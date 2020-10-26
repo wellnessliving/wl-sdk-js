@@ -1,0 +1,281 @@
+/**
+ * Catalog cart.
+ *
+ * This model is generated automatically based on API.
+ *
+ * @augments WlSdk_ModelAbstract
+ * @constructor
+ */
+function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
+{
+  WlSdk_ModelAbstract.apply(this);
+
+  /**
+   * @inheritDoc
+   */
+  this._s_key = 'k_business,uid_current';
+
+  /**
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_tax_custom
+   * @property {string} f_tax Tax amount.
+   * @property {string} k_tax Tax identifiers, primary key in {@link \RsTaxSql}.
+   */
+  /**
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item
+   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_tax_custom[]} a_tax_custom Information about taxes. If not passed means no custom taxes applied to sale item.
+   * If record is present, it means that tax is custom. Structure:<dl>
+   *   <dt>string <tt>f_tax</tt></dt>
+   *   <dd>Tax amount.</dd>
+   *   <dt>string <tt>k_tax</tt></dt>
+   *   <dd>Tax identifiers, primary key in {@link \RsTaxSql}.</dd>
+   * </dl>
+   * @property {number} i_quantity Quantity of sale items.
+   * @property {number} id_sale Sale item type, one of {@link \RsSaleSid}.
+   * @property {string} k_id Sale item ID.
+   * @property {string} k_shop_product_option Shop product option. <tt>null</tt> if sale item has no options.
+   * @property {*} m_price_custom Custom price of sale item. If not passed means no custom price applied to sale item.
+   */
+
+  /**
+   * Cart items list with next structure:
+   * <dl>
+   * <dt>array [<var>a_tax_custom</var>]</dt>
+   * <dd>Information about taxes. If not passed means no custom taxes applied to sale item.
+   * If record is present, it means that tax is custom. Structure:<dl>
+   *   <dt>string <var>f_tax</var></dt>
+   *   <dd>Tax amount.</dd>
+   *   <dt>string <var>k_tax</var></dt>
+   *   <dd>Tax identifiers, primary key in {@link \RsTaxSql}.</dd>
+   * </dl></dd>
+   * <dt>int <var>i_quantity</var></dt>
+   * <dd>Quantity of sale items.</dd>
+   * <dt>int <var>id_sale</var></dt>
+   * <dd>Sale item type, one of {@link \RsSaleSid}.</dd>
+   * <dt>string <var>k_id</var></dt>
+   * <dd>Sale item ID.</dd>
+   * <dt>string <var>k_shop_product_option</var></dt>
+   * <dd>Shop product option. <tt>null</tt> if sale item has no options.</dd>
+   * <dt>string [<var>m_price_custom</var>]</dt>
+   * <dd>Custom price of sale item. If not passed means no custom price applied to sale item.</dd>
+   * </dl>
+   *
+   * @get get
+   * @type {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item[]}
+   */
+  this.a_item = [];
+
+  /**
+   * Discount in percents.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.f_discount_percent = 0;
+
+  /**
+   * Business key.
+   * 
+   * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_business = undefined;
+
+  /**
+   * Primary key of location in {@link RsLocationSql} table.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_location = "";
+
+  /**
+   * Amount of discount.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_discount = undefined;
+
+  /**
+   * Discount in amount of money.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.m_discount_flat = "";
+
+  /**
+   * Amount of subtotal.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_subtotal = undefined;
+
+  /**
+   * Amount of tax.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_tax = undefined;
+
+  /**
+   * Tips amount.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.m_tip = "";
+
+  /**
+   * Amount of appointment tips.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_tip_purchase = undefined;
+
+  /**
+   * Total amount of the cart.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_total = undefined;
+
+  /**
+   * Discount code.
+   * 
+   * <tt>null</tt> if not set.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.text_discount_code = null;
+
+  /**
+   * Error code. Error should be shown on form but form should be calculated without exceptions.
+   *
+   * @get result
+   * @type {*}
+   */
+  this.text_error_code = undefined;
+
+  /**
+   * Current user key.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.uid_current = undefined;
+
+  /**
+   * User key to which purchase performs. Primary key in {@link \PassportLoginSql} table.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.uid_customer = "";
+
+  this.changeInit();
+}
+
+WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel);
+
+/**
+ * @inheritDoc
+ */
+Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.prototype.config=function()
+{
+  return {
+    "a_field": {
+      "a_item": {
+        "get": {
+          "get": true
+        }
+      },
+      "f_discount_percent": {
+        "get": {
+          "get": true
+        }
+      },
+      "k_business": {
+        "get": {
+          "get": true
+        }
+      },
+      "k_location": {
+        "get": {
+          "get": true
+        }
+      },
+      "m_discount": {
+        "get": {
+          "result": true
+        }
+      },
+      "m_discount_flat": {
+        "get": {
+          "get": true
+        }
+      },
+      "m_subtotal": {
+        "get": {
+          "result": true
+        }
+      },
+      "m_tax": {
+        "get": {
+          "result": true
+        }
+      },
+      "m_tip": {
+        "get": {
+          "get": true
+        }
+      },
+      "m_tip_purchase": {
+        "get": {
+          "result": true
+        }
+      },
+      "m_total": {
+        "get": {
+          "result": true
+        }
+      },
+      "text_discount_code": {
+        "get": {
+          "get": true
+        }
+      },
+      "text_error_code": {
+        "get": {
+          "result": true
+        }
+      },
+      "uid_current": {
+        "get": {
+          "get": true
+        }
+      },
+      "uid_customer": {
+        "get": {
+          "get": true
+        }
+      }
+    }
+  };
+};
+
+/**
+ * @function
+ * @name Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.instanceGet
+ * @param {string} k_business Business key. <b>This field is not used directly and described for correct auto generation JavaScript.</b>
+ * @param {string} uid_current Current user key.
+ * @returns {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+*/
