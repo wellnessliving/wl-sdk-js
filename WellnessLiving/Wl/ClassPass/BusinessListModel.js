@@ -1,7 +1,7 @@
 /**
  * Returns a list of all partners.
-
-Dispatched URL: <tt>/cp/v1/partners</tt>.
+ *
+ * Dispatched URL: <tt>/cp/v1/partners</tt>.
  *
  * This model is generated automatically based on API.
  *

@@ -1,8 +1,8 @@
 /**
  * Retrieves information about WellnessLiving user.
-
-Can return public information about the staff.
-To obtain full user information, you must have access to the requested user, otherwise there will be an access error.
+ *
+ * Can return public information about the staff.
+ * To obtain full user information, you must have access to the requested user, otherwise there will be an access error.
  *
  * This model is generated automatically based on API.
  *
@@ -139,7 +139,7 @@ function Wl_Login_LoginModel()
 
   /**
    * Key of business.
-   * 
+   *
    * Primary key in {@link RsBusinessSql}.
    *
    * @get get
@@ -223,7 +223,7 @@ function Wl_Login_LoginModel()
 
   /**
    * List of users to get information for. Primary keys in {@link \PassportLoginSql} table. Serialized as JSON string.
-   * 
+   *
    * <tt>null</tt> for mode of single user.
    *
    * @post post
@@ -233,7 +233,7 @@ function Wl_Login_LoginModel()
 
   /**
    * Key of user.
-   * 
+   *
    * Primary key in {@link PassportLoginSql}.
    *
    * @get get,result

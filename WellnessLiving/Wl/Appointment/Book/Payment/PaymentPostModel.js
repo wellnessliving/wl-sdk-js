@@ -1,6 +1,6 @@
 /**
  * {@inheritdoc}
-Wl-sdk users have encountered a problem sending a request due to the request length limit.
+ * Wl-sdk users have encountered a problem sending a request due to the request length limit.
  *
  * This model is generated automatically based on API.
  *
@@ -26,7 +26,7 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
 
   /**
    * A list of payment sources to pay with.
-   * 
+   *
    * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
    *
    * @post post
@@ -196,7 +196,7 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
 
   /**
    * Location to show available appointment booking schedule.
-   * 
+   *
    * Primary key in {@link \RsLocationSql} table.
    *
    * @get get,result
@@ -240,7 +240,7 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
 
   /**
    * User to get information for.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get

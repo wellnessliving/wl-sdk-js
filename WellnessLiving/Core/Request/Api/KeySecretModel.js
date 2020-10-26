@@ -1,9 +1,9 @@
 /**
  * Point to get a secret key for request signing.
-It is necessary in a case of CORS request.
-
-Request to this point must be signed as ordinary requests from SDK (using transient and persistent cookies).
-There must be no CORS (do not send from a browser).
+ * It is necessary in a case of CORS request.
+ *
+ * Request to this point must be signed as ordinary requests from SDK (using transient and persistent cookies).
+ * There must be no CORS (do not send from a browser).
  *
  * This model is generated automatically based on API.
  *

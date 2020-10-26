@@ -1,6 +1,6 @@
 /**
  * Api to work with verification email in Amazon SES. It is necessary for sending email through Amazon SES.
-Amazon SES can send email only from verified email addresses.
+ * Amazon SES can send email only from verified email addresses.
  *
  * This model is generated automatically based on API.
  *

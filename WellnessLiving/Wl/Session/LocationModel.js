@@ -1,11 +1,11 @@
 /**
  * This API is dedicated to save into session location selected by guest.
-
-It is forbidden to use sessions in application.
-
-But we must save location to define business member of which must became user after authorisation/registration.
-
-So usage of session is only way.
+ *
+ * It is forbidden to use sessions in application.
+ *
+ * But we must save location to define business member of which must became user after authorisation/registration.
+ *
+ * So usage of session is only way.
  *
  * This model is generated automatically based on API.
  *

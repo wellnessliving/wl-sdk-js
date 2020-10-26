@@ -1,6 +1,6 @@
 /**
  * Point to create one-time pin code.
-This code must be used for a security token generation.
+ * This code must be used for a security token generation.
  *
  * This model is generated automatically based on API.
  *

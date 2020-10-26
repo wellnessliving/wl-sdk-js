@@ -1,7 +1,7 @@
 /**
  * Create class from data received from Class Pass.
-
-Dispatched URL: <tt>/cp/v1/reservations</tt>.
+ *
+ * Dispatched URL: <tt>/cp/v1/reservations</tt>.
  *
  * This model is generated automatically based on API.
  *

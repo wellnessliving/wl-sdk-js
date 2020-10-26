@@ -1,7 +1,7 @@
 /**
  * The client requests to create a booking.
-The partner backend makes a booking for the requested slot, and returns the slot upon success,
-or business logic error (e.g. if the slot has become unavailable, or if payment is invalid, etc.) upon failure.
+ * The partner backend makes a booking for the requested slot, and returns the slot upon success,
+ * or business logic error (e.g. if the slot has become unavailable, or if payment is invalid, etc.) upon failure.
  *
  * This model is generated automatically based on API.
  *
@@ -32,7 +32,7 @@ function Wl_Google_Booking_CreateBookingModel()
    * Information about payments. When payment authorizations are handled by
    * Google, if the booking request does not succeed, payment authorizations are
    * automatically canceled. (optional)
-   * 
+   *
    * <tt>null</tt> if not specified.
    *
    * @post post
@@ -42,7 +42,7 @@ function Wl_Google_Booking_CreateBookingModel()
 
   /**
    * The inventory slot that is being requested to make this booking.
-   * 
+   *
    * Slot is provided for the partner to verify the lease information.
    *
    * @post post
@@ -61,7 +61,7 @@ function Wl_Google_Booking_CreateBookingModel()
   /**
    * A string from the user which contains any special requests or additional
    * information that they would like to notify the merchant about. (optional)
-   * 
+   *
    * <tt>null</tt> if not specified.
    *
    * @post post
@@ -71,7 +71,7 @@ function Wl_Google_Booking_CreateBookingModel()
 
   /**
    * Partner provided deal id associated with this slot. (optional).
-   * 
+   *
    * <tt>null</tt> if not specified.
    *
    * @post post

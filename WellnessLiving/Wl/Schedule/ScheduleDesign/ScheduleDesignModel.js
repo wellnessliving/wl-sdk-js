@@ -1,7 +1,7 @@
 /**
  * Schedule design data.
-
-This API is not located in Wl\Schedule\Design because in this case core does not recognize URL correctly.
+ *
+ * This API is not located in Wl\Schedule\Design because in this case core does not recognize URL correctly.
  *
  * This model is generated automatically based on API.
  *

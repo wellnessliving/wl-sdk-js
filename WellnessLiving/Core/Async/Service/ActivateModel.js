@@ -1,7 +1,7 @@
 /**
  * Allows to activate or deactivate a worker server.
-
-Deactivation of a worker server may be needed for maintenance work on the server.
+ *
+ * Deactivation of a worker server may be needed for maintenance work on the server.
  *
  * This model is generated automatically based on API.
  *
@@ -27,9 +27,9 @@ function Core_Async_Service_ActivateModel()
 
   /**
    * Whether this worker server should be activated or deactivated.
-   * 
+   *
    * <tt>true</tt> to activate this worker server.
-   * 
+   *
    * <tt>false</tt> to deactivate this worker server.
    *
    * @post post

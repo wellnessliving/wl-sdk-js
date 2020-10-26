@@ -1,7 +1,7 @@
 /**
  * Returns information about a partners.
-
-Dispatched URL: <tt>/cp/v1/partners/{partner_id}</tt>.
+ *
+ * Dispatched URL: <tt>/cp/v1/partners/{partner_id}</tt>.
  *
  * This model is generated automatically based on API.
  *

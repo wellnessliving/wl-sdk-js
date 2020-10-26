@@ -1,7 +1,7 @@
 /**
  * Returns a list of all locations of partner.
-
-Dispatched URL: <tt>/cp/v1/partners/{partner_id}/venues</tt>.
+ *
+ * Dispatched URL: <tt>/cp/v1/partners/{partner_id}/venues</tt>.
  *
  * This model is generated automatically based on API.
  *

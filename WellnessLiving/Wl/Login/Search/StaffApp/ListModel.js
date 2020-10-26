@@ -1,6 +1,6 @@
 /**
  * Data model that represents a list of user IDs,
-depending on the search query and the privileges of the user who searches.
+ * depending on the search query and the privileges of the user who searches.
  *
  * This model is generated automatically based on API.
  *

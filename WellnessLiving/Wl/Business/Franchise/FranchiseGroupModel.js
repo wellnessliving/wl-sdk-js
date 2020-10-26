@@ -1,6 +1,6 @@
 /**
  * Point to get a franchise group.
-Group is all businesses bound by a franchise (both franchisor and franchisees).
+ * Group is all businesses bound by a franchise (both franchisor and franchisees).
  *
  * This model is generated automatically based on API.
  *
@@ -26,7 +26,7 @@ function Wl_Business_Franchise_FranchiseGroupModel()
 
   /**
    * Key of business to get data for. It may be both franchisor and franchisee.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql} table.
    *
    * @get get

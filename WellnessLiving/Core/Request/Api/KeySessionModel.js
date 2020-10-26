@@ -1,10 +1,10 @@
 /**
  * Point to get a session key.
-CORS request only.
-
-This point must be done from user's browser.
-
-See {@link \Core\Request\Api\KeySecretApi} also.
+ * CORS request only.
+ *
+ * This point must be done from user's browser.
+ *
+ * See {@link \Core\Request\Api\KeySecretApi} also.
  *
  * This model is generated automatically based on API.
  *

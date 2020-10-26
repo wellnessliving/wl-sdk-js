@@ -1,6 +1,6 @@
 /**
  * Registers existing user in current business.
-If user already member of current business then do nothing.
+ * If user already member of current business then do nothing.
  *
  * This model is generated automatically based on API.
  *

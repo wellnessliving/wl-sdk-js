@@ -1,6 +1,6 @@
 /**
  * This method returns future bookings for a user at any merchant.
-This method should not return past bookings or cancelled bookings.
+ * This method should not return past bookings or cancelled bookings.
  *
  * This model is generated automatically based on API.
  *

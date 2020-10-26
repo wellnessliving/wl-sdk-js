@@ -1,7 +1,7 @@
 /**
  * Returns a list of all partners.
-
-Dispatched URL: <tt>/cp/v1/partners/{partner_id}/venues/{venue_id}/schedules/{schedule_id}/attendance</tt>.
+ *
+ * Dispatched URL: <tt>/cp/v1/partners/{partner_id}/venues/{venue_id}/schedules/{schedule_id}/attendance</tt>.
  *
  * This model is generated automatically based on API.
  *

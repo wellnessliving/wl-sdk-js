@@ -1,6 +1,6 @@
 /**
  * Import popup API.
-This is a banner that can be enabled at the time of import.
+ * This is a banner that can be enabled at the time of import.
  *
  * This model is generated automatically based on API.
  *

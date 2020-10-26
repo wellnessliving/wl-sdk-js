@@ -1,7 +1,7 @@
 /**
  * Clears all caches where messages can be cached.
-
-This includes compiled versions of templates.
+ *
+ * This includes compiled versions of templates.
  *
  * This model is generated automatically based on API.
  *

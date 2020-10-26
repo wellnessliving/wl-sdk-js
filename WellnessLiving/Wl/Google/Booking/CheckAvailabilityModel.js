@@ -1,6 +1,6 @@
 /**
  * Check availability for a requested slot.
-The partner backend verifies that the requested appointment slot is valid and available.
+ * The partner backend verifies that the requested appointment slot is valid and available.
  *
  * This model is generated automatically based on API.
  *

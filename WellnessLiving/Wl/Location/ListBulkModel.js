@@ -1,7 +1,7 @@
 /**
  * Point to get location lists for a bulk of business.
-
-Hack for a franchise with a lot of businesses.
+ *
+ * Hack for a franchise with a lot of businesses.
  *
  * This model is generated automatically based on API.
  *

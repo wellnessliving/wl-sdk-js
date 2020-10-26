@@ -1,7 +1,7 @@
 /**
  * Always throws {@link \Core\Request\Api\DebugException}, for all methods.
-
-This class is used when an API request to an unexisting endpoint is performed.
+ *
+ * This class is used when an API request to an unexisting endpoint is performed.
  *
  * This model is generated automatically based on API.
  *

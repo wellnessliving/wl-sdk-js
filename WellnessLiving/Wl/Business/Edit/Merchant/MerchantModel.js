@@ -1,7 +1,7 @@
 /**
  * Manages business merchant processing:
-- returns detail information about business merchants;
-- adds/edits merchant settings for specified business.
+ * - returns detail information about business merchants;
+ * - adds/edits merchant settings for specified business.
  *
  * This model is generated automatically based on API.
  *
@@ -78,7 +78,7 @@ function Wl_Business_Edit_Merchant_MerchantModel()
   /**
    * Business key.
    * Primary key in {@link \RsBusinessSql} table.
-   * 
+   *
    * <tt>null</tt> if not set.
    *
    * @delete get
@@ -91,7 +91,7 @@ function Wl_Business_Edit_Merchant_MerchantModel()
   /**
    * Specified payment merchant for which detail information should be return.
    * Primary key in {@link \RsBusinessMerchantSql} table.
-   * 
+   *
    * <tt>null</tt> if it is need to return information about all payment processors for specified business.
    *
    * @delete get

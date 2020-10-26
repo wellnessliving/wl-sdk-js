@@ -1,7 +1,7 @@
 /**
  * Api to return list of video categories.
-
-Results of the methods can be viewed in the model.
+ *
+ * Results of the methods can be viewed in the model.
  *
  * This model is generated automatically based on API.
  *

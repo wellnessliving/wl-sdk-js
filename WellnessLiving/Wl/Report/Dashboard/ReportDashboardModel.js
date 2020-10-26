@@ -1,10 +1,10 @@
 /**
  * API point to manipulate of the adding reports to a dashboard.
-
-<b>Note</b>.
-Old context and context from {@link ReportSaveApi} is used here because:
- - reason to use 'rs.report.save' context: messages should be the same in both implementations (old and new);
- - reason to use context from {@link ReportSaveApi}: saving and adding to a dashboard in the old implementation uses the same module.
+ *
+ * <b>Note</b>.
+ * Old context and context from {@link ReportSaveApi} is used here because:
+ *  - reason to use 'rs.report.save' context: messages should be the same in both implementations (old and new);
+ *  - reason to use context from {@link ReportSaveApi}: saving and adding to a dashboard in the old implementation uses the same module.
  *
  * This model is generated automatically based on API.
  *

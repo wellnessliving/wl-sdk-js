@@ -1,7 +1,7 @@
 /**
  * Health check status API endpoint.
-
-Used by Google to check that our services are available.
+ *
+ * Used by Google to check that our services are available.
  *
  * This model is generated automatically based on API.
  *

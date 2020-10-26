@@ -1,12 +1,12 @@
 /**
  * API to get schedule.
-
-<b>Note.</b>
-List of the properties is temporary.
-This is a temporary version which returns a completed template.
-
-<b>Important.</b>
-When this API will be completed - delete TODO 'Schedule Api' in the project and code for them.
+ *
+ * <b>Note.</b>
+ * List of the properties is temporary.
+ * This is a temporary version which returns a completed template.
+ *
+ * <b>Important.</b>
+ * When this API will be completed - delete TODO 'Schedule Api' in the project and code for them.
  *
  * This model is generated automatically based on API.
  *
