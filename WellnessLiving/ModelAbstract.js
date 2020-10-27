@@ -943,17 +943,6 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
           o_data_ready = a_signature['a_parameter'];
       }
 
-      var s_rule = null;
-      if(WlSdk_Config_Mixin.RESULT_CONVERSION_RULES)
-      {
-        if(WlSdk_Config_Mixin.RESULT_CONVERSION_RULES.hasOwnProperty(get_class(this)))
-          s_rule = WlSdk_Config_Mixin.RESULT_CONVERSION_RULES[get_class(this)];
-        else if(WlSdk_Config_Mixin.RESULT_CONVERSION_RULES.hasOwnProperty(''))
-          s_rule = WlSdk_Config_Mixin.RESULT_CONVERSION_RULES[''];
-      }
-      if(s_rule)
-        a_header['X-Error-Rules'] = s_rule;
-
       var a_ajax = {
         'cache': false,
         'contentType': is_file?false:'application/x-www-form-urlencoded; charset=UTF-8',
