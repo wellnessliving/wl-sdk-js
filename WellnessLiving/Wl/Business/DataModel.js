@@ -96,6 +96,14 @@ function Wl_Business_DataModel()
   this.k_business_token = undefined;
 
   /**
+   * Currency key of the given business or system currency if business not passed.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.k_currency = undefined;
+
+  /**
    * Reply-to email address.
    *
    * @get result
@@ -242,6 +250,11 @@ Wl_Business_DataModel.prototype.config=function()
         }
       },
       "k_business_token": {
+        "get": {
+          "result": true
+        }
+      },
+      "k_currency": {
         "get": {
           "result": true
         }
