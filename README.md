@@ -1,4 +1,4 @@
-# wl-js-sdk
+# wl-sdk-js
 Read [HowToSetup](./WellnessLiving/doc/HowToSetup.md) for installation guide.  
 Read [AboutAuthentication](./WellnessLiving/doc/AboutAuthentication.md) for description 
 of authentication system.
