@@ -56,7 +56,7 @@ function Wl_User_Referrer_ReferrerModel()
   this.a_photo = undefined;
 
   /**
-   * Current business ID.
+   * Current business key.
    *
    * @get get
    * @type {string}
@@ -72,7 +72,7 @@ function Wl_User_Referrer_ReferrerModel()
   this.s_email = undefined;
 
   /**
-   * The business client ID of the referrer.
+   * The business client key of the referrer.
    *
    * @get result
    * @type {string}
@@ -112,7 +112,7 @@ function Wl_User_Referrer_ReferrerModel()
   this.s_search = "";
 
   /**
-   * Client's UID of the referrer.
+   * Client's user key of the referrer.
    *
    * @get result
    * @type {string}
@@ -184,7 +184,7 @@ Wl_User_Referrer_ReferrerModel.prototype.config=function()
  * @function
  * @name Wl_User_Referrer_ReferrerModel.instanceGet
  * @param {string} s_search A string for search a referrer.
- * @param {string} k_business Current business ID.
+ * @param {string} k_business Current business key.
  * @returns {Wl_User_Referrer_ReferrerModel}
  * @see WlSdk_ModelAbstract.instanceGet()
 */
