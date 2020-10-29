@@ -72,7 +72,7 @@ function Wl_User_Referrer_ReferrerModel()
   this.s_email = undefined;
 
   /**
-   * The business client key of the referrer.
+   * The business client ID of the referrer.
    *
    * @get result
    * @type {string}
