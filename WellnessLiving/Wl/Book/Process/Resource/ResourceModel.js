@@ -92,6 +92,7 @@ function Wl_Book_Process_Resource_ResourceModel()
   /**
    * @typedef {{}} Wl_Book_Process_Resource_ResourceModel_a_resource_all_a_resource_list
    * @property {number} i_index Number of asset. Actual for assets with quantity more than <tt>1</tt>.
+   * @property {boolean} is_current <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
    * @property {string} k_resource ID of asset. Primary key {@link RsResourceSql} table.
    * @property {string} s_resource Title of asset.
    */
@@ -106,6 +107,12 @@ function Wl_Book_Process_Resource_ResourceModel()
    *     Number of asset. Actual for assets with quantity more than <tt>1</tt>.
    *   </dd>
    *   <dt>
+   *     bool <tt>is_current</tt>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
+   *   </dd>
+   *   <dt>
    *     string <tt>k_resource</tt>
    *   </dt>
    *   <dd>
@@ -118,7 +125,10 @@ function Wl_Book_Process_Resource_ResourceModel()
    *     Title of asset.
    *   </dd>
    * </dl>
+   * @property {boolean} has_current <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
+   * @property {boolean} is_client_select <tt>true</tt> - client selected resource from current group; <tt>false</tt> otherwise.
    * @property {boolean} is_share <tt>true</tt> - assets of this category do not belong to certain users but belong to session in general; <tt>false</tt> - assets belong to certain users.
+   * @property {boolean} is_select <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
    * @property {string} k_resource_layout ID of asset layout. Primary key in {@link \Wl\Resource\Layout\Sql} table.
    * @property {string} k_resource_type ID of asset category. Primary key in {@link RsResourceTypeSql} table.
    * @property {string} s_resource_type Title of asset category.
@@ -140,6 +150,12 @@ function Wl_Book_Process_Resource_ResourceModel()
    *         Number of asset. Actual for assets with quantity more than <tt>1</tt>.
    *       </dd>
    *       <dt>
+   *         bool <var>is_current</var>
+   *       </dt>
+   *       <dd>
+   *         <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
+   *       </dd>
+   *       <dt>
    *         string <var>k_resource</var>
    *       </dt>
    *       <dd>
@@ -154,10 +170,28 @@ function Wl_Book_Process_Resource_ResourceModel()
    *     </dl>
    *   </dd>
    *   <dt>
+   *     bool <var>has_current</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_client_select</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - client selected resource from current group; <tt>false</tt> otherwise.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_share</var>
    *   </dt>
    *   <dd>
    *     <tt>true</tt> - assets of this category do not belong to certain users but belong to session in general; <tt>false</tt> - assets belong to certain users.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_select</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout</var>
