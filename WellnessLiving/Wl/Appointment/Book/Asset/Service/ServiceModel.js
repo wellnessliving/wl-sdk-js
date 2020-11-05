@@ -28,7 +28,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    * @typedef {{}} Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource
    * @property {{}} a_image Asset image data. See {@link \RsResourceImage::data()} for details.
    * @property {boolean} is_available <tt>true</tt> - this asset has at least one free unit; <tt>false</tt> - asset has no free units.
-   * @property {string} k_resource Asset ID. Primary key in {@link \RsResourceSql} table.
+   * @property {string} k_resource Asset key. Primary key in {@link \RsResourceSql} table.
    * @property {string} s_resource Asset title.
    */
   /**
@@ -51,7 +51,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    *     string <tt>k_resource</tt>
    *   </dt>
    *   <dd>
-   *     Asset ID. Primary key in {@link \RsResourceSql} table.
+   *     Asset key. Primary key in {@link \RsResourceSql} table.
    *   </dd>
    *   <dt>
    *     string <tt>s_resource</tt>
@@ -60,7 +60,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    *     Asset title.
    *   </dd>
    * </dl>
-   * @property {?string} k_resource_layout Assets' layout ID; primary key in {@link \Wl\Resource\Layout\Sql} table. <tt>null</tt> if asset category has no layout.
+   * @property {?string} k_resource_layout Assets' layout key; primary key in {@link \Wl\Resource\Layout\Sql} table. <tt>null</tt> if asset category has no layout.
    * @property {string} s_resource_type Title of asset category.
    */
 
@@ -89,7 +89,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    *         string <var>k_resource</var>
    *       </dt>
    *       <dd>
-   *         Asset ID. Primary key in {@link \RsResourceSql} table.
+   *         Asset key. Primary key in {@link \RsResourceSql} table.
    *       </dd>
    *       <dt>
    *         string <var>s_resource</var>
@@ -103,7 +103,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    *     string|null <var>k_resource_layout</var>
    *   </dt>
    *   <dd>
-   *     Assets' layout ID; primary key in {@link \Wl\Resource\Layout\Sql} table. <tt>null</tt> if asset category has no layout.
+   *     Assets' layout key; primary key in {@link \Wl\Resource\Layout\Sql} table. <tt>null</tt> if asset category has no layout.
    *   </dd>
    *   <dt>
    *     string <var>s_resource_type</var>
