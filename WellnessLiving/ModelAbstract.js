@@ -501,9 +501,20 @@ WlSdk_ModelAbstract.prototype.errorGet = function()
 /**
  * Extends a child class with standard static methods.
  *
+ * @deprecated Use {@link WlSdk_ModelAbstract.extends()} (in the required subclass) instead.
  * @param {WlSdk_ModelAbstract} o_child A subclass to extend.
  */
 WlSdk_ModelAbstract.extend = function(o_child)
+{
+  this.extends(o_child);
+};
+
+/**
+ * Extends a child class with standard static methods.
+ *
+ * @param {WlSdk_ModelAbstract} o_child A subclass to extend.
+ */
+WlSdk_ModelAbstract.extends = function(o_child)
 {
   o_child.prototype=Object.create(this.prototype);
 
@@ -892,9 +903,6 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
     a_url = {};
   }
 
-  if(a_config.s_method==='DELETE')
-    url = WlSdk_Core_Url.variable(url,a_data);
-
   this._o_defer = WlSdk_Config_Mixin.configDeferredCreate(
     get_class(this)+'.request',
     'URL: '+url+'. Method: '+a_config.s_method+'. Data: '+JSON.stringify(a_data)
@@ -932,6 +940,7 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
     {
       var a_header = o_this.header();
       a_header['X-Signature-Date'] = WlSdk_Core_Date.mysqlHttp(dt_request);
+      a_header['X-Signature-Timezone'] = (new Date()).getTimezoneOffset();
       if(a_signature)
       {
         a_header['Authorization'] = a_signature['s_authorization'];
