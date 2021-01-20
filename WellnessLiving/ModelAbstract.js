@@ -903,6 +903,9 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
     a_url = {};
   }
 
+  if(a_config.s_method==='DELETE'&&s_csrf)
+    url = WlSdk_Core_Url.variable(url,{'csrf': s_csrf});
+
   this._o_defer = WlSdk_Config_Mixin.configDeferredCreate(
     get_class(this)+'.request',
     'URL: '+url+'. Method: '+a_config.s_method+'. Data: '+JSON.stringify(a_data)
