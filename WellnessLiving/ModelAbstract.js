@@ -501,7 +501,7 @@ WlSdk_ModelAbstract.prototype.errorGet = function()
 /**
  * Extends a child class with standard static methods.
  *
- * @deprecated Use {@link WlSdk_ModelAbstract.extends()} (in the required subclass) instead.
+ * @deprecated Use {@link WlSdk_ModelAbstract.extends} (in the required subclass) instead.
  * @param {WlSdk_ModelAbstract} o_child A subclass to extend.
  */
 WlSdk_ModelAbstract.extend = function(o_child)

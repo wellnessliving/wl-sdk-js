@@ -70,21 +70,21 @@ WlSdk_Config_MixinAbstract.CONFIG_AUTHORIZE_ID = '';
  *       <dt>[value]-/dt>
  *       <dd>Can be used for any status, which starts with [value]-.</dd>
  *       <dt>-</dt>
- *       <dd>Code, which should be set, if status is not <tt>ok</tt>,but we do not have any corresponding code in the rules.</dd>
+ *       <dd>Code, which should be set, if status is not <tt>ok</tt>, but we do not have any corresponding code in the rules.</dd>
  *     </dl>
  *   </li>
  * </ul>
  *
  * Example: <code>
- *   WlSdk_Config_Mixin.RESULT_CONVERSION_RULES = [
- *     '' => 'default',
- *     'Wl_Login_LoginModel => '418 code-teapot, 451 signature-empty'
- *   ];
+ *   WlSdk_Config_Mixin.RESULT_CONVERSION_RULES = {
+ *     '': 'default',
+ *     'Wl_Login_LoginModel': '418 code-teapot, 451 signature-empty'
+ *   };
  * </code>
  *
  * @type {{}}
  */
-WlSdk_Config_MixinAbstract.RESULT_CONVERSION_RULES = [];
+WlSdk_Config_MixinAbstract.RESULT_CONVERSION_RULES = {};
 
 /**
  * Deferred object that is resolved when credentials for request signing are loaded.
