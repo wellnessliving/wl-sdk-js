@@ -11,6 +11,25 @@ function WlSdk_Config_Mixin()
 WlSdk_Config_MixinAbstract.extend(WlSdk_Config_Mixin);
 
 /**
+ * Login for application authorization.
+ *
+ * @type {string}
+ */
+WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID = 'add ID';
+
+/**
+ * Code for CSRF protection.
+ */
+WlSdk_Config_Mixin.CSRF_CODE = SDK_CSRF_CODE; // Set variable with your CSRF code.
+
+/**
+ * Session type.
+ *
+ * @type {string}
+ */
+WlSdk_Config_Mixin.SESSION = 'cookie';
+
+/**
  * URL of the API server (including trailing slash).
  *
  * @type {string}
@@ -23,18 +42,6 @@ WlSdk_Config_Mixin.URL_API = 'add URL';
  * @type {string}
  */
 WlSdk_Config_Mixin.URL_CSRF = 'http://stable.wellnessliving.lc/secret.php';  // Example of API URL.
-
-/**
- * Login for application authorization.
- *
- * @type {string}
- */
-WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID = 'add ID';
-
-/**
- * Code for CSRF protection.
- */
-WlSdk_Config_Mixin.CSRF_CODE = SDK_CSRF_CODE; // Set variable with your CSRF code.
 
 /*
 /!**

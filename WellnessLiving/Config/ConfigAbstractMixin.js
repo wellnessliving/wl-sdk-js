@@ -25,6 +25,16 @@ WlSdk_Config_MixinAbstract.ASSERT_EXCEPTION = WlSdk_AssertException;
 WlSdk_Config_MixinAbstract.CSRF_CODE = '';
 
 /**
+ * Session type.
+ *
+ * `cookie` based on cookies.
+ * `local` base on session key which is saved in the browser local storage.
+ *
+ * @type {string}
+ */
+WlSdk_Config_MixinAbstract.SESSION = 'local';
+
+/**
  * URL of the API server (including trailing slash).
  *
  * @type {string}
@@ -101,9 +111,12 @@ WlSdk_Config_MixinAbstract.o_deferred_credentials = null;
  */
 WlSdk_Config_MixinAbstract.configCredentialsLoad = function(a_config)
 {
-  WlSdk_AssertException.notEmpty(this.CSRF_CODE,{
-    'text_message': 'Code for protection of CSRF is empty.'
-  });
+  if(this.SESSION==='cookie')
+  {
+    WlSdk_AssertException.notEmpty(this.CSRF_CODE,{
+      'text_message': 'Code for protection of CSRF is empty.'
+    });
+  }
   WlSdk_AssertException.notEmpty(this.URL_CSRF,{
     'text_message': 'URL of the page to load signature credentials is not configured.'
   });
@@ -118,18 +131,50 @@ WlSdk_Config_MixinAbstract.configCredentialsLoad = function(a_config)
 
   var o_this = this;
 
-  var o_key_session = new Core_Request_Api_KeySessionModel();
-  o_key_session.s_application = this.CONFIG_AUTHORIZE_ID;
-  o_key_session.s_csrf = this.CSRF_CODE;
-  o_key_session.request({
-    'is_public': true,
-    's_method': 'GET'
-  }).done(function()
+  var o_promise_key_defer = o_this.configDeferredCreate();
+  if(this.SESSION==='cookie')
+  {
+    var o_key_session = new Core_Request_Api_KeySessionModel();
+    o_key_session.s_application = this.CONFIG_AUTHORIZE_ID;
+    o_key_session.s_csrf = this.CSRF_CODE;
+
+    o_key_session.request({
+      'is_public': true,
+      's_method': 'GET'
+    }).done(function()
+    {
+      o_promise_key_defer.resolve(o_key_session.s_key).promise();
+    }).fail(function()
+    {
+      o_promise_key_defer.reject();
+      WlSdk_Config_MixinAbstract.o_deferred_credentials.reject(o_key_session.errorGet());
+    });
+  }
+  else
+  {
+    WlSdk_Config_Mixin.csrfCode(this.sessionKey()).done(function(s_csrf)
+    {
+      WlSdk_AssertException.notEmpty(s_csrf,{
+        'text_message': 'Code for protection of CSRF is empty.'
+      });
+      WlSdk_ModelAbstract.a_credentials = {
+        's_csrf': s_csrf
+      };
+      WlSdk_Config_MixinAbstract.o_deferred_credentials.resolve();
+    }).fail(function(data)
+    {
+      o_promise_key_defer.reject();
+      WlSdk_Config_MixinAbstract.o_deferred_credentials.reject(data);
+    });
+    return WlSdk_Config_MixinAbstract.o_deferred_credentials.promise();
+  }
+
+  o_promise_key_defer.done(function(s_session_key)
   {
     var url = o_this.URL_CSRF;
     url = WlSdk_Core_Url.variable(url,{
       's_csrf': o_this.CSRF_CODE,
-      's_key_session': o_key_session.s_key
+      's_key_session': s_session_key
     });
 
     fetch(url,{
@@ -156,9 +201,6 @@ WlSdk_Config_MixinAbstract.configCredentialsLoad = function(a_config)
     {
       WlSdk_Config_MixinAbstract.o_deferred_credentials.reject({'s_message': error['s_error']});
     });
-  }).fail(function()
-  {
-    WlSdk_Config_MixinAbstract.o_deferred_credentials.reject(o_key_session.errorGet());
   });
 
   return WlSdk_Config_MixinAbstract.o_deferred_credentials.promise();
@@ -210,6 +252,17 @@ WlSdk_Config_MixinAbstract.configTestLog = function(x_log)
 };
 
 /**
+ * Returns CSRF code based on session key.
+ *
+ * @param {string} s_session_key Session key.
+ * @return {WlSdk_Deferred_Promise} Promise that will be resolved when CSRF code is ready to use.
+ */
+WlSdk_Config_MixinAbstract.csrfCode = function(s_session_key)
+{
+  return this.configDeferredCreate().resolve('').promise();
+};
+
+/**
  * Extends the class to a child.
  *
  * @param {WlSdk_Config_MixinAbstract} o_child Child class to be extended.
@@ -239,4 +292,28 @@ WlSdk_Config_MixinAbstract.extend = function(o_child)
 WlSdk_Config_MixinAbstract.requestSuccess = function(a_result,s_request,url_request)
 {
   return true;
+};
+
+/**
+ * Returns session key.
+ *
+ * @returns {string} Session key.
+ */
+WlSdk_Config_MixinAbstract.sessionKey = function()
+{
+  var s_session_id = window.localStorage.getItem('s_session_id');
+  if(s_session_id === null)
+  {
+    var s_symbols="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    s_session_id = '';
+    for(var i=0;i<40;i++)
+    {
+      var c=Math.round((Math.random()*10000000))%s_symbols.length;
+      s_session_id=s_session_id+s_symbols.charAt(c);
+    }
+
+    window.localStorage.setItem('s_session_id',s_session_id);
+  }
+
+  return s_session_id;
 };
