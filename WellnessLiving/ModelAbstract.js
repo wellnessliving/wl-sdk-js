@@ -507,6 +507,9 @@ WlSdk_ModelAbstract.prototype.errorGet = function()
 WlSdk_ModelAbstract.extend = function(o_child)
 {
   this.extends(o_child);
+
+
+
 };
 
 /**
