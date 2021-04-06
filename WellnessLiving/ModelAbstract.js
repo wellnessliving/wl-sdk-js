@@ -1009,15 +1009,15 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
               'url': url
             });
 
+            var a_config = o_this.config();
+            var s_key;
             if(a_result['status']==='ok')
             {
               WlSdk_Config_Mixin.configTestLog(s_method+' '+url+' Success!');
 
               o_this._o_error = null;
 
-              var a_config = o_this.config();
-
-              for(var s_key in a_config['a_field'])
+              for(s_key in a_config['a_field'])
               {
                 if(!a_config['a_field'].hasOwnProperty(s_key))
                   continue;
@@ -1067,6 +1067,22 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
             // noinspection JSObjectNullOrUndefined
             if(a_result['status']!=='ok'||a_result.hasOwnProperty('a_error'))
             {
+              for(s_key in a_config['a_field'])
+              {
+                if(!a_config['a_field'].hasOwnProperty(s_key))
+                  continue;
+                if(!a_config['a_field'][s_key][s_method])
+                  continue;
+                if(!a_config['a_field'][s_key][s_method]['error'])
+                  continue;
+
+                // noinspection JSObjectNullOrUndefined
+                if(a_result.hasOwnProperty(s_key))
+                  o_this[s_key] = a_result[s_key];
+                else
+                  o_this[s_key] = null;
+              }
+
               var o_event = o_this.syncErrorProcess(a_result);
 
               o_this._o_error = o_event;

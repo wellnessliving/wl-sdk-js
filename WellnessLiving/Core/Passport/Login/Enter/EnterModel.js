@@ -41,7 +41,7 @@ function Core_Passport_Login_Enter_EnterModel()
 
   /**
    * Notepad that is used to hash user password.
-   * 
+   *
    * See {@link \Core\Passport\Login\Enter\EnterApi::$s_password} about hashing of user password.
    *
    * @post post
@@ -59,7 +59,7 @@ function Core_Passport_Login_Enter_EnterModel()
 
   /**
    * Whether and how user login and password should be remembered.
-   * 
+   *
    * Allowed values: <ul>
    *   <li><tt>''</tt> - Empty line (default value) if you do not want to remember anything.</li>
    *   <li><tt>'login'</tt> - To remember only user login.</li>
@@ -70,6 +70,16 @@ function Core_Passport_Login_Enter_EnterModel()
    * @type {string}
    */
   this.s_remember = "";
+
+  /**
+   * Optional URL to get captcha image.
+   *
+   * This field is filled in a case when a captcha code is required to sign in.
+   *
+   * @post error
+   * @type {string}
+   */
+  this.url_captcha = undefined;
 
   /**
    * Optional url for redirection after sign in in web application.
