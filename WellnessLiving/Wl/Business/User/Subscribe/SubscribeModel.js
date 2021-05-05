@@ -16,7 +16,7 @@ function Wl_Business_User_Subscribe_SubscribeModel()
    * <tt>true</tt> if user has email subscription on business, <tt>false</tt> otherwise.
    * In case of changing subscription,
    * <tt>true</tt> if subscribe user on business, <tt>false</tt> is unsubscribe user on business.
-   * 
+   *
    * <tt>null</tt> until loaded.
    *
    * @get result
@@ -24,6 +24,21 @@ function Wl_Business_User_Subscribe_SubscribeModel()
    * @type {?boolean}
    */
   this.is_subscribe = null;
+
+  /**
+   * Information about user`s subscription.
+   * In case of getting information,
+   * <tt>true</tt> if user has sms subscription on business, <tt>false</tt> otherwise.
+   * In case of changing subscription,
+   * <tt>true</tt> if subscribe user on business, <tt>false</tt> if unsubscribe user on business.
+   *
+   * <tt>null</tt> until loaded.
+   *
+   * @get result
+   * @put get
+   * @type {?boolean}
+   */
+  this.is_subscribe_sms = null;
 
   /**
    * Business key
@@ -61,6 +76,14 @@ Wl_Business_User_Subscribe_SubscribeModel.prototype.config=function()
   return {
     "a_field": {
       "is_subscribe": {
+        "get": {
+          "result": true
+        },
+        "put": {
+          "get": true
+        }
+      },
+      "is_subscribe_sms": {
         "get": {
           "result": true
         },
