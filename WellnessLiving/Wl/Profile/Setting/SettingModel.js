@@ -16,67 +16,58 @@ function Wl_Profile_Setting_SettingModel()
   this._s_key = 'uid,k_business';
 
   /**
-   * Whether 'Booking Confirmation Email' group is enabled.
+   * Whether email notifications related to purchases, contracts, and other activity in a client's account are enabled.
    *
    * @get result
    * @post post
-   * @type {number}
+   * @type {boolean}
    */
-  this.is_email_booking_confirmation = true;
+  this.is_account_management_email = true;
 
   /**
-   * Whether 'Booking Reminder Email' group is enabled.
+   * Whether sms notifications related to purchases, contracts, and other activity in a client's account are enabled.
    *
    * @get result
    * @post post
-   * @type {number}
+   * @type {boolean}
    */
-  this.is_email_booking_reminder = true;
+  this.is_account_management_sms = true;
 
   /**
-   * Whether 'Company News Email' group is enabled.
+   * Whether email notifications related to news and updates from the business regarding their services, availability and promotions are enabled.
    *
    * @get result
    * @post post
-   * @type {number}
+   * @type {boolean}
    */
-  this.is_email_news = true;
+  this.is_news_and_updates_email = true;
 
   /**
-   * Whether all emails enabled.
+   * Whether sms notifications related to news and updates from the business regarding their services, availability and promotions are enabled.
    *
    * @get result
    * @post post
-   * @type {number}
+   * @type {boolean}
    */
-  this.is_email_notification = true;
+  this.is_news_and_updates_sms = true;
 
   /**
-   * Whether 'Review Request Email' group is enabled.
+   * Whether email notifications related to the services a client has booked are enabled.
    *
    * @get result
    * @post post
-   * @type {number}
+   * @type {boolean}
    */
-  this.is_email_review = true;
+  this.is_schedule_and_reminders_email = true;
 
   /**
-   * Whether all Push is enabled.
+   * Whether sms notifications related to the services a client has booked are enabled.
    *
    * @get result
    * @post post
-   * @type {number}
+   * @type {boolean}
    */
-  this.is_push_notification = true;
-
-  /**
-   * Whether all SMS is enabled.
-   *
-   * @get result
-   * @post post
-   * @type {number}
-   */
-  this.is_sms_notification = true;
+  this.is_schedule_and_reminders_sms = true;
 
   /**
    * ID of current business.
@@ -108,7 +99,7 @@ Wl_Profile_Setting_SettingModel.prototype.config=function()
 {
   return {
     "a_field": {
-      "is_email_booking_confirmation": {
+      "is_account_management_email": {
         "get": {
           "result": true
         },
@@ -116,7 +107,7 @@ Wl_Profile_Setting_SettingModel.prototype.config=function()
           "post": true
         }
       },
-      "is_email_booking_reminder": {
+      "is_account_management_sms": {
         "get": {
           "result": true
         },
@@ -124,7 +115,7 @@ Wl_Profile_Setting_SettingModel.prototype.config=function()
           "post": true
         }
       },
-      "is_email_news": {
+      "is_news_and_updates_email": {
         "get": {
           "result": true
         },
@@ -132,7 +123,7 @@ Wl_Profile_Setting_SettingModel.prototype.config=function()
           "post": true
         }
       },
-      "is_email_notification": {
+      "is_news_and_updates_sms": {
         "get": {
           "result": true
         },
@@ -140,7 +131,7 @@ Wl_Profile_Setting_SettingModel.prototype.config=function()
           "post": true
         }
       },
-      "is_email_review": {
+      "is_schedule_and_reminders_email": {
         "get": {
           "result": true
         },
@@ -148,15 +139,7 @@ Wl_Profile_Setting_SettingModel.prototype.config=function()
           "post": true
         }
       },
-      "is_push_notification": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_sms_notification": {
+      "is_schedule_and_reminders_sms": {
         "get": {
           "result": true
         },
