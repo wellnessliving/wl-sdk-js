@@ -46,23 +46,5 @@ WlSdk_ModelAbstract.extend(Wl_ClassPass_LocationDataModel);
  */
 Wl_ClassPass_LocationDataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "venue": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_partner": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_venue": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"venue": {"get": {"result": true}},"s_partner": {"get": {"get": true}},"s_venue": {"get": {"get": true}}}};
 };

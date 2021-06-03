@@ -28,13 +28,5 @@ WlSdk_ModelAbstract.extend(Wl_Postcard_Campaign_CampaignLanding_CampaignLandingM
  */
 Wl_Postcard_Campaign_CampaignLanding_CampaignLandingModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"post": true}}}};
 };

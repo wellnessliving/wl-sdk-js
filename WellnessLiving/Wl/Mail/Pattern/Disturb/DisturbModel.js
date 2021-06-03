@@ -13,12 +13,7 @@ function Wl_Mail_Pattern_Disturb_DisturbModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Mail_Pattern_Disturb_DisturbModel_a_end
@@ -61,7 +56,7 @@ function Wl_Mail_Pattern_Disturb_DisturbModel()
 
   /**
    * End time of "Do Not Disturb" period in seconds from start of the day.
-   * 
+   *
    * <tt>null</tt> if disturb period is not setup.
    *
    * @get result
@@ -71,7 +66,7 @@ function Wl_Mail_Pattern_Disturb_DisturbModel()
 
   /**
    * Start time of "Do Not Disturb" period in seconds from start of the day.
-   * 
+   *
    * <tt>null</tt> if disturb period is not setup.
    *
    * @get result
@@ -99,44 +94,7 @@ WlSdk_ModelAbstract.extend(Wl_Mail_Pattern_Disturb_DisturbModel);
  */
 Wl_Mail_Pattern_Disturb_DisturbModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_end": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "a_start": {
-        "post": {
-          "post": true
-        }
-      },
-      "i_end": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_start": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_end": {"get": {"result": true},"post": {"post": true}},"a_start": {"post": {"post": true}},"i_end": {"get": {"result": true}},"i_start": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -145,4 +103,4 @@ Wl_Mail_Pattern_Disturb_DisturbModel.prototype.config=function()
  * @param {string} k_business Business key.
  * @returns {Wl_Mail_Pattern_Disturb_DisturbModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

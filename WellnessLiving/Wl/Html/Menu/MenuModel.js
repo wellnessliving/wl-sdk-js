@@ -13,7 +13,7 @@ function Wl_Html_Menu_MenuModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_place,k_business,uid';
+  this._s_key = "id_place,k_business,uid";
 
   /**
    * Menu list or an empty array if the menu for the specified unit could not be loaded
@@ -59,30 +59,7 @@ WlSdk_ModelAbstract.extend(Wl_Html_Menu_MenuModel);
  */
 Wl_Html_Menu_MenuModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_menu": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_place": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_menu": {"get": {"result": true}},"id_place": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -93,4 +70,4 @@ Wl_Html_Menu_MenuModel.prototype.config=function()
  * @param {string} uid The user for which the menu should be displayed.
  * @returns {Wl_Html_Menu_MenuModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

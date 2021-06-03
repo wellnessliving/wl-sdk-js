@@ -11,14 +11,9 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * List of login promotion keys to create or delete pause for.
    * Primary key in {@link \RsLoginPromotionSql} table.
-   * 
+   *
    * <tt>null</tt> if not initialized.
    *
    * @post post
@@ -46,7 +41,7 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
   /**
    * End date of pause period in login promotion timezone. Can be set to special value
    * {@link PromotionPayPause::DATE_END_INDEFINITE} to make the period indefinite until further action.
-   * 
+   *
    * <tt>null</tt> if not initialized.
    *
    * @post post
@@ -57,7 +52,7 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
 
   /**
    * Start date of pause period in login promotion timezone.
-   * 
+   *
    * <tt>null</tt> if not initialized.
    *
    * @post post
@@ -77,7 +72,7 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
   /**
    * Action to perform with promotion payment pause periods.
    * One for the {@link \Wl\Promotion\Pay\PromotionPayPauseActionSid} constants.
-   * 
+   *
    * <tt>null</tt> if not initialized.
    *
    * @post post
@@ -87,7 +82,7 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
 
   /**
    * Additional notes for promotion payment pause period.
-   * 
+   *
    * <tt>null</tt> if not initialized.
    *
    * @post post
@@ -105,57 +100,5 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_Pay_PromotionPayPauseListModel);
  */
 Wl_Promotion_Pay_PromotionPayPauseListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login_promotion": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_login_promotion_exclude": {
-        "put": {
-          "result": true
-        }
-      },
-      "a_user": {
-        "put": {
-          "result": true
-        }
-      },
-      "dl_end": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "dl_start": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "i_user": {
-        "put": {
-          "result": true
-        }
-      },
-      "id_action": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_note": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login_promotion": {"post": {"post": true},"put": {"post": true}},"a_login_promotion_exclude": {"put": {"result": true}},"a_user": {"put": {"result": true}},"dl_end": {"post": {"post": true},"put": {"post": true}},"dl_start": {"post": {"post": true},"put": {"post": true}},"i_user": {"put": {"result": true}},"id_action": {"post": {"post": true}},"text_note": {"post": {"post": true}}}};
 };

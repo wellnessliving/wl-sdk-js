@@ -13,12 +13,7 @@ function Wl_Reward_Score_Current_CurrentModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business";
 
   /**
    * Current user's rank in the first leaderboard.
@@ -38,7 +33,7 @@ function Wl_Reward_Score_Current_CurrentModel()
 
   /**
    * ID of a business to show information for.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -56,7 +51,7 @@ function Wl_Reward_Score_Current_CurrentModel()
 
   /**
    * UID to retrieve information about.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
@@ -74,35 +69,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Score_Current_CurrentModel);
  */
 Wl_Reward_Score_Current_CurrentModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_board_rank": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_score": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_board_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_board_rank": {"get": {"result": true}},"i_score": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_board_title": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -112,4 +79,4 @@ Wl_Reward_Score_Current_CurrentModel.prototype.config=function()
  * @param {string} k_business ID of a business to show information for. Primary key in {@link \RsBusinessSql}.
  * @returns {Wl_Reward_Score_Current_CurrentModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

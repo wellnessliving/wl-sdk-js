@@ -44,23 +44,5 @@ WlSdk_ModelAbstract.extend(Core_Geo_GeoPositionModel);
  */
 Core_Geo_GeoPositionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "f_latitude": {
-        "get": {
-          "result": true
-        }
-      },
-      "f_longitude": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_city": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"f_latitude": {"get": {"result": true}},"f_longitude": {"get": {"result": true}},"k_city": {"get": {"result": true}}}};
 };

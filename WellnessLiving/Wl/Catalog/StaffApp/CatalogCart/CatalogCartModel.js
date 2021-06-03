@@ -13,7 +13,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid_current';
+  this._s_key = "k_business,uid_current";
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_tax_custom
@@ -73,8 +73,16 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.f_discount_percent = 0;
 
   /**
+   * Whether business applied commission at checkout.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_commission = false;
+
+  /**
    * Business key.
-   * 
+   *
    * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
    *
    * @get get
@@ -105,6 +113,14 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @type {string}
    */
   this.m_discount_flat = "";
+
+  /**
+   * Amount of total discount.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_discount_total = undefined;
 
   /**
    * Amount of subtotal.
@@ -148,7 +164,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
 
   /**
    * Discount code.
-   * 
+   *
    * <tt>null</tt> if not set.
    *
    * @get get
@@ -174,6 +190,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
 
   /**
    * User key to which purchase performs. Primary key in {@link \PassportLoginSql} table.
+   * Empty for a guest.
    *
    * @get get
    * @type {string}
@@ -190,85 +207,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel);
  */
 Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_item": {
-        "get": {
-          "get": true
-        }
-      },
-      "f_discount_percent": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_discount": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_discount_flat": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_subtotal": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_tax": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_tip": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_tip_purchase": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_total": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_discount_code": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_error_code": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid_current": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid_customer": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_item": {"get": {"get": true}},"f_discount_percent": {"get": {"get": true}},"is_commission": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_discount": {"get": {"result": true}},"m_discount_flat": {"get": {"get": true}},"m_discount_total": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_tip": {"get": {"get": true}},"m_tip_purchase": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"text_error_code": {"get": {"result": true}},"uid_current": {"get": {"get": true}},"uid_customer": {"get": {"get": true}}}};
 };
 
 /**
@@ -278,4 +217,4 @@ Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.prototype.config=function()
  * @param {string} uid_current Current user key.
  * @returns {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

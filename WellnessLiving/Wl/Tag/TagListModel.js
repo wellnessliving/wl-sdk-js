@@ -13,12 +13,7 @@ function Wl_Tag_TagListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Tag_TagListModel_a_list
@@ -28,7 +23,7 @@ function Wl_Tag_TagListModel()
 
   /**
    * Tag list.
-   * 
+   *
    * Each element has next structure:<dl>
    * <dt>string <var>k_tag</var> </dt>
    * <dd>Tag key. Primary key in the {@link \RsTagSql} table.</dd>
@@ -59,20 +54,7 @@ WlSdk_ModelAbstract.extend(Wl_Tag_TagListModel);
  */
 Wl_Tag_TagListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_list": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -81,4 +63,4 @@ Wl_Tag_TagListModel.prototype.config=function()
  * @param {string} k_business Business key of the tags.
  * @returns {Wl_Tag_TagListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

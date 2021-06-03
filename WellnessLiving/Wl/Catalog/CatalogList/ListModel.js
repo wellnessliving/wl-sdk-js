@@ -13,7 +13,7 @@ function Wl_Catalog_CatalogList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_location,uid';
+  this._s_key = "k_business,k_location,uid";
 
   /**
    * List of products to show.
@@ -58,30 +58,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_CatalogList_ListModel);
  */
 Wl_Catalog_CatalogList_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_product": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_product": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -92,4 +69,4 @@ Wl_Catalog_CatalogList_ListModel.prototype.config=function()
  * @param {string} uid Key of a user to show information for.
  * @returns {Wl_Catalog_CatalogList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

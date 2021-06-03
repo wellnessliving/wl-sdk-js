@@ -53,28 +53,5 @@ WlSdk_ModelAbstract.extend(Core_Push_PushModel);
  */
 Core_Push_PushModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "s_application_id": {
-        "post": {
-          "get": true
-        }
-      },
-      "s_id": {
-        "post": {
-          "get": true
-        }
-      },
-      "sid_system": {
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"s_application_id": {"post": {"get": true}},"s_id": {"post": {"get": true}},"sid_system": {"post": {"get": true}},"uid": {"post": {"get": true}}}};
 };

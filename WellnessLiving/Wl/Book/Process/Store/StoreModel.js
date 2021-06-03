@@ -13,7 +13,7 @@ function Wl_Book_Process_Store_StoreModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_class_period,dt_date_gmt,uid';
+  this._s_key = "k_class_period,dt_date_gmt,uid";
 
   /**
    * IDs of user's activity. Primary keys in {@link RsLoginActivitySql} table.
@@ -81,7 +81,7 @@ function Wl_Book_Process_Store_StoreModel()
    *     <tt>null</tt> if appointment must not repeat monthly.
    *   </dd>
    * </dl>
-   * 
+   *
    * <tt>null</tt> if booking must be not recurring.
    *
    * @post post
@@ -97,7 +97,7 @@ function Wl_Book_Process_Store_StoreModel()
 
   /**
    * Selected assets.
-   * 
+   *
    * Every element has keys:
    * <dl><dt>int <var>i_index</var></dt><dd>Order number of the asset (may be from 1 to asset quantity).</dd>
    * <dt>string <var>k_resource</var></dt><dd>Asset ID. Primary key in table {@link RsResourceSql}.</dd></dl>
@@ -109,9 +109,9 @@ function Wl_Book_Process_Store_StoreModel()
 
   /**
    * Selected sessions.
-   * 
+   *
    * Keys - session IDs. Primary keys in table {@link RsClassPeriodSql}.
-   * 
+   *
    * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
    *
    * @post post
@@ -182,72 +182,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Store_StoreModel);
  */
 Wl_Book_Process_Store_StoreModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login_activity": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_repeat": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_resource": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_session_select": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_visit": {
-        "post": {
-          "result": true
-        }
-      },
-      "dt_date_gmt": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_mode": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "is_next": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -258,4 +193,4 @@ Wl_Book_Process_Store_StoreModel.prototype.config=function()
  * @param {string} uid Key of a user who is making a book.
  * @returns {Wl_Book_Process_Store_StoreModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

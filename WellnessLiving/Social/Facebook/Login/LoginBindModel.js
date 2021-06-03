@@ -13,7 +13,7 @@ function Social_Facebook_Login_LoginBindModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid';
+  this._s_key = "uid";
 
   /**
    * User ID in Facebook.
@@ -59,36 +59,7 @@ WlSdk_ModelAbstract.extend(Social_Facebook_Login_LoginBindModel);
  */
 Social_Facebook_Login_LoginBindModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_facebook": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "result": true
-        }
-      },
-      "is_exists": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_token": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_facebook": {"delete": {"get": true},"get": {"result": true}},"is_exists": {"get": {"result": true}},"s_token": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -97,4 +68,4 @@ Social_Facebook_Login_LoginBindModel.prototype.config=function()
  * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
  * @returns {Social_Facebook_Login_LoginBindModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

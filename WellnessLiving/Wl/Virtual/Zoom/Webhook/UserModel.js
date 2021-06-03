@@ -36,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Virtual_Zoom_Webhook_UserModel);
  */
 Wl_Virtual_Zoom_Webhook_UserModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "payload": {
-        "post": {
-          "post": true
-        }
-      },
-      "event": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"payload": {"post": {"post": true}},"event": {"post": {"post": true}}}};
 };

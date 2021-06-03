@@ -11,11 +11,6 @@ function Core_Passport_Login_Register_RegisterModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * @typedef {{}} Core_Passport_Login_Register_RegisterModel_a_data
    * @property {string} [k_business] Key of the business for wellnessliving project to register user in.
    * 
@@ -29,16 +24,16 @@ function Core_Passport_Login_Register_RegisterModel()
 
   /**
    * Additional data about new users.
-   * 
+   *
    * <dl>
    *   <dt>string <var>[k_business]</var></dt>
    *   <dd>
    *     Key of the business for wellnessliving project to register user in.
-   * 
+   *
    *     Behavior is different for different applications. If application is connected to the certain business, this
    *     property can be always empty - all clients will be registered in the connected business. If business is set
    *     for such application and is different from the business from application settings, error occurs.
-   * 
+   *
    *     If application is not connected to the business, any business key can be set. This does not require any special
    *     privileges, as registration is a public available action.
    *   </dd>
@@ -99,7 +94,7 @@ function Core_Passport_Login_Register_RegisterModel()
 
   /**
    * URL to confirmation page. This link will be used in a confirmation email.
-   * 
+   *
    * If empty, URL to default page will be used.
    *
    * @post post
@@ -117,48 +112,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_Login_Register_RegisterModel);
  */
 Core_Passport_Login_Register_RegisterModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_data": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_application": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_mail": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_name_first": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_name_last": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_password": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_password_confirm": {
-        "post": {
-          "post": true
-        }
-      },
-      "url_confirm": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_data": {"post": {"post": true}},"s_application": {"post": {"post": true}},"s_mail": {"post": {"post": true}},"s_name_first": {"post": {"post": true}},"s_name_last": {"post": {"post": true}},"s_password": {"post": {"post": true}},"s_password_confirm": {"post": {"post": true}},"url_confirm": {"post": {"post": true}}}};
 };

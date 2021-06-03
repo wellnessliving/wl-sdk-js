@@ -13,19 +13,14 @@ function Wl_Insurance_Enrollment_EnrollmentPanelModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_wellness_program,k_login_promotion';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,k_wellness_program,k_login_promotion";
 
   /**
    * Reimbursement account information.
-   * 
+   *
    * Keys - field name.
    * Values - value entered by user.
-   * 
+   *
    * Validation is performed by {@link \Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setAccountForm()} method.
    *
    * @post post
@@ -36,10 +31,10 @@ function Wl_Insurance_Enrollment_EnrollmentPanelModel()
 
   /**
    * List of fields that the user has filled in for enrollment.
-   * 
+   *
    * Keys - field key in the database. See {@link \Wl\Integration\Curves\PartnerFieldSql} table for more details.
    * Values - value entered by user.
-   * 
+   *
    * Validation is performed by {@link \Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setFieldForm()} method.
    *
    * @post post
@@ -104,7 +99,7 @@ function Wl_Insurance_Enrollment_EnrollmentPanelModel()
   /**
    * Purchased program key.
    * Primary key from {@link \RsLoginPromotionSql} table.
-   * 
+   *
    * If set, the program key (<tt>k_wellness_program</tt>) will be taken from the {@link \Wl\Login\Promotion\LoginPromotionInsuranceSql} table.
    *
    * @get get
@@ -116,7 +111,7 @@ function Wl_Insurance_Enrollment_EnrollmentPanelModel()
 
   /**
    * "Wellness Program" key.
-   * 
+   *
    * Primary key from {@link \Wl\Integration\Curves\WellnessProgramSql} table.
    *
    * @get get
@@ -136,69 +131,7 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Enrollment_EnrollmentPanelModel);
  */
 Wl_Insurance_Enrollment_EnrollmentPanelModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_account": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_field": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_info": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_field_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_login_promotion": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_wellness_program": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_account": {"post": {"post": true},"put": {"post": true}},"a_field": {"post": {"post": true},"put": {"post": true}},"a_info": {"get": {"result": true}},"html_field_list": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_login_promotion": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_wellness_program": {"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -209,4 +142,4 @@ Wl_Insurance_Enrollment_EnrollmentPanelModel.prototype.config=function()
  * @param {string} k_login_promotion Purchased program key. Primary key from {@link \RsLoginPromotionSql} table. If set, the program key (<tt>k_wellness_program</tt>) will be taken from the {@link \Wl\Login\Promotion\LoginPromotionInsuranceSql} table.
  * @returns {Wl_Insurance_Enrollment_EnrollmentPanelModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

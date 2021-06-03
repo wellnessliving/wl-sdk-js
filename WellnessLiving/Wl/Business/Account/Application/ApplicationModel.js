@@ -36,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Account_Application_ApplicationModel);
  */
 Wl_Business_Account_Application_ApplicationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_application": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_application": {"post": {"get": true}},"k_business": {"post": {"get": true}}}};
 };

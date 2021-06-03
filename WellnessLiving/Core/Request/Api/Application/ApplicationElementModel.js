@@ -11,14 +11,9 @@ function Core_Request_Api_Application_ApplicationElementModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * The array of keys of access groups of current application.
    * <tt>null</tt> when application doesn't have access groups.
-   * 
+   *
    * Primary key in {@link \Core\Request\Api\Application\GroupSql} table.
    *
    * @get result
@@ -29,9 +24,9 @@ function Core_Request_Api_Application_ApplicationElementModel()
 
   /**
    * If an application is edited, its key is stored here.
-   * 
+   *
    * Primary key in {@link \Core\Request\Api\Application\Sql} table.
-   * 
+   *
    * <tt>null</tt> if a new group should be created.
    * This value is required for edit and delete operations.
    *
@@ -79,52 +74,5 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_Application_ApplicationElementModel)
  */
 Core_Request_Api_Application_ApplicationElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_application_group": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_api_application": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        }
-      },
-      "s_code": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "s_id": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "text_application": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_application_group": {"get": {"result": true},"post": {"post": true}},"k_api_application": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"s_code": {"get": {"result": true},"post": {"post": true}},"s_id": {"get": {"result": true},"post": {"post": true}},"text_application": {"get": {"result": true},"post": {"post": true}}}};
 };

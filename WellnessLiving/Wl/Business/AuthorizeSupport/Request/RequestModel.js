@@ -11,11 +11,6 @@ function Wl_Business_AuthorizeSupport_Request_RequestModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * <tt>true</tt> - support must wait permission from franchisee. <tt>false</tt> - no need to wait; authorisation is already done.
    *
    * @get result
@@ -51,29 +46,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_AuthorizeSupport_Request_RequestModel);
  */
 Wl_Business_AuthorizeSupport_Request_RequestModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_pending": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_pending": {"get": {"result": true}},"k_location": {"delete": {"get": true},"get": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true}}}};
 };

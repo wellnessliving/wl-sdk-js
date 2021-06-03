@@ -13,7 +13,7 @@ function Wl_Business_Header_OwnerModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * Business or Location title.
@@ -26,9 +26,9 @@ function Wl_Business_Header_OwnerModel()
 
   /**
    * The key of the business for which you want to get header information.
-   * 
+   *
    * As a result, this field may be empty. In this case, the location key will be setted.
-   * 
+   *
    * Primary key from {@link \RsBusinessSql} table.
    *
    * @get get,result
@@ -38,7 +38,7 @@ function Wl_Business_Header_OwnerModel()
 
   /**
    * Key of current user location.
-   * 
+   *
    * Primary key from {@link \RsLocationSql} table.
    *
    * @get result
@@ -57,7 +57,7 @@ function Wl_Business_Header_OwnerModel()
 
   /**
    * The user key for which information will be loaded.
-   * 
+   *
    * Primary key from {@link \PassportLoginSql} table.
    *
    * @get get
@@ -83,41 +83,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Header_OwnerModel);
  */
 Wl_Business_Header_OwnerModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "html_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "show_business_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_microsite": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"html_title": {"get": {"result": true}},"k_business": {"get": {"get": true,"result": true}},"k_location": {"get": {"result": true}},"show_business_name": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_microsite": {"get": {"result": true}}}};
 };
 
 /**
@@ -127,4 +93,4 @@ Wl_Business_Header_OwnerModel.prototype.config=function()
  * @param {string} uid The user key for which information will be loaded. Primary key from {@link \PassportLoginSql} table.
  * @returns {Wl_Business_Header_OwnerModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

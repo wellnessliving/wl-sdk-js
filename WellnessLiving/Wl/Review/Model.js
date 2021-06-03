@@ -1,5 +1,5 @@
 /**
- * 
+ *
  *
  * This model is generated automatically based on API.
  *
@@ -20,7 +20,5 @@ WlSdk_ModelAbstract.extend(Wl_Review_Model);
  */
 Wl_Review_Model.prototype.config=function()
 {
-  return {
-    "a_field": []
-  };
+  return {"a_field": []};
 };

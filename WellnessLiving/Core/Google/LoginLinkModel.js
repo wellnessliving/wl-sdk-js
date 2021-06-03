@@ -28,13 +28,5 @@ WlSdk_ModelAbstract.extend(Core_Google_LoginLinkModel);
  */
 Core_Google_LoginLinkModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "url_redirect": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"url_redirect": {"get": {"result": true}}}};
 };

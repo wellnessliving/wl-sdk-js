@@ -20,7 +20,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_Login_SignOut_SignOutModel);
  */
 Core_Passport_Login_SignOut_SignOutModel.prototype.config=function()
 {
-  return {
-    "a_field": []
-  };
+  return {"a_field": []};
 };

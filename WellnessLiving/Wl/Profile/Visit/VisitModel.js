@@ -12,7 +12,7 @@ function Wl_Profile_Visit_VisitModel()
 
   /**
    * UID of the user that is visited by current user.
-   * 
+   *
    * Primary key in {@link PassportLoginSql}.
    *
    * @post post
@@ -30,13 +30,5 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Visit_VisitModel);
  */
 Wl_Profile_Visit_VisitModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "uid_profile": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"uid_profile": {"post": {"post": true}}}};
 };

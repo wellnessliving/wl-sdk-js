@@ -11,11 +11,6 @@ function Wl_Business_Partner_Dashboard_DashboardModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Data for chart report.
    *
    * @get result
@@ -49,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Partner_Dashboard_DashboardModel);
  */
 Wl_Business_Partner_Dashboard_DashboardModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "html_chart": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_chart": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"html_chart": {"get": {"result": true}},"id_chart": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };

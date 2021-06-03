@@ -13,7 +13,7 @@ function Wl_User_Info_UserInfoModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
+  this._s_key = "uid,k_business";
 
   /**
    * Information about user's photo.
@@ -66,7 +66,7 @@ function Wl_User_Info_UserInfoModel()
   /**
    * ID of business.
    * May be empty if we need system-wide information.
-   * 
+   *
    * Primary key in {@link RsBusinessSql}.
    *
    * @get get
@@ -124,7 +124,7 @@ function Wl_User_Info_UserInfoModel()
 
   /**
    * ID of user.
-   * 
+   *
    * Primary key in {@link PassportLoginSql}.
    *
    * @get get
@@ -150,85 +150,7 @@ WlSdk_ModelAbstract.extend(Wl_User_Info_UserInfoModel);
  */
 Wl_User_Info_UserInfoModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_photo": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_add": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_birth": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_gender": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_customer_new": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_traveller": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_login_type": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_first_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_last_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_mail": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_member": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_phone": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_photo": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_photo": {"get": {"result": true}},"dt_add": {"get": {"result": true}},"dt_birth": {"get": {"result": true}},"id_gender": {"get": {"result": true}},"is_customer_new": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_login_type": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_photo": {"get": {"result": true}}}};
 };
 
 /**
@@ -238,4 +160,4 @@ Wl_User_Info_UserInfoModel.prototype.config=function()
  * @param {string} k_business ID of business. May be empty if we need system-wide information. Primary key in {@link RsBusinessSql}.
  * @returns {Wl_User_Info_UserInfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

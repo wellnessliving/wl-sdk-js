@@ -20,7 +20,7 @@ function Wl_Staff_Schedule_Add_AddModel()
 
   /**
    * Services list, each element is a primary key in {@link \RsServiceSql}.
-   * 
+   *
    * Empty list means all services.
    * <tt>null</tt> means not set.
    *
@@ -63,7 +63,7 @@ function Wl_Staff_Schedule_Add_AddModel()
 
   /**
    * Count of the periods which specified in {@link AddApi::$id_repeat}.
-   * 
+   *
    * If this field is absent default value {@link \Wl\Classes\Period\Period::REPEAT_COUNT} is used.
    *
    * @post post
@@ -73,7 +73,7 @@ function Wl_Staff_Schedule_Add_AddModel()
 
   /**
    * Measuring unit of {@link AddApi::$i_repeat}. One of {@link ADurationSid} constants.
-   * 
+   *
    * If this field is absent default value {@link \Wl\Classes\Period\Period::REPEAT_PERIOD} is used.
    *
    * @post post
@@ -83,7 +83,7 @@ function Wl_Staff_Schedule_Add_AddModel()
 
   /**
    * Whether model works with available working time.
-   * 
+   *
    * <tt>true</tt> means available working time.
    * <tt>false</tt> means unavailable working time.
    *
@@ -94,7 +94,7 @@ function Wl_Staff_Schedule_Add_AddModel()
 
   /**
    * Whether period is eternal.
-   * 
+   *
    * <tt>true</tt> means on going.
    * <tt>false</tt> means end date will be used.
    *
@@ -153,83 +153,5 @@ WlSdk_ModelAbstract.extend(Wl_Staff_Schedule_Add_AddModel);
  */
 Wl_Staff_Schedule_Add_AddModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_day": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_service": {
-        "post": {
-          "post": true
-        }
-      },
-      "dt_end_date": {
-        "post": {
-          "post": true
-        }
-      },
-      "dt_end_time": {
-        "post": {
-          "post": true
-        }
-      },
-      "dt_start_date": {
-        "post": {
-          "post": true
-        }
-      },
-      "dt_start_time": {
-        "post": {
-          "post": true
-        }
-      },
-      "i_repeat": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_repeat": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_break": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_eternal": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_service_all": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_staff": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_note": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_day": {"post": {"post": true}},"a_service": {"post": {"post": true}},"dt_end_date": {"post": {"post": true}},"dt_end_time": {"post": {"post": true}},"dt_start_date": {"post": {"post": true}},"dt_start_time": {"post": {"post": true}},"i_repeat": {"post": {"post": true}},"id_repeat": {"post": {"post": true}},"is_break": {"post": {"post": true}},"is_eternal": {"post": {"post": true}},"is_service_all": {"post": {"post": true}},"k_business": {"post": {"get": true}},"k_location": {"post": {"post": true}},"k_staff": {"post": {"post": true}},"text_note": {"post": {"post": true}}}};
 };

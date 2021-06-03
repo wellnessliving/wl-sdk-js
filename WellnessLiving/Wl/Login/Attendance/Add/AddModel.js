@@ -13,12 +13,7 @@ function Wl_Login_Attendance_Add_AddModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_date_global,k_class_period,uid_client';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "dt_date_global,k_class_period,uid_client";
 
   /**
    * @typedef {{}} Wl_Login_Attendance_Add_AddModel_a_login_promotion
@@ -100,6 +95,19 @@ function Wl_Login_Attendance_Add_AddModel()
    * @type {number}
    */
   this.id_visit = undefined;
+
+  /**
+   * Defines whether only single session can be booked for block event.
+   *
+   * <tt>true</tt> Only current session of the block event will be booked in a case if staff event has appropriate setting to do this action.
+   *   In this case this session will be considered as session out of event block.
+   * <tt>false</tt> all available event sessions will be booked.
+   *   In this case session will be considered as part of event block.
+   *
+   * @post get
+   * @type {boolean}
+   */
+  this.is_event_single = false;
 
   /**
    * <tt>true</tt> - session is free (no ways to pay); <tt>false</tt> - session is chargeable.
@@ -197,105 +205,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_Add_AddModel);
  */
 Wl_Login_Attendance_Add_AddModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login_promotion": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_session_pass": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_global": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_add_option": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_mode": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_visit": {
-        "post": {
-          "result": true
-        }
-      },
-      "is_free": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_paid": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_login_promotion": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_session_pass": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_visit": {
-        "post": {
-          "result": true
-        }
-      },
-      "m_price": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_rest": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid_client": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "url_store": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login_promotion": {"get": {"result": true}},"a_session_pass": {"get": {"result": true}},"dt_date_global": {"get": {"get": true},"post": {"get": true}},"id_add_option": {"post": {"post": true}},"id_mode": {"post": {"post": true}},"id_visit": {"post": {"result": true}},"is_event_single": {"post": {"get": true}},"is_free": {"get": {"result": true}},"is_paid": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"get": {"result": true},"post": {"post": true}},"k_session_pass": {"get": {"result": true},"post": {"post": true}},"k_visit": {"post": {"result": true}},"m_price": {"get": {"result": true}},"m_rest": {"get": {"result": true}},"uid_client": {"get": {"get": true},"post": {"get": true}},"url_store": {"post": {"result": true}}}};
 };
 
 /**
@@ -306,4 +216,4 @@ Wl_Login_Attendance_Add_AddModel.prototype.config=function()
  * @param {string} uid_client User key that staff adds to attendance list. Primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Login_Attendance_Add_AddModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

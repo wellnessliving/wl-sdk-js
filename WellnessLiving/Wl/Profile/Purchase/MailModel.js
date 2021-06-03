@@ -13,7 +13,7 @@ function Wl_Profile_Purchase_MailModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_purchase,uid';
+  this._s_key = "k_purchase,uid";
 
   /**
    * Purchase ID. Primary key in {@link RsPurchaseSql} table.
@@ -41,20 +41,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Purchase_MailModel);
  */
 Wl_Profile_Purchase_MailModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_purchase": {
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_purchase": {"post": {"get": true}},"uid": {"post": {"get": true}}}};
 };
 
 /**
@@ -64,4 +51,4 @@ Wl_Profile_Purchase_MailModel.prototype.config=function()
  * @param {string} uid ID of user for who receipt should be sent. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Profile_Purchase_MailModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

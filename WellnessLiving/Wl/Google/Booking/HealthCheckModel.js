@@ -22,7 +22,5 @@ WlSdk_ModelAbstract.extend(Wl_Google_Booking_HealthCheckModel);
  */
 Wl_Google_Booking_HealthCheckModel.prototype.config=function()
 {
-  return {
-    "a_field": []
-  };
+  return {"a_field": []};
 };

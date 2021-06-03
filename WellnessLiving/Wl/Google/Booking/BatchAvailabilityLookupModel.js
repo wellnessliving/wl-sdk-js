@@ -44,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Google_Booking_BatchAvailabilityLookupModel);
  */
 Wl_Google_Booking_BatchAvailabilityLookupModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "slot_time": {
-        "post": {
-          "post": true
-        }
-      },
-      "slot_time_availability": {
-        "post": {
-          "result": true
-        }
-      },
-      "merchant_id": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"slot_time": {"post": {"post": true}},"slot_time_availability": {"post": {"result": true}},"merchant_id": {"post": {"post": true}}}};
 };

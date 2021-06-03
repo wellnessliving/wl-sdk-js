@@ -39,7 +39,7 @@ function Wl_Purchase_Item_PurchaseItemAmountModel()
   /**
    * Key of the business that should be set to the purchase item.
    * Primary key from {@link \RsBusinessSql}.
-   * 
+   *
    * <tt>null</tt> if not set.
    *
    * @get get
@@ -49,7 +49,7 @@ function Wl_Purchase_Item_PurchaseItemAmountModel()
 
   /**
    * Key of the item within appropriate table according to {@link PurchaseItemAmountApi::$id_purchase_item}.
-   * 
+   *
    * Can be <tt>null</tt> if it is new purchase item.
    *
    * @get get
@@ -59,7 +59,7 @@ function Wl_Purchase_Item_PurchaseItemAmountModel()
 
   /**
    * Key of the location purchase occur. Primary key from {@link \RsLocationSql}.
-   * 
+   *
    * <tt>null</tt> if not set.
    *
    * @get get
@@ -86,7 +86,7 @@ function Wl_Purchase_Item_PurchaseItemAmountModel()
 
   /**
    * Manual price that should be set to the purchase item.
-   * 
+   *
    * <tt>null</tt> if not set.
    *
    * @get get
@@ -137,73 +137,5 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Item_PurchaseItemAmountModel);
  */
 Wl_Purchase_Item_PurchaseItemAmountModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_count": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_purchase_item": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_new": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_reward_prize": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_discount": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_price": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_subtotal": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_tax": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_total": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid_purchase": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_count": {"get": {"get": true}},"id_purchase_item": {"get": {"get": true}},"is_new": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_reward_prize": {"get": {"get": true}},"m_discount": {"get": {"result": true}},"m_price": {"get": {"get": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"uid_purchase": {"get": {"get": true}}}};
 };

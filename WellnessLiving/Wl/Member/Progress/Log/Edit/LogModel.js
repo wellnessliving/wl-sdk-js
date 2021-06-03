@@ -13,7 +13,7 @@ function Wl_Member_Progress_Log_Edit_LogModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_date,k_business,uid';
+  this._s_key = "dt_date,k_business,uid";
 
   /**
    * Field log data. Structure of this array corresponds structure of result of {@link \Wl\Member\Progress\Log\Field\FieldList::getData()}.
@@ -26,7 +26,7 @@ function Wl_Member_Progress_Log_Edit_LogModel()
 
   /**
    * List of fields.
-   * 
+   *
    * Keys are field IDs ({@link \Wl\Member\Progress\Field\ProgressFieldSid} constants).
    * Values are new field values.
    * Structure of value completely defined by individual fields.
@@ -38,7 +38,7 @@ function Wl_Member_Progress_Log_Edit_LogModel()
 
   /**
    * Progress log date.
-   * 
+   *
    * If <tt>null</tt> use the current date.
    *
    * @get get
@@ -73,7 +73,7 @@ function Wl_Member_Progress_Log_Edit_LogModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
@@ -84,7 +84,7 @@ function Wl_Member_Progress_Log_Edit_LogModel()
 
   /**
    * User key.
-   * 
+   *
    * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
@@ -103,62 +103,7 @@ WlSdk_ModelAbstract.extend(Wl_Member_Progress_Log_Edit_LogModel);
  */
 Wl_Member_Progress_Log_Edit_LogModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_field_list": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "a_field_log": {
-        "post": {
-          "post": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "dt_last": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_weight_only": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_field_list": {"get": {"result": true},"post": {"result": true}},"a_field_log": {"post": {"post": true}},"dt_date": {"get": {"get": true},"post": {"get": true}},"dt_last": {"get": {"result": true}},"is_staff": {"get": {"result": true}},"is_weight_only": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -169,4 +114,4 @@ Wl_Member_Progress_Log_Edit_LogModel.prototype.config=function()
  * @param {?string} uid User key. Primary key in the {@link \PassportLoginSql} table.
  * @returns {Wl_Member_Progress_Log_Edit_LogModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

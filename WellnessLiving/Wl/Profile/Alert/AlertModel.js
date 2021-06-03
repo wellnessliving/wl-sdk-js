@@ -13,12 +13,7 @@ function Wl_Profile_Alert_AlertModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business";
 
   /**
    * @typedef {{}} Wl_Profile_Alert_AlertModel_a_alert
@@ -137,30 +132,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Alert_AlertModel);
  */
 Wl_Profile_Alert_AlertModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_alert": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_warning": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_alert": {"get": {"result": true}},"a_warning": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -170,4 +142,4 @@ Wl_Profile_Alert_AlertModel.prototype.config=function()
  * @param {string} k_business Key of current business.
  * @returns {Wl_Profile_Alert_AlertModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

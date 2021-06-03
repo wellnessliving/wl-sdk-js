@@ -13,7 +13,7 @@ function Wl_Reward_Board_BoardList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * A list of information about reward boards.
@@ -25,7 +25,7 @@ function Wl_Reward_Board_BoardList_ListModel()
 
   /**
    * Business to show information for.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -35,7 +35,7 @@ function Wl_Reward_Board_BoardList_ListModel()
 
   /**
    * User to retrieve information about.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
@@ -53,25 +53,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Board_BoardList_ListModel);
  */
 Wl_Reward_Board_BoardList_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_reward_board": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_reward_board": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -81,4 +63,4 @@ Wl_Reward_Board_BoardList_ListModel.prototype.config=function()
  * @param {string} uid User to retrieve information about. Primary key in {@link \PassportLoginSql}.
  * @returns {Wl_Reward_Board_BoardList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_date,k_location,k_service,k_resource,i_duration,is_backend,uid';
+  this._s_key = "dt_date,k_location,k_service,k_resource,i_duration,is_backend,uid";
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase
@@ -210,7 +210,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * Location to show available appointment booking schedule.
-   * 
+   *
    * Primary key in {@link \RsLocationSql} table.
    *
    * @get get,result
@@ -245,7 +245,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * User to get information for.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
@@ -264,62 +264,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Purchase_PurchaseModel);
  */
 Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_purchase": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        }
-      },
-      "i_duration": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_backend": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true,
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_login_promotion": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_resource": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_purchase": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_promotion": {"get": {"result": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -334,4 +279,4 @@ Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
  * @param {string} uid User to get information for. Primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Appointment_Book_Purchase_PurchaseModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

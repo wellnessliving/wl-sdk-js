@@ -46,23 +46,5 @@ WlSdk_ModelAbstract.extend(Wl_ClassPass_LocationListModel);
  */
 Wl_ClassPass_LocationListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "pagination": {
-        "get": {
-          "result": true
-        }
-      },
-      "venues": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_partner": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"pagination": {"get": {"result": true}},"venues": {"get": {"result": true}},"s_partner": {"get": {"get": true}}}};
 };

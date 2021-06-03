@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Asset_CategoryModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location,k_class_tab,is_backend';
+  this._s_key = "k_location,k_class_tab,is_backend";
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_CategoryModel_a_category
@@ -51,7 +51,7 @@ function Wl_Appointment_Book_Asset_CategoryModel()
   this.a_category = undefined;
 
   /**
-   * <tt>true</tt> - load asset categories for backend mode; <tt>false</tt> - for frontend mode.
+   * `true` to load asset categories for backend mode; `false` for frontend mode.
    *
    * @get get
    * @type {boolean}
@@ -84,30 +84,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_CategoryModel);
  */
 Wl_Appointment_Book_Asset_CategoryModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_category": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_backend": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class_tab": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_category": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
 };
 
 /**
@@ -115,7 +92,7 @@ Wl_Appointment_Book_Asset_CategoryModel.prototype.config=function()
  * @name Wl_Appointment_Book_Asset_CategoryModel.instanceGet
  * @param {string} k_location ID of the location.
  * @param {string} k_class_tab Class tab ID to filter services.
- * @param {boolean} is_backend <tt>true</tt> - load asset categories for backend mode; <tt>false</tt> - for frontend mode.
+ * @param {boolean} is_backend `true` to load asset categories for backend mode; `false` for frontend mode.
  * @returns {Wl_Appointment_Book_Asset_CategoryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

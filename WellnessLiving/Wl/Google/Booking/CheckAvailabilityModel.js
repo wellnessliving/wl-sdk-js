@@ -12,10 +12,10 @@ function Wl_Google_Booking_CheckAvailabilityModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link \Core\Integration\IntegrationDataTrait::toArray()} for documentation.
+   * The appointment slot that is being checked.
    *
-   * @post result
-   * @type {{}}
+   * @post post
+   * @type {*}
    */
   this.slot = undefined;
 
@@ -27,14 +27,6 @@ function Wl_Google_Booking_CheckAvailabilityModel()
    */
   this.count_available = undefined;
 
-  /**
-   * The appointment slot that is being checked.
-   *
-   * @post post
-   * @type {*}
-   */
-  this.slot = undefined;
-
   this.changeInit();
 }
 
@@ -45,18 +37,5 @@ WlSdk_ModelAbstract.extend(Wl_Google_Booking_CheckAvailabilityModel);
  */
 Wl_Google_Booking_CheckAvailabilityModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "slot": {
-        "post": {
-          "post": true
-        }
-      },
-      "count_available": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"slot": {"post": {"post": true}},"count_available": {"post": {"result": true}}}};
 };

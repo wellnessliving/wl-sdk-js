@@ -1,5 +1,5 @@
 /**
- * 
+ *
  *
  * This model is generated automatically based on API.
  *
@@ -28,13 +28,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_User_Password_Once_Model);
  */
 Core_Passport_User_Password_Once_Model.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "password": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"password": {"post": {"result": true}}}};
 };

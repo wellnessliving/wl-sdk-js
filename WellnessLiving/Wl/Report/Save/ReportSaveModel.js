@@ -13,7 +13,7 @@ function Wl_Report_Save_ReportSaveModel()
   /**
    * @inheritDoc
    */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_report_save";
 
   /**
    * Filter raw data of the saved report.
@@ -45,7 +45,7 @@ function Wl_Report_Save_ReportSaveModel()
 
   /**
    * Report category of the saved report.
-   * 
+   *
    * One of the {@link \RsReportCategorySid} constants.
    *
    * @get result
@@ -114,98 +114,13 @@ WlSdk_ModelAbstract.extend(Wl_Report_Save_ReportSaveModel);
  */
 Wl_Report_Save_ReportSaveModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_filter": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_settings": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "cid_controller": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "id_report_category": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_report_save": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "text_description": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "uid_actor": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_filter": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"a_settings": {"post": {"post": true},"put": {"post": true}},"cid_controller": {"post": {"post": true},"put": {"post": true}},"id_report_category": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_report_save": {"get": {"get": true},"put": {"get": true}},"text_description": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"text_title": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"uid_actor": {"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Report_Save_ReportSaveModel.instanceGet
+ * @param {string} k_report_save Report save key. Primary key in the {@link \RsReportSaveSql} table.
+ * @returns {Wl_Report_Save_ReportSaveModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */

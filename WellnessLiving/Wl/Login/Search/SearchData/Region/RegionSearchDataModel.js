@@ -13,7 +13,7 @@ function Wl_Login_Search_SearchData_Region_RegionSearchDataModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Login_Search_SearchData_Region_RegionSearchDataModel_a_geo_a_region
@@ -102,20 +102,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Search_SearchData_Region_RegionSearchDataMod
  */
 Wl_Login_Search_SearchData_Region_RegionSearchDataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_geo": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_geo": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -124,4 +111,4 @@ Wl_Login_Search_SearchData_Region_RegionSearchDataModel.prototype.config=functio
  * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
  * @returns {Wl_Login_Search_SearchData_Region_RegionSearchDataModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

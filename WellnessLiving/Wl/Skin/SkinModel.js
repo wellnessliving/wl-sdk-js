@@ -13,12 +13,7 @@ function Wl_Skin_SkinModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_skin';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_skin";
 
   /**
    * Skin fields to save.
@@ -67,33 +62,7 @@ WlSdk_ModelAbstract.extend(Wl_Skin_SkinModel);
  */
 Wl_Skin_SkinModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_field": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_skin": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_skin": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_skin": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_field": {"post": {"post": true}},"a_skin": {"get": {"result": true}},"id_skin": {"get": {"result": true}},"k_skin": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -102,4 +71,4 @@ Wl_Skin_SkinModel.prototype.config=function()
  * @param {string} k_skin Skin key.
  * @returns {Wl_Skin_SkinModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

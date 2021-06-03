@@ -73,40 +73,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_User_Subscribe_SubscribeModel);
  */
 Wl_Business_User_Subscribe_SubscribeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_subscribe": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "is_subscribe_sms": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_subscribe": {"get": {"result": true},"put": {"get": true}},"is_subscribe_sms": {"get": {"result": true},"put": {"get": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"uid": {"get": {"get": true},"put": {"get": true}}}};
 };

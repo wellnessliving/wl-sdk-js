@@ -13,12 +13,7 @@ function Wl_Reward_Action_ElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,k_reward_action';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business,k_reward_action";
 
   /**
    * Points amount that will be added to user account after successful accomplishment of reward action.
@@ -46,7 +41,7 @@ function Wl_Reward_Action_ElementModel()
 
   /**
    * Business to show information for.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -57,7 +52,7 @@ function Wl_Reward_Action_ElementModel()
 
   /**
    * Reward action to show information for.
-   * 
+   *
    * Primary key in {@link \RsRewardActionSql}.
    *
    * @get get
@@ -76,7 +71,7 @@ function Wl_Reward_Action_ElementModel()
 
   /**
    * User to retrieve information about.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
@@ -95,54 +90,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Action_ElementModel);
  */
 Wl_Reward_Action_ElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_score": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_reward_score": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_request": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_reward_action": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_description": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_score": {"get": {"result": true}},"id_reward_score": {"get": {"result": true}},"is_request": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_reward_action": {"get": {"get": true},"post": {"get": true}},"s_description": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -153,4 +101,4 @@ Wl_Reward_Action_ElementModel.prototype.config=function()
  * @param {string} k_reward_action Reward action to show information for. Primary key in {@link \RsRewardActionSql}.
  * @returns {Wl_Reward_Action_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

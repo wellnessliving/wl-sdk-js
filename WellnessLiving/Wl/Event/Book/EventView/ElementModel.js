@@ -13,12 +13,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_event,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_event,uid";
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_book_available
@@ -131,6 +126,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string[]} a_virtual_location List of virtual locations. Each value is primary key in {@link \RsLocationSql} table.
    * @property {string} dt_end End date of session.
    * @property {string} dt_start Start date of session.
+   * @property {number} i_capacity Class capacity.
    * @property {number} i_duration Duration of class in seconds.
    * @property {boolean} is_virtual <tt>true</tt> - if event is virtual, <tt>false</tt> - otherwise.
    * @property {string} k_location Location key. Primary key in {@link \RsLocationSql} table.
@@ -190,6 +186,12 @@ function Wl_Event_Book_EventView_ElementModel()
    *   </dt>
    *   <dd>
    *     Start date of session.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_capacity</var>
+   *   </dt>
+   *   <dd>
+   *     Class capacity.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
@@ -374,7 +376,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * Event ID.
-   * 
+   *
    * Primary key in {@link \RsClassSql}.
    *
    * @get get
@@ -432,7 +434,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * User key.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
@@ -458,145 +460,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventView_ElementModel);
  */
 Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_book_available": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_class_logo": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_event": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_schedule": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_staff_logo": {
-        "get": {
-          "result": true
-        }
-      },
-      "dl_book_available_end": {
-        "get": {
-          "get": true
-        }
-      },
-      "dl_book_available_start": {
-        "get": {
-          "get": true
-        }
-      },
-      "dt_book_date": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_early": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_end": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_start": {
-        "get": {
-          "result": true
-        }
-      },
-      "hide_application": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_special": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_session": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_book": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_full": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_virtual": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_book_class_period": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_event": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_price": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_price_total": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_price_total_early": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_deny_reason": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_event": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      },
-      "xml_description": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_book_available": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"hide_application": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_session": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"uid": {"get": {"get": true}},"xml_description": {"get": {"result": true}}}};
 };
 
 /**
@@ -606,4 +470,4 @@ Wl_Event_Book_EventView_ElementModel.prototype.config=function()
  * @param {string} uid User key. Primary key in {@link \PassportLoginSql}.
  * @returns {Wl_Event_Book_EventView_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

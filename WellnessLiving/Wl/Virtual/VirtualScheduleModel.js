@@ -20,7 +20,7 @@ function Wl_Virtual_VirtualScheduleModel()
 
   /**
    * Number of seconds after which need to repeat request.
-   * 
+   *
    * <tt>null</tt> if request should not be repeated.
    *
    * @post result
@@ -70,38 +70,5 @@ WlSdk_ModelAbstract.extend(Wl_Virtual_VirtualScheduleModel);
  */
 Wl_Virtual_VirtualScheduleModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dtu_class_period": {
-        "post": {
-          "post": true
-        }
-      },
-      "i_delay": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_appointment": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "post": {
-          "post": true
-        }
-      },
-      "url_redirect": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dtu_class_period": {"post": {"post": true}},"i_delay": {"post": {"result": true}},"k_appointment": {"post": {"post": true}},"k_business": {"post": {"result": true}},"k_class_period": {"post": {"post": true}},"url_redirect": {"post": {"result": true}}}};
 };

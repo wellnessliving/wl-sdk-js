@@ -44,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Mail_MailUseModel);
  */
 Wl_Login_Mail_MailUseModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_exists": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_mail": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_exists": {"get": {"result": true}},"k_business": {"get": {"get": true}},"text_mail": {"get": {"get": true}}}};
 };

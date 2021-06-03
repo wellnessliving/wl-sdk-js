@@ -1,5 +1,5 @@
 /**
- * API to get data from an existing postcard template.
+ * Endpoint for retrieving an existing postcard template images.
  *
  * This model is generated automatically based on API.
  *
@@ -11,12 +11,14 @@ function Wl_Postcard_Campaign_CampaignEdit_CampaignEditTemplateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Time passed from the start of the verification process.
+   * Postcard key.
+   *
+   * <tt>null</tt> if existing template not required.
    *
    * @get get
    * @type {string}
    */
-  this.k_postcard = "0";
+  this.k_postcard = undefined;
 
   /**
    * Back image.
@@ -44,23 +46,5 @@ WlSdk_ModelAbstract.extend(Wl_Postcard_Campaign_CampaignEdit_CampaignEditTemplat
  */
 Wl_Postcard_Campaign_CampaignEdit_CampaignEditTemplateModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_postcard": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_back": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_front": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_postcard": {"get": {"get": true}},"url_back": {"get": {"result": true}},"url_front": {"get": {"result": true}}}};
 };

@@ -13,7 +13,7 @@ function Wl_Schedule_WorkingTime_StaffWorkingModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_staff,k_location,k_business,k_service,dl_start,dl_end';
+  this._s_key = "k_staff,k_location,k_business,k_service,dl_start,dl_end";
 
   /**
    * Staff period.
@@ -41,7 +41,7 @@ function Wl_Schedule_WorkingTime_StaffWorkingModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql} table.
    *
    * @get get
@@ -51,7 +51,7 @@ function Wl_Schedule_WorkingTime_StaffWorkingModel()
 
   /**
    * Location to show available appointment booking schedule.
-   * 
+   *
    * Primary key in {@link \RsLocationSql} table.
    *
    * @get get
@@ -69,7 +69,7 @@ function Wl_Schedule_WorkingTime_StaffWorkingModel()
 
   /**
    * Staff Key to show what days are available for appointment booking.
-   * 
+   *
    * Primary key in {@link \RsStaffSql} table.
    *
    * @get get
@@ -87,45 +87,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_WorkingTime_StaffWorkingModel);
  */
 Wl_Schedule_WorkingTime_StaffWorkingModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_staff_period": {
-        "get": {
-          "result": true
-        }
-      },
-      "dl_end": {
-        "get": {
-          "get": true
-        }
-      },
-      "dl_start": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_staff": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_staff_period": {"get": {"result": true}},"dl_end": {"get": {"get": true}},"dl_start": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_staff": {"get": {"get": true}}}};
 };
 
 /**
@@ -139,4 +101,4 @@ Wl_Schedule_WorkingTime_StaffWorkingModel.prototype.config=function()
  * @param {string} dl_end End date of the staff working.
  * @returns {Wl_Schedule_WorkingTime_StaffWorkingModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

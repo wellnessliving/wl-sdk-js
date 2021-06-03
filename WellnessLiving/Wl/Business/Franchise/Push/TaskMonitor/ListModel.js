@@ -11,11 +11,6 @@ function Wl_Business_Franchise_Push_TaskMonitor_ListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * The list of tasks.
    *
    * @get result
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Franchise_Push_TaskMonitor_ListModel);
  */
 Wl_Business_Franchise_Push_TaskMonitor_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_queue": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_queue": {"get": {"result": true}}}};
 };

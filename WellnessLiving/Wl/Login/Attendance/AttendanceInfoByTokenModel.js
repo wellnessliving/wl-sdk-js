@@ -13,7 +13,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_date_local,k_appointment,k_class_period,k_business';
+  this._s_key = "dt_date_local,k_appointment,k_class_period,k_business";
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceInfoByTokenModel_a_logo
@@ -352,120 +352,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_AttendanceInfoByTokenModel);
  */
 Wl_Login_Attendance_AttendanceInfoByTokenModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_logo": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_resource": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_resource_layout": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_global": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_local": {
-        "get": {
-          "get": true
-        }
-      },
-      "has_note": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_note": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_start_virtual_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_appointment": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_resource": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_time_end": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_time_start": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_token": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_logo": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_resource_layout": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"has_note": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_service": {"get": {"result": true}},"is_start_virtual_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_time_end": {"get": {"result": true}},"text_time_start": {"get": {"result": true}},"text_title": {"get": {"result": true}},"text_token": {"get": {"get": true}}}};
 };
 
 /**
@@ -477,4 +364,4 @@ Wl_Login_Attendance_AttendanceInfoByTokenModel.prototype.config=function()
  * @param {string} k_business ID of business to get information for. Primary key in {@link RsBusinessSql} table.
  * @returns {Wl_Login_Attendance_AttendanceInfoByTokenModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

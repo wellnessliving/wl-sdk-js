@@ -13,11 +13,11 @@ function Wl_Business_Skin_BusinessSkinModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_place,k_business';
+  this._s_key = "id_place,k_business";
 
   /**
    * Full business skin data.
-   * 
+   *
    * See result of the {@link \rs_business_skin()} function.
    *
    * @get result
@@ -52,7 +52,7 @@ function Wl_Business_Skin_BusinessSkinModel()
 
   /**
    * Business key from {@link \RsBusinessSql}.
-   * 
+   *
    * If <tt>null</tt> you will receive data for the default skin.
    *
    * @get get
@@ -86,45 +86,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Skin_BusinessSkinModel);
  */
 Wl_Business_Skin_BusinessSkinModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_skin": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_focus_delay": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_focus_duration": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_place": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "sid_header_button_size": {
-        "get": {
-          "result": true
-        }
-      },
-      "sid_header_button_type": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_skin": {"get": {"result": true}},"i_focus_delay": {"get": {"result": true}},"id_focus_duration": {"get": {"result": true}},"id_place": {"get": {"get": true}},"k_business": {"get": {"get": true}},"sid_header_button_size": {"get": {"result": true}},"sid_header_button_type": {"get": {"result": true}}}};
 };
 
 /**
@@ -134,4 +96,4 @@ Wl_Business_Skin_BusinessSkinModel.prototype.config=function()
  * @param {?string} k_business Business key from {@link \RsBusinessSql}. If <tt>null</tt> you will receive data for the default skin.
  * @returns {Wl_Business_Skin_BusinessSkinModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -10,10 +10,6 @@ function Core_Session_Limit_SessionLimitModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
 
   this.changeInit();
 }
@@ -25,7 +21,5 @@ WlSdk_ModelAbstract.extend(Core_Session_Limit_SessionLimitModel);
  */
 Core_Session_Limit_SessionLimitModel.prototype.config=function()
 {
-  return {
-    "a_field": []
-  };
+  return {"a_field": []};
 };

@@ -92,23 +92,5 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Catalog_ProgramListModel);
  */
 Wl_Insurance_Catalog_ProgramListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_wellness_program": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_promotion": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_wellness_program": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_promotion": {"get": {"get": true}}}};
 };

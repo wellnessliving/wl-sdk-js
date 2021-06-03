@@ -48,13 +48,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Integration_Model);
  */
 Wl_Business_Integration_Model.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "businesses": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"businesses": {"get": {"result": true}}}};
 };

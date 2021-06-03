@@ -13,7 +13,7 @@ function Wl_Profile_Prize_PrizeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
+  this._s_key = "uid,k_business";
 
   /**
    * Array of prize keys redeemed by user.
@@ -49,25 +49,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Prize_PrizeModel);
  */
 Wl_Profile_Prize_PrizeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login_prize": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login_prize": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -77,4 +59,4 @@ Wl_Profile_Prize_PrizeModel.prototype.config=function()
  * @param {string} k_business Key of current business.
  * @returns {Wl_Profile_Prize_PrizeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

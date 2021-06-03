@@ -13,7 +13,7 @@ function Wl_Login_Attendance_Row_RowModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_visit';
+  this._s_key = "k_business,k_visit";
 
   /**
    * Service image.
@@ -57,30 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_Row_RowModel);
  */
 Wl_Login_Attendance_Row_RowModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_row": {
-        "get": {
-          "result": true
-        }
-      },
-      "dtu_date": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_visit": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_row": {"get": {"result": true}},"dtu_date": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_visit": {"get": {"get": true}}}};
 };
 
 /**
@@ -90,4 +67,4 @@ Wl_Login_Attendance_Row_RowModel.prototype.config=function()
  * @param {string} k_visit Visit key.
  * @returns {Wl_Login_Attendance_Row_RowModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

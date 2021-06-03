@@ -180,28 +180,5 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Staff_PurchaseStaffCommissionModel);
  */
 Wl_Purchase_Staff_PurchaseStaffCommissionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_available_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_commission_purchase": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_purchase": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_available_staff": {"get": {"result": true}},"a_commission_purchase": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_purchase": {"get": {"get": true}}}};
 };

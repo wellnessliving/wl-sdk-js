@@ -13,7 +13,7 @@ function Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,id_postcard_campaign_client,id_flag_active,s_login_type,s_member_group';
+  this._s_key = "k_business,id_postcard_campaign_client,id_flag_active,s_login_type,s_member_group";
 
   /**
    * Quantity of recipients.
@@ -33,22 +33,20 @@ function Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel()
   this.id_flag_active = 0;
 
   /**
-   * By which way clients are selected to mail campaign.
-   * One of {@link \Wl\Postcard\Campaign\CampaignClientSid} constants.
+   * Recipient group. One of {@link \Wl\Postcard\Campaign\CampaignClientSid} constants.
    *
    * @get get
    * @type {number}
    */
-  this.id_postcard_campaign_client = 0;
+  this.id_postcard_campaign_client = undefined;
 
   /**
    * Business in which clients must be searched.
-   * Primary key in {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = undefined;
 
   /**
    * Total cost of campaign.
@@ -86,55 +84,17 @@ WlSdk_ModelAbstract.extend(Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummary
  */
 Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_quantity": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_flag_active": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_postcard_campaign_client": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_cost": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_login_type": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_member_group": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_quantity": {"get": {"result": true}},"id_flag_active": {"get": {"get": true}},"id_postcard_campaign_client": {"get": {"get": true}},"k_business": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"s_login_type": {"get": {"get": true}},"s_member_group": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel.instanceGet
- * @param {string} k_business Business in which clients must be searched. Primary key in {@link \RsBusinessSql} table.
- * @param {number} id_postcard_campaign_client By which way clients are selected to mail campaign. One of {@link \Wl\Postcard\Campaign\CampaignClientSid} constants.
+ * @param {string} k_business Business in which clients must be searched.
+ * @param {number} id_postcard_campaign_client Recipient group. One of {@link \Wl\Postcard\Campaign\CampaignClientSid} constants.
  * @param {number} id_flag_active Whether to send mails to active and inactive clients. One of {@link \AFlagSid} constants.
  * @param {string} s_login_type Serialized by JSON list of client types. Every element is primary key in {@link \Wl\Login\Type\Sql} table.
  * @param {string} s_member_group Serialized by JSON list of client groups. Every element is primary key in {@link \Wl\Member\Group\Sql} table.
  * @returns {Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

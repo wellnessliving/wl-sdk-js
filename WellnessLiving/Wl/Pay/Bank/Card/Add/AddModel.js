@@ -13,12 +13,7 @@ function Wl_Pay_Bank_Card_Add_AddModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_location,k_pay_owner';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,k_location,k_pay_owner";
 
   /**
    * @typedef {{}} Wl_Pay_Bank_Card_Add_AddModel_a_card_detail_a_pay_address
@@ -133,7 +128,7 @@ function Wl_Pay_Bank_Card_Add_AddModel()
 
   /**
    * Location key. Primary key in {@link \RsLocationSql} table.
-   * 
+   *
    * If empty, user's home location will be used.
    *
    * @get get
@@ -161,44 +156,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Bank_Card_Add_AddModel);
  */
 Wl_Pay_Bank_Card_Add_AddModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_card_detail": {
-        "post": {
-          "post": true
-        }
-      },
-      "html_widget": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_pay_owner": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_card_detail": {"post": {"post": true}},"html_widget": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true},"post": {"get": true}},"k_pay_owner": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -209,4 +167,4 @@ Wl_Pay_Bank_Card_Add_AddModel.prototype.config=function()
  * @param {string} k_pay_owner Bank card owner ID. Primary key in {@link \RsPayOwnerSql} table.
  * @returns {Wl_Pay_Bank_Card_Add_AddModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

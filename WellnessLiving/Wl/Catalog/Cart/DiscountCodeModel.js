@@ -66,7 +66,7 @@ function Wl_Catalog_Cart_DiscountCodeModel()
 
   /**
    * Information about elements of purchase.
-   * 
+   *
    * <dl>
    *  <dt>int <var>id_sale</var></dt>
    *  <dd>Purchase ite sale category. Constant from {@link \RsSaleSid}.</dd>
@@ -121,38 +121,5 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Cart_DiscountCodeModel);
  */
 Wl_Catalog_Cart_DiscountCodeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_discount_code": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_item": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_discount_code": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_error_code": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid_customer": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_discount_code": {"get": {"result": true}},"a_item": {"get": {"get": true}},"k_business": {"get": {"get": true}},"text_discount_code": {"get": {"get": true}},"text_error_code": {"get": {"result": true}},"uid_customer": {"get": {"get": true}}}};
 };

@@ -13,12 +13,7 @@ function Wl_Search_Template_Menu_MenuModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,s_search_group';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business,s_search_group";
 
   /**
    * @typedef {{}} Wl_Search_Template_Menu_MenuModel_a_search_list
@@ -57,7 +52,7 @@ function Wl_Search_Template_Menu_MenuModel()
 
   /**
    * Whether given template should be marked as default or not.
-   * 
+   *
    * <tt>null</tt> if field is not set.
    *
    * @post post
@@ -125,66 +120,7 @@ WlSdk_ModelAbstract.extend(Wl_Search_Template_Menu_MenuModel);
  */
 Wl_Search_Template_Menu_MenuModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_search_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_default": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_open": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_search_template": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_search_group": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_search_list": {"get": {"result": true}},"is_default": {"post": {"post": true}},"is_open": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_search_template": {"delete": {"get": true},"post": {"get": true}},"s_search_group": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -195,4 +131,4 @@ Wl_Search_Template_Menu_MenuModel.prototype.config=function()
  * @param {string} s_search_group Unique string identifying the name of the search group.
  * @returns {Wl_Search_Template_Menu_MenuModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

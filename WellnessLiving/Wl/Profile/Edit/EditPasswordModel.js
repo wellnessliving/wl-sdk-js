@@ -11,11 +11,6 @@ function Wl_Profile_Edit_EditPasswordModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * ID of business where actions take place.
    * Primary key in {@link \RsBusinessSql} table.
    * Business is necessary for mail sending only.
@@ -68,33 +63,5 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_EditPasswordModel);
  */
 Wl_Profile_Edit_EditPasswordModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_password_confirm": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_password_new": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_password_old": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"post": true}},"s_password_confirm": {"post": {"post": true}},"s_password_new": {"post": {"post": true}},"s_password_old": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };

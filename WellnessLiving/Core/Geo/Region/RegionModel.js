@@ -13,7 +13,7 @@ function Core_Geo_Region_RegionModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_locale';
+  this._s_key = "id_locale";
 
   /**
    * @typedef {{}} Core_Geo_Region_RegionModel_a_region_a_region
@@ -91,7 +91,7 @@ function Core_Geo_Region_RegionModel()
 
   /**
    * Whether to get regions for all locales.
-   * 
+   *
    * <tt>true</tt> - to get regions for all locales, <tt>false</tt> - otherwise.
    * By default <tt>false</tt>.
    *
@@ -110,25 +110,7 @@ WlSdk_ModelAbstract.extend(Core_Geo_Region_RegionModel);
  */
 Core_Geo_Region_RegionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_region": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_locale": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_locale_all": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_region": {"get": {"result": true}},"id_locale": {"get": {"get": true}},"is_locale_all": {"get": {"get": true}}}};
 };
 
 /**
@@ -137,4 +119,4 @@ Core_Geo_Region_RegionModel.prototype.config=function()
  * @param {number} id_locale ID of locale to get regions for.
  * @returns {Core_Geo_Region_RegionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

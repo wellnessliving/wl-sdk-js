@@ -20,7 +20,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_Alive_PassportAliveModel);
  */
 Core_Passport_Alive_PassportAliveModel.prototype.config=function()
 {
-  return {
-    "a_field": []
-  };
+  return {"a_field": []};
 };

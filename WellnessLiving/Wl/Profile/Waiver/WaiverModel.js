@@ -13,7 +13,7 @@ function Wl_Profile_Waiver_WaiverModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * @typedef {{}} Wl_Profile_Waiver_WaiverModel_a_waiver
@@ -98,30 +98,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Waiver_WaiverModel);
  */
 Wl_Profile_Waiver_WaiverModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_waiver": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_minor_age": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_waiver": {"get": {"result": true}},"i_minor_age": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -131,4 +108,4 @@ Wl_Profile_Waiver_WaiverModel.prototype.config=function()
  * @param {string} uid User to get information for. Primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Profile_Waiver_WaiverModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

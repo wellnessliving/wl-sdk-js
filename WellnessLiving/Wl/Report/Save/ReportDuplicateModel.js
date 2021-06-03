@@ -11,11 +11,6 @@ function Wl_Report_Save_ReportDuplicateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Filter raw data of the duplicated report.
    *
    * @post post
@@ -65,34 +60,5 @@ WlSdk_ModelAbstract.extend(Wl_Report_Save_ReportDuplicateModel);
  */
 Wl_Report_Save_ReportDuplicateModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_filter": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_settings": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_report_save": {
-        "post": {
-          "get": true,
-          "result": true
-        }
-      },
-      "uid_actor": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_filter": {"post": {"post": true}},"a_settings": {"post": {"post": true}},"k_business": {"post": {"get": true}},"k_report_save": {"post": {"get": true,"result": true}},"uid_actor": {"post": {"get": true}}}};
 };

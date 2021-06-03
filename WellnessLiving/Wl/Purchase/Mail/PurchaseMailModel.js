@@ -11,11 +11,6 @@ function Wl_Purchase_Mail_PurchaseMailModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Whether mail sending should be forced.
    *
    * @post post
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Mail_PurchaseMailModel);
  */
 Wl_Purchase_Mail_PurchaseMailModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_send_force": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_purchase": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_send_force": {"post": {"post": true}},"k_purchase": {"post": {"post": true}}}};
 };

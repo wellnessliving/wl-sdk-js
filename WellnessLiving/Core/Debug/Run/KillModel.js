@@ -11,11 +11,6 @@ function Core_Debug_Run_KillModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A list of process IDs to kill.
    *
    * @delete get
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Core_Debug_Run_KillModel);
  */
 Core_Debug_Run_KillModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_id": {
-        "delete": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_id": {"delete": {"get": true}}}};
 };

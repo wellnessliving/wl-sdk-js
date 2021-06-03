@@ -13,7 +13,7 @@ function Wl_Member_Progress_Log_Compare_CompareModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * List of dates.
@@ -49,25 +49,7 @@ WlSdk_ModelAbstract.extend(Wl_Member_Progress_Log_Compare_CompareModel);
  */
 Wl_Member_Progress_Log_Compare_CompareModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_date": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_date": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -77,4 +59,4 @@ Wl_Member_Progress_Log_Compare_CompareModel.prototype.config=function()
  * @param {string} uid User key to search dates for. Primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Member_Progress_Log_Compare_CompareModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

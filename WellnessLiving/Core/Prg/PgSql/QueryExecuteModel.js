@@ -44,23 +44,5 @@ WlSdk_ModelAbstract.extend(Core_Prg_PgSql_QueryExecuteModel);
  */
 Core_Prg_PgSql_QueryExecuteModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "html_body": {
-        "post": {
-          "result": true
-        }
-      },
-      "s_connect": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_pgsql_query": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"html_body": {"post": {"result": true}},"s_connect": {"post": {"post": true}},"s_pgsql_query": {"post": {"post": true}}}};
 };

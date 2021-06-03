@@ -11,13 +11,8 @@ function Wl_Pay_Bank_EntityModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Contains data associated with payment source.
-   * 
+   *
    * Structure of this array depends on type of the payment source.
    *
    * @post post
@@ -35,7 +30,7 @@ function Wl_Pay_Bank_EntityModel()
 
   /**
    * Type of payment source.
-   * 
+   *
    * One of {@link \RsPayMethodSid} constants.
    *
    * @post post
@@ -53,7 +48,7 @@ function Wl_Pay_Bank_EntityModel()
 
   /**
    * Key of the location within which this payment entity is managed.
-   * 
+   *
    * Empty string, zero should be passed here if a business-wide merchant should be used.
    * In this case it is also allowed to not to pass this parameter.
    *
@@ -80,38 +75,5 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Bank_EntityModel);
  */
 Wl_Pay_Bank_EntityModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_data": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_currency": {
-        "post": {
-          "get": true
-        }
-      },
-      "id_pay_method": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_pay_owner": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_data": {"post": {"post": true}},"id_currency": {"post": {"get": true}},"id_pay_method": {"post": {"post": true}},"k_business": {"post": {"get": true}},"k_location": {"post": {"get": true}},"k_pay_owner": {"post": {"post": true}}}};
 };

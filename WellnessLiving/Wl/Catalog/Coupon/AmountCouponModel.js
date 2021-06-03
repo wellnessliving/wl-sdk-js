@@ -20,7 +20,7 @@ function Wl_Catalog_Coupon_AmountCouponModel()
 
   /**
    * Business key.
-   * 
+   *
    * <tt>null</tt> if not set yet.
    *
    * @post post
@@ -38,18 +38,5 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Coupon_AmountCouponModel);
  */
 Wl_Catalog_Coupon_AmountCouponModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_cart_coupon": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_cart_coupon": {"post": {"result": true}},"k_business": {"post": {"post": true}}}};
 };

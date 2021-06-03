@@ -13,7 +13,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Classes_ScheduleListClassesModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,is_event';
+  this._s_key = "k_business,uid,is_event";
 
   /**
    * List of classes/events. Keys - class/event IDs; primary key in {@link \RsClassSql} table. Values - class/event titles.
@@ -65,48 +65,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_StaffApp_Classes_ScheduleLis
  */
 Wl_Schedule_ScheduleList_StaffApp_Classes_ScheduleListClassesModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_class": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_event": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_class": {"get": {"result": true}},"is_event": {"get": {"get": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -117,4 +76,4 @@ Wl_Schedule_ScheduleList_StaffApp_Classes_ScheduleListClassesModel.prototype.con
  * @param {boolean} is_event <tt>true</tt> - to return events; <tt>false</tt> - to return classes.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Classes_ScheduleListClassesModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

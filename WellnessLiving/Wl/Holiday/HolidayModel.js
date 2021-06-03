@@ -13,13 +13,13 @@ function Wl_Holiday_HolidayModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dl_work,k_business';
+  this._s_key = "dl_work,k_business";
 
   /**
-   * List of location keys which have a closed day by date {@link \Wl\Holiday\HolidayApi::$dl_work}.
+   * List of location's closed day titles by location keys on date {@link \Wl\Holiday\HolidayApi::$dl_work}.
    *
    * @get result
-   * @type {string[]}
+   * @type {{}}
    */
   this.a_location_holiday = undefined;
 
@@ -49,6 +49,14 @@ function Wl_Holiday_HolidayModel()
    */
   this.k_business = undefined;
 
+  /**
+   * Message of the closed day of business on date {@link \Wl\Holiday\HolidayApi::$dl_work}.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_business_title = "";
+
   this.changeInit();
 }
 
@@ -59,30 +67,7 @@ WlSdk_ModelAbstract.extend(Wl_Holiday_HolidayModel);
  */
 Wl_Holiday_HolidayModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_location_holiday": {
-        "get": {
-          "result": true
-        }
-      },
-      "dl_work": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_business_holiday": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_location_holiday": {"get": {"result": true}},"dl_work": {"get": {"get": true}},"is_business_holiday": {"get": {"result": true}},"k_business": {"get": {"get": true}},"text_business_title": {"get": {"result": true}}}};
 };
 
 /**
@@ -92,4 +77,4 @@ Wl_Holiday_HolidayModel.prototype.config=function()
  * @param {string} k_business Business key. Primary key in {@link RsBusinessSql} table.
  * @returns {Wl_Holiday_HolidayModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

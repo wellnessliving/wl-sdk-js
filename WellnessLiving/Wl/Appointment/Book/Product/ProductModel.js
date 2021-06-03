@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Product_ProductModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_service';
+  this._s_key = "k_service";
 
   /**
    * See {@link \Wl\Appointment\Wizard\AppointmentWizard::product()} for details.
@@ -42,20 +42,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Product_ProductModel);
  */
 Wl_Appointment_Book_Product_ProductModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_product": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_product": {"get": {"result": true}},"k_service": {"get": {"get": true}}}};
 };
 
 /**
@@ -64,4 +51,4 @@ Wl_Appointment_Book_Product_ProductModel.prototype.config=function()
  * @param {string} k_service ID of a service to show information for. Primary key in {@link \RsServiceSql} table.
  * @returns {Wl_Appointment_Book_Product_ProductModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

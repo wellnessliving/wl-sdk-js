@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Question_QuestionModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_service';
+  this._s_key = "k_service";
 
   /**
    * A list of questions for the current service.
@@ -41,20 +41,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Question_QuestionModel);
  */
 Wl_Appointment_Book_Question_QuestionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_question": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_question": {"get": {"result": true}},"k_service": {"get": {"get": true}}}};
 };
 
 /**
@@ -63,4 +50,4 @@ Wl_Appointment_Book_Question_QuestionModel.prototype.config=function()
  * @param {string} k_service Service key.
  * @returns {Wl_Appointment_Book_Question_QuestionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

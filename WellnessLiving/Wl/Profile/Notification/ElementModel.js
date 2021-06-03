@@ -13,12 +13,7 @@ function Wl_Profile_Notification_ElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_push_history';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,k_push_history";
 
   /**
    * Date of push notification sending.
@@ -30,7 +25,7 @@ function Wl_Profile_Notification_ElementModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -40,7 +35,7 @@ function Wl_Profile_Notification_ElementModel()
 
   /**
    * Key of push notification to retrieve information about.
-   * 
+   *
    * Primary key in {@link \Core\Push\History\Sql}.
    *
    * @get get
@@ -74,35 +69,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Notification_ElementModel);
  */
 Wl_Profile_Notification_ElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dtl_send": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_push_history": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_message": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dtl_send": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_push_history": {"get": {"get": true}},"text_message": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
 };
 
 /**
@@ -112,4 +79,4 @@ Wl_Profile_Notification_ElementModel.prototype.config=function()
  * @param {string} k_push_history Key of push notification to retrieve information about. Primary key in {@link \Core\Push\History\Sql}.
  * @returns {Wl_Profile_Notification_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

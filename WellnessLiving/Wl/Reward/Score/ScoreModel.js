@@ -11,11 +11,6 @@ function Wl_Reward_Score_ScoreModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this._s_key = 'a_login_activity';
-
-  /**
    * IDs of activity. Primary keys in {@link RsLoginActivitySql} table.
    *
    * @get get
@@ -42,29 +37,5 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Score_ScoreModel);
  */
 Wl_Reward_Score_ScoreModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login_activity": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "i_score": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login_activity": {"get": {"get": true},"post": {"get": true}},"i_score": {"get": {"result": true}}}};
 };
-
-/**
- * @function
- * @name Wl_Reward_Score_ScoreModel.instanceGet
- * @param {string[]} a_login_activity IDs of activity. Primary keys in {@link RsLoginActivitySql} table.
- * @returns {Wl_Reward_Score_ScoreModel}
- * @see WlSdk_ModelAbstract.instanceGet()
-*/

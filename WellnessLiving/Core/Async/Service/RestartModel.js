@@ -11,13 +11,8 @@ function Core_Async_Service_RestartModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * IP address of a queue server which worker threads should be restarted.
-   * 
+   *
    * An empty string to restart worker threads at all queue servers.
    *
    * @post post
@@ -27,7 +22,7 @@ function Core_Async_Service_RestartModel()
 
   /**
    * IP address of a worker at which all threads should be restarted.
-   * 
+   *
    * This variable is required if {@link \Core\Async\Service\RestartApi::$is_all} is <tt>false</tt> and
    * {@link \Core\Async\Service\RestartApi::$s_thread} is not specified, otherwise this variable is not allowed.
    *
@@ -38,7 +33,7 @@ function Core_Async_Service_RestartModel()
 
   /**
    * Whether all threads at all worker servers should be restarted.
-   * 
+   *
    * This variable should be set to `true` if neither {@link \Core\Async\Service\RestartApi::$ip_worker} nor
    * {@link \Core\Async\Service\RestartApi::$s_thread} specified, otherwise this variable should be set to `false`.
    *
@@ -57,7 +52,7 @@ function Core_Async_Service_RestartModel()
 
   /**
    * ID of a thread to restart.
-   * 
+   *
    * This variable is required if {@link \Core\Async\Service\RestartApi::$is_all} is <tt>false</tt> and
    * {@link \Core\Async\Service\RestartApi::$ip_worker} is not specified, otherwise this variable is not allowed.
    *
@@ -76,33 +71,5 @@ WlSdk_ModelAbstract.extend(Core_Async_Service_RestartModel);
  */
 Core_Async_Service_RestartModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "ip_queue": {
-        "post": {
-          "post": true
-        }
-      },
-      "ip_worker": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_all": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_provider": {
-        "post": {
-          "get": true
-        }
-      },
-      "s_thread": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"ip_queue": {"post": {"post": true}},"ip_worker": {"post": {"post": true}},"is_all": {"post": {"post": true}},"s_provider": {"post": {"get": true}},"s_thread": {"post": {"post": true}}}};
 };

@@ -16,7 +16,7 @@ function Wl_Login_LoginModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
+  this._s_key = "uid,k_business";
 
   /**
    * @typedef {{}} Wl_Login_LoginModel_a_login
@@ -110,6 +110,14 @@ function Wl_Login_LoginModel()
    * @type {Wl_Login_LoginModel_a_login[]}
    */
   this.a_login = undefined;
+
+  /**
+   * Whether this user can send postcards.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_postcard = undefined;
 
   /**
    * The height of the requested photo.
@@ -259,105 +267,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_LoginModel);
  */
 Wl_Login_LoginModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login": {
-        "post": {
-          "result": true
-        }
-      },
-      "i_photo_height": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "i_photo_width": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_gender": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_first_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_last_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_mail_client": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_mail_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_name_first_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_name_full_client": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_name_full_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_name_last_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_uid": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      },
-      "url_photo": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login": {"post": {"result": true}},"can_postcard": {"get": {"result": true}},"i_photo_height": {"get": {"get": true},"post": {"get": true}},"i_photo_width": {"get": {"get": true},"post": {"get": true}},"id_gender": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_staff": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"text_mail_client": {"get": {"result": true}},"text_mail_staff": {"get": {"result": true}},"text_name_first_staff": {"get": {"result": true}},"text_name_full_client": {"get": {"result": true}},"text_name_full_staff": {"get": {"result": true}},"text_name_last_staff": {"get": {"result": true}},"text_uid": {"post": {"post": true}},"uid": {"get": {"get": true,"result": true}},"url_photo": {"get": {"result": true}}}};
 };
 
 /**
@@ -367,4 +277,4 @@ Wl_Login_LoginModel.prototype.config=function()
  * @param {string} k_business Key of business. Primary key in {@link RsBusinessSql}.
  * @returns {Wl_Login_LoginModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

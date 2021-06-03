@@ -13,12 +13,7 @@ function Wl_Import_Pay_StartModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business_merchant';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business_merchant";
 
   /**
    * ID of a merchant for which import should be started.
@@ -38,15 +33,7 @@ WlSdk_ModelAbstract.extend(Wl_Import_Pay_StartModel);
  */
 Wl_Import_Pay_StartModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business_merchant": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business_merchant": {"post": {"get": true}}}};
 };
 
 /**
@@ -55,4 +42,4 @@ Wl_Import_Pay_StartModel.prototype.config=function()
  * @param {string} k_business_merchant ID of a merchant for which import should be started.
  * @returns {Wl_Import_Pay_StartModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

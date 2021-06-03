@@ -13,7 +13,7 @@ function Wl_Book_Process_ProcessModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_class_period,dt_date_gmt,uid';
+  this._s_key = "k_class_period,dt_date_gmt,uid";
 
   /**
    * @typedef {{}} Wl_Book_Process_ProcessModel_a_path
@@ -101,7 +101,7 @@ function Wl_Book_Process_ProcessModel()
    *     <tt>null</tt> if appointment must not repeat monthly.
    *   </dd>
    * </dl>
-   * 
+   *
    * <tt>null</tt> if booking must be not recurring.
    *
    * @post post
@@ -195,77 +195,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_ProcessModel);
  */
 Wl_Book_Process_ProcessModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_path": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_repeat": {
-        "post": {
-          "post": true
-        }
-      },
-      "dt_date_gmt": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_mode": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_pay_require": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_event": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_session": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_wait": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_path": {"get": {"result": true}},"a_repeat": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay_require": {"get": {"result": true}},"is_event": {"get": {"result": true}},"is_session": {"get": {"result": true}},"is_wait": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -276,4 +206,4 @@ Wl_Book_Process_ProcessModel.prototype.config=function()
  * @param {string} uid Key of a user who is making a book.
  * @returns {Wl_Book_Process_ProcessModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,12 +13,7 @@ function Core_Google_GoogleCoordinateModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 's_address';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "s_address";
 
   /**
    * Latitude coordinate.
@@ -54,25 +49,7 @@ WlSdk_ModelAbstract.extend(Core_Google_GoogleCoordinateModel);
  */
 Core_Google_GoogleCoordinateModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "f_latitude": {
-        "get": {
-          "result": true
-        }
-      },
-      "f_longitude": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_address": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"f_latitude": {"get": {"result": true}},"f_longitude": {"get": {"result": true}},"s_address": {"get": {"get": true}}}};
 };
 
 /**
@@ -81,4 +58,4 @@ Core_Google_GoogleCoordinateModel.prototype.config=function()
  * @param {string} s_address Address to get geo position for.
  * @returns {Core_Google_GoogleCoordinateModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

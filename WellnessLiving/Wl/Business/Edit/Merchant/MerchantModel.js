@@ -13,11 +13,6 @@ function Wl_Business_Edit_Merchant_MerchantModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * @typedef {{}} Wl_Business_Edit_Merchant_MerchantModel_a_business_merchant_list_a_pay_method
    * @property {number} id_pay_method Id of the payment method. One of {@link \RsPayMethodSid} constants.
    * @property {string} text_title Title of the payment method.
@@ -111,40 +106,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Edit_Merchant_MerchantModel);
  */
 Wl_Business_Edit_Merchant_MerchantModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_business_merchant_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_business_merchant_save": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_business_merchant": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_business_merchant_list": {"get": {"result": true}},"a_business_merchant_save": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_business_merchant": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}}}};
 };

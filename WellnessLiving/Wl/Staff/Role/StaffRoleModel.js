@@ -13,7 +13,7 @@ function Wl_Staff_Role_StaffRoleModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Staff_Role_StaffRoleModel_a_staff_role
@@ -69,20 +69,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_Role_StaffRoleModel);
  */
 Wl_Staff_Role_StaffRoleModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_staff_role": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_staff_role": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -91,4 +78,4 @@ Wl_Staff_Role_StaffRoleModel.prototype.config=function()
  * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
  * @returns {Wl_Staff_Role_StaffRoleModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

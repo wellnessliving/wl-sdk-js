@@ -10,10 +10,6 @@ function Core_Prg_ClearPublic_ClearPublicModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
 
   this.changeInit();
 }
@@ -25,7 +21,5 @@ WlSdk_ModelAbstract.extend(Core_Prg_ClearPublic_ClearPublicModel);
  */
 Core_Prg_ClearPublic_ClearPublicModel.prototype.config=function()
 {
-  return {
-    "a_field": []
-  };
+  return {"a_field": []};
 };

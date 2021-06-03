@@ -13,10 +13,10 @@ function Wl_Help_Popup_PopupModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
-   * Whether “Call Us” button should be hidden in the help popup.
+   * Whether "Call Us" button should be hidden in the help popup.
    *
    * @get result
    * @type {boolean}
@@ -24,7 +24,7 @@ function Wl_Help_Popup_PopupModel()
   this.hide_call_us = undefined;
 
   /**
-   * Whether “Email Us” button should be hidden in the help popup.
+   * Whether "Email Us" button should be hidden in the help popup.
    *
    * @get result
    * @type {boolean}
@@ -32,7 +32,15 @@ function Wl_Help_Popup_PopupModel()
   this.hide_email_us = undefined;
 
   /**
-   * Whether “My Requests” button should be hidden in the help popup.
+   * Whether "Forum" button should be hidden in the help popup.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.hide_forum = undefined;
+
+  /**
+   * Whether "My Requests" button should be hidden in the help popup.
    *
    * @get result
    * @type {boolean}
@@ -76,40 +84,7 @@ WlSdk_ModelAbstract.extend(Wl_Help_Popup_PopupModel);
  */
 Wl_Help_Popup_PopupModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "hide_call_us": {
-        "get": {
-          "result": true
-        }
-      },
-      "hide_email_us": {
-        "get": {
-          "result": true
-        }
-      },
-      "hide_my_requests": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_article_target": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"hide_call_us": {"get": {"result": true}},"hide_email_us": {"get": {"result": true}},"hide_forum": {"get": {"result": true}},"hide_my_requests": {"get": {"result": true}},"id_article_target": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -119,4 +94,4 @@ Wl_Help_Popup_PopupModel.prototype.config=function()
  * @param {string} uid User who asks for help. Primary key from {@link \PassportLoginSql} table.
  * @returns {Wl_Help_Popup_PopupModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

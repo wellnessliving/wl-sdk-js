@@ -13,12 +13,7 @@ function Wl_Business_Partner_Contest_PartnerContestModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_partner_contest';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_partner_contest";
 
   /**
    * Weather the contest is visible to anyone or not.
@@ -70,35 +65,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Partner_Contest_PartnerContestModel);
  */
 Wl_Business_Partner_Contest_PartnerContestModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_remove": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_visible": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_partner_contest": {
-        "post": {
-          "get": true
-        }
-      },
-      "s_message": {
-        "post": {
-          "result": true
-        }
-      },
-      "s_status": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_remove": {"post": {"post": true}},"is_visible": {"post": {"post": true}},"k_partner_contest": {"post": {"get": true}},"s_message": {"post": {"result": true}},"s_status": {"post": {"result": true}}}};
 };
 
 /**
@@ -107,4 +74,4 @@ Wl_Business_Partner_Contest_PartnerContestModel.prototype.config=function()
  * @param {string} k_partner_contest Contest key.
  * @returns {Wl_Business_Partner_Contest_PartnerContestModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

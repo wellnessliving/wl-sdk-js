@@ -1,7 +1,8 @@
 /**
  * Provides manipulations of the reservations.
  *
- * Dispatched URL: <tt>/cp/v1/reservations/{reservation_id}</tt>.
+ * ## Dispatched URL:
+ * <tt>/cp/v1/reservations/{reservation_id}</tt>.
  *
  * This model is generated automatically based on API.
  *
@@ -38,18 +39,5 @@ WlSdk_ModelAbstract.extend(Wl_ClassPass_ReservationDataModel);
  */
 Wl_ClassPass_ReservationDataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_late_cancel": {
-        "patch": {
-          "result": true
-        }
-      },
-      "s_reservation": {
-        "patch": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_late_cancel": {"patch": {"result": true}},"s_reservation": {"patch": {"get": true}}}};
 };

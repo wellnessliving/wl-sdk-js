@@ -13,7 +13,7 @@ function Wl_Reward_Action_CategoryList_CategoryListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Reward_Action_CategoryList_CategoryListModel_a_category
@@ -51,7 +51,7 @@ function Wl_Reward_Action_CategoryList_CategoryListModel()
 
   /**
    * ID of a business to show information for.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -69,20 +69,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Action_CategoryList_CategoryListModel);
  */
 Wl_Reward_Action_CategoryList_CategoryListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_category": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_category": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -91,4 +78,4 @@ Wl_Reward_Action_CategoryList_CategoryListModel.prototype.config=function()
  * @param {string} k_business ID of a business to show information for. Primary key in {@link \RsBusinessSql}.
  * @returns {Wl_Reward_Action_CategoryList_CategoryListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

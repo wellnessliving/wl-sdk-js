@@ -11,13 +11,8 @@ function Core_Locale_Message_InlineEditor_MessageDataModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A list of sources of translated messages to retrieve information about.
-   * 
+   *
    * In a case there are many messages, JSON-encoded string can be passed here.
    *
    * @post post
@@ -43,18 +38,5 @@ WlSdk_ModelAbstract.extend(Core_Locale_Message_InlineEditor_MessageDataModel);
  */
 Core_Locale_Message_InlineEditor_MessageDataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_source": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_translate": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_source": {"post": {"post": true}},"a_translate": {"post": {"result": true}}}};
 };

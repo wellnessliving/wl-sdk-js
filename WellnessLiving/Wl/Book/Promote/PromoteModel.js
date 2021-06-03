@@ -44,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Promote_PromoteModel);
  */
 Wl_Book_Promote_PromoteModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_visit": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_message": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"post": true}},"k_visit": {"post": {"post": true}},"text_message": {"post": {"result": true}}}};
 };

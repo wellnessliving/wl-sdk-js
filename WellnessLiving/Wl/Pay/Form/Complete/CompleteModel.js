@@ -13,7 +13,7 @@ function Wl_Pay_Form_Complete_CompleteModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_purchase';
+  this._s_key = "k_purchase";
 
   /**
    * ID of purchase currency. Primary key in {@link RsCurrencySql} table.
@@ -57,30 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Form_Complete_CompleteModel);
  */
 Wl_Pay_Form_Complete_CompleteModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_currency": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_purchase": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_cost": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_purchase": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_currency": {"get": {"result": true}},"k_purchase": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"s_purchase": {"get": {"result": true}}}};
 };
 
 /**
@@ -89,4 +66,4 @@ Wl_Pay_Form_Complete_CompleteModel.prototype.config=function()
  * @param {string} k_purchase Purchase ID.
  * @returns {Wl_Pay_Form_Complete_CompleteModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -11,11 +11,6 @@ function Core_Request_Api_Application_GroupModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A group list. Where key is group key, value is the title of the group.
    * <tt>null</tt> if is not initialized yet.
    *
@@ -34,13 +29,5 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_Application_GroupModel);
  */
 Core_Request_Api_Application_GroupModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_application_group": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_application_group": {"get": {"result": true}}}};
 };

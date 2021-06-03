@@ -13,7 +13,7 @@ function Wl_Catalog_Location_LocationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * A list of information about locations.
@@ -65,35 +65,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Location_LocationModel);
  */
 Wl_Catalog_Location_LocationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location_active": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location_home": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location_random": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_location": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location_active": {"get": {"result": true}},"k_location_home": {"get": {"result": true}},"k_location_random": {"get": {"result": true}}}};
 };
 
 /**
@@ -102,4 +74,4 @@ Wl_Catalog_Location_LocationModel.prototype.config=function()
  * @param {number} k_business ID of the business.
  * @returns {Wl_Catalog_Location_LocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

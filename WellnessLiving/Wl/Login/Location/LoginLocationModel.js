@@ -13,7 +13,7 @@ function Wl_Login_Location_LoginLocationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid';
+  this._s_key = "uid";
 
   /**
    * Keys of locations. Primary keys in {@link \RsLocationSql} table.
@@ -25,7 +25,7 @@ function Wl_Login_Location_LoginLocationModel()
 
   /**
    * Key of user to get data for.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
@@ -43,20 +43,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Location_LoginLocationModel);
  */
 Wl_Login_Location_LoginLocationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_location": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -65,4 +52,4 @@ Wl_Login_Location_LoginLocationModel.prototype.config=function()
  * @param {string} uid Key of user to get data for. Primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Login_Location_LoginLocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

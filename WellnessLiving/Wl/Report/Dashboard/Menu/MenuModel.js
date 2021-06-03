@@ -11,11 +11,6 @@ function Wl_Report_Dashboard_Menu_MenuModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * List of the available dashboards.
    *
    * @get result
@@ -61,34 +56,5 @@ WlSdk_ModelAbstract.extend(Wl_Report_Dashboard_Menu_MenuModel);
  */
 Wl_Report_Dashboard_Menu_MenuModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_dashboard": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_dashboard_order": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_dashboard": {"get": {"result": true}},"a_dashboard_order": {"put": {"post": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"uid": {"get": {"get": true},"put": {"get": true}}}};
 };

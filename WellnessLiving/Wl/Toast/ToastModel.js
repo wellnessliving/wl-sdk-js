@@ -11,53 +11,36 @@ function Wl_Toast_ToastModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Array of result data.
+   * Array of result toasts.
    *
    * @get result
    * @type {{}}
    */
-  this.a_data = undefined;
+  this.a_toast = undefined;
 
   /**
    * Array of primary keys of toast messages in {@link ToastSql} table.
    *
    * @put post
-   * @type {{}}
+   * @type {string[]}
    */
-  this.a_toasts = undefined;
-
-  /**
-   * Type of the notification {@link ToastSid}.
-   *
-   * @post post
-   * @type {number}
-   */
-  this.id_type = undefined;
+  this.a_toast_list = undefined;
 
   /**
    * Business key. Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
-   * @post get
    * @put get
-   * @type {number}
-   */
-  this.k_business = undefined;
-
-  /**
-   * Notification message.
-   *
-   * @post post
    * @type {string}
    */
-  this.s_message = undefined;
+  this.k_business = undefined;
 
   /**
    * Primary key of registered user in {@link \PassportLoginSql} table.
    *
    * @get get
-   * @post get
-   * @type {number}
+   * @put get
+   * @type {string}
    */
   this.uid = undefined;
 
@@ -71,47 +54,5 @@ WlSdk_ModelAbstract.extend(Wl_Toast_ToastModel);
  */
 Wl_Toast_ToastModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_data": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_toasts": {
-        "put": {
-          "post": true
-        }
-      },
-      "id_type": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "s_message": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_toast": {"get": {"result": true}},"a_toast_list": {"put": {"post": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"uid": {"get": {"get": true},"put": {"get": true}}}};
 };

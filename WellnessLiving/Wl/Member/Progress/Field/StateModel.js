@@ -52,7 +52,7 @@ function Wl_Member_Progress_Field_StateModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in the {@link \RsBusinessSql} table.
    *
    * @put get
@@ -62,7 +62,7 @@ function Wl_Member_Progress_Field_StateModel()
 
   /**
    * Field key.
-   * 
+   *
    * Primary key in the {@link \Wl\Member\Progress\Field\Sql} table.
    *
    * @put get
@@ -88,52 +88,5 @@ WlSdk_ModelAbstract.extend(Wl_Member_Progress_Field_StateModel);
  */
 Wl_Member_Progress_Field_StateModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_field": {
-        "put": {
-          "result": true
-        }
-      },
-      "is_active": {
-        "put": {
-          "result": true,
-          "post": true
-        }
-      },
-      "is_public": {
-        "put": {
-          "result": true,
-          "post": true
-        }
-      },
-      "is_require": {
-        "put": {
-          "result": true,
-          "post": true
-        }
-      },
-      "is_require_staff": {
-        "put": {
-          "result": true,
-          "post": true
-        }
-      },
-      "k_business": {
-        "put": {
-          "get": true
-        }
-      },
-      "k_field": {
-        "put": {
-          "get": true
-        }
-      },
-      "text_title": {
-        "put": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_field": {"put": {"result": true}},"is_active": {"put": {"result": true,"post": true}},"is_public": {"put": {"result": true,"post": true}},"is_require": {"put": {"result": true,"post": true}},"is_require_staff": {"put": {"result": true,"post": true}},"k_business": {"put": {"get": true}},"k_field": {"put": {"get": true}},"text_title": {"put": {"result": true}}}};
 };

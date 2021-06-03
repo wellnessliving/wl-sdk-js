@@ -11,6 +11,25 @@ function Wl_Catalog_Payment_PaymentModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_commission
+   * @property {string} k_staff Staff key. Primary key of {@link \RsStaffSql} table.
+   * @property {string} k_staff_pay Payment schema key. Primary key of {@link \RsStaffSql} table.
+   */
+
+  /**
+   * Commission which staff earns for this purchase. If not empty, has next fields: <dl>
+   *   <dt>string <var>k_staff</var></dt>
+   *   <dd>Staff key. Primary key of {@link \RsStaffSql} table.</dd>
+   *   <dt>string <var>k_staff_pay</var></dt>
+   *   <dd>Payment schema key. Primary key of {@link \RsStaffSql} table.</dd>
+   * </dl>
+   *
+   * @post get
+   * @type {Wl_Catalog_Payment_PaymentModel_a_commission}
+   */
+  this.a_commission = [];
+
+  /**
    * Sale items from the catalog cart.
    *
    * @post post
@@ -20,7 +39,7 @@ function Wl_Catalog_Payment_PaymentModel()
 
   /**
    * A list of payment sources to pay with.
-   * 
+   *
    * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
    *
    * @post post
@@ -111,7 +130,7 @@ function Wl_Catalog_Payment_PaymentModel()
 
   /**
    * Manual surcharge amount.
-   * 
+   *
    * Empty string means automatic surcharge amount.
    *
    * @post post
@@ -153,88 +172,5 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Payment_PaymentModel);
  */
 Wl_Catalog_Payment_PaymentModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_item": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_pay_form": {
-        "post": {
-          "post": true
-        }
-      },
-      "f_discount_percent": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_mode": {
-        "post": {
-          "get": true
-        }
-      },
-      "is_guest": {
-        "post": {
-          "get": true
-        }
-      },
-      "is_staff": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_pay_installment_template": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_purchase": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_visit": {
-        "post": {
-          "post": true
-        }
-      },
-      "m_discount_flat": {
-        "post": {
-          "post": true
-        }
-      },
-      "m_surcharge": {
-        "post": {
-          "post": true
-        }
-      },
-      "m_tip": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_discount_code": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_commission": {"post": {"get": true}},"a_item": {"post": {"post": true}},"a_pay_form": {"post": {"post": true}},"f_discount_percent": {"post": {"post": true}},"id_mode": {"post": {"get": true}},"is_guest": {"post": {"get": true}},"is_staff": {"post": {"get": true}},"k_business": {"post": {"get": true}},"k_location": {"post": {"get": true}},"k_pay_installment_template": {"post": {"post": true}},"k_purchase": {"post": {"result": true}},"k_visit": {"post": {"post": true}},"m_discount_flat": {"post": {"post": true}},"m_surcharge": {"post": {"post": true}},"m_tip": {"post": {"post": true}},"text_discount_code": {"post": {"post": true}},"uid": {"post": {"get": true}}}};
 };

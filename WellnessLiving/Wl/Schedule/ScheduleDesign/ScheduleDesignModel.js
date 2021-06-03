@@ -15,7 +15,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * Schedule time interval in minutes.
@@ -34,12 +34,38 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.id_option = undefined;
 
   /**
+   * Day ID of the start week.
+   *
+   * Constant from {@link WeekDaySid}.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.id_start_week = undefined;
+
+  /**
    * Business key. Primary key in {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
    */
   this.k_business = "0";
+
+  /**
+   * Cell background color when staff member is available.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.s_color_staff_available = null;
+
+  /**
+   * Cell background color when staff member is not available.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.s_color_staff_busy = null;
 
   /**
    * Color of staff name when staff was substituted.
@@ -67,35 +93,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleDesign_ScheduleDesignModel);
  */
 Wl_Schedule_ScheduleDesign_ScheduleDesignModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_interval": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_option": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_color_staff_substitute": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_interval": {"get": {"result": true}},"id_option": {"get": {"result": true}},"id_start_week": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_color_staff_available": {"get": {"result": true}},"s_color_staff_busy": {"get": {"result": true}},"s_color_staff_substitute": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -105,4 +103,4 @@ Wl_Schedule_ScheduleDesign_ScheduleDesignModel.prototype.config=function()
  * @param {string} uid User key. Primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Schedule_ScheduleDesign_ScheduleDesignModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

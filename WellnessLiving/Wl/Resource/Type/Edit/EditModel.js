@@ -11,11 +11,6 @@ function Wl_Resource_Type_Edit_EditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * ID of current business. Primary key in {@link RsBusinessSql} table.
    *
    * @post get
@@ -74,41 +69,5 @@ WlSdk_ModelAbstract.extend(Wl_Resource_Type_Edit_EditModel);
  */
 Wl_Resource_Type_Edit_EditModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_resource_type": {
-        "post": {
-          "result": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "s_title_post": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_title_put": {
-        "put": {
-          "post": true
-        }
-      },
-      "url_layout": {
-        "post": {
-          "result": true
-        }
-      },
-      "url_resource_create": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"get": true}},"k_resource_type": {"post": {"result": true},"put": {"get": true}},"s_title_post": {"post": {"post": true}},"s_title_put": {"put": {"post": true}},"url_layout": {"post": {"result": true}},"url_resource_create": {"post": {"result": true}}}};
 };

@@ -11,11 +11,6 @@ function Core_Prg_XDebug_ProfilerModeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * <tt>true</tt> if xdebug profiler enable, <tt>false</tt> otherwise.
    *
    * @post result
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Core_Prg_XDebug_ProfilerModeModel);
  */
 Core_Prg_XDebug_ProfilerModeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_enable": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_enable": {"post": {"result": true}}}};
 };

@@ -11,11 +11,6 @@ function Wl_Tax_Region_TaxRegionModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Tax value.
    *
    * @get result
@@ -66,36 +61,5 @@ WlSdk_ModelAbstract.extend(Wl_Tax_Region_TaxRegionModel);
  */
 Wl_Tax_Region_TaxRegionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "f_tax_region": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "is_active": {
-        "post": {
-          "get": true
-        }
-      },
-      "is_confirm": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_tax": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"f_tax_region": {"get": {"result": true},"post": {"get": true}},"is_active": {"post": {"get": true}},"is_confirm": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_tax": {"post": {"get": true}}}};
 };

@@ -11,13 +11,18 @@ function Wl_Insurance_Profile_InsuranceHoldModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
+   * Key of business to which currently handled login promotion belongs.
+   * Primary key in {@link \RsBusinessSql} table.
+   *
+   * @delete get
+   * @post get
+   * @type {string}
    */
-  this.ERROR_SILENT = true;
+  this.k_business = "";
 
   /**
    * Key of login promotion to cancel.
-   * 
+   *
    * Primary key in {@link \RsLoginPromotionSql} table.
    *
    * @delete get
@@ -44,21 +49,5 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Profile_InsuranceHoldModel);
  */
 Wl_Insurance_Profile_InsuranceHoldModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_login_promotion": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_promotion_pay_pause": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"delete": {"get": true},"post": {"get": true}},"k_login_promotion": {"delete": {"get": true},"post": {"get": true}},"k_promotion_pay_pause": {"post": {"result": true}}}};
 };

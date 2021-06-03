@@ -11,13 +11,8 @@ function Wl_Business_Lead_BusinessChangeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Defines whether {@link BusinessChangeApi::$k_business} should be associated with referral or with referrer business.
-   * 
+   *
    * <tt>true</tt> - to associate with referral business.
    * <tt>false</tt> - to associate with referrer business.
    *
@@ -38,7 +33,7 @@ function Wl_Business_Lead_BusinessChangeModel()
 
   /**
    * ID of the business lead request within partner program.
-   * 
+   *
    * Primary key from {@link \Wl\Business\LeadSql}.
    *
    * @post post
@@ -56,23 +51,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Lead_BusinessChangeModel);
  */
 Wl_Business_Lead_BusinessChangeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_referral": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business_lead": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_referral": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_business_lead": {"post": {"post": true}}}};
 };

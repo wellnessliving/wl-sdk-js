@@ -13,7 +13,7 @@ function Wl_Purchase_Item_PurchaseItemListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_purchase';
+  this._s_key = "k_purchase";
 
   /**
    * Additional information. Uses only on desktop version.
@@ -118,12 +118,46 @@ function Wl_Purchase_Item_PurchaseItemListModel()
   this.m_discount = undefined;
 
   /**
+   * Title of the discount.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_discount_title = undefined;
+
+  /**
    * Subtotal amount.
    *
    * @get result
    * @type {string}
    */
   this.m_subtotal = undefined;
+
+  /**
+   * Subtotal amount minus amount discount.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_subtotal_apply_discount = undefined;
+
+  /**
+   * Subtotal amount minus amount discount and plus amount tax.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_subtotal_include_tax = undefined;
+
+  /**
+   * Surcharge amount.
+   *
+   * <tt>null</tt> - if purchase is made without surcharge and not is web.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.m_surcharge = null;
 
   /**
    * Tax amount.
@@ -148,6 +182,16 @@ function Wl_Purchase_Item_PurchaseItemListModel()
    * @type {string}
    */
   this.m_total = undefined;
+
+  /**
+   * Total amount with surcharge.
+   *
+   * <tt>null</tt> - if purchase is made without surcharge and not is web.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.m_total_include_surcharge = null;
 
   /**
    * Human readable description of payment method.
@@ -175,90 +219,7 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Item_PurchaseItemListModel);
  */
 Wl_Purchase_Item_PurchaseItemListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_additional_info": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_logo": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_purchase_item": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_local": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_web": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_currency": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_purchase": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_discount": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_subtotal": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_tax": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_tip": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_total": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_pay_method": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_additional_info": {"get": {"result": true}},"a_logo": {"get": {"result": true}},"a_purchase_item": {"get": {"result": true}},"dt_date_local": {"get": {"result": true}},"is_web": {"get": {"get": true}},"k_business": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_purchase": {"get": {"get": true}},"m_discount": {"get": {"result": true}},"m_discount_title": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_subtotal_apply_discount": {"get": {"result": true}},"m_subtotal_include_tax": {"get": {"result": true}},"m_surcharge": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_tip": {"get": {"result": true}},"m_total": {"get": {"result": true}},"m_total_include_surcharge": {"get": {"result": true}},"text_pay_method": {"get": {"result": true}},"uid": {"get": {"result": true}}}};
 };
 
 /**
@@ -267,4 +228,4 @@ Wl_Purchase_Item_PurchaseItemListModel.prototype.config=function()
  * @param {string} k_purchase Purchase ID. Primary key in {@link \RsPurchaseSql} table.
  * @returns {Wl_Purchase_Item_PurchaseItemListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

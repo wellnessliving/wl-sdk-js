@@ -11,21 +11,16 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Whether dashboard widget is collapsed.
    *
    * @put post
    * @type {boolean}
    */
-  this.is_collapsed = undefined;
+  this.is_collapsed = false;
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in the {@link \RsBusinessSql} table.
    *
    * @delete get
@@ -36,7 +31,7 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetModel()
 
   /**
    * Widget key.
-   * 
+   *
    * Primary key in {@link \RsReportDashboardWidgetSql} table.
    *
    * @delete get
@@ -47,7 +42,7 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetModel()
 
   /**
    * User key.
-   * 
+   *
    * Primary key in the {@link \PassportLoginSql} table.
    *
    * @delete get
@@ -66,37 +61,5 @@ WlSdk_ModelAbstract.extend(Wl_Report_Dashboard_Widget_DashboardWidgetModel);
  */
 Wl_Report_Dashboard_Widget_DashboardWidgetModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_collapsed": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_report_dashboard_widget": {
-        "delete": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_collapsed": {"put": {"post": true}},"k_business": {"delete": {"get": true},"put": {"get": true}},"k_report_dashboard_widget": {"delete": {"get": true},"put": {"get": true}},"uid": {"delete": {"get": true},"put": {"get": true}}}};
 };

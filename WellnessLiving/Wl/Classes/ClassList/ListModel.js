@@ -13,7 +13,7 @@ function Wl_Classes_ClassList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business,is_franchise";
 
   /**
    * @typedef {{}} Wl_Classes_ClassList_ListModel_a_class
@@ -92,6 +92,15 @@ function Wl_Classes_ClassList_ListModel()
   this.is_enrollment_block_all = false;
 
   /**
+   * Whether to return franchisee-created classes (if business is franchisor).
+   * <tt>true</tt> to include franchisee-created classes.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_franchise = false;
+
+  /**
    * Business key, primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -109,31 +118,14 @@ WlSdk_ModelAbstract.extend(Wl_Classes_ClassList_ListModel);
  */
 Wl_Classes_ClassList_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_class": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_enrollment_block_all": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_class": {"get": {"result": true}},"is_enrollment_block_all": {"get": {"get": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Classes_ClassList_ListModel.instanceGet
  * @param {string} k_business Business key, primary key in {@link \RsBusinessSql}.
+ * @param {boolean} is_franchise Whether to return franchisee-created classes (if business is franchisor). <tt>true</tt> to include franchisee-created classes.
  * @returns {Wl_Classes_ClassList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

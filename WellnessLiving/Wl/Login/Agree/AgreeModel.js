@@ -13,11 +13,11 @@ function Wl_Login_Agree_AgreeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
+  this._s_key = "uid,k_business";
 
   /**
    * ID of business.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @post get
@@ -35,7 +35,7 @@ function Wl_Login_Agree_AgreeModel()
 
   /**
    * User's ID.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @post get
@@ -53,25 +53,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Agree_AgreeModel);
  */
 Wl_Login_Agree_AgreeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "s_signature": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"get": true}},"s_signature": {"post": {"post": true}},"uid": {"post": {"get": true}}}};
 };
 
 /**
@@ -81,4 +63,4 @@ Wl_Login_Agree_AgreeModel.prototype.config=function()
  * @param {string} k_business ID of business. Primary key in {@link \RsBusinessSql}.
  * @returns {Wl_Login_Agree_AgreeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

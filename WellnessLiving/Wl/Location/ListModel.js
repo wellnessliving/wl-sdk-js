@@ -13,7 +13,7 @@ function Wl_Location_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * Primary keys of businesses in {@link \RsBusinessSql} table.
@@ -98,13 +98,21 @@ function Wl_Location_ListModel()
   /**
    * Primary keys of businesses in {@link \RsBusinessSql} table.
    * You can specify it instead of <var>$k_business</var> to load data for a lot of businesses by 1 query.
-   * 
+   *
    * The same as <var>$a_business</var>, but serialized with JSON (to make URL shorter).
    *
    * @get get
    * @type {string}
    */
   this.s_business = "";
+
+  /**
+   * Whether removed locations should be returned.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.show_remove = false;
 
   this.changeInit();
 }
@@ -116,30 +124,7 @@ WlSdk_ModelAbstract.extend(Wl_Location_ListModel);
  */
 Wl_Location_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_business": {"get": {"get": true}},"a_location": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_business": {"get": {"get": true}},"show_remove": {"get": {"get": true}}}};
 };
 
 /**
@@ -148,4 +133,4 @@ Wl_Location_ListModel.prototype.config=function()
  * @param {string} k_business Primary key of business in {@link \RsBusinessSql} table.
  * @returns {Wl_Location_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -11,11 +11,6 @@ function Wl_Virtual_MeetingListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * @typedef {{}} Wl_Virtual_MeetingListModel_a_meeting_list_a_staff
    * @property {string} text_staff Full name of the staff.
    * @property {string} url_photo Url photo of the staff.
@@ -83,18 +78,5 @@ WlSdk_ModelAbstract.extend(Wl_Virtual_MeetingListModel);
  */
 Wl_Virtual_MeetingListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_meeting_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_meeting_list": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };

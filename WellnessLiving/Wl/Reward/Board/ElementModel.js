@@ -13,12 +13,7 @@ function Wl_Reward_Board_ElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_reward_board,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,k_reward_board,uid";
 
   /**
    * List of reward board elements information.
@@ -30,7 +25,7 @@ function Wl_Reward_Board_ElementModel()
 
   /**
    * List of users to get information for. Primary keys in {@link \PassportLoginSql} table.
-   * 
+   *
    * <tt>null</tt> for mode of single user.
    *
    * @get get
@@ -48,7 +43,7 @@ function Wl_Reward_Board_ElementModel()
 
   /**
    * Business to show information for.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -58,7 +53,7 @@ function Wl_Reward_Board_ElementModel()
 
   /**
    * Reward board to show information for.
-   * 
+   *
    * Primary key in {@link \RsRewardBoardSql}.
    *
    * @get get
@@ -76,7 +71,7 @@ function Wl_Reward_Board_ElementModel()
 
   /**
    * User to retrieve information about.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
@@ -102,50 +97,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Board_ElementModel);
  */
 Wl_Reward_Board_ElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_reward": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_uid": {
-        "get": {
-          "get": true
-        }
-      },
-      "i_score": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_reward_board": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_logo": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_reward": {"get": {"result": true}},"a_uid": {"get": {"get": true}},"i_score": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_reward_board": {"get": {"get": true}},"s_name": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_logo": {"get": {"result": true}}}};
 };
 
 /**
@@ -156,4 +108,4 @@ Wl_Reward_Board_ElementModel.prototype.config=function()
  * @param {string} uid User to retrieve information about. Primary key in {@link \PassportLoginSql}.
  * @returns {Wl_Reward_Board_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

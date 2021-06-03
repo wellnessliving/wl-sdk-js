@@ -13,7 +13,7 @@ function Wl_Tax_TaxModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_tax';
+  this._s_key = "k_tax";
 
   /**
    * Tax ID. Primary key in {@link \RsTaxSql} table.
@@ -41,20 +41,7 @@ WlSdk_ModelAbstract.extend(Wl_Tax_TaxModel);
  */
 Wl_Tax_TaxModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_tax": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_tax": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_tax": {"get": {"get": true}},"text_tax": {"get": {"result": true}}}};
 };
 
 /**
@@ -63,4 +50,4 @@ Wl_Tax_TaxModel.prototype.config=function()
  * @param {string} k_tax Tax ID. Primary key in {@link \RsTaxSql} table.
  * @returns {Wl_Tax_TaxModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

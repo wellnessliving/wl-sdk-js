@@ -13,7 +13,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_class_period,dt_date_gmt,uid';
+  this._s_key = "k_class_period,dt_date_gmt,uid";
 
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_item
@@ -78,7 +78,7 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * A list of payment sources to pay with.
-   * 
+   *
    * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
    *
    * @post post
@@ -144,7 +144,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    *     <tt>null</tt> if appointment must not repeat monthly.
    *   </dd>
    * </dl>
-   * 
+   *
    * <tt>null</tt> if booking must be not recurring.
    *
    * @post post
@@ -257,92 +257,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Payment_PaymentModel);
  */
 Wl_Book_Process_Payment_PaymentModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_item": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_login_activity_book": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_pay_form": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_repeat": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_resource": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_session": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_visit": {
-        "post": {
-          "result": true
-        }
-      },
-      "dt_date_gmt": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_mode": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_login_activity_purchase": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_pay_installment_template": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_discount_code": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_item": {"post": {"post": true}},"a_login_activity_book": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_pay_installment_template": {"post": {"post": true}},"text_discount_code": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -353,4 +268,4 @@ Wl_Book_Process_Payment_PaymentModel.prototype.config=function()
  * @param {string} uid Key of a user who is making a book.
  * @returns {Wl_Book_Process_Payment_PaymentModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

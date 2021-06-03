@@ -11,11 +11,6 @@ function Wl_Schedule_Config_ConfigDefaultModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * ID of the predefined set of filters on the schedule.
    *
    * @post post
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Config_ConfigDefaultModel);
  */
 Wl_Schedule_Config_ConfigDefaultModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_default": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_schedule_config": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_default": {"post": {"post": true}},"k_schedule_config": {"post": {"get": true}}}};
 };

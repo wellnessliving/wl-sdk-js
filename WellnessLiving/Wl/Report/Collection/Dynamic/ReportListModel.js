@@ -13,7 +13,7 @@ function Wl_Report_Collection_Dynamic_ReportListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,cid_dynamic_collection';
+  this._s_key = "k_business,uid,cid_dynamic_collection";
 
   /**
    * @typedef {{}} Wl_Report_Collection_Dynamic_ReportListModel_a_report_list
@@ -68,7 +68,7 @@ function Wl_Report_Collection_Dynamic_ReportListModel()
 
   /**
    * User key. Primary key in the {@link \PassportLoginSql} table.
-   * 
+   *
    * Must be the same as currently logged-in user.
    *
    * @get get
@@ -86,30 +86,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_Collection_Dynamic_ReportListModel);
  */
 Wl_Report_Collection_Dynamic_ReportListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_report_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "cid_dynamic_collection": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_report_list": {"get": {"result": true}},"cid_dynamic_collection": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -120,4 +97,4 @@ Wl_Report_Collection_Dynamic_ReportListModel.prototype.config=function()
  * @param {number} cid_dynamic_collection CID of a subclass of {@link DynamicCollection}.
  * @returns {Wl_Report_Collection_Dynamic_ReportListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

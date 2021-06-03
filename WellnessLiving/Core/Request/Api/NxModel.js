@@ -22,7 +22,5 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_NxModel);
  */
 Core_Request_Api_NxModel.prototype.config=function()
 {
-  return {
-    "a_field": []
-  };
+  return {"a_field": []};
 };

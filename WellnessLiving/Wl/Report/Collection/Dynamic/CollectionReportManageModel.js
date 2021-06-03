@@ -13,19 +13,14 @@ function Wl_Report_Collection_Dynamic_CollectionReportManageModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,k_dynamic_collection_report';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid,k_dynamic_collection_report";
 
   /**
    * Report ID within the collection, one of {@link \RsReportSid}.
-   * 
+   *
    * Must be provided in combination with <var>k_dynamic_collection</var>.
    * Ignored if <var>k_dynamic_collection_report</var> is provided.
-   * 
+   *
    * <tt>null</tt> if <var>k_dynamic_collection_report</var> is provided instead.
    *
    * @delete get
@@ -43,10 +38,10 @@ function Wl_Report_Collection_Dynamic_CollectionReportManageModel()
 
   /**
    * Key of dynamic collection to which <var>id_report</var> belongs. Primary key in {@link DynamicCollectionSql} table.
-   * 
+   *
    * Must be provided in combination with <var>id_report</var>.
    * Ignored if <var>k_dynamic_collection_report</var> is provided.
-   * 
+   *
    * <tt>null</tt> if <var>k_dynamic_collection_report</var> is provided instead.
    *
    * @delete get
@@ -56,9 +51,9 @@ function Wl_Report_Collection_Dynamic_CollectionReportManageModel()
 
   /**
    * Key of the dynamic collection report to manage. Primary key in {@link DynamicCollectionReportSql} table.
-   * 
+   *
    * Must be provided if <var>k_dynamic_collection</var> and <var>id_report</var> are empty.
-   * 
+   *
    * <tt>null</tt> if <var>k_dynamic_collection</var> and <var>id_report</var> pair are provided instead.
    *
    * @delete get
@@ -84,35 +79,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_Collection_Dynamic_CollectionReportManageMo
  */
 Wl_Report_Collection_Dynamic_CollectionReportManageModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_report": {
-        "delete": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        }
-      },
-      "k_dynamic_collection": {
-        "delete": {
-          "get": true
-        }
-      },
-      "k_dynamic_collection_report": {
-        "delete": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_report": {"delete": {"get": true}},"k_business": {"delete": {"get": true}},"k_dynamic_collection": {"delete": {"get": true}},"k_dynamic_collection_report": {"delete": {"get": true}},"uid": {"delete": {"get": true}}}};
 };
 
 /**
@@ -123,4 +90,4 @@ Wl_Report_Collection_Dynamic_CollectionReportManageModel.prototype.config=functi
  * @param {?string} k_dynamic_collection_report Key of the dynamic collection report to manage. Primary key in {@link DynamicCollectionReportSql} table. Must be provided if <var>k_dynamic_collection</var> and <var>id_report</var> are empty. <tt>null</tt> if <var>k_dynamic_collection</var> and <var>id_report</var> pair are provided instead.
  * @returns {Wl_Report_Collection_Dynamic_CollectionReportManageModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -11,11 +11,6 @@ function Core_Passport_ChangePassword_ChangePasswordBeginModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Characters to pass captcha test.
    *
    * @post post
@@ -41,7 +36,7 @@ function Core_Passport_ChangePassword_ChangePasswordBeginModel()
 
   /**
    * URL to password reset page. This link will be used in a password reset email.
-   * 
+   *
    * If empty, URL to default page will be used.
    *
    * @post post
@@ -59,28 +54,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_ChangePassword_ChangePasswordBeginModel
  */
 Core_Passport_ChangePassword_ChangePasswordBeginModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "text_captcha": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_error": {
-        "post": {
-          "result": true
-        }
-      },
-      "text_mail": {
-        "post": {
-          "post": true
-        }
-      },
-      "url_reset": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"text_captcha": {"post": {"post": true}},"text_error": {"post": {"result": true}},"text_mail": {"post": {"post": true}},"url_reset": {"post": {"post": true}}}};
 };

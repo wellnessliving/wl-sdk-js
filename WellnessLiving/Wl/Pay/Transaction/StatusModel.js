@@ -11,13 +11,8 @@ function Wl_Pay_Transaction_StatusModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * New status of payment transaction.
-   * 
+   *
    * One of {@link \RsPayTransactionStatusSid} constants.
    *
    * @put post
@@ -43,18 +38,5 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Transaction_StatusModel);
  */
 Wl_Pay_Transaction_StatusModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_pay_transaction_status": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_pay_transaction": {
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_pay_transaction_status": {"put": {"post": true}},"k_pay_transaction": {"put": {"get": true}}}};
 };

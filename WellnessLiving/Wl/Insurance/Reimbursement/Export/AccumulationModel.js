@@ -13,7 +13,7 @@ function Wl_Insurance_Reimbursement_Export_AccumulationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * Business key.
@@ -42,20 +42,7 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Reimbursement_Export_AccumulationModel);
  */
 Wl_Insurance_Reimbursement_Export_AccumulationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_partner": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"get": true}},"k_partner": {"post": {"get": true}}}};
 };
 
 /**
@@ -64,4 +51,4 @@ Wl_Insurance_Reimbursement_Export_AccumulationModel.prototype.config=function()
  * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
  * @returns {Wl_Insurance_Reimbursement_Export_AccumulationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

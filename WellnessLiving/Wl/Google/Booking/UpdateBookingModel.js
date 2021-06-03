@@ -11,12 +11,12 @@ function Wl_Google_Booking_UpdateBookingModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Information about booking.
+   * Booking to be updated.
    *
-   * @post result
-   * @type {?{}}
+   * @post post
+   * @type {*}
    */
-  this.booking = null;
+  this.booking = undefined;
 
   /**
    * Information about failure.
@@ -25,14 +25,6 @@ function Wl_Google_Booking_UpdateBookingModel()
    * @type {?{}}
    */
   this.booking_failure = null;
-
-  /**
-   * Booking to be updated.
-   *
-   * @post post
-   * @type {*}
-   */
-  this.booking = undefined;
 
   this.changeInit();
 }
@@ -44,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Google_Booking_UpdateBookingModel);
  */
 Wl_Google_Booking_UpdateBookingModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "booking": {
-        "post": {
-          "post": true
-        }
-      },
-      "booking_failure": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"booking": {"post": {"post": true}},"booking_failure": {"post": {"result": true}}}};
 };

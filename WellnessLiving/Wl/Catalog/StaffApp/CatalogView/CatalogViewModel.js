@@ -12,7 +12,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * Configuration information.
-   * 
+   *
    * Empty array means not set.
    *
    * @get get
@@ -22,7 +22,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * Tax list.
-   * 
+   *
    * Empty array means not set.
    *
    * @get get
@@ -40,7 +40,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * Quantity of items.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -50,7 +50,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * ID of sale category. One of {@link \RsSaleSid}.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -60,7 +60,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * Business key.
-   * 
+   *
    * Empty value means not set.
    * <tt>null</tt> means system business.
    *
@@ -71,7 +71,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * ID of the sale item.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -81,7 +81,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * Shop product option ID.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -91,7 +91,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * Price amount.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -133,7 +133,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * Current user ID.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -151,78 +151,5 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogView_CatalogViewModel);
  */
 Wl_Catalog_StaffApp_CatalogView_CatalogViewModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_config": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_tax": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_tax_data": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_quantity": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_sale": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_shop_product_option": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_price": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_prorate": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_subtotal": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_tax": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_total": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_config": {"get": {"get": true}},"a_tax": {"get": {"get": true}},"a_tax_data": {"get": {"result": true}},"i_quantity": {"get": {"get": true}},"id_sale": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true}},"m_price": {"get": {"get": true}},"m_prorate": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };

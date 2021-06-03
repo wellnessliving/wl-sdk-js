@@ -13,12 +13,7 @@ function Wl_Import_Pay_AbortModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business_merchant';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business_merchant";
 
   /**
    * ID of a merchant for which import should be aborted.
@@ -38,15 +33,7 @@ WlSdk_ModelAbstract.extend(Wl_Import_Pay_AbortModel);
  */
 Wl_Import_Pay_AbortModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business_merchant": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business_merchant": {"post": {"get": true}}}};
 };
 
 /**
@@ -55,4 +42,4 @@ Wl_Import_Pay_AbortModel.prototype.config=function()
  * @param {string} k_business_merchant ID of a merchant for which import should be aborted.
  * @returns {Wl_Import_Pay_AbortModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

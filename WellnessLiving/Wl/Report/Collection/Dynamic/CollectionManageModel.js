@@ -13,18 +13,13 @@ function Wl_Report_Collection_Dynamic_CollectionManageModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,k_dynamic_collection';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid,k_dynamic_collection";
 
   /**
    * List of widgets that are displayed on the dashboard.
-   * 
+   *
    * <tt>null</tt> if list of widgets doesn't need to be updated.
-   * 
+   *
    * Structure of each item: <dl>
    *    <dt>int <var>i_position</var></dt>
    *    <dd>Report's position in the collection.</dd>
@@ -92,52 +87,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_Collection_Dynamic_CollectionManageModel);
  */
 Wl_Report_Collection_Dynamic_CollectionManageModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_report_list": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "cid_collection": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_dynamic_collection": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_report_list": {"get": {"result": true},"put": {"post": true}},"cid_collection": {"get": {"result": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_dynamic_collection": {"get": {"get": true},"put": {"get": true}},"text_title": {"get": {"result": true}},"uid": {"get": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -148,4 +98,4 @@ Wl_Report_Collection_Dynamic_CollectionManageModel.prototype.config=function()
  * @param {string} k_dynamic_collection Key of the dynamic collection to manage. Primary key in {@link DynamicCollectionSql} table.
  * @returns {Wl_Report_Collection_Dynamic_CollectionManageModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

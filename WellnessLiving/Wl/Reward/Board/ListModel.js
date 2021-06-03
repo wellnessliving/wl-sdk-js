@@ -13,7 +13,7 @@ function Wl_Reward_Board_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_reward_board';
+  this._s_key = "k_business,k_reward_board";
 
   /**
    * A list of UID items. Each value is a primary key in {@link RsRewardBoardSql}
@@ -25,7 +25,7 @@ function Wl_Reward_Board_ListModel()
 
   /**
    * ID of a business to show information for.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -35,7 +35,7 @@ function Wl_Reward_Board_ListModel()
 
   /**
    * ID of reward board to show information for.
-   * 
+   *
    * Primary key in {@link \RsRewardBoardSql}.
    *
    * @get get
@@ -53,25 +53,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Board_ListModel);
  */
 Wl_Reward_Board_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_uid": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_reward_board": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_uid": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_reward_board": {"get": {"get": true}}}};
 };
 
 /**
@@ -81,4 +63,4 @@ Wl_Reward_Board_ListModel.prototype.config=function()
  * @param {string} k_reward_board ID of reward board to show information for. Primary key in {@link \RsRewardBoardSql}.
  * @returns {Wl_Reward_Board_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

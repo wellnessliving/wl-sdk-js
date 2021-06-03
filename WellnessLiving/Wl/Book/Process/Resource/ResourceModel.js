@@ -13,7 +13,7 @@ function Wl_Book_Process_Resource_ResourceModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_class_period,dt_date_gmt,uid,a_session';
+  this._s_key = "k_class_period,dt_date_gmt,uid,a_session";
 
   /**
    * IDs of user's activity. Primary keys in table {@link RsLoginActivitySql}. Not empty only if session(s) was booked on this step.
@@ -81,7 +81,7 @@ function Wl_Book_Process_Resource_ResourceModel()
    *     <tt>null</tt> if appointment must not repeat monthly.
    *   </dd>
    * </dl>
-   * 
+   *
    * <tt>null</tt> if booking must be not recurring.
    *
    * @post post
@@ -127,8 +127,8 @@ function Wl_Book_Process_Resource_ResourceModel()
    * </dl>
    * @property {boolean} has_current <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
    * @property {boolean} is_client_select <tt>true</tt> - client selected resource from current group; <tt>false</tt> otherwise.
-   * @property {boolean} is_share <tt>true</tt> - assets of this category do not belong to certain users but belong to session in general; <tt>false</tt> - assets belong to certain users.
    * @property {boolean} is_select <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
+   * @property {boolean} is_share <tt>true</tt> - assets of this category do not belong to certain users but belong to session in general; <tt>false</tt> - assets belong to certain users.
    * @property {string} k_resource_layout ID of asset layout. Primary key in {@link \Wl\Resource\Layout\Sql} table.
    * @property {string} k_resource_type ID of asset category. Primary key in {@link RsResourceTypeSql} table.
    * @property {string} s_resource_type Title of asset category.
@@ -182,16 +182,16 @@ function Wl_Book_Process_Resource_ResourceModel()
    *     <tt>true</tt> - client selected resource from current group; <tt>false</tt> otherwise.
    *   </dd>
    *   <dt>
-   *     bool <var>is_share</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> - assets of this category do not belong to certain users but belong to session in general; <tt>false</tt> - assets belong to certain users.
-   *   </dd>
-   *   <dt>
    *     bool <var>is_select</var>
    *   </dt>
    *   <dd>
    *     <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_share</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - assets of this category do not belong to certain users but belong to session in general; <tt>false</tt> - assets belong to certain users.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout</var>
@@ -226,7 +226,7 @@ function Wl_Book_Process_Resource_ResourceModel()
 
   /**
    * Selected assets.
-   * 
+   *
    * Every element has keys:
    * <dl><dt>int <var>i_index</var></dt><dd>Order number of the asset (may be from 1 to asset quantity).</dd>
    * <dt>string <var>k_resource</var></dt><dd>Asset ID. Primary key in table {@link RsResourceSql}.</dd></dl>
@@ -239,7 +239,7 @@ function Wl_Book_Process_Resource_ResourceModel()
   /**
    * Selected sessions.
    * Not empty only for session mode.
-   * 
+   *
    * Fields - IDs of sessions in database.
    * Values - arrays of date/time when session is occurred. In MySQL format. In GMT.
    *
@@ -311,80 +311,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Resource_ResourceModel);
  */
 Wl_Book_Process_Resource_ResourceModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login_activity": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_repeat": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_resource_all": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_resource_select": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_session": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "a_visit": {
-        "post": {
-          "result": true
-        }
-      },
-      "dt_date_gmt": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_mode": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "is_next": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource_all": {"get": {"result": true}},"a_resource_select": {"post": {"post": true}},"a_session": {"get": {"get": true},"post": {"get": true}},"a_visit": {"post": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -396,4 +323,4 @@ Wl_Book_Process_Resource_ResourceModel.prototype.config=function()
  * @param {{}} a_session Selected sessions. Not empty only for session mode. Fields - IDs of sessions in database. Values - arrays of date/time when session is occurred. In MySQL format. In GMT.
  * @returns {Wl_Book_Process_Resource_ResourceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

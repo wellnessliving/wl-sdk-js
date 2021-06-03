@@ -37,18 +37,5 @@ WlSdk_ModelAbstract.extend(Wl_Google_Booking_ListBookingsModel);
  */
 Wl_Google_Booking_ListBookingsModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "bookings": {
-        "post": {
-          "result": true
-        }
-      },
-      "user_id": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"bookings": {"post": {"result": true}},"user_id": {"post": {"get": true}}}};
 };

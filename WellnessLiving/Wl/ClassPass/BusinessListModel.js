@@ -38,18 +38,5 @@ WlSdk_ModelAbstract.extend(Wl_ClassPass_BusinessListModel);
  */
 Wl_ClassPass_BusinessListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "pagination": {
-        "get": {
-          "result": true
-        }
-      },
-      "partners": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"pagination": {"get": {"result": true}},"partners": {"get": {"result": true}}}};
 };

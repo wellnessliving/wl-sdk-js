@@ -13,7 +13,7 @@ function Wl_Service_AgeRestriction_AgeRestrictionStatusModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_class_period,uid';
+  this._s_key = "k_class_period,uid";
 
   /**
    * Whether a client can book class.
@@ -25,7 +25,7 @@ function Wl_Service_AgeRestriction_AgeRestrictionStatusModel()
 
   /**
    * Class period key.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -51,25 +51,7 @@ WlSdk_ModelAbstract.extend(Wl_Service_AgeRestriction_AgeRestrictionStatusModel);
  */
 Wl_Service_AgeRestriction_AgeRestrictionStatusModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "can_book": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"can_book": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -79,4 +61,4 @@ Wl_Service_AgeRestriction_AgeRestrictionStatusModel.prototype.config=function()
  * @param {string} uid User key.
  * @returns {Wl_Service_AgeRestriction_AgeRestrictionStatusModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

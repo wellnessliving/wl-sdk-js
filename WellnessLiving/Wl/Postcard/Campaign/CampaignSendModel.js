@@ -31,19 +31,5 @@ WlSdk_ModelAbstract.extend(Wl_Postcard_Campaign_CampaignSendModel);
  */
 Wl_Postcard_Campaign_CampaignSendModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_postcard_campaign": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_postcard_campaign": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}}}};
 };

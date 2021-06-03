@@ -13,7 +13,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,k_class_tab,dt_date,show_cancel';
+  this._s_key = "uid,k_business,k_class_tab,dt_date,show_cancel";
 
   /**
    * @typedef {{}} Wl_Schedule_ClassList_ClassListModel_a_session
@@ -140,13 +140,24 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * Date of list end in location timezone.
-   * 
-   * Empty to end after 62 days after {@link \Wl\Schedule\ClassList\ClassListApi::$dt_date}.
+   *
+   * Empty to end after a period {@link ClassListApi::DEFAULT_PERIOD} after start date {@link \Wl\Schedule\ClassList\ClassListApi::$dt_date}.
    *
    * @get get
    * @type {string}
    */
   this.dt_end = "";
+
+  /**
+   * Whether need to retrieve list of classes sessions regardless tab specified in {@link EventListApi::$k_class_tab}.
+   *
+   * * <tt>true</tt> - retrieve list regardless specified tab.
+   * * <tt>false</tt> - retrieve list only for specific tab.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_tab_all = false;
 
   /**
    * <tt>true</tt> - list of sessions contains sessions from different timezones; <tt>false</tt> - otherwise.
@@ -175,8 +186,9 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * Primary key of booking tab in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table.
-   * 
+   *
    * <tt>0</tt> means system default tab.
+   * ## Will be ignored if {@link ClassListApi::$is_tab_all} is <tt>true</tt>.
    *
    * @get get
    * @type {string}
@@ -185,7 +197,7 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * Whether canceled class periods will be displayed or not.
-   * 
+   *
    * <tt>true</tt> - canceled class periods will be displayed;
    * <tt>false</tt> - canceled class periods will not be displayed.
    *
@@ -196,7 +208,7 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * Current user key.
-   * 
+   *
    * <tt>null</tt> if user is not signed in.
    *
    * @get get
@@ -214,55 +226,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
  */
 Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_session": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        }
-      },
-      "dt_end": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_timezone_different": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_virtual_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class_tab": {
-        "get": {
-          "get": true
-        }
-      },
-      "show_cancel": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -270,9 +234,9 @@ Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
  * @name Wl_Schedule_ClassList_ClassListModel.instanceGet
  * @param {string} uid Current user key. <tt>null</tt> if user is not signed in.
  * @param {string} k_business Business primary key in {@link RsBusinessSql} table.
- * @param {string} k_class_tab Primary key of booking tab in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table. <tt>0</tt> means system default tab.
+ * @param {string} k_class_tab Primary key of booking tab in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table. <tt>0</tt> means system default tab. ## Will be ignored if {@link ClassListApi::$is_tab_all} is <tt>true</tt>.
  * @param {string} dt_date Date of list start in location timezone.
  * @param {boolean} show_cancel Whether canceled class periods will be displayed or not. <tt>true</tt> - canceled class periods will be displayed; <tt>false</tt> - canceled class periods will not be displayed.
  * @returns {Wl_Schedule_ClassList_ClassListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

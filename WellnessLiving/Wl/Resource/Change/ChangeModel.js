@@ -44,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Resource_Change_ChangeModel);
  */
 Wl_Resource_Change_ChangeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_index": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_resource": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_visit": {
-        "put": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_index": {"put": {"post": true}},"k_resource": {"put": {"post": true}},"k_visit": {"put": {"post": true}}}};
 };

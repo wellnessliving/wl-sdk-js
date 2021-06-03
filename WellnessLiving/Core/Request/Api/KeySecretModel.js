@@ -65,33 +65,5 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_KeySecretModel);
  */
 Core_Request_Api_KeySecretModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "s_csrf": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_key_secret": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_key_session": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_domain": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_origin": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"s_csrf": {"get": {"get": true}},"s_key_secret": {"get": {"result": true}},"s_key_session": {"get": {"get": true}},"url_domain": {"get": {"get": true}},"url_origin": {"get": {"get": true}}}};
 };

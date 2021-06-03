@@ -11,11 +11,6 @@ function Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseEditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Insurance provider key. Primary key in {@link \Wl\Integration\Curves\PartnerSql} table,
    * <tt>null</tt> if field is not set.
    *
@@ -73,51 +68,5 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuse
  */
 Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseEditModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_insurance_provider": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_reimbursement_refuse": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "text_code": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "text_description_provider": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "text_display": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_insurance_provider": {"get": {"result": true},"post": {"post": true}},"k_reimbursement_refuse": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"text_code": {"get": {"result": true},"post": {"post": true}},"text_description_provider": {"get": {"result": true},"post": {"post": true}},"text_display": {"get": {"result": true},"post": {"post": true}}}};
 };

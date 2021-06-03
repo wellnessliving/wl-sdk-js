@@ -29,7 +29,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   /**
    * Data of appointment repeat.
    * See key <tt>a_repeat</tt> of {@link \Wl\Appointment\Book\Finish\FinishApi::$a_book_data} for details.
-   * 
+   *
    * <tt>null</tt> if repeat is not required.
    *
    * @get get
@@ -47,7 +47,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
    * List of assets. Every element has next keys:
    * <dl><dt>int [<var>i_index</var>]</dt><dd>Asset index in layout.</dd>
    * <dt>string <var>k_resource</var></dt><dd>Asset primary key in {@link \RsResourceSql} table.</dd></dl>
-   * 
+   *
    * May be specified for service booking only.
    *
    * @get get
@@ -83,7 +83,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
 
   /**
    * Location to show available appointment booking schedule.
-   * 
+   *
    * Primary key in {@link \RsLocationSql} table.
    *
    * @get get,result
@@ -120,7 +120,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
 
   /**
    * User to get information for.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
@@ -139,75 +139,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Conflict_ConflictModel);
  */
 Wl_Appointment_Book_Conflict_ConflictModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_conflict": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_product": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_repeat": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_resource": {
-        "get": {
-          "get": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        }
-      },
-      "i_duration": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_appointment": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true,
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_resource": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_staff": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_conflict": {"get": {"result": true}},"a_product": {"get": {"get": true}},"a_repeat": {"get": {"get": true}},"a_resource": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"k_appointment": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_staff": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

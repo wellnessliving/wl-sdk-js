@@ -13,12 +13,7 @@ function Wl_Mail_Group_MailGroupOpenModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid";
 
   /**
    * Mail group ID. One of {@link \RsMailGroupSid} constants.
@@ -62,30 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Mail_Group_MailGroupOpenModel);
  */
 Wl_Mail_Group_MailGroupOpenModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_mail_group": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_remove": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_mail_group": {"post": {"post": true}},"is_remove": {"post": {"post": true}},"k_business": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };
 
 /**
@@ -95,4 +67,4 @@ Wl_Mail_Group_MailGroupOpenModel.prototype.config=function()
  * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
  * @returns {Wl_Mail_Group_MailGroupOpenModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_gender_staff,k_staff,k_location,k_service,k_resource,i_index,i_duration,uid,s_product';
+  this._s_key = "id_gender_staff,k_staff,k_location,k_service,k_resource,i_index,i_duration,uid,s_product";
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Schedule_CalendarModel_a_date
@@ -92,7 +92,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
 
   /**
    * Location to show available appointment booking schedule.
-   * 
+   *
    * Primary key in {@link \RsLocationSql} table.
    *
    * @get get,result
@@ -103,7 +103,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
 
   /**
    * Resource key to show what days are available for asset booking.
-   * 
+   *
    * Primary key in {@link \RsResourceSql} table.
    *
    * @get get
@@ -113,7 +113,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
 
   /**
    * Service key to show what days are available for appointment booking.
-   * 
+   *
    * Primary key in {@link \RsServiceSql} table.
    *
    * @get get
@@ -123,7 +123,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
 
   /**
    * Staff key to show what days are available for appointment booking.
-   * 
+   *
    * Primary key in {@link \RsStaffSql} table.
    *
    * @get get
@@ -142,7 +142,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
 
   /**
    * User to get information for.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
@@ -161,73 +161,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Schedule_CalendarModel);
  */
 Wl_Appointment_Book_Schedule_CalendarModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_date": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      },
-      "i_duration": {
-        "get": {
-          "get": true
-        }
-      },
-      "i_index": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_gender_staff": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true,
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_resource": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_staff": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_product": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_date": {"get": {"result": true}},"dt_date": {"get": {"get": true,"result": true}},"i_duration": {"get": {"get": true}},"i_index": {"get": {"get": true}},"id_gender_staff": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_staff": {"get": {"get": true}},"s_product": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -244,4 +178,4 @@ Wl_Appointment_Book_Schedule_CalendarModel.prototype.config=function()
  * @param {string} s_product List of service add-ons. Serialized to be usable as model key. Values - primary keys in {@link \RsShopProductSql} table.
  * @returns {Wl_Appointment_Book_Schedule_CalendarModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

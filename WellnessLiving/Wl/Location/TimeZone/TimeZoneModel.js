@@ -11,11 +11,6 @@ function Wl_Location_TimeZone_TimeZoneModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * @typedef {{}} Wl_Location_TimeZone_TimeZoneModel_a_timezone
    * @property {?number} i_dst_offset Maximum daylight savings offset in seconds. A value of 3600 indicates this location uses daylight savings time, <tt>null</tt> if no dst info requested.
    * @property {number} i_raw_offset The timezone's offset in seconds from UTC. Not all time zones will be evenly divisible by 3600.
@@ -32,7 +27,7 @@ function Wl_Location_TimeZone_TimeZoneModel()
    *   <dt>string <var>text_time_zone_name</var></dt>
    *   <dd>The time zone's name.</dd>
    * </dl>
-   * 
+   *
    * <tt>null</tt> if no result.
    *
    * @post result
@@ -42,7 +37,7 @@ function Wl_Location_TimeZone_TimeZoneModel()
 
   /**
    * Location's address.
-   * 
+   *
    * <tt>null</tt> if not set yet.
    *
    * @post post
@@ -60,18 +55,5 @@ WlSdk_ModelAbstract.extend(Wl_Location_TimeZone_TimeZoneModel);
  */
 Wl_Location_TimeZone_TimeZoneModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_timezone": {
-        "post": {
-          "result": true
-        }
-      },
-      "text_location": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_timezone": {"post": {"result": true}},"text_location": {"post": {"post": true}}}};
 };

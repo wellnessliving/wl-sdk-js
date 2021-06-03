@@ -11,11 +11,6 @@ function Wl_Business_Application_Account_AccountModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * ID of distribution provider (is directly related to operation system) to save data for.
    * One of {@link \Core\Spa\OsSid} constants.
    *
@@ -58,28 +53,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Application_Account_AccountModel);
  */
 Wl_Business_Application_Account_AccountModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_os": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_login": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_password": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_os": {"post": {"post": true}},"k_business": {"post": {"post": true}},"s_login": {"post": {"post": true}},"s_password": {"post": {"post": true}}}};
 };

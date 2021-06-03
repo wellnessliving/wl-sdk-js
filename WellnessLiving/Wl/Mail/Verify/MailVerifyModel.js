@@ -12,11 +12,6 @@ function Wl_Mail_Verify_MailVerifyModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Business key.
    *
    * @post post
@@ -42,18 +37,5 @@ WlSdk_ModelAbstract.extend(Wl_Mail_Verify_MailVerifyModel);
  */
 Wl_Mail_Verify_MailVerifyModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_email": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"post": true}},"text_email": {"post": {"post": true}}}};
 };

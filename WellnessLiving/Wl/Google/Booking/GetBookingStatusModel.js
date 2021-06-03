@@ -44,24 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Google_Booking_GetBookingStatusModel);
  */
 Wl_Google_Booking_GetBookingStatusModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "booking_id": {
-        "post": {
-          "get": true,
-          "result": true
-        }
-      },
-      "booking_status": {
-        "post": {
-          "result": true
-        }
-      },
-      "prepayment_status": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"booking_id": {"post": {"get": true,"result": true}},"booking_status": {"post": {"result": true}},"prepayment_status": {"post": {"result": true}}}};
 };

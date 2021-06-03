@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_start,k_location,k_service,is_backend';
+  this._s_key = "dt_start,k_location,k_service,is_backend";
 
   /**
    * List of assets which are busy in the time of service booking. Keys - asset ID; primary key in {@link \RsResourceSql} table. Values - sub array. In sub arrays keys - number of asset unit; values -
@@ -137,7 +137,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   /**
    * <tt>true</tt> for a case of backend mode.
    * In this mode list of asset categories must be returned even asset selection is disabled for clients.
-   * 
+   *
    * <tt>false</tt> for a case of frontend mode.
    * In this mode list of asset categories must not be returned if asset selection is disabled for clients.
    *
@@ -172,45 +172,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_Service_ServiceModel);
  */
 Wl_Appointment_Book_Asset_Service_ServiceModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_resource_busy": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_resource_type": {
-        "get": {
-          "result": true
-        }
-      },
-      "can_book_unavailable_assets": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_start": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_backend": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_resource_busy": {"get": {"result": true}},"a_resource_type": {"get": {"result": true}},"can_book_unavailable_assets": {"get": {"result": true}},"dt_start": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}}}};
 };
 
 /**
@@ -222,4 +184,4 @@ Wl_Appointment_Book_Asset_Service_ServiceModel.prototype.config=function()
  * @param {boolean} is_backend <tt>true</tt> for a case of backend mode. In this mode list of asset categories must be returned even asset selection is disabled for clients. <tt>false</tt> for a case of frontend mode. In this mode list of asset categories must not be returned if asset selection is disabled for clients.
  * @returns {Wl_Appointment_Book_Asset_Service_ServiceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -11,13 +11,8 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * File for a new image.
-   * 
+   *
    * Strange name for compatibility with old server side.
    *
    * @post post
@@ -131,73 +126,5 @@ WlSdk_ModelAbstract.extend(Core_Drive_ImageUpload_ImageUploadTemporaryModel);
  */
 Core_Drive_ImageUpload_ImageUploadTemporaryModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "f_image": {
-        "post": {
-          "post": true
-        }
-      },
-      "has_crop": {
-        "post": {
-          "result": true
-        }
-      },
-      "i_height": {
-        "post": {
-          "result": true
-        }
-      },
-      "i_height_src": {
-        "post": {
-          "result": true
-        }
-      },
-      "i_rotate": {
-        "post": {
-          "result": true
-        }
-      },
-      "i_width": {
-        "post": {
-          "result": true
-        }
-      },
-      "i_width_src": {
-        "post": {
-          "result": true
-        }
-      },
-      "id_type_src": {
-        "post": {
-          "result": true
-        }
-      },
-      "is_resize": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_id": {
-        "post": {
-          "get": true
-        }
-      },
-      "s_class": {
-        "post": {
-          "get": true
-        }
-      },
-      "url_thumbnail": {
-        "post": {
-          "result": true
-        }
-      },
-      "url_view": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"f_image": {"post": {"post": true}},"has_crop": {"post": {"result": true}},"i_height": {"post": {"result": true}},"i_height_src": {"post": {"result": true}},"i_rotate": {"post": {"result": true}},"i_width": {"post": {"result": true}},"i_width_src": {"post": {"result": true}},"id_type_src": {"post": {"result": true}},"is_resize": {"post": {"result": true}},"k_id": {"post": {"get": true}},"s_class": {"post": {"get": true}},"url_thumbnail": {"post": {"result": true}},"url_view": {"post": {"result": true}}}};
 };

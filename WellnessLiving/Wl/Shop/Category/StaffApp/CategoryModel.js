@@ -13,7 +13,7 @@ function Wl_Shop_Category_StaffApp_CategoryModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Shop_Category_StaffApp_CategoryModel_a_shop_category
@@ -75,20 +75,7 @@ WlSdk_ModelAbstract.extend(Wl_Shop_Category_StaffApp_CategoryModel);
  */
 Wl_Shop_Category_StaffApp_CategoryModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_shop_category": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_shop_category": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -97,4 +84,4 @@ Wl_Shop_Category_StaffApp_CategoryModel.prototype.config=function()
  * @param {string} k_business Key of business to get categories for. Primary key in {@link RsBusinessSql} table.
  * @returns {Wl_Shop_Category_StaffApp_CategoryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

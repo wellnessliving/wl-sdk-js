@@ -11,11 +11,6 @@ function Wl_Integration_Curves_Partner_PartnerListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A list of curves partner.
    *
    * @get result
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Wl_Integration_Curves_Partner_PartnerListModel);
  */
 Wl_Integration_Curves_Partner_PartnerListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_list": {"get": {"result": true}}}};
 };

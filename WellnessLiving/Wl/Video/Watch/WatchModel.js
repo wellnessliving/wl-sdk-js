@@ -11,14 +11,26 @@ function Wl_Video_Watch_WatchModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
+   * Number of seconds which user watched video.
+   *
+   * @put post
+   * @type {number}
    */
-  this.ERROR_SILENT = true;
+  this.i_watched = undefined;
+
+  /**
+   * Source ID.
+   *
+   * @post post
+   * @type {number}
+   */
+  this.id_source = undefined;
 
   /**
    * Business key.
    *
    * @post post
+   * @put post
    * @type {string}
    */
   this.k_business = undefined;
@@ -31,6 +43,15 @@ function Wl_Video_Watch_WatchModel()
    */
   this.k_video = undefined;
 
+  /**
+   * Video watch key.
+   *
+   * @post result
+   * @put post
+   * @type {string}
+   */
+  this.k_video_watch = undefined;
+
   this.changeInit();
 }
 
@@ -41,18 +62,5 @@ WlSdk_ModelAbstract.extend(Wl_Video_Watch_WatchModel);
  */
 Wl_Video_Watch_WatchModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_video": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_watched": {"put": {"post": true}},"id_source": {"post": {"post": true}},"k_business": {"post": {"post": true},"put": {"post": true}},"k_video": {"post": {"post": true}},"k_video_watch": {"post": {"result": true},"put": {"post": true}}}};
 };

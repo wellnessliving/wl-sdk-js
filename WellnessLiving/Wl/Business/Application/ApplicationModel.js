@@ -13,11 +13,11 @@ function Wl_Business_Application_ApplicationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * Key of a business to show information for.
-   * 
+   *
    * Primary key from {@link RsSkinSql} table.
    *
    * @get get
@@ -43,20 +43,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Application_ApplicationModel);
  */
 Wl_Business_Application_ApplicationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_application_title": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"get": {"get": true}},"text_application_title": {"get": {"result": true}}}};
 };
 
 /**
@@ -65,4 +52,4 @@ Wl_Business_Application_ApplicationModel.prototype.config=function()
  * @param {string} k_business Key of a business to show information for. Primary key from {@link RsSkinSql} table.
  * @returns {Wl_Business_Application_ApplicationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

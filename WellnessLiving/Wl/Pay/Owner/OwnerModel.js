@@ -13,7 +13,7 @@ function Wl_Pay_Owner_OwnerModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid';
+  this._s_key = "uid";
 
   /**
    * Payment owner type. One of {@link RsPayOwnerSid} constants.
@@ -49,25 +49,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Owner_OwnerModel);
  */
 Wl_Pay_Owner_OwnerModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_pay_owner": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_pay_owner": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_pay_owner": {"get": {"result": true}},"k_pay_owner": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -76,4 +58,4 @@ Wl_Pay_Owner_OwnerModel.prototype.config=function()
  * @param {number} uid ID of a user to show information for.
  * @returns {Wl_Pay_Owner_OwnerModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

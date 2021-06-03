@@ -52,28 +52,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_ChangePassword_ChangePasswordApplyModel
  */
 Core_Passport_ChangePassword_ChangePasswordApplyModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "text_code": {
-        "post": {
-          "get": true
-        }
-      },
-      "text_login": {
-        "post": {
-          "get": true
-        }
-      },
-      "text_mail": {
-        "post": {
-          "get": true
-        }
-      },
-      "text_password": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"text_code": {"post": {"get": true}},"text_login": {"post": {"get": true}},"text_mail": {"post": {"get": true}},"text_password": {"post": {"post": true}}}};
 };

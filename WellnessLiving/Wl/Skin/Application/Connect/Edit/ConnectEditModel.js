@@ -11,11 +11,6 @@ function Wl_Skin_Application_Connect_Edit_ConnectEditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Data for send push.
    *
    * @post post
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Skin_Application_Connect_Edit_ConnectEditModel);
  */
 Wl_Skin_Application_Connect_Edit_ConnectEditModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_push": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_message": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_push": {"post": {"post": true}},"s_message": {"post": {"post": true}}}};
 };

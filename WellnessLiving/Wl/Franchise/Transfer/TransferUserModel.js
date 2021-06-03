@@ -11,11 +11,6 @@ function Wl_Franchise_Transfer_TransferUserModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Business key.
    *
    * @get get
@@ -57,28 +52,5 @@ WlSdk_ModelAbstract.extend(Wl_Franchise_Transfer_TransferUserModel);
  */
 Wl_Franchise_Transfer_TransferUserModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_name_full": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid_transfer": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_photo": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"get": {"get": true}},"text_name_full": {"get": {"result": true}},"uid_transfer": {"get": {"get": true}},"url_photo": {"get": {"result": true}}}};
 };

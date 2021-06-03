@@ -44,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Search_Filter_LoginSearchFilterModel);
  */
 Wl_Login_Search_Filter_LoginSearchFilterModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_search_filter": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_login_search": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_reception": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_search_filter": {"get": {"result": true}},"is_login_search": {"get": {"result": true}},"is_reception": {"get": {"result": true}}}};
 };

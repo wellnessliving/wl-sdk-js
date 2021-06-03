@@ -13,11 +13,12 @@ function Wl_Staff_StaffList_StaffListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Staff_StaffList_StaffListModel_a_staff
-   * @property {string[]} a_staff_pay List of pay rate ID's applicable for staff.
+   * @property {string[]} a_staff_pay Staff name.
+   * @property {string} html_name List of pay rate ID's applicable for staff.
    * @property {number} i_order Order for sorting.
    * @property {string} k_staff Staff key; primary key in {@link RsStaffSql} table.
    * @property {string} s_name Staff name.
@@ -25,6 +26,7 @@ function Wl_Staff_StaffList_StaffListModel()
    * @property {string} s_surname First letter of surname of staff member.
    * @property {?string} s_surname_full Whole surname of staff member. <tt>null</tt> if private staff member information is not accessible.
    * @property {string} uid ID of staff as user. Primary key in {@link PassportLoginSql} table.
+   * @property {string} url_image Url link to user photo, or empty string, if photo is not loaded.
    */
 
   /**
@@ -33,6 +35,12 @@ function Wl_Staff_StaffList_StaffListModel()
    *   <dt>
    *     string[] <var>a_staff_pay</var>
    *   </dt>
+   *   <dt>
+   *     string <var>html_name</var>
+   *   </dt>
+   *   <dd>
+   *     Staff name.
+   *   </dd>
    *   <dd>
    *     List of pay rate ID's applicable for staff.
    *   </dd>
@@ -78,6 +86,12 @@ function Wl_Staff_StaffList_StaffListModel()
    *   <dd>
    *     ID of staff as user. Primary key in {@link PassportLoginSql} table.
    *   </dd>
+   *   <dt>
+   *     string <var>url_image</var>
+   *   </dt>
+   *   <dd>
+   *     Url link to user photo, or empty string, if photo is not loaded.
+   *   </dd>
    * </dl>
    *
    * @get result
@@ -103,20 +117,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_StaffList_StaffListModel);
  */
 Wl_Staff_StaffList_StaffListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_staff": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -125,4 +126,4 @@ Wl_Staff_StaffList_StaffListModel.prototype.config=function()
  * @param {string} k_business ID of business. Primary key in {@link RsBusinessSql} table.
  * @returns {Wl_Staff_StaffList_StaffListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

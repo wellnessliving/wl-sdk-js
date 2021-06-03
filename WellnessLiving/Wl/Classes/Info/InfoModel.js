@@ -13,7 +13,7 @@ function Wl_Classes_Info_InfoModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_class';
+  this._s_key = "k_class";
 
   /**
    * @typedef {{}} Wl_Classes_Info_InfoModel_a_logo
@@ -77,30 +77,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Info_InfoModel);
  */
 Wl_Classes_Info_InfoModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_logo": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_event": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_class": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_logo": {"get": {"result": true}},"is_event": {"get": {"result": true}},"k_class": {"get": {"get": true}},"text_title": {"get": {"result": true}}}};
 };
 
 /**
@@ -109,4 +86,4 @@ Wl_Classes_Info_InfoModel.prototype.config=function()
  * @param {string} k_class Class identifier to get information for. Primary key in {@link RsClassSql} table.
  * @returns {Wl_Classes_Info_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

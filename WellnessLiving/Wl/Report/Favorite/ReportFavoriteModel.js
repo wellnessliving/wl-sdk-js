@@ -13,11 +13,11 @@ function Wl_Report_Favorite_ReportFavoriteModel()
   /**
    * @inheritDoc
    */
-  this.ERROR_SILENT = true;
+  this._s_key = "cid_controller,k_report_save";
 
   /**
    * CID of the controller.
-   * 
+   *
    * Subclass of the {@link ReportViewControllerAbstract}.
    *
    * @delete get
@@ -37,7 +37,7 @@ function Wl_Report_Favorite_ReportFavoriteModel()
 
   /**
    * Business key within which request is performed.
-   * 
+   *
    * Primary key in the {@link \RsBusinessSql} table.
    *
    * @delete get
@@ -77,57 +77,14 @@ WlSdk_ModelAbstract.extend(Wl_Report_Favorite_ReportFavoriteModel);
  */
 Wl_Report_Favorite_ReportFavoriteModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "cid_controller": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "is_favorite": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_report_save": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid_actor": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"cid_controller": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"is_favorite": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_report_save": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"uid_actor": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Report_Favorite_ReportFavoriteModel.instanceGet
+ * @param {number} cid_controller CID of the controller. Subclass of the {@link ReportViewControllerAbstract}.
+ * @param {string} k_report_save Saved report key to manage.
+ * @returns {Wl_Report_Favorite_ReportFavoriteModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */

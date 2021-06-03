@@ -66,37 +66,5 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Tab_ClassTabModel);
  */
 Wl_Classes_Tab_ClassTabModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_class_tab_object": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_class_tab_system": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_class_tab": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        }
-      },
-      "text_title": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_class_tab_object": {"post": {"post": true}},"id_class_tab_system": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_class_tab": {"delete": {"get": true},"post": {"get": true,"result": true}},"text_title": {"post": {"post": true}}}};
 };

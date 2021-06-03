@@ -36,19 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Session_RedirectUrlModel);
  */
 Wl_Session_RedirectUrlModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "ip": {
-        "get": {
-          "get": true
-        }
-      },
-      "url": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"ip": {"get": {"get": true}},"url": {"get": {"get": true,"result": true}}}};
 };

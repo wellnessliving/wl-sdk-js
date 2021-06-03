@@ -13,7 +13,7 @@ function Wl_Location_Select_LocationSelectModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,a_config';
+  this._s_key = "k_business,uid,a_config";
 
   /**
    * Result-defining configuration set.
@@ -59,30 +59,7 @@ WlSdk_ModelAbstract.extend(Wl_Location_Select_LocationSelectModel);
  */
 Wl_Location_Select_LocationSelectModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_config": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_select": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_config": {"get": {"get": true}},"a_select": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -93,4 +70,4 @@ Wl_Location_Select_LocationSelectModel.prototype.config=function()
  * @param {{}} a_config Result-defining configuration set.
  * @returns {Wl_Location_Select_LocationSelectModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

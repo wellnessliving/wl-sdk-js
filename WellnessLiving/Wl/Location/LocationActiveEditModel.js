@@ -11,11 +11,6 @@ function Wl_Location_LocationActiveEditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Local date of operation.
    *
    * @post get
@@ -76,47 +71,5 @@ WlSdk_ModelAbstract.extend(Wl_Location_LocationActiveEditModel);
  */
 Wl_Location_LocationActiveEditModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dl_operation": {
-        "post": {
-          "get": true
-        }
-      },
-      "is_churn": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "text_confirm": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_reason": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dl_operation": {"post": {"get": true}},"is_churn": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true},"post": {"get": true}},"text_confirm": {"get": {"result": true}},"text_reason": {"post": {"get": true}}}};
 };

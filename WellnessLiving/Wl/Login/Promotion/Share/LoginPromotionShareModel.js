@@ -71,23 +71,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_Share_LoginPromotionShareModel);
  */
 Wl_Login_Promotion_Share_LoginPromotionShareModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_share_family": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_login_promotion": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_share_family": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_login_promotion": {"get": {"get": true}}}};
 };

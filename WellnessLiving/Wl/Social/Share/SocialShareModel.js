@@ -11,11 +11,6 @@ function Wl_Social_Share_SocialShareModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * The primary keys of the share objects.
    *
    * @post post
@@ -73,38 +68,5 @@ WlSdk_ModelAbstract.extend(Wl_Social_Share_SocialShareModel);
  */
 Wl_Social_Share_SocialShareModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_key": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_share_destination": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_share_object": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_secret": {
-        "post": {
-          "result": true
-        }
-      },
-      "uid": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_key": {"post": {"post": true}},"id_share_destination": {"post": {"post": true}},"id_share_object": {"post": {"post": true}},"k_business": {"post": {"post": true}},"s_secret": {"post": {"result": true}},"uid": {"post": {"post": true}}}};
 };

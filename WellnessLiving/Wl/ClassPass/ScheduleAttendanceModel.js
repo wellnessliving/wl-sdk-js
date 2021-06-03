@@ -62,33 +62,5 @@ WlSdk_ModelAbstract.extend(Wl_ClassPass_ScheduleAttendanceModel);
  */
 Wl_ClassPass_ScheduleAttendanceModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "attendance": {
-        "get": {
-          "result": true
-        }
-      },
-      "pagination": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_partner": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_schedule": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_venue": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"attendance": {"get": {"result": true}},"pagination": {"get": {"result": true}},"s_partner": {"get": {"get": true}},"s_schedule": {"get": {"get": true}},"s_venue": {"get": {"get": true}}}};
 };

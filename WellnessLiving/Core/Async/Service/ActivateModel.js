@@ -13,11 +13,6 @@ function Core_Async_Service_ActivateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * IP address of a worker that should be activated or deactivated.
    *
    * @post post
@@ -55,23 +50,5 @@ WlSdk_ModelAbstract.extend(Core_Async_Service_ActivateModel);
  */
 Core_Async_Service_ActivateModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "ip_worker": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_active": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_provider": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"ip_worker": {"post": {"post": true}},"is_active": {"post": {"post": true}},"s_provider": {"post": {"get": true}}}};
 };

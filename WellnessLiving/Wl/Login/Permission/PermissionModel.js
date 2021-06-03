@@ -13,7 +13,7 @@ function Wl_Login_Permission_PermissionModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_login_promotion';
+  this._s_key = "k_login_promotion";
 
   /**
    * <tt>true</tt> - make purchased promotion auto-renewable; <tt>false</tt> - otherwise.
@@ -25,7 +25,7 @@ function Wl_Login_Permission_PermissionModel()
 
   /**
    * ID of purchased promotion.
-   * 
+   *
    * Primary key in {@link \RsLoginPromotionSql}.
    *
    * @post get
@@ -43,20 +43,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Permission_PermissionModel);
  */
 Wl_Login_Permission_PermissionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_renew": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_login_promotion": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_renew": {"post": {"post": true}},"k_login_promotion": {"post": {"get": true}}}};
 };
 
 /**
@@ -65,4 +52,4 @@ Wl_Login_Permission_PermissionModel.prototype.config=function()
  * @param {string} k_login_promotion ID of purchased promotion. Primary key in {@link \RsLoginPromotionSql}.
  * @returns {Wl_Login_Permission_PermissionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

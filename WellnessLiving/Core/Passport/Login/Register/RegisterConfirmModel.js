@@ -52,28 +52,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_Login_Register_RegisterConfirmModel);
  */
 Core_Passport_Login_Register_RegisterConfirmModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "text_code": {
-        "post": {
-          "get": true
-        }
-      },
-      "text_login": {
-        "post": {
-          "get": true
-        }
-      },
-      "text_mail": {
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"text_code": {"post": {"get": true}},"text_login": {"post": {"get": true}},"text_mail": {"post": {"get": true}},"uid": {"post": {"result": true}}}};
 };

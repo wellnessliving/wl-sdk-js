@@ -13,12 +13,7 @@ function Wl_Pay_Bank_Card_Widget_WidgetSelectModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_pay_method,id_pay_owner,k_id,k_business,k_currency,k_location,id_pay_mode';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "id_pay_method,id_pay_owner,k_id,k_business,k_currency,k_location,id_pay_mode";
 
   /**
    * List of saved bank cards. See {@link \RsPayBankCardSelectWidget::additional_data()} for details.
@@ -99,50 +94,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Bank_Card_Widget_WidgetSelectModel);
  */
 Wl_Pay_Bank_Card_Widget_WidgetSelectModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_pay_card": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_pay_method": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_pay_mode": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_pay_owner": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_currency": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_pay_card": {"get": {"result": true}},"id_pay_method": {"get": {"get": true}},"id_pay_mode": {"get": {"get": true}},"id_pay_owner": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_currency": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
 };
 
 /**
@@ -157,4 +109,4 @@ Wl_Pay_Bank_Card_Widget_WidgetSelectModel.prototype.config=function()
  * @param {number} id_pay_mode Payment mode. One of {@link RsPayModeSid} constants.
  * @returns {Wl_Pay_Bank_Card_Widget_WidgetSelectModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

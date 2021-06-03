@@ -49,23 +49,5 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_KeySessionModel);
  */
 Core_Request_Api_KeySessionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "s_application": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_csrf": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_key": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"s_application": {"get": {"get": true}},"s_csrf": {"get": {"get": true}},"s_key": {"get": {"result": true}}}};
 };

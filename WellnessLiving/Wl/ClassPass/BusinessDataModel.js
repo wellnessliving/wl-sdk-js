@@ -38,18 +38,5 @@ WlSdk_ModelAbstract.extend(Wl_ClassPass_BusinessDataModel);
  */
 Wl_ClassPass_BusinessDataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "partner": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_partner": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"partner": {"get": {"result": true}},"s_partner": {"get": {"get": true}}}};
 };

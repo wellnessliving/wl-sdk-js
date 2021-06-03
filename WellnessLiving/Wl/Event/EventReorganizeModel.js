@@ -13,12 +13,7 @@ function Wl_Event_EventReorganizeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'a_class_period,k_class';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "a_class_period,k_class";
 
   /**
    * List of the class periods' keys which should be reorganized.
@@ -47,20 +42,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_EventReorganizeModel);
  */
 Wl_Event_EventReorganizeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_class_period": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_class": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_class_period": {"post": {"post": true}},"k_class": {"post": {"post": true}}}};
 };
 
 /**
@@ -70,4 +52,4 @@ Wl_Event_EventReorganizeModel.prototype.config=function()
  * @param {string} k_class Class key. Destination class.
  * @returns {Wl_Event_EventReorganizeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

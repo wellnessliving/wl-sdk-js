@@ -11,11 +11,6 @@ function Wl_Sms_History_ResendModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A sms history ID.
    *
    * @post get
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Wl_Sms_History_ResendModel);
  */
 Wl_Sms_History_ResendModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_sms_history": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_sms_history": {"post": {"get": true}}}};
 };

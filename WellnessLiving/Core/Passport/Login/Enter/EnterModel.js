@@ -11,11 +11,6 @@ function Core_Passport_Login_Enter_EnterModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Additional data for user authorization.
    *
    * @post post
@@ -99,43 +94,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_Login_Enter_EnterModel);
  */
 Core_Passport_Login_Enter_EnterModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "json_data": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_captcha": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_login": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_notepad": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_password": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_remember": {
-        "post": {
-          "post": true
-        }
-      },
-      "url_redirect": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"json_data": {"post": {"post": true}},"s_captcha": {"post": {"post": true}},"s_login": {"post": {"post": true}},"s_notepad": {"post": {"post": true}},"s_password": {"post": {"post": true}},"s_remember": {"post": {"post": true}},"url_captcha": {"post": {"error": true}},"url_redirect": {"post": {"result": true}}}};
 };

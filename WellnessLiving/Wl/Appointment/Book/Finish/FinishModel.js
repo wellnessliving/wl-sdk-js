@@ -297,7 +297,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
 
   /**
    * A list of payment sources to pay with.
-   * 
+   *
    * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
    *
    * @post post
@@ -407,7 +407,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
 
   /**
    * Location to show available appointment booking schedule.
-   * 
+   *
    * Primary key in {@link \RsLocationSql} table.
    *
    * @get get,result
@@ -426,7 +426,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
 
   /**
    * User to get information for.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
@@ -445,95 +445,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Finish_FinishModel);
  */
 Wl_Appointment_Book_Finish_FinishModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_answer": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_appointment": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_book_data": {
-        "post": {
-          "get": true
-        }
-      },
-      "a_login_activity_visit": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_pay_form": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_payment_data": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_purchase_item": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_user": {
-        "post": {
-          "get": true
-        }
-      },
-      "a_visit": {
-        "post": {
-          "result": true
-        }
-      },
-      "id_mode": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_pay": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_appointment": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true,
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "m_pay": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_answer": {"post": {"post": true}},"a_appointment": {"post": {"result": true}},"a_book_data": {"post": {"get": true}},"a_login_activity_visit": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_payment_data": {"post": {"post": true}},"a_purchase_item": {"post": {"post": true}},"a_user": {"post": {"get": true}},"a_visit": {"post": {"result": true}},"id_mode": {"post": {"post": true}},"id_pay": {"post": {"get": true}},"k_appointment": {"post": {"get": true}},"k_business": {"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"m_pay": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

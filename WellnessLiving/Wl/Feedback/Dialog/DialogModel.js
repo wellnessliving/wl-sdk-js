@@ -11,11 +11,6 @@ function Wl_Feedback_Dialog_DialogModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Area, which feedback is about.
    * One of {@link \Wl\Feedback\Dialog\FeedbackAreaSid}.
    *
@@ -94,48 +89,5 @@ WlSdk_ModelAbstract.extend(Wl_Feedback_Dialog_DialogModel);
  */
 Wl_Feedback_Dialog_DialogModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_feedback_area": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_rate": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_staff": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_feedback": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_link": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_page": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_feedback_area": {"post": {"post": true}},"id_rate": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_staff": {"post": {"post": true}},"text_feedback": {"post": {"post": true}},"text_link": {"post": {"post": true}},"text_page": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };

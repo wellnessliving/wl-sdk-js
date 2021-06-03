@@ -13,7 +13,7 @@ function Wl_Profile_Term_TermModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
+  this._s_key = "uid,k_business";
 
   /**
    * Date/time of the waiver confirmation. <tt>null</tt> if waiver is not confirmed.
@@ -98,55 +98,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Term_TermModel);
  */
 Wl_Profile_Term_TermModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dt_agree": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_contract": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_minor_age": {
-        "get": {
-          "result": true
-        }
-      },
-      "ip_agree": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_agree": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_signature": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dt_agree": {"get": {"result": true}},"html_contract": {"get": {"result": true}},"i_minor_age": {"get": {"result": true}},"ip_agree": {"get": {"result": true}},"is_agree": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_name": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_signature": {"get": {"result": true}}}};
 };
 
 /**
@@ -156,4 +108,4 @@ Wl_Profile_Term_TermModel.prototype.config=function()
  * @param {string} k_business Key of current business.
  * @returns {Wl_Profile_Term_TermModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

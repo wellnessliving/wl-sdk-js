@@ -118,7 +118,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
    * Key of the location in which the purchase is made.
    * Actually this is booking process location.
    * Primary key in {@link \RsLocationSql} table.
-   * 
+   *
    * <tt>null</tt> if not set or location can not be defined for some reason.
    *
    * @get get
@@ -152,38 +152,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementListModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_purchase_item_request": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_purchase_item_result": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_discount_code": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_purchase_item_request": {"get": {"get": true}},"a_purchase_item_result": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };

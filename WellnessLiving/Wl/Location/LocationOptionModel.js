@@ -13,7 +13,7 @@ function Wl_Location_LocationOptionModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_location';
+  this._s_key = "k_business,k_location";
 
   /**
    * Local date of operation.
@@ -57,30 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Location_LocationOptionModel);
  */
 Wl_Location_LocationOptionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dl_start": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_customer": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_location": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dl_start": {"post": {"post": true}},"is_customer": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_location": {"post": {"post": true}}}};
 };
 
 /**
@@ -90,4 +67,4 @@ Wl_Location_LocationOptionModel.prototype.config=function()
  * @param {string} k_location Key of location. Primary key in {@link \RsLocationSql} table.
  * @returns {Wl_Location_LocationOptionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

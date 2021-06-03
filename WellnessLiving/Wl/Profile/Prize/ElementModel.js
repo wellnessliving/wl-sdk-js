@@ -13,12 +13,7 @@ function Wl_Profile_Prize_ElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_login_prize';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_login_prize";
 
   /**
    * Prize price in wellnessliving points.
@@ -32,6 +27,7 @@ function Wl_Profile_Prize_ElementModel()
    * Key of redeemable prize.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_login_prize = "0";
@@ -62,30 +58,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Prize_ElementModel);
  */
 Wl_Profile_Prize_ElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_score": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_login_prize": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_date": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_description": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_score": {"get": {"result": true}},"k_login_prize": {"get": {"get": true},"post": {"get": true}},"s_date": {"get": {"result": true}},"s_description": {"get": {"result": true}}}};
 };
 
 /**
@@ -94,4 +67,4 @@ Wl_Profile_Prize_ElementModel.prototype.config=function()
  * @param {string} k_login_prize Key of redeemable prize.
  * @returns {Wl_Profile_Prize_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

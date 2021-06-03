@@ -35,13 +35,5 @@ WlSdk_ModelAbstract.extend(Wl_Session_LocationModel);
  */
 Wl_Session_LocationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_location": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_location": {"post": {"post": true}}}};
 };
