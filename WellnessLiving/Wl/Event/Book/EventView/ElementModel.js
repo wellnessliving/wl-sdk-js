@@ -341,6 +341,16 @@ function Wl_Event_Book_EventView_ElementModel()
   this.i_session = undefined;
 
   /**
+   * Virtual provider ID.
+   *
+   * <tt>null</tt> for not virtual classes.
+   *
+   * @get result
+   * @var {?number}
+   */
+  this.id_virtual_provider = undefined;
+
+  /**
    * <tt>true</tt> if event is booked already; <tt>false</tt> otherwise.
    *
    * @get result
@@ -374,7 +384,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * Event ID.
-   * 
+   *
    * Primary key in {@link \RsClassSql}.
    *
    * @get get
@@ -432,7 +442,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * User key.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @get get

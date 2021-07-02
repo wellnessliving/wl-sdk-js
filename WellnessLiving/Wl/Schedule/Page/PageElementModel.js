@@ -107,6 +107,16 @@ function Wl_Schedule_Page_PageElementModel()
   this.id_note = undefined;
 
   /**
+   * Virtual provider ID.
+   *
+   * <tt>null</tt> for not virtual classes.
+   *
+   * @get result
+   * @var {?number}
+   */
+  this.id_virtual_provider = undefined;
+
+  /**
    * ID of visit state. One of {@link \Wl\Visit\VisitSid} constants.
    *
    * @get result
