@@ -13,7 +13,7 @@ function Wl_Profile_Purchase_PurchaseListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
+  this._s_key = "uid,k_business";
 
   /**
    * @typedef {{}} Wl_Profile_Purchase_PurchaseListModel_a_purchase
@@ -174,25 +174,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Purchase_PurchaseListModel);
  */
 Wl_Profile_Purchase_PurchaseListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_purchase": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_purchase": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -202,4 +184,4 @@ Wl_Profile_Purchase_PurchaseListModel.prototype.config=function()
  * @param {string} k_business ID of a business to show information for.
  * @returns {Wl_Profile_Purchase_PurchaseListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

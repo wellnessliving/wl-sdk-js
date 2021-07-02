@@ -15,10 +15,49 @@ function Wl_Video_VideoListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business,is_backend";
 
   /**
-   * A list of reimbursement refuse.
+   * Calorie interval under which you need to find the video.
+   *
+   * <dl>
+   *  <dt>int [<var>i_from</var>]</dt>
+   *  <dd>Minimum calories.</dd>
+   *  <dt>int [<var>i_to</var>]</dt>
+   *  <dd>Maximum calories.</dd>
+   * </dl>
+   *
+   * @get get
+   * @type {number[]}
+   */
+  this.a_calorie = undefined;
+
+  /**
+   * Duration interval under which you need to find the video.
+   * The interval is set in seconds.
+   *
+   * <dl>
+   *  <dt>int [<var>i_from</var>]</dt>
+   *  <dd>Minimum duration. </dd>
+   *  <dt>int [<var>i_to</var>]</dt>
+   *  <dd>Maximum duration.</dd>
+   * </dl>
+   *
+   * @get get
+   * @type {number[]}
+   */
+  this.a_duration = undefined;
+
+  /**
+   * List of levels to show videos with.
+   *
+   * @get get
+   * @type {string[]}
+   */
+  this.a_level = undefined;
+
+  /**
+   * A list of videos.
    *
    * @get result
    * @type {{}[]}
@@ -58,6 +97,32 @@ function Wl_Video_VideoListModel()
   this.a_video_category = undefined;
 
   /**
+   * List of video tags to show videos with.
+   *
+   * @get get
+   * @type {string[]}
+   */
+  this.a_video_tag = undefined;
+
+  /**
+   * Sorting type.
+   * Constant from {@link \Wl\Video\Catalog\Filter\Sort\FilterSortSid}.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.id_sort = undefined;
+
+  /**
+   * <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
+   *
+   * @get get
+   * @put get
+   * @type {boolean}
+   */
+  this.is_backend = false;
+
+  /**
    * Business key from {@link \RsBusinessSql}.
    *
    * @get get
@@ -84,54 +149,14 @@ WlSdk_ModelAbstract.extend(Wl_Video_VideoListModel);
  */
 Wl_Video_VideoListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_order": {
-        "put": {
-          "post": true
-        }
-      },
-      "a_staff": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_video_category": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "text_search": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_calorie": {"get": {"get": true}},"a_duration": {"get": {"get": true}},"a_level": {"get": {"get": true}},"a_list": {"get": {"result": true}},"a_location": {"get": {"get": true}},"a_order": {"put": {"post": true}},"a_staff": {"get": {"get": true}},"a_video_category": {"get": {"get": true}},"a_video_tag": {"get": {"get": true}},"id_sort": {"get": {"get": true}},"is_backend": {"get": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"text_search": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Video_VideoListModel.instanceGet
  * @param {string} k_business Business key from {@link \RsBusinessSql}.
+ * @param {boolean} is_backend <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
  * @returns {Wl_Video_VideoListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

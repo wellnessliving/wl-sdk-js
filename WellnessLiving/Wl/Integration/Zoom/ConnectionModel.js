@@ -11,11 +11,6 @@ function Wl_Integration_Zoom_ConnectionModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Event payload information.
    *
    * @post post
@@ -35,7 +30,7 @@ function Wl_Integration_Zoom_ConnectionModel()
 
   /**
    * Code to returned by <tt>Zoom</tt> service after successful authorisation.
-   * 
+   *
    * Required to retrieve access token.
    *
    * @get get
@@ -69,39 +64,5 @@ WlSdk_ModelAbstract.extend(Wl_Integration_Zoom_ConnectionModel);
  */
 Wl_Integration_Zoom_ConnectionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "payload": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "code": {
-        "get": {
-          "get": true
-        }
-      },
-      "csrf": {
-        "get": {
-          "get": true
-        }
-      },
-      "event": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"payload": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"code": {"get": {"get": true}},"csrf": {"get": {"get": true}},"event": {"post": {"post": true}}}};
 };

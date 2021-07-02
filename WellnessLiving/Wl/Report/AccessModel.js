@@ -13,7 +13,7 @@ function Wl_Report_AccessModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_report,k_business';
+  this._s_key = "id_report,k_business";
 
   /**
    * <tt>true</tt> - access is granted; <tt>false</tt> - access is denied.
@@ -49,25 +49,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_AccessModel);
  */
 Wl_Report_AccessModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "has_access": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_report": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"has_access": {"get": {"result": true}},"id_report": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -77,4 +59,4 @@ Wl_Report_AccessModel.prototype.config=function()
  * @param {string} k_business ID of business for which access must be checked. Primary key in {@link \RsBusinessSql} table.
  * @returns {Wl_Report_AccessModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

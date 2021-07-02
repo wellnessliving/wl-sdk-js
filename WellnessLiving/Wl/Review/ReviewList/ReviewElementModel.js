@@ -13,12 +13,7 @@ function Wl_Review_ReviewList_ReviewElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_review,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,k_review,uid";
 
   /**
    * @typedef {{}} Wl_Review_ReviewList_ReviewElementModel_a_review
@@ -91,6 +86,14 @@ function Wl_Review_ReviewList_ReviewElementModel()
   this.a_review = undefined;
 
   /**
+   * Key of the business to which the review belongs.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_business = undefined;
+
+  /**
    * Review primary key in {@link \RsReviewSql}.
    *
    * @get get
@@ -100,7 +103,7 @@ function Wl_Review_ReviewList_ReviewElementModel()
 
   /**
    * User primary key in {@link \PassportLoginSql}.
-   * 
+   *
    * May be empty for a case of quest.
    *
    * @get get
@@ -118,32 +121,15 @@ WlSdk_ModelAbstract.extend(Wl_Review_ReviewList_ReviewElementModel);
  */
 Wl_Review_ReviewList_ReviewElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_review": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_review": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_review": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_review": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Review_ReviewList_ReviewElementModel.instanceGet
+ * @param {string} k_business Key of the business to which the review belongs.
  * @param {string} k_review Review primary key in {@link \RsReviewSql}.
  * @param {string} uid User primary key in {@link \PassportLoginSql}. May be empty for a case of quest.
  * @returns {Wl_Review_ReviewList_ReviewElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

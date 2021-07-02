@@ -354,7 +354,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *     <tt>null</tt> if appointment must not repeat monthly.
    *   </dd>
    * </dl>
-   * 
+   *
    * <tt>null</tt> if booking must be not recurring.
    *
    * @post post
@@ -424,60 +424,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseModel);
  */
 Wl_Book_Process_Purchase_PurchaseModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_purchase": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_repeat": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_session": {
-        "get": {
-          "get": true
-        }
-      },
-      "dt_date_gmt": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_mode": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_purchase": {"get": {"result": true}},"a_repeat": {"post": {"post": true}},"a_session": {"get": {"get": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

@@ -11,11 +11,6 @@ function Wl_Profile_Sensor_SensorListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * @typedef {{}} Wl_Profile_Sensor_SensorListModel_a_page
    * @property {number} page Page number.
    * @property {boolean} [is_selected] Whether the page is current.
@@ -207,40 +202,5 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Sensor_SensorListModel);
  */
 Wl_Profile_Sensor_SensorListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_page": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_sensor": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_current_page": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_page": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_page": {"get": {"result": true}},"a_sensor": {"get": {"result": true}},"i_current_page": {"get": {"result": true}},"i_page": {"get": {"get": true}},"k_business": {"get": {"get": true,"result": true}},"uid": {"get": {"get": true,"result": true}}}};
 };

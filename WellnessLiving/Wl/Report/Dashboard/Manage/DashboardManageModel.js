@@ -13,12 +13,7 @@ function Wl_Report_Dashboard_Manage_DashboardManageModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,k_report_dashboard';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid,k_report_dashboard";
 
   /**
    * @typedef {{}} Wl_Report_Dashboard_Manage_DashboardManageModel_a_staff_role
@@ -28,9 +23,9 @@ function Wl_Report_Dashboard_Manage_DashboardManageModel()
 
   /**
    * Selected staff roles of the dashboard.
-   * 
+   *
    * <tt>null</tt> if list of staff roles doesn't need to be updated.
-   * 
+   *
    * <dl>
    *   <dt>int <var>id_privilege_role</var></dt>
    *   <dd>ID of privilege role. Constant from {@link \RsPrivilegeRoleSid}.</dd>
@@ -47,9 +42,9 @@ function Wl_Report_Dashboard_Manage_DashboardManageModel()
 
   /**
    * List of widgets that are displayed on the dashboard.
-   * 
+   *
    * <tt>null</tt> if list of widgets doesn't need to be updated.
-   * 
+   *
    * Structure of each item: <dl>
    *    <dt>int <var>i_report_widget</var></dt>
    *    <dd>
@@ -111,7 +106,7 @@ function Wl_Report_Dashboard_Manage_DashboardManageModel()
 
   /**
    * Dashboard key to read or update. Primary key in {@link \RsReportDashboardSql} table.
-   * 
+   *
    * <tt>null</tt> if API is called to create a new dashboard.
    *
    * @delete get
@@ -132,7 +127,7 @@ function Wl_Report_Dashboard_Manage_DashboardManageModel()
 
   /**
    * Dashboard title.
-   * 
+   *
    * <tt>null</tt> for read requests.
    *
    * @get result
@@ -163,119 +158,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_Dashboard_Manage_DashboardManageModel);
  */
 Wl_Report_Dashboard_Manage_DashboardManageModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_staff_role": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_widget_list": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "can_share": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_mode": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "id_share": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_report_dashboard": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        },
-        "put": {
-          "get": true,
-          "result": true
-        }
-      },
-      "text_owner_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_staff_role": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"a_widget_list": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"can_share": {"get": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"id_share": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_report_dashboard": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true,"result": true}},"text_owner_name": {"get": {"result": true}},"text_title": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -286,4 +169,4 @@ Wl_Report_Dashboard_Manage_DashboardManageModel.prototype.config=function()
  * @param {?string} k_report_dashboard Dashboard key to read or update. Primary key in {@link \RsReportDashboardSql} table. <tt>null</tt> if API is called to create a new dashboard.
  * @returns {Wl_Report_Dashboard_Manage_DashboardManageModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

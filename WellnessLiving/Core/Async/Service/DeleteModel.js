@@ -11,13 +11,8 @@ function Core_Async_Service_DeleteModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * IP address of a queue server at which queue should be purged.
-   * 
+   *
    * Empty string to purge all available queue servers.
    *
    * @post post
@@ -51,23 +46,5 @@ WlSdk_ModelAbstract.extend(Core_Async_Service_DeleteModel);
  */
 Core_Async_Service_DeleteModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "ip_queue": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_function": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_provider": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"ip_queue": {"post": {"post": true}},"s_function": {"post": {"post": true}},"s_provider": {"post": {"get": true}}}};
 };

@@ -13,11 +13,6 @@ function Core_WebSocket_SubscribeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Keys of the channel.
    *
    * Key is name of a key field in a channel controller.
@@ -86,38 +81,5 @@ WlSdk_ModelAbstract.extend(Core_WebSocket_SubscribeModel);
  */
 Core_WebSocket_SubscribeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_key": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_message_broadcast": {
-        "post": {
-          "result": true
-        }
-      },
-      "cid_channel": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_channel_message": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_password": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_token": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_key": {"post": {"post": true}},"a_message_broadcast": {"post": {"result": true}},"cid_channel": {"post": {"post": true}},"k_channel_message": {"post": {"post": true}},"s_password": {"post": {"post": true}},"s_token": {"post": {"post": true}}}};
 };

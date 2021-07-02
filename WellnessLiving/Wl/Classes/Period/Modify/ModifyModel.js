@@ -13,7 +13,7 @@ function Wl_Classes_Period_Modify_ModifyModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * Returns step information, depending on steps.
@@ -78,10 +78,10 @@ function Wl_Classes_Period_Modify_ModifyModel()
 
   /**
    * Step direction.
-   * 
+   *
    * <tt>true</tt> step forward.
    * <tt>false</tt> step back.
-   * 
+   *
    * After each step this variable sets to default position.
    * By default makes step forward.
    *
@@ -110,7 +110,7 @@ function Wl_Classes_Period_Modify_ModifyModel()
 
   /**
    * Class period key.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -121,7 +121,7 @@ function Wl_Classes_Period_Modify_ModifyModel()
 
   /**
    * Unique hash string.
-   * 
+   *
    * This hash string is a hash of the {@link RsClassModify} object.
    * It need to work with the same {@link RsClassModify} object on each step.
    *
@@ -141,100 +141,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Period_Modify_ModifyModel);
  */
 Wl_Classes_Period_Modify_ModifyModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_get": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_set": {
-        "post": {
-          "post": true
-        }
-      },
-      "dt_end": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "dt_start": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_class_modify_action": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_class_modify_mode": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_step": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        }
-      },
-      "is_back": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_class": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_id": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_get": {"get": {"result": true}},"a_set": {"post": {"post": true}},"dt_end": {"get": {"get": true},"post": {"get": true}},"dt_start": {"get": {"get": true},"post": {"get": true}},"id_class_modify_action": {"get": {"get": true},"post": {"get": true}},"id_class_modify_mode": {"get": {"get": true},"post": {"get": true}},"id_step": {"get": {"get": true},"post": {"get": true,"result": true}},"is_back": {"get": {"get": true},"post": {"get": true,"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"s_id": {"get": {"get": true},"post": {"get": true,"result": true}}}};
 };
 
 /**
@@ -243,4 +150,4 @@ Wl_Classes_Period_Modify_ModifyModel.prototype.config=function()
  * @param {string} k_business Business key.
  * @returns {Wl_Classes_Period_Modify_ModifyModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

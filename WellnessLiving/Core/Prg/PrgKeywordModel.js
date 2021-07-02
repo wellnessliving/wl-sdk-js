@@ -13,7 +13,7 @@ function Core_Prg_PrgKeywordModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_mode';
+  this._s_key = "id_mode";
 
   /**
    * List of keywords.
@@ -41,20 +41,7 @@ WlSdk_ModelAbstract.extend(Core_Prg_PrgKeywordModel);
  */
 Core_Prg_PrgKeywordModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_keyword": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_mode": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_keyword": {"get": {"result": true}},"id_mode": {"get": {"get": true}}}};
 };
 
 /**
@@ -63,4 +50,4 @@ Core_Prg_PrgKeywordModel.prototype.config=function()
  * @param {number} id_mode Mode for load keyword. One of {@link \Core\Prg\PrgKeywordModeSid} constants.
  * @returns {Core_Prg_PrgKeywordModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

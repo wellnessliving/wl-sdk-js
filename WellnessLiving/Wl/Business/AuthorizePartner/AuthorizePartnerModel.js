@@ -11,11 +11,6 @@ function Wl_Business_AuthorizePartner_AuthorizePartnerModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * <tt>true</tt> - grant access; <tt>false</tt> - deny access.
    *
    * @get get
@@ -49,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_AuthorizePartner_AuthorizePartnerModel);
  */
 Wl_Business_AuthorizePartner_AuthorizePartnerModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_grant": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_grant": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };

@@ -11,11 +11,6 @@ function Wl_Appointment_Edit_AddonUpdateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * IDs of the addons for appointment.
    *
    * @put post
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Edit_AddonUpdateModel);
  */
 Wl_Appointment_Edit_AddonUpdateModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_addon": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_appointment": {
-        "put": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_addon": {"put": {"post": true}},"k_appointment": {"put": {"post": true}}}};
 };

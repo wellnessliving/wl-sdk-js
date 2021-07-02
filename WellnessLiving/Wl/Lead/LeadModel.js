@@ -90,54 +90,5 @@ WlSdk_ModelAbstract.extend(Wl_Lead_LeadModel);
  */
 Wl_Lead_LeadModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_field_data": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_field_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_skin": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_skin": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_captcha": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "result": true
-        }
-      },
-      "url_captcha": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_field_data": {"post": {"post": true}},"a_field_list": {"get": {"result": true}},"a_skin": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_skin": {"get": {"get": true},"post": {"get": true}},"s_captcha": {"post": {"post": true}},"uid": {"post": {"result": true}},"url_captcha": {"get": {"result": true}}}};
 };

@@ -13,12 +13,7 @@ function Social_Facebook_Login_LoginModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 's_token';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "s_token";
 
   /**
    * Application ID.
@@ -46,20 +41,7 @@ WlSdk_ModelAbstract.extend(Social_Facebook_Login_LoginModel);
  */
 Social_Facebook_Login_LoginModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "s_application": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_token": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"s_application": {"post": {"post": true}},"s_token": {"post": {"post": true}}}};
 };
 
 /**
@@ -68,4 +50,4 @@ Social_Facebook_Login_LoginModel.prototype.config=function()
  * @param {string} s_token Facebook token.
  * @returns {Social_Facebook_Login_LoginModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

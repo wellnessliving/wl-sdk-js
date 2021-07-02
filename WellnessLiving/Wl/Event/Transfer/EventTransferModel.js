@@ -91,47 +91,5 @@ WlSdk_ModelAbstract.extend(Wl_Event_Transfer_EventTransferModel);
  */
 Wl_Event_Transfer_EventTransferModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_relation": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_mode": {
-        "post": {
-          "get": true
-        }
-      },
-      "is_backend": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_purchase_item": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid_from": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid_to": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_relation": {"get": {"result": true}},"id_mode": {"post": {"get": true}},"is_backend": {"post": {"get": true}},"k_purchase_item": {"get": {"get": true},"post": {"get": true}},"uid_from": {"get": {"get": true},"post": {"get": true}},"uid_to": {"get": {"get": true},"post": {"get": true}}}};
 };

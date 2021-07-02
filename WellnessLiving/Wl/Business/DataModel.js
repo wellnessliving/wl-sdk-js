@@ -13,7 +13,7 @@ function Wl_Business_DataModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * List of predefined tips percentages.
@@ -48,6 +48,27 @@ function Wl_Business_DataModel()
   this.id_locale = undefined;
 
   /**
+   * Rank type ID of the business.
+   *
+   * Constant from {@link \RsRankTypeSid}.
+   *
+   * <tt>null</tt> if business does not have a rank type.
+   *
+   * @get result
+   * @type {?number}
+   */
+  this.id_rank_type = null;
+
+  /**
+   * Whether business is multiple location.
+   * Including inactive locations.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_location_multiple = undefined;
+
+  /**
    * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
    *
    * @get result
@@ -78,6 +99,14 @@ function Wl_Business_DataModel()
    * @type {boolean}
    */
   this.is_tip_deny = undefined;
+
+  /**
+   * <tt>true</tt> if client must to sign after selecting the tip; <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_tip_sign = undefined;
 
   /**
    * Business primary key in {@link RsBusinessSql} table.
@@ -202,120 +231,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_DataModel);
  */
 Wl_Business_DataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_tip_predefine": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_logo_height": {
-        "get": {
-          "get": true
-        }
-      },
-      "i_logo_width": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_locale": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_progress_client": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_progress_verify": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_tip": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_tip_deny": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business_token": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_currency": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_reply_mail": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_reply_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_office_address": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_token": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_facebook": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_google": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_logo": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_logo_empty": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_twitter": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_website": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_tip_predefine": {"get": {"result": true}},"i_logo_height": {"get": {"get": true}},"i_logo_width": {"get": {"get": true}},"id_locale": {"get": {"result": true}},"id_rank_type": {"get": {"result": true}},"is_location_multiple": {"get": {"result": true}},"is_progress_client": {"get": {"result": true}},"is_progress_verify": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"is_tip_deny": {"get": {"result": true}},"is_tip_sign": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_business_token": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"s_reply_mail": {"get": {"result": true}},"s_reply_name": {"get": {"result": true}},"text_office_address": {"get": {"result": true}},"text_title": {"get": {"result": true}},"text_token": {"get": {"get": true}},"url_facebook": {"get": {"result": true}},"url_google": {"get": {"result": true}},"url_logo": {"get": {"result": true}},"url_logo_empty": {"get": {"result": true}},"url_twitter": {"get": {"result": true}},"url_website": {"get": {"result": true}}}};
 };
 
 /**
@@ -324,4 +240,4 @@ Wl_Business_DataModel.prototype.config=function()
  * @param {string} k_business Business primary key in {@link RsBusinessSql} table.
  * @returns {Wl_Business_DataModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

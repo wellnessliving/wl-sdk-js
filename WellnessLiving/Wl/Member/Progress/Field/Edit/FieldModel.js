@@ -36,7 +36,7 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
 
   /**
    * Field measurement unit ID.
-   * 
+   *
    * One of the {@link \Wl\Member\Progress\Field\MeasurementSid} constants.
    *
    * @get result
@@ -47,7 +47,7 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
 
   /**
    * Field type ID.
-   * 
+   *
    * One of the {@link \Wl\Member\Progress\Field\TypeSid} constants.
    *
    * @get result
@@ -94,7 +94,7 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
@@ -105,7 +105,7 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
 
   /**
    * Field key.
-   * 
+   *
    * Primary key in the {@link \Wl\Member\Progress\Field\Sql} table.
    *
    * @get get
@@ -117,7 +117,7 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
   /**
    * Field title.
    * Only titles of the custom progress fields can be changed.
-   * 
+   *
    * <tt>null</tt> If default title should be used.
    *
    * @get result
@@ -136,96 +136,5 @@ WlSdk_ModelAbstract.extend(Wl_Member_Progress_Field_Edit_FieldModel);
  */
 Wl_Member_Progress_Field_Edit_FieldModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_measurement": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_type": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_field": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_measurement_unit": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "id_type": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_active": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_public": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_require": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_require_staff": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_field": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true,
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_measurement": {"get": {"result": true}},"a_type": {"get": {"result": true}},"id_field": {"get": {"result": true}},"id_measurement_unit": {"get": {"result": true},"post": {"post": true}},"id_type": {"get": {"result": true},"post": {"post": true}},"is_active": {"get": {"result": true},"post": {"post": true}},"is_public": {"get": {"result": true},"post": {"post": true}},"is_require": {"get": {"result": true},"post": {"post": true}},"is_require_staff": {"get": {"result": true},"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_field": {"get": {"get": true},"post": {"get": true}},"text_title": {"get": {"result": true},"post": {"post": true,"result": true}}}};
 };

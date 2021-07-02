@@ -80,28 +80,5 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Method_ListModel);
  */
 Wl_Pay_Method_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_pay_method": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_active": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_pay_method": {"get": {"result": true}},"is_active": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };

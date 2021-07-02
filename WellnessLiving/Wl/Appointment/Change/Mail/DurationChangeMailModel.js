@@ -11,11 +11,6 @@ function Wl_Appointment_Change_Mail_DurationChangeMailModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Html template that can be used to change mail template.
    *
    * @get result
@@ -32,7 +27,7 @@ function Wl_Appointment_Change_Mail_DurationChangeMailModel()
   this.id_mail = undefined;
 
   /**
-   * Appointment primary key in {@link \RsAppointmentSql} table. <tt>null> if appointment not set.
+   * Appointment primary key in {@link \RsAppointmentSql} table. <tt>null</tt> if appointment not set.
    *
    * @get get
    * @type {*}
@@ -49,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Change_Mail_DurationChangeMailModel);
  */
 Wl_Appointment_Change_Mail_DurationChangeMailModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "html_mail_editor": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_mail": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_appointment": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"html_mail_editor": {"get": {"result": true}},"id_mail": {"get": {"get": true}},"k_appointment": {"get": {"get": true}}}};
 };

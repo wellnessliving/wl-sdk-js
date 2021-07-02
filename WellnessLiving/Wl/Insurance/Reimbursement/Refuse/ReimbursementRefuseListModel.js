@@ -11,11 +11,6 @@ function Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * @typedef {{}} Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseListModel_a_list
    * @property {string} k_reimbursement_refuse Insurance reimbursement refuse key. Primary key from {@link \Wl\Insurance\Reimbursement\Refuse\ReimbursementRefuseSql} table.
    * @property {string} text_code Code of the reason, which should be unique per partner.
@@ -99,28 +94,5 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuse
  */
 Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_refuse_message": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_insurance_provider": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_code": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_list": {"get": {"result": true}},"id_refuse_message": {"get": {"get": true}},"k_insurance_provider": {"get": {"get": true}},"text_code": {"get": {"get": true}}}};
 };

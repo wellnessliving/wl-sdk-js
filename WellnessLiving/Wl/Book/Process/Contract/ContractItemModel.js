@@ -13,12 +13,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 's_purchase_item,s_wizard_id';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "s_purchase_item,s_wizard_id";
 
   /**
    * Whether there remains a selected purchase item that grants access to the class.
@@ -116,78 +111,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Contract_ContractItemModel);
  */
 Wl_Book_Process_Contract_ContractItemModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "has_valid_purchase": {
-        "delete": {
-          "result": true
-        }
-      },
-      "html_contract": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_purchase_item": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_agree": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_purchase_item": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "s_signature": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "s_wizard_id": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "text_contract": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"has_valid_purchase": {"delete": {"result": true}},"html_contract": {"get": {"result": true}},"id_purchase_item": {"get": {"result": true}},"is_agree": {"get": {"result": true},"put": {"post": true}},"k_id": {"get": {"result": true}},"s_purchase_item": {"delete": {"get": true},"get": {"get": true},"put": {"get": true}},"s_signature": {"get": {"result": true},"put": {"post": true}},"s_wizard_id": {"delete": {"get": true},"get": {"get": true},"put": {"get": true}},"text_contract": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
 };
 
 /**
@@ -197,4 +121,4 @@ Wl_Book_Process_Contract_ContractItemModel.prototype.config=function()
  * @param {string} s_wizard_id Booking wizard session key.
  * @returns {Wl_Book_Process_Contract_ContractItemModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

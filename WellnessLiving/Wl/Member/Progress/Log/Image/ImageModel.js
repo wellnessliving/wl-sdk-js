@@ -13,7 +13,7 @@ function Wl_Member_Progress_Log_Image_ImageModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_date,k_business,uid';
+  this._s_key = "dt_date,k_business,uid";
 
   /**
    * @typedef {{}} Wl_Member_Progress_Log_Image_ImageModel_a_image
@@ -87,7 +87,7 @@ function Wl_Member_Progress_Log_Image_ImageModel()
 
   /**
    * Date of the progress picture.
-   * 
+   *
    * <tt>null</tt> if not initialized yet.
    *
    * @delete get
@@ -99,9 +99,9 @@ function Wl_Member_Progress_Log_Image_ImageModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in the {@link \RsBusinessSql} table.
-   * 
+   *
    * <tt>null</tt> if not initialized yet.
    *
    * @delete get
@@ -113,7 +113,7 @@ function Wl_Member_Progress_Log_Image_ImageModel()
 
   /**
    * Save image command.
-   * 
+   *
    * <tt>null</tt> if not initialized yet.
    *
    * @post post
@@ -123,7 +123,7 @@ function Wl_Member_Progress_Log_Image_ImageModel()
 
   /**
    * User key.
-   * 
+   *
    * <tt>null</tt> if not initialized yet.
    *
    * @delete get
@@ -143,53 +143,7 @@ WlSdk_ModelAbstract.extend(Wl_Member_Progress_Log_Image_ImageModel);
  */
 Wl_Member_Progress_Log_Image_ImageModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_image": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_command": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_image": {"get": {"result": true}},"dt_date": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"s_command": {"post": {"post": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -200,4 +154,4 @@ Wl_Member_Progress_Log_Image_ImageModel.prototype.config=function()
  * @param {?string} uid User key. <tt>null</tt> if not initialized yet.
  * @returns {Wl_Member_Progress_Log_Image_ImageModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

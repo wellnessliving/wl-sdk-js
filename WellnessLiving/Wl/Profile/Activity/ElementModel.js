@@ -13,12 +13,7 @@ function Wl_Profile_Activity_ElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_login_activity';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_login_activity";
 
   /**
    * Messages with description what did user do to get points.
@@ -78,7 +73,7 @@ function Wl_Profile_Activity_ElementModel()
 
   /**
    * ID of activity to retrieve information about.
-   * 
+   *
    * Primary key in {@link \RsLoginActivitySql}.
    *
    * @get get
@@ -112,60 +107,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Activity_ElementModel);
  */
 Wl_Profile_Activity_ElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_reward_score": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_gmt": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_local": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_score": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_spend": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_icon": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_type": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_login_activity": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_message": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_link": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_reward_score": {"get": {"result": true}},"dt_date_gmt": {"get": {"result": true}},"dt_date_local": {"get": {"result": true}},"i_score": {"get": {"result": true}},"i_spend": {"get": {"result": true}},"id_icon": {"get": {"result": true}},"id_type": {"get": {"result": true}},"k_login_activity": {"get": {"get": true}},"s_message": {"get": {"result": true}},"url_link": {"get": {"result": true}}}};
 };
 
 /**
@@ -174,4 +116,4 @@ Wl_Profile_Activity_ElementModel.prototype.config=function()
  * @param {string} k_login_activity ID of activity to retrieve information about. Primary key in {@link \RsLoginActivitySql}.
  * @returns {Wl_Profile_Activity_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

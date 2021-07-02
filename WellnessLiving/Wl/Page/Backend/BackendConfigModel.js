@@ -13,11 +13,11 @@ function Wl_Page_Backend_BackendConfigModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * Data for the navigation banner template.
-   * 
+   *
    * Method {@link \Wl\Page\Backend\BackendConfigApi::headQuick()} is preparing the data.
    *
    * @get result
@@ -27,7 +27,7 @@ function Wl_Page_Backend_BackendConfigModel()
 
   /**
    * Data for the left panel template.
-   * 
+   *
    * Method {@link \Wl\Page\Backend\BackendConfigApi::panelLeft()} is preparing the data.
    *
    * @get result
@@ -85,45 +85,7 @@ WlSdk_ModelAbstract.extend(Wl_Page_Backend_BackendConfigModel);
  */
 Wl_Page_Backend_BackendConfigModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_head_quick": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_panel_left": {
-        "get": {
-          "result": true
-        }
-      },
-      "can_partner": {
-        "get": {
-          "result": true
-        }
-      },
-      "can_search_uid": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_search_lock": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_head_quick": {"get": {"result": true}},"a_panel_left": {"get": {"result": true}},"can_partner": {"get": {"result": true}},"can_search_uid": {"get": {"result": true}},"is_search_lock": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -133,4 +95,4 @@ Wl_Page_Backend_BackendConfigModel.prototype.config=function()
  * @param {string} uid User key from {@link \PassportLoginSql}.
  * @returns {Wl_Page_Backend_BackendConfigModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

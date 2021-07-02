@@ -16,11 +16,6 @@ function Wl_Report_Dashboard_ReportDashboardModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Filter raw data of the report.
    *
    * @post post
@@ -110,77 +105,5 @@ WlSdk_ModelAbstract.extend(Wl_Report_Dashboard_ReportDashboardModel);
  */
 Wl_Report_Dashboard_ReportDashboardModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_filter": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_settings": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "cid_controller": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_report_dashboard": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "k_report_save": {
-        "put": {
-          "get": true
-        }
-      },
-      "text_description": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "text_title": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "uid_actor": {
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_filter": {"post": {"post": true},"put": {"post": true}},"a_settings": {"post": {"post": true},"put": {"post": true}},"cid_controller": {"post": {"post": true},"put": {"post": true}},"k_business": {"post": {"get": true},"put": {"get": true}},"k_report_dashboard": {"post": {"post": true},"put": {"post": true}},"k_report_save": {"put": {"get": true}},"text_description": {"post": {"post": true},"put": {"post": true}},"text_title": {"post": {"post": true},"put": {"post": true}},"uid_actor": {"post": {"get": true},"put": {"get": true}}}};
 };

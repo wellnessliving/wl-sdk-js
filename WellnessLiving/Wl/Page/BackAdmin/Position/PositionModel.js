@@ -11,11 +11,6 @@ function Wl_Page_BackAdmin_Position_PositionModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Value of left property.
    *
    * @get result
@@ -43,24 +38,5 @@ WlSdk_ModelAbstract.extend(Wl_Page_BackAdmin_Position_PositionModel);
  */
 Wl_Page_BackAdmin_Position_PositionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_left": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "i_top": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_left": {"get": {"result": true},"post": {"post": true}},"i_top": {"get": {"result": true},"post": {"post": true}}}};
 };

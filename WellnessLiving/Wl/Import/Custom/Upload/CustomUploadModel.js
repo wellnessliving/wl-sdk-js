@@ -11,11 +11,6 @@ function Wl_Import_Custom_Upload_CustomUploadModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Count of the rows that are left to be imported.
    *
    * @get result
@@ -49,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Import_Custom_Upload_CustomUploadModel);
  */
 Wl_Import_Custom_Upload_CustomUploadModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_left": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_import_custom": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_left": {"get": {"result": true}},"id_import_custom": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };

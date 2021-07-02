@@ -37,18 +37,5 @@ WlSdk_ModelAbstract.extend(Wl_Skin_Application_Resource_ApplicationResourceModel
  */
 Wl_Skin_Application_Resource_ApplicationResourceModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_application": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_application": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };

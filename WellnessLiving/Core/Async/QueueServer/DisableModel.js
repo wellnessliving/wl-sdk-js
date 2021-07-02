@@ -16,11 +16,6 @@ function Core_Async_QueueServer_DisableModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * IP address of a queue server that should be disabled or activated.
    *
    * @post post
@@ -58,23 +53,5 @@ WlSdk_ModelAbstract.extend(Core_Async_QueueServer_DisableModel);
  */
 Core_Async_QueueServer_DisableModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "ip_queue": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_active": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_provider": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"ip_queue": {"post": {"post": true}},"is_active": {"post": {"post": true}},"s_provider": {"post": {"get": true}}}};
 };

@@ -15,7 +15,7 @@ function Wl_Video_Category_CategoryListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business,is_backend";
 
   /**
    * List of shard video category keys in order to be saved.
@@ -26,12 +26,40 @@ function Wl_Video_Category_CategoryListModel()
   this.a_order = undefined;
 
   /**
+   * @typedef {{}} Wl_Video_Category_CategoryListModel_a_video_category
+   * @property {number} i_video Number of videos.
+   * @property {string} k_video_category Key of the video category.
+   * @property {string} k_video_category_full String key of the video category.
+   * @property {string} text_title Title of the category.
+   */
+
+  /**
    * Categories of business video library {@link Wl_Video_Category_CategoryListModel.k_business}.
    *
+   * Each element has next structure: <dl>
+   *   <dt>int <var>i_video</var></dt>
+   *   <dd>Number of videos.</dd>
+   *   <dt>string <var>k_video_category</var></dt>
+   *   <dd>Key of the video category.</dd>
+   *   <dt>string <var>k_video_category_full</var></dt>
+   *   <dd>String key of the video category.</dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Title of the category.</dd>
+   * </dl>
+   *
    * @get result
-   * @type {{}[]}
+   * @type {Wl_Video_Category_CategoryListModel_a_video_category[]}
    */
   this.a_video_category = undefined;
+
+  /**
+   * <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
+   *
+   * @get get
+   * @put get
+   * @type {boolean}
+   */
+  this.is_backend = false;
 
   /**
    * <tt>true</tt> if skip group without video, <tt>false</tt> otherwise.
@@ -42,7 +70,7 @@ function Wl_Video_Category_CategoryListModel()
   this.is_skip_empty_group = undefined;
 
   /**
-   * Business key from {@link \RsBusinessSql}.
+   * Key of the business.
    *
    * @get get
    * @put get
@@ -68,44 +96,14 @@ WlSdk_ModelAbstract.extend(Wl_Video_Category_CategoryListModel);
  */
 Wl_Video_Category_CategoryListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_order": {
-        "put": {
-          "post": true
-        }
-      },
-      "a_video_category": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_skip_empty_group": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "text_filter": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_order": {"put": {"post": true}},"a_video_category": {"get": {"result": true}},"is_backend": {"get": {"get": true},"put": {"get": true}},"is_skip_empty_group": {"get": {"get": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"text_filter": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Video_Category_CategoryListModel.instanceGet
- * @param {string} k_business Business key from {@link \RsBusinessSql}.
+ * @param {string} k_business Key of the business.
+ * @param {boolean} is_backend <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
  * @returns {Wl_Video_Category_CategoryListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

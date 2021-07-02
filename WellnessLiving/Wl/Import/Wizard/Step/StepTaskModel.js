@@ -11,11 +11,6 @@ function Wl_Import_Wizard_Step_StepTaskModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Count of rows that are left to be imported.
    *
    * @get result
@@ -51,29 +46,5 @@ WlSdk_ModelAbstract.extend(Wl_Import_Wizard_Step_StepTaskModel);
  */
 Wl_Import_Wizard_Step_StepTaskModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_left": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_import_wizard": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_left": {"get": {"result": true}},"id_import_wizard": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}}}};
 };

@@ -13,7 +13,7 @@ function Wl_Profile_Contract_ContractModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,k_location,id_purchase_item,k_id,k_purchase_item,m_price_custom';
+  this._s_key = "uid,k_business,k_location,id_purchase_item,k_id,k_purchase_item,m_price_custom";
 
   /**
    * Promotion custom start date.
@@ -151,94 +151,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Contract_ContractModel);
  */
 Wl_Profile_Contract_ContractModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dt_start": {
-        "get": {
-          "get": true
-        }
-      },
-      "f_manual_discount": {
-        "get": {
-          "get": true
-        }
-      },
-      "html_contract": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_minor_age": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_purchase_item": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_purchase_item": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "m_discount_flat": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_price_custom": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_discount_code": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_signature": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dt_start": {"get": {"get": true}},"f_manual_discount": {"get": {"get": true}},"html_contract": {"get": {"result": true}},"i_minor_age": {"get": {"result": true}},"id_purchase_item": {"get": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_purchase_item": {"get": {"get": true},"post": {"get": true}},"m_discount_flat": {"get": {"get": true}},"m_price_custom": {"get": {"get": true}},"s_discount_code": {"get": {"get": true}},"s_signature": {"post": {"post": true}},"text_title": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -253,4 +166,4 @@ Wl_Profile_Contract_ContractModel.prototype.config=function()
  * @param {string} m_price_custom Custom price of the item.
  * @returns {Wl_Profile_Contract_ContractModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -53,28 +53,5 @@ WlSdk_ModelAbstract.extend(Wl_Eml_Mailchimp_EmlMailChimpModel);
  */
 Wl_Eml_Mailchimp_EmlMailChimpModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "data": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_token": {
-        "post": {
-          "get": true
-        }
-      },
-      "type": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"get": true}},"data": {"post": {"post": true}},"s_token": {"post": {"get": true}},"type": {"post": {"post": true}}}};
 };

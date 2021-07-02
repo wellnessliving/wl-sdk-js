@@ -13,7 +13,7 @@ function Wl_Schedule_Page_PageElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_visit';
+  this._s_key = "k_business,k_visit";
 
   /**
    * @typedef {{}} Wl_Schedule_Page_PageElementModel_a_staff
@@ -149,12 +149,28 @@ function Wl_Schedule_Page_PageElementModel()
   this.is_event = undefined;
 
   /**
+   * <tt>true</tt> - service is virtual; <tt>false</tt> - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_virtual = undefined;
+
+  /**
    * Appointment ID. Primary key in {@link RsAppointmentSql} table.
    *
    * @get result
    * @type {*}
    */
   this.k_appointment = undefined;
+
+  /**
+   * Key of the business to which the visit belongs.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_business = undefined;
 
   /**
    * Session ID. Primary key in {@link RsClassPeriodSql} table.
@@ -189,6 +205,14 @@ function Wl_Schedule_Page_PageElementModel()
   this.s_title = undefined;
 
   /**
+   * Location title.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_location = undefined;
+
+  /**
    * Room where session takes place.
    *
    * @get result
@@ -210,7 +234,7 @@ function Wl_Schedule_Page_PageElementModel()
    * @get result
    * @type {string}
    */
-  this.url_join_zoom = undefined;
+  this.url_virtual_join = undefined;
 
   this.changeInit();
 }
@@ -222,116 +246,14 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Page_PageElementModel);
  */
 Wl_Schedule_Page_PageElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_cancel": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_global": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_local": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_special": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_duration": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_wait_spot": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_note": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_visit": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_checkin": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_enable_client_cancel": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_event": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_appointment": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_visit": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_room": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_join_zoom": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_staff": {"get": {"result": true}},"dt_cancel": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_visit": {"get": {"result": true}},"is_checkin": {"get": {"result": true}},"is_enable_client_cancel": {"get": {"result": true}},"is_event": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_appointment": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_visit": {"get": {"get": true}},"s_title": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_room": {"get": {"result": true}},"uid": {"get": {"result": true}},"url_virtual_join": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Schedule_Page_PageElementModel.instanceGet
+ * @param {string} k_business Key of the business to which the visit belongs.
  * @param {string} k_visit Book/visit ID. Primary key in table {@link RsVisitSql}.
  * @returns {Wl_Schedule_Page_PageElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

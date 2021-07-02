@@ -20,12 +20,7 @@ function Wl_Schedule_ScheduleModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,is_backend,is_widget,url_page,s_data';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid,is_backend,is_widget,url_page,s_data";
 
   /**
    * Schedule info. Prepares only in the backend mode.
@@ -110,55 +105,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleModel);
  */
 Wl_Schedule_ScheduleModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_result": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_schedule": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_template": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_backend": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_widget": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_data": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      },
-      "url_page": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_result": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"html_template": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"is_widget": {"get": {"get": true}},"k_business": {"get": {"get": true}},"s_data": {"get": {"get": true}},"uid": {"get": {"get": true}},"url_page": {"get": {"get": true}}}};
 };
 
 /**
@@ -172,4 +119,4 @@ Wl_Schedule_ScheduleModel.prototype.config=function()
  * @param {?string} s_data Parameters and filters of the schedule encoded by Javascript analogue of the {@link \Core\Tool\UrlEncode\UrlEncode::encode()} method.
  * @returns {Wl_Schedule_ScheduleModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

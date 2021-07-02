@@ -13,7 +13,7 @@ function Wl_Shop_Product_ProductList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business,is_franchise";
 
   /**
    * @typedef {{}} Wl_Shop_Product_ProductList_ListModel_a_product
@@ -52,6 +52,15 @@ function Wl_Shop_Product_ProductList_ListModel()
   this.id_table = undefined;
 
   /**
+   * Whether to return franchisee-created products (if business is franchisor).
+   * <tt>true</tt> to include franchisee-created products.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_franchise = false;
+
+  /**
    * Business key.
    * Primary key in the {@link \RsBusinessSql} table.
    *
@@ -70,31 +79,14 @@ WlSdk_ModelAbstract.extend(Wl_Shop_Product_ProductList_ListModel);
  */
 Wl_Shop_Product_ProductList_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_product": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_table": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_product": {"get": {"result": true}},"id_table": {"get": {"result": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Shop_Product_ProductList_ListModel.instanceGet
  * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @param {boolean} is_franchise Whether to return franchisee-created products (if business is franchisor). <tt>true</tt> to include franchisee-created products.
  * @returns {Wl_Shop_Product_ProductList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

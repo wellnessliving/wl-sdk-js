@@ -38,6 +38,30 @@ function Wl_Classes_Period_Clients_Model()
    */
   this.clients = undefined;
 
+  /**
+   * Date and time of the currently viewed attendance list.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.dtl_date = undefined;
+
+  /**
+   * Whether only clients from <tt>Classpass</tt> should be returned.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_classpass_only = undefined;
+
+  /**
+   * Class period key of the attendance list.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_class_period = undefined;
+
   this.changeInit();
 }
 
@@ -48,13 +72,5 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Period_Clients_Model);
  */
 Wl_Classes_Period_Clients_Model.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "clients": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"clients": {"get": {"result": true}},"dtl_date": {"get": {"get": true}},"is_classpass_only": {"get": {"get": true}},"k_class_period": {"get": {"get": true}}}};
 };

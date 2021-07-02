@@ -13,12 +13,7 @@ function Wl_Book_Process_Contract_ContractListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 's_wizard_id';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "s_wizard_id";
 
   /**
    * @typedef {{}} Wl_Book_Process_Contract_ContractListModel_a_contract_list
@@ -83,32 +78,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Contract_ContractListModel);
  */
 Wl_Book_Process_Contract_ContractListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_contract_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_contract_skip": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true,
-          "post": true
-        }
-      },
-      "s_wizard_id": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_contract_list": {"get": {"result": true}},"is_contract_skip": {"get": {"result": true},"put": {"result": true,"post": true}},"s_wizard_id": {"get": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -117,4 +87,4 @@ Wl_Book_Process_Contract_ContractListModel.prototype.config=function()
  * @param {string} s_wizard_id Booking wizard session key.
  * @returns {Wl_Book_Process_Contract_ContractListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

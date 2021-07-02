@@ -13,7 +13,7 @@ function Social_Twitter_Login_LoginModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid';
+  this._s_key = "uid";
 
   /**
    * User ID in Twitter.
@@ -67,41 +67,7 @@ WlSdk_ModelAbstract.extend(Social_Twitter_Login_LoginModel);
  */
 Social_Twitter_Login_LoginModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_twitter": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "is_exists": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_secret": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_token": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_twitter": {"delete": {"get": true},"get": {"result": true},"post": {"get": true}},"is_exists": {"get": {"result": true}},"s_secret": {"post": {"post": true}},"s_token": {"post": {"post": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -110,4 +76,4 @@ Social_Twitter_Login_LoginModel.prototype.config=function()
  * @param {string} uid User's primary key in {@link PassportLoginSql} table.
  * @returns {Social_Twitter_Login_LoginModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

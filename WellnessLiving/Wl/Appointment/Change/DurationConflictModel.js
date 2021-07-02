@@ -61,7 +61,7 @@ function Wl_Appointment_Change_DurationConflictModel()
 
   /**
    * Location to show available appointment booking schedule.
-   * 
+   *
    * Primary key in {@link \RsLocationSql} table.
    *
    * @get get,result
@@ -96,7 +96,7 @@ function Wl_Appointment_Change_DurationConflictModel()
 
   /**
    * User to get information for.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
@@ -115,70 +115,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Change_DurationConflictModel);
  */
 Wl_Appointment_Change_DurationConflictModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_conflict": {
-        "get": {
-          "result": true
-        }
-      },
-      "can_book_anyway": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_duration_new": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_staff_book_flow": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_appointment": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true,
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_form_id": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_conflict": {"get": {"result": true}},"can_book_anyway": {"get": {"result": true}},"i_duration_new": {"get": {"get": true}},"id_staff_book_flow": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"result": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"s_form_id": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

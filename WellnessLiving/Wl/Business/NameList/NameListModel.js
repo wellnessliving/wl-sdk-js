@@ -13,7 +13,7 @@ function Wl_Business_NameList_NameListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'a_business';
+  this._s_key = "a_business";
 
   /**
    * List of business keys.
@@ -50,25 +50,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_NameList_NameListModel);
  */
 Wl_Business_NameList_NameListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_business_error": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_business_name": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_business": {"post": {"post": true}},"a_business_error": {"post": {"result": true}},"a_business_name": {"post": {"result": true}}}};
 };
 
 /**
@@ -77,4 +59,4 @@ Wl_Business_NameList_NameListModel.prototype.config=function()
  * @param {{}} a_business List of business keys. Each element is primary key for the {@link \RsBusinessSql} table.
  * @returns {Wl_Business_NameList_NameListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

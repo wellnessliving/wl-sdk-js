@@ -13,12 +13,7 @@ function Wl_Profile_Account_Select_SelectModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business";
 
   /**
    * Array with information about current user and his relationship with sub accounts.
@@ -30,7 +25,7 @@ function Wl_Profile_Account_Select_SelectModel()
 
   /**
    * Business to retrieve relationship information.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -41,7 +36,7 @@ function Wl_Profile_Account_Select_SelectModel()
 
   /**
    * UID to retrieve relationship information.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
@@ -52,7 +47,7 @@ function Wl_Profile_Account_Select_SelectModel()
 
   /**
    * ID of relative to sign in.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @post post
@@ -70,36 +65,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Account_Select_SelectModel);
  */
 Wl_Profile_Account_Select_SelectModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_user": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid_in": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_user": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}},"uid_in": {"post": {"post": true}}}};
 };
 
 /**
@@ -109,4 +75,4 @@ Wl_Profile_Account_Select_SelectModel.prototype.config=function()
  * @param {string} k_business Business to retrieve relationship information. Primary key in {@link \RsBusinessSql}.
  * @returns {Wl_Profile_Account_Select_SelectModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

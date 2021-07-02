@@ -13,12 +13,7 @@ function Wl_Profile_Billing_BillingModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business";
 
   /**
    * Whether to show account information.
@@ -38,7 +33,7 @@ function Wl_Profile_Billing_BillingModel()
 
   /**
    * ID of a business to show information for.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -56,7 +51,7 @@ function Wl_Profile_Billing_BillingModel()
 
   /**
    * UID to retrieve information about.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
@@ -82,40 +77,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Billing_BillingModel);
  */
 Wl_Profile_Billing_BillingModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_show_account": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_show_transaction": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_payer_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid_payer": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_show_account": {"get": {"result": true}},"is_show_transaction": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_payer_name": {"get": {"result": true}},"uid": {"get": {"get": true}},"uid_payer": {"get": {"result": true}}}};
 };
 
 /**
@@ -125,4 +87,4 @@ Wl_Profile_Billing_BillingModel.prototype.config=function()
  * @param {string} k_business ID of a business to show information for. Primary key in {@link \RsBusinessSql}.
  * @returns {Wl_Profile_Billing_BillingModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

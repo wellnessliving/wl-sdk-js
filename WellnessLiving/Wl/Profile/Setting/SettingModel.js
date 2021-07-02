@@ -1,5 +1,5 @@
 /**
- * Retrieves a list of user settings.
+ * Retrieves a list of user's notification settings.
  *
  * This model is generated automatically based on API.
  *
@@ -13,7 +13,7 @@ function Wl_Profile_Setting_SettingModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
+  this._s_key = "uid,k_business";
 
   /**
    * Whether email notifications related to purchases, contracts, and other activity in a client's account are enabled.
@@ -97,74 +97,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Setting_SettingModel);
  */
 Wl_Profile_Setting_SettingModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_account_management_email": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_account_management_sms": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_news_and_updates_email": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_news_and_updates_sms": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_schedule_and_reminders_email": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_schedule_and_reminders_sms": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_account_management_email": {"get": {"result": true},"post": {"post": true}},"is_account_management_sms": {"get": {"result": true},"post": {"post": true}},"is_news_and_updates_email": {"get": {"result": true},"post": {"post": true}},"is_news_and_updates_sms": {"get": {"result": true},"post": {"post": true}},"is_schedule_and_reminders_email": {"get": {"result": true},"post": {"post": true}},"is_schedule_and_reminders_sms": {"get": {"result": true},"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -174,4 +107,4 @@ Wl_Profile_Setting_SettingModel.prototype.config=function()
  * @param {string} k_business ID of current business.
  * @returns {Wl_Profile_Setting_SettingModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

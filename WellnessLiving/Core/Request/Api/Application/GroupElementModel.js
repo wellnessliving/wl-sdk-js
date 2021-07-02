@@ -11,15 +11,10 @@ function Core_Request_Api_Application_GroupElementModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * If a group is edited, its key is stored here.
-   * 
+   *
    * Primary key in {@link \Core\Request\Api\Application\GroupSql} table.
-   * 
+   *
    * <tt>null</tt> if a new group should be created.
    * This value is required for edit and delete operations.
    *
@@ -67,44 +62,5 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_Application_GroupElementModel);
  */
 Core_Request_Api_Application_GroupElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_application_group": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        }
-      },
-      "text_access": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "text_privilege": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_application_group": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"text_access": {"get": {"result": true},"post": {"post": true}},"text_privilege": {"get": {"result": true},"post": {"post": true}},"text_title": {"get": {"result": true},"post": {"post": true}}}};
 };

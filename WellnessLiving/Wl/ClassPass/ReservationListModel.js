@@ -30,13 +30,5 @@ WlSdk_ModelAbstract.extend(Wl_ClassPass_ReservationListModel);
  */
 Wl_ClassPass_ReservationListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "spot_label": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"spot_label": {"post": {"result": true}}}};
 };

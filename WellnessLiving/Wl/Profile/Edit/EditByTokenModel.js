@@ -13,16 +13,16 @@ function Wl_Profile_Edit_EditByTokenModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,is_staff';
+  this._s_key = "k_business,uid,is_staff";
 
   /**
    * Field values to save.
-   * 
+   *
    * Keys are field IDs.
-   * 
+   *
    * Values are new field values. Specific values depend on individual type of field. For some fields, there may be a
    * string, for some fields there may be an array.
-   * 
+   *
    * If a composite field is changed, all fields should be specified (for example, if you change address you should
    * obligatorily specify city).
    *
@@ -44,7 +44,7 @@ function Wl_Profile_Edit_EditByTokenModel()
   /**
    * Information for user's photo.
    * It is necessary to save simultaneously user and photo in staff member mode.
-   * 
+   *
    * Attention!
    * Data from this field is taken directly from a POST somewhere in the depths of the photo upload.
    *
@@ -94,7 +94,7 @@ function Wl_Profile_Edit_EditByTokenModel()
 
   /**
    * ID of a business to manipulate with.
-   * 
+   *
    * Empty value to manipulate with system-wide fields.
    *
    * @get get
@@ -161,7 +161,7 @@ function Wl_Profile_Edit_EditByTokenModel()
 
   /**
    * ID of a user to manipulate with.
-   * 
+   *
    * If empty then an empty form will be displayed to add a new user.
    *
    * @get get
@@ -181,119 +181,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_EditByTokenModel);
  */
 Wl_Profile_Edit_EditByTokenModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_change": {
-        "put": {
-          "post": true
-        }
-      },
-      "a_error": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "a_image_upload": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_new": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_structure": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_short": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "is_staff": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "class": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "code": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "status": {
-        "post": {
-          "result": true
-        }
-      },
-      "message": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "text_password": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_token": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_change": {"put": {"post": true}},"a_error": {"get": {"result": true},"post": {"result": true}},"a_image_upload": {"post": {"post": true}},"a_new": {"post": {"post": true}},"a_structure": {"get": {"result": true}},"is_short": {"get": {"result": true},"post": {"get": true}},"is_staff": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"class": {"get": {"result": true},"post": {"result": true}},"code": {"get": {"result": true},"post": {"result": true}},"status": {"post": {"result": true}},"message": {"get": {"result": true},"post": {"result": true}},"text_password": {"post": {"post": true}},"text_token": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}}}};
 };
 
 /**
@@ -304,4 +192,4 @@ Wl_Profile_Edit_EditByTokenModel.prototype.config=function()
  * @param {boolean} is_staff How we want to see this page. As a staff or as a user.
  * @returns {Wl_Profile_Edit_EditByTokenModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

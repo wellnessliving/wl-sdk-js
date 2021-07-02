@@ -11,11 +11,6 @@ function Wl_Page_BackAdmin_BackAdminModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A link to redirect to an administrator account who is currently signed as a different user.
    *
    * @post result
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Wl_Page_BackAdmin_BackAdminModel);
  */
 Wl_Page_BackAdmin_BackAdminModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "url_redirect": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"url_redirect": {"post": {"result": true}}}};
 };

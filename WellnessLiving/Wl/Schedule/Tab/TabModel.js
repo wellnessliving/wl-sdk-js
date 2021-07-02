@@ -13,7 +13,7 @@ function Wl_Schedule_Tab_TabModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_location,uid';
+  this._s_key = "k_business,k_location,uid";
 
   /**
    * @typedef {{}} Wl_Schedule_Tab_TabModel_a_tab
@@ -99,30 +99,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Tab_TabModel);
  */
 Wl_Schedule_Tab_TabModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_tab": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_tab": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -133,4 +110,4 @@ Wl_Schedule_Tab_TabModel.prototype.config=function()
  * @param {string} uid User's primary key in {@link \PassportLoginSql} table. Empty for a case of guest.
  * @returns {Wl_Schedule_Tab_TabModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

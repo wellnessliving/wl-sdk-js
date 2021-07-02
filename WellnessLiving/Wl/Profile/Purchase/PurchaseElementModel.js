@@ -13,7 +13,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_purchase_item,k_login_promotion,k_code,k_login_product,k_enrollment_book,k_session_pass';
+  this._s_key = "k_purchase_item,k_login_promotion,k_code,k_login_product,k_enrollment_book,k_session_pass";
 
   /**
    * @typedef {{}} Wl_Profile_Purchase_PurchaseElementModel_a_component
@@ -470,10 +470,10 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * ID of redemption code which is used to obtain some goods.
-   * 
+   *
    * Should be specified only to obtain via redemption code
    * (not for ordinary purchases or for purchased promotions without purchases).
-   * 
+   *
    * Primary key in {@link RsCodeSql}.
    *
    * @get get
@@ -499,7 +499,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * ID of entirely booked event.
-   * 
+   *
    * Must be specified if purchase item is a component of a package and it is whole event book.
    *
    * @get get
@@ -509,7 +509,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * ID of purchased product.
-   * 
+   *
    * Must be specified if purchase item is a component of a package.
    *
    * @get get
@@ -519,10 +519,10 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * ID of purchased promotion.
-   * 
+   *
    * Must be specified only for purchases promotions without purchases
    * (not for ordinary purchases or to obtain via redemption codes).
-   * 
+   *
    * Primary key in {@link RsLoginPromotionSql}.
    *
    * @get get
@@ -540,7 +540,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * ID of purchase item.
-   * 
+   *
    * Must be specified only for ordinary purchases
    * (not for obtain via redemption codes or for purchased promotions without purchases).
    * And only for items which are not components of package.
@@ -560,7 +560,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * ID of makeup to attend event.
-   * 
+   *
    * Must be specified if purchase item is a component of a package and it is whole event book.
    * And only for items which are not components of package.
    *
@@ -755,385 +755,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Purchase_PurchaseElementModel);
  */
 Wl_Profile_Purchase_PurchaseElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_component": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_logo": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_restrict": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_tax": {
-        "get": {
-          "result": true
-        }
-      },
-      "can_renew": {
-        "get": {
-          "result": true
-        }
-      },
-      "dl_purchase": {
-        "get": {
-          "result": true
-        }
-      },
-      "dl_start": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_end": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_hold_end": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_hold_start": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_purchase": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_send": {
-        "get": {
-          "result": true
-        }
-      },
-      "f_discount_login_type_percent": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_description": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_book": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_buy": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_discount_count": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_duration": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_left": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_limit": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_payment_period": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_remain": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_remain_duration": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_renew": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_use": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_activation": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_discount_commission_type": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_duration": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_program_type": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_purchase_item": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_sale": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_active": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_component": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_convert": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_expire": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_hold": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_limit": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_login_type_member": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_mail": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_past": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_redeem": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_renew": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_transfer": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_code": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_code_result": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_currency": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_enrollment_book": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_login_product": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_login_promotion": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_login_promotion_result": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_purchase_item": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_purchase_result": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_session_pass": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_cost_item": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_cost_total": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_discount_amount": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_discount_login_type_amount": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_discount_manual": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_period_price": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_price": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_refund": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_code": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_gift_recipient": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_limit_actor": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_mail": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_message": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_payer": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_promotion_convert": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_purchase": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_recipient": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_sender": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "sid_value": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid_payer": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid_recipient": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_component": {"get": {"result": true}},"a_logo": {"get": {"result": true}},"a_restrict": {"get": {"result": true}},"a_tax": {"get": {"result": true}},"can_renew": {"get": {"result": true}},"dl_purchase": {"get": {"result": true}},"dl_start": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_hold_end": {"get": {"result": true}},"dt_hold_start": {"get": {"result": true}},"dt_purchase": {"get": {"result": true}},"dt_send": {"get": {"result": true}},"f_discount_login_type_percent": {"get": {"result": true}},"html_description": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_buy": {"get": {"result": true}},"i_discount_count": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_left": {"get": {"result": true}},"i_limit": {"get": {"result": true}},"i_payment_period": {"get": {"result": true}},"i_remain": {"get": {"result": true}},"i_remain_duration": {"get": {"result": true}},"i_renew": {"get": {"result": true}},"i_use": {"get": {"result": true}},"id_activation": {"get": {"result": true}},"id_discount_commission_type": {"get": {"result": true}},"id_duration": {"get": {"result": true}},"id_program_type": {"get": {"result": true}},"id_purchase_item": {"get": {"result": true}},"id_sale": {"get": {"result": true}},"is_active": {"get": {"result": true}},"is_component": {"get": {"result": true}},"is_convert": {"get": {"result": true}},"is_expire": {"get": {"result": true}},"is_hold": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_login_type_member": {"get": {"result": true}},"is_mail": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_redeem": {"get": {"result": true}},"is_renew": {"get": {"result": true}},"is_transfer": {"get": {"result": true}},"k_code": {"get": {"get": true}},"k_code_result": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"k_enrollment_book": {"get": {"get": true}},"k_login_product": {"get": {"get": true}},"k_login_promotion": {"get": {"get": true}},"k_login_promotion_result": {"get": {"result": true}},"k_purchase_item": {"get": {"get": true}},"k_purchase_result": {"get": {"result": true}},"k_session_pass": {"get": {"get": true}},"m_cost_item": {"get": {"result": true}},"m_cost_total": {"get": {"result": true}},"m_discount_amount": {"get": {"result": true}},"m_discount_login_type_amount": {"get": {"result": true}},"m_discount_manual": {"get": {"result": true}},"m_period_price": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_refund": {"get": {"result": true}},"s_code": {"get": {"result": true}},"s_gift_recipient": {"get": {"result": true}},"s_limit_actor": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_message": {"get": {"result": true}},"s_payer": {"get": {"result": true}},"s_promotion_convert": {"get": {"result": true}},"s_purchase": {"get": {"result": true}},"s_recipient": {"get": {"result": true}},"s_sender": {"get": {"result": true}},"s_title": {"get": {"result": true}},"sid_value": {"get": {"result": true}},"uid_payer": {"get": {"result": true}},"uid_recipient": {"get": {"result": true}}}};
 };
 
 /**
@@ -1147,4 +769,4 @@ Wl_Profile_Purchase_PurchaseElementModel.prototype.config=function()
  * @param {string} k_session_pass ID of makeup to attend event. Must be specified if purchase item is a component of a package and it is whole event book. And only for items which are not components of package.
  * @returns {Wl_Profile_Purchase_PurchaseElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,7 +13,7 @@ function Wl_Profile_Notification_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * A list of notification items. Each value is a primary key in {@link \Core\Push\History\Sql}.
@@ -49,25 +49,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Notification_ListModel);
  */
 Wl_Profile_Notification_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_notification": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_notification": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -77,4 +59,4 @@ Wl_Profile_Notification_ListModel.prototype.config=function()
  * @param {string} uid ID of a user to show information for. Primary key in {@link \PassportLoginSql}.
  * @returns {Wl_Profile_Notification_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,7 +13,7 @@ function Wl_Report_InfoModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_report,k_business';
+  this._s_key = "id_report,k_business";
 
   /**
    * Report ID. One of {@link \RsReportSid} constants.
@@ -49,25 +49,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_InfoModel);
  */
 Wl_Report_InfoModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_report": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_report_type": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_report": {"get": {"get": true}},"id_report_type": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -77,4 +59,4 @@ Wl_Report_InfoModel.prototype.config=function()
  * @param {string} k_business ID of business for which report must be generated. Primary key in {@link \RsBusinessSql} table.
  * @returns {Wl_Report_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,7 +13,7 @@ function Wl_Catalog_View_Image_ImageModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_sale,k_id,k_shop_product_option';
+  this._s_key = "id_sale,k_id,k_shop_product_option";
 
   /**
    * Contains a list of images for the current product.
@@ -57,30 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_View_Image_ImageModel);
  */
 Wl_Catalog_View_Image_ImageModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_image": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_sale": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_shop_product_option": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_image": {"get": {"result": true}},"id_sale": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true}}}};
 };
 
 /**
@@ -91,4 +68,4 @@ Wl_Catalog_View_Image_ImageModel.prototype.config=function()
  * @param {string} k_shop_product_option Shop product option ID.
  * @returns {Wl_Catalog_View_Image_ImageModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

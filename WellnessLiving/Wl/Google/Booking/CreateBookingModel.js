@@ -97,48 +97,5 @@ WlSdk_ModelAbstract.extend(Wl_Google_Booking_CreateBookingModel);
  */
 Wl_Google_Booking_CreateBookingModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "booking": {
-        "post": {
-          "result": true
-        }
-      },
-      "booking_failure": {
-        "post": {
-          "result": true
-        }
-      },
-      "payment_information": {
-        "post": {
-          "post": true
-        }
-      },
-      "slot": {
-        "post": {
-          "post": true
-        }
-      },
-      "user_information": {
-        "post": {
-          "post": true
-        }
-      },
-      "additional_request": {
-        "post": {
-          "post": true
-        }
-      },
-      "deal_id": {
-        "post": {
-          "post": true
-        }
-      },
-      "idempotency_token": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"booking": {"post": {"result": true}},"booking_failure": {"post": {"result": true}},"payment_information": {"post": {"post": true}},"slot": {"post": {"post": true}},"user_information": {"post": {"post": true}},"additional_request": {"post": {"post": true}},"deal_id": {"post": {"post": true}},"idempotency_token": {"post": {"post": true}}}};
 };

@@ -28,13 +28,5 @@ WlSdk_ModelAbstract.extend(Core_All_VersionModel);
  */
 Core_All_VersionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "s_version": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"s_version": {"get": {"result": true}}}};
 };

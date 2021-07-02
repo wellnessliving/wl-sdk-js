@@ -13,7 +13,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_date,k_business,uid';
+  this._s_key = "dt_date,k_business,uid";
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule
@@ -47,6 +47,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    * @property {string} text_color_background Background color for session in hex representation.
    * @property {string} text_color_border Border color for session in hex representation.
    * @property {boolean} is_virtual_service <tt>true</tt> - If the business has at least one virtual service, <tt>false</tt> - otherwise.
+   * @property {string} url_image URL to image. Empty if image not exist.
    */
 
   /**
@@ -217,12 +218,38 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    *   <dd>
    *     <tt>true</tt> - If the business has at least one virtual service, <tt>false</tt> - otherwise.
    *   </dd>
+   *   <dt>
+   *     string<var>url_image</var>
+   *   </dt>
+   *   <dd>
+   *     URL to image. Empty if image not exist.
+   *   </dd>
    * </dl>
    *
    * @get result
    * @type {Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule[]}
    */
   this.a_schedule = undefined;
+
+  /**
+   * End date of the range from which list of schedule should be retrieved.
+   *
+   * <tt>null</tt> if range has no end date.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.dl_end = undefined;
+
+  /**
+   * Start date of the range from which list of schedule should be retrieved.
+   *
+   * <tt>null</tt> if range has no start date.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.dl_start = undefined;
 
   /**
    * Date (local) for which schedule must be gotten.
@@ -274,53 +301,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel);
  */
 Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_schedule": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_virtual_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_schedule": {"get": {"result": true}},"dl_end": {"get": {"get": true}},"dl_start": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -331,4 +312,4 @@ Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel.prototype.config=function()
  * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

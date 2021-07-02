@@ -11,11 +11,6 @@ function Wl_Event_EventCancelWholeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Event key.
    *
    * @post post
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Event_EventCancelWholeModel);
  */
 Wl_Event_EventCancelWholeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_class": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_class": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };

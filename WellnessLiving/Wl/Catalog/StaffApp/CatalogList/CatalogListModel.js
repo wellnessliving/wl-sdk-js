@@ -13,7 +13,7 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_location,k_visit';
+  this._s_key = "k_business,k_location,k_visit";
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogList_CatalogListModel_a_shop_product
@@ -144,35 +144,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogList_CatalogListModel);
  */
 Wl_Catalog_StaffApp_CatalogList_CatalogListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_shop_product": {
-        "get": {
-          "result": true
-        }
-      },
-      "can_add": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_visit": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_shop_product": {"get": {"result": true}},"can_add": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_visit": {"get": {"get": true}}}};
 };
 
 /**
@@ -183,4 +155,4 @@ Wl_Catalog_StaffApp_CatalogList_CatalogListModel.prototype.config=function()
  * @param {string} k_visit ID of a visit to show purchase options for.
  * @returns {Wl_Catalog_StaffApp_CatalogList_CatalogListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,12 +13,7 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,text_mail,uid_want';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,text_mail,uid_want";
 
   /**
    * @typedef {{}} Wl_Profile_Edit_Email_EditEmailModel_a_user
@@ -122,51 +117,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_Email_EditEmailModel);
  */
 Wl_Profile_Edit_Email_EditEmailModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_user": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_limit": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_use": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "text_mail": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid_result": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid_want": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_user": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_use": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true}},"uid_result": {"get": {"result": true}},"uid_want": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -177,4 +128,4 @@ Wl_Profile_Edit_Email_EditEmailModel.prototype.config=function()
  * @param {string} uid_want User primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Profile_Edit_Email_EditEmailModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

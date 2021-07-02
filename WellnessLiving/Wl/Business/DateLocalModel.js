@@ -11,11 +11,6 @@ function Wl_Business_DateLocalModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Business local date in mysql format.
    *
    * @get result
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_DateLocalModel);
  */
 Wl_Business_DateLocalModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dtl_date": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dtl_date": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };

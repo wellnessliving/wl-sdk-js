@@ -13,7 +13,7 @@ function Wl_Login_Member_MemberModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid';
+  this._s_key = "uid";
 
   /**
    * @typedef {{}} Wl_Login_Member_MemberModel_a_business
@@ -75,20 +75,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Member_MemberModel);
  */
 Wl_Login_Member_MemberModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_business": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_business": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -97,4 +84,4 @@ Wl_Login_Member_MemberModel.prototype.config=function()
  * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Login_Member_MemberModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

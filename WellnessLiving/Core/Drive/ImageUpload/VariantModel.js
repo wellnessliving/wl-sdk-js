@@ -13,7 +13,7 @@ function Core_Drive_ImageUpload_VariantModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 's_link,s_command,s_code';
+  this._s_key = "s_link,s_command,s_code";
 
   /**
    * @typedef {{}} Core_Drive_ImageUpload_VariantModel_a_image
@@ -123,30 +123,7 @@ WlSdk_ModelAbstract.extend(Core_Drive_ImageUpload_VariantModel);
  */
 Core_Drive_ImageUpload_VariantModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_image": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_code": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_command": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_link": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_image": {"get": {"result": true}},"s_code": {"get": {"get": true}},"s_command": {"get": {"get": true}},"s_link": {"get": {"get": true}}}};
 };
 
 /**
@@ -157,4 +134,4 @@ Core_Drive_ImageUpload_VariantModel.prototype.config=function()
  * @param {string} s_code Protection string. Used to prevent custom link generation on client side.
  * @returns {Core_Drive_ImageUpload_VariantModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -26,7 +26,7 @@ function Wl_ClassPass_LocationScheduleModel()
    * @get result
    * @type {{}}
    */
-  this.schedules = undefined;
+  this.schedules = [];
 
   /**
    * Partner ID.
@@ -54,28 +54,5 @@ WlSdk_ModelAbstract.extend(Wl_ClassPass_LocationScheduleModel);
  */
 Wl_ClassPass_LocationScheduleModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "pagination": {
-        "get": {
-          "result": true
-        }
-      },
-      "schedules": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_partner": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_venue": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"pagination": {"get": {"result": true}},"schedules": {"get": {"result": true}},"s_partner": {"get": {"get": true}},"s_venue": {"get": {"get": true}}}};
 };

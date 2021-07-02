@@ -13,7 +13,7 @@ function Wl_Visit_Note_Edit_EditModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_visit';
+  this._s_key = "k_visit";
 
   /**
    * Uncompressed note content received from form.
@@ -107,7 +107,7 @@ function Wl_Visit_Note_Edit_EditModel()
 
   /**
    * Visit ID, primary key in {@link \RsVisitSql}.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -134,67 +134,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Note_Edit_EditModel);
  */
 Wl_Visit_Note_Edit_EditModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_data": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_data_note_additional": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_info": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_visit_note": {
-        "get": {
-          "result": true
-        }
-      },
-      "can_edit": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_note": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_visit": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_visit_note": {
-        "delete": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_data": {"post": {"post": true}},"a_data_note_additional": {"get": {"result": true}},"a_info": {"get": {"result": true}},"a_visit_note": {"get": {"result": true}},"can_edit": {"get": {"result": true}},"id_note": {"get": {"result": true},"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"k_visit_note": {"delete": {"get": true}}}};
 };
 
 /**
@@ -203,4 +143,4 @@ Wl_Visit_Note_Edit_EditModel.prototype.config=function()
  * @param {string} k_visit Visit ID, primary key in {@link \RsVisitSql}. Empty value means not set.
  * @returns {Wl_Visit_Note_Edit_EditModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

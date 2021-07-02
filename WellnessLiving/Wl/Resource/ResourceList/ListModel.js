@@ -13,7 +13,7 @@ function Wl_Resource_ResourceList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Resource_ResourceList_ListModel_a_resource
@@ -60,6 +60,15 @@ function Wl_Resource_ResourceList_ListModel()
   this.a_resource = undefined;
 
   /**
+   * Whether to return franchisee-created resources (if business is franchisor).
+   * <tt>true</tt> to include franchisee-created resources.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_franchise = false;
+
+  /**
    * Business key, primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -77,20 +86,7 @@ WlSdk_ModelAbstract.extend(Wl_Resource_ResourceList_ListModel);
  */
 Wl_Resource_ResourceList_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_resource": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_resource": {"get": {"result": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -99,4 +95,4 @@ Wl_Resource_ResourceList_ListModel.prototype.config=function()
  * @param {string} k_business Business key, primary key in {@link \RsBusinessSql}.
  * @returns {Wl_Resource_ResourceList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

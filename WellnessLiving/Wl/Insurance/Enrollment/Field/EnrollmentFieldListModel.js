@@ -12,10 +12,10 @@ function Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel()
 
   /**
    * Reimbursement account information.
-   * 
+   *
    * Keys - field name.
    * Values - value entered by user.
-   * 
+   *
    * Validation is performed by {@link \Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setAccountForm()} method.
    *
    * @post post
@@ -26,10 +26,10 @@ function Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel()
 
   /**
    * List of fields that the user has filled in for enrollment.
-   * 
+   *
    * Keys - field key in the database. See {@link \Wl\Integration\Curves\PartnerFieldSql} table for more details.
    * Values - value entered by user.
-   * 
+   *
    * Validation is performed by {@link \Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setFieldForm()} method.
    *
    * @post post
@@ -128,28 +128,28 @@ function Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel()
    *          <dd>Type of text field.</dd>
    *        </dl>
    *      </dd>
-   * 
+   *
    *      <dt>int <var>i_length</var></dt>
    *      <dd>Length of field.</dd>
-   * 
+   *
    *      <dt>bool <var>is_disable</var></dt>
    *      <dd>Whether this field is disabled.</dd>
-   * 
+   *
    *      <dt>bool <var>is_required</var></dt>
    *      <dd>Whether this field is required.</dd>
-   * 
+   *
    *      <dt>string <var>k_field</var></dt>
    *      <dd>Field key.</dd>
-   * 
+   *
    *      <dt>string <var>s_regular</var></dt>
    *      <dd>Regular expression validation for field.</dd>
-   * 
+   *
    *      <dt>string <var>text_display_name</var></dt>
    *      <dd>Label text for field.</dd>
-   * 
+   *
    *      <dt>string <var>text_error_message</var></dt>
    *      <dd>Error message if value in field is not valid.</dd>
-   * 
+   *
    *      <dt>string <var>text_field_name</var></dt>
    *      <dd>Name of field.</dd>
    *    </dl>
@@ -173,7 +173,7 @@ function Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel()
 
   /**
    * "Wellness Program" key.
-   * 
+   *
    * Primary key from {@link \Wl\Integration\Curves\WellnessProgramSql} table.
    *
    * @get get
@@ -193,51 +193,5 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Enrollment_Field_EnrollmentFieldListMode
  */
 Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_account": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_field": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_field_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_wellness_program": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_account": {"post": {"post": true},"put": {"post": true}},"a_field": {"post": {"post": true},"put": {"post": true}},"a_field_list": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_wellness_program": {"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };

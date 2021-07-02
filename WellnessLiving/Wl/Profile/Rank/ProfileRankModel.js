@@ -11,11 +11,6 @@ function Wl_Profile_Rank_ProfileRankModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Promotion date on belts.
    * <tt>null</tt> if not initialized yet.
    *
@@ -55,32 +50,5 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Rank_ProfileRankModel);
  */
 Wl_Profile_Rank_ProfileRankModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dtu_promotion_date": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_rank": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dtu_promotion_date": {"get": {"result": true},"post": {"get": true}},"k_rank": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

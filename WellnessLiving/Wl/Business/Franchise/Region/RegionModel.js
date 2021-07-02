@@ -11,11 +11,6 @@ function Wl_Business_Franchise_Region_RegionModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * List of location.
    *
    * @post post
@@ -76,45 +71,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Franchise_Region_RegionModel);
  */
 Wl_Business_Franchise_Region_RegionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_location": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_franchise_region": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        }
-      },
-      "k_staff": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_description": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_title": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_location": {"post": {"post": true}},"k_business": {"delete": {"get": true},"post": {"get": true}},"k_franchise_region": {"delete": {"get": true},"post": {"get": true,"result": true}},"k_staff": {"post": {"post": true}},"text_description": {"post": {"post": true}},"text_title": {"post": {"post": true}}}};
 };

@@ -13,7 +13,7 @@ function Wl_Pay_Bank_Card_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,k_location';
+  this._s_key = "uid,k_business,k_location";
 
   /**
    * List of bank cards.
@@ -34,7 +34,7 @@ function Wl_Pay_Bank_Card_ListModel()
   /**
    * Location to show information for.
    * Primary key in {@link \RsLocationSql} table.
-   * 
+   *
    * <tt>0</tt> to use user's home location.
    *
    * @get get
@@ -60,30 +60,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Bank_Card_ListModel);
  */
 Wl_Pay_Bank_Card_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_bank_card": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_bank_card": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -94,4 +71,4 @@ Wl_Pay_Bank_Card_ListModel.prototype.config=function()
  * @param {string} k_location Location to show information for. Primary key in {@link \RsLocationSql} table. <tt>0</tt> to use user's home location.
  * @returns {Wl_Pay_Bank_Card_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

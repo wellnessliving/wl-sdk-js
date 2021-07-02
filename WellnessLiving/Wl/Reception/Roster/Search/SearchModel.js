@@ -6,12 +6,12 @@
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Wl_Reception_Roster_Search_Model()
+function Wl_Reception_Roster_Search_SearchModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @typedef {{}} Wl_Reception_Roster_Search_Model_a_user
+   * @typedef {{}} Wl_Reception_Roster_Search_SearchModel_a_user
    * @property {string} s_firstname First name of a client.
    * @property {string} s_lastname Last name of a client.
    * @property {number} uid User key.
@@ -48,7 +48,7 @@ function Wl_Reception_Roster_Search_Model()
    * </dl>
    *
    * @get result
-   * @type {Wl_Reception_Roster_Search_Model_a_user}
+   * @type {Wl_Reception_Roster_Search_SearchModel_a_user}
    */
   this.a_user = undefined;
 
@@ -89,41 +89,12 @@ function Wl_Reception_Roster_Search_Model()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Reception_Roster_Search_Model);
+WlSdk_ModelAbstract.extend(Wl_Reception_Roster_Search_SearchModel);
 
 /**
  * @inheritDoc
  */
-Wl_Reception_Roster_Search_Model.prototype.config=function()
+Wl_Reception_Roster_Search_SearchModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_user": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_request": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_request": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_secret": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_user": {"get": {"result": true}},"i_request": {"get": {"get": true,"result": true}},"k_location": {"get": {"get": true}},"s_request": {"get": {"get": true}},"s_secret": {"get": {"get": true}}}};
 };

@@ -13,7 +13,7 @@ function Wl_Staff_StaffView_StaffViewModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_staff';
+  this._s_key = "k_business,k_staff";
 
   /**
    * @typedef {{}} Wl_Staff_StaffView_StaffViewModel_a_class_day_a_class_period
@@ -196,7 +196,7 @@ function Wl_Staff_StaffView_StaffViewModel()
 
   /**
    * List of staff keys.
-   * 
+   *
    * Primary key in {@link \RsStaffSql}.
    *
    * @get get
@@ -206,7 +206,7 @@ function Wl_Staff_StaffView_StaffViewModel()
 
   /**
    * ID of a business to show information for.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -216,7 +216,7 @@ function Wl_Staff_StaffView_StaffViewModel()
 
   /**
    * Staff key.
-   * 
+   *
    * Primary key in {@link \RsStaffSql}.
    *
    * @get get
@@ -234,40 +234,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_StaffView_StaffViewModel);
  */
 Wl_Staff_StaffView_StaffViewModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_class_day": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_result_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_staff_list": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_staff": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_class_day": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"a_staff_list": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_staff": {"get": {"get": true}}}};
 };
 
 /**
@@ -277,4 +244,4 @@ Wl_Staff_StaffView_StaffViewModel.prototype.config=function()
  * @param {string} k_staff Staff key. Primary key in {@link \RsStaffSql}.
  * @returns {Wl_Staff_StaffView_StaffViewModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

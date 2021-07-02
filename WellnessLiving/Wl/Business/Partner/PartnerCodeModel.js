@@ -11,11 +11,6 @@ function Wl_Business_Partner_PartnerCodeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Business key.
    *
    * @post get
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Partner_PartnerCodeModel);
  */
 Wl_Business_Partner_PartnerCodeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "text_code": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"get": true}},"text_code": {"post": {"post": true}}}};
 };

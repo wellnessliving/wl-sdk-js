@@ -11,13 +11,8 @@ function Wl_Business_Account_PayChangeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * New local date without time of the next payment.
-   * 
+   *
    * Not specified if should not be changed.
    *
    * @put result,post
@@ -69,7 +64,7 @@ function Wl_Business_Account_PayChangeModel()
 
   /**
    * New amount of the next payment for achieve application.
-   * 
+   *
    * Not specified if should not be changed.
    *
    * @put post
@@ -87,44 +82,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Account_PayChangeModel);
  */
 Wl_Business_Account_PayChangeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dt_pay": {
-        "put": {
-          "result": true,
-          "post": true
-        }
-      },
-      "html_amount_pay": {
-        "put": {
-          "result": true
-        }
-      },
-      "html_date_pay": {
-        "put": {
-          "result": true
-        }
-      },
-      "id_pay": {
-        "put": {
-          "post": true
-        }
-      },
-      "is_reset": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "put": {
-          "post": true
-        }
-      },
-      "m_amount": {
-        "put": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dt_pay": {"put": {"result": true,"post": true}},"html_amount_pay": {"put": {"result": true}},"html_date_pay": {"put": {"result": true}},"id_pay": {"put": {"post": true}},"is_reset": {"put": {"post": true}},"k_business": {"put": {"post": true}},"m_amount": {"put": {"post": true}}}};
 };

@@ -13,7 +13,7 @@ function Wl_Service_ServiceList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Service_ServiceList_ListModel_a_service
@@ -60,6 +60,15 @@ function Wl_Service_ServiceList_ListModel()
   this.a_service = undefined;
 
   /**
+   * Whether to return franchisee-created services (if business is franchisor).
+   * <tt>true</tt> to include franchisee-created services.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_franchise = false;
+
+  /**
    * Business key, primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -77,20 +86,7 @@ WlSdk_ModelAbstract.extend(Wl_Service_ServiceList_ListModel);
  */
 Wl_Service_ServiceList_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_service": {"get": {"result": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -99,4 +95,4 @@ Wl_Service_ServiceList_ListModel.prototype.config=function()
  * @param {string} k_business Business key, primary key in {@link \RsBusinessSql}.
  * @returns {Wl_Service_ServiceList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

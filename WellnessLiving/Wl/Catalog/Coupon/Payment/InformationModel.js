@@ -13,11 +13,11 @@ function Wl_Catalog_Coupon_Payment_InformationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_coupon,k_coupon_amount';
+  this._s_key = "k_business,k_coupon,k_coupon_amount";
 
   /**
    * A list of payment sources to pay with.
-   * 
+   *
    * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
    *
    * @post post
@@ -91,50 +91,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Coupon_Payment_InformationModel);
  */
 Wl_Catalog_Coupon_Payment_InformationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_pay_form": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_coupon": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_coupon_amount": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_subtotal": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_tax": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_total": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_discount_code": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_pay_form": {"post": {"post": true}},"k_business": {"get": {"get": true}},"k_coupon": {"get": {"get": true}},"k_coupon_amount": {"get": {"get": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}}}};
 };
 
 /**
@@ -145,4 +102,4 @@ Wl_Catalog_Coupon_Payment_InformationModel.prototype.config=function()
  * @param {string} k_coupon_amount ID of the coupon amount, primary key in {@link \Wl\Coupon\AmountSql}.
  * @returns {Wl_Catalog_Coupon_Payment_InformationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

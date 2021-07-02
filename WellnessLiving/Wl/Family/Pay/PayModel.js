@@ -13,12 +13,7 @@ function Wl_Family_Pay_PayModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business";
 
   /**
    * ID of business to get information for. Primary key in {@link \RsBusinessAr} table.
@@ -59,34 +54,7 @@ WlSdk_ModelAbstract.extend(Wl_Family_Pay_PayModel);
  */
 Wl_Family_Pay_PayModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid_payer": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}},"uid_payer": {"get": {"result": true},"post": {"post": true}}}};
 };
 
 /**
@@ -96,4 +64,4 @@ Wl_Family_Pay_PayModel.prototype.config=function()
  * @param {string} k_business ID of business to get information for. Primary key in {@link \RsBusinessAr} table.
  * @returns {Wl_Family_Pay_PayModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

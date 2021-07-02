@@ -13,16 +13,11 @@ function Wl_Member_Progress_Goal_Edit_GoalModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid";
 
   /**
    * List of fields.
-   * 
+   *
    * Keys are field IDs ({@link \Wl\Member\Progress\Field\ProgressFieldSid} constants).
    * Values are new field values.
    * Structure of value completely defined by individual fields.
@@ -51,7 +46,7 @@ function Wl_Member_Progress_Goal_Edit_GoalModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
@@ -62,7 +57,7 @@ function Wl_Member_Progress_Goal_Edit_GoalModel()
 
   /**
    * User key.
-   * 
+   *
    * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
@@ -81,44 +76,7 @@ WlSdk_ModelAbstract.extend(Wl_Member_Progress_Goal_Edit_GoalModel);
  */
 Wl_Member_Progress_Goal_Edit_GoalModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_field_goal": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_field_list": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "is_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_field_goal": {"post": {"post": true}},"a_field_list": {"get": {"result": true},"post": {"result": true}},"is_staff": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -128,4 +86,4 @@ Wl_Member_Progress_Goal_Edit_GoalModel.prototype.config=function()
  * @param {?string} uid User key. Primary key in the {@link \PassportLoginSql} table.
  * @returns {Wl_Member_Progress_Goal_Edit_GoalModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,12 +13,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid";
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel_a_filter_a_config
@@ -214,43 +209,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleList
  */
 Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_filter": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_filter": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -260,4 +219,4 @@ Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel.prototype.confi
  * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

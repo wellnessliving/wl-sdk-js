@@ -12,9 +12,9 @@ function Wl_Book_Process_Info_InfoCanCompleteModel()
 
   /**
    * Selected sessions.
-   * 
+   *
    * Keys - session IDs. Primary keys in table {@link RsClassPeriodSql}.
-   * 
+   *
    * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
    *
    * @get get
@@ -24,9 +24,9 @@ function Wl_Book_Process_Info_InfoCanCompleteModel()
 
   /**
    * Selected sessions.
-   * 
+   *
    * Keys - session IDs. Primary keys in table {@link RsClassPeriodSql}.
-   * 
+   *
    * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
    *
    * @post post
@@ -90,58 +90,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Info_InfoCanCompleteModel);
  */
 Wl_Book_Process_Info_InfoCanCompleteModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_session_select": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_session_select_post": {
-        "post": {
-          "post": true
-        }
-      },
-      "can_complete": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "dt_date_gmt": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_id": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_session_select": {"get": {"get": true}},"a_session_select_post": {"post": {"post": true}},"can_complete": {"get": {"result": true},"post": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"s_id": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

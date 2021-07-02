@@ -13,7 +13,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_sale,k_id,k_shop_product_option,k_location';
+  this._s_key = "id_sale,k_id,k_shop_product_option,k_location";
 
   /**
    * Contains additional specified data for the sale item.
@@ -213,7 +213,7 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * Shop product option key.
-   * 
+   *
    * <tt>null</tt> if not initialized yet.
    *
    * @get get,result
@@ -295,10 +295,10 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * Serialized list of goods.
-   * 
+   *
    * Use it to load a bulk of goods by 1 request. In this case do not specify {@link ElementApi::$id_sale},
    * {@link ElementApi::$k_id} and {@link ElementApi::$k_shop_product_option}.
-   * 
+   *
    * <tt>null</tt> to load just data of 1 item.
    *
    * @get get
@@ -356,168 +356,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_CatalogList_ElementModel);
  */
 Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_data": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_discount_code": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_image": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_installment_template": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_item": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_tax": {
-        "get": {
-          "result": true
-        }
-      },
-      "f_price": {
-        "get": {
-          "result": true
-        }
-      },
-      "f_price_include": {
-        "get": {
-          "result": true
-        }
-      },
-      "f_tax": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_purchase_item": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_purchase_option_view": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_sale": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      },
-      "is_contract": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_shop_product_option": {
-        "get": {
-          "get": true,
-          "result": true
-        }
-      },
-      "m_discount_code": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_discount_login": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_price": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_price_include": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_tax": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_comment": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_price": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_sale": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_item": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_price": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_sale": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "xml_description": {
-        "get": {
-          "result": true
-        }
-      },
-      "xml_special": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_data": {"get": {"result": true}},"a_discount_code": {"get": {"get": true}},"a_image": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_item": {"get": {"result": true}},"a_tax": {"get": {"result": true}},"f_price": {"get": {"result": true}},"f_price_include": {"get": {"result": true}},"f_tax": {"get": {"result": true}},"id_purchase_item": {"get": {"result": true}},"id_purchase_option_view": {"get": {"result": true}},"id_sale": {"get": {"get": true,"result": true}},"is_contract": {"get": {"result": true}},"k_id": {"get": {"get": true,"result": true}},"k_location": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true,"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_include": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"s_comment": {"get": {"result": true}},"s_price": {"get": {"result": true}},"s_sale": {"get": {"result": true}},"s_title": {"get": {"result": true}},"text_item": {"get": {"get": true}},"text_price": {"get": {"result": true}},"text_sale": {"get": {"result": true}},"text_title": {"get": {"result": true}},"xml_description": {"get": {"result": true}},"xml_special": {"get": {"result": true}}}};
 };
 
 /**
@@ -529,4 +368,4 @@ Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
  * @param {string} k_location ID of the location.
  * @returns {Wl_Catalog_CatalogList_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

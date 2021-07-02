@@ -1,5 +1,5 @@
 /**
- * Retrieves an information about staff members for the current location.
+ * Retrieves information about staff members for the current location.
  *
  * This model is generated automatically based on API.
  *
@@ -13,7 +13,7 @@ function Wl_Location_Staff_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location';
+  this._s_key = "k_location";
 
   /**
    * @typedef {{}} Wl_Location_Staff_ListModel_a_staff
@@ -82,20 +82,7 @@ WlSdk_ModelAbstract.extend(Wl_Location_Staff_ListModel);
  */
 Wl_Location_Staff_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_staff": {"get": {"result": true}},"k_location": {"get": {"get": true}}}};
 };
 
 /**
@@ -104,4 +91,4 @@ Wl_Location_Staff_ListModel.prototype.config=function()
  * @param {string} k_location ID of a location.
  * @returns {Wl_Location_Staff_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

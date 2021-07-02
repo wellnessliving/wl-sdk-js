@@ -13,12 +13,7 @@ function Wl_Location_Flag_FlagModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_location,uid";
 
   /**
    * @typedef {{}} Wl_Location_Flag_FlagModel_a_flag
@@ -59,7 +54,7 @@ function Wl_Location_Flag_FlagModel()
   this.is_flag = undefined;
 
   /**
-   * Location primary key.
+   * Location key.
    *
    * @get get
    * @type {string}
@@ -85,42 +80,14 @@ WlSdk_ModelAbstract.extend(Wl_Location_Flag_FlagModel);
  */
 Wl_Location_Flag_FlagModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_flag": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_uid": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_flag": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_flag": {"get": {"result": true}},"a_uid": {"get": {"get": true}},"is_flag": {"get": {"result": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Location_Flag_FlagModel.instanceGet
- * @param {string} k_location Location primary key.
+ * @param {string} k_location Location key.
  * @param {?string} uid User's primary key. <tt>null</tt> if not set.
  * @returns {Wl_Location_Flag_FlagModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

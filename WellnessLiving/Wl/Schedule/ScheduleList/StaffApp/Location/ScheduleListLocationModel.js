@@ -13,7 +13,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * Location IDs. Primary keys in {@link \RsLocationSql} table.
@@ -57,43 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleLi
  */
 Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_location": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -103,4 +67,4 @@ Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel.prototype.c
  * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

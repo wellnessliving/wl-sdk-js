@@ -36,18 +36,5 @@ WlSdk_ModelAbstract.extend(Social_Google_Plus_LoginModel);
  */
 Social_Google_Plus_LoginModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "s_application": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_code": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"s_application": {"post": {"post": true}},"s_code": {"post": {"post": true}}}};
 };

@@ -13,7 +13,7 @@ function Wl_Report_DataModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'i_page,id_report,id_report_group,id_report_view,k_business,s_filter,s_sort';
+  this._s_key = "i_page,id_report,id_report_group,id_report_view,k_business,s_filter,s_sort";
 
   /**
    * Data of required report. See {@link \RsReport::apiData()} for details.
@@ -89,50 +89,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_DataModel);
  */
 Wl_Report_DataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_data": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_page": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_report": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_report_group": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_report_view": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_filter": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_sort": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_data": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_report": {"get": {"get": true}},"id_report_group": {"get": {"get": true}},"id_report_view": {"get": {"get": true}},"k_business": {"get": {"get": true}},"s_filter": {"get": {"get": true}},"s_sort": {"get": {"get": true}}}};
 };
 
 /**
@@ -147,4 +104,4 @@ Wl_Report_DataModel.prototype.config=function()
  * @param {string} s_sort Way for sorting report data.
  * @returns {Wl_Report_DataModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

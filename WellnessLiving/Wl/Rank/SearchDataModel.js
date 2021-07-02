@@ -13,7 +13,7 @@ function Wl_Rank_SearchDataModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * Belt rank categories.
@@ -41,20 +41,7 @@ WlSdk_ModelAbstract.extend(Wl_Rank_SearchDataModel);
  */
 Wl_Rank_SearchDataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_rank_category_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_rank_category_list": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -63,4 +50,4 @@ Wl_Rank_SearchDataModel.prototype.config=function()
  * @param {string} k_business Business key from {@link \RsBusinessSql}.
  * @returns {Wl_Rank_SearchDataModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

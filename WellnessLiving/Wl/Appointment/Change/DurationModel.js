@@ -11,11 +11,6 @@ function Wl_Appointment_Change_DurationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Array with state of client mail form.
    *
    * @post post
@@ -73,7 +68,7 @@ function Wl_Appointment_Change_DurationModel()
 
   /**
    * Appointment key.
-   * 
+   *
    * Empty value means not set.
    *
    * @post post
@@ -107,58 +102,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Change_DurationModel);
  */
 Wl_Appointment_Change_DurationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_mail_form_client": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_mail_form_staff": {
-        "post": {
-          "post": true
-        }
-      },
-      "i_duration_delta": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_notify_client": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_notify_staff": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_reload": {
-        "post": {
-          "result": true
-        }
-      },
-      "is_skip": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_appointment": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_form_id": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_time_end": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_mail_form_client": {"post": {"post": true}},"a_mail_form_staff": {"post": {"post": true}},"i_duration_delta": {"post": {"post": true}},"is_notify_client": {"post": {"post": true}},"is_notify_staff": {"post": {"post": true}},"is_reload": {"post": {"result": true}},"is_skip": {"post": {"result": true}},"k_appointment": {"post": {"post": true}},"s_form_id": {"post": {"post": true}},"s_time_end": {"post": {"result": true}}}};
 };

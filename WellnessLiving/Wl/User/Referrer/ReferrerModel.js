@@ -13,12 +13,7 @@ function Wl_User_Referrer_ReferrerModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 's_search,k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "s_search,k_business";
 
   /**
    * @typedef {{}} Wl_User_Referrer_ReferrerModel_a_photo
@@ -129,55 +124,7 @@ WlSdk_ModelAbstract.extend(Wl_User_Referrer_ReferrerModel);
  */
 Wl_User_Referrer_ReferrerModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_photo": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_email": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_member": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_name_first": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_name_last": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_phone": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_search": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid_referrer": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_photo": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_email": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_name_first": {"get": {"result": true}},"s_name_last": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_search": {"get": {"get": true}},"uid_referrer": {"get": {"result": true}}}};
 };
 
 /**
@@ -187,4 +134,4 @@ Wl_User_Referrer_ReferrerModel.prototype.config=function()
  * @param {string} k_business Current business key.
  * @returns {Wl_User_Referrer_ReferrerModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

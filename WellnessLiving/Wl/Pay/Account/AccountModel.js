@@ -13,7 +13,7 @@ function Wl_Pay_Account_AccountModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,is_owner';
+  this._s_key = "uid,k_business,is_owner";
 
   /**
    * @typedef {{}} Wl_Pay_Account_AccountModel_a_account
@@ -91,7 +91,7 @@ function Wl_Pay_Account_AccountModel()
 
   /**
    * Key of a business to show information for.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -117,35 +117,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Account_AccountModel);
  */
 Wl_Pay_Account_AccountModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_account": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_account_nx": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_owner": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_account": {"get": {"result": true}},"a_account_nx": {"get": {"result": true}},"is_owner": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -156,4 +128,4 @@ Wl_Pay_Account_AccountModel.prototype.config=function()
  * @param {boolean} is_owner <tt>true</tt> - get information for account of money owner (another user may be owner of the specified user's money). <tt>false</tt> - get information certainly for the specified user.
  * @returns {Wl_Pay_Account_AccountModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

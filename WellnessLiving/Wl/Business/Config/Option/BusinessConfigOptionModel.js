@@ -13,7 +13,7 @@ function Wl_Business_Config_Option_BusinessConfigOptionModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * List of config option values. Key - config option class CID, value - config option value.
@@ -41,20 +41,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Config_Option_BusinessConfigOptionModel);
  */
 Wl_Business_Config_Option_BusinessConfigOptionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_option": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_option": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -63,4 +50,4 @@ Wl_Business_Config_Option_BusinessConfigOptionModel.prototype.config=function()
  * @param {string} k_business Key of business. Primary key in {@link RsBusinessSql}.
  * @returns {Wl_Business_Config_Option_BusinessConfigOptionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

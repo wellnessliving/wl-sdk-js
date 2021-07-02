@@ -11,11 +11,6 @@ function Wl_Business_Partner_Enroll_EnrollModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Business key.
    *
    * @post get
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Partner_Enroll_EnrollModel);
  */
 Wl_Business_Partner_Enroll_EnrollModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"get": true}}}};
 };

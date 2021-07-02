@@ -12,7 +12,7 @@ function Wl_Review_ReviewModel()
 
   /**
    * Selected rate.
-   * 
+   *
    * <tt>null</tt> if not set yet.
    *
    * @post post
@@ -22,7 +22,7 @@ function Wl_Review_ReviewModel()
 
   /**
    * ID of a location.
-   * 
+   *
    * <tt>null</tt> if not set yet.
    *
    * @post post
@@ -48,7 +48,7 @@ function Wl_Review_ReviewModel()
 
   /**
    * The text of review.
-   * 
+   *
    * <tt>null</tt> if not set yet.
    *
    * @post post
@@ -66,33 +66,5 @@ WlSdk_ModelAbstract.extend(Wl_Review_ReviewModel);
  */
 Wl_Review_ReviewModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_rate": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_location": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_login_activity": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_review": {
-        "post": {
-          "result": true
-        }
-      },
-      "s_text": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_rate": {"post": {"post": true}},"k_location": {"post": {"post": true}},"k_login_activity": {"post": {"result": true}},"k_review": {"post": {"result": true}},"s_text": {"post": {"post": true}}}};
 };

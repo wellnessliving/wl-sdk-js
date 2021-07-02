@@ -13,7 +13,7 @@ function Wl_Business_Franchise_Report_Curves_AccumulationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * Progress value.
@@ -69,41 +69,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Franchise_Report_Curves_AccumulationModel
  */
 Wl_Business_Franchise_Report_Curves_AccumulationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "f_progress": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_exists": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "url_download": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"f_progress": {"get": {"result": true}},"is_exists": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}},"url_download": {"get": {"result": true}}}};
 };
 
 /**
@@ -113,4 +79,4 @@ Wl_Business_Franchise_Report_Curves_AccumulationModel.prototype.config=function(
  * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
  * @returns {Wl_Business_Franchise_Report_Curves_AccumulationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

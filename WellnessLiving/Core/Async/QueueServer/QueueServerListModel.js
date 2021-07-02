@@ -11,11 +11,6 @@ function Core_Async_QueueServer_QueueServerListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A list of queue servers.
    *
    * @get result
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Core_Async_QueueServer_QueueServerListModel);
  */
 Core_Async_QueueServer_QueueServerListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_queue": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_provider": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_queue": {"get": {"result": true}},"s_provider": {"get": {"get": true}}}};
 };

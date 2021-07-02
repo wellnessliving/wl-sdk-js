@@ -13,7 +13,7 @@ function Wl_Staff_PayRate_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Staff_PayRate_ListModel_a_pay_rate
@@ -91,20 +91,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_PayRate_ListModel);
  */
 Wl_Staff_PayRate_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_pay_rate": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_pay_rate": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -113,4 +100,4 @@ Wl_Staff_PayRate_ListModel.prototype.config=function()
  * @param {string} k_business ID of business. Primary key in {@link RsBusinessSql} table.
  * @returns {Wl_Staff_PayRate_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,7 +13,7 @@ function Wl_Business_Reward_Config_RewardConfigModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * <tt>true</tt> Reward program is disabled, <tt>false</tt> - otherwise.
@@ -43,26 +43,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Reward_Config_RewardConfigModel);
  */
 Wl_Business_Reward_Config_RewardConfigModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_disabled_reward_program": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_disabled_reward_program": {"get": {"result": true},"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -71,4 +52,4 @@ Wl_Business_Reward_Config_RewardConfigModel.prototype.config=function()
  * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
  * @returns {Wl_Business_Reward_Config_RewardConfigModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

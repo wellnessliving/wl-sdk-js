@@ -36,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Account_Subscription_SearchDataModel);
  */
 Wl_Business_Account_Subscription_SearchDataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_subscription_status": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_subscription_status": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };

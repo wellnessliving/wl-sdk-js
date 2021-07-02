@@ -11,9 +11,12 @@ function Wl_Event_EventCancelModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
+   * Key of the business to which the visit belongs.
+   *
+   * @post get
+   * @type {string}
    */
-  this.ERROR_SILENT = true;
+  this.k_business = undefined;
 
   /**
    * Book ID.
@@ -34,13 +37,5 @@ WlSdk_ModelAbstract.extend(Wl_Event_EventCancelModel);
  */
 Wl_Event_EventCancelModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_visit": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"get": true}},"k_visit": {"post": {"get": true}}}};
 };

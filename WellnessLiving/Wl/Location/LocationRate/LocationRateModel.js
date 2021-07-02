@@ -13,12 +13,7 @@ function Wl_Location_LocationRate_LocationRateModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_location";
 
   /**
    * Location rate.
@@ -46,7 +41,7 @@ function Wl_Location_LocationRate_LocationRateModel()
 
   /**
    * ID of a location to show rate for.
-   * 
+   *
    * Primary key in {@link \RsLocationSql}.
    *
    * @get get
@@ -64,30 +59,7 @@ WlSdk_ModelAbstract.extend(Wl_Location_LocationRate_LocationRateModel);
  */
 Wl_Location_LocationRate_LocationRateModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "f_rate": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_review": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_rate": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"f_rate": {"get": {"result": true}},"i_review": {"get": {"result": true}},"is_rate": {"get": {"result": true}},"k_location": {"get": {"get": true}}}};
 };
 
 /**
@@ -96,4 +68,4 @@ Wl_Location_LocationRate_LocationRateModel.prototype.config=function()
  * @param {string} k_location ID of a location to show rate for. Primary key in {@link \RsLocationSql}.
  * @returns {Wl_Location_LocationRate_LocationRateModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

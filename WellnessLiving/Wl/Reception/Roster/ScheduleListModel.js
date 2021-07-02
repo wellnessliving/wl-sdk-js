@@ -45,23 +45,5 @@ WlSdk_ModelAbstract.extend(Wl_Reception_Roster_ScheduleListModel);
  */
 Wl_Reception_Roster_ScheduleListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_schedule": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_local": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_schedule": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
 };

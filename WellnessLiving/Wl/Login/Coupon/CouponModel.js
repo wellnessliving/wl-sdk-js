@@ -52,28 +52,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Coupon_CouponModel);
  */
 Wl_Login_Coupon_CouponModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_login_coupon": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_amount": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_code": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"get": {"get": true}},"k_login_coupon": {"get": {"result": true}},"m_amount": {"get": {"result": true}},"s_code": {"get": {"get": true}}}};
 };

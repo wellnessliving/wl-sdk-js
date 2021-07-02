@@ -11,11 +11,6 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * All data from the provider model <tt>Wl_Appointment_Book_ProviderModel</tt>.
    *
    * @get get
@@ -26,7 +21,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
 
   /**
    * A list of payment sources to pay with.
-   * 
+   *
    * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
    *
    * @post post
@@ -196,7 +191,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
 
   /**
    * Location to show available appointment booking schedule.
-   * 
+   *
    * Primary key in {@link \RsLocationSql} table.
    *
    * @get get,result
@@ -230,6 +225,15 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.m_total = undefined;
 
   /**
+   * Variable price. Is set only during booking an appointment with variable type of the price
+   *   {@link \RsServicePriceSid::VARIES} from spa backend {@link ModeSid::SPA_BACKEND}.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.m_variable_price = "";
+
+  /**
    * Discount code.
    *
    * @get get
@@ -240,7 +244,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
 
   /**
    * User to get information for.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
@@ -259,105 +263,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Payment_PaymentModel);
  */
 Wl_Appointment_Book_Payment_PaymentModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_book_data": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "a_pay_form": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_promotion_data": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_purchase": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_purchase_item": {
-        "post": {
-          "result": true
-        }
-      },
-      "id_mode": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_pay": {
-        "post": {
-          "result": true
-        }
-      },
-      "id_purchase_item": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true,
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_login_activity_purchase": {
-        "post": {
-          "result": true
-        }
-      },
-      "k_login_promotion": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_total": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_discount_code": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_book_data": {"get": {"get": true},"post": {"get": true}},"a_pay_form": {"post": {"post": true}},"a_promotion_data": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_purchase_item": {"post": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay": {"post": {"result": true}},"id_purchase_item": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_login_promotion": {"get": {"get": true}},"m_total": {"get": {"result": true}},"m_variable_price": {"get": {"get": true}},"text_discount_code": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

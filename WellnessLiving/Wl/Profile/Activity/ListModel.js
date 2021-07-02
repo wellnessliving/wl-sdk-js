@@ -13,7 +13,7 @@ function Wl_Profile_Activity_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * A list of activity items. Each value is a primary key in {@link RsLoginActivitySql}.
@@ -49,25 +49,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Activity_ListModel);
  */
 Wl_Profile_Activity_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_activity": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_activity": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -77,4 +59,4 @@ Wl_Profile_Activity_ListModel.prototype.config=function()
  * @param {string} uid ID of a user to show information for.
  * @returns {Wl_Profile_Activity_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

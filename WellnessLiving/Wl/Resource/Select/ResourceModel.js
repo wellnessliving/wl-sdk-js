@@ -13,7 +13,7 @@ function Wl_Resource_Select_ResourceModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_location';
+  this._s_key = "k_business,k_location,is_book";
 
   /**
    * @typedef {{}} Wl_Resource_Select_ResourceModel_a_resource
@@ -134,6 +134,14 @@ function Wl_Resource_Select_ResourceModel()
   this.id_purchase_item = undefined;
 
   /**
+   * If return only bookable resources. If <tt>false</tt> returns all resources.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_book = true;
+
+  /**
    * If need period only data.
    *
    * @get get
@@ -194,65 +202,7 @@ WlSdk_ModelAbstract.extend(Wl_Resource_Select_ResourceModel);
  */
 Wl_Resource_Select_ResourceModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_resource": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_resource_period": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_period_one": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_duration": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_purchase_item": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_period_only": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_resource_period": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_resource": {
-        "get": {
-          "get": true
-        }
-      },
-      "not_duration_empty": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_resource": {"get": {"result": true}},"a_resource_period": {"get": {"result": true}},"html_period_one": {"get": {"result": true}},"i_duration": {"get": {"get": true}},"id_purchase_item": {"get": {"get": true}},"is_book": {"get": {"get": true}},"is_period_only": {"get": {"get": true}},"is_resource_period": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource": {"get": {"get": true}},"not_duration_empty": {"get": {"get": true}}}};
 };
 
 /**
@@ -260,6 +210,7 @@ Wl_Resource_Select_ResourceModel.prototype.config=function()
  * @name Wl_Resource_Select_ResourceModel.instanceGet
  * @param {string} k_business Business key, primary key in {@link \RsBusinessSql}.
  * @param {?string} k_location Location to show resource. Primary key in {@link \RsLocationSql} table.
+ * @param {boolean} is_book If return only bookable resources. If <tt>false</tt> returns all resources.
  * @returns {Wl_Resource_Select_ResourceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -11,11 +11,6 @@ function Wl_Business_AuthorizeSupport_AuthorizeSupportEnterModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Location primary key in {@link \RsLocationSql} table.
    *
    * @get get
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_AuthorizeSupport_AuthorizeSupportEnterMod
  */
 Wl_Business_AuthorizeSupport_AuthorizeSupportEnterModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_location": {"get": {"get": true}}}};
 };

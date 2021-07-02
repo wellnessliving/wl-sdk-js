@@ -11,11 +11,6 @@ function Wl_Import_Migration_Cookie_CookieGeneralModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Key of the business from Mindbody.
    * Note: This key is used to go to the backend page of the business in Mindbody.
    * Key of the business can be a negative number.
@@ -59,28 +54,5 @@ WlSdk_ModelAbstract.extend(Wl_Import_Migration_Cookie_CookieGeneralModel);
  */
 Wl_Import_Migration_Cookie_CookieGeneralModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_studio": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_cookie": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_login": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_password": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_studio": {"get": {"get": true}},"s_cookie": {"get": {"result": true}},"text_login": {"get": {"get": true}},"text_password": {"get": {"get": true}}}};
 };

@@ -13,7 +13,7 @@ function Wl_Reward_Prize_PrizeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * Array of prize keys. Each element is primary key from {@link \RsRewardPrizeSql}.
@@ -49,25 +49,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Prize_PrizeModel);
  */
 Wl_Reward_Prize_PrizeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_prize": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_score": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_prize": {"get": {"result": true}},"a_score": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -76,4 +58,4 @@ Wl_Reward_Prize_PrizeModel.prototype.config=function()
  * @param {string} k_business Key of current business.
  * @returns {Wl_Reward_Prize_PrizeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

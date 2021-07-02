@@ -11,11 +11,6 @@ function Wl_Franchise_Transfer_TransferStatusModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Transfer status ID. One of {@link \Wl\Franchise\Transfer\TransferStatusSid} constants.
    *
    * @put post
@@ -57,28 +52,5 @@ WlSdk_ModelAbstract.extend(Wl_Franchise_Transfer_TransferStatusModel);
  */
 Wl_Franchise_Transfer_TransferStatusModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_transfer_status": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_franchise_transfer": {
-        "put": {
-          "post": true
-        }
-      },
-      "text_reason": {
-        "put": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_transfer_status": {"put": {"post": true}},"k_business": {"put": {"post": true}},"k_franchise_transfer": {"put": {"post": true}},"text_reason": {"put": {"post": true}}}};
 };

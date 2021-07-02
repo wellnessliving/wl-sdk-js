@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Staff_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location,k_service,dt_date,is_unavailable';
+  this._s_key = "k_location,k_service,dt_date,is_unavailable";
 
   /**
    * A list of staff members with information about them.
@@ -99,55 +99,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Staff_ListModel);
  */
 Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "can_book_unavailable_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        }
-      },
-      "has_gender": {
-        "get": {
-          "result": true
-        }
-      },
-      "has_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_gender_different": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_unavailable": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_service": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_staff": {"get": {"result": true}},"can_book_unavailable_staff": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"has_gender": {"get": {"result": true}},"has_staff": {"get": {"result": true}},"is_gender_different": {"get": {"result": true}},"is_unavailable": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}}}};
 };
 
 /**
@@ -159,4 +111,4 @@ Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
  * @param {boolean} is_unavailable <tt>true</tt> - return service categories which has no staff members to conduct it; <tt>false</tt> - return only service categories which has staff members.
  * @returns {Wl_Appointment_Book_Staff_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

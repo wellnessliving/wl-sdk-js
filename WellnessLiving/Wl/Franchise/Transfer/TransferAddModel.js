@@ -11,11 +11,6 @@ function Wl_Franchise_Transfer_TransferAddModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * End date of temporary transfer.
    * Set if {@link \Wl\Franchise\Transfer\TransferAddApi::$id_transfer_period} equals to
    * {@link \Wl\Franchise\Transfer\TransferPeriodSid::RANGE} constant, otherwise <tt>null</tt>.
@@ -97,48 +92,5 @@ WlSdk_ModelAbstract.extend(Wl_Franchise_Transfer_TransferAddModel);
  */
 Wl_Franchise_Transfer_TransferAddModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dt_end_local": {
-        "post": {
-          "post": true
-        }
-      },
-      "dt_start_local": {
-        "post": {
-          "post": true
-        }
-      },
-      "i_day": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_transfer_direction": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_transfer_period": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_location_to": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid_transfer": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dt_end_local": {"post": {"post": true}},"dt_start_local": {"post": {"post": true}},"i_day": {"post": {"post": true}},"id_transfer_direction": {"post": {"post": true}},"id_transfer_period": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_location_to": {"post": {"post": true}},"uid_transfer": {"post": {"post": true}}}};
 };

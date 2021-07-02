@@ -13,7 +13,7 @@ function Wl_Login_Type_LoginTypeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * List of login types keys.
@@ -41,20 +41,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Type_LoginTypeModel);
  */
 Wl_Login_Type_LoginTypeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login_type_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login_type_list": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -63,4 +50,4 @@ Wl_Login_Type_LoginTypeModel.prototype.config=function()
  * @param {string} k_business Business key.
  * @returns {Wl_Login_Type_LoginTypeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -36,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_GymPass_Webhook_BookingCancelModel);
  */
 Wl_GymPass_Webhook_BookingCancelModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "event_type": {
-        "post": {
-          "post": true
-        }
-      },
-      "event_data": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"event_type": {"post": {"post": true}},"event_data": {"post": {"post": true}}}};
 };

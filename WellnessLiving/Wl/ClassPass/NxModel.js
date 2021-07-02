@@ -22,7 +22,5 @@ WlSdk_ModelAbstract.extend(Wl_ClassPass_NxModel);
  */
 Wl_ClassPass_NxModel.prototype.config=function()
 {
-  return {
-    "a_field": []
-  };
+  return {"a_field": []};
 };

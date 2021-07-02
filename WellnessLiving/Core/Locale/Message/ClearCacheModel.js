@@ -12,10 +12,6 @@ function Core_Locale_Message_ClearCacheModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
 
   this.changeInit();
 }
@@ -27,7 +23,5 @@ WlSdk_ModelAbstract.extend(Core_Locale_Message_ClearCacheModel);
  */
 Core_Locale_Message_ClearCacheModel.prototype.config=function()
 {
-  return {
-    "a_field": []
-  };
+  return {"a_field": []};
 };

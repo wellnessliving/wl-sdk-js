@@ -13,7 +13,7 @@ function Wl_Staff_Location_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * List of business staffs with the locations available to them.
@@ -41,20 +41,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_Location_ListModel);
  */
 Wl_Staff_Location_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_location": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -63,4 +50,4 @@ Wl_Staff_Location_ListModel.prototype.config=function()
  * @param {string} k_business Business key for which data will be collected.
  * @returns {Wl_Staff_Location_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

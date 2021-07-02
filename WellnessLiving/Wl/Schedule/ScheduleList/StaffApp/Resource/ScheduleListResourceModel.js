@@ -13,7 +13,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel_a_resource
@@ -77,43 +77,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleLi
  */
 Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_resource": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_resource": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -123,4 +87,4 @@ Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel.prototype.c
  * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

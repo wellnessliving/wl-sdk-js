@@ -11,11 +11,6 @@ function Wl_Lead_LeadStatusModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Status of the lead record. One of {@link \RsLeadStatusSid} constants.
    *
    * @post post
@@ -49,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Lead_LeadStatusModel);
  */
 Wl_Lead_LeadStatusModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_lead_status": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_lead_status": {"post": {"post": true}},"k_business": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };

@@ -13,12 +13,7 @@ function Wl_Feedback_Modal_FeedbackModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid";
 
   /**
    * @typedef {{}} Wl_Feedback_Modal_FeedbackModel_a_options
@@ -117,54 +112,7 @@ WlSdk_ModelAbstract.extend(Wl_Feedback_Modal_FeedbackModel);
  */
 Wl_Feedback_Modal_FeedbackModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_options": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_score": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_staff": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "show_modal": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_first_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_options": {"get": {"result": true}},"i_score": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_staff": {"get": {"result": true},"post": {"post": true}},"show_modal": {"get": {"result": true}},"text_first_name": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -174,4 +122,4 @@ Wl_Feedback_Modal_FeedbackModel.prototype.config=function()
  * @param {string} uid User key.
  * @returns {Wl_Feedback_Modal_FeedbackModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

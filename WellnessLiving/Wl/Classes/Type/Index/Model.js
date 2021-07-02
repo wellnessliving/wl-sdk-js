@@ -36,13 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Type_Index_Model);
  */
 Wl_Classes_Type_Index_Model.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "class_types": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"class_types": {"get": {"result": true}}}};
 };

@@ -13,12 +13,7 @@ function Wl_Search_Criteria_SearchCriteriaListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,s_search_entity,s_search_group,k_search_template';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business,s_search_entity,s_search_group,k_search_template";
 
   /**
    * A list of criteria with default (empty) data. Used to display default criteria list.
@@ -57,7 +52,7 @@ function Wl_Search_Criteria_SearchCriteriaListModel()
   /**
    * Key of existing template.
    * Primary key in the {@link SearchTemplateSql} table.
-   * 
+   *
    * Can be empty if template needs to be created.
    *
    * @get get
@@ -101,50 +96,7 @@ WlSdk_ModelAbstract.extend(Wl_Search_Criteria_SearchCriteriaListModel);
  */
 Wl_Search_Criteria_SearchCriteriaListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_criteria_list_default": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_criteria_list_save": {
-        "get": {
-          "result": true
-        }
-      },
-      "has_disable": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_search_template": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_search_entity": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_search_group": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_criteria_list_default": {"get": {"result": true}},"a_criteria_list_save": {"get": {"result": true}},"has_disable": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_search_template": {"get": {"get": true}},"s_search_entity": {"get": {"get": true}},"s_search_group": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -157,4 +109,4 @@ Wl_Search_Criteria_SearchCriteriaListModel.prototype.config=function()
  * @param {string} k_search_template Key of existing template. Primary key in the {@link SearchTemplateSql} table. Can be empty if template needs to be created.
  * @returns {Wl_Search_Criteria_SearchCriteriaListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

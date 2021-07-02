@@ -11,11 +11,6 @@ function Wl_Franchise_Transfer_Edit_TransferEditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * <tt>true</tt> if transfer can be edited to permanent, <tt>false</tt> otherwise.
    *
    * @get result
@@ -72,6 +67,15 @@ function Wl_Franchise_Transfer_Edit_TransferEditModel()
   this.id_transfer_period = undefined;
 
   /**
+   * Business key.
+   *
+   * @get get
+   * @put get
+   * @type {string}
+   */
+  this.k_business = undefined;
+
+  /**
    * Franchise transfer key. Primary key in {@link \Wl\Franchise\Transfer\TransferSql} table.
    *
    * @get get
@@ -90,51 +94,5 @@ WlSdk_ModelAbstract.extend(Wl_Franchise_Transfer_Edit_TransferEditModel);
  */
 Wl_Franchise_Transfer_Edit_TransferEditModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "can_permanent": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_end_current_local": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_end_local": {
-        "put": {
-          "post": true
-        }
-      },
-      "dt_start_current_local": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_start_local": {
-        "put": {
-          "post": true
-        }
-      },
-      "id_transfer_direction": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_transfer_period": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_franchise_transfer": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"can_permanent": {"get": {"result": true}},"dt_end_current_local": {"get": {"result": true}},"dt_end_local": {"put": {"post": true}},"dt_start_current_local": {"get": {"result": true}},"dt_start_local": {"put": {"post": true}},"id_transfer_direction": {"get": {"result": true}},"id_transfer_period": {"put": {"post": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_franchise_transfer": {"get": {"get": true},"put": {"get": true}}}};
 };

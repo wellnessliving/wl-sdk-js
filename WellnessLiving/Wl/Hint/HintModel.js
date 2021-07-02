@@ -12,7 +12,7 @@ function Wl_Hint_HintModel()
 
   /**
    * A list of hints that should be displayed sequentially.
-   * 
+   *
    * Template should be placed in <tt>Wl\Hint\Xml</tt> as a single xml file.
    *
    * @put post
@@ -46,23 +46,5 @@ WlSdk_ModelAbstract.extend(Wl_Hint_HintModel);
  */
 Wl_Hint_HintModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_template": {
-        "put": {
-          "post": true
-        }
-      },
-      "text_template_show": {
-        "put": {
-          "result": true
-        }
-      },
-      "uid": {
-        "put": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_template": {"put": {"post": true}},"text_template_show": {"put": {"result": true}},"uid": {"put": {"post": true}}}};
 };

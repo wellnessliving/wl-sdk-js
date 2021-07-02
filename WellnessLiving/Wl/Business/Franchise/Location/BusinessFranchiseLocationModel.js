@@ -13,12 +13,7 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,id_business_franchise_location,id_report';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,id_business_franchise_location,id_report";
 
   /**
    * @typedef {{}} Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_city_list
@@ -211,9 +206,9 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
 
   /**
    * Determines which locations should be returned.
-   * 
+   *
    * One of the {@link BusinessFranchiseLocationSid} constants.
-   * 
+   *
    * <tt>null</tt> means that {@link \Wl\Business\Franchise\Location\BusinessFranchiseLocationSid::ALL} is used.
    *
    * @get get
@@ -223,9 +218,9 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
 
   /**
    * Determines report for which data should be returned.
-   * 
+   *
    * One of the {@link \RsReportSid} constants.
-   * 
+   *
    * <tt>null</tt> means that report is not set.
    *
    * @get get
@@ -251,50 +246,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Franchise_Location_BusinessFranchiseLocat
  */
 Wl_Business_Franchise_Location_BusinessFranchiseLocationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_city_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_country_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_location_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_region_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_state_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_business_franchise_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_report": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_city_list": {"get": {"result": true}},"a_country_list": {"get": {"result": true}},"a_location_list": {"get": {"result": true}},"a_region_list": {"get": {"result": true}},"a_state_list": {"get": {"result": true}},"id_business_franchise_location": {"get": {"get": true}},"id_report": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -305,4 +257,4 @@ Wl_Business_Franchise_Location_BusinessFranchiseLocationModel.prototype.config=f
  * @param {number} id_report Determines report for which data should be returned. One of the {@link \RsReportSid} constants. <tt>null</tt> means that report is not set.
  * @returns {Wl_Business_Franchise_Location_BusinessFranchiseLocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

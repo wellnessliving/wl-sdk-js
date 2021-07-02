@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location,k_resource_category,k_class_tab,is_backend';
+  this._s_key = "k_location,k_resource_category,k_class_tab,is_backend";
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_period
@@ -169,40 +169,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_AssetListModel);
  */
 Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_asset": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_backend": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class_tab": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_resource_category": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_resource_layout": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_asset": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource_category": {"get": {"get": true}},"k_resource_layout": {"get": {"result": true}}}};
 };
 
 /**
@@ -214,4 +181,4 @@ Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
  * @param {boolean} is_backend <tt>true</tt> - load assets for backend mode; <tt>false</tt> - for frontend mode.
  * @returns {Wl_Appointment_Book_Asset_AssetListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

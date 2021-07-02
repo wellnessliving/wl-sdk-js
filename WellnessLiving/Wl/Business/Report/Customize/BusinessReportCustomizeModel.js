@@ -13,12 +13,7 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,k_report_save,id_report,id_report_page';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business,k_report_save,id_report,id_report_page";
 
   /**
    * Button config.
@@ -119,7 +114,7 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
 
   /**
    * Report page ID. One of the {@link \RsReportPageSid} constants.
-   * 
+   *
    * <tt>null</tt> if report is rendered in a single report collection.
    *
    * @get get
@@ -181,88 +176,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Report_Customize_BusinessReportCustomizeM
  */
 Wl_Business_Report_Customize_BusinessReportCustomizeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_button": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "a_column": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_column_selected": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_report_date": {
-        "get": {
-          "result": true
-        }
-      },
-      "has_client": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_report": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "id_report_page": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_report_save": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "show_client_details": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "sid_report_date": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_button": {"get": {"result": true},"post": {"post": true}},"a_column": {"get": {"result": true}},"a_column_selected": {"post": {"post": true}},"a_report_date": {"get": {"result": true}},"has_client": {"get": {"result": true}},"id_report": {"get": {"get": true},"post": {"get": true}},"id_report_page": {"get": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_report_save": {"get": {"get": true},"post": {"get": true}},"show_client_details": {"get": {"result": true},"post": {"post": true}},"sid_report_date": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -275,4 +189,4 @@ Wl_Business_Report_Customize_BusinessReportCustomizeModel.prototype.config=funct
  * @param {number} id_report_page Report page ID. One of the {@link \RsReportPageSid} constants. <tt>null</tt> if report is rendered in a single report collection.
  * @returns {Wl_Business_Report_Customize_BusinessReportCustomizeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

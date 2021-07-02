@@ -11,11 +11,6 @@ function Wl_Profile_Sensor_SensorSaveModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Page number.
    *
    * @post result
@@ -92,57 +87,5 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Sensor_SensorSaveModel);
  */
 Wl_Profile_Sensor_SensorSaveModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_page": {
-        "post": {
-          "result": true
-        }
-      },
-      "id_sensor_type": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_edit": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_old_sensor": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_sensor": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "text_name": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_page": {"post": {"result": true}},"id_sensor_type": {"post": {"post": true}},"is_edit": {"post": {"post": true}},"k_business": {"delete": {"get": true},"post": {"get": true}},"s_old_sensor": {"post": {"post": true}},"s_sensor": {"delete": {"get": true},"post": {"get": true}},"text_name": {"post": {"post": true}},"uid": {"delete": {"get": true},"post": {"get": true}}}};
 };

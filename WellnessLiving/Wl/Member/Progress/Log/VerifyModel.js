@@ -20,7 +20,7 @@ function Wl_Member_Progress_Log_VerifyModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in the {@link \RsBusinessSql} table.
    *
    * @put get
@@ -30,7 +30,7 @@ function Wl_Member_Progress_Log_VerifyModel()
 
   /**
    * User key.
-   * 
+   *
    * Primary key in the {@link \PassportLoginSql} table.
    *
    * @put get
@@ -48,23 +48,5 @@ WlSdk_ModelAbstract.extend(Wl_Member_Progress_Log_VerifyModel);
  */
 Wl_Member_Progress_Log_VerifyModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dt_date": {
-        "put": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dt_date": {"put": {"get": true}},"k_business": {"put": {"get": true}},"uid": {"put": {"get": true}}}};
 };

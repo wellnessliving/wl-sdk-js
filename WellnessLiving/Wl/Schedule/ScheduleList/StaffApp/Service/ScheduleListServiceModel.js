@@ -13,7 +13,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * List of appointment services. Keys - service IDs; primary key in {@link \RsServiceSql} table. Values - service title.
@@ -57,43 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleLis
  */
 Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_service": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -103,4 +67,4 @@ Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel.prototype.con
  * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

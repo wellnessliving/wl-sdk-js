@@ -11,11 +11,6 @@ function Wl_Location_LocationActiveLogModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Local date of operation.
    *
    * @post post
@@ -65,33 +60,5 @@ WlSdk_ModelAbstract.extend(Wl_Location_LocationActiveLogModel);
  */
 Wl_Location_LocationActiveLogModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dl_operation": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_location": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_location_active_log": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_reason": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dl_operation": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_location": {"post": {"post": true}},"k_location_active_log": {"post": {"post": true}},"text_reason": {"post": {"post": true}}}};
 };

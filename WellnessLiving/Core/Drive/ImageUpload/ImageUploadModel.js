@@ -13,7 +13,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 's_class,k_id';
+  this._s_key = "s_class,k_id";
 
   /**
    * Image information for every ID. Every element contains values like {@link \Core\Drive\ImageUpload\ImageUploadApi::_get()} result.
@@ -124,7 +124,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
 
   /**
    * List of image IDs within {@link ImageUploadApi::$s_class}. Serialised via JSON.
-   * 
+   *
    * <tt>null</tt> if no data sent from client.
    *
    * @post post
@@ -169,132 +169,7 @@ WlSdk_ModelAbstract.extend(Core_Drive_ImageUpload_ImageUploadModel);
  */
 Core_Drive_ImageUpload_ImageUploadModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_image": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_text_empty": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "i_preview_height": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "i_preview_width": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "i_thumbnail_height": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "i_thumbnail_width": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "is_delete_allow": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "s_class": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "s_code": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "s_command": {
-        "put": {
-          "post": true
-        }
-      },
-      "s_link": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "text_id": {
-        "post": {
-          "post": true
-        }
-      },
-      "url_empty": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "url_thumbnail": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "url_upload": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_image": {"post": {"result": true}},"a_text_empty": {"get": {"result": true},"put": {"result": true}},"i_preview_height": {"get": {"result": true},"put": {"result": true}},"i_preview_width": {"get": {"result": true},"put": {"result": true}},"i_thumbnail_height": {"get": {"result": true},"put": {"result": true}},"i_thumbnail_width": {"get": {"result": true},"put": {"result": true}},"is_delete_allow": {"get": {"result": true},"put": {"result": true}},"k_id": {"get": {"get": true},"put": {"get": true}},"s_class": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"s_code": {"get": {"result": true},"put": {"result": true}},"s_command": {"put": {"post": true}},"s_link": {"get": {"result": true},"put": {"result": true}},"text_id": {"post": {"post": true}},"url_empty": {"get": {"result": true},"put": {"result": true}},"url_thumbnail": {"get": {"result": true},"put": {"result": true}},"url_upload": {"get": {"result": true},"put": {"result": true}}}};
 };
 
 /**
@@ -304,4 +179,4 @@ Core_Drive_ImageUpload_ImageUploadModel.prototype.config=function()
  * @param {string} k_id ID of image within {@link ImageUploadApi::$s_class}.
  * @returns {Core_Drive_ImageUpload_ImageUploadModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

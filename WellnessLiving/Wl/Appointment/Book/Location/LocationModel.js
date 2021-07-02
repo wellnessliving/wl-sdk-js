@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Location_LocationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,id_class_tab,k_class_tab,uid,is_backend';
+  this._s_key = "k_business,id_class_tab,k_class_tab,uid,is_backend";
 
   /**
    * A list of business locations with information about them.
@@ -25,7 +25,7 @@ function Wl_Appointment_Book_Location_LocationModel()
 
   /**
    * ID of class tab type.
-   * 
+   *
    * <tt>null</tt> if not set yet.
    *
    * @get get
@@ -52,7 +52,7 @@ function Wl_Appointment_Book_Location_LocationModel()
 
   /**
    * ID of class tab.
-   * 
+   *
    * <tt>null</tt> if not set yet.
    *
    * @get get
@@ -78,40 +78,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Location_LocationModel);
  */
 Wl_Appointment_Book_Location_LocationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_class_tab": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_backend": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class_tab": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_location": {"get": {"result": true}},"id_class_tab": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -124,4 +91,4 @@ Wl_Appointment_Book_Location_LocationModel.prototype.config=function()
  * @param {boolean} is_backend <tt>true</tt> - return all service categories of certain location; <tt>false</tt> - return only service categories which has staff members and are bound to certain book tab.
  * @returns {Wl_Appointment_Book_Location_LocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

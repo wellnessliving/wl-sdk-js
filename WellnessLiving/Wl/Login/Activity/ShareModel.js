@@ -44,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Activity_ShareModel);
  */
 Wl_Login_Activity_ShareModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login_activity": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_facebook": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_twitter": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login_activity": {"post": {"post": true}},"is_facebook": {"post": {"post": true}},"is_twitter": {"post": {"post": true}}}};
 };

@@ -11,13 +11,8 @@ function Wl_Report_Generator_FilterInfoModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Additional filter field data.
-   * 
+   *
    * This array is gathered with data returned by {@link \Wl\Report\Generator\ReportFilterFieldAbstract::data()}.
    *
    * @get result
@@ -27,13 +22,23 @@ function Wl_Report_Generator_FilterInfoModel()
 
   /**
    * A list of dynamic filter fields in this report.
-   * 
+   *
    * Copy of result of {@link \Wl\Report\Generator\ReportGeneratorReportAbstract::filterDynamic()}.
    *
    * @get result
    * @type {{}[]}
    */
   this.a_dynamic = undefined;
+
+  /**
+   * A list of hidden filter fields in this report.
+   *
+   * Each element is a {@link ReportFilterFieldInfo::$s_name filter field name}.
+   *
+   * @get result
+   * @type {string[]}
+   */
+  this.a_hide = undefined;
 
   /**
    * Warning list of the report.
@@ -45,7 +50,7 @@ function Wl_Report_Generator_FilterInfoModel()
 
   /**
    * CID of the report which filter information should be retrieved.
-   * 
+   *
    * One of {@link ReportGeneratorReportAbstract} subclasses.
    *
    * @get get
@@ -55,7 +60,7 @@ function Wl_Report_Generator_FilterInfoModel()
 
   /**
    * Filters that should be applied to the report.
-   * 
+   *
    * In this array, key is name of a filter field.
    * A filter field is a property of a {@link ReportFilterAbstract} subclass.
    * Name of the property of that subclass corresponds key in this array.
@@ -67,9 +72,9 @@ function Wl_Report_Generator_FilterInfoModel()
 
   /**
    * Key of the business which report should be shown.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
-   * 
+   *
    * `0` or an empty string for system-wide reports.
    *
    * @get get
@@ -79,9 +84,9 @@ function Wl_Report_Generator_FilterInfoModel()
 
   /**
    * Actor user.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql}.
-   * 
+   *
    * `0` or an empty string for guests.
    *
    * @get get
@@ -99,43 +104,5 @@ WlSdk_ModelAbstract.extend(Wl_Report_Generator_FilterInfoModel);
  */
 Wl_Report_Generator_FilterInfoModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_data": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_dynamic": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_message": {
-        "get": {
-          "result": true
-        }
-      },
-      "cid_report": {
-        "get": {
-          "get": true
-        }
-      },
-      "json_filter": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid_actor": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_data": {"get": {"result": true}},"a_dynamic": {"get": {"result": true}},"a_hide": {"get": {"result": true}},"a_message": {"get": {"result": true}},"cid_report": {"get": {"get": true}},"json_filter": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid_actor": {"get": {"get": true}}}};
 };

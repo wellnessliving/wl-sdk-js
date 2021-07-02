@@ -12,7 +12,7 @@ function Wl_Profile_Merge_ProfileMergeModel()
 
   /**
    * List of fields to save.
-   * 
+   *
    * Keys are keys of fields. Primary key in the {@link \RsFieldSql} table.
    * Values are keys of users from whose profile field value is needed save. Primary key in the {@link \PassportLoginSql} table.
    *
@@ -56,28 +56,5 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Merge_ProfileMergeModel);
  */
 Wl_Profile_Merge_ProfileMergeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_field_save": {
-        "post": {
-          "get": true
-        }
-      },
-      "a_uid": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "uid_main": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_field_save": {"post": {"get": true}},"a_uid": {"post": {"get": true}},"k_business": {"post": {"get": true}},"uid_main": {"post": {"result": true}}}};
 };

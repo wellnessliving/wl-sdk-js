@@ -11,11 +11,6 @@ function Social_Apple_Login_AppleLoginModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Application ID.
    *
    * @post post
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Social_Apple_Login_AppleLoginModel);
  */
 Social_Apple_Login_AppleLoginModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "text_application": {
-        "post": {
-          "post": true
-        }
-      },
-      "text_authorization": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"text_application": {"post": {"post": true}},"text_authorization": {"post": {"post": true}}}};
 };

@@ -11,11 +11,6 @@ function Wl_Pay_Transaction_EditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * @typedef {{}} Wl_Pay_Transaction_EditModel_a_time
    * @property {number} i_hour Number of hours.
    * @property {number} i_minute Number of minutes.
@@ -32,7 +27,7 @@ function Wl_Pay_Transaction_EditModel()
    *   <dt>bool <var>is_am</var></dt>
    *   <dd>Whether time in AM or PM.</dd>
    * </dl>
-   * 
+   *
    * Not specified if should not be changed.
    *
    * @put post
@@ -42,7 +37,7 @@ function Wl_Pay_Transaction_EditModel()
 
   /**
    * New date without time of payment transaction process.
-   * 
+   *
    * Not specified if should not be changed.
    *
    * @put post
@@ -68,7 +63,7 @@ function Wl_Pay_Transaction_EditModel()
 
   /**
    * New base payment method of payment transaction. One of {@link \RsPayMethodSid} constants.
-   * 
+   *
    * Not specified if should not be changed.
    *
    * @put post
@@ -78,7 +73,7 @@ function Wl_Pay_Transaction_EditModel()
 
   /**
    * New custom payment method of payment transaction. Primary key from {@link \Wl\Pay\Method\MethodSql}.
-   * 
+   *
    * Not specified if should not be changed or if base payment method should be used.
    *
    * @put post
@@ -88,9 +83,9 @@ function Wl_Pay_Transaction_EditModel()
 
   /**
    * ID of a payment transaction to change.
-   * 
+   *
    * Primary key from {@link \RsPayTransactionSql}.
-   * 
+   *
    * May be empty if {@link \EditApi.$k_pay_transaction_process} is specified.
    *
    * @put get
@@ -100,9 +95,9 @@ function Wl_Pay_Transaction_EditModel()
 
   /**
    * ID of a payment transaction process to change.
-   * 
+   *
    * Primary key from {@link \RsPayTransactionProcessSql}.
-   * 
+   *
    * May be empty if {@link \EditApi.$k_pay_transaction} is specified.
    *
    * @put get
@@ -112,7 +107,7 @@ function Wl_Pay_Transaction_EditModel()
 
   /**
    * New amount of payment transaction process.
-   * 
+   *
    * Not specified if should not be changed.
    *
    * @put post
@@ -130,53 +125,5 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Transaction_EditModel);
  */
 Wl_Pay_Transaction_EditModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_time": {
-        "put": {
-          "post": true
-        }
-      },
-      "dt_date_local": {
-        "put": {
-          "post": true
-        }
-      },
-      "html_amount": {
-        "put": {
-          "result": true
-        }
-      },
-      "html_date": {
-        "put": {
-          "result": true
-        }
-      },
-      "id_pay_method": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_pay_method": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_pay_transaction": {
-        "put": {
-          "get": true
-        }
-      },
-      "k_pay_transaction_process": {
-        "put": {
-          "get": true
-        }
-      },
-      "m_amount": {
-        "put": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_time": {"put": {"post": true}},"dt_date_local": {"put": {"post": true}},"html_amount": {"put": {"result": true}},"html_date": {"put": {"result": true}},"id_pay_method": {"put": {"post": true}},"k_pay_method": {"put": {"post": true}},"k_pay_transaction": {"put": {"get": true}},"k_pay_transaction_process": {"put": {"get": true}},"m_amount": {"put": {"post": true}}}};
 };

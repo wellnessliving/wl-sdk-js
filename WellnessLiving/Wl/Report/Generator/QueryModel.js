@@ -14,11 +14,6 @@ function Wl_Report_Generator_QueryModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A list of dynamic fields in this report.
    *
    * Copy of result of {@link \Wl\Report\Generator\ReportGeneratorReportAbstract::generatorDynamic()}.
@@ -271,103 +266,5 @@ WlSdk_ModelAbstract.extend(Wl_Report_Generator_QueryModel);
  */
 Wl_Report_Generator_QueryModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_dynamic": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_field": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_row": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_stale": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_warning": {
-        "post": {
-          "result": true
-        }
-      },
-      "cid_report": {
-        "post": {
-          "post": true
-        }
-      },
-      "dtu_complete": {
-        "post": {
-          "result": true
-        }
-      },
-      "dtu_queue": {
-        "post": {
-          "result": true
-        }
-      },
-      "dtu_start": {
-        "post": {
-          "result": true
-        }
-      },
-      "i_limit": {
-        "post": {
-          "post": true
-        }
-      },
-      "i_offset": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_report_status": {
-        "post": {
-          "result": true
-        }
-      },
-      "is_refresh": {
-        "post": {
-          "post": true
-        }
-      },
-      "json_filter": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_report": {
-        "post": {
-          "result": true
-        }
-      },
-      "s_sort": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_sql": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid_actor": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_dynamic": {"post": {"result": true}},"a_field": {"post": {"result": true}},"a_row": {"post": {"result": true}},"a_stale": {"post": {"result": true}},"a_warning": {"post": {"result": true}},"cid_report": {"post": {"post": true}},"dtu_complete": {"post": {"result": true}},"dtu_queue": {"post": {"result": true}},"dtu_start": {"post": {"result": true}},"i_limit": {"post": {"post": true}},"i_offset": {"post": {"post": true}},"id_report_status": {"post": {"result": true}},"is_refresh": {"post": {"post": true}},"json_filter": {"post": {"post": true}},"k_business": {"post": {"post": true}},"s_report": {"post": {"result": true}},"s_sort": {"post": {"post": true}},"s_sql": {"post": {"post": true}},"uid_actor": {"post": {"post": true}}}};
 };

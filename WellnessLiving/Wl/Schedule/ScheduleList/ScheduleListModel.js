@@ -13,7 +13,7 @@ function Wl_Schedule_ScheduleList_ScheduleListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location,dt_date,k_class_tab,id_class_tab,uid';
+  this._s_key = "k_location,dt_date,k_class_tab,id_class_tab,uid";
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_ScheduleListModel_a_schedule_a_staff
@@ -177,45 +177,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_ScheduleListModel);
  */
 Wl_Schedule_ScheduleList_ScheduleListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_schedule": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_class_tab": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_classes_available": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_class_tab": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_schedule": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"id_class_tab": {"get": {"get": true}},"is_classes_available": {"get": {"result": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -228,4 +190,4 @@ Wl_Schedule_ScheduleList_ScheduleListModel.prototype.config=function()
  * @param {string} uid ID of user to show information for. Primary key in table {@link PassportLoginSql}.
  * @returns {Wl_Schedule_ScheduleList_ScheduleListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

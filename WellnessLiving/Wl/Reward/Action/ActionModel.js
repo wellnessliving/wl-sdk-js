@@ -13,7 +13,7 @@ function Wl_Reward_Action_ActionModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,k_reward_action_category';
+  this._s_key = "uid,k_business,k_reward_action_category";
 
   /**
    * A list reward actions. Every element has next keys:
@@ -77,30 +77,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Action_ActionModel);
  */
 Wl_Reward_Action_ActionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_reward_action": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_reward_action_category": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_reward_action": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_reward_action_category": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -111,4 +88,4 @@ Wl_Reward_Action_ActionModel.prototype.config=function()
  * @param {string} k_reward_action_category Key of reward action category.
  * @returns {Wl_Reward_Action_ActionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

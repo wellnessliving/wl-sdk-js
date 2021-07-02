@@ -11,11 +11,6 @@ function Wl_Shop_Product_Option_Inventory_Count_InventoryCountModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * List of notes for the shop product options.
    * Key is shop product option inventory key from the {@link \RsShopProductOptionInventorySql} table, value is text note.
    *
@@ -141,47 +136,5 @@ WlSdk_ModelAbstract.extend(Wl_Shop_Product_Option_Inventory_Count_InventoryCount
  */
 Wl_Shop_Product_Option_Inventory_Count_InventoryCountModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_note": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "a_product_option": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_quantity": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "text_barcode": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_user_name": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_note": {"get": {"get": true},"post": {"get": true}},"a_product_option": {"get": {"result": true}},"a_quantity": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"text_barcode": {"get": {"get": true}},"text_user_name": {"get": {"result": true}}}};
 };

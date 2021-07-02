@@ -11,11 +11,6 @@ function Wl_Login_Attendance_StaffApp_Virtual_JoinModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Local date with time of start virtual service.
    *
    * @get result
@@ -42,7 +37,7 @@ function Wl_Login_Attendance_StaffApp_Virtual_JoinModel()
 
   /**
    * Key of the virtual appointment. Primary key in {@link \RsAppointmentSql} table.
-   * <tt><null/tt> - If the virtual service wait page is open for another type of service. For example: to the class period.
+   * <tt>null</tt> - If the virtual service wait page is open for another type of service. For example: to the class period.
    *
    * @get get
    * @type {?string}
@@ -72,7 +67,7 @@ function Wl_Login_Attendance_StaffApp_Virtual_JoinModel()
    * @get result
    * @type {string}
    */
-  this.url_zoom_redirect = undefined;
+  this.url_virtual_redirect = undefined;
 
   this.changeInit();
 }
@@ -84,43 +79,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_StaffApp_Virtual_JoinModel);
  */
 Wl_Login_Attendance_StaffApp_Virtual_JoinModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dtl_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "dtu_class_period": {
-        "get": {
-          "get": true
-        }
-      },
-      "dtu_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_appointment": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        }
-      },
-      "text_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_zoom_redirect": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dtl_service": {"get": {"result": true}},"dtu_class_period": {"get": {"get": true}},"dtu_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"text_service": {"get": {"result": true}},"url_virtual_redirect": {"get": {"result": true}}}};
 };

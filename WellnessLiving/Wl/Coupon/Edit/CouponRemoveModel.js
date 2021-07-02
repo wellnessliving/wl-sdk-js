@@ -11,11 +11,6 @@ function Wl_Coupon_Edit_CouponRemoveModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * ID of the Gift Card that should be removed.
    * Primary key from {@link \RsCouponSql}.
    *
@@ -34,13 +29,5 @@ WlSdk_ModelAbstract.extend(Wl_Coupon_Edit_CouponRemoveModel);
  */
 Wl_Coupon_Edit_CouponRemoveModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_coupon": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_coupon": {"post": {"post": true}}}};
 };

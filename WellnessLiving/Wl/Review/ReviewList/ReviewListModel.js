@@ -13,7 +13,7 @@ function Wl_Review_ReviewList_ReviewListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location,uid';
+  this._s_key = "k_location,uid";
 
   /**
    * @typedef {{}} Wl_Review_ReviewList_ReviewListModel_a_review
@@ -185,35 +185,7 @@ WlSdk_ModelAbstract.extend(Wl_Review_ReviewList_ReviewListModel);
  */
 Wl_Review_ReviewList_ReviewListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_review": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_page": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_order": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_review": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_order": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -223,4 +195,4 @@ Wl_Review_ReviewList_ReviewListModel.prototype.config=function()
  * @param {string} uid User key.
  * @returns {Wl_Review_ReviewList_ReviewListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

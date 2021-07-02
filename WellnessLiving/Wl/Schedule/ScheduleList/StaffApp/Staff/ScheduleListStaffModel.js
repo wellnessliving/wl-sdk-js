@@ -13,7 +13,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * IDs of staff members which must be represented of business schedule. Primary keys in {@link \RsStaffSql} table.
@@ -57,43 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListS
  */
 Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_staff": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -103,4 +67,4 @@ Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel.prototype.config=
  * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

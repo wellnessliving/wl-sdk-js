@@ -13,12 +13,7 @@ function Wl_Profile_Attach_ProfileAttachModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid";
 
   /**
    * List of attaches.
@@ -30,9 +25,9 @@ function Wl_Profile_Attach_ProfileAttachModel()
 
   /**
    * Comments for exists attaches.
-   * 
+   *
    * Strange name for compatibility with old server side.
-   * 
+   *
    * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
    *
    * @post post
@@ -42,9 +37,9 @@ function Wl_Profile_Attach_ProfileAttachModel()
 
   /**
    * New files for exists attaches.
-   * 
+   *
    * Strange name for compatibility with old server side.
-   * 
+   *
    * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
    *
    * @post post
@@ -54,9 +49,9 @@ function Wl_Profile_Attach_ProfileAttachModel()
 
   /**
    * New names for exists attache.
-   * 
+   *
    * Strange name for compatibility with old server side.
-   * 
+   *
    * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
    *
    * @post post
@@ -67,9 +62,9 @@ function Wl_Profile_Attach_ProfileAttachModel()
   /**
    * Old attaches which must be kept.
    * If this field does not contain a attach, it will be removed with POST.
-   * 
+   *
    * Strange name for compatibility with old server side.
-   * 
+   *
    * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
    *
    * @post post
@@ -79,9 +74,9 @@ function Wl_Profile_Attach_ProfileAttachModel()
 
   /**
    * Comments for new attaches.
-   * 
+   *
    * Strange name for compatibility with old server side.
-   * 
+   *
    * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
    *
    * @post post
@@ -91,9 +86,9 @@ function Wl_Profile_Attach_ProfileAttachModel()
 
   /**
    * Files for new attaches.
-   * 
+   *
    * Strange name for compatibility with old server side.
-   * 
+   *
    * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
    *
    * @post post
@@ -103,9 +98,9 @@ function Wl_Profile_Attach_ProfileAttachModel()
 
   /**
    * Names for new attaches.
-   * 
+   *
    * Strange name for compatibility with old server side.
-   * 
+   *
    * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
    *
    * @post post
@@ -141,66 +136,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Attach_ProfileAttachModel);
  */
 Wl_Profile_Attach_ProfileAttachModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_attach": {
-        "get": {
-          "result": true
-        }
-      },
-      "attach_comment": {
-        "post": {
-          "post": true
-        }
-      },
-      "attach_file": {
-        "post": {
-          "post": true
-        }
-      },
-      "attach_name": {
-        "post": {
-          "post": true
-        }
-      },
-      "attach_save": {
-        "post": {
-          "post": true
-        }
-      },
-      "new_attach_comment": {
-        "post": {
-          "post": true
-        }
-      },
-      "new_attach_file": {
-        "post": {
-          "post": true
-        }
-      },
-      "new_attach_name": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_attach": {"get": {"result": true}},"attach_comment": {"post": {"post": true}},"attach_file": {"post": {"post": true}},"attach_name": {"post": {"post": true}},"attach_save": {"post": {"post": true}},"new_attach_comment": {"post": {"post": true}},"new_attach_file": {"post": {"post": true}},"new_attach_name": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -210,4 +146,4 @@ Wl_Profile_Attach_ProfileAttachModel.prototype.config=function()
  * @param {string} uid Business primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Profile_Attach_ProfileAttachModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

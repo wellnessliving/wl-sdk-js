@@ -97,43 +97,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Add_MailUseOkModel);
  */
 Wl_Login_Add_MailUseOkModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_error": {
-        "post": {
-          "result": true
-        }
-      },
-      "is_lead": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_skin": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_code": {
-        "post": {
-          "result": true
-        }
-      },
-      "text_message": {
-        "post": {
-          "result": true
-        }
-      },
-      "uid": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_error": {"post": {"result": true}},"is_lead": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_skin": {"post": {"post": true}},"s_code": {"post": {"result": true}},"text_message": {"post": {"result": true}},"uid": {"post": {"post": true}}}};
 };

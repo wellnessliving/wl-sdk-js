@@ -11,11 +11,6 @@ function Wl_Gym_Visit_VisitAddModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * @typedef {{}} Wl_Gym_Visit_VisitAddModel_a_time
    * @property {number} i_hour Number of hours.
    * @property {number} i_minute Number of minutes.
@@ -48,7 +43,7 @@ function Wl_Gym_Visit_VisitAddModel()
 
   /**
    * Determines whether to pay.
-   * 
+   *
    * <tt>true</tt> if need pay visit, <tt>false</tt> if visit should be not pay.
    *
    * @post post
@@ -74,7 +69,7 @@ function Wl_Gym_Visit_VisitAddModel()
 
   /**
    * User key who book gym visit.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @post get
@@ -100,43 +95,5 @@ WlSdk_ModelAbstract.extend(Wl_Gym_Visit_VisitAddModel);
  */
 Wl_Gym_Visit_VisitAddModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_time": {
-        "post": {
-          "post": true
-        }
-      },
-      "dt_date": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_pay": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "post": {
-          "get": true
-        }
-      },
-      "url_catalog": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_time": {"post": {"post": true}},"dt_date": {"post": {"post": true}},"is_pay": {"post": {"post": true}},"k_business": {"post": {"get": true}},"k_location": {"post": {"get": true}},"uid": {"post": {"get": true}},"url_catalog": {"post": {"result": true}}}};
 };

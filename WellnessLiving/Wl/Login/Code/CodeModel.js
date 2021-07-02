@@ -13,12 +13,7 @@ function Wl_Login_Code_CodeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business";
 
   /**
    * Key of source mode. One of {@link \Wl\Mode\ModeSid} constants.
@@ -62,30 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Code_CodeModel);
  */
 Wl_Login_Code_CodeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_mode": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_code": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_mode": {"post": {"post": true}},"k_business": {"post": {"post": true}},"s_code": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };
 
 /**
@@ -95,4 +67,4 @@ Wl_Login_Code_CodeModel.prototype.config=function()
  * @param {string} k_business Key of current business.
  * @returns {Wl_Login_Code_CodeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

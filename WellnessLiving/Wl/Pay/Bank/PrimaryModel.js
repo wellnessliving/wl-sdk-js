@@ -11,11 +11,6 @@ function Wl_Pay_Bank_PrimaryModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * ID of pay bank.
    *
    * @put post
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Bank_PrimaryModel);
  */
 Wl_Pay_Bank_PrimaryModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_pay_bank": {
-        "put": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_pay_bank": {"put": {"post": true}}}};
 };

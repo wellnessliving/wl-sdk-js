@@ -13,7 +13,7 @@ function Wl_Location_View_ViewModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location';
+  this._s_key = "k_location";
 
   /**
    * @typedef {{}} Wl_Location_View_ViewModel_a_logo
@@ -274,115 +274,7 @@ WlSdk_ModelAbstract.extend(Wl_Location_View_ViewModel);
  */
 Wl_Location_View_ViewModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_logo": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_slide": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_work": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_description_full": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_description_preview": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_logo_height": {
-        "get": {
-          "get": true
-        }
-      },
-      "i_logo_width": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_address": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_map": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_phone": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_timezone": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_address_individual": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_city": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_country": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_mail": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_postal": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_region": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_map": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_microsite": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_logo": {"get": {"result": true}},"a_slide": {"get": {"result": true}},"a_work": {"get": {"result": true}},"html_description_full": {"get": {"result": true}},"html_description_preview": {"get": {"result": true}},"i_logo_height": {"get": {"get": true}},"i_logo_width": {"get": {"get": true}},"k_location": {"get": {"get": true}},"s_address": {"get": {"result": true}},"s_map": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_timezone": {"get": {"result": true}},"s_title": {"get": {"result": true}},"text_address_individual": {"get": {"result": true}},"text_city": {"get": {"result": true}},"text_country": {"get": {"result": true}},"text_mail": {"get": {"result": true}},"text_postal": {"get": {"result": true}},"text_region": {"get": {"result": true}},"url_map": {"get": {"result": true}},"url_microsite": {"get": {"result": true}}}};
 };
 
 /**
@@ -391,4 +283,4 @@ Wl_Location_View_ViewModel.prototype.config=function()
  * @param {string} k_location Key of location.
  * @returns {Wl_Location_View_ViewModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

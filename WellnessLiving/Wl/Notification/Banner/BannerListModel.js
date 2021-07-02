@@ -13,7 +13,7 @@ function Wl_Notification_Banner_BannerListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * List of banners.
@@ -62,36 +62,7 @@ WlSdk_ModelAbstract.extend(Wl_Notification_Banner_BannerListModel);
  */
 Wl_Notification_Banner_BannerListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_banner_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_notification_banner": {
-        "put": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_banner_list": {"get": {"result": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_notification_banner": {"put": {"post": true}},"uid": {"get": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -101,4 +72,4 @@ Wl_Notification_Banner_BannerListModel.prototype.config=function()
  * @param {string} uid User for which available banners will be loaded. Primary key in {@link \PassportLoginSql}.
  * @returns {Wl_Notification_Banner_BannerListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

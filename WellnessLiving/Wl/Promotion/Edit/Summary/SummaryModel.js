@@ -13,7 +13,7 @@ function Wl_Promotion_Edit_Summary_SummaryModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'm_price,k_business,s_tax';
+  this._s_key = "m_price,k_business,s_tax";
 
   /**
    * Business key within which price should be calculated.
@@ -57,30 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_Edit_Summary_SummaryModel);
  */
 Wl_Promotion_Edit_Summary_SummaryModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_price": {
-        "get": {
-          "get": true
-        }
-      },
-      "m_summary": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_tax": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"get": {"get": true}},"m_price": {"get": {"get": true}},"m_summary": {"get": {"result": true}},"s_tax": {"get": {"get": true}}}};
 };
 
 /**
@@ -91,4 +68,4 @@ Wl_Promotion_Edit_Summary_SummaryModel.prototype.config=function()
  * @param {string} s_tax List of tax IDs divided by coma to apply to initial price.
  * @returns {Wl_Promotion_Edit_Summary_SummaryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

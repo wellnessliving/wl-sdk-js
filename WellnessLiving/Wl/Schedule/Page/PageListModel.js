@@ -13,7 +13,7 @@ function Wl_Schedule_Page_PageListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,is_past';
+  this._s_key = "uid,k_business,is_past";
 
   /**
    * @typedef {{}} Wl_Schedule_Page_PageListModel_a_visit
@@ -38,7 +38,7 @@ function Wl_Schedule_Page_PageListModel()
 
   /**
    * Determines date range end, date and time in UTC timezone in MySQL format.
-   * 
+   *
    * <tt>null</tt> until loaded.
    *
    * @get get
@@ -48,7 +48,7 @@ function Wl_Schedule_Page_PageListModel()
 
   /**
    * Determines date range start, date and time in UTC timezone in MySQL format.
-   * 
+   *
    * <tt>null</tt> until loaded.
    *
    * @get get
@@ -90,40 +90,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Page_PageListModel);
  */
 Wl_Schedule_Page_PageListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_visit": {
-        "get": {
-          "result": true
-        }
-      },
-      "dtu_end": {
-        "get": {
-          "get": true
-        }
-      },
-      "dtu_start": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_past": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_visit": {"get": {"result": true}},"dtu_end": {"get": {"get": true}},"dtu_start": {"get": {"get": true}},"is_past": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -134,4 +101,4 @@ Wl_Schedule_Page_PageListModel.prototype.config=function()
  * @param {boolean} is_past Determines whether current schedule is the past schedule.
  * @returns {Wl_Schedule_Page_PageListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

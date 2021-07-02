@@ -13,16 +13,11 @@ function Wl_Business_Design_BusinessDesignModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business";
 
   /**
    * Business design data.
-   * 
+   *
    * Result of the {@link \RsBusinessDesign::data()} method.
    *
    * @get result
@@ -32,7 +27,7 @@ function Wl_Business_Design_BusinessDesignModel()
 
   /**
    * Business key to get business design data.
-   * 
+   *
    * May be <tt>null</tt>. In this case default business design data is returned.
    *
    * @get get
@@ -50,20 +45,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Design_BusinessDesignModel);
  */
 Wl_Business_Design_BusinessDesignModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_data": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_data": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -72,4 +54,4 @@ Wl_Business_Design_BusinessDesignModel.prototype.config=function()
  * @param {string} k_business Business key to get business design data. May be <tt>null</tt>. In this case default business design data is returned.
  * @returns {Wl_Business_Design_BusinessDesignModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

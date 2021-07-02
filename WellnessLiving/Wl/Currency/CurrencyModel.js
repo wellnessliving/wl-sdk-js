@@ -48,13 +48,5 @@ WlSdk_ModelAbstract.extend(Wl_Currency_CurrencyModel);
  */
 Wl_Currency_CurrencyModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_currency": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_currency": {"get": {"result": true}}}};
 };

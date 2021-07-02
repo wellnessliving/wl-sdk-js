@@ -11,11 +11,6 @@ function Wl_Login_Permission_Access_AccessModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * @typedef {{}} Wl_Login_Permission_Access_AccessModel_a_access
    * @property {string} k_location Location key, where class or service occurs.
    * @property {string} k_class Class key.
@@ -134,7 +129,7 @@ function Wl_Login_Permission_Access_AccessModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql} table.
    *
    * @get get
@@ -144,7 +139,7 @@ function Wl_Login_Permission_Access_AccessModel()
 
   /**
    * User key.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
@@ -162,43 +157,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Permission_Access_AccessModel);
  */
 Wl_Login_Permission_Access_AccessModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_access": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_schedule": {
-        "get": {
-          "get": true
-        }
-      },
-      "a_time": {
-        "get": {
-          "get": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_traveller": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_access": {"get": {"result": true}},"a_schedule": {"get": {"get": true}},"a_time": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };

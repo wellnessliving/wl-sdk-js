@@ -11,11 +11,6 @@ function Wl_Business_Churn_BusinessChurnModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Business churn date.
    * <tt>null</tt> if not initialized yet.
    *
@@ -67,36 +62,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Churn_BusinessChurnModel);
  */
 Wl_Business_Churn_BusinessChurnModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dl_churn": {
-        "post": {
-          "get": true
-        }
-      },
-      "is_churn": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "text_business_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_churn_reason": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dl_churn": {"post": {"get": true}},"is_churn": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"text_business_name": {"get": {"result": true}},"text_churn_reason": {"post": {"get": true}}}};
 };

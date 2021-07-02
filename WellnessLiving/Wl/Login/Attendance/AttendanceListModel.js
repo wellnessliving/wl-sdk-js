@@ -13,7 +13,7 @@ function Wl_Login_Attendance_AttendanceListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_date_local,k_appointment,k_class_period,k_business';
+  this._s_key = "dt_date_local,k_appointment,k_class_period,k_business";
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListModel_a_list_active
@@ -202,60 +202,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_AttendanceListModel);
  */
 Wl_Login_Attendance_AttendanceListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list_active": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_list_confirm": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_list_wait": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date_local": {
-        "get": {
-          "get": true
-        }
-      },
-      "i_capacity": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_client": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_appointment": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_list_active": {"get": {"result": true}},"a_list_confirm": {"get": {"result": true}},"a_list_wait": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"i_capacity": {"get": {"result": true}},"i_client": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"result": true}}}};
 };
 
 /**
@@ -267,4 +214,4 @@ Wl_Login_Attendance_AttendanceListModel.prototype.config=function()
  * @param {string} k_business ID of business to get information for. Primary key in {@link RsBusinessSql} table.
  * @returns {Wl_Login_Attendance_AttendanceListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

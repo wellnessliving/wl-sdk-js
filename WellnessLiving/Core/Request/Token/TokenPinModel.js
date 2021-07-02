@@ -45,23 +45,5 @@ WlSdk_ModelAbstract.extend(Core_Request_Token_TokenPinModel);
  */
 Core_Request_Token_TokenPinModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "dtu_expire": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_pin": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_push": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"dtu_expire": {"get": {"result": true}},"text_pin": {"get": {"result": true}},"text_push": {"get": {"get": true}}}};
 };

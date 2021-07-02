@@ -13,7 +13,7 @@ function Wl_Reward_Action_ActionTypeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_reward_score,k_business';
+  this._s_key = "id_reward_score,k_business";
 
   /**
    * @typedef {{}} Wl_Reward_Action_ActionTypeModel_a_reward_action
@@ -62,25 +62,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Action_ActionTypeModel);
  */
 Wl_Reward_Action_ActionTypeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_reward_action": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_reward_score": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_reward_action": {"get": {"result": true}},"id_reward_score": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -90,4 +72,4 @@ Wl_Reward_Action_ActionTypeModel.prototype.config=function()
  * @param {string} k_business Key of a business to show information for.
  * @returns {Wl_Reward_Action_ActionTypeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

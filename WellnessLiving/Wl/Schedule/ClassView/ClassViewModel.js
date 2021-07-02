@@ -13,7 +13,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_date,k_class_period,uid';
+  this._s_key = "dt_date,k_class_period,uid";
 
   /**
    * Class data.
@@ -41,14 +41,14 @@ function Wl_Schedule_ClassView_ClassViewModel()
 
   /**
    * List of sessions to get information for. Every element has next keys:
-   * 
+   *
    * <dl>
    *   <dt>string <var>dt_date</var></dt>
    *   <dd>Date/time of the session in UTC.</dd>
    *   <dt>string <var>k_class_period</var></dt>
    *   <dd>Session primary key in {@link RsClassPeriodSql} table.</dd>
    * </dl>
-   * 
+   *
    * <tt>null</tt> for mode of single session.
    *
    * @get get
@@ -120,79 +120,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassView_ClassViewModel);
  */
 Wl_Schedule_ClassView_ClassViewModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_class": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "a_location": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "a_session_request": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "a_session_result": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "a_staff": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_session_request": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_class": {"get": {"result": true},"post": {"result": true}},"a_location": {"get": {"result": true},"post": {"result": true}},"a_session_request": {"get": {"get": true},"post": {"get": true}},"a_session_result": {"get": {"result": true},"post": {"result": true}},"a_staff": {"get": {"result": true},"post": {"result": true}},"dt_date": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"s_session_request": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -203,4 +131,4 @@ Wl_Schedule_ClassView_ClassViewModel.prototype.config=function()
  * @param {string} uid User's primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Schedule_ClassView_ClassViewModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -11,11 +11,6 @@ function Wl_Presence_PresenceActivateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * ID of the plan to be activated.
    *
    * @post post
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Wl_Presence_PresenceActivateModel);
  */
 Wl_Presence_PresenceActivateModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_website": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_website": {"post": {"post": true}},"k_business": {"post": {"get": true}}}};
 };

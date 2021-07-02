@@ -13,11 +13,11 @@ function Wl_Book_Process_Info_InfoModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_class_period,dt_date_gmt,uid';
+  this._s_key = "k_class_period,dt_date_gmt,uid";
 
   /**
    * Week days available for recurring booking. Constants of {@link \ADateWeekSid} class.
-   * 
+   *
    * <tt>null</tt> if recurring booking is not available.
    *
    * @get result
@@ -91,7 +91,7 @@ function Wl_Book_Process_Info_InfoModel()
    *     <tt>null</tt> if appointment must not repeat monthly.
    *   </dd>
    * </dl>
-   * 
+   *
    * <tt>null</tt> if booking must be not recurring.
    *
    * @post post
@@ -107,7 +107,7 @@ function Wl_Book_Process_Info_InfoModel()
 
   /**
    * Selected assets.
-   * 
+   *
    * Every element has keys: <dl>
    *   <dt>int <var>i_index</var></dt>
    *   <dd>Order number of the asset (may be from 1 to asset quantity).</dd>
@@ -199,9 +199,9 @@ function Wl_Book_Process_Info_InfoModel()
 
   /**
    * Selected sessions.
-   * 
+   *
    * Keys - session IDs. Primary keys in table {@link RsClassPeriodSql}.
-   * 
+   *
    * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
    *
    * @post post
@@ -286,6 +286,26 @@ function Wl_Book_Process_Info_InfoModel()
   this.html_special = null;
 
   /**
+   * Number of available spots.
+   *
+   * <tt>null</tt> if this information is not available.
+   *
+   * @get result
+   * @type {?number}
+   */
+  this.i_available = null;
+
+  /**
+   * Number of booked spots.
+   *
+   * <tt>null</tt> if this information is not available.
+   *
+   * @get result
+   * @type {?number}
+   */
+  this.i_book = null;
+
+  /**
    * Duration of session. In minutes.
    *
    * @get result
@@ -312,7 +332,7 @@ function Wl_Book_Process_Info_InfoModel()
 
   /**
    * Does user agree liability release?
-   * 
+   *
    * <tt>true</tt> - user agreed; <tt>false</tt> - user did not agree or agreement not required.
    *
    * @post post
@@ -337,6 +357,14 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_next = undefined;
 
   /**
+   * Whether the class can be paid with single session.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_single_buy = undefined;
+
+  /**
    * <tt>true</tt> if class is virtual, <tt>false</tt> otherwise.
    *
    * @get result
@@ -352,6 +380,14 @@ function Wl_Book_Process_Info_InfoModel()
    * @type {string}
    */
   this.k_class_period = "0";
+
+  /**
+   * Price of the session.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_price = undefined;
 
   /**
    * Title of class.
@@ -412,152 +448,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Info_InfoModel);
  */
 Wl_Book_Process_Info_InfoModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_day_available": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_login_activity": {
-        "post": {
-          "result": true
-        }
-      },
-      "a_repeat": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_resource": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_session_all": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_session_select": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_visit": {
-        "post": {
-          "result": true
-        }
-      },
-      "dt_date_gmt": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "dt_date_local": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_contract": {
-        "get": {
-          "result": true
-        }
-      },
-      "html_special": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_duration": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_wait_spot": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_mode": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "is_agree": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_book_repeat_client": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_next": {
-        "post": {
-          "result": true
-        }
-      },
-      "is_virtual": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_class_period": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_class": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_location_address": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_location_title": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_time": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_room": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_day_available": {"get": {"result": true}},"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_all": {"get": {"result": true}},"a_session_select": {"post": {"post": true}},"a_staff": {"get": {"result": true}},"a_visit": {"post": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"dt_date_local": {"get": {"result": true}},"html_contract": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_available": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_agree": {"post": {"post": true}},"is_book_repeat_client": {"get": {"result": true}},"is_next": {"post": {"result": true}},"is_single_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"m_price": {"get": {"result": true}},"s_class": {"get": {"result": true}},"s_location_address": {"get": {"result": true}},"s_location_title": {"get": {"result": true}},"s_time": {"get": {"result": true}},"text_room": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -568,4 +459,4 @@ Wl_Book_Process_Info_InfoModel.prototype.config=function()
  * @param {string} uid Key of a user who is making a book.
  * @returns {Wl_Book_Process_Info_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

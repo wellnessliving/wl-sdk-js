@@ -13,12 +13,7 @@ function Wl_Log_LogBusinessDataModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_log,k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_log,k_business";
 
   /**
    * @typedef {{}} Wl_Log_LogBusinessDataModel_a_template
@@ -42,7 +37,7 @@ function Wl_Log_LogBusinessDataModel()
 
   /**
    * Business key.
-   * 
+   *
    * Primary key from {@link \RsBusinessSql} table.
    *
    * @get get
@@ -52,7 +47,7 @@ function Wl_Log_LogBusinessDataModel()
 
   /**
    * Log key.
-   * 
+   *
    * Primary key from {@link \Core\Log\DataSql} table.
    *
    * @get get
@@ -70,25 +65,7 @@ WlSdk_ModelAbstract.extend(Wl_Log_LogBusinessDataModel);
  */
 Wl_Log_LogBusinessDataModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_template": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_log": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_template": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_log": {"get": {"get": true}}}};
 };
 
 /**
@@ -98,4 +75,4 @@ Wl_Log_LogBusinessDataModel.prototype.config=function()
  * @param {string} k_business Business key. Primary key from {@link \RsBusinessSql} table.
  * @returns {Wl_Log_LogBusinessDataModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

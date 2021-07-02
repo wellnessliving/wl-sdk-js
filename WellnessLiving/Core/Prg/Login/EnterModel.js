@@ -11,11 +11,6 @@ function Core_Prg_Login_EnterModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Programmer login.
    *
    * @post post
@@ -25,7 +20,7 @@ function Core_Prg_Login_EnterModel()
 
   /**
    * Notepad that is used to hash user password.
-   * 
+   *
    * See {@link \Core\Passport\Login\Enter\EnterApi::$s_password} about hashing of user password.
    *
    * @post post
@@ -51,23 +46,5 @@ WlSdk_ModelAbstract.extend(Core_Prg_Login_EnterModel);
  */
 Core_Prg_Login_EnterModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "s_login": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_notepad": {
-        "post": {
-          "post": true
-        }
-      },
-      "s_password": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"s_login": {"post": {"post": true}},"s_notepad": {"post": {"post": true}},"s_password": {"post": {"post": true}}}};
 };

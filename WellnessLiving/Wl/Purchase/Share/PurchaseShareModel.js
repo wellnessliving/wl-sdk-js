@@ -44,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Share_PurchaseShareModel);
  */
 Wl_Purchase_Share_PurchaseShareModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_social": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_purchase": {
-        "post": {
-          "post": true
-        }
-      },
-      "url_share": {
-        "post": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_social": {"post": {"post": true}},"k_purchase": {"post": {"post": true}},"url_share": {"post": {"result": true}}}};
 };

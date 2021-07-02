@@ -13,7 +13,7 @@ function Wl_Family_Relation_RelationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business';
+  this._s_key = "uid,k_business";
 
   /**
    * @typedef {{}} Wl_Family_Relation_RelationModel_a_new
@@ -37,7 +37,9 @@ function Wl_Family_Relation_RelationModel()
 
   /**
    * Information about user's family relations. Every element has next fields:
-   * <ul><li>Number <tt>id_family_relation</tt> Type of family relation. One of {@link RsFamilyRelationSid} constants.
+   * <ul>
+   *   <li>int <tt>id_family_relation</tt> Type of family relation. One of {@link RsFamilyRelationSid} constants.</li>
+   * </ul>
    *
    * @delete result
    * @get result
@@ -86,53 +88,7 @@ WlSdk_ModelAbstract.extend(Wl_Family_Relation_RelationModel);
  */
 Wl_Family_Relation_RelationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_new": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_relation": {
-        "delete": {
-          "result": true
-        },
-        "get": {
-          "result": true
-        },
-        "post": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid_delete": {
-        "delete": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_new": {"post": {"post": true}},"a_relation": {"delete": {"result": true},"get": {"result": true},"post": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"uid_delete": {"delete": {"get": true}}}};
 };
 
 /**
@@ -142,4 +98,4 @@ Wl_Family_Relation_RelationModel.prototype.config=function()
  * @param {string} k_business ID of business to get information for. Primary key in {@link \RsBusinessAr} table.
  * @returns {Wl_Family_Relation_RelationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

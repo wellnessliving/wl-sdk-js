@@ -13,12 +13,7 @@ function Wl_Staff_Load_LoadModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_staff';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,k_staff";
 
   /**
    * Staff work information. See {@link rs_staff_load_check_work_trx()}.
@@ -92,54 +87,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_Load_LoadModel);
  */
 Wl_Staff_Load_LoadModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_work": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "result": true
-        }
-      },
-      "is_start": {
-        "put": {
-          "result": true
-        }
-      },
-      "is_time_manage": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_staff": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "text_work_start": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_work": {"get": {"result": true},"put": {"result": true}},"is_start": {"put": {"result": true}},"is_time_manage": {"get": {"result": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_location": {"put": {"post": true}},"k_staff": {"get": {"get": true},"put": {"get": true}},"text_work_start": {"get": {"result": true}}}};
 };
 
 /**
@@ -149,4 +97,4 @@ Wl_Staff_Load_LoadModel.prototype.config=function()
  * @param {string} k_staff Staff member primary key. Primary key in {@link \RsStaffSql} table.
  * @returns {Wl_Staff_Load_LoadModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

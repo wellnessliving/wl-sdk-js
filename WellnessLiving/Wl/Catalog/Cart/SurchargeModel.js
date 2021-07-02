@@ -11,13 +11,8 @@ function Wl_Catalog_Cart_SurchargeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Data for Quick Buy.
-   * 
+   *
    * Structure of this array is described in {@link \RsCatalogCart::__construct()}.
    *
    * @post post
@@ -60,28 +55,5 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Cart_SurchargeModel);
  */
 Wl_Catalog_Cart_SurchargeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_quick_config": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_manual": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "m_surcharge": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_quick_config": {"post": {"post": true}},"is_manual": {"post": {"post": true}},"k_business": {"post": {"post": true}},"m_surcharge": {"post": {"post": true}}}};
 };

@@ -13,7 +13,7 @@ function Core_Spa_Application_SpaApplicationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 's_application';
+  this._s_key = "s_application";
 
   /**
    * <tt>true</tt> - enable for this application sign in with Apple; <tt>false</tt> - disable.
@@ -30,6 +30,14 @@ function Core_Spa_Application_SpaApplicationModel()
    * @type {boolean}
    */
   this.is_facebook = undefined;
+
+  /**
+   * <tt>true</tt> - enable for this application sign in with Google; <tt>false</tt> - disable.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_google = undefined;
 
   /**
    * <tt>true</tt> - registration of new user is denied in application; <tt>false</tt> - registration of new user is allowed.
@@ -65,35 +73,7 @@ WlSdk_ModelAbstract.extend(Core_Spa_Application_SpaApplicationModel);
  */
 Core_Spa_Application_SpaApplicationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_apple": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_facebook": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_register_deny": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_social": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_application": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_apple": {"get": {"result": true}},"is_facebook": {"get": {"result": true}},"is_google": {"get": {"result": true}},"is_register_deny": {"get": {"result": true}},"is_social": {"get": {"result": true}},"s_application": {"get": {"get": true}}}};
 };
 
 /**
@@ -102,4 +82,4 @@ Core_Spa_Application_SpaApplicationModel.prototype.config=function()
  * @param {string} s_application Unique ID of application.
  * @returns {Core_Spa_Application_SpaApplicationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

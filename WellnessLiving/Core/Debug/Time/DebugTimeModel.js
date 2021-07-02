@@ -11,11 +11,6 @@ function Core_Debug_Time_DebugTimeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Serialized time log.
    *
    * @post post
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Core_Debug_Time_DebugTimeModel);
  */
 Core_Debug_Time_DebugTimeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "text_log": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"text_log": {"post": {"post": true}}}};
 };

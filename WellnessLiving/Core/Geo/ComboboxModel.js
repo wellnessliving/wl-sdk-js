@@ -13,7 +13,7 @@ function Core_Geo_ComboboxModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_locale,s_value';
+  this._s_key = "id_locale,s_value";
 
   /**
    * @typedef {{}} Core_Geo_ComboboxModel_a_list
@@ -45,9 +45,9 @@ function Core_Geo_ComboboxModel()
 
   /**
    * Current locale that is used as a filter.
-   * 
+   *
    * One of {@link \Core\Locale\LocaleSid} constants.
-   * 
+   *
    * <tt>0</tt> means to search in all locales.
    *
    * @get get
@@ -73,25 +73,7 @@ WlSdk_ModelAbstract.extend(Core_Geo_ComboboxModel);
  */
 Core_Geo_ComboboxModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_locale": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_value": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_list": {"get": {"result": true}},"id_locale": {"get": {"get": true}},"s_value": {"get": {"get": true}}}};
 };
 
 /**
@@ -101,4 +83,4 @@ Core_Geo_ComboboxModel.prototype.config=function()
  * @param {string} s_value Value that is used as a filter.
  * @returns {Core_Geo_ComboboxModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

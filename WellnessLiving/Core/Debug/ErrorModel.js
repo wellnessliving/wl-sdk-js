@@ -28,13 +28,5 @@ WlSdk_ModelAbstract.extend(Core_Debug_ErrorModel);
  */
 Core_Debug_ErrorModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_error_list": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_error_list": {"post": {"post": true}}}};
 };

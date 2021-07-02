@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Service_ServiceListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_location,k_service_category,k_class_tab,is_backend,uid';
+  this._s_key = "k_location,k_service_category,k_class_tab,is_backend,uid";
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Service_ServiceListModel_a_service
@@ -220,7 +220,7 @@ function Wl_Appointment_Book_Service_ServiceListModel()
 
   /**
    * Location to show available appointment booking schedule.
-   * 
+   *
    * Primary key in {@link \RsLocationSql} table.
    *
    * @get get,result
@@ -239,7 +239,7 @@ function Wl_Appointment_Book_Service_ServiceListModel()
 
   /**
    * User to get information for.
-   * 
+   *
    * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
@@ -258,52 +258,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Service_ServiceListModel);
  */
 Wl_Appointment_Book_Service_ServiceListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_backend": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_tab_all": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class_tab": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true,
-          "result": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_service_category": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_service": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_service_category": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -316,4 +271,4 @@ Wl_Appointment_Book_Service_ServiceListModel.prototype.config=function()
  * @param {string} uid User to get information for. Primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Appointment_Book_Service_ServiceListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

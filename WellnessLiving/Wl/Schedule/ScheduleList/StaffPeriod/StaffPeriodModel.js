@@ -13,7 +13,7 @@ function Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'dt_date,k_business';
+  this._s_key = "dt_date,k_business";
 
   /**
    * Working hours list. See {@link \Wl\Schedule\WorkingTime\StaffWorkingTime::getWorkingTime()} for details.
@@ -51,25 +51,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel
  */
 Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_staff_period": {
-        "get": {
-          "result": true
-        }
-      },
-      "dt_date": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_staff_period": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -79,4 +61,4 @@ Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel.prototype.config=function(
  * @param {string} k_business ID of business for which working hours are required. Primary key in table {@link \RsBusinessSql}.
  * @returns {Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,7 +13,7 @@ function Wl_Staff_Privilege_PrivilegeListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * List of privileges via core. See {@link passport_privilege_user()} for details.
@@ -57,30 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_Privilege_PrivilegeListModel);
  */
 Wl_Staff_Privilege_PrivilegeListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_privilege_passport": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_privilege_staff": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_privilege_passport": {"get": {"result": true}},"a_privilege_staff": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -90,4 +67,4 @@ Wl_Staff_Privilege_PrivilegeListModel.prototype.config=function()
  * @param {string} uid User key to get privileges for. Primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Staff_Privilege_PrivilegeListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

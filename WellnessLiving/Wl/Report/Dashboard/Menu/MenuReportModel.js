@@ -13,12 +13,7 @@ function Wl_Report_Dashboard_Menu_MenuReportModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,id_report,k_report_save';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid,id_report,k_report_save";
 
   /**
    * List of dashboards for report.
@@ -73,35 +68,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_Dashboard_Menu_MenuReportModel);
  */
 Wl_Report_Dashboard_Menu_MenuReportModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_dashboard": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_report": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_report_save": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_dashboard": {"get": {"result": true}},"id_report": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_report_save": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -113,4 +80,4 @@ Wl_Report_Dashboard_Menu_MenuReportModel.prototype.config=function()
  * @param {string} k_report_save Report save key. Primary key in {@link \RsReportSaveSql} table.
  * @returns {Wl_Report_Dashboard_Menu_MenuReportModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

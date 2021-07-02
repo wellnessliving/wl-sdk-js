@@ -11,11 +11,6 @@ function Wl_Insurance_Profile_InsuranceCancelModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * The key of the business where we need to cancel Wellness Program membership.
    *
    * @delete get
@@ -26,7 +21,7 @@ function Wl_Insurance_Profile_InsuranceCancelModel()
 
   /**
    * Key of login promotion to cancel.
-   * 
+   *
    * Primary key from {@link \RsLoginPromotionSql} table.
    *
    * @delete get
@@ -62,37 +57,5 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Profile_InsuranceCancelModel);
  */
 Wl_Insurance_Profile_InsuranceCancelModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_login_promotion": {
-        "delete": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "s_reason": {
-        "put": {
-          "post": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"delete": {"get": true},"put": {"get": true}},"k_login_promotion": {"delete": {"get": true},"put": {"get": true}},"s_reason": {"put": {"post": true}},"uid": {"delete": {"get": true},"put": {"get": true}}}};
 };

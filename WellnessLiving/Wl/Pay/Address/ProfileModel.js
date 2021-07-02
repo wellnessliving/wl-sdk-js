@@ -13,12 +13,7 @@ function Wl_Pay_Address_ProfileModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid";
 
   /**
    * The business identifier in which editing is performed.
@@ -110,60 +105,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Address_ProfileModel);
  */
 Wl_Pay_Address_ProfileModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_geo_country": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_geo_region": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_city": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_phone": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_postal": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_street1": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_street2": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"get": {"get": true}},"k_geo_country": {"get": {"result": true}},"k_geo_region": {"get": {"result": true}},"s_city": {"get": {"result": true}},"s_name": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_postal": {"get": {"result": true}},"s_street1": {"get": {"result": true}},"s_street2": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -173,4 +115,4 @@ Wl_Pay_Address_ProfileModel.prototype.config=function()
  * @param {string} uid ID of a user whose default payment address should be returned.
  * @returns {Wl_Pay_Address_ProfileModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

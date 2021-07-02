@@ -11,11 +11,6 @@ function Wl_Catalog_StaffApp_CatalogCoupon_CatalogCouponModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Business key.
    *
    * @get get
@@ -59,28 +54,5 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogCoupon_CatalogCouponModel)
  */
 Wl_Catalog_StaffApp_CatalogCoupon_CatalogCouponModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_coupon": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_coupon_amount": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_code": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"get": {"get": true}},"k_coupon": {"get": {"get": true}},"k_coupon_amount": {"get": {"get": true}},"s_code": {"get": {"get": true}}}};
 };

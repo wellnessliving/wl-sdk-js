@@ -13,7 +13,7 @@ function Wl_Profile_Contract_ContractAll_ContractAllModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * @typedef {{}} Wl_Profile_Contract_ContractAll_ContractAllModel_a_contract
@@ -104,25 +104,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Contract_ContractAll_ContractAllModel);
  */
 Wl_Profile_Contract_ContractAll_ContractAllModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_contract": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_contract": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -132,4 +114,4 @@ Wl_Profile_Contract_ContractAll_ContractAllModel.prototype.config=function()
  * @param {string} uid User to get information for. Primary key in {@link \PassportLoginSql} table.
  * @returns {Wl_Profile_Contract_ContractAll_ContractAllModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

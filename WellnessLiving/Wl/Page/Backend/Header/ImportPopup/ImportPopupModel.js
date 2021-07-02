@@ -14,7 +14,7 @@ function Wl_Page_Backend_Header_ImportPopup_ImportPopupModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * Content visibility flag.
@@ -60,33 +60,7 @@ WlSdk_ModelAbstract.extend(Wl_Page_Backend_Header_ImportPopup_ImportPopupModel);
  */
 Wl_Page_Backend_Header_ImportPopup_ImportPopupModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_visible": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "show_import_popup": {
-        "get": {
-          "result": true
-        }
-      },
-      "show_import_popup_full": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_visible": {"put": {"post": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"show_import_popup": {"get": {"result": true}},"show_import_popup_full": {"get": {"result": true}}}};
 };
 
 /**
@@ -95,4 +69,4 @@ Wl_Page_Backend_Header_ImportPopup_ImportPopupModel.prototype.config=function()
  * @param {string} k_business Business key from {@link \RsBusinessSql}.
  * @returns {Wl_Page_Backend_Header_ImportPopup_ImportPopupModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

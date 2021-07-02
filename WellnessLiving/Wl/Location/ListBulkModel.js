@@ -15,7 +15,7 @@ function Wl_Location_ListBulkModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 's_business';
+  this._s_key = "s_business";
 
   /**
    * @typedef {{}} Wl_Location_ListBulkModel_a_location
@@ -112,20 +112,7 @@ WlSdk_ModelAbstract.extend(Wl_Location_ListBulkModel);
  */
 Wl_Location_ListBulkModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_location": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_location": {"get": {"result": true}},"s_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -134,4 +121,4 @@ Wl_Location_ListBulkModel.prototype.config=function()
  * @param {string} s_business Bulk of businesses. Business primary keys serialized with JSON.
  * @returns {Wl_Location_ListBulkModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

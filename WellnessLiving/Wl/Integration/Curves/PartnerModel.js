@@ -11,17 +11,30 @@ function Wl_Integration_Curves_PartnerModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A partner list. Where key is key partner, value is name of the partner.
    *
    * @get result
    * @type {?{}}
    */
   this.a_partner = null;
+
+  /**
+   * Business key.
+   *
+   * @get get
+   * @post get
+   * @type {string}
+   */
+  this.k_business = undefined;
+
+  /**
+   * User key.
+   *
+   * @get get
+   * @post get
+   * @type {string}
+   */
+  this.uid = undefined;
 
   this.changeInit();
 }
@@ -33,13 +46,5 @@ WlSdk_ModelAbstract.extend(Wl_Integration_Curves_PartnerModel);
  */
 Wl_Integration_Curves_PartnerModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_partner": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_partner": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

@@ -13,16 +13,11 @@ function Wl_Search_Template_Panel_PanelModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid,k_business,s_search_group,k_search_template';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "uid,k_business,s_search_group,k_search_template";
 
   /**
    * Entity in array format.
-   * For more information about the format, see {@link \Wl\Search\Entity\SearchEntityAbstract::createArray()} method.
+   * For more information about the format, see {@link \Wl\Search\Criteria\SearchCriteriaList::createArray()} method.
    *
    * @post post
    * @put post
@@ -33,7 +28,7 @@ function Wl_Search_Template_Panel_PanelModel()
   /**
    * @typedef {{}} Wl_Search_Template_Panel_PanelModel_a_panel
    * @property {string[]} a_staff_selected List of user keys of shared search template.
-   * @property {number} cid_search_entity Search entity CID. Constant from {@link \Wl\Search\Entity\SearchEntityAbstract} subclasses.
+   * @property {number} cid_search_entity Search entity CID. Constant from {@link \Wl\Search\SearchEntityAbstract} subclasses.
    * @property {number} id_share Share option constant. See {@link ShareSid}.
    * @property {string} k_search_template Key of existing template. Primary key in the {@link SearchTemplateSql} table.
    * @property {boolean} show_staff_role_list Whether staff role list should be shown for share.
@@ -53,7 +48,7 @@ function Wl_Search_Template_Panel_PanelModel()
    *     int <var>cid_search_entity</var>
    *   </dt>
    *   <dd>
-   *     Search entity CID. Constant from {@link \Wl\Search\Entity\SearchEntityAbstract} subclasses.
+   *     Search entity CID. Constant from {@link \Wl\Search\SearchEntityAbstract} subclasses.
    *   </dd>
    *   <dt>
    *     int <var>id_share</var>
@@ -88,7 +83,7 @@ function Wl_Search_Template_Panel_PanelModel()
 
   /**
    * Search entity CID list.
-   * Constants from {@link \Wl\Search\Entity\SearchEntityAbstract} subclasses.
+   * Constants from {@link \Wl\Search\SearchEntityAbstract} subclasses.
    *
    * @post post
    * @put post
@@ -104,7 +99,7 @@ function Wl_Search_Template_Panel_PanelModel()
 
   /**
    * Selected staff roles of the search template.
-   * 
+   *
    * <dl>
    *   <dt>int <var>id_privilege_role</var></dt>
    *   <dd>ID of privilege role. Constant from {@link \RsPrivilegeRoleSid}.</dd>
@@ -142,10 +137,10 @@ function Wl_Search_Template_Panel_PanelModel()
   /**
    * Key of existing template.
    * Primary key in the {@link SearchTemplateSql} table.
-   * 
+   *
    * Can be empty if template needs to be created.
    *
-   * @get get
+   * @get get,result
    * @post result
    * @put get
    * @type {string}
@@ -192,99 +187,7 @@ WlSdk_ModelAbstract.extend(Wl_Search_Template_Panel_PanelModel);
  */
 Wl_Search_Template_Panel_PanelModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_criteria": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_panel": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_search_entity": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_staff_role_selected": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "id_share": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_search_template": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "result": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "s_search_group": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "text_title": {
-        "post": {
-          "post": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_criteria": {"post": {"post": true},"put": {"post": true}},"a_panel": {"get": {"result": true}},"a_search_entity": {"post": {"post": true},"put": {"post": true}},"a_staff_role_selected": {"post": {"post": true},"put": {"post": true}},"id_share": {"post": {"post": true},"put": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_search_template": {"get": {"get": true,"result": true},"post": {"result": true},"put": {"get": true}},"s_search_group": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"text_title": {"post": {"post": true},"put": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
@@ -296,4 +199,4 @@ Wl_Search_Template_Panel_PanelModel.prototype.config=function()
  * @param {string} k_search_template Key of existing template. Primary key in the {@link SearchTemplateSql} table. Can be empty if template needs to be created.
  * @returns {Wl_Search_Template_Panel_PanelModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

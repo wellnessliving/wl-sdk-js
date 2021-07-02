@@ -13,7 +13,7 @@ function Wl_Promotion_Purchase_PurchaseListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Promotion_Purchase_PurchaseListModel_a_promotion
@@ -77,25 +77,7 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_Purchase_PurchaseListModel);
  */
 Wl_Promotion_Purchase_PurchaseListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_promotion": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_table": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_promotion": {"get": {"result": true}},"id_table": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -104,4 +86,4 @@ Wl_Promotion_Purchase_PurchaseListModel.prototype.config=function()
  * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
  * @returns {Wl_Promotion_Purchase_PurchaseListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

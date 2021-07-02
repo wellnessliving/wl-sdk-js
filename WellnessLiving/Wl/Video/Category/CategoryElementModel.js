@@ -13,11 +13,6 @@ function Wl_Video_Category_CategoryElementModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * List of client and member types, who can access videos from the category.
    *
    * @get result
@@ -102,76 +97,5 @@ WlSdk_ModelAbstract.extend(Wl_Video_Category_CategoryElementModel);
  */
 Wl_Video_Category_CategoryElementModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_login_type": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "a_member_group": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "i_order": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_login_type": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "is_member_group": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "k_video_category": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true,
-          "result": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "text_title": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_login_type": {"get": {"result": true},"put": {"post": true}},"a_member_group": {"get": {"result": true},"put": {"post": true}},"i_order": {"get": {"result": true}},"is_login_type": {"get": {"result": true},"put": {"post": true}},"is_member_group": {"get": {"result": true},"put": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"put": {"get": true}},"k_video_category": {"delete": {"get": true},"get": {"get": true,"result": true},"put": {"get": true}},"text_title": {"get": {"result": true},"put": {"post": true}}}};
 };

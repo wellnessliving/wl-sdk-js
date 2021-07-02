@@ -11,11 +11,6 @@ function Wl_Calendar_Cordova_CordovaCalendarClientModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Events that must be synchronized in calendar. See {@link CordovaCalendarApiAbstract::data()} for detailed description.
    *
    * @post result
@@ -68,33 +63,5 @@ WlSdk_ModelAbstract.extend(Wl_Calendar_Cordova_CordovaCalendarClientModel);
  */
 Wl_Calendar_Cordova_CordovaCalendarClientModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_visit_actual": {
-        "post": {
-          "result": true
-        }
-      },
-      "dtu_synced_last": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "s_visit_synced": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_visit_actual": {"post": {"result": true}},"dtu_synced_last": {"post": {"get": true}},"k_business": {"post": {"get": true}},"s_visit_synced": {"post": {"post": true}},"uid": {"post": {"get": true}}}};
 };

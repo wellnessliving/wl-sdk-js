@@ -13,12 +13,7 @@ function Wl_Login_Promotion_PromotionPayCancelModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid,k_login_promotion';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business,uid,k_login_promotion";
 
   /**
    * Whether the client may use remaining visits after promotion cancellation.
@@ -38,7 +33,7 @@ function Wl_Login_Promotion_PromotionPayCancelModel()
 
   /**
    * Key of login promotion to update options for.
-   * 
+   *
    * Primary key in {@link \RsLoginPromotionSql} table.
    *
    * @put get
@@ -64,30 +59,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_PromotionPayCancelModel);
  */
 Wl_Login_Promotion_PromotionPayCancelModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "is_use": {
-        "put": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "put": {
-          "get": true
-        }
-      },
-      "k_login_promotion": {
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "put": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"is_use": {"put": {"post": true}},"k_business": {"put": {"get": true}},"k_login_promotion": {"put": {"get": true}},"uid": {"put": {"get": true}}}};
 };
 
 /**
@@ -98,4 +70,4 @@ Wl_Login_Promotion_PromotionPayCancelModel.prototype.config=function()
  * @param {string} k_login_promotion Key of login promotion to update options for. Primary key in {@link \RsLoginPromotionSql} table.
  * @returns {Wl_Login_Promotion_PromotionPayCancelModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

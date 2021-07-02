@@ -11,13 +11,8 @@ function Wl_Insurance_Reimbursement_ReimbursementResubmitModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Key of the reimbursement record to be resubmitted.
-   * 
+   *
    * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
@@ -35,13 +30,5 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Reimbursement_ReimbursementResubmitModel
  */
 Wl_Insurance_Reimbursement_ReimbursementResubmitModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_insurance_reimbursement": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_insurance_reimbursement": {"get": {"get": true}}}};
 };

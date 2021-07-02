@@ -36,18 +36,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_Login_InfoModel);
  */
 Core_Passport_Login_InfoModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "uid": {
-        "get": {
-          "result": true
-        }
-      },
-      "url_password_change": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"uid": {"get": {"result": true}},"url_password_change": {"get": {"result": true}}}};
 };

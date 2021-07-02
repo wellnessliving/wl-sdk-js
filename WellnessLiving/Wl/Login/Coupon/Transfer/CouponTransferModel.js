@@ -11,11 +11,6 @@ function Wl_Login_Coupon_Transfer_CouponTransferModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Key of business. Primary key in {@link \RsBusinessSql} table.
    * <tt>null</tt> if not initialized.
    *
@@ -65,40 +60,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Coupon_Transfer_CouponTransferModel);
  */
 Wl_Login_Coupon_Transfer_CouponTransferModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_login_coupon": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid_from": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "uid_to": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"get": {"get": true},"post": {"get": true}},"k_login_coupon": {"get": {"get": true},"post": {"get": true}},"uid_from": {"get": {"get": true},"post": {"get": true}},"uid_to": {"get": {"get": true},"post": {"get": true}}}};
 };

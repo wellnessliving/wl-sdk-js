@@ -11,11 +11,6 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * List of dates, when sessions will be booked.
    *
    * @get result
@@ -89,7 +84,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
 
   /**
    * Whether sessions should be connected to the day of month or day of week.
-   * 
+   *
    * <tt>true</tt> means to book the same day of month, <tt>false</tt> - the same day of week.
    *
    * @get get
@@ -115,63 +110,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Wizard_Recurring_RecurringListModel);
  */
 Wl_Appointment_Wizard_Recurring_RecurringListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_date": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_day": {
-        "get": {
-          "get": true
-        }
-      },
-      "dt_end": {
-        "get": {
-          "get": true
-        }
-      },
-      "dt_start": {
-        "get": {
-          "get": true
-        }
-      },
-      "dt_time": {
-        "get": {
-          "get": true
-        }
-      },
-      "i_count": {
-        "get": {
-          "get": true
-        }
-      },
-      "i_period": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_duration": {
-        "get": {
-          "get": true
-        }
-      },
-      "id_end": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_month": {
-        "get": {
-          "get": true
-        }
-      },
-      "s_id": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_date": {"get": {"result": true}},"a_day": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"dt_start": {"get": {"get": true}},"dt_time": {"get": {"get": true}},"i_count": {"get": {"get": true}},"i_period": {"get": {"get": true}},"id_duration": {"get": {"get": true}},"id_end": {"get": {"get": true}},"is_month": {"get": {"get": true}},"s_id": {"get": {"get": true}}}};
 };

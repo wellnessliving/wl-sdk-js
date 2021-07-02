@@ -11,13 +11,8 @@ function Wl_Business_Location_Merchant_Share_SaveModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A list of source locations for merchant sharing.
-   * 
+   *
    * <tt>null</tt> to not to change this list.
    *
    * @post post
@@ -27,7 +22,7 @@ function Wl_Business_Location_Merchant_Share_SaveModel()
 
   /**
    * A list of destination locations for merchant sharing.
-   * 
+   *
    * <tt>null</tt> to not to change this list.
    *
    * @post post
@@ -45,7 +40,7 @@ function Wl_Business_Location_Merchant_Share_SaveModel()
 
   /**
    * Business key. Obligatory field.
-   * 
+   *
    * Primary key from {@link \RsBusinessSql} table.
    *
    * @post get
@@ -55,9 +50,9 @@ function Wl_Business_Location_Merchant_Share_SaveModel()
 
   /**
    * Merchant sharing group ID.
-   * 
+   *
    * Primary key from {@link GroupSql} table.
-   * 
+   *
    * <tt>null</tt> to create new group.
    *
    * @post post,result
@@ -75,34 +70,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Location_Merchant_Share_SaveModel);
  */
 Wl_Business_Location_Merchant_Share_SaveModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_location_from": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_location_to": {
-        "post": {
-          "post": true
-        }
-      },
-      "is_clear": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_merchant_share_group": {
-        "post": {
-          "post": true,
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_location_from": {"post": {"post": true}},"a_location_to": {"post": {"post": true}},"is_clear": {"post": {"post": true}},"k_business": {"post": {"get": true}},"k_merchant_share_group": {"post": {"post": true,"result": true}}}};
 };

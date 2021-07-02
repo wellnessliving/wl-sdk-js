@@ -11,11 +11,6 @@ function Wl_Login_Promotion_Rollup_AdjustModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Count of remaining visits that should be after adjustment.
    *
    * @post post
@@ -49,23 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_Rollup_AdjustModel);
  */
 Wl_Login_Promotion_Rollup_AdjustModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_count": {
-        "post": {
-          "post": true
-        }
-      },
-      "id_period": {
-        "post": {
-          "get": true
-        }
-      },
-      "k_login_promotion": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_count": {"post": {"post": true}},"id_period": {"post": {"get": true}},"k_login_promotion": {"post": {"get": true}}}};
 };

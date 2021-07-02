@@ -13,7 +13,7 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,uid';
+  this._s_key = "k_business,uid";
 
   /**
    * @typedef {{}} Wl_Report_Dashboard_Widget_DashboardWidgetListModel_a_category_list
@@ -176,35 +176,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_Dashboard_Widget_DashboardWidgetListModel);
  */
 Wl_Report_Dashboard_Widget_DashboardWidgetListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_category_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_widget_default_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_widget_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_category_list": {"get": {"result": true}},"a_widget_default_list": {"get": {"result": true}},"a_widget_list": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -214,4 +186,4 @@ Wl_Report_Dashboard_Widget_DashboardWidgetListModel.prototype.config=function()
  * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
  * @returns {Wl_Report_Dashboard_Widget_DashboardWidgetListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -11,11 +11,6 @@ function Wl_Integration_Zoom_ConfirmationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Business key. Primary key in the {@link \RsBusinessSql} table.
    *
    * @post get
@@ -33,13 +28,5 @@ WlSdk_ModelAbstract.extend(Wl_Integration_Zoom_ConfirmationModel);
  */
 Wl_Integration_Zoom_ConfirmationModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "k_business": {
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"k_business": {"post": {"get": true}}}};
 };

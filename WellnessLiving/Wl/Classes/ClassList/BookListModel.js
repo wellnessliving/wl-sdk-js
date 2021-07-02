@@ -91,18 +91,5 @@ WlSdk_ModelAbstract.extend(Wl_Classes_ClassList_BookListModel);
  */
 Wl_Classes_ClassList_BookListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_class": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_class": {"get": {"result": true}},"k_location": {"get": {"get": true}}}};
 };

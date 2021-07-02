@@ -12,7 +12,7 @@ function Core_Spa_Model_ModelPoolModel()
 
   /**
    * A set of model objects that need to be synchronized.
-   * 
+   *
    * Key - model class name.
    * Value - model data.
    *
@@ -31,7 +31,7 @@ function Core_Spa_Model_ModelPoolModel()
 
   /**
    * The method (get, post, put, delete) that will be called on all given models.
-   * 
+   *
    * Currently only the "get" method is supported
    *
    * @post post
@@ -49,23 +49,5 @@ WlSdk_ModelAbstract.extend(Core_Spa_Model_ModelPoolModel);
  */
 Core_Spa_Model_ModelPoolModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_request": {
-        "post": {
-          "post": true
-        }
-      },
-      "a_result": {
-        "post": {
-          "result": true
-        }
-      },
-      "s_method": {
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_request": {"post": {"post": true}},"a_result": {"post": {"result": true}},"s_method": {"post": {"post": true}}}};
 };

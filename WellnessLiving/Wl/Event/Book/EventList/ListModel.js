@@ -13,7 +13,7 @@ function Wl_Event_Book_EventList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_class_tab,uid';
+  this._s_key = "k_business,k_class_tab,uid";
 
   /**
    * List of event identifiers
@@ -69,35 +69,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventList_ListModel);
  */
 Wl_Event_Book_EventList_ListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_event": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_virtual_service": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_class_tab": {
-        "get": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_event": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -108,4 +80,4 @@ Wl_Event_Book_EventList_ListModel.prototype.config=function()
  * @param {string} uid Book user key. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Event_Book_EventList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

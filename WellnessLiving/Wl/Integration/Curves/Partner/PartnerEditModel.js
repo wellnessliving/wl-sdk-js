@@ -11,11 +11,6 @@ function Wl_Integration_Curves_Partner_PartnerEditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Channel type ID. One of {@link \Wl\Integration\Curves\ChannelTypeSid} constants.
    *
    * @get result
@@ -71,9 +66,9 @@ function Wl_Integration_Curves_Partner_PartnerEditModel()
 
   /**
    * If a partner is edited, its key is stored here.
-   * 
+   *
    * Primary key in {@link \Wl\Integration\Curves\PartnerSql} table.
-   * 
+   *
    * <tt>null</tt> if a new partner should be created.
    * This value is required for edit and delete operations.
    *
@@ -111,81 +106,5 @@ WlSdk_ModelAbstract.extend(Wl_Integration_Curves_Partner_PartnerEditModel);
  */
 Wl_Integration_Curves_Partner_PartnerEditModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_channel_type": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "id_curves_country": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "id_deal_type": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "id_reimbursement_type": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_active": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "is_reimbursement_information_required": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_partner": {
-        "delete": {
-          "get": true
-        },
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true,
-          "result": true
-        }
-      },
-      "s_partner": {
-        "get": {
-          "result": true
-        }
-      },
-      "text_partner": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_channel_type": {"get": {"result": true},"post": {"post": true}},"id_curves_country": {"get": {"result": true},"post": {"post": true}},"id_deal_type": {"get": {"result": true},"post": {"post": true}},"id_reimbursement_type": {"get": {"result": true},"post": {"post": true}},"is_active": {"get": {"result": true},"post": {"post": true}},"is_reimbursement_information_required": {"get": {"result": true},"post": {"post": true}},"k_partner": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"s_partner": {"get": {"result": true}},"text_partner": {"get": {"result": true},"post": {"post": true}}}};
 };

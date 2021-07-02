@@ -13,12 +13,7 @@ function Wl_User_Option_PromptList_PromptListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_option,s_value,uid';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "id_option,s_value,uid";
 
   /**
    * Option ID.
@@ -56,31 +51,7 @@ WlSdk_ModelAbstract.extend(Wl_User_Option_PromptList_PromptListModel);
  */
 Wl_User_Option_PromptList_PromptListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_option": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "s_value": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "delete": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_option": {"delete": {"get": true},"post": {"get": true}},"s_value": {"post": {"post": true}},"uid": {"delete": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -91,4 +62,4 @@ Wl_User_Option_PromptList_PromptListModel.prototype.config=function()
  * @param {string} uid User key for which option value is updated. Primary key in {@link \PassportLoginSql}.
  * @returns {Wl_User_Option_PromptList_PromptListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

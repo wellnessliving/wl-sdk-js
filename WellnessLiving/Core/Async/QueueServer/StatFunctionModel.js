@@ -11,11 +11,6 @@ function Core_Async_QueueServer_StatFunctionModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A list of functions.
    *
    * @get result
@@ -41,18 +36,5 @@ WlSdk_ModelAbstract.extend(Core_Async_QueueServer_StatFunctionModel);
  */
 Core_Async_QueueServer_StatFunctionModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_function": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_provider": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_function": {"get": {"result": true}},"s_provider": {"get": {"get": true}}}};
 };

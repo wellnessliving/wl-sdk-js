@@ -54,12 +54,28 @@ function Wl_Session_EnvironmentModel()
   this.a_splash_screen = null;
 
   /**
+   * Local date with time now in current location @see \Wl\Session\EnvironmentApi::$k_location.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.dtl_now = undefined;
+
+  /**
    * Business account ID. Constant from {@link \RsBusinessAccountSid}.
    *
    * @get result
    * @type {number}
    */
   this.id_business_account = undefined;
+
+  /**
+   * Business account application ID. Constant from {@link \Wl\Business\Account\ApplicationSid}.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.id_business_account_application = undefined;
 
   /**
    * Currency ID. One of {@link \RsCurrencySid} constants.
@@ -92,6 +108,23 @@ function Wl_Session_EnvironmentModel()
    * @type {boolean}
    */
   this.is_application_custom = undefined;
+
+  /**
+   * <tt>true</tt> if user must be redirected to billing page to enter credit card; <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_billing_required = undefined;
+
+  /**
+   * <tt>true</tt> if user must be redirected from booking page to billing page to enter credit card;
+   *   <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_booking_required_billing = undefined;
 
   /**
    * Determines if a business has multiple locations. See {@link \rs_business_location_multiple()}.
@@ -220,122 +253,5 @@ WlSdk_ModelAbstract.extend(Wl_Session_EnvironmentModel);
  */
 Wl_Session_EnvironmentModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_business": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_splash_screen": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_business_account": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_currency": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_locale": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_place": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_application_custom": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_business_location_multiple": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_contract": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_location_geo": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_location_redirect": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_profile_required": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_request_required_information": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_traveller": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_waiver_required": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "k_business_franchisor": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_currency": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_location": {
-        "get": {
-          "result": true
-        },
-        "put": {
-          "post": true
-        }
-      },
-      "s_application_id": {
-        "get": {
-          "get": true
-        },
-        "put": {
-          "get": true
-        }
-      },
-      "uid": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_business": {"get": {"result": true}},"a_splash_screen": {"get": {"result": true}},"dtl_now": {"get": {"result": true}},"id_business_account": {"get": {"result": true}},"id_business_account_application": {"get": {"result": true}},"id_currency": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"id_place": {"get": {"result": true}},"is_application_custom": {"get": {"result": true}},"is_billing_required": {"get": {"result": true}},"is_booking_required_billing": {"get": {"result": true}},"is_business_location_multiple": {"get": {"result": true}},"is_contract": {"get": {"result": true}},"is_location_geo": {"get": {"result": true}},"is_location_redirect": {"get": {"result": true}},"is_profile_required": {"get": {"result": true}},"is_request_required_information": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"is_waiver_required": {"get": {"result": true}},"k_business": {"get": {"result": true},"put": {"post": true}},"k_business_franchisor": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"k_location": {"get": {"result": true},"put": {"post": true}},"s_application_id": {"get": {"get": true},"put": {"get": true}},"uid": {"get": {"result": true}}}};
 };

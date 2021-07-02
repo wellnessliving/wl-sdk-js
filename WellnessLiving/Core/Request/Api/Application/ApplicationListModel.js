@@ -11,11 +11,6 @@ function Core_Request_Api_Application_ApplicationListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A list of applications.
    * <tt>null</tt> if is not initialized yet.
    *
@@ -34,13 +29,5 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_Application_ApplicationListModel);
  */
 Core_Request_Api_Application_ApplicationListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_list": {"get": {"result": true}}}};
 };

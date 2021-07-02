@@ -13,7 +13,7 @@ function Wl_Resource_Layout_LayoutModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_resource_layout';
+  this._s_key = "k_resource_layout";
 
   /**
    * @typedef {{}} Wl_Resource_Layout_LayoutModel_a_resource
@@ -305,60 +305,7 @@ WlSdk_ModelAbstract.extend(Wl_Resource_Layout_LayoutModel);
  */
 Wl_Resource_Layout_LayoutModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_resource": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_shape_custom": {
-        "get": {
-          "result": true
-        }
-      },
-      "a_shape_icon": {
-        "get": {
-          "result": true
-        }
-      },
-      "i_grid": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_grid": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_resource_layout": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_resource_type": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_color_active": {
-        "get": {
-          "result": true
-        }
-      },
-      "show_name": {
-        "get": {
-          "result": true
-        }
-      },
-      "show_number": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_resource": {"get": {"result": true}},"a_shape_custom": {"get": {"result": true}},"a_shape_icon": {"get": {"result": true}},"i_grid": {"get": {"result": true}},"is_grid": {"get": {"result": true}},"k_resource_layout": {"get": {"get": true}},"k_resource_type": {"get": {"result": true}},"s_color_active": {"get": {"result": true}},"show_name": {"get": {"result": true}},"show_number": {"get": {"result": true}}}};
 };
 
 /**
@@ -367,4 +314,4 @@ Wl_Resource_Layout_LayoutModel.prototype.config=function()
  * @param {string} k_resource_layout ID of layout.
  * @returns {Wl_Resource_Layout_LayoutModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

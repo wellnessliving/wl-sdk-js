@@ -14,7 +14,7 @@ function Wl_Business_Franchise_FranchiseGroupModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
+  this._s_key = "k_business";
 
   /**
    * Keys of businesses of franchise group. Primary keys in {@link \RsBusinessSql} table.
@@ -44,20 +44,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Franchise_FranchiseGroupModel);
  */
 Wl_Business_Franchise_FranchiseGroupModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_business": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_business": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -66,4 +53,4 @@ Wl_Business_Franchise_FranchiseGroupModel.prototype.config=function()
  * @param {string} k_business Key of business to get data for. It may be both franchisor and franchisee. Primary key in {@link \RsBusinessSql} table.
  * @returns {Wl_Business_Franchise_FranchiseGroupModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

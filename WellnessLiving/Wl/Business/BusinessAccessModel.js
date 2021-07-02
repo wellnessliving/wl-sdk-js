@@ -13,7 +13,7 @@ function Wl_Business_BusinessAccessModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'uid';
+  this._s_key = "uid";
 
   /**
    * Businesses where giver user is a staff member. Primary keys in table {@link \RsBusinessSql}.
@@ -42,20 +42,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_BusinessAccessModel);
  */
 Wl_Business_BusinessAccessModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_business": {
-        "get": {
-          "result": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_business": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -64,4 +51,4 @@ Wl_Business_BusinessAccessModel.prototype.config=function()
  * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
  * @returns {Wl_Business_BusinessAccessModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

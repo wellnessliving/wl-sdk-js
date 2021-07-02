@@ -13,7 +13,7 @@ function Wl_Visit_Pay_PayChangeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business,k_visit,uid';
+  this._s_key = "k_business,k_visit,uid";
 
   /**
    * @typedef {{}} Wl_Visit_Pay_PayChangeModel_a_list
@@ -75,7 +75,7 @@ function Wl_Visit_Pay_PayChangeModel()
 
   /**
    * Business key.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -86,7 +86,7 @@ function Wl_Visit_Pay_PayChangeModel()
 
   /**
    * Class period key.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -105,7 +105,7 @@ function Wl_Visit_Pay_PayChangeModel()
 
   /**
    * Current user ID.
-   * 
+   *
    * Empty value means not set.
    *
    * @get get
@@ -124,54 +124,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Pay_PayChangeModel);
  */
 Wl_Visit_Pay_PayChangeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_change": {
-        "post": {
-          "result": true
-        }
-      },
-      "is_pay_now": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "k_visit": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      },
-      "text_key": {
-        "post": {
-          "post": true
-        }
-      },
-      "uid": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_list": {"get": {"result": true}},"is_change": {"post": {"result": true}},"is_pay_now": {"get": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"text_key": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -182,4 +135,4 @@ Wl_Visit_Pay_PayChangeModel.prototype.config=function()
  * @param {string} uid Current user ID. Empty value means not set.
  * @returns {Wl_Visit_Pay_PayChangeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

@@ -13,7 +13,7 @@ function Wl_Visit_VisitStatusModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_visit,k_business';
+  this._s_key = "k_visit,k_business";
 
   /**
    * Visit status. One of {@link \Wl\Visit\VisitSid} constants.
@@ -27,7 +27,8 @@ function Wl_Visit_VisitStatusModel()
   /**
    * ID of business. Primary key in {@link RsBusinessSql} table.
    *
-   * @post post
+   * @get get
+   * @post get
    * @type {string}
    */
   this.k_business = "0";
@@ -51,31 +52,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_VisitStatusModel);
  */
 Wl_Visit_VisitStatusModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "id_visit": {
-        "get": {
-          "result": true
-        },
-        "post": {
-          "post": true
-        }
-      },
-      "k_business": {
-        "post": {
-          "post": true
-        }
-      },
-      "k_visit": {
-        "get": {
-          "get": true
-        },
-        "post": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"id_visit": {"get": {"result": true},"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -85,4 +62,4 @@ Wl_Visit_VisitStatusModel.prototype.config=function()
  * @param {string} k_business ID of business. Primary key in {@link RsBusinessSql} table.
  * @returns {Wl_Visit_VisitStatusModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

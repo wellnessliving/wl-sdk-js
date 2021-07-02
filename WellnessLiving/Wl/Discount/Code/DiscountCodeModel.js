@@ -13,12 +13,7 @@ function Wl_Discount_Code_DiscountCodeModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'k_business';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "k_business";
 
   /**
    * @typedef {{}} Wl_Discount_Code_DiscountCodeModel_a_list
@@ -28,7 +23,7 @@ function Wl_Discount_Code_DiscountCodeModel()
 
   /**
    * Discount codes list.
-   * 
+   *
    * Each element has next structure:<dl>
    * <dt>string <var>k_discount_code</var> </dt>
    * <dd>Discount code key. Primary key in the {@link \Wl\Discount\Code\Sql} table.</dd>
@@ -59,20 +54,7 @@ WlSdk_ModelAbstract.extend(Wl_Discount_Code_DiscountCodeModel);
  */
 Wl_Discount_Code_DiscountCodeModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_list": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
@@ -81,4 +63,4 @@ Wl_Discount_Code_DiscountCodeModel.prototype.config=function()
  * @param {string} k_business Business key of the discount codes.
  * @returns {Wl_Discount_Code_DiscountCodeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

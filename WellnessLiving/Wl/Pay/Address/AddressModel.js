@@ -13,12 +13,7 @@ function Wl_Pay_Address_AddressModel()
   /**
    * @inheritDoc
    */
-  this._s_key = 'id_pay_owner,k_id';
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  this._s_key = "id_pay_owner,k_id";
 
   /**
    * Payment addresses information.
@@ -56,25 +51,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Address_AddressModel);
  */
 Wl_Pay_Address_AddressModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_pay_address": {
-        "get": {
-          "result": true
-        }
-      },
-      "id_pay_owner": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_id": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_pay_address": {"get": {"result": true}},"id_pay_owner": {"get": {"get": true}},"k_id": {"get": {"get": true}}}};
 };
 
 /**
@@ -84,4 +61,4 @@ Wl_Pay_Address_AddressModel.prototype.config=function()
  * @param {string} k_id Primary key of a payment owner. May be business of user depending on a {@link \Wl\Pay\Address\AddressApi::$id_pay_owner} value.
  * @returns {Wl_Pay_Address_AddressModel}
  * @see WlSdk_ModelAbstract.instanceGet()
-*/
+ */

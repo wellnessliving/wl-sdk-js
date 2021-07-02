@@ -11,13 +11,8 @@ function Core_Request_Api_Application_GroupListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * A list of access groups.
-   * 
+   *
    * <tt>null</tt> if is not initialized yet.
    *
    * @get result
@@ -35,13 +30,5 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_Application_GroupListModel);
  */
 Core_Request_Api_Application_GroupListModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "a_list": {
-        "get": {
-          "result": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"a_list": {"get": {"result": true}}}};
 };

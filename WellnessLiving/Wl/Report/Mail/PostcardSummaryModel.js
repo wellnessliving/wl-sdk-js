@@ -62,33 +62,5 @@ WlSdk_ModelAbstract.extend(Wl_Report_Mail_PostcardSummaryModel);
  */
 Wl_Report_Mail_PostcardSummaryModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_quantity": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "k_currency": {
-        "get": {
-          "result": true
-        }
-      },
-      "m_cost": {
-        "get": {
-          "result": true
-        }
-      },
-      "s_id": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_quantity": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_currency": {"get": {"result": true}},"m_cost": {"get": {"result": true}},"s_id": {"get": {"get": true}}}};
 };
