@@ -501,9 +501,20 @@ WlSdk_ModelAbstract.prototype.errorGet = function()
 /**
  * Extends a child class with standard static methods.
  *
+ * @deprecated Use {@link WlSdk_ModelAbstract.extends} (in the required subclass) instead.
  * @param {WlSdk_ModelAbstract} o_child A subclass to extend.
  */
 WlSdk_ModelAbstract.extend = function(o_child)
+{
+  this.extends(o_child);
+};
+
+/**
+ * Extends a child class with standard static methods.
+ *
+ * @param {WlSdk_ModelAbstract} o_child A subclass to extend.
+ */
+WlSdk_ModelAbstract.extends = function(o_child)
 {
   o_child.prototype=Object.create(this.prototype);
 
@@ -565,7 +576,7 @@ WlSdk_ModelAbstract.prototype.getDone = function()
  *
  * If synchronized, this method does nothing.
  *
- * @return {*} Promise object that is resolved when synchronization is complete.
+ * @return {WlSdk_Deferred_Promise} Promise object that is resolved when synchronization is complete.
  */
 WlSdk_ModelAbstract.prototype.getIf = function()
 {
@@ -688,6 +699,12 @@ WlSdk_ModelAbstract.instanceGet = function(_key)
       for(i = 0;i<a_key.length;i++)
       {
         var x_value = o_model[a_key[i]];
+
+        if(is_numeric(x_value))
+          x_value = x_value.toString();
+        if(is_numeric(arguments[i]))
+          arguments[i] = arguments[i].toString();
+
         WlSdk_AssertException.assertTrue(x_value===arguments[i],{
           's_class': o_model.constructor.name,
           's_key': a_key[i],
@@ -857,10 +874,11 @@ WlSdk_ModelAbstract.prototype.putSchedule = function(t_timeout)
  */
 WlSdk_ModelAbstract.prototype.request = function(a_config)
 {
+  var s_class = get_class(this);
   WlSdk_AssertException.assertTrue(!this._o_defer,{
     's_method': a_config.s_method,
     'text_message': 'It is not allowed to perform synchronization while model is being synchronized.',
-    'this': get_class(this)
+    'this': s_class
   });
 
   var o_this = this;
@@ -892,11 +910,11 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
     a_url = {};
   }
 
-  if(a_config.s_method==='DELETE')
-    url = WlSdk_Core_Url.variable(url,a_data);
+  if(a_config.s_method==='DELETE'&&s_csrf)
+    url = WlSdk_Core_Url.variable(url,{'csrf': s_csrf});
 
   this._o_defer = WlSdk_Config_Mixin.configDeferredCreate(
-    get_class(this)+'.request',
+    s_class+'.request',
     'URL: '+url+'. Method: '+a_config.s_method+'. Data: '+JSON.stringify(a_data)
   );
 
@@ -932,6 +950,7 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
     {
       var a_header = o_this.header();
       a_header['X-Signature-Date'] = WlSdk_Core_Date.mysqlHttp(dt_request);
+      a_header['X-Signature-Timezone'] = (new Date()).getTimezoneOffset();
       if(a_signature)
       {
         a_header['Authorization'] = a_signature['s_authorization'];
@@ -943,6 +962,17 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
           o_data_ready = a_signature['a_parameter'];
       }
 
+      var s_rule = null;
+      if(WlSdk_Config_Mixin.RESULT_CONVERSION_RULES)
+      {
+        if(WlSdk_Config_Mixin.RESULT_CONVERSION_RULES.hasOwnProperty(s_class))
+          s_rule = WlSdk_Config_Mixin.RESULT_CONVERSION_RULES[s_class];
+        else if(WlSdk_Config_Mixin.RESULT_CONVERSION_RULES.hasOwnProperty(''))
+          s_rule = WlSdk_Config_Mixin.RESULT_CONVERSION_RULES[''];
+      }
+      if(s_rule)
+        a_header['X-Error-Rules'] = s_rule;
+
       var a_ajax = {
         'cache': false,
         'contentType': is_file?false:'application/x-www-form-urlencoded; charset=UTF-8',
@@ -952,14 +982,6 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
         'dt_request': dt_request,
         'error': function(jsXHR,textStatus,errorThrown)
         {
-          o_this.requestLog({
-            'errorThrown': errorThrown,
-            's_event': 'Request has been failed',
-            'textStatus': textStatus,
-            'type': s_method,
-            'url': url
-          });
-
           WlSdk_Config_Mixin.configTestLog(s_method+' '+url+' Fatal!');
 
           o_this.requestErrorProcess(textStatus,errorThrown,jsXHR.status);
@@ -970,14 +992,6 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
         'processData': !is_file,
         'success': function(a_result)
         {
-          o_this.requestLog({
-            'a_result': a_result,
-            'data': o_data_ready,
-            's_event': 'Response to request has been received',
-            'type': s_method,
-            'url': url
-          });
-
           try
           {
             WlSdk_AssertException.assertTrue((typeof a_result==='object')&&a_result!==null,{
@@ -986,15 +1000,15 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
               'url': url
             });
 
+            var a_config = o_this.config();
+            var s_key;
             if(a_result['status']==='ok')
             {
               WlSdk_Config_Mixin.configTestLog(s_method+' '+url+' Success!');
 
               o_this._o_error = null;
 
-              var a_config = o_this.config();
-
-              for(var s_key in a_config['a_field'])
+              for(s_key in a_config['a_field'])
               {
                 if(!a_config['a_field'].hasOwnProperty(s_key))
                   continue;
@@ -1044,6 +1058,22 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
             // noinspection JSObjectNullOrUndefined
             if(a_result['status']!=='ok'||a_result.hasOwnProperty('a_error'))
             {
+              for(s_key in a_config['a_field'])
+              {
+                if(!a_config['a_field'].hasOwnProperty(s_key))
+                  continue;
+                if(!a_config['a_field'][s_key][s_method])
+                  continue;
+                if(!a_config['a_field'][s_key][s_method]['error'])
+                  continue;
+
+                // noinspection JSObjectNullOrUndefined
+                if(a_result.hasOwnProperty(s_key))
+                  o_this[s_key] = a_result[s_key];
+                else
+                  o_this[s_key] = null;
+              }
+
               var o_event = o_this.syncErrorProcess(a_result);
 
               o_this._o_error = o_event;
@@ -1107,13 +1137,6 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
       var o_ajax = o_this._ajax(a_ajax);
       o_this._o_defer.notify(0);
 
-      o_this.requestLog({
-        'data': o_data_ready,
-        's_event': 'Request has been sent',
-        'type': s_method,
-        'url': url
-      });
-
       o_this.indicatorStart();
 
       o_ajax.always(function()
@@ -1176,23 +1199,13 @@ WlSdk_ModelAbstract.prototype.requestExceptionHandle = function(e)
 }
 
 /**
- * Logs request/response.
- *
- * @param {{}} a_log Information to be logged.
- */
-WlSdk_ModelAbstract.prototype.requestLog = function(a_log)
-{
-  // Do nothing by default.
-};
-
-/**
  * Returns URI of current model.
  *
  * @return {string} URI of current model.
  */
 WlSdk_ModelAbstract.prototype.resource = function()
 {
-  var o_match=this.constructor.toString().match(/function ([A-Za-z_]+)Model\(/);
+  var o_match=this.constructor.toString().match(/function ([A-Za-z0-9_]+)Model\(/);
   WlSdk_AssertException.notEmpty(o_match,{
     'constructor': this.constructor,
     'o_model': this,
