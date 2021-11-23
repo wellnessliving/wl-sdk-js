@@ -23,11 +23,12 @@ WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID = 'add ID';
 WlSdk_Config_Mixin.CSRF_CODE = SDK_CSRF_CODE; // Set variable with your CSRF code.
 
 /**
- * URL of the API server (including trailing slash).
+ * Region id in which information about this business is stored.
+ * One of {@link WlSdk_Config_ConfigRegionSid} fields.
  *
- * @type {string}
+ * @type {number}
  */
-WlSdk_Config_Mixin.URL_API = 'add URL';
+WlSdk_Config_Mixin.ID_REGION = WlSdk_Config_ConfigRegionSid.US_EAST_1;
 
 /**
  * URL of the API where secret key for signature may be generated.
