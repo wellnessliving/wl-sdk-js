@@ -329,7 +329,7 @@ WlSdk_ModelAbstract.prototype._formDataFill = function(a_signature,o_form_data,a
  */
 WlSdk_ModelAbstract.prototype.apiUrl = function()
 {
-  return WlSdk_Config_Mixin.URL_API+this.resource();
+  return WlSdk_Config_MixinAbstract.apiUrl() + this.resource();
 };
 
 /**

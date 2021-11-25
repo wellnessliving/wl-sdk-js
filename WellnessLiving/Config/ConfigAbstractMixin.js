@@ -1,4 +1,5 @@
 // @after Core/Request/Api/Sdk/AssertException.js
+// @after Config/ConfigRegionSid.js
 
 /**
  * Configurations for SDK.
@@ -25,6 +26,27 @@ WlSdk_Config_MixinAbstract.ASSERT_EXCEPTION = WlSdk_AssertException;
 WlSdk_Config_MixinAbstract.CSRF_CODE = '';
 
 /**
+ * Region id in which information about this business is stored.
+ * One of {@link WlSdk_Config_ConfigRegionSid} fields.
+ *
+ * @type {number}
+ */
+WlSdk_Config_MixinAbstract.ID_REGION = 0;
+
+/**
+ * URL of the API endpoint by regions.
+ *
+ * The key of array is region id. One of {@link WlSdk_Config_ConfigRegionSid} fields.
+ * The value is URL of the API endpoint for region.
+ *
+ * @type {Object<number: string>}
+ */
+WlSdk_Config_MixinAbstract.REGION_URL = {
+  1 : 'https://staging.wellnessliving.com/', // WlSdk_Config_ConfigRegionSid.US_EAST_1
+  2 : 'https://demo.wellnessliving.com/' // WlSdk_Config_ConfigRegionSid.AP_SOUTHEAST_2
+};
+
+/**
  * Session type.
  *
  * `cookie` based on cookies.
@@ -33,13 +55,6 @@ WlSdk_Config_MixinAbstract.CSRF_CODE = '';
  * @type {string}
  */
 WlSdk_Config_MixinAbstract.SESSION = 'local';
-
-/**
- * URL of the API server (including trailing slash).
- *
- * @type {string}
- */
-WlSdk_Config_MixinAbstract.URL_API = '';
 
 /**
  * URL of the page where secret key for signature may be generated.
@@ -102,6 +117,29 @@ WlSdk_Config_MixinAbstract.RESULT_CONVERSION_RULES = {};
  * @type {?WlSdk_Deferred}
  */
 WlSdk_Config_MixinAbstract.o_deferred_credentials = null;
+
+/**
+ * Returns URL to access API endpoint.
+ *
+ * @return {string} URL to access API endpoint.
+ */
+WlSdk_Config_MixinAbstract.apiUrl = function()
+{
+  var url;
+  var id_region = WlSdk_Config_Mixin.ID_REGION;
+  WlSdk_AssertException.notEmpty(WlSdk_Config_ConfigRegionSid.hasOwnProperty(id_region),{
+    'ID_REGION': id_region,
+    'text_message': 'Region id is not exist.'
+  });
+
+  WlSdk_AssertException.notEmpty(WlSdk_Config_MixinAbstract.REGION_URL.hasOwnProperty(id_region),{
+    'ID_REGION': id_region,
+    'text_message': 'The URL endpoint API is not set for the requested region id. Let the developers know about it.'
+  });
+
+  url=WlSdk_Config_MixinAbstract.REGION_URL[id_region];
+  return url;
+};
 
 /**
  * Loads credentials to sign requests.

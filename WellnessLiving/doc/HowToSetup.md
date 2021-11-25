@@ -3,7 +3,7 @@ It must be successor of `WlSdk_Config_MixinAbstract` class.
 See file `SdkConfigMixinCookie.js` (session based on cookies) or `SdkConfigMixinLocal.js` (session based on session key
 which is saved in browser local storage) for examples.
 Redefine in this class fields:
-- `URL_API` - WellnessLiving server domain.
+- `ID_REGION` - region id in which information about this business is stored (one of `WlSdk_Config_ConfigRegionSid` fields).
 - `CONFIG_AUTHORIZE_ID` - application ID.
 
 Then you must understand 2 authentication ways in JS SDK.
@@ -85,7 +85,7 @@ It must receive next fields:
 
 The API must return `s_csrf` in JSON format.
 ```PHP
-echo json_encode(['s_csrf' => 'CSRF cide here']);
+echo json_encode(['s_csrf' => 'CSRF code here']);
 ```
 
 If you get any error return is from the API in this way:

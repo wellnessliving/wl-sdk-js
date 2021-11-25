@@ -23,18 +23,18 @@ WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID = 'add ID';
 WlSdk_Config_Mixin.CSRF_CODE = SDK_CSRF_CODE; // Set variable with your CSRF code.
 
 /**
+ * Region id in which information about this business is stored.
+ *
+ * @type {number}
+ */
+WlSdk_Config_Mixin.ID_REGION = WlSdk_Config_ConfigRegionSid.US_EAST_1;
+
+/**
  * Session type.
  *
  * @type {string}
  */
 WlSdk_Config_Mixin.SESSION = 'cookie';
-
-/**
- * URL of the API server (including trailing slash).
- *
- * @type {string}
- */
-WlSdk_Config_Mixin.URL_API = 'add URL';
 
 /**
  * URL of the API where secret key for signature may be generated.

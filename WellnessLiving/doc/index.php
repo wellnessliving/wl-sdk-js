@@ -14,6 +14,7 @@
 	  <script src=\"sdk/Deferred/SdkDeferred.js\" type=\"text/javascript\"></script>
 	  <script src=\"sdk/Deferred/SdkPromise.js\" type=\"text/javascript\"></script>
 	  <script src=\"sdk/AssertException.js\" type=\"text/javascript\"></script>
+	  <script src=\"sdk/Config/ConfigRegionSid.js\" type=\"text/javascript\"></script>
 	  <script src=\"sdk/Config/ConfigAbstractMixin.js\" type=\"text/javascript\"></script>
 	  <script src=\"sdk/Config/SdkConfigMixin.js\" type=\"text/javascript\"></script>
 	  <script src=\"sdk/AuthorizationSignature.js\" type=\"text/javascript\"></script>
