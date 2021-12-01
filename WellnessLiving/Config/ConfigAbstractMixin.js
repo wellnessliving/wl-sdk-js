@@ -280,6 +280,16 @@ WlSdk_Config_MixinAbstract.configDeferredWhen = function(a_defer)
 };
 
 /**
+ * Provides always resolved promise.
+ *
+ * @return {WlSdk_Deferred_Promise}
+ */
+WlSdk_Config_MixinAbstract.configPromiseResolved = function()
+{
+  return (new WlSdk_Deferred()).resolve().promise();
+}
+
+/**
  * Writes into log for test purposes.
  *
  * @param {*} x_log Text to be written.
