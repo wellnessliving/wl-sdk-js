@@ -125,20 +125,18 @@ WlSdk_Config_MixinAbstract.o_deferred_credentials = null;
  */
 WlSdk_Config_MixinAbstract.apiUrl = function()
 {
-  var url;
   var id_region = WlSdk_Config_Mixin.ID_REGION;
-  WlSdk_AssertException.notEmpty(WlSdk_Config_ConfigRegionSid.hasOwnProperty(id_region),{
-    'ID_REGION': id_region,
+  WlSdk_AssertException.notEmpty(WlSdk_Config_ConfigRegionSid.regionExists(id_region),{
+    'id_region': id_region,
     'text_message': 'Region id is not exist.'
   });
 
   WlSdk_AssertException.notEmpty(WlSdk_Config_MixinAbstract.REGION_URL.hasOwnProperty(id_region),{
-    'ID_REGION': id_region,
+    'id_region': id_region,
     'text_message': 'The URL endpoint API is not set for the requested region id. Let the developers know about it.'
   });
 
-  url=WlSdk_Config_MixinAbstract.REGION_URL[id_region];
-  return url;
+  return WlSdk_Config_MixinAbstract.REGION_URL[id_region];
 };
 
 /**

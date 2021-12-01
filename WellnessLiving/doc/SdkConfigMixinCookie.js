@@ -24,15 +24,21 @@ WlSdk_Config_Mixin.CSRF_CODE = SDK_CSRF_CODE; // Set variable with your CSRF cod
 
 /**
  * Region id in which information about this business is stored.
+ * One of {@link WlSdk_Config_ConfigRegionSid} fields.
  *
  * @type {number}
+ * @see WlSdk_Config_MixinAbstract.ID_REGION
  */
 WlSdk_Config_Mixin.ID_REGION = WlSdk_Config_ConfigRegionSid.US_EAST_1;
 
 /**
  * Session type.
  *
+ * `cookie` based on cookies.
+ * `local` base on session key which is saved in the browser local storage.
+ *
  * @type {string}
+ * @see WlSdk_Config_MixinAbstract.SESSION
  */
 WlSdk_Config_Mixin.SESSION = 'cookie';
 
