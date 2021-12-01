@@ -282,7 +282,7 @@ WlSdk_Config_MixinAbstract.configDeferredWhen = function(a_defer)
 /**
  * Provides always resolved promise.
  *
- * @return {WlSdk_Deferred_Promise}
+ * @return {WlSdk_Deferred_Promise} Promise that will be resolved when credentials are loaded.
  */
 WlSdk_Config_MixinAbstract.configPromiseResolved = function()
 {
