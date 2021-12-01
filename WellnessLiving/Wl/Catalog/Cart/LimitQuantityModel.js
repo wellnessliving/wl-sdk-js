@@ -3,13 +3,13 @@
  *
  * This model is generated automatically based on API.
  *
- * @augments Core_Spa_Model
+ * @augments WlSdk_ModelAbstract
  * @constructor
  * @see Wl\Catalog\Cart\LimitQuantityApi
  */
 function Wl_Catalog_Cart_LimitQuantityModel()
 {
-  Core_Spa_Model.apply(this);
+  WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
@@ -105,7 +105,7 @@ function Wl_Catalog_Cart_LimitQuantityModel()
   this.changeInit();
 }
 
-Core_Spa_Model.extend(Wl_Catalog_Cart_LimitQuantityModel);
+WlSdk_ModelAbstract.extend(Wl_Catalog_Cart_LimitQuantityModel);
 
 /**
  * @inheritDoc
@@ -114,13 +114,3 @@ Wl_Catalog_Cart_LimitQuantityModel.prototype.config=function()
 {
   return {"a_field": {"a_item": {"get": {"get": true}},"i_purchase_already": {"get": {"result": true}},"i_purchase_current": {"get": {"result": true}},"i_quantity_limit": {"get": {"result": true}},"is_limit_exceeded": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_promotion": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
-
-/**
- * @function
- * @name Wl_Catalog_Cart_LimitQuantityModel.instanceGet
- * @param {string} k_business Business in which the purchase is made.
- * @param {string} k_promotion A promotion key to add to cart.
- * @param {string} uid UID of a user.
- * @returns {Wl_Catalog_Cart_LimitQuantityModel}
- * @see Core_Spa_Model.instanceGet()
- */
