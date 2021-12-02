@@ -89,6 +89,14 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.is_commission = false;
 
   /**
+   * Whether display custom receipt notes at checkout.
+   *
+   * @get result
+   * @var {boolean}
+   */
+  this.is_receipt_note = false;
+
+  /**
    * Business key.
    *
    * <b>This field is not used directly and described for correct auto generation JavaScript.</b>
@@ -187,6 +195,14 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @type {*}
    */
   this.text_error_code = undefined;
+
+  /**
+   * Custom receipt note text.
+   *
+   * @get result
+   * @var {string}
+   */
+  this.text_receipt_note = "";
 
   /**
    * Current user key.
