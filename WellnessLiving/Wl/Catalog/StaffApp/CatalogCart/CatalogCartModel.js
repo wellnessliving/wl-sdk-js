@@ -73,6 +73,14 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.f_discount_percent = 0;
 
   /**
+   * `true` to enable checking every item at the cart; `false` to disable.
+   *
+   * @get get
+   * @var {boolean}
+   */
+  this.is_check_cart_item = false;
+
+  /**
    * Whether business applied commission at checkout.
    *
    * @get result
@@ -207,7 +215,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel);
  */
 Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.prototype.config=function()
 {
-  return {"a_field": {"a_item": {"get": {"get": true}},"f_discount_percent": {"get": {"get": true}},"is_commission": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_discount": {"get": {"result": true}},"m_discount_flat": {"get": {"get": true}},"m_discount_total": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_tip": {"get": {"get": true}},"m_tip_purchase": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"text_error_code": {"get": {"result": true}},"uid_current": {"get": {"get": true}},"uid_customer": {"get": {"get": true}}}};
+  return {"a_field": {"a_item": {"get": {"get": true}},"f_discount_percent": {"get": {"get": true}},"is_check_cart_item": {"get": {"get": true}},"is_commission": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_discount": {"get": {"result": true}},"m_discount_flat": {"get": {"get": true}},"m_discount_total": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_tip": {"get": {"get": true}},"m_tip_purchase": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"text_error_code": {"get": {"result": true}},"uid_current": {"get": {"get": true}},"uid_customer": {"get": {"get": true}}}};
 };
 
 /**
