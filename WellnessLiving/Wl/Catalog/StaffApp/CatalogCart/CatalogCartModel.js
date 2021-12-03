@@ -78,7 +78,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @get get
    * @var {boolean}
    */
-  this.is_check_cart_item = false;
+  this.is_check_cart_item = 0;
 
   /**
    * Whether business applied commission at checkout.
@@ -86,7 +86,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @get result
    * @type {boolean}
    */
-  this.is_commission = false;
+  this.is_commission = 0;
 
   /**
    * Whether display custom receipt notes at checkout.
@@ -94,7 +94,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @get result
    * @var {boolean}
    */
-  this.is_receipt_note = false;
+  this.is_receipt_note = 0;
 
   /**
    * Business key.
