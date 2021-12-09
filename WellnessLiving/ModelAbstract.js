@@ -167,48 +167,55 @@ WlSdk_ModelAbstract.prototype._ajax = function(a_config)
     var s_body;
     var url = a_config['url'];
 
-    var a_parameter = [];
-    for(var s_field in o_signature.a_array)
+    if(a_config['data'] instanceof FormData)
     {
-      if(!o_signature.a_array.hasOwnProperty(s_field))
-        continue;
-
-      var x_value = o_signature.a_array[s_field];
-
-      if(x_value===null)
-        continue; // null means do not include this value to request.
-
-      if((x_value instanceof Array)&&x_value.length===0)
-      {
-        a_parameter.push(encodeURIComponent(s_field)+'=');
-      }
-      else
-      {
-        var x_parameter = WlSdk_Core_Url.encode(s_field,x_value);
-        WlSdk_AssertException.assertTrue(typeof x_parameter==='string',{
-          's_field': s_field,
-          's_type': typeof x_parameter,
-          'text_message': '[WlSdk_ModelAbstract._ajax] Unsupported value.',
-          'url': url,
-          'x_value': x_value
-        });
-
-        a_parameter.push(x_parameter);
-      }
-    }
-    if(a_config['type']==='GET')
-    {
-      if(a_parameter.length)
-        url += '?'+a_parameter.join('&');
+      s_body = a_config['data'];
     }
     else
     {
-      s_body = a_parameter.join('&');
+      var a_parameter = [];
+      for(var s_field in o_signature.a_array)
+      {
+        if(!o_signature.a_array.hasOwnProperty(s_field))
+          continue;
+
+        var x_value = o_signature.a_array[s_field];
+
+        if(x_value===null)
+          continue; // null means do not include this value to request.
+
+        if((x_value instanceof Array)&&x_value.length===0)
+        {
+          a_parameter.push(encodeURIComponent(s_field)+'=');
+        }
+        else
+        {
+          var x_parameter = WlSdk_Core_Url.encode(s_field,x_value);
+          WlSdk_AssertException.assertTrue(typeof x_parameter==='string',{
+            's_field': s_field,
+            's_type': typeof x_parameter,
+            'text_message': '[WlSdk_ModelAbstract._ajax] Unsupported value.',
+            'url': url,
+            'x_value': x_value
+          });
+
+          a_parameter.push(x_parameter);
+        }
+      }
+      if(a_config['type']==='GET')
+      {
+        if(a_parameter.length)
+          url += '?'+a_parameter.join('&');
+      }
+      else
+      {
+        s_body = a_parameter.join('&');
+      }
     }
 
-    var o_header = new Headers({
-      'Content-Type': a_config['contentType']
-    });
+    var o_header = new Headers({});
+    if(a_config['contentType'])
+      o_header.append('Content-Type',a_config['contentType']);
     for(var s_header in a_config['headers'])
     {
       if(a_config['headers'].hasOwnProperty(s_header))
