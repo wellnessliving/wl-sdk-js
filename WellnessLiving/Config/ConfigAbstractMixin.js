@@ -266,26 +266,29 @@ WlSdk_Config_MixinAbstract.configDeferredCreate = function(s_where,s_comment)
 };
 
 /**
+ * Provides always resolved promise.
+ *
+ * This is analogous to the {@link https://api.jquery.com/jQuery.when/|JQuery.when()} method for projects
+ * that do not use {@link https://jquery.com|JQuery} library.
+ *
+ * @return {WlSdk_Deferred_Promise} Always resolved promise.
+ */
+WlSdk_Config_MixinAbstract.configPromiseResolved = function()
+{
+  return (new WlSdk_Deferred()).resolve().promise();
+}
+
+/**
  * Creates a promise that will be resolved when a set of deferred objects is resolved.
  *
  * @param {WlSdk_Deferred[]} a_defer A list of deferred objects.
  * @return {WlSdk_Deferred_Promise} Promise that wil be resolved
  * when all deferred objects in the list are resolved.
  */
-WlSdk_Config_MixinAbstract.configDeferredWhen = function(a_defer)
+WlSdk_Config_MixinAbstract.configPromiseWhen = function(a_defer)
 {
   return WlSdk_Deferred.when(a_defer).promise();
 };
-
-/**
- * Provides always resolved promise.
- *
- * @return {WlSdk_Deferred_Promise} Promise that will be resolved when credentials are loaded.
- */
-WlSdk_Config_MixinAbstract.configPromiseResolved = function()
-{
-  return (new WlSdk_Deferred()).resolve().promise();
-}
 
 /**
  * Writes into log for test purposes.

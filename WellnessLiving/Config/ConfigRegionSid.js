@@ -34,14 +34,16 @@ WlSdk_Config_ConfigRegionSid.US_EAST_1=1;
 
 /**
  * Checks for the existence of a region id.
+ *
  * @param {number} id_region Region id.
+ * @return {boolean} `true` if <var>id_region</var> is valid value
+ * (one of the constants of the class {@link WlSdk_Config_ConfigRegionSid}), `false` if <var>id_region</var> is invalid.
  */
 WlSdk_Config_ConfigRegionSid.regionExists = function(id_region)
 {
-  switch(id_region)
+  for(var s_name in WlSdk_Config_ConfigRegionSid)
   {
-    case WlSdk_Config_ConfigRegionSid.AP_SOUTHEAST_2:
-    case WlSdk_Config_ConfigRegionSid.US_EAST_1:
+    if(WlSdk_Config_ConfigRegionSid[s_name]===id_region)
       return true;
   }
 

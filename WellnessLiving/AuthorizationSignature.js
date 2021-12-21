@@ -229,7 +229,7 @@ WlSdk_AuthorizationSignature.prototype.signatureArray = function(a_array)
     });
   }
 
-  return WlSdk_Config_Mixin.configDeferredWhen(a_deferred);
+  return WlSdk_Config_Mixin.configPromiseWhen(a_deferred);
 };
 
 /**
