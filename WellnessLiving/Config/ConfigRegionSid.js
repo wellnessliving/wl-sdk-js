@@ -43,7 +43,7 @@ WlSdk_Config_ConfigRegionSid.regionExists = function(id_region)
 {
   for(var s_name in WlSdk_Config_ConfigRegionSid)
   {
-    if(WlSdk_Config_ConfigRegionSid[s_name]===id_region)
+    if(WlSdk_Config_ConfigRegionSid.hasOwnProperty(s_name) && WlSdk_Config_ConfigRegionSid[s_name]===id_region)
       return true;
   }
 
