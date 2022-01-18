@@ -59,14 +59,6 @@ function Wl_Catalog_Cart_CartModel()
   this.k_location = "0";
 
   /**
-   * Custom amount for a gift card which user entered.
-   *
-   * @get result
-   * @type {?string}
-   */
-  this.m_custom = null;
-
-  /**
    * Full discount of the cart.
    *
    * @get result
@@ -136,7 +128,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Cart_CartModel);
  */
 Wl_Catalog_Cart_CartModel.prototype.config=function()
 {
-  return {"a_field": {"a_item": {"get": {"get": true}},"a_tax_list": {"get": {"result": true}},"k_location": {"get": {"get": true}},"m_custom": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_tip_purchase": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_item": {"get": {"get": true}},"a_tax_list": {"get": {"result": true}},"k_location": {"get": {"get": true}},"m_discount": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_tip_purchase": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
