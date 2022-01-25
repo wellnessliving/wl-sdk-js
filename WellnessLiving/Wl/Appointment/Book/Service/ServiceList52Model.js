@@ -1,19 +1,22 @@
 /**
  * Retrieves information about services in the current service category.
  *
+ * This is a new version of the API endpoint {@link \Wl\Appointment\Book\Service\ServiceListApi}.
+ * It allows to filter list of services by multiple book now tabs.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Wl_Appointment_Book_Service_ServiceListModel()
+function Wl_Appointment_Book_Service_ServiceList52Model()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
    */
-  this._s_key = "k_location,k_service_category,k_class_tab,is_backend,uid";
+  this._s_key = "a_class_tab,k_location,k_service_category,is_backend,uid";
 
   /**
    * Class tab key to filter services. If empty, find on standard book tab.
@@ -26,7 +29,7 @@ function Wl_Appointment_Book_Service_ServiceListModel()
   this.a_class_tab = [];
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Service_ServiceListModel_a_service
+   * @typedef {{}} Wl_Appointment_Book_Service_ServiceList52Model_a_service
    * @property {{}} a_class_tab The list of tab keys for service.
    * @property {{}} a_image Appointment image. See {@link \RsServiceLogo::data()} for details.
    * @property {string} f_deposit Amount of deposit required.
@@ -236,7 +239,7 @@ function Wl_Appointment_Book_Service_ServiceListModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Service_ServiceListModel_a_service}
+   * @type {Wl_Appointment_Book_Service_ServiceList52Model_a_service}
    */
   this.a_service = undefined;
 
@@ -257,14 +260,6 @@ function Wl_Appointment_Book_Service_ServiceListModel()
    * @type {boolean}
    */
   this.is_tab_all = false;
-
-  /**
-   * Class tab key to filter services. If empty or <tt>'0'</tt> find on standard book tab.
-   *
-   * @get get
-   * @type {string}
-   */
-  this.k_class_tab = "0";
 
   /**
    * Location to show available appointment booking schedule.
@@ -299,24 +294,24 @@ function Wl_Appointment_Book_Service_ServiceListModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Service_ServiceListModel);
+WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Service_ServiceList52Model);
 
 /**
  * @inheritDoc
  */
-Wl_Appointment_Book_Service_ServiceListModel.prototype.config=function()
+Wl_Appointment_Book_Service_ServiceList52Model.prototype.config=function()
 {
-  return {"a_field": {"a_class_tab": {"get": {"get": true}},"a_service": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_service_category": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_class_tab": {"get": {"get": true}},"a_service": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_service_category": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
- * @name Wl_Appointment_Book_Service_ServiceListModel.instanceGet
+ * @name Wl_Appointment_Book_Service_ServiceList52Model.instanceGet
+ * @param {string[]} a_class_tab Class tab key to filter services. If empty, find on standard book tab. If multiple tabs are sent, appointment types, which are at least in one of them, will be in the result.
  * @param {string} k_location Location to show available appointment booking schedule. Primary key in {@link \RsLocationSql} table.
  * @param {string} k_service_category Key of a service category to show information for.
- * @param {string} k_class_tab Class tab key to filter services. If empty or <tt>'0'</tt> find on standard book tab.
  * @param {boolean} is_backend <tt>true</tt> - return all active services of certain location; <tt>false</tt> - return only services which are bound to certain book tab.
  * @param {string} uid User to get information for. Primary key in {@link \PassportLoginSql} table.
- * @returns {Wl_Appointment_Book_Service_ServiceListModel}
+ * @returns {Wl_Appointment_Book_Service_ServiceList52Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
