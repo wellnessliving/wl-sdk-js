@@ -39,6 +39,33 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   /**
    * Cart items list with next structure:
    * <dl>
+   * <dt>array [<var>a_option</var>]</dt>
+   * <dd>List of purchase item additional options:<dl>
+   *   <dt>string [<var>f_price</var>]</dt>
+   *   <dd>Custom price.</dd>
+   *   <dt>string [<var>dt_prorate</var>]</dt>
+   *   <dd>Prorate date.</dd>
+   *   <dt>string [<var>dt_start</var>]</dt>
+   *   <dd>Start date.</dd>
+   *   <dt>bool [<var>is_prorate</var>]</dt>
+   *   <dd>Whether selected option 'prorate option'.</dd>
+   *   <dt>bool [<var>is_prorate_fix</var>]</dt>
+   *   <dd>Whether selected option 'pay prorate amount only' and prorate amount entered by user.</dd>
+   *   <dt>bool [<var>is_prorate_only</var>]</dt>
+   *   <dd>Whether selected option 'pay prorate amount only' to include to price prorate amount only.</dd>
+   *   <dt>string [<var>dt_send_local</var>]</dt>
+   *   <dd>Date when mail with gift card must be sent.</dd>
+   *   <dt>bool <var>is_mail</var></dt>
+   *   <dd><tt>true</tt> if gift card will be sent on email, <tt>false</tt> if gift card will be printed.</dd>
+   *   <dt>string [<var>s_mail</var>]</dt>
+   *   <dd>Recipient's email.</dd>
+   *   <dt>string [<var>s_message</var>]</dt>
+   *   <dd>Message.</dd>
+   *   <dt>string <var>s_recipient</var></dt>
+   *   <dd>Recipient's name.</dd>
+   *   <dt>string <var>s_sender</var></dt>
+   *   <dd>Sender's name.</dd>
+   * </dl></dd>
    * <dt>array [<var>a_tax_custom</var>]</dt>
    * <dd>Information about taxes. If not passed means no custom taxes applied to sale item.
    * If record is present, it means that tax is custom. Structure:<dl>
