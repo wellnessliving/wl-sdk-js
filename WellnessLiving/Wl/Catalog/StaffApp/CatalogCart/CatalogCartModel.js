@@ -53,6 +53,8 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    *   <dd>Whether selected option 'pay prorate amount only' and prorate amount entered by user.</dd>
    *   <dt>bool [<var>is_prorate_only</var>]</dt>
    *   <dd>Whether selected option 'pay prorate amount only' to include to price prorate amount only.</dd>
+   *   <dt>string [<var>m_custom</var>]</dt>
+   *   <dd>Custom price for gift card.</dd>
    *   <dt>string [<var>dt_send_local</var>]</dt>
    *   <dd>Date when mail with gift card must be sent.</dd>
    *   <dt>bool <var>is_mail</var></dt>
