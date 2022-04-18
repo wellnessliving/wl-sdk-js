@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_location,k_resource_category,k_class_tab,is_backend";
+  this._s_key = "k_location,k_resource_category,k_class_tab,is_backend,dtl_date";
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_period
