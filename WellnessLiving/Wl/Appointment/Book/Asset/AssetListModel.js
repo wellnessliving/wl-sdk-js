@@ -120,6 +120,16 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.a_asset = undefined;
 
   /**
+   * Selected date and time of asset booking.
+   *   It is actual in case when business booking policy allows clients to select a date and time,
+   *   then the available asset.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.dtl_date = false;
+
+  /**
    * <tt>true</tt> - load assets for backend mode; <tt>false</tt> - for frontend mode.
    *
    * @get get
@@ -169,7 +179,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_AssetListModel);
  */
 Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
 {
-  return {"a_field": {"a_asset": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource_category": {"get": {"get": true}},"k_resource_layout": {"get": {"result": true}}}};
+  return {"a_field": {"a_asset": {"get": {"result": true}},"dtl_date": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource_category": {"get": {"get": true}},"k_resource_layout": {"get": {"result": true}}}};
 };
 
 /**
