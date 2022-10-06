@@ -372,6 +372,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    *   </dd>
    * </dl>
    * @property {number} i_count Count of items in the purchase.
+   * @property {string} k_purchase_item Purchase item key. Primary key in {@link \RsPurchaseItemSql} table.
    * @property {string} m_price Price of the single item.
    * @property {string} m_price_total Price of all items.
    * @property {string} text_category Type of the item: product, class pass, etc.
@@ -423,6 +424,12 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    *     Count of items in the purchase.
    *   </dd>
    *   <dt>
+   *     int <var>k_purchase_item</var>
+   *   </dt>
+   *   <dd>
+   *     Purchase item key. Primary key in {@link \RsPurchaseItemSql} table.
+   *   </dd>
+   *   <dt>
    *     string <var>m_price</var>
    *   </dt>
    *   <dd>
@@ -467,7 +474,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item}
+   * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item[]}
    */
   this.a_purchase_item = undefined;
 
