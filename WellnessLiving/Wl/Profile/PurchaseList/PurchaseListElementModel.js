@@ -17,7 +17,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
 
   /**
    * @typedef {{}} Wl_Profile_PurchaseList_PurchaseListElementModel_a_component
-   * @property {*} k_enrollment_book Primary key in {@link \RsenrollmentBookSql} table.
+   * @property {*} k_enrollment_book Primary key in {@link \RsEnrollmentBookSql} table.
    * @property {*} k_login_product Primary key in {@link \RsLoginProductSql} table.
    * @property {*} k_login_promotion Primary key in {@link \RsLoginPromotionSql} table.
    * @property {*} k_session_pass Primary key in {@link \Wl\Session\Pass\Sql} table.
@@ -30,7 +30,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
    *     string [<var>k_enrollment_book</var>]
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \RsenrollmentBookSql} table.
+   *     Primary key in {@link \RsEnrollmentBookSql} table.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_product</var>]
@@ -61,7 +61,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
    * @typedef {{}} Wl_Profile_PurchaseList_PurchaseListElementModel_a_logo
    * @property {number} i_height Height.
    * @property {number} i_width Width.
-   * @property {boolean} is_empty <tt>true</tt> - purchase item does not have image; <tt>false</tt> - has image.
+   * @property {boolean} is_empty `true` - purchase item does not have image; `false` - has image.
    */
 
   /**
@@ -83,7 +83,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
    *     bool <var>is_empty</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - purchase item does not have image; <tt>false</tt> - has image.
+   *     `true` - purchase item does not have image; `false` - has image.
    *   </dd>
    * </dl>
    *
@@ -156,7 +156,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.a_tax = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> - user can control renewing of promotion; <tt>false</tt> - can not control.
+   * Not `false` only for promotions. `true` - user can control renewing of promotion; `false` - can not control.
    *
    * @get result
    * @type {boolean}
@@ -244,7 +244,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.html_description = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions and enrollments. How many sessions were booked by this promotion or enrollment.
+   * Not `0` only for promotions and enrollments. How many sessions were booked by this promotion or enrollment.
    *
    * @get result
    * @type {number}
@@ -252,7 +252,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_book = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many minutes of sessions were booked by this promotion.
+   * Not `0` only for promotions. How many minutes of sessions were booked by this promotion.
    *
    * @get result
    * @type {number}
@@ -284,7 +284,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_duration = undefined;
 
   /**
-   * Not <tt>0</tt> only for not sequential promotions. How many books by this promotion is left.
+   * Not `0` only for not sequential promotions. How many books by this promotion is left.
    *
    * @get result
    * @type {number}
@@ -292,7 +292,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_left = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many book may be made by promotion in total.
+   * Not `0` only for promotions. How many book may be made by promotion in total.
    *
    * @get result
    * @type {number}
@@ -300,7 +300,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_limit = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions with program type "membership". Duration of regular payments interval.
+   * Not `0` only for promotions with program type "membership". Duration of regular payments interval.
    *
    * @get result
    * @type {number}
@@ -308,7 +308,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_payment_period = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many books by this promotion is left.
+   * Not `0` only for promotions. How many books by this promotion is left.
    *
    * @get result
    * @type {number}
@@ -316,7 +316,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_remain = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many minutes of sessions can be booked by promotion.
+   * Not `0` only for promotions. How many minutes of sessions can be booked by promotion.
    *
    * @get result
    * @type {number}
@@ -324,7 +324,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_remain_duration = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many times promotion was updated.
+   * Not `0` only for promotions. How many times promotion was updated.
    *
    * @get result
    * @type {number}
@@ -332,7 +332,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_renew = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many visits were made by promotion.
+   * Not `0` only for promotions. How many visits were made by promotion.
    *
    * @get result
    * @type {number}
@@ -340,7 +340,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_use = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. Number of minutes the user has already used with this purchase of this promotion.
+   * Not `0` only for promotions. Number of minutes the user has already used with this purchase of this promotion.
    *
    * @get result
    * @type {number}
@@ -364,7 +364,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.id_discount_commission_type = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions with program type "membership". Measurement unit for key <var>i_payment_period</var>. One on {@link \RsDurationTypeSid} constants.
+   * Not `0` only for promotions with program type "membership". Measurement unit for key <var>i_payment_period</var>. One on {@link \RsDurationTypeSid} constants.
    *
    * @get result
    * @type {number}
@@ -372,7 +372,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.id_duration = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. Measurement unit for key <var>i_payment_period</var>. ID of promotion program type. One on {@link \RsProgramTypeSid} constants.
+   * Not `0` only for promotions. Measurement unit for key <var>i_payment_period</var>. ID of promotion program type. One on {@link \RsProgramTypeSid} constants.
    *
    * @get result
    * @type {number}
@@ -396,7 +396,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.id_sale = undefined;
 
   /**
-   * <tt>true</tt> if purchase item is active; <tt>false</tt> otherwise.
+   * `true` if purchase item is active; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -404,7 +404,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_active = undefined;
 
   /**
-   * <tt>true</tt> if purchase item is a component of another purchase item (package); <tt>false</tt> if purchase item is not a component.
+   * `true` if purchase item is a component of another purchase item (package); `false` if purchase item is not a component.
    *
    * @get result
    * @type {boolean}
@@ -412,7 +412,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_component = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if after expiration promotion should be converted to another promotion; <tt>false</tt> otherwise.
+   * Not `false` only for promotions. `true` if after expiration promotion should be converted to another promotion; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -420,7 +420,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_convert = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if promotion is expired; <tt>false</tt> otherwise.
+   * Not `false` only for promotions. `true` if promotion is expired; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -428,7 +428,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_expire = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if promotion is on hold; <tt>false</tt> otherwise.
+   * Not `false` only for promotions. `true` if promotion is on hold; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -436,7 +436,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_hold = undefined;
 
   /**
-   * <tt>true</tt> if usage purchase item is restricted; <tt>false</tt> otherwise.
+   * `true` if usage purchase item is restricted; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -444,7 +444,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_limit = undefined;
 
   /**
-   * <tt>true</tt> - discount was applied for member type; <tt>false</tt> - discount was applied for pass holder type; <tt>null</tt> - discount was applied for prospect type or if this discount was not
+   * `true` - discount was applied for member type; `false` - discount was applied for pass holder type; `null` - discount was applied for prospect type or if this discount was not
    * applied.
    *
    * @get result
@@ -453,7 +453,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_login_type_member = null;
 
   /**
-   * Not <tt>false</tt> only for gift cards. <tt>true</tt> if email notification about gift should be sent; <tt>false</tt> otherwise.
+   * Not `false` only for gift cards. `true` if email notification about gift should be sent; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -461,7 +461,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_mail = undefined;
 
   /**
-   * Not <tt>false</tt> only for gift cards. <tt>true</tt> if email notification about gift was sent; <tt>false</tt> otherwise.
+   * Not `false` only for gift cards. `true` if email notification about gift was sent; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -469,7 +469,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_past = undefined;
 
   /**
-   * Not <tt>false</tt> only for gift cards. <tt>true</tt> - gift card is redeemed; <tt>false</tt> - gift cart is not redeemed.
+   * Not `false` only for gift cards. `true` - gift card is redeemed; `false` - gift cart is not redeemed.
    *
    * @get result
    * @type {boolean}
@@ -477,7 +477,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_redeem = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if promotion will be renewed after expiration; <tt>false</tt> otherwise.
+   * Not `false` only for promotions. `true` if promotion will be renewed after expiration; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -485,7 +485,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_renew = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if promotion has been transferred; <tt>false</tt> otherwise.
+   * Not `false` only for promotions. `true` if promotion has been transferred; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -658,7 +658,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.m_price = undefined;
 
   /**
-   * Refunded amount. <tt>0</tt> if were no refunds.
+   * Refunded amount. `0` if were no refunds.
    *
    * @get result
    * @type {string}
@@ -701,7 +701,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.s_limit_actor = undefined;
 
   /**
-   * Not empty only for gift cards. <tt>true</tt> if mail about purchase was sent (or will be sent); <tt>false</tt> otherwise.
+   * Not empty only for gift cards. `true` if mail about purchase was sent (or will be sent); `false` otherwise.
    *
    * @get result
    * @type {string}
