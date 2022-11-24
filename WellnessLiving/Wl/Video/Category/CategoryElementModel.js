@@ -39,8 +39,17 @@ function Wl_Video_Category_CategoryElementModel()
   this.i_order = undefined;
 
   /**
-   * <tt>true</tt> if some client or member types can grant access to the video category.
-   * <tt>false</tt> if none of the client or member types can grant access to the video category.
+   * <tt>true</tt> if video category is for cloud session recordings.
+   * Otherwise <tt>false</tt> if video category is not for cloud session recordings.
+   *
+   * @get result
+   * @put post
+   * @type {boolean}
+   */
+  this.is_cloud_recording = false;
+
+  /**
+   * <tt>true</tt> if some client or member types can grant access to the video category, <tt>false</tt> otherwise.
    *
    * @get result
    * @put post
@@ -50,7 +59,7 @@ function Wl_Video_Category_CategoryElementModel()
 
   /**
    * <tt>true</tt> if some member groups can grant access to the video category.
-   * <tt>false</tt> if none of the member groups can grant access to the video category.
+   * Otherwise <tt>false</tt> if none of the member groups can grant access to the video category.
    *
    * @get result
    * @put post
@@ -73,7 +82,7 @@ function Wl_Video_Category_CategoryElementModel()
    *
    * @delete get
    * @get get,result
-   * @put get
+   * @put get,result
    * @type {string}
    */
   this.k_video_category = undefined;
@@ -97,5 +106,5 @@ WlSdk_ModelAbstract.extend(Wl_Video_Category_CategoryElementModel);
  */
 Wl_Video_Category_CategoryElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_type": {"get": {"result": true},"put": {"post": true}},"a_member_group": {"get": {"result": true},"put": {"post": true}},"i_order": {"get": {"result": true}},"is_login_type": {"get": {"result": true},"put": {"post": true}},"is_member_group": {"get": {"result": true},"put": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"put": {"get": true}},"k_video_category": {"delete": {"get": true},"get": {"get": true,"result": true},"put": {"get": true}},"text_title": {"get": {"result": true},"put": {"post": true}}}};
+  return {"a_field": {"a_login_type": {"get": {"result": true},"put": {"post": true}},"a_member_group": {"get": {"result": true},"put": {"post": true}},"i_order": {"get": {"result": true}},"is_cloud_recording": {"get": {"result": true},"put": {"post": true}},"is_login_type": {"get": {"result": true},"put": {"post": true}},"is_member_group": {"get": {"result": true},"put": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"put": {"get": true}},"k_video_category": {"delete": {"get": true},"get": {"get": true,"result": true},"put": {"get": true,"result": true}},"text_title": {"get": {"result": true},"put": {"post": true}}}};
 };

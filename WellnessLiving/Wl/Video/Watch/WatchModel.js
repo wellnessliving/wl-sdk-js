@@ -11,7 +11,16 @@ function Wl_Video_Watch_WatchModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Number of seconds which user watched video.
+   * Current time in seconds at which the user is at in the video.
+   *
+   * @post post
+   * @put post
+   * @type {number}
+   */
+  this.i_current_time = undefined;
+
+  /**
+   * Duration in seconds which user has watched the video.
    *
    * @put post
    * @type {number}
@@ -62,5 +71,5 @@ WlSdk_ModelAbstract.extend(Wl_Video_Watch_WatchModel);
  */
 Wl_Video_Watch_WatchModel.prototype.config=function()
 {
-  return {"a_field": {"i_watched": {"put": {"post": true}},"id_source": {"post": {"post": true}},"k_business": {"post": {"post": true},"put": {"post": true}},"k_video": {"post": {"post": true}},"k_video_watch": {"post": {"result": true},"put": {"post": true}}}};
+  return {"a_field": {"i_current_time": {"post": {"post": true},"put": {"post": true}},"i_watched": {"put": {"post": true}},"id_source": {"post": {"post": true}},"k_business": {"post": {"post": true},"put": {"post": true}},"k_video": {"post": {"post": true}},"k_video_watch": {"post": {"result": true},"put": {"post": true}}}};
 };

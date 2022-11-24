@@ -118,7 +118,23 @@ function Wl_Video_VideoElementModel()
    * @post post
    * @type {number}
    */
-  this.i_calorie = undefined;
+  this.i_calorie = 0;
+
+  /**
+   * Current time as a percentage of the video duration at which the user is at in the video.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_current_percent = undefined;
+
+  /**
+   * Current time in seconds at which the user is at in the video.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_current_time = undefined;
 
   /**
    * Duration of video.
@@ -128,6 +144,19 @@ function Wl_Video_VideoElementModel()
    * @type {number}
    */
   this.i_duration = undefined;
+
+  /**
+   * Size of the uploaded file.
+   *
+   * If the file will be uploaded in parts, size will be set.
+   *
+   * In this case, the file will not be uploaded to this API.
+   * Method {@link VideoElementApi::_fileVideoGet()} will not return the result.
+   *
+   * @post post
+   * @type {number|string}
+   */
+  this.i_file_upload_size = "";
 
   /**
    * Number of video views.
@@ -166,6 +195,16 @@ function Wl_Video_VideoElementModel()
    * @type {boolean}
    */
   this.is_calorie = undefined;
+
+  /**
+   * `true` if video is converted.
+   * `false` if video is not converted.
+   *
+   * @get result
+   * @post get
+   * @type {boolean}
+   */
+  this.is_converted = undefined;
 
   /**
    * <tt>true</tt> if video is published, <tt>false</tt> otherwise.
@@ -231,6 +270,31 @@ function Wl_Video_VideoElementModel()
    * @type {string}
    */
   this.s_command = "";
+
+  /**
+   * ID of the uploaded file.
+   * If the file will be uploaded in parts, upload ID will be set.
+   *
+   * In this case, the file will not be uploaded to this API.
+   * Method {@link VideoElementApi::_fileVideoGet()} will not return the result.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.s_file_upload_id = "";
+
+  /**
+   * The real name of the uploaded file.
+   *
+   * If the file will be uploaded in parts, the name will be set.
+   *
+   * In this case, the file will not be uploaded to this API.
+   * Method {@link VideoElementApi::_fileVideoGet()} will not return the result.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.s_file_upload_name = "";
 
   /**
    * String representation of video's key.
@@ -334,7 +398,7 @@ WlSdk_ModelAbstract.extend(Wl_Video_VideoElementModel);
  */
 Wl_Video_VideoElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_location": {"get": {"result": true},"post": {"post": true}},"a_staff": {"get": {"result": true},"post": {"post": true}},"a_staff_info": {"get": {"result": true}},"a_video_category": {"get": {"result": true},"post": {"post": true}},"a_video_tag": {"get": {"result": true},"post": {"post": true}},"dtl_publish": {"get": {"result": true},"post": {"post": true}},"dtl_unpublish": {"get": {"result": true},"post": {"post": true}},"dtl_upload": {"get": {"result": true}},"file_video": {"post": {"post": true}},"i_calorie": {"get": {"result": true},"post": {"post": true}},"i_duration": {"get": {"result": true},"post": {"post": true}},"i_watch": {"get": {"result": true}},"id_location_select": {"get": {"result": true},"post": {"post": true}},"is_backend": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"is_calorie": {"get": {"result": true},"post": {"post": true}},"is_published": {"get": {"result": true}},"is_video_level": {"get": {"result": true},"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_video": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"k_video_category_primary": {"get": {"result": true},"post": {"post": true}},"k_video_level": {"get": {"result": true},"post": {"post": true}},"s_command": {"post": {"post": true}},"s_preview_video_key": {"get": {"result": true}},"s_thumbnail": {"post": {"post": true}},"show_calorie": {"get": {"result": true}},"show_level": {"get": {"result": true}},"show_view": {"get": {"result": true}},"text_level_title": {"get": {"result": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"url_thumbnail": {"get": {"result": true}},"url_video": {"get": {"result": true}},"url_video_direct": {"get": {"result": true}},"xml_description": {"get": {"result": true},"post": {"post": true}}}};
+  return {"a_field": {"a_location": {"get": {"result": true},"post": {"post": true}},"a_staff": {"get": {"result": true},"post": {"post": true}},"a_staff_info": {"get": {"result": true}},"a_video_category": {"get": {"result": true},"post": {"post": true}},"a_video_tag": {"get": {"result": true},"post": {"post": true}},"dtl_publish": {"get": {"result": true},"post": {"post": true}},"dtl_unpublish": {"get": {"result": true},"post": {"post": true}},"dtl_upload": {"get": {"result": true}},"file_video": {"post": {"post": true}},"i_calorie": {"get": {"result": true},"post": {"post": true}},"i_current_percent": {"get": {"result": true}},"i_current_time": {"get": {"result": true}},"i_duration": {"get": {"result": true},"post": {"post": true}},"i_file_upload_size": {"post": {"post": true}},"i_watch": {"get": {"result": true}},"id_location_select": {"get": {"result": true},"post": {"post": true}},"is_backend": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"is_calorie": {"get": {"result": true},"post": {"post": true}},"is_converted": {"get": {"result": true},"post": {"get": true}},"is_published": {"get": {"result": true}},"is_video_level": {"get": {"result": true},"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_video": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"k_video_category_primary": {"get": {"result": true},"post": {"post": true}},"k_video_level": {"get": {"result": true},"post": {"post": true}},"s_command": {"post": {"post": true}},"s_file_upload_id": {"post": {"post": true}},"s_file_upload_name": {"post": {"post": true}},"s_preview_video_key": {"get": {"result": true}},"s_thumbnail": {"post": {"post": true}},"show_calorie": {"get": {"result": true}},"show_level": {"get": {"result": true}},"show_view": {"get": {"result": true}},"text_level_title": {"get": {"result": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"url_thumbnail": {"get": {"result": true}},"url_video": {"get": {"result": true}},"url_video_direct": {"get": {"result": true}},"xml_description": {"get": {"result": true},"post": {"post": true}}}};
 };
 
 /**

@@ -27,6 +27,7 @@ function Wl_Video_Category_CategoryListModel()
 
   /**
    * @typedef {{}} Wl_Video_Category_CategoryListModel_a_video_category
+   * @property {boolean} can_delete Whether video category can be deleted.
    * @property {number} i_video Number of videos.
    * @property {string} k_video_category Key of the video category.
    * @property {string} k_video_category_full String key of the video category.
@@ -37,6 +38,8 @@ function Wl_Video_Category_CategoryListModel()
    * Categories of business video library {@link Wl_Video_Category_CategoryListModel.k_business}.
    *
    * Each element has next structure: <dl>
+   *   <dt>bool <var>can_delete</var></dt>
+   *   <dd>Whether video category can be deleted.</dd>
    *   <dt>int <var>i_video</var></dt>
    *   <dd>Number of videos.</dd>
    *   <dt>string <var>k_video_category</var></dt>
