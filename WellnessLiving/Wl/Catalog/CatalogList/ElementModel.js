@@ -16,10 +16,27 @@ function Wl_Catalog_CatalogList_ElementModel()
   this._s_key = "id_sale,k_id,k_shop_product_option,k_location";
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data
+   * @property {string[]} a_program_list List of services that this purchase option gives access to. If the purchase option gives access
+   *   to all classes, a_program_list will contain the string "All-classes", and if no class access at all, will contain
+   *   the string "no access to classes". Same behavior for events.
+   * @property {string} sid_duration_type Duration type of the purchase option. One of {@link \RsDurationTypeSid} constants.
+   * @property {string} s_expire Expiration date of the purchase option / package when sid_duration_type is {@link \RsDurationTypeSid::DATE}.
+   *   Will contain the expiration date, or s_expire will be empty string if the purchase option does not expire.
+   * @property {string} s_duration Duration type of the purchase option / package when sid_duration_type is {@link \RsDurationTypeSid::PERIOD}.
+   *   For example, a purchase option that is set to a period of 12 months. i_duration will include number of periods,
+   *   ie, 12, and s_duration will be the string "months".
+   * @property {string} i_duration Duration type of the purchase option / package when sid_duration_type is {@link \RsDurationTypeSid::PERIOD}.
+   *   For example, a purchase option that is set to a period of 12 months. i_duration will include number of periods,
+   *   ie, 12, and s_duration will be the string "months".
+   * @property {string} text_package_item Contents of the package. If id_sale is {@link \RsSaleSid::PACKAGE}.
+   */
+
+  /**
    * Contains additional specified data for the sale item.
    *
    * @get result
-   * @type {?{}}
+   * @type {?{Wl_Catalog_CatalogList_ElementModel_a_data}}
    */
   this.a_data = null;
 
@@ -27,7 +44,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_discount_code
    * @property {string} f_amount Fixed amount of the discount.
    * @property {number} f_percent Percentage amount of the discount.
-   * @property {number} i_limit 
+   * @property {number} i_limit
    * @property {string} k_discount_code Discount code key.
    * @property {string} s_discount_code Discount code value.
    */
