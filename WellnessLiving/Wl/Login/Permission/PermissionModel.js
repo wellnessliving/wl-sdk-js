@@ -24,9 +24,7 @@ function Wl_Login_Permission_PermissionModel()
   this.is_renew = false;
 
   /**
-   * ID of purchased promotion.
-   *
-   * Primary key in {@link \RsLoginPromotionSql}.
+   * Key of purchased promotion.
    *
    * @post get
    * @type {string}
