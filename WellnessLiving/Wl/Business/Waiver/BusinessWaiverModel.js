@@ -83,7 +83,45 @@ Core_Spa_Model.extend(Wl_Business_Waiver_BusinessWaiverModel);
  */
 Wl_Business_Waiver_BusinessWaiverModel.prototype.config=function()
 {
-  return {"a_field": {"i_contract_minor": {"get": {"result": true}},"is_contract_book_only": {"get": {"get": true}},"is_contract_minor": {"get": {"result": true}},"is_contract_upon_register": {"get": {"result": true}},"k_business": {"get": {"get": true}},"xml_contract": {"get": {"get": true}},"xml_description": {"get": {"get": true}}}};
+  return {
+    "a_field": {
+      "i_contract_minor": {
+        "get": {
+          "result": true
+        }
+      },
+      "is_contract_book_only": {
+        "get": {
+          "get": true
+        }
+      },
+      "is_contract_minor": {
+        "get": {
+          "result": true
+        }
+      },
+      "is_contract_upon_register": {
+        "get": {
+          "result": true
+        }
+      },
+      "k_business": {
+        "get": {
+          "get": true
+        }
+      },
+      "xml_contract": {
+        "get": {
+          "get": true
+        }
+      },
+      "xml_description": {
+        "get": {
+          "get": true
+        }
+      }
+    }
+  };
 };
 
 /**
