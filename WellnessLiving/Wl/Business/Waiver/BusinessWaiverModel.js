@@ -3,13 +3,13 @@
  *
  * This model is generated automatically based on API.
  *
- * @augments Core_Spa_Model
+ * @augments WlSdk_ModelAbstract
  * @constructor
  * @see Wl\Business\Waiver\BusinessWaiverApi
  */
 function Wl_Business_Waiver_BusinessWaiverModel()
 {
-  Core_Spa_Model.apply(this);
+  WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
