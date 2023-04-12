@@ -17,7 +17,7 @@ function Wl_Business_Waiver_BusinessWaiverModel()
   this._s_key = "k_business";
 
   /**
-   * If {@link \Wl\Business\Waiver\BusinessWaiverApi::$is_contract_minor} is set, this field contains the age
+   * If {@link Wl_Business_Waiver_BusinessWaiverModel.is_contract_minor} is set, this field contains the age
    * of the minor. Default value is 18.
    *
    * @get result
@@ -34,7 +34,7 @@ function Wl_Business_Waiver_BusinessWaiverModel()
   this.is_contract_book_only = false;
 
   /**
-   * Clients can sign the waiver on behalf of any minor of age {@link \Wl\Business\Waiver\BusinessWaiverApi::$i_contract_minor}
+   * Clients can sign the waiver on behalf of any minor of age {@link Wl_Business_Waiver_BusinessWaiverModel.i_contract_minor}
    *
    * @get result
    * @type {boolean}
@@ -50,7 +50,7 @@ function Wl_Business_Waiver_BusinessWaiverModel()
   this.is_contract_upon_register = false;
 
   /**
-   * Business Key. Primary key in table {@link \RsBusinessSql}.
+   * Business Key.
    *
    * @get get
    * @type {string}
@@ -76,7 +76,7 @@ function Wl_Business_Waiver_BusinessWaiverModel()
   this.changeInit();
 }
 
-Core_Spa_Model.extend(Wl_Business_Waiver_BusinessWaiverModel);
+WlSdk_ModelAbstract.extends(Wl_Business_Waiver_BusinessWaiverModel);
 
 /**
  * @inheritDoc
@@ -127,7 +127,7 @@ Wl_Business_Waiver_BusinessWaiverModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Waiver_BusinessWaiverModel.instanceGet
- * @param {string} k_business Business Key. Primary key in table {@link \RsBusinessSql}.
+ * @param {string} k_business Business Key.
  * @returns {Wl_Business_Waiver_BusinessWaiverModel}
- * @see Core_Spa_Model.instanceGet()
+ * @see WlSdk_ModelAbstract.instanceGet()
  */
