@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_location,k_resource_category,k_class_tab,is_backend,dtl_date";
+  this._s_key = "k_location,k_resource_category,k_class_tab,is_backend,dtl_date,k_timezone,id_mode,uid";
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_period
@@ -130,12 +130,30 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.dtl_date = false;
 
   /**
+   * Mode type, one of {@link \Wl\Mode\ModeSid} constants.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.id_mode = 0;
+
+  /**
    * <tt>true</tt> - load assets for backend mode; <tt>false</tt> - for frontend mode.
    *
    * @get get
    * @type {boolean}
    */
   this.is_backend = false;
+
+  /**
+   * Business key.
+   *
+   * If not set, location's business will be used.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_business = "0";
 
   /**
    * Class tab ID to filter assets.
@@ -169,6 +187,26 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    */
   this.k_resource_layout = undefined;
 
+  /**
+   * Timezone of date and time of asset booking.
+   *
+   * Empty if {@link Wl_Appointment_Book_Asset_AssetListModel.dtl_date} not set or client can't change in which timezone dates should be shown.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_timezone = "";
+
+  /**
+   * Client to get information for.
+   *
+   * If client not set, returns full asset list without client restrictions.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.uid = null;
+
   this.changeInit();
 }
 
@@ -179,7 +217,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_AssetListModel);
  */
 Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
 {
-  return {"a_field": {"a_asset": {"get": {"result": true}},"dtl_date": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource_category": {"get": {"get": true}},"k_resource_layout": {"get": {"result": true}}}};
+  return {"a_field": {"a_asset": {"get": {"result": true}},"dtl_date": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource_category": {"get": {"get": true}},"k_resource_layout": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
