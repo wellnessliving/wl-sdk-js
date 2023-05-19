@@ -1,7 +1,7 @@
 /**
- * Model of assets which are required for service booking.
+ * An endpoint that retrieves assets required for a service booking.
  *
- * This model is generated automatically based on API.
+ * This endpoint is generated automatically based on the API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,8 +16,9 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this._s_key = "dt_start,k_location,k_service,is_backend";
 
   /**
-   * List of assets which are busy in the time of service booking. Keys - asset ID; primary key in {@link \RsResourceSql} table. Values - sub array. In sub arrays keys - number of asset unit; values -
-   * <tt>true</tt>.
+   * A list of assets that are busy for the time of service booking.
+   *
+   * Keys refer to asset IDs, and values refer to subarrays. The subarray key is the asset key, where the values will always be `true`.
    *
    * @get result
    * @type {{}}
@@ -26,90 +27,92 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource
-   * @property {{}} a_image Asset image data. See {@link \RsResourceImage::data()} for details.
-   * @property {boolean} is_available <tt>true</tt> - this asset has at least one free unit; <tt>false</tt> - asset has no free units.
-   * @property {string} k_resource Asset key. Primary key in {@link \RsResourceSql} table.
-   * @property {string} s_resource Asset title.
+   * @property {{}} a_image The asset's image data.
+   * @property {boolean} is_available If `true`, the asset has at least one free unit. Otherwise, this will be `false`
+   * if the asset has no free units.
+   * @property {string} k_resource The asset key.
+   * @property {string} s_resource The asset title.
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type
-   * @property {Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource[]} a_resource List of resources. Every element has keys:
+   * @property {Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource[]} a_resource A list of resources.
+   * Every element has the next keys:
    * <dl>
    *   <dt>
    *     array <tt>a_image</tt>
    *   </dt>
    *   <dd>
-   *     Asset image data. See {@link \RsResourceImage::data()} for details.
+   *     The asset's image data.
    *   </dd>
    *   <dt>
    *     bool <tt>is_available</tt>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - this asset has at least one free unit; <tt>false</tt> - asset has no free units.
+   *     If <tt>true</tt>, this asset has at least one free unit. Otherwise, this will be <tt>false</tt> if the asset has no free units.
    *   </dd>
    *   <dt>
    *     string <tt>k_resource</tt>
    *   </dt>
    *   <dd>
-   *     Asset key. Primary key in {@link \RsResourceSql} table.
+   *     The asset key.
    *   </dd>
    *   <dt>
    *     string <tt>s_resource</tt>
    *   </dt>
    *   <dd>
-   *     Asset title.
+   *     The asset title.
    *   </dd>
    * </dl>
-   * @property {?string} k_resource_layout Assets' layout key; primary key in {@link \Wl\Resource\Layout\Sql} table. <tt>null</tt> if asset category has no layout.
-   * @property {string} s_resource_type Title of asset category.
+   * @property {?string} k_resource_layout The asset's layout key. This will be <tt>null</tt> if the asset category has no layout.
+   * @property {string} s_resource_type The title of the asset category.
    */
 
   /**
-   * List of assets which are required for service booking. Keys - asset category ID; primary key in {@link \RsResourceTypeSql} table. Values - sub arrays with next keys:
+   * A list of assets that are required for the service booking. Keys refer to asset category IDs, and values refer to subarrays with the next keys:
    * <dl>
    *   <dt>
-   *     array[] <var>a_resource</var>
+   *     array[] <b>a_resource</b>
    *   </dt>
    *   <dd>
-   *     List of resources. Every element has keys:
+   *     A list of resources. Every element has the next keys:
    *     <dl>
    *       <dt>
-   *         array <var>a_image</var>
+   *         array <b>a_image</b>
    *       </dt>
    *       <dd>
-   *         Asset image data. See {@link \RsResourceImage::data()} for details.
+   *         The asset image data.
    *       </dd>
    *       <dt>
-   *         bool <var>is_available</var>
+   *         bool <b>is_available</b>
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> - this asset has at least one free unit; <tt>false</tt> - asset has no free units.
+   *         If <tt>true</tt>, this asset has at least one free unit. Otherwise, this will be <tt>false</tt> if the asset has no free units.
    *       </dd>
    *       <dt>
-   *         string <var>k_resource</var>
+   *         string <b>k_resource</b>
    *       </dt>
    *       <dd>
-   *         Asset key. Primary key in {@link \RsResourceSql} table.
+   *         The asset key.
    *       </dd>
    *       <dt>
-   *         string <var>s_resource</var>
+   *         string <b>s_resource</b>
    *       </dt>
    *       <dd>
-   *         Asset title.
+   *         The asset title.
    *       </dd>
    *     </dl>
    *   </dd>
    *   <dt>
-   *     string|null <var>k_resource_layout</var>
+   *     string|null <b>k_resource_layout</b>
    *   </dt>
    *   <dd>
-   *     Assets' layout key; primary key in {@link \Wl\Resource\Layout\Sql} table. <tt>null</tt> if asset category has no layout.
+   *     The asset's layout key. This will be <tt>null</tt> if the asset category has no layout.
    *   </dd>
    *   <dt>
-   *     string <var>s_resource_type</var>
+   *     string <b>s_resource_type</b>
    *   </dt>
    *   <dd>
-   *     Title of asset category.
+   *     The title of asset category.
    *   </dd>
    * </dl>
    *
@@ -119,7 +122,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this.a_resource_type = undefined;
 
   /**
-   * Can staff booked unavailable assets.
+   * Determines whether staff members booked unavailable assets.
    *
    * @get result
    * @type {boolean}
@@ -127,7 +130,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this.can_book_unavailable_assets = undefined;
 
   /**
-   * Date/time of service start in MySQL format.
+   * The date/time of the service start in MySQL format.
    *
    * @get get
    * @type {string}
@@ -135,11 +138,11 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this.dt_start = "";
 
   /**
-   * <tt>true</tt> for a case of backend mode.
-   * In this mode list of asset categories must be returned even asset selection is disabled for clients.
+   * <b>true</b> - backend mode is used.
+   * In this mode, the list of asset categories will be returned even if asset selection is disabled for clients.
    *
-   * <tt>false</tt> for a case of frontend mode.
-   * In this mode list of asset categories must not be returned if asset selection is disabled for clients.
+   * <b>false</b> - frontend mode is used.
+   * In this mode, the list of asset categories won't be returned if asset selection is disabled for clients.
    *
    * @get get
    * @type {boolean}
@@ -147,7 +150,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this.is_backend = false;
 
   /**
-   * Location key.
+   * The location key.
    *
    * @get get
    * @type {string}
@@ -155,7 +158,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this.k_location = "0";
 
   /**
-   * Service key.
+   * The service key.
    *
    * @get get
    * @type {string}
@@ -178,10 +181,12 @@ Wl_Appointment_Book_Asset_Service_ServiceModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Asset_Service_ServiceModel.instanceGet
- * @param {string} dt_start Date/time of service start in MySQL format.
- * @param {string} k_location Location key.
- * @param {string} k_service Service key.
- * @param {boolean} is_backend <tt>true</tt> for a case of backend mode. In this mode list of asset categories must be returned even asset selection is disabled for clients. <tt>false</tt> for a case of frontend mode. In this mode list of asset categories must not be returned if asset selection is disabled for clients.
+ * @param {string} dt_start The date/time of service start in MySQL format.
+ * @param {string} k_location The location key.
+ * @param {string} k_service The service key.
+ * @param {boolean} is_backend <tt>true</tt> if backend mode is used. In this mode, the list of asset categories will be
+ * returned even if asset selection is disabled for clients. Otherwise, this will be <tt>false</tt> if frontend mode is used.
+ * In this mode, the list of asset categories won't be returned if asset selection is disabled for clients.
  * @returns {Wl_Appointment_Book_Asset_Service_ServiceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
