@@ -1,7 +1,5 @@
 /**
- * Retrieves information about assets in the current asset category.
- *
- * This model is generated automatically based on API.
+ * An endpoint that retrieves information about assets in the current asset category.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,39 +15,39 @@ function Wl_Appointment_Book_Asset_AssetListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_period
-   * @property {number} i_duration Duration of asset in minutes.
-   * @property {string} html_duration Duration of asset to paste into view.
-   * @property {string} html_price Price of the asset period to paste into view.
+   * @property {number} i_duration The duration of the asset in minutes.
+   * @property {string} html_duration The duration of the asset to paste into view.
+   * @property {string} html_price The price of the asset period to paste into view.
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset
-   * @property {{}} a_image Information about asset logo.
+   * @property {{}} a_image Information about the asset logo.
    * @property {Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_period[]} a_period A list of asset periods with information about them:
    * <dl>
    *   <dt>
    *     int <tt>i_duration</tt>
    *   </dt>
    *   <dd>
-   *     Duration of asset in minutes.
+   *     The duration of the asset in minutes.
    *   </dd>
    *   <dt>
    *     string <tt>html_duration</tt>
    *   </dt>
    *   <dd>
-   *     Duration of asset to paste into view.
+   *     The duration of asset to paste into view.
    *   </dd>
    *   <dt>
    *     string <tt>html_price</tt>
    *   </dt>
    *   <dd>
-   *     Price of the asset period to paste into view.
+   *     The price of the asset period to paste into view.
    *   </dd>
    * </dl>
-   * @property {boolean} hide_application Whether asset will be hidden in the White Label mobile application.
-   * <tt>true</tt> means that asset will not be displayed, <tt>false</tt> otherwise.
-   * @property {number} id_service_require Purchase rule. One of {@link RsServiceRequireSid} constants.
-   * @property {string} k_resource Resource key.
-   * @property {string} s_title Title of resource.
+   * @property {boolean} hide_application Determines whether the asset will be hidden in the White Label mobile application.
+   * If <b>true</b>, the asset won't be displayed. Otherwise, this will be <b>false</b>.
+   * @property {number} id_service_require The purchase rule. One of {@link RsServiceRequireSid} constants.
+   * @property {string} k_resource The resource key.
+   * @property {string} s_title The title of the resource.
    */
 
   /**
@@ -59,7 +57,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     Information about asset logo.
+   *     Information about the asset logo.
    *   </dd>
    *   <dt>
    *     array[] <var>a_period</var>
@@ -71,19 +69,19 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *         int <var>i_duration</var>
    *       </dt>
    *       <dd>
-   *         Duration of asset in minutes.
+   *         The duration of asset in minutes.
    *       </dd>
    *       <dt>
    *         string <var>html_duration</var>
    *       </dt>
    *       <dd>
-   *         Duration of asset to paste into view.
+   *         The duration of the asset to paste into view.
    *       </dd>
    *       <dt>
    *         string <var>html_price</var>
    *       </dt>
    *       <dd>
-   *         Price of the asset period to paste into view.
+   *         The price of the asset period to paste into view.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -91,26 +89,26 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *     bool <var>hide_application</var>
    *   </dt>
    *   <dd>
-   *     Whether asset will be hidden in the White Label mobile application.
-   *     <tt>true</tt> means that asset will not be displayed, <tt>false</tt> otherwise.
+   *     Determines whether the asset will be hidden in the White Label mobile application.
+   *     If <b>true</b> the asset won't be displayed. Otherwise, this will be <b>false</b>.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>
    *   </dt>
    *   <dd>
-   *     Purchase rule. One of {@link RsServiceRequireSid} constants.
+   *     The purchase rule. One of {@link RsServiceRequireSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_resource</var>
    *   </dt>
    *   <dd>
-   *     Resource key.
+   *     The resource key.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Title of resource.
+   *     The title of the resource.
    *   </dd>
    * </dl>
    *
@@ -120,9 +118,8 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.a_asset = undefined;
 
   /**
-   * Selected date and time of asset booking.
-   *   It is actual in case when business booking policy allows clients to select a date and time,
-   *   then the available asset.
+   * The selected date and time of the asset booking. This is for cases where the business booking policy allows clients
+   * to select a date and time, then the available asset.
    *
    * @get get
    * @type {string}
@@ -130,7 +127,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.dtl_date = false;
 
   /**
-   * Mode type, one of {@link \Wl\Mode\ModeSid} constants.
+   * The mode type. One of {@link \Wl\Mode\ModeSid} constants.
    *
    * @get get
    * @type {number}
@@ -138,7 +135,9 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.id_mode = 0;
 
   /**
-   * <tt>true</tt> - load assets for backend mode; <tt>false</tt> - for frontend mode.
+   * If <b>true</b>, assets will be loaded for backend mode.
+   *
+   * If <b>false</b>, assets will be loaded for frontend mode.
    *
    * @get get
    * @type {boolean}
@@ -146,9 +145,9 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.is_backend = false;
 
   /**
-   * Business key.
+   * The business key.
    *
-   * If not set, location's business will be used.
+   * The location's business will be used if not set yet.
    *
    * @get get
    * @type {string}
@@ -156,7 +155,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.k_business = "0";
 
   /**
-   * Class tab ID to filter assets.
+   * The class tab ID used to filter assets.
    *
    * @get get
    * @type {string}
@@ -164,7 +163,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.k_class_tab = "0";
 
   /**
-   * ID of a location.
+   * The ID of a location.
    *
    * @get get
    * @type {string}
@@ -172,7 +171,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.k_location = "0";
 
   /**
-   * ID of an asset category to show information for.
+   * The ID of an asset category to show information for.
    *
    * @get get
    * @type {string}
@@ -180,7 +179,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.k_resource_category = "0";
 
   /**
-   * ID of asset category layout. May be empty if asset category has no layout.
+   * The ID of an asset category layout. This may be empty if the asset category has no layout.
    *
    * @get result
    * @type {string}
@@ -188,9 +187,10 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.k_resource_layout = undefined;
 
   /**
-   * Timezone of date and time of asset booking.
+   * The time zone in which the asset booking was made.
    *
-   * Empty if {@link Wl_Appointment_Book_Asset_AssetListModel.dtl_date} not set or client can't change in which timezone dates should be shown.
+   * This will be empty if {@link Wl_Appointment_Book_Asset_AssetListModel.dtl_date} isn't set yet or if clients can't
+   * change the time zone in which asset bookings can be made.
    *
    * @get get
    * @type {string}
@@ -198,9 +198,9 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.k_timezone = "";
 
   /**
-   * Client to get information for.
+   * The client to get information for.
    *
-   * If client not set, returns full asset list without client restrictions.
+   * The full asset list without client restrictions will be returned if not set yet.
    *
    * @get get
    * @type {?string}
@@ -223,10 +223,11 @@ Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Asset_AssetListModel.instanceGet
- * @param {string} k_location ID of a location.
- * @param {string} k_resource_category ID of an asset category to show information for.
- * @param {string} k_class_tab Class tab ID to filter assets.
- * @param {boolean} is_backend <tt>true</tt> - load assets for backend mode; <tt>false</tt> - for frontend mode.
+ * @param {string} k_location The ID of a location.
+ * @param {string} k_resource_category The ID of an asset category to show information for.
+ * @param {string} k_class_tab The class tab ID to filter assets.
+ * @param {boolean} is_backend If <b>true</b>, assets are loaded for backend mode. Otherwise, <b>false</b> if assets
+ * are loaded for frontend mode.
  * @returns {Wl_Appointment_Book_Asset_AssetListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
