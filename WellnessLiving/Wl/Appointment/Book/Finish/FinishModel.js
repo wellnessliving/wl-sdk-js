@@ -58,10 +58,17 @@ function Wl_Appointment_Book_Finish_FinishModel()
    * <tt>null</tt> if appointment must not repeat monthly.
    */
   /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_product (old format)
+   * Object properties - primary keys in {@link \RsShopProductOptionSql} table.
+   */
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_product (new format)
+   * @property {number} i_count Add-on count
+   * @property {string} k_shop_product_option Add-on key, primary key in {@link \RsShopProductOptionSql} table.
+   */
+  /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data
-   * @property {*} a_product Add-ons to appointment.
-   * Elements - primary keys in {@link \RsShopProductOptionSql} table.
-   * Specify for appointment booking only.
+   * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_product[]} a_product Add-ons to appointment. Specify for appointment booking only.
    * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_repeat[]} a_repeat Recurring booking information:
    * <dl>
    *   <dt>
