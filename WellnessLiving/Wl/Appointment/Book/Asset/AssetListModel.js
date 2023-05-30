@@ -45,7 +45,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    * </dl>
    * @property {boolean} hide_application Determines whether the asset will be hidden in the White Label mobile application.
    * If <b>true</b>, the asset won't be displayed. Otherwise, this will be <b>false</b>.
-   * @property {number} id_service_require The purchase rule. One of {@link RsServiceRequireSid} constants.
+   * @property {number} id_service_require The purchase rule. One of the {@link WlSdk_Service_ServiceRequireSid} constants.
    * @property {string} k_resource The resource key.
    * @property {string} s_title The title of the resource.
    */
@@ -96,7 +96,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *     int <var>id_service_require</var>
    *   </dt>
    *   <dd>
-   *     The purchase rule. One of {@link RsServiceRequireSid} constants.
+   *     The purchase rule. One of the {@link WlSdk_Service_ServiceRequireSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_resource</var>
@@ -127,7 +127,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.dtl_date = false;
 
   /**
-   * The mode type. One of {@link \Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link WlSdk_Mode_ModeSid} constants.
    *
    * @get get
    * @type {number}
