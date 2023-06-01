@@ -1,7 +1,5 @@
 /**
- * Retrieves a list of information about asset categories on the appointment booking page.
- *
- * This model is generated automatically based on API.
+ * An endpoint that retrieves a list of information about asset categories on the appointment booking page.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,31 +15,33 @@ function Wl_Appointment_Book_Asset_CategoryModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_CategoryModel_a_category
-   * @property {*} hide_application <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
-   * @property {string} k_resource_type Resource type ID.
-   * @property {string} html_title Title of resource type.
+   * @property {*} hide_application If `true`, all resources are hidden in this category for the White Label mobile application.
+   * Otherwise, this will be `false`.
+   * @property {string} k_resource_type The resource type ID.
+   * @property {string} html_title The title of the resource type.
    */
 
   /**
-   * A list of service categories with information about them:
+   * A list of service categories with the following information:
    * <dl>
    *   <dt>
    *     boolean <var>hide_application</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
+   *     If <tt>true</tt>, all resources are hidden in this category for the White Label mobile application. Otherwise,
+   *     this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_type</var>
    *   </dt>
    *   <dd>
-   *     Resource type ID.
+   *     The resource type ID.
    *   </dd>
    *   <dt>
    *     string <var>html_title</var>
    *   </dt>
    *   <dd>
-   *     Title of resource type.
+   *     The resource type title.
    *   </dd>
    * </dl>
    *
@@ -51,7 +51,8 @@ function Wl_Appointment_Book_Asset_CategoryModel()
   this.a_category = undefined;
 
   /**
-   * `true` to load asset categories for backend mode; `false` for frontend mode.
+   * If `true`, asset categories are loaded for backend mode. Otherwise,this will be `false` if asset categories are
+   * loaded for frontend mode.
    *
    * @get get
    * @type {boolean}
@@ -59,7 +60,7 @@ function Wl_Appointment_Book_Asset_CategoryModel()
   this.is_backend = false;
 
   /**
-   * Class tab ID to filter services.
+   * The class tab ID to filter services.
    *
    * @get get
    * @type {string}
@@ -67,7 +68,7 @@ function Wl_Appointment_Book_Asset_CategoryModel()
   this.k_class_tab = "0";
 
   /**
-   * ID of the location.
+   * The ID of the location.
    *
    * @get get
    * @type {string}
@@ -90,9 +91,10 @@ Wl_Appointment_Book_Asset_CategoryModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Asset_CategoryModel.instanceGet
- * @param {string} k_location ID of the location.
- * @param {string} k_class_tab Class tab ID to filter services.
- * @param {boolean} is_backend `true` to load asset categories for backend mode; `false` for frontend mode.
+ * @param {string} k_location The ID of the location.
+ * @param {string} k_class_tab The class tab ID to filter services.
+ * @param {boolean} is_backend If `true` asset categories are loaded for backend mode. Otherwise, this will be `false`
+ * if asset categories are loaded for frontend mode.
  * @returns {Wl_Appointment_Book_Asset_CategoryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
