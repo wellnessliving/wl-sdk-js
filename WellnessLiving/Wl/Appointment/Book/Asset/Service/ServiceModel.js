@@ -63,7 +63,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    *     The asset title.
    *   </dd>
    * </dl>
-   * @property {?string} k_resource_layout The asset's layout key. This will be <tt>null</tt> if the asset category has no layout.
+   * @property {?string} k_resource_layout The asset's layout key. This will be `null` if the asset category has no layout.
    * @property {string} s_resource_type The title of the asset category.
    */
 
@@ -86,7 +86,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    *         bool <b>is_available</b>
    *       </dt>
    *       <dd>
-   *         If <tt>true</tt>, this asset has at least one free unit. Otherwise, this will be <tt>false</tt> if the asset has no free units.
+   *         If `true`, this asset has at least one free unit. Otherwise, this will be `false` if the asset has no free units.
    *       </dd>
    *       <dt>
    *         string <b>k_resource</b>

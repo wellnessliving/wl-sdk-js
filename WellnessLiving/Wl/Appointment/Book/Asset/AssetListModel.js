@@ -44,7 +44,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *   </dd>
    * </dl>
    * @property {boolean} hide_application Determines whether the asset will be hidden in the White Label mobile application.
-   * If <b>true</b>, the asset won't be displayed. Otherwise, this will be <b>false</b>.
+   * If `true`, the asset won't be displayed. Otherwise, this will be `false`.
    * @property {number} id_service_require The purchase rule. One of the {@link WlSdk_Service_ServiceRequireSid} constants.
    * @property {string} k_resource The resource key.
    * @property {string} s_title The title of the resource.
@@ -90,7 +90,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *   </dt>
    *   <dd>
    *     Determines whether the asset will be hidden in the White Label mobile application.
-   *     If <b>true</b> the asset won't be displayed. Otherwise, this will be <b>false</b>.
+   *     If <tt>true</tt> the asset won't be displayed. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>
@@ -135,9 +135,9 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.id_mode = 0;
 
   /**
-   * If <b>true</b>, assets will be loaded for backend mode.
+   * If `true`, assets will be loaded for backend mode.
    *
-   * If <b>false</b>, assets will be loaded for frontend mode.
+   * If `false`, assets will be loaded for frontend mode.
    *
    * @get get
    * @type {boolean}
@@ -226,7 +226,7 @@ Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
  * @param {string} k_location The ID of a location.
  * @param {string} k_resource_category The ID of an asset category to show information for.
  * @param {string} k_class_tab The class tab ID to filter assets.
- * @param {boolean} is_backend If <b>true</b>, assets are loaded for backend mode. Otherwise, <b>false</b> if assets
+ * @param {boolean} is_backend If `true`, assets are loaded for backend mode. Otherwise, this will be `false` if assets
  * are loaded for frontend mode.
  * @returns {Wl_Appointment_Book_Asset_AssetListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
