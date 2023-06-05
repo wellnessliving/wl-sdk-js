@@ -1,10 +1,7 @@
-// @after Core/Request/Api/Sdk/AssertException.js
-// @before Config/ConfigAbstractMixin.js
-
 /**
  * A list of client booking flow types.
  */
-function WlSdk_Service_ServiceRequireSid()
+function Wl_Service_ServiceRequireSid()
 {
   // Empty constructor.
 }
@@ -16,14 +13,14 @@ function WlSdk_Service_ServiceRequireSid()
  *
  * @type {number}
  */
-WlSdk_Service_ServiceRequireSid.ADVANCE = 4;
+Wl_Service_ServiceRequireSid.ADVANCE = 4;
 
 /**
  * Full payment is required.
  *
  * @type {number}
  */
-WlSdk_Service_ServiceRequireSid.FULL = 2;
+Wl_Service_ServiceRequireSid.FULL = 2;
 
 /**
  * Nothing is required.
@@ -31,7 +28,7 @@ WlSdk_Service_ServiceRequireSid.FULL = 2;
  *
  * @type {number}
  */
-WlSdk_Service_ServiceRequireSid.NOTHING = 1;
+Wl_Service_ServiceRequireSid.NOTHING = 1;
 
 // 3 - is reserved for deprecated "advanced percent" that was combined with "flat advance" into "ADVANCE".
 
@@ -41,11 +38,11 @@ WlSdk_Service_ServiceRequireSid.NOTHING = 1;
  *
  * @type {number}
  */
-WlSdk_Service_ServiceRequireSid.OFFLINE = 6;
+Wl_Service_ServiceRequireSid.OFFLINE = 6;
 
 /**
  * Credit card authorisation without payment is required.
  *
  * @type {number}
  */
-WlSdk_Service_ServiceRequireSid.ZERO = 5;
+Wl_Service_ServiceRequireSid.ZERO = 5;
