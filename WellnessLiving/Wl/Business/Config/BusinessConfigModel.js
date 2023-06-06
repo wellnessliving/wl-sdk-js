@@ -4,7 +4,7 @@
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Wl_Business_Config_Option_BusinessConfigModel()
+function Wl_Business_Config_BusinessConfigModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
@@ -91,20 +91,20 @@ function Wl_Business_Config_Option_BusinessConfigModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Business_Config_Option_BusinessConfigModel);
+WlSdk_ModelAbstract.extend(Wl_Business_Config_BusinessConfigModel);
 
 /**
  * @inheritDoc
  */
-Wl_Business_Config_Option_BusinessConfigModel.prototype.config=function()
+Wl_Business_Config_BusinessConfigModel.prototype.config=function()
 {
   return {"a_field": {"a_business_policy": {"get": {"result": true}},"is_location_select": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
  * @function
- * @name Wl_Business_Config_Option_BusinessConfigModel.instanceGet
+ * @name Wl_Business_Config_BusinessConfigModel.instanceGet
  * @param {string} k_business Key of business.
- * @returns {Wl_Business_Config_Option_BusinessConfigModel}
+ * @returns {Wl_Business_Config_BusinessConfigModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
