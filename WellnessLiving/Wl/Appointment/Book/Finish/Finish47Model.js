@@ -1,7 +1,6 @@
 /**
- * Allows to pay an appointment or appointment purchase option for the client.
- *
- * This model is generated automatically based on API.
+ * An endpoint that performs paid or unpaid appointment bookings. This endpoint can also be used to allow a
+ * client to buy a Purchase Option to book an appointment.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +10,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * A list of answers for the questions.
+   * A list of answers for the questions required for the appointment booking.
    *
    * @post post
    * @type {{}}
@@ -20,17 +19,17 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_appointment
-   * @property {string} k_appointment Appointment ID. Primary key in {@link \RsAppointmentSql} table.
+   * @property {string} k_appointment Appointment ID.
    */
 
   /**
-   * Booked appointments. Every element has key:
+   * The booked appointments. Every element has the next key:
    * <dl>
    *   <dt>
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     Appointment ID. Primary key in {@link \RsAppointmentSql} table.
+   *     The appointment ID.
    *   </dd>
    * </dl>
    *
@@ -40,7 +39,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_appointment = undefined;
 
   /**
-   * The documentation is the same as in {@link FinishApi::$a_book_data}.
+   * See {@link FinishApi::$a_book_data} for details.
    *
    * @post post
    * @type {{}}
@@ -48,7 +47,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_book_data = [];
 
   /**
-   * IDs of activity of books are made. Primary keys in {@link RsLoginActivitySql} table.
+   * The activity keys of the bookings that were made.
    *
    * @post result
    * @type {string[]}
@@ -58,7 +57,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
+   * The structure of this array corresponds with the structure of {@link \RsPayForm::$a_pay_source}.
    *
    * @post post
    * @type {{}[]}
@@ -67,22 +66,22 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_payment_data
-   * @property {number} id_purchase_item Type of the purchase item. One of the {@link \RsPurchaseItemSid} constants.
-   * @property {string} k_id Promotion key or appointment key. Depends on <tt>id_purchase_item</tt> of this array.
-   * @property {string} k_login_promotion Login promotion key. Primary key in the {@link \RsLoginPromotionSql} table.
-   * @property {string} text_discount_code Discount code.
+   * @property {number} id_purchase_item The type of the purchase item. One of the {@link \RsPurchaseItemSid} constants.
+   * @property {string} k_id The promotion or appointment key (depending on <tt>id_purchase_item</tt> of this array).
+   * @property {string} k_login_promotion The login promotion key.
+   * @property {string} text_discount_code The discount code.
    */
 
   /**
-   * Data required for payment. Has next structure:<dl>
+   * Data required for a payment. The data has the next structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>Type of the purchase item. One of the {@link \RsPurchaseItemSid} constants.</dd>
+   *   <dd>The purchase item type. One of the {@link \RsPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
-   *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
+   *   <dd>The promotion or appointment key (depending on <var>id_purchase_item</var> of this array).</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>Login promotion key. Primary key in the {@link \RsLoginPromotionSql} table.</dd>
+   *   <dd>The login promotion key.</dd>
    *   <dt>string <var>text_discount_code</var></dt>
-   *   <dd>Discount code.</dd>
+   *   <dd>The discount code.</dd>
    * </dl>
    *
    * @post post
@@ -91,8 +90,8 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_payment_data = [];
 
   /**
-   * Purchase items keys.
-   * Empty if no purchases are made for appointment booking.
+   * The purchase items keys.
+   * This will be empty if no purchases have been made for the appointment booking.
    *
    * @post post
    * @type {string[]}
@@ -101,22 +100,22 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_user
-   * @property {string[]} a_note List of notes to add to user.
-   * @property {string} text_mail Mail.
-   * @property {string} text_name_first First name.
-   * @property {string} text_name_last Last name.
-   * @property {string} text_phone Mobile phone.
+   * @property {string[]} a_note A list of notes to add to the client.
+   * @property {string} text_mail The client's email address.
+   * @property {string} text_name_first The client's first name.
+   * @property {string} text_name_last The client's last name.
+   * @property {string} text_phone The client's mobile phone number.
    */
 
   /**
-   * Data to create new user.
-   * Specify if <var>$uid</var> is empty.
-   * Must contain keys:
-   * <dl><dt>string[] <var>a_note</var></dt><dd>List of notes to add to user.</dd>
-   * <dt>string <var>text_mail</var></dt><dd>Mail.</dd>
-   * <dt>string <var>text_name_first</var></dt><dd>First name.</dd>
-   * <dt>string <var>text_name_last</var></dt><dd>Last name.</dd>
-   * <dt>string <var>text_phone</var></dt><dd>Mobile phone.</dd></dl>
+   * Data used to create a new client.
+   * This will be specified if <var>$uid</var> is empty.
+   * The <tt>a_user</tt> property must contain the next keys:
+   * <dl><dt>string[] <var>a_note</var></dt><dd>A list of notes to add to the client.</dd>
+   * <dt>string <var>text_mail</var></dt><dd>The client's email address.</dd>
+   * <dt>string <var>text_name_first</var></dt><dd>The client's first name.</dd>
+   * <dt>string <var>text_name_last</var></dt><dd>The client's last name.</dd>
+   * <dt>string <var>text_phone</var></dt><dd>The client's mobile phone.</dd></dl>
    *
    * @post get
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_user}
@@ -124,7 +123,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_user = [];
 
   /**
-   * IDs of visits. Primary keys in {@link RsVisitSql} table.
+   * The visit IDs.
    *
    * @post result
    * @type {string[]}
@@ -132,7 +131,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_visit = undefined;
 
   /**
-   * Mode type, one of {@link \Wl\Mode\ModeSid} constants.
+   * The mode type. One of the {@link \Wl\Mode\ModeSid} constants.
    *
    * @post post
    * @type {number}
@@ -140,7 +139,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.id_mode = 0;
 
   /**
-   * Payment type for the appointment, one of {@link RsAppointmentPaySid} constants.
+   * The ID of the payment type used for the appointment booking. One of {@link RsAppointmentPaySid} constants.
    *
    * @post get
    * @type {number}
@@ -148,9 +147,8 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.id_pay = 0;
 
   /**
-   * Appointment key.
-   * Specify to reschedule certain appointment.
-   * Primary key in {@link \RsAppointmentSql} table.
+   * The appointment key.
+   * This is used when rescheduling appointment sessions.
    *
    * @post get
    * @type {string}
@@ -158,7 +156,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.k_appointment = "0";
 
   /**
-   * Business key.
+   * The business key.
    *
    * @post get
    * @type {string}
@@ -166,9 +164,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.k_business = "0";
 
   /**
-   * Location to show available appointment booking schedule.
-   *
-   * Primary key in {@link \RsLocationSql} table.
+   * The location to show the available appointment booking schedule for.
    *
    * @get get,result
    * @post get
@@ -177,7 +173,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.k_location = "0";
 
   /**
-   * A sum paid.
+   * The amount paid by the client.
    *
    * @post post
    * @type {string}
@@ -185,9 +181,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.m_pay = "0";
 
   /**
-   * User to get information for.
-   *
-   * Primary key in {@link \PassportLoginSql} table.
+   * The client to get information for.
    *
    * @get get
    * @post get
