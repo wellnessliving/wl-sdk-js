@@ -88,14 +88,6 @@ function Wl_Profile_Form_Response_ResponseListModel()
   this.a_quiz_response = [];
 
   /**
-   * `true` if API is being used from backend, `false` otherwise.
-   *
-   * @get get
-   * @type {boolean}
-   */
-  this.is_backend = false;
-
-  /**
    * Key of a business to show information for.
    *
    * @get get
