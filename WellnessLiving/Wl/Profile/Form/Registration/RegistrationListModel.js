@@ -18,16 +18,16 @@ function Wl_Profile_Form_Registration_RegistrationListModel()
   /**
    * @typedef {{}} Wl_Profile_Form_Registration_RegistrationListModel_a_quiz
    * @property {boolean} is_require Whether form is require to completion.
-   * @property {string} k_quiz Quiz key. Primary key in {@link \Core\Quiz\QuizSql} table.
-   * @property {string} k_quiz_login Quiz login key. Primary key in {@link \Wl\Quiz\Login\QuizLoginSql} table.
+   * @property {string} k_quiz Quiz key.
+   * @property {string} k_quiz_login Quiz login key.
    * @property {string} text_title Quiz title.
    */
 
   /**
    * Require and optional to completion forms. Each element has the next structure: <dl>
    *   <dt>bool <var>is_require</var></dt> <dd>Whether form is require to completion.</dd>
-   *   <dt>string <var>k_quiz</var></dt> <dd>Quiz key. Primary key in {@link \Core\Quiz\QuizSql} table.</dd>
-   *   <dt>string <var>k_quiz_login</var></dt> <dd>Quiz login key. Primary key in {@link \Wl\Quiz\Login\QuizLoginSql} table.</dd>
+   *   <dt>string <var>k_quiz</var></dt> <dd>Quiz key.</dd>
+   *   <dt>string <var>k_quiz_login</var></dt> <dd>Quiz login key.</dd>
    *   <dt>string <var>text_title</var></dt> <dd>Quiz title.</dd>
    * </dl>
    *

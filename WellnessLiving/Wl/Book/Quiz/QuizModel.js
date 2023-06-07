@@ -18,7 +18,7 @@ function Wl_Appointment_Book_Quiz_QuizModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Quiz_QuizModel_a_quiz
    * @property {boolean} is_require Whether the quiz is required.
-   * @property {string} k_quiz Quiz key. Primary key from {@link \Core\Quiz\QuizSql} table.
+   * @property {string} k_quiz Quiz key.
    * @property {string} text_title Quiz title.
    */
 
@@ -27,7 +27,7 @@ function Wl_Appointment_Book_Quiz_QuizModel()
    *  <dt>bool <var>is_require</var></dt>
    *  <dd>Whether the quiz is required.</dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>Quiz key. Primary key from {@link \Core\Quiz\QuizSql} table.</dd>
+   *  <dd>Quiz key.</dd>
    *  <dt>string <var>text_title</var></dt>
    *  <dd>Quiz title.</dd>
    * </dl>
