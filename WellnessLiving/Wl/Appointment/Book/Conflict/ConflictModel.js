@@ -1,7 +1,5 @@
 /**
- * Appointment booking conflicts data.
- *
- * This model is generated automatically based on API.
+ * An endpoint that gets data for appointment booking conflicts.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See for {@link \RsAppointmentEditConflict::checkAvailability()} details.
+   * See {@link \RsAppointmentEditConflict::checkAvailability()} for details.
    *
    * @get result
    * @type {{}[]}
@@ -19,7 +17,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.a_conflict = undefined;
 
   /**
-   * List of add-ons. Primary keys in {@link \RsShopProductOptionSql} table.
+   * A list of add-ons.
    *
    * @get get
    * @type {string[]}
@@ -27,10 +25,10 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.a_product = [];
 
   /**
-   * Data of appointment repeat.
-   * See key <tt>a_repeat</tt> of {@link \Wl\Appointment\Book\Finish\FinishApi::$a_book_data} for details.
+   * The appointment repeat data.
+   * See the `a_repeat` key of {@link \Wl\Appointment\Book\Finish\FinishApi::$a_book_data} for details.
    *
-   * <tt>null</tt> if repeat is not required.
+   * This will be `null` if repeat data isn't required.
    *
    * @get get
    * @type {?{}}
@@ -39,16 +37,16 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Conflict_ConflictModel_a_resource
-   * @property {*} i_index Asset index in layout.
-   * @property {string} k_resource Asset primary key in {@link \RsResourceSql} table.
+   * @property {*} i_index The asset index in the layout.
+   * @property {string} k_resource The asset primary key.
    */
 
   /**
-   * List of assets. Every element has next keys:
-   * <dl><dt>int [<var>i_index</var>]</dt><dd>Asset index in layout.</dd>
-   * <dt>string <var>k_resource</var></dt><dd>Asset primary key in {@link \RsResourceSql} table.</dd></dl>
+   * The list of assets. Every element has the next keys:
+   * <dl><dt>int [<var>i_index</var>]</dt><dd>The asset index in the layout.</dd>
+   * <dt>string <var>k_resource</var></dt><dd>The asset primary key.</dd></dl>
    *
-   * May be specified for service booking only.
+   * This can only be specified for service bookings.
    *
    * @get get
    * @type {Wl_Appointment_Book_Conflict_ConflictModel_a_resource[]}
@@ -56,7 +54,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.a_resource = [];
 
   /**
-   * Date/time of appointment. In location timezone.
+   * The date/time of appointment in the location's time zone.
    *
    * @get get
    * @type {string}
@@ -64,8 +62,8 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.dt_date = "";
 
   /**
-   * Appointment duration.
-   * Must be specified for asset booking only.
+   * The appointment duration.
+   * This must only be specified for asset bookings.
    *
    * @get get
    * @type {number}
@@ -73,8 +71,8 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.i_duration = 0;
 
   /**
-   * Appointment primary key in {@link \RsAppointmentSql} table.
-   * Empty for a new appointment.
+   * The appointment primary key.
+   * This will be empty for new appointments.
    *
    * @get get
    * @type {string}
@@ -82,9 +80,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_appointment = "0";
 
   /**
-   * Location to show available appointment booking schedule.
-   *
-   * Primary key in {@link \RsLocationSql} table.
+   * The location to show the available appointment booking schedule for.
    *
    * @get get,result
    * @post get
@@ -93,8 +89,8 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_location = "0";
 
   /**
-   * Asset primary key in {@link \RsResourceSql} table.
-   * Empty for service booking.
+   * The asset primary key.
+   * This will be empty for service bookings.
    *
    * @get get
    * @type {string}
@@ -102,8 +98,8 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_resource = "0";
 
   /**
-   * Service primary key in {@link \RsServiceSql} table.
-   * Empty for asset booking.
+   * The service primary key.
+   * This will be empty for asset bookings.
    *
    * @get get
    * @type {string}
@@ -111,7 +107,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_service = "0";
 
   /**
-   * Staff member primary key in {@link \RsStaffSql} table.
+   * The staff member primary key.
    *
    * @get get
    * @type {string}
@@ -119,9 +115,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_staff = "0";
 
   /**
-   * User to get information for.
-   *
-   * Primary key in {@link \PassportLoginSql} table.
+   * The user to get information for.
    *
    * @get get
    * @post get
