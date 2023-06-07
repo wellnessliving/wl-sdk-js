@@ -58,6 +58,73 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
   this.a_date = undefined;
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Schedule_CalendarModel_a_timezone_data_a_timezone
+   * @property {number} i_order Timezone order.
+   * @property {number} i_shift Timezone shift from UTC in hours.
+   * @property {bool} is_select `true` for selected timezone - from {@link this.k_timezone} property or client's default timezone when param not set.
+   * @property {string} k_timezone Timezone key.
+   * @property {string} s_title Timezone name.
+   * @property {string} text_abbr Timezone abbreviation.
+   */
+
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Schedule_CalendarModel_a_timezone_data
+   * @property {Wl_Appointment_Book_Schedule_CalendarModel_a_timezone_data_a_timezone|null} a_timezone `null` if business settings doesn't allow client to adjust timezone, otherwise list of timezones.
+   * @property {string|null} name `null` if business settings doesn't allow client to adjust timezone, otherwise timezone input name.
+   */
+
+  /**
+   * Information about timezone.
+   * <dl>
+   *   <dt>array|null <var>a_timezone</var></dt>
+   *   <dd>
+   *     `null` if business settings doesn't allow client to adjust timezone, otherwise list of timezones:
+   *     <dl>
+   *       <dt>int <var>i_order</var></dt>
+   *       <dd>Timezone order</dd>
+   *       <dt>int <var>i_shift</var></dt>
+   *       <dd>Timezone shift from UTC in hours</dd>
+   *       <dt>bool <var>is_select</var></dt>
+   *       <dd>`true` for selected timezone - from {@link this.k_timezone} property or client's default timezone when param not set.</dd>
+   *       <dt>string <var>k_timezone</var></dt>
+   *       <dd>Timezone key</dd>
+   *       <dt>string <var>s_title</var></dt>
+   *       <dd>Timezone name</dd>
+   *       <dt>string <var>text_abbr</var></dt>
+   *       <dd>Timezone abbreviation</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>string|null <var>name</var></dt>
+   *   <dd>`null` if business settings doesn't allow client to adjust timezone, otherwise timezone input name.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_Appointment_Book_Schedule_CalendarModel_a_timezone_data}
+   */
+  this.a_timezone_data = undefined;
+
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Schedule_CalendarModel_a_week_name
+   * @property {number} i_day Week day, one of the {@link ADateWeekSid} constants..
+   * @property {string} html_week_day Short week day's name (2 letters, i.e. 'Fr').
+   */
+
+  /**
+   * Array with short week day's names (2 letters, i.e. 'Fr') for calendar month view. Week days order according to business's settings.
+   *
+   * <dl>
+   *   <dt>int <var>i_day</var></dt>
+   *   <dd>Week day, one of the {@link \ADateWeekSid} constants.</dd>
+   *   <dt>string <var>html_week_day</var></dt>
+   *   <dd>Short week day's name (2 letters, i.e. 'Fr')</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_Appointment_Book_Schedule_CalendarModel_a_week_name}
+   */
+  this.a_week_name = undefined;
+
+  /**
    * Date to determine what month to display (in local timezone).
    *
    * @get get,result
@@ -130,6 +197,14 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
    * @type {string}
    */
   this.k_staff = "0";
+
+  /**
+   * Key of timezone. If not set, client's profile timezone is used.
+   *
+   * @get get
+   * @type {string|null}
+   */
+  this.k_timezone = null;
 
   /**
    * List of service add-ons. Serialized to be usable as model key.
