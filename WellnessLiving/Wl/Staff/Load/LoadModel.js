@@ -70,6 +70,14 @@ function Wl_Staff_Load_LoadModel()
   this.k_staff = "0";
 
   /**
+   * Pay rate identifier.
+   *
+   * @put put
+   * @type {string}
+   */
+  this.k_staff_pay = "0";
+
+  /**
    * Message, when the work has been started.
    *
    * @get result
@@ -87,7 +95,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_Load_LoadModel);
  */
 Wl_Staff_Load_LoadModel.prototype.config=function()
 {
-  return {"a_field": {"a_work": {"get": {"result": true},"put": {"result": true}},"is_start": {"put": {"result": true}},"is_time_manage": {"get": {"result": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_location": {"put": {"post": true}},"k_staff": {"get": {"get": true},"put": {"get": true}},"text_work_start": {"get": {"result": true}}}};
+  return {"a_field": {"a_work": {"get": {"result": true},"put": {"result": true}},"is_start": {"put": {"result": true}},"is_time_manage": {"get": {"result": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_location": {"put": {"post": true}},"k_staff": {"get": {"get": true},"put": {"get": true}},"k_staff_pay":{"put": {"put": true}},"text_work_start": {"get": {"result": true}}}};
 };
 
 /**
