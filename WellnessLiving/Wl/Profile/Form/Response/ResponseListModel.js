@@ -113,7 +113,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Form_Response_ResponseListModel);
  */
 Wl_Profile_Form_Response_ResponseListModel.prototype.config=function()
 {
-  return {"a_field": {"a_quiz_login": {"get": {"result": true}},"a_quiz_response": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_quiz_login": {"get": {"result": true}},"a_quiz_response": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**

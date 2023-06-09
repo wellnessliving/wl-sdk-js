@@ -181,6 +181,42 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.f_tax = null;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_width = 0;
+
+  /**
+   * Promotion image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_promotion_image_height = 0;
+
+  /**
+   * Promotion image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_promotion_image_width = 0;
+
+  /**
    * Purchase item ID.
    *
    * @get result
