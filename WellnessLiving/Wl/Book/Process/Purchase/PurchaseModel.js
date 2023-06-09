@@ -380,6 +380,24 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.dt_date_gmt = "";
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_width = 0;
+
+  /**
    * Mode type. One of {@link \Wl\Mode\ModeSid} constants.
    *
    * @get get

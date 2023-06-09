@@ -200,6 +200,24 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.i_duration = 0;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size {@link \RsLoginLogo::THUMBNAIL_HEIGHT}.
+   *
+   * @get get
+   * @type {?number}
+   */
+  this.i_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size {@link \RsLoginLogo::THUMBNAIL_WIDTH}.
+   *
+   * @get get
+   * @type {?number}
+   */
+  this.i_width = 0;
+
+  /**
    * <tt>true</tt> - get all promotions suitable for appointment;
    * <tt>false</tt> - get only promotions available for client.
    *
