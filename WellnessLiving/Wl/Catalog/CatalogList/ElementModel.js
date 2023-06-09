@@ -13,30 +13,13 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "id_sale,k_id,k_shop_product_option,k_location";
-
-  /**
-   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data
-   * @property {string[]} a_program_list List of services that this purchase option gives access to. If the purchase option gives access
-   *   to all classes, a_program_list will contain the string "All-classes", and if no class access at all, will contain
-   *   the string "no access to classes". Same behavior for events.
-   * @property {string} sid_duration_type Duration type of the purchase option. One of {@link \RsDurationTypeSid} constants.
-   * @property {string} s_expire Expiration date of the purchase option / package when sid_duration_type is {@link \RsDurationTypeSid::DATE}.
-   *   Will contain the expiration date, or s_expire will be empty string if the purchase option does not expire.
-   * @property {string} s_duration Duration type of the purchase option / package when sid_duration_type is {@link \RsDurationTypeSid::PERIOD}.
-   *   For example, a purchase option that is set to a period of 12 months. i_duration will include number of periods,
-   *   ie, 12, and s_duration will be the string "months".
-   * @property {string} i_duration Duration type of the purchase option / package when sid_duration_type is {@link \RsDurationTypeSid::PERIOD}.
-   *   For example, a purchase option that is set to a period of 12 months. i_duration will include number of periods,
-   *   ie, 12, and s_duration will be the string "months".
-   * @property {string} text_package_item Contents of the package. If id_sale is {@link \RsSaleSid::PACKAGE}.
-   */
+  this._s_key = "id_sale,k_id,k_shop_product_option,k_location,dl_client_prorate";
 
   /**
    * Contains additional specified data for the sale item.
    *
    * @get result
-   * @type {?{Wl_Catalog_CatalogList_ElementModel_a_data}}
+   * @type {?{}}
    */
   this.a_data = null;
 
@@ -83,7 +66,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {number} id_duration Duration of a single period. One of {@link \ADurationSid} constants.
    * @property {number} i_period Number of periods specified by <tt>id_period</tt> between individual payments.
    * @property {string} k_currency Payment currency Key.
-   * @property {string} k_pay_installment_template Key of installment plan template. Primary key in {@link \Wl\Pay\Installment\Template\Sql}
+   * @property {string} k_pay_installment_template Key of installment plan template.
    * @property {string} m_amount Amount of installment plan.
    * @property {string} s_duration Title of installment plan.
    */
@@ -119,7 +102,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    *     string <var>k_pay_installment_template</var>
    *   </dt>
    *   <dd>
-   *      Key of installment plan template. Primary key in {@link \Wl\Pay\Installment\Template\Sql}
+   *      Key of installment plan template.
    *   </dd>
    *   <dt>
    *     string <var>m_amount</var>
@@ -141,12 +124,35 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.a_installment_template = undefined;
 
   /**
-   * List of data for each item from {@link ElementApi::$text_item}. Structure of every element equals to {@link ElementApi::_get()} return.
+   * List of data for each item from {@link Wl_Catalog_CatalogList_ElementModel.text_item}. Structure of every element equals to {@link Wl_Catalog_CatalogList_ElementModel._get()} return.
    *
    * @get result
    * @type {{}[]}
    */
   this.a_item = undefined;
+
+  /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_sale_id_group
+   * @property {number} id_sale ID of item category. One of {@link \RsSaleSid} constants.
+   * @property {string} k_id Primary key of item.
+   * @property {string} k_shop_product_option Product option. <tt>0</tt> for any other cases.
+   */
+
+  /**
+   * List of items groped by sale categories on the store page.
+   * Keys are sale IDs {@link \RsSaleSid}, values - data to identify an item:<dl>
+   *   <dt>int <var>id_sale</var></dt>
+   *   <dd>ID of item category. One of {@link \RsSaleSid} constants.</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>Primary key of item.</dd>
+   *   <dt>string <var>k_shop_product_option</var></dt>
+   *   <dd>Product option. <tt>0</tt> for any other cases.</dd>
+   * </dl>
+   *
+   * @get get
+   * @type {Wl_Catalog_CatalogList_ElementModel_a_sale_id_group[]}
+   */
+  this.a_sale_id_group = [];
 
   /**
    * Contains information about taxes. Fields - tax keys; values - tax amounts.
@@ -155,6 +161,16 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @type {?{}}
    */
   this.a_tax = null;
+
+  /**
+   * Client prorate date.
+   *
+   * `null` in case when client prorate date is not passed.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.dl_client_prorate = null;
 
   /**
    * Price of the sale item.
@@ -179,6 +195,22 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @type {?string}
    */
   this.f_tax = null;
+
+  /**
+   * Description about the sale item.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.html_description = null;
+
+  /**
+   * Special instructions of the sale item.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.html_special = null;
 
   /**
    * Image height in pixels. Please specify this value if you need image to be returned in specific size.
@@ -225,7 +257,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.id_purchase_item = null;
 
   /**
-   * ID of purchase option view type, returned by {@link \RsPurchaseItemSid::sale()}.
+   * ID of purchase option view type. One of {@link \RsPurchaseItemSid}.
    *
    * @get result
    * @type {?number}
@@ -249,10 +281,10 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.is_contract = undefined;
 
   /**
-   * ID of the sale item.
+   * Key of the sale item.
    *
    * @get get,result
-   * @type {number}
+   * @type {string}
    */
   this.k_id = 0;
 
@@ -349,8 +381,8 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * Serialized list of goods.
    *
-   * Use it to load a bulk of goods by 1 request. In this case do not specify {@link ElementApi::$id_sale},
-   * {@link ElementApi::$k_id} and {@link ElementApi::$k_shop_product_option}.
+   * Use it to load a bulk of goods by 1 request. In this case do not specify {@link Wl_Catalog_CatalogList_ElementModel.id_sale},
+   * {@link Wl_Catalog_CatalogList_ElementModel.k_id} and {@link Wl_Catalog_CatalogList_ElementModel.k_shop_product_option}.
    *
    * <tt>null</tt> to load just data of 1 item.
    *
@@ -409,16 +441,17 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_CatalogList_ElementModel);
  */
 Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_data": {"get": {"result": true}},"a_discount_code": {"get": {"get": true}},"a_image": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_item": {"get": {"result": true}},"a_tax": {"get": {"result": true}},"f_price": {"get": {"result": true}},"f_price_include": {"get": {"result": true}},"f_tax": {"get": {"result": true}},"id_purchase_item": {"get": {"result": true}},"id_purchase_option_view": {"get": {"result": true}},"id_sale": {"get": {"get": true,"result": true}},"is_contract": {"get": {"result": true}},"k_id": {"get": {"get": true,"result": true}},"k_location": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true,"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_include": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"s_comment": {"get": {"result": true}},"s_price": {"get": {"result": true}},"s_sale": {"get": {"result": true}},"s_title": {"get": {"result": true}},"text_item": {"get": {"get": true}},"text_price": {"get": {"result": true}},"text_sale": {"get": {"result": true}},"text_title": {"get": {"result": true}},"xml_description": {"get": {"result": true}},"xml_special": {"get": {"result": true}}}};
+  return {"a_field": {"a_data": {"get": {"result": true}},"a_discount_code": {"get": {"get": true}},"a_image": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_item": {"get": {"result": true}},"a_sale_id_group": {"get": {"get": true}},"a_tax": {"get": {"result": true}},"dl_client_prorate": {"get": {"get": true}},"f_price": {"get": {"result": true}},"f_price_include": {"get": {"result": true}},"f_tax": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_promotion_image_height": {"get": {"get": true}},"i_promotion_image_width": {"get": {"get": true}},"id_purchase_item": {"get": {"result": true}},"id_purchase_option_view": {"get": {"result": true}},"id_sale": {"get": {"get": true,"result": true}},"is_contract": {"get": {"result": true}},"k_id": {"get": {"get": true,"result": true}},"k_location": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true,"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_include": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"s_comment": {"get": {"result": true}},"s_price": {"get": {"result": true}},"s_sale": {"get": {"result": true}},"s_title": {"get": {"result": true}},"text_item": {"get": {"get": true}},"text_price": {"get": {"result": true}},"text_sale": {"get": {"result": true}},"text_title": {"get": {"result": true}},"xml_description": {"get": {"result": true}},"xml_special": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Catalog_CatalogList_ElementModel.instanceGet
  * @param {number} id_sale ID of sale category. One of {@link \RsSaleSid}.
- * @param {number} k_id ID of the sale item.
+ * @param {string} k_id Key of the sale item.
  * @param {?string} k_shop_product_option Shop product option key. <tt>null</tt> if not initialized yet.
  * @param {string} k_location ID of the location.
+ * @param {?string} dl_client_prorate Client prorate date. `null` in case when client prorate date is not passed.
  * @returns {Wl_Catalog_CatalogList_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
