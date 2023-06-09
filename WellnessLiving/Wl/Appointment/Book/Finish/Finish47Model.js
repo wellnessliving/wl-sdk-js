@@ -19,7 +19,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_appointment
-   * @property {string} k_appointment Appointment ID.
+   * @property {string} k_appointment The appointment ID.
    */
 
   /**
