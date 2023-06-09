@@ -114,7 +114,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
    *
    * <dl>
    *   <dt>int <var>i_day</var></dt>
-   *   <dd>Week day, one of the {@link \ADateWeekSid} constants.</dd>
+   *   <dd>Week day, one of the {@link ADateWeekSid} constants.</dd>
    *   <dt>string <var>html_week_day</var></dt>
    *   <dd>Short week day's name (2 letters, i.e. 'Fr')</dd>
    * </dl>
@@ -236,7 +236,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Schedule_CalendarModel);
  */
 Wl_Appointment_Book_Schedule_CalendarModel.prototype.config=function()
 {
-  return {"a_field": {"a_date": {"get": {"result": true}},"dt_date": {"get": {"get": true,"result": true}},"i_duration": {"get": {"get": true}},"i_index": {"get": {"get": true}},"id_gender_staff": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_staff": {"get": {"get": true}},"s_product": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_date": {"get": {"result": true}},"a_timezone_data": {"get": {"result": true}},"a_week_name": {"get": {"result": true}},"dt_date": {"get": {"get": true,"result": true}},"i_duration": {"get": {"get": true}},"i_index": {"get": {"get": true}},"id_gender_staff": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_staff": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"s_product": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
