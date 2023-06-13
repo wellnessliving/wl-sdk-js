@@ -1,5 +1,5 @@
 /**
- * An endpoint that allows for an appointment or appointment Purchase Option payment for a client.
+ * An endpoint that validates parameters that allow for an appointment or appointment Purchase Option payment for a client.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -79,7 +79,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    *   </dd>
    * </dl>
    * @property {string} id_purchase_item The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.
-   * @property {string} k_id The value of the discount used for the purchase.
+   * @property {string} k_id The key of the discount used for the purchase.
    * @property {string} m_discount The value of the discount used for the purchase.
    * @property {string} m_pay The payment for the Purchase Option or single visit without taxes.
    * @property {string} m_price The price of the Purchase Option or single visit.
@@ -121,7 +121,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    *     string <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     The value of the discount used for the purchase.
+   *     The key of the discount used for the purchase.
    *   </dd>
    *   <dt>
    *     string <var>m_discount</var>
@@ -201,7 +201,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.k_location = "0";
 
   /**
-   * The ID of activity of the purchase that was made. This will be empty if no purchase was made.
+   * The activity ID of the purchase that was made. This will be empty if no purchase was made.
    *
    * @post result
    * @type {string}
