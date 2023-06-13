@@ -81,17 +81,17 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
    *     `null` if business settings doesn't allow client to adjust timezone, otherwise list of timezones:
    *     <dl>
    *       <dt>int <var>i_order</var></dt>
-   *       <dd>Timezone order</dd>
+   *       <dd>Timezone order.</dd>
    *       <dt>int <var>i_shift</var></dt>
-   *       <dd>Timezone shift from UTC in hours</dd>
+   *       <dd>Timezone shift from UTC in hours.</dd>
    *       <dt>bool <var>is_select</var></dt>
    *       <dd>`true` for selected timezone - from {@link this.k_timezone} property or client's default timezone when param not set.</dd>
    *       <dt>string <var>k_timezone</var></dt>
-   *       <dd>Timezone key</dd>
+   *       <dd>Timezone key.</dd>
    *       <dt>string <var>s_title</var></dt>
-   *       <dd>Timezone name</dd>
+   *       <dd>Timezone name.</dd>
    *       <dt>string <var>text_abbr</var></dt>
-   *       <dd>Timezone abbreviation</dd>
+   *       <dd>Timezone abbreviation.</dd>
    *     </dl>
    *   </dd>
    *   <dt>string|null <var>name</var></dt>
@@ -105,7 +105,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Schedule_CalendarModel_a_week_name
-   * @property {number} i_day Week day, one of the {@link ADateWeekSid} constants..
+   * @property {number} i_day Week day, one of the {@link ADateWeekSid} constants.
    * @property {string} html_week_day Short week day's name (2 letters, i.e. 'Fr').
    */
 
@@ -116,7 +116,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
    *   <dt>int <var>i_day</var></dt>
    *   <dd>Week day, one of the {@link ADateWeekSid} constants.</dd>
    *   <dt>string <var>html_week_day</var></dt>
-   *   <dd>Short week day's name (2 letters, i.e. 'Fr')</dd>
+   *   <dd>Short week day's name (2 letters, i.e. 'Fr').</dd>
    * </dl>
    *
    * @get result
@@ -199,7 +199,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
   this.k_staff = "0";
 
   /**
-   * Key of timezone. If not set, client's profile timezone is used.
+   * Key of timezone. `null` if not set to use client's profile timezone.
    *
    * @get get
    * @type {string|null}
