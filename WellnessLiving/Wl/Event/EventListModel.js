@@ -65,6 +65,14 @@ function Wl_Event_EventListModel()
   this.is_backend = undefined;
 
   /**
+   * `true` to show even event restricted by booking policies; `false` to show available events only.
+   *
+   * @get get
+   * @var {boolean}
+   */
+  this.is_ignore_requirement = false;
+
+  /**
    * Whether need to retrieve list of event sessions regardless tab specified in {@link EventListApi::$k_class_tab}.
    *
    * * <tt>true</tt> - retrieve list regardless specified tab.
