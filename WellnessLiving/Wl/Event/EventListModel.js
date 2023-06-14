@@ -153,5 +153,5 @@ WlSdk_ModelAbstract.extend(Wl_Event_EventListModel);
  */
 Wl_Event_EventListModel.prototype.config=function()
 {
-  return {"a_field": {"a_enrollment_block_list": {"get": {"get": true}},"a_event_list": {"get": {"result": true}},"dl_end": {"get": {"get": true}},"dl_start": {"get": {"get": true}},"id_flag": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_skin": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_enrollment_block_list": {"get": {"get": true}},"a_event_list": {"get": {"result": true}},"dl_end": {"get": {"get": true}},"dl_start": {"get": {"get": true}},"id_flag": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_ignore_requirement": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_skin": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
