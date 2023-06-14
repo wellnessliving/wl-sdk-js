@@ -65,6 +65,14 @@ function Wl_Event_EventListModel()
   this.is_backend = undefined;
 
   /**
+   * `true` to show even event restricted by booking policies; `false` to show available events only.
+   *
+   * @get get
+   * @var {boolean}
+   */
+  this.is_ignore_requirement = false;
+
+  /**
    * Whether need to retrieve list of event sessions regardless tab specified in {@link EventListApi::$k_class_tab}.
    *
    * * <tt>true</tt> - retrieve list regardless specified tab.
@@ -145,5 +153,5 @@ WlSdk_ModelAbstract.extend(Wl_Event_EventListModel);
  */
 Wl_Event_EventListModel.prototype.config=function()
 {
-  return {"a_field": {"a_enrollment_block_list": {"get": {"get": true}},"a_event_list": {"get": {"result": true}},"dl_end": {"get": {"get": true}},"dl_start": {"get": {"get": true}},"id_flag": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_skin": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_enrollment_block_list": {"get": {"get": true}},"a_event_list": {"get": {"result": true}},"dl_end": {"get": {"get": true}},"dl_start": {"get": {"get": true}},"id_flag": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_ignore_requirement": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_skin": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
