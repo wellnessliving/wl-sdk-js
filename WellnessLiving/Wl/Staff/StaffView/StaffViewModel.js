@@ -119,74 +119,41 @@ function Wl_Staff_StaffView_StaffViewModel()
 
   /**
    * @typedef {{}} Wl_Staff_StaffView_StaffViewModel_a_staff
-   * @property {{}} a_photo Staff`s photo. See {@link \RsStaffImage::data()}.
-   * @property {number} id_gender Staff member's gender. One of {@link \Wl\Gender\GenderSid} constants.
+   * @property {{}} a_photo Staff`s photo. See {@link RsStaffImage.data()}.
+   * @property {number} id_gender Staff member's gender. One of {@link Wl_Gender_GenderSid} constants.
    * @property {string} k_location Staff`s current location.
    * @property {string} s_biography Staff biography.
    * @property {string} s_family 1st letter of surname.
    * @property {string} s_name Staff name.
    * @property {string} s_position Staff job name.
    * @property {string} text_business_role Staff`s business role name.
-   * @property {string} uid Staff user ID.
+   * @property {string} text_full_name Staff`s full name.
+   * @property {string} uid Staff user key.
    */
 
   /**
    * First staff information:
    * <dl>
-   *   <dt>
-   *     array <var>a_photo</var>
-   *   </dt>
-   *   <dd>
-   *     Staff`s photo. See {@link \RsStaffImage::data()}.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_gender</var>
-   *   </dt>
-   *   <dd>
-   *     Staff member's gender. One of {@link \Wl\Gender\GenderSid} constants.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
-   *   <dd>
-   *     Staff`s current location.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_biography</var>
-   *   </dt>
-   *   <dd>
-   *     Staff biography.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_family</var>
-   *   </dt>
-   *   <dd>
-   *     1st letter of surname.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_name</var>
-   *   </dt>
-   *   <dd>
-   *     Staff name.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_position</var>
-   *   </dt>
-   *   <dd>
-   *     Staff job name.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_business_role</var>
-   *   </dt>
-   *   <dd>
-   *     Staff`s business role name.
-   *   </dd>
-   *   <dt>
-   *     string <var>uid</var>
-   *   </dt>
-   *   <dd>
-   *     Staff user ID.
-   *   </dd>
+   *   <dt>array <var>a_photo</var></dt>
+   *   <dd>Staff`s photo. See {@link RsStaffImage.data()}.</dd>
+   *   <dt>int <var>id_gender</var></dt>
+   *   <dd>Staff member's gender. One of {@link Wl_Gender_GenderSid} constants.</dd>
+   *   <dt>string <var>k_location</var></dt>
+   *   <dd>Staff`s current location.</dd>
+   *   <dt>string <var>s_biography</var></dt>
+   *   <dd>Staff biography.</dd>
+   *   <dt>string <var>s_family</var></dt>
+   *   <dd>1st letter of surname.</dd>
+   *   <dt>string <var>s_name</var></dt>
+   *   <dd>Staff name.</dd>
+   *   <dt>string <var>s_position</var></dt>
+   *   <dd>Staff job name.</dd>
+   *   <dt>string <var>text_business_role</var></dt>
+   *   <dd>Staff`s business role name.</dd>
+   *   <dt>string <var>text_full_name</var></dt>
+   *   <dd>Staff`s full name.</dd>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>Staff user key.</dd>
    * </dl>
    *
    * @get result
@@ -197,17 +164,31 @@ function Wl_Staff_StaffView_StaffViewModel()
   /**
    * List of staff keys.
    *
-   * Primary key in {@link \RsStaffSql}.
-   *
    * @get get
    * @type {string[]}
    */
   this.a_staff_list = undefined;
 
   /**
-   * ID of a business to show information for.
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
    *
-   * Primary key in {@link \RsBusinessSql}.
+   * @get get
+   * @type {number}
+   */
+  this.i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_width = 0;
+
+  /**
+   * ID of a business to show information for.
    *
    * @get get
    * @type {string}
@@ -216,8 +197,6 @@ function Wl_Staff_StaffView_StaffViewModel()
 
   /**
    * Staff key.
-   *
-   * Primary key in {@link \RsStaffSql}.
    *
    * @get get
    * @type {string}
@@ -234,14 +213,14 @@ WlSdk_ModelAbstract.extend(Wl_Staff_StaffView_StaffViewModel);
  */
 Wl_Staff_StaffView_StaffViewModel.prototype.config=function()
 {
-  return {"a_field": {"a_class_day": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"a_staff_list": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_staff": {"get": {"get": true}}}};
+  return {"a_field": {"a_class_day": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"a_staff_list": {"get": {"get": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_staff": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Staff_StaffView_StaffViewModel.instanceGet
- * @param {string} k_business ID of a business to show information for. Primary key in {@link \RsBusinessSql}.
- * @param {string} k_staff Staff key. Primary key in {@link \RsStaffSql}.
+ * @param {string} k_business ID of a business to show information for.
+ * @param {string} k_staff Staff key.
  * @returns {Wl_Staff_StaffView_StaffViewModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
