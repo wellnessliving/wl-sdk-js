@@ -46,7 +46,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_book_available
    * @property {string} dt_date Date/time when session starts. In UTC.
-   * @property {string} k_class_period Session keys.
+   * @property {string} k_class_period Class session keys.
    */
 
   /**
@@ -55,7 +55,7 @@ function Wl_Event_Book_EventView_ElementModel()
    *   <dt>string <var>dt_date</var></dt>
    *   <dd>Date/time when session starts. In UTC.</dd>
    *   <dt>string <var>k_class_period</var></dt>
-   *   <dd>Session keys.</dd>
+   *   <dd>Class session keys.</dd>
    * </dl>
    *
    * @get result
@@ -119,10 +119,99 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_event = undefined;
 
   /**
-   *
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat_a_staff
+   * @property {string} k_staff Staff key.
+   * @property {string} s_name Staff name.
+   * @property {string} s_surname First letter of staff surname.
+   */
+  /**
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat
+   * @property {number} i_repeat Count of the periods which specified in <tt>id_repeat</tt>.
+   * @property {number} id_repeat Measuring unit of <tt>i_repeat</tt> (week, month, year).
+   */
+  /**
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule
+   * @property {{}} a_day List of week days when session is occurred. Keys - numbers of week day (0 - Sunday, 6 - Saturday);
+   *  values - always <tt>true</tt>.
+   * @property {Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat} a_repeat Repeat periodicity instructions.
+   * <dl>
+   *   <dt>int <tt>i_repeat</tt></dt>
+   *   <dd>Count of the periods which specified in <tt>id_repeat</tt>.</dd>
+   *   <dt>int <tt>id_repeat</tt></dt>
+   *   <dd>Measuring unit of <tt>i_repeat</tt> (week, month, year).</dd>
+   * </dl>
+   * @property {Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat_a_staff[]} a_staff List of staff who conduct session. Every element has next keys:<dl>
+   *   <dt>string <tt>k_staff</tt></dt>
+   *   <dd>Staff key.</dd>
+   *   <dt>string <tt>s_name</tt></dt>
+   *   <dd>Staff name.</dd>
+   *   <dt>string <tt>s_surname</tt></dt>
+   *   <dd>First letter of staff surname.</dd>
+   * </dl>
+   * @property {string[]} a_virtual_location List of virtual locations. Each value is location key.
+   * @property {string} dt_end End date of session.
+   * @property {string} dt_start Start date of session.
+   * @property {number} i_capacity Class capacity.
+   * @property {number} i_duration Duration of class in seconds.
+   * @property {boolean} is_virtual <tt>true</tt> - if event is virtual, <tt>false</tt> - otherwise.
+   * @property {string} k_location Location key.
+   * @property {string} s_location Location title.
+   * @property {string} s_time Time when session is occurred.
+   * @property {string} s_timezone Location timezone abbreviation.
+   */
+
+  /**
+   * Schedule of event sessions. Every element has next keys:
+   * <dl>
+   *   <dt>array <var>a_day</var></dt>
+   *   <dd>
+   *      List of week days when session is occurred. Keys - numbers of week day (0 - Sunday, 6 - Saturday);
+   *      values - always <tt>true</tt>.
+   *   </dd>
+   *   <dt>array <var>a_repeat</var></dt>
+   *   <dd>
+   *     Repeat periodicity instructions.
+   *     <dl>
+   *       <dt>int <var>i_repeat</var></dt>
+   *       <dd>Count of the periods which specified in <var>id_repeat</var>.</dd>
+   *       <dt>int <var>id_repeat</var></dt>
+   *       <dd>Measuring unit of <var>i_repeat</var> (week, month, year).</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>array[] <var>a_staff</var></dt>
+   *   <dd>List of staff who conduct session. Every element has next keys:<dl>
+   *       <dt>string <var>k_staff</var></dt>
+   *       <dd>Staff key.</dd>
+   *       <dt>string <var>s_name</var></dt>
+   *       <dd>Staff name.</dd>
+   *       <dt>string <var>s_surname</var></dt>
+   *       <dd>First letter of staff surname.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>string[] <var>a_virtual_location</var></dt>
+   *   <dd>List of virtual locations. Each value is location key.</dd>
+   *   <dt>string <var>dt_end</var></dt>
+   *   <dd>End date of session.</dd>
+   *   <dt>string <var>dt_start</var></dt>
+   *   <dd>Start date of session.</dd>
+   *   <dt>int <var>i_capacity</var></dt>
+   *   <dd>Class capacity.</dd>
+   *   <dt>int <var>i_duration</var></dt>
+   *   <dd>Duration of class in seconds.</dd>
+   *   <dt>bool <var>is_virtual</var></dt>
+   *   <dd><tt>true</tt> - if event is virtual, <tt>false</tt> - otherwise.</dd>
+   *   <dt>string <var>k_location</var></dt>
+   *   <dd>Location key.</dd>
+   *   <dt>string <var>s_location</var></dt>
+   *   <dd>Location title.</dd>
+   *   <dt>string <var>s_time</var></dt>
+   *   <dd>Time when session is occurred.</dd>
+   *   <dt>string <var>s_timezone</var></dt>
+   *   <dd>Location timezone abbreviation.</dd>
+   * </dl>
    *
    * @get result
-   * @type {*}
+   * @type {Wl_Event_Book_EventView_ElementModel_a_schedule[]}
    */
   this.a_schedule = undefined;
 
@@ -322,8 +411,6 @@ function Wl_Event_Book_EventView_ElementModel()
    * `true` if event can be paid with pricing option only.
    * `false` if full event purchase or single session purchase are allowed.
    *
-   * Copy of {@link \RsClassSql}.<tt>is_promotion_only</tt>.
-   *
    * @get result
    * @type {boolean}
    */
@@ -331,8 +418,6 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * Whether this event allows paying for single session.
-   *
-   * Copy of {@link \RsClassSql}.<tt>is_single_buy</tt>.
    *
    * @get result
    * @type {boolean}
