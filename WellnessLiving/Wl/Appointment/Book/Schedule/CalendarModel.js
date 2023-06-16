@@ -20,36 +20,28 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
    * @property {string} dt_date Date item of the calendar.
    * @property {number} i_week Number of day in week.
    * @property {boolean} is_available Whether booking is available for this day.
+   * @property {boolean} is_current Whether date is current.</dd>
+   * @property {boolean} is_out Whether date is out of current month or it's business/location closed date.
+   * @property {boolean} is_waitlist_only Whether booking for this day available only in wait list.
+   * @property {boolean} is_week_end Whether date is last day of the week.
+   * @property {boolean} is_week_start Whether date is first day of the week.
    * @property {string} s_day String representation of day number with leading zeroes.
+   * @property {string} s_week String representation of week day (one letter, i.e. "F").
    */
 
   /**
    * Array with calendar schedule days and appointment availability.
    * <dl>
-   *   <dt>
-   *     string <var>dt_date</var>
-   *   </dt>
-   *   <dd>
-   *     Date item of the calendar.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_week</var>
-   *   </dt>
-   *   <dd>
-   *     Number of day in week.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_available</var>
-   *   </dt>
-   *   <dd>
-   *     Whether booking is available for this day.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_day</var>
-   *   </dt>
-   *   <dd>
-   *     String representation of day number with leading zeroes.
-   *   </dd>
+   *   <dt>string <var>dt_date</var></dt><dd>Date item of the calendar.</dd>
+   *   <dt>int <var>i_week</var></dt><dd>Number of day in week.</dd>
+   *   <dt>bool <var>is_available</var></dt><dd>Whether booking is available for this day.</dd>
+   *   <dt>bool <var>is_current</var></dt><dd>Whether date is current.</dd>
+   *   <dt>bool <var>is_out</var></dt><dd>Whether date is out of current month or it's business/location closed date.</dd>
+   *   <dt>bool <var>is_waitlist_only</var></dt><dd>Whether booking for this day available only in wait list.</dd>
+   *   <dt>bool <var>is_week_end</var></dt><dd>Whether date is last day of the week.</dd>
+   *   <dt>bool <var>is_week_start</var></dt><dd>Whether date is first day of the week.</dd>
+   *   <dt>string <var>s_day</var></dt><dd>String representation of day number with leading zeroes.</dd>
+   *   <dt>string <var>s_week</var></dt><dd>String representation of week day (one letter, i.e. "F").</dd>
    * </dl>
    *
    * @get result
