@@ -60,6 +60,15 @@ function Wl_Appointment_Book_Asset_CategoryModel()
   this.is_backend = false;
 
   /**
+   * `true` - search in all tabs.
+   * `false` - search only for the selected book tab.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_tab_all = false;
+
+  /**
    * The class tab key to use for filtering services.
    *
    * @get get
@@ -85,7 +94,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_CategoryModel);
  */
 Wl_Appointment_Book_Asset_CategoryModel.prototype.config=function()
 {
-  return {"a_field": {"a_category": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
+  return {"a_field": {"a_category": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
 };
 
 /**
