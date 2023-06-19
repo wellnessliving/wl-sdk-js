@@ -1,23 +1,43 @@
 /**
- * An endpoint that validates parameters that allow for an appointment or appointment Purchase Option payment for a client.
+ * Allows to pay an appointment or appointment purchase option for the client.
  *
- * @deprecated Use {@link Wl_Appointment_Book_Payment_PaymentModel} instead.
+ * Only difference from {@link Wl_Appointment_Book_Payment_PaymentModel}
+ * is possibility to pay for a lot of appointments at the same time.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Wl_Appointment_Book_Payment_PaymentModel()
+function Wl_Appointment_Book_Payment_PaymentMultipleModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * All data from the provider model.
+   * Structure of this array corresponds to the structure of
+   * the <tt>Wl_Appointment_Book_ProviderAbstractModel</tt> class in JavaScript,
+   * which is normally used as its subclass <tt>Wl_Appointment_Book_ProviderModel</tt>.
    *
    * @get get
-   * @post get
    * @type {{}}
    */
-  this.a_book_data = [];
+  this.a_book_data = {};
+
+  /**
+   * Structure of this array corresponds to the structure of
+   * the <tt>Wl_Appointment_Book_ProviderAbstractModel</tt> class in JavaScript,
+   * which is normally used as its subclass <tt>Wl_Appointment_Book_ProviderModel</tt>.
+   *
+   * @post post
+   * @type {{}}
+   */
+  this.a_book_data_post = {};
+
+  /**
+   * ID of payment type for the appointment.
+   *
+   * @post result
+   * @type {number[]}
+   */
+  this.a_pay = undefined;
 
   /**
    * A list of payment sources to pay with.
@@ -30,7 +50,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.a_pay_form = [];
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_promotion_data
+   * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_promotion_data
    * @property {string} s_expire The Purchase Option expiration date.
    * @property {string} s_title The title of the Purchase Option.
    */
@@ -53,18 +73,18 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Payment_PaymentModel_a_promotion_data}
+   * @type {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_promotion_data}
    */
   this.a_promotion_data = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_purchase_a_tax
+   * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_a_tax
    * @property {number} m_tax The tax rate.
    * @property {string} text_title The name of the tax.
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_purchase
-   * @property {Wl_Appointment_Book_Payment_PaymentModel_a_purchase_a_tax} a_tax Information about taxes in the following format.
+   * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase
+   * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_a_tax} a_tax Information about taxes in the following format.
    * A list of taxes to apply. The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
    * <dl>
    *   <dt>
@@ -117,7 +137,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    *     string <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.
+   *     The purchase item ID.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
@@ -146,7 +166,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Payment_PaymentModel_a_purchase}
+   * @type {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase}
    */
   this.a_purchase = undefined;
 
@@ -159,7 +179,25 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.a_purchase_item = null;
 
   /**
-   * The key of the source mode. One of the {@link \Wl\Mode\ModeSid} constants.
+   * List of quiz response keys.
+   * Key is quiz key.
+   * Value is response key.
+   *
+   * @post post
+   * @type {{}}
+   */
+  this.a_quiz_response = {};
+
+  /**
+   * The price of service with the tax without surcharge.
+   *
+   * @get result
+   * @var {{}}
+   */
+  this.a_total = undefined;
+
+  /**
+   * The ID of the source mode.
    *
    * @get get
    * @post get
@@ -168,30 +206,13 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.id_mode = 0;
 
   /**
-   * The payment type for the appointment. One of the {@link RsAppointmentPaySid} constants.
-   *
-   * @post result
-   * @type {number}
-   */
-  this.id_pay = undefined;
-
-  /**
-   * The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.
+   * `true` if client is walk-in, otherwise `false`.
    *
    * @get get
    * @post get
-   * @type {number}
+   * @type {boolean}
    */
-  this.id_purchase_item = 0;
-
-  /**
-   * The Purchase Option or appointment key, depending on {@link Wl_Appointment_Book_Payment_PaymentModel.id_purchase_item}.
-   *
-   * @get get
-   * @post get
-   * @type {string}
-   */
-  this.k_id = "0";
+  this.is_walk_in = false;
 
   /**
    * The location to show available appointment booking schedule for.
@@ -211,12 +232,36 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.k_login_activity_purchase = undefined;
 
   /**
-   * The login promotion ID.
+   * Gift card amount.
    *
-   * @get get
-   * @type {string}
+   * @get result
+   * @var {string}
    */
-  this.k_login_promotion = "0";
+  this.m_coupon = undefined;
+
+  /**
+   * Discount amount.
+   *
+   * @get result
+   * @var {string}
+   */
+  this.m_discount = undefined;
+
+  /**
+   * Surcharge amount.
+   *
+   * @get result
+   * @var {string}
+   */
+  this.m_surcharge = undefined;
+
+  /**
+   * The tax of service.
+   *
+   * @get result
+   * @var {string}
+   */
+  this.m_tax = undefined;
 
   /**
    * The price of the service with tax.
@@ -227,13 +272,13 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.m_total = undefined;
 
   /**
-   * The variable price, which is only set when booking an appointment with a variable price type
-   *   ({@link \RsServicePriceSid::VARIES} from spa backend {@link ModeSid::SPA_BACKEND}).
+   * Gift card code.
    *
    * @get get
-   * @type {string}
+   * @post get
+   * @var {string}
    */
-  this.m_variable_price = "";
+  this.text_coupon_code = '';
 
   /**
    * The discount code.
@@ -256,12 +301,12 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Payment_PaymentModel);
+WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Payment_PaymentMultipleModel);
 
 /**
  * @inheritDoc
  */
-Wl_Appointment_Book_Payment_PaymentModel.prototype.config=function()
+Wl_Appointment_Book_Payment_PaymentMultipleModel.prototype.config = function()
 {
-  return {"a_field": {"a_book_data": {"get": {"get": true},"post": {"get": true}},"a_pay_form": {"post": {"post": true}},"a_promotion_data": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_purchase_item": {"post": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay": {"post": {"result": true}},"id_purchase_item": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_login_promotion": {"get": {"get": true}},"m_total": {"get": {"result": true}},"m_variable_price": {"get": {"get": true}},"text_discount_code": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_book_data": {"get": {"get": true}},"a_book_data_post": {"post": {"post": true}},"a_pay": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_promotion_data": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_purchase_item": {"post": {"result": true}},"a_quiz_response": {"post": {"post": true}},"a_total": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"m_coupon": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_surcharge": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_coupon_code": {"get": {"get": true},"post": {"get": true}},"text_discount_code": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
