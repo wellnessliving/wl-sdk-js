@@ -14,7 +14,7 @@ function Wl_ClassPass_ReservationDataModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link \Wl\ClassPass\ReservationCancel::$is_late_cancel} for documentation.
+   * See {@link Wl\ClassPass\ReservationCancel::$is_late_cancel} for documentation.
    *
    * @patch result
    * @type {boolean}

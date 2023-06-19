@@ -42,12 +42,12 @@ function Wl_Schedule_ScheduleList_ScheduleListModel()
    * @property {string} dt_date_gmt Date/time of session start (in GMT).
    * @property {number} i_duration Session duration (in minutes).
    * @property {boolean} is_wait_list <tt>true</tt> if user can take place in wait list only; <tt>false</tt> otherwise.
-   * @property {string} k_class_period Session ID. Primary key in {@link RsClassPeriodSql} table.
+   * @property {string} k_class_period Session ID.
    * @property {string} s_title Class title.
    */
 
   /**
-   * Schedule of sessions in location {@link \Wl\Schedule\ScheduleList\ScheduleListApi::$k_location} in day {@link \Wl\Schedule\ScheduleList\ScheduleListApi::$dt_date}. Every element has keys:
+   * Schedule of sessions in location {@link Wl_Schedule_ScheduleList_ScheduleListModel.k_location} in day {@link Wl_Schedule_ScheduleList_ScheduleListModel.dt_date}. Every element has keys:
    * <dl>
    *   <dt>
    *     array <var>a_staff</var>
@@ -103,7 +103,7 @@ function Wl_Schedule_ScheduleList_ScheduleListModel()
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     Session ID. Primary key in {@link RsClassPeriodSql} table.
+   *     Session ID.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
@@ -128,7 +128,7 @@ function Wl_Schedule_ScheduleList_ScheduleListModel()
   this.dt_date = "";
 
   /**
-   * ID of group of category tab. One of {@link \Wl\Classes\Tab\TabSid} constants.
+   * ID of group of category tab. One of {@link Wl_Classes_Tab_TabSid} constants.
    *
    * @get get
    * @type {number}
@@ -144,7 +144,7 @@ function Wl_Schedule_ScheduleList_ScheduleListModel()
   this.is_classes_available = undefined;
 
   /**
-   * ID of category tab in database. Primary key in table {@link \Wl\Classes\Tab\Sql\ClassTab\Sql}.
+   * ID of category tab in database.
    *
    * @get get
    * @type {string}
@@ -160,7 +160,7 @@ function Wl_Schedule_ScheduleList_ScheduleListModel()
   this.k_location = "0";
 
   /**
-   * ID of user to show information for. Primary key in table {@link PassportLoginSql}.
+   * ID of user to show information for.
    *
    * @get get
    * @type {string}
@@ -185,9 +185,9 @@ Wl_Schedule_ScheduleList_ScheduleListModel.prototype.config=function()
  * @name Wl_Schedule_ScheduleList_ScheduleListModel.instanceGet
  * @param {string} k_location ID of business location to show information for.
  * @param {string} dt_date Date to show information for. In MySQL format, without time.
- * @param {string} k_class_tab ID of category tab in database. Primary key in table {@link \Wl\Classes\Tab\Sql\ClassTab\Sql}.
- * @param {number} id_class_tab ID of group of category tab. One of {@link \Wl\Classes\Tab\TabSid} constants.
- * @param {string} uid ID of user to show information for. Primary key in table {@link PassportLoginSql}.
+ * @param {string} k_class_tab ID of category tab in database.
+ * @param {number} id_class_tab ID of group of category tab. One of {@link Wl_Classes_Tab_TabSid} constants.
+ * @param {string} uid ID of user to show information for.
  * @returns {Wl_Schedule_ScheduleList_ScheduleListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

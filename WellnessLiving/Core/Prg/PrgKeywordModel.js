@@ -24,7 +24,7 @@ function Core_Prg_PrgKeywordModel()
   this.a_keyword = undefined;
 
   /**
-   * Mode for load keyword. One of {@link \Core\Prg\PrgKeywordModeSid} constants.
+   * Mode for load keyword. One of {@link Core_Prg_PrgKeywordModeSid} constants.
    *
    * @get get
    * @type {number}
@@ -47,7 +47,7 @@ Core_Prg_PrgKeywordModel.prototype.config=function()
 /**
  * @function
  * @name Core_Prg_PrgKeywordModel.instanceGet
- * @param {number} id_mode Mode for load keyword. One of {@link \Core\Prg\PrgKeywordModeSid} constants.
+ * @param {number} id_mode Mode for load keyword. One of {@link Core_Prg_PrgKeywordModeSid} constants.
  * @returns {Core_Prg_PrgKeywordModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

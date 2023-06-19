@@ -1,5 +1,6 @@
 /**
- * List of regions.
+ * Gets a list of regions for a specified country or a list of regions for all countries.
+ * A region is a political subdivision like a state, province, or territory.
  *
  * This model is generated automatically based on API.
  *
@@ -17,48 +18,48 @@ function Core_Geo_Region_RegionModel()
 
   /**
    * @typedef {{}} Core_Geo_Region_RegionModel_a_region_a_region
-   * @property {string} k_geo Region key.
-   * @property {string} s_title Region name.
+   * @property {string} k_geo The region key.
+   * @property {string} s_title The name of the region.
    */
   /**
    * @typedef {{}} Core_Geo_Region_RegionModel_a_region
-   * @property {Core_Geo_Region_RegionModel_a_region_a_region[]} a_region List of regions within the country: <dl>
+   * @property {Core_Geo_Region_RegionModel_a_region_a_region[]} a_region List of region in country. Every element has keys: <dl>
    *   <dt>
    *     string <tt>k_geo</tt>
    *   </dt>
    *   <dd>
-   *     Region key.
+   *     The region key.
    *   </dd>
    *   <dt>
    *     string <tt>s_title</tt>
    *   </dt>
    *   <dd>
-   *     Region name.
+   *     The name of the region.
    *   </dd>
    * </dl>
-   * @property {string} k_geo_country Country key.
-   * @property {string} s_title Country name.
+   * @property {string} k_geo_country The country key.
+   * @property {string} s_title The name of the country
    */
 
   /**
-   * List of countries and nested regions.
+   * A list of regions, grouped by their countries.
    * <dl>
    *   <dt>
    *     string[] <var>a_region</var>
    *   </dt>
    *   <dd>
-   *     List of regions within the country: <dl>
+   *     List of region in country. Every element has keys: <dl>
    *       <dt>
    *         string <var>k_geo</var>
    *       </dt>
    *       <dd>
-   *         Region key.
+   *         The region key.
    *       </dd>
    *       <dt>
    *         string <var>s_title</var>
    *       </dt>
    *       <dd>
-   *         Region name.
+   *         The name of the region.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -66,13 +67,13 @@ function Core_Geo_Region_RegionModel()
    *     string <var>k_geo_country</var>
    *   </dt>
    *   <dd>
-   *     Country key.
+   *     The country key.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Country name.
+   *     The name of the country
    *   </dd>
    * </dl>
    *
@@ -82,7 +83,7 @@ function Core_Geo_Region_RegionModel()
   this.a_region = undefined;
 
   /**
-   * ID of locale to get regions for.
+   * The ID of the locale to find regions for. One of the {@link Core_Locale_LocaleSid} constants.
    *
    * @get get
    * @type {number}
@@ -90,15 +91,14 @@ function Core_Geo_Region_RegionModel()
   this.id_locale = 0;
 
   /**
-   * Whether to get regions for all locales.
+   * Whether to get the regions for all locales.
    *
-   * <tt>true</tt> - to get regions for all locales, <tt>false</tt> - otherwise.
-   * By default <tt>false</tt>.
+   * If `true` then get regions for all locales, `false` - otherwise.
    *
    * @get get
    * @type {boolean}
    */
-  this.is_locale_all = 0;
+  this.is_locale_all = false;
 
   this.changeInit();
 }
@@ -116,7 +116,7 @@ Core_Geo_Region_RegionModel.prototype.config=function()
 /**
  * @function
  * @name Core_Geo_Region_RegionModel.instanceGet
- * @param {number} id_locale ID of locale to get regions for.
+ * @param {number} id_locale The ID of the locale to find regions for. One of the {@link Core_Locale_LocaleSid} constants.
  * @returns {Core_Geo_Region_RegionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

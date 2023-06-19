@@ -11,7 +11,7 @@ function Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseEditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Insurance provider key. Primary key in {@link \Wl\Integration\Curves\PartnerSql} table,
+   * Insurance provider key.
    * <tt>null</tt> if field is not set.
    *
    * @get result
@@ -21,7 +21,7 @@ function Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseEditModel()
   this.k_insurance_provider = null;
 
   /**
-   * Reimbursement refuse key. Primary key in {@link \Wl\Insurance\Reimbursement\Refuse\ReimbursementRefuseSql} table,
+   * Reimbursement refuse key.
    * <tt>null</tt> if field is not set.
    *
    * @delete get

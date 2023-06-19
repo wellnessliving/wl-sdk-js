@@ -1,5 +1,5 @@
 /**
- * Returns information about user account balance.
+ * An endpoint that displays information about user's accounts.
  *
  * This model is generated automatically based on API.
  *
@@ -17,40 +17,42 @@ function Wl_Pay_Account_AccountModel()
 
   /**
    * @typedef {{}} Wl_Pay_Account_AccountModel_a_account
-   * @property {number} id_currency Currency ID. One of {@link \RsCurrencySid} constant.
-   * @property {string} k_currency Key of account currency. Primary key in {@link \RsCurrencySql}.
-   * @property {?string} k_pay_account ID of payment account. Primary key in {@link \RsPayAccountSql}. <tt>null</tt> if this is a user account based on system payment method.
-   * @property {?string} k_pay_method ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method. Primary key in {@link \Wl\Pay\Method\MethodSql}.
+   * @property {number} id_currency Currency ID. One of {@link RsCurrencySid} constant.
+   * @property {string} k_currency Key of account currency.
+   * @property {?string} k_pay_account ID of payment account. <tt>null</tt> if this is a user account based on system payment method.
+   * @property {?string} k_pay_method ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method.
    * @property {string} m_rest Account balance.
    * @property {?string} s_method Name of a custom payment method. <tt>null</tt> if this is a user account based on system payment method.
    */
 
   /**
-   * User's accounts. Keys - IDs of accounts (may be <tt>0</tt> if user has no accounts in currency of given business). Values - arrays with next keys:
-   * <dl>
+   * A list of the user's accounts.
+   *
+   * Keys are account keys. This could be `0` if the user has no accounts in the currency of the given business.
+   * Values are account data: <dl>
    *   <dt>
    *     int <var>id_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency ID. One of {@link \RsCurrencySid} constant.
+   *     Currency ID. One of {@link RsCurrencySid} constant.
    *   </dd>
    *   <dt>
    *     string <var>k_currency</var>
    *   </dt>
    *   <dd>
-   *     Key of account currency. Primary key in {@link \RsCurrencySql}.
+   *     Key of account currency.
    *   </dd>
    *   <dt>
    *     string|null <var>k_pay_account</var>
    *   </dt>
    *   <dd>
-   *     ID of payment account. Primary key in {@link \RsPayAccountSql}. <tt>null</tt> if this is a user account based on system payment method.
+   *     ID of payment account. <tt>null</tt> if this is a user account based on system payment method.
    *   </dd>
    *   <dt>
    *     string|null <var>k_pay_method</var>
    *   </dt>
    *   <dd>
-   *     ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method. Primary key in {@link \Wl\Pay\Method\MethodSql}.
+   *     ID of custom payment method. <tt>null</tt> if this is a user account based on system payment method.
    *   </dd>
    *   <dt>
    *     string <var>m_rest</var>
@@ -80,9 +82,9 @@ function Wl_Pay_Account_AccountModel()
   this.a_account_nx = undefined;
 
   /**
-   * <tt>true</tt> - get information for account of money owner
-   * (another user may be owner of the specified user's money).
-   * <tt>false</tt> - get information certainly for the specified user.
+   * If `true`, information for the account's owner is returned. Clients can be configured to pay for a relative's
+   * expenses. For example, a parent can pay for their child.
+   * Otherwise, `false` to indicate information strictly for the specified user is returned.
    *
    * @get get
    * @type {boolean}
@@ -90,9 +92,7 @@ function Wl_Pay_Account_AccountModel()
   this.is_owner = false;
 
   /**
-   * Key of a business to show information for.
-   *
-   * Primary key in {@link \RsBusinessSql}.
+   * The key of the business to show information for.
    *
    * @get get
    * @type {string}
@@ -100,7 +100,7 @@ function Wl_Pay_Account_AccountModel()
   this.k_business = "0";
 
   /**
-   * UID of a user to show information for.
+   * The key of the user to show information for.
    *
    * @get get
    * @type {string}
@@ -123,9 +123,9 @@ Wl_Pay_Account_AccountModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Pay_Account_AccountModel.instanceGet
- * @param {string} uid UID of a user to show information for.
- * @param {string} k_business Key of a business to show information for. Primary key in {@link \RsBusinessSql}.
- * @param {boolean} is_owner <tt>true</tt> - get information for account of money owner (another user may be owner of the specified user's money). <tt>false</tt> - get information certainly for the specified user.
+ * @param {string} uid The key of the user to show information for.
+ * @param {string} k_business The key of the business to show information for.
+ * @param {boolean} is_owner If `true`, information for the account's owner is returned. Clients can be configured to pay for a relative's expenses. For example, a parent can pay for their child. Otherwise, `false` to indicate information strictly for the specified user is returned.
  * @returns {Wl_Pay_Account_AccountModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

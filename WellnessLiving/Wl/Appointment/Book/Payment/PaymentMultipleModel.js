@@ -1,8 +1,9 @@
 /**
  * Allows to pay an appointment or appointment purchase option for the client.
  *
- * Only difference from {@link Wl_Appointment_Book_Payment_PaymentModel}
- * is possibility to pay for a lot of appointments at the same time.
+ * Only difference from {@link Wl_Appointment_Book_Payment_PaymentModel} is possibility to pay for a lot of appointments at the same time.
+ *
+ * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -15,24 +16,26 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * Structure of this array corresponds to the structure of
    * the <tt>Wl_Appointment_Book_ProviderAbstractModel</tt> class in JavaScript,
    * which is normally used as its subclass <tt>Wl_Appointment_Book_ProviderModel</tt>.
+   * Property of the object is stored as an element of this array with the same name.
    *
    * @get get
    * @type {{}}
    */
-  this.a_book_data = {};
+  this.a_book_data = [];
 
   /**
    * Structure of this array corresponds to the structure of
    * the <tt>Wl_Appointment_Book_ProviderAbstractModel</tt> class in JavaScript,
    * which is normally used as its subclass <tt>Wl_Appointment_Book_ProviderModel</tt>.
+   * Property of the object is stored as an element of this array with the same name.
    *
    * @post post
    * @type {{}}
    */
-  this.a_book_data_post = {};
+  this.a_book_data_post = [];
 
   /**
-   * ID of payment type for the appointment.
+   * Payment type for the appointment, one of {@link RsAppointmentPaySid} constants.
    *
    * @post result
    * @type {number[]}
@@ -42,7 +45,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   /**
    * A list of payment sources to pay with.
    *
-   * The structure of this array corresponds with the structure of {@link \RsPayForm::$a_pay_source}.
+   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
    *
    * @post post
    * @type {{}[]}
@@ -51,24 +54,39 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_promotion_data
-   * @property {string} s_expire The Purchase Option expiration date.
-   * @property {string} s_title The title of the Purchase Option.
+   * @property {number} i_limit Limit on the visit count of the promotion.
+   * @property {number} i_remain Count of remaining visits.
+   * @property {string} s_expire The expiration date.
+   * @property {string} s_title The title of promotion.
    */
 
   /**
-   * Information about the Purchase Option.
+   * Information about selected login promotion.
+   *
    * <dl>
+   *   <dt>
+   *     int <var>i_limit</var>
+   *   </dt>
+   *   <dd>
+   *      Limit on the visit count of the promotion.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_remain</var>
+   *   </dt>
+   *   <dd>
+   *     Count of remaining visits.
+   *   </dd>
    *   <dt>
    *     string <var>s_expire</var>
    *   </dt>
    *   <dd>
-   *     The Purchase Option expiration date.
+   *     The expiration date.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     The title of the Purchase Option.
+   *     The title of promotion.
    *   </dd>
    * </dl>
    *
@@ -79,57 +97,53 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_a_tax
-   * @property {number} m_tax The tax rate.
-   * @property {string} text_title The name of the tax.
+   * @property {number} m_tax Tax rate.
+   * @property {string} text_title Name of the tax.
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase
-   * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_a_tax} a_tax Information about taxes in the following format.
-   * A list of taxes to apply. The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
+   * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_a_tax} a_tax Contains information about taxes in the following format. A list of taxes to apply. The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
    * <dl>
    *   <dt>
    *     float <tt>m_tax</tt>
    *   </dt>
    *   <dd>
-   *     The tax rate.
+   *     Tax rate.
    *   </dd>
    *   <dt>
    *     string <tt>text_title</tt>
    *   </dt>
    *   <dd>
-   *     The name of the tax.
+   *     Name of the tax.
    *   </dd>
    * </dl>
-   * @property {string} id_purchase_item The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.
-   * @property {string} k_id The key of the discount used for the purchase.
-   * @property {string} m_discount The value of the discount used for the purchase.
-   * @property {string} m_pay The payment for the Purchase Option or single visit without taxes.
-   * @property {string} m_price The price of the Purchase Option or single visit.
+   * @property {string} id_purchase_item Purchase item ID. One of {@link RsPurchaseItemSid} constant.
+   * @property {string} k_id The value of the discount used for purchase.
+   * @property {string} m_discount The value of the discount used for purchase.
+   * @property {string} m_pay The payment for the promotion or single visit without taxes.
+   * @property {string} m_price The price of the promotion or single visit.
    */
 
   /**
-   * <b>Field -</b> a string in the format `id_purchase_item-k_id`.
-   *
-   * <b>Value -</b> an array with the next stricture:
+   * Fields - string in format <tt>id_purchase_item-k_id</tt>. Values - array with next stricture:
    * <dl>
    *   <dt>
    *     array <var>a_tax</var>
    *   </dt>
    *   <dd>
-   *     Information about taxes in the following format.
-   *     A list of taxes to apply. The array keys are `k_tax` keys. Each element contains the following fields:
+   *     Contains information about taxes in the following format. A list of taxes to apply. The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
    *     <dl>
    *       <dt>
    *         float <var>m_tax</var>
    *       </dt>
    *       <dd>
-   *         The tax rate.
+   *         Tax rate.
    *       </dd>
    *       <dt>
    *         string <var>text_title</var>
    *       </dt>
    *       <dd>
-   *         The name of the tax.
+   *         Name of the tax.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -137,31 +151,31 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *     string <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The purchase item ID.
+   *     Purchase item ID. One of {@link RsPurchaseItemSid} constant.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     The key of the discount used for the purchase.
+   *     The value of the discount used for purchase.
    *   </dd>
    *   <dt>
    *     string <var>m_discount</var>
    *   </dt>
    *   <dd>
-   *     The value of the discount used for the purchase.
+   *     The value of the discount used for purchase.
    *   </dd>
    *   <dt>
    *     string <var>m_pay</var>
    *   </dt>
    *   <dd>
-   *     The payment for the Purchase Option or single visit without taxes.
+   *     The payment for the promotion or single visit without taxes.
    *   </dd>
    *   <dt>
    *     string <var>m_price</var>
    *   </dt>
    *   <dd>
-   *     The price of the Purchase Option or single visit.
+   *     The price of the promotion or single visit.
    *   </dd>
    * </dl>
    *
@@ -180,24 +194,34 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
 
   /**
    * List of quiz response keys.
-   * Key is quiz key.
-   * Value is response key.
+   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
+   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
    *
    * @post post
    * @type {{}}
    */
-  this.a_quiz_response = {};
+  this.a_quiz_response = [];
 
   /**
    * The price of service with the tax without surcharge.
    *
    * @get result
-   * @var {{}}
+   * @type {string}
    */
   this.a_total = undefined;
 
   /**
-   * The ID of the source mode.
+   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * There may be empty values in this list, which means that this is a walk-in.
+   *
+   * @get get
+   * @post get
+   * @type {string[]}
+   */
+  this.a_uid = [];
+
+  /**
+   * Key of source mode. One of {@link Wl_Mode_ModeSid} constants.
    *
    * @get get
    * @post get
@@ -215,7 +239,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   this.is_walk_in = false;
 
   /**
-   * The location to show available appointment booking schedule for.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -224,7 +248,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   this.k_location = "0";
 
   /**
-   * The activity ID of the purchase that was made. This will be empty if no purchase was made.
+   * ID of activity of purchase is made. Empty if no purchase is made.
    *
    * @post result
    * @type {string}
@@ -235,7 +259,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * Gift card amount.
    *
    * @get result
-   * @var {string}
+   * @type {string}
    */
   this.m_coupon = undefined;
 
@@ -243,7 +267,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * Discount amount.
    *
    * @get result
-   * @var {string}
+   * @type {string}
    */
   this.m_discount = undefined;
 
@@ -251,7 +275,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * Surcharge amount.
    *
    * @get result
-   * @var {string}
+   * @type {string}
    */
   this.m_surcharge = undefined;
 
@@ -259,12 +283,12 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * The tax of service.
    *
    * @get result
-   * @var {string}
+   * @type {string}
    */
   this.m_tax = undefined;
 
   /**
-   * The price of the service with tax.
+   * The price of service with the tax without surcharge.
    *
    * @get result
    * @type {string}
@@ -276,12 +300,12 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *
    * @get get
    * @post get
-   * @var {string}
+   * @type {string}
    */
-  this.text_coupon_code = '';
+  this.text_coupon_code = "";
 
   /**
-   * The discount code.
+   * Discount code.
    *
    * @get get
    * @post get
@@ -290,7 +314,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   this.text_discount_code = "";
 
   /**
-   * The client to get information for.
+   * User to get information for.
    *
    * @get get
    * @post get
@@ -306,7 +330,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Payment_PaymentMultipleModel);
 /**
  * @inheritDoc
  */
-Wl_Appointment_Book_Payment_PaymentMultipleModel.prototype.config = function()
+Wl_Appointment_Book_Payment_PaymentMultipleModel.prototype.config=function()
 {
   return {"a_field": {"a_book_data": {"get": {"get": true}},"a_book_data_post": {"post": {"post": true}},"a_pay": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_promotion_data": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_purchase_item": {"post": {"result": true}},"a_quiz_response": {"post": {"post": true}},"a_total": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"m_coupon": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_surcharge": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_coupon_code": {"get": {"get": true},"post": {"get": true}},"text_discount_code": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

@@ -24,7 +24,7 @@ function Wl_Login_Promotion_PromotionPayCancelModel()
   this.is_use = undefined;
 
   /**
-   * The key of the business to which the promotion belongs. Primary key in {@link \RsBusinessSql} table.
+   * The key of the business to which the promotion belongs.
    *
    * @put get
    * @type {string}
@@ -34,15 +34,13 @@ function Wl_Login_Promotion_PromotionPayCancelModel()
   /**
    * Key of login promotion to update options for.
    *
-   * Primary key in {@link \RsLoginPromotionSql} table.
-   *
    * @put get
    * @type {string}
    */
   this.k_login_promotion = undefined;
 
   /**
-   * Key of the user performing the request. Primary key in {@link \PassportLoginSql} table.
+   * Key of the user performing the request.
    *
    * @put get
    * @type {string}
@@ -65,9 +63,9 @@ Wl_Login_Promotion_PromotionPayCancelModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Login_Promotion_PromotionPayCancelModel.instanceGet
- * @param {string} k_business The key of the business to which the promotion belongs. Primary key in {@link \RsBusinessSql} table.
- * @param {string} uid Key of the user performing the request. Primary key in {@link \PassportLoginSql} table.
- * @param {string} k_login_promotion Key of login promotion to update options for. Primary key in {@link \RsLoginPromotionSql} table.
+ * @param {string} k_business The key of the business to which the promotion belongs.
+ * @param {string} uid Key of the user performing the request.
+ * @param {string} k_login_promotion Key of login promotion to update options for.
  * @returns {Wl_Login_Promotion_PromotionPayCancelModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

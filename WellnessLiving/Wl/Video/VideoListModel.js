@@ -1,7 +1,5 @@
 /**
- * Api to return list of videos.
- *
- * Results of the methods can be viewed in the model.
+ * An endpoint that returns a list of videos.
  *
  * This model is generated automatically based on API.
  *
@@ -15,16 +13,16 @@ function Wl_Video_VideoListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,is_backend";
+  this._s_key = "k_business,uid,is_backend";
 
   /**
-   * Calorie interval under which you need to find the video.
+   * The calorie range ascribed to the video to use for the search.
    *
    * <dl>
    *  <dt>int [<var>i_from</var>]</dt>
-   *  <dd>Minimum calories.</dd>
+   *  <dd>The minimum number of calories.</dd>
    *  <dt>int [<var>i_to</var>]</dt>
-   *  <dd>Maximum calories.</dd>
+   *  <dd>The maximum number of calories.</dd>
    * </dl>
    *
    * @get get
@@ -33,14 +31,14 @@ function Wl_Video_VideoListModel()
   this.a_calorie = undefined;
 
   /**
-   * Duration interval under which you need to find the video.
+   * The duration range ascribed to the video to use for the search.
    * The interval is set in seconds.
    *
    * <dl>
    *  <dt>int [<var>i_from</var>]</dt>
-   *  <dd>Minimum duration. </dd>
+   *  <dd>The minimum duration. </dd>
    *  <dt>int [<var>i_to</var>]</dt>
-   *  <dd>Maximum duration.</dd>
+   *  <dd>The maximum duration.</dd>
    * </dl>
    *
    * @get get
@@ -49,7 +47,7 @@ function Wl_Video_VideoListModel()
   this.a_duration = undefined;
 
   /**
-   * List of levels to show videos with.
+   * A list of levels to show videos for. A level can refer to the difficulty ascribed to the video.
    *
    * @get get
    * @type {string[]}
@@ -62,10 +60,10 @@ function Wl_Video_VideoListModel()
    * @get result
    * @type {{}[]}
    */
-  this.a_list = undefined;
+  this.a_list = [];
 
   /**
-   * List of locations to show videos from.
+   * A list of locations to show videos from.
    *
    * @get get
    * @type {string[]}
@@ -73,7 +71,7 @@ function Wl_Video_VideoListModel()
   this.a_location = undefined;
 
   /**
-   * List of shard video keys in order to be saved.
+   * A list of shared video keys in their saved order.
    *
    * @put post
    * @type {string[]}
@@ -81,7 +79,7 @@ function Wl_Video_VideoListModel()
   this.a_order = undefined;
 
   /**
-   * List of staff members to show videos with.
+   * A list of staff members who appear in videos.
    *
    * @get get
    * @type {string[]}
@@ -89,7 +87,7 @@ function Wl_Video_VideoListModel()
   this.a_staff = undefined;
 
   /**
-   * List of video categories to show videos from.
+   * A list of video categories to show videos from.
    *
    * @get get
    * @type {string[]}
@@ -97,7 +95,7 @@ function Wl_Video_VideoListModel()
   this.a_video_category = undefined;
 
   /**
-   * List of video tags to show videos with.
+   * A list of video tags to show videos for.
    *
    * @get get
    * @type {string[]}
@@ -105,8 +103,8 @@ function Wl_Video_VideoListModel()
   this.a_video_tag = undefined;
 
   /**
-   * Sorting type.
-   * Constant from {@link \Wl\Video\Catalog\Filter\Sort\FilterSortSid}.
+   * The sorting type.
+   * A constant from {@link Wl_Video_Catalog_Filter_Sort_FilterSortSid}.
    *
    * @get get
    * @type {number}
@@ -114,7 +112,7 @@ function Wl_Video_VideoListModel()
   this.id_sort = undefined;
 
   /**
-   * <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
+   * If `true`, the API is being used from backend. Otherwise, this will be `false`.
    *
    * @get get
    * @put get
@@ -123,7 +121,7 @@ function Wl_Video_VideoListModel()
   this.is_backend = false;
 
   /**
-   * Business key from {@link \RsBusinessSql}.
+   * The business key.
    *
    * @get get
    * @put get
@@ -132,12 +130,24 @@ function Wl_Video_VideoListModel()
   this.k_business = undefined;
 
   /**
-   * Filter phrase to filter videos by name.
+   * The filter phrase to filter videos by name.
    *
    * @get get
    * @type {string}
    */
   this.text_search = undefined;
+
+  /**
+   * UID of the client who request list of videos.
+   *
+   * `null` if user is not signed in.
+   *
+   * *NOTE: Not used directly in API, needed for {@link Wl_Video_VideoListModel.KEY} constant.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.uid = null;
 
   this.changeInit();
 }
@@ -149,14 +159,15 @@ WlSdk_ModelAbstract.extend(Wl_Video_VideoListModel);
  */
 Wl_Video_VideoListModel.prototype.config=function()
 {
-  return {"a_field": {"a_calorie": {"get": {"get": true}},"a_duration": {"get": {"get": true}},"a_level": {"get": {"get": true}},"a_list": {"get": {"result": true}},"a_location": {"get": {"get": true}},"a_order": {"put": {"post": true}},"a_staff": {"get": {"get": true}},"a_video_category": {"get": {"get": true}},"a_video_tag": {"get": {"get": true}},"id_sort": {"get": {"get": true}},"is_backend": {"get": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"text_search": {"get": {"get": true}}}};
+  return {"a_field": {"a_calorie": {"get": {"get": true}},"a_duration": {"get": {"get": true}},"a_level": {"get": {"get": true}},"a_list": {"get": {"result": true}},"a_location": {"get": {"get": true}},"a_order": {"put": {"post": true}},"a_staff": {"get": {"get": true}},"a_video_category": {"get": {"get": true}},"a_video_tag": {"get": {"get": true}},"id_sort": {"get": {"get": true}},"is_backend": {"get": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"text_search": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Video_VideoListModel.instanceGet
- * @param {string} k_business Business key from {@link \RsBusinessSql}.
- * @param {boolean} is_backend <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
+ * @param {string} k_business The business key.
+ * @param {?string} uid UID of the client who request list of videos. `null` if user is not signed in. *NOTE: Not used directly in API, needed for {@link Wl_Video_VideoListModel.KEY} constant.
+ * @param {boolean} is_backend If `true`, the API is being used from backend. Otherwise, this will be `false`.
  * @returns {Wl_Video_VideoListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

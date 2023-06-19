@@ -35,7 +35,7 @@ function Wl_Report_Save_ReportSaveModel()
   this.a_settings = undefined;
 
   /**
-   * CID of the controller class. Subclass of {@link ReportViewControllerAbstract}.
+   * CID of the controller class. Subclass of {@link Wl\Report\View\ReportViewControllerAbstract}.
    *
    * @post post
    * @put post
@@ -46,7 +46,7 @@ function Wl_Report_Save_ReportSaveModel()
   /**
    * Report category of the saved report.
    *
-   * One of the {@link \RsReportCategorySid} constants.
+   * One of the {@link RsReportCategorySid} constants.
    *
    * @get result
    * @post post
@@ -56,7 +56,7 @@ function Wl_Report_Save_ReportSaveModel()
   this.id_report_category = undefined;
 
   /**
-   * Business key of the saved report. Primary key in the {@link \RsBusinessSql} table.
+   * Business key of the saved report.
    *
    * @get get
    * @post get
@@ -66,7 +66,7 @@ function Wl_Report_Save_ReportSaveModel()
   this.k_business = undefined;
 
   /**
-   * Report save key. Primary key in the {@link \RsReportSaveSql} table.
+   * Report save key.
    *
    * @get get
    * @put get
@@ -95,7 +95,7 @@ function Wl_Report_Save_ReportSaveModel()
   this.text_title = undefined;
 
   /**
-   * UID user's key of the actor. Primary key in the {@link \PassportLoginSql} table.
+   * UID user's key of the actor.
    *
    * @get get
    * @post get
@@ -120,7 +120,7 @@ Wl_Report_Save_ReportSaveModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_Save_ReportSaveModel.instanceGet
- * @param {string} k_report_save Report save key. Primary key in the {@link \RsReportSaveSql} table.
+ * @param {string} k_report_save Report save key.
  * @returns {Wl_Report_Save_ReportSaveModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -18,7 +18,7 @@ function Wl_Book_Process_Contract_ContractListModel()
   /**
    * @typedef {{}} Wl_Book_Process_Contract_ContractListModel_a_contract_list
    * @property {boolean} is_agree Whether client already agreed to this contract.
-   * @property {string} s_purchase_item Key of purchase option, one of array keys returned by {@link \RsBookProcess::purchase()}.
+   * @property {string} s_purchase_item Key of purchase option, one of array keys returned by {@link RsBookProcess::purchase()}.
    * @property {string} s_signature Client's signature, if this contract has already been signed.
    */
 
@@ -35,7 +35,7 @@ function Wl_Book_Process_Contract_ContractListModel()
    *     string <var>s_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     Key of purchase option, one of array keys returned by {@link \RsBookProcess::purchase()}.
+   *     Key of purchase option, one of array keys returned by {@link RsBookProcess::purchase()}.
    *   </dd>
    *   <dt>
    *     string <var>s_signature</var>

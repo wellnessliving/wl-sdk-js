@@ -20,7 +20,6 @@ function Wl_Event_EventCancelModel()
 
   /**
    * Book ID.
-   * Primary key in table {@link \RsVisitSql}.
    *
    * @post get
    * @type {string}

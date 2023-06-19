@@ -79,7 +79,7 @@ function Wl_Reception_Roster_Search_SearchModel()
   /**
    * Secret string to get access.
    * As this API can be used without backend we need to protect using thi API be secret code.
-   * See {@link \Wl\Reception\Roster\Controller::secret()}
+   * See {@link Wl\Reception\Roster\Controller::secret()}
    *
    * @get get
    * @type {string}

@@ -56,8 +56,8 @@ function Wl_Resource_Select_ResourceModel()
    * @property {number} i_duration Duration of asset.
    * @property {boolean} is_select <tt>true</tt> if asset was selected. <tt>false</tt> in other cases.
    * @property {boolean} is_visible <tt>true</tt> if asset are visible. <tt>false</tt> in other cases.
-   * @property {string} k_resource Asset key. Primary key in {@link \RsResourceSql} table.
-   * @property {string} k_resource_type Key of asset category. Primary key in {@link RsResourceTypeSql} table.
+   * @property {string} k_resource Asset key.
+   * @property {string} k_resource_type Key of asset category.
    */
 
   /**
@@ -91,13 +91,13 @@ function Wl_Resource_Select_ResourceModel()
    *     string <var>k_resource</var>
    *   </dt>
    *   <dd>
-   *     Asset key. Primary key in {@link \RsResourceSql} table.
+   *     Asset key.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_type</var>
    *   </dt>
    *   <dd>
-   *     Key of asset category. Primary key in {@link RsResourceTypeSql} table.
+   *     Key of asset category.
    *   </dd>
    * </dl>
    *
@@ -168,7 +168,6 @@ function Wl_Resource_Select_ResourceModel()
 
   /**
    * Location to show resource.
-   * Primary key in {@link \RsLocationSql} table.
    *
    * @get get
    * @type {?string}
@@ -209,7 +208,7 @@ Wl_Resource_Select_ResourceModel.prototype.config=function()
  * @function
  * @name Wl_Resource_Select_ResourceModel.instanceGet
  * @param {string} k_business Business key, primary key in {@link \RsBusinessSql}.
- * @param {?string} k_location Location to show resource. Primary key in {@link \RsLocationSql} table.
+ * @param {?string} k_location Location to show resource.
  * @param {boolean} is_book If return only bookable resources. If <tt>false</tt> returns all resources.
  * @returns {Wl_Resource_Select_ResourceModel}
  * @see WlSdk_ModelAbstract.instanceGet()

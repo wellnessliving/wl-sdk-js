@@ -17,11 +17,11 @@ function Wl_Location_Staff_ListModel()
 
   /**
    * @typedef {{}} Wl_Location_Staff_ListModel_a_staff
-   * @property {string} k_staff ID as staff member. Primary key in {@link \RsStaffSql} table.
+   * @property {string} k_staff ID as staff member.
    * @property {string} s_name Name.
    * @property {string} s_position Job title.
    * @property {string} s_surname 1st letter of surname.
-   * @property {string} uid ID as user. Primary key in {@link \PassportLoginSql} table.
+   * @property {string} uid ID as user.
    */
 
   /**
@@ -31,7 +31,7 @@ function Wl_Location_Staff_ListModel()
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     ID as staff member. Primary key in {@link \RsStaffSql} table.
+   *     ID as staff member.
    *   </dd>
    *   <dt>
    *     string <var>s_name</var>
@@ -55,7 +55,7 @@ function Wl_Location_Staff_ListModel()
    *     string <var>uid</var>
    *   </dt>
    *   <dd>
-   *     ID as user. Primary key in {@link \PassportLoginSql} table.
+   *     ID as user.
    *   </dd>
    * </dl>
    *

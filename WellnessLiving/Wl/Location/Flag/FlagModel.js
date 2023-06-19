@@ -1,5 +1,5 @@
 /**
- * Point to check if a user is flagged in a location.
+ * An endpoint that retrieves information if a user is flagged in a location.
  *
  * This model is generated automatically based on API.
  *
@@ -17,14 +17,14 @@ function Wl_Location_Flag_FlagModel()
 
   /**
    * @typedef {{}} Wl_Location_Flag_FlagModel_a_flag
-   * @property {string} uid Key: Primary key in the {@link \PassportLogin} table.
+   * @property {string} uid Key:
    * @property {boolean} is_flag Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.
    */
 
   /**
    * Array with structure:<dl>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>Key: Primary key in the {@link \PassportLogin} table.</dd>
+   *   <dd>Key:</dd>
    *   <dt>bool <var>is_flag</var></dt>
    *   <dd>Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.</dd>
    * </dl>
@@ -36,7 +36,7 @@ function Wl_Location_Flag_FlagModel()
   this.a_flag = undefined;
 
   /**
-   * User keys. Each element is a primary key in the {@link \PassportLogin} table.
+   * User keys. Each element is a primary key in the {@link \PassportLoginSql} table.
    * <tt>null</tt> if not set.
    *
    * @get get
@@ -45,8 +45,9 @@ function Wl_Location_Flag_FlagModel()
   this.a_uid = null;
 
   /**
-   * <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.
-   * <tt>null</tt> until loaded or when <var>a_uid</var> was not set.
+   * <tt>true</tt> if the user is flagged, <tt>false</tt> if otherwise.
+   *
+   * <tt>null</tt> until loaded or when {@link Wl_Location_Flag_FlagModel.a_uid} was not set.
    *
    * @get result
    * @type {boolean}
@@ -54,7 +55,7 @@ function Wl_Location_Flag_FlagModel()
   this.is_flag = undefined;
 
   /**
-   * Location key.
+   * The location key.
    *
    * @get get
    * @type {string}
@@ -62,7 +63,7 @@ function Wl_Location_Flag_FlagModel()
   this.k_location = undefined;
 
   /**
-   * User's primary key.
+   * The user's key.
    * <tt>null</tt> if not set.
    *
    * @get get
@@ -86,8 +87,8 @@ Wl_Location_Flag_FlagModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Location_Flag_FlagModel.instanceGet
- * @param {string} k_location Location key.
- * @param {?string} uid User's primary key. <tt>null</tt> if not set.
+ * @param {string} k_location The location key.
+ * @param {?string} uid The user's key. <tt>null</tt> if not set.
  * @returns {Wl_Location_Flag_FlagModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

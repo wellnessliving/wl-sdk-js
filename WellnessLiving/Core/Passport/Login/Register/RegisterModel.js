@@ -1,5 +1,8 @@
 /**
- * Point of entry for user signing up.
+ * Allows new clients to be registered.
+ *
+ * WellnessLiving recommends using the {@link Wl_Lead_LeadModel} endpoint to register new users.
+ * This endpoint is not enabled by default. Contact WellnessLiving to enable this endpoint for your business.
  *
  * This model is generated automatically based on API.
  *
@@ -12,7 +15,7 @@ function Core_Passport_Login_Register_RegisterModel()
 
   /**
    * @typedef {{}} Core_Passport_Login_Register_RegisterModel_a_data
-   * @property {string} [k_business] Key of the business for wellnessliving project to register user in.
+   * @property {string} [k_business] The key of the business for wellnessliving project to register user in.
    * 
    * Behavior is different for different applications. If application is connected to the certain business, this
    * property can be always empty - all clients will be registered in the connected business. If business is set
@@ -23,12 +26,12 @@ function Core_Passport_Login_Register_RegisterModel()
    */
 
   /**
-   * Additional data about new users.
+   * The additional data about new users.
    *
    * <dl>
    *   <dt>string <var>[k_business]</var></dt>
    *   <dd>
-   *     Key of the business for wellnessliving project to register user in.
+   *     The key of the business for wellnessliving project to register user in.
    *
    *     Behavior is different for different applications. If application is connected to the certain business, this
    *     property can be always empty - all clients will be registered in the connected business. If business is set
@@ -45,7 +48,7 @@ function Core_Passport_Login_Register_RegisterModel()
   this.a_data = [];
 
   /**
-   * Application ID.
+   * The application ID. This is a business specific ID required to register clients.
    *
    * @post post
    * @type {string}
@@ -53,7 +56,7 @@ function Core_Passport_Login_Register_RegisterModel()
   this.s_application = "";
 
   /**
-   * Email.
+   * The new client email address.
    *
    * @post post
    * @type {string}
@@ -61,7 +64,7 @@ function Core_Passport_Login_Register_RegisterModel()
   this.s_mail = "";
 
   /**
-   * First name.
+   * The new client given name.
    *
    * @post post
    * @type {string}
@@ -69,7 +72,7 @@ function Core_Passport_Login_Register_RegisterModel()
   this.s_name_first = "";
 
   /**
-   * Last name.
+   * The new client surname.
    *
    * @post post
    * @type {string}
@@ -77,7 +80,7 @@ function Core_Passport_Login_Register_RegisterModel()
   this.s_name_last = "";
 
   /**
-   * Password.
+   * The new client password.
    *
    * @post post
    * @type {string}
@@ -85,17 +88,9 @@ function Core_Passport_Login_Register_RegisterModel()
   this.s_password = "";
 
   /**
-   * Password confirmation.
+   * The URL to the confirmation page. This link is used in a confirmation email.
    *
-   * @post post
-   * @type {string}
-   */
-  this.s_password_confirm = "";
-
-  /**
-   * URL to confirmation page. This link will be used in a confirmation email.
-   *
-   * If empty, URL to default page will be used.
+   * If empty, URL to default page is used.
    *
    * @post post
    * @type {string}
@@ -112,5 +107,5 @@ WlSdk_ModelAbstract.extend(Core_Passport_Login_Register_RegisterModel);
  */
 Core_Passport_Login_Register_RegisterModel.prototype.config=function()
 {
-  return {"a_field": {"a_data": {"post": {"post": true}},"s_application": {"post": {"post": true}},"s_mail": {"post": {"post": true}},"s_name_first": {"post": {"post": true}},"s_name_last": {"post": {"post": true}},"s_password": {"post": {"post": true}},"s_password_confirm": {"post": {"post": true}},"url_confirm": {"post": {"post": true}}}};
+  return {"a_field": {"a_data": {"post": {"post": true}},"s_application": {"post": {"post": true}},"s_mail": {"post": {"post": true}},"s_name_first": {"post": {"post": true}},"s_name_last": {"post": {"post": true}},"s_password": {"post": {"post": true}},"url_confirm": {"post": {"post": true}}}};
 };

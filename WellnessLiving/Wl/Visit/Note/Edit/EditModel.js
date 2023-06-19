@@ -87,7 +87,7 @@ function Wl_Visit_Note_Edit_EditModel()
   this.can_edit = undefined;
 
   /**
-   * Note type, one of {@link \Wl\Visit\Note\Sid\NoteSid} constants.
+   * Note type, one of {@link Wl_Visit_Note_Sid_NoteSid} constants.
    *
    * @get result
    * @post post
@@ -96,7 +96,15 @@ function Wl_Visit_Note_Edit_EditModel()
   this.id_note = 0;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * <tt>true</tt> - if visit notes are new, <tt>false</tt> - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_new = 0;
+
+  /**
+   * Business key.
    *
    * @delete get
    * @get get
@@ -134,7 +142,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Note_Edit_EditModel);
  */
 Wl_Visit_Note_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field": {"a_data": {"post": {"post": true}},"a_data_note_additional": {"get": {"result": true}},"a_info": {"get": {"result": true}},"a_visit_note": {"get": {"result": true}},"can_edit": {"get": {"result": true}},"id_note": {"get": {"result": true},"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"k_visit_note": {"delete": {"get": true}}}};
+  return {"a_field": {"a_data": {"post": {"post": true}},"a_data_note_additional": {"get": {"result": true}},"a_info": {"get": {"result": true}},"a_visit_note": {"get": {"result": true}},"can_edit": {"get": {"result": true}},"id_note": {"get": {"result": true},"post": {"post": true}},"is_new": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"k_visit_note": {"delete": {"get": true}}}};
 };
 
 /**

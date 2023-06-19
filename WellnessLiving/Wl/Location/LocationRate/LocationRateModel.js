@@ -42,8 +42,6 @@ function Wl_Location_LocationRate_LocationRateModel()
   /**
    * ID of a location to show rate for.
    *
-   * Primary key in {@link \RsLocationSql}.
-   *
    * @get get
    * @type {string}
    */
@@ -65,7 +63,7 @@ Wl_Location_LocationRate_LocationRateModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Location_LocationRate_LocationRateModel.instanceGet
- * @param {string} k_location ID of a location to show rate for. Primary key in {@link \RsLocationSql}.
+ * @param {string} k_location ID of a location to show rate for.
  * @returns {Wl_Location_LocationRate_LocationRateModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

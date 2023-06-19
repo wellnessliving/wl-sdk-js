@@ -13,7 +13,7 @@ function Core_Spa_Model_ModelPoolModel()
   /**
    * A set of model objects that need to be synchronized.
    *
-   * Key - model class name.
+   * Key - concatenate string(model class name, model registry key)
    * Value - model data.
    *
    * @post post

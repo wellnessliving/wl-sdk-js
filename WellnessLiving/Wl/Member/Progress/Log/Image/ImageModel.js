@@ -17,9 +17,7 @@ function Wl_Member_Progress_Log_Image_ImageModel()
 
   /**
    * @typedef {{}} Wl_Member_Progress_Log_Image_ImageModel_a_image
-   * @property {{}} a_image Image storage data. Structure of this array corresponds result of {@link \Wl\Member\Progress\Log\Image\ProgressImage::load()}.
-   * @property {number} i-preview-height Image preview height.
-   * @property {number} i-preview-width Image preview width.
+   * @property {{}} a_image Image storage data. Structure of this array corresponds result of {@link Wl\Member\Progress\Log\Image\ProgressImage::load()}.
    * @property {number} i-size Max image size.
    * @property {number} i-thumbnail-height Image thumbnail height.
    * @property {number} i-thumbnail-width Image thumbnail width.
@@ -34,19 +32,7 @@ function Wl_Member_Progress_Log_Image_ImageModel()
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     Image storage data. Structure of this array corresponds result of {@link \Wl\Member\Progress\Log\Image\ProgressImage::load()}.
-   *   </dd>
-   *   <dt>
-   *     int <var>i-preview-height</var>
-   *   </dt>
-   *   <dd>
-   *     Image preview height.
-   *   </dd>
-   *   <dt>
-   *     int <var>i-preview-width</var>
-   *   </dt>
-   *   <dd>
-   *     Image preview width.
+   *     Image storage data. Structure of this array corresponds result of {@link Wl\Member\Progress\Log\Image\ProgressImage::load()}.
    *   </dd>
    *   <dt>
    *     int <var>i-size</var>
@@ -100,8 +86,6 @@ function Wl_Member_Progress_Log_Image_ImageModel()
   /**
    * Business key.
    *
-   * Primary key in the {@link \RsBusinessSql} table.
-   *
    * <tt>null</tt> if not initialized yet.
    *
    * @delete get
@@ -150,7 +134,7 @@ Wl_Member_Progress_Log_Image_ImageModel.prototype.config=function()
  * @function
  * @name Wl_Member_Progress_Log_Image_ImageModel.instanceGet
  * @param {?string} dt_date Date of the progress picture. <tt>null</tt> if not initialized yet.
- * @param {?string} k_business Business key. Primary key in the {@link \RsBusinessSql} table. <tt>null</tt> if not initialized yet.
+ * @param {?string} k_business Business key. <tt>null</tt> if not initialized yet.
  * @param {?string} uid User key. <tt>null</tt> if not initialized yet.
  * @returns {Wl_Member_Progress_Log_Image_ImageModel}
  * @see WlSdk_ModelAbstract.instanceGet()

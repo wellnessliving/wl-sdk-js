@@ -11,7 +11,7 @@ function Wl_Integration_Zoom_ConfirmationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @post get
    * @type {string}

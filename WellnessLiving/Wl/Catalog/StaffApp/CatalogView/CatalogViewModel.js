@@ -1,5 +1,5 @@
 /**
- * Products list for online store.
+ * Returns information about an item’s price after taxes.
  *
  * This model is generated automatically based on API.
  *
@@ -11,27 +11,57 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Configuration information.
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_config
+   * @property {number} f_promote The amount to prorate the item by.
+   * @property {boolean} is_prorate If <tt>true</tt> this item is prorated.
+   * @property {string} m_prorate_custom The custom prorate amount.
+   */
+
+  /**
+   * Configuration information about the item, which can specify prorated amounts.
    *
-   * Empty array means not set.
+   * If set, these values will change the values returned by the endpoint call.
+   *
+   * <dl>
+   *   <dt>float <var>f_promote</var></dt>
+   *   <dd>The amount to prorate the item by.</dd>
+   *   <dt>bool <var>is_prorate</var></dt>
+   *   <dd>If <tt>true</tt> this item is prorated.</dd>
+   *   <dt>string <var>m_prorate_custom</var></dt>
+   *   <dd>The custom prorate amount.</dd>
+   * </dl>
    *
    * @get get
-   * @type {{}}
+   * @type {Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_config}
    */
   this.a_config = [];
 
   /**
-   * Tax list.
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_tax
+   * @property {string} k_tax The tax ID.
+   * @property {string} m_tax_custom The amount of custom tax.
+   */
+
+  /**
+   * Contains information about edited taxes.
    *
-   * Empty array means not set.
+   * It is `null` if not set yet or taxes are default.
+   *
+   * The key is the tax identifier and the value is:
+   * <dl>
+   *   <dt>string <var>k_tax</var></dt>
+   *   <dd>The tax ID.</dd>
+   *   <dt>string <var>m_tax_custom</var></dt>
+   *   <dd>The amount of custom tax.</dd>
+   * </dl>
    *
    * @get get
-   * @type {{}}
+   * @type {Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_tax}
    */
   this.a_tax = [];
 
   /**
-   * Contains information about taxes. Structure of this array is described in {@link \RsTax::$a_tax}.
+   * Contains information about calculated taxes. The structure of this array is described in {@link RsTax::$a_tax}.
    *
    * @get result
    * @type {{}}
@@ -39,9 +69,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.a_tax_data = undefined;
 
   /**
-   * Quantity of items.
-   *
-   * Empty value means not set.
+   * The quantity of items.
    *
    * @get get
    * @type {number}
@@ -49,9 +77,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.i_quantity = "";
 
   /**
-   * ID of sale category. One of {@link \RsSaleSid}.
-   *
-   * Empty value means not set.
+   * The ID of the sale category. One of {@link RsSaleSid} constants.
    *
    * @get get
    * @type {number}
@@ -59,20 +85,18 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.id_sale = 0;
 
   /**
-   * Business key.
-   *
-   * Empty value means not set.
-   * <tt>null</tt> means system business.
+   * The business key.
+   * `null` means system business.
    *
    * @get get
-   * @type {?string}
+   * @type {string}
    */
   this.k_business = "";
 
   /**
-   * ID of the sale item.
-   *
-   * Empty value means not set.
+   * The key of the sale item.
+   * It can be retrieved with the {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel} endpoint (see the
+   * <var>a_shop_product</var> parameter).
    *
    * @get get
    * @type {string}
@@ -80,9 +104,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.k_id = "";
 
   /**
-   * Shop product option ID.
-   *
-   * Empty value means not set.
+   * The key of the product option.
    *
    * @get get
    * @type {string}
@@ -90,9 +112,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.k_shop_product_option = "";
 
   /**
-   * Price amount.
-   *
-   * Empty value means not set.
+   * The custom price of the sale item.
    *
    * @get get
    * @type {string}
@@ -100,7 +120,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.m_price = "";
 
   /**
-   * Prorate amount.
+   * The prorated amount.
    *
    * @get result
    * @type {string}
@@ -116,7 +136,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.m_subtotal = undefined;
 
   /**
-   * Amount of tax.
+   * The calculated amount of tax.
    *
    * @get result
    * @type {string}
@@ -124,7 +144,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.m_tax = undefined;
 
   /**
-   * Amount of sale item including taxes and quantity.
+   * The calculated amount of the sale item, including taxes.
    *
    * @get result
    * @type {string}
@@ -132,9 +152,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.m_total = undefined;
 
   /**
-   * Current user ID.
-   *
-   * Empty value means not set.
+   * The ID of the user who performed the actions.
    *
    * @get get
    * @type {string}

@@ -1,5 +1,5 @@
 /**
- * API for testing with {@link \Core\Request\Api::DENY_DEFAULT} equal <tt>false</tt>.
+ * API for testing with {@link Core_Request_Model.DENY_DEFAULT} equal <tt>false</tt>.
  *
  * This model is generated automatically based on API.
  *

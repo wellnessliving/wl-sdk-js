@@ -43,6 +43,14 @@ function Wl_Business_Account_Subscription_PriceOverrideModel()
   this.id_periodicity = undefined;
 
   /**
+   * Plan ID.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.id_plan = undefined;
+
+  /**
    * Business key from {@link \RsBusinessSql}.
    *
    * @get get
@@ -60,5 +68,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Account_Subscription_PriceOverrideModel);
  */
 Wl_Business_Account_Subscription_PriceOverrideModel.prototype.config=function()
 {
-  return {"a_field": {"a_override": {"get": {"result": true}},"cid_subscription": {"get": {"get": true}},"has_override": {"get": {"result": true}},"id_periodicity": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field": {"a_override": {"get": {"result": true}},"cid_subscription": {"get": {"get": true}},"has_override": {"get": {"result": true}},"id_periodicity": {"get": {"get": true}},"id_plan": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };

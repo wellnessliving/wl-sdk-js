@@ -11,7 +11,7 @@ function Wl_Session_Status_Model()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Whether current user has left hist contact details. {@link \Wl\Session\Status\Api::contactSet()} is used to set, and {@link \Wl\Session\Status\Api::contactGet()} is used to retrieve this flag.
+   * Whether current user has left hist contact details. {@link Wl_Session_Status_Model.contactSet()} is used to set, and {@link Wl_Session_Status_Model.contactGet()} is used to retrieve this flag.
    *
    * @get result
    * @type {boolean}

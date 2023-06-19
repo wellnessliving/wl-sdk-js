@@ -16,7 +16,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel()
   this._s_key = "k_business,uid";
 
   /**
-   * IDs of staff members which must be represented of business schedule. Primary keys in {@link \RsStaffSql} table.
+   * IDs of staff members which must be represented of business schedule.
    *
    * @get result
    * @type {string[]}
@@ -25,7 +25,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel()
 
   /**
    * Business key.
-   * Primary key in {@link RsBusinessSql} table.
    *
    * @delete get
    * @get get
@@ -37,7 +36,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel()
 
   /**
    * User key.
-   * Primary key in {@link PassportLoginSql} table.
    *
    * @delete get
    * @get get
@@ -63,8 +61,8 @@ Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel.prototype.config=
 /**
  * @function
  * @name Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel.instanceGet
- * @param {string} k_business Business key. Primary key in {@link RsBusinessSql} table.
- * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

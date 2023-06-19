@@ -45,15 +45,6 @@ function Core_WebSocket_SubscribeModel()
   this.cid_channel = undefined;
 
   /**
-   * Key of the last websocket message that was received by a browser.
-   * Primary key in the {@link WebSocketChannelMessageSql} table.
-   *
-   * @post post
-   * @type {string}
-   */
-  this.k_channel_message = undefined;
-
-  /**
    * Subscriber password.
    *
    * @post post
@@ -81,5 +72,5 @@ WlSdk_ModelAbstract.extend(Core_WebSocket_SubscribeModel);
  */
 Core_WebSocket_SubscribeModel.prototype.config=function()
 {
-  return {"a_field": {"a_key": {"post": {"post": true}},"a_message_broadcast": {"post": {"result": true}},"cid_channel": {"post": {"post": true}},"k_channel_message": {"post": {"post": true}},"s_password": {"post": {"post": true}},"s_token": {"post": {"post": true}}}};
+  return {"a_field": {"a_key": {"post": {"post": true}},"a_message_broadcast": {"post": {"result": true}},"cid_channel": {"post": {"post": true}},"s_password": {"post": {"post": true}},"s_token": {"post": {"post": true}}}};
 };

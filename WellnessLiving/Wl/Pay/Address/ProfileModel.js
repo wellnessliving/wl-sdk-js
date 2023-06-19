@@ -1,5 +1,5 @@
 /**
- * Returns default payment address data that is retrieved from user profile.
+ * An endpoint that retrieves a client’s physical address from their profile.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,7 @@ function Wl_Pay_Address_ProfileModel()
   this._s_key = "k_business,uid";
 
   /**
-   * The business identifier in which editing is performed.
+   * The business key number used internally by WellnessLiving.
    *
    * @get get
    * @type {string}
@@ -24,7 +24,9 @@ function Wl_Pay_Address_ProfileModel()
   this.k_business = "";
 
   /**
-   * ID of GEO country.
+   * The country key.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @type {?string}
@@ -32,7 +34,9 @@ function Wl_Pay_Address_ProfileModel()
   this.k_geo_country = null;
 
   /**
-   * ID of GEO region.
+   * The region ID.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @type {?string}
@@ -40,7 +44,9 @@ function Wl_Pay_Address_ProfileModel()
   this.k_geo_region = null;
 
   /**
-   * Name of the city. <tt>null</tt> if city is not selected in user profile.
+   * The name of the city in the address.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @type {?string}
@@ -48,7 +54,9 @@ function Wl_Pay_Address_ProfileModel()
   this.s_city = null;
 
   /**
-   * Name of the user. <tt>null</tt> if user name is not entered in user profile.
+   * The client name as listed in their address.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @type {?string}
@@ -56,7 +64,9 @@ function Wl_Pay_Address_ProfileModel()
   this.s_name = null;
 
   /**
-   * Phone number.
+   * The client phone number.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @type {?string}
@@ -64,7 +74,9 @@ function Wl_Pay_Address_ProfileModel()
   this.s_phone = null;
 
   /**
-   * Postal code. <tt>null</tt> if postal code is not entered in user profile.
+   * The client postal or zip code.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @type {?string}
@@ -72,7 +84,9 @@ function Wl_Pay_Address_ProfileModel()
   this.s_postal = null;
 
   /**
-   * Street address, line 1. <tt>null</tt> if street address is not entered in user profile.
+   * The first line of the client address.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @type {?string}
@@ -80,7 +94,9 @@ function Wl_Pay_Address_ProfileModel()
   this.s_street1 = null;
 
   /**
-   * Street address, line 2. <tt>null</tt> if street address is not entered in user profile.
+   * The second line of the client address.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @type {?string}
@@ -88,7 +104,7 @@ function Wl_Pay_Address_ProfileModel()
   this.s_street2 = null;
 
   /**
-   * ID of a user whose default payment address should be returned.
+   * The key of the user whose data should be retrieved.
    *
    * @get get
    * @type {string}
@@ -111,8 +127,8 @@ Wl_Pay_Address_ProfileModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Pay_Address_ProfileModel.instanceGet
- * @param {string} k_business The business identifier in which editing is performed.
- * @param {string} uid ID of a user whose default payment address should be returned.
+ * @param {string} k_business The business key number used internally by WellnessLiving.
+ * @param {string} uid The key of the user whose data should be retrieved.
  * @returns {Wl_Pay_Address_ProfileModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -17,7 +17,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel()
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel_a_resource
-   * @property {{}} a_image Data of asset image. See {@link \RsResourceImage::data()} for details.
+   * @property {{}} a_image Data of asset image. See {@link RsResourceImage::data()} for details.
    * @property {string} text_title Asset title.
    */
 
@@ -28,7 +28,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel()
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     Data of asset image. See {@link \RsResourceImage::data()} for details.
+   *     Data of asset image. See {@link RsResourceImage::data()} for details.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
@@ -45,7 +45,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel()
 
   /**
    * Business key.
-   * Primary key in {@link RsBusinessSql} table.
    *
    * @delete get
    * @get get
@@ -57,7 +56,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel()
 
   /**
    * User key.
-   * Primary key in {@link PassportLoginSql} table.
    *
    * @delete get
    * @get get
@@ -83,8 +81,8 @@ Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel.prototype.c
 /**
  * @function
  * @name Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel.instanceGet
- * @param {string} k_business Business key. Primary key in {@link RsBusinessSql} table.
- * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Resource_ScheduleListResourceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

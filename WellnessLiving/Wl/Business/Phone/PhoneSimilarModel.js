@@ -1,6 +1,6 @@
 /**
  * When business registers phone number, phone number must be verified first.
- * {@link \Wl\Business\Phone\PhoneVerifyApi} is used for it.
+ * {@link Wl_Business_Phone_PhoneVerifyModel} is used for it.
  *
  * In case phone number fails verification, few similar numbers should be suggested.
  * This API is used to get these similar phone numbers, depended on phone number which failed verification.
@@ -22,7 +22,7 @@ function Wl_Business_Phone_PhoneSimilarModel()
 
   /**
    * Array of phone numbers, which were got from provider.
-   * Amount of phone numbers is based on {@link PhoneSimilarApi::PHONE_AMOUNT}.
+   * Amount of phone numbers is based on {@link Wl_Business_Phone_PhoneSimilarModel.PHONE_AMOUNT}.
    *
    * Structure of this array is: <dl>
    *   <dt>string <var>text_phone</var></dt>
@@ -37,7 +37,7 @@ function Wl_Business_Phone_PhoneSimilarModel()
   this.a_phone = [];
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql}.
+   * Business key.
    *
    * @get get
    * @type {string}

@@ -12,7 +12,7 @@ function Wl_Login_Attendance_Design_CustomizeModel()
 
   /**
    * Field settings of attendance list.
-   * The key is settings name (sid constant from {@link \Wl\Login\Attendance\Design\FieldListSid}) and the value is
+   * The key is settings name (sid constant from {@link Wl_Login_Attendance_Design_FieldListSid}) and the value is
    * settings value.
    *
    * @get result

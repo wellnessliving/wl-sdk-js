@@ -19,7 +19,7 @@ function Wl_Import_Custom_Upload_CustomUploadModel()
   this.i_left = undefined;
 
   /**
-   * Type of custom import. One of {@link \Wl\Import\Custom\CustomSid} constants.
+   * Type of custom import. One of {@link Wl_Import_Custom_CustomSid} constants.
    *
    * @get get
    * @type {number}

@@ -1,6 +1,8 @@
 /**
  * Point to start password change procedure.
  *
+ * Post it to send to user "reset password email" mail.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
@@ -12,6 +14,8 @@ function Core_Passport_ChangePassword_ChangePasswordBeginModel()
 
   /**
    * Characters to pass captcha test.
+   *
+   * Specify it only if server requires captcha.
    *
    * @post post
    * @type {string}
@@ -29,6 +33,8 @@ function Core_Passport_ChangePassword_ChangePasswordBeginModel()
   /**
    * User's email.
    *
+   * <b>Required!</b>
+   *
    * @post post
    * @type {string}
    */
@@ -37,7 +43,7 @@ function Core_Passport_ChangePassword_ChangePasswordBeginModel()
   /**
    * URL to password reset page. This link will be used in a password reset email.
    *
-   * If empty, URL to default page will be used.
+   * Specify only if you want to send user to a custom password reset page, if empty, URL to default page will be used.
    *
    * @post post
    * @type {string}

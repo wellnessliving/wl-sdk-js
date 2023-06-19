@@ -1,10 +1,10 @@
 /**
  * API for testing base implementation for method:
- * * {@link Api::delete()}
- * * {@link Api::get()}
- * * {@link Api::patch()}
- * * {@link Api::post()}
- * * {@link Api::put()}
+ * * {@link Core_Request_Model.delete()}
+ * * {@link Core_Request_Model.get()}
+ * * {@link Core_Request_Model.patch()}
+ * * {@link Core_Request_Model.post()}
+ * * {@link Core_Request_Model.put()}
  *
  * This model is generated automatically based on API.
  *

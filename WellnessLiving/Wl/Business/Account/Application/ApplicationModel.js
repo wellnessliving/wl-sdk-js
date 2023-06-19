@@ -11,7 +11,7 @@ function Wl_Business_Account_Application_ApplicationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Application package ID. One of {@link \Wl\Business\Account\ApplicationSid}.
+   * Application package ID. One of {@link Wl_Business_Account_ApplicationSid}.
    *
    * @post get
    * @type {number}
@@ -19,7 +19,7 @@ function Wl_Business_Account_Application_ApplicationModel()
   this.id_application = undefined;
 
   /**
-   * Business key. Primary key from the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @post get
    * @type {string}

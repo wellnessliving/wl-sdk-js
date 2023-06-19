@@ -12,7 +12,6 @@ function Wl_Insurance_Profile_InsuranceHoldModel()
 
   /**
    * Key of business to which currently handled login promotion belongs.
-   * Primary key in {@link \RsBusinessSql} table.
    *
    * @delete get
    * @post get
@@ -22,8 +21,6 @@ function Wl_Insurance_Profile_InsuranceHoldModel()
 
   /**
    * Key of login promotion to cancel.
-   *
-   * Primary key in {@link \RsLoginPromotionSql} table.
    *
    * @delete get
    * @post get

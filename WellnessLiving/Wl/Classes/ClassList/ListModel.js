@@ -24,7 +24,7 @@ function Wl_Classes_ClassList_ListModel()
    * @property {boolean} is_event Define if current element is event.<tt>true</tt> - event, <tt>false</tt> - class.
    * @property {boolean} is_remove Whether class/event is removed.
    * @property {string} k_class Class/event identifier, primary key in {@link \RsClassSql}.
-   * @property {string} k_enrollment_block Event Block ID, primary key in {@link RsEnrollmentBlockSql}.
+   * @property {string} k_enrollment_block Event Block ID, primary key in {@link \RsEnrollmentBlockSql}.
    * @property {string} text_title Class/event name.
    */
 
@@ -68,7 +68,7 @@ function Wl_Classes_ClassList_ListModel()
    *     string <var>k_enrollment_block</var>
    *   </dt>
    *   <dd>
-   *     Event Block ID, primary key in {@link RsEnrollmentBlockSql}.
+   *     Event Block ID, primary key in {@link \RsEnrollmentBlockSql}.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>

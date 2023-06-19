@@ -1,5 +1,5 @@
 /**
- * Always throws {@link \Core\Request\Api\DebugException}, for all methods.
+ * Always throws {@link Core_Request_Model\DebugException}, for all methods.
  *
  * This class is used when an API request to an unexisting endpoint is performed.
  *

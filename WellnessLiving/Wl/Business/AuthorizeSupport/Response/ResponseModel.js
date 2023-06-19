@@ -1,5 +1,9 @@
 /**
- * Entry point for grant/deny access to business location.
+ * An endpoint to request entrance into a business location.
+ *
+ * This endpoint is similar to {@link Wl_Business_AuthorizePartner_AuthorizePartnerModel} but not identical. To grant a user
+ * access the SDK sign-in account, the Manage Business permission is required. The associated accounts will receive an
+ * email regarding when they are given access and when that access expires. Access will be granted for 24 hours.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +15,9 @@ function Wl_Business_AuthorizeSupport_Response_ResponseModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * <tt>true</tt> - grant access; <tt>false</tt> - deny access.
+   * Determines whether the user will be granted access or if access will be revoked.
+   * If <tt>true</tt> - then grant access; If <tt>false</tt> - then revoke access.
+   * Revoking access is a scheduled task set to be run within the next 15 minutes.
    *
    * @get get
    * @type {boolean}
@@ -19,7 +25,7 @@ function Wl_Business_AuthorizeSupport_Response_ResponseModel()
   this.is_grant = false;
 
   /**
-   * Location to which user want to enter. Primary key in {@link \RsLocationSql} table.
+   * The key of the location to access.
    *
    * @get get
    * @type {string}
@@ -27,7 +33,7 @@ function Wl_Business_AuthorizeSupport_Response_ResponseModel()
   this.k_location = "0";
 
   /**
-   * User who want to enter. Primary key in {@link \PassportLoginSql} table.
+   * The key of the user who will be granted access.
    *
    * @get get
    * @type {string}

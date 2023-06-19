@@ -30,7 +30,7 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
    */
   /**
    * @typedef {{}} Wl_Pay_Bank_Ach_Add_AddModel_a_card_detail
-   * @property {Wl_Pay_Bank_Ach_Add_AddModel_a_card_detail_a_pay_address} a_pay_address Payment address for {@link RsPayAddressSelectWidget} address edit widget:
+   * @property {Wl_Pay_Bank_Ach_Add_AddModel_a_card_detail_a_pay_address} a_pay_address Payment address for {@link \RsPayAddressSelectWidget} address edit widget:
    * <dl>
    *   <dt>bool <tt>is_new</tt></dt>
    *   <dd><tt>true</tt> - add new address; <tt>false</tt> - use existing address.</dd>
@@ -53,10 +53,13 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
    *   <dt>string <tt>s_street2</tt></dt>
    *   <dd>Second address line.</dd>
    * </dl>
+   * @property {number} id_pay_actor Pay actor id. One of {@link RsPayActorSid} constants.
    * @property {number} id_pay_bank_ach_holder Account holder type. One of {@link RsPayBankAchHolderSid} constants.
    * @property {number} id_pay_bank_ach_sec SEC code. One of {@link RsPayBankAchSecSid} constants.
    * @property {number} id_pay_bank_ach_type Account type. One of {@link RsPayBankAchTypeSid} constants.
    * @property {boolean} is_default <tt>true</tt> - if a payment method is set as default, <tt>false</tt> - otherwise.
+   * @property {string} k_pay_bank Key of existing payment source in case of editing.
+   * Empty if new pay source is being added.
    * @property {string} s_aban ABA number.
    * @property {string} s_account Account number.
    * @property {string} s_name Bank account nickname.
@@ -69,7 +72,7 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
    * <dl>
    *   <dt>array <var>a_pay_address</var></dt>
    *   <dd>
-   *     Payment address for {@link RsPayAddressSelectWidget} address edit widget:
+   *     Payment address for {@link \RsPayAddressSelectWidget} address edit widget:
    *     <dl>
    *       <dt>bool <var>is_new</var></dt>
    *       <dd><tt>true</tt> - add new address; <tt>false</tt> - use existing address.</dd>
@@ -93,6 +96,8 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
    *       <dd>Second address line.</dd>
    *     </dl>
    *   </dd>
+   *   <dt>int <var>id_pay_actor</var></dt>
+   *   <dd>Pay actor id. One of {@link RsPayActorSid} constants.</dd>
    *   <dt>int <var>id_pay_bank_ach_holder</var></dt>
    *   <dd>Account holder type. One of {@link RsPayBankAchHolderSid} constants.</dd>
    *   <dt>int <var>id_pay_bank_ach_sec</var></dt>
@@ -101,6 +106,11 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
    *   <dd>Account type. One of {@link RsPayBankAchTypeSid} constants.</dd>
    *   <dt>bool <var>is_default</var></dt>
    *   <dd><tt>true</tt> - if a payment method is set as default, <tt>false</tt> - otherwise.</dd>
+   *   <dt>string <var>k_pay_bank</var></dt>
+   *   <dd>
+   *     Key of existing payment source in case of editing.
+   *     Empty if new pay source is being added.
+   *   </dd>
    *   <dt>string <var>s_aban</var></dt>
    *   <dd>ABA number.</dd>
    *   <dt>string <var>s_account</var></dt>
@@ -119,8 +129,9 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
   this.a_card_detail = [];
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
+   * @delete get
    * @get get
    * @post get
    * @type {string}
@@ -128,7 +139,7 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
   this.k_business = "0";
 
   /**
-   * Location key. Primary key in {@link \RsLocationSql} table.
+   * Location key.
    *
    * If empty, user's home location will be used.
    *
@@ -139,7 +150,17 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
   this.k_location = "0";
 
   /**
-   * Pay owner key. Primary key in {@link \RsPayOwnerSql} table.
+   * Pay bank key to delete.
+   *
+   * @delete get
+   * @type {string}
+   */
+  this.k_pay_bank = "0";
+
+  /**
+   * Pay owner key.
+   *
+   * Copy of result of {@link Wl\Pay\Owner\PayOwner::ownerMoney()}.
    *
    * @get get
    * @post get
@@ -157,15 +178,15 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Bank_Ach_Add_AddModel);
  */
 Wl_Pay_Bank_Ach_Add_AddModel.prototype.config=function()
 {
-  return {"a_field": {"a_card_detail": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true},"post": {"get": true}},"k_pay_owner": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_card_detail": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true},"post": {"get": true}},"k_pay_bank": {"delete": {"get": true}},"k_pay_owner": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Pay_Bank_Ach_Add_AddModel.instanceGet
- * @param {string} k_business Business key. Primary key in {@link \RsBusinessSql} table.
- * @param {string} k_location Location key. Primary key in {@link \RsLocationSql} table. If empty, user's home location will be used.
- * @param {string} k_pay_owner Pay owner key. Primary key in {@link \RsPayOwnerSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} k_location Location key. If empty, user's home location will be used.
+ * @param {string} k_pay_owner Pay owner key. Copy of result of {@link Wl\Pay\Owner\PayOwner::ownerMoney()}.
  * @returns {Wl_Pay_Bank_Ach_Add_AddModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

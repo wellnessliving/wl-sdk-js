@@ -1,5 +1,10 @@
 /**
- * Manages promotion payment pause periods.
+ * An endpoint that manages or retrieves information about holds on Purchase Options.
+ *
+ * The DELETE method can remove a hold.
+ * The GET method only returns information about active holds.
+ * The POST method can create or edit a hold.
+ * The PUT method can edit a hold.
  *
  * This model is generated automatically based on API.
  *
@@ -18,7 +23,7 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
    * @property {string} dl_start Starting date of the pause (inclusively - this date is paused).
    * @property {?number} i_hold_day Duration of the hold in days. <tt>null</tt> if the hold is ongoing.
    * @property {boolean} is_past Whether the hold is in past.
-   * @property {string} k_promotion_pay_pause Key of the hold period. Primary key in the {@link \RsPromotionPayPauseSql} table.
+   * @property {string} k_promotion_pay_pause Key of the hold period.
    * @property {?string} text_note Additional notes.
    * @property {?string} text_user_create Full name of a user that has created hold period. <tt>null</tt> for old records.
    * @property {?string} uid_create Key of a user that has created hold period. <tt>null</tt> for old records.
@@ -40,7 +45,7 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
    *   <dt>bool <var>is_past</var></dt>
    *   <dd>Whether the hold is in past.</dd>
    *   <dt>string <var>k_promotion_pay_pause</var></dt>
-   *   <dd>Key of the hold period. Primary key in the {@link \RsPromotionPayPauseSql} table.</dd>
+   *   <dd>Key of the hold period.</dd>
    *   <dt>string|null <var>text_note</var></dt>
    *   <dd>Additional notes.</dd>
    *   <dt>string|null <var>text_user_create</var></dt>
@@ -49,7 +54,7 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
    *   <dd>Key of a user that has created hold period. <tt>null</tt> for old records.</dd>
    * </dl>
    *
-   * <tt>null</tt> if {@link PromotionPayPauseApi::$is_list} is false.
+   * <tt>null</tt> if {@link Wl_Login_Promotion_PromotionPayPauseModel.is_list} is false.
    *
    * @get result
    * @type {?Wl_Login_Promotion_PromotionPayPauseModel_a_pay_pause_list[]}
@@ -57,10 +62,10 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   this.a_pay_pause_list = null;
 
   /**
-   * End date of pause period in login promotion timezone. Can be set to special value
-   * {@link PromotionPayPause::DATE_END_INDEFINITE} to make the period indefinite until further action.
+   * The end date of the current hold, in the local time zone. This can be set to a special value
+   * {@link Wl\Promotion\Pay\PromotionPayPause::DATE_END_INDEFINITE} to make the period indefinite until further action.
    *
-   * <tt>null</tt> if it shouldn't be updated.
+   * `null` if it shouldn't be updated.
    *
    * @get get,result
    * @post get
@@ -70,9 +75,9 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   this.dt_end = null;
 
   /**
-   * Start date of pause period in login promotion timezone.
+   * The start date of the current hold, in the local time zone.
    *
-   * <tt>null</tt> if it shouldn't be updated.
+   * `null` if it shouldn't be updated.
    *
    * @get get,result
    * @post get
@@ -83,10 +88,10 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
 
   /**
    * Whether need to get all pause periods for the login promotion.
-   * If <tt>true</tt> then {@link PromotionPayPauseApi::$a_pay_pause_list} will be returned.
-   * If <tt>false</tt> then information about specified {@link PromotionPayPauseApi::$k_promotion_pay_pause} or
-   * currently active pause period will be returned ({@link PromotionPayPauseApi::$dt_start},
-   * {@link PromotionPayPauseApi::$dt_end} and {@link PromotionPayPauseApi::$text_note}).
+   * If <tt>true</tt> then {@link Wl_Login_Promotion_PromotionPayPauseModel.a_pay_pause_list} will be returned.
+   * If <tt>false</tt> then information about specified {@link Wl_Login_Promotion_PromotionPayPauseModel.k_promotion_pay_pause} or
+   * currently active pause period will be returned ({@link Wl_Login_Promotion_PromotionPayPauseModel.dt_start},
+   * {@link Wl_Login_Promotion_PromotionPayPauseModel.dt_end} and {@link Wl_Login_Promotion_PromotionPayPauseModel.text_note}).
    *
    * @get get
    * @type {boolean}
@@ -95,7 +100,6 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
 
   /**
    * Key of business to which currently handled pause period or login promotion belongs.
-   * Primary key in {@link \RsBusinessSql} table.
    *
    * <tt>null</tt> if not initialized.
    *
@@ -108,12 +112,12 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   this.k_business = null;
 
   /**
-   * Key of login promotion to create pause for.
-   * Primary key in {@link \RsLoginPromotionSql} table.
+   * The Purchase Option key. If this key is used, a new hold will be created. The endpoint will return a `start-cross`
+   * status code if a hold is already in place.
    *
-   * Ignored if {@link $k_promotion_pay_pause} is provided.
+   * Ignored if {@link Wl_Login_Promotion_PromotionPayPauseModel.k_promotion_pay_pause} is provided.
    *
-   * <tt>null</tt> if not initialized.
+   * `null` if not yet initialized.
    *
    * @delete get
    * @get get,result
@@ -123,10 +127,10 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   this.k_login_promotion = null;
 
   /**
-   * Key of the payment pause period to read or update.
-   * Primary key in {@link \RsPromotionPayPauseSql} table.
+   * The promotion payment hold key. If this key is used, it will edit an existing hold.
+   * This key will be empty if there's no active hold in place or if a scheduled hold isn't in effect.
    *
-   * <tt>null</tt> if not initialized or request is based on {@link $k_login_promotion}.
+   * `null` if not yet initialized or if the request is based on {@link Wl_Login_Promotion_PromotionPayPauseModel.k_login_promotion}.
    *
    * @delete get
    * @get get,result
@@ -137,9 +141,10 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   this.k_promotion_pay_pause = null;
 
   /**
-   * Additional notes for promotion payment pause period.
+   * Additional notes for the promotion payment pause period.
+   * Leave this field as `null` if the note shouldn't be updated.
    *
-   * <tt>null</tt> if it shouldn't be updated.
+   * `null` if it shouldn't be updated.
    *
    * @get result
    * @post post

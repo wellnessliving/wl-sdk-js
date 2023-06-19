@@ -1,5 +1,5 @@
 /**
- * Retrieves a list of activity items to show in user profile.
+ * An endpoint that returns a list of client activities.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,9 @@ function Wl_Profile_Activity_ListModel()
   this._s_key = "k_business,uid";
 
   /**
-   * A list of activity items. Each value is a primary key in {@link RsLoginActivitySql}.
+   * An array listing client activities, where each activity is provided as an ID number.
+   *
+   * The order of items in this array is the order in which the elements should be displayed.
    *
    * @get result
    * @type {string[]}
@@ -24,7 +26,7 @@ function Wl_Profile_Activity_ListModel()
   this.a_activity = undefined;
 
   /**
-   * ID of a business to show information for.
+   * The key of the business to show information for.
    *
    * @get get
    * @type {string}
@@ -32,7 +34,7 @@ function Wl_Profile_Activity_ListModel()
   this.k_business = "0";
 
   /**
-   * ID of a user to show information for.
+   * The key of the client to show information for.
    *
    * @get get
    * @type {string}
@@ -55,8 +57,8 @@ Wl_Profile_Activity_ListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Activity_ListModel.instanceGet
- * @param {string} k_business ID of a business to show information for.
- * @param {string} uid ID of a user to show information for.
+ * @param {string} k_business The key of the business to show information for.
+ * @param {string} uid The key of the client to show information for.
  * @returns {Wl_Profile_Activity_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

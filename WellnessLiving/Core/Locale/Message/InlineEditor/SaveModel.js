@@ -12,14 +12,14 @@ function Core_Locale_Message_InlineEditor_SaveModel()
 
   /**
    * @typedef {{}} Core_Locale_Message_InlineEditor_SaveModel_a_translate
-   * @property {{}} a_translate Translations to save. Key is language ID (one of {@link \Core\Locale\Language\LocaleLanguageSid} constants),
+   * @property {{}} a_translate Translations to save. Key is language ID (one of {@link Core_Locale_Language_LocaleLanguageSid} constants),
    *   value is either translation, or <tt>null</tt> to remove translation.
    * @property {*} is_js Whether this message is originated from JavaScript code.
    * 
    *   Setting this flag leads to that this source and all translations are added to
    *   {@link \Core\Locale\Message\InlineEditor\InlineSql}.
    * 
-   *   This flag is only considered if {@link \Core\Locale\Message\InlineEditor\SaveApi::FORWARD_GLOBAL} is set to
+   *   This flag is only considered if {@link Core_Locale_Message_InlineEditor_SaveModel.FORWARD_GLOBAL} is set to
    *   <tt>true</tt>.
    * @property {string} text_source Source of translated message.
    */
@@ -30,7 +30,7 @@ function Core_Locale_Message_InlineEditor_SaveModel()
    * Each element of this array contains:<dl>
    *   <dt>array <var>a_translate</var></dt>
    *   <dd>
-   *   Translations to save. Key is language ID (one of {@link \Core\Locale\Language\LocaleLanguageSid} constants),
+   *   Translations to save. Key is language ID (one of {@link Core_Locale_Language_LocaleLanguageSid} constants),
    *   value is either translation, or <tt>null</tt> to remove translation.
    *   </dd>
    *   <dt>bool [<var>is_js</var>=<tt>false</tt>]</dt>
@@ -40,7 +40,7 @@ function Core_Locale_Message_InlineEditor_SaveModel()
    *   Setting this flag leads to that this source and all translations are added to
    *   {@link \Core\Locale\Message\InlineEditor\InlineSql}.
    *
-   *   This flag is only considered if {@link \Core\Locale\Message\InlineEditor\SaveApi::FORWARD_GLOBAL} is set to
+   *   This flag is only considered if {@link Core_Locale_Message_InlineEditor_SaveModel.FORWARD_GLOBAL} is set to
    *   <tt>true</tt>.
    *   </dd>
    *   <dt>string <var>text_source</var></dt>

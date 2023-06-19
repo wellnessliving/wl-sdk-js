@@ -13,8 +13,6 @@ function Wl_Profile_Visit_VisitModel()
   /**
    * UID of the user that is visited by current user.
    *
-   * Primary key in {@link PassportLoginSql}.
-   *
    * @post post
    * @type {string}
    */

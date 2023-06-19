@@ -1,5 +1,5 @@
 /**
- * Entry point for cancellation of whole event.
+ * An endpoint that cancels a whole event booked by a client.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +11,7 @@ function Wl_Event_EventCancelWholeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Event key.
+   * An event key.
    *
    * @post post
    * @type {string}
@@ -19,7 +19,7 @@ function Wl_Event_EventCancelWholeModel()
   this.k_class = "0";
 
   /**
-   * User key.
+   * A user key.
    *
    * @post post
    * @type {string}

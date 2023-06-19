@@ -19,12 +19,22 @@ function Core_Prg_PgSql_QueryExecuteModel()
   this.html_body = undefined;
 
   /**
-   * Data for connection to execute PostgreSQL query.
+   * `true` if the query must be executed on behalf of the root,
+   * `false` if the query must be executed on behalf of a normal user with limited rights.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_root = undefined;
+
+  /**
+   * The connection key to execute PostgreSQL query.
+   * One of the result keys of the {@link Core\Prg\PgSql\QueryPgSqlExecute::connectionList()} method.
    *
    * @post post
    * @type {string}
    */
-  this.s_connect = undefined;
+  this.s_connection = undefined;
 
   /**
    * PostgreSQL query to execute.
@@ -44,5 +54,5 @@ WlSdk_ModelAbstract.extend(Core_Prg_PgSql_QueryExecuteModel);
  */
 Core_Prg_PgSql_QueryExecuteModel.prototype.config=function()
 {
-  return {"a_field": {"html_body": {"post": {"result": true}},"s_connect": {"post": {"post": true}},"s_pgsql_query": {"post": {"post": true}}}};
+  return {"a_field": {"html_body": {"post": {"result": true}},"is_root": {"post": {"post": true}},"s_connection": {"post": {"post": true}},"s_pgsql_query": {"post": {"post": true}}}};
 };

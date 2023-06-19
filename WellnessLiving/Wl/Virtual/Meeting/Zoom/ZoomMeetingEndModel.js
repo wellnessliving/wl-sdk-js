@@ -1,5 +1,5 @@
 /**
- * Api for end Zoom meeting.
+ * Api called when meeting ended.
  *
  * This model is generated automatically based on API.
  *

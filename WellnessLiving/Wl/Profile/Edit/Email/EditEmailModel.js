@@ -1,5 +1,7 @@
 /**
- * Entry point to check user's email.
+ * An endpoint that checks if a user's email address is already used or changes a user’s login email address.
+ *
+ * This endpoint is rate limited. If the rate limit is exceeded, it won't return user information.
  *
  * This model is generated automatically based on API.
  *
@@ -24,7 +26,9 @@ function Wl_Profile_Edit_Email_EditEmailModel()
    */
 
   /**
-   * Information about user who already occupies specified email. Empty array if email is free or if quantity of requests is exhausted. Otherwise has next keys:
+   * Information about the user who occupies the specified email.
+   * This will be empty if the email is free or if the rate limit has been reached.
+   * Otherwise, has next keys:
    * <dl>
    *   <dt>
    *     string <var>text_firstname</var>
@@ -58,7 +62,16 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.a_user = undefined;
 
   /**
-   * <tt>true</tt> - quantity of request is exhausted; <tt>false</tt> - otherwise. See {@link \Wl\Login\Member\MemberMail::mailUse()} for details.
+   * Shows, whether client was registered in the business: <tt>true</tt> if user was added to the business,
+   * <tt>false</tt> if staff only received temporary access, because mandatory fields must be specified first.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_added = false;
+
+  /**
+   * If `true`, then the number of requests has exceeded the rate limit. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -66,7 +79,7 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.is_limit = undefined;
 
   /**
-   * <tt>true</tt> - specified email is occupied; <tt>false</tt> - otherwise.
+   * If `true`, then the specified email is in use. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -74,7 +87,7 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.is_use = undefined;
 
   /**
-   * Business primary key in {@link \RsBusinessSql} table.
+   * The business key where the check must be performed.
    *
    * @get get
    * @post get
@@ -83,7 +96,7 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.k_business = "0";
 
   /**
-   * Email to be checked.
+   * The email address to be checked.
    *
    * @get get
    * @type {string}
@@ -91,7 +104,8 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.text_mail = "";
 
   /**
-   * User who occupies specified email. Primary key in {@link \PaslortLoginSql} table. <tt>0</tt> if email is free or if quantity of requests is exhausted.
+   * The key of user who has the specified email.
+   * This will be `0` if the email is free or if the rate limit has been reached.
    *
    * @get result
    * @type {string}
@@ -99,7 +113,8 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.uid_result = undefined;
 
   /**
-   * User primary key in {@link \PassportLoginSql} table.
+   * The key of user whose email will be edited.
+   * This will be `0` in the case of a new user creation.
    *
    * @get get
    * @post get
@@ -117,15 +132,15 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_Email_EditEmailModel);
  */
 Wl_Profile_Edit_Email_EditEmailModel.prototype.config=function()
 {
-  return {"a_field": {"a_user": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_use": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true}},"uid_result": {"get": {"result": true}},"uid_want": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_user": {"get": {"result": true}},"is_added": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_use": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true}},"uid_result": {"get": {"result": true}},"uid_want": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Profile_Edit_Email_EditEmailModel.instanceGet
- * @param {string} k_business Business primary key in {@link \RsBusinessSql} table.
- * @param {string} text_mail Email to be checked.
- * @param {string} uid_want User primary key in {@link \PassportLoginSql} table.
+ * @param {string} k_business The business key where the check must be performed.
+ * @param {string} text_mail The email address to be checked.
+ * @param {string} uid_want The key of user whose email will be edited. This will be `0` in the case of a new user creation.
  * @returns {Wl_Profile_Edit_Email_EditEmailModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

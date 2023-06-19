@@ -1,5 +1,8 @@
 /**
- * Entry point to grant/deny access to a business location for a partner.
+ * Endpoint to give members of a franchisor access to a franchisee.
+ *
+ * To grant a user access the SDK sign-in account, the Manage Franchise Location permission is required.
+ * Access will be granted for 24 hours.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +14,9 @@ function Wl_Business_AuthorizePartner_AuthorizePartnerModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * <tt>true</tt> - grant access; <tt>false</tt> - deny access.
+   * Determines whether the user will be granted access or if access will be revoked.
+   * If <tt>true</tt> - then grant access; If <tt>false</tt> - then revoke access.
+   * Revoking access is a scheduled task set to be run within the next 15 minutes.
    *
    * @get get
    * @type {boolean}
@@ -19,7 +24,7 @@ function Wl_Business_AuthorizePartner_AuthorizePartnerModel()
   this.is_grant = false;
 
   /**
-   * Key for the location which the user wants to enter. Primary key in the {@link \RsLocationSql} table.
+   * The key of the franchisee location to enter.
    *
    * @get get
    * @type {string}
@@ -27,7 +32,7 @@ function Wl_Business_AuthorizePartner_AuthorizePartnerModel()
   this.k_location = "0";
 
   /**
-   * Key for the user who wants to enter. Primary key in the {@link \PassportLoginSql} table.
+   * The key of the user who will be granted access.
    *
    * @get get
    * @type {string}

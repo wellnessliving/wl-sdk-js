@@ -1,7 +1,5 @@
 /**
- * Api to return list of video categories.
- *
- * Results of the methods can be viewed in the model.
+ * An endpoint that returns a list of video categories.
  *
  * This model is generated automatically based on API.
  *
@@ -18,7 +16,7 @@ function Wl_Video_VideoElementModel()
   this._s_key = "k_business,k_video,is_backend";
 
   /**
-   * Keys of the locations, where this video is available.
+   * The keys of the locations where this video is available.
    *
    * @get result
    * @post post
@@ -27,7 +25,7 @@ function Wl_Video_VideoElementModel()
   this.a_location = undefined;
 
   /**
-   * Keys of the staff members, who are on the video.
+   * The keys of the staff members who are on the video.
    *
    * @get result
    * @post post
@@ -37,16 +35,16 @@ function Wl_Video_VideoElementModel()
 
   /**
    * @typedef {{}} Wl_Video_VideoElementModel_a_staff_info
-   * @property {string} k_staff Key of the staff. Primary key in {@link \RsStaffSql} table.
-   * @property {string} text_name Full staff name.
+   * @property {string} k_staff The staff member key.
+   * @property {string} text_name The staff member's full name.
    */
 
   /**
-   * List of staff members to show videos with. Every item has next structure:<dl>
+   * A list of staff members associated with the video. Every item has the following structure:<dl>
    *   <dt>string <var>k_staff</var></dt>
-   *   <dd>Key of the staff. Primary key in {@link \RsStaffSql} table.</dd>
+   *   <dd>The staff member key.</dd>
    *   <dt>string <var>text_name</var></dt>
-   *   <dd>Full staff name.</dd>
+   *   <dd>The staff member's full name.</dd>
    * </dl>
    *
    * @get result
@@ -55,7 +53,7 @@ function Wl_Video_VideoElementModel()
   this.a_staff_info = undefined;
 
   /**
-   * Keys of the video category, where these video can be found.
+   * The video category keys where this video can be found.
    *
    * @get result
    * @post post
@@ -64,7 +62,7 @@ function Wl_Video_VideoElementModel()
   this.a_video_category = undefined;
 
   /**
-   * Keys of the video tag.
+   * The video tag keys.
    *
    * @get result
    * @post post
@@ -73,9 +71,9 @@ function Wl_Video_VideoElementModel()
   this.a_video_tag = undefined;
 
   /**
-   * Date and time when video published
+   * The date and time when the video was published.
    *
-   * <tt>null</tt> if published date is not set.
+   * This will be `null` if the published date is not set yet.
    *
    * @get result
    * @post post
@@ -84,9 +82,9 @@ function Wl_Video_VideoElementModel()
   this.dtl_publish = null;
 
   /**
-   * Date and time when video unpublished
+   * The date and time when the video was unpublished.
    *
-   * <tt>null</tt> if unpublished date is not set.
+   * This will be `null` if the unpublished date is not set yet.
    *
    * @get result
    * @post post
@@ -95,7 +93,7 @@ function Wl_Video_VideoElementModel()
   this.dtl_unpublish = null;
 
   /**
-   * Date when video upload.
+   * The date when the video was uploaded.
    *
    * @get result
    * @type {string}
@@ -112,7 +110,7 @@ function Wl_Video_VideoElementModel()
   this.file_video = undefined;
 
   /**
-   * Count of burned calories.
+   * The count of burned calories associated with the video.
    *
    * @get result
    * @post post
@@ -121,7 +119,7 @@ function Wl_Video_VideoElementModel()
   this.i_calorie = 0;
 
   /**
-   * Current time as a percentage of the video duration at which the user is at in the video.
+   * The current time as a percentage of the video duration at which the user is at in the video.
    *
    * @get result
    * @type {number}
@@ -129,7 +127,7 @@ function Wl_Video_VideoElementModel()
   this.i_current_percent = undefined;
 
   /**
-   * Current time in seconds at which the user is at in the video.
+   * The current time in seconds at which the user is at in the video.
    *
    * @get result
    * @type {number}
@@ -137,7 +135,7 @@ function Wl_Video_VideoElementModel()
   this.i_current_time = undefined;
 
   /**
-   * Duration of video.
+   * The video duration in seconds.
    *
    * @get result
    * @post post
@@ -146,12 +144,12 @@ function Wl_Video_VideoElementModel()
   this.i_duration = undefined;
 
   /**
-   * Size of the uploaded file.
+   * The size of the uploaded file.
    *
-   * If the file will be uploaded in parts, size will be set.
+   * If the file will be uploaded in parts, its size will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * Method {@link VideoElementApi::_fileVideoGet()} will not return the result.
+   * Method {@link Wl_Video_VideoElementModel._fileVideoGet()} will not return the result.
    *
    * @post post
    * @type {number|string}
@@ -159,7 +157,7 @@ function Wl_Video_VideoElementModel()
   this.i_file_upload_size = "";
 
   /**
-   * Number of video views.
+   * The number of video views.
    *
    * @get result
    * @type {number}
@@ -167,8 +165,8 @@ function Wl_Video_VideoElementModel()
   this.i_watch = undefined;
 
   /**
-   * {@link YesNoSid::NO} if video is available in all locations.
-   * {@link YesNoSid::YES} if video is available only in certain locations.
+   * {@link Core_Sid_YesNoSid.NO} if the video is available in all locations.
+   * {@link Core_Sid_YesNoSid.YES} if the video is available only in certain locations.
    *
    * @get result
    * @post post
@@ -177,7 +175,7 @@ function Wl_Video_VideoElementModel()
   this.id_location_select = undefined;
 
   /**
-   * <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
+   * If `true`, the API is being used from backend. Otherwise, this will be `false`.
    *
    * @delete get
    * @get get
@@ -187,8 +185,8 @@ function Wl_Video_VideoElementModel()
   this.is_backend = false;
 
   /**
-   * <tt>true</tt> if display calories on video.
-   * <tt>false</tt> if hide calories on video.
+   * If `true`, the calorie count will be displayed on the video.
+   * If `false`, the calorie count will be hidden on the video.
    *
    * @get result
    * @post post
@@ -197,8 +195,8 @@ function Wl_Video_VideoElementModel()
   this.is_calorie = undefined;
 
   /**
-   * `true` if video is converted.
-   * `false` if video is not converted.
+   * If `true`, the video is converted.
+   * If `false`, the video isn't converted.
    *
    * @get result
    * @post get
@@ -207,7 +205,7 @@ function Wl_Video_VideoElementModel()
   this.is_converted = undefined;
 
   /**
-   * <tt>true</tt> if video is published, <tt>false</tt> otherwise.
+   * If `true`, the video is published. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -215,8 +213,8 @@ function Wl_Video_VideoElementModel()
   this.is_published = undefined;
 
   /**
-   * <tt>true</tt> if enable video level for video.
-   * <tt>false</tt> if disable video level for video.
+   * If `true`, the video level for the video is enabled.
+   * If `false`, the video level for the video is disabled.
    *
    * @get result
    * @post post
@@ -225,7 +223,7 @@ function Wl_Video_VideoElementModel()
   this.is_video_level = undefined;
 
   /**
-   * Business key from {@link \RsBusinessSql}.
+   * The business key.
    *
    * @delete get
    * @get get
@@ -235,7 +233,7 @@ function Wl_Video_VideoElementModel()
   this.k_business = undefined;
 
   /**
-   * Video key from {@link VideoSql}.
+   * The video key.
    *
    * @delete get
    * @get get
@@ -245,7 +243,7 @@ function Wl_Video_VideoElementModel()
   this.k_video = undefined;
 
   /**
-   * Video category primary key.
+   * The video category primary key.
    *
    * @get result
    * @post post
@@ -254,8 +252,8 @@ function Wl_Video_VideoElementModel()
   this.k_video_category_primary = undefined;
 
   /**
-   * Video level key.
-   * <tt>0</tt> if select <tt>All Levels</tt>
+   * The video level key.
+   * This will be `0` if `All Levels` is selected.
    *
    * @get result
    * @post post
@@ -264,7 +262,7 @@ function Wl_Video_VideoElementModel()
   this.k_video_level = undefined;
 
   /**
-   * Name of the command that had been executing when exception occurred.
+   * The name of the command that has been executing when the exception occurred.
    *
    * @post post
    * @type {string}
@@ -276,7 +274,7 @@ function Wl_Video_VideoElementModel()
    * If the file will be uploaded in parts, upload ID will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * Method {@link VideoElementApi::_fileVideoGet()} will not return the result.
+   * Method {@link Wl_Video_VideoElementModel._fileVideoGet()} will not return the result.
    *
    * @post post
    * @type {string}
@@ -286,10 +284,10 @@ function Wl_Video_VideoElementModel()
   /**
    * The real name of the uploaded file.
    *
-   * If the file will be uploaded in parts, the name will be set.
+   * If the file will be uploaded in parts, its name will be set.
    *
-   * In this case, the file will not be uploaded to this API.
-   * Method {@link VideoElementApi::_fileVideoGet()} will not return the result.
+   * In this case, the file won't be uploaded to this API and the POST method won't
+   * return the result.
    *
    * @post post
    * @type {string}
@@ -297,9 +295,9 @@ function Wl_Video_VideoElementModel()
   this.s_file_upload_name = "";
 
   /**
-   * String representation of video's key.
+   * The string representation of the video's key.
    *
-   * <tt>null</tt> if video does not have thumbnail image.
+   * This will be `null` if the video doesn't have a thumbnail image.
    *
    * @get result
    * @type {?string}
@@ -307,7 +305,7 @@ function Wl_Video_VideoElementModel()
   this.s_preview_video_key = null;
 
   /**
-   * Thumbnail of video.
+   * The video thumbnail.
    *
    * @post post
    * @type {string}
@@ -315,7 +313,7 @@ function Wl_Video_VideoElementModel()
   this.s_thumbnail = undefined;
 
   /**
-   * <tt>false</tt> if number of calorie on videos is hidden, <tt>true</tt> - otherwise.
+   * If `false`, the calorie count for videos is hidden. Otherwise, this will be `true`.
    *
    * @get result
    * @type {boolean}
@@ -323,7 +321,7 @@ function Wl_Video_VideoElementModel()
   this.show_calorie = undefined;
 
   /**
-   * <tt>false</tt> if levels of videos is hidden, <tt>true</tt> - otherwise.
+   * If `false`, video levels are hidden. Otherwise, this will be `true`.
    *
    * @get result
    * @type {boolean}
@@ -331,7 +329,7 @@ function Wl_Video_VideoElementModel()
   this.show_level = undefined;
 
   /**
-   * <tt>false</tt> if number of views on videos is hidden, <tt>true</tt> - otherwise.
+   * If `false`, the number of views for videos is hidden. Otherwise, this will be `true`.
    *
    * @get result
    * @type {boolean}
@@ -339,7 +337,7 @@ function Wl_Video_VideoElementModel()
   this.show_view = undefined;
 
   /**
-   * Name of video level.
+   * The video level name.
    *
    * @get result
    * @type {string}
@@ -347,7 +345,7 @@ function Wl_Video_VideoElementModel()
   this.text_level_title = undefined;
 
   /**
-   * Name of the video.
+   * The video name.
    *
    * @get result
    * @post post
@@ -356,7 +354,7 @@ function Wl_Video_VideoElementModel()
   this.text_title = undefined;
 
   /**
-   * Url of the thumbnail for video.
+   * The URL of the video thumbnail.
    *
    * @get result
    * @type {string}
@@ -364,7 +362,7 @@ function Wl_Video_VideoElementModel()
   this.url_thumbnail = undefined;
 
   /**
-   * Url of the video.
+   * The URL of the video on a WellnessLiving page.
    *
    * @get result
    * @type {?string}
@@ -372,7 +370,7 @@ function Wl_Video_VideoElementModel()
   this.url_video = null;
 
   /**
-   * Direct url of the video.
+   * The direct URL of the video.
    *
    * @get result
    * @type {string}
@@ -380,7 +378,7 @@ function Wl_Video_VideoElementModel()
   this.url_video_direct = undefined;
 
   /**
-   * Description of the video.
+   * The video description.
    *
    * @get result
    * @post post
@@ -404,9 +402,9 @@ Wl_Video_VideoElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Video_VideoElementModel.instanceGet
- * @param {string} k_business Business key from {@link \RsBusinessSql}.
- * @param {string} k_video Video key from {@link VideoSql}.
- * @param {boolean} is_backend <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
+ * @param {string} k_business The business key.
+ * @param {string} k_video The video key.
+ * @param {boolean} is_backend If `true`, the API is being used from backend. Otherwise, this will be `false`.
  * @returns {Wl_Video_VideoElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

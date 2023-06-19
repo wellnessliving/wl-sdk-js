@@ -13,7 +13,7 @@ function Wl_ClassPass_ReservationListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link \Wl\ClassPass\ReservationResultData::$text_spot_label} for documentation.
+   * See {@link Wl\ClassPass\ReservationResultData::$text_spot_label} for documentation.
    *
    * @post result
    * @type {?string}

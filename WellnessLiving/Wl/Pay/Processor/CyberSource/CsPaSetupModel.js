@@ -14,7 +14,7 @@ function Wl_Pay_Processor_CyberSource_CsPaSetupModel()
    * Credit card data.
    *
    * Contents of the payment source as it presents on the payment form.
-   * This data is passed into {@link \RsPayBankCardSelectWidget::data_set()}.
+   * This data is passed into {@link RsPayBankCardSelectWidget::data_set()}.
    *
    * @post post
    * @type {{}}
@@ -24,7 +24,7 @@ function Wl_Pay_Processor_CyberSource_CsPaSetupModel()
   /**
    * ID of the actor.
    *
-   * One of {@link \RsPayActorSid} constants.
+   * One of {@link RsPayActorSid} constants.
    *
    * @post post
    * @type {number}
@@ -46,8 +46,6 @@ function Wl_Pay_Processor_CyberSource_CsPaSetupModel()
   /**
    * Key of the business which receives the payment.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @post post
    * @type {string}
    */
@@ -55,8 +53,6 @@ function Wl_Pay_Processor_CyberSource_CsPaSetupModel()
 
   /**
    * Key of the business merchant that should be used to perform the request.
-   *
-   * Primary key in {@link \RsBusinessMerchantSql}.
    *
    * @post post
    * @type {string}
@@ -66,11 +62,9 @@ function Wl_Pay_Processor_CyberSource_CsPaSetupModel()
   /**
    * Key of a custom payment method.
    *
-   * Primary key in {@link MethodSql}.
-   *
    * `null` or an empty string if payment is performed with a standard payment method.
    *
-   * Only payment methods based on {@link \RsPayMethodSid::ECOMMERCE} are accepted.
+   * Only payment methods based on {@link RsPayMethodSid.ECOMMERCE} are accepted.
    *
    * @post post
    * @type {?string}
@@ -79,8 +73,6 @@ function Wl_Pay_Processor_CyberSource_CsPaSetupModel()
 
   /**
    * Key of payment transaction that was created.
-   *
-   * Primary key in {@link \RsPayTransactionSql}.
    *
    * @post result
    * @type {string}

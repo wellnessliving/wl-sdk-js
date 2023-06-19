@@ -85,7 +85,6 @@ function Wl_Login_Search_SearchData_Region_RegionSearchDataModel()
 
   /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -108,7 +107,7 @@ Wl_Login_Search_SearchData_Region_RegionSearchDataModel.prototype.config=functio
 /**
  * @function
  * @name Wl_Login_Search_SearchData_Region_RegionSearchDataModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @param {string} k_business Business key.
  * @returns {Wl_Login_Search_SearchData_Region_RegionSearchDataModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

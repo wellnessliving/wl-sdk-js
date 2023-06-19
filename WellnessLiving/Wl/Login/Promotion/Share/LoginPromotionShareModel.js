@@ -14,7 +14,7 @@ function Wl_Login_Promotion_Share_LoginPromotionShareModel()
    * @typedef {{}} Wl_Login_Promotion_Share_LoginPromotionShareModel_a_share_family
    * @property {boolean} is_share Whether the login promotion was shared with user.
    * @property {string} text_name User name.
-   * @property {string} uid User key. Primary key in {@link \PassportLoginSql} table.
+   * @property {string} uid User key.
    */
 
   /**
@@ -36,7 +36,7 @@ function Wl_Login_Promotion_Share_LoginPromotionShareModel()
    *     string <var>uid</var>
    *   </dt>
    *   <dd>
-   *     User key. Primary key in {@link \PassportLoginSql} table.
+   *     User key.
    *   </dd>
    * </dl>
    *
@@ -46,7 +46,7 @@ function Wl_Login_Promotion_Share_LoginPromotionShareModel()
   this.a_share_family = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @type {string}
@@ -54,7 +54,7 @@ function Wl_Login_Promotion_Share_LoginPromotionShareModel()
   this.k_business = undefined;
 
   /**
-   * Purchased promotion key. Primary key in {@link \RsLoginPromotionSql} table.
+   * Purchased promotion key.
    *
    * @get get
    * @type {string}

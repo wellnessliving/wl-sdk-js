@@ -26,8 +26,8 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
 
   /**
    * @typedef {{}} Wl_Business_Report_Customize_BusinessReportCustomizeModel_a_column
-   * @property {string} a_hide Column name list of the hidden columns and available in the report. See {@link \RsReport::info()}.
-   * @property {string} a_visible Column name list of the visible columns and available in the report. See {@link \RsReport::info()}.
+   * @property {string} a_hide Column name list of the hidden columns and available in the report. See {@link RsReport::info()}.
+   * @property {string} a_visible Column name list of the visible columns and available in the report. See {@link RsReport::info()}.
    */
 
   /**
@@ -37,13 +37,13 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
    *     string <var>a_hide</var>
    *   </dt>
    *   <dd>
-   *     Column name list of the hidden columns and available in the report. See {@link \RsReport::info()}.
+   *     Column name list of the hidden columns and available in the report. See {@link RsReport::info()}.
    *   </dd>
    *   <dt>
    *     string <var>a_visible</var>
    *   </dt>
    *   <dd>
-   *     Column name list of the visible columns and available in the report. See {@link \RsReport::info()}.
+   *     Column name list of the visible columns and available in the report. See {@link RsReport::info()}.
    *   </dd>
    * </dl>
    *
@@ -63,7 +63,7 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
   /**
    * @typedef {{}} Wl_Business_Report_Customize_BusinessReportCustomizeModel_a_report_date
    * @property {boolean} is_select Whether the report date is selected.
-   * @property {string} sid_report_date Report date SID. One of the {@link \RsReportDateSid} constants.
+   * @property {string} sid_report_date Report date SID. One of the {@link RsReportDateSid} constants.
    * @property {string} text_title Title of the report date.
    */
 
@@ -80,7 +80,7 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
    *     string <var>sid_report_date</var>
    *   </dt>
    *   <dd>
-   *     Report date SID. One of the {@link \RsReportDateSid} constants.
+   *     Report date SID. One of the {@link RsReportDateSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
@@ -104,7 +104,7 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
   this.has_client = undefined;
 
   /**
-   * Report ID. One of the {@link \RsReportSid} constants.
+   * Report ID. One of the {@link RsReportSid} constants.
    *
    * @get get
    * @post get
@@ -113,7 +113,7 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
   this.id_report = undefined;
 
   /**
-   * Report page ID. One of the {@link \RsReportPageSid} constants.
+   * Report page ID. One of the {@link RsReportPageSid} constants.
    *
    * <tt>null</tt> if report is rendered in a single report collection.
    *
@@ -123,7 +123,25 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
   this.id_report_page = undefined;
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Whether predefined filter should be generated or user should select filter prior to generate report.
+   *
+   * @get result
+   * @post get
+   * @type {boolean}
+   */
+  this.is_report_date_default = undefined;
+
+  /**
+   * Whether last generated date range should be opened by default.
+   *
+   * @get result
+   * @post get
+   * @type {boolean}
+   */
+  this.is_report_generate_last = undefined;
+
+  /**
+   * Business key.
    *
    * @get get
    * @post get
@@ -132,13 +150,22 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
   this.k_business = undefined;
 
   /**
-   * Report save key. Primary key in the {@link \RsReportSaveSql} table.
+   * Report save key.
    *
    * @get get
    * @post get
    * @type {string}
    */
   this.k_report_save = undefined;
+
+  /**
+   * Whether buttons for date range selection should be shown nearby date filter.
+   *
+   * @get result
+   * @post post
+   * @type {boolean}
+   */
+  this.show_button_selection = undefined;
 
   /**
    * Whether that client details information should be shown.
@@ -158,7 +185,7 @@ function Wl_Business_Report_Customize_BusinessReportCustomizeModel()
   this.sid_report_date = undefined;
 
   /**
-   * User key. Primary key in the {@link \PassportLoginSql} table.
+   * User key.
    *
    * @get get
    * @post get
@@ -176,17 +203,17 @@ WlSdk_ModelAbstract.extend(Wl_Business_Report_Customize_BusinessReportCustomizeM
  */
 Wl_Business_Report_Customize_BusinessReportCustomizeModel.prototype.config=function()
 {
-  return {"a_field": {"a_button": {"get": {"result": true},"post": {"post": true}},"a_column": {"get": {"result": true}},"a_column_selected": {"post": {"post": true}},"a_report_date": {"get": {"result": true}},"has_client": {"get": {"result": true}},"id_report": {"get": {"get": true},"post": {"get": true}},"id_report_page": {"get": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_report_save": {"get": {"get": true},"post": {"get": true}},"show_client_details": {"get": {"result": true},"post": {"post": true}},"sid_report_date": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_button": {"get": {"result": true},"post": {"post": true}},"a_column": {"get": {"result": true}},"a_column_selected": {"post": {"post": true}},"a_report_date": {"get": {"result": true}},"has_client": {"get": {"result": true}},"id_report": {"get": {"get": true},"post": {"get": true}},"id_report_page": {"get": {"get": true}},"is_report_date_default": {"get": {"result": true},"post": {"get": true}},"is_report_generate_last": {"get": {"result": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_report_save": {"get": {"get": true},"post": {"get": true}},"show_button_selection": {"get": {"result": true},"post": {"post": true}},"show_client_details": {"get": {"result": true},"post": {"post": true}},"sid_report_date": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Business_Report_Customize_BusinessReportCustomizeModel.instanceGet
- * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {string} k_report_save Report save key. Primary key in the {@link \RsReportSaveSql} table.
- * @param {number} id_report Report ID. One of the {@link \RsReportSid} constants.
- * @param {number} id_report_page Report page ID. One of the {@link \RsReportPageSid} constants. <tt>null</tt> if report is rendered in a single report collection.
+ * @param {string} uid User key.
+ * @param {string} k_business Business key.
+ * @param {string} k_report_save Report save key.
+ * @param {number} id_report Report ID. One of the {@link RsReportSid} constants.
+ * @param {number} id_report_page Report page ID. One of the {@link RsReportPageSid} constants. <tt>null</tt> if report is rendered in a single report collection.
  * @returns {Wl_Business_Report_Customize_BusinessReportCustomizeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

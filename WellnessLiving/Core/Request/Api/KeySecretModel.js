@@ -23,7 +23,7 @@ function Core_Request_Api_KeySecretModel()
   this.s_csrf = undefined;
 
   /**
-   * Secret key that must be used for signing API requests in the browser.
+   * Secret key for request signing.
    *
    * @get result
    * @type {string}
@@ -31,8 +31,7 @@ function Core_Request_Api_KeySecretModel()
   this.s_key_secret = undefined;
 
   /**
-   * Session client key.
-   * See {@link \Core\Request\Api\KeySessionApi}.
+   * Session key.
    *
    * @get get
    * @type {string}
@@ -40,8 +39,9 @@ function Core_Request_Api_KeySecretModel()
   this.s_key_session = undefined;
 
   /**
-   * Alias of {@link \Core\Request\Api\KeySecretApi::$url_origin}.
+   * Alias of {@link Core_Request_Api_KeySecretModel.url_origin}.
    *
+   * @deprecated Use {@link Core_Request_Api_KeySecretModel.url_origin} instead.
    * @get get
    * @type {string}
    */

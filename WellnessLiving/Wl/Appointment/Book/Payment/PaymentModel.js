@@ -1,17 +1,25 @@
 /**
- * An endpoint that validates parameters that allow for an appointment or appointment Purchase Option payment for a client.
+ * An endpoint that displays information about payments for an appointment.
+ * The POST method for this endpoint is implemented as a separate endpoint (see
+ * {@link Wl_Appointment_Book_Payment_PaymentPostModel}).
  *
- * @deprecated Use {@link Wl_Appointment_Book_Payment_PaymentModel} instead.
+ * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Appointment_Book_Payment_PaymentPostModel} instead.
  */
 function Wl_Appointment_Book_Payment_PaymentModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * All data from the provider model.
+   * @inheritDoc
+   */
+  this._s_key = "id_mode,k_location,uid,id_purchase_item,k_id,k_login_promotion,k_session_pass,s_unique_key";
+
+  /**
+   * All data from the provider <tt>Wl_Appointment_Book_ProviderModel</tt> model.
    *
    * @get get
    * @post get
@@ -22,7 +30,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   /**
    * A list of payment sources to pay with.
    *
-   * The structure of this array corresponds with the structure of {@link \RsPayForm::$a_pay_source}.
+   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
    *
    * @post post
    * @type {{}[]}
@@ -31,29 +39,30 @@ function Wl_Appointment_Book_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_promotion_data
-   * @property {string} s_expire The Purchase Option expiration date.
+   * @property {string} i_limit The limit of total visits.
+   * @property {number} i_remain The number of remaining visits.
+   * @property {string} s_expire The expiration date.
    * @property {string} s_title The title of the Purchase Option.
    */
 
   /**
-   * Information about the Purchase Option.
+   * Information about selected Purchase Options.
    * <dl>
-   *   <dt>
-   *     string <var>s_expire</var>
-   *   </dt>
-   *   <dd>
-   *     The Purchase Option expiration date.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_title</var>
-   *   </dt>
-   *   <dd>
-   *     The title of the Purchase Option.
-   *   </dd>
+   *   <dt>string <var>i_limit</var></dt>
+   *   <dd>The limit of total visits.</dd>
+   *
+   *   <dt>int <var>i_remain</var></dt>
+   *   <dd>The number of remaining visits.</dd>
+   *
+   *   <dt>string <var>s_expire</var></dt>
+   *   <dd>The expiration date.</dd>
+   *
+   *   <dt>string <var>s_title</var></dt>
+   *   <dd>The title of the Purchase Option.</dd>
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Payment_PaymentModel_a_promotion_data}
+   * @type {Wl_Appointment_Book_Payment_PaymentModel_a_promotion_data[]}
    */
   this.a_promotion_data = undefined;
 
@@ -64,94 +73,66 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_purchase
-   * @property {Wl_Appointment_Book_Payment_PaymentModel_a_purchase_a_tax} a_tax Information about taxes in the following format.
-   * A list of taxes to apply. The array keys are <tt>k_tax</tt> keys. Each element contains the following fields:
-   * <dl>
-   *   <dt>
-   *     float <tt>m_tax</tt>
-   *   </dt>
-   *   <dd>
-   *     The tax rate.
-   *   </dd>
-   *   <dt>
-   *     string <tt>text_title</tt>
-   *   </dt>
-   *   <dd>
-   *     The name of the tax.
-   *   </dd>
+   * @property {Wl_Appointment_Book_Payment_PaymentModel_a_purchase_a_tax} a_tax Contains information about taxes in the following format. A list of taxes to apply.
+   * The array keys are `k_tax` keys. Each element contains the following fields: <dl>
+   *   <dt>float <tt>m_tax</tt></dt>
+   *   <dd>The tax rate.</dd>
+   * 
+   *   <dt>string <tt>text_title</tt></dt>
+   *   <dd>The name of the tax.</dd>
    * </dl>
-   * @property {string} id_purchase_item The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.
-   * @property {string} k_id The key of the discount used for the purchase.
+   * @property {string} id_purchase_item The purchase item ID. A constant of {@link RsPurchaseItemSid}.
+   * @property {string} k_id The value of the discount used for the purchase.
    * @property {string} m_discount The value of the discount used for the purchase.
    * @property {string} m_pay The payment for the Purchase Option or single visit without taxes.
    * @property {string} m_price The price of the Purchase Option or single visit.
    */
 
   /**
-   * <b>Field -</b> a string in the format `id_purchase_item-k_id`.
+   * Information about selected purchase items.
    *
-   * <b>Value -</b> an array with the next stricture:
+   * Indexes are strings in the format `id_purchase_item-k_id`.
+   *
+   * Values are an array with the following structure:
+   *
    * <dl>
-   *   <dt>
-   *     array <var>a_tax</var>
-   *   </dt>
+   *   <dt>array <var>a_tax</var></dt>
    *   <dd>
-   *     Information about taxes in the following format.
-   *     A list of taxes to apply. The array keys are `k_tax` keys. Each element contains the following fields:
-   *     <dl>
-   *       <dt>
-   *         float <var>m_tax</var>
-   *       </dt>
-   *       <dd>
-   *         The tax rate.
-   *       </dd>
-   *       <dt>
-   *         string <var>text_title</var>
-   *       </dt>
-   *       <dd>
-   *         The name of the tax.
-   *       </dd>
+   *     Contains information about taxes in the following format. A list of taxes to apply.
+   *     The array keys are `k_tax` keys. Each element contains the following fields: <dl>
+   *       <dt>float <var>m_tax</var></dt>
+   *       <dd>The tax rate.</dd>
+   *
+   *       <dt>string <var>text_title</var></dt>
+   *       <dd>The name of the tax.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     string <var>id_purchase_item</var>
-   *   </dt>
-   *   <dd>
-   *     The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the discount used for the purchase.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_discount</var>
-   *   </dt>
-   *   <dd>
-   *     The value of the discount used for the purchase.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_pay</var>
-   *   </dt>
-   *   <dd>
-   *     The payment for the Purchase Option or single visit without taxes.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_price</var>
-   *   </dt>
-   *   <dd>
-   *     The price of the Purchase Option or single visit.
-   *   </dd>
+   *
+   *   <dt>string <var>id_purchase_item</var></dt>
+   *   <dd>The purchase item ID. A constant of {@link RsPurchaseItemSid}.</dd>
+   *
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>The value of the discount used for the purchase.</dd>
+   *
+   *   <dt>string <var>m_discount</var></dt>
+   *   <dd>The value of the discount used for the purchase.</dd>
+   *
+   *   <dt>string <var>m_pay</var></dt>
+   *   <dd>The payment for the Purchase Option or single visit without taxes.</dd>
+   *
+   *   <dt>string <var>m_price</var></dt>
+   *   <dd>The price of the Purchase Option or single visit.</dd>
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Payment_PaymentModel_a_purchase}
+   * @type {Wl_Appointment_Book_Payment_PaymentModel_a_purchase[]}
    */
   this.a_purchase = undefined;
 
   /**
-   * Purchase item IDs from the database.
+   * The purchase item keys from the database.
+   *
+   * This will be `null` if not set yet.
    *
    * @post result
    * @type {?string[]}
@@ -159,7 +140,27 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.a_purchase_item = null;
 
   /**
-   * The key of the source mode. One of the {@link \Wl\Mode\ModeSid} constants.
+   * List of quiz response keys.
+   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
+   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
+   *
+   * @post post
+   * @type {{}}
+   */
+  this.a_quiz_response = [];
+
+  /**
+   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * There may be empty values in this list, which means that this is a walk-in.
+   *
+   * @get get
+   * @post get
+   * @type {string[]}
+   */
+  this.a_uid = [];
+
+  /**
+   * The key of source mode. A constant of {@link Wl_Mode_ModeSid}.
    *
    * @get get
    * @post get
@@ -168,7 +169,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.id_mode = 0;
 
   /**
-   * The payment type for the appointment. One of the {@link RsAppointmentPaySid} constants.
+   * The payment type for the appointment. A constant of {@link RsAppointmentPaySid}.
    *
    * @post result
    * @type {number}
@@ -176,7 +177,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.id_pay = undefined;
 
   /**
-   * The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.
+   * The purchase item ID. A constant of {@link RsPurchaseItemSid}.
    *
    * @get get
    * @post get
@@ -185,7 +186,16 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.id_purchase_item = 0;
 
   /**
-   * The Purchase Option or appointment key, depending on {@link Wl_Appointment_Book_Payment_PaymentModel.id_purchase_item}.
+   * `true` if client is walk-in, otherwise `false`.
+   *
+   * @get get
+   * @post get
+   * @type {boolean}
+   */
+  this.is_walk_in = false;
+
+  /**
+   * The item key. Depends of {@link Wl_Appointment_Book_Payment_PaymentModel.id_purchase_item} property.
    *
    * @get get
    * @post get
@@ -194,7 +204,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.k_id = "0";
 
   /**
-   * The location to show available appointment booking schedule for.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -203,7 +213,8 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.k_location = "0";
 
   /**
-   * The activity ID of the purchase that was made. This will be empty if no purchase was made.
+   * The key of activity of the purchase made.
+   * Empty if no purchase has been made.
    *
    * @post result
    * @type {string}
@@ -211,7 +222,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.k_login_activity_purchase = undefined;
 
   /**
-   * The login promotion ID.
+   * The login promotion key.
    *
    * @get get
    * @type {string}
@@ -219,7 +230,47 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.k_login_promotion = "0";
 
   /**
-   * The price of the service with tax.
+   * Session pass key.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_session_pass = "0";
+
+  /**
+   * Gift card amount.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_coupon = "0.00";
+
+  /**
+   * Discount amount.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_discount = "0.00";
+
+  /**
+   * Surcharge amount.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_surcharge = "0.00";
+
+  /**
+   * The tax of service.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_tax = "0.00";
+
+  /**
+   * The total cost of the purchase.
    *
    * @get result
    * @type {string}
@@ -227,8 +278,8 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.m_total = undefined;
 
   /**
-   * The variable price, which is only set when booking an appointment with a variable price type
-   *   ({@link \RsServicePriceSid::VARIES} from spa backend {@link ModeSid::SPA_BACKEND}).
+   * Variable price. Is set only during booking an appointment with variable type of the price
+   *   {@link RsServicePriceSid.VARIES} from spa backend {@link Wl_Mode_ModeSid.SPA_BACKEND}.
    *
    * @get get
    * @type {string}
@@ -236,7 +287,25 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.m_variable_price = "";
 
   /**
-   * The discount code.
+   * Service unique key.
+   * Used for model cache.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.s_unique_key = "";
+
+  /**
+   * Gift card code.
+   *
+   * @get get
+   * @post get
+   * @type {string}
+   */
+  this.text_coupon_code = "";
+
+  /**
+   * The discount code to be applied to the purchase.
    *
    * @get get
    * @post get
@@ -245,7 +314,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.text_discount_code = "";
 
   /**
-   * The client to get information for.
+   * User to get information for.
    *
    * @get get
    * @post get
@@ -263,5 +332,20 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Payment_PaymentModel);
  */
 Wl_Appointment_Book_Payment_PaymentModel.prototype.config=function()
 {
-  return {"a_field": {"a_book_data": {"get": {"get": true},"post": {"get": true}},"a_pay_form": {"post": {"post": true}},"a_promotion_data": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_purchase_item": {"post": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay": {"post": {"result": true}},"id_purchase_item": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_login_promotion": {"get": {"get": true}},"m_total": {"get": {"result": true}},"m_variable_price": {"get": {"get": true}},"text_discount_code": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_book_data": {"get": {"get": true},"post": {"get": true}},"a_pay_form": {"post": {"post": true}},"a_promotion_data": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_purchase_item": {"post": {"result": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay": {"post": {"result": true}},"id_purchase_item": {"get": {"get": true},"post": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_login_promotion": {"get": {"get": true}},"k_session_pass": {"get": {"get": true}},"m_coupon": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_surcharge": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"m_variable_price": {"get": {"get": true}},"s_unique_key": {"get": {"get": true}},"text_coupon_code": {"get": {"get": true},"post": {"get": true}},"text_discount_code": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Appointment_Book_Payment_PaymentModel.instanceGet
+ * @param {number} id_mode The key of source mode. A constant of {@link Wl_Mode_ModeSid}.
+ * @param {string} k_location Location to show available appointment booking schedule.
+ * @param {string} uid User to get information for.
+ * @param {number} id_purchase_item The purchase item ID. A constant of {@link RsPurchaseItemSid}.
+ * @param {string} k_id The item key. Depends of {@link Wl_Appointment_Book_Payment_PaymentModel.id_purchase_item} property.
+ * @param {string} k_login_promotion The login promotion key.
+ * @param {string} k_session_pass Session pass key.
+ * @param {string} s_unique_key Service unique key. Used for model cache.
+ * @returns {Wl_Appointment_Book_Payment_PaymentModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */

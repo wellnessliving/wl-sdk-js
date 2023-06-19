@@ -13,7 +13,7 @@ function Wl_ClassPass_ScheduleAttendanceModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link \Wl\ClassPass\ScheduleAttendanceListData::toClassPass()} for documentation.
+   * See {@link Wl\ClassPass\ScheduleAttendanceListData::toClassPass()} for documentation.
    *
    * @get result
    * @type {{}}
@@ -21,7 +21,7 @@ function Wl_ClassPass_ScheduleAttendanceModel()
   this.attendance = undefined;
 
   /**
-   * See {@link \Wl\ClassPass\ScheduleAttendanceListData::toClassPass()} for documentation.
+   * See {@link Wl\ClassPass\ScheduleAttendanceListData::toClassPass()} for documentation.
    *
    * @get result
    * @type {{}}

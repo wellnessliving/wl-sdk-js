@@ -1,5 +1,5 @@
 /**
- * Retrieves a list of alerts and warnings to show in user's profile.
+ * An endpoint that retrieves information about client alert messages.
  *
  * This model is generated automatically based on API.
  *
@@ -17,45 +17,54 @@ function Wl_Profile_Alert_AlertModel()
 
   /**
    * @typedef {{}} Wl_Profile_Alert_AlertModel_a_alert
-   * @property {?string} dt_date Date and time in MySQL format in local time when alert was last modified. <tt>null</tt> if date is not available for this alert.
-   * @property {boolean} is_today <tt>true</tt> - if alert added today; <tt>false</tt> - otherwise.
-   * @property {*} k_pay_account ID of user's account. Primary key in {@link RsPayAccountSql} table.
-   * @property {*} k_purchase_item ID of purchase item. Primary key in {@link RsPurchaseItemSql} table.
-   * @property {string} s_text Text of alert.
+   * @property {?string} dt_date The date and time in MySQL format in local time when the alert was last modified.
+   * This will be `null` if the date isn't available for this alert.
+   * @property {boolean} is_today This will be `true` if the alert was added today. Otherwise, this will be `false`.
+   * @property {number} id_profile_note ID of alert type. One of {@link RsProfileNoteSid} constants.
+   * @property {*} k_pay_account The key of the client's account.
+   * @property {*} k_purchase_item The key of the purchase item.
+   * @property {string} s_text The alert's text.
    */
 
   /**
-   * List of alerts. Every element array with keys:
+   * A list of alerts. Every element is an array with the following keys:
    * <dl>
    *   <dt>
    *     string|null <var>dt_date</var>
    *   </dt>
    *   <dd>
-   *     Date and time in MySQL format in local time when alert was last modified. <tt>null</tt> if date is not available for this alert.
+   *     The date and time in MySQL format in local time when the alert was last modified.
+   *     This will be `null` if the date isn't available for this alert.
    *   </dd>
    *   <dt>
    *     bool <var>is_today</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - if alert added today; <tt>false</tt> - otherwise.
+   *     This will be `true` if the alert was added today. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_profile_note</var>
+   *   </dt>
+   *   <dd>
+   *     ID of alert type. One of {@link RsProfileNoteSid} constants.
    *   </dd>
    *   <dt>
    *     string [<var>k_pay_account</var>]
    *   </dt>
    *   <dd>
-   *     ID of user's account. Primary key in {@link RsPayAccountSql} table.
+   *     The key of the client's account.
    *   </dd>
    *   <dt>
    *     string [<var>k_purchase_item</var>]
    *   </dt>
    *   <dd>
-   *     ID of purchase item. Primary key in {@link RsPurchaseItemSql} table.
+   *     The key of the purchase item.
    *   </dd>
    *   <dt>
    *     string <var>s_text</var>
    *   </dt>
    *   <dd>
-   *     Text of alert.
+   *     The alert's text.
    *   </dd>
    * </dl>
    *
@@ -66,38 +75,45 @@ function Wl_Profile_Alert_AlertModel()
 
   /**
    * @typedef {{}} Wl_Profile_Alert_AlertModel_a_warning
-   * @property {boolean} dt_date Date and time in MySQL format in local time when warning was last modified.
-   * @property {boolean} is_flag <tt>true</tt> - is flagged; <tt>false</tt> - is not flagged.
-   * @property {boolean} is_today <tt>true</tt> - if warning added today; <tt>false</tt> - otherwise.
-   * @property {string} s_text Text of warning.
+   * @property {string[]} a_location_flag The list of locations keys from {@link \RsLocationSql} table, where this note is flagged.
+   * @property {boolean} dt_date The date and time in MySQL format in local time when the warning was last modified.
+   * @property {boolean} is_flag This will be `true` if the client is flagged. Otherwise, this will be `false`.
+   * @property {boolean} is_today This will be `true` if the warning was added today. Otherwise, this will be `false`.
+   * @property {string} s_text The text of the warning.
    */
 
   /**
-   * List of warnings. Every element array with keys:
+   * A list of warnings. Every element is an array with the following keys:
    * <dl>
+   *   <dt>
+   *     string[] <var>a_location_flag</var>
+   *   </dt>
+   *   <dd>
+   *     The list of locations keys from {@link \RsLocationSql} table, where this note is flagged.
+   *   </dd>
    *   <dt>
    *     bool <var>dt_date</var>
    *   </dt>
    *   <dd>
-   *     Date and time in MySQL format in local time when warning was last modified.
+   *     The date and time in MySQL format in local time when the warning was last modified.
    *   </dd>
    *   <dt>
    *     bool <var>is_flag</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - is flagged; <tt>false</tt> - is not flagged.
+   *     This will be `true` if the client is flagged. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_today</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - if warning added today; <tt>false</tt> - otherwise.
+   *     This will be `true` if the warning was added today. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>s_text</var>
    *   </dt>
    *   <dd>
-   *     Text of warning.
+   *     The text of the warning.
    *   </dd>
    * </dl>
    *
@@ -107,7 +123,7 @@ function Wl_Profile_Alert_AlertModel()
   this.a_warning = undefined;
 
   /**
-   * Key of current business.
+   * The key of the business.
    *
    * @get get
    * @type {string}
@@ -115,7 +131,7 @@ function Wl_Profile_Alert_AlertModel()
   this.k_business = "0";
 
   /**
-   * Key of a user to show information for.
+   * The key of the user to show information for.
    *
    * @get get
    * @type {string}
@@ -138,8 +154,8 @@ Wl_Profile_Alert_AlertModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Alert_AlertModel.instanceGet
- * @param {string} uid Key of a user to show information for.
- * @param {string} k_business Key of current business.
+ * @param {string} uid The key of the user to show information for.
+ * @param {string} k_business The key of the business.
  * @returns {Wl_Profile_Alert_AlertModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -1,5 +1,5 @@
 /**
- * Api for retrieves/change/delete video tag.
+ * An endpoint that retrieves, changes, or deletes a video tag.
  *
  * This model is generated automatically based on API.
  *
@@ -11,8 +11,7 @@ function Wl_Video_Tag_TagModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * <tt>true</tt> if confirmation for delete video tag which currently
-   * associated to one or more videos, <tt>false</tt> otherwise.
+   * If `true`, confirmation is required to delete videos. Otherwise, this will be `false`.
    *
    * @delete get
    * @type {boolean}
@@ -20,7 +19,7 @@ function Wl_Video_Tag_TagModel()
   this.is_delete_confirm = undefined;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @delete get
    * @get get
@@ -31,7 +30,7 @@ function Wl_Video_Tag_TagModel()
   this.k_business = undefined;
 
   /**
-   * Video tag key.
+   * The video tag key.
    *
    * @delete get
    * @get get
@@ -42,7 +41,7 @@ function Wl_Video_Tag_TagModel()
   this.k_video_tag = undefined;
 
   /**
-   * Title of the video tag.
+   * The video tag title.
    *
    * @post post
    * @put post

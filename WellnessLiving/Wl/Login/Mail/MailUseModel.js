@@ -1,5 +1,5 @@
 /**
- * Point to check if an email address is used by member of a business.
+ * An endpoint to check if an email address is used by member of a business.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +11,8 @@ function Wl_Login_Mail_MailUseModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * <tt>true</tt> if user with specified email exists in specified business; <tt>false</tt> otherwise.
+   * If <tt>true</tt>, the user with the specified email address exists in specified business. Otherwise, this will
+   * be <tt>false</tt>.
    *
    * @get result
    * @type {boolean}
@@ -19,7 +20,7 @@ function Wl_Login_Mail_MailUseModel()
   this.is_exists = undefined;
 
   /**
-   * Business to check email usage in.
+   * The business for which the email address search is being performed.
    *
    * @get get
    * @type {string}
@@ -27,7 +28,7 @@ function Wl_Login_Mail_MailUseModel()
   this.k_business = undefined;
 
   /**
-   * Email to check usage.
+   * The email address to check for.
    *
    * @get get
    * @type {string}

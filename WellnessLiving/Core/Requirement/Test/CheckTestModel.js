@@ -11,7 +11,7 @@ function Core_Requirement_Test_CheckTestModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Serialized date from {@link \Core\Requirement\CoreRequirementAbstract::runAll()} method.
+   * Serialized date from {@link Core\Requirement\CoreRequirementAbstract::runAll()} method.
    *
    * @get result
    * @type {string}

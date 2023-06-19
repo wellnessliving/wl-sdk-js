@@ -3,6 +3,9 @@
  * The partner backend makes a booking for the requested slot, and returns the slot upon success,
  * or business logic error (e.g. if the slot has become unavailable, or if payment is invalid, etc.) upon failure.
  *
+ * **Cross-datacenter compatibility:** key of the business is returned by {@link Wl_Google_Booking_CreateBookingModel.businessKey()}.
+ * The request is then redirected to region of that business by {@link Wl_Google_Booking_BookingServerBaseModel.run()}.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract

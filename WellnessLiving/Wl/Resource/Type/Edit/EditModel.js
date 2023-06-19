@@ -11,7 +11,7 @@ function Wl_Resource_Type_Edit_EditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * ID of current business. Primary key in {@link RsBusinessSql} table.
+   * ID of current business.
    *
    * @post get
    * @type {string}
@@ -19,7 +19,7 @@ function Wl_Resource_Type_Edit_EditModel()
   this.k_business = "0";
 
   /**
-   * ID of asset category. Primary key in {@link RsResourceTypeSql} table.
+   * ID of asset category.
    *
    * @post result
    * @put get

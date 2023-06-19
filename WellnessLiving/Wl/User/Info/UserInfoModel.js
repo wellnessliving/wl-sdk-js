@@ -1,5 +1,5 @@
 /**
- * Retrieves information about Wellnessliving user.
+ * An endpoint that retrieves information about a WellnessLiving user.
  *
  * This model is generated automatically based on API.
  *
@@ -16,15 +16,31 @@ function Wl_User_Info_UserInfoModel()
   this._s_key = "uid,k_business";
 
   /**
-   * Information about user's photo.
+   * @typedef {{}} Wl_User_Info_UserInfoModel_a_photo
+   * @property {number} i_height The height of the photo.
+   * @property {number} i_width The width of the photo.
+   * @property {string} url_photo The URL of the photo.
+   */
+
+  /**
+   * Information about the user's photo. The information returned has the following structure:<dl>
+   *   <dt>int <var>i_height</var></dt>
+   *   <dd>The height of the photo.</dd>
+   *
+   *   <dt>int <var>i_width</var></dt>
+   *   <dd>The width of the photo.</dd>
+   *
+   *   <dt>string <var>url_photo</var></dt>
+   *   <dd>The URL of the photo.</dd>
+   * </dl>
    *
    * @get result
-   * @type {{}}
+   * @type {Wl_User_Info_UserInfoModel_a_photo}
    */
   this.a_photo = undefined;
 
   /**
-   * Day when user has become business member.
+   * The date the user was added, given in UTC time.
    *
    * @get result
    * @type {string}
@@ -32,7 +48,7 @@ function Wl_User_Info_UserInfoModel()
   this.dt_add = undefined;
 
   /**
-   * Birthday.
+   * The user's birthday. This will be `null` if the birthday isn't set yet.
    *
    * @get result
    * @type {string}
@@ -40,7 +56,9 @@ function Wl_User_Info_UserInfoModel()
   this.dt_birth = undefined;
 
   /**
-   * User's gender. One of {@link GenderSid} constants.
+   * The ID of the user's gender. One of the {@link Wl_Gender_GenderSid} constants.
+   *
+   * This will be `null` if the gender isn't set yet.
    *
    * @get result
    * @type {number}
@@ -48,7 +66,8 @@ function Wl_User_Info_UserInfoModel()
   this.id_gender = undefined;
 
   /**
-   * Whether user is new customer.
+   * This will be `true` if the user has never made purchases or reservations in this business.
+   * Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -56,7 +75,8 @@ function Wl_User_Info_UserInfoModel()
   this.is_customer_new = undefined;
 
   /**
-   * <tt>true</tt> is user is traveller in specified business; <tt>false</tt> otherwise.
+   * This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
+   * in the Enterprise business.
    *
    * @get result
    * @type {boolean}
@@ -64,10 +84,8 @@ function Wl_User_Info_UserInfoModel()
   this.is_traveller = undefined;
 
   /**
-   * ID of business.
-   * May be empty if we need system-wide information.
-   *
-   * Primary key in {@link RsBusinessSql}.
+   * The key of the business.
+   * This may be empty if system-wide information is needed.
    *
    * @get get
    * @type {string}
@@ -75,7 +93,7 @@ function Wl_User_Info_UserInfoModel()
   this.k_business = "0";
 
   /**
-   * User's login type. Primary key in {@link \Wl\Login\Type\Sql} table. Can be <tt>0</tt> for prospects.
+   * The key of the login type. The login type describes the user's client type in this business.
    *
    * @get result
    * @type {string}
@@ -83,7 +101,7 @@ function Wl_User_Info_UserInfoModel()
   this.k_login_type = undefined;
 
   /**
-   * User first name.
+   * The user's first name.
    *
    * @get result
    * @type {string}
@@ -91,7 +109,7 @@ function Wl_User_Info_UserInfoModel()
   this.s_first_name = undefined;
 
   /**
-   * User last name.
+   * The user's last name.
    *
    * @get result
    * @type {string}
@@ -99,7 +117,7 @@ function Wl_User_Info_UserInfoModel()
   this.s_last_name = undefined;
 
   /**
-   * User email address.
+   * The user's email address.
    *
    * @get result
    * @type {string}
@@ -107,7 +125,8 @@ function Wl_User_Info_UserInfoModel()
   this.s_mail = undefined;
 
   /**
-   * User member ID.
+   * The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
+   * is set by the business and separate from the <var>uid</var> value.
    *
    * @get result
    * @type {string}
@@ -115,7 +134,7 @@ function Wl_User_Info_UserInfoModel()
   this.s_member = undefined;
 
   /**
-   * User phone number.
+   * The user's phone number.
    *
    * @get result
    * @type {string}
@@ -123,9 +142,7 @@ function Wl_User_Info_UserInfoModel()
   this.s_phone = undefined;
 
   /**
-   * ID of user.
-   *
-   * Primary key in {@link PassportLoginSql}.
+   * The key of the user.
    *
    * @get get
    * @type {string}
@@ -133,7 +150,7 @@ function Wl_User_Info_UserInfoModel()
   this.uid = "0";
 
   /**
-   * User photo URL.
+   * The URL for the user's photo.
    *
    * @get result
    * @type {string}
@@ -156,8 +173,8 @@ Wl_User_Info_UserInfoModel.prototype.config=function()
 /**
  * @function
  * @name Wl_User_Info_UserInfoModel.instanceGet
- * @param {string} uid ID of user. Primary key in {@link PassportLoginSql}.
- * @param {string} k_business ID of business. May be empty if we need system-wide information. Primary key in {@link RsBusinessSql}.
+ * @param {string} uid The key of the user.
+ * @param {string} k_business The key of the business. This may be empty if system-wide information is needed.
  * @returns {Wl_User_Info_UserInfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -20,7 +20,8 @@ function Wl_Resource_ResourceList_ListModel()
    * @property {boolean} hide_application Whether resource will be hidden in the White Label mobile application.
    *  <tt>true</tt> means that resource will not be displayed, <tt>false</tt> otherwise.
    * @property {boolean} is_active Whether resource is active.
-   * @property {string} k_resource Resource identifier, primary key in {@link \RsClassSql}.
+   * @property {string} k_resource Resource key, primary key in {@link \RsResourceSql}.
+   * @property {string} k_resource_type Resource type key, primary key in {@link \RsResourceTypeSql}.
    * @property {string} text_title Resource name.
    */
 
@@ -44,7 +45,13 @@ function Wl_Resource_ResourceList_ListModel()
    *     string <var>k_resource</var>
    *   </dt>
    *   <dd>
-   *     Resource identifier, primary key in {@link \RsClassSql}.
+   *     Resource key, primary key in {@link \RsResourceSql}.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_resource_type</var>
+   *   </dt>
+   *   <dd>
+   *     Resource type key, primary key in {@link \RsResourceTypeSql}.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>

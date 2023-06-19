@@ -1,5 +1,5 @@
 /**
- * Tags API point.
+ * An endpoint that gets tags for a business.
  *
  * This model is generated automatically based on API.
  *
@@ -17,18 +17,18 @@ function Wl_Tag_TagListModel()
 
   /**
    * @typedef {{}} Wl_Tag_TagListModel_a_list
-   * @property {string} k_tag Tag key. Primary key in the {@link \RsTagSql} table.
-   * @property {string} text_title Tag title.
+   * @property {string} k_tag The tag key.
+   * @property {string} text_title The tag title.
    */
 
   /**
-   * Tag list.
+   * The tag list.
    *
-   * Each element has next structure:<dl>
+   * Each element has the next structure:<dl>
    * <dt>string <var>k_tag</var> </dt>
-   * <dd>Tag key. Primary key in the {@link \RsTagSql} table.</dd>
+   * <dd>The tag key.</dd>
    * <dt>string <var>text_title</var></dt>
-   * <dd>Tag title.</dd>
+   * <dd>The tag title.</dd>
    * </dl>
    *
    * @get result
@@ -37,7 +37,7 @@ function Wl_Tag_TagListModel()
   this.a_list = undefined;
 
   /**
-   * Business key of the tags.
+   * The business key of the tags.
    *
    * @get get
    * @type {string}
@@ -60,7 +60,7 @@ Wl_Tag_TagListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Tag_TagListModel.instanceGet
- * @param {string} k_business Business key of the tags.
+ * @param {string} k_business The business key of the tags.
  * @returns {Wl_Tag_TagListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

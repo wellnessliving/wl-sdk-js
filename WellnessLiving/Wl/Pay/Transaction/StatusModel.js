@@ -13,7 +13,7 @@ function Wl_Pay_Transaction_StatusModel()
   /**
    * New status of payment transaction.
    *
-   * One of {@link \RsPayTransactionStatusSid} constants.
+   * One of {@link RsPayTransactionStatusSid} constants.
    *
    * @put post
    * @type {number}

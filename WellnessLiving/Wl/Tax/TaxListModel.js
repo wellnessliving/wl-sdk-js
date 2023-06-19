@@ -1,5 +1,5 @@
 /**
- * Tax list API point.
+ * An endpoint that retrieves a list of taxes for a business.
  *
  * This model is generated automatically based on API.
  *
@@ -17,18 +17,24 @@ function Wl_Tax_TaxListModel()
 
   /**
    * @typedef {{}} Wl_Tax_TaxListModel_a_list
-   * @property {string} k_tax Tax key. Primary key in the {@link \RsTaxSql} table.
-   * @property {string} text_title Tax title.
+   * @property {number} f_value The amount of the tax.
+   * @property {string} k_tax The type of the tax, one of the {@link RsTaxSid} constants.
+   * @property {string} k_tax The tax key.
+   * @property {string} text_title The name of the tax.
    */
 
   /**
-   * Tax list.
+   * A list of taxes.
    *
-   * Each element has next structure:<dl>
+   * Each element has the following structure:<dl>
+   * <dt>float <var>f_value</var> </dt>
+   * <dd>The amount of the tax.</dd>
    * <dt>string <var>k_tax</var> </dt>
-   * <dd>Tax key. Primary key in the {@link \RsTaxSql} table.</dd>
+   * <dd>The type of the tax, one of the {@link RsTaxSid} constants.</dd>
+   * <dt>string <var>k_tax</var> </dt>
+   * <dd>The tax key.</dd>
    * <dt>string <var>text_title</var></dt>
-   * <dd>Tax title.</dd>
+   * <dd>The name of the tax.</dd>
    * </dl>
    *
    * @get result
@@ -37,7 +43,7 @@ function Wl_Tax_TaxListModel()
   this.a_list = undefined;
 
   /**
-   * Business key of the taxes.
+   * The key of the business for which to get a list of taxes.
    *
    * @get get
    * @type {string}
@@ -60,7 +66,7 @@ Wl_Tax_TaxListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Tax_TaxListModel.instanceGet
- * @param {string} k_business Business key of the taxes.
+ * @param {string} k_business The key of the business for which to get a list of taxes.
  * @returns {Wl_Tax_TaxListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

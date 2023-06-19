@@ -24,7 +24,7 @@ function Wl_Member_Progress_Log_Compare_CompareModel()
   this.a_date = undefined;
 
   /**
-   * Key of business to get information for. Primary key in {@link \RsBusinessSql} table.
+   * Key of business to get information for.
    *
    * @get get
    * @type {string}
@@ -32,7 +32,7 @@ function Wl_Member_Progress_Log_Compare_CompareModel()
   this.k_business = "0";
 
   /**
-   * User key to search dates for. Primary key in {@link \PassportLoginSql} table.
+   * User key to search dates for.
    *
    * @get get
    * @type {string}
@@ -55,8 +55,8 @@ Wl_Member_Progress_Log_Compare_CompareModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Member_Progress_Log_Compare_CompareModel.instanceGet
- * @param {string} k_business Key of business to get information for. Primary key in {@link \RsBusinessSql} table.
- * @param {string} uid User key to search dates for. Primary key in {@link \PassportLoginSql} table.
+ * @param {string} k_business Key of business to get information for.
+ * @param {string} uid User key to search dates for.
  * @returns {Wl_Member_Progress_Log_Compare_CompareModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

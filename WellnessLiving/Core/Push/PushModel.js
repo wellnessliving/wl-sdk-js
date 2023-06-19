@@ -28,7 +28,7 @@ function Core_Push_PushModel()
 
   /**
    * OS name.
-   * String version of {@link \APushOsSid} constants.
+   * String version of {@link APushOsSid} constants.
    *
    * @post get
    * @type {string}

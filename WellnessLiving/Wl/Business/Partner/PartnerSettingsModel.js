@@ -1,7 +1,8 @@
 /**
- * Works with partner settings of the business: name of the business owner, review about wellnessliving and other.
- * This information staff member enters, when enrolls into partner program and is used on custom landing page, which
- * is available by special business url.
+ * An endpoint that works with partner settings of the business.
+ * The name of the business owner, review(s) about WellnessLiving, and more.
+ * This information is entered by a staff member when a client enrolls into Partner Program and uses a custom landing page, which
+ * is available by special business URL.
  *
  * This model is generated automatically based on API.
  *
@@ -13,15 +14,16 @@ function Wl_Business_Partner_PartnerSettingsModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Home page tour of the business. Depends on type.
+   * The homepage tour of the business, which depends on the type.
    *
    * @get result
+   * @see RsHomeTourSid
    * @type {number}
    */
   this.id_business_tour = 0;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get result
    * @type {string}
@@ -29,7 +31,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
   this.k_business = "";
 
   /**
-   * Unique code that business can give other businesses to tell them about system.
+   * The unique code that a business can provide other businesses to tell them about system.
    *
    * @get get
    * @type {string}
@@ -37,7 +39,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
   this.text_code = "";
 
   /**
-   * First name of the business representative.
+   * The first name of the business representative.
    *
    * @get result
    * @type {string}
@@ -45,7 +47,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
   this.text_name_first = undefined;
 
   /**
-   * Last name of the business representative.
+   * The last name of the business representative.
    *
    * @get result
    * @type {string}
@@ -53,7 +55,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
   this.text_name_last = undefined;
 
   /**
-   * Job title of the business representative.
+   * The job title of the business representative.
    *
    * @get result
    * @type {string}
@@ -61,7 +63,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
   this.text_position = undefined;
 
   /**
-   * Text of the review about wellnessliving system.
+   * The text of the review about the WellnessLiving system.
    *
    * @get result
    * @type {string}
@@ -69,12 +71,14 @@ function Wl_Business_Partner_PartnerSettingsModel()
   this.text_review = undefined;
 
   /**
-   * Link to the photo of the business representative.
+   * A link to the photo of the business representative.
+   *
+   * `null` in case when image is not uploaded.
    *
    * @get result
-   * @type {string}
+   * @type {?string}
    */
-  this.url_photo = undefined;
+  this.url_photo = null;
 
   this.changeInit();
 }

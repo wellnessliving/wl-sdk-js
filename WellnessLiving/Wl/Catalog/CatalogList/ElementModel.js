@@ -1,5 +1,5 @@
 /**
- * Retrieves information about product.
+ * Information about a certain item in the store.
  *
  * This model is generated automatically based on API.
  *
@@ -16,18 +16,40 @@ function Wl_Catalog_CatalogList_ElementModel()
   this._s_key = "id_sale,k_id,k_shop_product_option,k_location,dl_client_prorate";
 
   /**
-   * Contains additional specified data for the sale item.
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data
+   * @property {boolean} is_renew_public Only for promotions.
+   * <tt>true</tt> - client can set promotion auto-renew.
+   * <tt>false</tt> - client can't set promotion auto-renew.
+   */
+
+  /**
+   * Additional information specific for the item.
+   *
+   * The structure may be different depending on the item category.
+   * <dl>
+   *   <dt>
+   *     bool <var>is_renew_public</var>
+   *   </dt>
+   *   <dd>
+   *     Only for promotions.
+   *     <tt>true</tt> - client can set promotion auto-renew.
+   *     <tt>false</tt> - client can't set promotion auto-renew.
+   *   </dd>
+   * </dl>
+   *
+   * For example, for a product it contains inventory information. For a gift card, it contains possible amounts.
+   * For a pass/membership/package, it contains information about starting and stopping.
    *
    * @get result
-   * @type {?{}}
+   * @type {Wl_Catalog_CatalogList_ElementModel_a_data}
    */
-  this.a_data = null;
+  this.a_data = undefined;
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_discount_code
    * @property {string} f_amount Fixed amount of the discount.
    * @property {number} f_percent Percentage amount of the discount.
-   * @property {number} i_limit
+   * @property {number} i_limit 
    * @property {string} k_discount_code Discount code key.
    * @property {string} s_discount_code Discount code value.
    */
@@ -53,68 +75,104 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.a_discount_code = [];
 
   /**
-   * Contains a image connected to a sale item.
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_image
+   * @property {number} i_height The height in pixels.
+   * @property {number} i_width The width in pixels.
+   * @property {boolean} is_empty <tt>true</tt> - item has no image (in this case ignore other keys of this array).
+   * <tt>false</tt> - item has an image.
+   * @property {string} s_url The image URL.
+   */
+
+  /**
+   * Image information:
+   * <dl>
+   *   <dt>
+   *     int <var>i_height</var>
+   *   </dt>
+   *   <dd>
+   *     The height in pixels.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_width</var>
+   *   </dt>
+   *   <dd>
+   *     The width in pixels.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_empty</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> - item has no image (in this case ignore other keys of this array).
+   *     <tt>false</tt> - item has an image.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_url</var>
+   *   </dt>
+   *   <dd>
+   *     The image URL.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @type {?{}}
+   * @type {Wl_Catalog_CatalogList_ElementModel_a_image}
    */
-  this.a_image = null;
+  this.a_image = undefined;
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_installment_template
-   * @property {number} i_count Number of payments.
-   * @property {number} id_duration Duration of a single period. One of {@link \ADurationSid} constants.
-   * @property {number} i_period Number of periods specified by <tt>id_period</tt> between individual payments.
-   * @property {string} k_currency Payment currency Key.
-   * @property {string} k_pay_installment_template Key of installment plan template.
-   * @property {string} m_amount Amount of installment plan.
-   * @property {string} s_duration Title of installment plan.
+   * @property {number} i_count The number of payments.
+   * @property {number} id_duration The duration of a single period. One of {@link ADurationSid} constants.
+   * @property {number} i_period The number of periods specified by <tt>id_period</tt> between individual payments.
+   * @property {string} k_currency The payment currency Key.
+   * @property {string} k_pay_installment_template The key of the installment plan template.
+   * @property {string} m_amount The amount of the installment plan.
+   * @property {string} s_duration The title of the installment plan.
    */
 
   /**
-   * A list of installment plans. Each element has next keys:
+   * A list of installment plans. Each element has the following next keys:
    * <dl>
    *   <dt>
    *     int <var>i_count</var>
    *   </dt>
    *   <dd>
-   *      Number of payments.
+   *      The number of payments.
    *   </dd>
    *   <dt>
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
-   *      Duration of a single period. One of {@link \ADurationSid} constants.
+   *      The duration of a single period. One of {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *      Number of periods specified by <var>id_period</var> between individual payments.
+   *      The number of periods specified by <var>id_period</var> between individual payments.
    *   </dd>
    *   <dt>
    *     string <var>k_currency</var>
    *   </dt>
    *   <dd>
-   *     Payment currency Key.
+   *     The payment currency Key.
    *   </dd>
    *   <dt>
    *     string <var>k_pay_installment_template</var>
    *   </dt>
    *   <dd>
-   *      Key of installment plan template.
+   *      The key of the installment plan template. Primary key in {@link \Wl\Pay\Installment\Template\Sql}
    *   </dd>
    *   <dt>
    *     string <var>m_amount</var>
    *   </dt>
    *   <dd>
-   *     Amount of installment plan.
+   *     The amount of the installment plan.
    *   </dd>
    *   <dt>
    *     string <var>s_duration</var>
    *   </dt>
    *   <dd>
-   *     Title of installment plan.
+   *     The title of the installment plan.
    *   </dd>
    * </dl>
    *
@@ -124,25 +182,70 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.a_installment_template = undefined;
 
   /**
-   * List of data for each item from {@link Wl_Catalog_CatalogList_ElementModel.text_item}. Structure of every element equals to {@link Wl_Catalog_CatalogList_ElementModel._get()} return.
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item
+   * @property {{}} a_data Contains additional specified data for the sale item.
+   * @property {{}} a_image Information about one image connected to a sale item.
+   * @property {{}} a_tax Contains information about taxes. Structure of this array is described in {@link RsTax::$a_tax}.
+   * @property {string} id_purchase_option_view Purchase option view type, one of {@link Wl_Catalog_PurchaseOptionViewSid}.
+   * @property {string} m_discount_code Amount of discount code.
+   * @property {string} m_discount_login Amount of discount for client type.
+   * @property {string} s_comment Additional information about sale item. For example: information about 'introductory offer'.
+   * @property {string} s_price Price of the sale item in human readable format.
+   * @property {string} s_sale Category title of the sale item.
+   * @property {string} s_title Title of sale item.
+   */
+
+  /**
+   * A list of requested goods information.
+   * <dl>
+   *   <dt>array <var>a_data</var></dt>
+   *   <dd>Contains additional specified data for the sale item.</dd>
+   *
+   *   <dt>array <var>a_image</var></dt>
+   *   <dd>Information about one image connected to a sale item.</dd>
+   *
+   *   <dt>array <var>a_tax</var></dt>
+   *   <dd>Contains information about taxes. Structure of this array is described in {@link RsTax::$a_tax}.</dd>
+   *
+   *   <dt>string <var>id_purchase_option_view</var></dt>
+   *   <dd>Purchase option view type, one of {@link Wl_Catalog_PurchaseOptionViewSid}.</dd>
+   *
+   *   <dt>string <var>m_discount_code</var></dt>
+   *   <dd>Amount of discount code.</dd>
+   *
+   *   <dt>string <var>m_discount_login</var></dt>
+   *   <dd>Amount of discount for client type.</dd>
+   *
+   *   <dt>string <var>s_comment</var></dt>
+   *   <dd>Additional information about sale item. For example: information about 'introductory offer'.</dd>
+   *
+   *   <dt>string <var>s_price</var></dt>
+   *   <dd>Price of the sale item in human readable format.</dd>
+   *
+   *   <dt>string <var>s_sale</var></dt>
+   *   <dd>Category title of the sale item.</dd>
+   *
+   *   <dt>string <var>s_title</var></dt>
+   *   <dd>Title of sale item.</dd>
+   * </dl>
    *
    * @get result
-   * @type {{}[]}
+   * @type {Wl_Catalog_CatalogList_ElementModel_a_item[]}
    */
   this.a_item = undefined;
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_sale_id_group
-   * @property {number} id_sale ID of item category. One of {@link \RsSaleSid} constants.
+   * @property {number} id_sale ID of item category. One of {@link RsSaleSid} constants.
    * @property {string} k_id Primary key of item.
    * @property {string} k_shop_product_option Product option. <tt>0</tt> for any other cases.
    */
 
   /**
    * List of items groped by sale categories on the store page.
-   * Keys are sale IDs {@link \RsSaleSid}, values - data to identify an item:<dl>
+   * Keys are sale IDs {@link RsSaleSid}, values - data to identify an item:<dl>
    *   <dt>int <var>id_sale</var></dt>
-   *   <dd>ID of item category. One of {@link \RsSaleSid} constants.</dd>
+   *   <dd>ID of item category. One of {@link RsSaleSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>Primary key of item.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
@@ -155,12 +258,14 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.a_sale_id_group = [];
 
   /**
-   * Contains information about taxes. Fields - tax keys; values - tax amounts.
+   * A list of the item's taxes.
+   * Keys - tax keys.
+   * Values - The amount of tax
    *
    * @get result
-   * @type {?{}}
+   * @type {{}}
    */
-  this.a_tax = null;
+  this.a_tax = undefined;
 
   /**
    * Client prorate date.
@@ -249,23 +354,25 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.i_promotion_image_width = 0;
 
   /**
-   * Purchase item ID.
+   * The ID of the purchase item category.
+   * One of {@link RsPurchaseItemSid} constants.
    *
    * @get result
-   * @type {?number}
+   * @type {number}
    */
-  this.id_purchase_item = null;
+  this.id_purchase_item = undefined;
 
   /**
-   * ID of purchase option view type. One of {@link \RsPurchaseItemSid}.
+   * The ID of the item view category. One of {@link Wl_Catalog_PurchaseOptionViewSid} constants.
    *
    * @get result
-   * @type {?number}
+   * @type {number}
    */
-  this.id_purchase_option_view = null;
+  this.id_purchase_option_view = undefined;
 
   /**
-   * ID of sale category. One of {@link \RsSaleSid}.
+   * The ID of item category.
+   * One of {@link RsSaleSid} constants.
    *
    * @get get,result
    * @type {number}
@@ -273,7 +380,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.id_sale = 0;
 
   /**
-   * Whether it is required to sign contract.
+   * <tt>true</tt> if the item requires a contract, <tt>false</tt> otherwise.
    *
    * @get result
    * @type {boolean}
@@ -281,7 +388,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.is_contract = undefined;
 
   /**
-   * Key of the sale item.
+   * The item key.
    *
    * @get get,result
    * @type {string}
@@ -289,7 +396,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.k_id = 0;
 
   /**
-   * ID of the location.
+   * The location key.
    *
    * @get get
    * @type {string}
@@ -297,7 +404,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.k_location = "0";
 
   /**
-   * Shop product option key.
+   * The product option key.
    *
    * <tt>null</tt> if not initialized yet.
    *
@@ -307,23 +414,23 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.k_shop_product_option = "";
 
   /**
-   * Amount of discount code.
+   * The discount amount for a discount code.
    *
    * @get result
-   * @type {?string}
+   * @type {string}
    */
-  this.m_discount_code = null;
+  this.m_discount_code = undefined;
 
   /**
-   * Amount of discount for client type.
+   * The discount amount for a user's type.
    *
    * @get result
-   * @type {?string}
+   * @type {string}
    */
-  this.m_discount_login = null;
+  this.m_discount_login = undefined;
 
   /**
-   * Price of the element.
+   * The price on the price tag.
    *
    * @get result
    * @type {string}
@@ -331,7 +438,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.m_price = undefined;
 
   /**
-   * Price after application of discounts but before application of tax.
+   * The price including taxes.
    *
    * @get result
    * @type {string}
@@ -339,7 +446,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.m_price_include = undefined;
 
   /**
-   * Amount of tax.
+   * The amount of taxes.
    *
    * @get result
    * @type {string}
@@ -347,12 +454,13 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.m_tax = undefined;
 
   /**
-   * Additional information about sale item. For example: information about 'introductory offer'.
+   * Additional comment(s).
+   * For example: information about 'introductory offer'.
    *
    * @get result
-   * @type {?string}
+   * @type {string}
    */
-  this.s_comment = null;
+  this.s_comment = undefined;
 
   /**
    * Price of the sale item in human readable format.
@@ -379,12 +487,21 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.s_title = null;
 
   /**
-   * Serialized list of goods.
+   * A list of goods to get information for. Every element must contain the next keys:
+   * <dl>
+   *   <dt>int <var>id_sale</var></dt>
+   *   <dd>The ID of the item category. One of {@link RsSaleSid} constants.</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>The key of the item.</dd>
+   *   <dt>string <var>k_shop_product_option</var></dt>
+   *   <dd>The key of the product option. <tt>0</tt> if the item is not a product.</dd>
+   * </dl>
+   * Must be serialized via JSON.
    *
-   * Use it to load a bulk of goods by 1 request. In this case do not specify {@link Wl_Catalog_CatalogList_ElementModel.id_sale},
-   * {@link Wl_Catalog_CatalogList_ElementModel.k_id} and {@link Wl_Catalog_CatalogList_ElementModel.k_shop_product_option}.
+   * If you specify this field, you must NOT specify fields {@link Wl_Catalog_CatalogList_ElementModel.id_sale}, {@link Wl_Catalog_CatalogList_ElementModel.k_id},
+   * {@link Wl_Catalog_CatalogList_ElementModel.k_shop_product_option}.
    *
-   * <tt>null</tt> to load just data of 1 item.
+   * <tt>null</tt> to get information of only one item.
    *
    * @get get
    * @type {?string}
@@ -392,7 +509,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.text_item = null;
 
   /**
-   * Formatted amount of money.
+   * The price on the price tag with currency sign.
    *
    * @get result
    * @type {string}
@@ -400,7 +517,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.text_price = undefined;
 
   /**
-   * Title of the sale.
+   * The title of the item category.
    *
    * @get result
    * @type {string}
@@ -408,7 +525,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.text_sale = undefined;
 
   /**
-   * Title of the item.
+   * The item title.
    *
    * @get result
    * @type {string}
@@ -416,16 +533,18 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.text_title = undefined;
 
   /**
-   * Description about the sale item.
+   * A detailed description.
    *
+   * @deprecated Use `html_description`.
    * @get result
    * @type {?string}
    */
   this.xml_description = null;
 
   /**
-   * Special instructions of the sale item.
+   * Special instructions.
    *
+   * @deprecated Use `html_special`.
    * @get result
    * @type {?string}
    */
@@ -447,10 +566,10 @@ Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Catalog_CatalogList_ElementModel.instanceGet
- * @param {number} id_sale ID of sale category. One of {@link \RsSaleSid}.
- * @param {string} k_id Key of the sale item.
- * @param {?string} k_shop_product_option Shop product option key. <tt>null</tt> if not initialized yet.
- * @param {string} k_location ID of the location.
+ * @param {number} id_sale The ID of item category. One of {@link RsSaleSid} constants.
+ * @param {string} k_id The item key.
+ * @param {?string} k_shop_product_option The product option key. <tt>null</tt> if not initialized yet.
+ * @param {string} k_location The location key.
  * @param {?string} dl_client_prorate Client prorate date. `null` in case when client prorate date is not passed.
  * @returns {Wl_Catalog_CatalogList_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()

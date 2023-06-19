@@ -1,5 +1,7 @@
 /**
- * Point to load new image without a cut.
+ * Tool to upload a raw image into server.
+ *
+ * Then you must save this image by {@link Core_Drive_ImageUpload_ImageUploadModel}.
  *
  * This model is generated automatically based on API.
  *
@@ -11,9 +13,7 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * File for a new image.
-   *
-   * Strange name for compatibility with old server side.
+   * Image to be uploaded.
    *
    * @post post
    * @type {{}}
@@ -69,7 +69,7 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
   this.i_width_src = undefined;
 
   /**
-   * Image type ID. One of {@link \Core\Drive\DriveTypeSid} constants.
+   * Image type ID. One of {@link Core_Drive_DriveTypeSid} constants.
    *
    * @post result
    * @type {number}
@@ -85,7 +85,9 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
   this.is_resize = undefined;
 
   /**
-   * Key of image within {@link ImageUploadTemporaryApi::$s_class}.
+   * Key of image within {@link Core_Drive_ImageUpload_ImageUploadTemporaryModel.s_class}.
+   *
+   * For example, for user's photo specify user's key here.
    *
    * @post get
    * @type {string}
@@ -94,6 +96,8 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
 
   /**
    * Name of class that manages this image.
+   *
+   * For example, for user's photo specify string <tt>PassportLoginImage</tt> here.
    *
    * @post get
    * @type {string}
@@ -104,7 +108,7 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
    * URL to resized and rotated image in file storage.
    *
    * @post result
-   * @type {boolean}
+   * @type {string}
    */
   this.url_thumbnail = undefined;
 
@@ -112,7 +116,7 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
    * URL to original image in file storage.
    *
    * @post result
-   * @type {boolean}
+   * @type {string}
    */
   this.url_view = undefined;
 

@@ -1,5 +1,5 @@
 /**
- * Send mail API.
+ * An endpoint that can be used to send email messages.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +11,7 @@ function Wl_Mail_SendMailModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Primary key of business in {@link \RsBusinessSql} table.
+   * The business key.
    *
    * @post get
    * @type {string}
@@ -19,7 +19,7 @@ function Wl_Mail_SendMailModel()
   this.k_business = "0";
 
   /**
-   * Business mail.
+   * The business's mailing address.
    *
    * @post post
    * @type {string}
@@ -27,7 +27,7 @@ function Wl_Mail_SendMailModel()
   this.s_business_mail = "";
 
   /**
-   * Business name.
+   * The business name.
    *
    * @post post
    * @type {string}
@@ -35,7 +35,7 @@ function Wl_Mail_SendMailModel()
   this.s_business_name = "";
 
   /**
-   * Business reply.
+   * The business's reply.
    *
    * @post post
    * @type {string}
@@ -43,7 +43,7 @@ function Wl_Mail_SendMailModel()
   this.s_business_reply = "";
 
   /**
-   * Company name.
+   * The campaign name.
    *
    * @post post
    * @type {string}
@@ -51,7 +51,7 @@ function Wl_Mail_SendMailModel()
   this.s_campaign = "";
 
   /**
-   * Message recipient.
+   * The message recipient's address.
    *
    * @post post
    * @type {string}
@@ -59,7 +59,7 @@ function Wl_Mail_SendMailModel()
   this.s_mail = "";
 
   /**
-   * Message subject.
+   * The message's subject line.
    *
    * @post post
    * @type {string}
@@ -67,7 +67,7 @@ function Wl_Mail_SendMailModel()
   this.s_subject = "";
 
   /**
-   * Message content.
+   * The message content.
    *
    * @post post
    * @type {string}

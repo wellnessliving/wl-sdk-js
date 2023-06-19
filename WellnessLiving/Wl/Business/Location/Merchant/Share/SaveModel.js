@@ -41,8 +41,6 @@ function Wl_Business_Location_Merchant_Share_SaveModel()
   /**
    * Business key. Obligatory field.
    *
-   * Primary key from {@link \RsBusinessSql} table.
-   *
    * @post get
    * @type {string}
    */
@@ -50,8 +48,6 @@ function Wl_Business_Location_Merchant_Share_SaveModel()
 
   /**
    * Merchant sharing group ID.
-   *
-   * Primary key from {@link GroupSql} table.
    *
    * <tt>null</tt> to create new group.
    *

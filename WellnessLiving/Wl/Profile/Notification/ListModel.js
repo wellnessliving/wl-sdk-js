@@ -24,7 +24,7 @@ function Wl_Profile_Notification_ListModel()
   this.a_notification = undefined;
 
   /**
-   * Business key to show information for. Primary key in {@link \RsBusinessSql}.
+   * Business key to show information for.
    *
    * @get get
    * @type {string}
@@ -32,7 +32,7 @@ function Wl_Profile_Notification_ListModel()
   this.k_business = "0";
 
   /**
-   * ID of a user to show information for. Primary key in {@link \PassportLoginSql}.
+   * ID of a user to show information for.
    *
    * @get get
    * @type {string}
@@ -55,8 +55,8 @@ Wl_Profile_Notification_ListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Notification_ListModel.instanceGet
- * @param {string} k_business Business key to show information for. Primary key in {@link \RsBusinessSql}.
- * @param {string} uid ID of a user to show information for. Primary key in {@link \PassportLoginSql}.
+ * @param {string} k_business Business key to show information for.
+ * @param {string} uid ID of a user to show information for.
  * @returns {Wl_Profile_Notification_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

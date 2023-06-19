@@ -1,5 +1,5 @@
 /**
- * Retrieves information about event item.
+ * An endpoint that retrieves information about an event element.
  *
  * This model is generated automatically based on API.
  *
@@ -17,25 +17,25 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_age_restrictions
-   * @property {?number} i_age_from Age from that event is allowed. `null` if minimal age is not limited or information is not available.
-   * @property {?number} i_age_to Age till that event is allowed. `null` if minimal age is not limited or information is not available.
-   * @property {boolean} is_age_public `true` if age restrictions are public and available, `false` if they are hidden.
-   * When restrictions are hidden and current user is not a staff member, age range will be empty.
+   * @property {?number} i_age_from The minimum age for participation in the event. `null` if there's no minimum age set or information isn't available.
+   * @property {?number} i_age_to The age limit for participation in the event. `null` if there's no age limit set or information isn't available.
+   * @property {boolean} is_age_public `true` if age restrictions are public and available, `false` if they're hidden.
+   * When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
    */
 
   /**
-   * Information about age restrictions for this event.
+   * Displays information about age restrictions for this event.
    *
-   * Empty array if there are no restrictions based on the age.
+   * An empty array if there are no age restrictions.
    *
    * <dl>
    *   <dt>int|null <var>i_age_from</var></dt>
-   *   <dd>Age from that event is allowed. `null` if minimal age is not limited or information is not available.</dd>
+   *   <dd>The minimum age for participation in the event. `null` if there's no minimum age set or information isn't available.</dd>
    *   <dt>int|null <var>i_age_to</var></dt>
-   *   <dd>Age till that event is allowed. `null` if minimal age is not limited or information is not available.</dd>
+   *   <dd>The age limit for participation in the event. `null` if there's no age limit set or information isn't available.</dd>
    *   <dt>bool <var>is_age_public</var></dt>
-   *   <dd>`true` if age restrictions are public and available, `false` if they are hidden.
-   *     When restrictions are hidden and current user is not a staff member, age range will be empty.</dd>
+   *   <dd>`true` if age restrictions are public and available, `false` if they're hidden.
+   *     When restrictions are hidden and the current user isn't a staff member, the age range will be empty.</dd>
    * </dl>
    *
    * @get result
@@ -46,16 +46,19 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_book_available
    * @property {string} dt_date Date/time when session starts. In UTC.
-   * @property {string} k_class_period Class session keys.
+   * @property {string} k_class_period Class session primary keys in table {@link \RsClassPeriodSql}.
    */
 
   /**
-   * List of sessions available for booking. Every element has next keys:
+   * Retrieves information about an event item.
+   *
+   * Received only if {@link Wl_Event_Book_EventView_ElementModel.k_event} has been specified. In this case other fields aren't receivers.
+   *
    * <dl>
    *   <dt>string <var>dt_date</var></dt>
    *   <dd>Date/time when session starts. In UTC.</dd>
    *   <dt>string <var>k_class_period</var></dt>
-   *   <dd>Class session keys.</dd>
+   *   <dd>Class session primary keys in table {@link \RsClassPeriodSql}.</dd>
    * </dl>
    *
    * @get result
@@ -64,12 +67,12 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_book_available = undefined;
 
   /**
-   * All business policies connected to clients and bookings.
+   * Displays all business policies connected to clients and bookings.
    *
-   * Has the same structure as {@link Wl_Business_Config_BusinessConfigModel.a_business_policy}.
+   * Contains the same structure as the {@link Wl_Business_Config_BusinessConfigModel.a_business_policy} property.
    *
-   * If policies are overwritten for the certain event, then this event policies will be in the result.
-   * Business policies will be otherwise.
+   * If policies are overwritten for a certain event, the impacted event's policies will be in this result.
+   * Otherwise, the result will display the business policies.
    *
    * @get result
    * @type {{}}
@@ -85,7 +88,7 @@ function Wl_Event_Book_EventView_ElementModel()
    */
 
   /**
-   * Image of event:
+   * The logo of event.
    * <dl>
    *   <dt>int [<var>i_height</var>]</dt>
    *   <dd>Is returned only if staff has photo. Image height.</dd>
@@ -103,7 +106,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_class_logo = undefined;
 
   /**
-   * The list of keys from class tab.
+   * The list of keys from class tab.+
    *
    * @get result
    * @type {string[]}
@@ -111,7 +114,12 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_class_tab = undefined;
 
   /**
-   * Keys - keys of events; values - events data (structure is the same as in array described below).
+   * Displays information for a bulk of events.
+   *
+   * Received only if {@link Wl_Event_Book_EventView_ElementModel.s_event} has been specified. In this case, other fields aren't receivers.
+   *
+   * The event keys of this array.
+   * Values of this array and sub arrays with keys that correspond to all fields in this table that may be received.
    *
    * @get result
    * @type {{}}
@@ -120,9 +128,9 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat_a_staff
-   * @property {string} k_staff Staff key.
-   * @property {string} s_name Staff name.
-   * @property {string} s_surname First letter of staff surname.
+   * @property {string} k_staff The staff member key.
+   * @property {string} s_name The staff member name.
+   * @property {string} s_surname The first letter of staff member's surname.
    */
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat
@@ -131,8 +139,8 @@ function Wl_Event_Book_EventView_ElementModel()
    */
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule
-   * @property {{}} a_day List of week days when session is occurred. Keys - numbers of week day (0 - Sunday, 6 - Saturday);
-   *  values - always <tt>true</tt>.
+   * @property {{}} a_day A list of days of the week when the session has occurred.
+   * Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always <tt>true</tt>.
    * @property {Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat} a_repeat Repeat periodicity instructions.
    * <dl>
    *   <dt>int <tt>i_repeat</tt></dt>
@@ -140,33 +148,41 @@ function Wl_Event_Book_EventView_ElementModel()
    *   <dt>int <tt>id_repeat</tt></dt>
    *   <dd>Measuring unit of <tt>i_repeat</tt> (week, month, year).</dd>
    * </dl>
-   * @property {Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat_a_staff[]} a_staff List of staff who conduct session. Every element has next keys:<dl>
+   * @property {Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat_a_staff[]} a_staff A list of staff members who conduct the session. Every element has the following next keys:
+   * <dl>
    *   <dt>string <tt>k_staff</tt></dt>
-   *   <dd>Staff key.</dd>
+   *   <dd>The staff member key.</dd>
    *   <dt>string <tt>s_name</tt></dt>
-   *   <dd>Staff name.</dd>
+   *   <dd>The staff member name.</dd>
    *   <dt>string <tt>s_surname</tt></dt>
-   *   <dd>First letter of staff surname.</dd>
+   *   <dd>The first letter of staff member's surname.</dd>
    * </dl>
-   * @property {string[]} a_virtual_location List of virtual locations. Each value is location key.
-   * @property {string} dt_end End date of session.
-   * @property {string} dt_start Start date of session.
-   * @property {number} i_capacity Class capacity.
-   * @property {number} i_duration Duration of class in seconds.
-   * @property {boolean} is_virtual <tt>true</tt> - if event is virtual, <tt>false</tt> - otherwise.
-   * @property {string} k_location Location key.
-   * @property {string} s_location Location title.
-   * @property {string} s_time Time when session is occurred.
-   * @property {string} s_timezone Location timezone abbreviation.
+   * @property {string[]} a_virtual_location List of virtual locations.
+   * @property {string} dt_end The end date of the session.
+   * The local date without time.
+   * @property {string} dt_start The start date of the session.
+   * The local date without time.
+   * @property {number} i_capacity The class capacity.
+   * @property {number} i_duration The duration of the class in seconds.
+   * @property {boolean} is_virtual This will be `true` if the session is not held in person but offered remotely. If will be `false` otherwise.
+   * @property {string} f_price The price of the session, if it can be purchased separately.
+   * @property {string} k_class_period The key of the class period.
+   * @property {string} k_location The key of the location where the session is held.
+   * @property {string} s_location The location title.
+   * @property {string} s_time The time when session occurred.
+   * A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am</tt>
+   * @property {string} s_timezone The name of the timezone in which the session is held.
    */
 
   /**
-   * Schedule of event sessions. Every element has next keys:
+   * A list of event sessions. Every element has the following next keys:
    * <dl>
-   *   <dt>array <var>a_day</var></dt>
+   *   <dt>
+   *     array <var>a_day</var>
+   *   </dt>
    *   <dd>
-   *      List of week days when session is occurred. Keys - numbers of week day (0 - Sunday, 6 - Saturday);
-   *      values - always <tt>true</tt>.
+   *     A list of days of the week when the session has occurred.
+   *     Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always <tt>true</tt>.
    *   </dd>
    *   <dt>array <var>a_repeat</var></dt>
    *   <dd>
@@ -178,36 +194,95 @@ function Wl_Event_Book_EventView_ElementModel()
    *       <dd>Measuring unit of <var>i_repeat</var> (week, month, year).</dd>
    *     </dl>
    *   </dd>
-   *   <dt>array[] <var>a_staff</var></dt>
-   *   <dd>List of staff who conduct session. Every element has next keys:<dl>
+   *   <dt>
+   *     array[] <var>a_staff</var>
+   *   </dt>
+   *   <dd>
+   *     A list of staff members who conduct the session. Every element has the following next keys:
+   *     <dl>
    *       <dt>string <var>k_staff</var></dt>
-   *       <dd>Staff key.</dd>
+   *       <dd>The staff member key.</dd>
    *       <dt>string <var>s_name</var></dt>
-   *       <dd>Staff name.</dd>
+   *       <dd>The staff member name.</dd>
    *       <dt>string <var>s_surname</var></dt>
-   *       <dd>First letter of staff surname.</dd>
+   *       <dd>The first letter of staff member's surname.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>string[] <var>a_virtual_location</var></dt>
-   *   <dd>List of virtual locations. Each value is location key.</dd>
-   *   <dt>string <var>dt_end</var></dt>
-   *   <dd>End date of session.</dd>
-   *   <dt>string <var>dt_start</var></dt>
-   *   <dd>Start date of session.</dd>
-   *   <dt>int <var>i_capacity</var></dt>
-   *   <dd>Class capacity.</dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>Duration of class in seconds.</dd>
-   *   <dt>bool <var>is_virtual</var></dt>
-   *   <dd><tt>true</tt> - if event is virtual, <tt>false</tt> - otherwise.</dd>
-   *   <dt>string <var>k_location</var></dt>
-   *   <dd>Location key.</dd>
-   *   <dt>string <var>s_location</var></dt>
-   *   <dd>Location title.</dd>
-   *   <dt>string <var>s_time</var></dt>
-   *   <dd>Time when session is occurred.</dd>
-   *   <dt>string <var>s_timezone</var></dt>
-   *   <dd>Location timezone abbreviation.</dd>
+   *   <dt>
+   *     string[] <var>a_virtual_location</var>
+   *   </dt>
+   *   <dd>
+   *     List of virtual locations.
+   *   </dd>
+   *   <dt>
+   *     string <var>dt_end</var>
+   *   </dt>
+   *   <dd>
+   *     The end date of the session.
+   *     The local date without time.
+   *   </dd>
+   *   <dt>
+   *     string <var>dt_start</var>
+   *   </dt>
+   *   <dd>
+   *     The start date of the session.
+   *     The local date without time.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_capacity</var>
+   *   </dt>
+   *   <dd>
+   *     The class capacity.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_duration</var>
+   *   </dt>
+   *   <dd>
+   *     The duration of the class in seconds.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_virtual</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if the session is not held in person but offered remotely. If will be `false` otherwise.
+   *   </dd>
+   *   <dt>
+   *     string <var>f_price</var>
+   *   </dt>
+   *   <dd>
+   *     The price of the session, if it can be purchased separately.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_class_period</var>
+   *   </dt>
+   *   <dd>
+   *     The key of the class period.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     The key of the location where the session is held.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_location</var>
+   *   </dt>
+   *   <dd>
+   *     The location title.
+   *   </dd>
+   *   <dt>
+   *     string <var>s_time</var>
+   *   </dt>
+   *   <dd>
+   *     The time when session occurred.
+   *     A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am</tt>
+   *   </dd>
+   *   <dt>
+   *     string <var>s_timezone</var>
+   *   </dt>
+   *   <dd>
+   *     The name of the timezone in which the session is held.
+   *   </dd>
    * </dl>
    *
    * @get result
@@ -224,14 +299,14 @@ function Wl_Event_Book_EventView_ElementModel()
    */
 
   /**
-   * Photos of staff. Keys - IDs of staff; values - information about staff photo:
+   * Photos of staff members. Keys are the keys of staff members. The values are the following:
    * <dl>
    *   <dt>int <var>i_height</var></dt>
    *   <dd>Image height.</dd>
    *   <dt>int <var>i_width</var></dt>
    *   <dd>Image width.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>Key of the user.</dd>
+   *   <dd>Key of the user. Primary key from {@link \PassportLoginSql} table</dd>
    *   <dt>string <var>url_logo</var></dt>
    *   <dd>URL to image.</dd>
    * </dl>
@@ -243,24 +318,24 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_visits_required
-   * @property {number} i_count Number of visits.
+   * @property {number} i_count The number of visits.
    * @property {boolean} is_event `true` if this is an event, `false` if this is a class.
-   * @property {string} k_class Key of the class or event.
-   * @property {string} text_title Name of the class or event.
+   * @property {string} k_class The key of the class or event.
+   * @property {string} text_title The name of the class or event.
    */
 
   /**
-   * List of classes and events, which client should visit before this one.
+   * A list of classes and events that clients should attend before this one.
    *
    * <dl>
    *   <dt>int <var>i_count</var></dt>
-   *   <dd>Number of visits.</dd>
+   *   <dd>The number of visits.</dd>
    *   <dt>bool <var>is_event</var></dt>
    *   <dd>`true` if this is an event, `false` if this is a class.</dd>
    *   <dt>string <var>k_class</var></dt>
-   *   <dd>Key of the class or event.</dd>
+   *   <dd>The key of the class or event.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>Name of the class or event.</dd>
+   *   <dd>The name of the class or event.</dd>
    * </dl>
    *
    * @get result
@@ -269,9 +344,10 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_visits_required = undefined;
 
   /**
-   * Book available end date.
-   * If is set and {@link Wl_Event_Book_EventView_ElementModel.dl_book_available_start} is set list of sessions
-   *   available for booking {@link Wl_Event_Book_EventView_ElementModel.get()} should match given date range.
+   * The last available date for booking.
+   * If this is set and {@link Wl_Event_Book_EventView_ElementModel.dl_book_available_start} is a set list of
+   *   sessions available for booking, {@link Wl_Event_Book_EventView_ElementModel.a_book_available}
+   *   should match given date range.
    *
    * @get get
    * @type {?string}
@@ -279,9 +355,10 @@ function Wl_Event_Book_EventView_ElementModel()
   this.dl_book_available_end = null;
 
   /**
-   * Book available start date.
-   * If is set and {@link Wl_Event_Book_EventView_ElementModel.dl_book_available_end} is set list of sessions
-   *   available for booking {@link Wl_Event_Book_EventView_ElementModel.get()} should match given date range.
+   * The first available date for booking.
+   * If this is set and {@link Wl_Event_Book_EventView_ElementModel.dl_book_available_end} is a set list of
+   *   sessions available for booking {@link Wl_Event_Book_EventView_ElementModel.a_book_available}
+   *   should match given date range.
    *
    * @get get
    * @type {?string}
@@ -289,7 +366,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.dl_book_available_start = null;
 
   /**
-   * Date/time of first event session.
+   * That date that should be used to go to the booking wizard.
    *
    * @get result
    * @type {?string}
@@ -297,7 +374,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.dt_book_date = null;
 
   /**
-   * Early date of event purchase.
+   * The early registration date of the event.
    *
    * @get result
    * @type {?string}
@@ -305,7 +382,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.dt_early = null;
 
   /**
-   * End date of the event instance.
+   * The end date of the event.
    *
    * @get result
    * @type {string}
@@ -313,7 +390,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.dt_end = undefined;
 
   /**
-   * Date of first event session.
+   * The start date of the event.
    *
    * @get result
    * @type {string}
@@ -330,7 +407,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.hide_application = undefined;
 
   /**
-   * Special instruction for event.
+   * Special instruction for the event.
    *
    * @get result
    * @type {string}
@@ -356,7 +433,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.i_image_width = 0;
 
   /**
-   * Session count in event.
+   * The session count.
    *
    * @get result
    * @type {number}
@@ -382,9 +459,9 @@ function Wl_Event_Book_EventView_ElementModel()
   this.i_staff_image_width = 0;
 
   /**
-   * Virtual provider ID. One of {@link Wl_Virtual_VirtualProviderSid} constants.
+   * The virtual provider ID. One of the{@link Wl_Virtual_VirtualProviderSid} constants.
    *
-   * <tt>null</tt> for not virtual classes.
+   * `null` if an in-person event.
    *
    * @get result
    * @type {?number}
@@ -392,7 +469,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.id_virtual_provider = null;
 
   /**
-   * <tt>true</tt> if event is booked already; <tt>false</tt> otherwise.
+   * <tt>true</tt> if the event is already booked; <tt>false</tt> if the event isn't booked.
    *
    * @get result
    * @type {boolean}
@@ -400,7 +477,8 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_book = undefined;
 
   /**
-   * <tt>true</tt> if there are no free spots in the event; booking is available only into wait list. <tt>false</tt> otherwise.
+   * <tt>true</tt> if there are no free spots in the event; booking is available only into the wait list.
+   * <tt>false</tt> otherwise.
    *
    * @get result
    * @type {boolean}
@@ -408,8 +486,8 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_full = undefined;
 
   /**
-   * `true` if event can be paid with pricing option only.
-   * `false` if full event purchase or single session purchase are allowed.
+   * `true` if the event can be paid with a Purchase Option only.
+   * `false` if full event purchases or single session purchases are permitted.
    *
    * @get result
    * @type {boolean}
@@ -417,7 +495,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_promotion_only = undefined;
 
   /**
-   * Whether this event allows paying for single session.
+   * Determines whether this event allows paying for a single session.
    *
    * @get result
    * @type {boolean}
@@ -433,7 +511,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_virtual = undefined;
 
   /**
-   * ID of first event session.
+   * The ID of the session which should be used to go to the booking wizard.
    *
    * @get result
    * @type {string}
@@ -441,7 +519,8 @@ function Wl_Event_Book_EventView_ElementModel()
   this.k_book_class_period = undefined;
 
   /**
-   * Event ID.
+   * The event key.
+   * You can specify {@link Wl_Event_Book_EventView_ElementModel.s_event} instead to get information for a bulk of events.
    *
    * @get get
    * @type {string}
@@ -449,7 +528,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.k_event = "0";
 
   /**
-   * Price of the event session.
+   * The price of a single session of the event.
    *
    * @get result
    * @type {string}
@@ -457,7 +536,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.m_price = undefined;
 
   /**
-   * Price of the full event.
+   * The price of the all sessions of the event.
    *
    * @get result
    * @type {string}
@@ -465,7 +544,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.m_price_total = undefined;
 
   /**
-   * Price of the full event, should be used as full price while <var>dt_early</var> is actual.
+   * Price of the full event, should be used as full price while {@link Wl_Event_Book_EventView_ElementModel.dt_early} is actual.
    *
    * @get result
    * @type {?string}
@@ -473,7 +552,8 @@ function Wl_Event_Book_EventView_ElementModel()
   this.m_price_total_early = null;
 
   /**
-   * Reason of booking restriction. For example if exception has been thrown.
+   * The reason why the event can't be booked.
+   * Empty if {@link Wl_Event_Book_EventView_ElementModel.k_book_class_period} isn't empty.
    *
    * @get result
    * @type {string}
@@ -481,7 +561,8 @@ function Wl_Event_Book_EventView_ElementModel()
   this.s_deny_reason = undefined;
 
   /**
-   * Serialized with JSON list of event keys.
+   * A list of event keys serialized with JSON.
+   * Specify instead of {@link Wl_Event_Book_EventView_ElementModel.k_event} to get information for a bulk of events.
    *
    * @get get
    * @type {string}
@@ -489,7 +570,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.s_event = "";
 
   /**
-   * Event title.
+   * The title of the event.
    *
    * @get result
    * @type {?string}
@@ -497,7 +578,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.s_title = null;
 
   /**
-   * User key.
+   * The user key.
    *
    * @get get
    * @type {string}
@@ -505,7 +586,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.uid = "0";
 
   /**
-   * Description of event. Ready to put into browser.
+   * The description of the event.
    *
    * @get result
    * @type {?string}
@@ -528,8 +609,8 @@ Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Event_Book_EventView_ElementModel.instanceGet
- * @param {string} k_event Event ID.
- * @param {string} uid User key.
+ * @param {string} k_event The event key. You can specify {@link Wl_Event_Book_EventView_ElementModel.s_event} instead to get information for a bulk of events.
+ * @param {string} uid The user key.
  * @returns {Wl_Event_Book_EventView_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

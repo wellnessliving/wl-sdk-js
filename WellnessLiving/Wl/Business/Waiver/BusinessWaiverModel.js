@@ -5,7 +5,6 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @see Wl\Business\Waiver\BusinessWaiverApi
  */
 function Wl_Business_Waiver_BusinessWaiverModel()
 {
@@ -28,7 +27,7 @@ function Wl_Business_Waiver_BusinessWaiverModel()
   /**
    * Require clients to agree to the Liability Release only when booking services. `True` means to require. `False` otherwise.
    *
-   * @get get
+   * @get result
    * @type {boolean}
    */
   this.is_contract_book_only = false;
@@ -60,7 +59,7 @@ function Wl_Business_Waiver_BusinessWaiverModel()
   /**
    * Contents of the business waiver.
    *
-   * @get get
+   * @get result
    * @type {string}
    */
   this.xml_contract = "";
@@ -68,7 +67,7 @@ function Wl_Business_Waiver_BusinessWaiverModel()
   /**
    * Description of the business waiver.
    *
-   * @get get
+   * @get result
    * @type {string}
    */
   this.xml_description = "";
@@ -76,52 +75,14 @@ function Wl_Business_Waiver_BusinessWaiverModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extends(Wl_Business_Waiver_BusinessWaiverModel);
+WlSdk_ModelAbstract.extend(Wl_Business_Waiver_BusinessWaiverModel);
 
 /**
  * @inheritDoc
  */
 Wl_Business_Waiver_BusinessWaiverModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_contract_minor": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_contract_book_only": {
-        "get": {
-          "get": true
-        }
-      },
-      "is_contract_minor": {
-        "get": {
-          "result": true
-        }
-      },
-      "is_contract_upon_register": {
-        "get": {
-          "result": true
-        }
-      },
-      "k_business": {
-        "get": {
-          "get": true
-        }
-      },
-      "xml_contract": {
-        "get": {
-          "get": true
-        }
-      },
-      "xml_description": {
-        "get": {
-          "get": true
-        }
-      }
-    }
-  };
+  return {"a_field": {"i_contract_minor": {"get": {"result": true}},"is_contract_book_only": {"get": {"result": true}},"is_contract_minor": {"get": {"result": true}},"is_contract_upon_register": {"get": {"result": true}},"k_business": {"get": {"get": true}},"xml_contract": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
 };
 
 /**

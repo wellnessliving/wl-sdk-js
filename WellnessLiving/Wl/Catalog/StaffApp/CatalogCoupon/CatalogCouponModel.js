@@ -20,7 +20,6 @@ function Wl_Catalog_StaffApp_CatalogCoupon_CatalogCouponModel()
 
   /**
    * Coupon ID.
-   * Primary key in {@link \RsCouponSql}
    *
    * @get get
    * @type {string}
@@ -29,7 +28,6 @@ function Wl_Catalog_StaffApp_CatalogCoupon_CatalogCouponModel()
 
   /**
    * Coupon amount ID.
-   * Primary key in {@link \Wl\Coupon\AmountSql}
    *
    * @get get
    * @type {string}

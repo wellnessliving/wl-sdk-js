@@ -18,7 +18,7 @@ function Wl_Page_Backend_BackendConfigModel()
   /**
    * Data for the navigation banner template.
    *
-   * Method {@link \Wl\Page\Backend\BackendConfigApi::headQuick()} is preparing the data.
+   * Method {@link Wl_Page_Backend_BackendConfigModel.headQuick()} is preparing the data.
    *
    * @get result
    * @type {{}}
@@ -28,7 +28,7 @@ function Wl_Page_Backend_BackendConfigModel()
   /**
    * Data for the left panel template.
    *
-   * Method {@link \Wl\Page\Backend\BackendConfigApi::panelLeft()} is preparing the data.
+   * Method {@link Wl_Page_Backend_BackendConfigModel.panelLeft()} is preparing the data.
    *
    * @get result
    * @type {{}}

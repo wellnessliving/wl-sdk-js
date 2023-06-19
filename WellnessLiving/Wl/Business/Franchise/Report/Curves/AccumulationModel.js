@@ -33,7 +33,6 @@ function Wl_Business_Franchise_Report_Curves_AccumulationModel()
 
   /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
    * @post get
@@ -43,7 +42,6 @@ function Wl_Business_Franchise_Report_Curves_AccumulationModel()
 
   /**
    * User key.
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
    * @post get
@@ -75,8 +73,8 @@ Wl_Business_Franchise_Report_Curves_AccumulationModel.prototype.config=function(
 /**
  * @function
  * @name Wl_Business_Franchise_Report_Curves_AccumulationModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
  * @returns {Wl_Business_Franchise_Report_Curves_AccumulationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

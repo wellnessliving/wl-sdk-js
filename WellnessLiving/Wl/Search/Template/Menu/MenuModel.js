@@ -18,7 +18,7 @@ function Wl_Search_Template_Menu_MenuModel()
   /**
    * @typedef {{}} Wl_Search_Template_Menu_MenuModel_a_search_list
    * @property {string} is_default Whether this template is used as default template.
-   * @property {string} k_search_template Template key. Primary key in the {@link SearchTemplateSql} table.
+   * @property {string} k_search_template Template key.
    * @property {string} text_title Search template title.
    */
 
@@ -35,7 +35,7 @@ function Wl_Search_Template_Menu_MenuModel()
    *     string <var>k_search_template</var>
    *   </dt>
    *   <dd>
-   *     Template key. Primary key in the {@link SearchTemplateSql} table.
+   *     Template key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
@@ -70,7 +70,6 @@ function Wl_Search_Template_Menu_MenuModel()
 
   /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @delete get
    * @get get
@@ -81,7 +80,6 @@ function Wl_Search_Template_Menu_MenuModel()
 
   /**
    * Key of existing template.
-   * Primary key in the {@link SearchTemplateSql} table.
    *
    * @delete get
    * @post get
@@ -101,7 +99,6 @@ function Wl_Search_Template_Menu_MenuModel()
 
   /**
    * User key.
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @delete get
    * @get get
@@ -126,8 +123,8 @@ Wl_Search_Template_Menu_MenuModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Search_Template_Menu_MenuModel.instanceGet
- * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @param {string} uid User key.
+ * @param {string} k_business Business key.
  * @param {string} s_search_group Unique string identifying the name of the search group.
  * @returns {Wl_Search_Template_Menu_MenuModel}
  * @see WlSdk_ModelAbstract.instanceGet()

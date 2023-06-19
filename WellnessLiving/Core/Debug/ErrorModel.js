@@ -1,5 +1,5 @@
 /**
- * Saves error to log.
+ * Saves error to {@link Core\Debug\DebugJsLog}.
  *
  * This model is generated automatically based on API.
  *
@@ -13,8 +13,10 @@ function Core_Debug_ErrorModel()
   /**
    * List of errors. For structure see {@link Core_Debug_ErrorModel.a_error_list}.
    *
+   * JSON-encoded array mary arrive as a `string`.
+   *
    * @post post
-   * @type {{}}
+   * @type {{}|string}
    */
   this.a_error_list = [];
 

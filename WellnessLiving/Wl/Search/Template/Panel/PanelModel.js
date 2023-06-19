@@ -17,7 +17,7 @@ function Wl_Search_Template_Panel_PanelModel()
 
   /**
    * Entity in array format.
-   * For more information about the format, see {@link \Wl\Search\Criteria\SearchCriteriaList::createArray()} method.
+   * For more information about the format, see {@link Wl\Search\Criteria\SearchCriteriaList::createArray()} method.
    *
    * @post post
    * @put post
@@ -26,11 +26,21 @@ function Wl_Search_Template_Panel_PanelModel()
   this.a_criteria = [];
 
   /**
+   * Logic connection between criteria.
+   * See {@link Wl\Search\Criteria\SearchCriteriaList::$a_criteria_logic} for details.
+   *
+   * @post post
+   * @put post
+   * @type {*}
+   */
+  this.a_logic = undefined;
+
+  /**
    * @typedef {{}} Wl_Search_Template_Panel_PanelModel_a_panel
    * @property {string[]} a_staff_selected List of user keys of shared search template.
    * @property {number} cid_search_entity Search entity CID. Constant from {@link \Wl\Search\SearchEntityAbstract} subclasses.
-   * @property {number} id_share Share option constant. See {@link ShareSid}.
-   * @property {string} k_search_template Key of existing template. Primary key in the {@link SearchTemplateSql} table.
+   * @property {number} id_share Share option constant. See {@link Wl_Share_ShareSid}.
+   * @property {string} k_search_template Key of existing template.
    * @property {boolean} show_staff_role_list Whether staff role list should be shown for share.
    * @property {string} text_title Search template title.
    */
@@ -54,13 +64,13 @@ function Wl_Search_Template_Panel_PanelModel()
    *     int <var>id_share</var>
    *   </dt>
    *   <dd>
-   *     Share option constant. See {@link ShareSid}.
+   *     Share option constant. See {@link Wl_Share_ShareSid}.
    *   </dd>
    *   <dt>
    *     string <var>k_search_template</var>
    *   </dt>
    *   <dd>
-   *     Key of existing template. Primary key in the {@link SearchTemplateSql} table.
+   *     Key of existing template.
    *   </dd>
    *   <dt>
    *     bool <var>show_staff_role_list</var>
@@ -93,8 +103,8 @@ function Wl_Search_Template_Panel_PanelModel()
 
   /**
    * @typedef {{}} Wl_Search_Template_Panel_PanelModel_a_staff_role_selected
-   * @property {number} id_privilege_role ID of privilege role. Constant from {@link \RsPrivilegeRoleSid}.
-   * @property {string} k_business_role Key of the business role. Primary key in {@link \RsBusinessRoleSql} table.
+   * @property {number} id_privilege_role ID of privilege role. Constant from {@link RsPrivilegeRoleSid}.
+   * @property {string} k_business_role Key of the business role.
    */
 
   /**
@@ -102,9 +112,9 @@ function Wl_Search_Template_Panel_PanelModel()
    *
    * <dl>
    *   <dt>int <var>id_privilege_role</var></dt>
-   *   <dd>ID of privilege role. Constant from {@link \RsPrivilegeRoleSid}.</dd>
+   *   <dd>ID of privilege role. Constant from {@link RsPrivilegeRoleSid}.</dd>
    *   <dt>string <var>k_business_role</var></dt>
-   *   <dd>Key of the business role. Primary key in {@link \RsBusinessRoleSql} table.</dd>
+   *   <dd>Key of the business role.</dd>
    * </dl>
    *
    * @post post
@@ -115,7 +125,7 @@ function Wl_Search_Template_Panel_PanelModel()
 
   /**
    * Type of share option.
-   * One of {@link ShareSid} constants.
+   * One of {@link Wl_Member_Group_Edit_ShareSid} constants.
    *
    * @post post
    * @put post
@@ -125,7 +135,6 @@ function Wl_Search_Template_Panel_PanelModel()
 
   /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
    * @post get
@@ -136,12 +145,11 @@ function Wl_Search_Template_Panel_PanelModel()
 
   /**
    * Key of existing template.
-   * Primary key in the {@link SearchTemplateSql} table.
    *
    * Can be empty if template needs to be created.
    *
    * @get get,result
-   * @post result
+   * @post get,result
    * @put get
    * @type {string}
    */
@@ -168,7 +176,6 @@ function Wl_Search_Template_Panel_PanelModel()
 
   /**
    * User key.
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
    * @post get
@@ -187,16 +194,16 @@ WlSdk_ModelAbstract.extend(Wl_Search_Template_Panel_PanelModel);
  */
 Wl_Search_Template_Panel_PanelModel.prototype.config=function()
 {
-  return {"a_field": {"a_criteria": {"post": {"post": true},"put": {"post": true}},"a_panel": {"get": {"result": true}},"a_search_entity": {"post": {"post": true},"put": {"post": true}},"a_staff_role_selected": {"post": {"post": true},"put": {"post": true}},"id_share": {"post": {"post": true},"put": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_search_template": {"get": {"get": true,"result": true},"post": {"result": true},"put": {"get": true}},"s_search_group": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"text_title": {"post": {"post": true},"put": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
+  return {"a_field": {"a_criteria": {"post": {"post": true},"put": {"post": true}},"a_logic": {"post": {"post": true},"put": {"post": true}},"a_panel": {"get": {"result": true}},"a_search_entity": {"post": {"post": true},"put": {"post": true}},"a_staff_role_selected": {"post": {"post": true},"put": {"post": true}},"id_share": {"post": {"post": true},"put": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_search_template": {"get": {"get": true,"result": true},"post": {"get": true,"result": true},"put": {"get": true}},"s_search_group": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"text_title": {"post": {"post": true},"put": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Search_Template_Panel_PanelModel.instanceGet
- * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @param {string} uid User key.
+ * @param {string} k_business Business key.
  * @param {string} s_search_group Unique string identifying the name of the search group.
- * @param {string} k_search_template Key of existing template. Primary key in the {@link SearchTemplateSql} table. Can be empty if template needs to be created.
+ * @param {string} k_search_template Key of existing template. Can be empty if template needs to be created.
  * @returns {Wl_Search_Template_Panel_PanelModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

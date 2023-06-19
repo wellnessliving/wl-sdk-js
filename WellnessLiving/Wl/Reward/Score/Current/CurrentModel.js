@@ -34,8 +34,6 @@ function Wl_Reward_Score_Current_CurrentModel()
   /**
    * ID of a business to show information for.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @type {string}
    */
@@ -51,8 +49,6 @@ function Wl_Reward_Score_Current_CurrentModel()
 
   /**
    * UID to retrieve information about.
-   *
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
    * @type {string}
@@ -75,8 +71,8 @@ Wl_Reward_Score_Current_CurrentModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Reward_Score_Current_CurrentModel.instanceGet
- * @param {string} uid UID to retrieve information about. Primary key in {@link \PassportLoginSql}.
- * @param {string} k_business ID of a business to show information for. Primary key in {@link \RsBusinessSql}.
+ * @param {string} uid UID to retrieve information about.
+ * @param {string} k_business ID of a business to show information for.
  * @returns {Wl_Reward_Score_Current_CurrentModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

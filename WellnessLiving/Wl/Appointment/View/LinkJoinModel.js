@@ -12,7 +12,6 @@ function Wl_Appointment_View_LinkJoinModel()
 
   /**
    * Key of non-integrated virtual appointment.
-   * Primary key from {@link \RsAppointmentSql}.
    *
    * @post post
    * @type {string}
@@ -21,7 +20,6 @@ function Wl_Appointment_View_LinkJoinModel()
 
   /**
    * Key of business for which appointment belongs.
-   * Primary key from {@link \RsBusinessSql}.
    *
    * @post post
    * @type {string}

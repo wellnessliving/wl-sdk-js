@@ -1,5 +1,5 @@
 /**
- * Information about all currencies in the system.
+ * Retrieves information about all currencies in the system.
  *
  * This model is generated automatically based on API.
  *
@@ -14,6 +14,7 @@ function Wl_Currency_CurrencyModel()
    * @typedef {{}} Wl_Currency_CurrencyModel_a_currency
    * @property {boolean} is_before <tt>true</tt> - locate sign before amount; <tt>false</tt> - locate sign after amount.
    * @property {string} s_sign Sign of currency.
+   * @property {string} sid_currency International code of the currency.
    */
 
   /**
@@ -30,6 +31,12 @@ function Wl_Currency_CurrencyModel()
    *   </dt>
    *   <dd>
    *     Sign of currency.
+   *   </dd>
+   *   <dt>
+   *     string <var>sid_currency</var>
+   *   </dt>
+   *   <dd>
+   *     International code of the currency.
    *   </dd>
    * </dl>
    *

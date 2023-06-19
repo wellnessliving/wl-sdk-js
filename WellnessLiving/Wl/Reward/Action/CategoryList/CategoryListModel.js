@@ -18,7 +18,7 @@ function Wl_Reward_Action_CategoryList_CategoryListModel()
   /**
    * @typedef {{}} Wl_Reward_Action_CategoryList_CategoryListModel_a_category
    * @property {?number} id_reward_action_category ID of reward actions category type. One of {@link RsRewardActionCategorySid} constants. <tt>null</tt> for custom reward actions categories.
-   * @property {string} k_reward_action_category ID of reward actions category in database. Primary key in {@link RsRewardActionCategorySql} table.
+   * @property {string} k_reward_action_category ID of reward actions category in database.
    * @property {string} s_title Title of the reward action.
    */
 
@@ -34,7 +34,7 @@ function Wl_Reward_Action_CategoryList_CategoryListModel()
    *     string <var>k_reward_action_category</var>
    *   </dt>
    *   <dd>
-   *     ID of reward actions category in database. Primary key in {@link RsRewardActionCategorySql} table.
+   *     ID of reward actions category in database.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
@@ -51,8 +51,6 @@ function Wl_Reward_Action_CategoryList_CategoryListModel()
 
   /**
    * ID of a business to show information for.
-   *
-   * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
    * @type {string}
@@ -75,7 +73,7 @@ Wl_Reward_Action_CategoryList_CategoryListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Reward_Action_CategoryList_CategoryListModel.instanceGet
- * @param {string} k_business ID of a business to show information for. Primary key in {@link \RsBusinessSql}.
+ * @param {string} k_business ID of a business to show information for.
  * @returns {Wl_Reward_Action_CategoryList_CategoryListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

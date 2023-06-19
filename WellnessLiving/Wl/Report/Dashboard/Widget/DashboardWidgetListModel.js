@@ -18,7 +18,7 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
   /**
    * @typedef {{}} Wl_Report_Dashboard_Widget_DashboardWidgetListModel_a_category_list
    * @property {number} i_sort Category sort order.
-   * @property {number} id_report_category Category ID. One of {@link \RsReportCategorySid}.
+   * @property {number} id_report_category Category ID. One of {@link RsReportCategorySid}.
    * @property {string} text_title Category title.
    */
 
@@ -35,7 +35,7 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
    *     int <var>id_report_category</var>
    *   </dt>
    *   <dd>
-   *     Category ID. One of {@link \RsReportCategorySid}.
+   *     Category ID. One of {@link RsReportCategorySid}.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
@@ -52,9 +52,9 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
 
   /**
    * @typedef {{}} Wl_Report_Dashboard_Widget_DashboardWidgetListModel_a_widget_default_list
-   * @property {number|string} i_report_widget Widget content identifier. Depending on <tt>id_report_widget</tt> may be one of {@link \RsReportSid}, {@link \RsReportPageSid}, or primary key in {@link \RsReportSaveSql} table.
+   * @property {number|string} i_report_widget Widget content identifier. Depending on <tt>id_report_widget</tt> may be one of {@link RsReportSid}, {@link RsReportPageSid}, or primary key in {@link \RsReportSaveSql} table.
    * @property {number} i_sort Widget order within its category.
-   * @property {number} id_report_widget Widget type. One of {@link \RsReportWidgetSid} for details.
+   * @property {number} id_report_widget Widget type. One of {@link RsReportWidgetSid} for details.
    * @property {string} text_widget_key Unique key of the widget. Composite of <tt>id_report_widget</tt> and <tt>i_report_widget</tt>.
    */
 
@@ -65,7 +65,7 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
    *     int|string <var>i_report_widget</var>
    *   </dt>
    *   <dd>
-   *     Widget content identifier. Depending on <var>id_report_widget</var> may be one of {@link \RsReportSid}, {@link \RsReportPageSid}, or primary key in {@link \RsReportSaveSql} table.
+   *     Widget content identifier. Depending on <var>id_report_widget</var> may be one of {@link RsReportSid}, {@link RsReportPageSid}, or primary key in {@link \RsReportSaveSql} table.
    *   </dd>
    *   <dt>
    *     int <var>i_sort</var>
@@ -77,7 +77,7 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
    *     int <var>id_report_widget</var>
    *   </dt>
    *   <dd>
-   *     Widget type. One of {@link \RsReportWidgetSid} for details.
+   *     Widget type. One of {@link RsReportWidgetSid} for details.
    *   </dd>
    *   <dt>
    *     string <var>text_widget_key</var>
@@ -94,10 +94,10 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
 
   /**
    * @typedef {{}} Wl_Report_Dashboard_Widget_DashboardWidgetListModel_a_widget_list
-   * @property {number[]} a_report_category List of report categories this widget belongs to. List of IDs from {@link \RsReportCategorySid}.
-   * @property {number|string} i_report_widget Widget content identifier. Depending on <tt>id_report_widget</tt> may be one of {@link \RsReportSid}, {@link \RsReportPageSid}, or primary key in {@link \RsReportSaveSql} table.
+   * @property {number[]} a_report_category List of report categories this widget belongs to. List of IDs from {@link RsReportCategorySid}.
+   * @property {number|string} i_report_widget Widget content identifier. Depending on <tt>id_report_widget</tt> may be one of {@link RsReportSid}, {@link RsReportPageSid}, or primary key in {@link \RsReportSaveSql} table.
    * @property {number} i_sort Widget order within its category.
-   * @property {number} id_report_widget Widget type. One of {@link \RsReportWidgetSid} for details.
+   * @property {number} id_report_widget Widget type. One of {@link RsReportWidgetSid} for details.
    * @property {string} text_widget_key Unique key of the widget. Composite of <tt>id_report_widget</tt> and <tt>i_report_widget</tt>.
    * @property {string} text_title Widget title.
    */
@@ -109,13 +109,13 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
    *     int[] <var>a_report_category</var>
    *   </dt>
    *   <dd>
-   *     List of report categories this widget belongs to. List of IDs from {@link \RsReportCategorySid}.
+   *     List of report categories this widget belongs to. List of IDs from {@link RsReportCategorySid}.
    *   </dd>
    *   <dt>
    *     int|string <var>i_report_widget</var>
    *   </dt>
    *   <dd>
-   *     Widget content identifier. Depending on <var>id_report_widget</var> may be one of {@link \RsReportSid}, {@link \RsReportPageSid}, or primary key in {@link \RsReportSaveSql} table.
+   *     Widget content identifier. Depending on <var>id_report_widget</var> may be one of {@link RsReportSid}, {@link RsReportPageSid}, or primary key in {@link \RsReportSaveSql} table.
    *   </dd>
    *   <dt>
    *     int <var>i_sort</var>
@@ -127,7 +127,7 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
    *     int <var>id_report_widget</var>
    *   </dt>
    *   <dd>
-   *     Widget type. One of {@link \RsReportWidgetSid} for details.
+   *     Widget type. One of {@link RsReportWidgetSid} for details.
    *   </dd>
    *   <dt>
    *     string <var>text_widget_key</var>
@@ -150,7 +150,6 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
 
   /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -159,7 +158,6 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetListModel()
 
   /**
    * User key.
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
    * @type {string}
@@ -182,8 +180,8 @@ Wl_Report_Dashboard_Widget_DashboardWidgetListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_Dashboard_Widget_DashboardWidgetListModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
  * @returns {Wl_Report_Dashboard_Widget_DashboardWidgetListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

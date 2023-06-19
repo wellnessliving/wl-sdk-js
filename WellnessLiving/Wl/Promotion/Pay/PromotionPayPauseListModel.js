@@ -11,18 +11,6 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of login promotion keys to create or delete pause for.
-   * Primary key in {@link \RsLoginPromotionSql} table.
-   *
-   * <tt>null</tt> if not initialized.
-   *
-   * @post post
-   * @put post
-   * @type {?string[]}
-   */
-  this.a_login_promotion = null;
-
-  /**
    * List of the login promotions which can not be put on hold in the selected period.
    *
    * @put result
@@ -40,7 +28,7 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
 
   /**
    * End date of pause period in login promotion timezone. Can be set to special value
-   * {@link PromotionPayPause::DATE_END_INDEFINITE} to make the period indefinite until further action.
+   * {@link Wl\Promotion\Pay\PromotionPayPause::DATE_END_INDEFINITE} to make the period indefinite until further action.
    *
    * <tt>null</tt> if not initialized.
    *
@@ -71,7 +59,7 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
 
   /**
    * Action to perform with promotion payment pause periods.
-   * One for the {@link \Wl\Promotion\Pay\PromotionPayPauseActionSid} constants.
+   * One for the {@link Wl_Promotion_Pay_PromotionPayPauseActionSid} constants.
    *
    * <tt>null</tt> if not initialized.
    *
@@ -79,6 +67,18 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
    * @type {?number}
    */
   this.id_action = null;
+
+  /**
+   * Bulk of login promotions. Login promotion primary keys serialized with JSON.
+   * This logic was selected, because there is possibility to transfer list with more than 1000 elements.
+   *
+   * <tt>null</tt> if not initialized.
+   *
+   * @post post
+   * @put post
+   * @type {?string}
+   */
+  this.s_login_promotion = null;
 
   /**
    * Additional notes for promotion payment pause period.
@@ -100,5 +100,5 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_Pay_PromotionPayPauseListModel);
  */
 Wl_Promotion_Pay_PromotionPayPauseListModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_promotion": {"post": {"post": true},"put": {"post": true}},"a_login_promotion_exclude": {"put": {"result": true}},"a_user": {"put": {"result": true}},"dl_end": {"post": {"post": true},"put": {"post": true}},"dl_start": {"post": {"post": true},"put": {"post": true}},"i_user": {"put": {"result": true}},"id_action": {"post": {"post": true}},"text_note": {"post": {"post": true}}}};
+  return {"a_field": {"a_login_promotion_exclude": {"put": {"result": true}},"a_user": {"put": {"result": true}},"dl_end": {"post": {"post": true},"put": {"post": true}},"dl_start": {"post": {"post": true},"put": {"post": true}},"i_user": {"put": {"result": true}},"id_action": {"post": {"post": true}},"s_login_promotion": {"post": {"post": true},"put": {"post": true}},"text_note": {"post": {"post": true}}}};
 };

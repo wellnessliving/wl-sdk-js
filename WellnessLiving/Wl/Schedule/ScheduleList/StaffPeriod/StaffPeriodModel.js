@@ -16,7 +16,7 @@ function Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel()
   this._s_key = "dt_date,k_business";
 
   /**
-   * Working hours list. See {@link \Wl\Schedule\WorkingTime\StaffWorkingTime::getWorkingTime()} for details.
+   * Working hours list. See {@link Wl\Schedule\WorkingTime\StaffWorkingTime::getWorkingTime()} for details.
    *
    * @get result
    * @type {{}}
@@ -34,7 +34,6 @@ function Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel()
 
   /**
    * ID of business for which working hours are required.
-   * Primary key in table {@link \RsBusinessSql}.
    *
    * @get get
    * @type {string}
@@ -58,7 +57,7 @@ Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel.prototype.config=function(
  * @function
  * @name Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel.instanceGet
  * @param {string} dt_date Date for which working hours are required. In business timezone.
- * @param {string} k_business ID of business for which working hours are required. Primary key in table {@link \RsBusinessSql}.
+ * @param {string} k_business ID of business for which working hours are required.
  * @returns {Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

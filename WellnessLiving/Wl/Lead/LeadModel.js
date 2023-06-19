@@ -1,5 +1,9 @@
 /**
- * Entry point to "Lead capture" widget.
+ * An endpoint that gets information from the Lead Capture widget and saves a new user’s information.
+ *
+ * A user can be added to a second business by adding them first as a lead. If your business uses Enterprise Cloud,
+ * there may be a restriction where clients can only be members in one enterprise location (travellers in all
+ * other enterprise locations).
  *
  * This model is generated automatically based on API.
  *
@@ -11,8 +15,8 @@ function Wl_Lead_LeadModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of user's fields to save.
-   * Keys - primary keys in {@link \RsFieldSql} table, values - field values.
+   * A list of fields containing the lead information.
+   * The keys are the field keys and values are field values.
    *
    * @post post
    * @type {{}}
@@ -20,24 +24,114 @@ function Wl_Lead_LeadModel()
   this.a_field_data = [];
 
   /**
-   * List of profile fields in business. See {@link \RsSkinDataLead::_fieldDataLoad()} for details.
+   * @typedef {{}} Wl_Lead_LeadModel_a_field_list_a_item
+   * @property {string} s_id The option ID.
+   * @property {string} text_title The option title.
+   */
+  /**
+   * @typedef {{}} Wl_Lead_LeadModel_a_field_list
+   * @property {Wl_Lead_LeadModel_a_field_list_a_item[]} a_item A list of possible options for an HTML select field. This value is only used if this field is an HTML select.
+   * Every element has the following keys:
+   * <dl>
+   *   <dt>string <tt>s_id</tt></dt>
+   *   <dd>The option ID.</dd>
+   *   <dt>string <tt>text_title</tt></dt>
+   *   <dd>The option title.</dd>
+   * </dl>
+   * @property {number} id_field_general The type of the general field. This is one of the {@link RsFieldGeneralSid}.
+   * This value is only set if the field is one of the general fields.
+   * @property {number} id_field_type The field type. This is one of the {@link RsFieldTypeSid} constants.
+   * @property {boolean} is_require If `true`, then the field is mandatory. If `false`, then the field isn't mandatory.
+   * @property {string} k_field The field key.
+   * @property {string} text_field The field title.
+   */
+
+  /**
+   * A list of profile fields in the business. Every element has the following keys:
+   * <dl>
+   *   <dt>
+   *      array[] <var>a_item</var>
+   *   </dt>
+   *   <dd>
+   *     A list of possible options for an HTML select field. This value is only used if this field is an HTML select.
+   *     Every element has the following keys:
+   *     <dl>
+   *       <dt>string <var>s_id</var></dt>
+   *       <dd>The option ID.</dd>
+   *       <dt>string <var>text_title</var></dt>
+   *       <dd>The option title.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     int <var>id_field_general</var>
+   *   </dt>
+   *   <dd>
+   *     The type of the general field. This is one of the {@link RsFieldGeneralSid}.
+   *     This value is only set if the field is one of the general fields.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_field_type</var>
+   *   </dt>
+   *   <dd>
+   *     The field type. This is one of the {@link RsFieldTypeSid} constants.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_require</var>
+   *   </dt>
+   *   <dd>
+   *     If `true`, then the field is mandatory. If `false`, then the field isn't mandatory.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_field</var>
+   *   </dt>
+   *   <dd>
+   *     The field key.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_field</var>
+   *   </dt>
+   *   <dd>
+   *     The field title.
+   *   </dd>
+   * </dl>
    *
    * @get result
-   * @type {{}[]}
+   * @type {Wl_Lead_LeadModel_a_field_list[]}
    */
   this.a_field_list = undefined;
 
   /**
-   * Skin data. See {@link \RsSkinData::skin()} for details.
+   * @typedef {{}} Wl_Lead_LeadModel_a_skin
+   * @property {{}} a_style The general style settings.
+   * @property {{}} background The background settings.
+   * @property {{}} field-font The font settings.
+   * @property {{}} header-text The header settings.
+   * @property {{}} info-show The information settings.
+   * @property {{}} submit-background The settings for the submit button background.
+   * @property {{}} submit-font The settings for the submit button font.
+   * @property {{}} submit-text The settings for the submit button text.
+   */
+
+  /**
+   * The skin configuration:
+   * <dl>
+   *   <dt>array <var>a_style</var></dt><dd>The general style settings.</dd>
+   *   <dt>array <var>background</var></dt><dd>The background settings.</dd>
+   *   <dt>array <var>field-font</var></dt><dd>The font settings.</dd>
+   *   <dt>array <var>header-text</var></dt><dd>The header settings.</dd>
+   *   <dt>array <var>info-show</var></dt><dd>The information settings.</dd>
+   *   <dt>array <var>submit-background</var></dt><dd>The settings for the submit button background.</dd>
+   *   <dt>array <var>submit-font</var></dt><dd>The settings for the submit button font.</dd>
+   *   <dt>array <var>submit-text</var></dt><dd>The settings for the submit button text.</dd>
+   * </dl>
    *
    * @get result
-   * @type {{}}
+   * @type {Wl_Lead_LeadModel_a_skin}
    */
   this.a_skin = undefined;
 
   /**
-   * Business key.
-   * Primary key in {@link \RsBusinessSql} table.
+   * The key of business to which the new user must be captured.
    *
    * @get get
    * @post get
@@ -46,9 +140,10 @@ function Wl_Lead_LeadModel()
   this.k_business = "0";
 
   /**
-   * Skin key.
-   * Empty to use system default skin.
-   * Primary key in {@link \RsSkinSql} table.
+   * The key of the widget skin. If left empty, then the default skin is used.
+   * This will be the Lead Capture widget skin with "Use this widget for the Add Lead form" selected.
+   * If your business doesn't have a skin selected, this endpoint will default to the system-wide default,
+   * which may lack fields your business requires when adding a lead or a client.
    *
    * @get get
    * @post get
@@ -57,7 +152,9 @@ function Wl_Lead_LeadModel()
   this.k_skin = "0";
 
   /**
-   * Text for captcha test.
+   * The characters entered by the lead for the captcha test.
+   * This isn't necessary if the GET method returned an empty {@link Wl_Lead_LeadModel.url_captcha}.
+   * This field isn't necessary if the GET method returned an empty {@link Wl_Lead_LeadModel.url_captcha}.
    *
    * @post post
    * @type {string}
@@ -65,7 +162,7 @@ function Wl_Lead_LeadModel()
   this.s_captcha = "";
 
   /**
-   * Captured user. Primary key in {@link \PassportLoginSql} table.
+   * The key of the new user.
    *
    * @post result
    * @type {string}
@@ -73,7 +170,8 @@ function Wl_Lead_LeadModel()
   this.uid = undefined;
 
   /**
-   * URL to captcha image if it is necessary to enter captcha. Empty string otherwise.
+   * The URL to load the image with a captcha test.
+   * This string is empty if it's not necessary to pass a captcha test.
    *
    * @get result
    * @type {string}

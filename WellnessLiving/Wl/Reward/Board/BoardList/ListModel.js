@@ -26,8 +26,6 @@ function Wl_Reward_Board_BoardList_ListModel()
   /**
    * Business to show information for.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @type {string}
    */
@@ -35,8 +33,6 @@ function Wl_Reward_Board_BoardList_ListModel()
 
   /**
    * User to retrieve information about.
-   *
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
    * @type {string}
@@ -59,8 +55,8 @@ Wl_Reward_Board_BoardList_ListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Reward_Board_BoardList_ListModel.instanceGet
- * @param {string} k_business Business to show information for. Primary key in {@link \RsBusinessSql}.
- * @param {string} uid User to retrieve information about. Primary key in {@link \PassportLoginSql}.
+ * @param {string} k_business Business to show information for.
+ * @param {string} uid User to retrieve information about.
  * @returns {Wl_Reward_Board_BoardList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

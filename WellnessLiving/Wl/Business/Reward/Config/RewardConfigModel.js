@@ -25,7 +25,7 @@ function Wl_Business_Reward_Config_RewardConfigModel()
   this.is_disabled_reward_program = undefined;
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @post get
@@ -49,7 +49,7 @@ Wl_Business_Reward_Config_RewardConfigModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Reward_Config_RewardConfigModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @param {string} k_business Business key.
  * @returns {Wl_Business_Reward_Config_RewardConfigModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

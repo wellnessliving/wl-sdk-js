@@ -18,13 +18,13 @@ function Wl_Shop_Category_StaffApp_CategoryModel()
   /**
    * @typedef {{}} Wl_Shop_Category_StaffApp_CategoryModel_a_shop_category
    * @property {number} i_order Shop category order.
-   * @property {string} k_shop_category ID in {@link RsShopCategorySql} table.
+   * @property {string} k_shop_category ID in {@link \RsShopCategorySql} table.
    * @property {string} text_description Category description.
    * @property {string} text_title Category title.
    */
 
   /**
-   * Categories in online store for business {@link \Wl\Shop\Category\CategoryApi::$k_business}, with next keys:
+   * Categories in online store for business {@link Wl_Shop_Category_CategoryModel.k_business}, with next keys:
    * <dl>
    *   <dt>
    *     int <var>i_order</var>
@@ -36,7 +36,7 @@ function Wl_Shop_Category_StaffApp_CategoryModel()
    *     string <var>k_shop_category</var>
    *   </dt>
    *   <dd>
-   *     ID in {@link RsShopCategorySql} table.
+   *     ID in {@link \RsShopCategorySql} table.
    *   </dd>
    *   <dt>
    *     string <var>text_description</var>
@@ -58,7 +58,7 @@ function Wl_Shop_Category_StaffApp_CategoryModel()
   this.a_shop_category = undefined;
 
   /**
-   * Key of business to get categories for. Primary key in {@link RsBusinessSql} table.
+   * Key of business to get categories for.
    *
    * @get get
    * @type {string}
@@ -81,7 +81,7 @@ Wl_Shop_Category_StaffApp_CategoryModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Shop_Category_StaffApp_CategoryModel.instanceGet
- * @param {string} k_business Key of business to get categories for. Primary key in {@link RsBusinessSql} table.
+ * @param {string} k_business Key of business to get categories for.
  * @returns {Wl_Shop_Category_StaffApp_CategoryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

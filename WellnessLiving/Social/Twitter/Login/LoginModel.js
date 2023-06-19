@@ -50,7 +50,7 @@ function Social_Twitter_Login_LoginModel()
   this.s_token = "";
 
   /**
-   * User's primary key in {@link PassportLoginSql} table.
+   * User's primary key in {@link \PassportLoginSql} table.
    *
    * @get get
    * @type {string}
@@ -73,7 +73,7 @@ Social_Twitter_Login_LoginModel.prototype.config=function()
 /**
  * @function
  * @name Social_Twitter_Login_LoginModel.instanceGet
- * @param {string} uid User's primary key in {@link PassportLoginSql} table.
+ * @param {string} uid User's primary key in {@link \PassportLoginSql} table.
  * @returns {Social_Twitter_Login_LoginModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

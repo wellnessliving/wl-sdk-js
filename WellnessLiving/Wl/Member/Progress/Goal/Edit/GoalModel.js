@@ -18,7 +18,7 @@ function Wl_Member_Progress_Goal_Edit_GoalModel()
   /**
    * List of fields.
    *
-   * Keys are field IDs ({@link \Wl\Member\Progress\Field\ProgressFieldSid} constants).
+   * Keys are field IDs ({@link Wl_Member_Progress_Field_ProgressFieldSid} constants).
    * Values are new field values.
    * Structure of value completely defined by individual fields.
    *
@@ -28,7 +28,7 @@ function Wl_Member_Progress_Goal_Edit_GoalModel()
   this.a_field_goal = undefined;
 
   /**
-   * Field log data. Structure of this array corresponds structure of result of {@link \Wl\Member\Progress\Log\Field\FieldList::getData()}.
+   * Field log data. Structure of this array corresponds structure of result of {@link Wl\Member\Progress\Log\Field\FieldList::getData()}.
    *
    * @get result
    * @post result
@@ -47,8 +47,6 @@ function Wl_Member_Progress_Goal_Edit_GoalModel()
   /**
    * Business key.
    *
-   * Primary key in the {@link \RsBusinessSql} table.
-   *
    * @get get
    * @post get
    * @type {string}
@@ -57,8 +55,6 @@ function Wl_Member_Progress_Goal_Edit_GoalModel()
 
   /**
    * User key.
-   *
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
    * @post get
@@ -82,8 +78,8 @@ Wl_Member_Progress_Goal_Edit_GoalModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Member_Progress_Goal_Edit_GoalModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {?string} uid User key. Primary key in the {@link \PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {?string} uid User key.
  * @returns {Wl_Member_Progress_Goal_Edit_GoalModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

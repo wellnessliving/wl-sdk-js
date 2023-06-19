@@ -11,7 +11,7 @@ function Core_Prg_SmartCache_SmartCacheModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link SmartCache::$is_change_js} for documentation.
+   * See {@link Core\Prg\SmartCache\SmartCache::$is_change_js} for documentation.
    *
    * @get result
    * @type {boolean}
@@ -19,7 +19,7 @@ function Core_Prg_SmartCache_SmartCacheModel()
   this.is_change_js = undefined;
 
   /**
-   * See {@link SmartCache::$is_change_less} for documentation.
+   * See {@link Core\Prg\SmartCache\SmartCache::$is_change_less} for documentation.
    *
    * @get result
    * @type {boolean}
@@ -27,7 +27,7 @@ function Core_Prg_SmartCache_SmartCacheModel()
   this.is_change_less = undefined;
 
   /**
-   * See {@link SmartCache::$is_change_opcache} for documentation.
+   * See {@link Core\Prg\SmartCache\SmartCache::$is_change_opcache} for documentation.
    *
    * @get result
    * @type {boolean}

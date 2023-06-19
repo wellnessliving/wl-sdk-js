@@ -11,7 +11,7 @@ function Wl_Reward_Action_ActionWriteModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Promotions' list. Each element is a primary key in {@link RsPromotionSql} table.
+   * Promotions' list. Each element is a primary key in {@link \RsPromotionSql} table.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -63,7 +63,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Type of a period.
    *
-   * This field contains one of {@link \ADurationSid} constants.
+   * This field contains one of {@link ADurationSid} constants.
    *
    * <tt>null</tt> if not set yet.
    *
@@ -71,6 +71,26 @@ function Wl_Reward_Action_ActionWriteModel()
    * @type {?number}
    */
   this.id_duration = null;
+
+  /**
+   * Flag to define points type (account credits or points) in the 'Refer-a-Friend' section on the 'Enable Points' page.
+   * <tt>true</tt>, if these are account credits.
+   * <tt>false</tt>, if these are points.
+   * <tt>null</tt> if field left unchanged.
+   * <var>is_account_credit</var> field in the {@link \RsRewardActionSql} table.
+   *
+   * @post post
+   * @type {?boolean}
+   */
+  this.is_account_credit = null;
+
+  /**
+   * Value of field `is_auto_renewal` for a {@link \RsRewardActionSql} table.
+   *
+   * @post post
+   * @type {?boolean}
+   */
+  this.is_auto_renewal = null;
 
   /**
    * Business key.
@@ -142,5 +162,5 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Action_ActionWriteModel);
  */
 Wl_Reward_Action_ActionWriteModel.prototype.config=function()
 {
-  return {"a_field": {"a_promotion": {"post": {"post": true}},"i_cap": {"post": {"post": true}},"i_count": {"post": {"post": true}},"i_score": {"post": {"post": true}},"id_cap": {"post": {"post": true}},"id_duration": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_class": {"post": {"post": true}},"k_promotion": {"post": {"post": true}},"k_reward_action": {"post": {"post": true}},"k_service": {"post": {"post": true}},"k_shop_product": {"post": {"post": true}}}};
+  return {"a_field": {"a_promotion": {"post": {"post": true}},"i_cap": {"post": {"post": true}},"i_count": {"post": {"post": true}},"i_score": {"post": {"post": true}},"id_cap": {"post": {"post": true}},"id_duration": {"post": {"post": true}},"is_account_credit": {"post": {"post": true}},"is_auto_renewal": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_class": {"post": {"post": true}},"k_promotion": {"post": {"post": true}},"k_reward_action": {"post": {"post": true}},"k_service": {"post": {"post": true}},"k_shop_product": {"post": {"post": true}}}};
 };

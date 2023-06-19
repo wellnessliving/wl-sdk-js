@@ -1,5 +1,5 @@
 /**
- * Search referrer by query's string.
+ * An endpoint that searches for a referrer using a string.
  *
  * This model is generated automatically based on API.
  *
@@ -23,7 +23,7 @@ function Wl_User_Referrer_ReferrerModel()
    */
 
   /**
-   * Information about the referrer's photo. Has next structure:
+   * Information about the referrer's photo. The information returned has the following structure:
    * <dl>
    *   <dt>
    *     int <var>i_height</var>
@@ -51,7 +51,7 @@ function Wl_User_Referrer_ReferrerModel()
   this.a_photo = undefined;
 
   /**
-   * Current business key.
+   * The key of the current business.
    *
    * @get get
    * @type {string}
@@ -59,7 +59,7 @@ function Wl_User_Referrer_ReferrerModel()
   this.k_business = undefined;
 
   /**
-   * The email of the referrer.
+   * The email address of the referrer.
    *
    * @get result
    * @type {string}
@@ -91,7 +91,7 @@ function Wl_User_Referrer_ReferrerModel()
   this.s_name_last = undefined;
 
   /**
-   * The phone of the referrer.
+   * The phone number of the referrer.
    *
    * @get result
    * @type {string}
@@ -99,7 +99,7 @@ function Wl_User_Referrer_ReferrerModel()
   this.s_phone = undefined;
 
   /**
-   * A string for search a referrer.
+   * The string to be used for searching for a referrer.
    *
    * @get get
    * @type {string}
@@ -107,7 +107,7 @@ function Wl_User_Referrer_ReferrerModel()
   this.s_search = "";
 
   /**
-   * Client's user key of the referrer.
+   * The referrer's user key.
    *
    * @get result
    * @type {string}
@@ -130,8 +130,8 @@ Wl_User_Referrer_ReferrerModel.prototype.config=function()
 /**
  * @function
  * @name Wl_User_Referrer_ReferrerModel.instanceGet
- * @param {string} s_search A string for search a referrer.
- * @param {string} k_business Current business key.
+ * @param {string} s_search The string to be used for searching for a referrer.
+ * @param {string} k_business The key of the current business.
  * @returns {Wl_User_Referrer_ReferrerModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

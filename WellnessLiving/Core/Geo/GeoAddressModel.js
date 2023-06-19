@@ -16,7 +16,7 @@ function Core_Geo_GeoAddressModel()
   this._s_key = "k_geo_city";
 
   /**
-   * Geo city key. Primary key in the {@link \AGeoSql} table.
+   * Geo city key.
    *
    * @get get
    * @type {?string}
@@ -24,7 +24,7 @@ function Core_Geo_GeoAddressModel()
   this.k_geo_city = null;
 
   /**
-   * Geo country key. Primary key in the {@link \AGeoSql} table.
+   * Geo country key.
    *
    * @get result
    * @type {?string}
@@ -32,7 +32,7 @@ function Core_Geo_GeoAddressModel()
   this.k_geo_country = null;
 
   /**
-   * Geo region key. Primary key in the {@link \AGeoSql} table.
+   * Geo region key.
    *
    * @get result
    * @type {?string}
@@ -63,7 +63,7 @@ Core_Geo_GeoAddressModel.prototype.config=function()
 /**
  * @function
  * @name Core_Geo_GeoAddressModel.instanceGet
- * @param {?string} k_geo_city Geo city key. Primary key in the {@link \AGeoSql} table.
+ * @param {?string} k_geo_city Geo city key.
  * @returns {Core_Geo_GeoAddressModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

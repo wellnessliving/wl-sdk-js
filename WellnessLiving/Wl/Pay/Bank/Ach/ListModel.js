@@ -20,7 +20,7 @@ function Wl_Pay_Bank_Ach_ListModel()
    * @property {number} id_pay_bank_ach_holder Type of account holder. One of {@link RsPayBankAchHolderSid} constants.
    * @property {number} id_pay_bank_ach_type Type of account. One of {@link RsPayBankAchTypeSid} constants.
    * @property {boolean} is_default <tt>true</tt> - this account is default payment method; <tt>false</tt> - otherwise.
-   * @property {string} k_pay_bank ID of bank account. Primary key in {@link RsPayBankSql}.
+   * @property {string} k_pay_bank ID of bank account.
    * @property {string} text_name_account Account name.
    * @property {string} text_name_holder Account holder name.
    * @property {string} text_number ACH account number.
@@ -28,63 +28,45 @@ function Wl_Pay_Bank_Ach_ListModel()
 
   /**
    * List of ACH accounts:
+   *
    * <dl>
-   *   <dt>
-   *     int <var>id_pay_bank_ach_holder</var>
-   *   </dt>
-   *   <dd>
-   *     Type of account holder. One of {@link RsPayBankAchHolderSid} constants.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_pay_bank_ach_type</var>
-   *   </dt>
-   *   <dd>
-   *     Type of account. One of {@link RsPayBankAchTypeSid} constants.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_default</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> - this account is default payment method; <tt>false</tt> - otherwise.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_pay_bank</var>
-   *   </dt>
-   *   <dd>
-   *     ID of bank account. Primary key in {@link RsPayBankSql}.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_name_account</var>
-   *   </dt>
-   *   <dd>
-   *     Account name.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_name_holder</var>
-   *   </dt>
-   *   <dd>
-   *     Account holder name.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_number</var>
-   *   </dt>
-   *   <dd>
-   *     ACH account number.
-   *   </dd>
+   *   <dt>int <var>id_pay_bank_ach_holder</var></dt>
+   *   <dd>Type of account holder. One of {@link RsPayBankAchHolderSid} constants.</dd>
+   *
+   *   <dt>int <var>id_pay_bank_ach_type</var></dt>
+   *   <dd>Type of account. One of {@link RsPayBankAchTypeSid} constants.</dd>
+   *
+   *   <dt>bool <var>is_default</var></dt>
+   *   <dd><tt>true</tt> - this account is default payment method; <tt>false</tt> - otherwise.</dd>
+   *
+   *   <dt>string <var>k_pay_bank</var></dt>
+   *   <dd>ID of bank account.</dd>
+   *
+   *   <dt>string <var>text_name_account</var></dt>
+   *   <dd>Account name.</dd>
+   *
+   *   <dt>string <var>text_name_holder</var></dt>
+   *   <dd>Account holder name.</dd>
+   *
+   *   <dt>string <var>text_number</var></dt>
+   *   <dd>ACH account number.</dd>
    * </dl>
    *
    * @get result
    * @type {Wl_Pay_Bank_Ach_ListModel_a_list[]}
    */
-  this.a_list = undefined;
+  this.a_list = [];
 
   /**
-   * <tt>true</tt> - can add new ACH account;<tt>false</tt> - can not add new ACH account.
+   * Whether new ACH account can be added.
+   *
+   * `true` if new ACH account can be added.
+   * `false` if new ACH account can not be added.
    *
    * @get result
    * @type {boolean}
    */
-  this.can_add = undefined;
+  this.can_add = false;
 
   /**
    * ID of current business.
@@ -96,7 +78,6 @@ function Wl_Pay_Bank_Ach_ListModel()
 
   /**
    * Location to show information for.
-   * Primary key in {@link \RsLocationSql} table.
    *
    * <tt>0</tt> to use user's home location.
    *
@@ -131,7 +112,7 @@ Wl_Pay_Bank_Ach_ListModel.prototype.config=function()
  * @name Wl_Pay_Bank_Ach_ListModel.instanceGet
  * @param {string} uid ID of a user to show information for.
  * @param {string} k_business ID of current business.
- * @param {string} k_location Location to show information for. Primary key in {@link \RsLocationSql} table. <tt>0</tt> to use user's home location.
+ * @param {string} k_location Location to show information for. <tt>0</tt> to use user's home location.
  * @returns {Wl_Pay_Bank_Ach_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

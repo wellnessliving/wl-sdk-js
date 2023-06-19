@@ -42,8 +42,6 @@ function Wl_Reward_Action_ElementModel()
   /**
    * Business to show information for.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @post get
    * @type {string}
@@ -52,8 +50,6 @@ function Wl_Reward_Action_ElementModel()
 
   /**
    * Reward action to show information for.
-   *
-   * Primary key in {@link \RsRewardActionSql}.
    *
    * @get get
    * @post get
@@ -71,8 +67,6 @@ function Wl_Reward_Action_ElementModel()
 
   /**
    * User to retrieve information about.
-   *
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
    * @post get
@@ -96,9 +90,9 @@ Wl_Reward_Action_ElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Reward_Action_ElementModel.instanceGet
- * @param {string} uid User to retrieve information about. Primary key in {@link \PassportLoginSql}.
- * @param {string} k_business Business to show information for. Primary key in {@link \RsBusinessSql}.
- * @param {string} k_reward_action Reward action to show information for. Primary key in {@link \RsRewardActionSql}.
+ * @param {string} uid User to retrieve information about.
+ * @param {string} k_business Business to show information for.
+ * @param {string} k_reward_action Reward action to show information for.
  * @returns {Wl_Reward_Action_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -32,7 +32,7 @@ function Wl_Location_LocationOptionModel()
   this.is_customer = undefined;
 
   /**
-   * Key of business. Primary key in {@link \RsBusinessSql} table.
+   * Key of business.
    *
    * @post post
    * @type {string}
@@ -40,7 +40,7 @@ function Wl_Location_LocationOptionModel()
   this.k_business = undefined;
 
   /**
-   * Key of location. Primary key in {@link \RsLocationSql} table.
+   * Key of location.
    *
    * @post post
    * @type {string}
@@ -63,8 +63,8 @@ Wl_Location_LocationOptionModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Location_LocationOptionModel.instanceGet
- * @param {string} k_business Key of business. Primary key in {@link \RsBusinessSql} table.
- * @param {string} k_location Key of location. Primary key in {@link \RsLocationSql} table.
+ * @param {string} k_business Key of business.
+ * @param {string} k_location Key of location.
  * @returns {Wl_Location_LocationOptionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -16,6 +16,8 @@ function Wl_Catalog_Coupon_Payment_PaymentModel()
    * @property {boolean} is_mail Determines that coupon will be sent by email.
    * @property {string} k_business Business key.
    * @property {string} k_coupon Coupon ID.
+   * @property {string} k_coupon_amount Coupon amount key.
+   * @property {string} m_custom Custom amount for gift card..
    * @property {string} s_image Image string ID.
    * @property {string} s_mail Recipient email.
    * @property {string} s_message Coupon message.
@@ -36,6 +38,12 @@ function Wl_Catalog_Coupon_Payment_PaymentModel()
    *
    *   <dt>string <var>k_coupon</var></dt>
    *   <dd>Coupon ID.</dd>
+   *
+   *   <dt>string <var>k_coupon_amount</var></dt>
+   *   <dd>Coupon amount key.</dd>
+   *
+   *   <dt>string <var>m_custom</var></dt>
+   *   <dd>Custom amount for gift card..</dd>
    *
    *   <dt>string <var>s_image</var></dt>
    *   <dd>Image string ID.</dd>
@@ -63,7 +71,7 @@ function Wl_Catalog_Coupon_Payment_PaymentModel()
   /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
+   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
    *
    * @post post
    * @type {{}[]}
@@ -71,7 +79,7 @@ function Wl_Catalog_Coupon_Payment_PaymentModel()
   this.a_pay_form = [];
 
   /**
-   * Key of source mode. One of {@link \Wl\Mode\ModeSid} constants.
+   * Key of source mode. One of {@link Wl_Mode_ModeSid} constants.
    *
    * @post post
    * @type {number}

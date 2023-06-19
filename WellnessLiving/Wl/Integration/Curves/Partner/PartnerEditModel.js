@@ -11,7 +11,7 @@ function Wl_Integration_Curves_Partner_PartnerEditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Channel type ID. One of {@link \Wl\Integration\Curves\ChannelTypeSid} constants.
+   * Channel type ID. One of {@link Wl_Integration_Curves_ChannelTypeSid} constants.
    *
    * @get result
    * @post post
@@ -20,7 +20,7 @@ function Wl_Integration_Curves_Partner_PartnerEditModel()
   this.id_channel_type = undefined;
 
   /**
-   * Curves country ID. One of {@link \Wl\Integration\Curves\CurvesCountrySid} constants.
+   * Curves country ID. One of {@link Wl_Integration_Curves_CurvesCountrySid} constants.
    *
    * @get result
    * @post post
@@ -29,7 +29,7 @@ function Wl_Integration_Curves_Partner_PartnerEditModel()
   this.id_curves_country = undefined;
 
   /**
-   * Deal type ID. One of {@link \Wl\Integration\Curves\DealTypeSid} constants.
+   * Deal type ID. One of {@link Wl_Integration_Curves_DealTypeSid} constants.
    *
    * @get result
    * @post post
@@ -38,7 +38,7 @@ function Wl_Integration_Curves_Partner_PartnerEditModel()
   this.id_deal_type = undefined;
 
   /**
-   * Reimbursement type ID. One of {@link \Wl\Insurance\Reimbursement\ReimbursementTypeSid} constants.
+   * Reimbursement type ID. One of {@link Wl_Insurance_Reimbursement_ReimbursementTypeSid} constants.
    *
    * @get result
    * @post post
@@ -51,7 +51,7 @@ function Wl_Integration_Curves_Partner_PartnerEditModel()
    *
    * @get result
    * @post post
-   * @type {number}
+   * @type {boolean}
    */
   this.is_active = undefined;
 
@@ -60,14 +60,12 @@ function Wl_Integration_Curves_Partner_PartnerEditModel()
    *
    * @get result
    * @post post
-   * @type {number}
+   * @type {boolean}
    */
   this.is_reimbursement_information_required = undefined;
 
   /**
    * If a partner is edited, its key is stored here.
-   *
-   * Primary key in {@link \Wl\Integration\Curves\PartnerSql} table.
    *
    * <tt>null</tt> if a new partner should be created.
    * This value is required for edit and delete operations.

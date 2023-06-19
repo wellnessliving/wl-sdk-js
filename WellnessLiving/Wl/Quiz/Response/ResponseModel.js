@@ -26,7 +26,7 @@ function Wl_Quiz_Response_ResponseModel()
 
   /**
    * Data for Quick Buy.
-   * Structure of this array is described in {@link \RsCatalogCart::__construct()}.
+   * Structure of this array is described in {@link RsCatalogCart::__construct()}.
    *
    * @post post
    * @type {{}}
@@ -51,7 +51,7 @@ function Wl_Quiz_Response_ResponseModel()
   this.can_anonymous = false;
 
   /**
-   * Response source. One of {@link SourceSid} constants.
+   * Response source. One of {@link Wl_Quiz_Response_SourceSid} constants.
    *
    * @get result
    * @post post
@@ -114,7 +114,7 @@ function Wl_Quiz_Response_ResponseModel()
    * Quiz response key.
    *
    * `null` in a case of response creation or
-   * removing set of responses in {@link \Core\Quiz\QuizResponseApi::$a_quiz_response_key}.
+   * removing set of responses in {@link Core_Quiz_QuizResponseModel.a_quiz_response_key}.
    *
    * @delete get
    * @get get
@@ -122,6 +122,17 @@ function Wl_Quiz_Response_ResponseModel()
    * @type {?string}
    */
   this.k_quiz_response = null;
+
+  /**
+   * Whether to show numbering of the form elements that supports numbering.
+   *
+   * `true` to show numbering on the form for elements that supports numbering.
+   * `false` to not show numbering.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.show_numbering = true;
 
   /**
    * Booking appointment wizard ID.
@@ -142,6 +153,16 @@ function Wl_Quiz_Response_ResponseModel()
   this.text_class_wizard_id = null;
 
   /**
+   * Title of the filled form.
+   *
+   * `null` in case when not filled yet.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.text_title = null;
+
+  /**
    * UID of the user who makes response for quiz.
    *
    * @post post
@@ -159,14 +180,14 @@ WlSdk_ModelAbstract.extend(Wl_Quiz_Response_ResponseModel);
  */
 Wl_Quiz_Response_ResponseModel.prototype.config=function()
 {
-  return {"a_field": {"a_element": {"get": {"result": true},"post": {"post": true}},"a_quick_config": {"post": {"post": true}},"a_quiz_response_key": {"delete": {"get": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"id_source": {"get": {"result": true},"post": {"post": true}},"is_backend": {"post": {"post": true}},"is_skip": {"post": {"post": true}},"json_element": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_quiz": {"post": {"get": true}},"k_quiz_login": {"post": {"post": true}},"k_quiz_response": {"delete": {"get": true},"get": {"get": true},"post": {"result": true}},"text_appointment_wizard_id": {"post": {"post": true}},"text_class_wizard_id": {"post": {"post": true}},"uid_response": {"post": {"post": true}}}};
+  return {"a_field": {"a_element": {"get": {"result": true},"post": {"post": true}},"a_quick_config": {"post": {"post": true}},"a_quiz_response_key": {"delete": {"get": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"id_source": {"get": {"result": true},"post": {"post": true}},"is_backend": {"post": {"post": true}},"is_skip": {"post": {"post": true}},"json_element": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_quiz": {"post": {"get": true}},"k_quiz_login": {"post": {"post": true}},"k_quiz_response": {"delete": {"get": true},"get": {"get": true},"post": {"result": true}},"show_numbering": {"get": {"result": true}},"text_appointment_wizard_id": {"post": {"post": true}},"text_class_wizard_id": {"post": {"post": true}},"text_title": {"get": {"result": true}},"uid_response": {"post": {"post": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Quiz_Response_ResponseModel.instanceGet
  * @param {string} k_business Business key within which quiz is managed.
- * @param {?string} k_quiz_response Quiz response key. `null` in a case of response creation or removing set of responses in {@link \Core\Quiz\QuizResponseApi::$a_quiz_response_key}.
+ * @param {?string} k_quiz_response Quiz response key. `null` in a case of response creation or removing set of responses in {@link Core_Quiz_QuizResponseModel.a_quiz_response_key}.
  * @returns {Wl_Quiz_Response_ResponseModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

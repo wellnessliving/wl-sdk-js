@@ -17,7 +17,7 @@ function Wl_Business_Report_ReportConfigModel()
 
   /**
    * Hidden feature button list.
-   * Each element is a constant of {@link ReportContainerControlButtonSid}.
+   * Each element is a constant of {@link Wl_Report_Container_ControlPanel_ControlButton_ReportContainerControlButtonSid}.
    *
    * May be an empty array. Order of items is relevant.
    * <tt>null</tt> if configuration is not save.
@@ -30,7 +30,7 @@ function Wl_Business_Report_ReportConfigModel()
 
   /**
    * Visible feature button list.
-   * Each element is a constant of {@link ReportContainerControlButtonSid}.
+   * Each element is a constant of {@link Wl_Report_Container_ControlPanel_ControlButton_ReportContainerControlButtonSid}.
    *
    * May be an empty array. Order of items is relevant.
    * <tt>null</tt> if configuration is not save.
@@ -43,7 +43,7 @@ function Wl_Business_Report_ReportConfigModel()
 
   /**
    * Hidden cell list.
-   * See {@link ReportGeneratorConfig::$a_cell_hidden}.
+   * See {@link Wl\Business\Report\ReportGeneratorConfig::$a_cell_hidden}.
    *
    * @get result
    * @post post
@@ -53,7 +53,7 @@ function Wl_Business_Report_ReportConfigModel()
 
   /**
    * Visible cell list. Order of items is relevant.
-   * See {@link ReportGeneratorConfig::$a_cell_visible}.
+   * See {@link Wl\Business\Report\ReportGeneratorConfig::$a_cell_visible}.
    *
    * @get result
    * @post post
@@ -62,7 +62,7 @@ function Wl_Business_Report_ReportConfigModel()
   this.a_cell_visible = undefined;
 
   /**
-   * The report CID. One of the {@link ReportGeneratorReportAbstract} subclasses.
+   * The report CID. One of the {@link Wl\Report\Generator\ReportGeneratorReportAbstract} subclasses.
    *
    * @get get
    * @post get
@@ -72,7 +72,7 @@ function Wl_Business_Report_ReportConfigModel()
 
   /**
    * Selected report date range.
-   * One of the {@link \RsReportDateSid} constants.
+   * One of the {@link RsReportDateSid} constants.
    *
    * <tt>null</tt> if configuration is not save.
    *
@@ -83,7 +83,7 @@ function Wl_Business_Report_ReportConfigModel()
   this.id_report_date = null;
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @post get
@@ -92,7 +92,7 @@ function Wl_Business_Report_ReportConfigModel()
   this.k_business = undefined;
 
   /**
-   * The key of the saved report. Primary key in the {@link \RsReportSaveSql} table.
+   * The key of the saved report.
    *
    * @get get
    * @post get
@@ -112,7 +112,7 @@ function Wl_Business_Report_ReportConfigModel()
   this.show_client_details = null;
 
   /**
-   * User's UID key. Primary key in the {@link \PassportLoginSql} table.
+   * User's UID key.
    *
    * @get get
    * @post get
@@ -136,10 +136,10 @@ Wl_Business_Report_ReportConfigModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Report_ReportConfigModel.instanceGet
- * @param {string} uid User's UID key. Primary key in the {@link \PassportLoginSql} table.
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {number} cid_report The report CID. One of the {@link ReportGeneratorReportAbstract} subclasses.
- * @param {?string} k_report_save The key of the saved report. Primary key in the {@link \RsReportSaveSql} table.
+ * @param {string} uid User's UID key.
+ * @param {string} k_business Business key.
+ * @param {number} cid_report The report CID. One of the {@link Wl\Report\Generator\ReportGeneratorReportAbstract} subclasses.
+ * @param {?string} k_report_save The key of the saved report.
  * @returns {Wl_Business_Report_ReportConfigModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

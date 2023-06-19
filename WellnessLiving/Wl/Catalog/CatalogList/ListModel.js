@@ -1,5 +1,5 @@
 /**
- * Retrieves a list of product for the store.
+ * Information about store items.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,7 @@ function Wl_Catalog_CatalogList_ListModel()
   this._s_key = "k_business,k_location,uid";
 
   /**
-   * List of products to show.
+   * A list of all sale items.
    *
    * @get result
    * @type {{}}
@@ -24,7 +24,19 @@ function Wl_Catalog_CatalogList_ListModel()
   this.a_product = undefined;
 
   /**
-   * Key of a business to show information for.
+   * List of products to show with duplicates.
+   *
+   * Products have their own order within every category. On the other hand they can be related to several shop
+   * categories. Due to the fact that sorting realization in browser would be rather complicated It was decided to
+   * sort products in backend using duplicates for every shop category.
+   *
+   * @get result
+   * @type {{}}
+   */
+  this.a_product_duplicate = undefined;
+
+  /**
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -32,8 +44,7 @@ function Wl_Catalog_CatalogList_ListModel()
   this.k_business = "0";
 
   /**
-   * Location key.
-   * Can affect the list of displayed products.
+   * The key of a location.
    *
    * @get get
    * @type {string}
@@ -41,7 +52,7 @@ function Wl_Catalog_CatalogList_ListModel()
   this.k_location = "0";
 
   /**
-   * Key of a user to show information for.
+   * The key of user.
    *
    * @get get
    * @type {string}
@@ -58,15 +69,15 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_CatalogList_ListModel);
  */
 Wl_Catalog_CatalogList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_product": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_product": {"get": {"result": true}},"a_product_duplicate": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Catalog_CatalogList_ListModel.instanceGet
- * @param {string} k_business Key of a business to show information for.
- * @param {string} k_location Location key. Can affect the list of displayed products.
- * @param {string} uid Key of a user to show information for.
+ * @param {string} k_business The business key.
+ * @param {string} k_location The key of a location.
+ * @param {string} uid The key of user.
  * @returns {Wl_Catalog_CatalogList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

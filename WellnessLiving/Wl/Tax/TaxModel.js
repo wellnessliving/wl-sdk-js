@@ -1,5 +1,5 @@
 /**
- * Entry point for tax data.
+ * An endpoint that returns tax information for a business.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,7 @@ function Wl_Tax_TaxModel()
   this._s_key = "k_tax";
 
   /**
-   * Tax ID. Primary key in {@link \RsTaxSql} table.
+   * The tax key to get information for.
    *
    * @get get
    * @type {string}
@@ -24,7 +24,7 @@ function Wl_Tax_TaxModel()
   this.k_tax = "0";
 
   /**
-   * Tax title.
+   * The tax title.
    *
    * @get result
    * @type {string}
@@ -47,7 +47,7 @@ Wl_Tax_TaxModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Tax_TaxModel.instanceGet
- * @param {string} k_tax Tax ID. Primary key in {@link \RsTaxSql} table.
+ * @param {string} k_tax The tax key to get information for.
  * @returns {Wl_Tax_TaxModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

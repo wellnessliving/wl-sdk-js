@@ -1,6 +1,9 @@
 /**
  * This method returns a booking status for a user based on provided booking ID.
  *
+ * **Cross-datacenter compatibility:** key of the business is returned by {@link Wl_Google_Booking_GetBookingStatusModel.businessKey()}.
+ * The request is then redirected to region of that business by {@link Wl_Google_Booking_BookingServerBaseModel.run()}.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
@@ -19,7 +22,7 @@ function Wl_Google_Booking_GetBookingStatusModel()
   this.booking_id = undefined;
 
   /**
-   * See {@link \Wl\Google\Booking\BookingStatusSid::idGoogle()} for documentation.
+   * See {@link Wl_Google_Booking_BookingStatusSid.idGoogle()} for documentation.
    *
    * @post result
    * @type {?string}
@@ -27,7 +30,7 @@ function Wl_Google_Booking_GetBookingStatusModel()
   this.booking_status = null;
 
   /**
-   * See {@link \Wl\Google\Booking\PrepaymentStatusSid::idGoogle()} for documentation.
+   * See {@link Wl_Google_Booking_PrepaymentStatusSid.idGoogle()} for documentation.
    *
    * @post result
    * @type {?string}

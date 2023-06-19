@@ -11,7 +11,7 @@ function Wl_Postcard_Campaign_CampaignLanding_CampaignLandingModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @post post
    * @type {string}

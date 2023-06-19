@@ -21,7 +21,7 @@ function Core_Prg_Login_EnterModel()
   /**
    * Notepad that is used to hash user password.
    *
-   * See {@link \Core\Passport\Login\Enter\EnterApi::$s_password} about hashing of user password.
+   * See {@link Core_Passport_Login_Enter_EnterModel.s_password} about hashing of user password.
    *
    * @post post
    * @type {string}
@@ -29,7 +29,7 @@ function Core_Prg_Login_EnterModel()
   this.s_notepad = "";
 
   /**
-   * User password (evaluated with {@link Core_Passport_Login_Enter_NotepadModel.hash()}).
+   * User password (evaluated with <tt>Core_Passport_Login_Enter_NotepadModel.hash()</tt> function on javascript).
    *
    * @post post
    * @type {string}

@@ -19,7 +19,7 @@ function Wl_Business_Franchise_Region_RegionModel()
   this.a_location = undefined;
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @delete get
    * @post get
@@ -28,7 +28,7 @@ function Wl_Business_Franchise_Region_RegionModel()
   this.k_business = undefined;
 
   /**
-   * Franchise region key. Primary key in the {@link \Wl\Business\Franchise\Region\RegionSql} table.
+   * Franchise region key.
    * If <tt>null</tt> need create franchise region.
    *
    * @delete get
@@ -38,7 +38,7 @@ function Wl_Business_Franchise_Region_RegionModel()
   this.k_franchise_region = null;
 
   /**
-   * Staff key. Primary key in the {@link \RsStaffSql} table.
+   * Staff key.
    *
    * @post post
    * @type {string}

@@ -19,7 +19,7 @@ function Wl_Business_DateLocalModel()
   this.dtl_date = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @type {string}

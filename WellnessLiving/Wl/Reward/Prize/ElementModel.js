@@ -26,13 +26,19 @@ function Wl_Reward_Prize_ElementModel()
   /**
    * Business to show information for.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @post get
    * @type {string}
    */
   this.k_business = "0";
+
+  /**
+   * Key of login prize.
+   *
+   * @post result
+   * @type {string}
+   */
+  this.k_login_prize = "0";
 
   /**
    * Key of redeemable prize.
@@ -54,8 +60,6 @@ function Wl_Reward_Prize_ElementModel()
   /**
    * User to retrieve information about.
    *
-   * Primary key in {@link \PassportLoginSql}.
-   *
    * @get get
    * @post get
    * @type {string}
@@ -72,14 +76,14 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Prize_ElementModel);
  */
 Wl_Reward_Prize_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"i_score": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_reward_prize": {"get": {"get": true},"post": {"get": true}},"s_description": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"i_score": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_login_prize": {"post": {"result": true}},"k_reward_prize": {"get": {"get": true},"post": {"get": true}},"s_description": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Reward_Prize_ElementModel.instanceGet
- * @param {string} uid User to retrieve information about. Primary key in {@link \PassportLoginSql}.
- * @param {string} k_business Business to show information for. Primary key in {@link \RsBusinessSql}.
+ * @param {string} uid User to retrieve information about.
+ * @param {string} k_business Business to show information for.
  * @param {string} k_reward_prize Key of redeemable prize.
  * @returns {Wl_Reward_Prize_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()

@@ -15,7 +15,7 @@ function Wl_Classes_Period_Clients_Model()
    * <ul>
    *   <li>string <var>first_name</var> Client's first name.
    *   </li>
-   *   <li>string <var>gender</var> Gender of client. String representation of constants {@link \Wl\Gender\GenderSid}.
+   *   <li>string <var>gender</var> Gender of client. String representation of constants {@link Wl_Gender_GenderSid}.
    *   </li>
    *   <li>string <var>last_name</var> Client's last name.
    *   </li>
@@ -29,7 +29,7 @@ function Wl_Classes_Period_Clients_Model()
    *   </li>
    *   <li>int <var>uid</var> User identifier.
    *   </li>
-   *   <li>string <var>visit</var> State of visit. String representation of constants {@link \Wl\Visit\VisitSid}.
+   *   <li>string <var>visit</var> State of visit. String representation of constants {@link Wl_Visit_VisitSid}.
    *   </li>
    * </ul>
    *

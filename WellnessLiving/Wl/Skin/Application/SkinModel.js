@@ -1,5 +1,5 @@
 /**
- * Retrieves skin settings for customisation of client application.
+ * An endpoint that retrieves customized skin settings for the client view.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,7 @@ function Wl_Skin_Application_SkinModel()
   this._s_key = "k_business";
 
   /**
-   * Array with skin data. See {@link \Wl\Skin\Application\Application::field_list()} for details.
+   * Skin information.
    *
    * @get result
    * @type {{}}
@@ -43,7 +43,7 @@ function Wl_Skin_Application_SkinModel()
   this.is_billing_confirm = undefined;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @delete get
    * @get get
@@ -76,7 +76,7 @@ Wl_Skin_Application_SkinModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Skin_Application_SkinModel.instanceGet
- * @param {string} k_business Business key.
+ * @param {string} k_business The business key.
  * @returns {Wl_Skin_Application_SkinModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -17,7 +17,7 @@ function Wl_Report_Customization_CustomizationFormModel()
 
   /**
    * Customization form data.
-   * See {@link CustomizationFormAbstract::toArray()} for details.
+   * See {@link Wl\Report\Customization\CustomizationFormAbstract::toArray()} for details.
    *
    * @get result
    * @post post
@@ -66,7 +66,7 @@ function Wl_Report_Customization_CustomizationFormModel()
   /**
    * Report CID list to that page customization form must be converted. String separated with <tt>,</tt>.
    *
-   * May be specified only if {@link CustomizationFormApi::$cid_page} in not empty.
+   * May be specified only if {@link Wl_Report_Customization_CustomizationFormModel.cid_page} in not empty.
    *
    * @get get
    * @type {string}
@@ -74,7 +74,7 @@ function Wl_Report_Customization_CustomizationFormModel()
   this.s_report = "";
 
   /**
-   * Current user's primary key in {@link \PassportLoginAr} table.
+   * Current user's primary key in {@link \Core\Passport\Login\PassportLoginAr} table.
    *
    * @get get
    * @post get
@@ -102,8 +102,8 @@ Wl_Report_Customization_CustomizationFormModel.prototype.config=function()
  * @param {number} cid_report Page CID.
  * @param {string} k_business Business primary key in {@link \RsBusinessSql} table.
  * @param {?string} k_report_save Primary key of a saved report in {@link \RsReportSaveSql} table. <tt>null</tt> means that report is not saved.
- * @param {string} s_report Report CID list to that page customization form must be converted. String separated with <tt>,</tt>. May be specified only if {@link CustomizationFormApi::$cid_page} in not empty.
- * @param {string} uid_actor Current user's primary key in {@link \PassportLoginAr} table.
+ * @param {string} s_report Report CID list to that page customization form must be converted. String separated with <tt>,</tt>. May be specified only if {@link Wl_Report_Customization_CustomizationFormModel.cid_page} in not empty.
+ * @param {string} uid_actor Current user's primary key in {@link \Core\Passport\Login\PassportLoginAr} table.
  * @returns {Wl_Report_Customization_CustomizationFormModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -23,8 +23,8 @@ function Core_Async_Service_RestartModel()
   /**
    * IP address of a worker at which all threads should be restarted.
    *
-   * This variable is required if {@link \Core\Async\Service\RestartApi::$is_all} is <tt>false</tt> and
-   * {@link \Core\Async\Service\RestartApi::$s_thread} is not specified, otherwise this variable is not allowed.
+   * This variable is required if {@link Core_Async_Service_RestartModel.is_all} is <tt>false</tt> and
+   * {@link Core_Async_Service_RestartModel.s_thread} is not specified, otherwise this variable is not allowed.
    *
    * @post post
    * @type {string}
@@ -34,8 +34,8 @@ function Core_Async_Service_RestartModel()
   /**
    * Whether all threads at all worker servers should be restarted.
    *
-   * This variable should be set to `true` if neither {@link \Core\Async\Service\RestartApi::$ip_worker} nor
-   * {@link \Core\Async\Service\RestartApi::$s_thread} specified, otherwise this variable should be set to `false`.
+   * This variable should be set to `true` if neither {@link Core_Async_Service_RestartModel.ip_worker} nor
+   * {@link Core_Async_Service_RestartModel.s_thread} specified, otherwise this variable should be set to `false`.
    *
    * @post post
    * @type {boolean}
@@ -53,8 +53,8 @@ function Core_Async_Service_RestartModel()
   /**
    * ID of a thread to restart.
    *
-   * This variable is required if {@link \Core\Async\Service\RestartApi::$is_all} is <tt>false</tt> and
-   * {@link \Core\Async\Service\RestartApi::$ip_worker} is not specified, otherwise this variable is not allowed.
+   * This variable is required if {@link Core_Async_Service_RestartModel.is_all} is <tt>false</tt> and
+   * {@link Core_Async_Service_RestartModel.ip_worker} is not specified, otherwise this variable is not allowed.
    *
    * @post post
    * @type {string}

@@ -13,7 +13,7 @@ function Wl_ClassPass_BusinessListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link \Wl\ClassPass\BusinessListData::toClassPass()} for documentation.
+   * See {@link Wl\ClassPass\BusinessListData::toClassPass()} for documentation.
    *
    * @get result
    * @type {{}}
@@ -21,7 +21,7 @@ function Wl_ClassPass_BusinessListModel()
   this.pagination = undefined;
 
   /**
-   * See {@link \Wl\ClassPass\BusinessListData::toClassPass()} for documentation.
+   * See {@link Wl\ClassPass\BusinessListData::toClassPass()} for documentation.
    *
    * @get result
    * @type {{}}

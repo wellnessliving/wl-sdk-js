@@ -28,7 +28,7 @@ function Wl_Business_Churn_BusinessChurnModel()
   this.is_churn = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @post get

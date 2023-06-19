@@ -12,6 +12,14 @@ function Wl_Profile_Password_Reset_PasswordResetModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * <tt>true</tt> if the password reset attempt was last; <tt>false</tt> otherwise.
+   *
+   * @post result
+   * @type {boolean}
+   */
+  this.is_last = undefined;
+
+  /**
    * Key of business.
    *
    * @post post
@@ -37,5 +45,5 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Password_Reset_PasswordResetModel);
  */
 Wl_Profile_Password_Reset_PasswordResetModel.prototype.config=function()
 {
-  return {"a_field": {"k_business": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
+  return {"a_field": {"is_last": {"post": {"result": true}},"k_business": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };

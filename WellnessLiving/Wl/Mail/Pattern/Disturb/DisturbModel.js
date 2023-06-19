@@ -16,63 +16,28 @@ function Wl_Mail_Pattern_Disturb_DisturbModel()
   this._s_key = "k_business";
 
   /**
-   * @typedef {{}} Wl_Mail_Pattern_Disturb_DisturbModel_a_end
-   * @property {number} i_hour Number of hour.
-   * @property {boolean} is_am Whether time in <tt>AM</tt> or <tt>PM</tt>.
+   * @typedef {{}} Wl_Mail_Pattern_Disturb_DisturbModel_a_disturb
+   * @property {number} i_end The end time of the do not disturb period, in seconds since midnight.
+   * @property {number} i_start The start time of the do not disturb period, in seconds since midnight.
    */
 
   /**
-   * End time of disturb period. <dl>
-   *   <dt>int <var>i_hour</var></dt>
-   *   <dd>Number of hour.</dd>
-   *   <dt>bool <var>is_am</var></dt>
-   *   <dd>Whether time in <tt>AM</tt> or <tt>PM</tt>.</dd>
+   * The start and end time for all the do not disturb periods for each mail page.
+   * Each key is one of the {@link RsMailPageSid} constants.
+   * Each of the values will be `null` if the do not disturb period is not set for this mail page.
+   * It will be an array with the following keys if set.
+   * <dl>
+   *   <dt>int <var>i_end</var></dt>
+   *   <dd>The end time of the do not disturb period, in seconds since midnight.</dd>
+   *   <dt>int <var>i_start</var></dt>
+   *   <dd>The start time of the do not disturb period, in seconds since midnight.</dd>
    * </dl>
    *
    * @get result
    * @post post
-   * @type {?Wl_Mail_Pattern_Disturb_DisturbModel_a_end}
+   * @type {Wl_Mail_Pattern_Disturb_DisturbModel_a_disturb}
    */
-  this.a_end = null;
-
-  /**
-   * @typedef {{}} Wl_Mail_Pattern_Disturb_DisturbModel_a_start
-   * @property {number} i_hour Number of hour.
-   * @property {boolean} is_am Whether time in <tt>AM</tt> or <tt>PM</tt>.
-   */
-
-  /**
-   * Start time of disturb period. <dl>
-   *   <dt>int <var>i_hour</var></dt>
-   *   <dd>Number of hour.</dd>
-   *   <dt>bool <var>is_am</var></dt>
-   *   <dd>Whether time in <tt>AM</tt> or <tt>PM</tt>.</dd>
-   * </dl>
-   *
-   * @post post
-   * @type {Wl_Mail_Pattern_Disturb_DisturbModel_a_start}
-   */
-  this.a_start = undefined;
-
-  /**
-   * End time of "Do Not Disturb" period in seconds from start of the day.
-   *
-   * <tt>null</tt> if disturb period is not setup.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.i_end = undefined;
-
-  /**
-   * Start time of "Do Not Disturb" period in seconds from start of the day.
-   *
-   * <tt>null</tt> if disturb period is not setup.
-   *
-   * @get result
-   * @type {?number}
-   */
-  this.i_start = null;
+  this.a_disturb = [];
 
   /**
    * Business key.
@@ -94,7 +59,7 @@ WlSdk_ModelAbstract.extend(Wl_Mail_Pattern_Disturb_DisturbModel);
  */
 Wl_Mail_Pattern_Disturb_DisturbModel.prototype.config=function()
 {
-  return {"a_field": {"a_end": {"get": {"result": true},"post": {"post": true}},"a_start": {"post": {"post": true}},"i_end": {"get": {"result": true}},"i_start": {"get": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_disturb": {"get": {"result": true},"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**

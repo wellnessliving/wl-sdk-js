@@ -16,7 +16,7 @@ function Wl_Member_Progress_Log_Edit_LogModel()
   this._s_key = "dt_date,k_business,uid";
 
   /**
-   * Field log data. Structure of this array corresponds structure of result of {@link \Wl\Member\Progress\Log\Field\FieldList::getData()}.
+   * Field log data. Structure of this array corresponds structure of result of {@link Wl\Member\Progress\Log\Field\FieldList::getData()}.
    *
    * @get result
    * @post result
@@ -27,7 +27,7 @@ function Wl_Member_Progress_Log_Edit_LogModel()
   /**
    * List of fields.
    *
-   * Keys are field IDs ({@link \Wl\Member\Progress\Field\ProgressFieldSid} constants).
+   * Keys are field IDs ({@link Wl_Member_Progress_Field_ProgressFieldSid} constants).
    * Values are new field values.
    * Structure of value completely defined by individual fields.
    *
@@ -48,7 +48,7 @@ function Wl_Member_Progress_Log_Edit_LogModel()
   this.dt_date = undefined;
 
   /**
-   * Last date when the user entered progress values. <tt>null</tt> if the user had not entered progress data before the {@link \Wl\Member\Progress\Log\Edit\LogApi::$dt_date} date.
+   * Last date when the user entered progress values. <tt>null</tt> if the user had not entered progress data before the {@link Wl_Member_Progress_Log_Edit_LogModel.dt_date} date.
    *
    * @get result
    * @type {?string}
@@ -74,8 +74,6 @@ function Wl_Member_Progress_Log_Edit_LogModel()
   /**
    * Business key.
    *
-   * Primary key in the {@link \RsBusinessSql} table.
-   *
    * @get get
    * @post get
    * @type {string}
@@ -84,8 +82,6 @@ function Wl_Member_Progress_Log_Edit_LogModel()
 
   /**
    * User key.
-   *
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
    * @post get
@@ -110,8 +106,8 @@ Wl_Member_Progress_Log_Edit_LogModel.prototype.config=function()
  * @function
  * @name Wl_Member_Progress_Log_Edit_LogModel.instanceGet
  * @param {string} dt_date Progress log date. If <tt>null</tt> use the current date.
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {?string} uid User key. Primary key in the {@link \PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {?string} uid User key.
  * @returns {Wl_Member_Progress_Log_Edit_LogModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

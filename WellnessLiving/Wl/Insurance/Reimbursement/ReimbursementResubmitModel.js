@@ -13,8 +13,6 @@ function Wl_Insurance_Reimbursement_ReimbursementResubmitModel()
   /**
    * Key of the reimbursement record to be resubmitted.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @type {string}
    */
