@@ -81,7 +81,7 @@ function Wl_Report_Dashboard_Manage_DashboardManageModel()
    * @get get
    * @post get
    * @put get
-   * @see PanelModeSid
+   * @see Wl_Report_Dashboard_Panel_PanelModeSid
    * @type {number}
    */
   this.id_mode = undefined;
@@ -92,7 +92,7 @@ function Wl_Report_Dashboard_Manage_DashboardManageModel()
    * @get result
    * @post post
    * @put post
-   * @see ShareSid
+   * @see Wl_Share_ShareSid
    * @type {number}
    */
   this.id_share = undefined;

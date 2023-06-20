@@ -62,7 +62,7 @@ function Wl_Business_DataModel()
    * The Locale ID, used to search geo items.
    *
    * @get result
-   * @see LocaleSid
+   * @see Core_Locale_LocaleSid
    * @type {number}
    */
   this.id_locale = undefined;

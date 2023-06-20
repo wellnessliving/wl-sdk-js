@@ -123,7 +123,7 @@ function Wl_Pay_Form_EnvironmentModel()
    * The locale ID of the business.
    *
    * @get result
-   * @see LocaleSid
+   * @see Core_Locale_LocaleSid
    * @type {?number}
    */
   this.id_locale = null;

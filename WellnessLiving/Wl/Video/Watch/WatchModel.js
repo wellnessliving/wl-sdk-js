@@ -31,7 +31,7 @@ function Wl_Video_Watch_WatchModel()
    * The source ID.
    *
    * @post post
-   * @see WatchSourceSid
+   * @see Wl_Video_Watch_WatchSourceSid
    * @type {number}
    */
   this.id_source = undefined;

@@ -36,7 +36,7 @@ function Wl_ClassPass_AppointmentEditModel()
    * Visit status.
    *
    * @patch post
-   * @see ReservationStatusSid
+   * @see Wl_ClassPass_ReservationStatusSid
    * @type {string}
    */
   this.status = undefined;
