@@ -7,7 +7,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link Wl_Appointment_Book_Payment_PaymentPostModel} instead.
+ * @deprecated Use {@link Wl_Appointment_Book_Payment_PaymentMultipleModel} instead.
  */
 function Wl_Appointment_Book_Payment_PaymentModel()
 {
