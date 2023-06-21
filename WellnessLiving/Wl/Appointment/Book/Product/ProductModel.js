@@ -1,7 +1,5 @@
 /**
- * Entry point for service add-ons data.
- *
- * This model is generated automatically based on API.
+ * An endpoint that gets information about appointment add-ons.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -24,8 +22,7 @@ function Wl_Appointment_Book_Product_ProductModel()
   this.a_product = undefined;
 
   /**
-   * ID of a service to show information for.
-   * Primary key in {@link \RsServiceSql} table.
+   * The service key to show information for.
    *
    * @get get
    * @type {string}
@@ -48,7 +45,7 @@ Wl_Appointment_Book_Product_ProductModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Product_ProductModel.instanceGet
- * @param {string} k_service ID of a service to show information for. Primary key in {@link \RsServiceSql} table.
+ * @param {string} k_service The service key to show information for.
  * @returns {Wl_Appointment_Book_Product_ProductModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
