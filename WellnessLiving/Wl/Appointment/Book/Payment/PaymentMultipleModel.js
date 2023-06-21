@@ -42,20 +42,20 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *         Not empty for new options purchase.
    *       </dd>
    *       <dt>
-   *         bool <tt>is_pay_later</tt>
+   *         boolean <tt>is_pay_later</tt>
    *       </dt>
    *       <dd>
    *         <tt>true</tt> if customer wants to on visit; <tt>false</tt> if user wants to pay now.
    *       </dd>
    *       <dt>
-   *         bool <tt>is_purchase_previous</tt>
+   *         boolean <tt>is_purchase_previous</tt>
    *       </dt>
    *       <dd>
    *         <tt>true</tt> if purchase option that was selected for another appointment from the batch
    *         must be used for this appointment; <tt>false</tt> otherwise.
    *       </dd>
    *       <dt>
-   *         bool <tt>is_wait_list_unpaid</tt>
+   *         boolean <tt>is_wait_list_unpaid</tt>
    *       </dt>
    *       <dd>
    *         <tt>true</tt> if customer is booking to wait list and don't have to pay;
@@ -159,7 +159,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *       <dd>
    *         The payment address:
    *         <dl>
-   *           <dt>bool <tt>is_new</tt></dt>
+   *           <dt>boolean <tt>is_new</tt></dt>
    *           <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *           <dt>string [<tt>k_geo_country</tt>]</dt>
    *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
@@ -200,7 +200,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *         The credit card expiration year. Specify to add a new card.
    *       </dd>
    *       <dt>
-   *         bool <tt>is_new</tt>
+   *         boolean <tt>is_new</tt>
    *       </dt>
    *       <dd>
    *         <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
@@ -232,13 +232,13 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *     The amount of money to withdraw with this payment source.
    *   </dd>
    *   <dt>
-   *     bool [<tt>is_hide</tt>]
+   *     boolean [<tt>is_hide</tt>]
    *   </dt>
    *   <dd>
    *     Whether this payment method is hidden.
    *   </dd>
    *   <dt>
-   *     bool [<tt>is_success</tt>=<tt>false</tt>]
+   *     boolean [<tt>is_success</tt>=<tt>false</tt>]
    *   </dt>
    *   <dd>
    *     Identifies whether this source was successfully charged.
@@ -319,7 +319,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *     The name of the tax.
    *   </dd>
    * </dl>
-   * @property {string} id_purchase_item The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.
+   * @property {string} id_purchase_item The purchase item ID.
    * @property {string} k_id The key of the discount used for the purchase.
    * @property {string} m_discount The value of the discount used for the purchase.
    * @property {string} m_pay The payment for the Purchase Option or single visit without taxes.
@@ -414,9 +414,19 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * List of amount to pay for appointments from batch with the tax without surcharge.
    *
    * @get result
-   * @var {string[]}
+   * @type {string[]}
    */
   this.a_total = undefined;
+
+  /**
+   * List of users' keys to book appointments.
+   * There may be empty values in this list, which means that this is a walk-in.
+   *
+   * @get get
+   * @post get
+   * @type {string[]}
+   */
+  this.a_uid = [];
 
   /**
    * The ID of the source mode. One of {@link Wl_Mode_ModeSid} constants.
@@ -426,6 +436,15 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @type {number}
    */
   this.id_mode = 0;
+
+  /**
+   * `true` if client is walk-in, otherwise `false`.
+   *
+   * @get get
+   * @post get
+   * @type {boolean}
+   */
+  this.is_walk_in = false;
 
   /**
    * The key of the location to show available appointment booking schedule for.
@@ -448,7 +467,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * Gift card amount.
    *
    * @get result
-   * @var {string}
+   * @type {string}
    */
   this.m_coupon = undefined;
 
@@ -456,7 +475,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * Discount amount.
    *
    * @get result
-   * @var {string}
+   * @type {string}
    */
   this.m_discount = undefined;
 
@@ -464,7 +483,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * Surcharge amount.
    *
    * @get result
-   * @var {string}
+   * @type {string}
    */
   this.m_surcharge = undefined;
 
@@ -472,7 +491,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * The amount of tax to pay.
    *
    * @get result
-   * @var {string}
+   * @type {string}
    */
   this.m_tax = undefined;
 
@@ -489,7 +508,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *
    * @get get
    * @post get
-   * @var {string}
+   * @type {string}
    */
   this.text_coupon_code = '';
 
