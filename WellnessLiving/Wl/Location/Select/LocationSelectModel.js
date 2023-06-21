@@ -24,7 +24,7 @@ function Wl_Location_Select_LocationSelectModel()
   this.a_config = [];
 
   /**
-   * Location list with additional parameters for an location select HTML component.
+   * Location list with additional parameters for a location select HTML component.
    *
    * @get result
    * @type {{}}
