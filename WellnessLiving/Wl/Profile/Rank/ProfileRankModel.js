@@ -21,7 +21,7 @@ function Wl_Profile_Rank_ProfileRankModel()
   this.dtu_promotion_date = null;
 
   /**
-   * Rank key. Primary key in {@link \RsRankSql}.
+   * Rank key.
    * Promotion date on which to be changed.
    *
    * @get get
@@ -31,7 +31,7 @@ function Wl_Profile_Rank_ProfileRankModel()
   this.k_rank = undefined;
 
   /**
-   * User ID. Primary key in {@link \PassportLoginSql}.
+   * User ID.
    * Promotion date on belts of whom to be changed.
    *
    * @get get

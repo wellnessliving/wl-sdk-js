@@ -1,5 +1,7 @@
 /**
- * Saves changes in user's permissions.
+ * Make purchased promotion auto-renewable.
+ *
+ * The POST method make auto-renewable or not auto-renewable based on {@link Wl_Login_Permission_PermissionModel.is_renew} parameter.
  *
  * This model is generated automatically based on API.
  *
@@ -47,7 +49,7 @@ Wl_Login_Permission_PermissionModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Login_Permission_PermissionModel.instanceGet
- * @param {string} k_login_promotion ID of purchased promotion. Primary key in {@link \RsLoginPromotionSql}.
+ * @param {string} k_login_promotion Key of purchased promotion.
  * @returns {Wl_Login_Permission_PermissionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -1,5 +1,7 @@
 /**
- * An endpoint that retrieves information about assets' locations.
+ * Retrieves information about assets location.
+ *
+ * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -14,7 +16,7 @@ function Wl_Appointment_Book_Asset_AssetLocationModel()
   this._s_key = "k_resource";
 
   /**
-   * The location key.
+   * Location key.
    *
    * @get result
    * @type {string}
@@ -22,7 +24,7 @@ function Wl_Appointment_Book_Asset_AssetLocationModel()
   this.k_location = undefined;
 
   /**
-   * The resource key.
+   * Resource key.
    *
    * @get get
    * @type {string}

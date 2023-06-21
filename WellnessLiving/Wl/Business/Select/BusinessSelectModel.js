@@ -33,7 +33,6 @@ function Wl_Business_Select_BusinessSelectModel()
 
   /**
    * Business in which a list of business is requested.
-   * Primary key in {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -42,7 +41,6 @@ function Wl_Business_Select_BusinessSelectModel()
 
   /**
    * User who requests a list of businesses.
-   * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
    * @type {string}
@@ -65,8 +63,8 @@ Wl_Business_Select_BusinessSelectModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Select_BusinessSelectModel.instanceGet
- * @param {string} k_business Business in which a list of business is requested. Primary key in {@link \RsBusinessSql} table.
- * @param {string} uid User who requests a list of businesses. Primary key in {@link \PassportLoginSql} table.
+ * @param {string} k_business Business in which a list of business is requested.
+ * @param {string} uid User who requests a list of businesses.
  * @param {{}} a_config Result-defining configuration set.
  * @returns {Wl_Business_Select_BusinessSelectModel}
  * @see WlSdk_ModelAbstract.instanceGet()

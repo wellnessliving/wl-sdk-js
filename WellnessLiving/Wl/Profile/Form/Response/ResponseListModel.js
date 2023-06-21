@@ -1,6 +1,8 @@
 /**
  * Retrieves list of user's quiz responses.
  *
+ * This model is generated automatically based on API.
+ *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */

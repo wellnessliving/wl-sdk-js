@@ -18,7 +18,7 @@ function Wl_Business_Design_BusinessDesignModel()
   /**
    * Business design data.
    *
-   * Result of the {@link \RsBusinessDesign::data()} method.
+   * Result of the {@link RsBusinessDesign::data()} method.
    *
    * @get result
    * @type {{}}

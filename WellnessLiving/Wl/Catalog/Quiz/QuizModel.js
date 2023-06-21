@@ -18,7 +18,7 @@ function Wl_Catalog_Quiz_QuizModel()
   /**
    * List of purchase items. Each element has format <tt>[id_purchase_item]::[k_id]</tt>, where<dl>
    *  <dt>int <var>id_purchase_item</var></dt>
-   *  <dd>ID of the purchase item.</dd>
+   *  <dd>ID of the purchase item. One of {@link RsPurchaseItemSid}.</dd>
    *  <dt>string <var>k_id</var></dt>
    *  <dd>Key of the item. Depends on <var>id_purchase_item</var> of this array.</dd>
    * </dl>
@@ -88,7 +88,7 @@ Wl_Catalog_Quiz_QuizModel.prototype.config=function()
  * @name Wl_Catalog_Quiz_QuizModel.instanceGet
  * @param {string} k_business Key of a business.
  * @param {?string} uid Key of a user who is making a purchase. `null` in case when quizzes requested for guest.
- * @param {string[]} a_purchase_item List of purchase items. Each element has format <tt>[id_purchase_item]::[k_id]</tt>, where<dl> <dt>int <var>id_purchase_item</var></dt> <dd>ID of the purchase item.</dd> <dt>string <var>k_id</var></dt> <dd>Key of the item. Depends on <var>id_purchase_item</var> of this array.</dd> </dl> Empty if no purchases are made for booking.
+ * @param {string[]} a_purchase_item List of purchase items. Each element has format <tt>[id_purchase_item]::[k_id]</tt>, where<dl> <dt>int <var>id_purchase_item</var></dt> <dd>ID of the purchase item. One of {@link RsPurchaseItemSid}.</dd> <dt>string <var>k_id</var></dt> <dd>Key of the item. Depends on <var>id_purchase_item</var> of this array.</dd> </dl> Empty if no purchases are made for booking.
  * @returns {Wl_Catalog_Quiz_QuizModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

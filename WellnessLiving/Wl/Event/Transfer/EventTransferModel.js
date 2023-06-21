@@ -39,7 +39,7 @@ function Wl_Event_Transfer_EventTransferModel()
   this.a_relation = undefined;
 
   /**
-   * Key of source mode. One of {@link \Wl\Mode\ModeSid} constants.
+   * Key of source mode. One of {@link Wl_Mode_ModeSid} constants.
    *
    * @post get
    * @type {number}
@@ -55,7 +55,7 @@ function Wl_Event_Transfer_EventTransferModel()
   this.is_backend = false;
 
   /**
-   * Key of event purchase item to be transferred. Primary key in {@link \RsPurchaseItemSql} table.
+   * Key of event purchase item to be transferred.
    *
    * @get get
    * @post get
@@ -64,7 +64,7 @@ function Wl_Event_Transfer_EventTransferModel()
   this.k_purchase_item = undefined;
 
   /**
-   * User key to transfer purchased event from. Primary key in {@link \PassportLoginSql} table.
+   * User key to transfer purchased event from.
    *
    * @get get
    * @post get
@@ -73,7 +73,7 @@ function Wl_Event_Transfer_EventTransferModel()
   this.uid_from = undefined;
 
   /**
-   * User key to transfer purchased event to. Primary key in {@link \PassportLoginSql} table.
+   * User key to transfer purchased event to.
    *
    * @get get
    * @post get

@@ -25,7 +25,6 @@ function Wl_Notification_Banner_BannerListModel()
 
   /**
    * The key of the business where the list of available banners will be loaded.
-   * Primary key in {@link \RsBusinessSql}.
    *
    * @get get
    * @put get
@@ -35,7 +34,6 @@ function Wl_Notification_Banner_BannerListModel()
 
   /**
    * Key of the banner to be closed.
-   * Primary key in the {@link \Wl\Notification\Banner\BannerSql} table.
    *
    * @put post
    * @type {string}
@@ -44,7 +42,6 @@ function Wl_Notification_Banner_BannerListModel()
 
   /**
    * User for which available banners will be loaded.
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
    * @put get
@@ -68,8 +65,8 @@ Wl_Notification_Banner_BannerListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Notification_Banner_BannerListModel.instanceGet
- * @param {string} k_business The key of the business where the list of available banners will be loaded. Primary key in {@link \RsBusinessSql}.
- * @param {string} uid User for which available banners will be loaded. Primary key in {@link \PassportLoginSql}.
+ * @param {string} k_business The key of the business where the list of available banners will be loaded.
+ * @param {string} uid User for which available banners will be loaded.
  * @returns {Wl_Notification_Banner_BannerListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

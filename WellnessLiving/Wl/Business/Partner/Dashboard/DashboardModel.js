@@ -19,7 +19,7 @@ function Wl_Business_Partner_Dashboard_DashboardModel()
   this.html_chart = undefined;
 
   /**
-   * Chart format ID. One of {@link \Wl\Business\Partner\Dashboard\ChartEarningsSid} constants.
+   * Chart format ID. One of {@link Wl_Business_Partner_Dashboard_ChartEarningsSid} constants.
    *
    * @get get
    * @type {number}
@@ -27,7 +27,7 @@ function Wl_Business_Partner_Dashboard_DashboardModel()
   this.id_chart = undefined;
 
   /**
-   * Key of the business. Primary key from  {@link RsBusinessSql} table.
+   * Key of the business.
    *
    * @get get
    * @type {string}

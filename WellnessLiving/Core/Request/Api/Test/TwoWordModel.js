@@ -38,7 +38,7 @@ function Core_Request_Api_Test_TwoWordModel()
   this.id_string = undefined;
 
   /**
-   * Result of {@link \Core\Request\Api::apiPrivilegeCheck()} method.
+   * Result of {@link Core_Request_Model.apiPrivilegeCheck()} method.
    *
    * @put result
    * @type {boolean}

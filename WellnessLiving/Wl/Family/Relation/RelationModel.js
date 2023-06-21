@@ -1,5 +1,5 @@
 /**
- * Data about user's family.
+ * Data about the user's family.
  *
  * This model is generated automatically based on API.
  *
@@ -17,17 +17,17 @@ function Wl_Family_Relation_RelationModel()
 
   /**
    * @typedef {{}} Wl_Family_Relation_RelationModel_a_new
-   * @property {number} id_family_relation Type of family relation. One of {@link \RsFamilyRelationSid} constants.
-   * @property {string} uid User's ID. Primary key in {@link \PassportLoginSql} table.
+   * @property {number} id_family_relation Type of family relation. One of {@link RsFamilyRelationSid} constants.
+   * @property {string} uid The related user's key.
    */
 
   /**
-   * New relative to be added to user {@link \Wl\Family\Relation\RelationApi::$uid}:
+   * The new relative to be added to user specified with {@link Wl_Family_Relation_RelationModel.uid}:
    * <dl>
    *   <dt>int <var>id_family_relation</var></dt>
-   *   <dd>Type of family relation. One of {@link \RsFamilyRelationSid} constants.</dd>
+   *   <dd>Type of family relation. One of {@link RsFamilyRelationSid} constants.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>User's ID. Primary key in {@link \PassportLoginSql} table.</dd>
+   *   <dd>The related user's key.</dd>
    * </dl>
    *
    * @post post
@@ -36,20 +36,38 @@ function Wl_Family_Relation_RelationModel()
   this.a_new = [];
 
   /**
-   * Information about user's family relations. Every element has next fields:
-   * <ul>
-   *   <li>int <tt>id_family_relation</tt> Type of family relation. One of {@link RsFamilyRelationSid} constants.</li>
-   * </ul>
+   * @typedef {{}} Wl_Family_Relation_RelationModel_a_relation
+   * @property {number} id_family_relation Type of family relation. One of {@link RsFamilyRelationSid} constants.
+   * @property {number} id_family_relation_reverse The type of reciprocated relationship. One of {@link RsFamilyRelationSid} constants.
+   * @property {string} text_name The name of the relation.
+   * @property {string} text_name_first The first name of the relation.
+   * @property {string} uid The key of the related user.
+   */
+
+  /**
+   * Information about the user's family relations. Every element has the following fields:
+   * <dl>
+   *   <dt>int <var>id_family_relation</var></dt>
+   *   <dd>Type of family relation. One of {@link RsFamilyRelationSid} constants.</dd>
+   *   <dt>int <var>id_family_relation_reverse</var></dt>
+   *   <dd>The type of reciprocated relationship. One of {@link RsFamilyRelationSid} constants.</dd>
+   *   <dt>string <var>text_name</var></dt>
+   *   <dd>The name of the relation.</dd>
+   *   <dt>string <var>text_name_first</var></dt>
+   *   <dd>The first name of the relation.</dd>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>The key of the related user.</dd>
+   * </dl>
    *
    * @delete result
    * @get result
    * @post result
-   * @type {{}[]}
+   * @type {Wl_Family_Relation_RelationModel_a_relation[]}
    */
   this.a_relation = undefined;
 
   /**
-   * ID of business to get information for. Primary key in {@link \RsBusinessAr} table.
+   * The business key.
    *
    * @delete get
    * @get get
@@ -59,8 +77,7 @@ function Wl_Family_Relation_RelationModel()
   this.k_business = undefined;
 
   /**
-   * User whose relatives we have to work with.
-   * Primary key in {@link \PassportLoginSql} table.
+   * The key of the user whose relatives we will work with.
    *
    * @delete get
    * @get get
@@ -70,8 +87,7 @@ function Wl_Family_Relation_RelationModel()
   this.uid = "0";
 
   /**
-   * User relation between who and user {@link \Wl\Family\Relation\RelationApi::$uid} must be removed.
-   * Primary key in {@link \PassportLoginSql} table.
+   * The key of the related user who {@link Wl_Family_Relation_RelationModel.uid} must be removed.
    *
    * @delete get
    * @type {string}
@@ -94,8 +110,8 @@ Wl_Family_Relation_RelationModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Family_Relation_RelationModel.instanceGet
- * @param {string} uid User whose relatives we have to work with. Primary key in {@link \PassportLoginSql} table.
- * @param {string} k_business ID of business to get information for. Primary key in {@link \RsBusinessAr} table.
+ * @param {string} uid The key of the user whose relatives we will work with.
+ * @param {string} k_business The business key.
  * @returns {Wl_Family_Relation_RelationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

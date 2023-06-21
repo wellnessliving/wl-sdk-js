@@ -1,5 +1,5 @@
 /**
- * Coupon API.
+ * An endpoint that retrieves a list of gift cards.
  *
  * This model is generated automatically based on API.
  *
@@ -13,35 +13,35 @@ function Wl_Coupon_CouponList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,is_franchise";
+  this._s_key = "k_business,is_franchise,is_frontend";
 
   /**
    * @typedef {{}} Wl_Coupon_CouponList_ListModel_a_coupon
-   * @property {number} id_type Type of coupon. One of {@link \Wl\Coupon\TypeSid} constants.
-   * @property {string} k_coupon Coupon key, primary key in {@link \RsCouponSql}.
-   * @property {string} text_title Title of coupon.
+   * @property {number} id_type The type of coupon. One of {@link Wl_Coupon_TypeSid} constants.
+   * @property {string} k_coupon The gift card key.
+   * @property {string} text_title The title of the gift card.
    */
 
   /**
-   * List of coupons.
+   * A list of gift cards. Every element has the following keys:
    * <dl>
    *   <dt>
    *     int <var>id_type</var>
    *   </dt>
    *   <dd>
-   *     Type of coupon. One of {@link \Wl\Coupon\TypeSid} constants.
+   *     The type of coupon. One of {@link Wl_Coupon_TypeSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_coupon</var>
    *   </dt>
    *   <dd>
-   *     Coupon key, primary key in {@link \RsCouponSql}.
+   *     The gift card key.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Title of coupon.
+   *     The title of the gift card.
    *   </dd>
    * </dl>
    *
@@ -68,8 +68,23 @@ function Wl_Coupon_CouponList_ListModel()
   this.is_franchise = false;
 
   /**
-   * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
+   * `true` to get only gift cards available for current user; `false` to get all gift cards.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_frontend = false;
+
+  /**
+   * A flag to include disabled items in the query result
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_inactive_include = false;
+
+  /**
+   * The business key to retrieve a list of all the gift cards in a business.
    *
    * @get get
    * @type {string}
@@ -86,14 +101,15 @@ WlSdk_ModelAbstract.extend(Wl_Coupon_CouponList_ListModel);
  */
 Wl_Coupon_CouponList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_coupon": {"get": {"result": true}},"id_table": {"get": {"result": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field": {"a_coupon": {"get": {"result": true}},"id_table": {"get": {"result": true}},"is_franchise": {"get": {"get": true}},"is_frontend": {"get": {"get": true}},"is_inactive_include": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Coupon_CouponList_ListModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @param {string} k_business The business key to retrieve a list of all the gift cards in a business.
  * @param {boolean} is_franchise Whether to return franchisee-created coupons (if business is franchisor). <tt>true</tt> to include franchisee-created coupons.
+ * @param {boolean} is_frontend `true` to get only gift cards available for current user; `false` to get all gift cards.
  * @returns {Wl_Coupon_CouponList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

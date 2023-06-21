@@ -1,5 +1,5 @@
 /**
- * Categories of online store.
+ * An endpoint that returns a list of all categories in a business’s store.
  *
  * This model is generated automatically based on API.
  *
@@ -18,13 +18,15 @@ function Wl_Shop_Category_CategoryModel()
   /**
    * @typedef {{}} Wl_Shop_Category_CategoryModel_a_shop_category
    * @property {boolean} is_default Whether category is selected as default.
-   * @property {string} k_shop_category ID in {@link RsShopCategorySql} table.
-   * @property {string} text_description Category description.
-   * @property {string} text_title Category title.
+   * @property {number} i_order The display order for the category.
+   * @property {string} k_shop_category The shop category key.
+   * @property {string} text_description The category description.
+   * @property {string} text_title The category name.
    */
 
   /**
-   * Categories of online store of business {@link \Wl\Shop\Category\CategoryApi::$k_business}. Keys - primary keys in {@link RsShopCategorySql} table; values - sub arrays with next keys:
+   * An array containing information about all store categories.
+   * Each array element is an array containing the following fields:
    * <dl>
    *   <dt>
    *     bool <var>is_default</var>
@@ -33,22 +35,28 @@ function Wl_Shop_Category_CategoryModel()
    *     Whether category is selected as default.
    *   </dd>
    *   <dt>
+   *     int <var>i_order</var>
+   *   </dt>
+   *   <dd>
+   *     The display order for the category.
+   *   </dd>
+   *   <dt>
    *     string <var>k_shop_category</var>
    *   </dt>
    *   <dd>
-   *     ID in {@link RsShopCategorySql} table.
+   *     The shop category key.
    *   </dd>
    *   <dt>
    *     string <var>text_description</var>
    *   </dt>
    *   <dd>
-   *     Category description.
+   *     The category description.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Category title.
+   *     The category name.
    *   </dd>
    * </dl>
    *
@@ -58,12 +66,28 @@ function Wl_Shop_Category_CategoryModel()
   this.a_shop_category = undefined;
 
   /**
-   * ID of business to get categories for. Primary key in {@link RsBusinessSql} table.
+   * The key of the business to get shop categories for.
    *
    * @get get
    * @type {string}
    */
   this.k_business = "0";
+
+  /**
+   * Key of the created shop category.
+   *
+   * @post result
+   * @type {string}
+   */
+  this.k_shop_category = undefined;
+
+  /**
+   * Title of new category.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.text_title = "";
 
   this.changeInit();
 }
@@ -75,13 +99,13 @@ WlSdk_ModelAbstract.extend(Wl_Shop_Category_CategoryModel);
  */
 Wl_Shop_Category_CategoryModel.prototype.config=function()
 {
-  return {"a_field": {"a_shop_category": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field": {"a_shop_category": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_shop_category": {"post": {"result": true}},"text_title": {"post": {"post": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Shop_Category_CategoryModel.instanceGet
- * @param {string} k_business ID of business to get categories for. Primary key in {@link RsBusinessSql} table.
+ * @param {string} k_business The key of the business to get shop categories for.
  * @returns {Wl_Shop_Category_CategoryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

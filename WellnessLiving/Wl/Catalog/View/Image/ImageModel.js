@@ -24,7 +24,7 @@ function Wl_Catalog_View_Image_ImageModel()
   this.a_image = undefined;
 
   /**
-   * ID of sale category. One of {@link \RsSaleSid}.
+   * ID of sale category. One of {@link RsSaleSid}.
    *
    * @get get
    * @type {number}
@@ -63,7 +63,7 @@ Wl_Catalog_View_Image_ImageModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Catalog_View_Image_ImageModel.instanceGet
- * @param {number} id_sale ID of sale category. One of {@link \RsSaleSid}.
+ * @param {number} id_sale ID of sale category. One of {@link RsSaleSid}.
  * @param {string} k_id ID of the sale item.
  * @param {string} k_shop_product_option Shop product option ID.
  * @returns {Wl_Catalog_View_Image_ImageModel}

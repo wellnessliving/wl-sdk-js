@@ -25,7 +25,7 @@ function Wl_Family_Pay_PayModel()
   this.k_business = undefined;
 
   /**
-   * ID of user to get information for. Primary key in {@link \PassportLoginAr} table.
+   * ID of user to get information for. Primary key in {@link \Core\Passport\Login\PassportLoginAr} table.
    *
    * @get get
    * @post get
@@ -34,9 +34,9 @@ function Wl_Family_Pay_PayModel()
   this.uid = undefined;
 
   /**
-   * ID of user who will pay for user {@link \Wl\Family\Pay\PayApi::$uid}.
-   * Primary key in {@link \PassportLoginAr} table.
-   * Empty if {@link \Wl\Family\Pay\PayApi::$uid} will pay for self.
+   * ID of user who will pay for user {@link Wl_Family_Pay_PayModel.uid}.
+   * Primary key in {@link \Core\Passport\Login\PassportLoginAr} table.
+   * Empty if {@link Wl_Family_Pay_PayModel.uid} will pay for self.
    *
    * @get result
    * @post post
@@ -60,7 +60,7 @@ Wl_Family_Pay_PayModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Family_Pay_PayModel.instanceGet
- * @param {string} uid ID of user to get information for. Primary key in {@link \PassportLoginAr} table.
+ * @param {string} uid ID of user to get information for. Primary key in {@link \Core\Passport\Login\PassportLoginAr} table.
  * @param {string} k_business ID of business to get information for. Primary key in {@link \RsBusinessAr} table.
  * @returns {Wl_Family_Pay_PayModel}
  * @see WlSdk_ModelAbstract.instanceGet()

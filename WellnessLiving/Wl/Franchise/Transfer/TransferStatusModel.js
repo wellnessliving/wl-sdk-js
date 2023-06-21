@@ -11,7 +11,7 @@ function Wl_Franchise_Transfer_TransferStatusModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Transfer status ID. One of {@link \Wl\Franchise\Transfer\TransferStatusSid} constants.
+   * Transfer status ID. One of {@link Wl_Franchise_Transfer_TransferStatusSid} constants.
    *
    * @put post
    * @type {number}
@@ -19,7 +19,7 @@ function Wl_Franchise_Transfer_TransferStatusModel()
   this.id_transfer_status = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @put post
    * @type {string}
@@ -27,7 +27,7 @@ function Wl_Franchise_Transfer_TransferStatusModel()
   this.k_business = undefined;
 
   /**
-   * Franchise transfer key. Primary key in {@link \Wl\Franchise\Transfer\TransferSql} table.
+   * Franchise transfer key.
    *
    * @put post
    * @type {string}

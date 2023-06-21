@@ -18,7 +18,7 @@ function Wl_Skin_SkinModel()
   /**
    * Skin fields to save.
    * Key is full name of the skin field, it is separated string containing field name and element name from
-   * {@link \Wl\Skin\Application\Application::field_list()}.
+   * {@link Wl\Skin\Application\Application::field_list()}.
    * Value is new field value.
    *
    * @post post
@@ -28,7 +28,7 @@ function Wl_Skin_SkinModel()
 
   /**
    * Skin data.
-   * Result of the {@link \RsSkinData::skin()} method.
+   * Result of the {@link RsSkinData::skin()} method.
    *
    * @get result
    * @type {{}}
@@ -52,6 +52,14 @@ function Wl_Skin_SkinModel()
    */
   this.k_skin = "0";
 
+  /**
+   * URL to the main page of the widget.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_skin = undefined;
+
   this.changeInit();
 }
 
@@ -62,7 +70,7 @@ WlSdk_ModelAbstract.extend(Wl_Skin_SkinModel);
  */
 Wl_Skin_SkinModel.prototype.config=function()
 {
-  return {"a_field": {"a_field": {"post": {"post": true}},"a_skin": {"get": {"result": true}},"id_skin": {"get": {"result": true}},"k_skin": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_field": {"post": {"post": true}},"a_skin": {"get": {"result": true}},"id_skin": {"get": {"result": true}},"k_skin": {"get": {"get": true},"post": {"get": true}},"url_skin": {"get": {"result": true}}}};
 };
 
 /**

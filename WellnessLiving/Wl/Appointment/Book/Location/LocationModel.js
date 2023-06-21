@@ -1,5 +1,7 @@
 /**
- * An endpoint that retrieves information about locations on the appointment booking page.
+ * Retrieves a list of information about locations on the appointment booking page.
+ *
+ * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -22,9 +24,9 @@ function Wl_Appointment_Book_Location_LocationModel()
   this.a_location = undefined;
 
   /**
-   * The class tab type ID.
+   * ID of class tab type.
    *
-   * This will be `null` if not set yet.
+   * <tt>null</tt> if not set yet.
    *
    * @get get
    * @type {?string}
@@ -32,9 +34,8 @@ function Wl_Appointment_Book_Location_LocationModel()
   this.id_class_tab = null;
 
   /**
-   * `true` - return all service categories of specified location.
-   *
-   * `false` - return only service categories that have staff members and are associated to a specific book tab.
+   * <tt>true</tt> - return all service categories of certain location;
+   * <tt>false</tt> - return only service categories which has staff members and are bound to certain book tab.
    *
    * @get get
    * @type {boolean}
@@ -42,7 +43,7 @@ function Wl_Appointment_Book_Location_LocationModel()
   this.is_backend = false;
 
   /**
-   * The business ID.
+   * ID of the business.
    *
    * @get get
    * @type {string}
@@ -50,9 +51,9 @@ function Wl_Appointment_Book_Location_LocationModel()
   this.k_business = "";
 
   /**
-   * The class tab ID.
+   * ID of class tab.
    *
-   * This will be `null` if not set yet.
+   * <tt>null</tt> if not set yet.
    *
    * @get get
    * @type {?string}
@@ -60,7 +61,7 @@ function Wl_Appointment_Book_Location_LocationModel()
   this.k_class_tab = null;
 
   /**
-   * The ID of the user to show information for.
+   * ID of user to show information for.
    *
    * @get get
    * @type {string}
@@ -83,12 +84,11 @@ Wl_Appointment_Book_Location_LocationModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Location_LocationModel.instanceGet
- * @param {string} k_business The ID of the business.
- * @param {?string} id_class_tab The ID of class tab type. This will be `null` if not set yet.
- * @param {?string} k_class_tab The ID of class tab. This will be `null` if not set yet.
- * @param {string} uid The ID of user to show information for.
- * @param {boolean} is_backend This will be `true` if all service categories of a specified location are returned. Otherwise,
- * this will be `false` if only service categories that have staff members and are associated to a specific book tab are returned.
+ * @param {string} k_business ID of the business.
+ * @param {?string} id_class_tab ID of class tab type. <tt>null</tt> if not set yet.
+ * @param {?string} k_class_tab ID of class tab. <tt>null</tt> if not set yet.
+ * @param {string} uid ID of user to show information for.
+ * @param {boolean} is_backend <tt>true</tt> - return all service categories of certain location; <tt>false</tt> - return only service categories which has staff members and are bound to certain book tab.
  * @returns {Wl_Appointment_Book_Location_LocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

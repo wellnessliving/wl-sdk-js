@@ -1,5 +1,5 @@
 /**
- * Checker for <tt>next</tt>, <tt>complete</tt> buttons in booking process.
+ * An endpoint that checks for `next` and `complete` buttons in the booking process.
  *
  * This model is generated automatically based on API.
  *
@@ -11,31 +11,44 @@ function Wl_Book_Process_Info_InfoCanCompleteModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Selected sessions.
+   * A list of sessions of an event that can be booked together.
    *
-   * Keys - session IDs. Primary keys in table {@link RsClassPeriodSql}.
+   * This is the same as {@link Wl_Book_Process_Info_InfoCanCompleteModel.a_session_select_post}, but limited by query string
+   * length and might fail if the user is booking more than 50 sessions at once. Therefore, using the POST method is preferable.
    *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
-   *
+   * @deprecated Use {@link Wl_Book_Process_Info_InfoCanCompleteModel.a_session_select_post} along with POST call instead.
    * @get get
-   * @type {{}}
+   * @type {{}[]}
    */
   this.a_session_select = [];
 
   /**
-   * Selected sessions.
+   * @typedef {{}} Wl_Book_Process_Info_InfoCanCompleteModel_a_session_select_post
+   * @property {string} dt_date The date and time in MySQL format in GMT when the session starts.
+   * @property {boolean} is_select `true` if this session should be booked, `false` otherwise.
+   * @property {string} k_class_period The class period key.
+   */
+
+  /**
+   * A list of sessions of an event that can be booked together.
    *
-   * Keys - session IDs. Primary keys in table {@link RsClassPeriodSql}.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * Every element has the next structure:
+   * <dl>
+   *   <dt>string <var>dt_date</var></dt>
+   *   <dd>The date and time in MySQL format in GMT when the session starts.</dd>
+   *   <dt>bool <var>is_select</var></dt>
+   *   <dd>`true` if this session should be booked, `false` otherwise.</dd>
+   *   <dt>string <var>k_class_period</var></dt>
+   *   <dd>The class period key.</dd>
+   * </dl>
    *
    * @post post
-   * @type {{}}
+   * @type {Wl_Book_Process_Info_InfoCanCompleteModel_a_session_select_post[]}
    */
   this.a_session_select_post = [];
 
   /**
-   * Whether booking process can be finished.
+   * Determines whether users can complete the booking process from the info step.
    *
    * @get result
    * @post result
@@ -44,7 +57,7 @@ function Wl_Book_Process_Info_InfoCanCompleteModel()
   this.can_complete = undefined;
 
   /**
-   * Date and time in GMT.
+   * The date and time of the session that the user is booking, returned in MySQL format and in GMT.
    *
    * @get get
    * @post get
@@ -53,7 +66,17 @@ function Wl_Book_Process_Info_InfoCanCompleteModel()
   this.dt_date_gmt = "";
 
   /**
-   * Class period key.
+   * `true` if price for the individual session should be hidden, if client has applicable pricing option to pay for this
+   * booking.
+   * `false` if price should be shown always.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.hide_price = "";
+
+  /**
+   * The class period ID that the user started to book.
    *
    * @get get
    * @post get
@@ -62,7 +85,7 @@ function Wl_Book_Process_Info_InfoCanCompleteModel()
   this.k_class_period = "";
 
   /**
-   * Booking process identifier.
+   * The unique booking process key.
    *
    * @get get
    * @post get
@@ -71,7 +94,7 @@ function Wl_Book_Process_Info_InfoCanCompleteModel()
   this.s_id = "";
 
   /**
-   * User key for which booking process performed.
+   * The key of a user who is making the booking.
    * Empty if user is guest.
    *
    * @get get
@@ -90,5 +113,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Info_InfoCanCompleteModel);
  */
 Wl_Book_Process_Info_InfoCanCompleteModel.prototype.config=function()
 {
-  return {"a_field": {"a_session_select": {"get": {"get": true}},"a_session_select_post": {"post": {"post": true}},"can_complete": {"get": {"result": true},"post": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"s_id": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_session_select": {"get": {"get": true}},"a_session_select_post": {"post": {"post": true}},"can_complete": {"get": {"result": true},"post": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"hide_price": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"s_id": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

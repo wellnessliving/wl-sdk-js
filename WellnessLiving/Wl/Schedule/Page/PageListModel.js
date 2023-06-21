@@ -1,5 +1,7 @@
 /**
- * Retrieves items of schedule for the client.
+ * An endpoint that returns a list of either previous or upcoming visits for a specific user.
+ *
+ * A visit can be for an appointment, class, or an event.
  *
  * This model is generated automatically based on API.
  *
@@ -17,17 +19,22 @@ function Wl_Schedule_Page_PageListModel()
 
   /**
    * @typedef {{}} Wl_Schedule_Page_PageListModel_a_visit
-   * @property {string} k_visit ID of book/visit. Primary key in {@link RsVisitSql}
+   * @property {string} k_business Key of the business in which this visit was made.
+   * @property {string} k_visit Key of a book/visit.
    */
 
   /**
    * Elements of user's schedule. Every element has next keys:
    * <dl>
+   *   <dt>string <var>k_business</var></dt>
+   *   <dd>
+   *     Key of the business in which this visit was made.
+   *   </dd>
    *   <dt>
    *     string <var>k_visit</var>
    *   </dt>
    *   <dd>
-   *     ID of book/visit. Primary key in {@link RsVisitSql}
+   *     Key of a book/visit.
    *   </dd>
    * </dl>
    *
@@ -37,9 +44,9 @@ function Wl_Schedule_Page_PageListModel()
   this.a_visit = undefined;
 
   /**
-   * Determines date range end, date and time in UTC timezone in MySQL format.
-   *
-   * <tt>null</tt> until loaded.
+   * If the date is set, a list of services before this date will be returned.
+   * The date and time is in UTC and in MySQL format.
+   * If left as `null`, then a list of services that aren't limited to the end date will be returned.
    *
    * @get get
    * @type {?string}
@@ -47,9 +54,9 @@ function Wl_Schedule_Page_PageListModel()
   this.dtu_end = null;
 
   /**
-   * Determines date range start, date and time in UTC timezone in MySQL format.
-   *
-   * <tt>null</tt> until loaded.
+   * If the date is set, a list of services after this date will be returned.
+   * The date and time is in UTC and in MySQL format.
+   * If left as `null`, then a list of services that aren't limited to the start date will be returned.
    *
    * @get get
    * @type {?string}
@@ -57,7 +64,8 @@ function Wl_Schedule_Page_PageListModel()
   this.dtu_start = null;
 
   /**
-   * Determines whether current schedule is the past schedule.
+   * If `true`, then all the client previous visits will be retrieved.
+   * If `false` or left as `null`, then all the client upcoming visits will be retrieved.
    *
    * @get get
    * @type {boolean}
@@ -65,7 +73,7 @@ function Wl_Schedule_Page_PageListModel()
   this.is_past = false;
 
   /**
-   * Business primary key in {@link RsBusinessSql} table.
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -73,10 +81,10 @@ function Wl_Schedule_Page_PageListModel()
   this.k_business = "0";
 
   /**
-   * User's primary key in {@link PassportLoginSql} table.
+   * The user key.
    *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
   this.uid = "0";
 
@@ -96,9 +104,9 @@ Wl_Schedule_Page_PageListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Schedule_Page_PageListModel.instanceGet
- * @param {string} uid User's primary key in {@link PassportLoginSql} table.
- * @param {string} k_business Business primary key in {@link RsBusinessSql} table.
- * @param {boolean} is_past Determines whether current schedule is the past schedule.
+ * @param {?string} uid The user key.
+ * @param {string} k_business The business key.
+ * @param {boolean} is_past If `true`, then all the client previous visits will be retrieved. If `false` or left as `null`, then all the client upcoming visits will be retrieved.
  * @returns {Wl_Schedule_Page_PageListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -44,15 +44,10 @@ function Wl_Login_Permission_Access_AccessModel()
   /**
    * @typedef {{}} Wl_Login_Permission_Access_AccessModel_a_schedule
    * @property {string} k_location Location key, where class or service occurs.
-   * Primary key in {@link \RsLocationSql} table.
    * @property {string} k_class Class key.
-   * Primary key in {@link \RsClassSql} table.
    * @property {string} k_login_promotion Login promotion key if need to check access for specific promotion.
-   * Primary key in {@link \RsLoginPromotionSql} table.
    * @property {string} k_resource Resource key.
-   * Primary key in {@link \RsResourceSql} table.
    * @property {string} k_service Service key.
-   * Primary key in {@link \RsServiceSql} table.
    */
 
   /**
@@ -60,27 +55,22 @@ function Wl_Login_Permission_Access_AccessModel()
    *   <dt>string <var>k_location</var></dt>
    *   <dd>
    *     Location key, where class or service occurs.
-   *     Primary key in {@link \RsLocationSql} table.
    *   </dd>
    *   <dt>string <var>k_class</var></dt>
    *   <dd>
    *     Class key.
-   *     Primary key in {@link \RsClassSql} table.
    *   </dd>
    *   <dt>string <var>k_login_promotion</var></dt>
    *   <dd>
    *     Login promotion key if need to check access for specific promotion.
-   *     Primary key in {@link \RsLoginPromotionSql} table.
    *   </dd>
    *   <dt>string <var>k_resource</var></dt>
    *   <dd>
    *     Resource key.
-   *     Primary key in {@link \RsResourceSql} table.
    *   </dd>
    *   <dt>string <var>k_service</var></dt>
    *   <dd>
    *     Service key.
-   *     Primary key in {@link \RsServiceSql} table.
    *   </dd>
    * </dl>
    *
@@ -130,8 +120,6 @@ function Wl_Login_Permission_Access_AccessModel()
   /**
    * Business key.
    *
-   * Primary key in {@link \RsBusinessSql} table.
-   *
    * @get get
    * @type {string}
    */
@@ -139,8 +127,6 @@ function Wl_Login_Permission_Access_AccessModel()
 
   /**
    * User key.
-   *
-   * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
    * @type {string}

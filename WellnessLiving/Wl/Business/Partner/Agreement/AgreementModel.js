@@ -1,6 +1,9 @@
 /**
  * Agreement API for partner program enrollment.
  *
+ * Note! No longer need because of auto-enroll. See https://wellnessliving.atlassian.net/browse/WL-58652
+ * TODO wl-40346: Remove code after 2023-11-08
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract

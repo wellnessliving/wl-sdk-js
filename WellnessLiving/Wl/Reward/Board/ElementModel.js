@@ -24,7 +24,7 @@ function Wl_Reward_Board_ElementModel()
   this.a_reward = null;
 
   /**
-   * List of users to get information for. Primary keys in {@link \PassportLoginSql} table.
+   * List of users to get information for.
    *
    * <tt>null</tt> for mode of single user.
    *
@@ -44,8 +44,6 @@ function Wl_Reward_Board_ElementModel()
   /**
    * Business to show information for.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @type {string}
    */
@@ -53,8 +51,6 @@ function Wl_Reward_Board_ElementModel()
 
   /**
    * Reward board to show information for.
-   *
-   * Primary key in {@link \RsRewardBoardSql}.
    *
    * @get get
    * @type {string}
@@ -71,8 +67,6 @@ function Wl_Reward_Board_ElementModel()
 
   /**
    * User to retrieve information about.
-   *
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
    * @type {string}
@@ -103,9 +97,9 @@ Wl_Reward_Board_ElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Reward_Board_ElementModel.instanceGet
- * @param {string} k_business Business to show information for. Primary key in {@link \RsBusinessSql}.
- * @param {string} k_reward_board Reward board to show information for. Primary key in {@link \RsRewardBoardSql}.
- * @param {string} uid User to retrieve information about. Primary key in {@link \PassportLoginSql}.
+ * @param {string} k_business Business to show information for.
+ * @param {string} k_reward_board Reward board to show information for.
+ * @param {string} uid User to retrieve information about.
  * @returns {Wl_Reward_Board_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

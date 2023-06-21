@@ -1,5 +1,5 @@
 /**
- * Manages questions for the current service.
+ * An endpoint that retrieves questions for a selected service.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,7 @@ function Wl_Appointment_Book_Question_QuestionModel()
   this._s_key = "k_service";
 
   /**
-   * A list of questions for the current service.
+   * A list of questions for the service.
    *
    * @get result
    * @type {{}}
@@ -24,7 +24,7 @@ function Wl_Appointment_Book_Question_QuestionModel()
   this.a_question = undefined;
 
   /**
-   * Service key.
+   * The service key used for retrieving questions.
    *
    * @get get
    * @type {string}
@@ -47,7 +47,7 @@ Wl_Appointment_Book_Question_QuestionModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Question_QuestionModel.instanceGet
- * @param {string} k_service Service key.
+ * @param {string} k_service The service key used for retrieving questions.
  * @returns {Wl_Appointment_Book_Question_QuestionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -13,16 +13,7 @@ function Wl_Business_NameList_NameListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "a_business";
-
-  /**
-   * List of business keys.
-   * Each element is primary key for the {@link \RsBusinessSql} table.
-   *
-   * @post post
-   * @type {{}}
-   */
-  this.a_business = [];
+  this._s_key = "s_business";
 
   /**
    * List of business keys that are incorrect.
@@ -40,6 +31,15 @@ function Wl_Business_NameList_NameListModel()
    */
   this.a_business_name = undefined;
 
+  /**
+   * Array of business keys, encoded to string to get names for.
+   * Each element is a primary key in the {@link \RsBusinessSql} table.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.s_business = "";
+
   this.changeInit();
 }
 
@@ -50,13 +50,13 @@ WlSdk_ModelAbstract.extend(Wl_Business_NameList_NameListModel);
  */
 Wl_Business_NameList_NameListModel.prototype.config=function()
 {
-  return {"a_field": {"a_business": {"post": {"post": true}},"a_business_error": {"post": {"result": true}},"a_business_name": {"post": {"result": true}}}};
+  return {"a_field": {"a_business_error": {"post": {"result": true}},"a_business_name": {"post": {"result": true}},"s_business": {"post": {"post": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Business_NameList_NameListModel.instanceGet
- * @param {{}} a_business List of business keys. Each element is primary key for the {@link \RsBusinessSql} table.
+ * @param {string} s_business Array of business keys, encoded to string to get names for. Each element is a primary key in the {@link \RsBusinessSql} table.
  * @returns {Wl_Business_NameList_NameListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

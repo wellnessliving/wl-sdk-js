@@ -18,7 +18,7 @@ function Wl_Business_Skin_BusinessSkinModel()
   /**
    * Full business skin data.
    *
-   * See result of the {@link \rs_business_skin()} function.
+   * See result of the {@link rs_business_skin()} function.
    *
    * @get result
    * @type {{}}
@@ -34,7 +34,7 @@ function Wl_Business_Skin_BusinessSkinModel()
   this.i_focus_delay = undefined;
 
   /**
-   * Measurement unit of <var>i_focus_delay</var>. Member of {@link \ADurationSid}.
+   * Measurement unit of <var>i_focus_delay</var>. Member of {@link ADurationSid}.
    *
    * @get result
    * @type {number}
@@ -43,7 +43,7 @@ function Wl_Business_Skin_BusinessSkinModel()
 
   /**
    * Current place ID.
-   * Constant from {@link \RsPlaceSid}.
+   * Constant from {@link RsPlaceSid}.
    *
    * @get get
    * @type {number}
@@ -59,6 +59,30 @@ function Wl_Business_Skin_BusinessSkinModel()
    * @type {?string}
    */
   this.k_business = null;
+
+  /**
+   * Navigation menu background colors.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.s_background_skin = undefined;
+
+  /**
+   * Left panel theme.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.s_left_theme = undefined;
+
+  /**
+   * Navigation menu theme.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.s_navmenu_theme = undefined;
 
   /**
    * Size of icons in the top header panel for quick access.
@@ -86,13 +110,13 @@ WlSdk_ModelAbstract.extend(Wl_Business_Skin_BusinessSkinModel);
  */
 Wl_Business_Skin_BusinessSkinModel.prototype.config=function()
 {
-  return {"a_field": {"a_skin": {"get": {"result": true}},"i_focus_delay": {"get": {"result": true}},"id_focus_duration": {"get": {"result": true}},"id_place": {"get": {"get": true}},"k_business": {"get": {"get": true}},"sid_header_button_size": {"get": {"result": true}},"sid_header_button_type": {"get": {"result": true}}}};
+  return {"a_field": {"a_skin": {"get": {"result": true}},"i_focus_delay": {"get": {"result": true}},"id_focus_duration": {"get": {"result": true}},"id_place": {"get": {"get": true}},"k_business": {"get": {"get": true}},"s_background_skin": {"get": {"result": true}},"s_left_theme": {"get": {"result": true}},"s_navmenu_theme": {"get": {"result": true}},"sid_header_button_size": {"get": {"result": true}},"sid_header_button_type": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Business_Skin_BusinessSkinModel.instanceGet
- * @param {number} id_place Current place ID. Constant from {@link \RsPlaceSid}.
+ * @param {number} id_place Current place ID. Constant from {@link RsPlaceSid}.
  * @param {?string} k_business Business key from {@link \RsBusinessSql}. If <tt>null</tt> you will receive data for the default skin.
  * @returns {Wl_Business_Skin_BusinessSkinModel}
  * @see WlSdk_ModelAbstract.instanceGet()

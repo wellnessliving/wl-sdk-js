@@ -1,5 +1,7 @@
 /**
- * An endpoint that retrieves information about available Purchase Options.
+ * An endpoint that retrieves information about service categories.
+ *
+ * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -15,17 +17,17 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_prize
-   * @property {number} i_count The login prize remaining quantity.
-   * @property {string} k_login_prize The key of the login prize.
-   * @property {string} text_description The user-friendly login prize description.
+   * @property {number} i_count Login prize remaining quantity.
+   * @property {string} k_login_prize Key of login prize.
+   * @property {string} text_description User friendly login prize description.
    */
 
   /**
-   * Data about the login prize that can be used to pay for the service.
+   * Data about login prize which can be used to pay for service.
    * <dl>
-   *   <dt>int <var>i_count</var></dt><dd>The login prize remaining quantity.</dd>
-   *   <dt>string <var>k_login_prize</var></dt><dd>THe key of login prize.</dd>
-   *   <dt>string <var>text_description</var></dt><dd>The user-friendly login prize description.</dd>
+   *   <dt>int <var>i_count</var></dt><dd>Login prize remaining quantity.</dd>
+   *   <dt>string <var>k_login_prize</var></dt><dd>Key of login prize.</dd>
+   *   <dt>string <var>text_description</var></dt><dd>User friendly login prize description.</dd>
    * </dl>
    *
    * @get result
@@ -35,53 +37,54 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data
-   * @property {number} i_book The number of future bookings that are paid using this Purchase Option.
+   * @property {number} i_book The count of future sessions that are paid with this Purchase Option.
    * @property {number} i_limit The limit of visits for the restriction period.
    * @property {number} i_remain The number of remaining visits for the restriction period.
    * @property {number} i_use The usage count of the Purchase Option.
-   * @property {number} i_visit_past The number of attended sessions before the last renewal.
-   * This will be `0` if there weren't any sessions renewed before the last renewal or if the Purchase is not set to auto-renew.
-   * @property {string} text_restriction The description of the restriction period.
+   * @property {number} i_visit_past The count of attended sessions before the last renewal.
+   * This will be `0` if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
+   * @property {string} text_restriction The description of restriction period. For example, "this week" or "for a four-day period".
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict
    * @property {number} i_limit The limit of visits for the shortest restriction period.
    * @property {number} i_remain The number of remaining visits for the shortest restriction period.
-   * @property {string} text_restriction The description of the shortest restriction period.
+   * @property {string} text_restriction The description of the shortest restriction period. For example "this week" or "for a four-day period".
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info
-   * @property {number} i_limit The number of visits permitted by the Purchase Option.
-   * @property {?number} i_limit_duration The maximum number of minutes the Purchase Option can be used for.
-   * @property {number} i_remain The remaining number of visits.
-   * @property {?number} i_remain_duration The number of minutes left in the Purchase Option.
+   * @property {number} i_limit The count of visits that the Purchase Option allows the client to make.
+   * @property {?number} i_limit_duration The maximum number of minutes that current Purchase Option can be used for.
+   * @property {number} i_remain The count of the remaining visits.
+   * @property {?number} i_remain_duration The number of minutes left in this Purchase Option.
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info} a_login_promotion_info <dl>
+   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info} a_login_promotion_info Information about the Purchase Option. It contains the following information:
+   *  <dl>
    *    <dt>int <tt>i_limit</tt></dt>
-   *    <dd>The number of visits permitted by the Purchase Option.</dd>
+   *    <dd>The count of visits that the Purchase Option allows the client to make.</dd>
    *    <dt>int|null <tt>i_limit_duration</tt></dt>
-   *    <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
+   *    <dd>The maximum number of minutes that current Purchase Option can be used for.</dd>
    *    <dt>int <tt>i_remain</tt></dt>
-   *    <dd>The remaining number of visits.</dd>
+   *    <dd>The count of the remaining visits.</dd>
    *    <dt>int|null <tt>i_remain_duration</tt></dt>
-   *    <dd>The number of minutes left in the Purchase Option.</dd>
+   *    <dd>The number of minutes left in this Purchase Option.</dd>
    *  </dl>
-   * @property {string[]} a_visit_limit A list of calendar restrictions for the Purchase Option.
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict} a_restrict Data about shortest restriction period:
+   * @property {string[]} a_visit_limit The list of calendar restrictions of the Purchase Option. For example, four per week.
+   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict} a_restrict Data about the shortest restriction period:
    * <dl>
    *   <dt>int <tt>i_limit</tt></dt>
    *   <dd>The limit of visits for the shortest restriction period.</dd>
    *   <dt>int <tt>i_remain</tt></dt>
    *   <dd>The number of remaining visits for the shortest restriction period.</dd>
    *   <dt>string <tt>text_restriction</tt></dt>
-   *   <dd>The description of the shortest restriction period.</dd>
+   *   <dd>The description of the shortest restriction period. For example "this week" or "for a four-day period".</dd>
    * </dl>
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data[]} a_restrict_data Data about all restriction periods. Array, where each record has next structure:
+   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data[]} a_restrict_data Data about all restriction periods. Given as an array, where each record has the following structure:
    * <dl>
    *   <dt>int <tt>i_book</tt></dt>
-   *   <dd>The number of future bookings that are paid using this Purchase Option.</dd>
+   *   <dd>The count of future sessions that are paid with this Purchase Option.</dd>
    *   <dt>int <tt>i_limit</tt></dt>
    *   <dd>The limit of visits for the restriction period.</dd>
    *   <dt>int <tt>i_remain</tt></dt>
@@ -90,91 +93,91 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *   <dd>The usage count of the Purchase Option.</dd>
    *   <dt>int <tt>i_visit_past</tt></dt>
    *   <dd>
-   *     The number of attended sessions before the last renewal.
-   *     This will be `0` if there weren't any sessions renewed before the last renewal or if the Purchase is not set to auto-renew.
+   *     The count of attended sessions before the last renewal.
+   *     This will be `0` if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
    *   </dd>
    *   <dt>string <tt>text_restriction</tt></dt>
-   *   <dd>The description of the restriction period.</dd>
+   *   <dd>The description of restriction period. For example, "this week" or "for a four-day period".</dd>
    * </dl>
-   * @property {number} i_limit The number of visits permitted by the Purchase Option.
-   * @property {?number} i_limit_duration The maximum number of minutes the Purchase Option can be used for.
-   * @property {number} id_program The program ID for Purchase Options from {@link \RsProgramSid}.
-   * @property {string} k_login_promotion The login promotion key.
-   * @property {string} s_class_include The list of included add-ons in the Purchase Option services.
+   * @property {number} i_limit The count of visits that the Purchase Option allows the client to make.
+   * @property {?number} i_limit_duration The maximum number of minutes that current Purchase Option can be used for.
+   * @property {number} id_program The program ID for promotions. One of the {@link RsProgramSid} constants.
+   * @property {string} k_login_promotion The Purchase Option login key.
+   * @property {string} s_class_include The list of services provided by this Purchase Option.
    * @property {string} s_description The Purchase Option description.
    * @property {string} s_duration The Purchase Option duration.
    * @property {string} s_title The Purchase Option name.
-   * @property {string} text_package_item Determines if this Purchase Option is a package.
-   * This field contains a list of Purchsae Options contained in the package.
+   * @property {string} text_package_item If this Purchase Option is a package, then this field contains a list of Purchase Options contained in the package.
    */
 
   /**
-   * A list of a client`s login promotions that can be applied to a given service.
+   * A list of the client`s login promotions that can be applied to a given service.
    * <dl>
    *   <dt>array <var>a_login_promotion_info</var></dt>
    *   <dd>
+   *      Information about the Purchase Option. It contains the following information:
    *      <dl>
    *        <dt>int <var>i_limit</var></dt>
-   *        <dd>The number of visits permitted by the Purchase Option.</dd>
+   *        <dd>The count of visits that the Purchase Option allows the client to make.</dd>
    *        <dt>int|null <var>i_limit_duration</var></dt>
-   *        <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
+   *        <dd>The maximum number of minutes that current Purchase Option can be used for.</dd>
    *        <dt>int <var>i_remain</var></dt>
-   *        <dd>The remaining number of visits.</dd>
+   *        <dd>The count of the remaining visits.</dd>
    *        <dt>int|null <var>i_remain_duration</var></dt>
-   *        <dd>The number of minutes left in the Purchase Option.</dd>
+   *        <dd>The number of minutes left in this Purchase Option.</dd>
    *      </dl>
    *   </dd>
    *   <dt>string[] <var>a_visit_limit</var></dt>
-   *   <dd>A list of the Purchase Option's calendar restrictions.</dd>
+   *   <dd>The list of calendar restrictions of the Purchase Option. For example, four per week.</dd>
    *   <dt>array <var>a_restrict</var></dt>
-   *   <dd>Information about the shortest restriction period:
+   *   <dd>Data about the shortest restriction period:
    *     <dl>
    *       <dt>int <var>i_limit</var></dt>
    *       <dd>The limit of visits for the shortest restriction period.</dd>
    *       <dt>int <var>i_remain</var></dt>
    *       <dd>The number of remaining visits for the shortest restriction period.</dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of the shortest restriction period."</dd>
+   *       <dd>The description of the shortest restriction period. For example "this week" or "for a four-day period".</dd>
    *     </dl>
    *   </dd>
    *   <dt>array[] <var>a_restrict_data</var></dt>
-   *   <dd>Information about all restriction periods, formatted as an array where each record has the next structure:
+   *   <dd>Data about all restriction periods. Given as an array, where each record has the following structure:
    *     <dl>
    *       <dt>int <var>i_book</var></dt>
-   *       <dd>The number of future booking that are paid using the Purchase Option.</dd>
+   *       <dd>The count of future sessions that are paid with this Purchase Option.</dd>
    *       <dt>int <var>i_limit</var></dt>
    *       <dd>The limit of visits for the restriction period.</dd>
    *       <dt>int <var>i_remain</var></dt>
    *       <dd>The number of remaining visits for the restriction period.</dd>
    *       <dt>int <var>i_use</var></dt>
-   *       <dd>The usage count of the Purchsae Option.</dd>
+   *       <dd>The usage count of the Purchase Option.</dd>
    *       <dt>int <var>i_visit_past</var></dt>
    *       <dd>
-   *         The number of attended sessions before the last renewal.
-   *         This will be `0` if there weren't any sessions renewed before the last renewal or if the Purchase is not set to auto-renew.
+   *         The count of attended sessions before the last renewal.
+   *         This will be `0` if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
    *       </dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of the restriction period.</dd>
+   *       <dd>The description of restriction period. For example, "this week" or "for a four-day period".</dd>
    *     </dl>
    *   </dd>
    *   <dt>int <var>i_limit</var></dt>
-   *   <dd>The number of visits permitted by the Purchase Option.</dd>
+   *   <dd>The count of visits that the Purchase Option allows the client to make.</dd>
    *   <dt>int|null <var>i_limit_duration</var></dt>
-   *   <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
+   *   <dd>The maximum number of minutes that current Purchase Option can be used for.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID for Purchase Options from {@link \RsProgramSid}.</dd>
+   *   <dd>The program ID for promotions. One of the {@link RsProgramSid} constants.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>The login promotion key.</dd>
+   *   <dd>The Purchase Option login key.</dd>
    *   <dt>string <var>s_class_include</var></dt>
-   *   <dd>The list of included add-ons in the Purchase Option services.</dd>
+   *   <dd>The list of services provided by this Purchase Option.</dd>
    *   <dt>string <var>s_description</var></dt>
-   *   <dd>The description of the Purchase Option.</dd>
+   *   <dd>The Purchase Option description.</dd>
    *   <dt>string <var>s_duration</var></dt>
    *   <dd>The Purchase Option duration.</dd>
    *   <dt>string <var>s_title</var></dt>
    *   <dd>The Purchase Option name.</dd>
    *   <dt>string <var>text_package_item</var></dt>
-   *   <dd>Determines if this Purchase Option is a package. This field contains list of Purchase Options contained in the package.</dd>
+   *   <dd>If this Purchase Option is a package, then this field contains a list of Purchase Options contained in the package.</dd>
    * </dl>
    *
    * @get result
@@ -184,164 +187,164 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase
-   * @property {{}} a_image The Purchase Option logo.
-   * @property {string[]} a_visit_limit A list of calendar restrictions of the Purchase Options.
-   * @property {string} dt_expire The Purchase Option expiration date.
-   * @property {string} dt_start The Purchase Option start date.
-   * @property {number} i The order number of the Purchase Option in the list.
-   * @property {number} i_limit The number of visits permitted by the Purchase Option.
-   * @property {?number} i_limit_duration The maximum number of minutes the Purchase Option can be used for.
-   * @property {number} i_payment_period The number of calendar periods (weeks, months, or years) between payments for the membership.
-   * @property {number} id_duration The duration ID. One of the {@link \ADurationSid} constants.
-   * @property {number} id_program The program ID for Purchase Options from {@link \RsProgramSid}.
-   * @property {number} id_program_type The program type ID. One of the {@link \RsProgramTypeSid} constants.
-   * @property {number} id_purchase_item The ID of the purchase item from {@link \RsPurchaseItemSid}.
-   * @property {boolean} is_description This will be `true` if the Purchase Option has a description. Otherwise, this will be `false`.
-   * @property {boolean} is_introductory This will be `true` if the Purchase Option is an introductory offer. Otherwise, this will be `false`.
-   * @property {number} k_id The primary ID of the element in its table.
-   * @property {string} m_price_old The price of a single session purchase before the online discount. This will be `null`
-   * if the service doesn't have an online discount. This is only set if the Purchase Option is the purchase of a single visit.
-   * @property {string} s_activation The Purchase Option activation settings.
-   * @property {string} s_class The CSS class used to identify the Purchase Option with an icon.
-   * @property {string} s_class_include The list of included CSS classes.
-   * @property {string} s_description The Purchase Option description.
-   * @property {string} s_duration The Purchase Option duration.
-   * @property {string} s_payment_duration The period between payments for memberships.
-   * @property {string} sid_program_category The category of the program for Purchase Options from {@link \RsProgramCategorySid}.
-   * @property {string} s_title The Purchase Option name.
-   * @property {string} s_value The Purchase Option in the format [<tt>purchase_item_id</tt>]::[<tt>k_id</tt>].
-   * @property {string} text_package_item Determines if this Purchase Option is a package. This field contains a list of Purchase Options contained in the package.
+   * @property {{}} a_image Logo of the purchase option. Result of the {@link RsPromotionImageLogo::image()} method.
+   * @property {string[]} a_visit_limit List of calendar restrictions of the promotion, for example, 4 per week.
+   * @property {string} dt_expire Date, when promotion expires.
+   * @property {string} dt_start Date, when promotion starts.
+   * @property {number} i Order number of the purchase option in the list.
+   * @property {number} i_limit Count of visits that purchase option allows to make.
+   * @property {?number} i_limit_duration Maximum number of minutes that current promotion can be used.
+   * @property {number} i_payment_period Count of calendar periods (weeks, months, years) between payment for membership.
+   * @property {number} id_duration Duration ID. Constant from {@link ADurationSid}.
+   * @property {number} id_program Program ID for promotions from {@link RsProgramSid}.
+   * @property {number} id_program_type Program type ID. Constant from {@link RsProgramTypeSid}.
+   * @property {number} id_purchase_item ID of the purchase item from {@link RsPurchaseItemSid}
+   * @property {boolean} is_description `true` if purchase option has description.
+   * @property {boolean} is_introductory `true` if promotion is introductory offer, `false` otherwise.
+   * @property {number} k_id Primary ID of the element in it's table.
+   * @property {string} m_price_old Price of single session purchase before online discount. `null` if service does not have online discount.
+   * Is set only if this purchase option is purchase of single visit.
+   * @property {string} s_activation Activation settings of the promotion.
+   * @property {string} s_class Class for designer to mark purchase options with different icons.
+   * @property {string} s_class_include List of included in the promotion services.
+   * @property {string} s_description Description of the purchase option.
+   * @property {string} s_duration Duration of the promotion.
+   * @property {string} s_payment_duration Period between payments for memberships.
+   * @property {string} sid_program_category Category of the program for promotions from {@link RsProgramCategorySid}.
+   * @property {string} s_title Name of the purchase option.
+   * @property {string} s_value Key of the purchase option in the format [<tt>purchase_item_id</tt>]::[<tt>k_id</tt>]
+   * @property {string} text_package_item If this promotion is a package. This field contains list of promotions contained in the package.
    */
 
   /**
-   * A list of the Purchase Options:
+   * An array with information about available Purchase Options.
    * <dl>
    *   <dt>
    *     array <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     The Purchase Option logo.
+   *     Logo of the purchase option. Result of the {@link RsPromotionImageLogo::image()} method.
    *   </dd>
    *   <dt>
    *     string[] <var>a_visit_limit</var>
    *   </dt>
    *   <dd>
-   *     A list of calendar restrictions of the Purchase Options.
+   *     List of calendar restrictions of the promotion, for example, 4 per week.
    *   </dd>
    *   <dt>
    *     string <var>dt_expire</var>
    *   </dt>
    *   <dd>
-   *     The Purchase Option expiration date.
+   *     Date, when promotion expires.
    *   </dd>
    *   <dt>
    *     string <var>dt_start</var>
    *   </dt>
    *   <dd>
-   *     The Purchase Option start date.
+   *     Date, when promotion starts.
    *   </dd>
    *   <dt>
    *     int <var>i</var>
    *   </dt>
    *   <dd>
-   *     The order number of the Purchase Option in the list.
+   *     Order number of the purchase option in the list.
    *   </dd>
    *   <dt>
    *     int <var>i_limit</var>
    *   </dt>
    *   <dd>
-   *     The number of visits permitted by the Purchase Option.
+   *     Count of visits that purchase option allows to make.
    *   </dd>
    *   <dt>
    *     int|null <var>i_limit_duration</var>
    *   </dt>
    *   <dd>
-   *     The maximum number of minutes the Purchase Option can be used for.
+   *     Maximum number of minutes that current promotion can be used.
    *   </dd>
    *   <dt>
    *     int <var>i_payment_period</var>
    *   </dt>
    *   <dd>
-   *     The number of calendar periods (weeks, months, or years) between payments for the membership.
+   *     Count of calendar periods (weeks, months, years) between payment for membership.
    *   </dd>
    *   <dt>
    *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
-   *     The duration ID. One of the {@link \ADurationSid} constants.
+   *     Duration ID. Constant from {@link ADurationSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     The program ID for Purchase Options from {@link \RsProgramSid}.
+   *     Program ID for promotions from {@link RsProgramSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_type</var>
    *   </dt>
    *   <dd>
-   *     The program type ID. One of the {@link \RsProgramTypeSid} constants.
+   *     Program type ID. Constant from {@link RsProgramTypeSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of the purchase item from {@link \RsPurchaseItemSid}.
+   *     ID of the purchase item from {@link RsPurchaseItemSid}
    *   </dd>
    *   <dt>
    *     bool <var>is_description</var>
    *   </dt>
    *   <dd>
-   *     This will be `true` if the Purchase Option has a description. Otherwise, this will be `false`.
+   *     `true` if purchase option has description.
    *   </dd>
    *   <dt>
    *     bool <var>is_introductory</var>
    *   </dt>
    *   <dd>
-   *     This will be `true` if the Purchase Option is an introductory offer. Otherwise, this will be `false`.
+   *     `true` if promotion is introductory offer, `false` otherwise.
    *   </dd>
    *   <dt>
    *     int <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     The primary ID of the element in its table.
+   *     Primary ID of the element in it's table.
    *   </dd>
    *   <dt>
    *     string|null [<var>m_price_old</var>]
    *   </dt>
    *   <dd>
-   *     The price of a single session purchase before the online discount. This will be `null` if the service doesn't have an online discount.
-   *     This is only set if the Purchase Option is the purchase of a single visit.
+   *     Price of single session purchase before online discount. `null` if service does not have online discount.
+   *     Is set only if this purchase option is purchase of single visit.
    *   </dd>
    *   <dt>
    *     string <var>s_activation</var>
    *   </dt>
    *   <dd>
-   *     The Purchase Option activation settings.
+   *     Activation settings of the promotion.
    *   </dd>
    *   <dt>
    *     string <var>s_class</var>
    *   </dt>
    *   <dd>
-   *     The CSS class used to identify the Purchase Option with an icon.
+   *     Class for designer to mark purchase options with different icons.
    *   </dd>
    *   <dt>
    *     string <var>s_class_include</var>
    *   </dt>
    *   <dd>
-   *     The list of included CSS classes.
+   *     List of included in the promotion services.
    *   </dd>
    *   <dt>
    *     string <var>s_description</var>
    *   </dt>
    *   <dd>
-   *     The Purchase Option description.
+   *     Description of the purchase option.
    *   </dd>
    *   <dt>
    *     string <var>s_duration</var>
    *   </dt>
    *   <dd>
-   *     The Purchase Option duration.
+   *     Duration of the promotion.
    *   </dd>
    *   <dt>
    *     string <var>s_payment_duration</var>
@@ -353,25 +356,25 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *     string <var>sid_program_category</var>
    *   </dt>
    *   <dd>
-   *     The category of the program for Purchase Options from {@link \RsProgramCategorySid}.
+   *     Category of the program for promotions from {@link RsProgramCategorySid}.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     The Purchase Option name.
+   *     Name of the purchase option.
    *   </dd>
    *   <dt>
    *     string <var>s_value</var>
    *   </dt>
    *   <dd>
-   *     The Purchase Option key in the format [<var>purchase_item_id</var>]::[<var>k_id</var>].
+   *     Key of the purchase option in the format [<var>purchase_item_id</var>]::[<var>k_id</var>]
    *   </dd>
    *   <dt>
    *     string <var>text_package_item</var>
    *   </dt>
    *   <dd>
-   *     Determines if this Purchase Option is a package. This field contains a list of Purchase Options contained in the package.
+   *     If this promotion is a package. This field contains list of promotions contained in the package.
    *   </dd>
    * </dl>
    *
@@ -382,17 +385,17 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_reward_prize
-   * @property {number} i_score The prize price in points.
-   * @property {string} k_reward_prize The prize key.
-   * @property {string} text_description The user-friendly prize description.
+   * @property {number} i_score Prize price in points.
+   * @property {string} k_reward_prize Key of redeemable prize..
+   * @property {string} text_description User friendly prize description.
    */
 
   /**
-   * A list of redeemable prizes that can be used to pay for service.
+   * List of redeemable prizes which can be used to pay for service.
    * <dl>
-   *   <dt>int <var>i_score</var></dt><dd>The prize price in points.</dd>
-   *   <dt>string <var>k_reward_prize</var></dt><dd>The prize key.</dd>
-   *   <dt>string <var>text_description</var></dt><dd>The user-friendly prize description.</dd>
+   *   <dt>int <var>i_score</var></dt><dd>Prize price in points.</dd>
+   *   <dt>string <var>k_reward_prize</var></dt><dd>Key of redeemable prize..</dd>
+   *   <dt>string <var>text_description</var></dt><dd>User friendly prize description.</dd>
    * </dl>
    *
    * @get result
@@ -402,63 +405,63 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_service_a_purchase
-   * @property {number} id_purchase_item The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.
-   * @property {string} k_id The purchase item key.
+   * @property {number} id_purchase_item Purchase item ID. Constant from {@link RsPurchaseItemSid}.
+   * @property {string} k_id Purchase item key.
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_service
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_service_a_purchase} a_purchase A list of Purchase Options selected for the service.
-   *    This should be set in cases where a new Purchase Option is selected for the service.
+   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_service_a_purchase} a_purchase List of purchase options selected for the service.
+   *    Should be set if a new purchase option is selected for this service.
    *    <dl>
    *  <dt>int <tt>id_purchase_item</tt></dt>
-   *  <dd>The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.</dd>
+   *  <dd>Purchase item ID. Constant from {@link RsPurchaseItemSid}.</dd>
    *  <dt>string <tt>k_id</tt></dt>
-   *  <dd>The purchase item key.</dd>
+   *  <dd>Purchase item key.</dd>
    *    </dl>
-   * @property {string} dt_date The local date/time used for checking the Purchase Option's expiration.
-   * @property {?string} k_login_prize The login prize key.
-   * This will be `null` if no login prize used to pay for this service.
-   * @property {?string} k_login_promotion The login promotion key.
-   * This should be set if the login promotion is selected for this service.
-   * @property {string} k_service The service key.
+   * @property {string} dt_date Local date/time to check purchase options expiration.
+   * @property {?string} k_login_prize Login prize key.
+   *    `null` if no login prize used to pay for this service.
+   * @property {?string} k_login_promotion Login promotion key.
+   *    Should be set if login promotion selected for this service.
+   * @property {string} k_service Service key from {@link \RsServiceSql}.
    */
 
   /**
-   * A list of selected services excluding the current selected service ({@link Wl_Appointment_Book_Purchase_PurchaseModel.k_service}).
+   * List of selected services without current {@link Wl_Appointment_Book_Purchase_PurchaseModel.k_service}.
    *
-   * The list of these services directly affects the list of selected Purchase Options.
-   * Results may vary depending on the number and order of the services.
+   * The list of these services directly affects the list of selected promotions.
+   * Depending on the number and order of services, there may be different results.
    *
    * The current {@link Wl_Appointment_Book_Purchase_PurchaseModel.k_service} will be added to the end of this list.
-   * This list can be considered a list of previously selected services.
+   * It is worth considering this list as a list of previously selected services.
    *
    * Each element has the following structure:
    * <dl>
    *  <dt>array <var>a_purchase</var></dt>
    *  <dd>
-   *    A list of Purchase Options selected for the service.
-   *    This should be set if a new Purchase Option is selected for the service.
+   *    List of purchase options selected for the service.
+   *    Should be set if a new purchase option is selected for this service.
    *    <dl>
    *      <dt>int <var>id_purchase_item</var></dt>
-   *      <dd>The purchase item ID. One of the {@link \RsPurchaseItemSid} constants.</dd>
+   *      <dd>Purchase item ID. Constant from {@link RsPurchaseItemSid}.</dd>
    *      <dt>string <var>k_id</var></dt>
-   *      <dd>The purchase item key.</dd>
+   *      <dd>Purchase item key.</dd>
    *    </dl>
    *  </dd>
    *  <dt>string <var>dt_date</var></dt>
-   *  <dd>The local date/time used for checking the Purchase Option's expiration.</dd>
+   *  <dd>Local date/time to check purchase options expiration.</dd>
    *  <dt>string|null <var>k_login_prize</var></dt>
    *  <dd>
-   *    The login prize key.
-   *    This will be `null` if no login prize used to pay for this service.
+   *    Login prize key.
+   *    `null` if no login prize used to pay for this service.
    *  </dd>
    *  <dt>string|null <var>k_login_promotion</var></dt>
    *  <dd>
-   *    The login promotion key.
-   *    This should be set if the login promotion is selected for this service.
+   *    Login promotion key.
+   *    Should be set if login promotion selected for this service.
    *  </dd>
    *  <dt>string <var>k_service</var></dt>
-   *  <dd>The service key.</dd>
+   *  <dd>Service key from {@link \RsServiceSql}.</dd>
    * </dl>
    *
    * @get get
@@ -467,8 +470,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.a_service = [];
 
   /**
-   * Information about the session pass in cases where a client books the same appointment a second time and already
-   * has a drop-in on their attendance history.
+   * Session pass information in a case if user books same appointment second time and already has Drop-in.
    *
    * @get result
    * @type {{}}
@@ -476,8 +478,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.a_session_pass = [];
 
   /**
-   * A list of user keys for booking appointments.
-   * Empty values in this list represent walk-ins.
+   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
    * @post get
@@ -486,7 +488,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.a_uid = [];
 
   /**
-   * The local date/time used for checking the Purchase Option's expiration.
+   * The date to use to check for expiration of Purchase Options.
    *
    * @get get
    * @type {string}
@@ -494,7 +496,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.dt_date = "";
 
   /**
-   * The resource duration in minutes.
+   * The asset booking duration.
    *
    * @get get
    * @type {number}
@@ -502,8 +504,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.i_duration = 0;
 
   /**
-   * The image height in pixels. This value must be specified if you need the image to be returned in a specific size.
-   * In cases where this value isn't specified, the returned image will have the default thumbnail size {@link RsLoginLogo.THUMBNAIL_HEIGHT}.
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size {@link RsLoginLogo::THUMBNAIL_HEIGHT}.
    *
    * @get get
    * @type {?number}
@@ -511,8 +513,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.i_height = 0;
 
   /**
-   * The image width in pixels.This value must be specified if you need the image to be returned in a specific size.
-   * In cases where this value isn't specified, the returned image will have the default thumbnail size {@link RsLoginLogo.THUMBNAIL_WIDTH}.
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size {@link RsLoginLogo::THUMBNAIL_WIDTH}.
    *
    * @get get
    * @type {?number}
@@ -520,8 +522,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.i_width = 0;
 
   /**
-   * `true` - gets all Purchase Options suitable for the appointment.
-   * `false` - gets only Purchase Options available for the client.
+   * `true` - get all Purchase Options suitable for appointment.
+   * `false` - get only Purchase Options available for the client.
    *
    * @get get
    * @type {boolean}
@@ -529,7 +531,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.is_backend = false;
 
   /**
-   * This will be `true` if the client is a walk-in. Otherwise, this will be `false`.
+   * `true` if client is walk-in, otherwise `false`.
    *
    * @get get
    * @post get
@@ -538,7 +540,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.is_walk_in = false;
 
   /**
-   * The location used for showing the available appointment booking schedule.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -547,9 +549,9 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.k_location = "0";
 
   /**
-   * The login promotion key that can be applied to a given service.
+   * The Purchase Option ID used to pay for the appointment.
    *
-   * If it comes from the client, it will be used to check whether it fits the given service or not.
+   * This will be `null` if the client doesn't have a suitable Purchase Option.
    *
    * @get get,result
    * @type {string}
@@ -557,7 +559,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.k_login_promotion = undefined;
 
   /**
-   * The resource key used for selecting available Purchase Options.
+   * The resource key.
    *
    * @get get
    * @type {string}
@@ -565,10 +567,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.k_resource = "0";
 
   /**
-   * The service key used for selecting available Purchase Options and login promotions.
-   *
-   * If multiple services are selected,
-   * they should be specified in the {@link Wl_Appointment_Book_Purchase_PurchaseModel.a_service} array.
+   * The service key used to select available Purchase Options.
+   * If multiple services are selected, they should be specified in {@link Wl_Appointment_Book_Purchase_PurchaseModel.a_service} array.
    *
    * @get get
    * @type {string}
@@ -576,9 +576,9 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.k_service = "0";
 
   /**
-   * The time zone key.
+   * Key of timezone.
    *
-   * This will be `null` if not set yet. In such cases, use the client's default time zone.
+   * `null` if not set then use default client timezone {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
    *
    * @get get
    * @type {?string}
@@ -586,7 +586,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.k_timezone = null;
 
   /**
-   * The login promotion title suitable for paying for the services.
+   * Login promotion title suitable to pay for the services.
    *
    * @get result
    * @type {string}
@@ -594,7 +594,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.text_login_promotion = "";
 
   /**
-   * The client to get information for.
+   * User to get information for.
    *
    * @get get
    * @post get
@@ -618,14 +618,14 @@ Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Purchase_PurchaseModel.instanceGet
- * @param {string} dt_date Local date/time to check purchase options expiration.
+ * @param {string} dt_date The date to use to check for expiration of Purchase Options.
  * @param {string} k_location Location to show available appointment booking schedule.
- * @param {string} k_service Service key to select available purchase options and login promotions. If multiple services are selected, they should be specified in {@link Wl_Appointment_Book_Purchase_PurchaseModel.a_service} array.
- * @param {string} k_resource Resource key to select available purchase options.
- * @param {number} i_duration Duration of the resource in minutes.
- * @param {boolean} is_backend `true` - get all promotions suitable for appointment; `false` - get only promotions available for client.
+ * @param {string} k_service The service key used to select available Purchase Options. If multiple services are selected, they should be specified in {@link Wl_Appointment_Book_Purchase_PurchaseModel.a_service} array.
+ * @param {string} k_resource The resource key.
+ * @param {number} i_duration The asset booking duration.
+ * @param {boolean} is_backend `true` - get all Purchase Options suitable for appointment. `false` - get only Purchase Options available for the client.
  * @param {string} uid User to get information for.
- * @param {?string} k_timezone Key of timezone. `null` if not set then use default client timezone.
+ * @param {?string} k_timezone Key of timezone. `null` if not set then use default client timezone {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
  * @returns {Wl_Appointment_Book_Purchase_PurchaseModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -26,7 +26,7 @@ function Wl_Html_Menu_MenuModel()
 
   /**
    * Current place ID.
-   * Constant from {@link \RsPlaceSid}.
+   * Constant from {@link RsPlaceSid}.
    *
    * @get get
    * @type {number}
@@ -65,7 +65,7 @@ Wl_Html_Menu_MenuModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Html_Menu_MenuModel.instanceGet
- * @param {number} id_place Current place ID. Constant from {@link \RsPlaceSid}.
+ * @param {number} id_place Current place ID. Constant from {@link RsPlaceSid}.
  * @param {string} k_business The business in which the user wants to see the menu.
  * @param {string} uid The user for which the menu should be displayed.
  * @returns {Wl_Html_Menu_MenuModel}

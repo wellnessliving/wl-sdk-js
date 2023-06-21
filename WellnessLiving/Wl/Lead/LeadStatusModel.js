@@ -11,7 +11,7 @@ function Wl_Lead_LeadStatusModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Status of the lead record. One of {@link \RsLeadStatusSid} constants.
+   * Status of the lead record. One of {@link RsLeadStatusSid} constants.
    *
    * @post post
    * @type {string}
@@ -19,7 +19,7 @@ function Wl_Lead_LeadStatusModel()
   this.id_lead_status = "";
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @post post
    * @type {string}
@@ -27,7 +27,7 @@ function Wl_Lead_LeadStatusModel()
   this.k_business = "";
 
   /**
-   * User key. Primary key in {@link \PassportLoginSql}.
+   * User key.
    *
    * @post post
    * @type {string}

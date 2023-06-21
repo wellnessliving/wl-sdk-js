@@ -1,10 +1,16 @@
 /**
- * Retrieves information about purchase.
+ * An endpoint that gets details of a specified purchase.
+ *
+ * This endpoint may require different IDs to be specified for different types of purchases.
+ * The IDs required for a specific item will be the same IDs returned from the {@link Wl_Profile_PurchaseList_PurchaseListModel}
+ * endpoint.
  *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Profile_PurchaseList_PurchaseListElementModel} instead. It provides the same functionality
+and more.
  */
 function Wl_Profile_Purchase_PurchaseElementModel()
 {
@@ -17,7 +23,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * @typedef {{}} Wl_Profile_Purchase_PurchaseElementModel_a_component
-   * @property {*} k_enrollment_book Primary key in {@link \RsenrollmentBookSql} table.
+   * @property {*} k_enrollment_book Primary key in {@link RsenrollmentBookSql} table.
    * @property {*} k_login_product Primary key in {@link \RsLoginProductSql} table.
    * @property {*} k_login_promotion Primary key in {@link \RsLoginPromotionSql} table.
    * @property {*} k_session_pass Primary key in {@link \Wl\Session\Pass\Sql} table.
@@ -30,25 +36,21 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    *     string [<var>k_enrollment_book</var>]
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \RsenrollmentBookSql} table.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_product</var>]
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \RsLoginProductSql} table.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_promotion</var>]
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \RsLoginPromotionSql} table.
    *   </dd>
    *   <dt>
    *     string [<var>k_session_pass</var>]
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \Wl\Session\Pass\Sql} table.
    *   </dd>
    * </dl>
    *
@@ -59,32 +61,23 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * @typedef {{}} Wl_Profile_Purchase_PurchaseElementModel_a_logo
-   * @property {number} i_height Height.
-   * @property {number} i_width Width.
-   * @property {boolean} is_empty <tt>true</tt> - purchase item does not have image; <tt>false</tt> - has image.
+   * @property {number} i_height The height of the image.
+   * @property {number} i_width The width of the image.
+   * @property {boolean} is_empty If `true`, then the purchased item doesn't have image. If `false`, then the item has an image.
+   * @property {string} s_url The URL for the image.
    */
 
   /**
-   * Image data:
+   * An array containing information about the image of the purchased item. Every element has the following keys:
    * <dl>
-   *   <dt>
-   *     int <var>i_height</var>
-   *   </dt>
-   *   <dd>
-   *     Height.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_width</var>
-   *   </dt>
-   *   <dd>
-   *     Width.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_empty</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> - purchase item does not have image; <tt>false</tt> - has image.
-   *   </dd>
+   *   <dt>int <var>i_height</var></dt>
+   *   <dd>The height of the image.</dd>
+   *   <dt>int <var>i_width</var></dt>
+   *   <dd>The width of the image.</dd>
+   *   <dt>bool <var>is_empty</var></dt>
+   *   <dd>If `true`, then the purchased item doesn't have image. If `false`, then the item has an image.</dd>
+   *   <dt>string <var>s_url</var></dt>
+   *   <dd>The URL for the image.</dd>
    * </dl>
    *
    * @get result
@@ -94,33 +87,22 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * @typedef {{}} Wl_Profile_Purchase_PurchaseElementModel_a_restrict
-   * @property {number} i_limit How many sessions may be booked during period.
-   * @property {number} i_remain How many sessions is not used up yet.
-   * @property {string} s_date Name of period type.
+   * @property {number} i_limit The number of sessions that may be booked during this period.
+   * @property {number} i_remain The number of sessions that remain available.
+   * @property {string} s_date The name of the period type.
    */
 
   /**
-   * For promotions - list of booking restrictions. Every element has next keys:
+   * This field is used only for promotions. It contains restrictions that will
+   * apply to bookings made with this promotion. Every element has the following keys:
    * <dl>
-   *   <dt>
-   *     int <var>i_limit</var>
-   *   </dt>
-   *   <dd>
-   *     How many sessions may be booked during period.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_remain</var>
-   *   </dt>
-   *   <dd>
-   *     How many sessions is not used up yet.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_date</var>
-   *   </dt>
-   *   <dd>
-   *     Name of period type.
-   *   </dd>
-   * </dl>Empty array for another purchase items.
+   *   <dt>int <var>i_limit</var></dt>
+   *   <dd>The number of sessions that may be booked during this period.</dd>
+   *   <dt>int <var>i_remain</var></dt>
+   *   <dd>The number of sessions that remain available.</dd>
+   *   <dt>string <var>s_date</var></dt>
+   *   <dd>The name of the period type.</dd>
+   * </dl>
    *
    * @get result
    * @type {Wl_Profile_Purchase_PurchaseElementModel_a_restrict[]}
@@ -129,25 +111,17 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * @typedef {{}} Wl_Profile_Purchase_PurchaseElementModel_a_tax
-   * @property {string} f_tax_discount Amount of tax.
-   * @property {string} s_tax Name of tax.
+   * @property {string} f_tax_discount The amount of tax.
+   * @property {string} s_tax The name of the tax.
    */
 
   /**
-   * List of taxes paid for purchase item. Every element has next keys:
+   * The list of taxes paid for the purchased item. Every element has the following fields:
    * <dl>
-   *   <dt>
-   *     string <var>f_tax_discount</var>
-   *   </dt>
-   *   <dd>
-   *     Amount of tax.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_tax</var>
-   *   </dt>
-   *   <dd>
-   *     Name of tax.
-   *   </dd>
+   *   <dt>string <var>f_tax_discount</var></dt>
+   *   <dd>The amount of tax.</dd>
+   *   <dt>string <var>s_tax</var></dt>
+   *   <dd>The name of the tax.</dd>
    * </dl>
    *
    * @get result
@@ -156,7 +130,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.a_tax = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> - user can control renewing of promotion; <tt>false</tt> - can not control.
+   * This is `true` only if the purchased item is a promotion and the user can control the renewal of the promotion.
+   * Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -172,7 +147,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.dl_purchase = undefined;
 
   /**
-   * Start date. Not empty only for passes/memberships.
+   * The start date of the promotion. This is used only if the purchased item is a promotion.
    *
    * @get result
    * @type {string}
@@ -180,7 +155,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.dl_start = undefined;
 
   /**
-   * Not empty only for promotions. Expiration date of promotion.
+   * The expiration date of the promotion. This is used only if the purchased item is a promotion.
    *
    * @get result
    * @type {string}
@@ -188,7 +163,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.dt_end = undefined;
 
   /**
-   * Not empty only for promotions. Date of promotion hold end. May be empty if hold is internal.
+   * The end date of the promotion hold. This is used only for promotions on hold.
+   * This may be empty if the hold is internal.
    *
    * @get result
    * @type {string}
@@ -196,7 +172,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.dt_hold_end = undefined;
 
   /**
-   * Not empty only for promotions. Date of promotion hold start.
+   * The start date of the promotion hold. This is used only for promotions on hold.
    *
    * @get result
    * @type {string}
@@ -204,7 +180,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.dt_hold_start = undefined;
 
   /**
-   * UTC date/time of purchase in MySQL format.
+   * The purchase date of the purchased item. This is given in GMT in MySQL format.
    *
    * @get result
    * @type {string}
@@ -212,7 +188,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.dt_purchase = undefined;
 
   /**
-   * Not empty only for gift cards. Date in MySQL format when mail about purchasing was sent (or will be sent) to user.
+   * The date for when the email regarding the gift card should be sent (or was sent) to the receiver.
+   * This is only used for gift cards.
    *
    * @get result
    * @type {string}
@@ -220,7 +197,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.dt_send = undefined;
 
   /**
-   * Size in percents of discount for client type.
+   * The percentage value of the discount for the client type. This is empty if this discount wasn't applied.
    *
    * @get result
    * @type {number}
@@ -228,7 +205,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.f_discount_login_type_percent = undefined;
 
   /**
-   * Formatted description.
+   * The description of the purchased item.
    *
    * @get result
    * @type {string}
@@ -236,7 +213,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.html_description = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many sessions were booked by this promotion.
+   * The number of sessions remaining for a promotion. This is used only for promotions.
+   * This will be `0` if the purchased item isn't a promotion or if there are no remaining sessions.
    *
    * @get result
    * @type {number}
@@ -244,7 +222,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_book = undefined;
 
   /**
-   * How many units of purchase item were bought.
+   * The number of purchased items bought at the time of purchase.
+   * This field will be `0` for purchase items obtained via a redemption code or as a result of an old import.
    *
    * @get result
    * @type {number}
@@ -252,7 +231,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_buy = undefined;
 
   /**
-   * Size in percents of discount via prize.
+   * The percentage value of the discount given by a reward prize. This field will be `0` if a discount wasn't applied.
    *
    * @get result
    * @type {number}
@@ -268,7 +247,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_duration = undefined;
 
   /**
-   * Not <tt>0</tt> only for not sequential promotions. How many books by this promotion is left.
+   * The number of bookings remaining in this promotion. This value is used only for non-sequential promotions.
    *
    * @get result
    * @type {number}
@@ -276,7 +255,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_left = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many book may be made by promotion in total.
+   * The number of visits which can be made with this promotion. This is used only for promotions.
    *
    * @get result
    * @type {number}
@@ -284,7 +263,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_limit = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions with program type "membership". Duration of regular payments interval.
+   * The duration of the regular payments interval. This is used only for “membership” type promotions.
    *
    * @get result
    * @type {number}
@@ -292,7 +271,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_payment_period = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many books by this promotion is left.
+   * The number of remaining bookings for the promotion. This is used only for promotions.
    *
    * @get result
    * @type {number}
@@ -300,7 +279,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_remain = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many minutes of sessions can be booked by promotion.
+   * The number of minutes remaining for the promotion.
+   * This is used only for promotions that work with a limited number of minutes.
    *
    * @get result
    * @type {number}
@@ -316,7 +296,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_renew = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many visits were made by promotion.
+   * This is used only for promotions. This is the number of visits that were attended for the promotion.
    *
    * @get result
    * @type {number}
@@ -332,7 +312,9 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_activation = undefined;
 
   /**
-   * Type of discount via prizes. One on {@link RsCommissionTypeSid} constants. Empty if this discount was not applied.
+   * The type of discount given via a reward prize.
+   * One on the {@link RsCommissionTypeSid} constants.
+   * This will be empty if this discount wasn't applied.
    *
    * @get result
    * @type {number}
@@ -340,7 +322,9 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_discount_commission_type = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions with program type "membership". Measurement unit for key <var>i_payment_period</var>. One on {@link RsDurationTypeSid} constants.
+   * The type of duration for the promotion. This is used only for “membership” type promotions.
+   * This determines whether the promotion lasts indefinitely, has a fixed duration, or ends on a specific date.
+   * One of the {@link RsDurationTypeSid} constants.
    *
    * @get result
    * @type {number}
@@ -348,7 +332,9 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_duration = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. Measurement unit for key <var>i_payment_period</var>. ID of promotion program type. One on {@link RsProgramTypeSid} constants.
+   * The ID of the promotion program.
+   * One of the {@link RsProgramTypeSid} constants.
+   * This is used only for promotions.
    *
    * @get result
    * @type {number}
@@ -356,7 +342,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_program_type = undefined;
 
   /**
-   * Measurement unit for key <var>i_payment_period</var>. ID of purchase item type. One on {@link \RsPurchaseItemSid} constants.
+   * The ID of the purchase item type.
+   * One of the {@link RsPurchaseItemSid} constants.
    *
    * @get result
    * @type {number}
@@ -364,7 +351,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_purchase_item = undefined;
 
   /**
-   * ID of sale category in store. One of constants {@link RsSaleSid}.
+   * The ID of the sale category.
+   * One of the {@link RsSaleSid} constants.
    *
    * @get result
    * @type {number}
@@ -372,7 +360,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_sale = undefined;
 
   /**
-   * <tt>true</tt> if purchase item is active; <tt>false</tt> otherwise.
+   * If `true`, then the purchase item is active. If `false`, then the purchase item isn't active.
    *
    * @get result
    * @type {boolean}
@@ -380,7 +368,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_active = undefined;
 
   /**
-   * <tt>true</tt> if purchase item is a component of another purchase item (package); <tt>false</tt> if purchase item is not a component.
+   * If `true`, then the purchased item is a component of another purchase item, as is the case of a package.
+   * If `false`, then the purchased item isn't a component of another purchase item.
    *
    * @get result
    * @type {boolean}
@@ -388,7 +377,9 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_component = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if after expiration promotion should be converted to another promotion; <tt>false</tt> otherwise.
+   * If `true`, then this promotion will be converted to a different promotion after it expires. It `false`, then the
+   * promotion won't be converted to a different promotion after it expires. This can only be true for certain
+   * promotions.
    *
    * @get result
    * @type {boolean}
@@ -396,7 +387,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_convert = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if promotion is expired; <tt>false</tt> otherwise.
+   * This is `true` only if the purchased item is an expired promotion. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -404,7 +395,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_expire = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if promotion is on hold; <tt>false</tt> otherwise.
+   * This is `true` only if the purchased item is a promotion placed on hold.
+   * Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -412,7 +404,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_hold = undefined;
 
   /**
-   * <tt>true</tt> if usage purchase item is restricted; <tt>false</tt> otherwise.
+   * If `true`, then the usage of this purchased item is disabled. If `false`, then the usage of this purchased item
+   * is enabled.
    *
    * @get result
    * @type {boolean}
@@ -420,8 +413,9 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_limit = undefined;
 
   /**
-   * <tt>true</tt> - discount was applied for member type; <tt>false</tt> - discount was applied for pass holder type; <tt>null</tt> - discount was applied for prospect type or if this discount was not
-   * applied.
+   * If `true`, then the discount was applied for the member type. If `false`, then the discount was applied for the
+   * pass holder type. If `null`, then the discount was applied for the prospect type (this won't be `null` only
+   * if a discount based on a client type was applied).
    *
    * @get result
    * @type {?boolean}
@@ -429,7 +423,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_login_type_member = null;
 
   /**
-   * Not <tt>false</tt> only for gift cards. <tt>true</tt> if email notification about gift should be sent; <tt>false</tt> otherwise.
+   * If `true`, then the gift card email notification will be sent to the receiver. This is `true` only if the
+   * purchased item is a gift card. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -437,7 +432,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_mail = undefined;
 
   /**
-   * Not <tt>false</tt> only for gift cards. <tt>true</tt> if email notification about gift was sent; <tt>false</tt> otherwise.
+   * If `true`, then the gift card email notification has been sent. This can only be `true` if the purchased item is a
+   * gift card. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -445,7 +441,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_past = undefined;
 
   /**
-   * Not <tt>false</tt> only for gift cards. <tt>true</tt> - gift card is redeemed; <tt>false</tt> - gift cart is not redeemed.
+   * This is `true` if the gift card has been redeemed. This can only be true if the purchased item is a gift card.
+   * Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -453,7 +450,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_redeem = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if promotion will be renewed after expiration; <tt>false</tt> otherwise.
+   * This is `true` if the promotion is auto-renewable. This can only be true if the purchased item is a promotion.
+   * Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -461,7 +459,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_renew = undefined;
 
   /**
-   * Not <tt>false</tt> only for promotions. <tt>true</tt> if promotion has been transferred; <tt>false</tt> otherwise.
+   * This is `true` if the promotion has been transferred. This can only be `true` if the purchased item is a promotion.
+   * This is `false` if the promotion hasn't been transferred or in all other cases.
    *
    * @get result
    * @type {boolean}
@@ -469,12 +468,9 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_transfer = undefined;
 
   /**
-   * ID of redemption code which is used to obtain some goods.
-   *
-   * Should be specified only to obtain via redemption code
-   * (not for ordinary purchases or for purchased promotions without purchases).
-   *
-   * Primary key in {@link RsCodeSql}.
+   * The key of the redemption code used to obtain some goods.
+   * This should be specified only for items obtained via redemption code (not for ordinary purchases or for purchased
+   * promotions without purchases). This will be `null` if not set yet.
    *
    * @get get
    * @type {string}
@@ -482,7 +478,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_code = "0";
 
   /**
-   * Redemption code via purchase item was purchased. Primary key in {@link RsCodeSql} table. Empty if purchase item was purchased not via redemption code.
+   * The key of the redemption code. This won't be `0` if the purchased item is obtained via a redemption code
+   * or if it's a component of a package which is obtained via a redemption code.
    *
    * @get result
    * @type {string}
@@ -490,7 +487,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_code_result = undefined;
 
   /**
-   * Purchase item currency. Primary key in {@link RsCurrencySql} table.
+   * The key of the currency used to make the purchase.
    *
    * @get result
    * @type {string}
@@ -498,9 +495,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_currency = undefined;
 
   /**
-   * ID of entirely booked event.
-   *
-   * Must be specified if purchase item is a component of a package and it is whole event book.
+   * The key of an entirely booked event.
+   * This must be specified if the purchased item is a whole event and a component of a package.
    *
    * @get get
    * @type {string}
@@ -508,9 +504,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_enrollment_book = "0";
 
   /**
-   * ID of purchased product.
-   *
-   * Must be specified if purchase item is a component of a package.
+   * The key of a purchased product.
+   * This must be specified if the purchased item is a product and a component of a package.
    *
    * @get get
    * @type {string}
@@ -518,12 +513,9 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_login_product = "0";
 
   /**
-   * ID of purchased promotion.
-   *
-   * Must be specified only for purchases promotions without purchases
-   * (not for ordinary purchases or to obtain via redemption codes).
-   *
-   * Primary key in {@link RsLoginPromotionSql}.
+   * The key of the user's promotion.
+   * This should only be specified for promotions given without a purchase. This isn't for ordinary purchases or for
+   * promotions obtained via redemption codes. This will be `null` if not set yet.
    *
    * @get get
    * @type {string}
@@ -531,7 +523,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_login_promotion = "0";
 
   /**
-   * Purchased promotion. Primary key in {@link RsLoginPromotionSql} table. Not empty only for promotions and components of package.
+   * The key of the purchased promotion. This won't be `0` only for promotions.
    *
    * @get result
    * @type {string}
@@ -539,11 +531,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_login_promotion_result = undefined;
 
   /**
-   * ID of purchase item.
-   *
-   * Must be specified only for ordinary purchases
-   * (not for obtain via redemption codes or for purchased promotions without purchases).
-   * And only for items which are not components of package.
+   * The key of the purchased item. This should be specified only for ordinary purchases, not for those obtained via
+   * redemption codes or as a result of an old import.
    *
    * @get get
    * @type {string}
@@ -551,7 +540,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_purchase_item = "0";
 
   /**
-   * Purchase ID. Primary key in {@link RsPurchaseSql} table. Empty for purchases obtained via redemption code and results of old import.
+   * The key of the whole purchase which includes the given purchased item.
    *
    * @get result
    * @type {string}
@@ -559,10 +548,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_purchase_result = undefined;
 
   /**
-   * ID of makeup to attend event.
-   *
-   * Must be specified if purchase item is a component of a package and it is whole event book.
-   * And only for items which are not components of package.
+   * The key of the make-up session used to attend an event.
    *
    * @get get
    * @type {string}
@@ -570,7 +556,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.k_session_pass = "0";
 
   /**
-   * Final cost of this purchase item.
+   * The cost of the purchased item.
    *
    * @get result
    * @type {string}
@@ -578,7 +564,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.m_cost_item = undefined;
 
   /**
-   * Final cost of purchase which includes this purchase item.
+   * The total cost of the purchase, including taxes and fees.
    *
    * @get result
    * @type {string}
@@ -586,7 +572,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.m_cost_total = undefined;
 
   /**
-   * Amount of discount via prize. Empty if this discount was not applied.
+   * The amount of the discount given via a reward prize. This will be empty if the discount wasn't applied.
    *
    * @get result
    * @type {string}
@@ -594,7 +580,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.m_discount_amount = undefined;
 
   /**
-   * Amount of discount for client type. Empty if this discount was not applied.
+   * The amount of the discount for the client type. This will be empty if the discount wasn't applied.
    *
    * @get result
    * @type {string}
@@ -610,7 +596,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.m_discount_manual = undefined;
 
   /**
-   * Not empty only for promotions with program type "membership". Amount of regular payment.
+   * The amount to pay for each payment period. This is used only for promotions with the "membership" program type.
    *
    * @get result
    * @type {string}
@@ -626,7 +612,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.m_price = undefined;
 
   /**
-   * Refunded amount. <tt>0</tt> if were no refunds.
+   * The amount refunded. This will be `0` if there are no refunds.
    *
    * @get result
    * @type {string}
@@ -634,7 +620,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.m_refund = undefined;
 
   /**
-   * Redemption code. Not empty only if purchase is obtained via redemption code.
+   * The redemption code. This is used only if the purchase is bought using a redemption code.
    *
    * @get result
    * @type {string}
@@ -642,7 +628,18 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_code = undefined;
 
   /**
-   * Not empty only for gift cards. Name of gift recipient.
+   * The code to redeem gift card. This won't be empty only for gift cards.
+   *
+   * This can be auto-generated or custom (entered manually by the staff member during purchase).
+   * The max length is 20 characters, which can include both numbers and letters.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.s_gift_code = undefined;
+
+  /**
+   * Name of gift recipient. This won't be empty only for gift cards.
    *
    * @get result
    * @type {string}
@@ -650,7 +647,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_gift_recipient = undefined;
 
   /**
-   * Name of staff member who disabled usage of purchase item. Empty if usage of purchase item is enabled.
+   * The name of the staff member who disabled the usage of the purchased item.
+   * This will be empty if the purchased item is enabled.
    *
    * @get result
    * @type {string}
@@ -658,7 +656,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_limit_actor = undefined;
 
   /**
-   * Not empty only for gift cards. <tt>true</tt> if mail about purchase was sent (or will be sent); <tt>false</tt> otherwise.
+   * The email address the gift card was sent to. This is used only for gift cards.
    *
    * @get result
    * @type {string}
@@ -666,7 +664,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_mail = undefined;
 
   /**
-   * Not empty only for gift cards. Message to gift receiver. Empty if email notification should not be sent.
+   * The text of the message sent to the gift card recipient. This is used only for gift cards.
+   * This will be empty if an email notification shouldn't be sent.
    *
    * @get result
    * @type {string}
@@ -674,7 +673,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_message = undefined;
 
   /**
-   * Name of user who has paid for this purchase.
+   * The name of the user who paid for this purchase.
    *
    * @get result
    * @type {string}
@@ -682,7 +681,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_payer = undefined;
 
   /**
-   * Not empty only for promotions which must be converted to another promotion after expiration. Title of promotion to which convent.
+   * The title of the converted promotion. This is used only for promotions which must be converted to
+   * another promotion after expiration.
    *
    * @get result
    * @type {string}
@@ -690,7 +690,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_promotion_convert = undefined;
 
   /**
-   * Number of receipt.
+   * The purchase ID number as it appears on the receipt.
+   * This value will also include the leading 0s for the ID number.
    *
    * @get result
    * @type {string}
@@ -698,7 +699,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_purchase = undefined;
 
   /**
-   * Name of user who has paid for this purchase.
+   * The name of the user who paid for this purchase.
    *
    * @get result
    * @type {string}
@@ -706,7 +707,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_recipient = undefined;
 
   /**
-   * Not empty only for gift cards. Gift sender.
+   * The name of the sender. This is used only for gift cards.
    *
    * @get result
    * @type {string}
@@ -714,7 +715,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_sender = undefined;
 
   /**
-   * Title of purchase item.
+   * The name of the purchased item.
    *
    * @get result
    * @type {string}
@@ -722,7 +723,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.s_title = undefined;
 
   /**
-   * Unique string ID of purchase item kind.
+   * The string ID of the purchased item. This ID may be used to change the view of the purchased item.
    *
    * @get result
    * @type {string}
@@ -730,7 +731,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.sid_value = undefined;
 
   /**
-   * ID of user who is owner of this purchase. Primary key in {@link PassportLoginSql} table.
+   * The key of the user who paid for this purchase.
    *
    * @get result
    * @type {string}
@@ -738,7 +739,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.uid_payer = undefined;
 
   /**
-   * ID of user who is owner of this purchase. Primary key in {@link PassportLoginSql} table.
+   * The key of the user who paid for this purchase.
    *
    * @get result
    * @type {string}
@@ -755,18 +756,18 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Purchase_PurchaseElementModel);
  */
 Wl_Profile_Purchase_PurchaseElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_component": {"get": {"result": true}},"a_logo": {"get": {"result": true}},"a_restrict": {"get": {"result": true}},"a_tax": {"get": {"result": true}},"can_renew": {"get": {"result": true}},"dl_purchase": {"get": {"result": true}},"dl_start": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_hold_end": {"get": {"result": true}},"dt_hold_start": {"get": {"result": true}},"dt_purchase": {"get": {"result": true}},"dt_send": {"get": {"result": true}},"f_discount_login_type_percent": {"get": {"result": true}},"html_description": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_buy": {"get": {"result": true}},"i_discount_count": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_left": {"get": {"result": true}},"i_limit": {"get": {"result": true}},"i_payment_period": {"get": {"result": true}},"i_remain": {"get": {"result": true}},"i_remain_duration": {"get": {"result": true}},"i_renew": {"get": {"result": true}},"i_use": {"get": {"result": true}},"id_activation": {"get": {"result": true}},"id_discount_commission_type": {"get": {"result": true}},"id_duration": {"get": {"result": true}},"id_program_type": {"get": {"result": true}},"id_purchase_item": {"get": {"result": true}},"id_sale": {"get": {"result": true}},"is_active": {"get": {"result": true}},"is_component": {"get": {"result": true}},"is_convert": {"get": {"result": true}},"is_expire": {"get": {"result": true}},"is_hold": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_login_type_member": {"get": {"result": true}},"is_mail": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_redeem": {"get": {"result": true}},"is_renew": {"get": {"result": true}},"is_transfer": {"get": {"result": true}},"k_code": {"get": {"get": true}},"k_code_result": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"k_enrollment_book": {"get": {"get": true}},"k_login_product": {"get": {"get": true}},"k_login_promotion": {"get": {"get": true}},"k_login_promotion_result": {"get": {"result": true}},"k_purchase_item": {"get": {"get": true}},"k_purchase_result": {"get": {"result": true}},"k_session_pass": {"get": {"get": true}},"m_cost_item": {"get": {"result": true}},"m_cost_total": {"get": {"result": true}},"m_discount_amount": {"get": {"result": true}},"m_discount_login_type_amount": {"get": {"result": true}},"m_discount_manual": {"get": {"result": true}},"m_period_price": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_refund": {"get": {"result": true}},"s_code": {"get": {"result": true}},"s_gift_recipient": {"get": {"result": true}},"s_limit_actor": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_message": {"get": {"result": true}},"s_payer": {"get": {"result": true}},"s_promotion_convert": {"get": {"result": true}},"s_purchase": {"get": {"result": true}},"s_recipient": {"get": {"result": true}},"s_sender": {"get": {"result": true}},"s_title": {"get": {"result": true}},"sid_value": {"get": {"result": true}},"uid_payer": {"get": {"result": true}},"uid_recipient": {"get": {"result": true}}}};
+  return {"a_field": {"a_component": {"get": {"result": true}},"a_logo": {"get": {"result": true}},"a_restrict": {"get": {"result": true}},"a_tax": {"get": {"result": true}},"can_renew": {"get": {"result": true}},"dl_purchase": {"get": {"result": true}},"dl_start": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_hold_end": {"get": {"result": true}},"dt_hold_start": {"get": {"result": true}},"dt_purchase": {"get": {"result": true}},"dt_send": {"get": {"result": true}},"f_discount_login_type_percent": {"get": {"result": true}},"html_description": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_buy": {"get": {"result": true}},"i_discount_count": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_left": {"get": {"result": true}},"i_limit": {"get": {"result": true}},"i_payment_period": {"get": {"result": true}},"i_remain": {"get": {"result": true}},"i_remain_duration": {"get": {"result": true}},"i_renew": {"get": {"result": true}},"i_use": {"get": {"result": true}},"id_activation": {"get": {"result": true}},"id_discount_commission_type": {"get": {"result": true}},"id_duration": {"get": {"result": true}},"id_program_type": {"get": {"result": true}},"id_purchase_item": {"get": {"result": true}},"id_sale": {"get": {"result": true}},"is_active": {"get": {"result": true}},"is_component": {"get": {"result": true}},"is_convert": {"get": {"result": true}},"is_expire": {"get": {"result": true}},"is_hold": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_login_type_member": {"get": {"result": true}},"is_mail": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_redeem": {"get": {"result": true}},"is_renew": {"get": {"result": true}},"is_transfer": {"get": {"result": true}},"k_code": {"get": {"get": true}},"k_code_result": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"k_enrollment_book": {"get": {"get": true}},"k_login_product": {"get": {"get": true}},"k_login_promotion": {"get": {"get": true}},"k_login_promotion_result": {"get": {"result": true}},"k_purchase_item": {"get": {"get": true}},"k_purchase_result": {"get": {"result": true}},"k_session_pass": {"get": {"get": true}},"m_cost_item": {"get": {"result": true}},"m_cost_total": {"get": {"result": true}},"m_discount_amount": {"get": {"result": true}},"m_discount_login_type_amount": {"get": {"result": true}},"m_discount_manual": {"get": {"result": true}},"m_period_price": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_refund": {"get": {"result": true}},"s_code": {"get": {"result": true}},"s_gift_code": {"get": {"result": true}},"s_gift_recipient": {"get": {"result": true}},"s_limit_actor": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_message": {"get": {"result": true}},"s_payer": {"get": {"result": true}},"s_promotion_convert": {"get": {"result": true}},"s_purchase": {"get": {"result": true}},"s_recipient": {"get": {"result": true}},"s_sender": {"get": {"result": true}},"s_title": {"get": {"result": true}},"sid_value": {"get": {"result": true}},"uid_payer": {"get": {"result": true}},"uid_recipient": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Profile_Purchase_PurchaseElementModel.instanceGet
- * @param {string} k_purchase_item ID of purchase item. Must be specified only for ordinary purchases (not for obtain via redemption codes or for purchased promotions without purchases). And only for items which are not components of package.
- * @param {string} k_login_promotion ID of purchased promotion. Must be specified only for purchases promotions without purchases (not for ordinary purchases or to obtain via redemption codes). Primary key in {@link RsLoginPromotionSql}.
- * @param {string} k_code ID of redemption code which is used to obtain some goods. Should be specified only to obtain via redemption code (not for ordinary purchases or for purchased promotions without purchases). Primary key in {@link RsCodeSql}.
- * @param {string} k_login_product ID of purchased product. Must be specified if purchase item is a component of a package.
- * @param {string} k_enrollment_book ID of entirely booked event. Must be specified if purchase item is a component of a package and it is whole event book.
- * @param {string} k_session_pass ID of makeup to attend event. Must be specified if purchase item is a component of a package and it is whole event book. And only for items which are not components of package.
+ * @param {string} k_purchase_item The key of the purchased item. This should be specified only for ordinary purchases, not for those obtained via redemption codes or as a result of an old import.
+ * @param {string} k_login_promotion The key of the user's promotion. This should only be specified for promotions given without a purchase. This isn't for ordinary purchases or for promotions obtained via redemption codes. This will be `null` if not set yet.
+ * @param {string} k_code The key of the redemption code used to obtain some goods. This should be specified only for items obtained via redemption code (not for ordinary purchases or for purchased promotions without purchases). This will be `null` if not set yet.
+ * @param {string} k_login_product The key of a purchased product. This must be specified if the purchased item is a product and a component of a package.
+ * @param {string} k_enrollment_book The key of an entirely booked event. This must be specified if the purchased item is a whole event and a component of a package.
+ * @param {string} k_session_pass The key of the make-up session used to attend an event.
  * @returns {Wl_Profile_Purchase_PurchaseElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

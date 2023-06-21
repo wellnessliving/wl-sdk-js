@@ -16,7 +16,7 @@ function Wl_Business_Sms_Chat_Dialog_DialogListModel()
    * @property {string} text_client The name of the client.
    * @property {string} text_date_last_sms Date when was received the last SMS from the client.
    * @property {string} text_last_sms The text of the last SMS from the client.
-   * @property {string} uid UID of the client. Primary key in {@link \PassportLoginSql} table.
+   * @property {string} uid UID of the client.
    * @property {string} url_profile_logo The link to logo the client.
    * @property {string} url_profile The link to profile the client.
    */
@@ -52,7 +52,7 @@ function Wl_Business_Sms_Chat_Dialog_DialogListModel()
    *     string <var>uid</var>
    *   </dt>
    *   <dd>
-   *     UID of the client. Primary key in {@link \PassportLoginSql} table.
+   *     UID of the client.
    *   </dd>
    *   <dt>
    *     string <var>url_profile_logo</var>

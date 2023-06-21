@@ -1,5 +1,5 @@
 /**
- * API point provides the list of locations for an location select HTML component.
+ * API point provides the list of locations for a location select HTML component.
  *
  * This model is generated automatically based on API.
  *
@@ -33,7 +33,6 @@ function Wl_Location_Select_LocationSelectModel()
 
   /**
    * Business in which a list of locations is requested.
-   * Primary key in {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -42,7 +41,8 @@ function Wl_Location_Select_LocationSelectModel()
 
   /**
    * User who requests a list of locations.
-   * Primary key in {@link \PassportLoginSql} table.
+   *
+   * Empty string for a guest.
    *
    * @get get
    * @type {string}
@@ -65,8 +65,8 @@ Wl_Location_Select_LocationSelectModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Location_Select_LocationSelectModel.instanceGet
- * @param {string} k_business Business in which a list of locations is requested. Primary key in {@link \RsBusinessSql} table.
- * @param {string} uid User who requests a list of locations. Primary key in {@link \PassportLoginSql} table.
+ * @param {string} k_business Business in which a list of locations is requested.
+ * @param {string} uid User who requests a list of locations. Empty string for a guest.
  * @param {{}} a_config Result-defining configuration set.
  * @returns {Wl_Location_Select_LocationSelectModel}
  * @see WlSdk_ModelAbstract.instanceGet()

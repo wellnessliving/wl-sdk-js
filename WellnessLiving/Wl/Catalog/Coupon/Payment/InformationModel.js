@@ -13,12 +13,12 @@ function Wl_Catalog_Coupon_Payment_InformationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,k_coupon,k_coupon_amount";
+  this._s_key = "k_business,k_coupon,k_coupon_amount,m_custom";
 
   /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
+   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
    *
    * @post post
    * @type {{}[]}
@@ -48,6 +48,14 @@ function Wl_Catalog_Coupon_Payment_InformationModel()
    * @type {string}
    */
   this.k_coupon_amount = 0;
+
+  /**
+   * Custom amount for gift card.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.m_custom = "0.00";
 
   /**
    * Total amount without tax.
@@ -91,7 +99,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Coupon_Payment_InformationModel);
  */
 Wl_Catalog_Coupon_Payment_InformationModel.prototype.config=function()
 {
-  return {"a_field": {"a_pay_form": {"post": {"post": true}},"k_business": {"get": {"get": true}},"k_coupon": {"get": {"get": true}},"k_coupon_amount": {"get": {"get": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}}}};
+  return {"a_field": {"a_pay_form": {"post": {"post": true}},"k_business": {"get": {"get": true}},"k_coupon": {"get": {"get": true}},"k_coupon_amount": {"get": {"get": true}},"m_custom": {"get": {"get": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}}}};
 };
 
 /**
@@ -100,6 +108,7 @@ Wl_Catalog_Coupon_Payment_InformationModel.prototype.config=function()
  * @param {string} k_business Business in which the purchase is made.
  * @param {string} k_coupon ID of the coupon, primary key in {@link \RsCouponSql}.
  * @param {string} k_coupon_amount ID of the coupon amount, primary key in {@link \Wl\Coupon\AmountSql}.
+ * @param {string} m_custom Custom amount for gift card.
  * @returns {Wl_Catalog_Coupon_Payment_InformationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

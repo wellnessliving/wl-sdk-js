@@ -12,13 +12,15 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_Edit_ScheduleListFilterEditMod
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_Filter_Edit_ScheduleListFilterEditModel_a_config
-   * @property {*} a_class List of classes which must be selected in filter. Primary keys in {@link \RsClassSql} table.
-   * @property {*} a_event List of events which must be selected in filter. Primary keys in {@link \RsClassSql} table.
-   * @property {*} a_location List of locations which must be selected in filter. Primary keys in {@link \RsLocationSql} table.
-   * @property {*} a_resource List of assets which must be selected in filter. Primary keys in {@link \RsResourceSql} table.
-   * @property {*} a_service List of appointment services which must be selected in filter. Primary keys in {@link \RsServiceSql} table.
-   * @property {*} a_staff List of staff members which must be selected in filter. Primary keys in {@link \RsStaffSql} table.
-   * @property {*} a_type List of service types which must be selected in filter. Constants of {@link \RsServiceSid} class.
+   * @property {*} a_class List of classes which must be selected in filter.
+   * @property {*} a_event List of events which must be selected in filter.
+   * @property {*} a_location List of locations which must be selected in filter.
+   * @property {*} a_resource List of assets which must be selected in filter.
+   * @property {*} a_service List of appointment services which must be selected in filter.
+   * @property {*} a_staff List of staff members which must be selected in filter.
+   * @property {*} a_type List of service types which must be selected in filter. Constants of {@link RsServiceSid} class.
+   * @property {*} is_staff_all <tt>true</tt> to show all staff members.
+   * <tt>false</tt> to show only staff members from <tt>a_staff</tt> field.
    * @property {*} is_staff_available <tt>true</tt> to show only available staff members; <tt>false</tt> otherwise.
    */
 
@@ -29,43 +31,50 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_Edit_ScheduleListFilterEditMod
    *     string[] [<var>a_class</var>]
    *   </dt>
    *   <dd>
-   *     List of classes which must be selected in filter. Primary keys in {@link \RsClassSql} table.
+   *     List of classes which must be selected in filter.
    *   </dd>
    *   <dt>
    *     string[] [<var>a_event</var>]
    *   </dt>
    *   <dd>
-   *     List of events which must be selected in filter. Primary keys in {@link \RsClassSql} table.
+   *     List of events which must be selected in filter.
    *   </dd>
    *   <dt>
    *     string[] [<var>a_location</var>]
    *   </dt>
    *   <dd>
-   *     List of locations which must be selected in filter. Primary keys in {@link \RsLocationSql} table.
+   *     List of locations which must be selected in filter.
    *   </dd>
    *   <dt>
    *     string[] [<var>a_resource</var>]
    *   </dt>
    *   <dd>
-   *     List of assets which must be selected in filter. Primary keys in {@link \RsResourceSql} table.
+   *     List of assets which must be selected in filter.
    *   </dd>
    *   <dt>
    *     string[] [<var>a_service</var>]
    *   </dt>
    *   <dd>
-   *     List of appointment services which must be selected in filter. Primary keys in {@link \RsServiceSql} table.
+   *     List of appointment services which must be selected in filter.
    *   </dd>
    *   <dt>
    *     string[] [<var>a_staff</var>]
    *   </dt>
    *   <dd>
-   *     List of staff members which must be selected in filter. Primary keys in {@link \RsStaffSql} table.
+   *     List of staff members which must be selected in filter.
    *   </dd>
    *   <dt>
    *     number[] [<var>a_type</var>]
    *   </dt>
    *   <dd>
-   *     List of service types which must be selected in filter. Constants of {@link \RsServiceSid} class.
+   *     List of service types which must be selected in filter. Constants of {@link RsServiceSid} class.
+   *   </dd>
+   *   <dt>
+   *     bool [<var>is_staff_all</var>]
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> to show all staff members.
+   *     <tt>false</tt> to show only staff members from <var>a_staff</var> field.
    *   </dd>
    *   <dt>
    *     bool [<var>is_staff_available</var>]
@@ -98,7 +107,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_Edit_ScheduleListFilterEditMod
 
   /**
    * Business key.
-   * Primary key in {@link RsBusinessSql} table.
    *
    * @delete get
    * @get get
@@ -109,7 +117,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_Edit_ScheduleListFilterEditMod
   this.k_business = undefined;
 
   /**
-   * ID of saved filter. Primary key in {@link \RsScheduleConfigSql} table.
+   * ID of saved filter.
    * <tt>0</tt> to create new filter.
    *
    * @delete get
@@ -128,7 +136,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_Edit_ScheduleListFilterEditMod
 
   /**
    * User key.
-   * Primary key in {@link PassportLoginSql} table.
    *
    * @delete get
    * @get get

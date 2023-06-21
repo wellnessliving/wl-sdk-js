@@ -1,5 +1,5 @@
 /**
- * Api for add reply of review.
+ * An endpoint that adds a review reply.
  *
  * This model is generated automatically based on API.
  *
@@ -9,6 +9,16 @@
 function Wl_Review_ReviewReplyModel()
 {
   WlSdk_ModelAbstract.apply(this);
+
+  /**
+   * Status of the Review, one of {@link RsReviewStatusSid} constants.
+   *
+   * `null` until passed to the api when admin replies to the review.
+   *
+   * @post post
+   * @type {?number}
+   */
+  this.id_review_status = null;
 
   /**
    * Key of the business to which the review belongs.
@@ -24,7 +34,7 @@ function Wl_Review_ReviewReplyModel()
   this.k_business = undefined;
 
   /**
-   * Review key. Primary key in {@link \RsReviewSql} table.
+   * The review key.
    *
    * @post post
    * @type {string}
@@ -32,7 +42,7 @@ function Wl_Review_ReviewReplyModel()
   this.k_review = undefined;
 
   /**
-   * Reply text for review.
+   * The reply text for review.
    *
    * @post post
    * @type {string}
@@ -49,5 +59,5 @@ WlSdk_ModelAbstract.extend(Wl_Review_ReviewReplyModel);
  */
 Wl_Review_ReviewReplyModel.prototype.config=function()
 {
-  return {"a_field": {"k_business": {"post": {"post": true}},"k_review": {"post": {"post": true}},"text_reply": {"post": {"post": true}}}};
+  return {"a_field": {"id_review_status": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_review": {"post": {"post": true}},"text_reply": {"post": {"post": true}}}};
 };

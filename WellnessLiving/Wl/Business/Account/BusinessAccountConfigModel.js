@@ -14,7 +14,7 @@ function Wl_Business_Account_BusinessAccountConfigModel()
    * List of subscription settings.
    *
    * Keys are CID of the subscription type and values are arrays of the payments for this subscription required for
-   * {@link \Wl\Business\Account\Subscription\SubscriptionWrite::gather()}
+   * {@link Wl\Business\Account\Subscription\SubscriptionWrite::gather()}
    *
    * @post post
    * @type {{}}

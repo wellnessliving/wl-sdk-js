@@ -1,5 +1,5 @@
 /**
- * Api endpoint to manage single quiz.
+ * An endpoint that manages a single quiz.
  *
  * This model is generated automatically based on API.
  *
@@ -27,7 +27,7 @@ function Wl_Quiz_QuizElementModel()
   this.a_element = [];
 
   /**
-   * Quiz settings. Array representation of {@link \Wl\Quiz\QuizElementApi::$o_setting}.
+   * Quiz settings. Array representation of {@link Wl_Quiz_QuizElementModel.o_setting}.
    *
    * @get result
    * @post post

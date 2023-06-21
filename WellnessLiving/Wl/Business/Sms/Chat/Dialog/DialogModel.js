@@ -11,13 +11,40 @@ function Wl_Business_Sms_Chat_Dialog_DialogModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * `true` if chat can be marked as archive.
+   * `false` - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_archive = false;
+
+  /**
+   * `true` if conversation can be marked as pinned.
+   * `false` - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_pin = false;
+
+  /**
+   * `true` if the last message in the chat is from client and chat can be marked read.
+   * `false` - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_read = false;
+
+  /**
    * `true` if the last message in the chat is from client and chat can be marked unread.
    * `false` - otherwise.
    *
    * @get result
    * @type {boolean}
    */
-  this.can_unread = undefined;
+  this.can_unread = false;
 
   /**
    * `true` if chat should be hidden on the list of chats.
@@ -42,7 +69,7 @@ function Wl_Business_Sms_Chat_Dialog_DialogModel()
   this.is_mute = null;
 
   /**
-   * Key of the business this sms chat is connected to. Primary key from {@link \RsBusinessSql}.
+   * Key of the business this sms chat is connected to.
    *
    * @get get
    * @post get
@@ -51,7 +78,7 @@ function Wl_Business_Sms_Chat_Dialog_DialogModel()
   this.k_business = undefined;
 
   /**
-   * Key of the user sms chat is related to. Primary key from {@link \PassportLoginSql}.
+   * Key of the user sms chat is related to.
    *
    * @get get
    * @post get
@@ -69,5 +96,5 @@ WlSdk_ModelAbstract.extend(Wl_Business_Sms_Chat_Dialog_DialogModel);
  */
 Wl_Business_Sms_Chat_Dialog_DialogModel.prototype.config=function()
 {
-  return {"a_field": {"can_unread": {"get": {"result": true}},"is_archive": {"get": {"result": true},"post": {"post": true}},"is_mute": {"get": {"result": true},"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"can_archive": {"get": {"result": true}},"can_pin": {"get": {"result": true}},"can_read": {"get": {"result": true}},"can_unread": {"get": {"result": true}},"is_archive": {"get": {"result": true},"post": {"post": true}},"is_mute": {"get": {"result": true},"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

@@ -18,7 +18,7 @@ function Wl_Report_Generator_FilterModel()
   /**
    * CID of a report page.
    *
-   * One of {@link ReportPageAbstract} subclasses.
+   * One of {@link Wl\Report\Generator\ReportPageAbstract} subclasses.
    *
    * Empty in a case of a single report.
    *
@@ -31,7 +31,7 @@ function Wl_Report_Generator_FilterModel()
   /**
    * CID of a report.
    *
-   * One of {@link ReportGeneratorReportAbstract} subclasses.
+   * One of {@link Wl\Report\Generator\ReportGeneratorReportAbstract} subclasses.
    *
    * Empty in a case of a report page.
    *
@@ -53,8 +53,6 @@ function Wl_Report_Generator_FilterModel()
   /**
    * Key of the business that report is shown.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @post get
    * @type {string}
@@ -63,8 +61,6 @@ function Wl_Report_Generator_FilterModel()
 
   /**
    * Actor user key.
-   *
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
    * @post get
@@ -88,10 +84,10 @@ Wl_Report_Generator_FilterModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_Generator_FilterModel.instanceGet
- * @param {number} cid_page CID of a report page. One of {@link ReportPageAbstract} subclasses. Empty in a case of a single report.
- * @param {number} cid_report CID of a report. One of {@link ReportGeneratorReportAbstract} subclasses. Empty in a case of a report page.
- * @param {string} k_business Key of the business that report is shown. Primary key in {@link \RsBusinessSql}.
- * @param {string} uid_actor Actor user key. Primary key in {@link \PassportLoginSql}.
+ * @param {number} cid_page CID of a report page. One of {@link Wl\Report\Generator\ReportPageAbstract} subclasses. Empty in a case of a single report.
+ * @param {number} cid_report CID of a report. One of {@link Wl\Report\Generator\ReportGeneratorReportAbstract} subclasses. Empty in a case of a report page.
+ * @param {string} k_business Key of the business that report is shown.
+ * @param {string} uid_actor Actor user key.
  * @returns {Wl_Report_Generator_FilterModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

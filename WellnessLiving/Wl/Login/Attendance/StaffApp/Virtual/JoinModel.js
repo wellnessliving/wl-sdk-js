@@ -19,7 +19,7 @@ function Wl_Login_Attendance_StaffApp_Virtual_JoinModel()
   this.dtl_service = "";
 
   /**
-   * Date with time in UTC of class period {@link \Wl\Login\Attendance\StaffApp\Virtual\JoinApi::$k_class_period}.
+   * Date with time in UTC of class period {@link Wl_Login_Attendance_StaffApp_Virtual_JoinModel.k_class_period}.
    * <tt>null</tt> - If the virtual service wait page is open for another type of service. For example: to the appointment.
    *
    * @get get
@@ -36,7 +36,15 @@ function Wl_Login_Attendance_StaffApp_Virtual_JoinModel()
   this.dtu_service = "";
 
   /**
-   * Key of the virtual appointment. Primary key in {@link \RsAppointmentSql} table.
+   * <tt>true</tt> if business use FitLIVE, <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.is_fitlive = "";
+
+  /**
+   * Key of the virtual appointment.
    * <tt>null</tt> - If the virtual service wait page is open for another type of service. For example: to the class period.
    *
    * @get get
@@ -45,7 +53,7 @@ function Wl_Login_Attendance_StaffApp_Virtual_JoinModel()
   this.k_appointment = null;
 
   /**
-   * Key of the virtual class period. Primary key in {@link \RsClassPeriodSql} table.
+   * Key of the virtual class period.
    * <tt>null</tt> - If the virtual service wait page is open for another type of service. For example: to the appointment.
    *
    * @get get
@@ -79,5 +87,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_StaffApp_Virtual_JoinModel);
  */
 Wl_Login_Attendance_StaffApp_Virtual_JoinModel.prototype.config=function()
 {
-  return {"a_field": {"dtl_service": {"get": {"result": true}},"dtu_class_period": {"get": {"get": true}},"dtu_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"text_service": {"get": {"result": true}},"url_virtual_redirect": {"get": {"result": true}}}};
+  return {"a_field": {"dtl_service": {"get": {"result": true}},"dtu_class_period": {"get": {"get": true}},"dtu_service": {"get": {"result": true}},"is_fitlive": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"text_service": {"get": {"result": true}},"url_virtual_redirect": {"get": {"result": true}}}};
 };

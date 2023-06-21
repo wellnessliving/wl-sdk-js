@@ -73,7 +73,7 @@ function Wl_Profile_Waiver_WaiverModel()
   this.i_minor_age = undefined;
 
   /**
-   * Business to get information for. Primary key in {@link \RsBusinessSql} table.
+   * Business to get information for.
    *
    * @get get
    * @type {string}
@@ -81,7 +81,7 @@ function Wl_Profile_Waiver_WaiverModel()
   this.k_business = "0";
 
   /**
-   * User to get information for. Primary key in {@link \PassportLoginSql} table.
+   * User to get information for.
    *
    * @get get
    * @type {string}
@@ -104,8 +104,8 @@ Wl_Profile_Waiver_WaiverModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Waiver_WaiverModel.instanceGet
- * @param {string} k_business Business to get information for. Primary key in {@link \RsBusinessSql} table.
- * @param {string} uid User to get information for. Primary key in {@link \PassportLoginSql} table.
+ * @param {string} k_business Business to get information for.
+ * @param {string} uid User to get information for.
  * @returns {Wl_Profile_Waiver_WaiverModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

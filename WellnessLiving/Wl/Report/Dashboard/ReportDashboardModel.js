@@ -2,9 +2,9 @@
  * API point to manipulate of the adding reports to a dashboard.
  *
  * <b>Note</b>.
- * Old context and context from {@link ReportSaveApi} is used here because:
+ * Old context and context from {@link Wl_Report_Save_ReportSaveModel} is used here because:
  *  - reason to use 'rs.report.save' context: messages should be the same in both implementations (old and new);
- *  - reason to use context from {@link ReportSaveApi}: saving and adding to a dashboard in the old implementation uses the same module.
+ *  - reason to use context from {@link Wl_Report_Save_ReportSaveModel}: saving and adding to a dashboard in the old implementation uses the same module.
  *
  * This model is generated automatically based on API.
  *
@@ -34,7 +34,7 @@ function Wl_Report_Dashboard_ReportDashboardModel()
   this.a_settings = undefined;
 
   /**
-   * CID of the controller class. Subclass of {@link ReportViewControllerAbstract}.
+   * CID of the controller class. Subclass of {@link Wl\Report\View\ReportViewControllerAbstract}.
    *
    * @post post
    * @put post
@@ -43,7 +43,7 @@ function Wl_Report_Dashboard_ReportDashboardModel()
   this.cid_controller = undefined;
 
   /**
-   * Business key of the report. Primary key in the {@link \RsBusinessSql} table.
+   * Business key of the report.
    *
    * @post get
    * @put get
@@ -52,7 +52,7 @@ function Wl_Report_Dashboard_ReportDashboardModel()
   this.k_business = undefined;
 
   /**
-   * Report dashboard key to which report should be added. Primary key in the {@link \RsReportDashboardSql} table.
+   * Report dashboard key to which report should be added.
    *
    * @post post
    * @put post
@@ -61,7 +61,7 @@ function Wl_Report_Dashboard_ReportDashboardModel()
   this.k_report_dashboard = undefined;
 
   /**
-   * Report save key. Primary key in the {@link \RsReportSaveSql} table.
+   * Report save key.
    *
    * @put get
    * @type {string}
@@ -87,7 +87,7 @@ function Wl_Report_Dashboard_ReportDashboardModel()
   this.text_title = undefined;
 
   /**
-   * UID user's key of the actor. Primary key in the {@link \PassportLoginSql} table.
+   * UID user's key of the actor.
    *
    * @post get
    * @put get

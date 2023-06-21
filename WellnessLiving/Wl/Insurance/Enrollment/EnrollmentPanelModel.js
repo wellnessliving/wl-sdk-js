@@ -21,7 +21,7 @@ function Wl_Insurance_Enrollment_EnrollmentPanelModel()
    * Keys - field name.
    * Values - value entered by user.
    *
-   * Validation is performed by {@link \Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setAccountForm()} method.
+   * Validation is performed by {@link Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setAccountForm()} method.
    *
    * @post post
    * @put post
@@ -35,7 +35,7 @@ function Wl_Insurance_Enrollment_EnrollmentPanelModel()
    * Keys - field key in the database. See {@link \Wl\Integration\Curves\PartnerFieldSql} table for more details.
    * Values - value entered by user.
    *
-   * Validation is performed by {@link \Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setFieldForm()} method.
+   * Validation is performed by {@link Wl\Insurance\Enrollment\Field\EnrollmentFieldList::setFieldForm()} method.
    *
    * @post post
    * @put post
@@ -98,7 +98,6 @@ function Wl_Insurance_Enrollment_EnrollmentPanelModel()
 
   /**
    * Purchased program key.
-   * Primary key from {@link \RsLoginPromotionSql} table.
    *
    * If set, the program key (<tt>k_wellness_program</tt>) will be taken from the {@link \Wl\Login\Promotion\LoginPromotionInsuranceSql} table.
    *
@@ -111,8 +110,6 @@ function Wl_Insurance_Enrollment_EnrollmentPanelModel()
 
   /**
    * "Wellness Program" key.
-   *
-   * Primary key from {@link \Wl\Integration\Curves\WellnessProgramSql} table.
    *
    * @get get
    * @post get
@@ -138,8 +135,8 @@ Wl_Insurance_Enrollment_EnrollmentPanelModel.prototype.config=function()
  * @function
  * @name Wl_Insurance_Enrollment_EnrollmentPanelModel.instanceGet
  * @param {string} k_business The key of the business in which the enrollment is performed.
- * @param {string} k_wellness_program "Wellness Program" key. Primary key from {@link \Wl\Integration\Curves\WellnessProgramSql} table.
- * @param {string} k_login_promotion Purchased program key. Primary key from {@link \RsLoginPromotionSql} table. If set, the program key (<tt>k_wellness_program</tt>) will be taken from the {@link \Wl\Login\Promotion\LoginPromotionInsuranceSql} table.
+ * @param {string} k_wellness_program "Wellness Program" key.
+ * @param {string} k_login_promotion Purchased program key. If set, the program key (<tt>k_wellness_program</tt>) will be taken from the {@link \Wl\Login\Promotion\LoginPromotionInsuranceSql} table.
  * @returns {Wl_Insurance_Enrollment_EnrollmentPanelModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

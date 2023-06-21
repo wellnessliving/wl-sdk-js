@@ -53,8 +53,6 @@ function Wl_Member_Progress_Field_StateModel()
   /**
    * Business key.
    *
-   * Primary key in the {@link \RsBusinessSql} table.
-   *
    * @put get
    * @type {string}
    */
@@ -62,8 +60,6 @@ function Wl_Member_Progress_Field_StateModel()
 
   /**
    * Field key.
-   *
-   * Primary key in the {@link \Wl\Member\Progress\Field\Sql} table.
    *
    * @put get
    * @type {string}

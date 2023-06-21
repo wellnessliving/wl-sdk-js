@@ -1,6 +1,9 @@
 /**
  * Api endpoint used by Google to update booking.
  *
+ * **Cross-datacenter compatibility:** key of the business is returned by {@link Wl_Google_Booking_UpdateBookingModel.businessKey()}.
+ * The request is then redirected to region of that business by {@link Wl_Google_Booking_BookingServerBaseModel.run()}.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract

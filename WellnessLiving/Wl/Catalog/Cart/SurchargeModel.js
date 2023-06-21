@@ -13,7 +13,7 @@ function Wl_Catalog_Cart_SurchargeModel()
   /**
    * Data for Quick Buy.
    *
-   * Structure of this array is described in {@link \RsCatalogCart::__construct()}.
+   * Structure of this array is described in {@link RsCatalogCart::__construct()}.
    *
    * @post post
    * @type {{}}
@@ -22,10 +22,10 @@ function Wl_Catalog_Cart_SurchargeModel()
 
   /**
    * Whether surcharge was set manually.
-   * <tt>0</tt> if not, <tt>1</tt> if yes.
+   * `false` if not, `true` if yes.
    *
    * @post post
-   * @type {number}
+   * @type {boolean}
    */
   this.is_manual = undefined;
 

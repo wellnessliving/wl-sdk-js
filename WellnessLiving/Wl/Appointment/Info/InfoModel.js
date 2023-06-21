@@ -72,6 +72,21 @@ function Wl_Appointment_Info_InfoModel()
   this.a_previous = undefined;
 
   /**
+   * List of questions and answers:<ul>
+   * <li>int <var>i_size</var> Size of rows for answer.</li>
+   * <li>bool <var>is_multiple</var> <tt>true</tt> if <var>i_size</var> greater than 1, <tt>false</tt> otherwise.
+   *   Can be empty if answer is loaded.</li>
+   * <li>string <var>s_answer</var> Answer for <var>s_question</var>.</li>
+   * <li>string <var>s_key</var> Answer key.</li>
+   * <li>string <var>s_question</var> Question.</li>
+   * </ul>
+   *
+   * @get result
+   * @type {{}[]}
+   */
+  this.a_question = [];
+
+  /**
    * List of assets which are used by this appointment.
    *
    * @get result
@@ -106,7 +121,6 @@ function Wl_Appointment_Info_InfoModel()
    *     string <var>k_shop_product_option</var>
    *   </dt>
    *   <dd>
-   *     Primary key in {@link \RsShopProductOptionSql} table.
    *   </dd>
    *   <dt>
    *     string <var>m_amount</var>
@@ -146,7 +160,7 @@ function Wl_Appointment_Info_InfoModel()
   this.i_index = null;
 
   /**
-   * Status of appointment payment. One of {@link \RsAppointmentPaySid} constants.
+   * Status of appointment payment. One of {@link RsAppointmentPaySid} constants.
    *
    * @get result
    * @type {number}
@@ -154,7 +168,7 @@ function Wl_Appointment_Info_InfoModel()
   this.id_appointment_pay = undefined;
 
   /**
-   * Class identifier to get information for. Primary key in {@link RsClassSql} table.
+   * Class identifier to get information for.
    *
    * @get get
    * @type {string}
@@ -162,7 +176,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_appointment = "0";
 
   /**
-   * Purchased promotion which provides this appointment. Primary key in {@link \RsLoginPromotionSql} table.
+   * Purchased promotion which provides this appointment.
    *
    * @get result
    * @type {string}
@@ -202,7 +216,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_service_category = null;
 
   /**
-   * Staff member who conducts this appointment. Primary key in {@link \RsStaffSql} table.
+   * Staff member who conducts this appointment.
    *
    * @get result
    * @type {string}
@@ -218,7 +232,7 @@ function Wl_Appointment_Info_InfoModel()
   this.text_title = undefined;
 
   /**
-   * User for whom this appointment was booked. Primary key in {@link \PassportLoginSql} table.
+   * User for whom this appointment was booked.
    *
    * @get result
    * @type {string}
@@ -235,13 +249,13 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Info_InfoModel);
  */
 Wl_Appointment_Info_InfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_next": {"get": {"result": true}},"a_previous": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_shop_product_option": {"get": {"result": true}},"dt_date_local": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_index": {"get": {"result": true}},"id_appointment_pay": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_login_promotion": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_resource_type": {"get": {"result": true}},"k_service": {"get": {"result": true}},"k_service_category": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"text_title": {"get": {"result": true}},"uid_appointment": {"get": {"result": true}}}};
+  return {"a_field": {"a_next": {"get": {"result": true}},"a_previous": {"get": {"result": true}},"a_question": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_shop_product_option": {"get": {"result": true}},"dt_date_local": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_index": {"get": {"result": true}},"id_appointment_pay": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_login_promotion": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_resource_type": {"get": {"result": true}},"k_service": {"get": {"result": true}},"k_service_category": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"text_title": {"get": {"result": true}},"uid_appointment": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Appointment_Info_InfoModel.instanceGet
- * @param {string} k_appointment Class identifier to get information for. Primary key in {@link RsClassSql} table.
+ * @param {string} k_appointment Class identifier to get information for.
  * @returns {Wl_Appointment_Info_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -1,5 +1,5 @@
 /**
- * Data of certain purchase for a receipt.
+ * An endpoint that returns receipt data of certain purchase.
  *
  * This model is generated automatically based on API.
  *
@@ -12,31 +12,31 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_account_rest
-   * @property {string} m_amount Rest amount on user account.
-   * @property {string} text_currency Currency of the amount.
-   * @property {string} text_method Payment method title.
+   * @property {string} m_amount The account balance on the user's account.
+   * @property {string} text_currency The currency of the amount.
+   * @property {string} text_method The payment method title.
    */
 
   /**
-   * Information about rest amount on personal user account after payment of purchase. Every element has keys:
+   * Information about the account balance for a user's account after payment for the purchase. Every element has the following keys:
    * <dl>
    *   <dt>
    *     string <var>m_amount</var>
    *   </dt>
    *   <dd>
-   *     Rest amount on user account.
+   *     The account balance on the user's account.
    *   </dd>
    *   <dt>
    *     string <var>text_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency of the amount.
+   *     The currency of the amount.
    *   </dd>
    *   <dt>
    *     string <var>text_method</var>
    *   </dt>
    *   <dd>
-   *     Payment method title.
+   *     The payment method title.
    *   </dd>
    * </dl>
    *
@@ -47,78 +47,78 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_business_a_logo
-   * @property {number} i_height Image height.
-   * @property {number} i_width Image width.
-   * @property {boolean} is_empty Whether image is empty.
-   * @property {string} text_url URL of the image.
+   * @property {number} i_height The image height.
+   * @property {number} i_width The image width.
+   * @property {boolean} is_empty This will be `true` if the image is empty. Otherwise, this will be `false`.
+   * @property {string} text_url The URL of the image.
    */
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_business
-   * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_business_a_logo} a_logo Business logo:
+   * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_business_a_logo} a_logo The business logo.
    * <dl>
    *   <dt>
    *     int <tt>i_height</tt>
    *   </dt>
    *   <dd>
-   *     Image height.
+   *     The image height.
    *   </dd>
    *   <dt>
    *     int <tt>i_width</tt>
    *   </dt>
    *   <dd>
-   *     Image width.
+   *     The image width.
    *   </dd>
    *   <dt>
    *     bool <tt>is_empty</tt>
    *   </dt>
    *   <dd>
-   *     Whether image is empty.
+   *     This will be `true` if the image is empty. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <tt>text_url</tt>
    *   </dt>
    *   <dd>
-   *     URL of the image.
+   *     The URL of the image.
    *   </dd>
    * </dl>
-   * @property {string} text_address Business address.
-   * @property {string} text_mail Business mail.
-   * @property {string} text_phone Business phone.
-   * @property {string} text_title Business name.
+   * @property {string} text_address The business's address.
+   * @property {string} text_mail The business's email address.
+   * @property {string} text_phone The business's phone number.
+   * @property {string} text_title The business name.
    */
 
   /**
-   * Information about business:
+   * Information about the business.
    * <dl>
    *   <dt>
    *     array <var>a_logo</var>
    *   </dt>
    *   <dd>
-   *     Business logo:
+   *     The business logo.
    *     <dl>
    *       <dt>
    *         int <var>i_height</var>
    *       </dt>
    *       <dd>
-   *         Image height.
+   *         The image height.
    *       </dd>
    *       <dt>
    *         int <var>i_width</var>
    *       </dt>
    *       <dd>
-   *         Image width.
+   *         The image width.
    *       </dd>
    *       <dt>
    *         bool <var>is_empty</var>
    *       </dt>
    *       <dd>
-   *         Whether image is empty.
+   *         This will be `true` if the image is empty. Otherwise, this will be `false`.
    *       </dd>
    *       <dt>
    *         string <var>text_url</var>
    *       </dt>
    *       <dd>
-   *         URL of the image.
+   *         The URL of the image.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -126,25 +126,25 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    *     string <var>text_address</var>
    *   </dt>
    *   <dd>
-   *     Business address.
+   *     The business's address.
    *   </dd>
    *   <dt>
    *     string <var>text_mail</var>
    *   </dt>
    *   <dd>
-   *     Business mail.
+   *     The business's email address.
    *   </dd>
    *   <dt>
    *     string <var>text_phone</var>
    *   </dt>
    *   <dd>
-   *     Business phone.
+   *     The business's phone number.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Business name.
+   *     The business name.
    *   </dd>
    * </dl>
    *
@@ -155,31 +155,31 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_card
-   * @property {string} text_card_number Card or account number.
-   * @property {string} text_card_system Card system name from {@link \ACardSystemSid}.
-   * @property {string} text_title Payment account title. 'Account number' for ACH, Card for all other.
+   * @property {string} text_card_number The card or account number.
+   * @property {string} text_card_system The card system name from {@link ACardSystemSid}.
+   * @property {string} text_title The payment account title. This will be 'Account number' for ACH, 'Card' for all other cases.
    */
 
   /**
-   * Payment transaction information. Every element has keys:
+   * Payment transaction information. Every element has the following keys:
    * <dl>
    *   <dt>
    *     string <var>text_card_number</var>
    *   </dt>
    *   <dd>
-   *     Card or account number.
+   *     The card or account number.
    *   </dd>
    *   <dt>
    *     string <var>text_card_system</var>
    *   </dt>
    *   <dd>
-   *     Card system name from {@link \ACardSystemSid}.
+   *     The card system name from {@link ACardSystemSid}.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Payment account title. 'Account number' for ACH, Card for all other.
+   *     The payment account title. This will be 'Account number' for ACH, 'Card' for all other cases.
    *   </dd>
    * </dl>
    *
@@ -190,38 +190,38 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_customer
-   * @property {string} text_address Customer address.
-   * @property {string} text_mail Customer mail.
-   * @property {string} text_name Customer name.
-   * @property {string} text_phone Customer phone.
+   * @property {string} text_address The customer's address.
+   * @property {string} text_mail The customer's email address.
+   * @property {string} text_name The customer's name.
+   * @property {string} text_phone The customer's phone number.
    */
 
   /**
-   * Information about customer:
+   * Information about the customer.
    * <dl>
    *   <dt>
    *     string <var>text_address</var>
    *   </dt>
    *   <dd>
-   *     Customer address.
+   *     The customer's address.
    *   </dd>
    *   <dt>
    *     string <var>text_mail</var>
    *   </dt>
    *   <dd>
-   *     Customer mail.
+   *     The customer's email address.
    *   </dd>
    *   <dt>
    *     string <var>text_name</var>
    *   </dt>
    *   <dd>
-   *     Customer name.
+   *     The customer's name.
    *   </dd>
    *   <dt>
    *     string <var>text_phone</var>
    *   </dt>
    *   <dd>
-   *     Customer phone.
+   *     The customer's phone number.
    *   </dd>
    * </dl>
    *
@@ -232,31 +232,31 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_pay_method
-   * @property {string} m_amount Amount of the payment.
-   * @property {string} text_currency Currency of the amount.
-   * @property {string} text_pay_method Payment method title.
+   * @property {string} m_amount The amount of the payment.
+   * @property {string} text_currency The currency of the amount.
+   * @property {string} text_pay_method The payment method title.
    */
 
   /**
-   * List of payment methods of current purchase. Every element has keys:
+   * A list of payment methods for the current purchase. Every element has the following keys:
    * <dl>
    *   <dt>
    *     string <var>m_amount</var>
    *   </dt>
    *   <dd>
-   *     Amount of the payment.
+   *     The amount of the payment.
    *   </dd>
    *   <dt>
    *     string <var>text_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency of the amount.
+   *     The currency of the amount.
    *   </dd>
    *   <dt>
    *     string <var>text_pay_method</var>
    *   </dt>
    *   <dd>
-   *     Payment method title.
+   *     The payment method title.
    *   </dd>
    * </dl>
    *
@@ -267,66 +267,66 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_price
-   * @property {string} m_discount Discount amount.
-   * @property {string} m_discount_code Discount amount for a discount code.
-   * @property {string} m_sum Subtotal amount - sum of the prices.
-   * @property {string} m_tax Taxes amount.
-   * @property {string} m_tip Tip amount.
-   * @property {string} m_total Total amount.
-   * @property {string} text_currency Currency of the purchase.
-   * @property {string} text_discount_code Discount code applied to the purchase.
+   * @property {string} m_discount The discount amount.
+   * @property {string} m_discount_code The discount amount for a discount code.
+   * @property {string} m_sum The subtotal amount (the sum of the prices).
+   * @property {string} m_tax The amount of taxes.
+   * @property {string} m_tip The amount of tips.
+   * @property {string} m_total The total amount.
+   * @property {string} text_currency The currency of the purchase.
+   * @property {string} text_discount_code The discount code applied to the purchase.
    */
 
   /**
-   * Full information about prices of the purchase:
+   * Complete information about price information for the purchase.
    * <dl>
    *   <dt>
    *     string <var>m_discount</var>
    *   </dt>
    *   <dd>
-   *     Discount amount.
+   *     The discount amount.
    *   </dd>
    *   <dt>
    *     string <var>m_discount_code</var>
    *   </dt>
    *   <dd>
-   *     Discount amount for a discount code.
+   *     The discount amount for a discount code.
    *   </dd>
    *   <dt>
    *     string <var>m_sum</var>
    *   </dt>
    *   <dd>
-   *     Subtotal amount - sum of the prices.
+   *     The subtotal amount (the sum of the prices).
    *   </dd>
    *   <dt>
    *     string <var>m_tax</var>
    *   </dt>
    *   <dd>
-   *     Taxes amount.
+   *     The amount of taxes.
    *   </dd>
    *   <dt>
    *     string <var>m_tip</var>
    *   </dt>
    *   <dd>
-   *     Tip amount.
+   *     The amount of tips.
    *   </dd>
    *   <dt>
    *     string <var>m_total</var>
    *   </dt>
    *   <dd>
-   *     Total amount.
+   *     The total amount.
    *   </dd>
    *   <dt>
    *     string <var>text_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency of the purchase.
+   *     The currency of the purchase.
    *   </dd>
    *   <dt>
    *     string <var>text_discount_code</var>
    *   </dt>
    *   <dd>
-   *     Discount code applied to the purchase.
+   *     The discount code applied to the purchase.
    *   </dd>
    * </dl>
    *
@@ -337,83 +337,83 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo
-   * @property {number} i_height Image height.
-   * @property {number} i_width Image width.
-   * @property {boolean} is_empty Whether image is empty.
-   * @property {string} text_url URL of the image.
+   * @property {number} i_height The image height.
+   * @property {number} i_width The image width.
+   * @property {boolean} is_empty Determines whether the image is empty.
+   * @property {string} text_url The URL of the image.
    */
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item
-   * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo} a_logo Purchase item logo:
+   * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo} a_logo The purchase item logo.
    * <dl>
    *   <dt>
    *     int <tt>i_height</tt>
    *   </dt>
    *   <dd>
-   *     Image height.
+   *     The image height.
    *   </dd>
    *   <dt>
    *     int <tt>i_width</tt>
    *   </dt>
    *   <dd>
-   *     Image width.
+   *     The image width.
    *   </dd>
    *   <dt>
    *     bool <tt>is_empty</tt>
    *   </dt>
    *   <dd>
-   *     Whether image is empty.
+   *     Determines whether the image is empty.
    *   </dd>
    *   <dt>
    *     string <tt>text_url</tt>
    *   </dt>
    *   <dd>
-   *     URL of the image.
+   *     The URL of the image.
    *   </dd>
    * </dl>
-   * @property {number} i_count Count of items in the purchase.
-   * @property {string} k_purchase_item Purchase item key. Primary key in {@link \RsPurchaseItemSql} table.
-   * @property {string} m_price Price of the single item.
-   * @property {string} m_price_total Price of all items.
-   * @property {string} text_category Type of the item: product, class pass, etc.
-   * @property {string} text_currency Currency of the price.
+   * @property {number} i_count The number of items in the purchase.
+   * @property {string} k_purchase_item The key of the purchase item.
+   * @property {string} m_price The price of the single item.
+   * @property {string} m_price_total The price of all items.
+   * @property {string} text_category The type of the item (for example, a pass or membership).
+   * @property {string} text_currency The currency of the price.
    * @property {string} text_info Additional information about the purchase item.
-   * @property {string} text_title Name of the purchase item.
-   * @property {string} text_description Description of the purchase item.
+   * @property {string} text_title The name of the purchase item.
+   * @property {string} text_description The description of the purchase item.
    */
 
   /**
-   * List of purchase items. Every element has keys:
+   * A list of purchase items. Every element has the following keys:
    * <dl>
    *   <dt>
    *     array <var>a_logo</var>
    *   </dt>
    *   <dd>
-   *     Purchase item logo:
+   *     The purchase item logo.
    *     <dl>
    *       <dt>
    *         int <var>i_height</var>
    *       </dt>
    *       <dd>
-   *         Image height.
+   *         The image height.
    *       </dd>
    *       <dt>
    *         int <var>i_width</var>
    *       </dt>
    *       <dd>
-   *         Image width.
+   *         The image width.
    *       </dd>
    *       <dt>
    *         bool <var>is_empty</var>
    *       </dt>
    *       <dd>
-   *         Whether image is empty.
+   *         Determines whether the image is empty.
    *       </dd>
    *       <dt>
    *         string <var>text_url</var>
    *       </dt>
    *       <dd>
-   *         URL of the image.
+   *         The URL of the image.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -421,37 +421,37 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    *     int <var>i_count</var>
    *   </dt>
    *   <dd>
-   *     Count of items in the purchase.
+   *     The number of items in the purchase.
    *   </dd>
    *   <dt>
-   *     int <var>k_purchase_item</var>
+   *     string <var>k_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     Purchase item key. Primary key in {@link \RsPurchaseItemSql} table.
+   *     The key of the purchase item.
    *   </dd>
    *   <dt>
    *     string <var>m_price</var>
    *   </dt>
    *   <dd>
-   *     Price of the single item.
+   *     The price of the single item.
    *   </dd>
    *   <dt>
    *     string <var>m_price_total</var>
    *   </dt>
    *   <dd>
-   *     Price of all items.
+   *     The price of all items.
    *   </dd>
    *   <dt>
    *     string <var>text_category</var>
    *   </dt>
    *   <dd>
-   *     Type of the item: product, class pass, etc.
+   *     The type of the item (for example, a pass or membership).
    *   </dd>
    *   <dt>
    *     string <var>text_currency</var>
    *   </dt>
    *   <dd>
-   *     Currency of the price.
+   *     The currency of the price.
    *   </dd>
    *   <dt>
    *     string <var>text_info</var>
@@ -463,13 +463,13 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Name of the purchase item.
+   *     The name of the purchase item.
    *   </dd>
    *   <dt>
    *     string <var>text_description</var>
    *   </dt>
    *   <dd>
-   *     Description of the purchase item.
+   *     The description of the purchase item.
    *   </dd>
    * </dl>
    *
@@ -479,7 +479,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.a_purchase_item = undefined;
 
   /**
-   * Local date of the purchase in MySQL format.
+   * The local date of the purchase in MySQL format.
    *
    * @get result
    * @type {string}
@@ -487,7 +487,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.dtl_purchase = undefined;
 
   /**
-   * Whether payment was signed.
+   * Determines whether the payment contained a signature.
    *
    * @get result
    * @type {boolean}
@@ -495,7 +495,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.has_signature = undefined;
 
   /**
-   * HTML representation of purchase receipt.
+   * HTML representation of the purchase receipt.
    *
    * @get result
    * @type {string}
@@ -503,7 +503,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.html_receipt = undefined;
 
   /**
-   * Purchase key. Primary key {@link \RsPurchaseSql} table.
+   * The key of the purchase.
    *
    * @get get
    * @type {string}
@@ -511,7 +511,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.k_purchase = undefined;
 
   /**
-   * Normalized purchase ID.
+   * The normalized purchase ID.
    *
    * @get result
    * @type {string}
@@ -519,7 +519,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.text_purchase_id = undefined;
 
   /**
-   * Receipt text set in store settings.
+   * The receipt text set in the store settings.
    *
    * @get result
    * @type {string}

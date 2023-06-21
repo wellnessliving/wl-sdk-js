@@ -1,5 +1,7 @@
 /**
- * An endpoint that gets information about appointment add-ons.
+ * An endpoint that returns information about service add-ons.
+ *
+ * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -14,7 +16,9 @@ function Wl_Appointment_Book_Product_ProductModel()
   this._s_key = "k_service";
 
   /**
-   * See {@link \Wl\Appointment\Wizard\AppointmentWizard::product()} for details.
+   * A list service add-ons.
+   *
+   * This will be `null` if not set yet.
    *
    * @get result
    * @type {{}[]}
@@ -22,7 +26,7 @@ function Wl_Appointment_Book_Product_ProductModel()
   this.a_product = undefined;
 
   /**
-   * The service key to show information for.
+   * The key of a service to show information for.
    *
    * @get get
    * @type {string}
@@ -45,7 +49,7 @@ Wl_Appointment_Book_Product_ProductModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Product_ProductModel.instanceGet
- * @param {string} k_service The service key to show information for.
+ * @param {string} k_service The key of a service to show information for.
  * @returns {Wl_Appointment_Book_Product_ProductModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

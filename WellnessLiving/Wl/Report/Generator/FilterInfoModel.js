@@ -13,7 +13,7 @@ function Wl_Report_Generator_FilterInfoModel()
   /**
    * Additional filter field data.
    *
-   * This array is gathered with data returned by {@link \Wl\Report\Generator\ReportFilterFieldAbstract::data()}.
+   * This array is gathered with data returned by {@link Wl\Report\Generator\ReportFilterFieldAbstract::data()}.
    *
    * @get result
    * @type {*}
@@ -23,7 +23,7 @@ function Wl_Report_Generator_FilterInfoModel()
   /**
    * A list of dynamic filter fields in this report.
    *
-   * Copy of result of {@link \Wl\Report\Generator\ReportGeneratorReportAbstract::filterDynamic()}.
+   * Copy of result of {@link Wl\Report\Generator\ReportGeneratorReportAbstract::filterDynamic()}.
    *
    * @get result
    * @type {{}[]}
@@ -51,7 +51,7 @@ function Wl_Report_Generator_FilterInfoModel()
   /**
    * CID of the report which filter information should be retrieved.
    *
-   * One of {@link ReportGeneratorReportAbstract} subclasses.
+   * One of {@link Wl\Report\Generator\ReportGeneratorReportAbstract} subclasses.
    *
    * @get get
    * @type {number}
@@ -62,7 +62,7 @@ function Wl_Report_Generator_FilterInfoModel()
    * Filters that should be applied to the report.
    *
    * In this array, key is name of a filter field.
-   * A filter field is a property of a {@link ReportFilterAbstract} subclass.
+   * A filter field is a property of a {@link Wl\Report\Generator\ReportFilterAbstract} subclass.
    * Name of the property of that subclass corresponds key in this array.
    *
    * @get get
@@ -73,8 +73,6 @@ function Wl_Report_Generator_FilterInfoModel()
   /**
    * Key of the business which report should be shown.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * `0` or an empty string for system-wide reports.
    *
    * @get get
@@ -84,8 +82,6 @@ function Wl_Report_Generator_FilterInfoModel()
 
   /**
    * Actor user.
-   *
-   * Primary key in {@link \PassportLoginSql}.
    *
    * `0` or an empty string for guests.
    *

@@ -26,8 +26,6 @@ function Wl_Profile_Notification_ElementModel()
   /**
    * Business key.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @type {string}
    */
@@ -35,8 +33,6 @@ function Wl_Profile_Notification_ElementModel()
 
   /**
    * Key of push notification to retrieve information about.
-   *
-   * Primary key in {@link \Core\Push\History\Sql}.
    *
    * @get get
    * @type {string}
@@ -75,8 +71,8 @@ Wl_Profile_Notification_ElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Notification_ElementModel.instanceGet
- * @param {string} k_business Business key. Primary key in {@link \RsBusinessSql}.
- * @param {string} k_push_history Key of push notification to retrieve information about. Primary key in {@link \Core\Push\History\Sql}.
+ * @param {string} k_business Business key.
+ * @param {string} k_push_history Key of push notification to retrieve information about.
  * @returns {Wl_Profile_Notification_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

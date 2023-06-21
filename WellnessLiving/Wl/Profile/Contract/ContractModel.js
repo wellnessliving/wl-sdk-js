@@ -1,5 +1,8 @@
 /**
- * Information about purchase option contract.
+ * An endpoint that gets information about a session pass or membership with a contract.
+ *
+ * The POST method will complete a sale of a Purchase Option requiring a contract.
+ * The method that WellnessLiving uses to encode a signature into a string isn't currently available in the SDK.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +19,7 @@ function Wl_Profile_Contract_ContractModel()
   this._s_key = "uid,k_business,k_location,id_purchase_item,k_id,k_purchase_item,m_price_custom";
 
   /**
-   * Promotion custom start date.
+   * The start date of the contract.
    *
    * @get get
    * @type {string}
@@ -24,15 +27,15 @@ function Wl_Profile_Contract_ContractModel()
   this.dt_start = "";
 
   /**
-   * Discount in percents.
+   * The percentage discount for the item.
    *
    * @get get
    * @type {number}
    */
-  this.f_manual_discount = "";
+  this.f_manual_discount = 0;
 
   /**
-   * Text of contract.
+   * The text of the contract.
    *
    * @get result
    * @type {string}
@@ -48,8 +51,8 @@ function Wl_Profile_Contract_ContractModel()
   this.i_minor_age = undefined;
 
   /**
-   * ID of purchase option type. Member of {@link \RsPurchaseItemSid}.
-   * Optional if {@link \Wl\Profile\Contract\ContractApi::$k_purchase_item} is not empty.
+   * The type of purchase item. This is one of the {@link RsPurchaseItemSid} constants.
+   * Optional if {@link Wl_Profile_Contract_ContractModel.k_purchase_item} is not empty.
    *
    * @get get
    * @type {number}
@@ -57,7 +60,17 @@ function Wl_Profile_Contract_ContractModel()
   this.id_purchase_item = 0;
 
   /**
-   * ID of a business to show information for.
+   * <tt>false</tt> if user has not agreed to use Electronic Signatures,
+   * <tt>true</tt> if user has agreed to use Electronic Signatures,
+   * <tt>null</tt> otherwise.
+   *
+   * @post post
+   * @type {?boolean}
+   */
+  this.is_agree = null;
+
+  /**
+   * The key of the business to show information for.
    *
    * @get get
    * @post get
@@ -66,9 +79,8 @@ function Wl_Profile_Contract_ContractModel()
   this.k_business = "0";
 
   /**
-   * ID of purchase option in database.
-   * Name of table in database depends on {@link \Wl\Profile\Contract\ContractApi::$id_purchase_item}.
-   * Optional if {@link \Wl\Profile\Contract\ContractApi::$k_purchase_item} is not empty.
+   * The key of the purchase item in the database.
+   * The item key. Depends of {@link Wl_Profile_Contract_ContractModel.id_purchase_item} property.
    *
    * @get get
    * @type {string}
@@ -76,7 +88,7 @@ function Wl_Profile_Contract_ContractModel()
   this.k_id = "0";
 
   /**
-   * ID of selected a location.
+   * The key of the selected location.
    *
    * @get get
    * @type {string}
@@ -84,7 +96,7 @@ function Wl_Profile_Contract_ContractModel()
   this.k_location = "0";
 
   /**
-   * ID of certain purchase item. Primary key in {@link \RsPurchaseItemSql} table.
+   * The key of the selected purchase item.
    *
    * @get get
    * @post get
@@ -101,7 +113,7 @@ function Wl_Profile_Contract_ContractModel()
   this.m_discount_flat = "0";
 
   /**
-   * Custom price of the item.
+   * The custom price of the item.
    *
    * @get get
    * @type {string}
@@ -109,7 +121,7 @@ function Wl_Profile_Contract_ContractModel()
   this.m_price_custom = "";
 
   /**
-   * Discount code.
+   * The discount code used for the item.
    *
    * @get get
    * @type {string}
@@ -117,7 +129,8 @@ function Wl_Profile_Contract_ContractModel()
   this.s_discount_code = "";
 
   /**
-   * Image with user's signature.
+   * An encoded version of the client signature.
+   * This is different from the signature needed to communicate with an endpoint.
    *
    * @post post
    * @type {string}
@@ -133,7 +146,7 @@ function Wl_Profile_Contract_ContractModel()
   this.text_title = undefined;
 
   /**
-   * ID of current user.
+   * The key of the current user.
    *
    * @get get
    * @post get
@@ -151,19 +164,19 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Contract_ContractModel);
  */
 Wl_Profile_Contract_ContractModel.prototype.config=function()
 {
-  return {"a_field": {"dt_start": {"get": {"get": true}},"f_manual_discount": {"get": {"get": true}},"html_contract": {"get": {"result": true}},"i_minor_age": {"get": {"result": true}},"id_purchase_item": {"get": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_purchase_item": {"get": {"get": true},"post": {"get": true}},"m_discount_flat": {"get": {"get": true}},"m_price_custom": {"get": {"get": true}},"s_discount_code": {"get": {"get": true}},"s_signature": {"post": {"post": true}},"text_title": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"dt_start": {"get": {"get": true}},"f_manual_discount": {"get": {"get": true}},"html_contract": {"get": {"result": true}},"i_minor_age": {"get": {"result": true}},"id_purchase_item": {"get": {"get": true}},"is_agree": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_purchase_item": {"get": {"get": true},"post": {"get": true}},"m_discount_flat": {"get": {"get": true}},"m_price_custom": {"get": {"get": true}},"s_discount_code": {"get": {"get": true}},"s_signature": {"post": {"post": true}},"text_title": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Profile_Contract_ContractModel.instanceGet
- * @param {string} uid ID of current user.
- * @param {string} k_business ID of a business to show information for.
- * @param {string} k_location ID of selected a location.
- * @param {number} id_purchase_item ID of purchase option type. Member of {@link \RsPurchaseItemSid}. Optional if {@link \Wl\Profile\Contract\ContractApi::$k_purchase_item} is not empty.
- * @param {string} k_id ID of purchase option in database. Name of table in database depends on {@link \Wl\Profile\Contract\ContractApi::$id_purchase_item}. Optional if {@link \Wl\Profile\Contract\ContractApi::$k_purchase_item} is not empty.
- * @param {string} k_purchase_item ID of certain purchase item. Primary key in {@link \RsPurchaseItemSql} table.
- * @param {string} m_price_custom Custom price of the item.
+ * @param {string} uid The key of the current user.
+ * @param {string} k_business The key of the business to show information for.
+ * @param {string} k_location The key of the selected location.
+ * @param {number} id_purchase_item The type of purchase item. This is one of the {@link RsPurchaseItemSid} constants. Optional if {@link Wl_Profile_Contract_ContractModel.k_purchase_item} is not empty.
+ * @param {string} k_id The key of the purchase item in the database. The item key. Depends of {@link Wl_Profile_Contract_ContractModel.id_purchase_item} property.
+ * @param {string} k_purchase_item The key of the selected purchase item.
+ * @param {string} m_price_custom The custom price of the item.
  * @returns {Wl_Profile_Contract_ContractModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -49,7 +49,7 @@ function Wl_Help_Popup_PopupModel()
 
   /**
    * Articles target ID.
-   * Constant from {@link ArticleTargetSid}.
+   * Constant from {@link Wl_Help_Popup_ArticleTargetSid}.
    *
    * @get result
    * @type {number}
@@ -58,7 +58,6 @@ function Wl_Help_Popup_PopupModel()
 
   /**
    * A business in which a user requests help.
-   * Primary key from {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -67,7 +66,6 @@ function Wl_Help_Popup_PopupModel()
 
   /**
    * User who asks for help.
-   * Primary key from {@link \PassportLoginSql} table.
    *
    * @get get
    * @type {string}
@@ -90,8 +88,8 @@ Wl_Help_Popup_PopupModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Help_Popup_PopupModel.instanceGet
- * @param {string} k_business A business in which a user requests help. Primary key from {@link \RsBusinessSql} table.
- * @param {string} uid User who asks for help. Primary key from {@link \PassportLoginSql} table.
+ * @param {string} k_business A business in which a user requests help.
+ * @param {string} uid User who asks for help.
  * @returns {Wl_Help_Popup_PopupModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

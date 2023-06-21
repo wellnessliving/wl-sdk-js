@@ -14,8 +14,6 @@ function Core_Request_Api_Application_ApplicationElementModel()
    * The array of keys of access groups of current application.
    * <tt>null</tt> when application doesn't have access groups.
    *
-   * Primary key in {@link \Core\Request\Api\Application\GroupSql} table.
-   *
    * @get result
    * @post post
    * @type {?string[]}
@@ -24,8 +22,6 @@ function Core_Request_Api_Application_ApplicationElementModel()
 
   /**
    * If an application is edited, its key is stored here.
-   *
-   * Primary key in {@link \Core\Request\Api\Application\Sql} table.
    *
    * <tt>null</tt> if a new group should be created.
    * This value is required for edit and delete operations.

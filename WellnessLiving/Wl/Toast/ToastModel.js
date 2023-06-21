@@ -19,7 +19,7 @@ function Wl_Toast_ToastModel()
   this.a_toast = undefined;
 
   /**
-   * Array of primary keys of toast messages in {@link ToastSql} table.
+   * Array of primary keys of toast messages in {@link Wl\Toast\ToastSql} table.
    *
    * @put post
    * @type {string[]}
@@ -27,7 +27,7 @@ function Wl_Toast_ToastModel()
   this.a_toast_list = undefined;
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @put get

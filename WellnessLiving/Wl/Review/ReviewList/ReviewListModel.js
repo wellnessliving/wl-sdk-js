@@ -1,5 +1,8 @@
 /**
- * Retrieves a list of reviews to location.
+ * An endpoint that returns a list of review IDs for all reviews for a location.
+ *
+ * Reviews in WellnessLiving apply to specific locations. This endpoint can be used to get the IDs for all reviews or
+ * to get a listing that includes all the review data if the `i_page parameter` is set.
  *
  * This model is generated automatically based on API.
  *
@@ -13,7 +16,7 @@ function Wl_Review_ReviewList_ReviewListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_location,uid";
+  this._s_key = "k_location,uid,id_order,i_page";
 
   /**
    * @typedef {{}} Wl_Review_ReviewList_ReviewListModel_a_review
@@ -22,11 +25,12 @@ function Wl_Review_ReviewList_ReviewListModel()
    * @property {string} dt_add Date when review added.
    * @property {number} f_rate Rate of review.
    * @property {boolean} is_verify <tt>true</tt> if review is verify, <tt>false</tt> otherwise.
-   * @property {string} k_review Review key. Primary key in {@link \RsReviewSql} table.
+   * @property {string} k_review Review key.
    * @property {string} s_firstname First name of user who wrote review.
    * @property {string} s_lastname Last name of user who wrote review.
    * @property {string} s_reply Reply for review.
    * @property {string} s_text Review text.
+   * @property {string} text_city City from the profile of the user, who left review.
    * @property {string} text_reply_first First name of staff who replied of review. Can be empty string if no one replied.
    * @property {string} text_reply_last Last name of staff who replied of review. Can be empty string if no one replied.
    * @property {string} text_role Staff role who replied of review. Can be empty string if no one replied.
@@ -36,7 +40,7 @@ function Wl_Review_ReviewList_ReviewListModel()
    */
 
   /**
-   * List of reviews. If passed {@link \Wl\Review\ReviewList\ReviewListApi::$i_page} then the result will be full, otherwise in result will be keys: <tt>k_review</tt>, <tt>uid</tt>.
+   * List of reviews. If passed {@link Wl_Review_ReviewList_ReviewListModel.i_page} then the result will be full, otherwise in result will be keys: <tt>k_review</tt>, <tt>uid</tt>.
    * <dl>
    *   <dt>
    *     bool <var>can_reply</var>
@@ -72,7 +76,7 @@ function Wl_Review_ReviewList_ReviewListModel()
    *     string <var>k_review</var>
    *   </dt>
    *   <dd>
-   *     Review key. Primary key in {@link \RsReviewSql} table.
+   *     Review key.
    *   </dd>
    *   <dt>
    *     string <var>s_firstname</var>
@@ -97,6 +101,12 @@ function Wl_Review_ReviewList_ReviewListModel()
    *   </dt>
    *   <dd>
    *     Review text.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_city</var>
+   *   </dt>
+   *   <dd>
+   *     City from the profile of the user, who left review.
    *   </dd>
    *   <dt>
    *     string <var>text_reply_first</var>
@@ -142,17 +152,20 @@ function Wl_Review_ReviewList_ReviewListModel()
   this.a_review = undefined;
 
   /**
-   * Page number.
-   * <tt>null</tt> if need load only keys of review.
+   * If not specified, this request will return all review keys. If specified, this request will return detailed reviews
+   * (10 per page).
+   *
+   * This will be `null` if you only need to load the keys of the review.
    *
    * @get get
-   * @type {number}
+   * @type {?number}
    */
-  this.i_page = undefined;
+  this.i_page = null;
 
   /**
-   * Review order ID. One of {@link \Wl\Review\ReviewList\ReviewOrderSid} constants.
-   * If not passed use default order {@link \Wl\Review\ReviewList\ReviewOrderSid::LATEST}.
+   * The order in which the review should be arranged. One of the {@link Wl_Review_ReviewList_ReviewOrderSid} constants.
+   *
+   * If not passed use default order {@link Wl_Review_ReviewList_ReviewOrderSid.LATEST}.
    *
    * @get get
    * @type {?number}
@@ -160,7 +173,7 @@ function Wl_Review_ReviewList_ReviewListModel()
   this.id_order = null;
 
   /**
-   * Location key.
+   * The key of the location to show reviews for.
    *
    * @get get
    * @type {string}
@@ -168,7 +181,8 @@ function Wl_Review_ReviewList_ReviewListModel()
   this.k_location = "";
 
   /**
-   * User key.
+   * The user's key. WellnessLiving allows staff to check low-rated reviews before posting them. Staff members can see
+   * all reviews. Clients can only see checked reviews.
    *
    * @get get
    * @type {string}
@@ -191,8 +205,10 @@ Wl_Review_ReviewList_ReviewListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Review_ReviewList_ReviewListModel.instanceGet
- * @param {string} k_location Location key.
- * @param {string} uid User key.
+ * @param {string} k_location The key of the location to show reviews for.
+ * @param {string} uid The user's key. WellnessLiving allows staff to check low-rated reviews before posting them. Staff members can see all reviews. Clients can only see checked reviews.
+ * @param {?number} id_order The order in which the review should be arranged. One of the {@link Wl_Review_ReviewList_ReviewOrderSid} constants. If not passed use default order {@link Wl_Review_ReviewList_ReviewOrderSid.LATEST}.
+ * @param {?number} i_page If not specified, this request will return all review keys. If specified, this request will return detailed reviews (10 per page). This will be `null` if you only need to load the keys of the review.
  * @returns {Wl_Review_ReviewList_ReviewListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

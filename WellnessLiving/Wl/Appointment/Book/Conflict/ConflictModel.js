@@ -1,23 +1,26 @@
 /**
- * An endpoint that gets data for appointment booking conflicts.
+ * Appointment booking conflicts data.
+ *
+ * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated New version {@link Wl_Appointment_Book_Conflict_Conflict56Model} should be used instead.
  */
 function Wl_Appointment_Book_Conflict_ConflictModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link \RsAppointmentEditConflict::checkAvailability()} for details.
+   * See for {@link RsAppointmentEditConflict::checkAvailability()} details.
    *
    * @get result
    * @type {{}[]}
    */
-  this.a_conflict = undefined;
+  this.a_conflict = [];
 
   /**
-   * A list of add-ons.
+   * List of add-ons.
    *
    * @get get
    * @type {string[]}
@@ -25,10 +28,10 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.a_product = [];
 
   /**
-   * The appointment repeat data.
-   * See the `a_repeat` key of {@link \Wl\Appointment\Book\Finish\FinishApi::$a_book_data} for details.
+   * Data of appointment repeat.
+   * See key <tt>a_repeat</tt> of {@link Wl_Appointment_Book_Finish_FinishModel.a_book_data} for details.
    *
-   * This will be `null` if repeat data isn't required.
+   * <tt>null</tt> if repeat is not required.
    *
    * @get get
    * @type {?{}}
@@ -37,16 +40,16 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Conflict_ConflictModel_a_resource
-   * @property {*} i_index The asset index in the layout.
-   * @property {string} k_resource The asset primary key.
+   * @property {*} i_index Asset index in layout.
+   * @property {string} k_resource Asset primary key in {@link \RsResourceSql} table.
    */
 
   /**
-   * The list of assets. Every element has the next keys:
-   * <dl><dt>int [<var>i_index</var>]</dt><dd>The asset index in the layout.</dd>
-   * <dt>string <var>k_resource</var></dt><dd>The asset primary key.</dd></dl>
+   * List of assets. Every element has next keys:
+   * <dl><dt>int [<var>i_index</var>]</dt><dd>Asset index in layout.</dd>
+   * <dt>string <var>k_resource</var></dt><dd>Asset primary key in {@link \RsResourceSql} table.</dd></dl>
    *
-   * This can only be specified for service bookings.
+   * May be specified for service booking only.
    *
    * @get get
    * @type {Wl_Appointment_Book_Conflict_ConflictModel_a_resource[]}
@@ -54,7 +57,17 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.a_resource = [];
 
   /**
-   * The date/time of appointment in the location's time zone.
+   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * There may be empty values in this list, which means that this is a walk-in.
+   *
+   * @get get
+   * @post get
+   * @type {string[]}
+   */
+  this.a_uid = [];
+
+  /**
+   * Date/time of appointment. In location timezone.
    *
    * @get get
    * @type {string}
@@ -62,8 +75,8 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.dt_date = "";
 
   /**
-   * The appointment duration.
-   * This must only be specified for asset bookings.
+   * Appointment duration.
+   * Must be specified for asset booking only.
    *
    * @get get
    * @type {number}
@@ -71,8 +84,17 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.i_duration = 0;
 
   /**
-   * The appointment primary key.
-   * This will be empty for new appointments.
+   * `true` if client is walk-in, otherwise `false`.
+   *
+   * @get get
+   * @post get
+   * @type {boolean}
+   */
+  this.is_walk_in = false;
+
+  /**
+   * Appointment primary key in {@link \RsAppointmentSql} table.
+   * Empty for a new appointment.
    *
    * @get get
    * @type {string}
@@ -80,7 +102,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_appointment = "0";
 
   /**
-   * The location to show the available appointment booking schedule for.
+   * Location to show available appointment booking schedule.
    *
    * @get get,result
    * @post get
@@ -89,8 +111,8 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_location = "0";
 
   /**
-   * The asset primary key.
-   * This will be empty for service bookings.
+   * Asset primary key in {@link \RsResourceSql} table.
+   * Empty for service booking.
    *
    * @get get
    * @type {string}
@@ -98,8 +120,8 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_resource = "0";
 
   /**
-   * The service primary key.
-   * This will be empty for asset bookings.
+   * Service primary key in {@link \RsServiceSql} table.
+   * Empty for asset booking.
    *
    * @get get
    * @type {string}
@@ -107,7 +129,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_service = "0";
 
   /**
-   * The staff member primary key.
+   * Staff member primary key in {@link \RsStaffSql} table.
    *
    * @get get
    * @type {string}
@@ -115,7 +137,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.k_staff = "0";
 
   /**
-   * The user to get information for.
+   * User to get information for.
    *
    * @get get
    * @post get
@@ -133,5 +155,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Conflict_ConflictModel);
  */
 Wl_Appointment_Book_Conflict_ConflictModel.prototype.config=function()
 {
-  return {"a_field": {"a_conflict": {"get": {"result": true}},"a_product": {"get": {"get": true}},"a_repeat": {"get": {"get": true}},"a_resource": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"k_appointment": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_staff": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_conflict": {"get": {"result": true}},"a_product": {"get": {"get": true}},"a_repeat": {"get": {"get": true}},"a_resource": {"get": {"get": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_staff": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

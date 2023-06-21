@@ -18,7 +18,7 @@ function Wl_Report_Collection_Dynamic_ReportListModel()
   /**
    * @typedef {{}} Wl_Report_Collection_Dynamic_ReportListModel_a_report_list
    * @property {number} i_position Position of the report in the list of available collection reports. Always 0 in this method.
-   * @property {number} id_report Report ID, one of {@link \RsReportSid}.
+   * @property {number} id_report Report ID, one of {@link RsReportSid}.
    * @property {string} text_title Report title.
    */
 
@@ -35,7 +35,7 @@ function Wl_Report_Collection_Dynamic_ReportListModel()
    *     int <var>id_report</var>
    *   </dt>
    *   <dd>
-   *     Report ID, one of {@link \RsReportSid}.
+   *     Report ID, one of {@link RsReportSid}.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
@@ -51,7 +51,7 @@ function Wl_Report_Collection_Dynamic_ReportListModel()
   this.a_report_list = undefined;
 
   /**
-   * CID of a subclass of {@link DynamicCollection}.
+   * CID of a subclass of {@link Wl\Report\Collection\DynamicCollection}.
    *
    * @get get
    * @type {number}
@@ -59,7 +59,7 @@ function Wl_Report_Collection_Dynamic_ReportListModel()
   this.cid_dynamic_collection = 0;
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @type {string}
@@ -67,7 +67,7 @@ function Wl_Report_Collection_Dynamic_ReportListModel()
   this.k_business = "";
 
   /**
-   * User key. Primary key in the {@link \PassportLoginSql} table.
+   * User key.
    *
    * Must be the same as currently logged-in user.
    *
@@ -92,9 +92,9 @@ Wl_Report_Collection_Dynamic_ReportListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_Collection_Dynamic_ReportListModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table. Must be the same as currently logged-in user.
- * @param {number} cid_dynamic_collection CID of a subclass of {@link DynamicCollection}.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key. Must be the same as currently logged-in user.
+ * @param {number} cid_dynamic_collection CID of a subclass of {@link Wl\Report\Collection\DynamicCollection}.
  * @returns {Wl_Report_Collection_Dynamic_ReportListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

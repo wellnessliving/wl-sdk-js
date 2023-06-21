@@ -12,8 +12,8 @@ function Wl_Franchise_Transfer_TransferAddModel()
 
   /**
    * End date of temporary transfer.
-   * Set if {@link \Wl\Franchise\Transfer\TransferAddApi::$id_transfer_period} equals to
-   * {@link \Wl\Franchise\Transfer\TransferPeriodSid::RANGE} constant, otherwise <tt>null</tt>.
+   * Set if {@link Wl_Franchise_Transfer_TransferAddModel.id_transfer_period} equals to
+   * {@link Wl_Franchise_Transfer_TransferPeriodSid.RANGE} constant, otherwise <tt>null</tt>.
    *
    * @post post
    * @type {?string}
@@ -22,8 +22,8 @@ function Wl_Franchise_Transfer_TransferAddModel()
 
   /**
    * Start date of temporary transfer.
-   * Set if {@link \Wl\Franchise\Transfer\TransferAddApi::$id_transfer_period} equals to
-   * {@link \Wl\Franchise\Transfer\TransferPeriodSid::RANGE} constant, otherwise <tt>null</tt>.
+   * Set if {@link Wl_Franchise_Transfer_TransferAddModel.id_transfer_period} equals to
+   * {@link Wl_Franchise_Transfer_TransferPeriodSid.RANGE} constant, otherwise <tt>null</tt>.
    *
    * @post post
    * @type {?string}
@@ -32,8 +32,8 @@ function Wl_Franchise_Transfer_TransferAddModel()
 
   /**
    * Number of days of temporary transfer.
-   * Set if {@link \Wl\Franchise\Transfer\TransferAddApi::$id_transfer_period} equals to
-   * {@link \Wl\Franchise\Transfer\TransferPeriodSid::DAY} constant, otherwise <tt>null</tt>.
+   * Set if {@link Wl_Franchise_Transfer_TransferAddModel.id_transfer_period} equals to
+   * {@link Wl_Franchise_Transfer_TransferPeriodSid.DAY} constant, otherwise <tt>null</tt>.
    *
    * @post post
    * @type {?number}
@@ -41,7 +41,7 @@ function Wl_Franchise_Transfer_TransferAddModel()
   this.i_day = null;
 
   /**
-   * Transfer direction ID. One of {@link \Wl\Franchise\Transfer\TransferDirectionSid} constants.
+   * Transfer direction ID. One of {@link Wl_Franchise_Transfer_TransferDirectionSid} constants.
    *
    * @post post
    * @type {number}
@@ -49,7 +49,7 @@ function Wl_Franchise_Transfer_TransferAddModel()
   this.id_transfer_direction = undefined;
 
   /**
-   * Transfer period ID. One of {@link \Wl\Franchise\Transfer\TransferPeriodSid} constants.
+   * Transfer period ID. One of {@link Wl_Franchise_Transfer_TransferPeriodSid} constants.
    *
    * @post post
    * @type {number}
@@ -57,7 +57,7 @@ function Wl_Franchise_Transfer_TransferAddModel()
   this.id_transfer_period = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    * This is business in which the transfer takes place.
    *
    * @post post
@@ -66,7 +66,7 @@ function Wl_Franchise_Transfer_TransferAddModel()
   this.k_business = undefined;
 
   /**
-   * Location key. Primary key in {@link \RsLocationSql} table.
+   * Location key.
    * This is a location where the transfer takes place.
    *
    * @post post
@@ -75,7 +75,7 @@ function Wl_Franchise_Transfer_TransferAddModel()
   this.k_location_to = undefined;
 
   /**
-   * Transferred user key. Primary key in the {@link \PassportLoginSql} table.
+   * Transferred user key.
    *
    * @post post
    * @type {string}

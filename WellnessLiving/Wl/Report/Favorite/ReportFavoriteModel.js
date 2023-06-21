@@ -18,7 +18,7 @@ function Wl_Report_Favorite_ReportFavoriteModel()
   /**
    * CID of the controller.
    *
-   * Subclass of the {@link ReportViewControllerAbstract}.
+   * Subclass of the {@link Wl\Report\View\ReportViewControllerAbstract}.
    *
    * @delete get
    * @get get
@@ -37,8 +37,6 @@ function Wl_Report_Favorite_ReportFavoriteModel()
 
   /**
    * Business key within which request is performed.
-   *
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @delete get
    * @get get
@@ -83,7 +81,7 @@ Wl_Report_Favorite_ReportFavoriteModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_Favorite_ReportFavoriteModel.instanceGet
- * @param {number} cid_controller CID of the controller. Subclass of the {@link ReportViewControllerAbstract}.
+ * @param {number} cid_controller CID of the controller. Subclass of the {@link Wl\Report\View\ReportViewControllerAbstract}.
  * @param {string} k_report_save Saved report key to manage.
  * @returns {Wl_Report_Favorite_ReportFavoriteModel}
  * @see WlSdk_ModelAbstract.instanceGet()

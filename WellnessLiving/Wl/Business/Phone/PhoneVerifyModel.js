@@ -20,7 +20,7 @@ function Wl_Business_Phone_PhoneVerifyModel()
   this.is_new_number = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql}.
+   * Business key.
    * It is necessary to get business locale settings and normalize phone number.
    *
    * @get get

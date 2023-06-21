@@ -12,7 +12,6 @@ function Wl_Postcard_Campaign_CampaignModel()
 
   /**
    * ID of mail campaign.
-   * Primary key in {@link \Wl\Postcard\Campaign\CampaignSql} table.
    *
    * @delete get
    * @get get

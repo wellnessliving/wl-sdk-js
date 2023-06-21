@@ -30,7 +30,7 @@ function Wl_Business_User_Subscribe_SubscribeModel()
    * In case of getting information,
    * <tt>true</tt> if user has sms subscription on business, <tt>false</tt> otherwise.
    * In case of changing subscription,
-   * <tt>true</tt> if subscribe user on business, <tt>false</tt> if unsubscribe user on business.
+   * <tt>true</tt> if subscribe user on business, <tt>false</tt> is unsubscribe user on business.
    *
    * <tt>null</tt> until loaded.
    *
@@ -41,10 +41,9 @@ function Wl_Business_User_Subscribe_SubscribeModel()
   this.is_subscribe_sms = null;
 
   /**
-   * Business key
+   * Business key.
    * Key of the business for which user will subscribe, unsubscribe,
    * receive information about the status of the subscription.
-   * Primary key in the {@link RsBusinessSql} table.
    *
    * @get get
    * @put get
@@ -55,7 +54,6 @@ function Wl_Business_User_Subscribe_SubscribeModel()
   /**
    * User key.
    * The key of the user whose subscription status needs to check or switch to subscribe / unsubscribe.
-   * Primary key in {@link PassportLoginSql} table.
    *
    * @get get
    * @put get

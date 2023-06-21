@@ -12,7 +12,7 @@ function Wl_Report_Background_GenerateReportModel()
 
   /**
    * Status of the report background generation.
-   * One of {@link \Wl\Report\Accumulation\ReportAccumulationStatusSid} constants.
+   * One of {@link Wl_Report_Accumulation_ReportAccumulationStatusSid} constants.
    * <tt>0</tt> in case of report title updating.
    *
    * @get result
@@ -47,7 +47,7 @@ function Wl_Report_Background_GenerateReportModel()
    * @get get
    * @post get
    * @put get
-   * @type {*}
+   * @type {string}
    */
   this.k_report_accumulation = undefined;
 

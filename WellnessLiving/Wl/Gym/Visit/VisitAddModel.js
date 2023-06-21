@@ -52,7 +52,7 @@ function Wl_Gym_Visit_VisitAddModel()
   this.is_pay = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @post get
    * @type {string}
@@ -60,7 +60,7 @@ function Wl_Gym_Visit_VisitAddModel()
   this.k_business = undefined;
 
   /**
-   * Location key. Primary key in {@link \RsLocationSql} table.
+   * Location key.
    *
    * @post get
    * @type {string}
@@ -70,10 +70,8 @@ function Wl_Gym_Visit_VisitAddModel()
   /**
    * User key who book gym visit.
    *
-   * Primary key in {@link \PassportLoginSql} table.
-   *
    * @post get
-   * @type {number}
+   * @type {string}
    */
   this.uid = undefined;
 

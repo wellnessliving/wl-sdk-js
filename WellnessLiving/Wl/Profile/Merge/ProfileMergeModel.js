@@ -13,8 +13,8 @@ function Wl_Profile_Merge_ProfileMergeModel()
   /**
    * List of fields to save.
    *
-   * Keys are keys of fields. Primary key in the {@link \RsFieldSql} table.
-   * Values are keys of users from whose profile field value is needed save. Primary key in the {@link \PassportLoginSql} table.
+   * Keys are keys of fields.
+   * Values are keys of users from whose profile field value is needed save.
    *
    * @post get
    * @type {{}}
@@ -22,7 +22,7 @@ function Wl_Profile_Merge_ProfileMergeModel()
   this.a_field_save = [];
 
   /**
-   * List of user keys to merge. One element is primary key in {@link PassportLoginSql}.
+   * List of user keys to merge. One element is primary key in {@link \PassportLoginSql}.
    *
    * @post get
    * @type {string[]}
@@ -30,7 +30,7 @@ function Wl_Profile_Merge_ProfileMergeModel()
   this.a_uid = [];
 
   /**
-   * Key of current business. Primary key in {@link RsBusinessSql} table.
+   * Key of current business.
    *
    * @post get
    * @type {string}
@@ -38,7 +38,7 @@ function Wl_Profile_Merge_ProfileMergeModel()
   this.k_business = "0";
 
   /**
-   * Key of main user. Primary key in {@link PassportLoginSql} table.
+   * Key of main user.
    * <tt>null</tt> if not set yet.
    *
    * @post result

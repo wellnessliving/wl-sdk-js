@@ -60,7 +60,7 @@ function Wl_Catalog_Cart_DiscountCodeModel()
 
   /**
    * @typedef {{}} Wl_Catalog_Cart_DiscountCodeModel_a_item
-   * @property {number} id_sale Purchase ite sale category. Constant from {@link \RsSaleSid}.
+   * @property {number} id_sale Purchase ite sale category. Constant from {@link RsSaleSid}.
    * @property {string} k_id Purchase item key.
    */
 
@@ -69,7 +69,7 @@ function Wl_Catalog_Cart_DiscountCodeModel()
    *
    * <dl>
    *  <dt>int <var>id_sale</var></dt>
-   *  <dd>Purchase ite sale category. Constant from {@link \RsSaleSid}.</dd>
+   *  <dd>Purchase ite sale category. Constant from {@link RsSaleSid}.</dd>
    *  <dt>string <var>k_id</var></dt>
    *  <dd>Purchase item key.</dd>
    * </dl>

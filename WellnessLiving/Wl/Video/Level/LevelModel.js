@@ -1,5 +1,5 @@
 /**
- * Api for retrieves/change/delete video level.
+ * An endpoint that retrieves, changes, or deletes a video level.
  *
  * This model is generated automatically based on API.
  *
@@ -11,8 +11,7 @@ function Wl_Video_Level_LevelModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * <tt>true</tt> if confirmation for delete video level which currently
-   * associated to one or more videos, <tt>false</tt> otherwise.
+   * If `true`, confirmation is required to delete videos. Otherwise, this will be `false`.
    *
    * @delete get
    * @type {boolean}
@@ -20,7 +19,7 @@ function Wl_Video_Level_LevelModel()
   this.is_delete_confirm = undefined;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @delete get
    * @get get
@@ -31,7 +30,7 @@ function Wl_Video_Level_LevelModel()
   this.k_business = undefined;
 
   /**
-   * Video level key.
+   * The video level key.
    *
    * @delete get
    * @get get
@@ -42,7 +41,7 @@ function Wl_Video_Level_LevelModel()
   this.k_video_level = undefined;
 
   /**
-   * Title of the video level.
+   * The video level title.
    *
    * @post post
    * @put post

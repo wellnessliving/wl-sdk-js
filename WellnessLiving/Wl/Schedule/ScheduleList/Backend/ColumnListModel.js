@@ -42,19 +42,28 @@ function Wl_Schedule_ScheduleList_Backend_ColumnListModel()
   this.a_column = undefined;
 
   /**
+   * Column list.
+   * Each element has next structure described here {@link Wl_Schedule_ScheduleList_Backend_ColumnListModel.a_column}
+   *
+   * @post post
+   * @type {{}}
+   */
+  this.a_column_set = undefined;
+
+  /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_business = undefined;
 
   /**
    * User's UID key.
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.uid = undefined;
@@ -69,14 +78,14 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_Backend_ColumnListModel);
  */
 Wl_Schedule_ScheduleList_Backend_ColumnListModel.prototype.config=function()
 {
-  return {"a_field": {"a_column": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_column": {"get": {"result": true}},"a_column_set": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Schedule_ScheduleList_Backend_ColumnListModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {string} uid User's UID key. Primary key in the {@link \PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User's UID key.
  * @returns {Wl_Schedule_ScheduleList_Backend_ColumnListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

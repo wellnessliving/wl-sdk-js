@@ -1,5 +1,5 @@
 /**
- * Api for change order of video levels.
+ * An endpoint that changes the order of video levels.
  *
  * This model is generated automatically based on API.
  *
@@ -17,16 +17,16 @@ function Wl_Video_Level_LevelListModel()
 
   /**
    * @typedef {{}} Wl_Video_Level_LevelListModel_a_level_list
-   * @property {string} k_video_level Video level key.
-   * @property {string} text_title Title of the video level.
+   * @property {string} k_video_level The video level key.
+   * @property {string} text_title The video level title.
    */
 
   /**
-   * List of video levels. Has next structure: <dl>
+   * A list of video levels with the following structure: <dl>
    *   <dt>string <var>k_video_level</var></dt>
-   *   <dd>Video level key.</dd>
+   *   <dd>The video level key.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>Title of the video level.</dd>
+   *   <dd>The video level title.</dd>
    * </dl>
    *
    * @get result
@@ -35,7 +35,7 @@ function Wl_Video_Level_LevelListModel()
   this.a_level_list = [];
 
   /**
-   * List of video level keys in order to be saved.
+   * A list of video level keys in the order to be saved.
    *
    * @put post
    * @type {string[]}
@@ -43,7 +43,7 @@ function Wl_Video_Level_LevelListModel()
   this.a_order = [];
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @put get
@@ -67,7 +67,7 @@ Wl_Video_Level_LevelListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Video_Level_LevelListModel.instanceGet
- * @param {string} k_business Business key.
+ * @param {string} k_business The business key.
  * @returns {Wl_Video_Level_LevelListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

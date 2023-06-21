@@ -12,7 +12,7 @@ function Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseListModel()
 
   /**
    * @typedef {{}} Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseListModel_a_list
-   * @property {string} k_reimbursement_refuse Insurance reimbursement refuse key. Primary key from {@link \Wl\Insurance\Reimbursement\Refuse\ReimbursementRefuseSql} table.
+   * @property {string} k_reimbursement_refuse Insurance reimbursement refuse key.
    * @property {string} text_code Code of the reason, which should be unique per partner.
    * @property {string} text_description_provider Description of the refuse from provider.
    * @property {string} text_display Description of the refuse, which should be shown in reimbursement reports. This field is filled by franchise owner.
@@ -26,7 +26,7 @@ function Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseListModel()
    *     string <var>k_reimbursement_refuse</var>
    *   </dt>
    *   <dd>
-   *     Insurance reimbursement refuse key. Primary key from {@link \Wl\Insurance\Reimbursement\Refuse\ReimbursementRefuseSql} table.
+   *     Insurance reimbursement refuse key.
    *   </dd>
    *   <dt>
    *     string <var>text_code</var>
@@ -60,8 +60,8 @@ function Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseListModel()
   this.a_list = undefined;
 
   /**
-   * Status of the refuse message. One of {@link \Wl\Insurance\Reimbursement\Refuse\Filter\FilterRefuseMessageSelectSid} constants.
-   * Default value {@link \Wl\Insurance\Reimbursement\Refuse\Filter\FilterRefuseMessageSelectSid::ALL}.
+   * Status of the refuse message. One of {@link Wl_Insurance_Reimbursement_Refuse_Filter_FilterRefuseMessageSelectSid} constants.
+   * Default value {@link Wl_Insurance_Reimbursement_Refuse_Filter_FilterRefuseMessageSelectSid.ALL}.
    *
    * @get get
    * @type {number}
@@ -69,7 +69,7 @@ function Wl_Insurance_Reimbursement_Refuse_ReimbursementRefuseListModel()
   this.id_refuse_message = 3;
 
   /**
-   * Insurance provider key. Primary key in {@link \Wl\Integration\Curves\PartnerSql} table, <tt>null</tt> if field is not set.
+   * Insurance provider key. <tt>null</tt> if field is not set.
    *
    * @get get
    * @type {?string}

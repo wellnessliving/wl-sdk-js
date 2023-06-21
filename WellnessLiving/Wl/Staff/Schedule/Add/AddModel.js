@@ -1,5 +1,5 @@
 /**
- * Model to add available/unavailable working time.
+ * Model to add available/unavailable working time for staff.
  *
  * This model is generated automatically based on API.
  *
@@ -11,9 +11,10 @@ function Wl_Staff_Schedule_Add_AddModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of working days, constants from {@link \ADateWeekSid}.
+   * List of working days, constants from {@link ADateWeekSid}.
    *
    * @post post
+   * @see ADateWeekSid
    * @type {number[]}
    */
   this.a_day = [];
@@ -28,6 +29,14 @@ function Wl_Staff_Schedule_Add_AddModel()
    * @type {string[]}
    */
   this.a_service = [];
+
+  /**
+   * Staff period key.
+   *
+   * @post result
+   * @type {string[]}
+   */
+  this.a_staff_period = undefined;
 
   /**
    * End date of working period.
@@ -62,9 +71,9 @@ function Wl_Staff_Schedule_Add_AddModel()
   this.dt_start_time = "";
 
   /**
-   * Count of the periods which specified in {@link AddApi::$id_repeat}.
+   * Count of the periods which specified in {@link Wl_Staff_Schedule_Add_AddModel.id_repeat}.
    *
-   * If this field is absent default value {@link \Wl\Classes\Period\Period::REPEAT_COUNT} is used.
+   * If this field is absent default value {@link Wl\Classes\Period\Period::REPEAT_COUNT_DEFAULT} is used.
    *
    * @post post
    * @type {number}
@@ -72,9 +81,9 @@ function Wl_Staff_Schedule_Add_AddModel()
   this.i_repeat = 0;
 
   /**
-   * Measuring unit of {@link AddApi::$i_repeat}. One of {@link ADurationSid} constants.
+   * Measuring unit of {@link Wl_Staff_Schedule_Add_AddModel.i_repeat}. One of {@link ADurationSid} constants.
    *
-   * If this field is absent default value {@link \Wl\Classes\Period\Period::REPEAT_PERIOD} is used.
+   * If this field is absent default value {@link Wl\Classes\Period\Period::REPEAT_PERIOD_DEFAULT} is used.
    *
    * @post post
    * @type {number}
@@ -84,8 +93,8 @@ function Wl_Staff_Schedule_Add_AddModel()
   /**
    * Whether model works with available working time.
    *
-   * <tt>true</tt> means available working time.
-   * <tt>false</tt> means unavailable working time.
+   * <tt>false</tt> means available working time.
+   * <tt>true</tt> means unavailable working time.
    *
    * @post post
    * @type {boolean}
@@ -112,7 +121,7 @@ function Wl_Staff_Schedule_Add_AddModel()
   this.is_service_all = false;
 
   /**
-   * Business key. Primary key in {@link RsBusinessSql} table.
+   * Business key.
    *
    * @post get
    * @type {string}
@@ -120,7 +129,7 @@ function Wl_Staff_Schedule_Add_AddModel()
   this.k_business = "";
 
   /**
-   * Location key. Primary key in {@link RsLocationSql} table.
+   * Location key.
    *
    * @post post
    * @type {string}
@@ -128,7 +137,7 @@ function Wl_Staff_Schedule_Add_AddModel()
   this.k_location = "";
 
   /**
-   * Staff key. Primary key in {@link RsStaffSql} table.
+   * Staff key.
    *
    * @post post
    * @type {string}
@@ -153,5 +162,5 @@ WlSdk_ModelAbstract.extend(Wl_Staff_Schedule_Add_AddModel);
  */
 Wl_Staff_Schedule_Add_AddModel.prototype.config=function()
 {
-  return {"a_field": {"a_day": {"post": {"post": true}},"a_service": {"post": {"post": true}},"dt_end_date": {"post": {"post": true}},"dt_end_time": {"post": {"post": true}},"dt_start_date": {"post": {"post": true}},"dt_start_time": {"post": {"post": true}},"i_repeat": {"post": {"post": true}},"id_repeat": {"post": {"post": true}},"is_break": {"post": {"post": true}},"is_eternal": {"post": {"post": true}},"is_service_all": {"post": {"post": true}},"k_business": {"post": {"get": true}},"k_location": {"post": {"post": true}},"k_staff": {"post": {"post": true}},"text_note": {"post": {"post": true}}}};
+  return {"a_field": {"a_day": {"post": {"post": true}},"a_service": {"post": {"post": true}},"a_staff_period": {"post": {"result": true}},"dt_end_date": {"post": {"post": true}},"dt_end_time": {"post": {"post": true}},"dt_start_date": {"post": {"post": true}},"dt_start_time": {"post": {"post": true}},"i_repeat": {"post": {"post": true}},"id_repeat": {"post": {"post": true}},"is_break": {"post": {"post": true}},"is_eternal": {"post": {"post": true}},"is_service_all": {"post": {"post": true}},"k_business": {"post": {"get": true}},"k_location": {"post": {"post": true}},"k_staff": {"post": {"post": true}},"text_note": {"post": {"post": true}}}};
 };

@@ -24,11 +24,12 @@ function Wl_Report_Collection_Dynamic_CollectionManageModel()
    *    <dt>int <var>i_position</var></dt>
    *    <dd>Report's position in the collection.</dd>
    *    <dt>int <var>id_report</var></dt>
-   *    <dd>Report ID, one of {@link \RsReportSid}.</dd>
+   *    <dd>Report ID, one of {@link RsReportSid}.</dd>
    * </dl>
    *
    * @get result
    * @put post
+   * @see RsReportSid
    * @type {?number[][]}
    */
   this.a_report_list = null;
@@ -43,7 +44,6 @@ function Wl_Report_Collection_Dynamic_CollectionManageModel()
 
   /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
    * @put get
@@ -52,7 +52,7 @@ function Wl_Report_Collection_Dynamic_CollectionManageModel()
   this.k_business = "";
 
   /**
-   * Key of the dynamic collection to manage. Primary key in {@link DynamicCollectionSql} table.
+   * Key of the dynamic collection to manage.
    *
    * @get get
    * @put get
@@ -93,9 +93,9 @@ Wl_Report_Collection_Dynamic_CollectionManageModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_Collection_Dynamic_CollectionManageModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @param {string} k_business Business key.
  * @param {string} uid Key of the user performing the request. Must be the same as currently logged-in user.
- * @param {string} k_dynamic_collection Key of the dynamic collection to manage. Primary key in {@link DynamicCollectionSql} table.
+ * @param {string} k_dynamic_collection Key of the dynamic collection to manage.
  * @returns {Wl_Report_Collection_Dynamic_CollectionManageModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

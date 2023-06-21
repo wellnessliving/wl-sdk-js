@@ -177,7 +177,7 @@ function Wl_Profile_Sensor_SensorListModel()
   this.i_page = 0;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get,result
    * @type {string}
@@ -185,7 +185,7 @@ function Wl_Profile_Sensor_SensorListModel()
   this.k_business = "0";
 
   /**
-   * User key. Primary key in {@link \PassportLoginSql} table.
+   * User key.
    *
    * @get get,result
    * @type {string}

@@ -1,5 +1,5 @@
 /**
- * Generates notepad for user sign in form.
+ * Retrieve the notepad value from the server which is used to log someone in to the SDK.
  *
  * This model is generated automatically based on API.
  *
@@ -19,7 +19,7 @@ function Core_Passport_Login_Enter_NotepadModel()
   this.s_hash = undefined;
 
   /**
-   * Value of a cryptographic nonce to hash user password. Length is {@link \Core\Passport\Login\Enter\NotepadApi::NONCE_LENGTH} characters.
+   * The notepad value, it is used to hash user's the password. Length is {@link Core_Passport_Login_Enter_NotepadModel.NONCE_LENGTH} characters.
    *
    * @get result
    * @type {string}

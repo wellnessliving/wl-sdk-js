@@ -37,6 +37,14 @@ function Wl_Mail_Pattern_Edit_MailPatternEditModel()
   this.has_max_review_request = null;
 
   /**
+   * The number of affected clients.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_affected_clients = 0;
+
+  /**
    * The amount for the new delay before sending mail.
    *
    * <tt>null</tt> if not loaded.
@@ -98,6 +106,19 @@ function Wl_Mail_Pattern_Edit_MailPatternEditModel()
   this.is_after_every = null;
 
   /**
+   * Whether emails should be sent to members in churn risk group (Only for automated marketing).
+   *
+   * `true` if sent mails only to members in churn risk group.
+   * `false` if sent mails not only to members in churn risk group.
+   *
+   * <tt>null</tt> if not set.
+   *
+   * @get get
+   * @type {?boolean}
+   */
+  this.is_churn_risk = null;
+
+  /**
    * Whether mail will be sent after the client has made a review.
    * <tt>true</tt> to send the mail, <tt>false</tt> to disable sending the mail. <tt>null</tt> if not set.
    *
@@ -108,7 +129,7 @@ function Wl_Mail_Pattern_Edit_MailPatternEditModel()
 
   /**
    * Whether need to prevent sending email without fulfilling a certain condition.
-   * For example, for email {@link \RaMailSid::PROMOTION_PURCHASE} and {@link \RaMailSid::LEAD_CAPTURE}
+   * For example, for email {@link RaMailSid.PROMOTION_PURCHASE} and {@link RaMailSid.LEAD_CAPTURE}
    * <tt>true</tt> means that mail will not be sent to clients who make any new purchase, <tt>false</tt> otherwise.
    * After change.
    *
@@ -120,7 +141,7 @@ function Wl_Mail_Pattern_Edit_MailPatternEditModel()
   this.is_prevent = null;
 
   /**
-   * Key of retention location. Primary key in {@link \RsLocationSql} table.
+   * Key of retention location.
    *
    * <tt>null</tt> if not set.
    *
@@ -130,7 +151,7 @@ function Wl_Mail_Pattern_Edit_MailPatternEditModel()
   this.k_location_retention = null;
 
   /**
-   * Key of the mail pattern. Primary key in {@link \RsMailPatternSql} table.
+   * Key of the mail pattern.
    *
    * <tt>null</tt> if not loaded.
    *
@@ -150,6 +171,14 @@ function Wl_Mail_Pattern_Edit_MailPatternEditModel()
    */
   this.s_object = null;
 
+  /**
+   * URL for client report.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_report = undefined;
+
   this.changeInit();
 }
 
@@ -160,5 +189,5 @@ WlSdk_ModelAbstract.extend(Wl_Mail_Pattern_Edit_MailPatternEditModel);
  */
 Wl_Mail_Pattern_Edit_MailPatternEditModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_type": {"get": {"get": true}},"a_member_group": {"get": {"get": true}},"has_max_review_request": {"get": {"get": true}},"i_after": {"get": {"get": true}},"i_delay": {"get": {"get": true}},"i_max_review_request": {"get": {"get": true}},"id_duration_delay": {"get": {"get": true}},"is_affected_client": {"get": {"result": true}},"is_after_every": {"get": {"get": true}},"is_disable_review_request_after_review": {"get": {"get": true}},"is_prevent": {"get": {"get": true}},"k_location_retention": {"get": {"get": true}},"k_mail_pattern": {"get": {"get": true}},"s_object": {"get": {"get": true}}}};
+  return {"a_field": {"a_login_type": {"get": {"get": true}},"a_member_group": {"get": {"get": true}},"has_max_review_request": {"get": {"get": true}},"i_affected_clients": {"get": {"result": true}},"i_after": {"get": {"get": true}},"i_delay": {"get": {"get": true}},"i_max_review_request": {"get": {"get": true}},"id_duration_delay": {"get": {"get": true}},"is_affected_client": {"get": {"result": true}},"is_after_every": {"get": {"get": true}},"is_churn_risk": {"get": {"get": true}},"is_disable_review_request_after_review": {"get": {"get": true}},"is_prevent": {"get": {"get": true}},"k_location_retention": {"get": {"get": true}},"k_mail_pattern": {"get": {"get": true}},"s_object": {"get": {"get": true}},"url_report": {"get": {"result": true}}}};
 };

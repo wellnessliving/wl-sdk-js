@@ -28,13 +28,13 @@ function Wl_Reward_Action_ActionModel()
    *     string <var>k_reward_action</var>
    *   </dt>
    *   <dd>
-   *     ID of reward action. Primary key in {@link \RsRewardActionSql} table.
+   *     ID of reward action.
    *   </dd>
    *   <dt>
    *     string <var>k_reward_action_category</var>
    *   </dt>
    *   <dd>
-   *     ID of reward action category in database. Primary key in {@link \RsRewardActionCategorySql} table.
+   *     ID of reward action category in database.
    *   </dd>
    * </dl>
    *

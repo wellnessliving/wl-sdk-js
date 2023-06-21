@@ -75,7 +75,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.id_duration = undefined;
 
   /**
-   * Type of the rule, when repeatable sessions should end from {@link \RsRepeatEndSid}.
+   * Type of the rule, when repeatable sessions should end from {@link RsRepeatEndSid}.
    *
    * @get get
    * @type {number}
@@ -88,7 +88,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
    * <tt>true</tt> means to book the same day of month, <tt>false</tt> - the same day of week.
    *
    * @get get
-   * @type {number}
+   * @type {boolean}
    */
   this.is_month = undefined;
 

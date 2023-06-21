@@ -12,7 +12,6 @@ function Wl_Coupon_Edit_CouponRemoveModel()
 
   /**
    * ID of the Gift Card that should be removed.
-   * Primary key from {@link \RsCouponSql}.
    *
    * @post post
    * @type {string}

@@ -12,9 +12,7 @@ function Wl_Pay_Processor_CyberSource_CsPaValidateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Key of payment transaction that was previously created with {@link \Wl\Pay\Processor\CyberSource\CsPaSetupApi}.
-   *
-   * Primary key in {@link \RsPayTransactionSql}.
+   * Key of payment transaction that was previously created with {@link Wl_Pay_Processor_CyberSource_CsPaSetupModel}.
    *
    * @post post
    * @type {string}

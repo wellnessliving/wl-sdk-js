@@ -11,7 +11,7 @@ function Wl_Reward_Score_ScoreModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * IDs of activity. Primary keys in {@link RsLoginActivitySql} table.
+   * IDs of activity.
    *
    * @get get
    * @post get
@@ -20,7 +20,7 @@ function Wl_Reward_Score_ScoreModel()
   this.a_login_activity = [];
 
   /**
-   * Points which are earned for activity {@link \Wl\Reward\Score\ScoreApi::$a_login_activity}.
+   * Points which are earned for activity {@link Wl_Reward_Score_ScoreModel.a_login_activity}.
    *
    * @get result
    * @type {number}

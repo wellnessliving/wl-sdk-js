@@ -13,7 +13,7 @@ function Wl_Pay_Account_Charge_ChargeModel()
   /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link \RsPayForm::$a_pay_source}.
+   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
    *
    * @post post
    * @type {{}[]}
@@ -21,7 +21,7 @@ function Wl_Pay_Account_Charge_ChargeModel()
   this.a_pay_form = [];
 
   /**
-   * Key of source mode. One of {@link \Wl\Mode\ModeSid} constants.
+   * Key of source mode. One of {@link Wl_Mode_ModeSid} constants.
    *
    * @post post
    * @type {number}
@@ -49,10 +49,8 @@ function Wl_Pay_Account_Charge_ChargeModel()
   /**
    * ID of business within which changed user account exists.
    *
-   * Primary key in {@link RsBusinessSql}.
-   *
    * Should not be passed if user account is created already.
-   * In this case {@link ChargeApi::$k_pay_account} should be passed.
+   * In this case {@link Wl_Pay_Account_Charge_ChargeModel.k_pay_account} should be passed.
    *
    * If both business ID and account ID passed, system checks if given business is owner of specified account.
    *
@@ -64,10 +62,8 @@ function Wl_Pay_Account_Charge_ChargeModel()
   /**
    * ID of user account to refill.
    *
-   * Primary key in {@link RsPayAccountSql}.
-   *
    * May be 0 if user account is not created yet.
-   * In this case {@link ChargeApi::$k_business} and {@link ChargeApi::$uid} should be passed.
+   * In this case {@link Wl_Pay_Account_Charge_ChargeModel.k_business} and {@link Wl_Pay_Account_Charge_ChargeModel.uid} should be passed.
    *
    * If not passed, currency of account equals default business currency.
    *
@@ -78,7 +74,7 @@ function Wl_Pay_Account_Charge_ChargeModel()
 
   /**
    * ID of purchase that was created during payment. This value is only returned in a case a purchase was created.
-   * New purchase is created when {@link ChargeApi::$id_pay_account_charge} equals {@link \RsPayAccountChargeSid::AUTO}.
+   * New purchase is created when {@link Wl_Pay_Account_Charge_ChargeModel.id_pay_account_charge} equals {@link RsPayAccountChargeSid.AUTO}.
    *
    * @post result
    * @type {*}
@@ -104,10 +100,8 @@ function Wl_Pay_Account_Charge_ChargeModel()
   /**
    * ID of user whose account to refill.
    *
-   * Primary key in {@link PassportLoginSql}.
-   *
    * Should not be passed if user account is created already.
-   * In this case {@link ChargeApi::$k_pay_account} should be passed.
+   * In this case {@link Wl_Pay_Account_Charge_ChargeModel.k_pay_account} should be passed.
    *
    * If both user ID and account ID passed, system checks if given user is owner of specified account.
    *

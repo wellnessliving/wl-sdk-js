@@ -16,7 +16,7 @@ function Wl_Profile_Purchase_MailModel()
   this._s_key = "k_purchase,uid";
 
   /**
-   * Purchase ID. Primary key in {@link RsPurchaseSql} table.
+   * Purchase ID.
    *
    * @post get
    * @type {string}
@@ -24,7 +24,7 @@ function Wl_Profile_Purchase_MailModel()
   this.k_purchase = undefined;
 
   /**
-   * ID of user for who receipt should be sent. Primary key in {@link PassportLoginSql} table.
+   * ID of user for who receipt should be sent.
    *
    * @post get
    * @type {string}
@@ -47,8 +47,8 @@ Wl_Profile_Purchase_MailModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Purchase_MailModel.instanceGet
- * @param {string} k_purchase Purchase ID. Primary key in {@link RsPurchaseSql} table.
- * @param {string} uid ID of user for who receipt should be sent. Primary key in {@link PassportLoginSql} table.
+ * @param {string} k_purchase Purchase ID.
+ * @param {string} uid ID of user for who receipt should be sent.
  * @returns {Wl_Profile_Purchase_MailModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

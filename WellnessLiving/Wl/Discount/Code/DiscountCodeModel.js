@@ -17,7 +17,7 @@ function Wl_Discount_Code_DiscountCodeModel()
 
   /**
    * @typedef {{}} Wl_Discount_Code_DiscountCodeModel_a_list
-   * @property {string} k_discount_code Discount code key. Primary key in the {@link \Wl\Discount\Code\Sql} table.
+   * @property {string} k_discount_code Discount code key.
    * @property {string} text_discount_code Discount code title.
    */
 
@@ -26,7 +26,7 @@ function Wl_Discount_Code_DiscountCodeModel()
    *
    * Each element has next structure:<dl>
    * <dt>string <var>k_discount_code</var> </dt>
-   * <dd>Discount code key. Primary key in the {@link \Wl\Discount\Code\Sql} table.</dd>
+   * <dd>Discount code key.</dd>
    * <dt>string <var>text_discount_code</var></dt>
    * <dd>Discount code title.</dd>
    * </dl>

@@ -12,7 +12,7 @@ function Wl_Skin_ScheduleStandard_ScheduleStandardModel()
 
   /**
    * Skin data.
-   * Result of the {@link \RsSkinData::skin()} method.
+   * Result of the {@link RsSkinData::skin()} method.
    *
    * @get result
    * @type {{}}

@@ -29,8 +29,6 @@ function Wl_Business_Header_OwnerModel()
    *
    * As a result, this field may be empty. In this case, the location key will be setted.
    *
-   * Primary key from {@link \RsBusinessSql} table.
-   *
    * @get get,result
    * @type {string}
    */
@@ -38,8 +36,6 @@ function Wl_Business_Header_OwnerModel()
 
   /**
    * Key of current user location.
-   *
-   * Primary key from {@link \RsLocationSql} table.
    *
    * @get result
    * @type {string}
@@ -57,8 +53,6 @@ function Wl_Business_Header_OwnerModel()
 
   /**
    * The user key for which information will be loaded.
-   *
-   * Primary key from {@link \PassportLoginSql} table.
    *
    * @get get
    * @type {string}
@@ -89,8 +83,8 @@ Wl_Business_Header_OwnerModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Header_OwnerModel.instanceGet
- * @param {string} k_business The key of the business for which you want to get header information. As a result, this field may be empty. In this case, the location key will be setted. Primary key from {@link \RsBusinessSql} table.
- * @param {string} uid The user key for which information will be loaded. Primary key from {@link \PassportLoginSql} table.
+ * @param {string} k_business The key of the business for which you want to get header information. As a result, this field may be empty. In this case, the location key will be setted.
+ * @param {string} uid The user key for which information will be loaded.
  * @returns {Wl_Business_Header_OwnerModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

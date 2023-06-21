@@ -1,5 +1,5 @@
 /**
- * Api for get video tags.
+ * An endpoint that retrieves video tags.
  *
  * This model is generated automatically based on API.
  *
@@ -17,16 +17,16 @@ function Wl_Video_Tag_TagListModel()
 
   /**
    * @typedef {{}} Wl_Video_Tag_TagListModel_a_tag_list
-   * @property {string} k_video_tag Video tag key.
-   * @property {string} text_title Title of the video tag.
+   * @property {string} k_video_tag The video tag key.
+   * @property {string} text_title The video tag title.
    */
 
   /**
-   * List of video tags. Has next structure: <dl>
+   * A list of video tags with the following structure: <dl>
    *   <dt>string <var>k_video_tag</var></dt>
-   *   <dd>Video tag key.</dd>
+   *   <dd>The video tag key.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>Title of the video tag.</dd>
+   *   <dd>The video tag title.</dd>
    * </dl>
    *
    * @get result
@@ -35,7 +35,7 @@ function Wl_Video_Tag_TagListModel()
   this.a_tag_list = [];
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -58,7 +58,7 @@ Wl_Video_Tag_TagListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Video_Tag_TagListModel.instanceGet
- * @param {string} k_business Business key.
+ * @param {string} k_business The business key.
  * @returns {Wl_Video_Tag_TagListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

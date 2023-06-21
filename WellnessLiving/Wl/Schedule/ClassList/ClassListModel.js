@@ -1,5 +1,5 @@
 /**
- * Retrieves items of class schedule.
+ * An endpoint that retrieves a list of classes and class information for a Class Tab.
  *
  * This model is generated automatically based on API.
  *
@@ -17,111 +17,126 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * @typedef {{}} Wl_Schedule_ClassList_ClassListModel_a_session
-   * @property {string[]} a_staff Keys of staff who conduct session. Primary keys in {@link RsStaffSql} table.
-   * @property {string[]} a_virtual_location List of virtual locations keys. Each value is primary key in {@link \RsLocationSql} table.
-   * @property {string} dt_date Date/time of session start in UTC.
-   * @property {string} dt_time Time of session start in local timezone.
-   * @property {string} dtl_date Date/time of session start in location timezone.
-   * @property {boolean} hide_application Whether class will be hidden in the White Label mobile application.
-   *  <tt>true</tt> means that class will not be displayed, <tt>false</tt> otherwise.
-   * @property {number} i_day Day of the week when session is occurred. Constants of {@link ADateWeekSid}.
-   * @property {number} i_duration Day of the week when session is occurred. Constants of {@link ADateWeekSid}.
-   * @property {boolean} is_cancel <tt>true</tt> if class period was cancelled; <tt>false</tt> otherwise.
-   * @property {boolean} is_virtual <tt>true</tt> if class is virtual, <tt>false</tt> otherwise.
-   * @property {string} k_class Class key. Primary key in {@link RsClassSql} table.
-   * @property {string} k_class_period Session key. Primary key in {@link RsClassPeriodSql} table.
-   * @property {string} k_location Key of session location. Primary key in {@link RsLocationSql} table.
-   * @property {string} s_title Title of session.
+   * @property {string[]} a_class_tab Keys of class tab.
+   * @property {string[]} a_staff The list of staff keys for the staff member conducting the session.
+   * @property {string[]} a_virtual_location The list of virtual locations keys. Each value is a location key.
+   * @property {string} dt_date The date/time of the session start in UTC.
+   * @property {string} dt_time The time of the session start in the local time zone.
+   * @property {string} dtl_date The date/time of session start in the location's time zone.
+   * @property {boolean} hide_application Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the
+   *  class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
+   * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
+   * @property {number} i_duration The duration of the session in minutes.
+   * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
+   * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
+   * @property {string} k_class The class key.
+   * @property {string} k_class_period The class period key.
+   * @property {string} k_location The key of the session's location.
+   * @property {string} s_title The title of the session.
+   * @property {string} url_book The direct link to start booking on the WellnessLiving website.
    */
 
   /**
-   * List of classes sessions starting with the date {@link \Wl\Schedule\ClassList\ClassListApi::$dt_date} and in the 62 days ahead (or up to {@link \Wl\Schedule\ClassList\ClassListApi::$dt_end}). Every
-   * element has next keys:
+   * A list of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel.dt_date}
+   * and in the 62 days ahead (or up to {@link Wl_Schedule_ClassList_ClassListModel.dt_end}).
+   * Every element has the following keys:
    * <dl>
+   *   <dt>
+   *     string[] <var>a_class_tab</var>
+   *   </dt>
+   *   <dd>
+   *     Keys of class tab.
+   *   </dd>
    *   <dt>
    *     string[] <var>a_staff</var>
    *   </dt>
    *   <dd>
-   *     Keys of staff who conduct session. Primary keys in {@link RsStaffSql} table.
+   *     The list of staff keys for the staff member conducting the session.
    *   </dd>
    *   <dt>
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
-   *     List of virtual locations keys. Each value is primary key in {@link \RsLocationSql} table.
+   *     The list of virtual locations keys. Each value is a location key.
    *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
    *   </dt>
    *   <dd>
-   *     Date/time of session start in UTC.
+   *     The date/time of the session start in UTC.
    *   </dd>
    *   <dt>
    *     string <var>dt_time</var>
    *   </dt>
    *   <dd>
-   *     Time of session start in local timezone.
+   *     The time of the session start in the local time zone.
    *   </dd>
    *   <dt>
    *     string <var>dtl_date</var>
    *   </dt>
    *   <dd>
-   *     Date/time of session start in location timezone.
+   *     The date/time of session start in the location's time zone.
    *   </dd>
    *   <dt>
    *     bool <var>hide_application</var>
    *   </dt>
    *   <dd>
-   *      Whether class will be hidden in the White Label mobile application.
-   *      <tt>true</tt> means that class will not be displayed, <tt>false</tt> otherwise.
+   *      Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the
+   *      class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
    *   </dd>
    *   <dt>
    *     int <var>i_day</var>
    *   </dt>
    *   <dd>
-   *     Day of the week when session is occurred. Constants of {@link ADateWeekSid}.
+   *     The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    *   </dd>
    *   <dt>
    *     int <var>i_duration</var>
    *   </dt>
    *   <dd>
-   *     Day of the week when session is occurred. Constants of {@link ADateWeekSid}.
+   *     The duration of the session in minutes.
    *   </dd>
    *   <dt>
    *     bool <var>is_cancel</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if class period was cancelled; <tt>false</tt> otherwise.
+   *     If `true`, this class period was canceled. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>is_virtual</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if class is virtual, <tt>false</tt> otherwise.
+   *     If `true`, this class is virtual. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_class</var>
    *   </dt>
    *   <dd>
-   *     Class key. Primary key in {@link RsClassSql} table.
+   *     The class key.
    *   </dd>
    *   <dt>
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     Session key. Primary key in {@link RsClassPeriodSql} table.
+   *     The class period key.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     Key of session location. Primary key in {@link RsLocationSql} table.
+   *     The key of the session's location.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Title of session.
+   *     The title of the session.
+   *   </dd>
+   *   <dt>
+   *     string <var>url_book</var>
+   *   </dt>
+   *   <dd>
+   *     The direct link to start booking on the WellnessLiving website.
    *   </dd>
    * </dl>
    *
@@ -131,7 +146,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.a_session = undefined;
 
   /**
-   * Date of list start in location timezone.
+   * The list start date in UTC and in MySQL format.
    *
    * @get get
    * @type {string}
@@ -139,9 +154,9 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.dt_date = "";
 
   /**
-   * Date of list end in location timezone.
-   *
-   * Empty to end after a period {@link ClassListApi::DEFAULT_PERIOD} after start date {@link \Wl\Schedule\ClassList\ClassListApi::$dt_date}.
+   * The list end date in UTC and in MySQL format.
+   * If left empty, the default duration is {@link Wl_Schedule_ClassList_ClassListModel.DEFAULT_PERIOD} days after
+   * {@link Wl_Schedule_ClassList_ClassListModel.dt_date}.
    *
    * @get get
    * @type {string}
@@ -149,10 +164,8 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.dt_end = "";
 
   /**
-   * Whether need to retrieve list of classes sessions regardless tab specified in {@link EventListApi::$k_class_tab}.
-   *
-   * * <tt>true</tt> - retrieve list regardless specified tab.
-   * * <tt>false</tt> - retrieve list only for specific tab.
+   * If `true`, sessions from every class tab are returned. If `false`, use the
+   * {@link Wl_Schedule_ClassList_ClassListModel.k_class_tab} value.
    *
    * @get get
    * @type {boolean}
@@ -160,7 +173,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.is_tab_all = false;
 
   /**
-   * <tt>true</tt> - list of sessions contains sessions from different timezones; <tt>false</tt> - otherwise.
+   * If `true`, the list of sessions contains sessions from different time zones. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -168,8 +181,9 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.is_timezone_different = undefined;
 
   /**
-   * <tt>true</tt> - If exist at least one virtual event by specific {@link \Wl\Schedule\ClassList\ClassListApi::$k_business} and {@link \Wl\Schedule\ClassList\ClassListApi::$k_class_tab},
-   * <tt>false</tt> - otherwise.
+   * If `true`, there exists at least one virtual service by a specified
+   * {@link Wl_Schedule_ClassList_ClassListModel.k_business} and {@link Wl_Schedule_ClassList_ClassListModel.k_class_tab},
+   * Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -177,7 +191,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.is_virtual_service = undefined;
 
   /**
-   * Business primary key in {@link RsBusinessSql} table.
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -185,10 +199,10 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.k_business = "0";
 
   /**
-   * Primary key of booking tab in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table.
+   * The category tab key.
    *
-   * <tt>0</tt> means system default tab.
-   * ## Will be ignored if {@link ClassListApi::$is_tab_all} is <tt>true</tt>.
+   * This will be `null` if not set yet.
+   * This will be ignored if {@link Wl_Schedule_ClassList_ClassListModel.is_tab_all} is `true`.
    *
    * @get get
    * @type {string}
@@ -196,10 +210,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.k_class_tab = "0";
 
   /**
-   * Whether canceled class periods will be displayed or not.
-   *
-   * <tt>true</tt> - canceled class periods will be displayed;
-   * <tt>false</tt> - canceled class periods will not be displayed.
+   * If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
    *
    * @get get
    * @type {boolean}
@@ -207,9 +218,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.show_cancel = false;
 
   /**
-   * Current user key.
-   *
-   * <tt>null</tt> if user is not signed in.
+   * The user key.
    *
    * @get get
    * @type {string}
@@ -232,11 +241,11 @@ Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Schedule_ClassList_ClassListModel.instanceGet
- * @param {string} uid Current user key. <tt>null</tt> if user is not signed in.
- * @param {string} k_business Business primary key in {@link RsBusinessSql} table.
- * @param {string} k_class_tab Primary key of booking tab in {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table. <tt>0</tt> means system default tab. ## Will be ignored if {@link ClassListApi::$is_tab_all} is <tt>true</tt>.
- * @param {string} dt_date Date of list start in location timezone.
- * @param {boolean} show_cancel Whether canceled class periods will be displayed or not. <tt>true</tt> - canceled class periods will be displayed; <tt>false</tt> - canceled class periods will not be displayed.
+ * @param {string} uid The user key.
+ * @param {string} k_business The business key.
+ * @param {string} k_class_tab The category tab key. This will be `null` if not set yet. This will be ignored if {@link Wl_Schedule_ClassList_ClassListModel.is_tab_all} is `true`.
+ * @param {string} dt_date The list start date in UTC and in MySQL format.
+ * @param {boolean} show_cancel If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
  * @returns {Wl_Schedule_ClassList_ClassListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -20,7 +20,6 @@ function Wl_Report_Mail_PostcardSummaryModel()
 
   /**
    * Business in which clients must be searched.
-   * Primary key in {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -45,7 +44,7 @@ function Wl_Report_Mail_PostcardSummaryModel()
 
   /**
    * ID of the element with the list of receivers.
-   * See {@link \RsReportMail::list_set()}.
+   * See {@link RsReportMail::list_set()}.
    *
    * @get get
    * @type {string}

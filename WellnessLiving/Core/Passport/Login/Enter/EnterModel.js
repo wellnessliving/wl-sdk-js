@@ -1,5 +1,5 @@
 /**
- * Signs user in.
+ * Signs a user in.
  *
  * This model is generated automatically based on API.
  *
@@ -19,7 +19,7 @@ function Core_Passport_Login_Enter_EnterModel()
   this.json_data = [];
 
   /**
-   * Captcha.
+   * Answer to the captcha if needed.
    *
    * @post post
    * @type {string}
@@ -27,7 +27,7 @@ function Core_Passport_Login_Enter_EnterModel()
   this.s_captcha = "";
 
   /**
-   * User login.
+   * The user's login.
    *
    * @post post
    * @type {string}
@@ -35,9 +35,9 @@ function Core_Passport_Login_Enter_EnterModel()
   this.s_login = "";
 
   /**
-   * Notepad that is used to hash user password.
+   * A copy of notepad that was used to hash user password.
    *
-   * See {@link \Core\Passport\Login\Enter\EnterApi::$s_password} about hashing of user password.
+   * See {@link Core_Passport_Login_Enter_EnterModel.s_password} for details.
    *
    * @post post
    * @type {string}
@@ -45,7 +45,9 @@ function Core_Passport_Login_Enter_EnterModel()
   this.s_notepad = "";
 
   /**
-   * User password (evaluated with {@link Core_Passport_Login_Enter_NotepadModel.hash()}).
+   * The hash of the user password.
+   *
+   * Use `Core_Passport_Login_Enter_NotepadModel.hash()` to evaluate password hash.
    *
    * @post post
    * @type {string}
@@ -53,12 +55,13 @@ function Core_Passport_Login_Enter_EnterModel()
   this.s_password = "";
 
   /**
-   * Whether and how user login and password should be remembered.
+   * Whether and how the user login and password should be remembered.
    *
-   * Allowed values: <ul>
-   *   <li><tt>''</tt> - Empty line (default value) if you do not want to remember anything.</li>
-   *   <li><tt>'login'</tt> - To remember only user login.</li>
-   *   <li><tt>'password'</tt> - To remember user login and password.</li>
+   * The accepted values are as follows:
+   * <ul>
+   *   <li>`''` Empty line (default value) if you do not want to remember anything.</li>
+   *   <li>`'login'` Remember only user login.</li>
+   *   <li>`'password'` Remember user login and password.</li>
    * </ul>
    *
    * @post post

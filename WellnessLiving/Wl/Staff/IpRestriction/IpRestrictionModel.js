@@ -17,7 +17,7 @@ function Wl_Staff_IpRestriction_IpRestrictionModel()
 
   /**
    * @typedef {{}} Wl_Staff_IpRestriction_IpRestrictionModel_a_ip_restriction_a_role
-   * @property {number} id_privilege_role ID of a default system role from {@link \RsPrivilegeRoleSid} that this IP restriction applies to.
+   * @property {number} id_privilege_role ID of a default system role from {@link RsPrivilegeRoleSid} that this IP restriction applies to.
    * @property {string} k_business_role Key of a custom business role this IP restriction applies to.
    */
   /**
@@ -25,7 +25,7 @@ function Wl_Staff_IpRestriction_IpRestrictionModel()
    * @property {Wl_Staff_IpRestriction_IpRestrictionModel_a_ip_restriction_a_role} a_role Array of arrays that contain the following keys:
    * <dl>
    *   <dt>int <tt>id_privilege_role</tt></dt>
-   *   <dd>ID of a default system role from {@link \RsPrivilegeRoleSid} that this IP restriction applies to.</dd>
+   *   <dd>ID of a default system role from {@link RsPrivilegeRoleSid} that this IP restriction applies to.</dd>
    * 
    *   <dt>string <tt>k_business_role</tt></dt>
    *   <dd>Key of a custom business role this IP restriction applies to.</dd>
@@ -40,7 +40,7 @@ function Wl_Staff_IpRestriction_IpRestrictionModel()
    *   <dd>Array of arrays that contain the following keys:
    *     <dl>
    *       <dt>int <var>id_privilege_role</var></dt>
-   *       <dd>ID of a default system role from {@link \RsPrivilegeRoleSid} that this IP restriction applies to.</dd>
+   *       <dd>ID of a default system role from {@link RsPrivilegeRoleSid} that this IP restriction applies to.</dd>
    *
    *       <dt>string <var>k_business_role</var></dt>
    *       <dd>Key of a custom business role this IP restriction applies to.</dd>

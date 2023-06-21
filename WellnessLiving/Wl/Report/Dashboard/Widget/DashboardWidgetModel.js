@@ -21,8 +21,6 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetModel()
   /**
    * Business key.
    *
-   * Primary key in the {@link \RsBusinessSql} table.
-   *
    * @delete get
    * @put get
    * @type {string}
@@ -32,8 +30,6 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetModel()
   /**
    * Widget key.
    *
-   * Primary key in {@link \RsReportDashboardWidgetSql} table.
-   *
    * @delete get
    * @put get
    * @type {string}
@@ -42,8 +38,6 @@ function Wl_Report_Dashboard_Widget_DashboardWidgetModel()
 
   /**
    * User key.
-   *
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @delete get
    * @put get

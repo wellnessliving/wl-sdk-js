@@ -34,8 +34,6 @@ function Wl_Profile_Billing_BillingModel()
   /**
    * ID of a business to show information for.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @type {string}
    */
@@ -51,8 +49,6 @@ function Wl_Profile_Billing_BillingModel()
 
   /**
    * UID to retrieve information about.
-   *
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @get get
    * @type {string}
@@ -83,8 +79,8 @@ Wl_Profile_Billing_BillingModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Billing_BillingModel.instanceGet
- * @param {string} uid UID to retrieve information about. Primary key in {@link \PassportLoginSql}.
- * @param {string} k_business ID of a business to show information for. Primary key in {@link \RsBusinessSql}.
+ * @param {string} uid UID to retrieve information about.
+ * @param {string} k_business ID of a business to show information for.
  * @returns {Wl_Profile_Billing_BillingModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

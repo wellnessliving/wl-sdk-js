@@ -1,8 +1,8 @@
 /**
- * Retrieves information about WellnessLiving user.
+ * An endpoint that returns the profile information for a specific user.
  *
- * Can return public information about the staff.
- * To obtain full user information, you must have access to the requested user, otherwise there will be an access error.
+ * This endpoint can be used to return public information about a staff member or a user`s image. To obtain the
+ * user's full information, you'll need access to the requested user.
  *
  * This model is generated automatically based on API.
  *
@@ -20,15 +20,15 @@ function Wl_Login_LoginModel()
 
   /**
    * @typedef {{}} Wl_Login_LoginModel_a_login
-   * @property {number} id_gender User's gender. One of {@link GenderSid} constants.
-   * @property {string} k_staff User's key as staff member. Primary key in {@link \RsStaffSql} table.
+   * @property {number} id_gender User's gender. One of {@link Wl_Gender_GenderSid} constants.
+   * @property {string} k_staff User's key as staff member.
    * @property {string} s_first_name User first name.
    * @property {string} s_last_name First letter of user last name.
    * @property {string} text_mail_client Client`s mail.
    * @property {string} text_mail_staff Staff`s mail.
    * @property {string} text_name_first_staff Staff`s first name.
    * @property {string} text_name_full_client Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See
-   * description of the {@link \Wl\User\Info\UserInfoAbstract::nameFullText()} method.
+   * description of the {@link Wl\User\Info\UserInfo::nameFullText()} method.
    * @property {string} text_name_full_staff Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
    * @property {string} text_name_last_staff Staff`s last name.
    * @property {string} url_photo User photo URL.
@@ -41,13 +41,13 @@ function Wl_Login_LoginModel()
    *     int <var>id_gender</var>
    *   </dt>
    *   <dd>
-   *     User's gender. One of {@link GenderSid} constants.
+   *     User's gender. One of {@link Wl_Gender_GenderSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     User's key as staff member. Primary key in {@link \RsStaffSql} table.
+   *     User's key as staff member.
    *   </dd>
    *   <dt>
    *     string <var>s_first_name</var>
@@ -84,7 +84,7 @@ function Wl_Login_LoginModel()
    *   </dt>
    *   <dd>
    *     Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See
-   *     description of the {@link \Wl\User\Info\UserInfoAbstract::nameFullText()} method.
+   *     description of the {@link Wl\User\Info\UserInfo::nameFullText()} method.
    *   </dd>
    *   <dt>
    *     string <var>text_name_full_staff</var>
@@ -138,7 +138,7 @@ function Wl_Login_LoginModel()
   this.i_photo_width = 0;
 
   /**
-   * User's gender. One of {@link GenderSid} constants.
+   * The gender ID. It will be one of the {@link AGenderSid} constants.
    *
    * @get result
    * @type {number}
@@ -146,9 +146,8 @@ function Wl_Login_LoginModel()
   this.id_gender = undefined;
 
   /**
-   * Key of business.
-   *
-   * Primary key in {@link RsBusinessSql}.
+   * The key of the business. Users can be in multiple businesses.
+   * This can be left as `null` to retrieve system-wide information.
    *
    * @get get
    * @post get
@@ -157,7 +156,7 @@ function Wl_Login_LoginModel()
   this.k_business = undefined;
 
   /**
-   * User's key as staff member. Primary key in {@link \RsStaffSql} table.
+   * The user's staff key for the specified business.
    *
    * @get result
    * @type {string}
@@ -165,7 +164,7 @@ function Wl_Login_LoginModel()
   this.k_staff = undefined;
 
   /**
-   * User first name.
+   * The first name of the user.
    *
    * @get result
    * @type {string}
@@ -173,7 +172,7 @@ function Wl_Login_LoginModel()
   this.s_first_name = undefined;
 
   /**
-   * First letter of user last name.
+   * The surname of the user.
    *
    * @get result
    * @type {string}
@@ -181,7 +180,7 @@ function Wl_Login_LoginModel()
   this.s_last_name = undefined;
 
   /**
-   * Client`s mail.
+   * The client`s mailing address.
    *
    * @get result
    * @type {string}
@@ -189,7 +188,8 @@ function Wl_Login_LoginModel()
   this.text_mail_client = undefined;
 
   /**
-   * Staff`s mail.
+   * The staff member's mailing address.
+   * This will be set if the user is a staff member ({@link Wl_Login_LoginModel.k_staff}).
    *
    * @get result
    * @type {string}
@@ -197,7 +197,8 @@ function Wl_Login_LoginModel()
   this.text_mail_staff = undefined;
 
   /**
-   * Staff`s first name.
+   * The staff member's first name.
+   * This will be set if the user is a staff member ({@link Wl_Login_LoginModel.k_staff}).
    *
    * @get result
    * @type {string}
@@ -205,8 +206,8 @@ function Wl_Login_LoginModel()
   this.text_name_first_staff = undefined;
 
   /**
-   * Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See
-   * description of the {@link \Wl\User\Info\UserInfoAbstract::nameFullText()} method.
+   * The user's login name. This is returned in cases when neither the first name nor the last name have been specified.
+   * An empty string is returned in cases where neither the first name, last name, nor login have been specified.
    *
    * @get result
    * @type {string}
@@ -214,7 +215,10 @@ function Wl_Login_LoginModel()
   this.text_name_full_client = undefined;
 
   /**
-   * Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
+   * The staff member's full name.
+   * The user login is returned in cases where neither the first name nor the last name have been specified.
+   * An empty string is returned in cases where neither the first name, last name, nor login have been specified.
+   * This will be set if the user is a staff member ({@link Wl_Login_LoginModel.k_staff}).
    *
    * @get result
    * @type {string}
@@ -222,7 +226,8 @@ function Wl_Login_LoginModel()
   this.text_name_full_staff = undefined;
 
   /**
-   * Staff`s last name.
+   * The staff member's last name.
+   * This will be set if the user is a staff member ({@link Wl_Login_LoginModel.k_staff}).
    *
    * @get result
    * @type {string}
@@ -230,7 +235,7 @@ function Wl_Login_LoginModel()
   this.text_name_last_staff = undefined;
 
   /**
-   * List of users to get information for. Primary keys in {@link \PassportLoginSql} table. Serialized as JSON string.
+   * List of users to get information for. Serialized as JSON string.
    *
    * <tt>null</tt> for mode of single user.
    *
@@ -240,17 +245,17 @@ function Wl_Login_LoginModel()
   this.text_uid = null;
 
   /**
-   * Key of user.
+   * The key of the user.
    *
-   * Primary key in {@link PassportLoginSql}.
+   * `null` on case when is walk-in client.
    *
    * @get get,result
-   * @type {string}
+   * @type {?string}
    */
   this.uid = "0";
 
   /**
-   * User photo URL.
+   * The URL where the user photo can be retrieved.
    *
    * @get result
    * @type {string}
@@ -273,8 +278,8 @@ Wl_Login_LoginModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Login_LoginModel.instanceGet
- * @param {string} uid Key of user. Primary key in {@link PassportLoginSql}.
- * @param {string} k_business Key of business. Primary key in {@link RsBusinessSql}.
+ * @param {?string} uid The key of the user. `null` on case when is walk-in client.
+ * @param {string} k_business The key of the business. Users can be in multiple businesses. This can be left as `null` to retrieve system-wide information.
  * @returns {Wl_Login_LoginModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

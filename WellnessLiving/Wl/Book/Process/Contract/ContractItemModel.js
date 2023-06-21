@@ -32,7 +32,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.html_contract = undefined;
 
   /**
-   * Type of purchase item, one of {@link \RsPurchaseItemSid}.
+   * Type of purchase item, one of {@link RsPurchaseItemSid}.
    *
    * @get result
    * @type {number}
@@ -57,7 +57,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.k_id = undefined;
 
   /**
-   * Key of purchase option, one of array keys returned by {@link \RsBookProcess::purchase()}.
+   * Key of purchase option, one of array keys returned by {@link RsBookProcess::purchase()}.
    *
    * @delete get
    * @get get
@@ -117,7 +117,7 @@ Wl_Book_Process_Contract_ContractItemModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Book_Process_Contract_ContractItemModel.instanceGet
- * @param {string} s_purchase_item Key of purchase option, one of array keys returned by {@link \RsBookProcess::purchase()}.
+ * @param {string} s_purchase_item Key of purchase option, one of array keys returned by {@link RsBookProcess::purchase()}.
  * @param {string} s_wizard_id Booking wizard session key.
  * @returns {Wl_Book_Process_Contract_ContractItemModel}
  * @see WlSdk_ModelAbstract.instanceGet()

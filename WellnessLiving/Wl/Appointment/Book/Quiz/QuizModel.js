@@ -41,6 +41,7 @@ function Wl_Appointment_Book_Quiz_QuizModel()
    * Purchase item ID.
    *
    * @get get
+   * @see RsPurchaseItemSid
    * @type {?number}
    */
   this.id_purchase_item = null;
@@ -62,7 +63,7 @@ function Wl_Appointment_Book_Quiz_QuizModel()
   this.k_business = "0";
 
   /**
-   * Promotion key or appointment key. Depends of {@link \Wl\Appointment\Book\Quiz\QuizApi::$id_purchase_item}.
+   * Promotion key or appointment key. Depends of {@link Wl_Appointment_Book_Quiz_QuizModel.id_purchase_item}.
    *
    * @get get
    * @type {?string}
@@ -115,7 +116,7 @@ Wl_Appointment_Book_Quiz_QuizModel.prototype.config=function()
  * @param {?string} k_resource Resource key.
  * @param {?string} uid User key. Empty if quest.
  * @param {?number} id_purchase_item Purchase item ID.
- * @param {?string} k_id Promotion key or appointment key. Depends of {@link \Wl\Appointment\Book\Quiz\QuizApi::$id_purchase_item}.
+ * @param {?string} k_id Promotion key or appointment key. Depends of {@link Wl_Appointment_Book_Quiz_QuizModel.id_purchase_item}.
  * @returns {Wl_Appointment_Book_Quiz_QuizModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
