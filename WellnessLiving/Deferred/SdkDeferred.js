@@ -95,10 +95,11 @@ function WlSdk_Deferred()
  */
 WlSdk_Deferred._deferIs = function(x_var)
 {
-  if(typeof x_var !== 'object')
+  if(typeof x_var !== 'object' && typeof x_var.state !== 'function')
     return false;
 
-  return typeof x_var.state === 'function' && typeof x_var.reject === 'function' && typeof x_var.resolve === 'function';
+  const s_state = x_var.state();
+  return s_state === 'pending' || s_state === 'rejected' || s_state === 'resolved';
 }
 
 /**
@@ -504,10 +505,10 @@ WlSdk_Deferred.when = function(x_defer)
 
   a_defer.forEach(function(o_defer)
   {
-    // WlSdk_AssertException.assertTrue(WlSdk_Deferred._deferIs(o_defer), {
-    //   'o_defer': o_defer,
-    //   'text_message': 'Invalid deferred object.'
-    // });
+    Core_Assert.assertTrue(WlSdk_Deferred._deferIs(o_defer), {
+      'o_defer': o_defer,
+      'text_message': 'Invalid deferred object.'
+    });
 
     o_defer.done(function()
     {
