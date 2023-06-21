@@ -1,7 +1,7 @@
 /**
  * An endpoint that validates parameters that allow for an appointment or appointment Purchase Option payment for a client.
  *
- * @deprecated Use {@link Wl_Appointment_Book_Payment_PaymentModel} instead.
+ * @deprecated Use {@link Wl_Appointment_Book_Payment_PaymentMultipleModel} instead.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
