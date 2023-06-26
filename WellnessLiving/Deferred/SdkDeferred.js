@@ -505,7 +505,7 @@ WlSdk_Deferred.when = function(x_defer)
 
   a_defer.forEach(function(o_defer)
   {
-    Core_Assert.assertTrue(WlSdk_Deferred._deferIs(o_defer), {
+    WlSdk_AssertException.assertTrue(WlSdk_Deferred._deferIs(o_defer), {
       'o_defer': o_defer,
       'text_message': 'Invalid deferred object.'
     });
