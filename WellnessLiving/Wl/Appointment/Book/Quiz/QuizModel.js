@@ -1,7 +1,5 @@
 /**
- * Manages quizzes for the service or the asset and selected purchase option during booking process.
- *
- * This model is generated automatically based on API.
+ * An endpoint that manages quizzes for the service, asset, or Purchase Option selected during the booking process.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,19 +15,19 @@ function Wl_Appointment_Book_Quiz_QuizModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Quiz_QuizModel_a_quiz
-   * @property {boolean} is_require Whether the quiz is required.
-   * @property {string} k_quiz Quiz key.
-   * @property {string} text_title Quiz title.
+   * @property {boolean} is_require Determines whether the quiz is required.
+   * @property {string} k_quiz The quiz key.
+   * @property {string} text_title The quiz title.
    */
 
   /**
-   * List of required quizzes. Each element has next structure:<dl>
+   * A list of required quizzes. Each element has the next structure:<dl>
    *  <dt>bool <var>is_require</var></dt>
-   *  <dd>Whether the quiz is required.</dd>
+   *  <dd>Determines whether the quiz is required.</dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>Quiz key.</dd>
+   *  <dd>The quiz key.</dd>
    *  <dt>string <var>text_title</var></dt>
-   *  <dd>Quiz title.</dd>
+   *  <dd>The quiz title.</dd>
    * </dl>
    *
    * @get result
@@ -38,16 +36,15 @@ function Wl_Appointment_Book_Quiz_QuizModel()
   this.a_quiz = [];
 
   /**
-   * Purchase item ID.
+   * The purchase item ID.
    *
    * @get get
-   * @see RsPurchaseItemSid
    * @type {?number}
    */
   this.id_purchase_item = null;
 
   /**
-   * Whether need return all quizzes (required and not required).
+   * Determines whether all quizzes need to be returned (required and not required).
    *
    * @get get
    * @type {boolean}
@@ -55,7 +52,7 @@ function Wl_Appointment_Book_Quiz_QuizModel()
   this.is_all = false;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -63,7 +60,7 @@ function Wl_Appointment_Book_Quiz_QuizModel()
   this.k_business = "0";
 
   /**
-   * Promotion key or appointment key. Depends of {@link Wl_Appointment_Book_Quiz_QuizModel.id_purchase_item}.
+   * The promotion or appointment key, depending on {@link Wl_Appointment_Book_Quiz_QuizModel.id_purchase_item}.
    *
    * @get get
    * @type {?string}
@@ -71,7 +68,7 @@ function Wl_Appointment_Book_Quiz_QuizModel()
   this.k_id = null;
 
   /**
-   * Resource key.
+   * The resource key.
    *
    * @get get
    * @type {?string}
@@ -79,7 +76,7 @@ function Wl_Appointment_Book_Quiz_QuizModel()
   this.k_resource = null;
 
   /**
-   * Service key.
+   * The service key.
    *
    * @get get
    * @type {?string}
@@ -87,8 +84,8 @@ function Wl_Appointment_Book_Quiz_QuizModel()
   this.k_service = null;
 
   /**
-   * User key.
-   * Empty if quest.
+   * The user key.
+   * Empty if this is a guest profile.
    *
    * @get get
    * @type {?string}
@@ -111,12 +108,12 @@ Wl_Appointment_Book_Quiz_QuizModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Quiz_QuizModel.instanceGet
- * @param {string} k_business Business key.
- * @param {?string} k_service Service key.
- * @param {?string} k_resource Resource key.
- * @param {?string} uid User key. Empty if quest.
- * @param {?number} id_purchase_item Purchase item ID.
- * @param {?string} k_id Promotion key or appointment key. Depends of {@link Wl_Appointment_Book_Quiz_QuizModel.id_purchase_item}.
+ * @param {string} k_business The business key.
+ * @param {?string} k_service The service key.
+ * @param {?string} k_resource The resource key.
+ * @param {?string} uid The user key. Empty if this is a guest profile.
+ * @param {?number} id_purchase_item The purchase item ID.
+ * @param {?string} k_id The promotion or appointment key, depending on {@link Wl_Appointment_Book_Quiz_QuizModel.id_purchase_item}.
  * @returns {Wl_Appointment_Book_Quiz_QuizModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
