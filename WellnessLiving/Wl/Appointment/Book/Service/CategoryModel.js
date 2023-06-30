@@ -1,8 +1,6 @@
 /**
  * An endpoint that retrieves information about service categories.
  *
- * This model is generated automatically based on API.
- *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
@@ -17,10 +15,11 @@ function Wl_Appointment_Book_Service_CategoryModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Service_CategoryModel_a_category
-   * @property {boolean} hide_application <tt>true</tt> - all services are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
-   * @property {boolean} i_sort Sort key for category. Used to sort categories on category list page.
-   * @property {string} k_service_category Service category key.
-   * @property {string} s_title Service category title.
+   * @property {boolean} hide_application If <tt>true</tt>, all services are hidden in this category for the White Label mobile app.
+   * Otherwise, this will be <tt>false</tt>.
+   * @property {boolean} i_sort The sort key for the category used to sort categories on category list page.
+   * @property {string} k_service_category The service category key.
+   * @property {string} s_title The service category title.
    */
 
   /**
@@ -30,25 +29,25 @@ function Wl_Appointment_Book_Service_CategoryModel()
    *     bool <var>hide_application</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - all services are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
+   *     If <tt>true</tt>, all services are hidden in this category for the White Label mobile app. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     bool <var>i_sort</var>
    *   </dt>
    *   <dd>
-   *     Sort key for category. Used to sort categories on category list page.
+   *     The sort key for the category used to sort categories on category list page.
    *   </dd>
    *   <dt>
    *     string <var>k_service_category</var>
    *   </dt>
    *   <dd>
-   *     Service category key.
+   *     The service category key.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Service category title.
+   *     The service category title.
    *   </dd>
    * </dl>
    *
@@ -58,8 +57,8 @@ function Wl_Appointment_Book_Service_CategoryModel()
   this.a_category = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
-   * There may be empty values in this list, which means that this is a walk-in.
+   * A list of user keys used to book appointments.
+   * Empty values in this list represent walk-ins.
    *
    * @get get
    * @post get
@@ -69,7 +68,8 @@ function Wl_Appointment_Book_Service_CategoryModel()
 
   /**
    * `true` - return all service categories for a certain location.
-   * `false` - return only service categories that are associated with a book tab and with staff members
+   *
+   * `false` - return only service categories that are associated with a book now tab and with staff members
    * able to conduct them.
    *
    * @get get
@@ -78,7 +78,7 @@ function Wl_Appointment_Book_Service_CategoryModel()
   this.is_backend = false;
 
   /**
-   * <tt>true</tt> - if client has a flag, <tt>false</tt> - otherwise.
+   * If <tt>true</tt>, if client has a flag. Otherwise, this will be <tt>false</tt>.
    *
    * @get result
    * @type {boolean}
@@ -87,7 +87,8 @@ function Wl_Appointment_Book_Service_CategoryModel()
 
   /**
    * `true` - search in all tabs.
-   * `false` - search only for the selected book tab.
+   *
+   * `false` - search only for the selected book now tab.
    *
    * @get get
    * @type {boolean}
@@ -95,7 +96,7 @@ function Wl_Appointment_Book_Service_CategoryModel()
   this.is_tab_all = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * This will be `true` if the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -112,7 +113,7 @@ function Wl_Appointment_Book_Service_CategoryModel()
   this.k_class_tab = "0";
 
   /**
-   * Location to show available appointment booking schedule.
+   * The location to show available appointment booking schedule for.
    *
    * @get get,result
    * @post get
@@ -121,7 +122,7 @@ function Wl_Appointment_Book_Service_CategoryModel()
   this.k_location = "0";
 
   /**
-   * User to get information for.
+   * The user to get information for.
    *
    * @get get
    * @post get
@@ -145,10 +146,12 @@ Wl_Appointment_Book_Service_CategoryModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Service_CategoryModel.instanceGet
- * @param {string} k_location Location to show available appointment booking schedule.
+ * @param {string} k_location The location to show available appointment booking schedule for.
  * @param {string} k_class_tab The class tab key used to filter services.
- * @param {boolean} is_backend `true` - return all service categories for a certain location. `false` - return only service categories that are associated with a book tab and with staff members able to conduct them.
- * @param {string} uid User to get information for.
+ * @param {boolean} is_backend If `true`, all service categories for a certain location are returned.
+ * Otherwise, this will be `false` if only service categories that are associated with a book now tab and with staff members
+ * able to conduct them will be returned.
+ * @param {string} uid The user to get information for.
  * @returns {Wl_Appointment_Book_Service_CategoryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
