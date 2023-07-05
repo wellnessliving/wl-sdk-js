@@ -11,15 +11,24 @@ function Wl_Appointment_Edit_AddonUpdateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * IDs of the addons for appointment.
+   * @typedef {{}} Wl_Appointment_Edit_AddonUpdateModel_a_addon
+   * @property {number} i_product Add-on count.
+   * @property {string} k_shop_product_option Key of add-on.
+   */
+
+  /**
+   * Addons for appointment.
+   *
+   * Old format - array where each value is key of add-on.
+   * New format - each element is an object: {Wl_Appointment_Edit_AddonUpdateModel_a_addon}
    *
    * @put post
-   * @type {string[]}
+   * @type {string[]|Wl_Appointment_Edit_AddonUpdateModel_a_addon[]}
    */
   this.a_addon = undefined;
 
   /**
-   * ID of the appointment.
+   * Key of the appointment.
    *
    * @put post
    * @type {string}
