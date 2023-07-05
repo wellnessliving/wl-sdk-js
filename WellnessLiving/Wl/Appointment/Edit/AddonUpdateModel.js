@@ -12,7 +12,7 @@ function Wl_Appointment_Edit_AddonUpdateModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Edit_AddonUpdateModel_a_addon
-   * @property {number} i_product Add-on count.
+   * @property {number} i_product Add-on count. Max value is 255.
    * @property {string} k_shop_product_option Key of add-on.
    */
 
