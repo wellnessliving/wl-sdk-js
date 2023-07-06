@@ -319,7 +319,7 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
    * The array keys are `k_tax` keys. Each element contains the following fields: <dl>
    *   <dt>float <tt>m_tax</tt></dt>
    *   <dd>The tax rate.</dd>
-   * 
+   *
    *   <dt>string <tt>text_title</tt></dt>
    *   <dd>The name of the tax.</dd>
    * </dl>
@@ -462,6 +462,14 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
    * @type {string}
    */
   this.k_login_activity_purchase = undefined;
+
+  /**
+   * Login prize key. In case when appointment paid by reward prize, there is the key of redeemed login prize. Empty otherwise.
+   *
+   * @post result
+   * @type {string}
+   */
+  this.k_login_prize = "0";
 
   /**
    * The login promotion key.
