@@ -1,7 +1,5 @@
 /**
- * Get change appointment mail pattern.
- *
- * This model is generated automatically based on API.
+ * An endpoint that gets the Appointment Change (Client) email template.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Appointment_Change_Mail_DurationChangeMailModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Html template that can be used to change mail template.
+   * The HTML template that can be used to change the email template.
    *
    * @get result
    * @type {string}
@@ -19,7 +17,7 @@ function Wl_Appointment_Change_Mail_DurationChangeMailModel()
   this.html_mail_editor = undefined;
 
   /**
-   * Email template ID from {@link RsMailSid}.
+   * The email template ID from {@link RsMailSid}.
    *
    * @get get
    * @type {*}
@@ -27,7 +25,7 @@ function Wl_Appointment_Change_Mail_DurationChangeMailModel()
   this.id_mail = undefined;
 
   /**
-   * Appointment primary key in {@link \RsAppointmentSql} table. <tt>null</tt> if appointment not set.
+   * The appointment primary key. This will be `null` if an appointment isn't set yet.
    *
    * @get get
    * @type {*}
