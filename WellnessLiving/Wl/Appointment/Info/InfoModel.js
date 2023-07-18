@@ -1,7 +1,5 @@
 /**
- * Appointment information.
- *
- * This model is generated automatically based on API.
+ * An endpoint that displays appointment information.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,24 +15,24 @@ function Wl_Appointment_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_next
-   * @property {string} dt_date_local Start date and time of the next appointment in local time in MySQL format.
-   * @property {string} k_appointment Next appointment ID, primary key in {@link \RsAppointmentSql}.
+   * @property {string} dt_date_local The start date and time of the next appointment in the location's time zone in MySQL format.
+   * @property {string} k_appointment The ID of the next appointment.
    */
 
   /**
-   * Next appointment data, or empty array if there no appointments in future:
+   * Data for the next appointment data (or an empty array if there no future appointments):
    * <dl>
    *   <dt>
    *     string <var>dt_date_local</var>
    *   </dt>
    *   <dd>
-   *     Start date and time of the next appointment in local time in MySQL format.
+   *     The start date and time of the next appointment in local time in MySQL format.
    *   </dd>
    *   <dt>
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     Next appointment ID, primary key in {@link \RsAppointmentSql}.
+   *     The ID of the next appointment.
    *   </dd>
    * </dl>
    *
@@ -45,24 +43,24 @@ function Wl_Appointment_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_previous
-   * @property {string} dt_date_local Start date and time of the previous appointment in local time in MySQL format.
-   * @property {string} k_appointment Previous appointment ID, primary key in {@link \RsAppointmentSql}.
+   * @property {string} dt_date_local The start date and time of the previous appointment in local time in MySQL format.
+   * @property {string} k_appointment The ID of the previous appointment.
    */
 
   /**
-   * Previous appointment data, or empty array if there no appointments in past:
+   * Data for the previous appointment data (or an empty array if there no future appointments):
    * <dl>
    *   <dt>
    *     string <var>dt_date_local</var>
    *   </dt>
    *   <dd>
-   *     Start date and time of the previous appointment in local time in MySQL format.
+   *     The start date and time of the previous appointment in local time in MySQL format.
    *   </dd>
    *   <dt>
    *     string <var>k_appointment</var>
    *   </dt>
    *   <dd>
-   *     Previous appointment ID, primary key in {@link \RsAppointmentSql}.
+   *     The ID of the previous appointment.
    *   </dd>
    * </dl>
    *
@@ -72,13 +70,13 @@ function Wl_Appointment_Info_InfoModel()
   this.a_previous = undefined;
 
   /**
-   * List of questions and answers:<ul>
-   * <li>int <var>i_size</var> Size of rows for answer.</li>
-   * <li>bool <var>is_multiple</var> <tt>true</tt> if <var>i_size</var> greater than 1, <tt>false</tt> otherwise.
-   *   Can be empty if answer is loaded.</li>
-   * <li>string <var>s_answer</var> Answer for <var>s_question</var>.</li>
-   * <li>string <var>s_key</var> Answer key.</li>
-   * <li>string <var>s_question</var> Question.</li>
+   * A list of questions and answers:<ul>
+   * <li>int <var>i_size</var> The size of rows for answer.</li>
+   * <li>bool <var>is_multiple</var> <tt>true</tt> if <var>i_size</var> greater than 1, <tt>false</tt> if otherwise.
+   *   This can be empty if an answer is loaded.</li>
+   * <li>string <var>s_answer</var> The answer for <var>s_question</var>.</li>
+   * <li>string <var>s_key</var> The answer key.</li>
+   * <li>string <var>s_question</var> The question.</li>
    * </ul>
    *
    * @get result
@@ -87,7 +85,7 @@ function Wl_Appointment_Info_InfoModel()
   this.a_question = [];
 
   /**
-   * List of assets which are used by this appointment.
+   * A list of assets used by this appointment.
    *
    * @get result
    * @type {{}[]}
@@ -96,37 +94,39 @@ function Wl_Appointment_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_shop_product_option
-   * @property {?string} k_login_product Primary key of purchased add-on. <tt>null</tt> if add-on is not purchased.
-   * @property {string} k_shop_product Primary key of add-on.
-   * @property {string} k_shop_product_option Primary key in {@link \RsShopProductOptionSql} table.
-   * @property {string} m_amount Price that it adds to an appointment.
+   * @property {?string} k_login_product The primary key of the purchased add-on. This will be <tt>null</tt> if there
+   * aren't any purchased add-ons.
+   * @property {string} k_shop_product The primary key of the add-on.
+   * @property {string} k_shop_product_option The primary key.
+   * @property {string} m_amount The add-on price.
    */
 
   /**
-   * List of appointment add-ons. Every element has next keys:
+   * A list of appointment add-ons. Every element has the next keys:
    * <dl>
    *   <dt>
    *     string|null <var>k_login_product</var>
    *   </dt>
    *   <dd>
-   *     Primary key of purchased add-on. <tt>null</tt> if add-on is not purchased.
+   *     The primary key of the purchased add-on. This will be <tt>null</tt> if there aren't any purchased add-ons.
    *   </dd>
    *   <dt>
    *     string <var>k_shop_product</var>
    *   </dt>
    *   <dd>
-   *     Primary key of add-on.
+   *     The primary key of the add-on.
    *   </dd>
    *   <dt>
    *     string <var>k_shop_product_option</var>
    *   </dt>
    *   <dd>
+   *     The primary key.
    *   </dd>
    *   <dt>
    *     string <var>m_amount</var>
    *   </dt>
    *   <dd>
-   *     Price that it adds to an appointment.
+   *     The add-on price.
    *   </dd>
    * </dl>
    *
@@ -136,7 +136,7 @@ function Wl_Appointment_Info_InfoModel()
   this.a_shop_product_option = undefined;
 
   /**
-   * Date/time of appointment in location timezone.
+   * The date/time of the appointment in the location's time zone.
    *
    * @get result
    * @type {string}
@@ -144,7 +144,7 @@ function Wl_Appointment_Info_InfoModel()
   this.dt_date_local = undefined;
 
   /**
-   * Appointment duration (in minutes).
+   * The appointment duration (in minutes).
    *
    * @get result
    * @type {?number}
@@ -152,7 +152,7 @@ function Wl_Appointment_Info_InfoModel()
   this.i_duration = null;
 
   /**
-   * Index of booked asset.
+   * The index of the booked asset.
    *
    * @get result
    * @type {?number}
@@ -160,7 +160,7 @@ function Wl_Appointment_Info_InfoModel()
   this.i_index = null;
 
   /**
-   * Status of appointment payment. One of {@link RsAppointmentPaySid} constants.
+   * The status of the appointment payment. One of the {@link RsAppointmentPaySid} constants.
    *
    * @get result
    * @type {number}
@@ -168,7 +168,7 @@ function Wl_Appointment_Info_InfoModel()
   this.id_appointment_pay = undefined;
 
   /**
-   * Class identifier to get information for.
+   * The class identifier to get information for.
    *
    * @get get
    * @type {string}
@@ -176,7 +176,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_appointment = "0";
 
   /**
-   * Purchased promotion which provides this appointment.
+   * The Purchase Option used to purchase the appointment.
    *
    * @get result
    * @type {string}
@@ -184,7 +184,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_login_promotion = undefined;
 
   /**
-   * Asset key.
+   * The asset key.
    *
    * @get result
    * @type {?string}
@@ -192,7 +192,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_resource = null;
 
   /**
-   * Asset category key.
+   * The asset category key.
    *
    * @get result
    * @type {?string}
@@ -200,7 +200,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_resource_type = null;
 
   /**
-   * Service key.
+   * The service key.
    *
    * @get result
    * @type {?string}
@@ -208,7 +208,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_service = null;
 
   /**
-   * Service category key.
+   * The service category key.
    *
    * @get result
    * @type {?string}
@@ -216,7 +216,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_service_category = null;
 
   /**
-   * Staff member who conducts this appointment.
+   * The staff member conducting the appointment.
    *
    * @get result
    * @type {string}
@@ -224,7 +224,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_staff = undefined;
 
   /**
-   * Title of the appointment.
+   * The title of the appointment.
    *
    * @get result
    * @type {string}
@@ -232,7 +232,7 @@ function Wl_Appointment_Info_InfoModel()
   this.text_title = undefined;
 
   /**
-   * User for whom this appointment was booked.
+   * The user for whom the appointment was booked.
    *
    * @get result
    * @type {string}
@@ -255,7 +255,7 @@ Wl_Appointment_Info_InfoModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Info_InfoModel.instanceGet
- * @param {string} k_appointment Class identifier to get information for.
+ * @param {string} k_appointment The class identifier to get information for.
  * @returns {Wl_Appointment_Info_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
