@@ -52,6 +52,24 @@ function Wl_Classes_ClassList_BookListModel()
   this.a_class = undefined;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default thumbnail size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_width = 0;
+
+  /**
    * The location key.
    *
    * @get get
@@ -69,5 +87,5 @@ WlSdk_ModelAbstract.extend(Wl_Classes_ClassList_BookListModel);
  */
 Wl_Classes_ClassList_BookListModel.prototype.config=function()
 {
-  return {"a_field": {"a_class": {"get": {"result": true}},"k_location": {"get": {"get": true}}}};
+  return {"a_field": {"a_class": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
 };
