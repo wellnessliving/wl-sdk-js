@@ -1,7 +1,5 @@
 /**
- * Adds or updates join link for non-integrated virtual appointment.
- *
- * This model is generated automatically based on API.
+ * An endpoint that adds or updates the join link for a non-integrated virtual appointment.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Appointment_View_LinkJoinModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Key of non-integrated virtual appointment.
+   * The key of the non-integrated virtual appointment.
    *
    * @post post
    * @type {string}
@@ -19,7 +17,7 @@ function Wl_Appointment_View_LinkJoinModel()
   this.k_appointment = undefined;
 
   /**
-   * Key of business for which appointment belongs.
+   * The key of the business the appointment belongs to.
    *
    * @post post
    * @type {string}
@@ -27,7 +25,7 @@ function Wl_Appointment_View_LinkJoinModel()
   this.k_business = undefined;
 
   /**
-   * Join link for non-integrated virtual appointment.
+   * The join link for the non-integrated virtual appointment.
    *
    * @post post
    * @type {string}

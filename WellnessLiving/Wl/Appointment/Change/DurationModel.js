@@ -1,7 +1,5 @@
 /**
- * Appointment duration change API.
- *
- * This model is generated automatically based on API.
+ * An endpoint that changes an appointment's duration.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Appointment_Change_DurationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Array with state of client mail form.
+   * An array containing the state of the client email form.
    *
    * @post post
    * @type {{}}
@@ -19,7 +17,7 @@ function Wl_Appointment_Change_DurationModel()
   this.a_mail_form_client = [];
 
   /**
-   * Array with state of staff mail form.
+   * An array containing the state of the staff member email form.
    *
    * @post post
    * @type {{}}
@@ -27,7 +25,7 @@ function Wl_Appointment_Change_DurationModel()
   this.a_mail_form_staff = [];
 
   /**
-   * Duration change value.
+   * The duration change value.
    *
    * @post post
    * @type {number}
@@ -35,7 +33,7 @@ function Wl_Appointment_Change_DurationModel()
   this.i_duration_delta = 0;
 
   /**
-   * <tt>true</tt> if it is required to send notification about appointment change to client, <tt>false</tt> otherwise.
+   * If `true`, notifications about appointment changes must be sent to the client. Otherwise, this will be `false`.
    *
    * @post post
    * @type {boolean}
@@ -43,7 +41,7 @@ function Wl_Appointment_Change_DurationModel()
   this.is_notify_client = false;
 
   /**
-   * <tt>true</tt> if it is required to send notification about appointment change to staff, <tt>false</tt> otherwise.
+   * If `true`, notifications about appointment changes must be sent to the staff member. Otherwise, this will be `false`.
    *
    * @post post
    * @type {boolean}
@@ -51,7 +49,7 @@ function Wl_Appointment_Change_DurationModel()
   this.is_notify_staff = false;
 
   /**
-   * Reload page.
+   * The reload page.
    *
    * @post result
    * @type {boolean}
@@ -67,9 +65,9 @@ function Wl_Appointment_Change_DurationModel()
   this.is_skip = undefined;
 
   /**
-   * Appointment key.
+   * The appointment key.
    *
-   * Empty value means not set.
+   * This will be empty if not set yet.
    *
    * @post post
    * @type {string}
@@ -77,7 +75,7 @@ function Wl_Appointment_Change_DurationModel()
   this.k_appointment = "";
 
   /**
-   * ID form.
+   * The form ID.
    *
    * @post post
    * @type {string}
@@ -85,7 +83,7 @@ function Wl_Appointment_Change_DurationModel()
   this.s_form_id = "";
 
   /**
-   * New appointment end time
+   * The new appointment end time.
    *
    * @post result
    * @type {string}
