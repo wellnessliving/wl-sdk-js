@@ -1,5 +1,5 @@
 /**
- * Class for definitions payment type for the appointment.
+ * A list of payment types that can be used for an appointment.
  */
 function Wl_Appointment_PaySid()
 {
@@ -7,28 +7,28 @@ function Wl_Appointment_PaySid()
 }
 
 /**
- * Deposit was paid.
+ * The deposit was paid.
  *
  * @type {number}
  */
 Wl_Appointment_PaySid.DEPOSIT = 2;
 
 /**
- * Appointment is free and does not require payment.
+ * The appointment is free and doesn't require payment.
  *
  * @type {number}
  */
 Wl_Appointment_PaySid.FREE = 4;
 
 /**
- * Full price was paid.
+ * The full price was paid.
  *
  * @type {number}
  */
 Wl_Appointment_PaySid.FULL = 3;
 
 /**
- * Nothing was paid.
+ * No payment was paid.
  *
  * @type {number}
  */
