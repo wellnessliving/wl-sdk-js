@@ -475,5 +475,5 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_Index_PromotionIndexModel);
  */
 Wl_Promotion_Index_PromotionIndexModel.prototype.config=function()
 {
-  return {"a_field": {"a_promotion": {"get": {"result": true}},"id_program_type": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
+  return {"a_field": {"a_promotion": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"id_program_type": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
 };

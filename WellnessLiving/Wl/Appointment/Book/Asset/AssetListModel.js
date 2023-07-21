@@ -320,7 +320,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_AssetListModel);
  */
 Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
 {
-  return {"a_field": {"a_asset": {"get": {"result": true}},"dtl_date": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource_category": {"get": {"get": true}},"k_resource_layout": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_asset": {"get": {"result": true}},"dtl_date": {"get": {"get": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource_category": {"get": {"get": true}},"k_resource_layout": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
