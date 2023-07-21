@@ -1,7 +1,5 @@
 /**
- * Returns list of local dates without time, when recurring sessions are going to be booked.
- *
- * This model is generated automatically based on API.
+ * An endpoint that returns a list of dates (without times) for recurring sessions.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of dates, when sessions will be booked.
+   * A list of dates for booked sessions.
    *
    * @get result
    * @type {string[]}
@@ -19,7 +17,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.a_date = undefined;
 
   /**
-   * Days, when sessions should be booked.
+   * A list of days of the booked sessions.
    *
    * @get get
    * @type {number[]}
@@ -27,7 +25,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.a_day = undefined;
 
   /**
-   * Date when recurring period ends.
+   * The date when the recurring period ends.
    *
    * @get get
    * @type {string}
@@ -35,7 +33,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.dt_end = undefined;
 
   /**
-   * Date when recurring period starts.
+   * The date when the recurring period starts.
    *
    * @get get
    * @type {string}
@@ -43,7 +41,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.dt_start = undefined;
 
   /**
-   * Time in mysql format, when each session should be started.
+   * The time (in MySQL format) when each session starts.
    *
    * @get get
    * @type {string}
@@ -51,7 +49,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.dt_time = undefined;
 
   /**
-   * Fixed count of sessions to be booked.
+   * The number of sessions booked.
    *
    * @get get
    * @type {number}
@@ -59,7 +57,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.i_count = undefined;
 
   /**
-   * Count of period between booked sessions.
+   * The number of periods between booked sessions.
    *
    * @get get
    * @type {number}
@@ -67,7 +65,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.i_period = undefined;
 
   /**
-   * Duration of the periods between sessions from {@link ADurationSid}.
+   * The duration of the periods between sessions from {@link ADurationSid}.
    *
    * @get get
    * @type {number}
@@ -75,7 +73,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.id_duration = undefined;
 
   /**
-   * Type of the rule, when repeatable sessions should end from {@link RsRepeatEndSid}.
+   * The rule type used for when repeatable sessions end from {@link RsRepeatEndSid}.
    *
    * @get get
    * @type {number}
@@ -83,9 +81,10 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.id_end = undefined;
 
   /**
-   * Whether sessions should be connected to the day of month or day of week.
+   * Determines whether sessions should be connected to the day of month or the day of week.
    *
-   * <tt>true</tt> means to book the same day of month, <tt>false</tt> - the same day of week.
+   * This will be `true` if it's booked for the same day of month. Otherwise, this will be `false` if it's booked for
+   * the same day of the week.
    *
    * @get get
    * @type {boolean}
@@ -93,7 +92,7 @@ function Wl_Appointment_Wizard_Recurring_RecurringListModel()
   this.is_month = undefined;
 
   /**
-   * Unique ID that defines appointment booking wizard.
+   * The unique ID that defines the appointment booking wizard.
    *
    * @get get
    * @type {string}
