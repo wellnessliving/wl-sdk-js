@@ -220,6 +220,24 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.id_mode = 0;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_width = 0;
+
+  /**
    * This is `true` if asset categories are loaded for back-end mode. Otherwise, this will be `false` for front-end mode.
    *
    * @get get
