@@ -97,7 +97,8 @@ function Wl_Appointment_Info_InfoModel()
    * @property {?string} k_login_product The primary key of the purchased add-on. This will be <tt>null</tt> if there
    * aren't any purchased add-ons.
    * @property {string} k_shop_product The primary key of the add-on.
-   * @property {string} k_shop_product_option The primary key.
+   * @property {string} k_shop_product_option The primary key of the shop product option.
+   *   T-shirts can have an option like size or color.
    * @property {string} m_amount The add-on price.
    */
 

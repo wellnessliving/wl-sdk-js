@@ -9,7 +9,7 @@ function Wl_Appointment_Change_DurationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * An array containing the state of the client email form.
+   * An array containing information about the custom that would be sent to the client.
    *
    * @post post
    * @type {{}}
@@ -57,7 +57,7 @@ function Wl_Appointment_Change_DurationModel()
   this.is_reload = undefined;
 
   /**
-   * To do nothing, skip all changes.
+   * If no changes were made, perhaps due to a conflict then this value will be `true`.
    *
    * @post result
    * @type {boolean}
