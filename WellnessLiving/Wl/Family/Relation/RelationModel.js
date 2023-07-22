@@ -17,7 +17,7 @@ function Wl_Family_Relation_RelationModel()
 
   /**
    * @typedef {{}} Wl_Family_Relation_RelationModel_a_new
-   * @property {number} id_family_relation Type of family relation. One of {@link RsFamilyRelationSid} constants.
+   * @property {number} id_family_relation Type of family relation. One of {@link Wl_Family_Relation_RelationSid} constants.
    * @property {string} uid The related user's key.
    */
 
@@ -25,7 +25,7 @@ function Wl_Family_Relation_RelationModel()
    * The new relative to be added to user specified with {@link Wl_Family_Relation_RelationModel.uid}:
    * <dl>
    *   <dt>int <var>id_family_relation</var></dt>
-   *   <dd>Type of family relation. One of {@link RsFamilyRelationSid} constants.</dd>
+   *   <dd>Type of family relation. One of {@link Wl_Family_Relation_RelationSid} constants.</dd>
    *   <dt>string <var>uid</var></dt>
    *   <dd>The related user's key.</dd>
    * </dl>
@@ -37,8 +37,8 @@ function Wl_Family_Relation_RelationModel()
 
   /**
    * @typedef {{}} Wl_Family_Relation_RelationModel_a_relation
-   * @property {number} id_family_relation Type of family relation. One of {@link RsFamilyRelationSid} constants.
-   * @property {number} id_family_relation_reverse The type of reciprocated relationship. One of {@link RsFamilyRelationSid} constants.
+   * @property {number} id_family_relation Type of family relation. One of {@link Wl_Family_Relation_RelationSid} constants.
+   * @property {number} id_family_relation_reverse The type of reciprocated relationship. One of {@link Wl_Family_Relation_RelationSid} constants.
    * @property {string} text_name The name of the relation.
    * @property {string} text_name_first The first name of the relation.
    * @property {string} uid The key of the related user.
@@ -48,9 +48,9 @@ function Wl_Family_Relation_RelationModel()
    * Information about the user's family relations. Every element has the following fields:
    * <dl>
    *   <dt>int <var>id_family_relation</var></dt>
-   *   <dd>Type of family relation. One of {@link RsFamilyRelationSid} constants.</dd>
+   *   <dd>Type of family relation. One of {@link Wl_Family_Relation_RelationSid} constants.</dd>
    *   <dt>int <var>id_family_relation_reverse</var></dt>
-   *   <dd>The type of reciprocated relationship. One of {@link RsFamilyRelationSid} constants.</dd>
+   *   <dd>The type of reciprocated relationship. One of {@link Wl_Family_Relation_RelationSid} constants.</dd>
    *   <dt>string <var>text_name</var></dt>
    *   <dd>The name of the relation.</dd>
    *   <dt>string <var>text_name_first</var></dt>
