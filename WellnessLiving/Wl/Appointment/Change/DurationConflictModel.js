@@ -9,7 +9,13 @@ function Wl_Appointment_Change_DurationConflictModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See for {@link RsAppointmentEditConflict::checkAvailability()} details.
+   * The list of conflicts. Every element has the following keys:
+   * <dl><dt>string[] <b>a_resource</b></dt><dd>Titles of assets which cause conflict. Not empty only in a case of conflict because of assets.</dd>
+   * <dt>string <b>dt_date_global</b></dt><dd>Date/time of conflict in MySQL format. In UTC.</dd>
+   * <dt>string <b>dt_date_local</b></dt><dd>Date/time of conflict in MySQL format. In location timezone.</dd>
+   * <dt>bool <b>is_holiday</b></dt><dd><tt>true</tt> - conflict because of holiday; <tt>false</tt> - another reason.</dd>
+   * <dt>bool <b>is_staff_conflict</b></dt><dd><tt>true</tt> - conflict because of staff member's working hours; <tt>false</tt> - another reason.</dd>
+   * <dt>string <b>text_staff</b></dt><dd>Name of staff member who conducts the appointment.</dd></dl>
    *
    * @get result
    * @type {{}[]}
