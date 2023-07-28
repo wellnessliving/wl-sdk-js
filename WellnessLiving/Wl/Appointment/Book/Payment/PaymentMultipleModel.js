@@ -253,6 +253,14 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   this.a_book_data_post = [];
 
   /**
+   * List of redeemed prizes.
+   *
+   * @post result
+   * @type {string[]}
+   */
+  this.a_login_prize = undefined;
+
+  /**
    * Payment type for the appointment, one of {@link RsAppointmentPaySid} constants.
    *
    * @post result
