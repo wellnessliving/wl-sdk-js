@@ -1,7 +1,5 @@
 /**
- * Update addons for appointment.
- *
- * This model is generated automatically based on API.
+ * An endpoint that updates add-ons for an appointment.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,10 +15,11 @@ function Wl_Appointment_Edit_AddonUpdateModel()
    */
 
   /**
-   * Addons for appointment.
+   * The appointment add-ons.
    *
-   * Old format - array where each value is key of add-on.
-   * New format - each element is an object: {Wl_Appointment_Edit_AddonUpdateModel_a_addon}
+   * <b>Old format -</b> an array where each value is the add-on key.
+   *
+   * <b>New format -</b> each element is an object: {@link Wl_Appointment_Edit_AddonUpdateModel_a_addon}.
    *
    * @put post
    * @type {string[]|Wl_Appointment_Edit_AddonUpdateModel_a_addon[]}
@@ -28,7 +27,7 @@ function Wl_Appointment_Edit_AddonUpdateModel()
   this.a_addon = undefined;
 
   /**
-   * Key of the appointment.
+   * The appointment key.
    *
    * @put post
    * @type {string}
