@@ -69,6 +69,7 @@ function Wl_Shop_Category_CategoryModel()
    * The key of the business to get shop categories for.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_business = "0";
@@ -99,7 +100,7 @@ WlSdk_ModelAbstract.extend(Wl_Shop_Category_CategoryModel);
  */
 Wl_Shop_Category_CategoryModel.prototype.config=function()
 {
-  return {"a_field": {"a_shop_category": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_shop_category": {"post": {"result": true}},"text_title": {"post": {"post": true}}}};
+  return {"a_field": {"a_shop_category": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_shop_category": {"post": {"result": true}},"text_title": {"post": {"post": true}}}};
 };
 
 /**

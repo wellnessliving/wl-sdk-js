@@ -19,7 +19,7 @@ function Wl_Book_Process_Process54Model()
 
   /**
    * Relationships who clients are allowed to book for.
-   * Constants of {@link RsFamilyRelationSid}.
+   * Constants of {@link Wl_Family_Relation_RelationSid}.
    *
    * `null` if clients are not allowed to book for their relationships.
    *
