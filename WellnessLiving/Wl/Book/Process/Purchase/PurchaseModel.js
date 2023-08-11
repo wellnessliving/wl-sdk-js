@@ -1,7 +1,5 @@
 /**
- * Information about Purchase Options that can book specified session(s).
- *
- * This model is generated automatically based on API.
+ * An endpoint that retrieves information about Purchase Options that can be used to book specified session(s).
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -18,33 +16,33 @@ function Wl_Book_Process_Purchase_PurchaseModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data
-   * @property {number} i_book The count of future sessions that are paid with this promotion.
+   * @property {number} i_book The number of future sessions that are paid using this Purchase Option.
    * @property {number} i_limit The limit of visits for the restriction period.
    * @property {number} i_remain The number of remaining visits for the restriction period.
-   * @property {number} i_use The count of usage of the promotion.
-   * @property {number} i_visit_past The count of attended sessions before the last renewal.
-   * `0` if no sessions before the last renewal or the promotion does not auto-renew.
-   * @property {string} text_restriction The description of restriction period, for example "this week" or "for a 4 day period".
+   * @property {number} i_use The Purchase Option's usage count.
+   * @property {number} i_visit_past The number of attended sessions before the last renewal.
+   * This will be `0` if there weren't any sessions before the last renewal or the Purchase Option doesn't auto-renew.
+   * @property {string} text_restriction The description of the restriction period. For example, "this week" or "for a four-day period".
    */
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict
    * @property {number} i_limit The limit of visits for the shortest restriction period.
    * @property {number} i_remain The number of remaining visits for the shortest restriction period.
-   * @property {string} text_restriction The description of the shortest restriction period, for example "this week" or "for a 4 day period".
+   * @property {string} text_restriction The description of the shortest restriction period. For example, "this week" or "for a four-day period".
    */
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info
-   * @property {number} i_limit The count of visits that the purchase option allows the client to make.
-   * @property {?number} i_limit_duration The maximum number of minutes that current promotion can be used.
-   * @property {number} i_remain The count of the remaining visits.
-   * @property {?number} i_remain_duration The number of minutes left in this promotion.
+   * @property {number} i_limit The number of visits that the Purchase Option allows the client to make.
+   * @property {?number} i_limit_duration The maximum number of minutes this Purchase Option can be used for.
+   * @property {number} i_remain The number of remaining visits.
+   * @property {?number} i_remain_duration The number of minutes left in this Purchase Option.
    */
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion
    * @property {Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info} a_login_promotion_info Information about the Purchase Option. It contains the following information:
    *  <dl>
    *    <dt>int <tt>i_limit</tt></dt>
-   *    <dd>The count of visits that the purchase option allows the client to make.</dd>
+   *    <dd>The number of visits that the Purchase Option allows the client to make.</dd>
    *    <dt>int|null <tt>i_limit_duration</tt></dt>
    *    <dd>The maximum number of minutes that current promotion can be used.</dd>
    *    <dt>int <tt>i_remain</tt></dt>
@@ -65,51 +63,52 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    * @property {Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data[]} a_restrict_data The data about all restriction periods. Given as an array, where each record has the following structure:
    * <dl>
    *   <dt>int <tt>i_book</tt></dt>
-   *   <dd>The count of future sessions that are paid with this promotion.</dd>
+   *   <dd>The number of future sessions that are paid using this Purchase Option.</dd>
    *   <dt>int <tt>i_limit</tt></dt>
    *   <dd>The limit of visits for the restriction period.</dd>
    *   <dt>int <tt>i_remain</tt></dt>
    *   <dd>The number of remaining visits for the restriction period.</dd>
    *   <dt>int <tt>i_use</tt></dt>
-   *   <dd>The count of usage of the promotion.</dd>
+   *   <dd>The Purchase Option's usage count.</dd>
    *   <dt>int <tt>i_visit_past</tt></dt>
    *   <dd>
-   *     The count of attended sessions before the last renewal.
-   *     `0` if no sessions before the last renewal or the promotion does not auto-renew.
+   *     The number of attended sessions before the last renewal.
+   *     This will be `0` if there weren't any sessions before the last renewal or the Purchase Option doesn't auto-renew.
    *   </dd>
    *   <dt>string <tt>text_restriction</tt></dt>
-   *   <dd>The description of restriction period, for example "this week" or "for a 4 day period".</dd>
+   *   <dd>The description of the restriction period. For example, "this week" or "for a four-day period".</dd>
    * </dl>
-   * @property {number} i_limit The count of visits that the purchase option allows the client to make.
-   * @property {?number} i_limit_duration The maximum number of minutes that current promotion can be used.
-   * @property {number} id_program The program ID for promotions, one of the {@link RsProgramSid} constants.
-   * @property {string} k_login_promotion The login promotion key.
-   * @property {string} s_class_include This list of services provided by this promotion.
-   * @property {string} s_description The description of the purchase option.
-   * @property {string} s_duration The duration of the promotion.
-   * @property {string} s_title The name of the purchase option.
-   * @property {string} text_package_item If this promotion is a package, then this field contains a list of promotions contained in the package.
+   * @property {number} i_limit The number of visits that the Purchase Option allows the client to make.
+   * @property {?number} i_limit_duration The maximum number of minutes this Purchase Option can be used for.
+   * @property {number} id_program The program ID for the Purchase Option. One of the {@link RsProgramSid} constants.
+   * @property {string} k_login_promotion The login promotion (Purchase Option) key.
+   * @property {string} s_class_include This list of services provided by this Purchase Option.
+   * @property {string} s_description The Purchase Option description.
+   * @property {string} s_duration The Purchase Option duration.
+   * @property {string} s_title The Purchase Option name.
+   * @property {string} text_package_item If this Purchase Option is a package, this field will contain a list of Purchase Options
+   * contained in the package.
    */
 
   /**
-   * A list of the client`s login promotions which can be applied to a given service.
+   * A list of the client`s login promotions (Purchase Options) that can be applied to a given service.
    * <dl>
    *   <dt>array <var>a_login_promotion_info</var></dt>
    *   <dd>
-   *      Information about the Purchase Option. It contains the following information:
+   *      Information about the Purchase Option containing the following information:
    *      <dl>
    *        <dt>int <var>i_limit</var></dt>
-   *        <dd>The count of visits that the purchase option allows the client to make.</dd>
+   *        <dd>The number of visits that the Purchase Option allows the client to make.</dd>
    *        <dt>int|null <var>i_limit_duration</var></dt>
-   *        <dd>The maximum number of minutes that current promotion can be used.</dd>
+   *        <dd>The maximum number of minutes this Purchase Option can be used for.</dd>
    *        <dt>int <var>i_remain</var></dt>
-   *        <dd>The count of the remaining visits.</dd>
+   *        <dd>The number of remaining visits.</dd>
    *        <dt>int|null <var>i_remain_duration</var></dt>
-   *        <dd>The number of minutes left in this promotion.</dd>
+   *        <dd>The number of minutes left in this Purchase Option.</dd>
    *      </dl>
    *   </dd>
    *   <dt>string[] <var>a_visit_limit</var></dt>
-   *   <dd>The list of calendar restrictions of the promotion, for example, 4 per week.</dd>
+   *   <dd>The list of calendar restrictions for this Purchase Option. For example, four per week.</dd>
    *   <dt>array <var>a_restrict</var></dt>
    *   <dd>The data about the shortest restriction period:
    *     <dl>
@@ -118,47 +117,47 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *       <dt>int <var>i_remain</var></dt>
    *       <dd>The number of remaining visits for the shortest restriction period.</dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of the shortest restriction period, for example "this week" or "for a 4 day period".</dd>
+   *       <dd>The description of the restriction period. For example, "this week" or "for a four-day period".</dd>
    *     </dl>
    *   </dd>
    *   <dt>array[] <var>a_restrict_data</var></dt>
-   *   <dd>The data about all restriction periods. Given as an array, where each record has the following structure:
+   *   <dd>The data about all the restriction periods provided as an array, where each record has the following structure:
    *     <dl>
    *       <dt>int <var>i_book</var></dt>
-   *       <dd>The count of future sessions that are paid with this promotion.</dd>
+   *       <dd>The number of future sessions that are paid using this Purchase Option.</dd>
    *       <dt>int <var>i_limit</var></dt>
    *       <dd>The limit of visits for the restriction period.</dd>
    *       <dt>int <var>i_remain</var></dt>
    *       <dd>The number of remaining visits for the restriction period.</dd>
    *       <dt>int <var>i_use</var></dt>
-   *       <dd>The count of usage of the promotion.</dd>
+   *       <dd>The Purchase Option's usage count.</dd>
    *       <dt>int <var>i_visit_past</var></dt>
    *       <dd>
-   *         The count of attended sessions before the last renewal.
-   *         `0` if no sessions before the last renewal or the promotion does not auto-renew.
+   *         The number of attended sessions before the last renewal.
+   *         This will be `0` if there weren't any sessions before the last renewal or the Purchase Option doesn't auto-renew.
    *       </dd>
    *       <dt>string <var>text_restriction</var></dt>
-   *       <dd>The description of restriction period, for example "this week" or "for a 4 day period".</dd>
+   *       <dd>The description of the restriction period. For example, "this week" or "for a four-day period".</dd>
    *     </dl>
    *   </dd>
    *   <dt>int <var>i_limit</var></dt>
-   *   <dd>The count of visits that the purchase option allows the client to make.</dd>
+   *   <dd>The number of visits the Purchase Option allows the client to make.</dd>
    *   <dt>int|null <var>i_limit_duration</var></dt>
-   *   <dd>The maximum number of minutes that current promotion can be used.</dd>
+   *   <dd>The maximum number of minutes this Purchase Option can be used for.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID for promotions, one of the {@link RsProgramSid} constants.</dd>
+   *   <dd>The program ID for the Purchase Option. One of the {@link RsProgramSid} constants.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>The login promotion key.</dd>
+   *   <dd>The login promotion (Purchase Option) key.</dd>
    *   <dt>string <var>s_class_include</var></dt>
-   *   <dd>This list of services provided by this promotion.</dd>
+   *   <dd>The list of services provided by this Purchase Option.</dd>
    *   <dt>string <var>s_description</var></dt>
-   *   <dd>The description of the purchase option.</dd>
+   *   <dd>The Purchase Option description.</dd>
    *   <dt>string <var>s_duration</var></dt>
-   *   <dd>The duration of the promotion.</dd>
+   *   <dd>The Purchase Option duration.</dd>
    *   <dt>string <var>s_title</var></dt>
-   *   <dd>The name of the purchase option.</dd>
+   *   <dd>The Purchase Option name.</dd>
    *   <dt>string <var>text_package_item</var></dt>
-   *   <dd>If this promotion is a package, then this field contains a list of promotions contained in the package.</dd>
+   *   <dd>If this Purchase Option is a package, this field will contain a list of Purchase Options contained in the package.</dd>
    * </dl>
    *
    * @get result
@@ -173,7 +172,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_purchase_a_installment_template
    * @property {number} i_count The number of payments.
-   * @property {number} id_duration The duration of a single period. One of {@link ADurationSid} constants.
+   * @property {number} id_duration The duration of a single period. One of the {@link ADurationSid} constants.
    * @property {number} i_period The number of periods specified by <tt>id_period</tt> between individual payments.
    * @property {string} k_currency The payment currency key.
    * @property {string} k_pay_installment_template The key of the installment plan template.
@@ -194,7 +193,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *     int <tt>id_duration</tt>
    *   </dt>
    *   <dd>
-   *      The duration of a single period. One of {@link ADurationSid} constants.
+   *      The duration of a single period. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     int <tt>i_period</tt>
@@ -238,29 +237,35 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    * </dl>
    * @property {string} f_price The price.
    * @property {*} f_price_early The price for early bookings.
-   * @property {string} html_payment_period Actual only for promotions with program 'membership'. Measurement unit of <tt>i_payment_period</tt> in short form.
+   * @property {string} html_payment_period Actual only for membership Purchase Options. The measurement unit of <tt>i_payment_period</tt> in short form.
    * @property {string} html_description The description, ready to paste in a browser.
-   * @property {*} i_limit The limit of sessions which may be booked by Purchase Options.
-   * @property {*} i_payment_period Actual only for promotions with program 'membership'. The duration of the regular payment interval.
-   * @property {*} i_session Actual only for purchases of single sessions. The number of sessions which are booked simultaneously.
-   * @property {*} id_program_category Actual only for promotions. The ID of the promotion program category. One of {@link RsProgramCategorySid} constants.
-   * @property {*} id_program_type Actual only for promotions. The ID of the promotion program type. One of {@link RsProgramTypeSid} constants.
-   * @property {number} id_purchase_item The ID of Purchase Option type. One of {@link RsPurchaseItemSid} constants.
-   * @property {*} is_contract <tt>true</tt> - The Purchase Option requires a contract assignment; <tt>false</tt> - doesn't require assignment.
-   * @property {*} is_convert <tt>true</tt> - after expiration, the Purchase Option should be converted to another instance; <tt>false</tt> - otherwise.
-   * @property {*} is_renew <tt>true</tt> - the Purchase Option is renewable; <tt>false</tt> - otherwise.
-   * @property {*} is_renew_check <tt>true</tt> - the Purchase Option is renewable and the "auto-renew" option should be turned on by default; <tt>false</tt> - otherwise.
-   * @property {string} k_id The key of the Purchase Option in the database. Table depends on <tt>id_purchase_item</tt>.
-   * @property {*} k_login_prize The key of the user's prize which can be used instead a Purchase Option to book the session.
+   * @property {*} i_limit The limit of sessions that can be booked using the Purchase Options.
+   * @property {*} i_payment_period Actual only for membership Purchase Options. The duration of the regular payment interval.
+   * @property {*} i_session Actual only for purchases of single sessions. The number of sessions booked simultaneously.
+   * @property {*} id_program_category Actual only for Purchase Options. The ID of the Purchase Option program category. One of the {@link RsProgramCategorySid} constants.
+   * @property {*} id_program_type Actual only for Purchase Options. The ID of the Purchase Option program type. One of the {@link RsProgramTypeSid} constants.
+   * @property {number} id_purchase_item The ID of the Purchase Option type. One of the {@link RsPurchaseItemSid} constants.
+   * @property {*} is_contract This will be <tt>true</tt> if the Purchase Option requires a contract assignment.
+   * Otherwise, this will be <tt>false</tt> if it doesn't require assignment.
+   * @property {*} is_convert This will be <tt>true</tt> the Purchase Option should be converted to another instance
+   * after it expires. Otherwise, this will be <tt>false</tt>.
+   * @property {*} is_renew This will be <tt>true</tt> if the Purchase Option is renewable.
+   * Otherwise, this will be <tt>false</tt>.
+   * @property {*} is_renew_check This will be <tt>true</tt> if the Purchase Option is renewable and the "auto-renew"
+   * option is turned on by default. Otherwise, this will be <tt>false</tt>.
+   * @property {string} k_id The key of the Purchase Option in the database. The table depends on <tt>id_purchase_item</tt>.
+   * @property {*} k_login_prize The key of the user's prize that can be used instead a Purchase Option to book the session.
    * @property {*} s_contract The contract of the Purchase Option. This is only set if <tt>is_contract</tt> is <tt>true</tt>.
-   * @property {*} s_payment_duration Actual only for promotions with program 'membership'. The measurement unit of <tt>i_payment_period</tt>.
-   * @property {*} s_promotion_convert Actual only if <tt>is_convert</tt> is <tt>true</tt>. The title of the promotion to which the Purchase Option should be converted after expiration.
+   * @property {*} s_payment_duration Actual only for membership Purchase Options. The measurement unit of <tt>i_payment_period</tt>.
+   * @property {*} s_promotion_convert Actual only if <tt>is_convert</tt> is <tt>true</tt>. The title of the Purchase Option
+   * to be used upon conversion after expiration.
    * @property {string} s_title The title.
    * @property {string} s_value The unique identifier.
    */
 
   /**
-   * A list of Purchase Options which are available for session(s) that are being booked. Keys - unique string IDs. Values - arrays with the next keys:
+   * A list of Purchase Options that are available for session(s) being booked. Keys refer to unique string IDs and
+   * values refer to arrays with the next keys:
    * <dl>
    *   <dt>
    *     array[] <var>a_installment_template</var>.
@@ -278,7 +283,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *         int <var>id_duration</var>
    *       </dt>
    *       <dd>
-   *          The duration of a single period. One of {@link ADurationSid} constants.
+   *          The duration of a single period. One of the {@link ADurationSid} constants.
    *       </dd>
    *       <dt>
    *         int <var>i_period</var>
@@ -316,7 +321,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *     array[] [<var>a_visit_limit</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions. A list of limits on booking by the promotion. Every element has the next keys:
+   *     Actual only for Purchase Options. A list of limits on booking by the promotion. Every element has the next keys:
    *     <dl>
    *       <dt>
    *         string <var>s_title</var>
@@ -342,7 +347,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *     string <var>html_payment_period</var>
    *   </dt>
    *   <dd>
-   *     Actual only for promotions with program 'membership'. Measurement unit of <var>i_payment_period</var> in short form.
+   *     Actual only for membership Purchase Options. The measurement unit of <var>i_payment_period</var> in short form.
    *   </dd>
    *   <dt>
    *     string <var>html_description</var>
@@ -354,91 +359,95 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *     int [<var>i_limit</var>]
    *   </dt>
    *   <dd>
-   *     The limit of sessions which may be booked by Purchase Options.
+   *     The limit of sessions that can be used by the Purchase Options.
    *   </dd>
    *   <dt>
    *     int [<var>i_payment_period</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions with program 'membership'. The duration of the regular payment interval.
+   *     Actual only for membership Purchase Options. The duration of the regular payment interval.
    *   </dd>
    *   <dt>
    *     int [<var>i_session</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for purchases of single sessions. The number of sessions which are booked simultaneously.
+   *     Actual only for purchases of single sessions. The number of sessions booked simultaneously.
    *   </dd>
    *   <dt>
    *     int [<var>id_program_category</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions. The ID of the promotion program category. One of {@link RsProgramCategorySid} constants.
+   *     Actual only for promotions. The ID of the Purchase Option program category. One of the {@link RsProgramCategorySid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_program_type</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions. The ID of the promotion program type. One of {@link RsProgramTypeSid} constants.
+   *     Actual only for promotions. The ID of the Purchase Option program type. One of the {@link RsProgramTypeSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of Purchase Option type. One of {@link RsPurchaseItemSid} constants.
+   *     The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_contract</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - The Purchase Option requires a contract assignment; <tt>false</tt> - doesn't require assignment.
+   *     This will be <tt>true</tt> if the Purchase Option requires a contract assignment. Otherwise, this will be
+   *     <tt>false</tt> if it isn't required.
    *   </dd>
    *   <dt>
    *     bool [<var>is_convert</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - after expiration, the Purchase Option should be converted to another instance; <tt>false</tt> - otherwise.
+   *     This will be <tt>true</tt> if the Purchase Option should be converted to another instance upon expiration.
+   *     Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     bool [<var>is_renew</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - the Purchase Option is renewable; <tt>false</tt> - otherwise.
+   *     This will be <tt>true</tt> if the Purchase Option is renewable. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     bool [<var>is_renew_check</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - the Purchase Option is renewable and the "auto-renew" option should be turned on by default; <tt>false</tt> - otherwise.
+   *     This will be <tt>true</tt> if the Purchase Option is renewable and the "auto-renew" option is turned on
+   *     by default. Otherwise, this will be <tt>false</tt>.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
    *   </dt>
    *   <dd>
-   *     The key of the Purchase Option in the database. Table depends on <var>id_purchase_item</var>.
+   *     The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_prize</var>]
    *   </dt>
    *   <dd>
-   *     The key of the user's prize which can be used instead a Purchase Option to book the session.
+   *     The key of the user's prize that can be used instead a Purchase Option to book the session.
    *   </dd>
    *   <dt>
    *     string [<var>s_contract</var>]
    *   </dt>
    *   <dd>
-   *     The contract of the Purchase Option. This is only set if <var>is_contract</var> is <tt>true</tt>.
+   *     The Purchase Option contract. This is only set if <var>is_contract</var> is <tt>true</tt>.
    *   </dd>
    *   <dt>
    *     string [<var>s_payment_duration</var>]
    *   </dt>
    *   <dd>
-   *     Actual only for promotions with program 'membership'. The measurement unit of <var>i_payment_period</var>.
+   *     Actual only for membership Purchase Options. The measurement unit of <var>i_payment_period</var>.
    *   </dd>
    *   <dt>
    *     string [<var>s_promotion_convert</var>]
    *   </dt>
    *   <dd>
-   *     Actual only if <var>is_convert</var> is <tt>true</tt>. The title of the promotion to which the Purchase Option should be converted after expiration.
+   *     Actual only if <var>is_convert</var> is <tt>true</tt>. If the Purchase Option is set to convert upon expiration,
+   *     this will be the name to use for the new instance of the Purchase Option.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
@@ -461,16 +470,17 @@ function Wl_Book_Process_Purchase_PurchaseModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_repeat
-   * @property {*} a_week Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
-   * Empty if appointment must not repeat weekly.
-   * @property {*} dl_end Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
-   * @property {*} i_occurrence Number of occurrences after that appointment repeat must stop.
-   * Empty if repeat must not stop after a certain number of occurrences.
-   * @property {number} i_period Frequency of appointment repeating.
-   * @property {number} id_period Measurement unit of `i_period`. One of {@link ADurationSid} constants.
-   * @property {*} is_month `true` if appointment must repeat monthly at the same date.
-   * `false` if appointment must repeat monthly at the same week day.
-   * `null` if appointment must not repeat monthly.
+   * @property {*} a_week The days of week when the appointment repeats. One of the {@link ADateWeekSid} constants.
+   * This will be empty if appointment doesn't repeat weekly.
+   * @property {*} dl_end The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle
+   * doesn't stop at a certain date.
+   * @property {*} i_occurrence The number of occurrences after which the appointment's repeat cycle stops.
+   * This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   * @property {number} i_period The frequency of the appointment repeat cycle.
+   * @property {number} id_period The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   * @property {*} is_month This will be `true` if the appointment repeats monthly at the same date.
+   * Otherwise, this will be `false` if the appointment repeats monthly on the same day of the week or `null` if
+   * the appointment doesn't repeat monthly.
    */
 
   /**
@@ -480,45 +490,46 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of week when the appointment repeats. One of the {@link ADateWeekSid} constants.
+   *     This will be empty if appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop
+   *     at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle stops. This will be empty if the
+   *     repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment repeat cycle.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` if appointment must repeat monthly at the same date.
-   *     `false` if appointment must repeat monthly at the same week day.
-   *     `null` if appointment must not repeat monthly.
+   *     This will be `true` if the appointment repeats monthly at the same date.
+   *     Otherwise, this will be `false` if the appointment repeats monthly on the same day of the week or `null` if
+   *     the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
-   * `null` if booking must be not recurring.
+   * This will be `null` if this isn't a recurring booking.
    *
    * @post post
    * @type {?Wl_Book_Process_Purchase_PurchaseModel_a_repeat}
@@ -527,8 +538,8 @@ function Wl_Book_Process_Purchase_PurchaseModel()
 
   /**
    * A list of sessions being booked.
-   * <b>Keys</b> - The class period keys.
-   * <b>Values</b> - List of date/time when the session occurred.
+   *
+   * Keys refer to class period keys and values refer to the dates/times when the session occurred.
    *
    * @get get
    * @type {{}}
@@ -536,7 +547,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.a_session = [];
 
   /**
-   * List of session passes that might be used in booking process.
+   * A list of session passes that could be used in the booking process.
    *
    * @get result
    * @type {{}}
@@ -544,11 +555,10 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.a_session_pass = [];
 
   /**
-   * Selected sessions on the waiting list without pay.
+   * Selected sessions on the wait list that are unpaid.
    *
-   * Keys - session IDs.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * Keys refer to session IDs. Values refer to dates/times when the session occurred provided as an array in MySQL
+   * format and in GMT.
    *
    * @get get
    * @type {{}}
@@ -556,8 +566,8 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.a_session_wait_list_unpaid = [];
 
   /**
-   * Whether the class/event can be booked at this step or not.
-   * External process control flag.
+   * Determines whether the class/event can be booked at this step.
+   * This is an external process control flag.
    *
    * @post post
    * @type {boolean}
@@ -565,7 +575,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.can_book = true;
 
   /**
-   * Date/time to which session is booked.
+   * The date/time the session is booked for.
    *
    * @get get
    * @post get
@@ -574,8 +584,8 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.dt_date_gmt = "";
 
   /**
-   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The image height in pixels. Specify this value if you need an image returned in a specific size.
+   * If this value isn't specified, the returned image will have the default thumbnail size.
    *
    * @get get
    * @type {number}
@@ -583,8 +593,8 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.i_image_height = 0;
 
   /**
-   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The image width in pixels. Specify this value if you need an image returned in a specific size.
+   * If this value isn't specified, the returned image will have the default thumbnail size.
    *
    * @get get
    * @type {number}
@@ -592,7 +602,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.i_image_width = 0;
 
   /**
-   * Mode type. One of {@link Wl_Mode_ModeSid} constants.
+   * The mode type. One of the {@link Wl_Mode_ModeSid} constants.
    *
    * @get get
    * @post get
@@ -601,7 +611,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.id_mode = 0;
 
   /**
-   * If client must authorize credit card.
+   * Determines if the client must authorize a credit card.
    *
    * @get get
    * @type {boolean}
@@ -609,8 +619,8 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.is_card_authorize = false;
 
   /**
-   * `true` if user pressed 'Pay later'.
-   * `false` if user pressed 'Pay now'.
+   * If `true`, the user pressed 'Pay later'. Otherwise, this will be `false` if the user
+   * pressed 'Pay now'.
    *
    * @post post
    * @type {boolean}
@@ -626,7 +636,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.k_business = "";
 
   /**
-   * Key of session which is booked.
+   * The key of the booked session.
    *
    * @get get
    * @post get
@@ -635,9 +645,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.k_class_period = "0";
 
   /**
-   * Login promotion to be used to book a class.
-   *
-   * Primary key from {@link  \RsLoginProductSql}.
+   * The login promotion (Purchase Option) used to book a class.
    *
    * @post post
    * @type {string}
@@ -645,8 +653,8 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.k_login_promotion = "";
 
   /**
-   * Default promotion key.
-   * Empty if the class has no default promotion.
+   * The default Purchase Option key.
+   * This will be empty if the class has no default Purchase Option.
    *
    * @get result
    * @type {string}
@@ -654,9 +662,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.k_promotion_default = "";
 
   /**
-   * Session pass to be used to book a class.
-   *
-   * Primary key from {@link  \Wl\Session\Pass\Sql}.
+   * The session pass used to book the class.
    *
    * @post post
    * @type {string}
@@ -664,7 +670,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
   this.k_session_pass = "";
 
   /**
-   * Key of a user who is making a book.
+   * The key of the user making the booking.
    *
    * @get get
    * @post get
@@ -688,11 +694,11 @@ Wl_Book_Process_Purchase_PurchaseModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Book_Process_Purchase_PurchaseModel.instanceGet
- * @param {string} k_class_period Key of session which is booked.
- * @param {string} dt_date_gmt Date/time to which session is booked.
+ * @param {string} k_class_period The key of the booked session.
+ * @param {string} dt_date_gmt The date/time the session is booked for.
  * @param {string} k_business The business key.
- * @param {string} uid Key of a user who is making a book.
- * @param {number} id_mode Mode type. One of {@link Wl_Mode_ModeSid} constants.
+ * @param {string} uid The key of the user making the booking.
+ * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Purchase_PurchaseModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
