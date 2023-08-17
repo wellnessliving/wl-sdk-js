@@ -45,7 +45,8 @@ function Wl_Family_Relation_RelationModel()
    */
 
   /**
-   * Information about the user's family relations. Every element has the following fields:
+   * Information about the user's family relations. Empty array if user is traveller for the specified business.
+   * Every element has the following fields:
    * <dl>
    *   <dt>int <var>id_family_relation</var></dt>
    *   <dd>Type of family relation. One of {@link Wl_Family_Relation_RelationSid} constants.</dd>
