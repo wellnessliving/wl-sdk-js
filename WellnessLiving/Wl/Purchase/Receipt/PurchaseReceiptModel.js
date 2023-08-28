@@ -526,6 +526,22 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    */
   this.text_receipt = undefined;
 
+  /**
+   * The URL for printing on a normal printer.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_print = undefined;
+
+  /**
+   * The URL for printing on a receipt printer.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_print_receipt = undefined;
+
   this.changeInit();
 }
 
@@ -536,5 +552,5 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Receipt_PurchaseReceiptModel);
  */
 Wl_Purchase_Receipt_PurchaseReceiptModel.prototype.config=function()
 {
-  return {"a_field": {"a_account_rest": {"get": {"result": true}},"a_business": {"get": {"result": true}},"a_card": {"get": {"result": true}},"a_customer": {"get": {"result": true}},"a_pay_method": {"get": {"result": true}},"a_price": {"get": {"result": true}},"a_purchase_item": {"get": {"result": true}},"dtl_purchase": {"get": {"result": true}},"has_signature": {"get": {"result": true}},"html_receipt": {"get": {"result": true}},"k_purchase": {"get": {"get": true}},"text_purchase_id": {"get": {"result": true}},"text_receipt": {"get": {"result": true}}}};
+  return {"a_field": {"a_account_rest": {"get": {"result": true}},"a_business": {"get": {"result": true}},"a_card": {"get": {"result": true}},"a_customer": {"get": {"result": true}},"a_pay_method": {"get": {"result": true}},"a_price": {"get": {"result": true}},"a_purchase_item": {"get": {"result": true}},"dtl_purchase": {"get": {"result": true}},"has_signature": {"get": {"result": true}},"html_receipt": {"get": {"result": true}},"k_purchase": {"get": {"get": true}},"text_purchase_id": {"get": {"result": true}},"text_receipt": {"get": {"result": true}},"url_print": {"get": {"result": true}},"url_print_receipt": {"get": {"result": true}}}};
 };
