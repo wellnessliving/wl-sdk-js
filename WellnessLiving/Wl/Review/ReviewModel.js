@@ -2,6 +2,10 @@
  * An endpoint that adds a review for a location. The review consists of a rating from 1 to 5 stars and text.
  * The review will be attributed to the user who is signed in to the API.
  *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is {@link Wl\Review\ReviewCaptcha::CID}.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract

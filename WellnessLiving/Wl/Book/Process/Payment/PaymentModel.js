@@ -1,6 +1,11 @@
 /**
- * An endpoint that acts as the booking wizard for the "Pay/Billing info" page. This also corresponds to the "Checkout" page
- * in WellnessLiving.
+ * An endpoint that acts as the booking wizard for the "Pay/Billing info" page.
+ *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is {@link Wl\Business\BusinessPaymentCaptcha::CID}.
+ *
+ * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,12 +21,12 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_item
-   * @property {number} id_purchase_item The ID of the purchase item type. One of the {@link RsPurchaseItemSid} constants.
-   * @property {*} is_renew If <tt>true</tt>, the item is set to auto-renew. Otherwise, this will be <tt>false</tt>.
+   * @property {number} id_purchase_item The ID of purchase item type. One of {@link RsPurchaseItemSid} constants.
+   * @property {*} is_renew <tt>true</tt> if the item should be set to auto-renew; <tt>false</tt> if otherwise.
    * If not set yet, use the default option for this item.
    * @property {string} k_id The key of the purchase item in the database.
-   * @property {string} k_login_prize The ID of the user's prize.
-   * This won't be <tt>0</tt> only if user is paying for the booking by redeeming a prize.
+   * @property {string} k_login_prize ID of user's prize.
+   * Not <tt>0</tt> only if user is paying book by prize.
    * @property {*} s_signature The signature of the Purchase Option contract.
    * This won't be set if the Purchase Option doesn't require a contract assignment.
    */
@@ -70,8 +75,8 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.a_item = [];
 
   /**
-   * The keys of the user's activities that correspond to bookings made.
-   * This won't be empty if the booking process is finished.
+   * Keys of the user's activity which correspond to bookings made.
+   * Not empty when the booking process is finished.
    *
    * @post result
    * @type {string[]}
@@ -80,49 +85,49 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_pay_form_a_pay_card_a_pay_address
-   * @property {*} is_new Set this value is <tt>1</tt> to add a new payment address or <tt>0</tt> to use a saved payment address.
-   * @property {*} k_geo_country The key of the country used for the payment address. Specify this to add a new address.
-   * @property {*} k_geo_region The key of the region for the payment address. Specify this to add a new address.
-   * @property {*} k_pay_address The key of the saved payment address. Specify this to use a saved address.
-   * @property {*} s_city The city used for the payment address. Specify this to add a new address.
-   * @property {*} s_name The card name. Specify this to add a new address.
-   * @property {*} s_phone The payment phone. Specify this to add a new address.
-   * @property {*} s_postal The postal code for the payment address. Specify this to add a new address.
-   * @property {*} s_street1 The payment address. Specify this to add a new address.
-   * @property {*} s_street2 The optional payment address. Specify this to add a new address.
+   * @property {*} is_new Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+   * @property {*} k_geo_country The key of the country used for the payment address. Specify to add a new address.
+   * @property {*} k_geo_region The key of the region for the payment address. Specify to add a new address.
+   * @property {*} k_pay_address The key of the saved payment address. Specify to use a saved address.
+   * @property {*} s_city The city used for the payment address. Specify to add a new address.
+   * @property {*} s_name The card name. Specify to add a new address.
+   * @property {*} s_phone The payment phone. Specify to add a new address.
+   * @property {*} s_postal The postal code for the payment address. Specify to add a new address.
+   * @property {*} s_street1 The payment address. Specify to add a new address.
+   * @property {*} s_street2 The optional payment address. Specify to add a new address.
    */
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_pay_form_a_pay_card
    * @property {Wl_Book_Process_Payment_PaymentModel_a_pay_form_a_pay_card_a_pay_address} a_pay_address The payment address:
    * <dl>
    *   <dt>boolean <tt>is_new</tt></dt>
-   *   <dd>Set this value is <tt>1</tt> to add a new payment address or <tt>0</tt> to use a saved payment address.</dd>
+   *   <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *   <dt>string [<tt>k_geo_country</tt>]</dt>
-   *   <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
+   *   <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
    *   <dt>string [<tt>k_geo_region</tt>]</dt>
-   *   <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
+   *   <dd>The key of the region for the payment address. Specify to add a new address.</dd>
    *   <dt>string [<tt>k_pay_address</tt>]</dt>
-   *   <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
+   *   <dd>The key of the saved payment address. Specify to use a saved address.</dd>
    *   <dt>string [<tt>s_city</tt>]</dt>
-   *   <dd>The city used for the payment address. Specify this to add a new address.</dd>
+   *   <dd>The city used for the payment address. Specify to add a new address.</dd>
    *   <dt>string [<tt>s_name</tt>]</dt>
-   *   <dd>The card name. Specify this to add a new address.</dd>
+   *   <dd>The card name. Specify to add a new address.</dd>
    *   <dt>string [<tt>s_phone</tt>]</dt>
-   *   <dd>The payment phone. Specify this to add a new address.</dd>
+   *   <dd>The payment phone. Specify to add a new address.</dd>
    *   <dt>string [<tt>s_postal</tt>]</dt>
-   *   <dd>The postal code for the payment address. Specify this to add a new address.</dd>
+   *   <dd>The postal code for the payment address. Specify to add a new address.</dd>
    *   <dt>string [<tt>s_street1</tt>]</dt>
-   *   <dd>The payment address. Specify this to add a new address.</dd>
+   *   <dd>The payment address. Specify to add a new address.</dd>
    *   <dt>string [<tt>s_street2</tt>]</dt>
-   *   <dd>The optional payment address. Specify this to add a new address.</dd>
+   *   <dd>The optional payment address. Specify to add a new address.</dd>
    * </dl>
-   * @property {*} i_csc The credit card CSC. Specify this to add a new card.
-   * @property {*} i_month The credit card expiration month. Specify this to add a new card.
-   * @property {*} i_year The credit card expiration year. Specify this to add a new card.
-   * @property {*} is_new Set this value to <tt>1</tt> to add a new card or <tt>0</tt> to use a saved card.
-   * @property {*} k_pay_bank The key of a credit card. Specify this to use saved card.
-   * @property {*} s_comment Optional comment(s). Specify this to add a new card.
-   * @property {*} s_number The card number. Specify this to add a new card.
+   * @property {*} i_csc The credit card CSC. Specify to add a new card.
+   * @property {*} i_month The credit card expiration month. Specify to add a new card.
+   * @property {*} i_year The credit card expiration year. Specify to add a new card.
+   * @property {*} is_new <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
+   * @property {*} k_pay_bank The key of a credit card. Specify to use saved card.
+   * @property {*} s_comment Optional comment(s). Specify to add a new card.
+   * @property {*} s_number The card number. Specify to add a new card.
    */
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_pay_form
@@ -135,72 +140,72 @@ function Wl_Book_Process_Payment_PaymentModel()
    *     The payment address:
    *     <dl>
    *       <dt>boolean <tt>is_new</tt></dt>
-   *       <dd>Set this value is <tt>1</tt> to add a new payment address or <tt>0</tt> to use a saved payment address.</dd>
+   *       <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *       <dt>string [<tt>k_geo_country</tt>]</dt>
-   *       <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
+   *       <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
    *       <dt>string [<tt>k_geo_region</tt>]</dt>
-   *       <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
+   *       <dd>The key of the region for the payment address. Specify to add a new address.</dd>
    *       <dt>string [<tt>k_pay_address</tt>]</dt>
-   *       <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
+   *       <dd>The key of the saved payment address. Specify to use a saved address.</dd>
    *       <dt>string [<tt>s_city</tt>]</dt>
-   *       <dd>The city used for the payment address. Specify this to add a new address.</dd>
+   *       <dd>The city used for the payment address. Specify to add a new address.</dd>
    *       <dt>string [<tt>s_name</tt>]</dt>
-   *       <dd>The card name. Specify this to add a new address.</dd>
+   *       <dd>The card name. Specify to add a new address.</dd>
    *       <dt>string [<tt>s_phone</tt>]</dt>
-   *       <dd>The payment phone. Specify this to add a new address.</dd>
+   *       <dd>The payment phone. Specify to add a new address.</dd>
    *       <dt>string [<tt>s_postal</tt>]</dt>
-   *       <dd>The postal code for the payment address. Specify this to add a new address.</dd>
+   *       <dd>The postal code for the payment address. Specify to add a new address.</dd>
    *       <dt>string [<tt>s_street1</tt>]</dt>
-   *       <dd>The payment address. Specify this to add a new address.</dd>
+   *       <dd>The payment address. Specify to add a new address.</dd>
    *       <dt>string [<tt>s_street2</tt>]</dt>
-   *       <dd>The optional payment address. Specify this to add a new address.</dd>
+   *       <dd>The optional payment address. Specify to add a new address.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
    *     int [<tt>i_csc</tt>]
    *   </dt>
    *   <dd>
-   *     The credit card CSC. Specify this to add a new card.
+   *     The credit card CSC. Specify to add a new card.
    *   </dd>
    *   <dt>
    *     int [<tt>i_month</tt>]
    *   </dt>
    *   <dd>
-   *     The credit card expiration month. Specify this to add a new card.
+   *     The credit card expiration month. Specify to add a new card.
    *   </dd>
    *   <dt>
    *     int [<tt>i_year</tt>]
    *   </dt>
    *   <dd>
-   *     The credit card expiration year. Specify this to add a new card.
+   *     The credit card expiration year. Specify to add a new card.
    *   </dd>
    *   <dt>
    *     boolean <tt>is_new</tt>
    *   </dt>
    *   <dd>
-   *     Set this value to <tt>1</tt> to add a new card or <tt>0</tt> to use a saved card.
+   *     <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
    *   </dd>
    *   <dt>
    *     string [<tt>k_pay_bank</tt>]
    *   </dt>
    *   <dd>
-   *     The key of a credit card. Specify this to use saved card.
+   *     The key of a credit card. Specify to use saved card.
    *   </dd>
    *   <dt>
    *     string [<tt>s_comment</tt>]
    *   </dt>
    *   <dd>
-   *     Optional comment(s). Specify this to add a new card.
+   *     Optional comment(s). Specify to add a new card.
    *   </dd>
    *   <dt>
    *     string [<tt>s_number</tt>]
    *   </dt>
    *   <dd>
-   *     The card number. Specify this to add a new card.
+   *     The card number. Specify to add a new card.
    *   </dd>
    * </dl>
    * @property {string} f_amount The amount of money to withdraw with this payment source.
-   * @property {*} is_hide Determines whether this payment method is hidden.
+   * @property {*} is_hide Whether this payment method is hidden.
    * @property {*} is_success Identifies whether this source was successfully charged.
    * @property {*} m_surcharge The client-side calculated surcharge.
    * @property {*} s_index The index of this form (optional).
@@ -225,68 +230,68 @@ function Wl_Book_Process_Payment_PaymentModel()
    *         The payment address:
    *         <dl>
    *           <dt>boolean <var>is_new</var></dt>
-   *           <dd>Set this value to <tt>1</tt> to add a new payment address or <tt>0</tt> to use a saved payment address.</dd>
+   *           <dd>Set this value is <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
    *           <dt>string [<var>k_geo_country</var>]</dt>
-   *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
+   *           <dd>The key of the country used for the payment address. Specify to add a new address.</dd>
    *           <dt>string [<var>k_geo_region</var>]</dt>
-   *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
+   *           <dd>The key of the region for the payment address. Specify to add a new address.</dd>
    *           <dt>string [<var>k_pay_address</var>]</dt>
-   *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
+   *           <dd>The key of the saved payment address. Specify to use a saved address.</dd>
    *           <dt>string [<var>s_city</var>]</dt>
-   *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
+   *           <dd>The city used for the payment address. Specify to add a new address.</dd>
    *           <dt>string [<var>s_name</var>]</dt>
-   *           <dd>The card name. Specify this to add a new address.</dd>
+   *           <dd>The card name. Specify to add a new address.</dd>
    *           <dt>string [<var>s_phone</var>]</dt>
-   *           <dd>The payment phone. Specify this to add a new address.</dd>
+   *           <dd>The payment phone. Specify to add a new address.</dd>
    *           <dt>string [<var>s_postal</var>]</dt>
-   *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
+   *           <dd>The postal code for the payment address. Specify to add a new address.</dd>
    *           <dt>string [<var>s_street1</var>]</dt>
-   *           <dd>The payment address. Specify this to add a new address.</dd>
+   *           <dd>The payment address. Specify to add a new address.</dd>
    *           <dt>string [<var>s_street2</var>]</dt>
-   *           <dd>The optional payment address. Specify this to add a new address.</dd>
+   *           <dd>The optional payment address. Specify to add a new address.</dd>
    *         </dl>
    *       </dd>
    *       <dt>
    *         int [<var>i_csc</var>]
    *       </dt>
    *       <dd>
-   *         The credit card CSC. Specify this to add a new card.
+   *         The credit card CSC. Specify to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_month</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration month. Specify this to add a new card.
+   *         The credit card expiration month. Specify to add a new card.
    *       </dd>
    *       <dt>
    *         int [<var>i_year</var>]
    *       </dt>
    *       <dd>
-   *         The credit card expiration year. Specify this to add a new card.
+   *         The credit card expiration year. Specify to add a new card.
    *       </dd>
    *       <dt>
    *         boolean <var>is_new</var>
    *       </dt>
    *       <dd>
-   *         Set this value to <tt>1</tt> to add a new card or <tt>0</tt> to use a saved card.
+   *         <tt>1</tt> to add a new card; <tt>0</tt> to use a saved card.
    *       </dd>
    *       <dt>
    *         string [<var>k_pay_bank</var>]
    *       </dt>
    *       <dd>
-   *         The key of a credit card. Specify this to use saved card.
+   *         The key of a credit card. Specify to use saved card.
    *       </dd>
    *       <dt>
    *         string [<var>s_comment</var>]
    *       </dt>
    *       <dd>
-   *         Optional comment(s). Specify this to add a new card.
+   *         Optional comment(s). Specify to add a new card.
    *       </dd>
    *       <dt>
    *         string [<var>s_number</var>]
    *       </dt>
    *       <dd>
-   *         The card number. Specify this to add a new card.
+   *         The card number. Specify to add a new card.
    *       </dd>
    *     </dl>
    *   </dd>
@@ -300,7 +305,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    *     boolean [<var>is_hide</var>]
    *   </dt>
    *   <dd>
-   *     Determines whether this payment method is hidden.
+   *     Whether this payment method is hidden.
    *   </dd>
    *   <dt>
    *     boolean [<var>is_success</var>=<tt>false</tt>]
@@ -334,10 +339,10 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.a_pay_form = [];
 
   /**
-   * A list of quiz response keys.
-   * The quiz key.
-   * The response key (or the special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} the
-   * constant).
+   * List of quiz response keys.
+   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
+   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table or
+   * special value from {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
    *
    * @post post
    * @type {{}}
@@ -346,65 +351,64 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_repeat
-   * @property {*} a_week The days of week when appointment must repeat. One of the {@link ADateWeekSid} constants.
-   * This will be empty if the appointment doesn't repeat weekly.
-   * @property {*} dl_end The date when appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't
-   * stop at a certain date.
-   * @property {*} i_occurrence The number of occurrences after which appointment's repeat cycle stops.
-   * This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   * @property {number} i_period The frequency of the appointment's repeat cycle.
-   * @property {number} id_period The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   * @property {*} is_month This will be `true` if the appointment repeats monthly at the same date.
-   * Otherwise, this will be `false` if the appointment repeats monthly at the same week day or `null` if appointment
-   * doesn't repeat monthly.
+   * @property {*} a_week Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
+   * Empty if appointment must not repeat weekly.
+   * @property {*} dl_end Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   * @property {*} i_occurrence Number of occurrences after that appointment repeat must stop.
+   * Empty if repeat must not stop after a certain number of occurrences.
+   * @property {number} i_period Frequency of appointment repeating.
+   * @property {number} id_period Measurement unit of `i_period`. One of {@link ADurationSid} constants.
+   * @property {*} is_month `true` if appointment must repeat monthly at the same date.
+   * `false` if appointment must repeat monthly at the same week day.
+   * `null` if appointment must not repeat monthly.
    */
 
   /**
-   * Information about the recurring booking:
+   * Information about recurring booking:
    * <dl>
    *   <dt>
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     The days of week when appointment must repeat. One of the {@link ADateWeekSid} constants.
-   *     This will be empty if the appointment doesn't repeat weekly.
+   *     Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
+   *     Empty if appointment must not repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     The date when appointment's repeat cycle stops. This will be empty if the repeat cycle
-   *     doesn't stop at a certain date.
+   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     The number of occurrences after which appointment's repeat cycle stops.
-   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *     Number of occurrences after that appointment repeat must stop.
+   *     Empty if repeat must not stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     The frequency of the appointment's repeat cycle.
+   *     Frequency of appointment repeating.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   *     Measurement unit of `i_period`. One of {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     This will be `true` if the appointment repeats monthly at the same date. Otherwise, this will be `false` if
-   *     the appointment repeats monthly at the same week day or `null` if appointment doesn't repeat monthly.
+   *     `true` if appointment must repeat monthly at the same date.
+   *     `false` if appointment must repeat monthly at the same week day.
+   *     `null` if appointment must not repeat monthly.
    *   </dd>
    * </dl>
    *
-   * This will be `null` if this isn't a recurring booking.
+   * `null` if booking must be not recurring.
    *
    * @post post
    * @type {?Wl_Book_Process_Payment_PaymentModel_a_repeat}
@@ -414,7 +418,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_resource
    * @property {number} i_index The number of asset(s). The actual number is returned for assets with a quantity greater than <tt>1</tt>.
-   * @property {string} k_resource The asset key.
+   * @property {string} k_resource The key of the asset.
    */
 
   /**
@@ -423,7 +427,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    *   <dt>int <var>i_index</var></dt>
    *   <dd>The number of asset(s). The actual number is returned for assets with a quantity greater than <tt>1</tt>.</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The asset key.</dd>
+   *   <dd>The key of the asset.</dd>
    * </dl>
    *
    * @post post
@@ -433,10 +437,8 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * A list of sessions being booked.
-   *
-   * Keys refer to class period keys.
-   *
-   * Values refer to a list of dates/times when the session occurred.
+   * <b>Keys</b> - The class period keys.
+   * <b>Values</b> - List of date/time when the session occurred.
    *
    * @post post
    * @type {{}}
@@ -444,11 +446,11 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.a_session = [];
 
   /**
-   * The selected sessions on the wait list that are unpaid.
+   * Selected sessions on the waiting list without pay.
    *
-   * Keys refer to session IDs.
+   * Keys - session IDs.
    *
-   * Values refer to index arrays of dates/times when session has occurred, returned in MySQL format and in GMT.
+   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
    *
    * @post post
    * @type {{}}
@@ -456,7 +458,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.a_session_wait_list_unpaid = [];
 
   /**
-   * The keys of bookings that were made.
+   * The keys of bookings made.
    *
    * @post result
    * @type {string[]}
@@ -464,8 +466,8 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.a_visit = undefined;
 
   /**
-   * Determines whether the class/event can be booked at this step or not.
-   * This is an external process control flag.
+   * Whether the class/event can be booked at this step or not.
+   * External process control flag.
    *
    * @post post
    * @type {boolean}
@@ -473,7 +475,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.can_book = true;
 
   /**
-   * The date/time the session is booked for.
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
@@ -482,7 +484,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.dt_date_gmt = "";
 
   /**
-   * The mode type. One of the {@link Wl_Mode_ModeSid} constants.
+   * Mode type. One of {@link Wl_Mode_ModeSid} constants.
    *
    * @get get
    * @post get
@@ -491,7 +493,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.id_mode = 0;
 
   /**
-   * Determines if the client must authorize the credit card.
+   * If client must authorize credit card.
    *
    * @post post
    * @type {boolean}
@@ -499,8 +501,8 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.is_card_authorize = false;
 
   /**
-   * This will be `true` if the user selected 'Pay later'. Otherwise, this will be `false` if the user selected
-   * 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @type {boolean}
@@ -508,7 +510,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.is_force_pay_later = false;
 
   /**
-   * The key of booked session.
+   * Key of session which is booked.
    *
    * @get get
    * @post get
@@ -517,7 +519,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.k_class_period = "0";
 
   /**
-   * The keys of the user's activities corresponding to the purchase made. This won't be empty when the booking process is finished.
+   * The keys of the user's activity corresponding to the purchase made. This won't be empty when the booking process is finished.
    *
    * @post result
    * @type {string}
@@ -525,7 +527,9 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.k_login_activity_purchase = undefined;
 
   /**
-   * The login Purchase Option used to book a class.
+   * Login promotion to be used to book a class.
+   *
+   * Primary key from {@link  \RsLoginProductSql}.
    *
    * @post post
    * @type {string}
@@ -534,9 +538,8 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * The installment template key.
-   *
-   * This property is optional. It will be `null` if an installment plan doesn't exist for the purchased item or
-   * `0` if an installment plan isn't selected for the purchased item from the list of installment plans.
+   * This property is optional and it will be `null` if an installment plan doesn't exist for the purchased item.
+   * This will be `0` if an installment plan isn't selected for the purchased item from the list of installment plans.
    *
    * @post post
    * @type {?string}
@@ -544,7 +547,9 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.k_pay_installment_template = null;
 
   /**
-   * The session pass used to book a class.
+   * Session pass to be used to book a class.
+   *
+   * Primary key from {@link  \Wl\Session\Pass\Sql}.
    *
    * @post post
    * @type {string}
@@ -552,7 +557,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.k_session_pass = "";
 
   /**
-   * The discount code applied to the purchase.
+   * The discount code to be applied to the purchase.
    *
    * @post post
    * @type {string}
@@ -560,7 +565,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.text_discount_code = "";
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get
@@ -584,9 +589,9 @@ Wl_Book_Process_Payment_PaymentModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Book_Process_Payment_PaymentModel.instanceGet
- * @param {string} k_class_period The key of booked session.
- * @param {string} dt_date_gmt The date/time the session is booked for.
- * @param {string} uid The key of the user making the booking.
+ * @param {string} k_class_period Key of session which is booked.
+ * @param {string} dt_date_gmt Date/time to which session is booked.
+ * @param {string} uid Key of a user who is making a book.
  * @returns {Wl_Book_Process_Payment_PaymentModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
