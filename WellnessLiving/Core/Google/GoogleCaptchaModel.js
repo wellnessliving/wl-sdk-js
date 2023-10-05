@@ -1,7 +1,8 @@
 /**
  * Api to store captcha user token.
  *
- * This model is generated automatically based on API.
+ * Site keys for initialize Google captcha:
+ * * Demo/Staging - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
