@@ -4,6 +4,10 @@
  * add the payment card.
  * The POST method will actually add the payment card.
  *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is {@link Wl\Business\BusinessPaymentCaptcha::CID}.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract

@@ -1,6 +1,10 @@
 /**
  * An endpoint that acts as the booking wizard for the "Pay/Billing info" page.
  *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is {@link Wl\Business\BusinessPaymentCaptcha::CID}.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
@@ -40,7 +44,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    *     boolean [<var>is_renew</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if the item should be set to auto-renew; <tt>false</tt> if otherwise.
+   *     If <tt>true</tt>, the item is set to auto-renew. Otherwise, this will be <tt>false</tt>.
    *     If not set yet, use the default option for this item.
    *   </dd>
    *   <dt>
@@ -53,15 +57,15 @@ function Wl_Book_Process_Payment_PaymentModel()
    *     string <var>k_login_prize</var>
    *   </dt>
    *   <dd>
-   *     ID of user's prize.
-   *     Not <tt>0</tt> only if user is paying book by prize.
+   *     The ID of the user's prize. This won't be <tt>0</tt> only if user is paying for the booking by
+   *     redeeming a prize.
    *   </dd>
    *   <dt>
    *     string [<var>s_signature</var>]
    *   </dt>
    *   <dd>
-   *     The signature of the Purchase Option contract.
-   *     This won't be set if the Purchase Option doesn't require a contract assignment.
+   *     The signature of the Purchase Option contract. This won't be set if the Purchase Option
+   *     doesn't require a contract assignment.
    *   </dd>
    * </dl>
    *

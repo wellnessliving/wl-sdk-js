@@ -1,6 +1,10 @@
 /**
  * Entry point to save ACH pay method.
  *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is {@link Wl\Business\BusinessPaymentCaptcha::CID}.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
@@ -129,6 +133,84 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
   this.a_card_detail = [];
 
   /**
+   * @typedef {{}} Wl_Pay_Bank_Ach_Add_AddModel_a_pay_bank
+   * @property {boolean} can_remove Whether current user can remove payment method.
+   * `true` if user can remove payment methods.
+   * `false` if user cannot remove payment methods.
+   * @property {number} id_pay_bank Type of recurrent payment token. One of {@link RsPayBankSid} constants.
+   * @property {number} id_pay_bank_ach_holder Type of account holder. One of {@link RsPayBankAchHolderSid} constants.
+   * @property {number} id_pay_bank_ach_type Type of account. One of {@link RsPayBankAchTypeSid} constants.
+   * @property {boolean} is_default `true` - this account is default payment method; `false` - otherwise.
+   * @property {string} k_pay_address Billing address.
+   * @property {string} k_pay_bank ID of bank account.
+   * @property {string} k_region Region ID.
+   * @property {string} text_city Name of city.
+   * @property {string} text_country Name of country.
+   * @property {string} text_name Account nickname.
+   * @property {string} text_name_account Account name.
+   * @property {string} text_name_holder Account holder name.
+   * @property {string} text_number ACH account number.
+   * @property {string} text_phone Phone number.
+   * @property {string} text_postal Postal code.
+   * @property {string} text_region Name of region.
+   * @property {string} text_street1 Street address line 1.
+   * @property {string} text_street2 Street address line 2.
+   */
+
+  /**
+   * ACH account information:
+   *
+   * <dl>
+   *   <dt>bool <var>can_remove</var></dt>
+   *   <dd>
+   *     Whether current user can remove payment method.
+   *     `true` if user can remove payment methods.
+   *     `false` if user cannot remove payment methods.
+   *   </dd>
+   *   <dt>int <var>id_pay_bank</var></dt>
+   *   <dd>Type of recurrent payment token. One of {@link RsPayBankSid} constants.</dd>
+   *   <dt>int <var>id_pay_bank_ach_holder</var></dt>
+   *   <dd>Type of account holder. One of {@link RsPayBankAchHolderSid} constants.</dd>
+   *   <dt>int <var>id_pay_bank_ach_type</var></dt>
+   *   <dd>Type of account. One of {@link RsPayBankAchTypeSid} constants.</dd>
+   *   <dt>bool <var>is_default</var></dt>
+   *   <dd>`true` - this account is default payment method; `false` - otherwise.</dd>
+   *   <dt>string <var>k_pay_address</var></dt>
+   *   <dd>Billing address.</dd>
+   *   <dt>string <var>k_pay_bank</var></dt>
+   *   <dd>ID of bank account.</dd>
+   *   <dt>string <var>k_region</var></dt>
+   *   <dd>Region ID.</dd>
+   *   <dt>string <var>text_city</var></dt>
+   *   <dd>Name of city.</dd>
+   *   <dt>string <var>text_country</var></dt>
+   *   <dd>Name of country.</dd>
+   *   <dt>string <var>text_name</var></dt>
+   *   <dd>Account nickname.</dd>
+   *   <dt>string <var>text_name_account</var></dt>
+   *   <dd>Account name.</dd>
+   *   <dt>string <var>text_name_holder</var></dt>
+   *   <dd>Account holder name.</dd>
+   *   <dt>string <var>text_number</var></dt>
+   *   <dd>ACH account number.</dd>
+   *   <dt>string <var>text_phone</var></dt>
+   *   <dd>Phone number.</dd>
+   *   <dt>string <var>text_postal</var></dt>
+   *   <dd>Postal code.</dd>
+   *   <dt>string <var>text_region</var></dt>
+   *   <dd>Name of region.</dd>
+   *   <dt>string <var>text_street1</var></dt>
+   *   <dd>Street address line 1.</dd>
+   *   <dt>string <var>text_street2</var></dt>
+   *   <dd>Street address line 2.</dd>
+   * </dl>
+   *
+   * @post result
+   * @type {Wl_Pay_Bank_Ach_Add_AddModel_a_pay_bank}
+   */
+  this.a_pay_bank = [];
+
+  /**
    * Business key.
    *
    * @delete get
@@ -178,7 +260,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Bank_Ach_Add_AddModel);
  */
 Wl_Pay_Bank_Ach_Add_AddModel.prototype.config=function()
 {
-  return {"a_field": {"a_card_detail": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true},"post": {"get": true}},"k_pay_bank": {"delete": {"get": true}},"k_pay_owner": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_card_detail": {"post": {"post": true}},"a_pay_bank": {"post": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true},"post": {"get": true}},"k_pay_bank": {"delete": {"get": true}},"k_pay_owner": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**

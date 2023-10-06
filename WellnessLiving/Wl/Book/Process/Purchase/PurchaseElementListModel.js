@@ -1,7 +1,5 @@
 /**
- * A model of a list of purchase items.
- *
- * This model is generated automatically based on API.
+ * An endpoint that provides a list of purchase items.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -19,10 +17,10 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
    */
 
   /**
-   * A list of purchase items for which to get information. Every element has the next keys:
+   * A list of purchase items to get information for. Every element has the next keys:
    * <dl>
    *   <dt>int [<var>i_session</var>]</dt>
-   *   <dd>The number of sessions which are booked simultaneously.</dd>
+   *   <dd>The number of sessions booked simultaneously.</dd>
    *   <dt>int <var>id_purchase_item</var></dt>
    *   <dd>The ID of the purchase item type. One of the {@link RsPurchaseItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
@@ -38,8 +36,8 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result
-   * @property {{}} a_tax Information about taxes. The key refers to the tax key, and the value refers to the tax amount.
-   * @property {string} id_purchase_item The ID of purchase item type.
+   * @property {{}} a_tax Information about taxes. The key refers to the tax key and the value refers to the tax amount.
+   * @property {string} id_purchase_item The ID of the purchase item type.
    * @property {string} k_id The key of the purchase item in the database.
    * @property {string} m_cost The cost of the purchase item (with taxes).
    * @property {string} m_discount The amount of the whole discount.
@@ -56,7 +54,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
    *     array <var>a_tax</var>
    *   </dt>
    *   <dd>
-   *     Information about taxes. The key refers to the tax key, and the value refers to the tax amount.
+   *     Information about taxes. The key refers to the tax key and the value refers to the tax amount.
    *   </dd>
    *   <dt>
    *     string <var>id_purchase_item</var></dt>
