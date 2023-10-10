@@ -196,6 +196,15 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.k_class_tab = "0";
 
   /**
+   * The list of staff members to filter.
+   * A comma seperated list of staff keys.
+   *
+   * @get get
+   * @var string
+   */
+  this.s_staff = '';
+
+  /**
    * Whether canceled class periods will be displayed or not.
    *
    * <tt>true</tt> - canceled class periods will be displayed;
@@ -226,7 +235,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
  */
 Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 {
-  return {"a_field": {"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
