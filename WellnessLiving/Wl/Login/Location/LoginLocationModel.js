@@ -16,7 +16,7 @@ function Wl_Login_Location_LoginLocationModel()
   this._s_key = "uid";
 
   /**
-   * Keys of locations. Primary keys in {@link \RsLocationSql} table.
+   * Keys of locations.
    *
    * @get result
    * @type {string[]}
@@ -25,8 +25,6 @@ function Wl_Login_Location_LoginLocationModel()
 
   /**
    * Key of user to get data for.
-   *
-   * Primary key in {@link \PassportLoginSql} table.
    *
    * @get get
    * @type {string}
@@ -49,7 +47,7 @@ Wl_Login_Location_LoginLocationModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Login_Location_LoginLocationModel.instanceGet
- * @param {string} uid Key of user to get data for. Primary key in {@link \PassportLoginSql} table.
+ * @param {string} uid Key of user to get data for.
  * @returns {Wl_Login_Location_LoginLocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

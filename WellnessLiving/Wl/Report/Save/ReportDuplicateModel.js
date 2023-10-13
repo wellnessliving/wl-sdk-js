@@ -27,7 +27,7 @@ function Wl_Report_Save_ReportDuplicateModel()
   this.a_settings = undefined;
 
   /**
-   * Business key within which duplicate operation is performed. Primary key in the {@link \RsBusinessSql} table.
+   * Business key within which duplicate operation is performed.
    *
    * @post get
    * @type {string}
@@ -35,7 +35,7 @@ function Wl_Report_Save_ReportDuplicateModel()
   this.k_business = undefined;
 
   /**
-   * Report save key that should be duplicated. Primary key in the {@link \RsReportSaveSql} table.
+   * Report save key that should be duplicated.
    *
    * @post get,result
    * @type {string}
@@ -43,7 +43,7 @@ function Wl_Report_Save_ReportDuplicateModel()
   this.k_report_save = undefined;
 
   /**
-   * UID user's key of the actor. Primary key in the {@link \PassportLoginSql} table.
+   * UID user's key of the actor.
    *
    * @post get
    * @type {string}

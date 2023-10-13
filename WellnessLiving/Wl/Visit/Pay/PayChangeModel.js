@@ -17,7 +17,7 @@ function Wl_Visit_Pay_PayChangeModel()
 
   /**
    * @typedef {{}} Wl_Visit_Pay_PayChangeModel_a_list
-   * @property {{}} a_logo Promotion logo, see result of {@link \RsPromotionImageLogo::data()}. Empty array for not paid option.
+   * @property {{}} a_logo Promotion logo, see result of {@link RsPromotionImageLogo::data()}. Empty array for not paid option.
    * @property {boolean} is_select Whether current element selected in the list.
    * @property {string} s_key <tt>0</tt> means 'Single buy', <tt>-1</tt> means 'Not paid'. Otherwise key with next structure: <tt>k_login_promotion:[k_login_promotion]</tt> or <tt>k_session_pass:[k_session_pass]</tt>.
    * @property {string} text_title Title of select option.
@@ -30,7 +30,7 @@ function Wl_Visit_Pay_PayChangeModel()
    *     array <var>a_logo</var>
    *   </dt>
    *   <dd>
-   *     Promotion logo, see result of {@link \RsPromotionImageLogo::data()}. Empty array for not paid option.
+   *     Promotion logo, see result of {@link RsPromotionImageLogo::data()}. Empty array for not paid option.
    *   </dd>
    *   <dt>
    *     bool <var>is_select</var>

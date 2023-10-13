@@ -1,5 +1,5 @@
 /**
- * Api for gets information about gift card.
+ * An endpoint that retrieves information about a gift card (also referred to as the coupon code).
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +11,12 @@ function Wl_Login_Coupon_CouponModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * @inheritDoc
+   */
+  this._s_key = "k_business";
+
+  /**
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -19,7 +24,8 @@ function Wl_Login_Coupon_CouponModel()
   this.k_business = undefined;
 
   /**
-   * Login coupon key. Primary key in {@link \RsLoginCouponSql} table.
+   * The gift card reference number for this specific user. WellnessLiving uses this reference number for managing
+   * gift cards in the system.
    *
    * @get result
    * @type {string}
@@ -27,7 +33,7 @@ function Wl_Login_Coupon_CouponModel()
   this.k_login_coupon = undefined;
 
   /**
-   * Sum that user can get after redemption.
+   * The gift card amount.
    *
    * @get result
    * @type {string}
@@ -35,7 +41,7 @@ function Wl_Login_Coupon_CouponModel()
   this.m_amount = undefined;
 
   /**
-   * Code of the coupon.
+   * The gift card.
    *
    * @get get
    * @type {string}
@@ -54,3 +60,11 @@ Wl_Login_Coupon_CouponModel.prototype.config=function()
 {
   return {"a_field": {"k_business": {"get": {"get": true}},"k_login_coupon": {"get": {"result": true}},"m_amount": {"get": {"result": true}},"s_code": {"get": {"get": true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Login_Coupon_CouponModel.instanceGet
+ * @param {string} k_business The business key.
+ * @returns {Wl_Login_Coupon_CouponModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */

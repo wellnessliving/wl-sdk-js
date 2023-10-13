@@ -1,5 +1,6 @@
 /**
- * Version of {@link \Wl\Login\Attendance\AttendanceInfoApi} for access validation by security token.
+ * An endpoint that displays information for certain sessions.
+ * Version of {@link Wl_Login_Attendance_AttendanceInfoModel} for access validation by security token.
  *
  * This model is generated automatically based on API.
  *
@@ -44,7 +45,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.a_logo = undefined;
 
   /**
-   * Assets which are bound to this session. Primary keys on {@link \RsResourceSql} table.
+   * Assets which are bound to this session.
    *
    * @get result
    * @type {string[]}
@@ -87,7 +88,6 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    *     string[] <var>a_resource_available</var>
    *   </dt>
    *   <dd>
-   *     Primary keys of assets in {@link \RsResourceSql} table.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout</var>
@@ -213,6 +213,15 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.dt_date_local = "";
 
   /**
+   * Date and time in UTC when the visit is promoted from wait list to active list.
+   * Not empty for appointments.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.dtu_wait_promote = "";
+
+  /**
    * Whether notes added to visit.
    *
    * @get result
@@ -221,7 +230,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.has_note = undefined;
 
   /**
-   * Type of note. One of {@link \Wl\Visit\Note\Sid\NoteSid} constants. <tt>false</tt> if notes not allowed.
+   * Type of note. One of {@link Wl_Visit_Note_Sid_NoteSid} constants. <tt>false</tt> if notes not allowed.
    *
    * @get result
    * @type {number|boolean}
@@ -229,7 +238,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.id_note = undefined;
 
   /**
-   * Service type, one of {@link \RsServiceSid}.
+   * Service type, one of {@link RsServiceSid}.
    *
    * @get result
    * @type {number}
@@ -247,7 +256,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.is_start_virtual_service = false;
 
   /**
-   * ID of appointment to get information for. Primary key in {@link RsAppointmentSql} table.
+   * ID of appointment to get information for.
    *
    * @get get
    * @type {string}
@@ -255,7 +264,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.k_appointment = "0";
 
   /**
-   * ID of business to get information for. Primary key in {@link RsBusinessSql} table.
+   * ID of business to get information for.
    *
    * @get get
    * @type {string}
@@ -271,7 +280,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.k_class = undefined;
 
   /**
-   * ID of class period to get information for. Primary key in {@link RsClassPeriodSql} table.
+   * ID of class period to get information for.
    *
    * @get get
    * @type {string}
@@ -335,7 +344,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.text_title = undefined;
 
   /**
-   * Security token.
+   * The security token.
    *
    * @get get
    * @type {string}
@@ -352,16 +361,16 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_AttendanceInfoByTokenModel);
  */
 Wl_Login_Attendance_AttendanceInfoByTokenModel.prototype.config=function()
 {
-  return {"a_field": {"a_logo": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_resource_layout": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"has_note": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_service": {"get": {"result": true}},"is_start_virtual_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_time_end": {"get": {"result": true}},"text_time_start": {"get": {"result": true}},"text_title": {"get": {"result": true}},"text_token": {"get": {"get": true}}}};
+  return {"a_field": {"a_logo": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_resource_layout": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"dtu_wait_promote": {"get": {"result": true}},"has_note": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_service": {"get": {"result": true}},"is_start_virtual_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_time_end": {"get": {"result": true}},"text_time_start": {"get": {"result": true}},"text_title": {"get": {"result": true}},"text_token": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Login_Attendance_AttendanceInfoByTokenModel.instanceGet
  * @param {string} dt_date_local Start date of the class in MySQL format in local time.
- * @param {string} k_appointment ID of appointment to get information for. Primary key in {@link RsAppointmentSql} table.
- * @param {string} k_class_period ID of class period to get information for. Primary key in {@link RsClassPeriodSql} table.
- * @param {string} k_business ID of business to get information for. Primary key in {@link RsBusinessSql} table.
+ * @param {string} k_appointment ID of appointment to get information for.
+ * @param {string} k_class_period ID of class period to get information for.
+ * @param {string} k_business ID of business to get information for.
  * @returns {Wl_Login_Attendance_AttendanceInfoByTokenModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

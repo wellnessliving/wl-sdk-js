@@ -25,7 +25,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel()
 
   /**
    * Business key.
-   * Primary key in {@link RsBusinessSql} table.
    *
    * @delete get
    * @get get
@@ -37,7 +36,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel()
 
   /**
    * User key.
-   * Primary key in {@link PassportLoginSql} table.
    *
    * @delete get
    * @get get
@@ -63,8 +61,8 @@ Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel.prototype.con
 /**
  * @function
  * @name Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel.instanceGet
- * @param {string} k_business Business key. Primary key in {@link RsBusinessSql} table.
- * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

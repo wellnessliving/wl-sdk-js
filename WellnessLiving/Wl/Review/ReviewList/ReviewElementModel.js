@@ -1,5 +1,5 @@
 /**
- * Retrieves information about review item.
+ * An endpoint that returns information about a review.
  *
  * This model is generated automatically based on API.
  *
@@ -19,10 +19,14 @@ function Wl_Review_ReviewList_ReviewElementModel()
    * @typedef {{}} Wl_Review_ReviewList_ReviewElementModel_a_review
    * @property {string} dt_add Date when review was added by user.
    * @property {number} f_rate Review rate.
-   * @property {string} s_firstname Client's first name who added review.
-   * @property {string} s_lastname Client's last name who added review.
-   * @property {string} s_reply Staff reply. Can be empty.
-   * @property {string} s_text Review text.
+   * @property {number} id_review_status Status of the Review
+   * @property {boolean} is_verify <tt>true</tt> if review is verified, <tt>false</tt> otherwise.
+   * @property {string} text_firstname Client's first name who added review.
+   * @property {string} text_lastname Client's last name who added review.
+   * @property {string} text_reply Staff reply. Can be empty.
+   * @property {string} text_review Review text.
+   * @property {string} text_business_name Business name
+   * @property {string} text_response Word "response".
    * @property {string} uid User key.
    * @property {string} url_logo User logo.
    */
@@ -43,28 +47,52 @@ function Wl_Review_ReviewList_ReviewElementModel()
    *     Review rate.
    *   </dd>
    *   <dt>
-   *     string <var>s_firstname</var>
+   *     int <var>id_review_status</var>
+   *   </dt>
+   *   <dd>
+   *     Status of the Review
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_verify</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if review is verified, <tt>false</tt> otherwise.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_firstname</var>
    *   </dt>
    *   <dd>
    *     Client's first name who added review.
    *   </dd>
    *   <dt>
-   *     string <var>s_lastname</var>
+   *     string <var>text_lastname</var>
    *   </dt>
    *   <dd>
    *     Client's last name who added review.
    *   </dd>
    *   <dt>
-   *     string <var>s_reply</var>
+   *     string <var>text_reply</var>
    *   </dt>
    *   <dd>
    *     Staff reply. Can be empty.
    *   </dd>
    *   <dt>
-   *     string <var>s_text</var>
+   *     string <var>text_review</var>
    *   </dt>
    *   <dd>
    *     Review text.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_business_name</var>
+   *   </dt>
+   *   <dd>
+   *     Business name
+   *   </dd>
+   *   <dt>
+   *     string <var>text_response</var>
+   *   </dt>
+   *   <dd>
+   *     Word "response".
    *   </dd>
    *   <dt>
    *     string <var>uid</var>
@@ -83,28 +111,29 @@ function Wl_Review_ReviewList_ReviewElementModel()
    * @get result
    * @type {Wl_Review_ReviewList_ReviewElementModel_a_review}
    */
-  this.a_review = undefined;
+  this.a_review = [];
 
   /**
-   * Key of the business to which the review belongs.
+   * The key of the business to which the review belongs.
    *
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
-   * Review primary key in {@link \RsReviewSql}.
+   * The review key.
    *
+   * @delete get
    * @get get
    * @type {string}
    */
   this.k_review = "0";
 
   /**
-   * User primary key in {@link \PassportLoginSql}.
+   * The user key.
    *
-   * May be empty for a case of quest.
+   * May be empty in the case of a quest.
    *
    * @get get
    * @type {string}
@@ -121,15 +150,15 @@ WlSdk_ModelAbstract.extend(Wl_Review_ReviewList_ReviewElementModel);
  */
 Wl_Review_ReviewList_ReviewElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_review": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_review": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_review": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_review": {"delete": {"get": true},"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Review_ReviewList_ReviewElementModel.instanceGet
- * @param {string} k_business Key of the business to which the review belongs.
- * @param {string} k_review Review primary key in {@link \RsReviewSql}.
- * @param {string} uid User primary key in {@link \PassportLoginSql}. May be empty for a case of quest.
+ * @param {string} k_business The key of the business to which the review belongs.
+ * @param {string} k_review The review key.
+ * @param {string} uid The user key. May be empty in the case of a quest.
  * @returns {Wl_Review_ReviewList_ReviewElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

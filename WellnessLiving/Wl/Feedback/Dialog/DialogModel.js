@@ -12,7 +12,7 @@ function Wl_Feedback_Dialog_DialogModel()
 
   /**
    * Area, which feedback is about.
-   * One of {@link \Wl\Feedback\Dialog\FeedbackAreaSid}.
+   * One of {@link Wl_Feedback_Dialog_FeedbackAreaSid}.
    *
    * @post post
    * @type {number}
@@ -21,7 +21,7 @@ function Wl_Feedback_Dialog_DialogModel()
 
   /**
    * Staff feedback rate.
-   * One of {@link \Wl\Feedback\Dialog\FeedbackRateSid}.
+   * One of {@link Wl_Feedback_Dialog_FeedbackRateSid}.
    *
    * @post post
    * @type {number}
@@ -30,7 +30,6 @@ function Wl_Feedback_Dialog_DialogModel()
 
   /**
    * Business key.
-   * Primary key in {@link \RsBusinessSql}.
    *
    * @post post
    * @type {string}
@@ -39,7 +38,6 @@ function Wl_Feedback_Dialog_DialogModel()
 
   /**
    * Staff member key.
-   * Primary key in {@link \RsStaffSql}.
    *
    * @post post
    * @type {string}
@@ -72,7 +70,6 @@ function Wl_Feedback_Dialog_DialogModel()
 
   /**
    * User key.
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @post post
    * @type {string}

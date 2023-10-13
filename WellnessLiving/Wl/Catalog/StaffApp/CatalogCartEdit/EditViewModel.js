@@ -31,7 +31,7 @@ function Wl_Catalog_StaffApp_CatalogCartEdit_EditViewModel()
   this.a_tax = [];
 
   /**
-   * Contains information about taxes. Structure of this array is described in {@link \RsTax::$a_tax}.
+   * Contains information about taxes. Structure of this array is described in {@link RsTax::$a_tax}.
    *
    * @get result
    * @type {{}}
@@ -49,7 +49,7 @@ function Wl_Catalog_StaffApp_CatalogCartEdit_EditViewModel()
   this.i_quantity = "";
 
   /**
-   * ID of sale category. One of {@link \RsSaleSid}.
+   * ID of sale category. One of {@link RsSaleSid}.
    *
    * Empty value means not set.
    *
@@ -149,7 +149,7 @@ function Wl_Catalog_StaffApp_CatalogCartEdit_EditViewModel()
   /**
    * Client user ID.
    *
-   * <tt>false</tt> means 'walk-in' option
+   * Empty string or <tt>false</tt> means 'walk-in' option
    *
    * @get get
    * @type {string}

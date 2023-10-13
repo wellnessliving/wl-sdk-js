@@ -1,5 +1,5 @@
 /**
- * Information about members of businesses.
+ * An endpoint that displays information about members of businesses.
  *
  * This model is generated automatically based on API.
  *
@@ -17,38 +17,47 @@ function Wl_Login_Member_MemberModel()
 
   /**
    * @typedef {{}} Wl_Login_Member_MemberModel_a_business
-   * @property {boolean} is_franchisee <tt>true</tt> if business is franchisee; <tt>false</tt> otherwise.
-   * @property {string} k_business Business key. Primary key in {@link RsBusinessSql} table.
-   * @property {string} k_business_franchisor Corporate account of the business franchise. Primary key in {@link RsBusinessSql} table.
-   * @property {string} text_title Title of business.
+   * @property {boolean} can_enter <tt>true</tt> if user is allowed to sign in into this business; <tt>false</tt> otherwise.
+   * This value is based on {@link Wl\Login\Disable\LoginDisableSql} table.
+   * @property {boolean} is_franchisee If `true`, then the business is a franchisee. Otherwise, this will be `false`.
+   * @property {string} k_business The business key.
+   * @property {string} k_business_franchisor The business key of the Enterprise Headquarters account (if applicable).
+   * @property {string} text_title The title of the business.
    */
 
   /**
-   * Businesses, member of which is user. Every element has next keys:
+   * A list of businesses where the client is present. Every element is an array with the following keys:
    * <dl>
+   *   <dt>
+   *     bool <var>can_enter</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if user is allowed to sign in into this business; <tt>false</tt> otherwise.
+   *     This value is based on {@link Wl\Login\Disable\LoginDisableSql} table.
+   *   </dd>
    *   <dt>
    *     bool <var>is_franchisee</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if business is franchisee; <tt>false</tt> otherwise.
+   *     If `true`, then the business is a franchisee. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_business</var>
    *   </dt>
    *   <dd>
-   *     Business key. Primary key in {@link RsBusinessSql} table.
+   *     The business key.
    *   </dd>
    *   <dt>
    *     string <var>k_business_franchisor</var>
    *   </dt>
    *   <dd>
-   *     Corporate account of the business franchise. Primary key in {@link RsBusinessSql} table.
+   *     The business key of the Enterprise Headquarters account (if applicable).
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Title of business.
+   *     The title of the business.
    *   </dd>
    * </dl>
    *
@@ -58,7 +67,7 @@ function Wl_Login_Member_MemberModel()
   this.a_business = undefined;
 
   /**
-   * User key. Primary key in {@link PassportLoginSql} table.
+   * The user's key.
    *
    * @get get
    * @type {string}
@@ -81,7 +90,7 @@ Wl_Login_Member_MemberModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Login_Member_MemberModel.instanceGet
- * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
+ * @param {string} uid The user's key.
  * @returns {Wl_Login_Member_MemberModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -1,6 +1,6 @@
 /**
  * Manages business phone number.
- * It is used to register business phone number, or to get phone number of some business.
+ * It is used to register business phone number or add bundle SID, or to get phone number of some business.
  *
  * This model is generated automatically based on API.
  *
@@ -12,7 +12,9 @@ function Wl_Business_Phone_PhoneModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Business locale. One of {@link \Core\Locale\LocaleSid} constants.
+   * Locale corresponding to the business' address country. One of {@link Core_Locale_LocaleSid} constants.
+   * Note that this may not be the same as the business' locale, if the business is misconfigured and has an address
+   * country that is outside its locale.
    *
    * @get result
    * @type {number}
@@ -21,23 +23,22 @@ function Wl_Business_Phone_PhoneModel()
 
   /**
    * Business key.
-   * Primary key in {@link \RsBusinessSql}.
    *
    * @delete get
    * @get get
    * @post get
-   * @type {string}
+   * @type {*}
    */
   this.k_business = undefined;
 
   /**
    * Business phone number(in locale format).
-   * Used to receive SMS notifications from clients.
+   * Used to receive SMS notifications from clients. Can be `null` during bundle SID saving.
    *
    * @delete get
    * @get result
    * @post get
-   * @type {string}
+   * @type {*}
    */
   this.text_phone = undefined;
 

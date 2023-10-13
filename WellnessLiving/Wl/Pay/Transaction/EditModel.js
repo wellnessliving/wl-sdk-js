@@ -62,7 +62,7 @@ function Wl_Pay_Transaction_EditModel()
   this.html_date = undefined;
 
   /**
-   * New base payment method of payment transaction. One of {@link \RsPayMethodSid} constants.
+   * New base payment method of payment transaction. One of {@link RsPayMethodSid} constants.
    *
    * Not specified if should not be changed.
    *
@@ -72,7 +72,7 @@ function Wl_Pay_Transaction_EditModel()
   this.id_pay_method = undefined;
 
   /**
-   * New custom payment method of payment transaction. Primary key from {@link \Wl\Pay\Method\MethodSql}.
+   * New custom payment method of payment transaction.
    *
    * Not specified if should not be changed or if base payment method should be used.
    *
@@ -84,9 +84,7 @@ function Wl_Pay_Transaction_EditModel()
   /**
    * ID of a payment transaction to change.
    *
-   * Primary key from {@link \RsPayTransactionSql}.
-   *
-   * May be empty if {@link \EditApi.$k_pay_transaction_process} is specified.
+   * May be empty if {@link Wl_Pay_Transaction_EditModel.k_pay_transaction_process} is specified.
    *
    * @put get
    * @type {string}
@@ -96,9 +94,7 @@ function Wl_Pay_Transaction_EditModel()
   /**
    * ID of a payment transaction process to change.
    *
-   * Primary key from {@link \RsPayTransactionProcessSql}.
-   *
-   * May be empty if {@link \EditApi.$k_pay_transaction} is specified.
+   * May be empty if {@link Wl_Pay_Transaction_EditModel.k_pay_transaction} is specified.
    *
    * @put get
    * @type {string}

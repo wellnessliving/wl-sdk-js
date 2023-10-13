@@ -52,7 +52,7 @@ function Wl_Classes_Info_InfoModel()
   this.is_event = undefined;
 
   /**
-   * Class identifier to get information for. Primary key in {@link RsClassSql} table.
+   * Class identifier to get information for.
    *
    * @get get
    * @type {string}
@@ -83,7 +83,7 @@ Wl_Classes_Info_InfoModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Classes_Info_InfoModel.instanceGet
- * @param {string} k_class Class identifier to get information for. Primary key in {@link RsClassSql} table.
+ * @param {string} k_class Class identifier to get information for.
  * @returns {Wl_Classes_Info_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

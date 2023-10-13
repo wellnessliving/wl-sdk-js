@@ -13,7 +13,7 @@ function Core_Drive_ImageUpload_VariantModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "s_link,s_command,s_code";
+  this._s_key = "s_link,i_rotate,s_code";
 
   /**
    * @typedef {{}} Core_Drive_ImageUpload_VariantModel_a_image
@@ -88,6 +88,14 @@ function Core_Drive_ImageUpload_VariantModel()
   this.a_image = undefined;
 
   /**
+   * Angle to rotate image. Positive - counterclockwise. Negative - clockwise.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_rotate = 0;
+
+  /**
    * Protection string.
    * Used to prevent custom link generation on client side.
    *
@@ -95,15 +103,6 @@ function Core_Drive_ImageUpload_VariantModel()
    * @type {string}
    */
   this.s_code = "";
-
-  /**
-   * Command that must be applied to image.
-   * Used to receive modified image variant.
-   *
-   * @get get
-   * @type {string}
-   */
-  this.s_command = "";
 
   /**
    * Image link.
@@ -123,14 +122,14 @@ WlSdk_ModelAbstract.extend(Core_Drive_ImageUpload_VariantModel);
  */
 Core_Drive_ImageUpload_VariantModel.prototype.config=function()
 {
-  return {"a_field": {"a_image": {"get": {"result": true}},"s_code": {"get": {"get": true}},"s_command": {"get": {"get": true}},"s_link": {"get": {"get": true}}}};
+  return {"a_field": {"a_image": {"get": {"result": true}},"i_rotate": {"get": {"get": true}},"s_code": {"get": {"get": true}},"s_link": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Core_Drive_ImageUpload_VariantModel.instanceGet
  * @param {string} s_link Image link.
- * @param {string} s_command Command that must be applied to image. Used to receive modified image variant.
+ * @param {number} i_rotate Angle to rotate image. Positive - counterclockwise. Negative - clockwise.
  * @param {string} s_code Protection string. Used to prevent custom link generation on client side.
  * @returns {Core_Drive_ImageUpload_VariantModel}
  * @see WlSdk_ModelAbstract.instanceGet()

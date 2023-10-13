@@ -18,7 +18,6 @@ function Wl_Session_LocationModel()
 
   /**
    * Location selected when application was started.
-   * Primary key in {@link \RsLocationSql} table.
    *
    * @post post
    * @type {string}

@@ -61,6 +61,30 @@ function Wl_Virtual_MeetingListModel()
   this.a_meeting_list = [];
 
   /**
+   * <tt>true</tt> if can add FitLIVE licenses, <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_add_license = undefined;
+
+  /**
+   * Number of paid FitLIVE licenses.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_license = undefined;
+
+  /**
+   * <tt>true</tt> if business use FitLIVE, <tt>false</tt> otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_fitlive = undefined;
+
+  /**
    * Business key.
    *
    * @get get
@@ -78,5 +102,5 @@ WlSdk_ModelAbstract.extend(Wl_Virtual_MeetingListModel);
  */
 Wl_Virtual_MeetingListModel.prototype.config=function()
 {
-  return {"a_field": {"a_meeting_list": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field": {"a_meeting_list": {"get": {"result": true}},"can_add_license": {"get": {"result": true}},"i_license": {"get": {"result": true}},"is_fitlive": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };

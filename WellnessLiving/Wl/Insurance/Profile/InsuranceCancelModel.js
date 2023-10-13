@@ -22,8 +22,6 @@ function Wl_Insurance_Profile_InsuranceCancelModel()
   /**
    * Key of login promotion to cancel.
    *
-   * Primary key from {@link \RsLoginPromotionSql} table.
-   *
    * @delete get
    * @put get
    * @type {string}

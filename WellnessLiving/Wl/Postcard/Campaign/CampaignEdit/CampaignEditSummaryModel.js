@@ -25,7 +25,7 @@ function Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel()
 
   /**
    * Whether to send mails to active and inactive clients.
-   * One of {@link \AFlagSid} constants.
+   * One of {@link AFlagSid} constants.
    *
    * @get get
    * @type {number}
@@ -33,7 +33,7 @@ function Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel()
   this.id_flag_active = 0;
 
   /**
-   * Recipient group. One of {@link \Wl\Postcard\Campaign\CampaignClientSid} constants.
+   * Recipient group. One of {@link Wl_Postcard_Campaign_CampaignClientSid} constants.
    *
    * @get get
    * @type {number}
@@ -91,8 +91,8 @@ Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel.prototype.config=func
  * @function
  * @name Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel.instanceGet
  * @param {string} k_business Business in which clients must be searched.
- * @param {number} id_postcard_campaign_client Recipient group. One of {@link \Wl\Postcard\Campaign\CampaignClientSid} constants.
- * @param {number} id_flag_active Whether to send mails to active and inactive clients. One of {@link \AFlagSid} constants.
+ * @param {number} id_postcard_campaign_client Recipient group. One of {@link Wl_Postcard_Campaign_CampaignClientSid} constants.
+ * @param {number} id_flag_active Whether to send mails to active and inactive clients. One of {@link AFlagSid} constants.
  * @param {string} s_login_type Serialized by JSON list of client types. Every element is primary key in {@link \Wl\Login\Type\Sql} table.
  * @param {string} s_member_group Serialized by JSON list of client groups. Every element is primary key in {@link \Wl\Member\Group\Sql} table.
  * @returns {Wl_Postcard_Campaign_CampaignEdit_CampaignEditSummaryModel}

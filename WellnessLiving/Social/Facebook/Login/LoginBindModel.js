@@ -41,7 +41,7 @@ function Social_Facebook_Login_LoginBindModel()
   this.s_token = "";
 
   /**
-   * User key. Primary key in {@link PassportLoginSql} table.
+   * User key.
    *
    * @get get
    * @post get
@@ -65,7 +65,7 @@ Social_Facebook_Login_LoginBindModel.prototype.config=function()
 /**
  * @function
  * @name Social_Facebook_Login_LoginBindModel.instanceGet
- * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
+ * @param {string} uid User key.
  * @returns {Social_Facebook_Login_LoginBindModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

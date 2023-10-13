@@ -18,10 +18,12 @@ function Social_Facebook_Login_LoginModel()
   /**
    * Application ID.
    *
+   * <tt>null</tt> for use application, which makes request. And use credential of application from {@link Core_Request_Model\Application\Credential\FacebookCredential} class for authorization user.
+   *
    * @post post
-   * @type {string}
+   * @type {?string}
    */
-  this.s_application = "";
+  this.s_application = null;
 
   /**
    * Facebook token.
@@ -29,7 +31,7 @@ function Social_Facebook_Login_LoginModel()
    * @post post
    * @type {string}
    */
-  this.s_token = "";
+  this.s_token = undefined;
 
   this.changeInit();
 }

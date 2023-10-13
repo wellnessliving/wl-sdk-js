@@ -11,7 +11,7 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * A list of field measurement. See {@link \Wl\Member\Progress\Field\MeasurementSid}.
+   * A list of field measurement. See {@link Wl_Member_Progress_Field_MeasurementSid}.
    *
    * @get result
    * @type {{}}
@@ -19,7 +19,7 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
   this.a_measurement = undefined;
 
   /**
-   * A list of field type. See {@link \Wl\Member\Progress\Field\TypeSid}.
+   * A list of field type. See {@link Wl_Member_Progress_Field_TypeSid}.
    *
    * @get result
    * @type {{}}
@@ -37,7 +37,7 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
   /**
    * Field measurement unit ID.
    *
-   * One of the {@link \Wl\Member\Progress\Field\MeasurementSid} constants.
+   * One of the {@link Wl_Member_Progress_Field_MeasurementSid} constants.
    *
    * @get result
    * @post post
@@ -48,7 +48,7 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
   /**
    * Field type ID.
    *
-   * One of the {@link \Wl\Member\Progress\Field\TypeSid} constants.
+   * One of the {@link Wl_Member_Progress_Field_TypeSid} constants.
    *
    * @get result
    * @post post
@@ -95,8 +95,6 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
   /**
    * Business key.
    *
-   * Primary key in the {@link \RsBusinessSql} table.
-   *
    * @get get
    * @post get
    * @type {string}
@@ -105,8 +103,6 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
 
   /**
    * Field key.
-   *
-   * Primary key in the {@link \Wl\Member\Progress\Field\Sql} table.
    *
    * @get get
    * @post get

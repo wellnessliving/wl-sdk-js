@@ -1,5 +1,5 @@
 /**
- * Information about locations/business holiday.
+ * An endpoint displaying information about locations' business holidays.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,7 @@ function Wl_Holiday_HolidayModel()
   this._s_key = "dl_work,k_business";
 
   /**
-   * List of location's closed day titles by location keys on date {@link \Wl\Holiday\HolidayApi::$dl_work}.
+   * A list of the location's closed day titles by location keys on the date {@link Wl_Holiday_HolidayModel.dl_work}.
    *
    * @get result
    * @type {{}}
@@ -24,8 +24,8 @@ function Wl_Holiday_HolidayModel()
   this.a_location_holiday = undefined;
 
   /**
-   * Date for which working hours are required.
-   * In business timezone.
+   * The date working hours are required for.
+   * Set in the business's timezone.
    *
    * @get get
    * @type {string}
@@ -33,7 +33,7 @@ function Wl_Holiday_HolidayModel()
   this.dl_work = "";
 
   /**
-   * <tt>true</tt> If business has closed day by date {@link \Wl\Holiday\HolidayApi::$dl_work}, <tt>false</tt> - otherwise.
+   * <tt>true</tt> if the business has a closed day on the date {@link Wl_Holiday_HolidayModel.dl_work}, <tt>false</tt> if otherwise.
    *
    * @get result
    * @type {boolean}
@@ -41,8 +41,7 @@ function Wl_Holiday_HolidayModel()
   this.is_business_holiday = undefined;
 
   /**
-   * Business key.
-   * Primary key in {@link RsBusinessSql} table.
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -50,7 +49,7 @@ function Wl_Holiday_HolidayModel()
   this.k_business = undefined;
 
   /**
-   * Message of the closed day of business on date {@link \Wl\Holiday\HolidayApi::$dl_work}.
+   * The message used for the business's closed day on the date {@link Wl_Holiday_HolidayModel.dl_work}.
    *
    * @get result
    * @type {string}
@@ -73,8 +72,8 @@ Wl_Holiday_HolidayModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Holiday_HolidayModel.instanceGet
- * @param {string} dl_work Date for which working hours are required. In business timezone.
- * @param {string} k_business Business key. Primary key in {@link RsBusinessSql} table.
+ * @param {string} dl_work The date working hours are required for. Set in the business's timezone.
+ * @param {string} k_business The business key.
  * @returns {Wl_Holiday_HolidayModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

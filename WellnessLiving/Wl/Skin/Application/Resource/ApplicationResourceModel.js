@@ -1,5 +1,5 @@
 /**
- * Point to get applications resources.
+ * An endpoint that returns information used to generate application sources.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +11,7 @@ function Wl_Skin_Application_Resource_ApplicationResourceModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Application data.
+   * The application data.
    *
    * @get result
    * @type {{}}
@@ -19,7 +19,7 @@ function Wl_Skin_Application_Resource_ApplicationResourceModel()
   this.a_application = undefined;
 
   /**
-   * Business primary key in {@link \RsBusinessSql} table.
+   * The business key.
    * Empty to get data for all businesses.
    *
    * @get get

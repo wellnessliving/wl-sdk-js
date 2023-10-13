@@ -59,7 +59,7 @@ function Wl_Franchise_Transfer_Edit_TransferEditModel()
   this.id_transfer_direction = undefined;
 
   /**
-   * Transfer period ID. One of {@link \Wl\Franchise\Transfer\TransferPeriodSid} constants.
+   * Transfer period ID. One of {@link Wl_Franchise_Transfer_TransferPeriodSid} constants.
    *
    * @put post
    * @type {number}
@@ -76,7 +76,7 @@ function Wl_Franchise_Transfer_Edit_TransferEditModel()
   this.k_business = undefined;
 
   /**
-   * Franchise transfer key. Primary key in {@link \Wl\Franchise\Transfer\TransferSql} table.
+   * Franchise transfer key.
    *
    * @get get
    * @put get

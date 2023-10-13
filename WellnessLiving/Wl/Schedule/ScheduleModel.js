@@ -64,7 +64,6 @@ function Wl_Schedule_ScheduleModel()
 
   /**
    * Business key for which schedule should be get.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -72,7 +71,7 @@ function Wl_Schedule_ScheduleModel()
   this.k_business = undefined;
 
   /**
-   * Parameters and filters of the schedule encoded by Javascript analogue of the {@link \Core\Tool\UrlEncode\UrlEncode::encode()} method.
+   * Parameters and filters of the schedule encoded by Javascript analogue of the {@link Core\Tool\UrlEncode\UrlEncode::encode()} method.
    *
    * @get get
    * @type {?string}
@@ -90,6 +89,7 @@ function Wl_Schedule_ScheduleModel()
   /**
    * URL to the controller which were used before API to show the schedule. Used to create URL for printing schedule.
    *
+   * @deprecated Should be deleted.
    * @get get
    * @type {string}
    */
@@ -111,12 +111,12 @@ Wl_Schedule_ScheduleModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Schedule_ScheduleModel.instanceGet
- * @param {string} k_business Business key for which schedule should be get. Primary key in the {@link \RsBusinessSql} table.
+ * @param {string} k_business Business key for which schedule should be get.
  * @param {string} uid User key who get the schedule.
  * @param {boolean} is_backend Whether API is called in the backend mode.
  * @param {boolean} is_widget Whether the schedule is shown in the widget.
  * @param {string} url_page URL to the controller which were used before API to show the schedule. Used to create URL for printing schedule.
- * @param {?string} s_data Parameters and filters of the schedule encoded by Javascript analogue of the {@link \Core\Tool\UrlEncode\UrlEncode::encode()} method.
+ * @param {?string} s_data Parameters and filters of the schedule encoded by Javascript analogue of the {@link Core\Tool\UrlEncode\UrlEncode::encode()} method.
  * @returns {Wl_Schedule_ScheduleModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

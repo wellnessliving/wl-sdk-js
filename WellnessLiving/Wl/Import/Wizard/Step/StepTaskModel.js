@@ -19,7 +19,7 @@ function Wl_Import_Wizard_Step_StepTaskModel()
   this.i_left = undefined;
 
   /**
-   * Import wizard step. One of {@link \Wl\Import\Wizard\ImportWizardSid} constants.
+   * Import wizard step. One of {@link Wl_Import_Wizard_ImportWizardSid} constants.
    *
    * @get get
    * @post get
@@ -28,7 +28,7 @@ function Wl_Import_Wizard_Step_StepTaskModel()
   this.id_import_wizard = undefined;
 
   /**
-   * Key of the business where import goes. Primary key from {@link \RsBusinessSql} table.
+   * Key of the business where import goes.
    *
    * @get get
    * @post get

@@ -23,7 +23,7 @@ function Wl_Appointment_Book_Asset_CategoryModel()
    */
 
   /**
-   * A list of service categories with information about them:
+   * A list of information about service categories.
    * <dl>
    *   <dt>
    *     boolean <var>hide_application</var>
@@ -46,12 +46,13 @@ function Wl_Appointment_Book_Asset_CategoryModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Asset_CategoryModel_a_category}
+   * @type {Wl_Appointment_Book_Asset_CategoryModel_a_category[]}
    */
   this.a_category = undefined;
 
   /**
-   * `true` to load asset categories for backend mode; `false` for frontend mode.
+   * If `true`, asset categories are loaded for backend mode. Otherwise, this will be `false` if asset categories
+   * are loaded for frontend mode.
    *
    * @get get
    * @type {boolean}
@@ -59,7 +60,16 @@ function Wl_Appointment_Book_Asset_CategoryModel()
   this.is_backend = false;
 
   /**
-   * Class tab ID to filter services.
+   * `true` - search in all tabs.
+   * `false` - search only for the selected book tab.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_tab_all = false;
+
+  /**
+   * The class tab key to use for filtering services.
    *
    * @get get
    * @type {string}
@@ -67,7 +77,7 @@ function Wl_Appointment_Book_Asset_CategoryModel()
   this.k_class_tab = "0";
 
   /**
-   * ID of the location.
+   * The key of the location to show information for.
    *
    * @get get
    * @type {string}
@@ -84,15 +94,15 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_CategoryModel);
  */
 Wl_Appointment_Book_Asset_CategoryModel.prototype.config=function()
 {
-  return {"a_field": {"a_category": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
+  return {"a_field": {"a_category": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Appointment_Book_Asset_CategoryModel.instanceGet
- * @param {string} k_location ID of the location.
- * @param {string} k_class_tab Class tab ID to filter services.
- * @param {boolean} is_backend `true` to load asset categories for backend mode; `false` for frontend mode.
+ * @param {string} k_location The key of the location to show information for.
+ * @param {string} k_class_tab The class tab key to use for filtering services.
+ * @param {boolean} is_backend If `true`, asset categories are loaded for backend mode. Otherwise, this will be `false` if asset categories are loaded for frontend mode.
  * @returns {Wl_Appointment_Book_Asset_CategoryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

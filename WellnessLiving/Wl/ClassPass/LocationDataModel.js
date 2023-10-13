@@ -13,7 +13,7 @@ function Wl_ClassPass_LocationDataModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link \Wl\ClassPass\LocationData::toClassPass()} for documentation.
+   * See {@link Wl\ClassPass\LocationData::toClassPass()} for documentation.
    *
    * @get result
    * @type {{}}

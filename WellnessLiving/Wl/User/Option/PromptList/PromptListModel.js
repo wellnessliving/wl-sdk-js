@@ -20,6 +20,7 @@ function Wl_User_Option_PromptList_PromptListModel()
    *
    * @delete get
    * @post get
+   * @see Wl_User_Option_OptionSid
    * @type {number}
    */
   this.id_option = undefined;
@@ -33,7 +34,7 @@ function Wl_User_Option_PromptList_PromptListModel()
   this.s_value = undefined;
 
   /**
-   * User key for which option value is updated. Primary key in {@link \PassportLoginSql}.
+   * User key for which option value is updated.
    *
    * @delete get
    * @post get
@@ -59,7 +60,7 @@ Wl_User_Option_PromptList_PromptListModel.prototype.config=function()
  * @name Wl_User_Option_PromptList_PromptListModel.instanceGet
  * @param {number} id_option Option ID.
  * @param {string} s_value Option value.
- * @param {string} uid User key for which option value is updated. Primary key in {@link \PassportLoginSql}.
+ * @param {string} uid User key for which option value is updated.
  * @returns {Wl_User_Option_PromptList_PromptListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

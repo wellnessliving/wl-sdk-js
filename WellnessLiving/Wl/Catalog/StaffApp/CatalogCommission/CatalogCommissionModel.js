@@ -17,16 +17,16 @@ function Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel()
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_commission_default
-   * @property {string} k_staff Staff key. Primary key of {@link \RsStaffSql} table.
-   * @property {string} k_staff_pay Staff pay key. Primary key of {@link \RsStaffPaySql} table.
+   * @property {string} k_staff Staff key.
+   * @property {string} k_staff_pay Staff pay key.
    */
 
   /**
    * Default staff commission for current client. Includes: <dl>
    *   <dt>string <var>k_staff</var></dt>
-   *   <dd>Staff key. Primary key of {@link \RsStaffSql} table.</dd>
+   *   <dd>Staff key.</dd>
    *   <dt>string <var>k_staff_pay</var></dt>
-   *   <dd>Staff pay key. Primary key of {@link \RsStaffPaySql} table.</dd>
+   *   <dd>Staff pay key.</dd>
    * </dl>
    *
    * @get result
@@ -37,10 +37,10 @@ function Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel()
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_staff_a_commission
    * @property {string} f_rate Rate of staff commission.
-   * @property {number} id_commission_type One of {@link \RsCommissionTypeSid} constants.
+   * @property {number} id_commission_type One of {@link RsCommissionTypeSid} constants.
    * @property {boolean} is_default <tt>true</tt> - if it is default commission for the staff,<tt>false</tt> - otherwise.
    * @property {string} html_commission Title of the commission.
-   * @property {string} k_staff_pay Staff pay key. Primary key of {@link \RsStaffPaySql} table.
+   * @property {string} k_staff_pay Staff pay key.
    */
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_staff
@@ -48,17 +48,17 @@ function Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel()
    * <dt>string <tt>f_rate</tt></dt>
    * <dd>Rate of staff commission.</dd>
    * <dt>int <tt>id_commission_type</tt></dt>
-   * <dd>One of {@link \RsCommissionTypeSid} constants.</dd>
+   * <dd>One of {@link RsCommissionTypeSid} constants.</dd>
    * <dt>bool <tt>is_default</tt></dt>
    * <dd><tt>true</tt> - if it is default commission for the staff,<tt>false</tt> - otherwise.</dd>
    * <dt>string <tt>html_commission</tt></dt>
    * <dd>Title of the commission.</dd>
    * <dt>string <tt>k_staff_pay</tt></dt>
-   * <dd>Staff pay key. Primary key of {@link \RsStaffPaySql} table.</dd>
+   * <dd>Staff pay key.</dd>
    *   </dl>
-   * @property {string} k_staff Staff key. Primary key of {@link \RsStaffSql} table.
+   * @property {string} k_staff Staff key.
    * @property {string} html_name Name of staff.
-   * @property {string} uid User key. Primary key of {@link \PassportLoginSql} table.
+   * @property {string} uid User key.
    */
 
   /**
@@ -68,20 +68,20 @@ function Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel()
    *     <dt>string <var>f_rate</var></dt>
    *     <dd>Rate of staff commission.</dd>
    *     <dt>int <var>id_commission_type</var></dt>
-   *     <dd>One of {@link \RsCommissionTypeSid} constants.</dd>
+   *     <dd>One of {@link RsCommissionTypeSid} constants.</dd>
    *     <dt>bool <var>is_default</var></dt>
    *     <dd><tt>true</tt> - if it is default commission for the staff,<tt>false</tt> - otherwise.</dd>
    *     <dt>string <var>html_commission</var></dt>
    *     <dd>Title of the commission.</dd>
    *     <dt>string <var>k_staff_pay</var></dt>
-   *     <dd>Staff pay key. Primary key of {@link \RsStaffPaySql} table.</dd>
+   *     <dd>Staff pay key.</dd>
    *   </dl></dd>
    *   <dt>string <var>k_staff</var></dt>
-   *   <dd>Staff key. Primary key of {@link \RsStaffSql} table.</dd>
+   *   <dd>Staff key.</dd>
    *   <dt>string <var>html_name</var></dt>
    *   <dd>Name of staff.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>User key. Primary key of {@link \PassportLoginSql} table.</dd>
+   *   <dd>User key.</dd>
    * </dl>
    *
    * @get result

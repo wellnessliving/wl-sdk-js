@@ -1,5 +1,5 @@
 /**
- * Products list for online store.
+ * Returns a list of all products available for a business’s shop at a particular location.
  *
  * This model is generated automatically based on API.
  *
@@ -19,19 +19,27 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogList_CatalogListModel_a_shop_product
    * @property {{}} a_location List of locations, where current sale item is available.
    * @property {string[]} a_login_type List of login types available to purchase sale item.
-   * @property {string[]} a_shop_category Online store categories. Primary keys in {@link RsShopCategorySql} table.
-   * @property {number} [id_program] Program ID. One of {@link \RsProgramSid} constants. Set for promotions.
-   * @property {number} id_restriction Restriction ID. One of {@link \Wl\Shop\Product\PurchaseRestrictionSid} constants.
-   * @property {number} id_sale Sale category ID. One of {@link \RsSaleSid}.
+   * @property {string[]} a_shop_category A list of online store category keys.
+   * @property {number} [id_program] The program ID, sets for promotions. One of {@link RsProgramSid} constants. Set for promotions.
+   *  <p>If `id_program` is {@link RsProgramSid.INSURANCE_MEMBERSHIP}, then use:</p>
+   *  <ul>
+   *    <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain a list of active programs.</li>
+   *    <li>{@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *    <li>{@link Wl_Catalog_Payment_PaymentModel} for a program purchase.</li>
+   *  </ul>
+   * @property {number} id_restriction Restriction ID. One of {@link Wl_Shop_Product_PurchaseRestrictionSid} constants.
+   * @property {number} id_sale Sale category ID. One of {@link RsSaleSid}.
    * @property {boolean} is_online_sell Whether sale item can be purchased by client.
-   * @property {boolean} is_visit <tt>true</tt> if this purchase option is suitable to pay for visit {@link \Wl\Catalog\StaffApp\CatalogList\CatalogListApi::$k_visit}; <tt>false</tt> otherwise.
-   * If {@link \Wl\Catalog\StaffApp\CatalogList\CatalogListApi::$k_visit} is empty, always false.
+   * @property {boolean} is_visit <tt>true</tt> if this purchase option is suitable to pay for visit {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit}; <tt>false</tt> otherwise.
+   * If {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit} is empty, always false.
    * @property {string} k_id Sale item ID.
-   * @property {string} text_title Title of sale item.
+   * @property {string} text_title The category title.
    */
 
   /**
-   * Products list for online store:
+   * Products in the online store category.
+   *
+   * Every element has the following next fields:
    * <dl>
    *   <dt>
    *     array <var>a_location</var>
@@ -49,25 +57,31 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    *     string[] <var>a_shop_category</var>
    *   </dt>
    *   <dd>
-   *     Online store categories. Primary keys in {@link RsShopCategorySql} table.
+   *     A list of online store category keys.
    *   </dd>
    *   <dt>
    *     int <var>[id_program]</var>
    *   </dt>
    *   <dd>
-   *     Program ID. One of {@link \RsProgramSid} constants. Set for promotions.
+   *      The program ID, sets for promotions. One of {@link RsProgramSid} constants. Set for promotions.
+   *      <p>If `id_program` is {@link RsProgramSid.INSURANCE_MEMBERSHIP}, then use:</p>
+   *      <ul>
+   *        <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain a list of active programs.</li>
+   *        <li>{@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} to get and validate fields for a given program.</li>
+   *        <li>{@link Wl_Catalog_Payment_PaymentModel} for a program purchase.</li>
+   *      </ul>
    *   </dd>
    *   <dt>
    *     int <var>id_restriction</var>
    *   </dt>
    *   <dd>
-   *     Restriction ID. One of {@link \Wl\Shop\Product\PurchaseRestrictionSid} constants.
+   *     Restriction ID. One of {@link Wl_Shop_Product_PurchaseRestrictionSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_sale</var>
    *   </dt>
    *   <dd>
-   *     Sale category ID. One of {@link \RsSaleSid}.
+   *     Sale category ID. One of {@link RsSaleSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_online_sell</var>
@@ -79,8 +93,8 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    *     bool <var>is_visit</var>
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if this purchase option is suitable to pay for visit {@link \Wl\Catalog\StaffApp\CatalogList\CatalogListApi::$k_visit}; <tt>false</tt> otherwise.
-   *     If {@link \Wl\Catalog\StaffApp\CatalogList\CatalogListApi::$k_visit} is empty, always false.
+   *     <tt>true</tt> if this purchase option is suitable to pay for visit {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit}; <tt>false</tt> otherwise.
+   *     If {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit} is empty, always false.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>
@@ -92,17 +106,17 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Title of sale item.
+   *     The category title.
    *   </dd>
    * </dl>
    *
    * @get result
-   * @type {Wl_Catalog_StaffApp_CatalogList_CatalogListModel_a_shop_product}
+   * @type {Wl_Catalog_StaffApp_CatalogList_CatalogListModel_a_shop_product[]}
    */
   this.a_shop_product = undefined;
 
   /**
-   * Does the employee have access to the Client Add page or not.
+   * If `true` then the current user is able to add the purchased item to the account.
    *
    * @get result
    * @type {boolean}
@@ -110,7 +124,7 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
   this.can_add = undefined;
 
   /**
-   * ID of business to get categories for. Primary key in {@link RsBusinessSql} table.
+   * The key of the business to get categories for.
    *
    * @get get
    * @type {string}
@@ -118,8 +132,8 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
   this.k_business = "0";
 
   /**
-   * ID of location.
-   * Can affect the list of displayed products.
+   * The location key.
+   * This can affect the list of displayed products.
    *
    * @get get
    * @type {string}
@@ -127,7 +141,7 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
   this.k_location = "0";
 
   /**
-   * ID of a visit to show purchase options for.
+   * The visit key to pay for.
    *
    * @get get
    * @type {string}
@@ -150,9 +164,9 @@ Wl_Catalog_StaffApp_CatalogList_CatalogListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Catalog_StaffApp_CatalogList_CatalogListModel.instanceGet
- * @param {string} k_business ID of business to get categories for. Primary key in {@link RsBusinessSql} table.
- * @param {string} k_location ID of location. Can affect the list of displayed products.
- * @param {string} k_visit ID of a visit to show purchase options for.
+ * @param {string} k_business The key of the business to get categories for.
+ * @param {string} k_location The location key. This can affect the list of displayed products.
+ * @param {string} k_visit The visit key to pay for.
  * @returns {Wl_Catalog_StaffApp_CatalogList_CatalogListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

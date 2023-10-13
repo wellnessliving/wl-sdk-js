@@ -12,13 +12,23 @@ function Wl_Member_Group_Edit_EditModel()
 
   /**
    * Entity in array format.
-   * For more information about the format, see {@link \Wl\Search\Criteria\SearchCriteriaList::createArray()} method.
+   * For more information about the format, see {@link Wl\Search\Criteria\SearchCriteriaList::createArray()} method.
    *
    * @post post
    * @put post
    * @type {{}}
    */
   this.a_criteria = [];
+
+  /**
+   * Logic connection between criteria.
+   * See {@link Wl\Search\Criteria\SearchCriteriaList::$a_criteria_logic} for details.
+   *
+   * @post post
+   * @put post
+   * @type {*}
+   */
+  this.a_logic = undefined;
 
   /**
    * Search entity CID list.
@@ -32,8 +42,8 @@ function Wl_Member_Group_Edit_EditModel()
 
   /**
    * @typedef {{}} Wl_Member_Group_Edit_EditModel_a_staff_role_selected
-   * @property {number} id_privilege_role ID of privilege role. Constant from {@link \RsPrivilegeRoleSid}.
-   * @property {string} k_business_role Key of the business role. Primary key in {@link \RsBusinessRoleSql} table.
+   * @property {number} id_privilege_role ID of privilege role. Constant from {@link RsPrivilegeRoleSid}.
+   * @property {string} k_business_role Key of the business role.
    */
 
   /**
@@ -41,9 +51,9 @@ function Wl_Member_Group_Edit_EditModel()
    *
    * <dl>
    *   <dt>int <var>id_privilege_role</var></dt>
-   *   <dd>ID of privilege role. Constant from {@link \RsPrivilegeRoleSid}.</dd>
+   *   <dd>ID of privilege role. Constant from {@link RsPrivilegeRoleSid}.</dd>
    *   <dt>string <var>k_business_role</var></dt>
-   *   <dd>Key of the business role. Primary key in {@link \RsBusinessRoleSql} table.</dd>
+   *   <dd>Key of the business role.</dd>
    * </dl>
    *
    * @post post
@@ -53,8 +63,18 @@ function Wl_Member_Group_Edit_EditModel()
   this.a_staff_role_selected = undefined;
 
   /**
+   * Shape of icon. One of {@link Wl_Member_Group_ShapeSid} constants.
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @type {number}
+   */
+  this.id_member_group_shape = 0;
+
+  /**
    * Type of share option.
-   * One of {@link ShareSid} constants.
+   * One of {@link Wl_Member_Group_Edit_ShareSid} constants.
    *
    * @post post
    * @put post
@@ -63,10 +83,37 @@ function Wl_Member_Group_Edit_EditModel()
   this.id_share = undefined;
 
   /**
+   * Whether Facility Access enabled for group.
+   *
+   * @get result
+   * @post post
+   * @type {boolean}
+   */
+  this.is_brivo_active = false;
+
+  /**
+   * <tt>true</tt> to enable group icon. <tt>false</tt> to disable.
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @type {boolean}
+   */
+  this.is_icon = false;
+
+  /**
+   * Whether auto-update enabled for group.
+   *
+   * @get result
+   * @post post
+   * @type {boolean}
+   */
+  this.is_update = false;
+
+  /**
    * Business to get information for.
    *
-   * Primary key in {@link \RsBusinessSql} table.
-   *
+   * @delete get
    * @get get
    * @post get
    * @put get
@@ -86,16 +133,45 @@ function Wl_Member_Group_Edit_EditModel()
 
   /**
    * Key of existing template.
-   * Primary key in the {@link SearchTemplateSql} table.
    *
    * Can be empty if template needs to be created.
    *
    * @get get,result
-   * @post result
+   * @post get,result
    * @put get
    * @type {string}
    */
   this.k_search_template = "";
+
+  /**
+   * Hexadecimal color of icon background.
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @type {string}
+   */
+  this.s_color_background = "";
+
+  /**
+   * Hexadecimal color of icon foreground.
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @type {string}
+   */
+  this.s_color_foreground = "";
+
+  /**
+   * Characters on icon.
+   *
+   * @get result
+   * @post post
+   * @put post
+   * @type {string}
+   */
+  this.s_icon = "";
 
   /**
    * Unique string identifying the name of the search group.
@@ -114,11 +190,19 @@ function Wl_Member_Group_Edit_EditModel()
    * @post post
    * @type {string}
    */
-  this.text_title = undefined;
+  this.text_title = "";
+
+  /**
+   * Additional warning message if there were some minor issues with request.
+   *
+   * @post result
+   * @put result
+   * @type {*}
+   */
+  this.text_warning = undefined;
 
   /**
    * User key.
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
    * @post get
@@ -137,5 +221,5 @@ WlSdk_ModelAbstract.extend(Wl_Member_Group_Edit_EditModel);
  */
 Wl_Member_Group_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field": {"a_criteria": {"post": {"post": true},"put": {"post": true}},"a_search_entity": {"post": {"post": true},"put": {"post": true}},"a_staff_role_selected": {"post": {"post": true},"put": {"post": true}},"id_share": {"post": {"post": true},"put": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_member_group": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"k_search_template": {"get": {"get": true,"result": true},"post": {"result": true},"put": {"get": true}},"s_search_group": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
+  return {"a_field": {"a_criteria": {"post": {"post": true},"put": {"post": true}},"a_logic": {"post": {"post": true},"put": {"post": true}},"a_search_entity": {"post": {"post": true},"put": {"post": true}},"a_staff_role_selected": {"post": {"post": true},"put": {"post": true}},"id_member_group_shape": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"id_share": {"post": {"post": true},"put": {"post": true}},"is_brivo_active": {"get": {"result": true},"post": {"post": true}},"is_icon": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"is_update": {"get": {"result": true},"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_member_group": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"k_search_template": {"get": {"get": true,"result": true},"post": {"get": true,"result": true},"put": {"get": true}},"s_color_background": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"s_color_foreground": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"s_icon": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"s_search_group": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"text_warning": {"post": {"result": true},"put": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
 };

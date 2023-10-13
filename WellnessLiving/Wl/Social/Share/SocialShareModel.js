@@ -19,7 +19,7 @@ function Wl_Social_Share_SocialShareModel()
   this.a_key = undefined;
 
   /**
-   * One of {@link \ASocialSid} constants.
+   * One of {@link ASocialSid} constants.
    *
    * @post post
    * @type {number}
@@ -27,7 +27,7 @@ function Wl_Social_Share_SocialShareModel()
   this.id_share_destination = undefined;
 
   /**
-   * One of {@link \Wl\Social\Share\ShareObjectSid} constants.
+   * One of {@link Wl_Social_Share_ShareObjectSid} constants.
    *
    * @post post
    * @type {number}
@@ -35,7 +35,7 @@ function Wl_Social_Share_SocialShareModel()
   this.id_share_object = undefined;
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @post post
    * @type {string}
@@ -51,7 +51,7 @@ function Wl_Social_Share_SocialShareModel()
   this.s_secret = undefined;
 
   /**
-   * User key. Primary key {@link \PassportLoginSql} table.
+   * User key.
    *
    * @post post
    * @type {string}

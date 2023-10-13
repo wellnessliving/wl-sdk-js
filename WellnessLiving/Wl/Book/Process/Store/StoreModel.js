@@ -1,5 +1,5 @@
 /**
- * Wizard of booking. Page "Purchase options".
+ * Booking Wizard for page "Purchase Options".
  *
  * This model is generated automatically based on API.
  *
@@ -11,12 +11,7 @@ function Wl_Book_Process_Store_StoreModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this._s_key = "k_class_period,dt_date_gmt,uid";
-
-  /**
-   * IDs of user's activity. Primary keys in {@link RsLoginActivitySql} table.
+   * Keys of user's activity. Not empty when booking process is finished.
    *
    * @post result
    * @type {string[]}
@@ -31,10 +26,10 @@ function Wl_Book_Process_Store_StoreModel()
    * @property {*} i_occurrence Number of occurrences after that appointment repeat must stop.
    * Empty if repeat must not stop after a certain number of occurrences.
    * @property {number} i_period Frequency of appointment repeating.
-   * @property {number} id_period Measurement unit of <tt>i_period</tt>. One of {@link ADurationSid} constants.
-   * @property {*} is_month <tt>true</tt> if appointment must repeat monthly at the same date.
-   * <tt>false</tt> if appointment must repeat monthly at the same week day.
-   * <tt>null</tt> if appointment must not repeat monthly.
+   * @property {number} id_period Measurement unit of `i_period`. One of {@link ADurationSid} constants.
+   * @property {*} is_month `true` if appointment must repeat monthly at the same date.
+   * `false` if appointment must repeat monthly at the same week day.
+   * `null` if appointment must not repeat monthly.
    */
 
   /**
@@ -70,19 +65,19 @@ function Wl_Book_Process_Store_StoreModel()
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of <tt>i_period</tt>. One of {@link ADurationSid} constants.
+   *     Measurement unit of `i_period`. One of {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if appointment must repeat monthly at the same date.
-   *     <tt>false</tt> if appointment must repeat monthly at the same week day.
-   *     <tt>null</tt> if appointment must not repeat monthly.
+   *     `true` if appointment must repeat monthly at the same date.
+   *     `false` if appointment must repeat monthly at the same week day.
+   *     `null` if appointment must not repeat monthly.
    *   </dd>
    * </dl>
    *
-   * <tt>null</tt> if booking must be not recurring.
+   * `null` if booking must be not recurring.
    *
    * @post post
    * @type {?Wl_Book_Process_Store_StoreModel_a_repeat}
@@ -91,16 +86,18 @@ function Wl_Book_Process_Store_StoreModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Store_StoreModel_a_resource
-   * @property {number} i_index Order number of the asset (may be from 1 to asset quantity).
-   * @property {string} k_resource Asset ID. Primary key in table {@link RsResourceSql}.
+   * @property {number} i_index Order number of the asset (maybe from 1 to asset quantity).
+   * @property {string} k_resource The key of asset.
    */
 
   /**
-   * Selected assets.
-   *
-   * Every element has keys:
-   * <dl><dt>int <var>i_index</var></dt><dd>Order number of the asset (may be from 1 to asset quantity).</dd>
-   * <dt>string <var>k_resource</var></dt><dd>Asset ID. Primary key in table {@link RsResourceSql}.</dd></dl>
+   * List of assets which are being booked. Every element has next keys:
+   * <dl>
+   *   <dt>int <var>i_index</var></dt>
+   *   <dd>Order number of the asset (maybe from 1 to asset quantity).</dd>
+   *   <dt>string <var>k_resource</var></dt>
+   *   <dd>The key of asset.</dd>
+   * </dl>
    *
    * @post post
    * @type {Wl_Book_Process_Store_StoreModel_a_resource[]}
@@ -110,9 +107,8 @@ function Wl_Book_Process_Store_StoreModel()
   /**
    * Selected sessions.
    *
-   * Keys - session IDs. Primary keys in table {@link RsClassPeriodSql}.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * <b>Keys</b> - The class period keys.
+   * <b>Values</b> - List of date/time when the session occurred in MySQL format and in GMT.
    *
    * @post post
    * @type {{}}
@@ -120,12 +116,33 @@ function Wl_Book_Process_Store_StoreModel()
   this.a_session_select = [];
 
   /**
-   * IDs of books are made. Primary keys in {@link RsVisitSql} table.
+   * Selected sessions on the waiting list without pay.
+   *
+   * Keys - session IDs.
+   *
+   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   *
+   * @post post
+   * @type {{}}
+   */
+  this.a_session_wait_list_unpaid = [];
+
+  /**
+   * Keys of books are made.
    *
    * @post result
    * @type {string[]}
    */
   this.a_visit = undefined;
+
+  /**
+   * Whether the class/event can be booked at this step or not.
+   * External process control flag.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.can_book = true;
 
   /**
    * Date/time to which session is booked.
@@ -137,7 +154,7 @@ function Wl_Book_Process_Store_StoreModel()
   this.dt_date_gmt = "";
 
   /**
-   * Mode type. One of {@link \Wl\Mode\ModeSid} constants.
+   * Mode type. One of {@link Wl_Mode_ModeSid} constants.
    *
    * @get get
    * @post get
@@ -146,8 +163,17 @@ function Wl_Book_Process_Store_StoreModel()
   this.id_mode = 0;
 
   /**
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_force_pay_later = false;
+
+  /**
    * <tt>true</tt> if need next steps of wizard (need to purchase something to book selected session);
-   * <tt>false</tt> if no need next steps (all need was already bought).
+   * <tt>false</tt> if no need next steps (all that need was already bought).
    *
    * @post result
    * @type {boolean}
@@ -162,6 +188,26 @@ function Wl_Book_Process_Store_StoreModel()
    * @type {string}
    */
   this.k_class_period = "0";
+
+  /**
+   * Login promotion to be used to book a class.
+   *
+   * Primary key from {@link  \RsLoginProductSql}.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.k_login_promotion = "";
+
+  /**
+   * Session pass to be used to book a class.
+   *
+   * Primary key from {@link  \Wl\Session\Pass\Sql}.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.k_session_pass = "";
 
   /**
    * Key of a user who is making a book.
@@ -182,15 +228,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Store_StoreModel);
  */
 Wl_Book_Process_Store_StoreModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
-
-/**
- * @function
- * @name Wl_Book_Process_Store_StoreModel.instanceGet
- * @param {string} k_class_period Key of session which is booked.
- * @param {string} dt_date_gmt Date/time to which session is booked.
- * @param {string} uid Key of a user who is making a book.
- * @returns {Wl_Book_Process_Store_StoreModel}
- * @see WlSdk_ModelAbstract.instanceGet()
- */

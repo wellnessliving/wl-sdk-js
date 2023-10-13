@@ -26,8 +26,6 @@ function Wl_Profile_Account_Select_SelectModel()
   /**
    * Business to retrieve relationship information.
    *
-   * Primary key in {@link \RsBusinessSql}.
-   *
    * @get get
    * @post get
    * @type {string}
@@ -37,8 +35,6 @@ function Wl_Profile_Account_Select_SelectModel()
   /**
    * UID to retrieve relationship information.
    *
-   * Primary key in {@link \PassportLoginSql}.
-   *
    * @get get
    * @post get
    * @type {string}
@@ -47,8 +43,6 @@ function Wl_Profile_Account_Select_SelectModel()
 
   /**
    * ID of relative to sign in.
-   *
-   * Primary key in {@link \PassportLoginSql}.
    *
    * @post post
    * @type {string}
@@ -71,8 +65,8 @@ Wl_Profile_Account_Select_SelectModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Account_Select_SelectModel.instanceGet
- * @param {string} uid UID to retrieve relationship information. Primary key in {@link \PassportLoginSql}.
- * @param {string} k_business Business to retrieve relationship information. Primary key in {@link \RsBusinessSql}.
+ * @param {string} uid UID to retrieve relationship information.
+ * @param {string} k_business Business to retrieve relationship information.
  * @returns {Wl_Profile_Account_Select_SelectModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

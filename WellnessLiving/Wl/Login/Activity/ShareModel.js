@@ -11,7 +11,7 @@ function Wl_Login_Activity_ShareModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of IDs of user's activity. Primary keys in {@link RsLoginActivitySql} table.
+   * List of IDs of user's activity.
    *
    * @post post
    * @type {string[]}
@@ -21,6 +21,7 @@ function Wl_Login_Activity_ShareModel()
   /**
    * <tt>true</tt> - share activity on Facebook; <tt>false</tt> - do not share on Facebook.
    *
+   * @deprecated Feature is no longer supported.
    * @post post
    * @type {boolean}
    */

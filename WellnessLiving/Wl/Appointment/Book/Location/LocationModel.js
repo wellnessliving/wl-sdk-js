@@ -61,7 +61,7 @@ function Wl_Appointment_Book_Location_LocationModel()
   this.k_class_tab = null;
 
   /**
-   * ID of user to show information for. Primary key in {@link \PassportLoginSql} table.
+   * ID of user to show information for.
    *
    * @get get
    * @type {string}
@@ -87,7 +87,7 @@ Wl_Appointment_Book_Location_LocationModel.prototype.config=function()
  * @param {string} k_business ID of the business.
  * @param {?string} id_class_tab ID of class tab type. <tt>null</tt> if not set yet.
  * @param {?string} k_class_tab ID of class tab. <tt>null</tt> if not set yet.
- * @param {string} uid ID of user to show information for. Primary key in {@link \PassportLoginSql} table.
+ * @param {string} uid ID of user to show information for.
  * @param {boolean} is_backend <tt>true</tt> - return all service categories of certain location; <tt>false</tt> - return only service categories which has staff members and are bound to certain book tab.
  * @returns {Wl_Appointment_Book_Location_LocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()

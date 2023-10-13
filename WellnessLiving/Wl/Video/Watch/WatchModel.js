@@ -1,5 +1,5 @@
 /**
- * Saves information about watch video.
+ * An endpoint that saves information about a watched video.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +11,7 @@ function Wl_Video_Watch_WatchModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Current time in seconds at which the user is at in the video.
+   * The current time in seconds the user is at in the video.
    *
    * @post post
    * @put post
@@ -20,7 +20,7 @@ function Wl_Video_Watch_WatchModel()
   this.i_current_time = undefined;
 
   /**
-   * Duration in seconds which user has watched the video.
+   * The duration in seconds the user has watched the video for.
    *
    * @put post
    * @type {number}
@@ -28,15 +28,16 @@ function Wl_Video_Watch_WatchModel()
   this.i_watched = undefined;
 
   /**
-   * Source ID.
+   * The source ID.
    *
    * @post post
+   * @see Wl_Video_Watch_WatchSourceSid
    * @type {number}
    */
   this.id_source = undefined;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @post post
    * @put post
@@ -45,7 +46,7 @@ function Wl_Video_Watch_WatchModel()
   this.k_business = undefined;
 
   /**
-   * String key of the video.
+   * The video string key.
    *
    * @post post
    * @type {string}
@@ -53,7 +54,7 @@ function Wl_Video_Watch_WatchModel()
   this.k_video = undefined;
 
   /**
-   * Video watch key.
+   * The video watch key.
    *
    * @post result
    * @put post

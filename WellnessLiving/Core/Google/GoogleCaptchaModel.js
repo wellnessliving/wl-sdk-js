@@ -1,7 +1,8 @@
 /**
  * Api to store captcha user token.
  *
- * This model is generated automatically based on API.
+ * Site keys for initialize Google reCAPTCHA v2:
+ * * Demo/Staging - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -12,6 +13,9 @@ function Core_Google_GoogleCaptchaModel()
 
   /**
    * Action name.
+   *
+   * Used for determinate place where captcha needed,
+   * in documentation for APIs which used captcha says which action it use.
    *
    * @put post
    * @type {string}

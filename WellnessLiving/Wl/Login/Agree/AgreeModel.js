@@ -1,5 +1,5 @@
 /**
- * Saves user's agreement to online waiver.
+ * An endpoint that saves the user's agreement to the online waiver.
  *
  * This model is generated automatically based on API.
  *
@@ -16,28 +16,44 @@ function Wl_Login_Agree_AgreeModel()
   this._s_key = "uid,k_business";
 
   /**
-   * ID of business.
+   * Formatted text of business liability release. Not empty if business has liability release and if user did not agree to this liability release.
    *
-   * Primary key in {@link \RsBusinessSql}.
+   * @get result
+   * @type {string}
+   */
+  this.html_contract = "";
+
+  /**
+   * <tt>false</tt> if user has not agreed to use Electronic Signatures,
+   * <tt>true</tt> if user has agreed to use Electronic Signatures,
+   * <tt>null</tt> otherwise.
    *
+   * @post post
+   * @type {?boolean}
+   */
+  this.is_agree = null;
+
+  /**
+   * The key of business.
+   *
+   * @get get
    * @post get
    * @type {string}
    */
   this.k_business = "0";
 
   /**
-   * The base64 encoded user's signature image in PNG.
+   * The base64-encoded user's signature image from the signature pad as a PNG file.
    *
    * @post post
    * @type {string}
    */
-  this.s_signature = false;
+  this.s_signature = "";
 
   /**
-   * User's ID.
+   * The user's key.
    *
-   * Primary key in {@link \PassportLoginSql}.
-   *
+   * @get get
    * @post get
    * @type {string}
    */
@@ -53,14 +69,14 @@ WlSdk_ModelAbstract.extend(Wl_Login_Agree_AgreeModel);
  */
 Wl_Login_Agree_AgreeModel.prototype.config=function()
 {
-  return {"a_field": {"k_business": {"post": {"get": true}},"s_signature": {"post": {"post": true}},"uid": {"post": {"get": true}}}};
+  return {"a_field": {"html_contract": {"get": {"result": true}},"is_agree": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"s_signature": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Login_Agree_AgreeModel.instanceGet
- * @param {string} uid User's ID. Primary key in {@link \PassportLoginSql}.
- * @param {string} k_business ID of business. Primary key in {@link \RsBusinessSql}.
+ * @param {string} uid The user's key.
+ * @param {string} k_business The key of business.
  * @returns {Wl_Login_Agree_AgreeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

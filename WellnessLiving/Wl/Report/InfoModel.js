@@ -16,7 +16,7 @@ function Wl_Report_InfoModel()
   this._s_key = "id_report,k_business";
 
   /**
-   * Report ID. One of {@link \RsReportSid} constants.
+   * Report ID. One of {@link RsReportSid} constants.
    *
    * @get get
    * @type {number}
@@ -32,7 +32,7 @@ function Wl_Report_InfoModel()
   this.id_report_type = undefined;
 
   /**
-   * ID of business for which report must be generated. Primary key in {@link \RsBusinessSql} table.
+   * ID of business for which report must be generated.
    *
    * @get get
    * @type {string}
@@ -55,8 +55,8 @@ Wl_Report_InfoModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_InfoModel.instanceGet
- * @param {number} id_report Report ID. One of {@link \RsReportSid} constants.
- * @param {string} k_business ID of business for which report must be generated. Primary key in {@link \RsBusinessSql} table.
+ * @param {number} id_report Report ID. One of {@link RsReportSid} constants.
+ * @param {string} k_business ID of business for which report must be generated.
  * @returns {Wl_Report_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

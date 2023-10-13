@@ -24,7 +24,7 @@ function Wl_Business_Config_Option_BusinessConfigOptionModel()
   this.a_option = undefined;
 
   /**
-   * Key of business. Primary key in {@link RsBusinessSql}.
+   * Key of business.
    *
    * @get get
    * @type {string}
@@ -47,7 +47,7 @@ Wl_Business_Config_Option_BusinessConfigOptionModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Config_Option_BusinessConfigOptionModel.instanceGet
- * @param {string} k_business Key of business. Primary key in {@link RsBusinessSql}.
+ * @param {string} k_business Key of business.
  * @returns {Wl_Business_Config_Option_BusinessConfigOptionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

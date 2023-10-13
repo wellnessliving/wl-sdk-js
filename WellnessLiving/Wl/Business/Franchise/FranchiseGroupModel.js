@@ -17,7 +17,7 @@ function Wl_Business_Franchise_FranchiseGroupModel()
   this._s_key = "k_business";
 
   /**
-   * Keys of businesses of franchise group. Primary keys in {@link \RsBusinessSql} table.
+   * Keys of businesses of franchise group.
    *
    * @get result
    * @type {string[]}
@@ -26,8 +26,6 @@ function Wl_Business_Franchise_FranchiseGroupModel()
 
   /**
    * Key of business to get data for. It may be both franchisor and franchisee.
-   *
-   * Primary key in {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -50,7 +48,7 @@ Wl_Business_Franchise_FranchiseGroupModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Franchise_FranchiseGroupModel.instanceGet
- * @param {string} k_business Key of business to get data for. It may be both franchisor and franchisee. Primary key in {@link \RsBusinessSql} table.
+ * @param {string} k_business Key of business to get data for. It may be both franchisor and franchisee.
  * @returns {Wl_Business_Franchise_FranchiseGroupModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

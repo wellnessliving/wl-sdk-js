@@ -11,7 +11,7 @@ function Wl_Business_Sms_Unread_SmsUnreadModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Key of the business. Primary key {@link \RsBusinessSql} table.
+   * Key of the business.
    *
    * @delete post
    * @post post

@@ -16,46 +16,26 @@ function Wl_Schedule_Page_AppointmentView_AppointmentViewModel()
   this._s_key = "k_business,k_appointment";
 
   /**
-   * @typedef {{}} Wl_Schedule_Page_AppointmentView_AppointmentViewModel_a_appointment_a_date
-   * @property {string} s_day Day of the weekend.
-   * @property {string} s_date Date of the appointment.
-   * @property {string} s_half_end Ante meridiem or Post meridiem for end time.
-   * @property {string} s_half_start Ante meridiem or Post meridiem for start time.
-   * @property {string} s_time_end End time.
-   * @property {string} s_time_start Start time.
-   */
-  /**
    * @typedef {{}} Wl_Schedule_Page_AppointmentView_AppointmentViewModel_a_appointment
-   * @property {Wl_Schedule_Page_AppointmentView_AppointmentViewModel_a_appointment_a_date} a_date Detail information about date and time of the appointment:<dl>
-   * <dt>string <tt>s_day</tt></dt><dd>Day of the weekend.</dd>
-   * <dt>string <tt>s_date</tt></dt><dd>Date of the appointment.</dd>
-   * <dt>string <tt>s_half_end</tt></dt><dd>Ante meridiem or Post meridiem for end time.</dd>
-   * <dt>string <tt>s_half_start</tt></dt><dd>Ante meridiem or Post meridiem for start time.</dd>
-   * <dt>string <tt>s_time_end</tt></dt><dd>End time.</dd>
-   * <dt>string <tt>s_time_start</tt></dt><dd>Start time.</dd>
-   *   </dl>
+   * @property {string} a_date_end End date of the appointment.
+   * @property {string} a_date_start Start date of the appointment.
    * @property {string} html_description Description of the appointment.
    * @property {string} html_special Special instructions.
    * @property {boolean} is_virtual <tt>true</tt> if the appointment is virtual, <tt>false</tt> otherwise.
-   * @property {string} k_location Location key. Primary key in the {@link \RsLocationSql} table.
-   * @property {string} k_staff Staff key. Primary key in the {@link \RsStaffSql} table.
+   * @property {string} k_location Location key.
+   * @property {string} k_staff Staff key.
    * @property {string} text_service Appointment title.
    * @property {string} text_staff_name Staff name.
-   * @property {string} uid_staff Staff uid. Primary key in the {@link \PassportLoginSql} table.
+   * @property {string} text_timezone Timezone name.
+   * @property {string} uid_staff Staff uid.
    */
 
   /**
    * Appointment information:<dl>
-   *   <dt>array <var>a_date</var></dt>
-   *   <dd>
-   *     Detail information about date and time of the appointment:<dl>
-   *     <dt>string <var>s_day</var></dt><dd>Day of the weekend.</dd>
-   *     <dt>string <var>s_date</var></dt><dd>Date of the appointment.</dd>
-   *     <dt>string <var>s_half_end</var></dt><dd>Ante meridiem or Post meridiem for end time.</dd>
-   *     <dt>string <var>s_half_start</var></dt><dd>Ante meridiem or Post meridiem for start time.</dd>
-   *     <dt>string <var>s_time_end</var></dt><dd>End time.</dd>
-   *     <dt>string <var>s_time_start</var></dt><dd>Start time.</dd>
-   *   </dl></dd>
+   *   <dt>string <var>a_date_end</var></dt>
+   *   <dd>End date of the appointment.</dd>
+   *   <dt>string <var>a_date_start</var></dt>
+   *   <dd>Start date of the appointment.</dd>
    *   <dt>string <var>html_description</var></dt>
    *   <dd>Description of the appointment.</dd>
    *   <dt>string <var>html_special</var></dt>
@@ -63,21 +43,32 @@ function Wl_Schedule_Page_AppointmentView_AppointmentViewModel()
    *   <dt>bool <var>is_virtual</var></dt>
    *   <dd><tt>true</tt> if the appointment is virtual, <tt>false</tt> otherwise.</dd>
    *   <dt>string <var>k_location</var></dt>
-   *   <dd>Location key. Primary key in the {@link \RsLocationSql} table.</dd>
+   *   <dd>Location key.</dd>
    *   <dt>string <var>k_staff</var></dt>
-   *   <dd>Staff key. Primary key in the {@link \RsStaffSql} table.</dd>
+   *   <dd>Staff key.</dd>
    *   <dt>string <var>text_service</var></dt>
    *   <dd>Appointment title.</dd>
    *   <dt>string <var>text_staff_name</var></dt>
    *   <dd>Staff name.</dd>
+   *   <dt>string <var>text_timezone</var></dt>
+   *   <dd>Timezone name.</dd>
    *   <dt>string <var>uid_staff</var></dt>
-   *   <dd>Staff uid. Primary key in the {@link \PassportLoginSql} table.</dd>
+   *   <dd>Staff uid.</dd>
    * </dl>
    *
    * @get result
    * @type {Wl_Schedule_Page_AppointmentView_AppointmentViewModel_a_appointment}
    */
   this.a_appointment = [];
+
+  /**
+   * Asset list data.
+   *
+   * @get result
+   * @post result
+   * @type {?{}[]}
+   */
+  this.a_asset = null;
 
   /**
    * @typedef {{}} Wl_Schedule_Page_AppointmentView_AppointmentViewModel_a_location
@@ -122,7 +113,7 @@ function Wl_Schedule_Page_AppointmentView_AppointmentViewModel()
   this.a_service_logo = [];
 
   /**
-   * Appointment key. Primary key in {@link \RsAppointmentSql} table.
+   * Appointment key.
    *
    * @get get
    * @type {string}
@@ -130,7 +121,7 @@ function Wl_Schedule_Page_AppointmentView_AppointmentViewModel()
   this.k_appointment = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @type {string}
@@ -147,14 +138,14 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Page_AppointmentView_AppointmentViewModel
  */
 Wl_Schedule_Page_AppointmentView_AppointmentViewModel.prototype.config=function()
 {
-  return {"a_field": {"a_appointment": {"get": {"result": true}},"a_location": {"get": {"result": true}},"a_service_logo": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field": {"a_appointment": {"get": {"result": true}},"a_asset": {"get": {"result": true},"post": {"result": true}},"a_location": {"get": {"result": true}},"a_service_logo": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Schedule_Page_AppointmentView_AppointmentViewModel.instanceGet
- * @param {string} k_business Business key. Primary key in {@link \RsBusinessSql} table.
- * @param {string} k_appointment Appointment key. Primary key in {@link \RsAppointmentSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} k_appointment Appointment key.
  * @returns {Wl_Schedule_Page_AppointmentView_AppointmentViewModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

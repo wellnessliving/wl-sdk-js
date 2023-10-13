@@ -1,5 +1,5 @@
 /**
- * List of payment methods.
+ * An endpoint containing a model to get the list of payment methods.
  *
  * This model is generated automatically based on API.
  *
@@ -12,31 +12,31 @@ function Wl_Pay_Method_ListModel()
 
   /**
    * @typedef {{}} Wl_Pay_Method_ListModel_a_pay_method
-   * @property {number} id_pay_method Payment method type id.
-   * @property {string} k_pay_method Payment method key. Primary key int the {@link \Wl\Pay\Method\MethodSql} table. May be <tt>null</tt> if it is a system payment method.
-   * @property {string} s_title Payment method name.
+   * @property {number} id_pay_method The payment method type ID. One of {@link RsPayMethodSid} constants.
+   * @property {?string} k_pay_method Payment method key. May be <tt>null</tt> if it is a system payment method.
+   * @property {string} s_title The payment method name.
    */
 
   /**
-   * List of payment methods:
+   * A list of payment methods:
    * <dl>
    *   <dt>
    *     int <var>id_pay_method</var>
    *   </dt>
    *   <dd>
-   *     Payment method type id.
+   *     The payment method type ID. One of {@link RsPayMethodSid} constants.
    *   </dd>
    *   <dt>
-   *     string <var>k_pay_method</var>
+   *     string|null <var>k_pay_method</var>
    *   </dt>
    *   <dd>
-   *     Payment method key. Primary key int the {@link \Wl\Pay\Method\MethodSql} table. May be <tt>null</tt> if it is a system payment method.
+   *     Payment method key. May be <tt>null</tt> if it is a system payment method.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
    *   </dt>
    *   <dd>
-   *     Payment method name.
+   *     The payment method name.
    *   </dd>
    * </dl>
    *
@@ -54,7 +54,7 @@ function Wl_Pay_Method_ListModel()
   this.is_active = true;
 
   /**
-   * Business primary key in {@link \RsBusinessSql}.
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -62,8 +62,7 @@ function Wl_Pay_Method_ListModel()
   this.k_business = "0";
 
   /**
-   * Key of a user to show information for.
-   * Primary key in {@link \PassportLoginSql} table.
+   * The key of a user to show information for.
    *
    * @get get
    * @type {string}

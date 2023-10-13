@@ -17,7 +17,6 @@ function Wl_Insurance_Reimbursement_Export_AccumulationModel()
 
   /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @post get
    * @type {string}
@@ -48,7 +47,7 @@ Wl_Insurance_Reimbursement_Export_AccumulationModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Insurance_Reimbursement_Export_AccumulationModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @param {string} k_business Business key.
  * @returns {Wl_Insurance_Reimbursement_Export_AccumulationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -1,5 +1,5 @@
 /**
- * API point to get promotion list of the specified business.
+ * An endpoint that gets a promotion list of the specified business.
  *
  * This model is generated automatically based on API.
  *
@@ -17,31 +17,31 @@ function Wl_Promotion_PromotionListModel()
 
   /**
    * @typedef {{}} Wl_Promotion_PromotionListModel_a_promotion
-   * @property {number} id_program Promotion program. One of {@link \RsProgramSid} constants.
-   * @property {string} k_promotion ID of promotion, primary key in {@link \RsPromotionSql}.
-   * @property {string} text_title Title of promotion.
+   * @property {number} id_program The promotion program. One of the {@link RsProgramSid} constants.
+   * @property {string} k_promotion The key of the promotion.
+   * @property {string} text_title The title of the promotion.
    */
 
   /**
-   * List of promotions.
+   * A list of promotions.
    * <dl>
    *   <dt>
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     Promotion program. One of {@link \RsProgramSid} constants.
+   *     The promotion program. One of the {@link RsProgramSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_promotion</var>
    *   </dt>
    *   <dd>
-   *     ID of promotion, primary key in {@link \RsPromotionSql}.
+   *     The key of the promotion.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>
    *   </dt>
    *   <dd>
-   *     Title of promotion.
+   *     The title of the promotion.
    *   </dd>
    * </dl>
    *
@@ -51,8 +51,8 @@ function Wl_Promotion_PromotionListModel()
   this.a_promotion = undefined;
 
   /**
-   * Whether to return franchisee-created promotions (if business is franchisor).
-   * <tt>true</tt> to include franchisee-created promotions.
+   * Determines whether to return promotions created by Enterprise Locations (for Enterprise Cloud businesses only).
+   * If `true`, promotions created by Enterprise Locations are included. Otherwise, this will be `false`.
    *
    * @get get
    * @type {boolean}
@@ -60,8 +60,7 @@ function Wl_Promotion_PromotionListModel()
   this.is_franchise = false;
 
   /**
-   * Business key to get promotions.
-   * Primary key in the {@link \RsBusinessSql} table.
+   * The business key used to get the promotions.
    *
    * @get get
    * @type {string}
@@ -84,8 +83,8 @@ Wl_Promotion_PromotionListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Promotion_PromotionListModel.instanceGet
- * @param {string} k_business Business key to get promotions. Primary key in the {@link \RsBusinessSql} table.
- * @param {boolean} is_franchise Whether to return franchisee-created promotions (if business is franchisor). <tt>true</tt> to include franchisee-created promotions.
+ * @param {string} k_business The business key used to get the promotions.
+ * @param {boolean} is_franchise Determines whether to return promotions created by Enterprise Locations (for Enterprise Cloud businesses only). If `true`, promotions created by Enterprise Locations are included. Otherwise, this will be `false`.
  * @returns {Wl_Promotion_PromotionListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

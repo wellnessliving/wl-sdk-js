@@ -11,7 +11,7 @@ function Wl_Calendar_Cordova_CordovaCalendarStaffModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Events that must be synchronized in calendar. See {@link CordovaCalendarApiAbstract::data()} for detailed description.
+   * Events that must be synchronized in calendar. See {@link Wl_Calendar_Cordova_CordovaCalendarModelAbstract.data()} for detailed description.
    *
    * @post result
    * @type {{}[]}
@@ -28,7 +28,6 @@ function Wl_Calendar_Cordova_CordovaCalendarStaffModel()
 
   /**
    * Business to synchronize calendar from.
-   * Primary key in {@link \RsBusinessSql} table.
    *
    * @post get
    * @type {string}
@@ -46,7 +45,6 @@ function Wl_Calendar_Cordova_CordovaCalendarStaffModel()
 
   /**
    * User to synchronize calendar for.
-   * Primary key in {@link \PassportLoginSql} table.
    *
    * @post get
    * @type {string}

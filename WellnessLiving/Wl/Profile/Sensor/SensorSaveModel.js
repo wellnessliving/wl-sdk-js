@@ -19,7 +19,7 @@ function Wl_Profile_Sensor_SensorSaveModel()
   this.i_page = undefined;
 
   /**
-   * Sensor type id, one of {@link SensorTypesSid} constants.
+   * Sensor type id, one of {@link Wl_Profile_Sensor_SensorTypesSid} constants.
    *
    * @post post
    * @type {number}

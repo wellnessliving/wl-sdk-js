@@ -374,7 +374,14 @@ WlSdk_ModelAbstract.prototype.array = function(a_filter)
       }
     }
 
-    a_result[s_key] = this[s_key];
+    // Browser can change boolean false to 'false'. It's important to understand difference between changing value and
+    // leaving it as it is. If field doesn't set it should have null value. If value sets it should have boolean data inside.
+    if(this[s_key]===false)
+      a_result[s_key] = 0;
+    else if(this[s_key]===true)
+      a_result[s_key] = 1;
+    else
+      a_result[s_key] = this[s_key];
   }
   return a_result;
 };

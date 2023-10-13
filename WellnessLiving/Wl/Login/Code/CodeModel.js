@@ -16,7 +16,7 @@ function Wl_Login_Code_CodeModel()
   this._s_key = "uid,k_business";
 
   /**
-   * Key of source mode. One of {@link \Wl\Mode\ModeSid} constants.
+   * Key of source mode. One of {@link Wl_Mode_ModeSid} constants.
    *
    * @post post
    * @type {number}

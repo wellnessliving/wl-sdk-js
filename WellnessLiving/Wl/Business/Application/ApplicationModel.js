@@ -18,8 +18,6 @@ function Wl_Business_Application_ApplicationModel()
   /**
    * Key of a business to show information for.
    *
-   * Primary key from {@link RsSkinSql} table.
-   *
    * @get get
    * @type {string}
    */
@@ -49,7 +47,7 @@ Wl_Business_Application_ApplicationModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Application_ApplicationModel.instanceGet
- * @param {string} k_business Key of a business to show information for. Primary key from {@link RsSkinSql} table.
+ * @param {string} k_business Key of a business to show information for.
  * @returns {Wl_Business_Application_ApplicationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

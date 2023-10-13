@@ -26,7 +26,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.i_interval = undefined;
 
   /**
-   * Option of appointments display. One of {@link \Wl\Schedule\Design\OptionSid} constants.
+   * Option of appointments display. One of {@link Wl_Schedule_Design_OptionSid} constants.
    *
    * @get result
    * @type {number}
@@ -36,7 +36,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   /**
    * Day ID of the start week.
    *
-   * Constant from {@link WeekDaySid}.
+   * Constant from {@link Wl_Schedule_Design_WeekDaySid}.
    *
    * @get result
    * @type {number}
@@ -44,7 +44,23 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.id_start_week = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * <tt>true</tt> - if need to show staff unavailable times with diagonal lines, <tt>false</tt> - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_diagonal_staff_busy = undefined;
+
+  /**
+   * <tt>true</tt> - if need to show work note, <tt>false</tt> - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_work_note = undefined;
+
+  /**
+   * Business key.
    *
    * @get get
    * @type {string}
@@ -76,7 +92,15 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.s_color_staff_substitute = null;
 
   /**
-   * User key. Primary key in {@link \PassportLoginSql} table.
+   * Whether need to scroll schedule to last booked service.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.show_booking_after_book = false;
+
+  /**
+   * User key.
    *
    * @get get
    * @type {string}
@@ -93,14 +117,14 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleDesign_ScheduleDesignModel);
  */
 Wl_Schedule_ScheduleDesign_ScheduleDesignModel.prototype.config=function()
 {
-  return {"a_field": {"i_interval": {"get": {"result": true}},"id_option": {"get": {"result": true}},"id_start_week": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_color_staff_available": {"get": {"result": true}},"s_color_staff_busy": {"get": {"result": true}},"s_color_staff_substitute": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"i_interval": {"get": {"result": true}},"id_option": {"get": {"result": true}},"id_start_week": {"get": {"result": true}},"is_diagonal_staff_busy": {"get": {"result": true}},"is_work_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_color_staff_available": {"get": {"result": true}},"s_color_staff_busy": {"get": {"result": true}},"s_color_staff_substitute": {"get": {"result": true}},"show_booking_after_book": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Schedule_ScheduleDesign_ScheduleDesignModel.instanceGet
- * @param {string} k_business Business key. Primary key in {@link \RsBusinessSql} table.
- * @param {string} uid User key. Primary key in {@link \PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
  * @returns {Wl_Schedule_ScheduleDesign_ScheduleDesignModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

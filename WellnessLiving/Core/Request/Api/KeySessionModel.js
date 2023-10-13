@@ -4,7 +4,7 @@
  *
  * This point must be done from user's browser.
  *
- * See {@link \Core\Request\Api\KeySecretApi} also.
+ * See {@link Core_Request_Api_KeySecretModel} also.
  *
  * This model is generated automatically based on API.
  *

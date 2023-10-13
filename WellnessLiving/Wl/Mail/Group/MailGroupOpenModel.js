@@ -16,7 +16,7 @@ function Wl_Mail_Group_MailGroupOpenModel()
   this._s_key = "k_business,uid";
 
   /**
-   * Mail group ID. One of {@link \RsMailGroupSid} constants.
+   * Mail group ID. One of {@link RsMailGroupSid} constants.
    *
    * @post post
    * @type {number}
@@ -32,7 +32,7 @@ function Wl_Mail_Group_MailGroupOpenModel()
   this.is_remove = undefined;
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @post post
    * @type {string}
@@ -40,7 +40,7 @@ function Wl_Mail_Group_MailGroupOpenModel()
   this.k_business = undefined;
 
   /**
-   * User key. Primary key in the {@link \PassportLoginSql} table.
+   * User key.
    *
    * @post post
    * @type {string}
@@ -63,8 +63,8 @@ Wl_Mail_Group_MailGroupOpenModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Mail_Group_MailGroupOpenModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
  * @returns {Wl_Mail_Group_MailGroupOpenModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

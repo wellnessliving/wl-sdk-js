@@ -19,7 +19,7 @@ function Wl_Book_Repeat_Panel_PanelModel()
   this.html_content = undefined;
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @type {string}
@@ -27,7 +27,7 @@ function Wl_Book_Repeat_Panel_PanelModel()
   this.k_business = undefined;
 
   /**
-   * Visit key. Primary key in {@link \RsVisitSql}.
+   * Visit key.
    *
    * @get get
    * @type {string}
@@ -35,7 +35,7 @@ function Wl_Book_Repeat_Panel_PanelModel()
   this.k_visit = undefined;
 
   /**
-   * User key. Primary key in {@link \PassportLoginSql} table.
+   * User key.
    *
    * @get get
    * @type {string}

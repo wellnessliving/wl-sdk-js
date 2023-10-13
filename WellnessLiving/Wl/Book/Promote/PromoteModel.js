@@ -11,7 +11,7 @@ function Wl_Book_Promote_PromoteModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * ID of business. Primary key in {@link RsBusinessSql} table.
+   * ID of business.
    *
    * @post post
    * @type {string}
@@ -19,7 +19,7 @@ function Wl_Book_Promote_PromoteModel()
   this.k_business = "0";
 
   /**
-   * Visit ID to promote. Primary key in {@link \RsVisitSql} table.
+   * Visit ID to promote.
    *
    * @post post
    * @type {string}

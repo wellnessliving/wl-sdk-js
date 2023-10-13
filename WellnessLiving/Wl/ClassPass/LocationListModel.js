@@ -13,7 +13,7 @@ function Wl_ClassPass_LocationListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link \Wl\ClassPass\LocationListData::toClassPass()} for documentation.
+   * See {@link Wl\ClassPass\LocationListData::toClassPass()} for documentation.
    *
    * @get result
    * @type {*}
@@ -21,7 +21,7 @@ function Wl_ClassPass_LocationListModel()
   this.pagination = undefined;
 
   /**
-   * See {@link \Wl\ClassPass\LocationListData::toClassPass()} for documentation.
+   * See {@link Wl\ClassPass\LocationListData::toClassPass()} for documentation.
    *
    * @get result
    * @type {{}}

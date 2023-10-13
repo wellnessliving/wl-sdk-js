@@ -12,7 +12,7 @@ function Wl_Business_Application_Account_AccountModel()
 
   /**
    * ID of distribution provider (is directly related to operation system) to save data for.
-   * One of {@link \Core\Spa\OsSid} constants.
+   * One of {@link Core_Spa_OsSid} constants.
    *
    * @post post
    * @type {number}
@@ -20,7 +20,7 @@ function Wl_Business_Application_Account_AccountModel()
   this.id_os = 0;
 
   /**
-   * ID of business to save data for. Primary key in {@link \RsBusinessSql} table.
+   * ID of business to save data for.
    *
    * @post post
    * @type {string}

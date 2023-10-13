@@ -1,5 +1,5 @@
 /**
- * Retrieves a list of event for the book now tab.
+ * An endpoint that retrieves a list of events for a given class tab.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,9 @@ function Wl_Event_Book_EventList_ListModel()
   this._s_key = "k_business,k_class_tab,uid";
 
   /**
-   * List of event identifiers
+   * A list of event identifiers.
+   *
+   * The order of items in this array matches the order in which elements should be displayed.
    *
    * @get result
    * @type {string[]}
@@ -25,8 +27,8 @@ function Wl_Event_Book_EventList_ListModel()
 
   /**
    * <tt>true</tt> if exist at least one virtual event
-   * by specific {@link \Wl\Event\Book\EventList\ListApi::$k_business} and
-   * {@link \Wl\Event\Book\EventList\ListApi::$k_class_tab},
+   * by specific {@link Wl_Event_Book_EventList_ListModel.k_business} and
+   * {@link Wl_Event_Book_EventList_ListModel.k_class_tab},
    * <tt>false</tt> otherwise.
    *
    * @get result
@@ -35,7 +37,7 @@ function Wl_Event_Book_EventList_ListModel()
   this.is_virtual_service = undefined;
 
   /**
-   * ID of a business to show information for.
+   * The key of the business to show information for.
    *
    * @get get
    * @type {string}
@@ -43,7 +45,7 @@ function Wl_Event_Book_EventList_ListModel()
   this.k_business = "0";
 
   /**
-   * Book tab key.
+   * The key of the category tab.
    * If empty, select only elements with not specified book tab.
    *
    * @get get
@@ -52,7 +54,7 @@ function Wl_Event_Book_EventList_ListModel()
   this.k_class_tab = "0";
 
   /**
-   * Book user key. Primary key in {@link PassportLoginSql} table.
+   * The user's key.
    *
    * @get get
    * @type {string}
@@ -75,9 +77,9 @@ Wl_Event_Book_EventList_ListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Event_Book_EventList_ListModel.instanceGet
- * @param {string} k_business ID of a business to show information for.
- * @param {string} k_class_tab Book tab key. If empty, select only elements with not specified book tab.
- * @param {string} uid Book user key. Primary key in {@link PassportLoginSql} table.
+ * @param {string} k_business The key of the business to show information for.
+ * @param {string} k_class_tab The key of the category tab. If empty, select only elements with not specified book tab.
+ * @param {string} uid The user's key.
  * @returns {Wl_Event_Book_EventList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

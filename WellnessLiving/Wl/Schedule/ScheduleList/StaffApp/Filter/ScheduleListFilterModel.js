@@ -17,13 +17,15 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel()
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel_a_filter_a_config
-   * @property {string[]} a_class Classes. Primary keys in {@link \RsClassSql} table.
-   * @property {string[]} a_event Events. Primary keys in {@link \RsClassSql} table.
-   * @property {string[]} a_location Locations. Primary keys in {@link \RsLocationSql} table.
-   * @property {string[]} a_resource Assets. Primary keys in {@link \RsResourceSql} table.
-   * @property {string[]} a_service Appointment services. Primary keys in {@link \RsServiceSql} table.
-   * @property {string[]} a_staff Staff members. Primary keys in {@link \RsStaffSql} table.
-   * @property {number[]} a_type Service types. Constants of {@link RsServiceSid} class (excluding {@link RsServiceSid::VISIT}).
+   * @property {string[]} a_class Classes.
+   * @property {string[]} a_event Events.
+   * @property {string[]} a_location Locations.
+   * @property {string[]} a_resource Assets.
+   * @property {string[]} a_service Appointment services.
+   * @property {string[]} a_staff Staff members.
+   * @property {number[]} a_type Service types. Constants of {@link RsServiceSid} class (excluding {@link RsServiceSid.VISIT}).
+   * @property {boolean} is_staff_all <tt>true</tt> to show all staff members.
+   * <tt>false</tt> to show only staff members from <tt>a_staff</tt> field.
    * @property {boolean} is_staff_available <tt>true</tt> to show only available staff members; <tt>false</tt> to show any staff member.
    */
   /**
@@ -34,43 +36,50 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel()
    *     string[] <tt>a_class</tt>
    *   </dt>
    *   <dd>
-   *     Classes. Primary keys in {@link \RsClassSql} table.
+   *     Classes.
    *   </dd>
    *   <dt>
    *     string[] <tt>a_event</tt>
    *   </dt>
    *   <dd>
-   *     Events. Primary keys in {@link \RsClassSql} table.
+   *     Events.
    *   </dd>
    *   <dt>
    *     string[] <tt>a_location</tt>
    *   </dt>
    *   <dd>
-   *     Locations. Primary keys in {@link \RsLocationSql} table.
+   *     Locations.
    *   </dd>
    *   <dt>
    *     string[] <tt>a_resource</tt>
    *   </dt>
    *   <dd>
-   *     Assets. Primary keys in {@link \RsResourceSql} table.
+   *     Assets.
    *   </dd>
    *   <dt>
    *     string[] <tt>a_service</tt>
    *   </dt>
    *   <dd>
-   *     Appointment services. Primary keys in {@link \RsServiceSql} table.
+   *     Appointment services.
    *   </dd>
    *   <dt>
    *     string[] <tt>a_staff</tt>
    *   </dt>
    *   <dd>
-   *     Staff members. Primary keys in {@link \RsStaffSql} table.
+   *     Staff members.
    *   </dd>
    *   <dt>
    *     int[] <tt>a_type</tt>
    *   </dt>
    *   <dd>
-   *     Service types. Constants of {@link RsServiceSid} class (excluding {@link RsServiceSid::VISIT}).
+   *     Service types. Constants of {@link RsServiceSid} class (excluding {@link RsServiceSid.VISIT}).
+   *   </dd>
+   *   <dt>
+   *     bool <tt>is_staff_all</tt>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> to show all staff members.
+   *     <tt>false</tt> to show only staff members from <tt>a_staff</tt> field.
    *   </dd>
    *   <dt>
    *     bool <tt>is_staff_available</tt>
@@ -98,43 +107,50 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel()
    *         string[] <var>a_class</var>
    *       </dt>
    *       <dd>
-   *         Classes. Primary keys in {@link \RsClassSql} table.
+   *         Classes.
    *       </dd>
    *       <dt>
    *         string[] <var>a_event</var>
    *       </dt>
    *       <dd>
-   *         Events. Primary keys in {@link \RsClassSql} table.
+   *         Events.
    *       </dd>
    *       <dt>
    *         string[] <var>a_location</var>
    *       </dt>
    *       <dd>
-   *         Locations. Primary keys in {@link \RsLocationSql} table.
+   *         Locations.
    *       </dd>
    *       <dt>
    *         string[] <var>a_resource</var>
    *       </dt>
    *       <dd>
-   *         Assets. Primary keys in {@link \RsResourceSql} table.
+   *         Assets.
    *       </dd>
    *       <dt>
    *         string[] <var>a_service</var>
    *       </dt>
    *       <dd>
-   *         Appointment services. Primary keys in {@link \RsServiceSql} table.
+   *         Appointment services.
    *       </dd>
    *       <dt>
    *         string[] <var>a_staff</var>
    *       </dt>
    *       <dd>
-   *         Staff members. Primary keys in {@link \RsStaffSql} table.
+   *         Staff members.
    *       </dd>
    *       <dt>
    *         int[] <var>a_type</var>
    *       </dt>
    *       <dd>
-   *         Service types. Constants of {@link RsServiceSid} class (excluding {@link RsServiceSid::VISIT}).
+   *         Service types. Constants of {@link RsServiceSid} class (excluding {@link RsServiceSid.VISIT}).
+   *       </dd>
+   *       <dt>
+   *         bool <var>is_staff_all</var>
+   *       </dt>
+   *       <dd>
+   *         <tt>true</tt> to show all staff members.
+   *         <tt>false</tt> to show only staff members from <var>a_staff</var> field.
    *       </dd>
    *       <dt>
    *         bool <var>is_staff_available</var>
@@ -177,7 +193,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel()
 
   /**
    * Business key.
-   * Primary key in {@link RsBusinessSql} table.
    *
    * @delete get
    * @get get
@@ -189,7 +204,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel()
 
   /**
    * User key.
-   * Primary key in {@link PassportLoginSql} table.
    *
    * @delete get
    * @get get
@@ -215,8 +229,8 @@ Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel.prototype.confi
 /**
  * @function
  * @name Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel.instanceGet
- * @param {string} k_business Business key. Primary key in {@link RsBusinessSql} table.
- * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

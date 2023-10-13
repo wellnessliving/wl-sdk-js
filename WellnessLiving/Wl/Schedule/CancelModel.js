@@ -1,5 +1,5 @@
 /**
- * Api is for canceling the sessions.
+ * An endpoint that cancels either an appointment, class, or event session for the client.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,7 @@ function Wl_Schedule_CancelModel()
   this._s_key = "k_business,dt_date,is_backend,k_appointment,k_class_period,uid";
 
   /**
-   * Date of the schedule.
+   * The date of the session in UTC.
    *
    * @get get
    * @post get
@@ -25,7 +25,8 @@ function Wl_Schedule_CancelModel()
   this.dt_date = "";
 
   /**
-   * <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
+   * This will be `true` if the API is being used from the back end. Otherwise, this will be `false`.
+   * Here, the back end refers to either a staff member or admin from the side of the business.
    *
    * @get get
    * @post get
@@ -34,13 +35,14 @@ function Wl_Schedule_CancelModel()
   this.is_backend = false;
 
   /**
-   * Appointment ID.
+   * The appointment key.
+   * This will be `null` if not set yet or if a class or event is canceled.
    *
    * @get get
    * @post get
-   * @type {string}
+   * @type {?string}
    */
-  this.k_appointment = "0";
+  this.k_appointment = null;
 
   /**
    * Key of the business within which the action is performed.
@@ -52,16 +54,17 @@ function Wl_Schedule_CancelModel()
   this.k_business = undefined;
 
   /**
-   * Class period key.
+   * The class period key.
+   * This will be `null` if not set yet or if an appointment is canceled.
    *
    * @get get
    * @post get
-   * @type {string}
+   * @type {?string}
    */
-  this.k_class_period = "0";
+  this.k_class_period = null;
 
   /**
-   * User key.
+   * The user key.
    *
    * @get get
    * @post get
@@ -86,11 +89,11 @@ Wl_Schedule_CancelModel.prototype.config=function()
  * @function
  * @name Wl_Schedule_CancelModel.instanceGet
  * @param {string} k_business Key of the business within which the action is performed.
- * @param {string} dt_date Date of the schedule.
- * @param {boolean} is_backend <tt>true</tt> if API is being used from backend, <tt>false</tt> otherwise.
- * @param {string} k_appointment Appointment ID.
- * @param {string} k_class_period Class period key.
- * @param {string} uid User key.
+ * @param {string} dt_date The date of the session in UTC.
+ * @param {boolean} is_backend This will be `true` if the API is being used from the back end. Otherwise, this will be `false`. Here, the back end refers to either a staff member or admin from the side of the business.
+ * @param {?string} k_appointment The appointment key. This will be `null` if not set yet or if a class or event is canceled.
+ * @param {?string} k_class_period The class period key. This will be `null` if not set yet or if an appointment is canceled.
+ * @param {string} uid The user key.
  * @returns {Wl_Schedule_CancelModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

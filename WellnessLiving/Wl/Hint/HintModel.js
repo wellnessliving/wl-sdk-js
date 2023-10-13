@@ -16,9 +16,19 @@ function Wl_Hint_HintModel()
    * Template should be placed in <tt>Wl\Hint\Xml</tt> as a single xml file.
    *
    * @put post
-   * @type {string[]}
+   * @type {{}[]}
    */
   this.a_template = [];
+
+  /**
+   * Key of the business to show the hint in.
+   *
+   * `null` means to show hint in the system business.
+   *
+   * @put post
+   * @type {?string}
+   */
+  this.k_business = null;
 
   /**
    * Name of the hint`s xml to be shown. An empty string if none of the hints should be shown.
@@ -26,7 +36,7 @@ function Wl_Hint_HintModel()
    * @put result
    * @type {boolean}
    */
-  this.text_template_show = undefined;
+  this.text_template_show = "";
 
   /**
    * The user who will be shown a hint.
@@ -46,5 +56,5 @@ WlSdk_ModelAbstract.extend(Wl_Hint_HintModel);
  */
 Wl_Hint_HintModel.prototype.config=function()
 {
-  return {"a_field": {"a_template": {"put": {"post": true}},"text_template_show": {"put": {"result": true}},"uid": {"put": {"post": true}}}};
+  return {"a_field": {"a_template": {"put": {"post": true}},"k_business": {"put": {"post": true}},"text_template_show": {"put": {"result": true}},"uid": {"put": {"post": true}}}};
 };

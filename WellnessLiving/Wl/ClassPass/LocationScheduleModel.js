@@ -13,7 +13,7 @@ function Wl_ClassPass_LocationScheduleModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See {@link \Wl\ClassPass\LocationScheduleListData::toClassPass()} for documentation.
+   * See {@link Wl\ClassPass\LocationScheduleListData::toClassPass()} for documentation.
    *
    * @get result
    * @type {{}}
@@ -21,7 +21,7 @@ function Wl_ClassPass_LocationScheduleModel()
   this.pagination = undefined;
 
   /**
-   * See {@link \Wl\ClassPass\LocationScheduleListData::toClassPass()} for documentation.
+   * See {@link Wl\ClassPass\LocationScheduleListData::toClassPass()} for documentation.
    *
    * @get result
    * @type {{}}

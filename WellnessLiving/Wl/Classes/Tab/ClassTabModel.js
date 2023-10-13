@@ -11,7 +11,7 @@ function Wl_Classes_Tab_ClassTabModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * ID of class tab object. One of {@link \Wl\Classes\Tab\TabSid} constants.
+   * ID of class tab object. One of {@link Wl_Classes_Tab_TabSid} constants.
    * <tt>null</tt> to hide class tab.
    *
    * @post post
@@ -20,7 +20,7 @@ function Wl_Classes_Tab_ClassTabModel()
   this.id_class_tab_object = null;
 
   /**
-   * Id of class tab type if this class tab is system default. One of {@link \Wl\Classes\Tab\TabSid} constants.
+   * Id of class tab type if this class tab is system default. One of {@link Wl_Classes_Tab_TabSid} constants.
    * <tt>null</tt> to hide class tab or if class tab is not system default.
    *
    * @post post
@@ -29,7 +29,7 @@ function Wl_Classes_Tab_ClassTabModel()
   this.id_class_tab_system = null;
 
   /**
-   * Business key. Primary key in the {@link \RsBusinessSql} table.
+   * Business key.
    * <tt>null</tt> to hide class tab.
    *
    * @post post
@@ -38,7 +38,7 @@ function Wl_Classes_Tab_ClassTabModel()
   this.k_business = null;
 
   /**
-   * Class tab key. Primary key in the {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table.
+   * Class tab key.
    * <tt>null</tt> to create new class tab.
    *
    * @delete get

@@ -42,8 +42,6 @@ function Wl_Schedule_WorkingTime_StaffWorkingModel()
   /**
    * Business key.
    *
-   * Primary key in {@link \RsBusinessSql} table.
-   *
    * @get get
    * @type {string}
    */
@@ -51,8 +49,6 @@ function Wl_Schedule_WorkingTime_StaffWorkingModel()
 
   /**
    * Location to show available appointment booking schedule.
-   *
-   * Primary key in {@link \RsLocationSql} table.
    *
    * @get get
    * @type {string}
@@ -69,8 +65,6 @@ function Wl_Schedule_WorkingTime_StaffWorkingModel()
 
   /**
    * Staff Key to show what days are available for appointment booking.
-   *
-   * Primary key in {@link \RsStaffSql} table.
    *
    * @get get
    * @type {?string}
@@ -93,9 +87,9 @@ Wl_Schedule_WorkingTime_StaffWorkingModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Schedule_WorkingTime_StaffWorkingModel.instanceGet
- * @param {?string} k_staff Staff Key to show what days are available for appointment booking. Primary key in {@link \RsStaffSql} table.
- * @param {string} k_location Location to show available appointment booking schedule. Primary key in {@link \RsLocationSql} table.
- * @param {string} k_business Business key. Primary key in {@link \RsBusinessSql} table.
+ * @param {?string} k_staff Staff Key to show what days are available for appointment booking.
+ * @param {string} k_location Location to show available appointment booking schedule.
+ * @param {string} k_business Business key.
  * @param {string} k_service Service primary key in {@link \RsServiceSql} table.
  * @param {string} dl_start Start date of the staff working.
  * @param {string} dl_end End date of the staff working.

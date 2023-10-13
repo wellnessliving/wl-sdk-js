@@ -11,7 +11,7 @@ function Wl_Reception_Roster_ScheduleListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Schedule of sessions in location {@link \Wl\Schedule\ScheduleList\ScheduleListApi::$k_location} in day {@link \Wl\Schedule\ScheduleList\ScheduleListApi::$dt_date}.
+   * Schedule of sessions in location {@link Wl_Schedule_ScheduleList_ScheduleListModel.k_location} in day {@link Wl_Schedule_ScheduleList_ScheduleListModel.dt_date}.
    *
    * @get result
    * @type {{}[]}
@@ -28,7 +28,7 @@ function Wl_Reception_Roster_ScheduleListModel()
   this.dt_date_local = "";
 
   /**
-   * ID of business location to show information for. Primary key from {@link \RsLocationSql}.
+   * ID of business location to show information for.
    *
    * @get get
    * @type {string}

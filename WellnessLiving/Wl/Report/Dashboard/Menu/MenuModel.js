@@ -28,7 +28,6 @@ function Wl_Report_Dashboard_Menu_MenuModel()
 
   /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
    * @put get
@@ -38,7 +37,6 @@ function Wl_Report_Dashboard_Menu_MenuModel()
 
   /**
    * User key.
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
    * @put get

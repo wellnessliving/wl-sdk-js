@@ -1,7 +1,5 @@
 /**
- * List of contracts tied to selected purchase options in class/event booking.
- *
- * This model is generated automatically based on API.
+ * An endpoint that provides a list of contracts tied to selected purchase options for a class/event booking.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -18,30 +16,30 @@ function Wl_Book_Process_Contract_ContractListModel()
   /**
    * @typedef {{}} Wl_Book_Process_Contract_ContractListModel_a_contract_list
    * @property {boolean} is_agree Whether client already agreed to this contract.
-   * @property {string} s_purchase_item Key of purchase option, one of array keys returned by {@link \RsBookProcess::purchase()}.
+   * @property {string} s_purchase_item Key of purchase option, one of array keys returned by {@link RsBookProcess::purchase()}.
    * @property {string} s_signature Client's signature, if this contract has already been signed.
    */
 
   /**
-   * List of purchase options with contracts. Value has following structure:
+   * A list of Purchase Options with contracts. The value has the following structure:
    * <dl>
    *   <dt>
    *     bool <var>is_agree</var>
    *   </dt>
    *   <dd>
-   *     Whether client already agreed to this contract.
+   *     Determines whether the client already agreed to this contract.
    *   </dd>
    *   <dt>
    *     string <var>s_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     Key of purchase option, one of array keys returned by {@link \RsBookProcess::purchase()}.
+   *     The key of Purchase Option. One of the array keys returned by {@link RsBookProcess::purchase()}.
    *   </dd>
    *   <dt>
    *     string <var>s_signature</var>
    *   </dt>
    *   <dd>
-   *     Client's signature, if this contract has already been signed.
+   *     The client's signature if this contract has already been signed.
    *   </dd>
    * </dl>
    *
@@ -51,7 +49,7 @@ function Wl_Book_Process_Contract_ContractListModel()
   this.a_contract_list = undefined;
 
   /**
-   * Whether contracts should be skipped.
+   * Determines whether contracts should be skipped.
    *
    * @get result
    * @put result,post
@@ -60,7 +58,7 @@ function Wl_Book_Process_Contract_ContractListModel()
   this.is_contract_skip = undefined;
 
   /**
-   * Booking wizard session key.
+   * The booking wizard session key.
    *
    * @get get
    * @put get
@@ -84,7 +82,7 @@ Wl_Book_Process_Contract_ContractListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Book_Process_Contract_ContractListModel.instanceGet
- * @param {string} s_wizard_id Booking wizard session key.
+ * @param {string} s_wizard_id The booking wizard session key.
  * @returns {Wl_Book_Process_Contract_ContractListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

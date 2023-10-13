@@ -1,5 +1,5 @@
 /**
- * List of business locations.
+ * An endpoint that returns information for all locations belonging to a business.
  *
  * This model is generated automatically based on API.
  *
@@ -36,7 +36,7 @@ function Wl_Location_ListModel()
    */
 
   /**
-   * List of locations of business {@link \Wl\Location\ListApi::$k_business}. Keys - location keys; primary keys in {@link RsLocationSql} table. Values - sub array with next keys:
+   * List of locations of business {@link Wl_Location_ListModel.k_business}. Keys - location keys; primary keys in {@link \RsLocationSql} table. Values - sub array with next keys:
    * <dl>
    *   <dt>
    *     float <var>f_latitude</var>
@@ -83,12 +83,12 @@ function Wl_Location_ListModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Location_ListModel_a_location}
+   * @type {Wl_Location_ListModel_a_location[]}
    */
   this.a_location = undefined;
 
   /**
-   * Primary key of business in {@link \RsBusinessSql} table.
+   * The business key used internally by WellnessLiving.
    *
    * @get get
    * @type {string}
@@ -130,7 +130,7 @@ Wl_Location_ListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Location_ListModel.instanceGet
- * @param {string} k_business Primary key of business in {@link \RsBusinessSql} table.
+ * @param {string} k_business The business key used internally by WellnessLiving.
  * @returns {Wl_Location_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

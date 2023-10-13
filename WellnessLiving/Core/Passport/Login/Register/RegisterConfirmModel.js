@@ -1,5 +1,5 @@
 /**
- * Point to confirm new user's email.
+ * Confirm user's email and completes registration process.
  *
  * This model is generated automatically based on API.
  *
@@ -35,7 +35,7 @@ function Core_Passport_Login_Register_RegisterConfirmModel()
   this.text_mail = "";
 
   /**
-   * Primary key of registered user in {@link \PassportLoginSql} table.
+   * Key of new registered user.
    *
    * @post result
    * @type {string}

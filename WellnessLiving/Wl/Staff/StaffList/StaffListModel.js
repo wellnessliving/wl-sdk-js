@@ -1,5 +1,5 @@
 /**
- * List of staff of business.
+ * An endpoint that returns a list of all staff members working for a business.
  *
  * This model is generated automatically based on API.
  *
@@ -17,32 +17,36 @@ function Wl_Staff_StaffList_StaffListModel()
 
   /**
    * @typedef {{}} Wl_Staff_StaffList_StaffListModel_a_staff
-   * @property {string[]} a_staff_pay Staff name.
-   * @property {string} html_name List of pay rate ID's applicable for staff.
+   * @property {string[]} a_pay_rate A list of internal pay rate keys applicable to the staff member.
+   * @property {string} html_name Staff name.
    * @property {number} i_order Order for sorting.
-   * @property {string} k_staff Staff key; primary key in {@link RsStaffSql} table.
-   * @property {string} s_name Staff name.
-   * @property {string} s_position Staff position.
-   * @property {string} s_surname First letter of surname of staff member.
-   * @property {?string} s_surname_full Whole surname of staff member. <tt>null</tt> if private staff member information is not accessible.
-   * @property {string} uid ID of staff as user. Primary key in {@link PassportLoginSql} table.
+   * @property {string} k_staff Staff key; primary key in {@link \RsStaffSql} table.
+   * @property {string} s_name The staff member first name.
+   * @property {string} s_position The staff member position in the organization.
+   * @property {string} s_surname The first letter of the staff member surname.
+   * @property {?string} s_surname_full The entire surname of the staff member. This will be `null` if private staff member information isn't accessible.
+   * @property {string} uid The user key.
+   * Each staff member in WellnessLiving can also access the system as a client of their business.
+   * This is the key used to represent the staff member as a client.
    * @property {string} url_image Url link to user photo, or empty string, if photo is not loaded.
    */
 
   /**
-   * Keys - staff IDs; primary keys in {@link RsStaffSql} table. Values - sub arrays with keys:
+   * Information about staff members.
+   * Each array index is the staff member keys.
+   * Each array element is an array containing the following fields:
    * <dl>
    *   <dt>
-   *     string[] <var>a_staff_pay</var>
+   *     string[] <var>a_pay_rate</var>
    *   </dt>
+   *   <dd>
+   *     A list of internal pay rate keys applicable to the staff member.
+   *   </dd>
    *   <dt>
    *     string <var>html_name</var>
    *   </dt>
    *   <dd>
    *     Staff name.
-   *   </dd>
-   *   <dd>
-   *     List of pay rate ID's applicable for staff.
    *   </dd>
    *   <dt>
    *     int <var>i_order</var>
@@ -54,37 +58,39 @@ function Wl_Staff_StaffList_StaffListModel()
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     Staff key; primary key in {@link RsStaffSql} table.
+   *     Staff key; primary key in {@link \RsStaffSql} table.
    *   </dd>
    *   <dt>
    *     string <var>s_name</var>
    *   </dt>
    *   <dd>
-   *     Staff name.
+   *     The staff member first name.
    *   </dd>
    *   <dt>
    *     string <var>s_position</var>
    *   </dt>
    *   <dd>
-   *     Staff position.
+   *     The staff member position in the organization.
    *   </dd>
    *   <dt>
    *     string <var>s_surname</var>
    *   </dt>
    *   <dd>
-   *     First letter of surname of staff member.
+   *     The first letter of the staff member surname.
    *   </dd>
    *   <dt>
    *     string|null <var>s_surname_full</var>
    *   </dt>
    *   <dd>
-   *     Whole surname of staff member. <tt>null</tt> if private staff member information is not accessible.
+   *     The entire surname of the staff member. This will be `null` if private staff member information isn't accessible.
    *   </dd>
    *   <dt>
    *     string <var>uid</var>
    *   </dt>
    *   <dd>
-   *     ID of staff as user. Primary key in {@link PassportLoginSql} table.
+   *     The user key.
+   *     Each staff member in WellnessLiving can also access the system as a client of their business.
+   *     This is the key used to represent the staff member as a client.
    *   </dd>
    *   <dt>
    *     string <var>url_image</var>
@@ -95,12 +101,12 @@ function Wl_Staff_StaffList_StaffListModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Staff_StaffList_StaffListModel_a_staff}
+   * @type {Wl_Staff_StaffList_StaffListModel_a_staff[]}
    */
   this.a_staff = undefined;
 
   /**
-   * ID of business. Primary key in {@link RsBusinessSql} table.
+   * The key of the business to show information for.
    *
    * @get get
    * @type {string}
@@ -123,7 +129,7 @@ Wl_Staff_StaffList_StaffListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Staff_StaffList_StaffListModel.instanceGet
- * @param {string} k_business ID of business. Primary key in {@link RsBusinessSql} table.
+ * @param {string} k_business The key of the business to show information for.
  * @returns {Wl_Staff_StaffList_StaffListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

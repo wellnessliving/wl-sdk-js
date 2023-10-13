@@ -11,21 +11,34 @@ function Wl_Classes_Virtual_NotificationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Key of the visit whose modal is being dismissed.
-   * Primary key of the {@link RsVisitSql} table.
+   * Key of the business to which the closed notification modal window belongs.
+   *
+   * `null` if key of the business is not known (may only occur in legacy applications).
    *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.k_visit = undefined;
+  this.k_business = null;
+
+  /**
+   * Key of the visit whose modal is being dismissed.
+   *
+   * `null` if this value did not arrive from the client application.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_visit = null;
 
   /**
    * Key of the user that is dismissing the modal.
    *
+   * `null` if this value did not arrive from the client application.
+   *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.uid = undefined;
+  this.uid = null;
 
   this.changeInit();
 }
@@ -37,5 +50,5 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Virtual_NotificationModel);
  */
 Wl_Classes_Virtual_NotificationModel.prototype.config=function()
 {
-  return {"a_field": {"k_visit": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"k_business": {"get": {"get": true}},"k_visit": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };

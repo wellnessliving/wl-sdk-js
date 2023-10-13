@@ -24,7 +24,7 @@ function Wl_Report_AccessModel()
   this.has_access = undefined;
 
   /**
-   * Report ID. One of {@link \RsReportSid} constants.
+   * Report ID. One of {@link RsReportSid} constants.
    *
    * @get get
    * @type {number}
@@ -32,7 +32,7 @@ function Wl_Report_AccessModel()
   this.id_report = 0;
 
   /**
-   * ID of business for which access must be checked. Primary key in {@link \RsBusinessSql} table.
+   * ID of business for which access must be checked.
    *
    * @get get
    * @type {string}
@@ -55,8 +55,8 @@ Wl_Report_AccessModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_AccessModel.instanceGet
- * @param {number} id_report Report ID. One of {@link \RsReportSid} constants.
- * @param {string} k_business ID of business for which access must be checked. Primary key in {@link \RsBusinessSql} table.
+ * @param {number} id_report Report ID. One of {@link RsReportSid} constants.
+ * @param {string} k_business ID of business for which access must be checked.
  * @returns {Wl_Report_AccessModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

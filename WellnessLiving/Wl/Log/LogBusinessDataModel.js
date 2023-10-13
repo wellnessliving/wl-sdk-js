@@ -38,8 +38,6 @@ function Wl_Log_LogBusinessDataModel()
   /**
    * Business key.
    *
-   * Primary key from {@link \RsBusinessSql} table.
-   *
    * @get get
    * @type {string}
    */
@@ -47,8 +45,6 @@ function Wl_Log_LogBusinessDataModel()
 
   /**
    * Log key.
-   *
-   * Primary key from {@link \Core\Log\DataSql} table.
    *
    * @get get
    * @type {string}
@@ -71,8 +67,8 @@ Wl_Log_LogBusinessDataModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Log_LogBusinessDataModel.instanceGet
- * @param {string} k_log Log key. Primary key from {@link \Core\Log\DataSql} table.
- * @param {string} k_business Business key. Primary key from {@link \RsBusinessSql} table.
+ * @param {string} k_log Log key.
+ * @param {string} k_business Business key.
  * @returns {Wl_Log_LogBusinessDataModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

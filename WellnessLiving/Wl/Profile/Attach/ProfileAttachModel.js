@@ -48,7 +48,7 @@ function Wl_Profile_Attach_ProfileAttachModel()
   this.attach_file = [];
 
   /**
-   * New names for exists attache.
+   * New names for exists attaches.
    *
    * Strange name for compatibility with old server side.
    *
@@ -61,7 +61,7 @@ function Wl_Profile_Attach_ProfileAttachModel()
 
   /**
    * Old attaches which must be kept.
-   * If this field does not contain a attach, it will be removed with POST.
+   * If this field does not contain an attach, it will be removed with POST.
    *
    * Strange name for compatibility with old server side.
    *

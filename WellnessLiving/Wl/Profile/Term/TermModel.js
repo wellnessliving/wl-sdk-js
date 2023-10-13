@@ -1,5 +1,5 @@
 /**
- * Information about online waiver.
+ * An endpoint that displays information about online waiver.
  *
  * This model is generated automatically based on API.
  *
@@ -16,7 +16,8 @@ function Wl_Profile_Term_TermModel()
   this._s_key = "uid,k_business";
 
   /**
-   * Date/time of the waiver confirmation. <tt>null</tt> if waiver is not confirmed.
+   * The date/time of the waiver confirmation.
+   * <tt>null</tt> if waiver is not confirmed.
    *
    * @get result
    * @type {?string}
@@ -24,7 +25,7 @@ function Wl_Profile_Term_TermModel()
   this.dt_agree = null;
 
   /**
-   * Text of online waiver.
+   * The text of the online waiver.
    *
    * @get result
    * @type {string}
@@ -40,7 +41,8 @@ function Wl_Profile_Term_TermModel()
   this.i_minor_age = undefined;
 
   /**
-   * The IP address from which the confirmation was carried out. <tt>null</tt> if waiver is not confirmed.
+   * The IP address from which the confirmation was carried out.
+   * <tt>null</tt> if waiver is not confirmed.
    *
    * @get result
    * @type {?string}
@@ -57,7 +59,7 @@ function Wl_Profile_Term_TermModel()
   this.is_agree = undefined;
 
   /**
-   * Key of current business.
+   * The key of the current business.
    *
    * @get get
    * @type {string}
@@ -65,7 +67,7 @@ function Wl_Profile_Term_TermModel()
   this.k_business = "0";
 
   /**
-   * User's name.
+   * The user's name.
    *
    * @get result
    * @type {string}
@@ -73,7 +75,7 @@ function Wl_Profile_Term_TermModel()
   this.s_name = undefined;
 
   /**
-   * Key of a user to show information for.
+   * The key of the user to show information for.
    *
    * @get get
    * @type {string}
@@ -81,7 +83,8 @@ function Wl_Profile_Term_TermModel()
   this.uid = "0";
 
   /**
-   * URL to image with client's signature. <tt>false</tt> if waiver is not confirmed.
+   * The URL to the image with the client's signature.
+   * <tt>false</tt> if waiver is not confirmed.
    *
    * @get result
    * @type {string|boolean}
@@ -104,8 +107,8 @@ Wl_Profile_Term_TermModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Term_TermModel.instanceGet
- * @param {string} uid Key of a user to show information for.
- * @param {string} k_business Key of current business.
+ * @param {string} uid The key of the user to show information for.
+ * @param {string} k_business The key of the current business.
  * @returns {Wl_Profile_Term_TermModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

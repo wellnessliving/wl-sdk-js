@@ -1,5 +1,5 @@
 /**
- * Purchase email sending.
+ * An endpoint that emails a receipt for a purchase.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +11,7 @@ function Wl_Purchase_Mail_PurchaseMailModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Whether mail sending should be forced.
+   * Determines whether mail sending should be forced.
    *
    * @post post
    * @type {boolean}
@@ -19,7 +19,7 @@ function Wl_Purchase_Mail_PurchaseMailModel()
   this.is_send_force = false;
 
   /**
-   * Purchase key.
+   * The key of the purchase.
    *
    * @post post
    * @type {string}

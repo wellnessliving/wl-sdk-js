@@ -13,8 +13,6 @@ function Core_Request_Api_Application_GroupElementModel()
   /**
    * If a group is edited, its key is stored here.
    *
-   * Primary key in {@link \Core\Request\Api\Application\GroupSql} table.
-   *
    * <tt>null</tt> if a new group should be created.
    * This value is required for edit and delete operations.
    *

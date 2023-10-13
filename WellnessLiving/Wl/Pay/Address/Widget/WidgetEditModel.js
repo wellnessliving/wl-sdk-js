@@ -32,7 +32,7 @@ function Wl_Pay_Address_Widget_WidgetEditModel()
   this.html_phone_mask = undefined;
 
   /**
-   * Business primary key in {@link RsBusinessSql} table.
+   * Business primary key in {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -63,7 +63,7 @@ Wl_Pay_Address_Widget_WidgetEditModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Pay_Address_Widget_WidgetEditModel.instanceGet
- * @param {string} k_business Business primary key in {@link RsBusinessSql} table.
+ * @param {string} k_business Business primary key in {@link \RsBusinessSql} table.
  * @returns {Wl_Pay_Address_Widget_WidgetEditModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

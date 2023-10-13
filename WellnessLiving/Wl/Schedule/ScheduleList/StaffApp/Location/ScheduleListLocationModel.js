@@ -16,7 +16,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel()
   this._s_key = "k_business,uid";
 
   /**
-   * Location IDs. Primary keys in {@link \RsLocationSql} table.
+   * Location IDs.
    *
    * @get result
    * @type {string[]}
@@ -25,7 +25,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel()
 
   /**
    * Business key.
-   * Primary key in {@link RsBusinessSql} table.
    *
    * @delete get
    * @get get
@@ -37,7 +36,6 @@ function Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel()
 
   /**
    * User key.
-   * Primary key in {@link PassportLoginSql} table.
    *
    * @delete get
    * @get get
@@ -63,8 +61,8 @@ Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel.prototype.c
 /**
  * @function
  * @name Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel.instanceGet
- * @param {string} k_business Business key. Primary key in {@link RsBusinessSql} table.
- * @param {string} uid User key. Primary key in {@link PassportLoginSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_Location_ScheduleListLocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

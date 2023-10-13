@@ -31,7 +31,7 @@ function Wl_Pay_Bank_EntityModel()
   /**
    * Type of payment source.
    *
-   * One of {@link \RsPayMethodSid} constants.
+   * One of {@link RsPayMethodSid} constants.
    *
    * @post post
    * @type {number}

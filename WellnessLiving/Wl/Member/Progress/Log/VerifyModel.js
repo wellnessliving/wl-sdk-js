@@ -21,8 +21,6 @@ function Wl_Member_Progress_Log_VerifyModel()
   /**
    * Business key.
    *
-   * Primary key in the {@link \RsBusinessSql} table.
-   *
    * @put get
    * @type {string}
    */
@@ -30,8 +28,6 @@ function Wl_Member_Progress_Log_VerifyModel()
 
   /**
    * User key.
-   *
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @put get
    * @type {string}

@@ -24,8 +24,8 @@ function Wl_Report_Dashboard_Menu_MenuReportModel()
   this.a_dashboard = undefined;
 
   /**
-   * Report ID (one of {@link \RsreportSid} constant for old generation reports) or CID report controller
-   *   (subclass of {@link ReportViewControllerAbstract} for new generation reports).
+   * Report ID (one of {@link RsReportSid} constant for old generation reports) or CID report controller
+   *   (subclass of {@link Wl\Report\View\ReportViewControllerAbstract} for new generation reports).
    *
    * @get get
    * @type {number}
@@ -34,7 +34,6 @@ function Wl_Report_Dashboard_Menu_MenuReportModel()
 
   /**
    * Business key.
-   * Primary key in the {@link \RsBusinessSql} table.
    *
    * @get get
    * @type {string}
@@ -42,7 +41,7 @@ function Wl_Report_Dashboard_Menu_MenuReportModel()
   this.k_business = "";
 
   /**
-   * Report save key. Primary key in {@link \RsReportSaveSql} table.
+   * Report save key.
    *
    * @get get
    * @type {string}
@@ -51,7 +50,6 @@ function Wl_Report_Dashboard_Menu_MenuReportModel()
 
   /**
    * User key.
-   * Primary key in the {@link \PassportLoginSql} table.
    *
    * @get get
    * @type {string}
@@ -74,10 +72,10 @@ Wl_Report_Dashboard_Menu_MenuReportModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_Dashboard_Menu_MenuReportModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
- * @param {string} uid User key. Primary key in the {@link \PassportLoginSql} table.
- * @param {number} id_report Report ID (one of {@link \RsreportSid} constant for old generation reports) or CID report controller  (subclass of {@link ReportViewControllerAbstract} for new generation reports).
- * @param {string} k_report_save Report save key. Primary key in {@link \RsReportSaveSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} uid User key.
+ * @param {number} id_report Report ID (one of {@link RsReportSid} constant for old generation reports) or CID report controller  (subclass of {@link Wl\Report\View\ReportViewControllerAbstract} for new generation reports).
+ * @param {string} k_report_save Report save key.
  * @returns {Wl_Report_Dashboard_Menu_MenuReportModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

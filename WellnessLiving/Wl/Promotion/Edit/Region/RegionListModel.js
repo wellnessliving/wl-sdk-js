@@ -13,7 +13,7 @@ function Wl_Promotion_Edit_Region_RegionListModel()
   /**
    * @typedef {{}} Wl_Promotion_Edit_Region_RegionListModel_a_franchise_region
    * @property {boolean} is_select <tt>true</tt> if region is selected, <tt>false</tt> otherwise.
-   * @property {string} k_franchise_region Franchise region key. Primary key in {@link FranchiseRegionSql} table.
+   * @property {string} k_franchise_region Franchise region key.
    * @property {string} text_title Name of the franchise region.
    */
 
@@ -23,7 +23,7 @@ function Wl_Promotion_Edit_Region_RegionListModel()
    *   <dt>bool <var>is_select</var></dt>
    *   <dd><tt>true</tt> if region is selected, <tt>false</tt> otherwise.</dd>
    *   <dt>string <var>k_franchise_region</var></dt>
-   *   <dd>Franchise region key. Primary key in {@link FranchiseRegionSql} table.</dd>
+   *   <dd>Franchise region key.</dd>
    *   <dt>string <var>text_title</var></dt>
    *   <dd>Name of the franchise region.</dd>
    * </dl>

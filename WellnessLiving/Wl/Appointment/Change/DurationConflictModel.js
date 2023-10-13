@@ -1,7 +1,5 @@
 /**
- * Information of conflicts when change appointment duration.
- *
- * This model is generated automatically based on API.
+ * An endpoint that gets information related to appointment conflicts.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,13 @@ function Wl_Appointment_Change_DurationConflictModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * See for {@link \RsAppointmentEditConflict::checkAvailability()} details.
+   * The list of conflicts. Every element has the following keys:
+   * <dl><dt>string[] <b>a_resource</b></dt><dd>Titles of assets which cause conflict. Not empty only in a case of conflict because of assets.</dd>
+   * <dt>string <b>dt_date_global</b></dt><dd>Date/time of conflict in MySQL format. In UTC.</dd>
+   * <dt>string <b>dt_date_local</b></dt><dd>Date/time of conflict in MySQL format. In location timezone.</dd>
+   * <dt>bool <b>is_holiday</b></dt><dd><tt>true</tt> - conflict because of holiday; <tt>false</tt> - another reason.</dd>
+   * <dt>bool <b>is_staff_conflict</b></dt><dd><tt>true</tt> - conflict because of staff member's working hours; <tt>false</tt> - another reason.</dd>
+   * <dt>string <b>text_staff</b></dt><dd>Name of staff member who conducts the appointment.</dd></dl>
    *
    * @get result
    * @type {{}[]}
@@ -19,7 +23,18 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.a_conflict = undefined;
 
   /**
-   * <tt>true</tt> if staff can book appointment when conflict. <tt>false</tt> in other cases.
+   * A list of user keys to use for booking appointments.
+   * Empty values signify walk-ins.
+   *
+   * @get get
+   * @post get
+   * @type {string[]}
+   */
+  this.a_uid = [];
+
+  /**
+   * If `true`, staff members can book the appointment despite the conflict. Otherwise, this will be `false` if
+   * staff members can't book the appointment due to the conflict.
    *
    * @get result
    * @type {boolean}
@@ -27,8 +42,8 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.can_book_anyway = undefined;
 
   /**
-   * Appointment duration.
-   * Must be specified for asset booking only.
+   * The appointment duration.
+   * This must be specified for asset bookings only.
    *
    * @get get
    * @type {number}
@@ -36,7 +51,7 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.i_duration_new = 0;
 
   /**
-   * Staff book flow id, one of {@link ServiceStaffBookFlowSid}.
+   * The staff book flow ID. One of the {@link Wl_Appointment_Change_ServiceStaffBookFlowSid} constants.
    *
    * @get result
    * @type {number}
@@ -44,7 +59,16 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.id_staff_book_flow = undefined;
 
   /**
-   * Appointment primary key in {@link \RsAppointmentSql} table.
+   * This will be `true` if the client is walk-in. Otherwise, this will be `false`.
+   *
+   * @get get
+   * @post get
+   * @type {boolean}
+   */
+  this.is_walk_in = false;
+
+  /**
+   * The appointment primary key.
    *
    * @get get
    * @type {string}
@@ -52,7 +76,7 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.k_appointment = "0";
 
   /**
-   * Key of the business. Primary key from {@link \RsBusinessSql} table.
+   * The business key.
    *
    * @get result
    * @type {string}
@@ -60,9 +84,7 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.k_business = undefined;
 
   /**
-   * Location to show available appointment booking schedule.
-   *
-   * Primary key in {@link \RsLocationSql} table.
+   * The location to show the available appointment booking schedule for.
    *
    * @get get,result
    * @post get
@@ -71,7 +93,7 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.k_location = "0";
 
   /**
-   * Service primary key in {@link RsServiceSql} table.
+   * The service primary key.
    *
    * @get result
    * @type {string}
@@ -79,7 +101,7 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.k_service = undefined;
 
   /**
-   * Selected staff key.
+   * The key of the selected staff member.
    *
    * @get result
    * @type {string}
@@ -87,7 +109,7 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.k_staff = undefined;
 
   /**
-   * ID form.
+   * The ID form.
    *
    * @get result
    * @type {string}
@@ -95,9 +117,7 @@ function Wl_Appointment_Change_DurationConflictModel()
   this.s_form_id = undefined;
 
   /**
-   * User to get information for.
-   *
-   * Primary key in {@link \PassportLoginSql} table.
+   * The user to get information for.
    *
    * @get get
    * @post get
@@ -115,5 +135,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Change_DurationConflictModel);
  */
 Wl_Appointment_Change_DurationConflictModel.prototype.config=function()
 {
-  return {"a_field": {"a_conflict": {"get": {"result": true}},"can_book_anyway": {"get": {"result": true}},"i_duration_new": {"get": {"get": true}},"id_staff_book_flow": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"result": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"s_form_id": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_conflict": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"can_book_anyway": {"get": {"result": true}},"i_duration_new": {"get": {"get": true}},"id_staff_book_flow": {"get": {"result": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"result": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"s_form_id": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

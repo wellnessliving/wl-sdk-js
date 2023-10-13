@@ -16,7 +16,7 @@ function Wl_Report_Generator_QueryModel()
   /**
    * A list of dynamic fields in this report.
    *
-   * Copy of result of {@link \Wl\Report\Generator\ReportGeneratorReportAbstract::generatorDynamic()}.
+   * Copy of result of {@link Wl\Report\Generator\ReportGeneratorReportAbstract::generatorDynamic()}.
    *
    * @post result
    * @type {{}[]}
@@ -26,7 +26,7 @@ function Wl_Report_Generator_QueryModel()
   /**
    * A list of fields in this report.
    *
-   * This array is effectively a title row for table that is returned in {@link \Wl\Report\Generator\QueryApi::$a_row}.
+   * This array is effectively a title row for table that is returned in {@link Wl_Report_Generator_QueryModel.a_row}.
    *
    * @post result
    * @type {string[]}
@@ -38,7 +38,7 @@ function Wl_Report_Generator_QueryModel()
    *
    * This is an indexed array in which one row is an indexed array also.
    *
-   * Indexes of the columns correspond columns in {@link \Wl\Report\Generator\QueryApi::$a_field}.
+   * Indexes of the columns correspond columns in {@link Wl_Report_Generator_QueryModel.a_field}.
    *
    * @post result
    * @type {string[][]}
@@ -51,7 +51,7 @@ function Wl_Report_Generator_QueryModel()
    * This array is only filled in when report is being updated now, or due to some other reasons contains mixed version
    * data (some data from the latest generation, and other from one of previous generations).
    *
-   * Value is index in {@link \Wl\Report\Generator\QueryApi::$a_row}.
+   * Value is index in {@link Wl_Report_Generator_QueryModel.a_row}.
    *
    * If a row is not listed here, it is of the latest version.
    *
@@ -71,7 +71,7 @@ function Wl_Report_Generator_QueryModel()
   /**
    * CID of the report to show.
    *
-   * One of {@link ReportGeneratorReportAbstract} subclasses.
+   * One of {@link Wl\Report\Generator\ReportGeneratorReportAbstract} subclasses.
    *
    * @post post
    * @type {number}
@@ -83,7 +83,7 @@ function Wl_Report_Generator_QueryModel()
    *
    * `null` if generation of this report is not completed.
    *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_complete</tt> for additional details.
+   * See {@link Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_complete</tt> for additional details.
    *
    * @post result
    * @type {string}
@@ -95,7 +95,7 @@ function Wl_Report_Generator_QueryModel()
    *
    * Effectively, this is the time when a user clicked to view this report.
    *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_queue</tt> for additional details.
+   * See {@link Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_queue</tt> for additional details.
    *
    * @post result
    * @type {string}
@@ -107,12 +107,25 @@ function Wl_Report_Generator_QueryModel()
    *
    * `null` if generation of this report is not started.
    *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_start</tt> for additional details.
+   * See {@link Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_start</tt> for additional details.
    *
    * @post result
    * @type {string}
    */
   this.dtu_start = undefined;
+
+  /**
+   * A CAS (compare-and-swap) number that allows to track changes in the report storage.
+   *
+   * This number is changed every time content of the report gets updated.
+   * If this number is not changed, the content is not updated.
+   *
+   * Copy of {@link Wl\Report\Generator\ReportStorageListSql}.<tt>i_cas_change</tt>.
+   *
+   * @post result
+   * @type {number}
+   */
+  this.i_cas_change = undefined;
 
   /**
    * How many rows of the report to return.
@@ -142,12 +155,31 @@ function Wl_Report_Generator_QueryModel()
   /**
    * Status of the report.
    *
-   * One of {@link \Wl\Report\Generator\ReportGeneratorStatusSid} constants.
+   * One of {@link Wl_Report_Generator_ReportGeneratorStatusSid} constants.
    *
    * @post result
    * @type {number}
    */
   this.id_report_status = undefined;
+
+  /**
+   * Defines whether actual or already generated report should be returned.
+   *
+   * `true` to not attempt search generated report and generate it again.
+   * `false` to attempt search generated report.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_actual = false;
+
+  /**
+   * Whether report is generating for the backend.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_backend = false;
 
   /**
    * Whether this report should be refreshed.
@@ -167,7 +199,7 @@ function Wl_Report_Generator_QueryModel()
    * Filters that should be applied to the report.
    *
    * In this array, key is name of a filter field.
-   * A filter field is a property of a {@link ReportFilterAbstract} subclass.
+   * A filter field is a property of a {@link Wl\Report\Generator\ReportFilterAbstract} subclass.
    * Name of the property of that subclass corresponds key in this array.
    *
    * @post post
@@ -177,8 +209,6 @@ function Wl_Report_Generator_QueryModel()
 
   /**
    * Key of the business which report should be shown.
-   *
-   * Primary key in {@link \RsBusinessSql}.
    *
    * `0` or an empty string for system-wide reports.
    *
@@ -190,7 +220,7 @@ function Wl_Report_Generator_QueryModel()
   /**
    * Key of this report.
    *
-   * This key may be used to subscribe to report changes with {@link \Wl\Report\Generator\UpdateChannel}.
+   * This key may be used to subscribe to report changes with {@link Wl\Report\Generator\UpdateChannel}.
    *
    * @post result
    * @type {string}
@@ -212,9 +242,9 @@ function Wl_Report_Generator_QueryModel()
    * To sort by a cell field, specify name of a report field and name of the cell field.
    * Separate with a dot. For example: <tt>o_account.m_amount</tt>.
    *
-   * You may specify a field which contains objects of {@link \Wl\Report\Generator\ReportGeneratorCellAbstract} without
+   * You may specify a field which contains objects of {@link Wl\Report\Generator\ReportGeneratorCellAbstract} without
    * specification of a name of a cell field.
-   * In this case sorting specified by {@link \Wl\Report\Generator\ReportGeneratorCellAbstract::SORT} will be applied.
+   * In this case sorting specified by {@link Wl\Report\Generator\ReportGeneratorCellAbstract::SORT} will be applied.
    *
    * Example value: <tt>s_first,+s_last,-o_account.m_amount,o_address</tt>.
    *
@@ -245,9 +275,17 @@ function Wl_Report_Generator_QueryModel()
   this.s_sql = undefined;
 
   /**
-   * Actor user.
+   * Text of an error message that occurred during generation of the report.
    *
-   * Primary key in {@link \PassportLoginSql}.
+   * An empty string in no error messages have occurred.
+   *
+   * @post result
+   * @type {string}
+   */
+  this.text_error = "";
+
+  /**
+   * Actor user.
    *
    * `0` or an empty string for guests.
    *
@@ -266,5 +304,5 @@ WlSdk_ModelAbstract.extend(Wl_Report_Generator_QueryModel);
  */
 Wl_Report_Generator_QueryModel.prototype.config=function()
 {
-  return {"a_field": {"a_dynamic": {"post": {"result": true}},"a_field": {"post": {"result": true}},"a_row": {"post": {"result": true}},"a_stale": {"post": {"result": true}},"a_warning": {"post": {"result": true}},"cid_report": {"post": {"post": true}},"dtu_complete": {"post": {"result": true}},"dtu_queue": {"post": {"result": true}},"dtu_start": {"post": {"result": true}},"i_limit": {"post": {"post": true}},"i_offset": {"post": {"post": true}},"id_report_status": {"post": {"result": true}},"is_refresh": {"post": {"post": true}},"json_filter": {"post": {"post": true}},"k_business": {"post": {"post": true}},"s_report": {"post": {"result": true}},"s_sort": {"post": {"post": true}},"s_sql": {"post": {"post": true}},"uid_actor": {"post": {"post": true}}}};
+  return {"a_field": {"a_dynamic": {"post": {"result": true}},"a_field": {"post": {"result": true}},"a_row": {"post": {"result": true}},"a_stale": {"post": {"result": true}},"a_warning": {"post": {"result": true}},"cid_report": {"post": {"post": true}},"dtu_complete": {"post": {"result": true}},"dtu_queue": {"post": {"result": true}},"dtu_start": {"post": {"result": true}},"i_cas_change": {"post": {"result": true}},"i_limit": {"post": {"post": true}},"i_offset": {"post": {"post": true}},"id_report_status": {"post": {"result": true}},"is_actual": {"post": {"post": true}},"is_backend": {"post": {"post": true}},"is_refresh": {"post": {"post": true}},"json_filter": {"post": {"post": true}},"k_business": {"post": {"post": true}},"s_report": {"post": {"result": true}},"s_sort": {"post": {"post": true}},"s_sql": {"post": {"post": true}},"text_error": {"post": {"result": true}},"uid_actor": {"post": {"post": true}}}};
 };

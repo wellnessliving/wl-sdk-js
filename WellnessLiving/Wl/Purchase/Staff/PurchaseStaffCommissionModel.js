@@ -1,5 +1,5 @@
 /**
- * Information about staff commission for purchase in the specified business.
+ * Information about staff commission for purchase item in the specified business.
  *
  * This model is generated automatically based on API.
  *
@@ -103,7 +103,7 @@ function Wl_Purchase_Staff_PurchaseStaffCommissionModel()
    * @get result
    * @type {Wl_Purchase_Staff_PurchaseStaffCommissionModel_a_available_staff}
    */
-  this.a_available_staff = undefined;
+  this.a_available_staff = [];
 
   /**
    * @typedef {{}} Wl_Purchase_Staff_PurchaseStaffCommissionModel_a_commission_purchase
@@ -115,7 +115,7 @@ function Wl_Purchase_Staff_PurchaseStaffCommissionModel()
    */
 
   /**
-   * Information about applied staff commission for purchase:
+   * Information about applied staff commission for purchase. Each element has next structure:
    * <dl>
    *   <dt>
    *     string <var>k_staff</var>
@@ -150,25 +150,88 @@ function Wl_Purchase_Staff_PurchaseStaffCommissionModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Purchase_Staff_PurchaseStaffCommissionModel_a_commission_purchase}
+   * @post post
+   * @type {Wl_Purchase_Staff_PurchaseStaffCommissionModel_a_commission_purchase[]}
    */
-  this.a_commission_purchase = undefined;
+  this.a_commission_purchase = [];
 
   /**
-   * Business key. Primary key in {@link \RsBusinessSql} table.
-   *
-   * @get get
-   * @type {string}
+   * @typedef {{}} Wl_Purchase_Staff_PurchaseStaffCommissionModel_a_future_payments
+   * @property {?number} i_future_payments Limit of future auto-payments to apply commission. `null`  if not limit.
+   * @property {?number} i_future_payments_left Count of left of future auto-payments to apply commission. `null`  if not limit.
+   * @property {boolean} is_future_payments `true` if commission is applied for future auto-payments, `false` otherwise.
    */
-  this.k_business = undefined;
 
   /**
-   * Purchase key. Primary key in {@link \RsPurchaseSql} table.
+   * Settings of applied commission for future auto-payments: <dl>
+   *   <dt>int|null <var>i_future_payments</var></dt>
+   *   <dd>Limit of future auto-payments to apply commission. `null`  if not limit.</dd>
+   *   <dt>int|null <var>i_future_payments_left</var></dt>
+   *   <dd>Count of left of future auto-payments to apply commission. `null`  if not limit.</dd>
+   *   <dt>bool <var>is_future_payments</var></dt>
+   *   <dd>`true` if commission is applied for future auto-payments, `false` otherwise.</dd>
+   * </dl>
+   *
+   * @get result
+   * @post post
+   * @type {Wl_Purchase_Staff_PurchaseStaffCommissionModel_a_future_payments}
+   */
+  this.a_future_payments = [];
+
+  /**
+   * @typedef {{}} Wl_Purchase_Staff_PurchaseStaffCommissionModel_a_past_payments
+   * @property {number} i_payment Number of auto-payments.
+   * @property {string} url_report Url to the staff commission report. See {@link RsReportSid.STAFF_PAY_DETAIL}.Empty string if no payments.
+   */
+
+  /**
+   * Information about past auto-payments for which the commission has been applied: <dl>
+   *   <dt>int <var>i_payment</var></dt>
+   *   <dd>Number of auto-payments.</dd>
+   *   <dt>string <var>url_report</var></dt>
+   *   <dd>Url to the staff commission report. See {@link RsReportSid.STAFF_PAY_DETAIL}.Empty string if no payments.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_Purchase_Staff_PurchaseStaffCommissionModel_a_past_payments}
+   */
+  this.a_past_payments = [];
+
+  /**
+   * Whether the promotion, that was paid by this purchase, is renewable.
+   * This determines if the commission can be applied to future auto-payments.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_recurring = false;
+
+  /**
+   * Business key.
    *
    * @get get
+   * @post get
    * @type {string}
    */
-  this.k_purchase = undefined;
+  this.k_business = "";
+
+  /**
+   * Purchase key.
+   *
+   * @get get
+   * @post get
+   * @type {string}
+   */
+  this.k_purchase = "";
+
+  /**
+   * Purchase item key.
+   *
+   * @get get
+   * @post get
+   * @type {string}
+   */
+  this.k_purchase_item = "";
 
   this.changeInit();
 }
@@ -180,5 +243,5 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Staff_PurchaseStaffCommissionModel);
  */
 Wl_Purchase_Staff_PurchaseStaffCommissionModel.prototype.config=function()
 {
-  return {"a_field": {"a_available_staff": {"get": {"result": true}},"a_commission_purchase": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_purchase": {"get": {"get": true}}}};
+  return {"a_field": {"a_available_staff": {"get": {"result": true}},"a_commission_purchase": {"get": {"result": true},"post": {"post": true}},"a_future_payments": {"get": {"result": true},"post": {"post": true}},"a_past_payments": {"get": {"result": true}},"is_recurring": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_purchase": {"get": {"get": true},"post": {"get": true}},"k_purchase_item": {"get": {"get": true},"post": {"get": true}}}};
 };

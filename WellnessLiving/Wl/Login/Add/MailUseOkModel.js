@@ -1,6 +1,12 @@
 /**
- * Registers existing user in current business.
- * If user already member of current business then do nothing.
+ * An endpoint that registers an existing user in the specified Enterprise Headquarters account.
+ *
+ * This endpoint isn't applicable for users who are already members of the business. After a profile is edited, there can
+ * be a delay while the data replicates to system caches. As a result, you may see a 'profile-field-empty' status code. In most
+ * cases, this delay is less than 20 seconds.
+ *
+ * For Enterprise Cloud in WellnessLiving, clients can only be members in one Enterprise Location.
+ * In all other Enterprise Locations, they'll be treated as travelers in the system.
  *
  * This model is generated automatically based on API.
  *
@@ -14,11 +20,13 @@ function Wl_Login_Add_MailUseOkModel()
   /**
    * @typedef {{}} Wl_Login_Add_MailUseOkModel_a_error
    * @property {string} html_message The error message.
-   * @property {string} s_field The key and name of the field which is missing information. Given in the format 'key.name'. The key is <tt>k_field</tt>, primary key of {@link RsFieldSql}.
+   * @property {string} s_field The name of the field missing information.
+   * Given in the format `k_field.name`.
    */
 
   /**
-   * A list of fields missing information.
+   * The list of fields with missing information.
+   * Each element is an array containing the following data:
    * <dl>
    *   <dt>
    *     string <var>html_message</var>
@@ -30,7 +38,8 @@ function Wl_Login_Add_MailUseOkModel()
    *     string <var>s_field</var>
    *   </dt>
    *   <dd>
-   *     The key and name of the field which is missing information. Given in the format 'key.name'. The key is <tt>k_field</tt>, primary key of {@link RsFieldSql}.
+   *     The name of the field missing information.
+   *     Given in the format `k_field.name`.
    *   </dd>
    * </dl>
    *
@@ -40,7 +49,7 @@ function Wl_Login_Add_MailUseOkModel()
   this.a_error = undefined;
 
   /**
-   * Whether this is a lead. <tt>true</tt> if this is the lead. <tt>false</tt> otherwise.
+   * This value is `true` if this user is a lead. `false` if otherwise.
    *
    * @post post
    * @type {boolean}
@@ -48,7 +57,7 @@ function Wl_Login_Add_MailUseOkModel()
   this.is_lead = false;
 
   /**
-   * Business key. Primary key in the {@link RsBusinessSql} table.
+   * The business key used internally by WellnessLiving.
    *
    * @post post
    * @type {string}
@@ -56,7 +65,7 @@ function Wl_Login_Add_MailUseOkModel()
   this.k_business = "";
 
   /**
-   * Lead Widget skin key used to add the lead. Primary key in the {@link RsSkinSql} table.
+   * The Lead Capture Widget skin key. This is used only if a lead was added.
    *
    * @post post
    * @type {string}
@@ -64,7 +73,7 @@ function Wl_Login_Add_MailUseOkModel()
   this.k_skin = "";
 
   /**
-   * The status code, will be mail-success on success.
+   * The result code of the request.
    *
    * @post result
    * @type {string}
@@ -72,7 +81,7 @@ function Wl_Login_Add_MailUseOkModel()
   this.s_code = undefined;
 
   /**
-   * The status message, it will be 'ok' on success.
+   * The result message of the request.
    *
    * @post result
    * @type {string}
@@ -80,7 +89,7 @@ function Wl_Login_Add_MailUseOkModel()
   this.text_message = undefined;
 
   /**
-   * User key. Primary key in the {@link \PassportLoginSql} table.
+   * The user key.
    *
    * @post post
    * @type {string}

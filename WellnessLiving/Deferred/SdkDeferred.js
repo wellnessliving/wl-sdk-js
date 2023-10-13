@@ -1,9 +1,4 @@
 /**
- * @callback WlSdk_Deferred_state
- * @param {*} [x_data] Data that were specified when the object was deferred of resolved.
- */
-
-/**
  * Represents a deferred object.
  *
  * Depending on implementation {@link WlSdk_Config_MixinAbstract.configDeferredCreate()} method may return
@@ -24,7 +19,7 @@ function WlSdk_Deferred()
   this.a_progress = [];
 
   /**
-   * Custom code that must be executed when object is resolved.
+   * Custom code that must be executed when object is rejected.
    *
    * @type {WlSdk_Deferred_state[]}
    * @private
@@ -32,7 +27,7 @@ function WlSdk_Deferred()
   this.a_reject = [];
 
   /**
-   * Custom code that must be executed when object is rejected.
+   * Custom code that must be executed when object is resolved.
    *
    * @type {WlSdk_Deferred_state[]}
    * @private
@@ -40,7 +35,15 @@ function WlSdk_Deferred()
   this.a_resolve = [];
 
   /**
-   * Promise that must be resolved of rejected in sync with the deferred object.
+   * Custom code that must be executed when object is resolved or rejected.
+   *
+   * @type {*[]}
+   * @private
+   */
+  this.a_then = [];
+
+  /**
+   * Promise that must be resolved or rejected in sync with the deferred object.
    *
    * This field serves for optimization purposes only (to prevent creating of a lit of promises).
    *
@@ -53,94 +56,233 @@ function WlSdk_Deferred()
 
   /**
    * Status of the deferred object.
+   * Can accept next statuses:
+   * * `pending` - The deferred object is not yet in a completed state (neither "rejected" nor "resolved").
+   * * `rejected` - The deferred object is in the rejected state, meaning that {@link WlSdk_Deferred.reject()} has been called.
+   * * `resolved` - The deferred object is in the resolved state, meaning that {@link WlSdk_Deferred.resolve()} has been called.
    *
    * @type {string}
    * @private
+   * @see WlSdk_Deferred.isRejected()
+   * @see WlSdk_Deferred.isResolved()
+   * @see WlSdk_Deferred.state()
    */
-  this.s_status = 'pending';
+  this.s_state = 'pending';
 
   /**
-   * Data that were specified when the object was deferred of resolved.
+   * Data that were passed to methods which manage states {@link WlSdk_Deferred.reject()} and {@link WlSdk_Deferred.resolve()}.
    *
-   * <tt>null</tt> if not set.
+   * <tt>null</tt> if data is not set.
    *
    * @type {?*}
    */
   this.x_data = null;
+
+  return this;
 }
 
 /**
- * Add handlers to be called when the deferred object is either resolved or rejected.
- *
- * @param {WlSdk_Deferred_state} call_function A function that is called when the deferred is resolved or rejected.
+ * @callback WlSdk_Deferred_state
+ * @param {*} [x_result] Data that were passed to methods which manage states {@link WlSdk_Deferred.reject()} and {@link WlSdk_Deferred.resolve()}.
  */
-WlSdk_Deferred.prototype.always = function(call_function)
+
+/**
+ * Checks that variable is deferred object.
+ *
+ * @param {*} x_var Variable for check.
+ * @returns {boolean} `true` if variable is deferred object, `false` otherwise.
+ * @private
+ */
+WlSdk_Deferred._deferIs = function(x_var)
 {
-  if(this.s_status==='pending')
+  if(typeof x_var !== 'object' && typeof x_var.state !== 'function')
+    return false;
+
+  const s_state = x_var.state();
+  return s_state === 'pending' || s_state === 'rejected' || s_state === 'resolved';
+}
+
+/**
+ * Callback for result of {@link WlSdk_Deferred.then()} method.
+ *
+ * @param {WlSdk_Deferred} o_defer_then Defer object.
+ * @param {*} x_result Data that were passed to methods which manage states {@link WlSdk_Deferred.reject()} and {@link WlSdk_Deferred.resolve()}.
+ * @private
+ */
+WlSdk_Deferred._thenResult = function(o_defer_then, x_result)
+{
+  if(WlSdk_Deferred._deferIs(x_result))
   {
-    this.a_resolve.push(call_function);
-    this.a_reject.push(call_function);
+    x_result.done(function(x_data)
+    {
+      o_defer_then.resolve(x_data)
+    }).fail(function(x_data)
+    {
+      o_defer_then.reject(x_data)
+    });
   }
   else
   {
-    call_function(this.x_data);
+    o_defer_then.resolve(x_result);
   }
+}
+
+/**
+ * Adds handlers to be called when the deferred object is either resolved or rejected.
+ *
+ * @param {WlSdk_Deferred_state} call_always A function that is called when the deferred is resolved or rejected.
+ * @return {WlSdk_Deferred} This object.
+ */
+WlSdk_Deferred.prototype.always = function(call_always)
+{
+  if(typeof call_always !== 'function')
+    return this;
+
+  if(this.s_state==='pending')
+  {
+    this.a_resolve.push(call_always);
+    this.a_reject.push(call_always);
+  }
+  else
+  {
+    call_always(this.x_data);
+  }
+
+  return this;
 };
 
 /**
- * Add handlers to be called when the deferred object is resolved.
+ * Adds handlers to be called when the deferred object is resolved.
  *
- * @param {WlSdk_Deferred_state} call_function A function that is called when the deferred is resolved.
+ * @param {WlSdk_Deferred_state} call_done A function that is called when the deferred is resolved.
  * @return {WlSdk_Deferred} This object.
  */
-WlSdk_Deferred.prototype.done = function(call_function)
+WlSdk_Deferred.prototype.done = function(call_done)
 {
+  if(typeof call_done !== 'function')
+    return this;
+
   if(this.isResolved())
-    call_function(this.x_data);
+    call_done(this.x_data);
   else
-    this.a_resolve.push(call_function);
+    this.a_resolve.push(call_done);
+
   return this;
 };
 
 /**
- * Add handlers to be called when the deferred object is rejected.
+ * Shell for {@link WlSdk_Deferred.done()} function.
  *
- * @param {WlSdk_Deferred_state} call_function A function that is called when the deferred is rejected.
+ * Processes exceptions thrown during execution of resolution/rejection callbacks.
+ *
+ * @param {WlSdk_Deferred_state} call_done A function that is called when the deferred is resolved.
  * @return {WlSdk_Deferred} This object.
  */
-WlSdk_Deferred.prototype.fail = function(call_function)
+WlSdk_Deferred.prototype.doneCatch = function(call_done)
 {
-  if(this.isRejected())
-    call_function(this.x_data);
-  else
-    this.a_reject.push(call_function);
+  this.done(function(x_result)
+  {
+    if(!call_done)
+      return;
+
+    try
+    {
+      call_done(x_result);
+    }
+    catch(e)
+    {
+      WlSdk_Deferred.handleException(e);
+    }
+  });
+
   return this;
 };
 
 /**
- * Determine whether a Deferred object has been rejected.
+ * Adds handlers to be called when the deferred object is rejected.
  *
- * @return {boolean} <tt>true</tt> means 'rejected'; <tt>false</tt> means 'not rejected'.
+ * @param {WlSdk_Deferred_state} call_fail A function that is called when the deferred is rejected.
+ * @return {WlSdk_Deferred} This object.
+ */
+WlSdk_Deferred.prototype.fail = function(call_fail)
+{
+  if(typeof call_fail !== 'function')
+    return this;
+
+  if(this.isRejected())
+    call_fail(this.x_data);
+  else
+    this.a_reject.push(call_fail);
+  return this;
+};
+
+/**
+ * Shell for {@link WlSdk_Deferred.fail()} function.
+ *
+ * Processes exceptions thrown during execution of resolution/rejection callbacks.
+ *
+ * @param {WlSdk_Deferred_state} call_fail A function that is called when the deferred is rejected.
+ * @return {WlSdk_Deferred} This object.
+ */
+WlSdk_Deferred.prototype.failCatch = function(call_fail)
+{
+  this.fail(function(x_result)
+  {
+    if(!call_fail)
+      return;
+
+    try
+    {
+      call_fail(x_result);
+    }
+    catch(e)
+    {
+      WlSdk_Deferred.handleException(e);
+    }
+  });
+
+  return this;
+};
+
+/**
+ * Handles exception.
+ *
+ * This method should be called when an unexpected exception is thrown and not caught.
+ *
+ * @param {*} e Exception to handle.
+ * @throws {*} Throws argument of this method always.
+ */
+WlSdk_Deferred.handleException = function(e)
+{
+  console.error(e);
+  throw e;
+}
+
+/**
+ * Determines whether a deferred object has been rejected.
+ *
+ * @return {boolean} `true` means 'rejected'; `false` means 'pending'.
  */
 WlSdk_Deferred.prototype.isRejected = function()
 {
-  return this.s_status==='rejected';
+  return this.s_state==='rejected';
 }
 
 /**
- * Determine whether a Deferred object has been resolved.
+ * Determines whether a deferred object has been resolved.
  *
- * @return {boolean} <tt>true</tt> means 'resolved'; <tt>false</tt> means 'not resolved'.
+ * @return {boolean} `true` means 'resolved'; `false` means 'pending'.
  */
 WlSdk_Deferred.prototype.isResolved = function()
 {
-  return this.s_status==='resolved';
+  return this.s_state==='resolved';
 }
 
 /**
- * Call the progress callbacks on the deferred object with the given args.
+ * Calls the progress callbacks on the deferred object with the given args.
  *
  * @param {*} _args Optional arguments that are passed to the progress callbacks.
+ * @return {WlSdk_Deferred} This object.
  */
 WlSdk_Deferred.prototype.notify = function(_args)
 {
@@ -148,22 +290,30 @@ WlSdk_Deferred.prototype.notify = function(_args)
   {
     call_progress(_args);
   });
+
+  return this;
 };
 
 /**
- * Add handlers to be called when the object generates progress notifications.
+ * Adds handlers to be called when the object generates progress notifications.
  *
  * @param {WlSdk_Deferred_state} call_function A function to be called when the object generates progress notifications.
+ * @return {WlSdk_Deferred} This object.
  */
 WlSdk_Deferred.prototype.progress = function(call_function)
 {
+  if(typeof call_function !== 'function')
+    return this;
+
   this.a_progress.push(call_function);
+
+  return this;
 };
 
 /**
- * Get promise from the deferred object.
+ * Gets promise from the deferred object.
  *
- * @return {WlSdk_Deferred_Promise} Promise that is resolved of rejected in sync with the deferred object.
+ * @return {WlSdk_Deferred_Promise} Promise that is resolved or rejected in sync with the deferred object.
  */
 WlSdk_Deferred.prototype.promise = function()
 {
@@ -176,21 +326,30 @@ WlSdk_Deferred.prototype.promise = function()
 /**
  * Rejects the deferred object.
  *
- * @param {*} [a_data] Data to be put into reject handler.
+ * @param {*} [x_data] Data to be put into fail handlers.
  * @return {WlSdk_Deferred} This deferred object.
  */
-WlSdk_Deferred.prototype.reject = function(a_data)
+WlSdk_Deferred.prototype.reject = function(x_data)
 {
-  WlSdk_AssertException.assertTrue(this.s_status==='pending',{
-    'text_message': "Object can be resolver or rejected only in status 'pending'."
-  });
+  if(this.s_state!=='pending')
+    return this;
 
-  this.x_data = a_data;
+  this.x_data = x_data;
 
-  this.s_status = 'rejected';
+  this.s_state = 'rejected';
   this.a_reject.forEach(function(call_reject)
   {
-    call_reject(a_data);
+    call_reject(x_data);
+  });
+  this.a_then.forEach(function(x_then)
+  {
+    if(!x_then.call_fail)
+    {
+      x_then.o_defer.reject(x_data);
+      return;
+    }
+
+    WlSdk_Deferred._thenResult(x_then.o_defer, x_then.call_fail(x_data))
   });
 
   return this;
@@ -199,63 +358,158 @@ WlSdk_Deferred.prototype.reject = function(a_data)
 /**
  * Resolves the deferred object.
  *
- * @param {*} [a_data] Data to be put into resolve handler.
+ * @param {*} [x_data] Data to be put into resolve handler.
  * @return {WlSdk_Deferred} This deferred object.
  */
-WlSdk_Deferred.prototype.resolve = function(a_data)
+WlSdk_Deferred.prototype.resolve = function(x_data)
 {
-  WlSdk_AssertException.assertTrue(this.s_status==='pending',{
-    'text_message': "Object can be resolver or rejected only in status 'pending'."
-  });
+  if(this.s_state!=='pending')
+    return this;
 
-  this.x_data = a_data;
+  this.x_data = x_data;
 
-  this.s_status = 'resolved';
+  this.s_state = 'resolved';
   this.a_resolve.forEach(function(call_resolve)
   {
-    call_resolve(a_data);
+    call_resolve(x_data);
+  });
+  this.a_then.forEach(function(x_then)
+  {
+    if(!x_then.call_done)
+    {
+      x_then.o_defer.resolve(x_data);
+      return;
+    }
+
+    WlSdk_Deferred._thenResult(x_then.o_defer, x_then.call_done(x_data))
   });
 
   return this;
 };
 
 /**
- * Get status of the deferred object.
+ * Gets the current state of a deferred object.
  *
- * @return {string} Object status.
+ * @return {string} Current state of a deferred object.
  */
 WlSdk_Deferred.prototype.state = function()
 {
-  return this.s_status;
+  return this.s_state;
+};
+
+/**
+ * Adds handlers to be called when the deferred object is resolved or rejected.
+ *
+ * @param {WlSdk_Deferred_state} call_done A function that is called when the deferred is resolved.
+ * @param {WlSdk_Deferred_state} [call_fail] A function that is called when the deferred is rejected.
+ * @return {WlSdk_Deferred_Promise} This object.
+ */
+WlSdk_Deferred.prototype.then = function(call_done,call_fail)
+{
+  const o_defer = new WlSdk_Deferred();
+
+  if(this.isResolved())
+  {
+    if(call_done)
+      WlSdk_Deferred._thenResult(o_defer,call_done(this.x_data));
+    else
+      o_defer.resolve(this.x_data);
+  }
+  else if(this.isRejected())
+  {
+    if(call_fail)
+      WlSdk_Deferred._thenResult(o_defer,call_fail(this.x_data));
+    else
+      o_defer.reject(this.x_data);
+  }
+  else
+  {
+    this.a_then.push({
+      'call_done': call_done,
+      'call_fail': call_fail,
+      'o_defer': o_defer
+    });
+  }
+
+  return o_defer.promise();
+};
+
+/**
+ * Shell for {@link WlSdk_Deferred.then()} function.
+ *
+ * Processes exceptions thrown during execution of resolution/rejection callbacks.
+ *
+ * @param {WlSdk_Deferred_state} call_done A function that is called when the deferred is resolved.
+ * @param {WlSdk_Deferred_state} [call_fail] A function that is called when the deferred is rejected.
+ * @return {WlSdk_Deferred_Promise} This object.
+ */
+WlSdk_Deferred.prototype.thenCatch = function(call_done,call_fail)
+{
+  return this.then(function(x_result)
+  {
+    if(!call_done)
+      return new WlSdk_Deferred().resolve(x_result);
+
+    try
+    {
+      return call_done(x_result);
+    }
+    catch(e)
+    {
+      WlSdk_Deferred.handleException(e);
+    }
+  },function(x_result)
+  {
+    if(!call_fail)
+      return new WlSdk_Deferred().reject(x_result);
+
+    try
+    {
+      return call_fail(x_result);
+    }
+    catch(e)
+    {
+      WlSdk_Deferred.handleException(e);
+    }
+  });
 };
 
 /**
  * Creates a deferred object that will be resolved when a set of deferred objects is resolved.
  *
- * @param {WlSdk_Deferred[]} x_defer A list of deferred objects.
+ * @param {WlSdk_Deferred[]} [x_defer] A list of deferred objects.
  * @return {WlSdk_Deferred} Deferred object that wil be resolved
  * when all deferred objects in the list are resolved.
  */
 WlSdk_Deferred.when = function(x_defer)
 {
-  var o_defer_main = new this();
+  const o_defer_main = new this();
 
-  var a_defer;
-  if(x_defer instanceof Array)
+  let a_defer;
+  if(typeof x_defer === 'undefined')
+  {
+    a_defer = [];
+  }
+  else if(x_defer instanceof Array)
   {
     a_defer = x_defer;
   }
   else
   {
     a_defer = [];
-    for (var i = 0;i<arguments.length;i++)
+    for(let i = 0;i<arguments.length;i++)
       a_defer.push(arguments[i]);
   }
 
-  var i_defer = a_defer.length;
+  let i_defer = a_defer.length;
 
   a_defer.forEach(function(o_defer)
   {
+    WlSdk_AssertException.assertTrue(WlSdk_Deferred._deferIs(o_defer), {
+      'o_defer': o_defer,
+      'text_message': 'Invalid deferred object.'
+    });
+
     o_defer.done(function()
     {
       if(o_defer_main.state()!=='pending')

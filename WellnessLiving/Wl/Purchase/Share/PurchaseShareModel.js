@@ -1,5 +1,5 @@
 /**
- * Saves data about share post of the purchase to specified social network.
+ * An endpoint that shares a purchase to a specified social network.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +11,7 @@ function Wl_Purchase_Share_PurchaseShareModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Social network. One of {@link \ASocialSid} constants.
+   * The social network. One of the {@link ASocialSid} constants.
    *
    * @post post
    * @type {number}
@@ -19,7 +19,7 @@ function Wl_Purchase_Share_PurchaseShareModel()
   this.id_social = undefined;
 
   /**
-   * Purchase key. Primary key {@link \RsPurchaseSql} table.
+   * The key of the purchase.
    *
    * @post post
    * @type {string}
@@ -27,7 +27,7 @@ function Wl_Purchase_Share_PurchaseShareModel()
   this.k_purchase = undefined;
 
   /**
-   * Url to sharing page.
+   * The URL to the sharing page.
    *
    * @post result
    * @type {string}

@@ -39,9 +39,9 @@ function Wl_Shop_Product_Option_Inventory_Count_InventoryCountModel()
    * </dl>
    * @property {string} dl_change Date of the last change product inventory.
    * @property {number} i_count Product quantity.
-   * @property {string} k_location Key of the location. Primary key in {@link \RsLocationSql} table.
-   * @property {string} k_shop_product_option Key of the shop product option. Primary key in {@link \RsShopProductOptionSql} table.
-   * @property {string} k_shop_product_option_inventory Key of the shop product option inventory. Primary key in {@link \RsShopProductOptionInventorySql} table.
+   * @property {string} k_location Key of the location.
+   * @property {string} k_shop_product_option Key of the shop product option.
+   * @property {string} k_shop_product_option_inventory Key of the shop product option inventory.
    * @property {string} text_category Online Store categories title.
    * @property {string} text_location Location title.
    * @property {string} text_note Product option inventory note.
@@ -69,11 +69,11 @@ function Wl_Shop_Product_Option_Inventory_Count_InventoryCountModel()
    *   <dt>int <var>i_count</var></dt>
    *   <dd>Product quantity.</dd>
    *   <dt>string <var>k_location</var></dt>
-   *   <dd>Key of the location. Primary key in {@link \RsLocationSql} table.</dd>
+   *   <dd>Key of the location.</dd>
    *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>Key of the shop product option. Primary key in {@link \RsShopProductOptionSql} table.</dd>
+   *   <dd>Key of the shop product option.</dd>
    *   <dt>string <var>k_shop_product_option_inventory</var></dt>
-   *   <dd>Key of the shop product option inventory. Primary key in {@link \RsShopProductOptionInventorySql} table.</dd>
+   *   <dd>Key of the shop product option inventory.</dd>
    *   <dt>string <var>text_category</var></dt>
    *   <dd>Online Store categories title.</dd>
    *   <dt>string <var>text_location</var></dt>
@@ -102,7 +102,7 @@ function Wl_Shop_Product_Option_Inventory_Count_InventoryCountModel()
   this.a_quantity = [];
 
   /**
-   * Current business. Primary key from the {@link \RsBusinessSql} table.
+   * Current business.
    *
    * @get get
    * @post get

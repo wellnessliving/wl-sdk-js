@@ -52,7 +52,7 @@ function Wl_Business_Waiver_WaiverModel()
   /**
    * User key for which the waiver is shown.
    * Used to fill the variables in the contract
-   * Not necessarily if the user does not already exist. In this case, you need to set {@link WaiverApi::$text_fullname}.
+   * Not necessarily if the user does not already exist. In this case, you need to set {@link Wl_Business_Waiver_WaiverModel.text_fullname}.
    *
    * @get get
    * @type {string}
@@ -76,7 +76,7 @@ Wl_Business_Waiver_WaiverModel.prototype.config=function()
  * @function
  * @name Wl_Business_Waiver_WaiverModel.instanceGet
  * @param {string} k_business ID of business to get waiver for.
- * @param {string} uid User key for which the waiver is shown. Used to fill the variables in the contract Not necessarily if the user does not already exist. In this case, you need to set {@link WaiverApi::$text_fullname}.
+ * @param {string} uid User key for which the waiver is shown. Used to fill the variables in the contract Not necessarily if the user does not already exist. In this case, you need to set {@link Wl_Business_Waiver_WaiverModel.text_fullname}.
  * @param {string} text_fullname Full username. Used as a variable in a contract. It may be set if user does not exist.
  * @returns {Wl_Business_Waiver_WaiverModel}
  * @see WlSdk_ModelAbstract.instanceGet()

@@ -25,8 +25,7 @@ function Wl_Member_Group_User_UserUpdateModel()
   /**
    * Business to get information for.
    *
-   * Primary key in {@link \RsBusinessSql} table.
-   *
+   * @delete get
    * @get get
    * @post get
    * @put get
@@ -53,5 +52,5 @@ WlSdk_ModelAbstract.extend(Wl_Member_Group_User_UserUpdateModel);
  */
 Wl_Member_Group_User_UserUpdateModel.prototype.config=function()
 {
-  return {"a_field": {"is_update": {"put": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_member_group": {"post": {"post": true},"put": {"post": true}}}};
+  return {"a_field": {"is_update": {"put": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_member_group": {"post": {"post": true},"put": {"post": true}}}};
 };

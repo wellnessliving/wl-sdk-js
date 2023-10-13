@@ -16,7 +16,7 @@ function Wl_Staff_Load_LoadModel()
   this._s_key = "k_business,k_staff";
 
   /**
-   * Staff work information. See {@link rs_staff_load_check_work_trx()}.
+   * Staff work information. See {@link Wl\Staff\Load\rs_staff_load_check_work_trx()}.
    *
    * @get result
    * @put result
@@ -42,7 +42,6 @@ function Wl_Staff_Load_LoadModel()
 
   /**
    * Business in which information about the staff load will be requested.
-   * Primary key in {@link \RsBusinessSql} table.
    *
    * @get get
    * @put get
@@ -52,22 +51,28 @@ function Wl_Staff_Load_LoadModel()
 
   /**
    * Location primary key.
-   * Primary key in {@link \RsLocationSql} table.
    *
    * @put post
-   * @type {string}
+   * @type {?string}
    */
-  this.k_location = "0";
+  this.k_location = null;
 
   /**
    * Staff member primary key.
-   * Primary key in {@link \RsStaffSql} table.
    *
    * @get get
    * @put get
    * @type {string}
    */
   this.k_staff = "0";
+
+  /**
+   * Pay rate identifier.
+   *
+   * @put post
+   * @type {string}
+   */
+  this.k_staff_pay = "0";
 
   /**
    * Message, when the work has been started.
@@ -87,14 +92,14 @@ WlSdk_ModelAbstract.extend(Wl_Staff_Load_LoadModel);
  */
 Wl_Staff_Load_LoadModel.prototype.config=function()
 {
-  return {"a_field": {"a_work": {"get": {"result": true},"put": {"result": true}},"is_start": {"put": {"result": true}},"is_time_manage": {"get": {"result": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_location": {"put": {"post": true}},"k_staff": {"get": {"get": true},"put": {"get": true}},"text_work_start": {"get": {"result": true}}}};
+  return {"a_field": {"a_work": {"get": {"result": true},"put": {"result": true}},"is_start": {"put": {"result": true}},"is_time_manage": {"get": {"result": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_location": {"put": {"post": true}},"k_staff": {"get": {"get": true},"put": {"get": true}},"k_staff_pay": {"put": {"post": true}},"text_work_start": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Staff_Load_LoadModel.instanceGet
- * @param {string} k_business Business in which information about the staff load will be requested. Primary key in {@link \RsBusinessSql} table.
- * @param {string} k_staff Staff member primary key. Primary key in {@link \RsStaffSql} table.
+ * @param {string} k_business Business in which information about the staff load will be requested.
+ * @param {string} k_staff Staff member primary key.
  * @returns {Wl_Staff_Load_LoadModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -1,7 +1,7 @@
 /**
  * Example API point.
  *
- * Used to test methods of {@link \Core\Request\Api\ApiModel}.
+ * Used to test methods of {@link Core_Request_Api_ModelModel}.
  *
  * This model is generated automatically based on API.
  *
