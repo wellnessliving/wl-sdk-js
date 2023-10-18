@@ -503,6 +503,15 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.html_receipt = undefined;
 
   /**
+   * Whether the print receipt URL requires authentication. If `true`, the URL contains a token that temporarily
+   * allows access to the print receipt without a login. `false` otherwise.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_url_public = false;
+
+  /**
    * The key of the purchase.
    *
    * @get get
