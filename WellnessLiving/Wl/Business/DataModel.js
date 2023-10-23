@@ -120,6 +120,15 @@ function Wl_Business_DataModel()
   this.is_location_multiple = undefined;
 
   /**
+   * `true` if clients of business can select a custom timezone in their profile;
+   * `false` if location or business timezone is used.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_profile_timezone = undefined;
+
+  /**
    * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
    *
    * @get result
