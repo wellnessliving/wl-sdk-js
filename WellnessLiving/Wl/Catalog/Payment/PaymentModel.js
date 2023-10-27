@@ -58,7 +58,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * <dd>The purchase type of the element. One of {@link RsPurchaseItemSid} constants.</dd>
    * <dt>string <tt>k_id</tt></dt>
    * <dd>The primary key of the element depends on type of the element.</dd></dl>
-   * @property {*} a_uid_share An array of UIDs. The list of users a purchase option should be shared with.
+   * @property {*} a_uid_share An array of UIDs. The client's relatives that will share the purchase option.
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_quick_gift_a_wellness_program[]} a_wellness_program "Wellness Program" fields.
    * 
    *  <tt>k_wellness_program</tt> must be passed along with this array. See description below.
@@ -119,7 +119,7 @@ function Wl_Catalog_Payment_PaymentModel()
    *     array [<tt>a_uid_share</tt>]
    *   </dt>
    *   <dd>
-   *     An array of UIDs. The list of users a purchase option should be shared with.
+   *     An array of UIDs. The client's relatives that will share the purchase option.
    *   </dd>
    *   <dt>
    *     array [<tt>a_wellness_program</tt>]
@@ -266,7 +266,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {*} k_shop_product_option The key of the product option (required for products only).
    * @property {*} m_price_custom The custom price (optional).
    * @property {string} [s_signature] The client signature. This is only used for items that require a signed contract.
-   * @property {string} [uid_to] Specifies the recipient user when a purchase option is to be transferred.
+   * @property {string} [uid_to] Specifies the recipient of a transfer purchase option.
    */
 
   /**
@@ -298,7 +298,7 @@ function Wl_Catalog_Payment_PaymentModel()
    *         array [<var>a_uid_share</var>]
    *       </dt>
    *       <dd>
-   *         An array of UIDs. The list of users a purchase option should be shared with.
+   *         An array of UIDs. The client's relatives that will share the purchase option.
    *       </dd>
    *       <dt>
    *         array [<var>a_wellness_program</var>]
@@ -490,7 +490,7 @@ function Wl_Catalog_Payment_PaymentModel()
    *     string <var>[uid_to]</var>
    *   </dt>
    *   <dd>
-   *     Specifies the recipient user when a purchase option is to be transferred.
+   *     Specifies the recipient of a transfer purchase option.
    *   </dd>
    * </dl>
    *
