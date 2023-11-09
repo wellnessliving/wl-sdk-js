@@ -16,6 +16,27 @@ function Wl_Schedule_ClassList_ClassListModel()
   this._s_key = "uid,k_business,k_class_tab,dt_date,show_cancel";
 
   /**
+   * Keys are dates of the days inside requested date range, when there is at least one class in the business.
+   * If, locations are sent as a parameter, then at least one class in the given locations.
+   *
+   * Values are empty arrays for now. This is done to make possible to add some information about certain dates, if we need this.
+   *
+   * @get result
+   * @var {{}[]}
+   */
+  this.a_calendar = [];
+
+  /**
+   * The list of location keys to filter results.
+   * If it's empty, schedule for all locations will be returned.
+   * All given locations should be from the same business, which is sent in {@link ClassListModel::$k_business}.
+   *
+   * @get get
+   * @var {string[]}
+   */
+  this.a_location = [];
+
+  /**
    * @typedef {{}} Wl_Schedule_ClassList_ClassListModel_a_session
    * @property {string[]} a_class_tab Keys of class tab.
    * @property {string[]} a_staff The list of staff keys for the staff member conducting the session.
@@ -164,6 +185,16 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.dt_end = "";
 
   /**
+   * `true` means to not generate {@link ClassListModel::$a_session} result.
+   * Can be used, if you do not need full information about existing classes and result in {@link ClassListModel::$a_calendar} is enough.
+   * any classes in the business.
+   *
+   * @get get
+   * @var {boolean}
+   */
+  this.is_response_short = false;
+
+  /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
    * {@link Wl_Schedule_ClassList_ClassListModel.k_class_tab} value.
    *
@@ -244,7 +275,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
  */
 Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 {
-  return {"a_field": {"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_location": {"get": {"result": true}},"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
