@@ -185,8 +185,8 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.dt_end = "";
 
   /**
-   * `true` means to not generate {@link ClassListModel::$a_session} result.
-   * Can be used, if you do not need full information about existing classes and result in {@link ClassListModel::$a_calendar} is enough.
+   * `true` means to not generate {@link Wl_Schedule_ClassList_ClassListModel.a_session} result.
+   * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassListModel.a_calendar} is enough.
    * any classes in the business.
    *
    * @get get
