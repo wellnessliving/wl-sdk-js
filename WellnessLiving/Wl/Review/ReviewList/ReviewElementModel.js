@@ -20,6 +20,7 @@ function Wl_Review_ReviewList_ReviewElementModel()
    * @property {string} dt_add Date when review was added by user.
    * @property {number} f_rate Review rate.
    * @property {number} id_review_status Status of the Review
+   * @property {boolean} is_featured <tt>true</tt> if review is featured, <tt>false</tt> otherwise.
    * @property {boolean} is_verify <tt>true</tt> if review is verified, <tt>false</tt> otherwise.
    * @property {string} text_firstname Client's first name who added review.
    * @property {string} text_lastname Client's last name who added review.
@@ -51,6 +52,12 @@ function Wl_Review_ReviewList_ReviewElementModel()
    *   </dt>
    *   <dd>
    *     Status of the Review
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_featured</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if review is featured, <tt>false</tt> otherwise.
    *   </dd>
    *   <dt>
    *     bool <var>is_verify</var>
