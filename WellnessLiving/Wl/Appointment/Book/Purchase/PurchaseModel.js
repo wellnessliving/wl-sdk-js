@@ -1,5 +1,5 @@
 /**
- * An endpoint that retrieves information about service categories.
+ * An endpoint that retrieves information about Purchase Options that can be used to pay for an appointment
  *
  * This model is generated automatically based on API.
  *
