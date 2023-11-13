@@ -430,6 +430,24 @@ function Wl_Promotion_Index_PromotionIndexModel()
   this.a_promotion = undefined;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_width = 0;
+
+  /**
    * The program type ID, which will be one of the {@link RsProgramTypeSid} constants.
    *
    * `0` to not filter Purchase Options with type of the Purchase Option.
@@ -457,5 +475,5 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_Index_PromotionIndexModel);
  */
 Wl_Promotion_Index_PromotionIndexModel.prototype.config=function()
 {
-  return {"a_field": {"a_promotion": {"get": {"result": true}},"id_program_type": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
+  return {"a_field": {"a_promotion": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"id_program_type": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
 };

@@ -1,6 +1,10 @@
 /**
  * Model to purchase an item and perform the payment in the online store.
  *
+ * This endpoint using captcha check.
+ * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
+ * For this API an action is `1064`.
+ *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
@@ -54,6 +58,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * <dd>The purchase type of the element. One of {@link RsPurchaseItemSid} constants.</dd>
    * <dt>string <tt>k_id</tt></dt>
    * <dd>The primary key of the element depends on type of the element.</dd></dl>
+   * @property {*} a_uid_share An array of UIDs. The client's relatives that will share the purchase option.
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_quick_gift_a_wellness_program[]} a_wellness_program "Wellness Program" fields.
    * 
    *  <tt>k_wellness_program</tt> must be passed along with this array. See description below.
@@ -69,6 +74,8 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {*} dt_prorate The prorate date. For memberships only.
    * @property {*} dt_send_local The date when the gift card will be sent. This is used for gift cards only.
    * @property {*} dt_start The start date. For memberships only.
+   * @property {*} is_pay_when_start If `true` the client won't be charged for this item until its start date, `false` otherwise.
+   * The purchase option must have a specified start date.
    * @property {*} is_prorate If set to `1` then this purchase will use the prorate rule. Set to `0` otherwise. For memberships only.
    * @property {*} is_prorate_fix If set to `1` then use the custom prorate amount. Set to `0` otherwise. For memberships only.
    * @property {*} is_prorate_only If set to `1` this purchase is prorate only. Set to `0` otherwise. For memberships only.
@@ -109,6 +116,12 @@ function Wl_Catalog_Payment_PaymentModel()
    *     <dd>The primary key of the element depends on type of the element.</dd></dl>
    *   </dd>
    *   <dt>
+   *     array [<tt>a_uid_share</tt>]
+   *   </dt>
+   *   <dd>
+   *     An array of UIDs. The client's relatives that will share the purchase option.
+   *   </dd>
+   *   <dt>
    *     array [<tt>a_wellness_program</tt>]
    *   </dt>
    *   <dd>
@@ -142,6 +155,13 @@ function Wl_Catalog_Payment_PaymentModel()
    *   </dt>
    *   <dd>
    *     The start date. For memberships only.
+   *   </dd>
+   *   <dt>
+   *     bool [<tt>is_pay_when_start</tt>]
+   *   </dt>
+   *   <dd>
+   *     If `true` the client won't be charged for this item until its start date, `false` otherwise.
+   *     The purchase option must have a specified start date.
    *   </dd>
    *   <dt>
    *     bool [<tt>is_prorate</tt>]
@@ -246,6 +266,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {*} k_shop_product_option The key of the product option (required for products only).
    * @property {*} m_price_custom The custom price (optional).
    * @property {string} [s_signature] The client signature. This is only used for items that require a signed contract.
+   * @property {string} [uid_to] Specifies the recipient of a transfer purchase option.
    */
 
   /**
@@ -272,6 +293,12 @@ function Wl_Catalog_Payment_PaymentModel()
    *         <dd>The purchase type of the element. One of {@link RsPurchaseItemSid} constants.</dd>
    *         <dt>string <var>k_id</var></dt>
    *         <dd>The primary key of the element depends on type of the element.</dd></dl>
+   *       </dd>
+   *       <dt>
+   *         array [<var>a_uid_share</var>]
+   *       </dt>
+   *       <dd>
+   *         An array of UIDs. The client's relatives that will share the purchase option.
    *       </dd>
    *       <dt>
    *         array [<var>a_wellness_program</var>]
@@ -307,6 +334,13 @@ function Wl_Catalog_Payment_PaymentModel()
    *       </dt>
    *       <dd>
    *         The start date. For memberships only.
+   *       </dd>
+   *       <dt>
+   *         bool [<var>is_pay_when_start</var>]
+   *       </dt>
+   *       <dd>
+   *         If `true` the client won't be charged for this item until its start date, `false` otherwise.
+   *         The purchase option must have a specified start date.
    *       </dd>
    *       <dt>
    *         bool [<var>is_prorate</var>]
@@ -451,6 +485,12 @@ function Wl_Catalog_Payment_PaymentModel()
    *   </dt>
    *   <dd>
    *     The client signature. This is only used for items that require a signed contract.
+   *   </dd>
+   *   <dt>
+   *     string <var>[uid_to]</var>
+   *   </dt>
+   *   <dd>
+   *     Specifies the recipient of a transfer purchase option.
    *   </dd>
    * </dl>
    *

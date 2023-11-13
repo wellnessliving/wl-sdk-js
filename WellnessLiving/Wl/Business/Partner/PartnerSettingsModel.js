@@ -41,6 +41,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
   /**
    * The first name of the business representative.
    *
+   * @deprecated This field is not used anymore.
    * @get result
    * @type {string}
    */
@@ -49,6 +50,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
   /**
    * The last name of the business representative.
    *
+   * @deprecated This field is not used anymore.
    * @get result
    * @type {string}
    */
@@ -57,6 +59,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
   /**
    * The job title of the business representative.
    *
+   * @deprecated This field is not used anymore.
    * @get result
    * @type {string}
    */
@@ -65,6 +68,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
   /**
    * The text of the review about the WellnessLiving system.
    *
+   * @deprecated This field is not used anymore.
    * @get result
    * @type {string}
    */
@@ -75,6 +79,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
    *
    * `null` in case when image is not uploaded.
    *
+   * @deprecated This field is not used anymore.
    * @get result
    * @type {?string}
    */

@@ -220,6 +220,24 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   this.id_mode = 0;
 
   /**
+   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_height = 0;
+
+  /**
+   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
+   * In case this value is not specified returned image will have default size.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_image_width = 0;
+
+  /**
    * This is `true` if asset categories are loaded for back-end mode. Otherwise, this will be `false` for front-end mode.
    *
    * @get get
@@ -302,7 +320,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_AssetListModel);
  */
 Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
 {
-  return {"a_field": {"a_asset": {"get": {"result": true}},"dtl_date": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource_category": {"get": {"get": true}},"k_resource_layout": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_asset": {"get": {"result": true}},"dtl_date": {"get": {"get": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_resource_category": {"get": {"get": true}},"k_resource_layout": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**

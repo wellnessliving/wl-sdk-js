@@ -1,7 +1,5 @@
 /**
- * Cancels a services.
- *
- * This model is generated automatically based on API.
+ * An endpoint that cancels a service.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Book_Cancel_CancelModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Array of visit's key. Each key is primary key in {@link \RsVisitSql} table.
+   * An array of visit keys.
    *
    * @post post
    * @type {string[]}
@@ -19,11 +17,9 @@ function Wl_Book_Cancel_CancelModel()
   this.a_visit = [];
 
   /**
-   * Array of visit's key which were canceled. These visits are in current location. Bookings made at other locations
-   * cannot be canceled, but they can be visible in clients Upcoming schedule in franchisee and can be selected for
+   * An array of visit keys that were canceled in the selected location. Bookings made at other locations
+   * can't be canceled, but they can be visible in a client's upcoming schedule and can be selected for
    * cancellation.
-   *
-   * Each key is primary key in {@link \RsVisitSql} table.
    *
    * @post result
    * @type {string[]}
@@ -31,7 +27,7 @@ function Wl_Book_Cancel_CancelModel()
   this.a_visit_canceled = [];
 
   /**
-   * Key of the business within which the action is performed.
+   * The key of the business within which the action is performed.
    *
    * @post post
    * @type {string}
@@ -39,7 +35,7 @@ function Wl_Book_Cancel_CancelModel()
   this.k_business = undefined;
 
   /**
-   * User key.
+   * The user key.
    *
    * @post post
    * @type {string}
