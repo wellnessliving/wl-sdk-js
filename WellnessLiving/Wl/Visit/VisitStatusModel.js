@@ -74,6 +74,15 @@ function Wl_Visit_VisitStatusModel()
   this.i_wait_spot = 0;
 
   /**
+   * Visit source. One of {@link Wl_Mode_ModeSid} constants.
+   *
+   * @get result
+   * @post post
+   * @type {string}
+   */
+  this.id_mode = "0";
+
+  /**
    * Visit status. One of {@link Wl_Visit_VisitSid} constants.
    *
    * @get result
@@ -224,7 +233,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_VisitStatusModel);
  */
 Wl_Visit_VisitStatusModel.prototype.config=function()
 {
-  return {"a_field": {"a_resource": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date": {"get": {"result": true}},"dtl_date": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_visit": {"get": {"result": true},"post": {"post": true}},"id_visit_from": {"post": {"post": true,"error": true}},"is_charge_fee": {"post": {"get": true}},"is_event": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_mail_pattern_live": {"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"s_calendar_file_content": {"get": {"result": true}},"text_abbr_timezone": {"get": {"result": true}},"text_reason": {"post": {"get": true}},"text_title": {"get": {"result": true}}}};
+  return {"a_field": {"a_resource": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date": {"get": {"result": true}},"dtl_date": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"result": true},"post": {"post": true}},"id_visit": {"get": {"result": true},"post": {"post": true}},"id_visit_from": {"post": {"post": true,"error": true}},"is_charge_fee": {"post": {"get": true}},"is_event": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_mail_pattern_live": {"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"s_calendar_file_content": {"get": {"result": true}},"text_abbr_timezone": {"get": {"result": true}},"text_reason": {"post": {"get": true}},"text_title": {"get": {"result": true}}}};
 };
 
 /**
