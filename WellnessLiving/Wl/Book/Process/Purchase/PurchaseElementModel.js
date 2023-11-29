@@ -1,7 +1,5 @@
 /**
- * A model of the purchase item.
- *
- * This model is generated automatically based on API.
+ * An endpoint that provides information about a purchase item.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,7 +14,9 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this._s_key = "id_purchase_item,k_id,k_location,uid,i_session,k_login_prize,text_discount_code,k_pay_installment_template";
 
   /**
-   * A list of taxes for one purchase item. Keys - tax keys (primary key in {@link \RsTaxSql} table); values - tax amount.
+   * A list of taxes for one purchase item.
+   *
+   * Keys refer to tax keys and values refer to tax amounts.
    *
    * @get result
    * @type {{}}
@@ -24,7 +24,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.a_tax = undefined;
 
   /**
-   * The number of sessions which are booked simultaneously.
+   * The number of sessions booked simultaneously.
    *
    * @get get
    * @type {number}
@@ -32,7 +32,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.i_session = 0;
 
   /**
-   * The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
+   * The purchase item type ID. One of the {@link RsPurchaseItemSid} constants.
    *
    * @get get
    * @type {number}
@@ -49,7 +49,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.k_id = "0";
 
   /**
-   * The key of the location in which the purchase is made.
+   * The key of the location where the purchase is made.
    * This is also the booking process location.
    *
    * @get get
@@ -59,7 +59,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
 
   /**
    * The key of the user's prize.
-   * Not empty only if the user wants to make a free visit from the prize.
+   * This won't be empty if the user wants to create a free visit from the prize.
    *
    * @get get
    * @type {string}
@@ -67,9 +67,10 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.k_login_prize = "0";
 
   /**
-   * Installment template key.
-   * This property is optional. `null` if installment plan doesn't exist for bought item.
-   * `0` if installment plan doesn't selected for bought item from the list of installment plans.
+   * The installment template key. This property is optional.
+   *
+   * This will be `null` if an installment plan doesn't exist for the purchased item or `0` if an installment plan
+   * isn't selected for the purchased item from the list of installment plans.
    *
    * @get get
    * @type {?string}
@@ -77,7 +78,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.k_pay_installment_template = null;
 
   /**
-   * The cost of one purchase item (with taxes).
+   * The cost of one purchase item with taxes included.
    *
    * @get result
    * @type {string}
@@ -85,7 +86,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.m_cost = undefined;
 
   /**
-   * The amount of the whole discount of one purchase item.
+   * The entire discount amount for one purchase item.
    *
    * @get result
    * @type {string}
@@ -93,7 +94,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.m_discount = undefined;
 
   /**
-   * Amount of discount for discount code of 1 purchase item.
+   * The discount amount for the discount code of one purchase item.
    *
    * @get result
    * @type {string}
@@ -109,7 +110,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.m_discount_login = undefined;
 
   /**
-   * The price of the purchase item (with or without taxes, depending on regional standards).
+   * The price of the purchase item with or without taxes (depending on regional standards).
    *
    * @get result
    * @type {string}
@@ -117,7 +118,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.m_price = undefined;
 
   /**
-   * Remaining price of 1 purchase item. (With or without taxes. It depends on regional standards.)
+   * The remaining price of one purchase item with or without taxes (depending on regional standards).
    *
    * @get result
    * @type {string}
@@ -125,7 +126,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.m_price_remaining = undefined;
 
   /**
-   * Amount of subtotal for 1 purchase item.
+   * The subtotal amount for one purchase item.
    *
    * @get result
    * @type {string}
@@ -133,7 +134,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.m_subtotal = undefined;
 
   /**
-   * The amount of taxes for the one purchase item.
+   * The amount of taxes for one purchase item.
    *
    * @get result
    * @type {string}
@@ -172,14 +173,19 @@ Wl_Book_Process_Purchase_PurchaseElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Book_Process_Purchase_PurchaseElementModel.instanceGet
- * @param {number} id_purchase_item The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
- * @param {string} k_id The key of the purchase item in the database. The name of the table in the database depends on {@link Wl_Book_Process_ProcessPurchaseElementModel.id_purchase_item}.
- * @param {string} k_location The key of the location in which the purchase is made. This is also the booking process location.
+ * @param {number} id_purchase_item The purchase item type ID. One of the {@link RsPurchaseItemSid} constants.
+ * @param {string} k_id The key of the purchase item in the database.
+ * The name of the table in the database depends on {@link Wl_Book_Process_ProcessPurchaseElementModel.id_purchase_item}.
+ * @param {string} k_location The key of the location where the purchase is made.
+ * This is also the booking process location.
  * @param {string} uid The key of the current user.
- * @param {number} i_session The number of sessions which are booked simultaneously.
- * @param {string} k_login_prize The key of the user's prize. Not empty only if the user wants to make a free visit from the prize.
+ * @param {number} i_session The number of sessions booked simultaneously.
+ * @param {string} k_login_prize The key of the user's prize.
+ * This won't be empty if the user wants to create a free visit from the prize.
  * @param {string} text_discount_code The discount code.
- * @param {?string} k_pay_installment_template Installment template key. This property is optional. `null` if installment plan doesn't exist for bought item. `0` if installment plan doesn't selected for bought item from the list of installment plans.
+ * @param {?string} k_pay_installment_template The installment template key. This property is optional.
+ * This will be `null` if an installment plan doesn't exist for the purchased item or `0` if an installment plan
+ * isn't selected for the purchased item from the list of installment plans.
  * @returns {Wl_Book_Process_Purchase_PurchaseElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

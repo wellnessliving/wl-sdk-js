@@ -1,7 +1,5 @@
 /**
- * Point to add a relative while booking process.
- *
- * This model is generated automatically based on API.
+ * An endpoint that adds a relationship to a client profile during the booking process.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Book_Process_Relation_RelationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Date/time of session to check booking availability.
+   * The date/time to use for checking the session booking's availability.
    *
    * @get get
    * @type {string}
@@ -19,8 +17,8 @@ function Wl_Book_Process_Relation_RelationModel()
   this.dtu_date = "";
 
   /**
-   * Relation type.
-   * One of {@link Wl_Family_Relation_RelationSid} constants.
+   * The relationship type.
+   * One of the {@link Wl_Family_Relation_RelationSid} constants.
    *
    * @post post
    * @type {number}
@@ -28,8 +26,8 @@ function Wl_Book_Process_Relation_RelationModel()
   this.id_relation = 0;
 
   /**
-   * `true` if new relative uses email of <var>uid_from</var>.
-   * `false` if new relative has his own email.
+   * This will be `true` if the linked client profile (relationship) uses the email of <var>uid_from</var>.
+   * Otherwise, this will be `false` if they have their own email.
    *
    * @post post
    * @type {boolean}
@@ -37,8 +35,8 @@ function Wl_Book_Process_Relation_RelationModel()
   this.is_mail_inherit = false;
 
   /**
-   * `true` if new relative pays for him self.
-   * `false` if <var>uid_from</var> pays for new relative.
+   * This will `true` if the linked client profile (relationship) pays for their own purchases.
+   * Otherwise, this will be `false` if <var>uid_from</var> pays for the linked profile's purchases.
    *
    * @post post
    * @type {boolean}
@@ -46,7 +44,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.is_pay_self = false;
 
   /**
-   * Business where <var>uid_from</var> creates new relative.
+   * The business in which <var>uid_from</var> records the new relationship.
    *
    * @get get
    * @post get
@@ -55,7 +53,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.k_business = "0";
 
   /**
-   * Session to check booking availability.
+   * The session booking to check availability for.
    *
    * @get get
    * @type {string}
@@ -63,7 +61,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.k_class_period = "0";
 
   /**
-   * New relative's email.
+   * The linked client profile's (relationship) email.
    *
    * @post post
    * @type {string}
@@ -71,7 +69,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.text_mail = "";
 
   /**
-   * New relative's first name.
+   * The linked client profile's (relationship) first name.
    *
    * @post post
    * @type {string}
@@ -79,7 +77,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.text_name_first = "";
 
   /**
-   * New relative's last name.
+   * The linked client profile's (relationship) last name.
    *
    * @post post
    * @type {string}
@@ -87,7 +85,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.text_name_last = "";
 
   /**
-   * New added relative.
+   * The newly added relationship.
    *
    * @post result
    * @type {string}
@@ -95,7 +93,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.uid_create = undefined;
 
   /**
-   * User who adds new relative for himself.
+   * The user (client profile) who's adding the linked client profile (relationship).
    *
    * @get get
    * @post get

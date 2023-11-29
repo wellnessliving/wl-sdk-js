@@ -18,7 +18,7 @@ function Wl_Book_Process_Info_Info54Model()
   /**
    * The days of the week available for recurring booking. One of the {@link ADateWeekSid} constants.
    *
-   * This will be `null` if recurring booking is not available.
+   * This will be `null` if recurring booking isn't available.
    *
    * @get result
    * @type {?number[]}
@@ -465,7 +465,7 @@ function Wl_Book_Process_Info_Info54Model()
    * Determines whether the class/event can be booked immediately or not.
    *
    * The verification is based on the search for the client's Purchase Options and other features of the class/event.
-   * But it doesn't take into account the presence of other mandatory steps.
+   * However, it doesn't account for any other mandatory steps that may exist.
    * Their presence will be indicated by the {@link Wl_Book_Process_Info_InfoModel.is_next} flag.
    *
    * @post result
@@ -546,7 +546,7 @@ function Wl_Book_Process_Info_Info54Model()
   this.k_location = undefined;
 
   /**
-   * The login Purchase Option to be used to book a class.
+   * The login Purchase Option used to book a class.
    *
    * @post post
    * @type {string}
@@ -554,7 +554,7 @@ function Wl_Book_Process_Info_Info54Model()
   this.k_login_promotion = "";
 
   /**
-   * THe session pass to be used to book a class.
+   * The session pass to be used to book a class.
    *
    * @post post
    * @type {string}

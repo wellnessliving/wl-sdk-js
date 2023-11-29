@@ -1,5 +1,5 @@
 /**
- * An endpoint that retrieves information about service categories.
+ * An endpoint that retrieves information about Purchase Options that can be used to pay for an appointment
  *
  * This model is generated automatically based on API.
  *
@@ -220,16 +220,90 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * An array with information about available Purchase Options.
    * <dl>
    *   <dt>
-   *     array <var>a_image</var>
+   *     array|bool <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     Logo of the purchase option. Result of the {@link RsPromotionImageLogo::image()} method.
+   *     Information describing the logo of the purchase option. This value can be false if there is no logo described.
+   *     Image information will have the following fields:
+   *     <dl>
+   *       <dt>
+   *         int <var>i_height</var>
+   *       </dt>
+   *       <dd>
+   *         Actual height of thumbnail image.
+   *       </dd>
+   *       <dt>
+   *         int <var>i_height_src</var>
+   *       </dt>
+   *       <dd>
+   *         Height of original image.
+   *       </dd>
+   *       <dt>
+   *         int <var>i_rotate</var>
+   *       </dt>
+   *       <dd>
+   *         Angle on which image was rotated compared to the original.
+   *       </dd>
+   *       <dt>
+   *         int <var>i_width</var>
+   *       </dt>
+   *       <dd>
+   *         Actual width of thumbnail image.
+   *       </dd>
+   *       <dt>
+   *         int <var>i_width_src</var>
+   *       </dt>
+   *       <dd>
+   *         Width of original image.
+   *       </dd>
+   *       <dt>
+   *         bool <var>is-resize</var>
+   *       </dt>
+   *       <dd>
+   *         Whether thumbnail is a resized variant of original image. If set to <tt>false</tt>
+   *         value returned in <var>url-thumbnail</var> equals value in <var>url-view</var>.
+   *       </dd>
+   *       <dt>
+   *         string <var>url-view</var>
+   *       </dt>
+   *       <dd>
+   *         Url to original image in file storage.
+   *       </dd>
+   *       <dt>
+   *         string <var>url-thumbnail</var>
+   *       </dt>
+   *       <dd>
+   *         Url to resized and rotated image in file storage. If size of original image is larger then specified by
+   *         arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise link to
+   *         original image is returned here.
+   *       </dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
+   *     array <var>a_payment</var>
+   *   </dt>
+   *   <dd>
+   *     The set of calculated values for payment:
+   *     <dl>
+   *       <dt>
+   *         string <var>m_discount</var>
+   *       </dt>
+   *       <dd>
+   *         The amount of the whole discount of one purchase item.
+   *       </dd>
+   *       <dt>
+   *         string <var>m_discount_login</var>
+   *       </dt>
+   *       <dd>
+   *         The discount amount for the client type of one purchase item.
+   *       </dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     string[] <var>a_visit_limit</var>
    *   </dt>
    *   <dd>
-   *     List of calendar restrictions of the promotion, for example, 4 per week.
+   *     A list of calendar restrictions of the Purchase Option in a human readable format, for example: '4 per week'.
    *   </dd>
    *   <dt>
    *     string <var>dt_expire</var>
@@ -242,6 +316,12 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *   </dt>
    *   <dd>
    *     Date, when promotion starts.
+   *   </dd>
+   *   <dt>
+   *     string <var>f_price</var>
+   *   </dt>
+   *   <dd>
+   *     The price of the Purchase Option.
    *   </dd>
    *   <dt>
    *     int <var>i</var>
@@ -286,10 +366,22 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *     Program type ID. Constant from {@link RsProgramTypeSid}.
    *   </dd>
    *   <dt>
+   *     int <var>id_promotion_price</var>
+   *   </dt>
+   *   <dd>
+   *     How the Purchase Item price is specified. One of the {@link RsProgramTypeSid} constants.
+   *   </dd>
+   *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
    *     ID of the purchase item from {@link RsPurchaseItemSid}
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_contract</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if the Purchase Option is a contract. It will `false` otherwise.
    *   </dd>
    *   <dt>
    *     bool <var>is_description</var>
@@ -302,6 +394,25 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *   </dt>
    *   <dd>
    *     `true` if promotion is introductory offer, `false` otherwise.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_renew</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if the Purchase Option will auto-renew. It will be `false` otherwise.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_renew_check</var>
+   *   </dt>
+   *   <dd>
+   *     If `true` - the Purchase Option is renewable and the "auto-renew" option should be turned on by default.
+   *    `This will be `false` otherwise.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_start</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if the Purchase Option has a duration that begins on purchase. It will be `false` otherwise.
    *   </dd>
    *   <dt>
    *     int <var>k_id</var>
@@ -531,6 +642,14 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.is_backend = false;
 
   /**
+   * Indicates if drop-in rate should be the default purchase option.
+   *
+   * @get result
+   * @var {boolean}
+   */
+  this.is_single_default = false;
+
+  /**
    * `true` if client is walk-in, otherwise `false`.
    *
    * @get get
@@ -621,7 +740,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Purchase_PurchaseModel);
  */
 Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_reward_prize": {"get": {"result": true}},"a_service": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"i_height": {"get": {"get": true}},"i_width": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_promotion": {"get": {"get": true,"result": true}},"k_promotion_default": {"get": {"result": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"text_login_promotion": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_reward_prize": {"get": {"result": true}},"a_service": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"i_height": {"get": {"get": true}},"i_width": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_single_default": {"get": {"result": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_promotion": {"get": {"get": true,"result": true}},"k_promotion_default": {"get": {"result": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"text_login_promotion": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
