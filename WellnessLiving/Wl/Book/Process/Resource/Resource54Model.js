@@ -16,7 +16,7 @@ function Wl_Book_Process_Resource_Resource54Model()
   this._s_key = "k_class_period,dt_date_gmt,uid,json_session,id_mode";
 
   /**
-   * The keys of a user's activity.
+   * The keys of a user's activities.
    * This won't be empty only if a session was booked during this step.
    *
    * @post result
@@ -34,9 +34,9 @@ function Wl_Book_Process_Resource_Resource54Model()
    * This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    * @property {number} i_period The frequency at which the appointment repeats.
    * @property {number} id_period The measurement unit of `i_period`. One of {@link ADurationSid} constants.
-   * @property {*} is_month `true` if appointment must repeat monthly at the same date.
-   * `false` if appointment must repeat monthly at the same week day.
-   * `null` if appointment must not repeat monthly.
+   * @property {*} is_month `true` if the appointment repeats monthly on the same date.
+   * `false` if the appointment repeats monthly on the same day of the week.
+   * `null` if the appointment doesn't repeat monthly.
    */
 
   /**
@@ -192,7 +192,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    *         string <var>k_resource</var>
    *       </dt>
    *       <dd>
-   *         The key of the asset in database.
+   *         The key of the asset in the database.
    *       </dd>
    *       <dt>
    *         string <var>s_resource</var>
@@ -337,9 +337,9 @@ function Wl_Book_Process_Resource_Resource54Model()
   this.id_mode = 0;
 
   /**
-   * `true` if the user selected 'Pay later'.
+   * `true` — the user selected 'Pay later'.
    *
-   * `false` if the user selected 'Pay now'.
+   * `false` — the user selected 'Pay now'.
    *
    * @post post
    * @type {boolean}
@@ -347,9 +347,9 @@ function Wl_Book_Process_Resource_Resource54Model()
   this.is_force_pay_later = false;
 
   /**
-   * `true` if the next steps of the booking wizard are needed (for example, to purchase something to book the selected session).
+   * `true` — the next steps of the booking wizard are needed (for example, to purchase something to book the selected session).
    *
-   * `false` if no next steps are needed (all that was needed was already purchased).
+   * `false` — no next steps are needed (all that was needed was already purchased).
    *
    * @post result
    * @type {boolean}
