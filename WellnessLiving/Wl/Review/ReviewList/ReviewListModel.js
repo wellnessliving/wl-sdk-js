@@ -1,5 +1,6 @@
 /**
- * An endpoint that returns a list of review IDs for all reviews for a location.
+ * An endpoint that returns a list of review IDs for all reviews for a location. If location is not specified, returns
+ * all reviews for all locations in the specified business.
  *
  * Reviews in WellnessLiving apply to specific locations. This endpoint can be used to get the IDs for all reviews or
  * to get a listing that includes all the review data if the `i_page parameter` is set.
@@ -16,7 +17,7 @@ function Wl_Review_ReviewList_ReviewListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_location,uid,id_order,i_page";
+  this._s_key = "k_business,k_location,uid,id_order,i_page";
 
   /**
    * @typedef {{}} Wl_Review_ReviewList_ReviewListModel_a_review
@@ -180,7 +181,15 @@ function Wl_Review_ReviewList_ReviewListModel()
   this.id_order = null;
 
   /**
-   * The key of the location to show reviews for.
+   * The key of the business to show reviews for. If not specified, location key needs to be specified.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_business = "";
+
+  /**
+   * The key of the location to show reviews for. If location is not specified, business key needs to be specified.
    *
    * @get get
    * @type {string}
@@ -206,12 +215,13 @@ WlSdk_ModelAbstract.extend(Wl_Review_ReviewList_ReviewListModel);
  */
 Wl_Review_ReviewList_ReviewListModel.prototype.config=function()
 {
-  return {"a_field": {"a_review": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_order": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_review": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_order": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Review_ReviewList_ReviewListModel.instanceGet
+ * @param {string} k_business The key of the business to show reviews for.
  * @param {string} k_location The key of the location to show reviews for.
  * @param {string} uid The user's key. WellnessLiving allows staff to check low-rated reviews before posting them. Staff members can see all reviews. Clients can only see checked reviews.
  * @param {?number} id_order The order in which the review should be arranged. One of the {@link Wl_Review_ReviewList_ReviewOrderSid} constants. If not passed use default order {@link Wl_Review_ReviewList_ReviewOrderSid.LATEST}.
