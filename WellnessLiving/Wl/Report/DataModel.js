@@ -55,6 +55,15 @@ function Wl_Report_DataModel()
   this.id_report_group = 0;
 
   /**
+   * The report page ID. One of the {@link RsReportPageSid} constants.
+   * If set, the collection of that page will be used, otherwise a collection of single report will be used.
+   *
+   * @get get
+   * @type {?number}
+   */
+  this.id_report_page = null;
+
+  /**
    * The report view ID. One of the {@link RsReportChartViewSid} constants.
    *
    * @get get
@@ -96,7 +105,7 @@ WlSdk_ModelAbstract.extend(Wl_Report_DataModel);
  */
 Wl_Report_DataModel.prototype.config=function()
 {
-  return {"a_field": {"a_data": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_report": {"get": {"get": true}},"id_report_group": {"get": {"get": true}},"id_report_view": {"get": {"get": true}},"k_business": {"get": {"get": true}},"s_filter": {"get": {"get": true}},"s_sort": {"get": {"get": true}}}};
+  return {"a_field": {"a_data": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_report": {"get": {"get": true}},"id_report_group": {"get": {"get": true}},"id_report_page": {"get": {"get": true}},"id_report_view": {"get": {"get": true}},"k_business": {"get": {"get": true}},"s_filter": {"get": {"get": true}},"s_sort": {"get": {"get": true}}}};
 };
 
 /**
