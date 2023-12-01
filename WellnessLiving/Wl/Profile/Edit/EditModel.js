@@ -224,6 +224,14 @@ function Wl_Profile_Edit_EditModel()
    */
   this.uid = "";
 
+  /**
+   * UID of already existed in another business user to add to current business.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.uid_existed = "";
+
   this.changeInit();
 }
 
@@ -234,7 +242,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_EditModel);
  */
 Wl_Profile_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field": {"a_change": {"put": {"post": true}},"a_error": {"get": {"result": true},"post": {"result": true}},"a_image_upload": {"post": {"post": true}},"a_new": {"post": {"post": true}},"a_structure": {"get": {"result": true}},"id_register_source": {"get": {"get": true},"post": {"get": true}},"is_short": {"get": {"result": true},"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"is_staff": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"class": {"get": {"result": true},"post": {"result": true}},"code": {"get": {"result": true},"post": {"result": true}},"status": {"post": {"result": true}},"message": {"get": {"result": true},"post": {"result": true}},"text_password": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}}}};
+  return {"a_field": {"a_change": {"put": {"post": true}},"a_error": {"get": {"result": true},"post": {"result": true}},"a_image_upload": {"post": {"post": true}},"a_new": {"post": {"post": true}},"a_structure": {"get": {"result": true}},"id_register_source": {"get": {"get": true},"post": {"get": true}},"is_short": {"get": {"result": true},"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"is_staff": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"class": {"get": {"result": true},"post": {"result": true}},"code": {"get": {"result": true},"post": {"result": true}},"status": {"post": {"result": true}},"message": {"get": {"result": true},"post": {"result": true}},"text_password": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"uid_existed": {"post": {"get": true}}}};
 };
 
 /**
