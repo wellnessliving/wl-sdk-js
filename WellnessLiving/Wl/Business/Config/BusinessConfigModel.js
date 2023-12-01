@@ -115,6 +115,16 @@ function Wl_Business_Config_BusinessConfigModel()
   this.is_location_select = undefined;
 
   /**
+   * Determines whether business has white label setting enabled in admin settings.
+   *
+   * `true` - enabled, `false` - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_white_label = undefined;
+
+  /**
    * The business key.
    *
    * @get get
@@ -132,7 +142,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Config_BusinessConfigModel);
  */
 Wl_Business_Config_BusinessConfigModel.prototype.config=function()
 {
-  return {"a_field": {"a_business_policy": {"get": {"result": true}},"is_location_select": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field": {"a_business_policy": {"get": {"result": true}},"is_location_select": {"get": {"result": true}},"is_white_label": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**

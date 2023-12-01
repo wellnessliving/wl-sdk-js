@@ -5,7 +5,7 @@
  *
  * This endpoint using captcha check.
  * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- * For this API an action is {@link Wl\Business\BusinessPaymentCaptcha::CID}.
+ * For this API an action is `1064`.
  *
  * This model is generated automatically based on API.
  *
