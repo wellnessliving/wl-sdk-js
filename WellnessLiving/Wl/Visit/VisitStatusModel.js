@@ -78,9 +78,9 @@ function Wl_Visit_VisitStatusModel()
    *
    * @get result
    * @post post
-   * @type {string}
+   * @type {int}
    */
-  this.id_mode = "0";
+  this.id_mode = 0;
 
   /**
    * Visit status. One of {@link Wl_Visit_VisitSid} constants.
