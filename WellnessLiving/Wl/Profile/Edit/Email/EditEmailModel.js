@@ -26,6 +26,14 @@ function Wl_Profile_Edit_Email_EditEmailModel()
    */
 
   /**
+   * List of business keys where a user is already a member.
+   *
+   * @get result
+   * @type {string[]}
+   */
+  this.a_business_member_key = undefined;
+
+  /**
    * Information about the user who occupies the specified email.
    * This will be empty if the email is free or if the rate limit has been reached.
    * Otherwise, has next keys:
@@ -71,12 +79,28 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.is_added = false;
 
   /**
+   * If `true`, user is already a member of current business, `false` - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_current_member = false;
+
+  /**
    * If `true`, then the number of requests has exceeded the rate limit. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
    */
   this.is_limit = undefined;
+
+  /**
+   * If `true`, user, who has the specified email, is staff, `false` - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_staff = false;
 
   /**
    * If `true`, then the specified email is in use. Otherwise, this will be `false`.
@@ -132,7 +156,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_Email_EditEmailModel);
  */
 Wl_Profile_Edit_Email_EditEmailModel.prototype.config=function()
 {
-  return {"a_field": {"a_user": {"get": {"result": true}},"is_added": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_use": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true}},"uid_result": {"get": {"result": true}},"uid_want": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_business_member_key": {"get": {"result": true}},"a_user": {"get": {"result": true}},"is_added": {"get": {"result": true}},"is_current_member": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_staff": {"get": {"result": true}},"is_use": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true}},"uid_result": {"get": {"result": true}},"uid_want": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
