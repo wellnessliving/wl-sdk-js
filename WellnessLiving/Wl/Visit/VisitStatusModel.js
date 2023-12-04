@@ -78,7 +78,7 @@ function Wl_Visit_VisitStatusModel()
    *
    * @get result
    * @post post
-   * @type {int}
+   * @type {number}
    */
   this.id_mode = 0;
 
