@@ -5,6 +5,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Book_Process_Process59Model} instead.
  */
 function Wl_Book_Process_Process54Model()
 {
