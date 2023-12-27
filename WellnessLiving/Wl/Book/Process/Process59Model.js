@@ -10,7 +10,7 @@
  * @constructor
  * @see Wl\Book\Process\Process59Api
  */
-function Wl_Book_Process_Process54Model()
+function Wl_Book_Process_Process59Model()
 {
   WlSdk_ModelAbstract.apply(this);
 
@@ -280,12 +280,12 @@ function Wl_Book_Process_Process54Model()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Book_Process_Process54Model);
+WlSdk_ModelAbstract.extend(Wl_Book_Process_Process59Model);
 
 /**
  * @inheritDoc
  */
-Wl_Book_Process_Process54Model.prototype.config=function()
+Wl_Book_Process_Process59Model.prototype.config=function()
 {
   return {"a_field": {"a_family_relation_login_allow": {"get": {"result": true}},"a_path": {"get": {"result": true}},"a_repeat": {"post": {"post": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay_require": {"get": {"result": true}},"is_card_authorize": {"get": {"result": true}},"is_event": {"get": {"result": true}},"is_family_relation_book": {"get": {"result": true}},"is_force_pay_later": {"post": {"post": true}},"is_free": {"get": {"result": true}},"is_have_ach": {"get": {"result": true}},"is_have_credit_card": {"get": {"result": true}},"is_session": {"get": {"result": true}},"is_wait": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"result": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
