@@ -1,10 +1,8 @@
 /**
- * Wizard of booking.
+ * An endpoint for the class/event booking wizard.
  *
- * Includes changes to the list of steps if the service is already booked for the currently selected client.
- * Only if {@link Wl_Book_Process_ProcessModel.is_family_relation_book} is set to `true`.
- *
- * This model is generated automatically based on API.
+ * This includes changes to the list of steps if the service is already booked for the selected client (only if
+ * {@link Wl_Book_Process_ProcessModel.is_family_relation_book} is set to `true`).
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -21,9 +19,9 @@ function Wl_Book_Process_Process59Model()
 
   /**
    * Relationships who clients are allowed to book for.
-   * Constants of {@link RsFamilyRelationSid}.
+   * One of the {@link RsFamilyRelationSid} constants.
    *
-   * `null` if clients are not allowed to book for their relationships.
+   * This will be `null` if clients aren't allowed to book for their relationships.
    *
    * @get result
    * @type {?number[]}
@@ -32,26 +30,25 @@ function Wl_Book_Process_Process59Model()
 
   /**
    * @typedef {{}} Wl_Book_Process_Process59Model_a_path
-   * @property {number} id_book_process Step ID. One of {@link Wl_Book_Process_ProcessSpaSid} constants.
-   * @property {*} is_current <tt>true</tt> - this item is current;
-   * <tt>false</tt> or is not set - is not current.
+   * @property {number} id_book_process The step ID. One of the {@link Wl_Book_Process_ProcessSpaSid} constants.
+   * @property {*} is_current This will be `true` if the item is current. Otherwise, this will be `false` if it isn't current
+   * or not set.
    */
 
   /**
-   * All steps to be done to make a booking. Every element has the next keys:
+   * The steps required to perform a booking. Every element has the next keys:
    * <dl>
    *   <dt>
    *     int <var>id_book_process</var>
    *   </dt>
    *   <dd>
-   *     Step ID. One of {@link Wl_Book_Process_ProcessSpaSid} constants.
+   *     The step ID. One of the {@link Wl_Book_Process_ProcessSpaSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_current</var>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> - this item is current;
-   *     <tt>false</tt> or is not set - is not current.
+   *     This will be `true` if the item is current. Otherwise, this will be `false` if it isn't current or not set.
    *   </dd>
    * </dl>
    *
@@ -62,16 +59,17 @@ function Wl_Book_Process_Process59Model()
 
   /**
    * @typedef {{}} Wl_Book_Process_Process59Model_a_repeat
-   * @property {*} a_week Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
-   * Empty if appointment must not repeat weekly.
-   * @property {*} dl_end Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
-   * @property {*} i_occurrence Number of occurrences after that appointment repeat must stop.
-   * Empty if repeat must not stop after a certain number of occurrences.
-   * @property {number} i_period Frequency of appointment repeating.
-   * @property {number} id_period Measurement unit of `i_period`. One of {@link ADurationSid} constants.
-   * @property {*} is_month `true` if appointment must repeat monthly at the same date.
-   * `false` if appointment must repeat monthly at the same week day.
-   * `null` if appointment must not repeat monthly.
+   * @property {*} a_week The days of the week when appointment repeats. One of the {@link ADateWeekSid} constants.
+   * This will be empty if appointment doesn't repeat weekly.
+   * @property {*} dl_end The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop
+   * at a certain date.
+   * @property {*} i_occurrence The number of occurrences after which the appointment's repeat cycle stops.
+   * This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   * @property {number} i_period The frequency of the appointment's repeat cycle.
+   * @property {number} id_period The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   * @property {*} is_month `true` if the appointment repeats monthly at the same date.
+   * `false` if the appointment repeats monthly at the same day of the week.
+   * `null` if the appointment doesn't repeat monthly.
    */
 
   /**
@@ -81,45 +79,46 @@ function Wl_Book_Process_Process59Model()
    *     int[] [<var>a_week</var>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of the week when appointment repeats. One of the {@link ADateWeekSid} constants.
+   *     This will be empty if appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<var>dl_end</var>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop
+   *     at a certain date.
    *   </dd>
    *   <dt>
    *     int [<var>i_occurrence</var>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle stops.
+   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <var>i_period</var>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment's repeat cycle.
    *   </dd>
    *   <dt>
    *     int <var>id_period</var>
    *   </dt>
    *   <dd>
-   *     Measurement unit of `i_period`. One of {@link ADurationSid} constants.
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<var>is_month</var>]
    *   </dt>
    *   <dd>
-   *     `true` if appointment must repeat monthly at the same date.
-   *     `false` if appointment must repeat monthly at the same week day.
-   *     `null` if appointment must not repeat monthly.
+   *     `true` if the appointment repeats monthly at the same date.
+   *     `false` if the appointment repeats monthly at the same day of the week.
+   *     `null` if the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
    *
-   * `null` if booking must be not recurring.
+   * This will be `null` if this isn't a recurring booking.
    *
    * @post post
    * @type {?Wl_Book_Process_Process59Model_a_repeat}
@@ -127,8 +126,8 @@ function Wl_Book_Process_Process59Model()
   this.a_repeat = null;
 
   /**
-   * Whether the class/event can be booked at this step or not.
-   * External process control flag.
+   * Determines whether the class/event can be booked at this step or not.
+   * This is an external process control flag.
    *
    * @post post
    * @type {boolean}
@@ -136,7 +135,7 @@ function Wl_Book_Process_Process59Model()
   this.can_book = true;
 
   /**
-   * Date/time to which session is booked.
+   * The date/time the session is booked for.
    *
    * @get get
    * @post get
@@ -145,7 +144,7 @@ function Wl_Book_Process_Process59Model()
   this.dt_date_gmt = "";
 
   /**
-   * Mode type. One of {@link Wl_Mode_ModeSid} constants.
+   * The mode type. One of the {@link Wl_Mode_ModeSid} constants.
    *
    * @get get
    * @post get
@@ -155,7 +154,7 @@ function Wl_Book_Process_Process59Model()
 
   /**
    * The purchase rule ID.
-   * One of {@link Wl_Classes_RequirePaySid} constants.
+   * One of the {@link Wl_Classes_RequirePaySid} constants.
    *
    * @get result
    * @type {number}
@@ -163,7 +162,7 @@ function Wl_Book_Process_Process59Model()
   this.id_pay_require = undefined;
 
   /**
-   * If client must authorize credit card.
+   * Determines if the client must authorize the credit card.
    *
    * @get result
    * @type {boolean}
@@ -171,7 +170,7 @@ function Wl_Book_Process_Process59Model()
   this.is_card_authorize = false;
 
   /**
-   * <tt>true</tt> - the session which is being booked is an event, <tt>false</tt> - if not an event.
+   * This will be `true` if the session being booked belongs to an event. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -179,7 +178,7 @@ function Wl_Book_Process_Process59Model()
   this.is_event = undefined;
 
   /**
-   * Whether clients allowed to book for their relationships without switching profiles.
+   * Determines whether clients allowed to book for their relationships without switching profiles.
    *
    * @get result
    * @type {boolean}
@@ -187,8 +186,9 @@ function Wl_Book_Process_Process59Model()
   this.is_family_relation_book = undefined;
 
   /**
-   * `true` if user pressed 'Pay later'.
-   * `false` if user pressed 'Pay now'.
+   * `true` if the user pressed 'Pay later'.
+   *
+   * `false` if the user pressed 'Pay now'.
    *
    * @post post
    * @type {boolean}
@@ -196,7 +196,7 @@ function Wl_Book_Process_Process59Model()
   this.is_force_pay_later = false;
 
   /**
-   * Whether class/event is free or not (it's just about the price).
+   * Determines whether the class/event is free of charge or not.
    *
    * @get result
    * @type {boolean}
@@ -204,7 +204,7 @@ function Wl_Book_Process_Process59Model()
   this.is_free = false;
 
   /**
-   * `true` if the client has an ach account, `false` otherwise.
+   * This will be `true` if the client has an ACH account. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -212,7 +212,7 @@ function Wl_Book_Process_Process59Model()
   this.is_have_ach = false;
 
   /**
-   * `true` if the client has a credit card, `false` otherwise.
+   * This will be `true` if the client has a credit card. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -220,7 +220,7 @@ function Wl_Book_Process_Process59Model()
   this.is_have_credit_card = false;
 
   /**
-   * <tt>true</tt> - the client can select several sessions per booking, <tt>false</tt> - the client can't select several sessions.
+   * This will be `true` if the client can select several sessions per booking. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -228,7 +228,7 @@ function Wl_Book_Process_Process59Model()
   this.is_session = undefined;
 
   /**
-   * <tt>true</tt> - the user can be placed on a wait list, <tt>false</tt> - the user can't be placed on a wait list.
+   * This will be `true` if the user can be placed on a wait list. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -236,7 +236,7 @@ function Wl_Book_Process_Process59Model()
   this.is_wait = undefined;
 
   /**
-   * Key of session which is booked.
+   * The key of the booked session.
    *
    * @get get
    * @post get
@@ -253,7 +253,7 @@ function Wl_Book_Process_Process59Model()
   this.k_location = undefined;
 
   /**
-   * Login promotion to be used to book a class.
+   * The login promotion used to book a class.
    *
    * @post post
    * @type {string}
@@ -261,7 +261,7 @@ function Wl_Book_Process_Process59Model()
   this.k_login_promotion = "";
 
   /**
-   * Session pass to be used to book a class.
+   * The session pass used to book a class.
    *
    * @post post
    * @type {string}
@@ -269,7 +269,7 @@ function Wl_Book_Process_Process59Model()
   this.k_session_pass = "";
 
   /**
-   * Key of a user who is making a book.
+   * The key of the user making the booking.
    *
    * @get get
    * @post get
@@ -293,10 +293,10 @@ Wl_Book_Process_Process59Model.prototype.config=function()
 /**
  * @function
  * @name Wl_Book_Process_Process59Model.instanceGet
- * @param {string} k_class_period Key of session which is booked.
- * @param {string} dt_date_gmt Date/time to which session is booked.
- * @param {string} uid Key of a user who is making a book.
- * @param {number} id_mode Mode type. One of {@link Wl_Mode_ModeSid} constants.
+ * @param {string} k_class_period The key of the booked session.
+ * @param {string} dt_date_gmt The date/time the session is booked for.
+ * @param {string} uid The key of the user making the booking.
+ * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Process59Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
