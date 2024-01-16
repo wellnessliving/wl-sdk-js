@@ -1,7 +1,5 @@
 /**
- * Upgrades business account to application customisation.
- *
- * This model is generated automatically based on API.
+ * An endpoint that upgrades a business account to application customization.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Business_Account_Application_ApplicationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Application package ID. One of {@link Wl_Business_Account_ApplicationSid}.
+   * The application package ID. One of the {@link Wl_Business_Account_ApplicationSid} constants.
    *
    * @post get
    * @type {number}
@@ -19,7 +17,7 @@ function Wl_Business_Account_Application_ApplicationModel()
   this.id_application = undefined;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @post get
    * @type {string}

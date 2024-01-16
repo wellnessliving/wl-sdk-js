@@ -1,7 +1,5 @@
 /**
- * Book promote processing.
- *
- * This model is generated automatically based on API.
+ * An endpoint that promotes a wait list booking to the attendance list.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Book_Promote_PromoteModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * ID of business.
+   * The business ID.
    *
    * @post post
    * @type {string}
@@ -19,7 +17,7 @@ function Wl_Book_Promote_PromoteModel()
   this.k_business = "0";
 
   /**
-   * Visit ID to promote.
+   * The visit ID to promote.
    *
    * @post post
    * @type {string}
@@ -27,7 +25,7 @@ function Wl_Book_Promote_PromoteModel()
   this.k_visit = "0";
 
   /**
-   * Message about successful promote.
+   * The message delivered upon successful promotion.
    *
    * @post result
    * @type {string}
