@@ -1,7 +1,5 @@
 /**
- * Allows to get subscription status.
- *
- * This model is generated automatically based on API.
+ * An endpoint that retrieves a subscription status.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Business_Account_Subscription_PriceOverrideModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of override options.
+   * A list of override options.
    *
    * @get result
    * @type {{}}
@@ -19,7 +17,7 @@ function Wl_Business_Account_Subscription_PriceOverrideModel()
   this.a_override = undefined;
 
   /**
-   * Subscription statuses.
+   * The subscription statuses.
    *
    * @get get
    * @type {number}
@@ -27,7 +25,7 @@ function Wl_Business_Account_Subscription_PriceOverrideModel()
   this.cid_subscription = undefined;
 
   /**
-   * Whether override is active.
+   * Determines whether the override is active.
    *
    * @get result
    * @type {boolean}
@@ -35,7 +33,7 @@ function Wl_Business_Account_Subscription_PriceOverrideModel()
   this.has_override = undefined;
 
   /**
-   * Periodicity of payments.
+   * The schedule period of payments.
    *
    * @get get
    * @type {number}
@@ -43,7 +41,7 @@ function Wl_Business_Account_Subscription_PriceOverrideModel()
   this.id_periodicity = undefined;
 
   /**
-   * Plan ID.
+   * The plan ID.
    *
    * @get get
    * @type {number}
@@ -51,7 +49,7 @@ function Wl_Business_Account_Subscription_PriceOverrideModel()
   this.id_plan = undefined;
 
   /**
-   * Business key from {@link \RsBusinessSql}.
+   * The business key.
    *
    * @get get
    * @type {string}
