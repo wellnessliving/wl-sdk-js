@@ -1,7 +1,5 @@
 /**
- * Allows to get subscription status.
- *
- * This model is generated automatically based on API.
+ * An endpoint that gets subscription statuses.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Business_Account_Subscription_SearchDataModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Subscription statuses.
+   * The subscription statuses.
    *
    * @get result
    * @type {{}}
@@ -19,7 +17,7 @@ function Wl_Business_Account_Subscription_SearchDataModel()
   this.a_subscription_status = undefined;
 
   /**
-   * Business key from {@link \RsBusinessSql}.
+   * The business key.
    *
    * @get get
    * @type {string}
