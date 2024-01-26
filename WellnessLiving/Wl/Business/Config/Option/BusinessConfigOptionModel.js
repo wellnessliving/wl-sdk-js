@@ -1,7 +1,5 @@
 /**
- * Retrieves business config options.
- *
- * This model is generated automatically based on API.
+ * An endpoint that retrieves business config options.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,7 +14,9 @@ function Wl_Business_Config_Option_BusinessConfigOptionModel()
   this._s_key = "k_business";
 
   /**
-   * List of config option values. Key - config option class CID, value - config option value.
+   * A list of config option values.
+   *
+   * Keys refer to config option class CIDs. Value refer to config option values.
    *
    * @get result
    * @type {{}}
@@ -24,7 +24,7 @@ function Wl_Business_Config_Option_BusinessConfigOptionModel()
   this.a_option = undefined;
 
   /**
-   * Key of business.
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -47,7 +47,7 @@ Wl_Business_Config_Option_BusinessConfigOptionModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Config_Option_BusinessConfigOptionModel.instanceGet
- * @param {string} k_business Key of business.
+ * @param {string} k_business The business key.
  * @returns {Wl_Business_Config_Option_BusinessConfigOptionModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
