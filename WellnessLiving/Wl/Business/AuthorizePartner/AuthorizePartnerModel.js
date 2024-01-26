@@ -1,10 +1,8 @@
 /**
- * Endpoint to give members of a franchisor access to a franchisee.
+ * An endpoint that gives members of a franchisor access to a franchisee.
  *
  * To grant a user access the SDK sign-in account, the Manage Franchise Location permission is required.
  * Access will be granted for 24 hours.
- *
- * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -15,7 +13,7 @@ function Wl_Business_AuthorizePartner_AuthorizePartnerModel()
 
   /**
    * Determines whether the user will be granted access or if access will be revoked.
-   * If <tt>true</tt> - then grant access; If <tt>false</tt> - then revoke access.
+   * If `true`, access is granted. Otherwise, this will be `false` if access is revoked.
    * Revoking access is a scheduled task set to be run within the next 15 minutes.
    *
    * @get get

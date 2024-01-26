@@ -1,7 +1,5 @@
 /**
- * Point to save data of accounts for application distribution.
- *
- * This model is generated automatically based on API.
+ * An endpoint that saves data of accounts for application distribution.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,8 +9,8 @@ function Wl_Business_Application_Account_AccountModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * ID of distribution provider (is directly related to operation system) to save data for.
-   * One of {@link Core_Spa_OsSid} constants.
+   * The distribution provider ID (directly related to the operating system) to save data for.
+   * One of the {@link Core_Spa_OsSid} constants.
    *
    * @post post
    * @type {number}
@@ -20,7 +18,7 @@ function Wl_Business_Application_Account_AccountModel()
   this.id_os = 0;
 
   /**
-   * ID of business to save data for.
+   * The ID of the business to save data for.
    *
    * @post post
    * @type {string}
@@ -28,7 +26,7 @@ function Wl_Business_Application_Account_AccountModel()
   this.k_business = "0";
 
   /**
-   * Account login to be saved.
+   * The account login to be saved.
    *
    * @post post
    * @type {string}
@@ -36,7 +34,7 @@ function Wl_Business_Application_Account_AccountModel()
   this.s_login = "";
 
   /**
-   * Account password to be saved.
+   * The account password to be saved.
    *
    * @post post
    * @type {string}
