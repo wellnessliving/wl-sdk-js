@@ -13,7 +13,7 @@ function Wl_Event_Book_EventList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,k_class_tab,uid";
+  this._s_key = "k_business,k_class_tab,uid,id_status";
 
   /**
    * A list of event identifiers.
@@ -24,6 +24,30 @@ function Wl_Event_Book_EventList_ListModel()
    * @type {string[]}
    */
   this.a_event = undefined;
+
+  /**
+   * Event availability value.
+   *
+   * Unavailable events are those that cannot be booked, but they are shown to the client.
+   *
+   * @get result
+   * @var array
+   */
+  this.a_event_available = [];
+
+  /**
+   * Defines how the event availability flag filter should be applied.
+   *
+   * One of {@link AFlagSid} constants.
+   *
+   * * {@link AFlagSid::ON} to show only available events.
+   * * {@link AFlagSid::OFF} to show only unavailable events.
+   * * {@link AFlagSid::ALL} to show all events (available and unavailable).
+   *
+   * @get get
+   * @var int
+   */
+  this.id_status = 3;
 
   /**
    * <tt>true</tt> if exist at least one virtual event
@@ -71,7 +95,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventList_ListModel);
  */
 Wl_Event_Book_EventList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_event": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_event": {"get": {"result": true}},"a_event_available": {"get": {"result": true}},"id_status": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
