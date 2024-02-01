@@ -1,9 +1,9 @@
 /**
- * Manages business merchant processing:
- * - returns detail information about business merchants;
- * - adds/edits merchant settings for specified business.
+ * An endpoint that manages a business's merchant processing settings:
  *
- * This model is generated automatically based on API.
+ * This endpoint can return detailed information about business merchants. It can also add or edit merchant settings
+ * for the specified business.
+ *
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -14,47 +14,48 @@ function Wl_Business_Edit_Merchant_MerchantModel()
 
   /**
    * @typedef {{}} Wl_Business_Edit_Merchant_MerchantModel_a_business_merchant_list_a_pay_method
-   * @property {number} id_pay_method Id of the payment method. One of {@link RsPayMethodSid} constants.
-   * @property {string} text_title Title of the payment method.
+   * @property {number} id_pay_method The payment method ID. One of the {@link RsPayMethodSid} constants.
+   * @property {string} text_title The payment method title.
    */
   /**
    * @typedef {{}} Wl_Business_Edit_Merchant_MerchantModel_a_business_merchant_list
    * @property {{}} a_merchant Additional business merchant settings.
-   * @property {Wl_Business_Edit_Merchant_MerchantModel_a_business_merchant_list_a_pay_method} a_pay_method List of supported payment methods:<dl>
+   * @property {Wl_Business_Edit_Merchant_MerchantModel_a_business_merchant_list_a_pay_method} a_pay_method A list of
+   * supported payment methods:<dl>
    * <dt>int <tt>id_pay_method</tt></dt>
-   * <dd>Id of the payment method. One of {@link RsPayMethodSid} constants.</dd>
+   * <dd>The payment method ID. One of the {@link RsPayMethodSid} constants.</dd>
    * <dt>string <tt>text_title</tt></dt>
    * <dd>Title of the payment method.</dd>
    *   </dl>
-   * @property {number} id_pay_processor ID payment gateway from {@link RsPayProcessorSid}.
-   * @property {string} k_business_merchant Key of the business merchant.
-   * @property {string} text_gateway_title Payment gateway title.
-   * @property {string} text_merchant_id Merchant ID.
-   * @property {string} text_processor_title Payment processor title.
+   * @property {number} id_pay_processor The payment gateway ID from {@link RsPayProcessorSid}.
+   * @property {string} k_business_merchant The business merchant key.
+   * @property {string} text_gateway_title The payment gateway title.
+   * @property {string} text_merchant_id The merchant ID.
+   * @property {string} text_processor_title The payment processor title.
    */
 
   /**
-   * List of business merchants with detail information. Each element has next structure:
+   * A list of business merchants with detailed information. Each element has the next structure:
    * <dl>
    *   <dt>array <var>a_merchant</var></dt>
    *   <dd>Additional business merchant settings.</dd>
    *   <dt>array <var>a_pay_method</var></dt>
-   *   <dd>List of supported payment methods:<dl>
+   *   <dd>A list of supported payment methods:<dl>
    *     <dt>int <var>id_pay_method</var></dt>
-   *     <dd>Id of the payment method. One of {@link RsPayMethodSid} constants.</dd>
+   *     <dd>The payment method ID. One of the {@link RsPayMethodSid} constants.</dd>
    *     <dt>string <var>text_title</var></dt>
-   *     <dd>Title of the payment method.</dd>
+   *     <dd>The payment method title.</dd>
    *   </dl></dd>
    *   <dt>int <var>id_pay_processor</var></dt>
-   *   <dd>ID payment gateway from {@link RsPayProcessorSid}.</dd>
+   *   <dd>The payment gateway ID from {@link RsPayProcessorSid}.</dd>
    *   <dt>string <var>k_business_merchant</var></dt>
-   *   <dd>Key of the business merchant.</dd>
+   *   <dd>The business merchant key.</dd>
    *   <dt>string <var>text_gateway_title</var></dt>
-   *   <dd>Payment gateway title.</dd>
+   *   <dd>The payment gateway title.</dd>
    *   <dt>string <var>text_merchant_id</var></dt>
-   *   <dd>Merchant ID.</dd>
+   *   <dd>The merchant ID.</dd>
    *   <dt>string <var>text_processor_title</var></dt>
-   *   <dd>Payment processor title.</dd>
+   *   <dd>The payment processor title.</dd>
    * </dl>
    *
    * @get result
@@ -63,7 +64,7 @@ function Wl_Business_Edit_Merchant_MerchantModel()
   this.a_business_merchant_list = [];
 
   /**
-   * Contain detail information about business merchant to save.
+   * Detailed information about the business merchant to save.
    *
    * @post post
    * @type {{}}
@@ -71,7 +72,7 @@ function Wl_Business_Edit_Merchant_MerchantModel()
   this.a_business_merchant_save = [];
 
   /**
-   * Whether its admin.
+   * Determines whether this is admin.
    *
    * @get result
    * @type {boolean}
@@ -79,9 +80,9 @@ function Wl_Business_Edit_Merchant_MerchantModel()
   this.is_admin = false;
 
   /**
-   * Business key.
+   * The business key.
    *
-   * <tt>null</tt> if not set.
+   * This will be `null` if not set.
    *
    * @delete get
    * @get get
@@ -91,9 +92,9 @@ function Wl_Business_Edit_Merchant_MerchantModel()
   this.k_business = null;
 
   /**
-   * Specified payment merchant for which detail information should be return.
+   * The payment merchant detailed information should be returned for.
    *
-   * <tt>null</tt> if it is need to return information about all payment processors for specified business.
+   * This will be `null` if it's required to return payment processor information for the specified business.
    *
    * @delete get
    * @get get
