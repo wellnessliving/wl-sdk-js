@@ -217,7 +217,7 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
   /**
    * Determines the report data to be returned.
    *
-   * One of the the {@link RsReportSid} constants.
+   * One of the {@link RsReportSid} constants.
    *
    * This will be `null` if the report isn't set yet.
    *
