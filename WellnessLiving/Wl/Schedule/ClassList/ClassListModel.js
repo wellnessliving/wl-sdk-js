@@ -13,7 +13,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "uid,k_business,k_class_tab,dt_date,show_cancel";
+  this._s_key = "uid,k_business,k_class_tab,dt_date,show_cancel,show_event";
 
   /**
    * Keys are dates of the days inside requested date range, when there is at least one class in the business.
@@ -258,6 +258,14 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.show_cancel = false;
 
   /**
+   * If `true`, events are also returned. If `false`, only classes are returned.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.show_event = false;
+
+  /**
    * The user key.
    *
    * @get get
@@ -275,7 +283,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
  */
 Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 {
-  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_location": {"get": {"result": true}},"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_location": {"get": {"result": true}},"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -286,6 +294,7 @@ Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
  * @param {string} k_class_tab The category tab key. This will be `null` if not set yet. This will be ignored if {@link Wl_Schedule_ClassList_ClassListModel.is_tab_all} is `true`.
  * @param {string} dt_date The list start date in UTC and in MySQL format.
  * @param {boolean} show_cancel If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
+ * @param {boolean} show_event If `true`, events are also returned. If `false`, only classes are returned.
  * @returns {Wl_Schedule_ClassList_ClassListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
