@@ -26,6 +26,7 @@ function Wl_Profile_Form_Response_ResponseListModel()
    * @property {string} k_quiz Quiz key.
    * @property {string} k_quiz_login Key of the request.
    * @property {string} text_title Title of the quiz.
+   * @property {string} text_user Name of user who complete response or start a draft.
    */
 
   /**
@@ -48,6 +49,8 @@ function Wl_Profile_Form_Response_ResponseListModel()
    *  <dd>Key of the request.</dd>
    *  <dt>string <var>text_title</var></dt>
    *  <dd>Title of the quiz.</dd>
+   *  <dt>string <var>text_user</var></dt>
+   *  <dd>Name of user who complete response or start a draft.</dd>
    * </dl>
    *
    * @get result
