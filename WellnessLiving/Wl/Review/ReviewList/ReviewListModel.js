@@ -25,6 +25,7 @@ function Wl_Review_ReviewList_ReviewListModel()
    * @property {string} dl_reply Date when staff reply to review. Can be empty string if no one replied.
    * @property {string} dt_add Date when review added.
    * @property {number} f_rate Rate of review.
+   * @property {boolean} is_featured <tt>true</tt> if review is featured, <tt>false</tt> otherwise.
    * @property {boolean} is_verify <tt>true</tt> if review is verify, <tt>false</tt> otherwise.
    * @property {string} k_review Review key.
    * @property {string} s_firstname First name of user who wrote review.
@@ -66,6 +67,12 @@ function Wl_Review_ReviewList_ReviewListModel()
    *   </dt>
    *   <dd>
    *     Rate of review.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_featured</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if review is featured, <tt>false</tt> otherwise.
    *   </dd>
    *   <dt>
    *     bool <var>is_verify</var>

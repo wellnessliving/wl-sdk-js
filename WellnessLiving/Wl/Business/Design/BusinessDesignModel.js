@@ -1,7 +1,5 @@
 /**
- * API point to manipulate business design data.
- *
- * This model is generated automatically based on API.
+ * An endpoint that manipulates business design data.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,7 +14,7 @@ function Wl_Business_Design_BusinessDesignModel()
   this._s_key = "k_business";
 
   /**
-   * Business design data.
+   * The business design data.
    *
    * Contains the following keys:
    *
@@ -73,9 +71,9 @@ function Wl_Business_Design_BusinessDesignModel()
   this.a_data = undefined;
 
   /**
-   * Business key to get business design data.
+   * The business key used to get business design data.
    *
-   * May be <tt>null</tt>. In this case default business design data is returned.
+   * If `null`, the default business design data is returned.
    *
    * @get get
    * @type {string}
@@ -98,7 +96,8 @@ Wl_Business_Design_BusinessDesignModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Design_BusinessDesignModel.instanceGet
- * @param {string} k_business Business key to get business design data. May be <tt>null</tt>. In this case default business design data is returned.
+ * @param {string} k_business The business key used to get business design data. If `null`, the default business design
+ * data is returned.
  * @returns {Wl_Business_Design_BusinessDesignModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

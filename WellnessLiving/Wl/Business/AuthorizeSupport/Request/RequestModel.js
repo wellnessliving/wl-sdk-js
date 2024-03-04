@@ -1,7 +1,5 @@
 /**
- * Entry point for enter to business location.
- *
- * This model is generated automatically based on API.
+ * An endpoint that allows a franchisor to enter a franchisee business location.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,8 @@ function Wl_Business_AuthorizeSupport_Request_RequestModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * <tt>true</tt> - support must wait permission from franchisee. <tt>false</tt> - no need to wait; authorisation is already done.
+   * If `true`, the user requesting access must obtain approval from the franchisee. Otherwise, this will be `false` if
+   * there's no approval required (authorization is already done).
    *
    * @get result
    * @type {boolean}
@@ -19,7 +18,7 @@ function Wl_Business_AuthorizeSupport_Request_RequestModel()
   this.is_pending = undefined;
 
   /**
-   * Location primary key in {@link \RsLocationSql} table.
+   * The location primary key.
    *
    * @delete get
    * @get get
@@ -28,7 +27,7 @@ function Wl_Business_AuthorizeSupport_Request_RequestModel()
   this.k_location = "0";
 
   /**
-   * User primary key in {@link \PassportLoginSql} table.
+   * The user's primary key.
    *
    * @delete get
    * @get get

@@ -19,12 +19,14 @@ function Wl_Profile_Form_Response_ResponseListModel()
    * @typedef {{}} Wl_Profile_Form_Response_ResponseListModel_a_quiz_login
    * @property {string} dtl_date Date of the request to fill out a quiz form.
    * @property {number} id_source Place where request to fill out a quiz form occurred. One of {@link Wl_Quiz_Response_SourceSid} constants.
+   * @property {number} id_status Status of the response. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.
    * @property {boolean} is_private Whether form can be viewed by staff member only after confirmation.
    *    `true` if form can be viewed only after confirmation
    *    `false` if form can be viewed always
    * @property {string} k_quiz Quiz key.
    * @property {string} k_quiz_login Key of the request.
    * @property {string} text_title Title of the quiz.
+   * @property {string} text_user Name of user who complete response or start a draft.
    */
 
   /**
@@ -33,6 +35,8 @@ function Wl_Profile_Form_Response_ResponseListModel()
    *  <dd>Date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
    *  <dd>Place where request to fill out a quiz form occurred. One of {@link Wl_Quiz_Response_SourceSid} constants.</dd>
+   *  <dt>int <var>id_status</var></dt>
+   *  <dd>Status of the response. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.</dd>
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
    *    Whether form can be viewed by staff member only after confirmation.
@@ -45,6 +49,8 @@ function Wl_Profile_Form_Response_ResponseListModel()
    *  <dd>Key of the request.</dd>
    *  <dt>string <var>text_title</var></dt>
    *  <dd>Title of the quiz.</dd>
+   *  <dt>string <var>text_user</var></dt>
+   *  <dd>Name of user who complete response or start a draft.</dd>
    * </dl>
    *
    * @get result
