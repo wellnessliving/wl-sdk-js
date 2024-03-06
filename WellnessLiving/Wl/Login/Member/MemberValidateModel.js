@@ -18,7 +18,6 @@ function Wl_Login_Member_MemberValidateModel()
   /**
    * List of fields if the user has empty profile fields, which are required for booking.
    *
-   *
    * @get result
    * @type {array}
    */
@@ -26,7 +25,6 @@ function Wl_Login_Member_MemberValidateModel()
 
   /**
    * List of fields if the user has empty profile fields, which are required for registration.
-   *
    *
    * @get result
    * @type {array}
@@ -36,7 +34,6 @@ function Wl_Login_Member_MemberValidateModel()
   /**
    * `true` If the user has credit cards on profile, otherwise `false`.
    *
-   *
    * @get result
    * @type {boolean}
    */
@@ -44,7 +41,6 @@ function Wl_Login_Member_MemberValidateModel()
 
   /**
    * `true` if the user has an outstanding contract, otherwise `false`.
-   *
    *
    * @get result
    * @type {boolean}
@@ -54,7 +50,6 @@ function Wl_Login_Member_MemberValidateModel()
   /**
    * `true` If the user has an outstanding waiver for the business, otherwise `false`.
    *
-   *
    * @get result
    * @type {boolean}
    */
@@ -62,7 +57,6 @@ function Wl_Login_Member_MemberValidateModel()
 
   /**
    * `true` If the user has pending registration quizzes to complete, otherwise `false`.
-   *
    *
    * @get result
    * @type {boolean}
@@ -72,7 +66,6 @@ function Wl_Login_Member_MemberValidateModel()
   /**
    * `true` If the user has to provide credit card details before booking, otherwise `false`.
    *
-   *
    * @get result
    * @type {boolean}
    */
@@ -80,7 +73,6 @@ function Wl_Login_Member_MemberValidateModel()
 
   /**
    * `true` If the user has to provide credit card details to finish their registration, otherwise `false`.
-   *
    *
    * @get result
    * @type {boolean}
@@ -98,7 +90,6 @@ function Wl_Login_Member_MemberValidateModel()
   /**
    * Home user`s location.
    * `null` if user has not home location.
-   *
    *
    * @get result
    * @type {?string}
