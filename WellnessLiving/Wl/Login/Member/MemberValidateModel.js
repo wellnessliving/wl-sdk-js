@@ -16,7 +16,7 @@ function Wl_Login_Member_MemberValidateModel()
   this._s_key = "k_business,uid";
 
   /**
-   * `true` if the user has empty profile fields, which are required for booking, otherwise `false`.
+   * List of fields if the user has empty profile fields, which are required for booking.
    *
    *
    * @get result
@@ -25,7 +25,7 @@ function Wl_Login_Member_MemberValidateModel()
   this.a_empty_fields_booking = [];
 
   /**
-   * `true` If the user has empty profile fields, which are required for registration, otherwise `false`.
+   * List of fields if the user has empty profile fields, which are required for registration.
    *
    *
    * @get result
