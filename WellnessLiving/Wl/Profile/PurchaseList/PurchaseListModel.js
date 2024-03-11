@@ -24,6 +24,7 @@ function Wl_Profile_PurchaseList_PurchaseListModel()
    * @property {number} id_sale The ID of the sale category in the store. One of the constants {@link RsSaleSid}.
    * @property {boolean} is_active If `true`, then the purchase item is active. Otherwise, this will be `false`.
    * @property {*} is_component If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
+   * @property {string} k_appointment Appointment key.
    * @property {string} k_code The redemption code key that was used to make a purchase.
    * This is used only if <tt>k_login_promotion</tt> and <tt>k_purchase</tt> are empty.
    * @property {*} k_enrollment_book The key of an event that requires clients to book every session at once.
@@ -40,6 +41,7 @@ function Wl_Profile_PurchaseList_PurchaseListModel()
    * @property {*} k_session_pass In certain cases a session can be canceled and makeup sessions can be granted to a client in lieu of
    * other compensation. This is the key of one of the makeup sessions used to attend an event. This is also
    * present for a repeat purchase of an event.
+   * @property {string} k_service Service key.
    * @property {string} s_title The name of the purchase item.
    * @property {string} uid The ID of the purchase owner.
    */
