@@ -26,10 +26,6 @@ function Wl_Profile_Form_Response_ResponseListModel()
    * @property {string} k_quiz Quiz key.
    * @property {string} k_quiz_login Key of the request.
    * @property {string} text_title Title of the quiz.
-   * @property {string} text_amend_date Date when response amended.
-   *    `null` if response was not edited.
-   * @property {string} text_amend_user Name of the user who amend the response.
-   *    `null` if response was not edited.
    * @property {string} text_user Name of user who complete response or start a draft.
    */
 
@@ -71,6 +67,10 @@ function Wl_Profile_Form_Response_ResponseListModel()
    *    `false` if form can be viewed always
    * @property {string} k_quiz Quiz key.
    * @property {string} k_quiz_login Quiz response key.
+   * @property {string} text_amend_date Date when response amended.
+   *    `null` if response was not edited.
+   * @property {string} text_amend_user Name of the user who amend the response.
+   *    `null` if response was not edited.
    * @property {string} text_title Title of the quiz.
    */
 
