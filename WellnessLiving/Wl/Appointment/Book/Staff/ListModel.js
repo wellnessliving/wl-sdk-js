@@ -146,7 +146,6 @@ Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
  * @param {number} id_role User role by whom this api called. For different roles different results might be generated.
  * @param {string} k_appointment_ignore Key of appointment which must be ignored when searches available staff.
  * @param {?string} k_timezone User's timezone primary key in {@link \AGeoTimezoneSql} table. `null` until initialized or to use location timezone.
- * @param {?string} uid Key of user for whom the service is booking.
  * @returns {Wl_Appointment_Book_Staff_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
