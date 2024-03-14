@@ -67,31 +67,45 @@ function Wl_Profile_Form_Response_ResponseListModel()
    *    `false` if form can be viewed always
    * @property {string} k_quiz Quiz key.
    * @property {string} k_quiz_login Quiz response key.
-   * @property {string} text_amend_date Date when response amended.
+   * @property {?string} text_amend_date Date when response amended.
    *    `null` if response was not edited.
-   * @property {string} text_amend_user Name of the user who amend the response.
+   * @property {?string} text_amend_user Name of the user who amend the response.
    *    `null` if response was not edited.
    * @property {string} text_title Title of the quiz.
    */
 
   /**
-   * List of completed quiz responses. Each element has the next structure: <dl>
+   * The list of completed quiz responses. Each element has the next structure: <dl>
    *  <dt>string <var>dtl_date</var></dt>
-   *  <dd>Date of a request to fill out a quiz form.</dd>
+   *  <dd>The date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
-   *  <dd>Place where request to fill out a quiz form occurred. One of {@link Wl_Quiz_Response_SourceSid} constants.</dd>
+   *  <dd>The place where the request to fill out the quiz form occurred. One of the {@link Wl_Quiz_Response_SourceSid} constants.</dd>
+   *  <dt>int <var>id_status</var></dt>
+   *  <dd>Status of the response. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.</dd>
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
-   *    Whether form can be viewed by staff member only after confirmation.
-   *    `true` if form can be viewed only after confirmation
-   *    `false` if form can be viewed always
+   *    Determines whether the form can be viewed by staff member only after confirmation.
+   *    `true` — the form can be viewed only after confirmation.
+   *    `false` — the form can always be viewed.
    *  </dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>Quiz key.</dd>
+   *  <dd>The quiz key.</dd>
    *  <dt>string <var>k_quiz_login</var></dt>
-   *  <dd>Quiz response key.</dd>
+   *  <dd>The quiz response key.</dd>
    *  <dt>string <var>text_title</var></dt>
-   *  <dd>Title of the quiz.</dd>
+   *  <dd>The quiz title.</dd>
+   *  <dt>string|null <var>text_amend_date</var></dt>
+   *  <dd>
+   *    Date when response amended.
+   *    `null` if response was not edited.
+   *  </dd>
+   *  <dt>string|null <var>text_amend_user</var></dt>
+   *  <dd>
+   *    Name of the user who amend the response.
+   *    `null` if response was not edited.
+   *  </dd>
+   *  <dt>string <var>text_user</var></dt>
+   *  <dd>Name of user who complete response or start a draft.</dd>
    * </dl>
    *
    * @get result
