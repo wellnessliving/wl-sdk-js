@@ -1,5 +1,5 @@
 /**
- * Retrieves list of user's quiz responses.
+ * An endpoint that retrieves a list of a user's quiz responses.
  *
  * This model is generated automatically based on API.
  *
@@ -17,40 +17,41 @@ function Wl_Profile_Form_Response_ResponseListModel()
 
   /**
    * @typedef {{}} Wl_Profile_Form_Response_ResponseListModel_a_quiz_login
-   * @property {string} dtl_date Date of the request to fill out a quiz form.
-   * @property {number} id_source Place where request to fill out a quiz form occurred. One of {@link Wl_Quiz_Response_SourceSid} constants.
-   * @property {number} id_status Status of the response. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.
-   * @property {boolean} is_private Whether form can be viewed by staff member only after confirmation.
-   *    `true` if form can be viewed only after confirmation
-   *    `false` if form can be viewed always
-   * @property {string} k_quiz Quiz key.
-   * @property {string} k_quiz_login Key of the request.
-   * @property {string} text_title Title of the quiz.
-   * @property {string} text_user Name of user who complete response or start a draft.
+   * @property {string} dtl_date The date of the request to fill out a quiz form.
+   * @property {number} id_source The place where the request to fill out a quiz form occurred. One of the {@link Wl_Quiz_Response_SourceSid} constants.
+   * @property {boolean} is_private Determines whether the form can be viewed by staff member only after confirmation.
+   *    `true` - the form can be viewed only after confirmation.
+   *    `false` - the form can always be viewed.
+   * @property {string} k_quiz The quiz key.
+   * @property {string} k_quiz_login The key of the request.
+   * @property {?string} k_quiz_response Key of the response.
+   *    Not `null` in case when response in draft status.
+   * @property {string} text_title The quiz title.
    */
 
   /**
-   * List of uncompleted quiz responses. Each element has the next structure: <dl>
+   * The list of uncompleted quiz responses. Each element has the next structure: <dl>
    *  <dt>string <var>dtl_date</var></dt>
-   *  <dd>Date of the request to fill out a quiz form.</dd>
+   *  <dd>The date of the request to fill out a quiz form.</dd>
    *  <dt>int <var>id_source</var></dt>
-   *  <dd>Place where request to fill out a quiz form occurred. One of {@link Wl_Quiz_Response_SourceSid} constants.</dd>
-   *  <dt>int <var>id_status</var></dt>
-   *  <dd>Status of the response. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.</dd>
+   *  <dd>The place where the request to fill out a quiz form occurred. One of the {@link Wl_Quiz_Response_SourceSid} constants.</dd>
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
-   *    Whether form can be viewed by staff member only after confirmation.
-   *    `true` if form can be viewed only after confirmation
-   *    `false` if form can be viewed always
+   *    Determines whether the form can be viewed by staff member only after confirmation.
+   *    `true` - the form can be viewed only after confirmation.
+   *    `false` - the form can always be viewed.
    *  </dd>
    *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>Quiz key.</dd>
+   *  <dd>The quiz key.</dd>
    *  <dt>string <var>k_quiz_login</var></dt>
-   *  <dd>Key of the request.</dd>
+   *  <dd>The key of the request.</dd>
+   *  <dt>string|null <var>k_quiz_response</var></dt>
+   *  <dd>
+   *    Key of the response.
+   *    Not `null` in case when response in draft status.
+   *  </dd>
    *  <dt>string <var>text_title</var></dt>
-   *  <dd>Title of the quiz.</dd>
-   *  <dt>string <var>text_user</var></dt>
-   *  <dd>Name of user who complete response or start a draft.</dd>
+   *  <dd>The quiz title.</dd>
    * </dl>
    *
    * @get result
@@ -60,18 +61,20 @@ function Wl_Profile_Form_Response_ResponseListModel()
 
   /**
    * @typedef {{}} Wl_Profile_Form_Response_ResponseListModel_a_quiz_response
-   * @property {string} dtl_date Date of a request to fill out a quiz form.
-   * @property {number} id_source Place where request to fill out a quiz form occurred. One of {@link Wl_Quiz_Response_SourceSid} constants.
-   * @property {boolean} is_private Whether form can be viewed by staff member only after confirmation.
-   *    `true` if form can be viewed only after confirmation
-   *    `false` if form can be viewed always
-   * @property {string} k_quiz Quiz key.
-   * @property {string} k_quiz_login Quiz response key.
+   * @property {string} dtl_date The date of the request to fill out a quiz form.
+   * @property {number} id_source The place where the request to fill out the quiz form occurred. One of the {@link Wl_Quiz_Response_SourceSid} constants.
+   * @property {number} id_status Status of the response. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.
+   * @property {boolean} is_private Determines whether the form can be viewed by staff member only after confirmation.
+   *    `true` - the form can be viewed only after confirmation.
+   *    `false` - the form can always be viewed.
+   * @property {string} k_quiz The quiz key.
+   * @property {string} k_quiz_login The quiz response key.
+   * @property {string} text_title The quiz title.
    * @property {?string} text_amend_date Date when response amended.
    *    `null` if response was not edited.
    * @property {?string} text_amend_user Name of the user who amend the response.
    *    `null` if response was not edited.
-   * @property {string} text_title Title of the quiz.
+   * @property {string} text_user Name of user who complete response or start a draft.
    */
 
   /**
@@ -85,8 +88,8 @@ function Wl_Profile_Form_Response_ResponseListModel()
    *  <dt>bool <var>is_private</var></dt>
    *  <dd>
    *    Determines whether the form can be viewed by staff member only after confirmation.
-   *    `true` — the form can be viewed only after confirmation.
-   *    `false` — the form can always be viewed.
+   *    `true` - the form can be viewed only after confirmation.
+   *    `false` - the form can always be viewed.
    *  </dd>
    *  <dt>string <var>k_quiz</var></dt>
    *  <dd>The quiz key.</dd>
@@ -114,7 +117,7 @@ function Wl_Profile_Form_Response_ResponseListModel()
   this.a_quiz_response = [];
 
   /**
-   * `true` if API is being used from backend, `false` otherwise.
+   * This will be `true` if the API is being used from the backend. Otherwise, this will be `false`.
    *
    * @get get
    * @type {boolean}
@@ -122,7 +125,7 @@ function Wl_Profile_Form_Response_ResponseListModel()
   this.is_backend = false;
 
   /**
-   * Key of a business to show information for.
+   * The key of the business to show information for.
    *
    * @get get
    * @type {string}
@@ -130,7 +133,7 @@ function Wl_Profile_Form_Response_ResponseListModel()
   this.k_business = "";
 
   /**
-   * Key of a user to show information for.
+   * The key of the user to show information for.
    *
    * @get get
    * @type {string}
@@ -153,8 +156,8 @@ Wl_Profile_Form_Response_ResponseListModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Form_Response_ResponseListModel.instanceGet
- * @param {string} uid Key of a user to show information for.
- * @param {string} k_business Key of a business to show information for.
+ * @param {string} uid The key of the user to show information for.
+ * @param {string} k_business The key of the business to show information for.
  * @returns {Wl_Profile_Form_Response_ResponseListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
