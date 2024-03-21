@@ -494,8 +494,8 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_book = undefined;
 
   /**
-   * <tt>true</tt> if there are no free spots in the event; booking is available only into the wait list.
-   * <tt>false</tt> otherwise.
+   * `true` if there are no free spots in the event; booking is available only into the wait list.
+   * `false` otherwise.
    *
    * @get result
    * @type {boolean}

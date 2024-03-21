@@ -176,7 +176,7 @@ function Wl_Promotion_Index_PromotionIndexModel()
    * @property {string} k_promotion The promotion key.
    * @property {string} m_price The price.
    * @property {string} text_description The description.
-   * @property {number} text_program THe localized promotion program name corresponding to the value of <tt>id_program</tt>.
+   * @property {number} text_program The localized promotion program name corresponding to the value of <tt>id_program</tt>.
    * @property {string} text_title The title.
    * @property {string} url_buy The direct URL to the promotion purchase page.
    */
@@ -408,7 +408,7 @@ function Wl_Promotion_Index_PromotionIndexModel()
    *     int <var>text_program</var>
    *   </dt>
    *   <dd>
-   *     THe localized promotion program name corresponding to the value of <var>id_program</var>.
+   *     The localized promotion program name corresponding to the value of <var>id_program</var>.
    *   </dd>
    *   <dt>
    *     string <var>text_title</var>

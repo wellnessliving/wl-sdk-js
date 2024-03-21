@@ -18,7 +18,7 @@ function Wl_Login_Permission_PermissionModel()
   this._s_key = "k_login_promotion";
 
   /**
-   * <tt>true</tt> - make purchased promotion auto-renewable; <tt>false</tt> - otherwise.
+   * If `true`, the purchased promotion has been made auto-renewable. Otherwise, this will be `false`.
    *
    * @post post
    * @type {boolean}
