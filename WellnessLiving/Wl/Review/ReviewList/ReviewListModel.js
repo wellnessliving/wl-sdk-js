@@ -81,6 +81,12 @@ function Wl_Review_ReviewList_ReviewListModel()
    *     <tt>true</tt> if review is verify, <tt>false</tt> otherwise.
    *   </dd>
    *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     The location ID for where the review was left/assigned.
+   *   </dd>
+   *   <dt>
    *     string <var>k_review</var>
    *   </dt>
    *   <dd>
