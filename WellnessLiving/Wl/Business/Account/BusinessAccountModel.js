@@ -1,10 +1,8 @@
 /**
- * An API used to get a list of active businesses.
+ * An endpoint used to get a list of active businesses.
  *
- * Is not available without user authorization.
- * Requires authorized user to have privilege `rs.business.view`.
- *
- * This model is generated automatically based on API.
+ * This endpoint isn't available without user authorization. It requires the authorized user to have the
+ * `rs.business.view` privilege.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -22,10 +20,10 @@ function Wl_Business_Account_BusinessAccountModel()
   this.a_business_keys = [];
 
   /**
-   * `true` to return only wellnesliving paid customers.
-   * `false` to return prospects.
+   * If `true`, this will only return paying WellnessLiving customers. Otherwise, this will be `false` to return only
+   * prospects.
    *
-   * Test and churned businesses are never returned.
+   * Note that test and churned businesses are never returned.
    *
    * @get get
    * @type {boolean}
@@ -33,7 +31,7 @@ function Wl_Business_Account_BusinessAccountModel()
   this.is_prospects = false;
 
   /**
-   * Specifies if only businesses having published locations should be returned.
+   * Determines if only businesses with published locations should be returned.
    *
    * @get get
    * @type {boolean}

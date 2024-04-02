@@ -113,6 +113,16 @@ function Wl_Appointment_Book_Staff_ListModel()
    */
   this.k_timezone = null;
 
+  /**
+   * Key of user for whom the service is booking.
+   *
+   * `null` if not set.
+   *
+   * @get get
+   * @type {string|null}
+   */
+  this.uid = null;
+
   this.changeInit();
 }
 
@@ -123,7 +133,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Staff_ListModel);
  */
 Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_staff": {"get": {"result": true}},"can_book_unavailable_staff": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"has_gender": {"get": {"result": true}},"has_staff": {"get": {"result": true}},"id_role": {"get": {"get": true}},"is_gender_different": {"get": {"result": true}},"is_unavailable": {"get": {"get": true}},"k_appointment_ignore": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}}}};
+  return {"a_field": {"a_staff": {"get": {"result": true}},"can_book_unavailable_staff": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"has_gender": {"get": {"result": true}},"has_staff": {"get": {"result": true}},"id_role": {"get": {"get": true}},"is_gender_different": {"get": {"result": true}},"is_unavailable": {"get": {"get": true}},"k_appointment_ignore": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -135,7 +145,7 @@ Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
  * @param {boolean} is_unavailable `true` - returns service categories that have no staff members available to conduct them. `false` - returns only service categories that have staff members available to conduct them.
  * @param {number} id_role User role by whom this api called. For different roles different results might be generated.
  * @param {string} k_appointment_ignore Key of appointment which must be ignored when searches available staff.
- * @param {?string} k_timezone User's timezone primary key in {@link \AGeoTimezoneSql} table. <tt>null</tt> until initialized or to use location timezone.
+ * @param {?string} k_timezone User's timezone primary key in {@link \AGeoTimezoneSql} table. `null` until initialized or to use location timezone.
  * @returns {Wl_Appointment_Book_Staff_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

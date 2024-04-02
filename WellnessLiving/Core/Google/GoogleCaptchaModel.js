@@ -3,6 +3,7 @@
  *
  * Site keys for initialize Google reCAPTCHA v2:
  * * Demo/Staging - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
+ * * Production - `6LeOGp4hAAAAACDoQeLUxnu2TAXXZWhdSm118auy`
  *
  * @augments WlSdk_ModelAbstract
  * @constructor

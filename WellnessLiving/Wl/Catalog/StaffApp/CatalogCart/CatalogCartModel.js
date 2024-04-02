@@ -16,6 +16,32 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this._s_key = "k_business,uid_current";
 
   /**
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_discount_code
+   * @property {boolean} is_select `true` if this code is selected currently, `false` otherwise.
+   * @property {string} k_discount_code Discount code key.
+   * @property {string} text_discount_code Value of the code that can be used to get discount.
+   * @property {string} text_title Name of the code.
+   */
+
+  /**
+   * A list of available discount codes with the next structure:
+   * <dl>
+   *   <dt>bool <var>is_select</var></dt>
+   *   <dd>`true` if this code is selected currently, `false` otherwise.</dd>
+   *   <dt>string <var>k_discount_code</var></dt>
+   *   <dd>Discount code key.</dd>
+   *   <dt>string <var>text_discount_code</var></dt>
+   *   <dd>Value of the code that can be used to get discount.</dd>
+   *   <dt>string <var>text_title</var></dt>
+   *   <dd>Name of the code.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_discount_code}
+   */
+  this.a_discount_code = [];
+
+  /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_tax_custom
    * @property {string} f_tax The tax amount.
    * @property {string} k_tax The tax keys.
@@ -193,6 +219,15 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.is_commission = false;
 
   /**
+   * Determines, how staff sees discount codes in Store.
+   * `true` as select field, `false` as input field.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_discount_code_mode_select = false;
+
+  /**
    * Determines whether to display custom receipt notes at checkout.
    *
    * @get result
@@ -334,7 +369,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel);
  */
 Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.prototype.config=function()
 {
-  return {"a_field": {"a_item": {"get": {"get": true}},"f_discount_percent": {"get": {"get": true}},"is_check_cart_item": {"get": {"get": true}},"is_commission": {"get": {"result": true}},"is_receipt_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_discount": {"get": {"result": true}},"m_discount_flat": {"get": {"get": true}},"m_discount_total": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_tip": {"get": {"get": true}},"m_tip_purchase": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"text_error_code": {"get": {"result": true}},"text_receipt_note": {"get": {"result": true}},"uid_current": {"get": {"get": true}},"uid_customer": {"get": {"get": true}}}};
+  return {"a_field": {"a_discount_code": {"get": {"result": true}},"a_item": {"get": {"get": true}},"f_discount_percent": {"get": {"get": true}},"is_check_cart_item": {"get": {"get": true}},"is_commission": {"get": {"result": true}},"is_discount_code_mode_select": {"get": {"result": true}},"is_receipt_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_discount": {"get": {"result": true}},"m_discount_flat": {"get": {"get": true}},"m_discount_total": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_tip": {"get": {"get": true}},"m_tip_purchase": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"text_error_code": {"get": {"result": true}},"text_receipt_note": {"get": {"result": true}},"uid_current": {"get": {"get": true}},"uid_customer": {"get": {"get": true}}}};
 };
 
 /**

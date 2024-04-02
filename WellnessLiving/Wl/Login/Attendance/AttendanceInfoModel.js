@@ -222,6 +222,14 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.a_staff = undefined;
 
   /**
+   * Confirmation date+time in MySQL format for appointment/asset. Will be zero date+time if client never confirmed.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.dt_confirm = undefined;
+
+  /**
    * Start date of ste session in MySQL format in GMT.
    *
    * @get result
