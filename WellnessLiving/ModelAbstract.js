@@ -111,6 +111,11 @@ function WlSdk_ModelAbstract()
 }
 
 /**
+ * SDK version number.
+ */
+WlSdk_ModelAbstract.VERSION='202404090954';
+
+/**
  * Credentials to sign requests.
  *
  * <tt>null</tt> if not loaded.
