@@ -225,7 +225,7 @@ WlSdk_ModelAbstract.prototype._ajax = function(a_config)
       if(a_config['type']==='GET')
       {
         if(a_parameter.length)
-          url += '?'+a_parameter.join('&');
+          url += (url.indexOf('?') >= 0 ? '&' : '?')+a_parameter.join('&');
       }
       else
       {
