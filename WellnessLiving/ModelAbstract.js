@@ -51,11 +51,15 @@ function WlSdk_ModelAbstract()
   /**
    * Amazon region ID.
    *
-   * `null` in case when not initialized yet.
+   * Used for make request to specific datacenter.
+   *
+   * `null` in case when request must be sent to default datacenter, by default datacenter selected based on cookie or
+   * based on geolocation.
    *
    * @type {?number}
    * @private
    * @see WlSdk_Config_ConfigRegionSid
+   * @see WlSdk_ModelAbstract.regionSet()
    */
   this._id_region = null;
 
@@ -896,7 +900,7 @@ WlSdk_ModelAbstract.prototype.putSchedule = function(t_timeout)
 /**
  * Sets region ID.
  *
- * @param {number} id_region Region ID.
+ * @param {?number} id_region Region ID. For more details see {@link WlSdk_ModelAbstract._id_region} property.
  */
 WlSdk_ModelAbstract.prototype.regionSet = function(id_region)
 {
@@ -1013,7 +1017,7 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
       if(s_rule)
         a_header['X-Error-Rules'] = s_rule;
 
-      if(o_this._id_region !== null)
+      if(o_this._id_region)
       {
         url = WlSdk_Core_Url.variable(url, {
           '.id-region': o_this._id_region
