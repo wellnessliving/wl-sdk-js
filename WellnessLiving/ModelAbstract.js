@@ -49,6 +49,17 @@ function WlSdk_ModelAbstract()
   this._i_timeout = 0;
 
   /**
+   * Amazon region ID.
+   *
+   * `null` in case when not initialized yet.
+   *
+   * @type {?number}
+   * @private
+   * @see WlSdk_Config_ConfigRegionSid
+   */
+  this._id_region = null;
+
+  /**
    * Whether this model is in sync with server.
    *
    * @type {boolean}
@@ -883,6 +894,16 @@ WlSdk_ModelAbstract.prototype.putSchedule = function(t_timeout)
 };
 
 /**
+ * Sets region ID.
+ *
+ * @param {number} id_region Region ID.
+ */
+WlSdk_ModelAbstract.prototype.regionSet = function(id_region)
+{
+  this._id_region = id_region;
+}
+
+/**
  * Retrieves content of the model from server.
  *
  * @param {{}} a_config Configuration array.
@@ -991,6 +1012,13 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
       }
       if(s_rule)
         a_header['X-Error-Rules'] = s_rule;
+
+      if(o_this._id_region !== null)
+      {
+        url = WlSdk_Core_Url.variable(url, {
+          '.id-region': o_this._id_region
+        });
+      }
 
       var a_ajax = {
         'cache': false,
