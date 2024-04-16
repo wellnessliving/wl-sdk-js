@@ -53,6 +53,14 @@ function Wl_Login_Attendance_StaffApp_Virtual_JoinModel()
   this.k_appointment = null;
 
   /**
+   * Key of the business, where session is going on.
+   *
+   * @get get
+   * @var string|null
+   */
+  this.k_business = null;
+
+  /**
    * Key of the virtual class period.
    * <tt>null</tt> - If the virtual service wait page is open for another type of service. For example: to the appointment.
    *
@@ -87,5 +95,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_StaffApp_Virtual_JoinModel);
  */
 Wl_Login_Attendance_StaffApp_Virtual_JoinModel.prototype.config=function()
 {
-  return {"a_field": {"dtl_service": {"get": {"result": true}},"dtu_class_period": {"get": {"get": true}},"dtu_service": {"get": {"result": true}},"is_fitlive": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"text_service": {"get": {"result": true}},"url_virtual_redirect": {"get": {"result": true}}}};
+  return {"a_field": {"dtl_service": {"get": {"result": true}},"dtu_class_period": {"get": {"get": true}},"dtu_service": {"get": {"result": true}},"is_fitlive": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"text_service": {"get": {"result": true}},"url_virtual_redirect": {"get": {"result": true}}}};
 };
