@@ -129,7 +129,7 @@ WlSdk_AuthorizationSignature.prototype._signatureCompute = function(a_data)
       '2',
       a_signature_check.join(''),
       WlSdk_ModelAbstract.VERSION,
-      window['MpJsData']&&MpJsData ? MpJsData['\\Core\\All\\File::VERSION'] : '[empty]'
+      window['MpJsData']&&MpJsData?MpJsData['\\Core\\All\\File::VERSION']:''
     ];
     if(a_secret&&a_secret.length===4)
     {
