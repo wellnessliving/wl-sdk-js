@@ -32,7 +32,7 @@ function Wl_Appointment_Book_Staff_ListModel()
    * A list of staff members with information about them.
    *
    * @get result
-   * @type {[Wl_Appointment_Book_Staff_ListModel_a_staff]}
+   * @type {Wl_Appointment_Book_Staff_ListModel_a_staff[]}
    */
   this.a_staff = undefined;
 
