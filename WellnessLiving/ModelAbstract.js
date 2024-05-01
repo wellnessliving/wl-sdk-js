@@ -27,6 +27,16 @@ function WlSdk_ModelAbstract()
   this.SCHEDULE_DEFAULT = 2;
 
   /**
+   * Whether `Authorization:` header with signature must be added to the request.
+   *
+   * `true` to add `Authorization:` header with signature to the request.
+   * `false` not to add this header.
+   *
+   * @type {boolean}
+   */
+  this.SIGNATURE = true;
+
+  /**
    * Old values for all model fields.
    *
    * Key is the name of the field.
@@ -615,7 +625,7 @@ WlSdk_ModelAbstract.prototype.getDone = function()
 WlSdk_ModelAbstract.prototype.getIf = function()
 {
   if(this._is_sync)
-    return WlSdk_Config_Mixin.configDeferredCreate().resolve().promise()
+    return WlSdk_Config_Mixin.configDeferredCreate().resolve().promise();
   else if(this._o_defer)
     return this._o_defer.promise();
   else
@@ -929,15 +939,12 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
 
   var s_method = a_config.s_method.toLowerCase();
 
-  var a_data = this.array({
-    's_method': s_method,
-    's_mode': a_config.s_method==='GET'?'get':'post'
-  });
+  let a_data = this.requestGetVariables(s_method);
 
   var url = this.apiUrl();
 
   var s_csrf = WlSdk_Config_Mixin.configCsrf();
-  if(s_csrf)
+  if(s_csrf&&this.SIGNATURE)
     a_data['csrf'] = s_csrf;
 
   var a_url;
@@ -968,7 +975,7 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
   {
     var has_stop = false;
 
-    var is_file = o_this._fileCheck(a_data);
+    const is_file = o_this._fileCheck(a_data);
 
     var a_signature_variable = a_url;
     var o_data_ready;
@@ -993,8 +1000,11 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
     },!empty(a_config['is_public'])).done(function(a_signature)
     {
       var a_header = o_this.header();
-      a_header['X-Signature-Date'] = WlSdk_Core_Date.mysqlHttp(dt_request);
-      a_header['X-Signature-Timezone'] = (new Date()).getTimezoneOffset();
+      if(o_this.SIGNATURE)
+      {
+        a_header['X-Signature-Date'] = WlSdk_Core_Date.mysqlHttp(dt_request);
+        a_header['X-Signature-Timezone'] = (new Date()).getTimezoneOffset();
+      }
       if(a_signature)
       {
         a_header['Authorization'] = a_signature['s_authorization'];
@@ -1250,13 +1260,31 @@ WlSdk_ModelAbstract.prototype.requestExceptionHandle = function(e)
 }
 
 /**
+ * Prepares variables that must be set in the request URL.
+ *
+ * @protected
+ * @param {string} s_method Name of the method for which the variables must be prepared (lowercase).
+ * @return {*} Variables that must be set in the request URL.
+ */
+WlSdk_ModelAbstract.prototype.requestGetVariables = function(s_method)
+{
+  return this.array({
+    's_method': s_method,
+    's_mode': s_method==='get'?'get':'post'
+  });
+};
+
+/**
  * Returns URI of current model.
  *
  * @return {string} URI of current model.
  */
 WlSdk_ModelAbstract.prototype.resource = function()
 {
-  var o_match=this.constructor.toString().match(/function ([A-Za-z0-9_]+)Model\(/);
+  const s_constructor = this.constructor.toString();
+  let o_match = s_constructor.match(/function ([A-Za-z0-9_]+)Model\(/);
+  if(!o_match)
+    o_match = s_constructor.match(/class ([A-Za-z0-9_]+)Model/);
   WlSdk_AssertException.notEmpty(o_match,{
     'constructor': this.constructor,
     'o_model': this,
@@ -1283,7 +1311,7 @@ WlSdk_ModelAbstract.prototype.resource = function()
 WlSdk_ModelAbstract.prototype.signatureAuthorize = function(a_request,is_public)
 {
   var o_deferred = WlSdk_Config_Mixin.configDeferredCreate(get_class(this)+'.signatureAuthorize');
-  if(is_public||!WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID)
+  if(is_public||!WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID||!this.SIGNATURE)
   {
     o_deferred.resolve(null);
   }
