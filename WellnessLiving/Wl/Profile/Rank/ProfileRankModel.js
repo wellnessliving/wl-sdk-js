@@ -22,6 +22,8 @@ function Wl_Profile_Rank_ProfileRankModel()
 
   /**
    * Login rank key.
+   * Can be empty. In this case promotion date will be set for currently promoted belt and belts in all franchisees
+   * a belt was pushed to.
    *
    * @post get
    * @type {string}
