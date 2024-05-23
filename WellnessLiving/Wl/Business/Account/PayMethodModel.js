@@ -1,7 +1,5 @@
 /**
- * Allows to get recurrent default payment method for business.
- *
- * This model is generated automatically based on API.
+ * An endpoint that gets recurring default payment methods for a business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Business_Account_PayMethodModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @type {string}
@@ -19,9 +17,9 @@ function Wl_Business_Account_PayMethodModel()
   this.k_business = undefined;
 
   /**
-   * Returns default recurrent payment source for business.
+   * The default recurring payment source for the business.
    *
-   * <tt>null</tt> if source not managed and automatic payments for business are not available.
+   * This will be `null` if the source isn't managed and automatic payments for the business aren't available.
    *
    * @get result
    * @type {?string}

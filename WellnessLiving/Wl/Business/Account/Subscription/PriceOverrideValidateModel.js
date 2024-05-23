@@ -1,7 +1,5 @@
 /**
- * Allows to validate override options.
- *
- * This model is generated automatically based on API.
+ * An endpoint that validates override options.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,7 @@ function Wl_Business_Account_Subscription_PriceOverrideValidateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of override options.
+   * A List of override options.
    *
    * @get get
    * @type {{}}
@@ -19,7 +17,7 @@ function Wl_Business_Account_Subscription_PriceOverrideValidateModel()
   this.a_override = undefined;
 
   /**
-   * Subscription statuses.
+   * The subscription statuses.
    *
    * @get get
    * @type {number}
@@ -27,7 +25,7 @@ function Wl_Business_Account_Subscription_PriceOverrideValidateModel()
   this.cid_subscription = undefined;
 
   /**
-   * Periodicity of payments.
+   * The schedule period of payments.
    *
    * @get get
    * @type {number}
@@ -35,7 +33,7 @@ function Wl_Business_Account_Subscription_PriceOverrideValidateModel()
   this.id_periodicity = undefined;
 
   /**
-   * Plan ID.
+   * The plan ID.
    *
    * @get get
    * @type {number}
@@ -43,7 +41,7 @@ function Wl_Business_Account_Subscription_PriceOverrideValidateModel()
   this.id_plan = undefined;
 
   /**
-   * Business key from {@link \RsBusinessSql}.
+   * The business key.
    *
    * @get get
    * @type {string}

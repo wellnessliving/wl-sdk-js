@@ -125,12 +125,20 @@ WlSdk_AuthorizationSignature.prototype._signatureCompute = function(a_data)
 
     o_this._s_signature = sha256(a_signature.join("\n"));
 
+    const a_debug = [
+      '2',
+      a_signature_check.join(''),
+      WlSdk_ModelAbstract.VERSION,
+      window['MpJsData']&&MpJsData?MpJsData['\\Core\\All\\File::VERSION']:''
+    ];
     if(a_secret&&a_secret.length===4)
     {
-      o_this._s_signature += '.'+a_secret[1]+'.'+a_signature_check.join('')+'.'+a_secret[2]+'.'+a_secret[3];
-      if(window['MpJsData']&&MpJsData)
-        o_this._s_signature += '.'+MpJsData['\\Core\\All\\File::VERSION'];
+      a_debug.push(a_secret[1]);
+      a_debug.push(a_secret[2]);
+      a_debug.push(a_secret[3]);
     }
+
+    o_this._s_signature += '.'+a_debug.join('.');
   });
 
   return o_array;

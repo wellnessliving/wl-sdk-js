@@ -1,7 +1,5 @@
 /**
- * Allows to modify business payment schedule.
- *
- * This model is generated automatically based on API.
+ * An endpoint that modifies a business's payment schedule.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,9 +9,9 @@ function Wl_Business_Account_BusinessAccountConfigModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of subscription settings.
+   * The list of subscription settings.
    *
-   * Keys are CID of the subscription type and values are arrays of the payments for this subscription required for
+   * Keys are class identifiers (CID) of the subscription type. Values are arrays of the payments for this subscription required for
    * {@link Wl\Business\Account\Subscription\SubscriptionWrite::gather()}
    *
    * @post post
@@ -22,7 +20,7 @@ function Wl_Business_Account_BusinessAccountConfigModel()
   this.a_subscription = [];
 
   /**
-   * Additional tax amount value.
+   * Additional taxes.
    *
    * @post post
    * @type {string}
@@ -30,7 +28,7 @@ function Wl_Business_Account_BusinessAccountConfigModel()
   this.f_tax = undefined;
 
   /**
-   * Number of days to show alert about failed payment.
+   * The number of days to show alerts about failed payments for.
    *
    * @post post
    * @type {number}
@@ -38,7 +36,7 @@ function Wl_Business_Account_BusinessAccountConfigModel()
   this.i_alert_fee = 0;
 
   /**
-   * Number of days after which business should be terminated.
+   * The number of days after which the business should be terminated.
    *
    * @post post
    * @type {number}
@@ -46,7 +44,7 @@ function Wl_Business_Account_BusinessAccountConfigModel()
   this.i_alert_termination = 0;
 
   /**
-   * Whether alert about failed payment should be shown to business owner.
+   * Determines whether alerts about failed payments should be shown to business owners.
    *
    * @post post
    * @type {boolean}
@@ -54,7 +52,7 @@ function Wl_Business_Account_BusinessAccountConfigModel()
   this.is_alert_fee = false;
 
   /**
-   * Whether alert about business future termination should be shown to business owner.
+   * Determines whether alerts about future business terminations should be shown to business owners.
    *
    * @post post
    * @type {boolean}
@@ -62,7 +60,7 @@ function Wl_Business_Account_BusinessAccountConfigModel()
   this.is_alert_termination = false;
 
   /**
-   * Whether business local currency should be used instead of system currency.
+   * Determines whether the business's local currency should be used (instead of the system currency).
    *
    * @post post
    * @type {boolean}
@@ -70,7 +68,7 @@ function Wl_Business_Account_BusinessAccountConfigModel()
   this.is_currency_locale = false;
 
   /**
-   * Whether additional taxes should be used.
+   * Determines whether additional taxes should be used.
    *
    * @post post
    * @type {boolean}
@@ -78,7 +76,7 @@ function Wl_Business_Account_BusinessAccountConfigModel()
   this.is_tax = false;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @post get
    * @type {string}

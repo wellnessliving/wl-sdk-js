@@ -1,7 +1,7 @@
 /**
- * Entry for enter business after confirmation form staff member of franchisee.
+ * An endpoint that allows a franchisor or staff member to enter a franchisee business location.
  *
- * This model is generated automatically based on API.
+ * Access to the franchisee is granted after confirmation.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +11,7 @@ function Wl_Business_AuthorizeSupport_AuthorizeSupportEnterModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Location primary key in {@link \RsLocationSql} table.
+   * The location key.
    *
    * @get get
    * @type {string}

@@ -14,10 +14,25 @@ function Wl_Appointment_Book_Staff_ListModel()
   this._s_key = "k_location,k_service,dt_date,is_unavailable,id_role,k_appointment_ignore,k_timezone";
 
   /**
+   * Describes structure of the field {@link Wl_Appointment_Book_Staff_ListModel.a_staff}.
+   *
+   * @typedef {{}} Wl_Appointment_Book_Staff_ListModel_a_staff
+   * @property {number} [id_gender] Gender ID. One of {@link Wl_Gender_GenderSid} constants.
+   * @property {boolean} [is_available] Whether staff member is available for booking appointment.
+   * @property {boolean} [is_daily_limit] Whether staff member reached daily limit to lead appointment.
+   * @property {boolean} [is_wait_list] Whether staff member is available only for wait list booking.
+   * @property {string} [k_staff] Key of the staff member.
+   * @property {string} [s_position] Title of the job.
+   * @property {string} [s_staff] Name of the staff member.
+   * @property {string} [uid] Uid of the staff member.
+   * @property {string} [xml_biography] Biography of the staff member.
+   */
+
+  /**
    * A list of staff members with information about them.
    *
    * @get result
-   * @type {{}[]}
+   * @type {Wl_Appointment_Book_Staff_ListModel_a_staff[]}
    */
   this.a_staff = undefined;
 
@@ -113,6 +128,16 @@ function Wl_Appointment_Book_Staff_ListModel()
    */
   this.k_timezone = null;
 
+  /**
+   * Key of user for whom the service is booking.
+   *
+   * `null` if not set.
+   *
+   * @get get
+   * @type {string|null}
+   */
+  this.uid = null;
+
   this.changeInit();
 }
 
@@ -123,7 +148,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Staff_ListModel);
  */
 Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_staff": {"get": {"result": true}},"can_book_unavailable_staff": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"has_gender": {"get": {"result": true}},"has_staff": {"get": {"result": true}},"id_role": {"get": {"get": true}},"is_gender_different": {"get": {"result": true}},"is_unavailable": {"get": {"get": true}},"k_appointment_ignore": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}}}};
+  return {"a_field": {"a_staff": {"get": {"result": true}},"can_book_unavailable_staff": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"has_gender": {"get": {"result": true}},"has_staff": {"get": {"result": true}},"id_role": {"get": {"get": true}},"is_gender_different": {"get": {"result": true}},"is_unavailable": {"get": {"get": true}},"k_appointment_ignore": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -135,7 +160,7 @@ Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
  * @param {boolean} is_unavailable `true` - returns service categories that have no staff members available to conduct them. `false` - returns only service categories that have staff members available to conduct them.
  * @param {number} id_role User role by whom this api called. For different roles different results might be generated.
  * @param {string} k_appointment_ignore Key of appointment which must be ignored when searches available staff.
- * @param {?string} k_timezone User's timezone primary key in {@link \AGeoTimezoneSql} table. <tt>null</tt> until initialized or to use location timezone.
+ * @param {?string} k_timezone User's timezone primary key in {@link \AGeoTimezoneSql} table. `null` until initialized or to use location timezone.
  * @returns {Wl_Appointment_Book_Staff_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

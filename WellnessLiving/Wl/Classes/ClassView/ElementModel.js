@@ -94,6 +94,9 @@ function Wl_Classes_ClassView_ElementModel()
    * If can be `0`, this means that class is free.
    * @property {boolean} is_virtual Whether the item is virtual.
    * @property {boolean} is_event Whether the item is event or class instance. `true` if item is event instance, `false` otherwise.
+   * @property {boolean|null} is_own This field will be `true` if the image used for the class is an image uploaded in class setup. If the image is
+   * not uploaded in the class setup, but there is at least one image in Setup->Locations image slider,
+   * this field will be `false`. `null` if class image is not uploaded, and there are no images in location slider, in this case empty image is used.
    * @property {string} k_class The class key.
    * @property {string} m_price Drop In price, if class allows to pay for one visit.
    * @property {boolean} show_special_instructions `true` if special instructions can be public, `false` if they should be shown only to the clients, who booked the class.
@@ -146,6 +149,13 @@ function Wl_Classes_ClassView_ElementModel()
    *   <dd>Tags for quick search.</dd>
    *   <dt>array <var>a_visits_required</var></dt>
    *   <dd>Information about visits that should be visited prior to visit this class/event.</dd>
+   *   <dt>bool|null <var>has_own_image</var></dt>
+   *   <dd>
+   *     This field will be `true` if the image used for the class is an image uploaded in class setup.
+   *     If the image is not uploaded in the class setup, but there is at least one image in Setup->Locations image slider,
+   *     this field will be `false`.
+   *     `null` if class image is not uploaded, and there are no images in location slider, in this case empty image is used.
+   *   </dd>
    *   <dt>string <var>html_description</var></dt>
    *   <dd>Description safe to be inserted to browser.</dd>
    *   <dt>string <var>html_special_instruction</var></dt>

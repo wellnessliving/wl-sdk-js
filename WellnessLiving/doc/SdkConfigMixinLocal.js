@@ -37,6 +37,8 @@ WlSdk_Config_Mixin.ID_REGION = WlSdk_Config_ConfigRegionSid.US_EAST_1;
  */
 WlSdk_Config_Mixin.URL_CSRF = 'http://stable.wellnessliving.lc/secret.php';  // Example of API URL.
 
+var WLSDK_CSRF_CODE_VARIABLE=null;
+
 /**
  * Returns CSRF code based on session key.
  *
@@ -113,3 +115,18 @@ WlSdk_Config_Mixin.signatureCompose = function(s_signature)
 {
   return WlSdk_Config_Mixin.SIGNATURE_VERSION+','+WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID+',,'+s_signature;
 };*/
+
+/**
+ * Returns URL of the Edge Cache.
+ *
+ * @return {string} URL of the Edge Cache.
+ */
+WlSdk_Config_Mixin.urlEdge = function()
+{
+  // Valid values:
+  //
+  // Production: https://edge.wellnessliving.com/
+  // Sandbox: https://edge.sandbox.wellnessliving.com/
+
+  return 'https://edge.wellnessliving.com/';
+};
