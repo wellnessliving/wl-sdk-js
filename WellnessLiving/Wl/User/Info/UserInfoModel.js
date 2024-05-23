@@ -23,6 +23,14 @@ function Wl_User_Info_UserInfoModel()
    */
 
   /**
+   * List of member groups that the user belongs to.
+   *
+   * @get result
+   * @type {string[]}
+   */
+  this.a_member_group = undefined;
+
+  /**
    * Information about the user's photo. The information returned has the following structure:<dl>
    *   <dt>int <var>i_height</var></dt>
    *   <dd>The height of the photo.</dd>
@@ -167,7 +175,7 @@ WlSdk_ModelAbstract.extend(Wl_User_Info_UserInfoModel);
  */
 Wl_User_Info_UserInfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_photo": {"get": {"result": true}},"dt_add": {"get": {"result": true}},"dt_birth": {"get": {"result": true}},"id_gender": {"get": {"result": true}},"is_customer_new": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_login_type": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_photo": {"get": {"result": true}}}};
+  return {"a_field": {"a_member_group": {"get": {"result": true}},"a_photo": {"get": {"result": true}},"dt_add": {"get": {"result": true}},"dt_birth": {"get": {"result": true}},"id_gender": {"get": {"result": true}},"is_customer_new": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_login_type": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_photo": {"get": {"result": true}}}};
 };
 
 /**
