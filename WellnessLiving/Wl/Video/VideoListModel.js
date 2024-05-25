@@ -79,6 +79,14 @@ function Wl_Video_VideoListModel()
   this.a_order = undefined;
 
   /**
+   * Pagination data.
+   *
+   * @get result
+   * @type {{}}
+   */
+  this.a_page = [];
+
+  /**
    * A list of staff members who appear in videos.
    *
    * @get get
@@ -103,13 +111,32 @@ function Wl_Video_VideoListModel()
   this.a_video_tag = undefined;
 
   /**
+   * Page to return.
+   * Pagination are ignored when count of videos less than {@link Wl_Video_VideoListModel.VIDEO_COUNT_PAGINATION}.
+   *
+   * `null` if you need to return all the videos.
+   *
+   * @get get
+   * @type {?number}
+   */
+  this.i_page = null;
+
+  /**
+   * Sort order ID. One of {@link Core_Sid_SortOrderSid} constants. `null` or 0 if order is undefined and depends on sort order.
+   *
+   * @get get,result
+   * @type {?number}
+   */
+  this.id_order = 0;
+
+  /**
    * The sorting type.
    * A constant from {@link Wl_Video_Catalog_Filter_Sort_FilterSortSid}.
    *
-   * @get get
-   * @type {number}
+   * @get get,result
+   * @type {?number}
    */
-  this.id_sort = undefined;
+  this.id_sort = 0;
 
   /**
    * If `true`, the API is being used from backend. Otherwise, this will be `false`.
@@ -159,7 +186,7 @@ WlSdk_ModelAbstract.extend(Wl_Video_VideoListModel);
  */
 Wl_Video_VideoListModel.prototype.config=function()
 {
-  return {"a_field": {"a_calorie": {"get": {"get": true}},"a_duration": {"get": {"get": true}},"a_level": {"get": {"get": true}},"a_list": {"get": {"result": true}},"a_location": {"get": {"get": true}},"a_order": {"put": {"post": true}},"a_staff": {"get": {"get": true}},"a_video_category": {"get": {"get": true}},"a_video_tag": {"get": {"get": true}},"id_sort": {"get": {"get": true}},"is_backend": {"get": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"text_search": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_calorie": {"get": {"get": true}},"a_duration": {"get": {"get": true}},"a_level": {"get": {"get": true}},"a_list": {"get": {"result": true}},"a_location": {"get": {"get": true}},"a_order": {"put": {"post": true}},"a_page": {"get": {"result": true}},"a_staff": {"get": {"get": true}},"a_video_category": {"get": {"get": true}},"a_video_tag": {"get": {"get": true}},"i_page": {"get": {"get": true}},"id_order": {"get": {"get": true,"result": true}},"id_sort": {"get": {"get": true,"result": true}},"is_backend": {"get": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"text_search": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**

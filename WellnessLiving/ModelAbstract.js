@@ -27,6 +27,16 @@ function WlSdk_ModelAbstract()
   this.SCHEDULE_DEFAULT = 2;
 
   /**
+   * Whether `Authorization:` header with signature must be added to the request.
+   *
+   * `true` to add `Authorization:` header with signature to the request.
+   * `false` not to add this header.
+   *
+   * @type {boolean}
+   */
+  this.SIGNATURE = true;
+
+  /**
    * Old values for all model fields.
    *
    * Key is the name of the field.
@@ -47,6 +57,21 @@ function WlSdk_ModelAbstract()
    * @private
    */
   this._i_timeout = 0;
+
+  /**
+   * Amazon region ID.
+   *
+   * Used for make request to specific datacenter.
+   *
+   * `null` in case when request must be sent to default datacenter, by default datacenter selected based on cookie or
+   * based on geolocation.
+   *
+   * @type {?number}
+   * @private
+   * @see WlSdk_Config_ConfigRegionSid
+   * @see WlSdk_ModelAbstract.regionSet()
+   */
+  this._id_region = null;
 
   /**
    * Whether this model is in sync with server.
@@ -109,6 +134,11 @@ function WlSdk_ModelAbstract()
    */
   this._s_key = null;
 }
+
+/**
+ * SDK version number.
+ */
+WlSdk_ModelAbstract.VERSION='202404090954';
 
 /**
  * Credentials to sign requests.
@@ -205,7 +235,7 @@ WlSdk_ModelAbstract.prototype._ajax = function(a_config)
       if(a_config['type']==='GET')
       {
         if(a_parameter.length)
-          url += '?'+a_parameter.join('&');
+          url += (url.indexOf('?') >= 0 ? '&' : '?')+a_parameter.join('&');
       }
       else
       {
@@ -595,7 +625,7 @@ WlSdk_ModelAbstract.prototype.getDone = function()
 WlSdk_ModelAbstract.prototype.getIf = function()
 {
   if(this._is_sync)
-    return WlSdk_Config_Mixin.configDeferredCreate().resolve().promise()
+    return WlSdk_Config_Mixin.configDeferredCreate().resolve().promise();
   else if(this._o_defer)
     return this._o_defer.promise();
   else
@@ -878,6 +908,16 @@ WlSdk_ModelAbstract.prototype.putSchedule = function(t_timeout)
 };
 
 /**
+ * Sets region ID.
+ *
+ * @param {?number} id_region Region ID. For more details see {@link WlSdk_ModelAbstract._id_region} property.
+ */
+WlSdk_ModelAbstract.prototype.regionSet = function(id_region)
+{
+  this._id_region = id_region;
+}
+
+/**
  * Retrieves content of the model from server.
  *
  * @param {{}} a_config Configuration array.
@@ -899,15 +939,12 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
 
   var s_method = a_config.s_method.toLowerCase();
 
-  var a_data = this.array({
-    's_method': s_method,
-    's_mode': a_config.s_method==='GET'?'get':'post'
-  });
+  let a_data = this.requestGetVariables(s_method);
 
   var url = this.apiUrl();
 
   var s_csrf = WlSdk_Config_Mixin.configCsrf();
-  if(s_csrf)
+  if(s_csrf&&this.SIGNATURE)
     a_data['csrf'] = s_csrf;
 
   var a_url;
@@ -938,7 +975,7 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
   {
     var has_stop = false;
 
-    var is_file = o_this._fileCheck(a_data);
+    const is_file = o_this._fileCheck(a_data);
 
     var a_signature_variable = a_url;
     var o_data_ready;
@@ -963,8 +1000,11 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
     },!empty(a_config['is_public'])).done(function(a_signature)
     {
       var a_header = o_this.header();
-      a_header['X-Signature-Date'] = WlSdk_Core_Date.mysqlHttp(dt_request);
-      a_header['X-Signature-Timezone'] = (new Date()).getTimezoneOffset();
+      if(o_this.SIGNATURE)
+      {
+        a_header['X-Signature-Date'] = WlSdk_Core_Date.mysqlHttp(dt_request);
+        a_header['X-Signature-Timezone'] = (new Date()).getTimezoneOffset();
+      }
       if(a_signature)
       {
         a_header['Authorization'] = a_signature['s_authorization'];
@@ -986,6 +1026,13 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
       }
       if(s_rule)
         a_header['X-Error-Rules'] = s_rule;
+
+      if(o_this._id_region)
+      {
+        url = WlSdk_Core_Url.variable(url, {
+          '.id-region': o_this._id_region
+        });
+      }
 
       var a_ajax = {
         'cache': false,
@@ -1213,13 +1260,31 @@ WlSdk_ModelAbstract.prototype.requestExceptionHandle = function(e)
 }
 
 /**
+ * Prepares variables that must be set in the request URL.
+ *
+ * @protected
+ * @param {string} s_method Name of the method for which the variables must be prepared (lowercase).
+ * @return {*} Variables that must be set in the request URL.
+ */
+WlSdk_ModelAbstract.prototype.requestGetVariables = function(s_method)
+{
+  return this.array({
+    's_method': s_method,
+    's_mode': s_method==='get'?'get':'post'
+  });
+};
+
+/**
  * Returns URI of current model.
  *
  * @return {string} URI of current model.
  */
 WlSdk_ModelAbstract.prototype.resource = function()
 {
-  var o_match=this.constructor.toString().match(/function ([A-Za-z0-9_]+)Model\(/);
+  const s_constructor = this.constructor.toString();
+  let o_match = s_constructor.match(/function ([A-Za-z0-9_]+)Model\(/);
+  if(!o_match)
+    o_match = s_constructor.match(/class ([A-Za-z0-9_]+)Model/);
   WlSdk_AssertException.notEmpty(o_match,{
     'constructor': this.constructor,
     'o_model': this,
@@ -1246,7 +1311,7 @@ WlSdk_ModelAbstract.prototype.resource = function()
 WlSdk_ModelAbstract.prototype.signatureAuthorize = function(a_request,is_public)
 {
   var o_deferred = WlSdk_Config_Mixin.configDeferredCreate(get_class(this)+'.signatureAuthorize');
-  if(is_public||!WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID)
+  if(is_public||!WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID||!this.SIGNATURE)
   {
     o_deferred.resolve(null);
   }

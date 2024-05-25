@@ -17,8 +17,10 @@ function Wl_Login_Search_StaffApp_ListModel()
 
   /**
    * @typedef {{}} Wl_Login_Search_StaffApp_ListModel_a_list
+   * @property {string} text_mail Client's email.
    * @property {string} text_name_first Client's first name.
    * @property {string} text_name_last Client's last name.
+   * @property {string} text_phone Client's phone.
    * @property {string} text_title The client name.
    * @property {string} uid The client key.
    */
@@ -31,10 +33,14 @@ function Wl_Login_Search_StaffApp_ListModel()
    *
    * Each element is an array with the following keys:
    * <dl>
+   *   <dt>string <var>text_mail</var></dt>
+   *   <dd>Client's email.</dd>
    *   <dt>string <var>text_name_first</var></dt>
    *   <dd>Client's first name.</dd>
    *   <dt>string <var>text_name_last</var></dt>
    *   <dd>Client's last name.</dd>
+   *   <dt>string <var>text_phone</var></dt>
+   *   <dd>Client's phone.</dd>
    *   <dt>string <var>text_title</var></dt>
    *   <dd>The client name.</dd>
    *   <dt>string <var>uid</var></dt>

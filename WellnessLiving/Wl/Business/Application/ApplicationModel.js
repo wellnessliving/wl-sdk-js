@@ -1,7 +1,5 @@
 /**
- * Api point allowing to get information about the business application.
- *
- * This model is generated automatically based on API.
+ * An endpoint that gets information about the business application.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,7 +14,7 @@ function Wl_Business_Application_ApplicationModel()
   this._s_key = "k_business";
 
   /**
-   * Key of a business to show information for.
+   * The key of the business to show information for.
    *
    * @get get
    * @type {string}
@@ -24,7 +22,7 @@ function Wl_Business_Application_ApplicationModel()
   this.k_business = "";
 
   /**
-   * Application title. Empty for default application.
+   * The application title. This will be empty for the default application.
    *
    * @get result
    * @type {string}
@@ -47,7 +45,7 @@ Wl_Business_Application_ApplicationModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Business_Application_ApplicationModel.instanceGet
- * @param {string} k_business Key of a business to show information for.
+ * @param {string} k_business The key of the business to show information for.
  * @returns {Wl_Business_Application_ApplicationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

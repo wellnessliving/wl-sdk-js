@@ -31,6 +31,9 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_height The image height.
    * @property {number} i_width The image width.
    * @property {boolean} is_empty This will be `true` if there's no image and a default is used.
+   * @property {boolean|null} is_own This field will be `true` if the image used for the class is an image uploaded in class setup. If the image is
+   * not uploaded in the class setup, but there is at least one image in Setup->Locations image slider,
+   * this field will be `false`. `null` if class image is not uploaded, and there are no images in location slider, in this case empty image is used.
    * @property {string} s_url The URL link to the image.
    */
   /**
@@ -42,6 +45,11 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * <dd>The image width.</dd>
    * <dt>bool <tt>is_empty</tt></dt>
    * <dd>This will be `true` if there's no image and a default is used.</dd>
+   * <dt>bool|null <var>is_own</var></dt>
+   * <dd>This field will be `true` if the image used for the class is an image uploaded in class setup. If the image is
+   * not uploaded in the class setup, but there is at least one image in Setup->Locations image slider,
+   * this field will be `false`. `null` if class image is not uploaded, and there are no images in location slider,
+   * in this case empty image is used.</dd>
    * <dt>string <tt>s_url</tt></dt>
    * <dd>The URL link to the image.</dd>
    *   </dl>
@@ -80,6 +88,11 @@ function Wl_Schedule_ClassView_ClassViewModel()
    *     <dd>The image width.</dd>
    *     <dt>bool <var>is_empty</var></dt>
    *     <dd>This will be `true` if there's no image and a default is used.</dd>
+   *     <dt>bool|null <var>is_own</var></dt>
+   *     <dd>This field will be `true` if the image used for the class is an image uploaded in class setup. If the image is
+   *     not uploaded in the class setup, but there is at least one image in Setup->Locations image slider,
+   *     this field will be `false`. `null` if class image is not uploaded, and there are no images in location slider,
+   *     in this case empty image is used.</dd>
    *     <dt>string <var>s_url</var></dt>
    *     <dd>The URL link to the image.</dd>
    *   </dl></dd>
@@ -108,6 +121,12 @@ function Wl_Schedule_ClassView_ClassViewModel()
    *   <dd>The class capacity.</dd>
    *   <dt>int <var>i_duration</var></dt>
    *   <dd>The class duration in minutes.</dd>
+   *   <dt>
+   *      int <var>id_deny_reason</var>
+   *    </dt>
+   *    <dd>
+   *      ID of deny reason. One of {@link \Wl\Schedule\ClassView\DenyReasonSid} constants.
+   *    </dd>
    *   <dt>bool <var>is_book</var></dt>
    *   <dd>This will be `true` if the current class was booked by the current client.</dd>
    *   <dt>bool <var>is_cancel</var></dt>

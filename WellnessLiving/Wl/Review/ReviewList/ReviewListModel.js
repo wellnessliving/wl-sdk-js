@@ -1,5 +1,6 @@
 /**
- * An endpoint that returns a list of review IDs for all reviews for a location.
+ * An endpoint that returns a list of review IDs for all reviews for a location. If location is not specified, returns
+ * all reviews for all locations in the specified business.
  *
  * Reviews in WellnessLiving apply to specific locations. This endpoint can be used to get the IDs for all reviews or
  * to get a listing that includes all the review data if the `i_page parameter` is set.
@@ -16,7 +17,7 @@ function Wl_Review_ReviewList_ReviewListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_location,uid,id_order,i_page";
+  this._s_key = "k_business,k_location,uid,id_order,i_page";
 
   /**
    * @typedef {{}} Wl_Review_ReviewList_ReviewListModel_a_review
@@ -24,6 +25,7 @@ function Wl_Review_ReviewList_ReviewListModel()
    * @property {string} dl_reply Date when staff reply to review. Can be empty string if no one replied.
    * @property {string} dt_add Date when review added.
    * @property {number} f_rate Rate of review.
+   * @property {boolean} is_featured <tt>true</tt> if review is featured, <tt>false</tt> otherwise.
    * @property {boolean} is_verify <tt>true</tt> if review is verify, <tt>false</tt> otherwise.
    * @property {string} k_review Review key.
    * @property {string} s_firstname First name of user who wrote review.
@@ -67,10 +69,22 @@ function Wl_Review_ReviewList_ReviewListModel()
    *     Rate of review.
    *   </dd>
    *   <dt>
+   *     bool <var>is_featured</var>
+   *   </dt>
+   *   <dd>
+   *     <tt>true</tt> if review is featured, <tt>false</tt> otherwise.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_verify</var>
    *   </dt>
    *   <dd>
    *     <tt>true</tt> if review is verify, <tt>false</tt> otherwise.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_location</var>
+   *   </dt>
+   *   <dd>
+   *     The location ID for where the review was left/assigned.
    *   </dd>
    *   <dt>
    *     string <var>k_review</var>
@@ -173,7 +187,15 @@ function Wl_Review_ReviewList_ReviewListModel()
   this.id_order = null;
 
   /**
-   * The key of the location to show reviews for.
+   * The key of the business to show reviews for. If not specified, location key needs to be specified.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_business = "";
+
+  /**
+   * The key of the location to show reviews for. If location is not specified, business key needs to be specified.
    *
    * @get get
    * @type {string}
@@ -199,12 +221,13 @@ WlSdk_ModelAbstract.extend(Wl_Review_ReviewList_ReviewListModel);
  */
 Wl_Review_ReviewList_ReviewListModel.prototype.config=function()
 {
-  return {"a_field": {"a_review": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_order": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_review": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_order": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Review_ReviewList_ReviewListModel.instanceGet
+ * @param {string} k_business The key of the business to show reviews for.
  * @param {string} k_location The key of the location to show reviews for.
  * @param {string} uid The user's key. WellnessLiving allows staff to check low-rated reviews before posting them. Staff members can see all reviews. Clients can only see checked reviews.
  * @param {?number} id_order The order in which the review should be arranged. One of the {@link Wl_Review_ReviewList_ReviewOrderSid} constants. If not passed use default order {@link Wl_Review_ReviewList_ReviewOrderSid.LATEST}.

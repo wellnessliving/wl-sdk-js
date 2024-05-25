@@ -16,6 +16,32 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this._s_key = "dt_date_local,k_appointment,k_class_period,k_business";
 
   /**
+   * @typedef {{}} Wl_Login_Attendance_AttendanceInfoModel_a_appointment_visit_info
+   * @property {boolean} is_deny `true` means that appointment was requested and denied by the staff.
+   * @property {boolean} is_notify_request_accept `true` means that the client will receive a notification, if appointment will be confirmed by the staff.
+   * @property {boolean} is_notify_request_deny `true` means that the client will receive a notification, if appointment will be denied by the staff.
+   * @property {boolean} is_request `true` means that appointment was requested, but not confirmed by the staff.
+   */
+
+  /**
+   * * Additional visit information about this appointment. Empty array if it's not an appointment:
+   * <dl>
+   *   <dt>bool <var>is_deny</var></dt>
+   *   <dd>`true` means that appointment was requested and denied by the staff.</dd>
+   *   <dt>bool <var>is_notify_request_accept</var></dt>
+   *   <dd>`true` means that the client will receive a notification, if appointment will be confirmed by the staff.</dd>
+   *   <dt>bool <var>is_notify_request_deny</var></dt>
+   *   <dd>`true` means that the client will receive a notification, if appointment will be denied by the staff.</dd>
+   *   <dt>bool <var>is_request</var></dt>
+   *   <dd>`true` means that appointment was requested, but not confirmed by the staff.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_Login_Attendance_AttendanceInfoModel_a_appointment_visit_info}
+   */
+  this.a_appointment_visit_info = undefined;
+
+  /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceInfoModel_a_logo
    * @property {boolean} is_empty Whether service image is empty.
    * @property {string} s_url Url link to image.
@@ -196,6 +222,14 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.a_staff = undefined;
 
   /**
+   * Confirmation date+time in MySQL format for appointment/asset. Will be zero date+time if client never confirmed.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.dt_confirm = undefined;
+
+  /**
    * Start date of ste session in MySQL format in GMT.
    *
    * @get result
@@ -352,7 +386,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_AttendanceInfoModel);
  */
 Wl_Login_Attendance_AttendanceInfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_logo": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_resource_layout": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"dtu_wait_promote": {"get": {"result": true}},"has_note": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_service": {"get": {"result": true}},"is_start_virtual_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_time_end": {"get": {"result": true}},"text_time_start": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
+  return {"a_field": {"a_appointment_visit_info": {"get": {"result": true}}, "a_logo": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_resource_layout": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"dtu_wait_promote": {"get": {"result": true}},"has_note": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_service": {"get": {"result": true}},"is_start_virtual_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_time_end": {"get": {"result": true}},"text_time_start": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
 };
 
 /**

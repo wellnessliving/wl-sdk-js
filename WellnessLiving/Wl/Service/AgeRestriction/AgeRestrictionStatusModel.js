@@ -24,6 +24,16 @@ function Wl_Service_AgeRestriction_AgeRestrictionStatusModel()
   this.can_book = undefined;
 
   /**
+   * Date of service.
+   *
+   * Empty value means not set.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.dtu_date = "";
+
+  /**
    * Class period key.
    *
    * Empty value means not set.
@@ -51,12 +61,13 @@ WlSdk_ModelAbstract.extend(Wl_Service_AgeRestriction_AgeRestrictionStatusModel);
  */
 Wl_Service_AgeRestriction_AgeRestrictionStatusModel.prototype.config=function()
 {
-  return {"a_field": {"can_book": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"can_book": {"get": {"result": true}},"dtu_date": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Service_AgeRestriction_AgeRestrictionStatusModel.instanceGet
+ * @param {string} dtu_date Date of service. Empty value means not set.
  * @param {string} k_class_period Class period key. Empty value means not set.
  * @param {string} uid User key.
  * @returns {Wl_Service_AgeRestriction_AgeRestrictionStatusModel}

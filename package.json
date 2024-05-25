@@ -1,0 +1,16 @@
+{
+  "name": "@wellnessliving/wl-sdk-js",
+  "version": "1.0.0",
+  "description": "WellnessLiving API JavaScript SDK",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wellnessliving/wl-sdk-js.git"
+  },
+  "author": "WellnessLiving",
+  "license": "proprietary",
+  "bugs": {
+    "url": "https://github.com/wellnessliving/wl-sdk-js/issues"
+  },
+  "homepage": "https://github.com/wellnessliving/wl-sdk-js#readme",
+  "private": true
+}

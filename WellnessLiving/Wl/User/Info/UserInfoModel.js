@@ -48,6 +48,93 @@ function Wl_User_Info_UserInfoModel()
   this.a_photo = undefined;
 
   /**
+   * @typedef {{}} Wl_User_Info_UserInfoModel_a_result_list
+   * @property {Wl_User_Info_UserInfoModel_a_photo} a_photo Information about the user's photo.
+   * @property {string} dt_add The date the user was added, given in UTC time.
+   * @property {string} dt_birth The user's birthday. This will be `null` if the birthday isn't set yet.
+   * @property {number} id_gender The ID of the user's gender. This will be `null` if the gender isn't set yet.
+   * @property {boolean} is_customer_new This will be `true` if the user has never made purchases or reservations in this business.
+   * Otherwise, this will be `false`.
+   * @property {boolean} is_traveller This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
+   * in the Enterprise business.
+   * @property {string} k_business The key of the business. This may be empty if system-wide information is needed.
+   * @property {string} k_login_type The key of the login type. The login type describes the user's client type in this business.
+   * @property {string} s_first_name The user's first name.
+   * @property {string} s_last_name The user's last name.
+   * @property {string} s_mail The user's email address.
+   * @property {string} s_member The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
+   * is set by the business and separate from the <var>uid</var> value.
+   * @property {string} s_phone The user's phone number.
+   * @property {string} uid The key of the user.
+   * @property {string} url_photo The URL for the user's photo.
+   */
+
+  /**
+   * List of user's data.
+   *
+   * <dl>
+   *   <dt>array <var>a_photo</var></dt>
+   *   <dd>Information about the user's photo.</dd>
+   *   <dt>string <var>dt_add</var></dt>
+   *   <dd>The date the user was added, given in UTC time.</dd>
+   *   <dt>string <var>dt_birth</var></dt>
+   *   <dd>
+   *     The user's birthday. This will be `null` if the birthday isn't set yet.
+   *   </dd>
+   *   <dt>int <var>id_gender</var></dt>
+   *   <dd>The ID of the user's gender. One of the {@link \AGenderSid} constants.</dd>
+   *   <dt>bool <var>is_customer_new</var></dt>
+   *   <dd>
+   *     This will be `true` if the user has never made purchases or reservations in this business.
+   *     Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>bool <var>is_traveller</var></dt>
+   *   <dd>
+   *     This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
+   *     in the Enterprise business.
+   *   </dd>
+   *   <dt>string <var>k_business</var></dt>
+   *   <dd>
+   *     The key of the business.
+   *     This may be empty if system-wide information is needed.
+   *   </dd>
+   *   <dt>string <var>k_login_type</var></dt>
+   *   <dd>The key of the login type. The login type describes the user's client type in this business.</dd>
+   *   <dt>string <var>s_first_name</var></dt>
+   *   <dd>The user's first name.</dd>
+   *   <dt>string <var>s_last_name</var></dt>
+   *   <dd>The user's last name.</dd>
+   *   <dt>string <var>s_mail</var></dt>
+   *   <dd>The user's email address.</dd>
+   *   <dt>string <var>s_member</var></dt>
+   *   <dd>
+   *     The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
+   *     is set by the business and separate from the <var>uid</var> value.
+   *   </dd>
+   *   <dt>string <var>s_phone</var></dt>
+   *   <dd>
+   *     The user's phone number.
+   *   </dd>
+   *   <dt>string <var>uid</var></dt>
+   *   <dd>The key of the user.</dd>
+   *   <dt>string <var>url_photo</var></dt>
+   *   <dd>The URL for the user's photo.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_User_Info_UserInfoModel_a_result_list}
+   */
+  this.a_result_list = undefined;
+
+  /**
+   * A list of user keys.
+   *
+   * @get get
+   * @type {string[]}
+   */
+  this.a_user_list = undefined;
+
+  /**
    * The date the user was added, given in UTC time.
    *
    * @get result
@@ -152,7 +239,7 @@ function Wl_User_Info_UserInfoModel()
   /**
    * The key of the user.
    *
-   * @get get
+   * @get get,result
    * @type {string}
    */
   this.uid = "0";

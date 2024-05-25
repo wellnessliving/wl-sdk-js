@@ -21,6 +21,16 @@ function Wl_Profile_Rank_ProfileRankModel()
   this.dtu_promotion_date = null;
 
   /**
+   * Login rank key.
+   * Can be empty. In this case promotion date will be set for currently promoted belt and belts in all franchisees
+   * a belt was pushed to.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.k_login_rank = undefined;
+
+  /**
    * Rank key.
    * Promotion date on which to be changed.
    *
@@ -50,5 +60,5 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Rank_ProfileRankModel);
  */
 Wl_Profile_Rank_ProfileRankModel.prototype.config=function()
 {
-  return {"a_field": {"dtu_promotion_date": {"get": {"result": true},"post": {"get": true}},"k_rank": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"dtu_promotion_date": {"get": {"result": true},"post": {"get": true}},"k_login_rank": {"post": {"get": true}},"k_rank": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

@@ -1,7 +1,5 @@
 /**
- * Api to churn business.
- *
- * This model is generated automatically based on API.
+ * An endpoint that churns a business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,8 +9,8 @@ function Wl_Business_Churn_BusinessChurnModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Business churn date.
-   * <tt>null</tt> if not initialized yet.
+   * The business's churn date.
+   * This will be `null` if not set yet.
    *
    * @post get
    * @type {?string}
@@ -20,7 +18,7 @@ function Wl_Business_Churn_BusinessChurnModel()
   this.dl_churn = null;
 
   /**
-   * <tt>true</tt> if business is a lost customer, <tt>false</tt> - otherwise.
+   * If `true`, the business is a lost customer. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -28,7 +26,7 @@ function Wl_Business_Churn_BusinessChurnModel()
   this.is_churn = undefined;
 
   /**
-   * Business key.
+   * The business key.
    *
    * @get get
    * @post get
@@ -37,7 +35,7 @@ function Wl_Business_Churn_BusinessChurnModel()
   this.k_business = undefined;
 
   /**
-   * Business name
+   * The business name.
    *
    * @get result
    * @type {string}
@@ -45,7 +43,7 @@ function Wl_Business_Churn_BusinessChurnModel()
   this.text_business_name = undefined;
 
   /**
-   * Reason of a business churn.
+   * The reason for the business churn.
    *
    * @post get
    * @type {string}
