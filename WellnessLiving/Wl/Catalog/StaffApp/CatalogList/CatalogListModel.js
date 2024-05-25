@@ -53,12 +53,14 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    *   </dt>
    *   <dd>
    *     List of login types available to purchase sale item.
+   *     Empty list means that the sale item is available to all login types.
    *   </dd>
    *   <dt>
    *     string[] <var>a_member_group</var>
    *   </dt>
    *   <dd>
    *     The list of member groups available to purchase the sale item.
+   *     Empty list means that the sale item is available to all member groups.
    *   </dd>
    *   <dt>
    *     string[] <var>a_shop_category</var>
