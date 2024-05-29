@@ -14,10 +14,25 @@ function Wl_Appointment_Book_Staff_ListModel()
   this._s_key = "k_location,k_service,dt_date,is_unavailable,id_role,k_appointment_ignore,k_timezone";
 
   /**
+   * Describes structure of the field {@link Wl_Appointment_Book_Staff_ListModel.a_staff}.
+   *
+   * @typedef {{}} Wl_Appointment_Book_Staff_ListModel_a_staff
+   * @property {number} [id_gender] Gender ID. One of {@link Wl_Gender_GenderSid} constants.
+   * @property {boolean} [is_available] Whether staff member is available for booking appointment.
+   * @property {boolean} [is_daily_limit] Whether staff member reached daily limit to lead appointment.
+   * @property {boolean} [is_wait_list] Whether staff member is available only for wait list booking.
+   * @property {string} [k_staff] Key of the staff member.
+   * @property {string} [s_position] Title of the job.
+   * @property {string} [s_staff] Name of the staff member.
+   * @property {string} [uid] Uid of the staff member.
+   * @property {string} [xml_biography] Biography of the staff member.
+   */
+
+  /**
    * A list of staff members with information about them.
    *
    * @get result
-   * @type {{}[]}
+   * @type {Wl_Appointment_Book_Staff_ListModel_a_staff[]}
    */
   this.a_staff = undefined;
 

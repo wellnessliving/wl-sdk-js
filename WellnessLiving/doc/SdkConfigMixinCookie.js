@@ -84,3 +84,18 @@ WlSdk_Config_Mixin.signatureCompose = function(s_signature)
 {
   return WlSdk_Config_Mixin.SIGNATURE_VERSION+','+WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID+',,'+s_signature;
 };*/
+
+/**
+ * Returns URL of the Edge Cache.
+ *
+ * @return {string} URL of the Edge Cache.
+ */
+WlSdk_Config_Mixin.urlEdge = function()
+{
+  // Valid values:
+  //
+  // Production: https://edge.wellnessliving.com/
+  // Sandbox: https://edge.sandbox.wellnessliving.com/
+
+  return 'https://edge.wellnessliving.com/';
+};
