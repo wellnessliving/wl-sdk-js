@@ -148,6 +148,16 @@ function Wl_Lead_LeadModel()
   this.a_skin = undefined;
 
   /**
+   * Whether it is possible to give free promotion when adding a user (only if free promotion is configured in the widget).
+   * `true` if it is possible, `false` if not.
+   *
+   * @get result
+   * @post get
+   * @type {boolean}
+   */
+  this.can_use_free_purchase = false;
+
+  /**
    * The key of business to which the new user must be captured.
    *
    * @get get
@@ -205,5 +215,5 @@ WlSdk_ModelAbstract.extend(Wl_Lead_LeadModel);
  */
 Wl_Lead_LeadModel.prototype.config=function()
 {
-  return {"a_field": {"a_field_data": {"post": {"post": true}},"a_field_list": {"get": {"result": true}},"a_skin": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_skin": {"get": {"get": true},"post": {"get": true}},"s_captcha": {"post": {"post": true}},"uid": {"post": {"result": true}},"url_captcha": {"get": {"result": true}}}};
+  return {"a_field": {"a_field_data": {"post": {"post": true}},"a_field_list": {"get": {"result": true}},"a_skin": {"get": {"result": true}},"can_use_free_purchase": {"get": {"result": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_skin": {"get": {"get": true},"post": {"get": true}},"s_captcha": {"post": {"post": true}},"uid": {"post": {"result": true}},"url_captcha": {"get": {"result": true}}}};
 };
