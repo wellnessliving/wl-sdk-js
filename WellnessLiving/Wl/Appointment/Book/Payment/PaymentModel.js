@@ -511,7 +511,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.m_discount = "0.00";
 
   /**
-   * Surcharge amount calculated for credit card.
+   * Surcharge amount calculated for credit cards (Virtual Terminal and Card Swiper).
    *
    * @get result
    * @type {string}
@@ -519,7 +519,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.m_surcharge = "0.00";
 
   /**
-   * Surcharge amount calculated for ACH.
+   * Surcharge amount calculated for money transfers from account: ACH, Direct Connect.
    *
    * @get result
    * @type {string}
