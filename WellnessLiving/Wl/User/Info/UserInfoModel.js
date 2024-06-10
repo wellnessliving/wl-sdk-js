@@ -52,6 +52,7 @@ function Wl_User_Info_UserInfoModel()
    * @property {Wl_User_Info_UserInfoModel_a_photo} a_photo Information about the user's photo.
    * @property {string} dt_add The date the user was added, given in UTC time.
    * @property {string} dt_birth The user's birthday. This will be `null` if the birthday isn't set yet.
+   * @property {boolean} has_discount Whether client's login type has a discount. `true` - login type has a discount, `false` - otherwise.
    * @property {number} id_gender The ID of the user's gender. This will be `null` if the gender isn't set yet.
    * @property {boolean} is_customer_new This will be `true` if the user has never made purchases or reservations in this business.
    * Otherwise, this will be `false`.
@@ -65,6 +66,7 @@ function Wl_User_Info_UserInfoModel()
    * @property {string} s_member The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
    * is set by the business and separate from the <var>uid</var> value.
    * @property {string} s_phone The user's phone number.
+   * @property {string} text_login_type Login type title. Empty if a client has no client type assigned.
    * @property {string} uid The key of the user.
    * @property {string} url_photo The URL for the user's photo.
    */
@@ -151,6 +153,15 @@ function Wl_User_Info_UserInfoModel()
   this.dt_birth = undefined;
 
   /**
+   * Whether client's login type has a discount.
+   * `true` - login type has a discount, `false` - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.has_discount = undefined;
+
+  /**
    * The ID of the user's gender. One of the {@link Wl_Gender_GenderSid} constants.
    *
    * This will be `null` if the gender isn't set yet.
@@ -235,6 +246,15 @@ function Wl_User_Info_UserInfoModel()
    * @type {string}
    */
   this.s_phone = undefined;
+
+  /**
+   * Login type title.
+   * Empty if a client has no client type assigned.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_login_type = undefined;
 
   /**
    * The key of the user.

@@ -129,18 +129,18 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    *     The appointment image. See {@link RsServiceLogo::data()} for details.
    *   </dd>
    *   <dt>
-   *     string[] <var>a_login_type_restriction</var>
+   *     array <var>a_login_type_restriction</var>
    *   </dt>
    *   <dd>
-   *     A list of login type titles for the current service.
-   *     Clients that have one of these types can book the service.
+   *     Keys are login type keys, values - List of login types' titles for current service.
+   *     Clients that have one of these types can book service.
    *   </dd>
    *   <dt>
-   *     string[] <var>a_member_group_restriction</var>
+   *     array <var>a_member_group_restriction</var>
    *   </dt>
    *   <dd>
-   *     A list of member group titles for the current service.
-   *     Clients that belongs to these groups can book the service.
+   *     Keys are member group keys, values - list of member groups' titles for current service.
+   *     Clients that belongs to these groups can book service.
    *   </dd>
    *   <dt>
    *     string <var>f_deposit</var>
