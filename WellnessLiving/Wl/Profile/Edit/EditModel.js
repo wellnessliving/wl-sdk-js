@@ -125,6 +125,7 @@ function Wl_Profile_Edit_EditModel()
   this.id_register_source = 0;
 
   /**
+   * Whether the address be inherited.
    * `true` if address inherit, otherwise `false`.
    *
    * @get result
@@ -245,6 +246,7 @@ function Wl_Profile_Edit_EditModel()
   /**
    * UID of the user, whose address was inherited by the existing client we want to add.
    * Empty if non-existent user is being added or user to add is the one, whose address is inherited.
+   * `null` If the address is not inherited.
    *
    * @get result
    * @post get
