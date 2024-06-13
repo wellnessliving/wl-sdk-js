@@ -755,7 +755,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @get result
    * @type {string}
    */
-  this.m_surcharge = undefined;
+  this.m_surcharge = "0.00";
 
   /**
    * Surcharge amount calculated for money transfers from account: ACH, Direct Connect.
@@ -763,7 +763,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @get result
    * @type {string}
    */
-  this.m_surcharge_ach = undefined;
+  this.m_surcharge_ach = "0.00";
 
   /**
    * The amount of tax to pay.
