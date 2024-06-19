@@ -149,13 +149,14 @@ function Wl_Lead_LeadModel()
 
   /**
    * Whether it is possible to give free promotion when adding a user (only if free promotion is configured in the widget).
-   * `true` if it is possible, `false` if not.
+   * `true` or `null` if it is possible, `false` if not.
+   * `null` used for backward compatibility.
    *
    * @get result
    * @post get
-   * @type {boolean}
+   * @type {?boolean}
    */
-  this.can_use_free_purchase = false;
+  this.can_use_free_purchase = null;
 
   /**
    * The key of business to which the new user must be captured.
