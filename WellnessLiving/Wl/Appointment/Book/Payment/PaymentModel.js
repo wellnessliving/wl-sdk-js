@@ -511,12 +511,20 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.m_discount = "0.00";
 
   /**
-   * Surcharge amount.
+   * Surcharge amount calculated for credit cards (Virtual Terminal and Card Swiper).
    *
    * @get result
    * @type {string}
    */
   this.m_surcharge = "0.00";
+
+  /**
+   * Surcharge amount calculated for money transfers from account: ACH, Direct Connect.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_surcharge_ach = "0.00";
 
   /**
    * The tax of service.
@@ -589,7 +597,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Payment_PaymentModel);
  */
 Wl_Appointment_Book_Payment_PaymentModel.prototype.config=function()
 {
-  return {"a_field": {"a_book_data": {"get": {"get": true},"post": {"get": true}},"a_pay_form": {"post": {"post": true}},"a_promotion_data": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_purchase_item": {"post": {"result": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay": {"post": {"result": true}},"id_purchase_item": {"get": {"get": true},"post": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_login_prize": {"post": {"result": true}},"k_login_promotion": {"get": {"get": true}},"k_session_pass": {"get": {"get": true}},"m_coupon": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_surcharge": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"m_variable_price": {"get": {"get": true}},"s_unique_key": {"get": {"get": true}},"text_coupon_code": {"get": {"get": true},"post": {"get": true}},"text_discount_code": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_book_data": {"get": {"get": true},"post": {"get": true}},"a_pay_form": {"post": {"post": true}},"a_promotion_data": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_purchase_item": {"post": {"result": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay": {"post": {"result": true}},"id_purchase_item": {"get": {"get": true},"post": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_login_prize": {"post": {"result": true}},"k_login_promotion": {"get": {"get": true}},"k_session_pass": {"get": {"get": true}},"m_coupon": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_surcharge": {"get": {"result": true}},"m_surcharge_ach": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"m_variable_price": {"get": {"get": true}},"s_unique_key": {"get": {"get": true}},"text_coupon_code": {"get": {"get": true},"post": {"get": true}},"text_discount_code": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
