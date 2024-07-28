@@ -18,6 +18,16 @@ function Wl_Profile_Rank_ProfileRankModel()
    * @post get
    * @type {?string}
    */
+  this.dtl_promotion_date = null;
+
+  /**
+   * Promotion date on belts.
+   * <tt>null</tt> if not initialized yet.
+   *
+   * @get result
+   * @post get
+   * @type {?string}
+   */
   this.dtu_promotion_date = null;
 
   /**
@@ -60,5 +70,5 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Rank_ProfileRankModel);
  */
 Wl_Profile_Rank_ProfileRankModel.prototype.config=function()
 {
-  return {"a_field": {"dtu_promotion_date": {"get": {"result": true},"post": {"get": true}},"k_login_rank": {"post": {"get": true}},"k_rank": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"dtl_promotion_date": {"get": {"result": true},"post": {"get": true}},"dtu_promotion_date": {"get": {"result": true},"post": {"get": true}},"k_login_rank": {"post": {"get": true}},"k_rank": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
