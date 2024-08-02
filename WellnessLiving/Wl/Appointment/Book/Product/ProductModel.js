@@ -1,5 +1,7 @@
 /**
- * An endpoint that returns information about service add-ons.
+ * Returns information about service add-ons.
+ *
+ * If you need to filter products by client type/group, use {@link Wl_Appointment_Book_Product_Product62Model}.
  *
  * This model is generated automatically based on API.
  *
