@@ -16,6 +16,23 @@ function Wl_Book_Process_Purchase_Purchase56Model()
   this._s_key = "k_class_period,dt_date_gmt,k_business,uid,id_mode";
 
   /**
+   * @typedef {{}} Wl_Book_Process_Purchase_Purchase56Model_a_login_prize
+   * @property {string} f_price The price, always '0'.
+   * @property {number} i_count Login prize remaining quantity.
+   * @property {number} i_limit The limit of sessions that can be booked with reward prize.
+   * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link \RsPurchaseItemSid} constants.
+   * @property {string} k_id The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.
+   * @property {string} k_login_prize Key of login prize. Primary key in {@link \RsLoginPrizeSql}.
+   * @property {string} text_title User friendly login prize description.
+   */
+
+  /**
+   * @get result
+   * @type {Wl_Book_Process_Purchase_Purchase56Model_a_login_prize[]}
+   */
+  this.a_login_prize = [];
+
+  /**
    * @typedef {{}} Wl_Book_Process_Purchase_Purchase56Model_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data
    * @property {number} i_book The count of future sessions that are paid with this promotion.
    * @property {number} i_limit The limit of visits for the restriction period.
@@ -537,6 +554,24 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * @type {?Wl_Book_Process_Purchase_Purchase56Model_a_repeat}
    */
   this.a_repeat = null;
+
+  /**
+   * @typedef {{}} Wl_Book_Process_Purchase_Purchase56Model_a_reward_prize
+   * @property {string} f_price The price, always '0'.
+   * @property {number} i_limit The limit of sessions that can be booked with reward prize.
+   * @property {number} i_score Prize price in points.
+   * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link \RsPurchaseItemSid} constants.
+   * @property {string} k_id The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.
+   * @property {string} k_reward_prize Key of redeemable prize. Primary key in {@link \RsRewardPrizeSql}.
+   * @property {string} s_value The unique identifier.
+   * @property {string} text_title User friendly login prize description.
+   */
+
+  /**
+   * @get result
+   * @type {Wl_Book_Process_Purchase_Purchase56Model_a_reward_prize[]}
+   */
+  this.a_reward_prize = [];
 
   /**
    * A list of sessions being booked.
