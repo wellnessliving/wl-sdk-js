@@ -1,8 +1,6 @@
 /**
  * Information about purchases which allow to book given session(s).
  *
- * This model is generated automatically based on API.
- *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */

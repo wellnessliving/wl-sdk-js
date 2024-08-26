@@ -3,8 +3,6 @@
  *
  * When using this endpoint, take into account the {@link Wl_Book_Process_ProcessSpaSid.QUIZ} step.
  *
- * This model is generated automatically based on API.
- *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
