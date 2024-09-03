@@ -1,5 +1,5 @@
 /**
- * Visit status processing.
+ * Views or changes the visit status.
  *
  * This model is generated automatically based on API.
  *
@@ -16,17 +16,13 @@ function Wl_Visit_VisitStatusModel()
   this._s_key = "k_visit,k_business";
 
   /**
-   * Array of service resources.
+   * An array of service resources.
    *
-   * Key is {@link \RsResourceTypeSql}.<tt>k_resource_type</tt>
-   * Value is array with the following Key: {@link \RsResourceSql}.<tt>k_resource</tt>,
-   * Value is array with {@link \RsResourceBusySql}.<tt>i_index</tt> and {@link \RsResourceSql}.<tt>i_quantity</tt>
+   * The key refers to the `k_resource_type`. See {@link \RsResourceTypeSql}.
+   * The value is an array with the following key: `k_resource`. See {@link \RsResourceSql}.
+   * The array element contains a nested array with `i_index` and `i_quantity`. See {@link \RsResourceBusySql}.
    *
-   * [{@link \RsResourceTypeSql}.<tt>k_resource_type</tt>] =>
-   * [{@link \RsResourceSql}.<tt>k_resource</tt> =>
-   * [{@link \RsResourceBusySql}.<tt>i_index</tt>, {@link \RsResourceSql}.<tt>i_quantity</tt>]]
-   *
-   * Empty if not set yet.
+   * This will be empty if not set yet.
    *
    * @get result
    * @type {*}
@@ -34,7 +30,33 @@ function Wl_Visit_VisitStatusModel()
   this.a_resource = [];
 
   /**
-   * List of staff member keys that instruct the class.
+   * An array of service resources.
+   *
+   * Contains an extended data set, as well as a different format than {@link Wl_Visit_VisitStatusModel.a_resource}.
+   *
+   * Each element contains the following set of data:
+   * <dl>
+   *  <dt>string <var>k_resource</var></dt>
+   *  <dd>Resource primary key in {@link \RsResourceSql} table.</dd>
+   *  <dt>string <var>k_resource_type</var></dt>
+   *  <dd>Resource type primary key in {@link \RsResourceTypeSql} table.</dd>
+   *  <dt>int <var>i_index</var></dt>
+   *  <dd>Index of the resource on the layout.</dd>
+   *  <dt>int <var>i_quantity</var></dt>
+   *  <dd>Quantity of the resource on the layout.</dd>
+   *  <dt>string <var>text_alias</var></dt>
+   *  <dd>Resource's custom name (alias) on the layout.</dd>
+   *  <dt>string <var>text_title</var></dt>
+   *  <dd>Resource's title.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {*}
+   */
+  this.a_resource_alias = [];
+
+  /**
+   * The list of keys of staff members that conduct the class.
    *
    * @get result
    * @type {string[]}
@@ -42,7 +64,7 @@ function Wl_Visit_VisitStatusModel()
   this.a_staff = [];
 
   /**
-   * Visit date and time in MySQL format.
+   * The visit date and time in UTC and in MySQL format.
    *
    * @get result
    * @type {string}
@@ -50,7 +72,7 @@ function Wl_Visit_VisitStatusModel()
   this.dt_date = "";
 
   /**
-   * Visit local date and time in MySQL format.
+   * The visit date in the location's time zone and in MySQL format.
    *
    * @get result
    * @type {string}
@@ -58,7 +80,7 @@ function Wl_Visit_VisitStatusModel()
   this.dtl_date = "";
 
   /**
-   * Service duration (in minutes).
+   * The service duration (in minutes).
    *
    * @get result
    * @type {number}
@@ -66,7 +88,7 @@ function Wl_Visit_VisitStatusModel()
   this.i_duration = 0;
 
   /**
-   * Place in a waiting list.
+   * The client's place in a waiting list.
    *
    * @get result
    * @type {number}
@@ -74,7 +96,9 @@ function Wl_Visit_VisitStatusModel()
   this.i_wait_spot = 0;
 
   /**
-   * Visit source. One of {@link Wl_Mode_ModeSid} constants.
+   * The source of the visit or the visit change.
+   * One of the {@link Wl_Mode_ModeSid} constants.
+   * If you're unsure about the value to use, keep the default value.
    *
    * @get result
    * @post post
@@ -83,7 +107,8 @@ function Wl_Visit_VisitStatusModel()
   this.id_mode = 0;
 
   /**
-   * Visit status. One of {@link Wl_Visit_VisitSid} constants.
+   * The status of the visit.
+   * One of the {@link Wl_Visit_VisitSid} constants.
    *
    * @get result
    * @post post
@@ -92,12 +117,12 @@ function Wl_Visit_VisitStatusModel()
   this.id_visit = "0";
 
   /**
-   * The status of the visit from which the transition is made. One of {@link Wl_Visit_VisitSid} constants.
+   * The status of the visit from which the transition is made. One of the {@link Wl_Visit_VisitSid} constants.
    *
-   * If visit status is passed it will be used to check with actual status in database.
-   * <tt>null</tt> means not passed.
+   * If the visit status is passed, it will be used to check with the actual status in the database.
+   * If `null`, the visit hasn't yet passed.
    *
-   * If the status from is expired this field will be filled with actual status in database.
+   * If the status of this parameter is out of date, the API call will refresh it.
    *
    * @post post,error
    * @type {*}
@@ -105,7 +130,9 @@ function Wl_Visit_VisitStatusModel()
   this.id_visit_from = undefined;
 
   /**
-   * A staff decision to charge or not charge a penalty when a customer meets late cancel/no-show requirements.
+   * The staff decision to charge (or not charge) a penalty when a client meets late cancel/no-show requirements.
+   *
+   * If `true`, a late cancel fee should be charged. Otherwise, this will be `false`.
    *
    * @post get
    * @type {boolean}
@@ -113,7 +140,7 @@ function Wl_Visit_VisitStatusModel()
   this.is_charge_fee = true;
 
   /**
-   * Whether the visit is from an event.
+   * Determines whether the visit is from an event.
    *
    * @get result
    * @type {boolean}
@@ -121,7 +148,7 @@ function Wl_Visit_VisitStatusModel()
   this.is_event = false;
 
   /**
-   * ID of business.
+   * The business key.
    *
    * @get get
    * @post get
@@ -130,7 +157,7 @@ function Wl_Visit_VisitStatusModel()
   this.k_business = "0";
 
   /**
-   * Key of class.
+   * The class key.
    *
    * @get result
    * @type {string}
@@ -138,7 +165,7 @@ function Wl_Visit_VisitStatusModel()
   this.k_class = "";
 
   /**
-   * Key of class period.
+   * The class period key.
    *
    * @get result
    * @type {string}
@@ -154,8 +181,8 @@ function Wl_Visit_VisitStatusModel()
   this.k_location = "";
 
   /**
-   * Key of the mail pattern.
-   * `null` when live mail pattern should not be used.
+   * The email pattern key.
+   * If `null`, the live email pattern shouldn't be used.
    *
    * @post get
    * @type {?string}
@@ -163,8 +190,8 @@ function Wl_Visit_VisitStatusModel()
   this.k_mail_pattern_live = null;
 
   /**
-   * Service key.
-   * 'null' if visit is not from appointment.
+   * The service key.
+   * If 'null', the visit isn't from an appointment.
    *
    * @get result
    * @type {*}
@@ -172,8 +199,8 @@ function Wl_Visit_VisitStatusModel()
   this.k_service = undefined;
 
   /**
-   * Key of staff who provide appointment.
-   * `null` if visit is not from appointment, for example visit is from asset.
+   * The key of the staff providing the appointment.
+   * If `null`, the visit isn't from an appointment (for example, the visit is from an asset).
    *
    * @get result
    * @type {?string}
@@ -181,9 +208,9 @@ function Wl_Visit_VisitStatusModel()
   this.k_staff = null;
 
   /**
-   * Key of timezone.
+   * The time zone key.
    *
-   * `null` if not set then use default timezone client {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   * `null` if not set then use default timezone client. See {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
    *
    * @get get
    * @type {?string}
@@ -191,7 +218,7 @@ function Wl_Visit_VisitStatusModel()
   this.k_timezone = null;
 
   /**
-   * Visit ID to get status for.
+   * The visit key.
    *
    * @get get
    * @post get
@@ -200,7 +227,7 @@ function Wl_Visit_VisitStatusModel()
   this.k_visit = "0";
 
   /**
-   * ics file for adding service to phone calendar.
+   * The .ics file for adding the service to a phone calendar.
    *
    * @get result
    * @type {string}
@@ -208,7 +235,7 @@ function Wl_Visit_VisitStatusModel()
   this.s_calendar_file_content = "";
 
   /**
-   * Text abbr of timezone.
+   * The text abbreviation of the time zone.
    *
    * @get result
    * @type {string}
@@ -216,7 +243,15 @@ function Wl_Visit_VisitStatusModel()
   this.text_abbr_timezone = "";
 
   /**
-   * Reason of visit cancelling.
+   * The full address of the location for the visit (not the name of the location).
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_location = "";
+
+  /**
+   * The reason the visit was canceled.
    *
    * @post get
    * @type {string}
@@ -224,7 +259,16 @@ function Wl_Visit_VisitStatusModel()
   this.text_reason = "";
 
   /**
-   * Title of the service.
+   * The full name of the staff member who conducts this visit.
+   * If there are several staff members conducting the visit, their names will all be listed and separated by commas.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_staff = "";
+
+  /**
+   * The service title.
    *
    * @get result
    * @type {string}
@@ -241,14 +285,14 @@ WlSdk_ModelAbstract.extend(Wl_Visit_VisitStatusModel);
  */
 Wl_Visit_VisitStatusModel.prototype.config=function()
 {
-  return {"a_field": {"a_resource": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date": {"get": {"result": true}},"dtl_date": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"result": true},"post": {"post": true}},"id_visit": {"get": {"result": true},"post": {"post": true}},"id_visit_from": {"post": {"post": true,"error": true}},"is_charge_fee": {"post": {"get": true}},"is_event": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_mail_pattern_live": {"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"s_calendar_file_content": {"get": {"result": true}},"text_abbr_timezone": {"get": {"result": true}},"text_reason": {"post": {"get": true}},"text_title": {"get": {"result": true}}}};
+  return {"a_field": {"a_resource": {"get": {"result": true}},"a_resource_alias": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date": {"get": {"result": true}},"dtl_date": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"result": true},"post": {"post": true}},"id_visit": {"get": {"result": true},"post": {"post": true}},"id_visit_from": {"post": {"post": true,"error": true}},"is_charge_fee": {"post": {"get": true}},"is_event": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_mail_pattern_live": {"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"s_calendar_file_content": {"get": {"result": true}},"text_abbr_timezone": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_reason": {"post": {"get": true}},"text_staff": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Visit_VisitStatusModel.instanceGet
- * @param {string} k_visit Visit ID to get status for.
- * @param {string} k_business ID of business.
+ * @param {string} k_visit The visit key.
+ * @param {string} k_business The business key.
  * @returns {Wl_Visit_VisitStatusModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
