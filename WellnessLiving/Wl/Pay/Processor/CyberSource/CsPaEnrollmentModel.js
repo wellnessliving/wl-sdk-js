@@ -11,6 +11,25 @@ function Wl_Pay_Processor_CyberSource_CsPaEnrollmentModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Pay_Processor_CyberSource_CsPaEnrollmentModel_a_device_info
+   * @property {number} i_browser_screen_height User browser screen height.
+   * @property {number} i_browser_screen_width User browser screen width.
+   */
+
+  /**
+   * User device info: <dl>
+   *   <dt>int <var>i_browser_screen_height</var></dt>
+   *   <dd>User browser screen height.</dd>
+   *   <dt>int <var>i_browser_screen_width</var></dt>
+   *   <dd>User browser screen width.</dd>
+   * </dl>
+   *
+   * @post post
+   * @type {Wl_Pay_Processor_CyberSource_CsPaEnrollmentModel_a_device_info}
+   */
+  this.a_device_info = [];
+
+  /**
    * Key of payment transaction that was previously created with {@link Wl_Pay_Processor_CyberSource_CsPaSetupModel}.
    *
    * @post post
@@ -51,5 +70,5 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Processor_CyberSource_CsPaEnrollmentModel);
  */
 Wl_Pay_Processor_CyberSource_CsPaEnrollmentModel.prototype.config=function()
 {
-  return {"a_field": {"k_pay_transaction": {"post": {"post": true}},"s_jwt": {"post": {"result": true}},"url_interact": {"post": {"result": true}}}};
+  return {"a_field": {"a_device_info": {"post": {"post": true}},"k_pay_transaction": {"post": {"post": true}},"s_jwt": {"post": {"result": true}},"url_interact": {"post": {"result": true}}}};
 };
