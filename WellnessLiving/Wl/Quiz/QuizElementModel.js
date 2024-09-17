@@ -31,8 +31,7 @@ function Wl_Quiz_QuizElementModel()
   /**
    * List of quiz elements.
    *
-   * Each element responsible for one quiz question (inheritor of {@link \Core\Quiz\Element\ElementQuestionAbstract})
-   * and contains array representation of individual question.
+   * Each element responsible for one quiz question and contains array representation of individual question.
    * Structure of each value depend on type of element and contains public arguments of responsible class element.
    *
    * Order of the elements in array corresponds to order of elements on the form.
