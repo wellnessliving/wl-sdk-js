@@ -3,22 +3,17 @@
  *
  * This model is generated automatically based on API.
  *
- * @augments Core_Spa_Model
+ * @augments WlSdk_ModelAbstract
  * @constructor
  */
 function Wl_Book_Process_Frequency_RepeatModel()
 {
-  Core_Spa_Model.apply(this);
+  WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
    */
   this._s_key = "a_day,a_visit_ignore,dt_date,dt_from,dt_to,i_count,i_duration,id_duration,id_mode,id_repeat_end,is_cancel,is_new_user,k_business,k_class_period,s_uid,uid,uid_actor";
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
 
   /**
    * List of days of the week to create visits. Each value is a {@link ADateWeekSid} constant.
@@ -141,7 +136,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.is_new_user = false;
 
   /**
-   * Business key, primary key in {@link \RsBusinessSql} table.
+   * Business key.
    *
    * @get get
    * @type {string}
@@ -149,7 +144,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.k_business = "";
 
   /**
-   * Class period key, primary key in {@link \RsClassPeriodSql} table.
+   * Class period key.
    *
    * @get get
    * @type {string}
@@ -224,8 +219,8 @@ Wl_Book_Process_Frequency_RepeatModel.prototype.config=function()
  * @param {number} id_repeat_end Type of repeating, one of {@link RsRepeatEndSid} constants.
  * @param {boolean} is_cancel `true` when cancelling booking, `false` otherwise.
  * @param {boolean} is_new_user `true` if current user is not created yet, `false` otherwise.
- * @param {string} k_business Business key, primary key in {@link \RsBusinessSql} table.
- * @param {string} k_class_period Class period key, primary key in {@link \RsClassPeriodSql} table.
+ * @param {string} k_business Business key.
+ * @param {string} k_class_period Class period key.
  * @param {string} s_uid Encoded list of user keys, who will attend visits.
  * @param {string} uid Key of user, who will attend visits.
  * @param {string} uid_actor Key of user, who perform booking.
