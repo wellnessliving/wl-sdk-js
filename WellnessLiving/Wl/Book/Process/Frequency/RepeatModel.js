@@ -225,5 +225,5 @@ Wl_Book_Process_Frequency_RepeatModel.prototype.config=function()
  * @param {string} uid Key of user, who will attend visits.
  * @param {string} uid_actor Key of user, who perform booking.
  * @returns {Wl_Book_Process_Frequency_RepeatModel}
- * @see Core_Spa_Model.instanceGet()
+ * @see WlSdk_ModelAbstract.instanceGet()
  */
