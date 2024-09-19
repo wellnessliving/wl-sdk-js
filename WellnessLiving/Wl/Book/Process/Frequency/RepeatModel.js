@@ -194,7 +194,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.changeInit();
 }
 
-Core_Spa_Model.extend(Wl_Book_Process_Frequency_RepeatModel);
+WlSdk_ModelAbstract.extend(Wl_Book_Process_Frequency_RepeatModel);
 
 /**
  * @inheritDoc
