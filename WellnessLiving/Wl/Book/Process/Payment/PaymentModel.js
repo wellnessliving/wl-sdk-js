@@ -103,21 +103,80 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_repeat
-   * @property {*} a_week Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
-   * Empty if appointment must not repeat weekly.
-   * @property {*} dl_end Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
-   * @property {*} i_occurrence Number of occurrences after that appointment repeat must stop.
-   * Empty if repeat must not stop after a certain number of occurrences.
-   * @property {number} i_period Frequency of appointment repeating.
-   * @property {number} id_period Measurement unit of `i_period`. One of {@link ADurationSid} constants.
-   * @property {*} is_month `true` if appointment must repeat monthly at the same date.
-   * `false` if appointment must repeat monthly at the same week day.
-   * `null` if appointment must not repeat monthly.
+   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
+   * Should be passed for any type of repetition.
+   * @property {number[]} a_week Deprecated, use `a_day` instead!
+   * @property {*} dl_end Deprecated, use `dt_from` and `dt_to` instead!
+   * @property {*} dt_from Date to start recurring booking.
+   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
+   * @property {*} dt_to Date to complete recurring booking.
+   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
+   * @property {*} i_count The number of occurrences after which the appointment's repeat cycle stops.
+   *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *  Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
+   * @property {number} i_duration Count of days\weeks\months between recurring bookings.
+   * @property {*} i_occurrence Deprecated, use `i_count` instead!
+   * @property {number} i_period Deprecated, use `i_duration` instead!
+   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
+   * @property {number} id_period Deprecated, use `id_duration` instead!
+   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**
-   * Information about recurring booking.
-   * `null` if booking must be not recurring.
+   * Information about the recurring booking:
+   * <dl>
+   *   <dt>int[] <var>a_day</var></dt>
+   *   <dd>
+   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
+   *     Should be passed for any type of repetition.
+   *   </dd>
+   *   <dt>int[] <var>a_week</var></dt>
+   *   <dd>Deprecated, use `a_day` instead!</dd>
+   *   <dt>string [<var>dl_end</var>]</dt>
+   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
+   *   <dt>
+   *     string [<var>dt_from</var>]
+   *   </dt>
+   *   <dd>
+   *     Date to start recurring booking.
+   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
+   *   </dd>
+   *   <dt>
+   *     string [<var>dt_to</var>]
+   *   </dt>
+   *   <dd>
+   *     Date to complete recurring booking.
+   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
+   *   </dd>
+   *   <dt>
+   *      int [<var>i_count</var>]
+   *    </dt>
+   *    <dd>
+   *      The number of occurrences after which the appointment's repeat cycle stops.
+   *      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *      Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
+   *    </dd>
+   *   <dt>int <var>i_duration</var></dt>
+   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
+   *   <dt>int [<var>i_occurrence</var>]</dt>
+   *   <dd>Deprecated, use `i_count` instead!</dd>
+   *   <dt>int <var>i_period</var></dt>
+   *   <dd>Deprecated, use `i_duration` instead!</dd>
+   *   <dt>
+   *     int <var>id_duration</var>
+   *   </dt>
+   *   <dd>
+   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   *     Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
+   *   </dd>
+   *   <dt>int <var>id_period</var></dt>
+   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dt>int <var>id_repeat_end</var></dt>
+   *   <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
+   * </dl>
+   *
+   * This will be `null` if the booking isn't recurring.
    *
    * @post post
    * @type {?Wl_Book_Process_Payment_PaymentModel_a_repeat}
