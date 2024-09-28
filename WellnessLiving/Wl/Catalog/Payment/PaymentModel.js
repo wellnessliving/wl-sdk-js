@@ -61,16 +61,13 @@ function Wl_Catalog_Payment_PaymentModel()
    * <dd>The primary key of the element, depending on the element type.</dd></dl>
    * @property {*} a_uid_share An array of UIDs representing the client's relatives that share the Purchase Option.
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_quick_gift_a_wellness_program[]} a_wellness_program "Wellness Program" fields.
-   *
    *  <tt>k_wellness_program</tt> must be passed along with this array. See the description below.
-   *
    *  <dl>
    *    <dt>array <tt>a_account</tt></dt>
    *    <dd>See {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel.a_account} for a full description.</dd>
    *    <dt>array <tt>a_field</tt></dt>
    *    <dd>See {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel.a_field} for a full description.</dd>
    *  </dl>
-   *
    *  It's recommended to validate the fields using the POST method of the {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} model.
    * @property {*} dt_prorate The prorate date, used only for memberships.
    * @property {*} dt_send_local The date when the gift card will be sent. This is only used for gift cards.
@@ -84,9 +81,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {*} k_appointment The appointment key, used only for appointment add-ons.
    * @property {*} k_coupon_amount The key of the gift card amount, used only for gift cards.
    * @property {*} k_staff The "Wellness Program" key. Set this for the insurance membership promotion.
-   *
    *  <tt>a_wellness_program</tt> array must be passed along with the key. See the array description above.
-   *
    *  <p>Use the following models to work with this type of promotion:</p>
    *  <ul>
    *    <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain list of active programs.</li>
@@ -128,16 +123,13 @@ function Wl_Catalog_Payment_PaymentModel()
    *   </dt>
    *   <dd>
    *      "Wellness Program" fields.
-   *
    *      <tt>k_wellness_program</tt> must be passed along with this array. See the description below.
-   *
    *      <dl>
    *        <dt>array <tt>a_account</tt></dt>
    *        <dd>See {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel.a_account} for a full description.</dd>
    *        <dt>array <tt>a_field</tt></dt>
    *        <dd>See {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel.a_field} for a full description.</dd>
    *      </dl>
-   *
    *      It's recommended to validate the fields using the POST method of the {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} model.
    *   </dd>
    *   <dt>
@@ -209,9 +201,7 @@ function Wl_Catalog_Payment_PaymentModel()
    *   </dt>
    *   <dd>
    *      The "Wellness Program" key. Set this for the insurance membership promotion.
-   *
    *      <tt>a_wellness_program</tt> array must be passed along with the key. See the array description above.
-   *
    *      <p>Use the following models to work with this type of promotion:</p>
    *      <ul>
    *        <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain list of active programs.</li>
@@ -263,6 +253,12 @@ function Wl_Catalog_Payment_PaymentModel()
    *   <dd>
    *     Specifies the recipient of a transfer Purchase Option.
    *   </dd>
+   *   <dt>
+   *     string <tt>[uid_to]</tt>
+   *   </dt>
+   *   <dd>
+   *     Specifies the recipient of a transfer Purchase Option.
+   *   </dd>
    * </dl>
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_tax_custom[]} a_tax_custom Customer taxes (optional). Every element must contain the following keys:
    * <dl><dt>string <tt>f_tax</tt></dt><dd>The tax amount.</dd>
@@ -271,6 +267,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {number} i_quantity The item quantity.
    * @property {number} id_sale The item type ID. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The item key.
+   * @property {*} k_login_prize The key of the login prize to apply a login prize discount.
    * @property {*} k_shop_product_option The product option key, required only for products.
    * @property {*} m_price_custom The custom price (optional).
    * @property {string} [s_signature] The client signature, used for items that require a signed contract.
@@ -312,16 +309,13 @@ function Wl_Catalog_Payment_PaymentModel()
    *       </dt>
    *       <dd>
    *          "Wellness Program" fields.
-   *
    *          <var>k_wellness_program</var> must be passed along with this array. See the description below.
-   *
    *          <dl>
    *            <dt>array <var>a_account</var></dt>
    *            <dd>See {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel.a_account} for a full description.</dd>
    *            <dt>array <var>a_field</var></dt>
    *            <dd>See {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel.a_field} for a full description.</dd>
    *          </dl>
-   *
    *          It's recommended to validate the fields using the POST method of the {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} model.
    *       </dd>
    *       <dt>
@@ -393,9 +387,7 @@ function Wl_Catalog_Payment_PaymentModel()
    *       </dt>
    *       <dd>
    *          The "Wellness Program" key. Set this for the insurance membership promotion.
-   *
    *          <var>a_wellness_program</var> array must be passed along with the key. See the array description above.
-   *
    *          <p>Use the following models to work with this type of promotion:</p>
    *          <ul>
    *            <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain list of active programs.</li>
@@ -447,6 +439,12 @@ function Wl_Catalog_Payment_PaymentModel()
    *       <dd>
    *         Specifies the recipient of a transfer Purchase Option.
    *       </dd>
+   *       <dt>
+   *         string <var>[uid_to]</var>
+   *       </dt>
+   *       <dd>
+   *         Specifies the recipient of a transfer Purchase Option.
+   *       </dd>
    *     </dl>
    *   </dd>
    *   <dt>
@@ -480,6 +478,12 @@ function Wl_Catalog_Payment_PaymentModel()
    *   </dt>
    *   <dd>
    *     The item key.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_login_prize</var>]
+   *   </dt>
+   *   <dd>
+   *    The key of the login prize to apply a login prize discount.
    *   </dd>
    *   <dt>
    *     string [<var>k_shop_product_option</var>]
