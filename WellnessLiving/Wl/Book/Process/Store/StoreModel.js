@@ -24,9 +24,9 @@ function Wl_Book_Process_Store_StoreModel()
    * @property {number} s_value Unique identifier of the element being checked.
    * Corresponds to the values:
    * <ul>
-   *   <li>{@link Wl_Book_Process_Store_Purchase56Model.a_purchase}`["s_value"]`</li>
-   *   <li>{@link Wl_Book_Process_Store_Purchase56Model.a_reward_prize}`["s_value"]`</li>
-   *   <li>{@link Wl_Book_Process_Store_Purchase56Model.a_login_prize}`["s_value"]`</li>
+   *   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_purchase}`["s_value"]`</li>
+   *   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_reward_prize}`["s_value"]`</li>
+   *   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_login_prize}`["s_value"]`</li>
    * </ul>
    */
 
@@ -44,9 +44,9 @@ function Wl_Book_Process_Store_StoreModel()
    *     Unique identifier of the element being checked.
    *     Corresponds to the values:
    *     <ul>
-   *       <li>{@link Wl_Book_Process_Store_Purchase56Model.a_purchase}`["s_value"]`</li>
-   *       <li>{@link Wl_Book_Process_Store_Purchase56Model.a_reward_prize}`["s_value"]`</li>
-   *       <li>{@link Wl_Book_Process_Store_Purchase56Model.a_login_prize}`["s_value"]`</li>
+   *       <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_purchase}`["s_value"]`</li>
+   *       <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_reward_prize}`["s_value"]`</li>
+   *       <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_login_prize}`["s_value"]`</li>
    *     </ul>
    *   </dd>
    * </dl>
@@ -216,6 +216,18 @@ function Wl_Book_Process_Store_StoreModel()
   this.id_mode = 0;
 
   /**
+   * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
+   *
+   * Use this field with caution.
+   * The final booking will not use this flag and the check will still be performed.
+   *
+   * @get get
+   * @post get
+   * @type {boolean}
+   */
+  this.is_credit_card_check = true;
+
+  /**
    * `true` if user pressed 'Pay later'.
    * `false` if user pressed 'Pay now'.
    *
@@ -278,5 +290,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Store_StoreModel);
  */
 Wl_Book_Process_Store_StoreModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_purchase_item_check": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_purchase_item_check": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
