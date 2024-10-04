@@ -442,7 +442,7 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.changeInit();
 }
 
-Core_Spa_Model.extend(Wl_Login_Attendance_AttendanceInfoModel);
+WlSdk_ModelAbstract.extend(Wl_Login_Attendance_AttendanceInfoModel);
 
 /**
  * @inheritDoc
