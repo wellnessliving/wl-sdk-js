@@ -24,7 +24,7 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    */
 
   /**
-   * * Additional visit information about this appointment. Empty array if it's not an appointment:
+   * Additional visit information about this appointment. Empty array if it's not an appointment:
    * <dl>
    *   <dt>bool <var>is_deny</var></dt>
    *   <dd>`true` means that appointment was requested and denied by the staff.</dd>
@@ -39,7 +39,7 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    * @get result
    * @type {Wl_Login_Attendance_AttendanceInfoModel_a_appointment_visit_info}
    */
-  this.a_appointment_visit_info = undefined;
+  this.a_appointment_visit_info = [];
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceInfoModel_a_logo
@@ -70,6 +70,33 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.a_logo = undefined;
 
   /**
+   * @typedef {{}} Wl_Login_Attendance_AttendanceInfoModel_a_purchase_option_default
+   * @property {*} id_sale The sale item type, one of the {@link RsSaleSid} constants.
+   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
+   * @property {*} k_id The default Purchase Option key.
+   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
+   * @property {boolean} is_single_default If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.
+   */
+
+  /**
+   * Default purchase option information.
+   * <dl>
+   *   <dt>string? <var>id_sale</var></dt>
+   *   <dd>The sale item type, one of the {@link RsSaleSid} constants.
+   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
+   *   <dt>string? <var>k_id</var></dt>
+   *   <dd>The default Purchase Option key.
+   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
+   *   <dt>bool <var>is_single_default</var></dt>
+   *   <dd>If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_Login_Attendance_AttendanceInfoModel_a_purchase_option_default}
+   */
+  this.a_purchase_option_default = [];
+
+  /**
    * Assets which are bound to this session.
    *
    * @get result
@@ -86,12 +113,12 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    * @typedef {{}} Wl_Login_Attendance_AttendanceInfoModel_a_resource_layout
    * @property {Wl_Login_Attendance_AttendanceInfoModel_a_resource_layout_a_client} a_client List of clients who occupy assets of class.
    * It is a double nesting array.
-   * Keys - primary keys of assets in {@link \RsResourceSql} table; sub keys - asset index;
-   * values - sub array with keys:
+   * Keys - primary keys of assets. See {@link \RsResourceSql} table. Sub keys - asset index.
+   * Values - sub array with keys:
    * <dl><dt>string <tt>text_client</tt></dt><dd>User's name.</dd>
    * <dt>string <tt>uid</tt></dt><dd>User's primary key.</dd></dl>
-   * @property {string[]} a_resource_available Primary keys of assets in {@link \RsResourceSql} table.
-   * @property {string} k_resource_layout Key of layout in {@link \Wl\Resource\Layout\Sql} table.
+   * @property {string[]} a_resource_available Key of asset.
+   * @property {string} k_resource_layout Key of layout. See table {@link \Wl\Resource\Layout\Sql}.
    * @property {string} text_resource_type Title of asset category.
    */
 
@@ -104,8 +131,8 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    *   <dd>
    *     List of clients who occupy assets of class.
    *     It is a double nesting array.
-   *     Keys - primary keys of assets in {@link \RsResourceSql} table; sub keys - asset index;
-   *     values - sub array with keys:
+   *     Keys - primary keys of assets. See {@link \RsResourceSql} table. Sub keys - asset index.
+   *     Values - sub array with keys:
    *     <dl><dt>string <var>text_client</var></dt><dd>User's name.</dd>
    *     <dt>string <var>uid</var></dt><dd>User's primary key.</dd></dl>
    *   </dd>
@@ -113,12 +140,13 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    *     string[] <var>a_resource_available</var>
    *   </dt>
    *   <dd>
+   *     Key of asset.
    *   </dd>
    *   <dt>
    *     string <var>k_resource_layout</var>
    *   </dt>
    *   <dd>
-   *     Key of layout in {@link \Wl\Resource\Layout\Sql} table.
+   *     Key of layout. See table {@link \Wl\Resource\Layout\Sql}.
    *   </dd>
    *   <dt>
    *     string <var>text_resource_type</var>
@@ -162,7 +190,7 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    *     Image URL.
    *   </dd>
    * </dl>
-   * @property {string} k_staff Staff key, primary key in {@link \RsStaffSql}.
+   * @property {string} k_staff Staff key.
    * @property {string} html_firstname Staff member's first name.
    * @property {string} html_lastname Staff member's last name.
    */
@@ -200,7 +228,7 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    *     string <var>k_staff</var>
    *   </dt>
    *   <dd>
-   *     Staff key, primary key in {@link \RsStaffSql}.
+   *     Staff key.
    *   </dd>
    *   <dt>
    *     string <var>html_firstname</var>
@@ -222,15 +250,15 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.a_staff = undefined;
 
   /**
-   * Confirmation date+time in MySQL format for appointment/asset. Will be zero date+time if client never confirmed.
+   * Confirmation date+time of appointment in MySQL format. If client never confirmed, will be zero date + time.
    *
    * @get result
    * @type {string}
    */
-  this.dt_confirm = undefined;
+  this.dt_confirm = "";
 
   /**
-   * Start date of ste session in MySQL format in GMT.
+   * Start date of the session in MySQL format in GMT.
    *
    * @get result
    * @type {string}
@@ -244,6 +272,22 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    * @type {string}
    */
   this.dt_date_local = "";
+
+  /**
+   * End date and time of the session in MySQL format in local timezone.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.dtl_end = "";
+
+  /**
+   * End date and time of the session in MySQL format in GMT.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.dtu_end = "";
 
   /**
    * Date and time in UTC when the visit is promoted from wait list to active list.
@@ -261,6 +305,14 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    * @type {boolean}
    */
   this.has_note = undefined;
+
+  /**
+   * Duration of the session in minutes.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_duration = undefined;
 
   /**
    * Type of note. One of {@link Wl_Visit_Note_Sid_NoteSid} constants. <tt>false</tt> if notes not allowed.
@@ -305,7 +357,7 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.k_business = "0";
 
   /**
-   * Class identifier, primary key in {@link \RsClassSql}. Not empty if service is class/event reservation.
+   * Class identifier, primary key in {@link \RsClassSql}. Not empty if service is class or event reservation.
    *
    * @get result
    * @type {string}
@@ -321,7 +373,7 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.k_class_period = "0";
 
   /**
-   * Location identifier, primary key in {@link \RsLocationSql}.
+   * Location identifier.
    *
    * @get result
    * @type {string}
@@ -329,7 +381,8 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.k_location = undefined;
 
   /**
-   * Resource identifier, primary key in {@link \RsResourceSql}. Not empty if service is asset reservation.
+   * Resource identifier.
+   * Not empty if service is asset reservation.
    *
    * @get result
    * @type {string}
@@ -337,7 +390,8 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.k_resource = undefined;
 
   /**
-   * Service identifier, primary key in {@link \RsServiceSql}. Not empty if service is appointment reservation.
+   * Service identifier.
+   * Not empty if service is appointment reservation.
    *
    * @get result
    * @type {string}
@@ -376,17 +430,26 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    */
   this.text_title = undefined;
 
+  /**
+   * URL that leads directly to the class/event booking page in the Client Web App.
+   * Empty string if the service is an appointment reservation.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_booking = undefined;
+
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Login_Attendance_AttendanceInfoModel);
+Core_Spa_Model.extend(Wl_Login_Attendance_AttendanceInfoModel);
 
 /**
  * @inheritDoc
  */
 Wl_Login_Attendance_AttendanceInfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_appointment_visit_info": {"get": {"result": true}}, "a_logo": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_resource_layout": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"dtu_wait_promote": {"get": {"result": true}},"has_note": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_service": {"get": {"result": true}},"is_start_virtual_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_time_end": {"get": {"result": true}},"text_time_start": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
+  return {"a_field": {"a_appointment_visit_info": {"get": {"result": true}},"a_logo": {"get": {"result": true}},"a_purchase_option_default": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_resource_layout": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_confirm": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"dtl_end": {"get": {"result": true}},"dtu_end": {"get": {"result": true}},"dtu_wait_promote": {"get": {"result": true}},"has_note": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_service": {"get": {"result": true}},"is_start_virtual_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_time_end": {"get": {"result": true}},"text_time_start": {"get": {"result": true}},"text_title": {"get": {"result": true}},"url_booking": {"get": {"result": true}}}};
 };
 
 /**
