@@ -70,6 +70,15 @@ function Wl_Pay_Processor_StripeCom_PaymentIntentUpdateModel()
   this.m_amount = "0.00";
 
   /**
+   * Surcharge amount to set.
+   * Required.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.m_surcharge = "0.00";
+
+  /**
    * Payment intent ID to update.
    * Required.
    *
@@ -97,5 +106,5 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Processor_StripeCom_PaymentIntentUpdateModel);
  */
 Wl_Pay_Processor_StripeCom_PaymentIntentUpdateModel.prototype.config=function()
 {
-  return {"a_field": {"id_currency": {"post": {"post": true}},"id_pay_actor": {"post": {"get": true}},"k_business": {"post": {"get": true}},"k_business_merchant": {"post": {"get": true}},"k_pay_transaction": {"post": {"get": true}},"m_amount": {"post": {"post": true}},"s_payment_intent": {"post": {"get": true}},"uid_purchase": {"post": {"get": true}}}};
+  return {"a_field": {"id_currency": {"post": {"post": true}},"id_pay_actor": {"post": {"get": true}},"k_business": {"post": {"get": true}},"k_business_merchant": {"post": {"get": true}},"k_pay_transaction": {"post": {"get": true}},"m_amount": {"post": {"post": true}},"m_surcharge": {"post": {"post": true}},"s_payment_intent": {"post": {"get": true}},"uid_purchase": {"post": {"get": true}}}};
 };
