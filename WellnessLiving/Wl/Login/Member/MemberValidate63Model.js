@@ -120,7 +120,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Member_MemberValidate63Model);
 /**
  * @inheritDoc
  */
-Wl_Login_Member_MemberValidateModel.prototype.config=function()
+Wl_Login_Member_MemberValidate63Model.prototype.config=function()
 {
   return {"a_field": {"a_empty_fields_booking": {"get": {"result": true}},"a_empty_fields_registration": {"get": {"result": true}},"a_empty_fields_required": {"get": {"result": true}},"has_credit_card": {"get": {"result": true}},"has_outstanding_contract": {"get": {"result": true}},"has_outstanding_waiver": {"get": {"result": true}},"has_pending_quizzes": {"get": {"result": true}},"is_booking_require_card": {"get": {"result": true}},"is_register_require_card": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
