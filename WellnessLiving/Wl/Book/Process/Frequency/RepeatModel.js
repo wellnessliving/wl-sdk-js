@@ -33,7 +33,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
    * @property {string} is_free Whether booking is free for this day.
    * @property {string} is_ignore Whether visit is from ignore list.
    * @property {string} is_wait Whether booking can be only to wait list.
-   * @property {string} k_class_period Key of class period, primary key in {}.
+   * @property {string} k_class_period Key of class period, primary key in {@link \RsClassPeriodSql} table.
    * @property {string} s_alert Staff name if booking available, warning about wait list or disabled booking otherwise.
    * @property {string} s_date Visit date and time in location's time zone in human readable format.
    */
@@ -48,15 +48,16 @@ function Wl_Book_Process_Frequency_RepeatModel()
 
   /**
    * List of visits to be ignored. Each value is a string consisting of a class period key
-   * and a visit date and time in location's timezone, concatenated by two colons.
+   * and a visit date and time in location's timezone, concatenated by two colons. Empty array if no visits
+   * should be ignored. Example: ['70::2024-11-05 18:00:00'].
    *
    * @get get
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_visit_ignore = [];
 
   /**
-   * Date of the class, when recurring booking was called.
+   * Date and time of the class, when recurring booking was called, in UTC timezone.
    *
    * @get get
    * @type {string}
@@ -64,7 +65,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_date = "";
 
   /**
-   * Date to start recurring booking.
+   * Date to start recurring booking. Not empty only when {@link RepeatApi::$id_repeat_end} == {@link \RsRepeatEndSid::DATE}.
    *
    * @get get,result
    * @type {string}
@@ -72,7 +73,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_from = "";
 
   /**
-   * Date to finish recurring booking.
+   * Date to finish recurring booking. Not empty only when {@link RepeatApi::$id_repeat_end} == {@link \RsRepeatEndSid::DATE}.
    *
    * @get get,result
    * @type {string}
@@ -80,7 +81,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_to = "";
 
   /**
-   * Count of the visits to be created. Should be empty, if date range is set.
+   * Count of the visits to be created. Not empty only when {@link RepeatApi::$id_repeat_end} == {@link \RsRepeatEndSid::COUNT}.
    *
    * @get get,result
    * @type {number}
@@ -160,7 +161,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.s_uid = "";
 
   /**
-   * Encoded list of user keys, who will attend visits.
+   * Start date of repeatable period in human-readable format.
    *
    * @get result
    * @type {string}
@@ -168,7 +169,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.text_date_from = "";
 
   /**
-   * Encoded list of user keys, who will attend visits.
+   * End date of repeatable period in human-readable format.
    *
    * @get result
    * @type {string}
@@ -186,6 +187,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   /**
    * Key of user, who perform booking.
    *
+   * @deprecated Current login user used instead.
    * @get get
    * @type {string}
    */
