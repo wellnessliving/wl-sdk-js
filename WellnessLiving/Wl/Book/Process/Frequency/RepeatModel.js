@@ -33,7 +33,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
    * @property {string} is_free Whether booking is free for this day.
    * @property {string} is_ignore Whether visit is from ignore list.
    * @property {string} is_wait Whether booking can be only to wait list.
-   * @property {string} k_class_period Key of class period, primary key in {@link \RsClassPeriodSql} table.
+   * @property {string} k_class_period Key of class period.
    * @property {string} s_alert Staff name if booking available, warning about wait list or disabled booking otherwise.
    * @property {string} s_date Visit date and time in location's time zone in human readable format.
    */
@@ -65,7 +65,8 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_date = "";
 
   /**
-   * Date to start recurring booking. Not empty only when {@link RepeatApi::$id_repeat_end} == {@link \RsRepeatEndSid::DATE}.
+   * Date to start recurring booking.
+   * Not empty only when {@link Wl_Book_Process_Frequency_RepeatModel.id_repeat_end} == {@link RsRepeatEndSid.DATE}.
    *
    * @get get,result
    * @type {string}
@@ -73,7 +74,8 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_from = "";
 
   /**
-   * Date to finish recurring booking. Not empty only when {@link RepeatApi::$id_repeat_end} == {@link \RsRepeatEndSid::DATE}.
+   * Date to finish recurring booking.
+   * Not empty only when {@link Wl_Book_Process_Frequency_RepeatModel.id_repeat_end} == {@link RsRepeatEndSid.DATE}.
    *
    * @get get,result
    * @type {string}
@@ -81,7 +83,8 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_to = "";
 
   /**
-   * Count of the visits to be created. Not empty only when {@link RepeatApi::$id_repeat_end} == {@link \RsRepeatEndSid::COUNT}.
+   * Count of the visits to be created.
+   * Not empty only when {@link Wl_Book_Process_Frequency_RepeatModel.id_repeat_end} == {@link RsRepeatEndSid.COUNT}.
    *
    * @get get,result
    * @type {number}
