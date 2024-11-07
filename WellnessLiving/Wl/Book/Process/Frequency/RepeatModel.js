@@ -208,27 +208,3 @@ Wl_Book_Process_Frequency_RepeatModel.prototype.config=function()
 {
   return {"a_field": {"a_day": {"get": {"get": true}},"a_visit": {"get": {"result": true}},"a_visit_ignore": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_from": {"get": {"get": true,"result": true}},"dt_to": {"get": {"get": true,"result": true}},"i_count": {"get": {"get": true,"result": true}},"i_duration": {"get": {"get": true}},"id_duration": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"id_repeat_end": {"get": {"get": true}},"is_cancel": {"get": {"get": true}},"is_new_user": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"s_uid": {"get": {"get": true}},"text_date_from": {"get": {"result": true}},"text_date_to": {"get": {"result": true}},"uid": {"get": {"get": true}},"uid_actor": {"get": {"get": true}}}};
 };
-
-/**
- * @function
- * @name Wl_Book_Process_Frequency_RepeatModel.instanceGet
- * @param {number[]} a_day List of days of the week to create visits. Each value is a {@link ADateWeekSid} constant.
- * @param {{}} a_visit_ignore List of visits to be ignored. Each value is a string consisting of a class period key and a visit date and time in location's timezone, concatenated by two colons.
- * @param {string} dt_date Date of the class, when recurring booking was called.
- * @param {string} dt_from Date to start recurring booking.
- * @param {string} dt_to Date to finish recurring booking.
- * @param {number} i_count Count of the visits to be created. Should be empty, if date range is set.
- * @param {number} i_duration Count of days\weeks\months between recurring bookings.
- * @param {number} id_duration Recurring booking interval, one of {@link ADurationSid} constants.
- * @param {number} id_mode WellnessLiving mode, one of {@link Wl_Mode_ModeSid} constants.
- * @param {number} id_repeat_end Type of repeating, one of {@link RsRepeatEndSid} constants.
- * @param {boolean} is_cancel `true` when cancelling booking, `false` otherwise.
- * @param {boolean} is_new_user `true` if current user is not created yet, `false` otherwise.
- * @param {string} k_business Business key.
- * @param {string} k_class_period Class period key.
- * @param {string} s_uid Encoded list of user keys, who will attend visits.
- * @param {string} uid Key of user, who will attend visits.
- * @param {string} uid_actor Key of user, who perform booking.
- * @returns {Wl_Book_Process_Frequency_RepeatModel}
- * @see WlSdk_ModelAbstract.instanceGet()
- */
