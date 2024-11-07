@@ -11,11 +11,6 @@ function Wl_Book_Process_Frequency_RepeatModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this._s_key = "a_day,a_visit_ignore,dt_date,dt_from,dt_to,i_count,i_duration,id_duration,id_mode,id_repeat_end,is_cancel,is_new_user,k_business,k_class_period,s_uid,uid,uid_actor";
-
-  /**
    * List of days of the week to create visits. Each value is a {@link ADateWeekSid} constant.
    *
    * @get get
