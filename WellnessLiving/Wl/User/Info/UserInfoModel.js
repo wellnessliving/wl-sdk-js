@@ -1,5 +1,5 @@
 /**
- * An endpoint that retrieves information about a WellnessLiving user.
+ * Retrieves information about a WellnessLiving user.
  *
  * This model is generated automatically based on API.
  *
@@ -14,6 +14,14 @@ function Wl_User_Info_UserInfoModel()
    * @inheritDoc
    */
   this._s_key = "uid,k_business";
+
+  /**
+   * List of member groups that the user belongs to.
+   *
+   * @get result
+   * @type {string[]}
+   */
+  this.a_member_group = [];
 
   /**
    * @typedef {{}} Wl_User_Info_UserInfoModel_a_photo
@@ -41,22 +49,26 @@ function Wl_User_Info_UserInfoModel()
 
   /**
    * @typedef {{}} Wl_User_Info_UserInfoModel_a_result_list
-   * @property {Wl_User_Info_UserInfoModel_a_photo} a_photo Information about the user's photo.
+   * @property {{}} a_member_group List of member groups that the user belongs to.
+   * @property {{}} a_photo Information about the user's photo.
    * @property {string} dt_add The date the user was added, given in UTC time.
    * @property {string} dt_birth The user's birthday. This will be `null` if the birthday isn't set yet.
-   * @property {number} id_gender The ID of the user's gender. This will be `null` if the gender isn't set yet.
+   * @property {number} id_gender The ID of the user's gender. One of the {@link AGenderSid} constants.
    * @property {boolean} is_customer_new This will be `true` if the user has never made purchases or reservations in this business.
    * Otherwise, this will be `false`.
    * @property {boolean} is_traveller This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
    * in the Enterprise business.
-   * @property {string} k_business The key of the business. This may be empty if system-wide information is needed.
+   * @property {string} k_business The key of the business.
+   * This may be empty if system-wide information is needed.
    * @property {string} k_login_type The key of the login type. The login type describes the user's client type in this business.
    * @property {string} s_first_name The user's first name.
    * @property {string} s_last_name The user's last name.
    * @property {string} s_mail The user's email address.
    * @property {string} s_member The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
-   * is set by the business and separate from the <var>uid</var> value.
+   * is set by the business and separate from the <tt>uid</tt> value.
    * @property {string} s_phone The user's phone number.
+   * @property {string} s_phone_home The user's home phone number.
+   * @property {string} s_phone_work The user's work phone number.
    * @property {string} uid The key of the user.
    * @property {string} url_photo The URL for the user's photo.
    */
@@ -65,6 +77,8 @@ function Wl_User_Info_UserInfoModel()
    * List of user's data.
    *
    * <dl>
+   *   <dt>array <var>a_member_group</var></dt>
+   *   <dd>List of member groups that the user belongs to.</dd>
    *   <dt>array <var>a_photo</var></dt>
    *   <dd>Information about the user's photo.</dd>
    *   <dt>string <var>dt_add</var></dt>
@@ -74,7 +88,7 @@ function Wl_User_Info_UserInfoModel()
    *     The user's birthday. This will be `null` if the birthday isn't set yet.
    *   </dd>
    *   <dt>int <var>id_gender</var></dt>
-   *   <dd>The ID of the user's gender. One of the {@link \AGenderSid} constants.</dd>
+   *   <dd>The ID of the user's gender. One of the {@link AGenderSid} constants.</dd>
    *   <dt>bool <var>is_customer_new</var></dt>
    *   <dd>
    *     This will be `true` if the user has never made purchases or reservations in this business.
@@ -107,6 +121,10 @@ function Wl_User_Info_UserInfoModel()
    *   <dd>
    *     The user's phone number.
    *   </dd>
+   *   <dt>string <var>s_phone_home</var></dt>
+   *   <dd>The user's home phone number.</dd>
+   *   <dt>string <var>s_phone_work</var></dt>
+   *   <dd>The user's work phone number.</dd>
    *   <dt>string <var>uid</var></dt>
    *   <dd>The key of the user.</dd>
    *   <dt>string <var>url_photo</var></dt>
@@ -114,7 +132,7 @@ function Wl_User_Info_UserInfoModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_User_Info_UserInfoModel_a_result_list}
+   * @type {Wl_User_Info_UserInfoModel_a_result_list[]}
    */
   this.a_result_list = undefined;
 
@@ -143,7 +161,18 @@ function Wl_User_Info_UserInfoModel()
   this.dt_birth = undefined;
 
   /**
-   * The ID of the user's gender. One of the {@link Wl_Gender_GenderSid} constants.
+   * Whether client's login type has a discount.
+   * `true` - login type has a discount, `false` - otherwise.
+   *
+   * This will be `null` if a client has no assigned login type.
+   *
+   * @get result
+   * @type {*}
+   */
+  this.has_discount = undefined;
+
+  /**
+   * The ID of the user's gender. One of the {@link AGenderSid} constants.
    *
    * This will be `null` if the gender isn't set yet.
    *
@@ -178,6 +207,16 @@ function Wl_User_Info_UserInfoModel()
    * @type {string}
    */
   this.k_business = "0";
+
+  /**
+   * Primary key of a city.
+   *
+   * `null` is user has no address.
+   *
+   * @get result
+   * @type {*}
+   */
+  this.k_city = undefined;
 
   /**
    * The key of the login type. The login type describes the user's client type in this business.
@@ -229,6 +268,61 @@ function Wl_User_Info_UserInfoModel()
   this.s_phone = undefined;
 
   /**
+   * The user's home phone number.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.s_phone_home = "";
+
+  /**
+   * The user's work phone number.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.s_phone_work = "";
+
+  /**
+   * Address inside a city.
+   *
+   * `null` is user has no address.
+   *
+   * @get result
+   * @type {*}
+   */
+  this.text_address = undefined;
+
+  /**
+   * City name.
+   *
+   * `null` is user has no address.
+   *
+   * @get result
+   * @type {*}
+   */
+  this.text_city = undefined;
+
+  /**
+   * Login type title.
+   * Empty if a client has no client type assigned.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_login_type = "";
+
+  /**
+   * Postal code.
+   *
+   * `null` is user has no address.
+   *
+   * @get result
+   * @type {*}
+   */
+  this.text_postal = undefined;
+
+  /**
    * The key of the user.
    *
    * @get get,result
@@ -254,7 +348,7 @@ WlSdk_ModelAbstract.extend(Wl_User_Info_UserInfoModel);
  */
 Wl_User_Info_UserInfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_photo": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_user_list": {"get": {"get": true}},"dt_add": {"get": {"result": true}},"dt_birth": {"get": {"result": true}},"id_gender": {"get": {"result": true}},"is_customer_new": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_login_type": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"uid": {"get": {"get": true,"result": true}},"url_photo": {"get": {"result": true}}}};
+  return {"a_field": {"a_member_group": {"get": {"result": true}},"a_photo": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_user_list": {"get": {"get": true}},"dt_add": {"get": {"result": true}},"dt_birth": {"get": {"result": true}},"has_discount": {"get": {"result": true}},"id_gender": {"get": {"result": true}},"is_customer_new": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_city": {"get": {"result": true}},"k_login_type": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_phone_home": {"get": {"result": true}},"s_phone_work": {"get": {"result": true}},"text_address": {"get": {"result": true}},"text_city": {"get": {"result": true}},"text_login_type": {"get": {"result": true}},"text_postal": {"get": {"result": true}},"uid": {"get": {"get": true,"result": true}},"url_photo": {"get": {"result": true}}}};
 };
 
 /**

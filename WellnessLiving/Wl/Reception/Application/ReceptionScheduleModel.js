@@ -36,6 +36,8 @@ function Wl_Reception_Application_ReceptionScheduleModel()
      * @property {number} i_duration Duration of the session in minutes.
      * @property {number} id_service Service ID. One of the {@link Wl_Service_ServiceSid} constants.
      * @property {boolean} is_auto `true` if the session can be checked in automatically, `false` otherwise.
+     * @property {boolean} is_book `true` if client should be notified that the visit is booked. `false` otherwise.
+     * @property {boolean} is_wait `true` if client should be notified that they are on the waitlist. `false` otherwise.
      * @property {?string} k_appointment Appointment key. `null` if not an appointment.
      * @property {?string} k_class_period Class period key. `null` if not a class or event.
      * @property {?string} k_visit Visit key if the session has been checked in, `null` otherwise.
@@ -66,6 +68,10 @@ function Wl_Reception_Application_ReceptionScheduleModel()
      *   <dd>Service ID. One of the {@link Wl_Service_ServiceSid} constants.</dd>
      *   <dt>bool <var>is_auto</var></dt>
      *   <dd>`true` if the session can be checked in automatically, `false` otherwise.</dd>
+     *   <dt>bool <var>is_book</var></dt>
+     *   <dd>`true` if client should be notified that the visit is booked. `false` otherwise.</dd>
+     *   <dt>bool <var>is_wait</var></dt>
+     *   <dd>`true` if client should be notified that they are on the waitlist. `false` otherwise.</dd>
      *   <dt>string|null <var>k_appointment</var></dt>
      *   <dd>Appointment key. `null` if not an appointment.</dd>
      *   <dt>string|null <var>k_class_period</var></dt>
@@ -98,7 +104,7 @@ function Wl_Reception_Application_ReceptionScheduleModel()
      */
     /**
      * @typedef {{}} Wl_Reception_Application_ReceptionScheduleModel_a_confirmation_data_a_payment
-     * @property {Wl_Reception_Application_ReceptionScheduleModel_a_confirmation_data_a_payment_a_restrict} a_restrict Calendar restrictions. A duration pass will only have elements if the limit has been met. Contains: <dl>
+     * @property {Wl_Reception_Application_ReceptionScheduleModel_a_confirmation_data_a_payment_a_restrict} a_restrict Calendar restrictions. A duration pass will only have elements if a restriction has been met. Contains: <dl>
      *   <dt>int <tt>i_limit</tt></dt><dd>Count of possible visits.</dd>
      *   <dt>int <tt>i_remain</tt></dt><dd>Count of remaining visits.</dd>
      *   <dt>bool <tt>s_date</tt></dt><dd>Name of the calendar period.</dd>
@@ -130,7 +136,7 @@ function Wl_Reception_Application_ReceptionScheduleModel()
      * @typedef {{}} Wl_Reception_Application_ReceptionScheduleModel_a_confirmation_data
      * @property {Wl_Reception_Application_ReceptionScheduleModel_a_confirmation_data_a_payment} a_payment Data for the promotion payment informational card. Each element contains:<dl>
      * <dt>array <tt>a_restrict</tt></dt>
-     * <dd>Calendar restrictions. A duration pass will only have elements if the limit has been met. Contains: <dl>
+     * <dd>Calendar restrictions. A duration pass will only have elements if a restriction has been met. Contains: <dl>
      *   <dt>int <tt>i_limit</tt></dt><dd>Count of possible visits.</dd>
      *   <dt>int <tt>i_remain</tt></dt><dd>Count of remaining visits.</dd>
      *   <dt>bool <tt>s_date</tt></dt><dd>Name of the calendar period.</dd>
@@ -194,7 +200,7 @@ function Wl_Reception_Application_ReceptionScheduleModel()
      *   <dt>array <var>a_payment</var></dt>
      *   <dd>Data for the promotion payment informational card. Each element contains:<dl>
      *     <dt>array <var>a_restrict</var></dt>
-     *     <dd>Calendar restrictions. A duration pass will only have elements if the limit has been met. Contains: <dl>
+     *     <dd>Calendar restrictions. A duration pass will only have elements if a restriction has been met. Contains: <dl>
      *       <dt>int <var>i_limit</var></dt><dd>Count of possible visits.</dd>
      *       <dt>int <var>i_remain</var></dt><dd>Count of remaining visits.</dd>
      *       <dt>bool <var>s_date</var></dt><dd>Name of the calendar period.</dd>

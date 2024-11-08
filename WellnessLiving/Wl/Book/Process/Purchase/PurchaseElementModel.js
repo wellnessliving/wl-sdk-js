@@ -11,7 +11,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "id_purchase_item,k_id,k_location,uid,i_session,k_login_prize,text_discount_code,k_pay_installment_template";
+  this._s_key = "id_purchase_item,k_id,k_location,uid,i_session,k_login_prize,text_discount_code,k_pay_installment_template,dtu_date";
 
   /**
    * A list of taxes for one purchase item.
@@ -22,6 +22,16 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
    * @type {{}}
    */
   this.a_tax = undefined;
+
+  /**
+   * Date/time of session is booking.
+   *
+   * `null` until initialized.
+   *
+   * @get get
+   * @var string|null
+   */
+  this.dtu_date = null;
 
   /**
    * The number of sessions booked simultaneously.
@@ -167,7 +177,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_tax": {"get": {"result": true}},"i_session": {"get": {"get": true}},"id_purchase_item": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_login_prize": {"get": {"get": true}},"k_pay_installment_template": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_remaining": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_tax": {"get": {"result": true}},"dtu_date": {"get": {"get": true}},"i_session": {"get": {"get": true}},"id_purchase_item": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_login_prize": {"get": {"get": true}},"k_pay_installment_template": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_remaining": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -186,6 +196,7 @@ Wl_Book_Process_Purchase_PurchaseElementModel.prototype.config=function()
  * @param {?string} k_pay_installment_template The installment template key. This property is optional.
  * This will be `null` if an installment plan doesn't exist for the purchased item or `0` if an installment plan
  * isn't selected for the purchased item from the list of installment plans.
+ * @param {?string} dtu_date Date/time of session is booking. `null` until initialized.
  * @returns {Wl_Book_Process_Purchase_PurchaseElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

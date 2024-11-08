@@ -110,7 +110,16 @@ function Wl_Pay_Form_EnvironmentModel()
   this.a_pay_processor = null;
 
   /**
-   * The percentage of the payment amount to additionally withdraw as a surcharge.
+   * Local date with time now in current location {@link Wl_Pay_Form_EnvironmentModel.k_location}
+   * or business {@link Wl_Pay_Form_EnvironmentModel.k_business} if not set location.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.dl_now = undefined;
+
+  /**
+   * Surcharge amount for payment with card represented as a percent of transaction amount.
    *
    * This will be `null` if the percentage surcharge amount shouldn't be withdrawn.
    *
@@ -118,6 +127,16 @@ function Wl_Pay_Form_EnvironmentModel()
    * @type {?string}
    */
   this.f_surcharge = null;
+
+  /**
+   * Surcharge amount for payment with ACH represented as a percent of transaction amount.
+   *
+   * This will be `null` if the percentage surcharge amount shouldn't be withdrawn.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.f_surcharge_ach = null;
 
   /**
    * The locale ID of the business.
@@ -138,10 +157,18 @@ function Wl_Pay_Form_EnvironmentModel()
   this.is_save_source = undefined;
 
   /**
+   * Whether tips are accepted.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_tip = false;
+
+  /**
    * The key of the business to retrieve payment information for.
    *
    * This will be `0` if not set yet.
-   * An empty string if payments are performed with the WellnessLiving system merchant.
+   * An empty string or `null` if payments are performed with the WellnessLiving system merchant.
    *
    * @get get
    * @type {string}
@@ -167,7 +194,7 @@ function Wl_Pay_Form_EnvironmentModel()
   this.k_location = "0";
 
   /**
-   * The fixed surcharge amount to withdraw from all payment sources that support surcharges.
+   * Surcharge amount for payment with card represented as a fixed amount.
    *
    * This will be `null` if the fixed surcharge amount shouldn't be withdrawn.
    *
@@ -175,6 +202,16 @@ function Wl_Pay_Form_EnvironmentModel()
    * @type {?string}
    */
   this.m_surcharge = null;
+
+  /**
+   * Surcharge amount for payment with ACH represented as a fixed amount.
+   *
+   * This will be `null` if the fixed surcharge amount shouldn't be withdrawn.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.m_surcharge_ach = null;
 
   this.changeInit();
 }
@@ -186,14 +223,14 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Form_EnvironmentModel);
  */
 Wl_Pay_Form_EnvironmentModel.prototype.config=function()
 {
-  return {"a_field": {"a_card_system": {"get": {"result": true}},"a_method_staff": {"get": {"result": true}},"a_method_support": {"get": {"result": true}},"a_mobile_config": {"get": {"result": true}},"a_pay_processor": {"get": {"result": true}},"f_surcharge": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"is_save_source": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_currency": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_surcharge": {"get": {"result": true}}}};
+  return {"a_field": {"a_card_system": {"get": {"result": true}},"a_method_staff": {"get": {"result": true}},"a_method_support": {"get": {"result": true}},"a_mobile_config": {"get": {"result": true}},"a_pay_processor": {"get": {"result": true}},"dl_now": {"get": {"result": true}},"f_surcharge": {"get": {"result": true}},"f_surcharge_ach": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"is_save_source": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_currency": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_surcharge": {"get": {"result": true}},"m_surcharge_ach": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Pay_Form_EnvironmentModel.instanceGet
  * @param {string} k_currency The key of the currency to retrieve payment information for.
- * @param {string} k_business The key of the business to retrieve payment information for. This will be `0` if not set yet. An empty string if payments are performed with the WellnessLiving system merchant.
+ * @param {string} k_business The key of the business to retrieve payment information for. This will be `0` if not set yet. An empty string or `null` if payments are performed with the WellnessLiving system merchant.
  * @param {string} k_location The key of the location to retrieve payment information for. This will be `0` if not set yet.
  * @returns {Wl_Pay_Form_EnvironmentModel}
  * @see WlSdk_ModelAbstract.instanceGet()

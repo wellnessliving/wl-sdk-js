@@ -1,5 +1,5 @@
 /**
- * An endpoint that retrieves information about an event element.
+ * Retrieves information about an event element.
  *
  * This model is generated automatically based on API.
  *
@@ -46,7 +46,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_book_available
    * @property {string} dt_date Date/time when session starts. In UTC.
-   * @property {string} k_class_period Class session primary keys in table {@link \RsClassPeriodSql}.
+   * @property {string} k_class_period Class session primary keys.
    */
 
   /**
@@ -58,7 +58,7 @@ function Wl_Event_Book_EventView_ElementModel()
    *   <dt>string <var>dt_date</var></dt>
    *   <dd>Date/time when session starts. In UTC.</dd>
    *   <dt>string <var>k_class_period</var></dt>
-   *   <dd>Class session primary keys in table {@link \RsClassPeriodSql}.</dd>
+   *   <dd>Class session primary keys.</dd>
    * </dl>
    *
    * @get result
@@ -162,9 +162,11 @@ function Wl_Event_Book_EventView_ElementModel()
    * The local date without time.
    * @property {string} dt_start The start date of the session.
    * The local date without time.
+   * @property {boolean} hide_location `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
+   * only has one location. `false` otherwise.
    * @property {number} i_capacity The class capacity.
    * @property {number} i_duration The duration of the class in seconds.
-   * @property {boolean} is_virtual This will be `true` if the session is not held in person but offered remotely. If will be `false` otherwise.
+   * @property {boolean} is_virtual This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
    * @property {string} f_price The price of the session, if it can be purchased separately.
    * @property {string} k_class_period The key of the class period.
    * @property {string} k_location The key of the location where the session is held.
@@ -229,6 +231,13 @@ function Wl_Event_Book_EventView_ElementModel()
    *     The local date without time.
    *   </dd>
    *   <dt>
+   *     bool <var>hide_location</var>
+   *   </dt>
+   *   <dd>
+   *     `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
+   *     only has one location. `false` otherwise.
+   *   </dd>
+   *   <dt>
    *     int <var>i_capacity</var>
    *   </dt>
    *   <dd>
@@ -244,7 +253,7 @@ function Wl_Event_Book_EventView_ElementModel()
    *     bool <var>is_virtual</var>
    *   </dt>
    *   <dd>
-   *     This will be `true` if the session is not held in person but offered remotely. If will be `false` otherwise.
+   *     This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
    *   </dd>
    *   <dt>
    *     string <var>f_price</var>
@@ -306,7 +315,7 @@ function Wl_Event_Book_EventView_ElementModel()
    *   <dt>int <var>i_width</var></dt>
    *   <dd>Image width.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>Key of the user. Primary key from {@link \PassportLoginSql} table</dd>
+   *   <dd>Key of the user.</dd>
    *   <dt>string <var>url_logo</var></dt>
    *   <dd>URL to image.</dd>
    * </dl>
@@ -319,6 +328,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_visits_required
    * @property {number} i_count The number of visits.
+   * @property {number} i_has The number of visits the client has already attended.
    * @property {boolean} is_event `true` if this is an event, `false` if this is a class.
    * @property {string} k_class The key of the class or event.
    * @property {string} text_title The name of the class or event.
@@ -330,6 +340,8 @@ function Wl_Event_Book_EventView_ElementModel()
    * <dl>
    *   <dt>int <var>i_count</var></dt>
    *   <dd>The number of visits.</dd>
+   *   <dt>int <var>i_has</var></dt>
+   *   <dd>The number of visits the client has already attended.</dd>
    *   <dt>bool <var>is_event</var></dt>
    *   <dd>`true` if this is an event, `false` if this is a class.</dd>
    *   <dt>string <var>k_class</var></dt>
@@ -467,7 +479,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.i_staff_image_width = 0;
 
   /**
-   * The virtual provider ID. One of the{@link Wl_Virtual_VirtualProviderSid} constants.
+   * The virtual provider ID. One of the {@link Wl_Virtual_VirtualProviderSid} constants.
    *
    * `null` if an in-person event.
    *
@@ -477,8 +489,17 @@ function Wl_Event_Book_EventView_ElementModel()
   this.id_virtual_provider = null;
 
   /**
+   * Whether the event is age restricted.
+   * `true` if the event is age restricted, `false` if the event is not.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_age_restrict = false;
+
+  /**
    * `true` if the event availability was checked; `false` if the event has too many sessions and calculating
-   *  the availability of each one takes a lot of time (user can use filter and solve the problem).
+   *  the availability of each one takes a lot of time.
    *
    * @get result
    * @type {boolean}
@@ -494,8 +515,16 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_book = undefined;
 
   /**
-   * <tt>true</tt> if there are no free spots in the event; booking is available only into the wait list.
-   * <tt>false</tt> otherwise.
+   * `true` If the event is bookable; `false` if the event isn't bookable.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_bookable = undefined;
+
+  /**
+   * `true` if there are no free spots in the event; booking is available only into the wait list.
+   * `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -522,6 +551,15 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_prorate = undefined;
 
   /**
+   * `true` if schedule should be grouped by location time and staff,
+   * `false` if all schedule elements should be independent.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_schedule_group = false;
+
+  /**
    * Determines whether this event allows paying for a single session.
    *
    * @get result
@@ -544,6 +582,14 @@ function Wl_Event_Book_EventView_ElementModel()
    * @type {string}
    */
   this.k_book_class_period = undefined;
+
+  /**
+   * Key of the business that belongs requested event(s).
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_business = null;
 
   /**
    * The event key.
@@ -605,12 +651,38 @@ function Wl_Event_Book_EventView_ElementModel()
   this.s_title = null;
 
   /**
+   * End date of the event in user-friendly format.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_end = undefined;
+
+  /**
+   * Start date of the event in user-friendly format.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_start = undefined;
+
+  /**
    * The user key.
    *
    * @get get
    * @type {string}
    */
   this.uid = "0";
+
+  /**
+   * Link to the start of the booking wizard to book the closed session from this event or the entire event.
+   *
+   * Can be `null` if there is no available for booking sessions.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.url_book = null;
 
   /**
    * The description of the event.
@@ -630,7 +702,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventView_ElementModel);
  */
 Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_virtual_provider": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"uid": {"get": {"get": true}},"xml_description": {"get": {"result": true}}}};
+  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
 };
 
 /**

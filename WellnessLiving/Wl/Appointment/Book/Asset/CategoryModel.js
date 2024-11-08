@@ -20,6 +20,7 @@ function Wl_Appointment_Book_Asset_CategoryModel()
    * @property {*} hide_application <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
    * @property {string} k_resource_type Resource type ID.
    * @property {string} html_title Title of resource type.
+   * @property {string} text_title Title of resource type as text.
    */
 
   /**
@@ -42,6 +43,12 @@ function Wl_Appointment_Book_Asset_CategoryModel()
    *   </dt>
    *   <dd>
    *     Title of resource type.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_title</var>
+   *   </dt>
+   *   <dd>
+   *     Title of resource type as text.
    *   </dd>
    * </dl>
    *

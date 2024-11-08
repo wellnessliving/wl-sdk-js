@@ -1,5 +1,5 @@
 /**
- * An endpoint that offers functionality for the class booking wizard on the "Class and Location" page.
+ * Offers functionality for the class booking wizard on the "Class and Location" page.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -15,9 +15,9 @@ function Wl_Book_Process_Info_InfoModel()
   this._s_key = "k_class_period,dt_date_gmt,uid,id_mode";
 
   /**
-   * The days of the week available for recurring booking. One of the {@link ADateWeekSid} constants.
+   * Week days available for recurring booking. Constants of {@link ADateWeekSid} class.
    *
-   * This will be `null` if recurring booking isn't available.
+   * `null` if recurring booking is not available.
    *
    * @get result
    * @type {?number[]}
@@ -34,66 +34,80 @@ function Wl_Book_Process_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Info_InfoModel_a_repeat
-   * @property {*} a_week The days of the week when appointment repeats. One of the {@link ADateWeekSid} constants.
-   * This will be empty if the appointment doesn't repeat on a weekly basis.
-   * @property {*} dl_end The date when appointment repeat cycle stops. This will be empty if the repeat cycle doesn't
-   * have a fixed end date.
-   * @property {*} i_occurrence The number of occurrences after which the appointment repeat cycle stops.
-   * This will be empty if the repeat cycle doesn't have a fixed number of occurrences.
-   * @property {number} i_period The frequency of the appointment's repeat cycle.
-   * @property {number} id_period The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   * @property {*} is_month This will be `true` if appointment repeats on a monthly basis on the same date.
-   * Otherwise, this will be `false` if appointment repeats monthly on the same day of the week or `null` if appointment
-   * doesn't repeat monthly.
+   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
+   * Should be passed for any type of repetition.
+   * @property {number[]} a_week Deprecated, use `a_day` instead!
+   * @property {*} dl_end Deprecated, use `dt_from` and `dt_to` instead!
+   * @property {*} dt_from Date to start recurring booking.
+   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
+   * @property {*} dt_to Date to complete recurring booking.
+   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
+   * @property {*} i_count The number of occurrences after which the appointment's repeat cycle stops.
+   *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *  Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
+   * @property {number} i_duration Count of days\weeks\months between recurring bookings.
+   * @property {*} i_occurrence Deprecated, use `i_count` instead!
+   * @property {number} i_period Deprecated, use `i_duration` instead!
+   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
+   * @property {number} id_period Deprecated, use `id_duration` instead!
+   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**
    * Information about the recurring booking:
    * <dl>
+   *   <dt>int[] <var>a_day</var></dt>
+   *   <dd>
+   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
+   *     Should be passed for any type of repetition.
+   *   </dd>
+   *   <dt>int[] <var>a_week</var></dt>
+   *   <dd>Deprecated, use `a_day` instead!</dd>
+   *   <dt>string [<var>dl_end</var>]</dt>
+   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
    *   <dt>
-   *     int[] [<var>a_week</var>]
+   *     string [<var>dt_from</var>]
    *   </dt>
    *   <dd>
-   *     The days of the week when appointment repeats. One of the {@link ADateWeekSid} constants.
-   *     This will be empty if the appointment doesn't repeat on a weekly basis.
+   *     Date to start recurring booking.
+   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
    *   </dd>
    *   <dt>
-   *     string [<var>dl_end</var>]
+   *     string [<var>dt_to</var>]
    *   </dt>
    *   <dd>
-   *     The date when appointment repeat cycle stops. This will be empty if the repeat cycle doesn't
-   *     have a fixed end date.
+   *     Date to complete recurring booking.
+   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
    *   </dd>
    *   <dt>
-   *     int [<var>i_occurrence</var>]
-   *   </dt>
-   *   <dd>
-   *     The number of occurrences after which the appointment repeat cycle stops.
-   *     This will be empty if the repeat cycle doesn't have a fixed number of occurrences.
-   *   </dd>
+   *      int [<var>i_count</var>]
+   *    </dt>
+   *    <dd>
+   *      The number of occurrences after which the appointment's repeat cycle stops.
+   *      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   *      Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
+   *    </dd>
+   *   <dt>int <var>i_duration</var></dt>
+   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
+   *   <dt>int [<var>i_occurrence</var>]</dt>
+   *   <dd>Deprecated, use `i_count` instead!</dd>
+   *   <dt>int <var>i_period</var></dt>
+   *   <dd>Deprecated, use `i_duration` instead!</dd>
    *   <dt>
-   *     int <var>i_period</var>
-   *   </dt>
-   *   <dd>
-   *     The frequency of the appointment's repeat cycle.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_period</var>
+   *     int <var>id_duration</var>
    *   </dt>
    *   <dd>
    *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
+   *     Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
    *   </dd>
-   *   <dt>
-   *     bool [<var>is_month</var>]
-   *   </dt>
-   *   <dd>
-   *     This will be `true` if appointment repeats on a monthly basis on the same date.
-   *     Otherwise, this will be `false` if appointment repeats monthly on the same day of the week or `null` if appointment
-   *     doesn't repeat monthly.
-   *   </dd>
+   *   <dt>int <var>id_period</var></dt>
+   *   <dd>Deprecated, use `id_duration` instead!</dd>
+   *   <dt>int <var>id_repeat_end</var></dt>
+   *   <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
    * </dl>
    *
-   * This will be `null` if this isn't a recurring booking.
+   * This will be `null` if the booking isn't recurring.
    *
    * @post post
    * @type {?Wl_Book_Process_Info_InfoModel_a_repeat}
@@ -102,17 +116,17 @@ function Wl_Book_Process_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Info_InfoModel_a_resource
-   * @property {number} i_index The order number of the asset (likely starting from 1).
-   * @property {string} k_resource The asset key.
+   * @property {number} i_index Order number of the asset (maybe from 1 to asset quantity).
+   * @property {string} k_resource The key of asset.
    */
 
   /**
    * A list of assets being booked. Every element has the next structure:
    * <dl>
    *   <dt>int <var>i_index</var></dt>
-   *   <dd>The order number of the asset (likely starting from 1).</dd>
+   *   <dd>Order number of the asset (maybe from 1 to asset quantity).</dd>
    *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The asset key.</dd>
+   *   <dd>The key of asset.</dd>
    * </dl>
    *
    * @post post
@@ -122,22 +136,21 @@ function Wl_Book_Process_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Info_InfoModel_a_session_all
-   * @property {string[]} a_staff The list of staff members leading this session.
-   * @property {string[]} a_virtual_location A list of virtual locations.
-   * @property {string} dt_date The date/time when the session starts in MySQL format and in GMT.
-   * @property {*} is_select If <tt>true</tt>, this session should be selected when the page is initialized.
-   * Otherwise, this will be <tt>false</tt>.
-   * @property {boolean} is_wait If <tt>true</tt>, the client has been added to a wait list.
-   * Otherwise, this will be <tt>false</tt> if they've been added to an active list.
-   * @property {boolean} is_wait_list_unpaid Allows clients to join the wait list unpaid.
-   * @property {string} k_class_period The session key.
-   * @property {string} k_location The location key.
-   * @property {boolean} m_price The session price.
+   * @property {string[]} a_staff List of staff names that are leading this session.
+   * @property {string[]} a_virtual_location List of virtual locations.
+   * @property {string} dt_date The date/time when session starts in MySQL format and in GMT.
+   * @property {*} is_select <tt>true</tt> if this session should be selected when page is initialized;
+   * <tt>false</tt> if otherwise.
+   * @property {boolean} is_wait `true` if client is added to a wait list, `false` - to an active list.
+   * @property {boolean} is_wait_list_unpaid Allow clients to join the wait list unpaid.
+   * @property {string} k_class_period The key of the session.
+   * @property {string} k_location Location key.
+   * @property {boolean} m_price Price of the session.
    * @property {string} s_location The name of the location where the session occurred.
-   * @property {string} s_start The date/time when the session starts in a human-readable format, returned
-   * in the time zone of the location.
-   * @property {string} text_duration A string representation of the session duration.
-   * The duration formatting method can be found in {@link Wl_Book_Process_Info_InfoModel._classDurationFormat()}.
+   * @property {string} s_start The date/time when the session starts in human-readable format.
+   * Returned in the time zone of the location.
+   * @property {string} text_duration String representation of session duration.
+   * Duration formatting method {@link Wl_Book_Process_Info_InfoModel._classDurationFormat()}.
    */
 
   /**
@@ -147,57 +160,56 @@ function Wl_Book_Process_Info_InfoModel()
    *     string[] <var>a_staff</var>
    *   </dt>
    *   <dd>
-   *     The list of staff members leading this session.
+   *     List of staff names that are leading this session.
    *   </dd>
    *   <dt>
    *     string[] <var>a_virtual_location</var>
    *   </dt>
    *   <dd>
-   *     A list of virtual locations.
+   *     List of virtual locations.
    *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
    *   </dt>
    *   <dd>
-   *     The date/time when the session starts in MySQL format and in GMT.
+   *     The date/time when session starts in MySQL format and in GMT.
    *   </dd>
    *   <dt>
    *     boolean <var>is_select</var>
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt>, this session should be selected when the page is initialized.
-   *     Otherwise, this will be <tt>false</tt>.
+   *     <tt>true</tt> if this session should be selected when page is initialized;
+   *     <tt>false</tt> if otherwise.
    *   </dd>
    *   <dt>
    *     bool <var>is_wait</var>
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt>, the client has been added to a wait list.
-   *     Otherwise, this will be <tt>false</tt> if they've been added to an active list.
+   *     `true` if client is added to a wait list, `false` - to an active list.
    *   </dd>
    *   <dt>
    *     bool <var>is_wait_list_unpaid</var>
    *   </dt>
    *   <dd>
-   *     Allows clients to join the wait list unpaid.
+   *     Allow clients to join the wait list unpaid.
    *   </dd>
    *   <dt>
    *     string <var>k_class_period</var>
    *   </dt>
    *   <dd>
-   *     The session key.
+   *     The key of the session.
    *   </dd>
    *   <dt>
    *     string <var>k_location</var>
    *   </dt>
    *   <dd>
-   *     The location key.
+   *     Location key.
    *   </dd>
    *   <dt>
    *     bool <var>m_price</var>
    *   </dt>
    *   <dd>
-   *     The session price.
+   *     Price of the session.
    *   </dd>
    *   <dt>
    *     string <var>s_location</var>
@@ -209,15 +221,15 @@ function Wl_Book_Process_Info_InfoModel()
    *     string <var>s_start</var>
    *   </dt>
    *   <dd>
-   *     The date/time when the session starts in a human-readable format, returned in the time zone
-   *     of the location.
+   *     The date/time when the session starts in human-readable format.
+   *     Returned in the time zone of the location.
    *   </dd>
    *   <dt>
    *     string <var>text_duration</var>
    *   </dt>
    *   <dd>
-   *     A string representation of the session duration. The duration formatting method can be
-   *     found in {@link Wl_Book_Process_Info_InfoModel._classDurationFormat()}.
+   *     String representation of session duration.
+   *     Duration formatting method {@link Wl_Book_Process_Info_InfoModel._classDurationFormat()}.
    *   </dd>
    * </dl>
    *
@@ -227,11 +239,27 @@ function Wl_Book_Process_Info_InfoModel()
   this.a_session_all = undefined;
 
   /**
+   * List of sessions that can be paid without new purchases.
+   * Such as previously prepaid or free sessions.
+   *
+   * Each its item has the key of following format: <dl>
+   *   <dt>string <var>dt_date</var>::<var>k_class_period</var></dt><dd>Composite key of the array.</dd>
+   * </dl>
+   * and the value of following structure: <dl>
+   *   <dt>string <var>dt_date</var></dt><dd>Session date.</dd>
+   *   <dt>string <var>k_class_period</var></dt><dd>Class period key for the session.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {*}
+   */
+  this.a_session_free = undefined;
+
+  /**
    * The selected sessions.
    *
-   * <b>Keys</b> refer to the class period keys.
-   *
-   * <b>Values</b> refer to the list of dates/times when the session occurred in MySQL format and in GMT.
+   * <b>Keys</b> - The class period keys.
+   * <b>Values</b> - List of date/time when the session occurred in MySQL format and in GMT.
    *
    * @post post
    * @type {{}}
@@ -241,9 +269,9 @@ function Wl_Book_Process_Info_InfoModel()
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * <b>Keys</b> refer to the session IDs.
+   * Keys - session IDs.
    *
-   * <b>Values</b> refer to the index arrays of dates/times when session occurred in MySQL format and in GMT.
+   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
    *
    * @post post
    * @type {{}}
@@ -267,9 +295,9 @@ function Wl_Book_Process_Info_InfoModel()
    *   <dt>string <tt>s_url</tt></dt>
    *   <dd>The image URL.</dd>
    * </dl>
-   * @property {string} s_family The first letter of staff member's surname.
+   * @property {string} s_family The first letter of staff member surname.
    * @property {string} s_staff The staff member's name.
-   * @property {string} uid The UID of the staff member.
+   * @property {string} uid UID of the staff member.
    */
 
   /**
@@ -290,11 +318,11 @@ function Wl_Book_Process_Info_InfoModel()
    *     </dl>
    *   </dd>
    *   <dt>string <var>s_family</var></dt>
-   *   <dd>The first letter of staff member's surname.</dd>
+   *   <dd>The first letter of staff member surname.</dd>
    *   <dt>string <var>s_staff</var></dt>
    *   <dd>The staff member's name.</dd>
    *   <dt>string <var>uid</var></dt>
-   *   <dd>The UID of the staff member.</dd>
+   *   <dd>UID of the staff member.</dd>
    * </dl>
    *
    * @get result
@@ -303,7 +331,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.a_staff = undefined;
 
   /**
-   * The keys of the bookings that were made.
+   * The keys of the bookings made.
    *
    * @post result
    * @type {string[]}
@@ -320,7 +348,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.can_book = true;
 
   /**
-   * The date when this class session's occurrences end.
+   * Date when this class session occurrences stop.
    *
    * @get result
    * @type {string}
@@ -328,7 +356,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.dl_end = undefined;
 
   /**
-   * The date/time the session is booked for.
+   * Date/time to which session is booked.
    *
    * @get get
    * @post get
@@ -337,7 +365,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.dt_date_gmt = "";
 
   /**
-   * The date/time of the booked session in MySQL format and in the location's time zone.
+   * The date/time of the session the user is booking in MySQL format in the location's timezone.
    *
    * @get result
    * @type {string}
@@ -345,10 +373,9 @@ function Wl_Book_Process_Info_InfoModel()
   this.dt_date_local = undefined;
 
   /**
-   * `true` if the price for the individual session should be hidden (the client has an applicable
-   * Purchase Option to pay for this booking).
-   *
-   * `false` if the price must be displayed.
+   * `true` if price for the individual session should be hidden, if client has applicable pricing option to pay for this
+   * booking.
+   * `false` if price should be shown always.
    *
    * @get result
    * @type {boolean}
@@ -356,8 +383,8 @@ function Wl_Book_Process_Info_InfoModel()
   this.hide_price = undefined;
 
   /**
-   * The text of the contract to which the user must agree before booking this session.
-   * This won't be empty if the business has a contract and the user didn't agree to this contract.
+   * The text of the contract to which the user must agree before book this session.
+   * Not empty if business has contract and if user did not agree to this contract.
    *
    * @get result
    * @type {string}
@@ -365,7 +392,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.html_contract = undefined;
 
   /**
-   * The class duration in a human-readable format.
+   * Class duration in human-readable format.
    *
    * @get result
    * @type {string}
@@ -381,7 +408,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.html_special = undefined;
 
   /**
-   * The special instructions preview for the class.
+   * Special instructions preview for class.
    *
    * @get result
    * @type {string}
@@ -389,9 +416,9 @@ function Wl_Book_Process_Info_InfoModel()
   this.html_special_preview = undefined;
 
   /**
-   * The number of available spots.
+   * Number of available spots.
    *
-   * This will be `null` if this information isn't available.
+   * `null` if this information is not available.
    *
    * @get result
    * @type {?number}
@@ -399,9 +426,9 @@ function Wl_Book_Process_Info_InfoModel()
   this.i_available = null;
 
   /**
-   * The number of booked spots.
+   * Number of booked spots.
    *
-   * This will be `null` if this information isn't available.
+   * `null` if this information is not available.
    *
    * @get result
    * @type {?number}
@@ -417,7 +444,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.i_duration = undefined;
 
   /**
-   * The client's estimated reserved spot on the waiting list.
+   * Estimated place of reservation on the waiting list.
    *
    * @get result
    * @type {number}
@@ -434,10 +461,9 @@ function Wl_Book_Process_Info_InfoModel()
   this.id_mode = 0;
 
   /**
-   * Determines whether the user has agreed to the liability release.
-   *
-   * This will be `true` if the user has agreed. Otherwise, this will be `false` if the user
-   * hasn't agreed or the agreement isn't required.
+   * Determines if the user has agreed to the liability release.
+   * `true` - if  the user has agreed. Otherwise, this will be.
+   * `false` - if the user hasn't agreed or the agreement isn't required.
    *
    * @post post
    * @type {boolean}
@@ -445,7 +471,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_agree = false;
 
   /**
-   * This will be `true` if recurring booking is available. Otherwise, this will be `false`.
+   * `true` if recurring booking is available, `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -458,10 +484,10 @@ function Wl_Book_Process_Info_InfoModel()
    * @get result
    * @type {boolean}
    */
-  this.is_book_repeat_client_no_end_date = undefined;
+  this.is_book_repeat_no_end_date = undefined;
 
   /**
-   * Determines whether the client must authorize the credit card.
+   * If client must authorize credit card.
    *
    * @post result
    * @type {boolean}
@@ -469,10 +495,30 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_card_authorize = false;
 
   /**
-   * Determines whether the class/event can be booked immediately or not.
+   * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
    *
-   * The verification is based on the search for the client's Purchase Options and other features of the class/event.
-   * However, it doesn't account for any other mandatory steps that may exist.
+   * Use this field with caution.
+   * The final booking will not use this flag and the check will still be performed.
+   *
+   * @get get
+   * @post get
+   * @type {boolean}
+   */
+  this.is_credit_card_check = true;
+
+  /**
+   * Can client chooses several session per booking.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_event_session = false;
+
+  /**
+   * Can the class/event be booked immediately or not.
+   *
+   * The verification is based on the search for client's promotions and other features of the class/event.
+   * But it does not take into account the presence of other mandatory steps.
    * Their presence will be indicated by the {@link Wl_Book_Process_Info_InfoModel.is_next} flag.
    *
    * @post result
@@ -481,9 +527,8 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_force_book = false;
 
   /**
-   * `true` - the user pressed 'Pay later'.
-   *
-   * `false` - the user pressed 'Pay now'.
+   * `true` if user pressed 'Pay later'.
+   * `false` if user pressed 'Pay now'.
    *
    * @post post
    * @type {boolean}
@@ -491,10 +536,8 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_force_pay_later = false;
 
   /**
-   * This will be `true` if the next steps of the booking wizard are needed (for example, to purchase something to
-   * book the selected session).
-   *
-   * Otherwise, this will be `false` if next steps aren't needed (everything required has already been purchased).
+   * `true` - next steps of the wizard are needed (for example, to purchase something to book the selected session).
+   * `false` - no need for next steps (all that's needed has already been purchased).
    *
    * @post result
    * @type {boolean}
@@ -502,9 +545,10 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_next = undefined;
 
   /**
-   * `true` - the event can be paid with a Purchase Option only.
+   * `true` if event can be paid with pricing option only.
+   * `false` if full event purchase or single session purchase are allowed.
    *
-   * `false` - the full event purchase and single session purchases are both allowed.
+   * Copy of {@link \RsClassSql}.`is_promotion_only`.
    *
    * @get result
    * @type {boolean}
@@ -512,7 +556,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_promotion_only = undefined;
 
   /**
-   * Determines whether the class can be paid with single session.
+   * Whether the class can be paid with single session.
    *
    * @get result
    * @type {boolean}
@@ -520,7 +564,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_single_buy = undefined;
 
   /**
-   * Determines whether the full text of the special instructions fits within the preview length or not.
+   * Whether the full text of the special instructions fits within the preview length or not.
    *
    * @get result
    * @type {boolean}
@@ -528,7 +572,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_special_preview = false;
 
   /**
-   * This will be `true` if the class is virtual. Otherwise, this will be `false`.
+   * `true` if class is virtual, `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -536,7 +580,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.is_virtual = undefined;
 
   /**
-   * The key of the booked session.
+   * Key of session which is booked.
    *
    * @get get
    * @post get
@@ -545,7 +589,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.k_class_period = "0";
 
   /**
-   * The class period location key.
+   * Class period location key.
    *
    * @get result
    * @type {string}
@@ -553,7 +597,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.k_location = undefined;
 
   /**
-   * The login Purchase Option used to book a class.
+   * Login promotion to be used to book a class.
    *
    * @post post
    * @type {string}
@@ -561,7 +605,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.k_login_promotion = "";
 
   /**
-   * The session pass to be used to book a class.
+   * Session pass to be used to book a class.
    *
    * @post post
    * @type {string}
@@ -569,7 +613,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.k_session_pass = "";
 
   /**
-   * The session price.
+   * Price of the session.
    *
    * @get result
    * @type {string}
@@ -577,7 +621,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.m_price = undefined;
 
   /**
-   * The entire event cost.
+   * Whole event cost.
    *
    * @get result
    * @type {string}
@@ -585,9 +629,9 @@ function Wl_Book_Process_Info_InfoModel()
   this.m_price_total = undefined;
 
   /**
-   * The event price at an early discount.
+   * Event price at an early discount.
    *
-   * This will be an empty string if there's no discount.
+   * An empty string if there is no discount.
    *
    * @get result
    * @type {string}
@@ -619,7 +663,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.s_location_title = undefined;
 
   /**
-   * The user signature.
+   * User signature.
    *
    * @post post
    * @type {string}
@@ -627,7 +671,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.s_signature = "";
 
   /**
-   * The time when the session takes place in the location's time zone, returned in the `hh:mm` format.
+   * The time when the session takes place in the location's time zone. In format `hh:mm`.
    *
    * @get result
    * @type {string}
@@ -635,7 +679,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.s_time = undefined;
 
   /**
-   * The room in which the session takes place.
+   * Room where session takes place.
    *
    * @get result
    * @type {string}
@@ -643,9 +687,8 @@ function Wl_Book_Process_Info_InfoModel()
   this.text_room = undefined;
 
   /**
-   * A text representation of the list of staff members.
-   *
-   * This list can be found in {@link Wl_Book_Process_Info_InfoModel.a_staff}.
+   * Text representation of the list of staffs.
+   * List of staff see {@link Wl_Book_Process_Info_InfoModel.a_staff}.
    *
    * @get result
    * @type {string}
@@ -653,7 +696,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.text_staff = undefined;
 
   /**
-   * The time zone abbreviation.
+   * Timezone abbreviation.
    *
    * @get result
    * @type {string}
@@ -661,7 +704,7 @@ function Wl_Book_Process_Info_InfoModel()
   this.text_timezone = undefined;
 
   /**
-   * The key of the user making the booking.
+   * Key of a user who is making a book.
    *
    * @get get
    * @post get
@@ -679,15 +722,15 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Info_InfoModel);
  */
 Wl_Book_Process_Info_InfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_day_available": {"get": {"result": true}},"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_all": {"get": {"result": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_staff": {"get": {"result": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dl_end": {"get": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"dt_date_local": {"get": {"result": true}},"hide_price": {"get": {"result": true}},"html_contract": {"get": {"result": true}},"html_duration": {"get": {"result": true}},"html_special": {"get": {"result": true}},"html_special_preview": {"get": {"result": true}},"i_available": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_agree": {"post": {"post": true}},"is_book_repeat_client": {"get": {"result": true}},"is_book_repeat_client_no_end_date": {"get": {"result": true}},"is_card_authorize": {"post": {"result": true}},"is_force_book": {"post": {"result": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_single_buy": {"get": {"result": true}},"is_special_preview": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"result": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_class": {"get": {"result": true}},"s_location_address": {"get": {"result": true}},"s_location_title": {"get": {"result": true}},"s_signature": {"post": {"post": true}},"s_time": {"get": {"result": true}},"text_room": {"get": {"result": true}},"text_staff": {"get": {"result": true}},"text_timezone": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_day_available": {"get": {"result": true}},"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_all": {"get": {"result": true}},"a_session_free": {"get": {"result": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_staff": {"get": {"result": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dl_end": {"get": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"dt_date_local": {"get": {"result": true}},"hide_price": {"get": {"result": true}},"html_contract": {"get": {"result": true}},"html_duration": {"get": {"result": true}},"html_special": {"get": {"result": true}},"html_special_preview": {"get": {"result": true}},"i_available": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_agree": {"post": {"post": true}},"is_book_repeat_client": {"get": {"result": true}},"is_book_repeat_no_end_date": {"get": {"result": true}},"is_card_authorize": {"post": {"result": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_event_session": {"get": {"result": true}},"is_force_book": {"post": {"result": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_single_buy": {"get": {"result": true}},"is_special_preview": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"result": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_class": {"get": {"result": true}},"s_location_address": {"get": {"result": true}},"s_location_title": {"get": {"result": true}},"s_signature": {"post": {"post": true}},"s_time": {"get": {"result": true}},"text_room": {"get": {"result": true}},"text_staff": {"get": {"result": true}},"text_timezone": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Book_Process_Info_InfoModel.instanceGet
- * @param {string} k_class_period The key of the booked session.
- * @param {string} dt_date_gmt The date/time the session is booked for.
- * @param {string} uid The key of the user making the booking.
+ * @param {string} k_class_period Key of session which is booked.
+ * @param {string} dt_date_gmt Date/time to which session is booked.
+ * @param {string} uid Key of a user who is making a book.
  * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Info_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()

@@ -119,6 +119,8 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    * For classes always <tt>null</tt>.
    * @property {string} k_appointment The appointment key.
    * If the session isn't an appointment, this will be `0`.
+   * @property {string} dt_confirm Confirmation date for appointment in MySQL format. Will be zero date + time in
+   * case appointment is not yet confirmed by client.
    * @property {string} k_class The class key.
    * If the session isn't a class, this will be `0`.
    * @property {string} k_class_period The class period key.
@@ -335,6 +337,13 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    *   <dd>
    *     The appointment key.
    *     If the session isn't an appointment, this will be `0`.
+   *   </dd>
+   *   <dt>
+   *     string <var>dt_confirm</var>
+   *   </dt>
+   *   <dd>
+   *     Confirmation date for appointment in MySQL format. Will be zero date + time in case appointment
+   *     is not yet confirmed by client.
    *   </dd>
    *   <dt>
    *     string <var>k_class</var>

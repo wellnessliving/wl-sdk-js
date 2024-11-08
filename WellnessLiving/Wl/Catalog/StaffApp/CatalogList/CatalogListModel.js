@@ -19,6 +19,7 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogList_CatalogListModel_a_shop_product
    * @property {{}} a_location List of locations, where current sale item is available.
    * @property {string[]} a_login_type List of login types available to purchase sale item.
+   * @property {string[]} a_member_group List of member groups available to purchase the sale item.
    * @property {string[]} a_shop_category A list of online store category keys.
    * @property {number} [id_program] The program ID, sets for promotions. One of {@link RsProgramSid} constants. Set for promotions.
    *  <p>If `id_program` is {@link RsProgramSid.INSURANCE_MEMBERSHIP}, then use:</p>
@@ -52,6 +53,14 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    *   </dt>
    *   <dd>
    *     List of login types available to purchase sale item.
+   *     Empty list means that the sale item is available to all login types.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_member_group</var>
+   *   </dt>
+   *   <dd>
+   *     The list of member groups available to purchase the sale item.
+   *     Empty list means that the sale item is available to all member groups.
    *   </dd>
    *   <dt>
    *     string[] <var>a_shop_category</var>

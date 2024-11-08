@@ -125,6 +125,17 @@ function Wl_Profile_Edit_EditModel()
   this.id_register_source = 0;
 
   /**
+   * Whether the address be inherited.
+   * `true` if address inherit, otherwise `false`.
+   *
+   * @get result
+   * @post get
+   * @put get
+   * @var {boolean}
+   */
+  this.is_address_inherit = false;
+
+  /**
    * Indicates whether to display the full profile edit form or the short version.
    * This is assumed to be used only in user registration mode.
    *
@@ -232,6 +243,18 @@ function Wl_Profile_Edit_EditModel()
    */
   this.uid_existed = "";
 
+  /**
+   * UID of the user, whose address was inherited by the existing client we want to add.
+   * Empty if non-existent user is being added or user to add is the one, whose address is inherited.
+   * `null` If the address is not inherited.
+   *
+   * @get result
+   * @post get
+   * @put get
+   * @var {string}
+   */
+  this.uid_inherit_address = "";
+
   this.changeInit();
 }
 
@@ -242,7 +265,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_EditModel);
  */
 Wl_Profile_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field": {"a_change": {"put": {"post": true}},"a_error": {"get": {"result": true},"post": {"result": true}},"a_image_upload": {"post": {"post": true}},"a_new": {"post": {"post": true}},"a_structure": {"get": {"result": true}},"id_register_source": {"get": {"get": true},"post": {"get": true}},"is_short": {"get": {"result": true},"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"is_staff": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"class": {"get": {"result": true},"post": {"result": true}},"code": {"get": {"result": true},"post": {"result": true}},"status": {"post": {"result": true}},"message": {"get": {"result": true},"post": {"result": true}},"text_password": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"uid_existed": {"post": {"get": true}}}};
+  return {"a_field": {"a_change": {"put": {"post": true}},"a_error": {"get": {"result": true},"post": {"result": true}},"a_image_upload": {"post": {"post": true}},"a_new": {"post": {"post": true}},"a_structure": {"get": {"result": true}},"id_register_source": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"is_address_inherit":{"get": {"result": true},"post": {"get": true},"put":{"get":true}},"is_short": {"get": {"result": true},"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"is_staff": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"class": {"get": {"result": true},"post": {"result": true}},"code": {"get": {"result": true},"post": {"result": true}},"status": {"post": {"result": true}},"message": {"get": {"result": true},"post": {"result": true}},"text_password": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"uid_existed": {"post": {"get": true}},"uid_inherit_address":{"get": {"result": true},"post": {"get": true},"put":{"get":true}}}};
 };
 
 /**

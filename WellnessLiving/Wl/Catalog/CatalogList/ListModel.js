@@ -44,7 +44,7 @@ function Wl_Catalog_CatalogList_ListModel()
   this.k_business = "0";
 
   /**
-   * The key of a location.
+   * The key of a location. If `0`, all products in the business are retrieved.
    *
    * @get get
    * @type {string}
@@ -76,7 +76,7 @@ Wl_Catalog_CatalogList_ListModel.prototype.config=function()
  * @function
  * @name Wl_Catalog_CatalogList_ListModel.instanceGet
  * @param {string} k_business The business key.
- * @param {string} k_location The key of a location.
+ * @param {string} k_location The key of a location. If `0`, all products in the business are retrieved.
  * @param {string} uid The key of user.
  * @returns {Wl_Catalog_CatalogList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
