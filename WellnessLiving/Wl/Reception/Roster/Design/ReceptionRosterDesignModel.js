@@ -131,7 +131,6 @@ function Wl_Reception_Roster_Design_ReceptionRosterDesignModel()
      * Key of the business.
      *
      * @get get
-     * @post get
      * @type {string}
      */
     this.k_business = "";
@@ -146,5 +145,5 @@ WlSdk_ModelAbstract.extend(Wl_Reception_Roster_Design_ReceptionRosterDesignModel
  */
 Wl_Reception_Roster_Design_ReceptionRosterDesignModel.prototype.config=function()
 {
-    return {"a_field": {"a_business_config": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}}}};
+    return {"a_field": {"a_business_config": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
