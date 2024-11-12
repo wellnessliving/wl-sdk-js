@@ -5,9 +5,8 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link Wl_Login_Member_MemberValidate63Model} instead.
  */
-function Wl_Login_Member_MemberValidateModel()
+function Wl_Login_Member_MemberValidate63Model()
 {
   WlSdk_ModelAbstract.apply(this);
 
@@ -31,6 +30,14 @@ function Wl_Login_Member_MemberValidateModel()
    * @type {array}
    */
   this.a_empty_fields_registration = [];
+
+  /**
+   * List of fields if the user has empty profile fields, which are required.
+   *
+   * @get result
+   * @type {array}
+   */
+  this.a_empty_fields_required = [];
 
   /**
    * `true` If the user has credit cards on profile, otherwise `false`.
@@ -108,21 +115,21 @@ function Wl_Login_Member_MemberValidateModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Login_Member_MemberValidateModel);
+WlSdk_ModelAbstract.extend(Wl_Login_Member_MemberValidate63Model);
 
 /**
  * @inheritDoc
  */
-Wl_Login_Member_MemberValidateModel.prototype.config=function()
+Wl_Login_Member_MemberValidate63Model.prototype.config=function()
 {
-  return {"a_field": {"a_empty_fields_booking": {"get": {"result": true}},"a_empty_fields_registration": {"get": {"result": true}},"has_credit_card": {"get": {"result": true}},"has_outstanding_contract": {"get": {"result": true}},"has_outstanding_waiver": {"get": {"result": true}},"has_pending_quizzes": {"get": {"result": true}},"is_booking_require_card": {"get": {"result": true}},"is_register_require_card": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_empty_fields_booking": {"get": {"result": true}},"a_empty_fields_registration": {"get": {"result": true}},"a_empty_fields_required": {"get": {"result": true}},"has_credit_card": {"get": {"result": true}},"has_outstanding_contract": {"get": {"result": true}},"has_outstanding_waiver": {"get": {"result": true}},"has_pending_quizzes": {"get": {"result": true}},"is_booking_require_card": {"get": {"result": true}},"is_register_require_card": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
- * @name Wl_Login_Member_MemberValidateModel.instanceGet
+ * @name Wl_Login_Member_MemberValidate63Model.instanceGet
  * @param {string} k_business The key of the business.
  * @param {string} uid The user's key.
- * @returns {Wl_Login_Member_MemberValidateModel}
+ * @returns {Wl_Login_Member_MemberValidate63Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
