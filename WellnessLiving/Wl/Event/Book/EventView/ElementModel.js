@@ -174,6 +174,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} s_time The time when session occurred.
    * A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am</tt>
    * @property {string} s_timezone The name of the timezone in which the session is held.
+   * @property {string} text_room The room in which the session is held.
    */
 
   /**
@@ -291,6 +292,12 @@ function Wl_Event_Book_EventView_ElementModel()
    *   </dt>
    *   <dd>
    *     The name of the timezone in which the session is held.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_room</var>
+   *   </dt>
+   *   <dd>
+   *     The room in which the session is held.
    *   </dd>
    * </dl>
    *
