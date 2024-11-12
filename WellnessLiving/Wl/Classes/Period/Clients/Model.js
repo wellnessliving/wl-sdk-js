@@ -13,6 +13,13 @@ function Wl_Classes_Period_Clients_Model()
   /**
    * List of clients that registered on class each element contains information:
    * <ul>
+   *   <li>array <var>asset</var> A list of the assets.<dl>
+   *     <dt>string <var>k_resource</var></dt><dd>Resource key.</dd>
+   *     <dt>string <var>text_name</var></dt>
+   *     <dd>Asset title that consists of the asset title itself concatenated with its index (in case of multiple assets) by '#'.</dd>
+   *     <dt>string <var>text_title</var></dt><dd>Title of the asset.</dd>
+   *   </dl>
+   *   </li>
    *   <li>string <var>first_name</var> Client's first name.
    *   </li>
    *   <li>string <var>gender</var> Gender of client. String representation of constants {@link Wl_Gender_GenderSid}.
@@ -34,7 +41,7 @@ function Wl_Classes_Period_Clients_Model()
    * </ul>
    *
    * @get result
-   * @type {{}}
+   * @type {{}[]}
    */
   this.clients = undefined;
 
