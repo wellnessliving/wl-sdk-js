@@ -11,11 +11,6 @@ function Wl_Book_Process_Frequency_RepeatModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this._s_key = "a_day,a_visit_ignore,dt_date,dt_from,dt_to,i_count,i_duration,id_duration,id_mode,id_repeat_end,is_cancel,is_new_user,k_business,k_class_period,s_uid,uid,uid_actor";
-
-  /**
    * List of days of the week to create visits. Each value is a {@link ADateWeekSid} constant.
    *
    * @get get
@@ -33,7 +28,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
    * @property {string} is_free Whether booking is free for this day.
    * @property {string} is_ignore Whether visit is from ignore list.
    * @property {string} is_wait Whether booking can be only to wait list.
-   * @property {string} k_class_period Key of class period, primary key in {}.
+   * @property {string} k_class_period Key of class period.
    * @property {string} s_alert Staff name if booking available, warning about wait list or disabled booking otherwise.
    * @property {string} s_date Visit date and time in location's time zone in human readable format.
    */
@@ -48,15 +43,16 @@ function Wl_Book_Process_Frequency_RepeatModel()
 
   /**
    * List of visits to be ignored. Each value is a string consisting of a class period key
-   * and a visit date and time in location's timezone, concatenated by two colons.
+   * and a visit date and time in location's timezone, concatenated by two colons. Empty array if no visits
+   * should be ignored. Example: ['70::2024-11-05 18:00:00'].
    *
    * @get get
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_visit_ignore = [];
 
   /**
-   * Date of the class, when recurring booking was called.
+   * Date and time of the class, when recurring booking was called, in UTC timezone.
    *
    * @get get
    * @type {string}
@@ -65,6 +61,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
 
   /**
    * Date to start recurring booking.
+   * Not empty only when {@link Wl_Book_Process_Frequency_RepeatModel.id_repeat_end} == {@link RsRepeatEndSid.DATE}.
    *
    * @get get,result
    * @type {string}
@@ -73,6 +70,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
 
   /**
    * Date to finish recurring booking.
+   * Not empty only when {@link Wl_Book_Process_Frequency_RepeatModel.id_repeat_end} == {@link RsRepeatEndSid.DATE}.
    *
    * @get get,result
    * @type {string}
@@ -80,7 +78,8 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_to = "";
 
   /**
-   * Count of the visits to be created. Should be empty, if date range is set.
+   * Count of the visits to be created.
+   * Not empty only when {@link Wl_Book_Process_Frequency_RepeatModel.id_repeat_end} == {@link RsRepeatEndSid.COUNT}.
    *
    * @get get,result
    * @type {number}
@@ -160,7 +159,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.s_uid = "";
 
   /**
-   * Encoded list of user keys, who will attend visits.
+   * Start date of repeatable period in human-readable format.
    *
    * @get result
    * @type {string}
@@ -168,7 +167,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.text_date_from = "";
 
   /**
-   * Encoded list of user keys, who will attend visits.
+   * End date of repeatable period in human-readable format.
    *
    * @get result
    * @type {string}
@@ -186,6 +185,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   /**
    * Key of user, who perform booking.
    *
+   * @deprecated Current login user used instead.
    * @get get
    * @type {string}
    */
@@ -203,27 +203,3 @@ Wl_Book_Process_Frequency_RepeatModel.prototype.config=function()
 {
   return {"a_field": {"a_day": {"get": {"get": true}},"a_visit": {"get": {"result": true}},"a_visit_ignore": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_from": {"get": {"get": true,"result": true}},"dt_to": {"get": {"get": true,"result": true}},"i_count": {"get": {"get": true,"result": true}},"i_duration": {"get": {"get": true}},"id_duration": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"id_repeat_end": {"get": {"get": true}},"is_cancel": {"get": {"get": true}},"is_new_user": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"s_uid": {"get": {"get": true}},"text_date_from": {"get": {"result": true}},"text_date_to": {"get": {"result": true}},"uid": {"get": {"get": true}},"uid_actor": {"get": {"get": true}}}};
 };
-
-/**
- * @function
- * @name Wl_Book_Process_Frequency_RepeatModel.instanceGet
- * @param {number[]} a_day List of days of the week to create visits. Each value is a {@link ADateWeekSid} constant.
- * @param {{}} a_visit_ignore List of visits to be ignored. Each value is a string consisting of a class period key and a visit date and time in location's timezone, concatenated by two colons.
- * @param {string} dt_date Date of the class, when recurring booking was called.
- * @param {string} dt_from Date to start recurring booking.
- * @param {string} dt_to Date to finish recurring booking.
- * @param {number} i_count Count of the visits to be created. Should be empty, if date range is set.
- * @param {number} i_duration Count of days\weeks\months between recurring bookings.
- * @param {number} id_duration Recurring booking interval, one of {@link ADurationSid} constants.
- * @param {number} id_mode WellnessLiving mode, one of {@link Wl_Mode_ModeSid} constants.
- * @param {number} id_repeat_end Type of repeating, one of {@link RsRepeatEndSid} constants.
- * @param {boolean} is_cancel `true` when cancelling booking, `false` otherwise.
- * @param {boolean} is_new_user `true` if current user is not created yet, `false` otherwise.
- * @param {string} k_business Business key.
- * @param {string} k_class_period Class period key.
- * @param {string} s_uid Encoded list of user keys, who will attend visits.
- * @param {string} uid Key of user, who will attend visits.
- * @param {string} uid_actor Key of user, who perform booking.
- * @returns {Wl_Book_Process_Frequency_RepeatModel}
- * @see WlSdk_ModelAbstract.instanceGet()
- */
