@@ -27,6 +27,16 @@ function WlSdk_ModelAbstract()
   this.SCHEDULE_DEFAULT = 2;
 
   /**
+   * Whether `Authorization:` header with signature must be added to the request.
+   *
+   * `true` to add `Authorization:` header with signature to the request.
+   * `false` not to add this header.
+   *
+   * @type {boolean}
+   */
+  this.SIGNATURE = true;
+
+  /**
    * Old values for all model fields.
    *
    * Key is the name of the field.
@@ -47,6 +57,21 @@ function WlSdk_ModelAbstract()
    * @private
    */
   this._i_timeout = 0;
+
+  /**
+   * Amazon region ID.
+   *
+   * Used for make request to specific datacenter.
+   *
+   * `null` in case when request must be sent to default datacenter, by default datacenter selected based on cookie or
+   * based on geolocation.
+   *
+   * @type {?number}
+   * @private
+   * @see WlSdk_Config_ConfigRegionSid
+   * @see WlSdk_ModelAbstract.regionSet()
+   */
+  this._id_region = null;
 
   /**
    * Whether this model is in sync with server.
@@ -111,6 +136,11 @@ function WlSdk_ModelAbstract()
 }
 
 /**
+ * SDK version number.
+ */
+WlSdk_ModelAbstract.VERSION='202404090954';
+
+/**
  * Credentials to sign requests.
  *
  * <tt>null</tt> if not loaded.
@@ -167,48 +197,55 @@ WlSdk_ModelAbstract.prototype._ajax = function(a_config)
     var s_body;
     var url = a_config['url'];
 
-    var a_parameter = [];
-    for(var s_field in o_signature.a_array)
+    if(a_config['data'] instanceof FormData)
     {
-      if(!o_signature.a_array.hasOwnProperty(s_field))
-        continue;
-
-      var x_value = o_signature.a_array[s_field];
-
-      if(x_value===null)
-        continue; // null means do not include this value to request.
-
-      if((x_value instanceof Array)&&x_value.length===0)
-      {
-        a_parameter.push(encodeURIComponent(s_field)+'=');
-      }
-      else
-      {
-        var x_parameter = WlSdk_Core_Url.encode(s_field,x_value);
-        WlSdk_AssertException.assertTrue(typeof x_parameter==='string',{
-          's_field': s_field,
-          's_type': typeof x_parameter,
-          'text_message': '[WlSdk_ModelAbstract._ajax] Unsupported value.',
-          'url': url,
-          'x_value': x_value
-        });
-
-        a_parameter.push(x_parameter);
-      }
-    }
-    if(a_config['type']==='GET')
-    {
-      if(a_parameter.length)
-        url += '?'+a_parameter.join('&');
+      s_body = a_config['data'];
     }
     else
     {
-      s_body = a_parameter.join('&');
+      var a_parameter = [];
+      for(var s_field in o_signature.a_array)
+      {
+        if(!o_signature.a_array.hasOwnProperty(s_field))
+          continue;
+
+        var x_value = o_signature.a_array[s_field];
+
+        if(x_value===null)
+          continue; // null means do not include this value to request.
+
+        if((x_value instanceof Array)&&x_value.length===0)
+        {
+          a_parameter.push(encodeURIComponent(s_field)+'=');
+        }
+        else
+        {
+          var x_parameter = WlSdk_Core_Url.encode(s_field,x_value);
+          WlSdk_AssertException.assertTrue(typeof x_parameter==='string',{
+            's_field': s_field,
+            's_type': typeof x_parameter,
+            'text_message': '[WlSdk_ModelAbstract._ajax] Unsupported value.',
+            'url': url,
+            'x_value': x_value
+          });
+
+          a_parameter.push(x_parameter);
+        }
+      }
+      if(a_config['type']==='GET')
+      {
+        if(a_parameter.length)
+          url += (url.indexOf('?') >= 0 ? '&' : '?')+a_parameter.join('&');
+      }
+      else
+      {
+        s_body = a_parameter.join('&');
+      }
     }
 
-    var o_header = new Headers({
-      'Content-Type': a_config['contentType']
-    });
+    var o_header = new Headers({});
+    if(a_config['contentType'])
+      o_header.append('Content-Type',a_config['contentType']);
     for(var s_header in a_config['headers'])
     {
       if(a_config['headers'].hasOwnProperty(s_header))
@@ -329,7 +366,7 @@ WlSdk_ModelAbstract.prototype._formDataFill = function(a_signature,o_form_data,a
  */
 WlSdk_ModelAbstract.prototype.apiUrl = function()
 {
-  return WlSdk_Config_Mixin.URL_API+this.resource();
+  return WlSdk_Config_MixinAbstract.apiUrl() + this.resource();
 };
 
 /**
@@ -367,7 +404,14 @@ WlSdk_ModelAbstract.prototype.array = function(a_filter)
       }
     }
 
-    a_result[s_key] = this[s_key];
+    // Browser can change boolean false to 'false'. It's important to understand difference between changing value and
+    // leaving it as it is. If field doesn't set it should have null value. If value sets it should have boolean data inside.
+    if(this[s_key]===false)
+      a_result[s_key] = 0;
+    else if(this[s_key]===true)
+      a_result[s_key] = 1;
+    else
+      a_result[s_key] = this[s_key];
   }
   return a_result;
 };
@@ -581,7 +625,7 @@ WlSdk_ModelAbstract.prototype.getDone = function()
 WlSdk_ModelAbstract.prototype.getIf = function()
 {
   if(this._is_sync)
-    return WlSdk_Config_Mixin.configDeferredCreate().resolve().promise()
+    return WlSdk_Config_Mixin.configDeferredCreate().resolve().promise();
   else if(this._o_defer)
     return this._o_defer.promise();
   else
@@ -864,6 +908,16 @@ WlSdk_ModelAbstract.prototype.putSchedule = function(t_timeout)
 };
 
 /**
+ * Sets region ID.
+ *
+ * @param {?number} id_region Region ID. For more details see {@link WlSdk_ModelAbstract._id_region} property.
+ */
+WlSdk_ModelAbstract.prototype.regionSet = function(id_region)
+{
+  this._id_region = id_region;
+}
+
+/**
  * Retrieves content of the model from server.
  *
  * @param {{}} a_config Configuration array.
@@ -885,15 +939,12 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
 
   var s_method = a_config.s_method.toLowerCase();
 
-  var a_data = this.array({
-    's_method': s_method,
-    's_mode': a_config.s_method==='GET'?'get':'post'
-  });
+  let a_data = this.requestGetVariables(s_method);
 
   var url = this.apiUrl();
 
   var s_csrf = WlSdk_Config_Mixin.configCsrf();
-  if(s_csrf)
+  if(s_csrf&&this.SIGNATURE)
     a_data['csrf'] = s_csrf;
 
   var a_url;
@@ -924,7 +975,7 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
   {
     var has_stop = false;
 
-    var is_file = o_this._fileCheck(a_data);
+    const is_file = o_this._fileCheck(a_data);
 
     var a_signature_variable = a_url;
     var o_data_ready;
@@ -949,8 +1000,11 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
     },!empty(a_config['is_public'])).done(function(a_signature)
     {
       var a_header = o_this.header();
-      a_header['X-Signature-Date'] = WlSdk_Core_Date.mysqlHttp(dt_request);
-      a_header['X-Signature-Timezone'] = (new Date()).getTimezoneOffset();
+      if(o_this.SIGNATURE)
+      {
+        a_header['X-Signature-Date'] = WlSdk_Core_Date.mysqlHttp(dt_request);
+        a_header['X-Signature-Timezone'] = (new Date()).getTimezoneOffset();
+      }
       if(a_signature)
       {
         a_header['Authorization'] = a_signature['s_authorization'];
@@ -972,6 +1026,13 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
       }
       if(s_rule)
         a_header['X-Error-Rules'] = s_rule;
+
+      if(o_this._id_region)
+      {
+        url = WlSdk_Core_Url.variable(url, {
+          '.id-region': o_this._id_region
+        });
+      }
 
       var a_ajax = {
         'cache': false,
@@ -1199,13 +1260,31 @@ WlSdk_ModelAbstract.prototype.requestExceptionHandle = function(e)
 }
 
 /**
+ * Prepares variables that must be set in the request URL.
+ *
+ * @protected
+ * @param {string} s_method Name of the method for which the variables must be prepared (lowercase).
+ * @return {*} Variables that must be set in the request URL.
+ */
+WlSdk_ModelAbstract.prototype.requestGetVariables = function(s_method)
+{
+  return this.array({
+    's_method': s_method,
+    's_mode': s_method==='get'?'get':'post'
+  });
+};
+
+/**
  * Returns URI of current model.
  *
  * @return {string} URI of current model.
  */
 WlSdk_ModelAbstract.prototype.resource = function()
 {
-  var o_match=this.constructor.toString().match(/function ([A-Za-z0-9_]+)Model\(/);
+  const s_constructor = this.constructor.toString();
+  let o_match = s_constructor.match(/function ([A-Za-z0-9_]+)Model\(/);
+  if(!o_match)
+    o_match = s_constructor.match(/class ([A-Za-z0-9_]+)Model/);
   WlSdk_AssertException.notEmpty(o_match,{
     'constructor': this.constructor,
     'o_model': this,
@@ -1232,7 +1311,7 @@ WlSdk_ModelAbstract.prototype.resource = function()
 WlSdk_ModelAbstract.prototype.signatureAuthorize = function(a_request,is_public)
 {
   var o_deferred = WlSdk_Config_Mixin.configDeferredCreate(get_class(this)+'.signatureAuthorize');
-  if(is_public||!WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID)
+  if(is_public||!WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID||!this.SIGNATURE)
   {
     o_deferred.resolve(null);
   }

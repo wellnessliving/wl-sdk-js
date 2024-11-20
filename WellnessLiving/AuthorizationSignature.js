@@ -61,7 +61,13 @@ WlSdk_AuthorizationSignature.prototype._signatureCompute = function(a_data)
 {
   var a_signature = [];
 
-  var s_version = a_data.hasOwnProperty('s_code')?'20150518':'20150518-cors';
+  var s_version;
+  if(a_data.hasOwnProperty('s_code'))
+    s_version = '20150518';
+  else if(WlSdk_Config_Mixin.SESSION==='local')
+    s_version = '20210304-cors';
+  else
+    s_version = '20150518-cors';
   // 's_code' is an application password; it must be absent in a browser.
   // The presence of 's_code' means a foreign application (and no CORS policy).
   a_signature.push('Core\\Request\\Api::'+s_version);
@@ -76,8 +82,16 @@ WlSdk_AuthorizationSignature.prototype._signatureCompute = function(a_data)
     a_signature.push(a_data['s_cookie_persistent']);
   if(a_data.hasOwnProperty('s_cookie_transient'))
     a_signature.push(a_data['s_cookie_transient']);
+
+  var a_secret;
   if(a_data.hasOwnProperty('s_key_secret'))
-    a_signature.push(a_data['s_key_secret']);
+  {
+    a_secret = a_data['s_key_secret'].split('.');
+    a_signature.push(a_secret[0]);
+  }
+
+  if(WlSdk_Config_Mixin.SESSION==='local')
+    a_signature.push(a_data['s_csrf']);
 
   var o_array = this.signatureArray(a_data['a_variable']);
   var o_this = this;
@@ -103,7 +117,28 @@ WlSdk_AuthorizationSignature.prototype._signatureCompute = function(a_data)
       a_signature.push(s_key+':'+a_header[s_key]);
     });
 
+    var a_signature_check = [];
+    a_signature.forEach(function(s_element)
+    {
+      a_signature_check.push(sha256(s_element).substr(0,1));
+    });
+
     o_this._s_signature = sha256(a_signature.join("\n"));
+
+    const a_debug = [
+      '2',
+      a_signature_check.join(''),
+      WlSdk_ModelAbstract.VERSION,
+      window['MpJsData']&&MpJsData?MpJsData['\\Core\\All\\File::VERSION']:''
+    ];
+    if(a_secret&&a_secret.length===4)
+    {
+      a_debug.push(a_secret[1]);
+      a_debug.push(a_secret[2]);
+      a_debug.push(a_secret[3]);
+    }
+
+    o_this._s_signature += '.'+a_debug.join('.');
   });
 
   return o_array;
@@ -202,7 +237,7 @@ WlSdk_AuthorizationSignature.prototype.signatureArray = function(a_array)
     });
   }
 
-  return WlSdk_Config_Mixin.configDeferredWhen(a_deferred);
+  return WlSdk_Config_Mixin.configPromiseWhen(a_deferred);
 };
 
 /**
@@ -243,7 +278,27 @@ WlSdk_AuthorizationSignature.prototype.signatureAuthorize = function(a_request)
   var o_this = this;
   o_compute.done(function()
   {
-    if(WlSdk_Config_Mixin.CSRF_CODE)
+    if(WlSdk_Config_Mixin.SESSION==='local')
+    {
+      WlSdk_AssertException.assertTrue(WlSdk_ModelAbstract.a_credentials.hasOwnProperty('s_csrf'),{
+        'text_message': 'CSRF code is not passed.'
+      });
+
+      WlSdk_AssertException.notEmpty(WlSdk_ModelAbstract.a_credentials['s_csrf'],{
+        'text_message': 'CSRF code is empty.'
+      });
+
+      var a_csrf = WlSdk_ModelAbstract.a_credentials['s_csrf'].split('.');
+      WlSdk_AssertException.assertTrue(a_csrf.length===3,{
+        'text_message': 'CSRF code is invalid.'
+      });
+
+      var s_session_id = WlSdk_Config_MixinAbstract.sessionKey();
+      var s_csrf_check = s_session_id+'.'+a_csrf[0].substr(0,5)+'.'+a_csrf[1];
+      o_this.s_header = '20210304-cors,'+WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID+',,'+s_csrf_check+','+
+        o_this._s_signature;
+    }
+    else if(WlSdk_Config_Mixin.CSRF_CODE)
     {
       o_this.s_header = '20150518-cors,'+WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID+',,'+WlSdk_Config_Mixin.CSRF_CODE+','+
         o_this._s_signature;

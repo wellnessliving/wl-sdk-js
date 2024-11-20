@@ -1,6 +1,7 @@
 You must add into JS SDK file with the class `WlSdk_Config_Mixin` for configuring.
 It must be successor of `WlSdk_Config_MixinAbstract` class.  
-See file `SdkConfigMixin.js` for example.  
+See file `SdkConfigMixinCookie.js` (session based on cookies) or `SdkConfigMixinLocal.js` (session based on session key
+which is saved in browser local storage) for examples.
 Redefine in this class fields:
 - `URL_API` - WellnessLiving server domain.
 - `CONFIG_AUTHORIZE_ID` - application ID.
@@ -19,7 +20,8 @@ CSRF is possible and there is CSRF protection.
 Next configuration depends on necessary authentication way.
 
 # Authentication with application password and without CSRF protection
-You must redefine next fields in the class `WlSdk_Config_Mixin`:
+You must redefine next fields in the class `WlSdk_Config_Mixin` (see file `SdkConfigMixinCookie.js`):
+- `SESSION='cookie'` - session type.
 - ```javascript 
   WlSdk_Config_Mixin.configCredentialsLoad = function()
   {
@@ -41,7 +43,7 @@ You must redefine next fields in the class `WlSdk_Config_Mixin`:
   ```
   Method that makes `Authorization` header value.
 
-# Authentication without application password and with CSRF protection
+# Authentication without application password and with CSRF protection (session based on cookie)
 **1.** While generation of a page by your server it must generate CSRF code (any way you want) and 
   place it on the page (like a JS variable).  
 See file `index.php` for example.
@@ -69,8 +71,38 @@ echo json_encode(['s_error' => 'Error message']);
 ```
 See file `secret.php` for example.
 
-**3.** For the class `WlSdk_Config_Mixin` redefine next fields:
+**3.** For the class `WlSdk_Config_Mixin` (see file `SdkConfigMixinCookie.js`) redefine next fields:
 - `URL_CSRF` - API for getting of strong notepad. 
+- `SESSION='cookie'` - session type.
 - `CSRF_CODE` - CSRF code. You can set it on your page as global JS variable. And use its value here.
+
+[To understand this way better, read this.](AboutAuthentication.md) 
+
+# Authentication without application password and with CSRF protection (session based on session key which is saved in browser local storage)
+**1.** API for getting a CSRF code must be implemented on your server.
+It must receive next fields:
+- `s_session_key` - session key which is saved in browser local storage.
+
+The API must return `s_csrf` in JSON format.
+```PHP
+echo json_encode(['s_csrf' => 'CSRF code here']);
+```
+
+If you get any error return is from the API in this way:
+```PHP
+echo json_encode(['s_error' => 'Error message']);
+```
+
+To generate CSRF code use `\WellnessLiving\Config\WlConfigAbstract::csrfCode` method. 
+Call this method using your connection configuration class.
+See file `csrfNoCookie.php` for example.
+
+Also, you are encouraged to save this session key in a cookie or session and used it to generate CSRF code during 
+rendering the page and include it into the page to prevent request to get CSRF code in `WlSdk_Config_Mixin.csrfCode()`. 
+
+**2.** For the class `WlSdk_Config_Mixin` make next:
+- implement method `WlSdk_Config_Mixin.csrfCode` - returns promise which is resolved with CSRF code. (see file `SdkConfigMixinLocal.js`)
+  - in this method you can add additional check if you save CSRF code on the page in Javascript
+    - check 5 first symbols of the session key with 5 last symbols of CSRF code (see `WlSdk_Config_Mixin.csrfCode` method).
 
 [To understand this way better, read this.](AboutAuthentication.md) 

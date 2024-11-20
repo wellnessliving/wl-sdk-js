@@ -1,0 +1,60 @@
+/**
+ * Manages work of hints.
+ *
+ * This model is generated automatically based on API.
+ *
+ * @augments WlSdk_ModelAbstract
+ * @constructor
+ */
+function Wl_Hint_HintModel()
+{
+  WlSdk_ModelAbstract.apply(this);
+
+  /**
+   * A list of hints that should be displayed sequentially.
+   *
+   * Template should be placed in <tt>Wl\Hint\Xml</tt> as a single xml file.
+   *
+   * @put post
+   * @type {{}[]}
+   */
+  this.a_template = [];
+
+  /**
+   * Key of the business to show the hint in.
+   *
+   * `null` means to show hint in the system business.
+   *
+   * @put post
+   * @type {?string}
+   */
+  this.k_business = null;
+
+  /**
+   * Name of the hint`s xml to be shown. An empty string if none of the hints should be shown.
+   *
+   * @put result
+   * @type {boolean}
+   */
+  this.text_template_show = "";
+
+  /**
+   * The user who will be shown a hint.
+   *
+   * @put post
+   * @type {string}
+   */
+  this.uid = "";
+
+  this.changeInit();
+}
+
+WlSdk_ModelAbstract.extend(Wl_Hint_HintModel);
+
+/**
+ * @inheritDoc
+ */
+Wl_Hint_HintModel.prototype.config=function()
+{
+  return {"a_field": {"a_template": {"put": {"post": true}},"k_business": {"put": {"post": true}},"text_template_show": {"put": {"result": true}},"uid": {"put": {"post": true}}}};
+};
