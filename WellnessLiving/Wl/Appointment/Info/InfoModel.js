@@ -16,25 +16,11 @@ function Wl_Appointment_Info_InfoModel()
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_next
    * @property {string} dt_date_local The start date and time of the next appointment in the location's time zone in MySQL format.
-   * @property {string} k_appointment The ID of the next appointment.
+   * @property {string} k_appointment The key of the next appointment.
    */
 
   /**
    * Data for the next appointment data (or an empty array if there no future appointments):
-   * <dl>
-   *   <dt>
-   *     string <var>dt_date_local</var>
-   *   </dt>
-   *   <dd>
-   *     The start date and time of the next appointment in local time in MySQL format.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_appointment</var>
-   *   </dt>
-   *   <dd>
-   *     The ID of the next appointment.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Appointment_Info_InfoModel_a_next}
@@ -44,25 +30,11 @@ function Wl_Appointment_Info_InfoModel()
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_previous
    * @property {string} dt_date_local The start date and time of the previous appointment in local time in MySQL format.
-   * @property {string} k_appointment The ID of the previous appointment.
+   * @property {string} k_appointment The key of the previous appointment.
    */
 
   /**
    * Data for the previous appointment data (or an empty array if there no future appointments):
-   * <dl>
-   *   <dt>
-   *     string <var>dt_date_local</var>
-   *   </dt>
-   *   <dd>
-   *     The start date and time of the previous appointment in local time in MySQL format.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_appointment</var>
-   *   </dt>
-   *   <dd>
-   *     The ID of the previous appointment.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Appointment_Info_InfoModel_a_previous}
@@ -70,66 +42,52 @@ function Wl_Appointment_Info_InfoModel()
   this.a_previous = undefined;
 
   /**
-   * A list of questions and answers:<ul>
-   * <li>int <var>i_size</var> The size of rows for answer.</li>
-   * <li>bool <var>is_multiple</var> <tt>true</tt> if <var>i_size</var> greater than 1, <tt>false</tt> if otherwise.
-   *   This can be empty if an answer is loaded.</li>
-   * <li>string <var>s_answer</var> The answer for <var>s_question</var>.</li>
-   * <li>string <var>s_key</var> The answer key.</li>
-   * <li>string <var>s_question</var> The question.</li>
-   * </ul>
+   * @typedef {{}} Wl_Appointment_Info_InfoModel_a_question
+   * @property {int} i_size The size of rows for answer.
+   * @property {bool} is_multiple `true` if <var>i_size</var> greater than 1, `false` otherwise. This can be empty if an answer is loaded.
+   * @property {string} s_answer The answer for <var>s_question</var>.
+   * @property {string} s_key The answer key.
+   * @property {string} s_question The question.
+   */
+
+  /**
+   * A list of questions and answers.
    *
    * @get result
-   * @type {{}[]}
+   * @type {Wl_Appointment_Info_InfoModel_a_question[]}
    */
   this.a_question = [];
+
+
+  /**
+   * @typedef {{}} Wl_Appointment_Info_InfoModel_a_resource
+   * @property {int} i_color_border Border color for schedule. In 24-bit representation of a hexadecimal color..
+   * @property {int} i_color_background Background color for schedule. In 24-bit representation of a hexadecimal color..
+   * @property {string} k_resource Resource key.
+   * @property {string} k_resource_type TResource type key.
+   * @property {string} s_resource Name of the resource.
+   * @property {string} s_resource_type Name of the resource type.
+   */
 
   /**
    * A list of assets used by this appointment.
    *
    * @get result
-   * @type {{}[]}
+   * @type {Wl_Appointment_Info_InfoModel_a_resource[]}
    */
   this.a_resource = undefined;
 
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_shop_product_option
-   * @property {?string} k_login_product The primary key of the purchased add-on. This will be <tt>null</tt> if there
-   * aren't any purchased add-ons.
+   * @property {[]} a_login_product List of purchased products. Empty if no products purchased.
+   * @property {?string} k_login_product Deprecated and always have `null` value.
    * @property {string} k_shop_product The primary key of the add-on.
-   * @property {string} k_shop_product_option The primary key of the shop product option.
-   *   T-shirts can have an option like size or color.
+   * @property {string} k_shop_product_option The primary key of the shop product option. T-shirts can have an option like size or color.
    * @property {string} m_amount The add-on price.
    */
 
   /**
-   * A list of appointment add-ons. Every element has the next keys:
-   * <dl>
-   *   <dt>
-   *     string|null <var>k_login_product</var>
-   *   </dt>
-   *   <dd>
-   *     The primary key of the purchased add-on. This will be <tt>null</tt> if there aren't any purchased add-ons.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_shop_product</var>
-   *   </dt>
-   *   <dd>
-   *     The primary key of the add-on.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_shop_product_option</var>
-   *   </dt>
-   *   <dd>
-   *     The primary key.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_amount</var>
-   *   </dt>
-   *   <dd>
-   *     The add-on price.
-   *   </dd>
-   * </dl>
+   * A list of appointment add-ons.
    *
    * @get result
    * @type {Wl_Appointment_Info_InfoModel_a_shop_product_option[]}
