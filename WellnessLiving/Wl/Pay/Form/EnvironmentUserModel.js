@@ -1,21 +1,20 @@
 /**
- * Gets information about payment environments.
+ * Gets information about payment environments for the user.
  *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link Wl_Pay_Form_EnvironmentUserModel} instead.
- * @see Wl\Pay\Form\EnvironmentApi
+ * @see Wl\Pay\Form\EnvironmentUserApi
  */
-function Wl_Pay_Form_EnvironmentModel()
+function Wl_Pay_Form_EnvironmentUserModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
    */
-  this._s_key = "k_currency,k_business,k_location";
+  this._s_key = "k_currency,k_business,k_location,uid_owner";
 
   /**
    * A list of supported bank card systems.
@@ -37,7 +36,7 @@ function Wl_Pay_Form_EnvironmentModel()
   this.a_method_staff = undefined;
 
   /**
-   * @typedef {{}} Wl_Pay_Form_EnvironmentModel_a_method_support
+   * @typedef {{}} Wl_Pay_Form_EnvironmentUserModel_a_method_support
    * @property {number} id_pay_method The ID of type of payment method. One of {@link RsPayMethodSid} constants.
    * @property {*} is_client Determines whether this method is available for clients. This field is only returned for custom payment methods.
    * @property {?string} k_pay_method The key of the custom payment method.
@@ -64,7 +63,7 @@ function Wl_Pay_Form_EnvironmentModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Pay_Form_EnvironmentModel_a_method_support[]}
+   * @type {Wl_Pay_Form_EnvironmentUserModel_a_method_support[]}
    */
   this.a_method_support = undefined;
 
@@ -78,7 +77,7 @@ function Wl_Pay_Form_EnvironmentModel()
   this.a_mobile_config = null;
 
   /**
-   * @typedef {{}} Wl_Pay_Form_EnvironmentModel_a_pay_processor
+   * @typedef {{}} Wl_Pay_Form_EnvironmentUserModel_a_pay_processor
    * @property {?{}} a_public_keys Public keys configured for this payment processor.
    * Copy of result of {@link Wl\Pay\Processor\ProcessorInterface\PayProcessorPublicKeysInterface::publicKeys()}.
    * `null` if this payment processor does not support public keys.
@@ -113,7 +112,7 @@ function Wl_Pay_Form_EnvironmentModel()
    * `null` if no processors are set up.
    *
    * @get result
-   * @type {?Wl_Pay_Form_EnvironmentModel_a_pay_processor[]}
+   * @type {?Wl_Pay_Form_EnvironmentUserModel_a_pay_processor[]}
    */
   this.a_pay_processor = null;
 
@@ -234,22 +233,23 @@ function Wl_Pay_Form_EnvironmentModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Pay_Form_EnvironmentModel);
+WlSdk_ModelAbstract.extend(Wl_Pay_Form_EnvironmentUserModel);
 
 /**
  * @inheritDoc
  */
-Wl_Pay_Form_EnvironmentModel.prototype.config=function()
+Wl_Pay_Form_EnvironmentUserModel.prototype.config=function()
 {
   return {"a_field": {"a_card_system": {"get": {"result": true}},"a_method_staff": {"get": {"result": true}},"a_method_support": {"get": {"result": true}},"a_mobile_config": {"get": {"result": true}},"a_pay_processor": {"get": {"result": true}},"dl_now": {"get": {"result": true}},"f_surcharge": {"get": {"result": true}},"f_surcharge_ach": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"is_save_source": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_currency": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_surcharge": {"get": {"result": true}},"m_surcharge_ach": {"get": {"result": true}},"uid_owner": {"get": {"get": true}}}};
 };
 
 /**
  * @function
- * @name Wl_Pay_Form_EnvironmentModel.instanceGet
+ * @name Wl_Pay_Form_EnvironmentUserModel.instanceGet
  * @param {string} k_currency The key of the currency to retrieve payment information for.
  * @param {string} k_business The key of the business to retrieve payment information for. This will be `0` if not set yet. An empty string or `null` if payments are performed with the WellnessLiving system merchant.
  * @param {string} k_location The key of the location to retrieve payment information for. This will be `0` if not set yet.
- * @returns {Wl_Pay_Form_EnvironmentModel}
+ * @param {?string} uid_owner The user ID to retrieve payment information for. `null` if not defined.
+ * @returns {Wl_Pay_Form_EnvironmentUserModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
