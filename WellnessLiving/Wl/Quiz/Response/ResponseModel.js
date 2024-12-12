@@ -51,6 +51,14 @@ function Wl_Quiz_Response_ResponseModel()
   this.can_anonymous = false;
 
   /**
+   * Mode type, one of {@link Wl_Mode_ModeSid} constants.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.id_mode = 0;
+
+  /**
    * Response source. One of {@link Wl_Quiz_Response_SourceSid} constants.
    *
    * @get result
@@ -188,7 +196,7 @@ WlSdk_ModelAbstract.extend(Wl_Quiz_Response_ResponseModel);
  */
 Wl_Quiz_Response_ResponseModel.prototype.config=function()
 {
-  return {"a_field": {"a_element": {"get": {"result": true},"post": {"post": true}},"a_quick_config": {"post": {"post": true}},"a_quiz_response_key": {"delete": {"get": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"id_source": {"get": {"result": true},"post": {"post": true}},"is_backend": {"post": {"post": true}},"is_draft": {"post": {"post": true}},"is_skip": {"post": {"post": true}},"json_element": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_quiz": {"post": {"get": true}},"k_quiz_login": {"post": {"post": true}},"k_quiz_response": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"show_numbering": {"get": {"result": true}},"text_appointment_wizard_id": {"post": {"post": true}},"text_class_wizard_id": {"post": {"post": true}},"text_title": {"get": {"result": true}},"uid_response": {"post": {"post": true}}}};
+  return {"a_field": {"a_element": {"get": {"result": true},"post": {"post": true}},"a_quick_config": {"post": {"post": true}},"a_quiz_response_key": {"delete": {"get": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"id_source": {"get": {"result": true},"post": {"post": true}},"id_mode": {"delete": {"get": true}},"is_backend": {"post": {"post": true}},"is_draft": {"post": {"post": true}},"is_skip": {"post": {"post": true}},"json_element": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_quiz": {"post": {"get": true}},"k_quiz_login": {"post": {"post": true}},"k_quiz_response": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"show_numbering": {"get": {"result": true}},"text_appointment_wizard_id": {"post": {"post": true}},"text_class_wizard_id": {"post": {"post": true}},"text_title": {"get": {"result": true}},"uid_response": {"post": {"post": true}}}};
 };
 
 /**
