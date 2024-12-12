@@ -53,7 +53,7 @@ function Wl_Quiz_Response_ResponseModel()
   /**
    * Mode type, one of {@link Wl_Mode_ModeSid} constants.
    *
-   * @get get
+   * @delete get
    * @type {number}
    */
   this.id_mode = 0;
