@@ -9,7 +9,7 @@ function Wl_Book_Promote_PromoteModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Response source. One of {@link Wl_Quiz_Response_SourceSid} constants.
+   * ID of the source where a visit was promoted, one of {@link Wl_Mode_ModeSid} constants.
    *
    * @post post
    * @type {number}
