@@ -10,7 +10,7 @@ function Wl_Appointment_Book_Promote_AppointmentBookPromoteModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Response source. One of {@link Wl_Quiz_Response_SourceSid} constants.
+   * ID of the source where a visit was promoted, one of {@link Wl_Mode_ModeSid} constants.
    *
    * @post post
    * @type {number}
@@ -26,7 +26,7 @@ function Wl_Appointment_Book_Promote_AppointmentBookPromoteModel()
   this.is_wait_confirm = false;
 
   /**
-   * The business ID.
+   * The business key.
    *
    * @post post
    * @type {string}
@@ -34,7 +34,7 @@ function Wl_Appointment_Book_Promote_AppointmentBookPromoteModel()
   this.k_business = "0";
 
   /**
-   * The visit ID to promote.
+   * The visit key to promote.
    *
    * @post post
    * @type {string}
