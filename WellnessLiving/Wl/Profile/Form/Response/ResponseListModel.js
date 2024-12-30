@@ -136,6 +136,38 @@ function Wl_Profile_Form_Response_ResponseListModel()
   this.a_quiz_response = [];
 
   /**
+   * Whether response can be amended by current user.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_amend = undefined;
+
+  /**
+   * Whether response can be filled by current user.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_fill = undefined;
+
+  /**
+   * Whether response can be removed by current user.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_remove = undefined;
+
+  /**
+   * Whether response can be viewed by current user.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_view = undefined;
+
+  /**
    * Defines whether completed forms should not be included in result list of forms.
    *
    * `true` to exclude completed forms from result.
@@ -174,6 +206,17 @@ function Wl_Profile_Form_Response_ResponseListModel()
   this.k_business = "";
 
   /**
+   * Quiz login key.
+   *
+   * @delete get
+   * @get get
+   * @post get
+   * @put get
+   * @type {string}
+   */
+  this.k_quiz_login = "";
+
+  /**
    * The key of the user to show information for.
    *
    * @get get
@@ -191,7 +234,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Form_Response_ResponseListModel);
  */
 Wl_Profile_Form_Response_ResponseListModel.prototype.config=function()
 {
-  return {"a_field": {"a_quiz_login": {"get": {"result": true}},"a_quiz_response": {"get": {"result": true}},"hide_completed": {"get": {"get": true}},"hide_optional": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_quiz_login": {"get": {"result": true}},"a_quiz_response": {"get": {"result": true}},"can_amend": {"get": {"result": true}},"can_fill": {"get": {"result": true}},"can_remove": {"get": {"result": true}},"can_view": {"get": {"result": true}},"hide_completed": {"get": {"get": true}},"hide_optional": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_quiz_login": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
