@@ -16,6 +16,28 @@ function Wl_User_Info_UserInfoModel()
   this._s_key = "uid,k_business";
 
   /**
+   * @typedef {{}} Wl_User_Info_UserInfoModel_a_custom_field
+   * @property {string} k_field Field key.
+   * @property {string} text_title Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.
+   * @property {string} text_value Value of the field.
+   */
+
+  /**
+   * List of the custom user fields:<dl>
+   *    <dt>string <var>k_field</var></dt>
+   *    <dd>Field key.</dd>
+   *    <dt>string <var>text_title</var></dt>
+   *    <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
+   *    <dt>string <var>text_value</var></dt>
+   *    <dd>Value of the field.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_User_Info_UserInfoModel_a_custom_field}
+   */
+  this.a_custom_field = [];
+
+  /**
    * List of member groups that the user belongs to.
    *
    * @get result
@@ -77,6 +99,15 @@ function Wl_User_Info_UserInfoModel()
    * List of user's data.
    *
    * <dl>
+   *   <dt>array <var>a_custom_field</var></dt>
+   *      <dd>List of the custom user fields:<dl>
+   *      <dt>string <var>k_field</var></dt>
+   *      <dd>Field key. Primary key in {@link \RsFieldSql} table.</dd>
+   *      <dt>string <var>text_title</var></dt>
+   *      <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
+   *      <dt>string <var>text_value</var></dt>
+   *      <dd>Value of the field.</dd>
+   *   </dl></dd>
    *   <dt>array <var>a_member_group</var></dt>
    *   <dd>List of member groups that the user belongs to.</dd>
    *   <dt>array <var>a_photo</var></dt>
@@ -209,9 +240,9 @@ function Wl_User_Info_UserInfoModel()
   this.k_business = "0";
 
   /**
-   * Primary key of a city.
+   * City.
    *
-   * `null` is user has no address.
+   * `null` if "address" field is disabled in the business.
    *
    * @get result
    * @type {*}
@@ -286,7 +317,7 @@ function Wl_User_Info_UserInfoModel()
   /**
    * Address inside a city.
    *
-   * `null` is user has no address.
+   * `null` if "address" field is disabled in the business.
    *
    * @get result
    * @type {*}
@@ -296,7 +327,7 @@ function Wl_User_Info_UserInfoModel()
   /**
    * City name.
    *
-   * `null` is user has no address.
+   * `null` if "address" field is disabled in the business.
    *
    * @get result
    * @type {*}
@@ -315,7 +346,7 @@ function Wl_User_Info_UserInfoModel()
   /**
    * Postal code.
    *
-   * `null` is user has no address.
+   * `null` if "address" field is disabled in the business.
    *
    * @get result
    * @type {*}
@@ -348,7 +379,7 @@ WlSdk_ModelAbstract.extend(Wl_User_Info_UserInfoModel);
  */
 Wl_User_Info_UserInfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_member_group": {"get": {"result": true}},"a_photo": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_user_list": {"get": {"get": true}},"dt_add": {"get": {"result": true}},"dt_birth": {"get": {"result": true}},"has_discount": {"get": {"result": true}},"id_gender": {"get": {"result": true}},"is_customer_new": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_city": {"get": {"result": true}},"k_login_type": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_phone_home": {"get": {"result": true}},"s_phone_work": {"get": {"result": true}},"text_address": {"get": {"result": true}},"text_city": {"get": {"result": true}},"text_login_type": {"get": {"result": true}},"text_postal": {"get": {"result": true}},"uid": {"get": {"get": true,"result": true}},"url_photo": {"get": {"result": true}}}};
+  return {"a_field": {"a_custom_field": {"get": {"result": true}},"a_member_group": {"get": {"result": true}},"a_photo": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_user_list": {"get": {"get": true}},"dt_add": {"get": {"result": true}},"dt_birth": {"get": {"result": true}},"has_discount": {"get": {"result": true}},"id_gender": {"get": {"result": true}},"is_customer_new": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_city": {"get": {"result": true}},"k_login_type": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_phone_home": {"get": {"result": true}},"s_phone_work": {"get": {"result": true}},"text_address": {"get": {"result": true}},"text_city": {"get": {"result": true}},"text_login_type": {"get": {"result": true}},"text_postal": {"get": {"result": true}},"uid": {"get": {"get": true,"result": true}},"url_photo": {"get": {"result": true}}}};
 };
 
 /**
