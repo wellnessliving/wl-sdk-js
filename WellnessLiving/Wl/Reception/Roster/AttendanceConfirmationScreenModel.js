@@ -43,14 +43,14 @@ function Wl_Reception_Roster_AttendanceConfirmationScreenModel()
    * @typedef {{}} Wl_Reception_Roster_AttendanceConfirmationScreenModel_a_visit_a_payment_a_image_a_restrict
    * @property {number} i_limit Count of possible visits.
    * @property {number} i_remain Count of remaining visits.
-   * @property {boolean} s_date Name of the calendar period.
+   * @property {string} s_date Name of the calendar period.
    */
   /**
    * @typedef {{}} Wl_Reception_Roster_AttendanceConfirmationScreenModel_a_visit_a_payment_a_image
    * @property {number} i_height Height of the image in pixels.
    * @property {number} i_width Width of the image in pixels.
    * @property {boolean} is_empty `true` means that image is empty.
-   * @property {string} url-thumbnail Link on the image.
+   * @property {string} url_thumbnail Link on the image.
    */
   /**
    * @typedef {{}} Wl_Reception_Roster_AttendanceConfirmationScreenModel_a_visit_a_payment
@@ -58,12 +58,12 @@ function Wl_Reception_Roster_AttendanceConfirmationScreenModel()
    *    <dt>int <tt>i_height</tt></dt><dd>Height of the image in pixels.</dd>
    *    <dt>int <tt>i_width</tt></dt><dd>Width of the image in pixels.</dd>
    *    <dt>bool <tt>is_empty</tt></dt><dd>`true` means that image is empty.</dd>
-   *    <dt>string <tt>url-thumbnail</tt></dt><dd>Link on the image.</dd>
+   *    <dt>string <tt>url_thumbnail</tt></dt><dd>Link on the image.</dd>
    *    </dl>
    * @property {Wl_Reception_Roster_AttendanceConfirmationScreenModel_a_visit_a_payment_a_image_a_restrict} a_restrict Information about calendar restrictions.<dl>
    *    <dt>int <tt>i_limit</tt></dt><dd>Count of possible visits.</dd>
    *    <dt>int <tt>i_remain</tt></dt><dd>Count of remaining visits.</dd>
-   *    <dt>bool <tt>s_date</tt></dt><dd>Name of the calendar period.</dd>
+   *    <dt>string <tt>s_date</tt></dt><dd>Name of the calendar period.</dd>
    *  </dl>
    * @property {string} html_expire Message about expiration date of the promotion.
    * @property {number} i_book Count of future books that are paid with this promotion.
@@ -75,6 +75,7 @@ function Wl_Reception_Roster_AttendanceConfirmationScreenModel()
    * @property {boolean} is_last_use If `true`, the promotion has a usage limit and no remaining visits. Otherwise, this will be `false`.
    * @property {string} s_expire Message about expiration date of the promotion.
    * @property {string} s_start Start date if promotion has not started yet.
+   *  If the promotion has already started, the field is not presented.
    * @property {string} s_title Name of the promotion.
    * @property {string} uid Promotion owner.
    */
@@ -85,13 +86,13 @@ function Wl_Reception_Roster_AttendanceConfirmationScreenModel()
    *    <dt>int <tt>i_height</tt></dt><dd>Height of the image in pixels.</dd>
    *    <dt>int <tt>i_width</tt></dt><dd>Width of the image in pixels.</dd>
    *    <dt>bool <tt>is_empty</tt></dt><dd>`true` means that image is empty.</dd>
-   *    <dt>string <tt>url-thumbnail</tt></dt><dd>Link on the image.</dd>
+   *    <dt>string <tt>url_thumbnail</tt></dt><dd>Link on the image.</dd>
    *    </dl></dd>
    *    <dt>array <tt>a_restrict</tt></dt>
    *  <dd>Information about calendar restrictions.<dl>
    *    <dt>int <tt>i_limit</tt></dt><dd>Count of possible visits.</dd>
    *    <dt>int <tt>i_remain</tt></dt><dd>Count of remaining visits.</dd>
-   *    <dt>bool <tt>s_date</tt></dt><dd>Name of the calendar period.</dd>
+   *    <dt>string <tt>s_date</tt></dt><dd>Name of the calendar period.</dd>
    *  </dl></dd>
    *    <dt>string <tt>html_expire</tt></dt><dd>Message about expiration date of the promotion.</dd>
    *    <dt>int <tt>i_book</tt></dt><dd>Count of future books that are paid with this promotion.</dd>
@@ -103,12 +104,14 @@ function Wl_Reception_Roster_AttendanceConfirmationScreenModel()
    *    <dt>bool <tt>is_last_use</tt></dt>
    *    <dd>If `true`, the promotion has a usage limit and no remaining visits. Otherwise, this will be `false`.</dd>
    *    <dt>string <tt>s_expire</tt></dt><dd>Message about expiration date of the promotion.</dd>
-   *    <dt>string <tt>s_start</tt></dt><dd>Start date if promotion has not started yet.</dd>
+   *    <dt>string <tt>s_start</tt></dt><dd>Start date if promotion has not started yet.
+   *  If the promotion has already started, the field is not presented.</dd>
    *    <dt>string <tt>s_title</tt></dt><dd>Name of the promotion.</dd>
    *    <dt>string <tt>uid</tt></dt><dd>Promotion owner.</dd>
    *  </dl>
    * @property {string} text_expire Date when promotion ends in user-friendly format.
-   * @property {string} text_payment The title of the promotion.
+   * @property {string} text_payment If visit not payed yet value is `Not payed`.
+   *  If specified visit don't need to be paid value is `Free`. Else title of the promotion.
    */
 
   /**
@@ -120,13 +123,13 @@ function Wl_Reception_Roster_AttendanceConfirmationScreenModel()
    *        <dt>int <var>i_height</var></dt><dd>Height of the image in pixels.</dd>
    *        <dt>int <var>i_width</var></dt><dd>Width of the image in pixels.</dd>
    *        <dt>bool <var>is_empty</var></dt><dd>`true` means that image is empty.</dd>
-   *        <dt>string <var>url-thumbnail</var></dt><dd>Link on the image.</dd>
+   *        <dt>string <var>url_thumbnail</var></dt><dd>Link on the image.</dd>
    *    </dl></dd>
    *    <dt>array <var>a_restrict</var></dt>
    *      <dd>Information about calendar restrictions.<dl>
    *        <dt>int <var>i_limit</var></dt><dd>Count of possible visits.</dd>
    *        <dt>int <var>i_remain</var></dt><dd>Count of remaining visits.</dd>
-   *        <dt>bool <var>s_date</var></dt><dd>Name of the calendar period.</dd>
+   *        <dt>string <var>s_date</var></dt><dd>Name of the calendar period.</dd>
    *      </dl></dd>
    *    <dt>string <var>html_expire</var></dt><dd>Message about expiration date of the promotion.</dd>
    *    <dt>int <var>i_book</var></dt><dd>Count of future books that are paid with this promotion.</dd>
@@ -138,12 +141,15 @@ function Wl_Reception_Roster_AttendanceConfirmationScreenModel()
    *    <dt>bool <var>is_last_use</var></dt>
    *    <dd>If `true`, the promotion has a usage limit and no remaining visits. Otherwise, this will be `false`.</dd>
    *    <dt>string <var>s_expire</var></dt><dd>Message about expiration date of the promotion.</dd>
-   *    <dt>string <var>s_start</var></dt><dd>Start date if promotion has not started yet.</dd>
+   *    <dt>string <var>s_start</var></dt><dd>Start date if promotion has not started yet.
+   *      If the promotion has already started, the field is not presented.</dd>
    *    <dt>string <var>s_title</var></dt><dd>Name of the promotion.</dd>
    *    <dt>string <var>uid</var></dt><dd>Promotion owner.</dd>
    *  </dl></dd>
    *    <dt>string <var>text_expire</var></dt><dd>Date when promotion ends in user-friendly format.</dd>
-   *    <dt>string <var>text_payment</var></dt><dd>The title of the promotion.</dd>
+   *    <dt>string <var>text_payment</var></dt><dd>If visit not payed yet value is `Not payed`.
+   *      If specified visit don't need to be paid value is `Free`. Else title of the promotion.
+   *    </dd>
    * </dl>
    *
    * @get result
@@ -168,7 +174,7 @@ function Wl_Reception_Roster_AttendanceConfirmationScreenModel()
   this.k_business = "";
 
   /**
-   * Class schedule ID.
+   * Class schedule key.
    *
    * @get get
    * @type {string}
