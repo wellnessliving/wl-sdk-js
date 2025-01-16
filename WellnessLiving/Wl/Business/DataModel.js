@@ -194,6 +194,14 @@ function Wl_Business_DataModel()
   this.k_business_token = undefined;
 
   /**
+   * Key of business type.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.k_business_type = "0";
+
+  /**
    * The currency key of the given business or system currency if the business didn't pass.
    *
    * @deprecated Use {@link Wl_Business_DataModel.id_currency} instead.
