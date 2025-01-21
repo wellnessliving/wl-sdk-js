@@ -1,5 +1,5 @@
 /**
- * Displays information for a specified business.
+ * Information for a specified business.
  *
  * This model is generated automatically based on API.
  *
@@ -16,9 +16,9 @@ function Wl_Business_DataModel()
   this._s_key = "k_business";
 
   /**
-   * A list of all business services and their availability data.
-   * This is presented as an array, where keys are SIDs from {@link Wl_Service_ServiceSid} and values are Boolean.
-   * If `true`, at least one service is enabled in the business. Otherwise, this will be `false`.
+   * List of all business services and their availability data.
+   * Array, where keys are sids from {@link Wl_Service_ServiceSid} and values are boolean:
+   * <tt>true</tt> - if service is enabled in the business, <tt>false</tt> otherwise.
    *
    * @get result
    * @type {{}}
@@ -34,7 +34,7 @@ function Wl_Business_DataModel()
   this.a_tip_predefine = undefined;
 
   /**
-   * The maximum height of the business image (in pixels).
+   * Maximum business image height.
    *
    * @get get
    * @type {number}
@@ -42,7 +42,7 @@ function Wl_Business_DataModel()
   this.i_logo_height = 100;
 
   /**
-   * The maximum width of the business image (in pixels).
+   * Maximum business image width.
    *
    * @get get
    * @type {number}
@@ -50,7 +50,7 @@ function Wl_Business_DataModel()
   this.i_logo_width = 220;
 
   /**
-   * The business category ID of the business.
+   * Business category ID of the business.
    *
    * @get result
    * @see RsBusinessCategorySid
@@ -59,7 +59,7 @@ function Wl_Business_DataModel()
   this.id_category = undefined;
 
   /**
-   * The currency ID of the given business (or the system currency ID if the business didn't pass).
+   * Currency ID of the given business or system currency ID if the business didn't pass.
    *
    * @get result
    * @see Core_Locale_CurrencySid
@@ -77,11 +77,11 @@ function Wl_Business_DataModel()
   this.id_locale = undefined;
 
   /**
-   * The rank type ID of the business.
+   * Rank type ID of the business.
    *
-   * One of the {@link RsRankTypeSid} constants.
+   * Constant from {@link RsRankTypeSid}.
    *
-   * This will be `null` if the business doesn't have a rank type.
+   * <tt>null</tt> if business does not have a rank type.
    *
    * @get result
    * @type {?number}
@@ -103,7 +103,7 @@ function Wl_Business_DataModel()
   this.id_region = undefined;
 
   /**
-   * Determines whether surcharges to client payments are enabled in the business.
+   * Whether surcharges to client payments are enabled in the business.
    *
    * @get result
    * @type {boolean}
@@ -111,15 +111,8 @@ function Wl_Business_DataModel()
   this.is_apply_surcharge = false;
 
   /**
-   * `true` if business is a franchisor or franchisee.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_franchise = false;
-
-  /**
-   * Determines whether the business has multiple locations (including inactive locations).
+   * Whether business is multiple location.
+   * Including inactive locations.
    *
    * @get result
    * @type {boolean}
@@ -127,9 +120,8 @@ function Wl_Business_DataModel()
   this.is_location_multiple = undefined;
 
   /**
-   * `true` - clients of the business can select a custom time zone in their profile.
-   *
-   * `false` - the location or business time zone is used.
+   * `true` if clients of business can select a custom timezone in their profile;
+   * `false` if location or business timezone is used.
    *
    * @get result
    * @type {boolean}
@@ -137,7 +129,7 @@ function Wl_Business_DataModel()
   this.is_profile_timezone = undefined;
 
   /**
-   * If `true`, clients can enter the progress log. Otherwise, this will be `false`.
+   * <tt>true</tt> if clients can enter progress log; <tt>false</tt> otherwise.
    *
    * @get result
    * @type {boolean}
@@ -145,7 +137,7 @@ function Wl_Business_DataModel()
   this.is_progress_client = undefined;
 
   /**
-   * If `true`, verification of the progress log by a staff member is required. Otherwise, this will be `false`.
+   * <tt>true</tt> if verification of the progress log by a staff member is required; <tt>false</tt> otherwise.
    *
    * @get result
    * @type {boolean}
@@ -153,7 +145,7 @@ function Wl_Business_DataModel()
   this.is_progress_verify = undefined;
 
   /**
-   * Determines whether quizzes are available in the business.
+   * Whether quizzes available in the business.
    *
    * @get result
    * @type {boolean}
@@ -161,7 +153,7 @@ function Wl_Business_DataModel()
   this.is_quiz_available = false;
 
   /**
-   * If `true`, tips are available in the business. Otherwise, this will be `false`.
+   * <tt>true</tt> if tips are available in the business; <tt>false</tt> otherwise.
    *
    * @get result
    * @type {boolean}
@@ -169,7 +161,7 @@ function Wl_Business_DataModel()
   this.is_tip = undefined;
 
   /**
-   * If `true`, the business has the "No tip" option displayed. Otherwise, this will be `false`.
+   * <tt>true</tt> if the business has the "No tip" option displayed; <tt>false</tt> otherwise.
    *
    * @get result
    * @type {boolean}
@@ -177,7 +169,7 @@ function Wl_Business_DataModel()
   this.is_tip_deny = undefined;
 
   /**
-   * If `true`, the client must sign after selecting the tip. Otherwise, this will be `false`.
+   * <tt>true</tt> if client must to sign after selecting the tip; <tt>false</tt> otherwise.
    *
    * @get result
    * @type {boolean}
@@ -193,17 +185,8 @@ function Wl_Business_DataModel()
   this.k_business = "0";
 
   /**
-   * The franchisor business key. This will be empty if this business is the franchisor or not in a franchise.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.k_business_franchisor = "";
-
-  /**
    * The business key obtained by the security token {@link Wl_Business_DataModel.text_token}.
-   * This can be used on the client side if authorization token should be used instead of the business key
-   * (the business key isn't available).
+   * Client side can use this way if it does not know business key but knows authorization token.
    *
    * @get result
    * @type {string}
@@ -211,7 +194,7 @@ function Wl_Business_DataModel()
   this.k_business_token = undefined;
 
   /**
-   * Key of business type.
+   * Key of the business type.
    *
    * @get result
    * @type {string}
@@ -219,7 +202,7 @@ function Wl_Business_DataModel()
   this.k_business_type = "0";
 
   /**
-   * The currency key of the given business, or the system currency if the business didn't pass.
+   * The currency key of the given business or system currency if the business didn't pass.
    *
    * @deprecated Use {@link Wl_Business_DataModel.id_currency} instead.
    * @get result
@@ -286,7 +269,8 @@ function Wl_Business_DataModel()
   this.url_google = undefined;
 
   /**
-   * The Instagram page.
+   * Instagram page.
+   * {@link Wl\Business\BusinessInfo::$url_instagram}.
    *
    * @get result
    * @type {string}
@@ -294,7 +278,8 @@ function Wl_Business_DataModel()
   this.url_instagram = "";
 
   /**
-   * The `LinkedIn` profile.
+   * Linkedin profile.
+   * {@link Wl\Business\BusinessInfo::$url_linkedin}.
    *
    * @get result
    * @type {string}
@@ -310,7 +295,7 @@ function Wl_Business_DataModel()
   this.url_logo = undefined;
 
   /**
-   * The image stub (in cases where the business logo isn't loaded).
+   * Image stub in case the business logo is not loaded.
    *
    * @get result
    * @type {string}
@@ -326,7 +311,7 @@ function Wl_Business_DataModel()
   this.url_twitter = undefined;
 
   /**
-   * The business website.
+   * Business website.
    *
    * @get result
    * @type {string}
@@ -334,7 +319,8 @@ function Wl_Business_DataModel()
   this.url_website = undefined;
 
   /**
-   * The YouTube website.
+   * YouTube website.
+   * {@link Wl\Business\BusinessInfo::$url_youtube}.
    *
    * @get result
    * @type {string}
@@ -351,7 +337,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_DataModel);
  */
 Wl_Business_DataModel.prototype.config=function()
 {
-  return {"a_field": {"a_service_list": {"get": {"result": true}},"a_tip_predefine": {"get": {"result": true}},"i_logo_height": {"get": {"get": true}},"i_logo_width": {"get": {"get": true}},"id_category": {"get": {"result": true}},"id_currency": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"id_rank_type": {"get": {"result": true}},"id_region": {"get": {"result": true}},"is_apply_surcharge": {"get": {"result": true}},"is_franchise": {"get": {"result": true}},"is_location_multiple": {"get": {"result": true}},"is_profile_timezone": {"get": {"result": true}},"is_progress_client": {"get": {"result": true}},"is_progress_verify": {"get": {"result": true}},"is_quiz_available": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"is_tip_deny": {"get": {"result": true}},"is_tip_sign": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_business_franchisor": {"get": {"result": true}},"k_business_token": {"get": {"result": true}},"k_business_type": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"s_reply_mail": {"get": {"result": true}},"s_reply_name": {"get": {"result": true}},"text_office_address": {"get": {"result": true}},"text_title": {"get": {"result": true}},"text_token": {"get": {"get": true}},"url_facebook": {"get": {"result": true}},"url_google": {"get": {"result": true}},"url_instagram": {"get": {"result": true}},"url_linkedin": {"get": {"result": true}},"url_logo": {"get": {"result": true}},"url_logo_empty": {"get": {"result": true}},"url_twitter": {"get": {"result": true}},"url_website": {"get": {"result": true}},"url_youtube": {"get": {"result": true}}}};
+  return {"a_field": {"a_service_list": {"get": {"result": true}},"a_tip_predefine": {"get": {"result": true}},"i_logo_height": {"get": {"get": true}},"i_logo_width": {"get": {"get": true}},"id_category": {"get": {"result": true}},"id_currency": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"id_rank_type": {"get": {"result": true}},"id_region": {"get": {"result": true}},"is_apply_surcharge": {"get": {"result": true}},"is_location_multiple": {"get": {"result": true}},"is_profile_timezone": {"get": {"result": true}},"is_progress_client": {"get": {"result": true}},"is_progress_verify": {"get": {"result": true}},"is_quiz_available": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"is_tip_deny": {"get": {"result": true}},"is_tip_sign": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_business_token": {"get": {"result": true}},"k_business_type": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"s_reply_mail": {"get": {"result": true}},"s_reply_name": {"get": {"result": true}},"text_office_address": {"get": {"result": true}},"text_title": {"get": {"result": true}},"text_token": {"get": {"get": true}},"url_facebook": {"get": {"result": true}},"url_google": {"get": {"result": true}},"url_instagram": {"get": {"result": true}},"url_linkedin": {"get": {"result": true}},"url_logo": {"get": {"result": true}},"url_logo_empty": {"get": {"result": true}},"url_twitter": {"get": {"result": true}},"url_website": {"get": {"result": true}},"url_youtube": {"get": {"result": true}}}};
 };
 
 /**
