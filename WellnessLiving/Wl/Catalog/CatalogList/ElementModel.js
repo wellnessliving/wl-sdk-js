@@ -59,6 +59,8 @@ function Wl_Catalog_CatalogList_ElementModel()
    *   <dd>
    *     This applies only for coupons. Coupon components information. Each element will contain the following keys:
    *     <dl>
+   *       <dt>int <var>id_program</var></dt>
+   *       <dd>Program ID. Only applies to promotions.</dd>
    *       <dt>int <var>id_purchase_item</var></dt>
    *       <dd> Purchase item ID.</dd>
    *       <dt>int <var>id_sale</var></dt>
