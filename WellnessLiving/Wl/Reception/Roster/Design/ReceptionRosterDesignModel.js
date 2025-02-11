@@ -1,5 +1,5 @@
 /**
- * Api endpoint to get information about self check-in design.
+ * Api endpoint to get information about Attendance Web App settings.
  *
  * This model is generated automatically based on API.
  *
@@ -10,6 +10,11 @@
 function Wl_Reception_Roster_Design_ReceptionRosterDesignModel()
 {
     WlSdk_ModelAbstract.apply(this);
+
+    /**
+     * @inheritDoc
+     */
+    this._s_key = "k_business";
 
     /**
      * @typedef {{}} Wl_Reception_Roster_Design_ReceptionRosterDesignModel_a_business_config_a_staff_ip_restriction_a_role
@@ -56,6 +61,7 @@ function Wl_Reception_Roster_Design_ReceptionRosterDesignModel()
      * @property {boolean} can_facebook_login `true` if user can sign in with facebook, `false` - otherwise.
      * @property {boolean} can_google_login `true` if user can sign in with google, `false` - otherwise.
      * @property {boolean} can_tjx_login `true` if user can sign in with TJX, `false` - otherwise.
+     * @property {boolean} hide_profile_images `true` - client profile images will be hidden on the attendance web app; `false` - do not show.
      * @property {boolean} hide_title Indicates if the title should be hidden.
      * @property {number} i_attendance_direct_delay Number of seconds of inactivity before automatic redirect.
      * @property {number} i_blame Quantity of penalty visits.
@@ -217,6 +223,8 @@ function Wl_Reception_Roster_Design_ReceptionRosterDesignModel()
      *   <dd>`true` if user can sign in with google, `false` - otherwise.</dd>
      *   <dt>bool <var>can_tjx_login</var></dt>
      *   <dd>`true` if user can sign in with TJX, `false` - otherwise.</dd>
+     *   <dt>bool <var>hide_profile_images</var></dt>
+     *   <dd>`true` - client profile images will be hidden on the attendance web app; `false` - do not show.</dd>
      *   <dt>bool <var>hide_title</var></dt>
      *   <dd>Indicates if the title should be hidden.</dd>
      *   <dt>int <var>i_attendance_direct_delay</var></dt>
@@ -466,3 +474,11 @@ Wl_Reception_Roster_Design_ReceptionRosterDesignModel.prototype.config=function(
 {
     return {"a_field": {"a_business_config": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Reception_Roster_Design_ReceptionRosterDesignModel.instanceGet
+ * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @returns {Wl_Reception_Roster_Design_ReceptionRosterDesignModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */
