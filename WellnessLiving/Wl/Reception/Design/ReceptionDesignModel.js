@@ -1,8 +1,6 @@
 /**
  * Api endpoint to get information about Self Check-In Kiosk settings.
  *
- * This model is generated automatically based on API.
- *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
@@ -17,7 +15,7 @@ function Wl_Reception_Design_ReceptionDesignModel()
 
     /**
      * Array of image information for Self Check-In logo.
-     * Empty if {@link \Wl\Reception\Design\ReceptionDesignApi::$k_location} is not provided.
+     * Empty if {@link Wl_Reception_Design_ReceptionDesignModel.k_location} is not provided.
      *
      * Will contain the following keys:
      * <dl>
@@ -73,7 +71,7 @@ function Wl_Reception_Design_ReceptionDesignModel()
      *
      * @get result
      * @type {number}
-     * @see CheckInSoundSid
+     * @see Wl_Reception_Design_CheckInSoundSid
      */
     this.id_failed_sound = undefined;
 
@@ -82,7 +80,7 @@ function Wl_Reception_Design_ReceptionDesignModel()
      *
      * @get result
      * @type {number}
-     * @see CheckInSoundSid
+     * @see Wl_Reception_Design_CheckInSoundSid
      */
     this.id_success_sound = undefined;
 
@@ -226,7 +224,7 @@ Wl_Reception_Design_ReceptionDesignModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Reception_Design_ReceptionDesignModel.instanceGet
- * @param {string} k_business Business key. Primary key in the {@link \RsBusinessSql} table.
+ * @param {string} k_business Business key.
  * @param {string} k_location Key of the location, where application is run.
  * @param {string} text_business_name Name of the business to display on the client self check-in page.
  * @returns {Wl_Reception_Design_ReceptionDesignModel}
