@@ -38,7 +38,7 @@ function Wl_Reception_Design_ReceptionDesignModel()
      * `false` - otherwise.
      *
      * @get resultresult
-     * @var bool@type {boolean}
+     * @type {boolean}
      */
      this.hide_profile_images = undefined;
 
@@ -178,7 +178,6 @@ function Wl_Reception_Design_ReceptionDesignModel()
      *
      * @get get
      * @type {string}
-     * @see \RsLocationSql
      */
     this.k_location = "";
 
