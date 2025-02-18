@@ -123,11 +123,13 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * @property {?number} i_limit_duration The maximum number of minutes the Purchase Option can be used for.
    * @property {number} i_promotion_priority Priority of this promotion. Result of {@link Wl_Promotion_Priority_PromotionPrioritySid.priorityGet()} method.
    * @property {number} id_program The program ID for Purchase Options. One of the {@link RsProgramSid} constants.
+   * @property {boolean} is_convert If `true`, the promotion converts to another instance upon expiration. Otherwise, this will be `false`.
    * @property {boolean} is_shared `true` if the promotion is shared with the client, `false` if the client is owner of the promotion.
    * @property {string} k_login_promotion The login promotion key.
    * @property {string} s_class_include The list of services provided by this Purchase Option.
    * @property {string} s_description The Purchase Option description.
    * @property {string} s_duration The Purchase Option duration.
+   * @property {*} s_promotion_convert This is only set if <tt>is_convert</tt> is `true`. The title to use for the new promotion instance upon auto-renewal.
    * @property {string} s_title The Purchase Option name.
    * @property {string} text_package_item If this promotion is a package, this field will contain a list of Purchase Options contained in the package.
    */
@@ -191,6 +193,8 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *   <dd>Priority of this promotion. Result of {@link Wl_Promotion_Priority_PromotionPrioritySid.priorityGet()} method.</dd>
    *   <dt>int <var>id_program</var></dt>
    *   <dd>The program ID for Purchase Options. One of the {@link RsProgramSid} constants.</dd>
+   *   <dt>bool <var>is_convert</var></dt>
+   *   <dd>If `true`, the promotion converts to another instance upon expiration. Otherwise, this will be `false`.</dd>
    *   <dt>bool <var>is_shared</var></dt>
    *   <dd>`true` if the promotion is shared with the client, `false` if the client is owner of the promotion.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
@@ -201,6 +205,8 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *   <dd>The Purchase Option description.</dd>
    *   <dt>string <var>s_duration</var></dt>
    *   <dd>The Purchase Option duration.</dd>
+   *   <dt>string [<var>s_promotion_convert</var>]</dt>
+   *   <dd>This is only set if <var>is_convert</var> is `true`. The title to use for the new promotion instance upon auto-renewal.</dd>
    *   <dt>string <var>s_title</var></dt>
    *   <dd>The Purchase Option name.</dd>
    *   <dt>string <var>text_package_item</var></dt>

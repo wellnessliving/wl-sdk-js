@@ -174,6 +174,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} s_time The time when session occurred.
    * A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am</tt>
    * @property {string} s_timezone The name of the timezone in which the session is held.
+   * @property {string} text_room The room in which the session is held.
    */
 
   /**
@@ -291,6 +292,12 @@ function Wl_Event_Book_EventView_ElementModel()
    *   </dt>
    *   <dd>
    *     The name of the timezone in which the session is held.
+   *   </dd>
+   *   <dt>
+   *     string <var>text_room</var>
+   *   </dt>
+   *   <dd>
+   *     The room in which the session is held.
    *   </dd>
    * </dl>
    *
@@ -459,6 +466,14 @@ function Wl_Event_Book_EventView_ElementModel()
    * @type {number}
    */
   this.i_session = undefined;
+
+  /**
+   * The remaining session count.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_session_remain = undefined;
 
   /**
    * Staff image height in pixels. Please specify this value if you need image to be returned in specific size.
@@ -702,7 +717,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventView_ElementModel);
  */
 Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
+  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_session_remain": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
 };
 
 /**

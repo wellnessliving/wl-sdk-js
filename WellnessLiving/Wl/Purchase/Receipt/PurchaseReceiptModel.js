@@ -471,6 +471,12 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    *   <dd>
    *     The description of the purchase item.
    *   </dd>
+   *   <dt>
+   *     string <var>url_print</var>
+   *   </dt>
+   *   <dd>
+   *     The URL to print. Only available if the purchase item is a coupon (gift card).
+   *   </dd>
    * </dl>
    *
    * @get result
@@ -503,8 +509,11 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.html_receipt = undefined;
 
   /**
-   * Whether the print receipt URL requires authentication. If `true`, the URL contains a token that temporarily
-   * allows access to the print receipt without a login. `false` otherwise.
+   * Whether {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print} and
+   * {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print_receipt} require authentication.
+   *
+   * If `true`, the URL contains a token that allows temporary access to the page without logging in. If 'false', the
+   * page requires authentication.
    *
    * @get get
    * @type {boolean}
