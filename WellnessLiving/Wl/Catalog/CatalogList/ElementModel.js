@@ -42,6 +42,7 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data
+   * @property {{}} a_component Only for coupons.
    * @property {boolean} is_renew_public Only for promotions.
    * <tt>true</tt> - client can set promotion auto-renew.
    * <tt>false</tt> - client can't set promotion auto-renew.
@@ -52,6 +53,24 @@ function Wl_Catalog_CatalogList_ElementModel()
    *
    * The structure may be different depending on the item category.
    * <dl>
+   *   <dt>
+   *     array[] <var>a_component</var>
+   *   </dt>
+   *   <dd>
+   *     This applies only for coupons. Coupon components information. Each element will contain the following keys:
+   *     <dl>
+   *       <dt>int <var>id_program</var></dt>
+   *       <dd>Program ID. Only applies to promotions.</dd>
+   *       <dt>int <var>id_purchase_item</var></dt>
+   *       <dd> Purchase item ID.</dd>
+   *       <dt>int <var>id_sale</var></dt>
+   *       <dd>Sale ID.</dd>
+   *       <dt>int <var>k_id</var></dt>
+   *       <dd>The identifier of the item.</dd>
+   *       <dt>string <var>text_title</var></dt>
+   *       <dd>The title of the item.</dd>
+   *     </dl>
+   *   </dd>
    *   <dt>
    *     bool <var>is_renew_public</var>
    *   </dt>

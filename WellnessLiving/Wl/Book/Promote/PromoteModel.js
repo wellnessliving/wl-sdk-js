@@ -9,6 +9,14 @@ function Wl_Book_Promote_PromoteModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * ID of the source where a visit was promoted, one of {@link Wl_Mode_ModeSid} constants.
+   *
+   * @post post
+   * @type {number}
+   */
+  this.id_mode = 0;
+
+  /**
    * The business ID.
    *
    * @post post
@@ -42,5 +50,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Promote_PromoteModel);
  */
 Wl_Book_Promote_PromoteModel.prototype.config=function()
 {
-  return {"a_field": {"k_business": {"post": {"post": true}},"k_visit": {"post": {"post": true}},"text_message": {"post": {"result": true}}}};
+  return {"a_field": {"id_mode": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_visit": {"post": {"post": true}},"text_message": {"post": {"result": true}}}};
 };

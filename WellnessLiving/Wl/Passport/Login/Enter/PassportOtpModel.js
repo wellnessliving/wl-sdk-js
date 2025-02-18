@@ -32,6 +32,7 @@ function Wl_Passport_Login_Enter_PassportOtpModel()
    * Business key.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_business = "";
@@ -63,5 +64,5 @@ WlSdk_ModelAbstract.extend(Wl_Passport_Login_Enter_PassportOtpModel);
  */
 Wl_Passport_Login_Enter_PassportOtpModel.prototype.config=function()
 {
-  return {"a_field": {"is_mail": {"get": {"get": true}},"is_phone": {"get": {"get": true}},"k_business": {"get": {"get": true}},"s_otp_code": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"is_mail": {"get": {"get": true}},"is_phone": {"get": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"s_otp_code": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
