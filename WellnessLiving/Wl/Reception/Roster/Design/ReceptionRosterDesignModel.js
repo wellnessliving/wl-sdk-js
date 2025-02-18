@@ -102,6 +102,15 @@ function Wl_Reception_Roster_Design_ReceptionRosterDesignModel()
     this.i_confirm_delay = 0;
 
     /**
+     * ID of the action to take when automatically redirecting.
+     * One of {@link Wl_Reception_Roster_DirectSid} constants.
+     *
+     * @get result
+     * @type {*}
+     */
+    this.id_attendance_direct = 1;
+
+    /**
      * Unit of time for the look ahead window for attendance app.
      *
      * @get result
@@ -186,5 +195,5 @@ WlSdk_ModelAbstract.extend(Wl_Reception_Roster_Design_ReceptionRosterDesignModel
  */
 Wl_Reception_Roster_Design_ReceptionRosterDesignModel.prototype.config=function()
 {
-    return {"a_field": {"a_image": {"get": {"result": true}},"i_attendance_direct_delay": {"get": {"result": true}},"i_book_open": {"get": {"result": true}},"i_book_quick_app": {"get": {"result": true}},"i_confirm_delay": {"get": {"result": true}},"id_book_quick_app": {"get": {"result": true}},"is_attend_free": {"get": {"result": true}},"is_book_open": {"get": {"result": true}},"is_book_optional": {"get": {"result": true}},"is_book_quick_app": {"get": {"result": true}},"k_business": {"get": {"get": true}},"show_business_name": {"get": {"result": true}},"show_confirm_screen": {"get": {"result": true}},"text_business_name": {"get": {"result": true}}}};
+    return {"a_field": {"a_image": {"get": {"result": true}},"i_attendance_direct_delay": {"get": {"result": true}},"i_book_open": {"get": {"result": true}},"i_book_quick_app": {"get": {"result": true}},"i_confirm_delay": {"get": {"result": true}},"id_attendance_direct": {"get": {"result": true}},"id_book_quick_app": {"get": {"result": true}},"is_attend_free": {"get": {"result": true}},"is_book_open": {"get": {"result": true}},"is_book_optional": {"get": {"result": true}},"is_book_quick_app": {"get": {"result": true}},"k_business": {"get": {"get": true}},"show_business_name": {"get": {"result": true}},"show_confirm_screen": {"get": {"result": true}},"text_business_name": {"get": {"result": true}}}};
 };
