@@ -14,16 +14,12 @@ function Wl_Family_Relation_FamilyRelationModel()
   this._s_key = "k_business";
 
   /**
-   * @typedef {{}} Wl_Family_Relation_FamilyRelationModel_a_business_relationships
-   */
-
-  /**
    * The relationship types in the business.
    *
    * Key is ID, value is SID. See {@link Wl_Family_Relation_RelationSid}.
    *
    * @get result
-   * @type {Wl_Family_Relation_FamilyRelationModel_a_business_relationships}
+   * @type {{}}
    */
   this.a_business_relationships = [];
 
