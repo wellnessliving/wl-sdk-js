@@ -11,6 +11,22 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * Information for sending an appointment notification.
+   * <dl>
+   *    <dt>bool [<var>is_mail</var>]</dt>
+   *    <dd>`true` to send mail; `false` to not send.</dd>
+   *    <dt>bool [<var>is_sms</var>]</dt>
+   *    <dd>`true` to send SMS; `false` to not send.</dd>
+   *    <dt>bool [<var>is_push</var>]</dt>
+   *    <dd>`true` to send push notification; `false` to not send.</dd>
+   *  </dl>
+   *
+   * @post post
+   * @var {{}}
+   */
+  this.a_notification = [];
+
+  /**
    * A list of answers for the questions from {@link Wl_Appointment_Book_Question_QuestionModel.a_question}.
    * Key - hash of the question, value - answer for the question.
    *
@@ -277,5 +293,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Finish_Finish47Model);
  */
 Wl_Appointment_Book_Finish_Finish47Model.prototype.config=function()
 {
-  return {"a_field": {"a_answer": {"post": {"post": true}},"a_appointment": {"post": {"result": true}},"a_book_data": {"post": {"post": true}},"a_login_activity_visit": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_payment_data": {"post": {"post": true}},"a_purchase_item": {"post": {"post": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"a_user": {"post": {"get": true}},"a_visit": {"post": {"result": true}},"id_mode": {"post": {"post": true}},"id_pay": {"post": {"get": true}},"is_back_to_back": {"post": {"post": true}},"is_unpaid_force": {"post": {"post": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"post": {"get": true}},"k_business": {"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_timezone": {"post": {"get": true}},"m_pay": {"post": {"post": true}},"s_id": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_notification": {"post": {"post": true}},"a_answer": {"post": {"post": true}},"a_appointment": {"post": {"result": true}},"a_book_data": {"post": {"post": true}},"a_login_activity_visit": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_payment_data": {"post": {"post": true}},"a_purchase_item": {"post": {"post": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"a_user": {"post": {"get": true}},"a_visit": {"post": {"result": true}},"id_mode": {"post": {"post": true}},"id_pay": {"post": {"get": true}},"is_back_to_back": {"post": {"post": true}},"is_unpaid_force": {"post": {"post": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"post": {"get": true}},"k_business": {"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_timezone": {"post": {"get": true}},"m_pay": {"post": {"post": true}},"s_id": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
