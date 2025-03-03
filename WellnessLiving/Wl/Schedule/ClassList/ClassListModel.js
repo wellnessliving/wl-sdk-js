@@ -49,8 +49,8 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @property {boolean} hide_application Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the
    *  class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
    * @property {string} html_description The class description.
-   * @property {number} i_book Count of visits on this class. Empty string means that there is not information about books.
-   * @property {number} i_capacity The capacity of the service. 'null' indicates that the capacity is not set.
+   * @property {number} i_book Count of visits on this class.
+   * @property {null|number} i_capacity The capacity of the service. 'null' indicates that the capacity is not set.
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
    * @property {number} i_wait Number of clients in wait list.
@@ -134,7 +134,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    *     int <var>i_book</var>
    *   </dt>
    *   <dd>
-   *     Count of visits on this class. Empty string means that there is not information about books.
+   *     Count of visits on this class.
    *   </dd>
    *   <dt>
    *     int <var>i_capacity</var>
