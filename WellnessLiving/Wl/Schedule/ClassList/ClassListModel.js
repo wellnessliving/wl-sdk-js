@@ -39,7 +39,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   /**
    * @typedef {{}} Wl_Schedule_ClassList_ClassListModel_a_session
    * @property {string[]} a_class_tab Keys of class tab.
-   * @property {string[]} a_image The class image.
+   * @property {string[]} a_image The class image. Empty array if there is no image.
    * @property {string[]} a_search_tag Tags associated with individual class.
    * @property {string[]} a_staff The list of staff keys for the staff member conducting the session.
    * @property {string[]} a_virtual_location The list of virtual locations keys. Each value is a location key.
@@ -79,7 +79,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    *     string[] <var>a_image</var>
    *   </dt>
    *   <dd>
-   *     The class image.
+   *     The class image. Empty array if there is no image.
    *   </dd>
    *   <dt>
    *     string[] <var>a_search_tag</var>
