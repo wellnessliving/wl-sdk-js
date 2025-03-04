@@ -11,7 +11,7 @@ function Wl_Social_Share_SocialShareModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * The primary keys of the share objects.
+   * The primary keys of the shared objects.
    *
    * @post post
    * @type {string[]}
@@ -19,7 +19,7 @@ function Wl_Social_Share_SocialShareModel()
   this.a_key = undefined;
 
   /**
-   * One of {@link ASocialSid} constants.
+   * The id of the social network. One of {@link ASocialSid} constants.
    *
    * @post post
    * @type {number}
@@ -27,7 +27,7 @@ function Wl_Social_Share_SocialShareModel()
   this.id_share_destination = undefined;
 
   /**
-   * One of {@link Wl_Social_Share_ShareObjectSid} constants.
+   * The id of type object for share post to social network. One of {@link Wl_Social_Share_ShareObjectSid} constants.
    *
    * @post post
    * @type {number}
