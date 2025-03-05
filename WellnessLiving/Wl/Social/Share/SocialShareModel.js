@@ -11,14 +11,12 @@
  *     $o_api->uid = $uid;
  *     $o_api->post();
  *
- *     // Link to the catalog list page.
- *     // Used as an example. This should be a link to the object type you want to share.
- *     $url_catalog = rs_catalog_url_list(['k_business' => $k_business]);
+ *     $url_link = ''; // Example: Wl_Profile_Activity_ElementModel.url_link
  *
  *     // s_secret points specifically to your object that you want to share, so add it to the url.
- *     // In this case url_catalog stores all purchases for the business,
+ *     // In this case url_link stores all purchases for the business,
  *     // and by using s_secret we will get a link to only those purchases we want to share.
- *     $url_facebook_share = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url_catalog . '&s_secret=' . $o_api->s_secret);
+ *     $url_facebook_share = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url_link . '&s_secret=' . $o_api->s_secret);
  * </code>
  *
  * This model is generated automatically based on API.
@@ -32,10 +30,11 @@ function Wl_Social_Share_SocialShareModel()
 
   /**
    * The primary keys of the shared objects. Depends on {@link Wl_Social_Share_SocialShareModel.id_share_object}.
-   * If {@link Wl_Social_Share_SocialShareModel.id_share_object} is {@link Wl_Social_Share_ShareObjectSid.BOOK}: each value is key of the visit.
-   * If {@link Wl_Social_Share_SocialShareModel.id_share_object} is {@link Wl_Social_Share_ShareObjectSid.LOCATION}: each value is key of the location.
-   * If {@link Wl_Social_Share_SocialShareModel.id_share_object} is {@link Wl_Social_Share_ShareObjectSid.PURCHASE}: each value is key of the purchase.
-   * If {@link Wl_Social_Share_SocialShareModel.id_share_object} is {@link Wl_Social_Share_ShareObjectSid.REVIEW}: each value is key of the review.
+   * If {@link Wl_Social_Share_SocialShareModel.id_share_object} is:
+   * * {@link Wl_Social_Share_ShareObjectSid.BOOK} - each value is key of the visit.
+   * * {@link Wl_Social_Share_ShareObjectSid.LOCATION} - each value is key of the location.
+   * * {@link Wl_Social_Share_ShareObjectSid.PURCHASE} - each value is key of the purchase.
+   * * {@link Wl_Social_Share_ShareObjectSid.REVIEW} - each value is key of the review.
    *
    * @post post
    * @type {string[]}
