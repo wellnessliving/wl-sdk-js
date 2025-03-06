@@ -44,6 +44,33 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.id_start_week = undefined;
 
   /**
+   * <tt>true</tt> - If needed to show recurring canceled appointments on schedule. <tt>false</tt> - otherwise.
+   * Current setting from business schedule design.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_appointment_cancel_recurring = undefined;
+
+  /**
+   * <tt>true</tt> - If needed to show single canceled appointments on schedule. <tt>false</tt> - otherwise.
+   * Current setting from business schedule design.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_appointment_cancel_single = undefined;
+
+  /**
+   * <tt>true</tt> - If needed to show canceled classes on schedule. <tt>false</tt> - otherwise.
+   * Current setting from business schedule design.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_class_cancel = undefined;
+
+  /**
    * <tt>true</tt> - if need to show staff unavailable times with diagonal lines, <tt>false</tt> - otherwise.
    *
    * @get result
@@ -117,7 +144,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleDesign_ScheduleDesignModel);
  */
 Wl_Schedule_ScheduleDesign_ScheduleDesignModel.prototype.config=function()
 {
-  return {"a_field": {"i_interval": {"get": {"result": true}},"id_option": {"get": {"result": true}},"id_start_week": {"get": {"result": true}},"is_diagonal_staff_busy": {"get": {"result": true}},"is_work_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_color_staff_available": {"get": {"result": true}},"s_color_staff_busy": {"get": {"result": true}},"s_color_staff_substitute": {"get": {"result": true}},"show_booking_after_book": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"i_interval": {"get": {"result": true}},"id_option": {"get": {"result": true}},"id_start_week": {"get": {"result": true}},"is_appointment_cancel_recurring": {"get": {"result": true}},"is_appointment_cancel_single": {"get": {"result": true}},"is_class_cancel": {"get": {"result": true}},"is_diagonal_staff_busy": {"get": {"result": true}},"is_work_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_color_staff_available": {"get": {"result": true}},"s_color_staff_busy": {"get": {"result": true}},"s_color_staff_substitute": {"get": {"result": true}},"show_booking_after_book": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
