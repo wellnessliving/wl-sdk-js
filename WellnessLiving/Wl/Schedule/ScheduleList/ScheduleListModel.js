@@ -16,6 +16,38 @@ function Wl_Schedule_ScheduleList_ScheduleListModel()
   this._s_key = "k_location,dt_date,k_class_tab,id_class_tab,uid";
 
   /**
+   * Configuration options for schedule.
+   * Key is option name, value is boolean.
+   *
+   * May contain the following keys:
+   *
+   * <dl>
+   *   <dt>
+   *     bool <var>is_appointment_cancel_recurring</var>
+   *   </dt>
+   *   <dd>
+   *     If needed to show recurring canceled appointments on schedule.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_appointment_cancel_single</var>
+   *   </dt>
+   *   <dd>
+   *     If needed to show single canceled appointments on schedule.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_class_cancel</var>
+   *   </dt>
+   *   <dd>
+   *     If needed to show canceled classes on schedule.
+   *   </dd>
+   * </dl>
+   *
+   * @get get
+   * @type {{}}
+   */
+  this.a_config = undefined;
+
+  /**
    * @typedef {{}} Wl_Schedule_ScheduleList_ScheduleListModel_a_schedule_a_staff
    * @property {boolean} is_staff_change Determines current staff member as substituted.
    * @property {string} s_staff Full name of staff.
@@ -177,7 +209,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleList_ScheduleListModel);
  */
 Wl_Schedule_ScheduleList_ScheduleListModel.prototype.config=function()
 {
-  return {"a_field": {"a_schedule": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"id_class_tab": {"get": {"get": true}},"is_classes_available": {"get": {"result": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_config": {"get": {"get": true}},"a_schedule": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"id_class_tab": {"get": {"get": true}},"is_classes_available": {"get": {"result": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
