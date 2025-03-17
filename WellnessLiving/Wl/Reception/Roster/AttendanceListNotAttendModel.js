@@ -21,10 +21,10 @@ function Wl_Reception_Roster_AttendanceListNotAttendModel()
   /**
    * The visit key.
    *
-   * @post result
+   * @post get
    * @type {string}
    */
-  this.k_visit = undefined;
+  this.k_visit = "";
 
   /**
    * The secret for authenticating the attendance kiosk.
