@@ -25,6 +25,51 @@ function Wl_Quiz_Response_ResponseModel()
   this.a_element = [];
 
   /**
+   * Elements' uploaded files. The value has next structure:<dl>
+   *   <dt>array <var>error</var></dt>
+   *   <dd>
+   *     An array of files upload errors where key is element unique identifier
+   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *    property name and value is errors codes.
+   *   </dd>
+   *   <dt>array <var>full_path</var></dt>
+   *   <dd>
+   *     An array of files full path where key is element unique identifier
+   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *    property name and value is full path.
+   *   </dd>
+   *   <dt>array <var>name</var></dt>
+   *   <dd>
+   *     An array of files' names where key is element unique identifier
+   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *    property name and value is file name.
+   *   </dd>
+   *   <dt>array <var>size</var></dt>
+   *   <dd>
+   *     An array of files' sizes where key is element unique identifier
+   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *    property name and value is file size.
+   *   </dd>
+   *   <dt>array <var>tmp_name</var></dt>
+   *   <dd>
+   *     An array of files' temporary names where key is element unique identifier
+   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *    property name and value is file temporary name.
+   *   </dd>
+   *   <dt>array <var>type</var></dt>
+   *   <dd>
+   *     An array of files' types where key is element unique identifier
+   *    {@link \Core\Quiz\Element\ElementAbstract::$s_id} and value is array where key is element
+   *    property name and value is file type.
+   *   </dd>
+   * </dl>
+   *
+   * @post post
+   * @type {*}
+   */
+  this.a_element_file = [];
+
+  /**
    * Data for Quick Buy.
    * Structure of this array is described in {@link RsCatalogCart::__construct()}.
    *
@@ -196,7 +241,7 @@ WlSdk_ModelAbstract.extend(Wl_Quiz_Response_ResponseModel);
  */
 Wl_Quiz_Response_ResponseModel.prototype.config=function()
 {
-  return {"a_field": {"a_element": {"get": {"result": true},"post": {"post": true}},"a_quick_config": {"post": {"post": true}},"a_quiz_response_key": {"delete": {"get": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"id_source": {"get": {"result": true},"post": {"post": true}},"id_mode": {"delete": {"get": true}},"is_backend": {"post": {"post": true}},"is_draft": {"post": {"post": true}},"is_skip": {"post": {"post": true}},"json_element": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_quiz": {"post": {"get": true}},"k_quiz_login": {"post": {"post": true}},"k_quiz_response": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"show_numbering": {"get": {"result": true}},"text_appointment_wizard_id": {"post": {"post": true}},"text_class_wizard_id": {"post": {"post": true}},"text_title": {"get": {"result": true}},"uid_response": {"post": {"post": true}}}};
+  return {"a_field": {"a_element": {"get": {"result": true},"post": {"post": true}},"a_element_file": {"post": {"post": true}},"a_quick_config": {"post": {"post": true}},"a_quiz_response_key": {"delete": {"get": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"id_source": {"get": {"result": true},"post": {"post": true}},"id_mode": {"delete": {"get": true}},"is_backend": {"post": {"post": true}},"is_draft": {"post": {"post": true}},"is_skip": {"post": {"post": true}},"json_element": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_quiz": {"post": {"get": true}},"k_quiz_login": {"post": {"post": true}},"k_quiz_response": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"show_numbering": {"get": {"result": true}},"text_appointment_wizard_id": {"post": {"post": true}},"text_class_wizard_id": {"post": {"post": true}},"text_title": {"get": {"result": true}},"uid_response": {"post": {"post": true}}}};
 };
 
 /**
