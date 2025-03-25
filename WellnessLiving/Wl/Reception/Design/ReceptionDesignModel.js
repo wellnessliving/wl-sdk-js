@@ -202,7 +202,7 @@ function Wl_Reception_Design_ReceptionDesignModel()
     /**
      * Name of the business to display on the client self check-in page.
      *
-     * @get get
+     * @get result
      * @type {string}
      */
     this.text_business_name = "";
@@ -217,7 +217,7 @@ WlSdk_ModelAbstract.extend(Wl_Reception_Design_ReceptionDesignModel);
  */
 Wl_Reception_Design_ReceptionDesignModel.prototype.config=function()
 {
-    return {"a_field":{"a_reception_logo":{"get":{"result":true}},"hide_profile_images":{"get":{"result":true}},"i_book_open":{"get":{"result":true}},"i_confirm_delay":{"get":{"result":true}},"i_schedule_delay":{"get":{"result":true}},"id_failed_sound":{"get":{"result":true}},"id_success_sound":{"get":{"result":true}},"is_attend_free":{"get":{"result":true}},"is_auto_check_in":{"get":{"result":true}},"is_book_open":{"get":{"result":true}},"is_book_optional":{"get":{"result":true}},"is_client_id":{"get":{"result":true}},"is_mail":{"get":{"result":true}},"is_password":{"get":{"result":true}},"is_phone":{"get":{"result":true}},"is_reconcile_auto":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"show_business_name":{"get":{"result":true}},"show_confirm_screen":{"get":{"result":true}},"text_business_name":{"get":{"get":true}}}};
+    return {"a_field":{"a_reception_logo":{"get":{"result":true}},"hide_profile_images":{"get":{"result":true}},"i_book_open":{"get":{"result":true}},"i_confirm_delay":{"get":{"result":true}},"i_schedule_delay":{"get":{"result":true}},"id_failed_sound":{"get":{"result":true}},"id_success_sound":{"get":{"result":true}},"is_attend_free":{"get":{"result":true}},"is_auto_check_in":{"get":{"result":true}},"is_book_open":{"get":{"result":true}},"is_book_optional":{"get":{"result":true}},"is_client_id":{"get":{"result":true}},"is_mail":{"get":{"result":true}},"is_password":{"get":{"result":true}},"is_phone":{"get":{"result":true}},"is_reconcile_auto":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"show_business_name":{"get":{"result":true}},"show_confirm_screen":{"get":{"result":true}},"text_business_name":{"get":{"result":true}}}};
 };
 
 /**
