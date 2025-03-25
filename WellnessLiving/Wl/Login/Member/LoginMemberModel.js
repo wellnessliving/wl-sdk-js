@@ -1,5 +1,5 @@
 /**
- * An endpoint that updates client ID.
+ * An endpoint that manages client ID.
  *
  * This model is generated automatically based on API.
  *
