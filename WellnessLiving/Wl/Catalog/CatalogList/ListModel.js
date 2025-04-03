@@ -36,6 +36,16 @@ function Wl_Catalog_CatalogList_ListModel()
   this.a_product_duplicate = undefined;
 
   /**
+   * `true` to consider the requirement to have a credit card for booking
+   * (this requirement can be set in business settings)
+   * `false` to ignore it.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_credit_card_check = true;
+
+  /**
    * The business key.
    *
    * @get get
@@ -44,7 +54,7 @@ function Wl_Catalog_CatalogList_ListModel()
   this.k_business = "0";
 
   /**
-   * The key of a location.
+   * The key of a location. If `0`, all products in the business are retrieved.
    *
    * @get get
    * @type {string}
@@ -69,14 +79,14 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_CatalogList_ListModel);
  */
 Wl_Catalog_CatalogList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_product": {"get": {"result": true}},"a_product_duplicate": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_product": {"get": {"result": true}},"a_product_duplicate": {"get": {"result": true}},"is_credit_card_check": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Catalog_CatalogList_ListModel.instanceGet
  * @param {string} k_business The business key.
- * @param {string} k_location The key of a location.
+ * @param {string} k_location The key of a location. If `0`, all products in the business are retrieved.
  * @param {string} uid The key of user.
  * @returns {Wl_Catalog_CatalogList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()

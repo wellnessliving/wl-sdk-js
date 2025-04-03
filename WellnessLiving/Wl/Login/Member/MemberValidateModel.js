@@ -5,6 +5,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Login_Member_MemberValidate63Model} instead.
  */
 function Wl_Login_Member_MemberValidateModel()
 {

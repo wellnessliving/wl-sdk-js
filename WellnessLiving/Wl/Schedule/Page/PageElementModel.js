@@ -198,6 +198,15 @@ function Wl_Schedule_Page_PageElementModel()
   this.html_special = undefined;
 
   /**
+   * Capacity of the service.
+   * <tt>null</tt> indicates that the capacity is not set.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_capacity = undefined;
+
+  /**
    * The scheduled duration of the visit.
    * <tt>0</tt> means that session duration is hidden.
    *
@@ -329,6 +338,14 @@ function Wl_Schedule_Page_PageElementModel()
   this.k_location = undefined;
 
   /**
+   * Resource key.
+   *
+   * @get result
+   * @type {*}
+   */
+  this.k_resource = undefined;
+
+  /**
    * Session key.
    *
    * @get result
@@ -385,6 +402,14 @@ function Wl_Schedule_Page_PageElementModel()
   this.uid = undefined;
 
   /**
+   * URL of the image representing the service or resource.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_image = undefined;
+
+  /**
    * Url to wait page is the beginning of an online service.
    *
    * @get result
@@ -402,7 +427,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Page_PageElementModel);
  */
 Wl_Schedule_Page_PageElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_appointment_visit_info": {"get": {"result": true}},"a_asset": {"get": {"result": true}},"a_class_info": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_cancel": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"result": true}},"dtl_location": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_virtual_provider": {"get": {"result": true}},"id_visit": {"get": {"result": true}},"is_checkin": {"get": {"result": true}},"is_enable_client_cancel": {"get": {"result": true}},"is_event": {"get": {"result": true}},"is_in_progress": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_appointment": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_service": {"get": {"result": true}},"k_visit": {"get": {"get": true}},"s_title": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_room": {"get": {"result": true}},"text_timezone": {"get": {"result": true}},"uid": {"get": {"result": true}},"url_virtual_join": {"get": {"result": true}}}};
+  return {"a_field": {"a_appointment_visit_info": {"get": {"result": true}},"a_asset": {"get": {"result": true}},"a_class_info": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_cancel": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"result": true}},"dtl_location": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_capacity": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_virtual_provider": {"get": {"result": true}},"id_visit": {"get": {"result": true}},"is_checkin": {"get": {"result": true}},"is_enable_client_cancel": {"get": {"result": true}},"is_event": {"get": {"result": true}},"is_in_progress": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_appointment": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"k_visit": {"get": {"get": true}},"s_title": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_room": {"get": {"result": true}},"text_timezone": {"get": {"result": true}},"uid": {"get": {"result": true}},"url_image": {"get": {"result": true}},"url_virtual_join": {"get": {"result": true}}}};
 };
 
 /**

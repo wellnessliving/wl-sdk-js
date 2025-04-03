@@ -38,6 +38,7 @@ function Wl_Classes_ClassView_ElementModel()
    * @property {number} is_cancel Defines whether the schedule canceled or not.
    * @property {string} k_location The location key of the schedule.
    * @property {string} m_price The price of a single session of the schedule.
+   * @property {string} text_room The room of the class period.
    * @property {string} text_time The time of the session in the following format: `[start_time] - [end_time]` in locale timezone.
    */
   /**
@@ -72,6 +73,8 @@ function Wl_Classes_ClassView_ElementModel()
    *   <dd>The location key of the schedule.</dd>
    *   <dt>string <tt>m_price</tt></dt>
    *   <dd>The price of a single session of the schedule.</dd>
+   *   <dt>string <tt>text_room</tt></dt>
+   *   <dd>The room of the class period.</dd>
    *   <dt>string <tt>text_time</tt></dt>
    *   <dd>The time of the session in the following format: `[start_time] - [end_time]` in locale timezone.</dd>
    * </dl>
@@ -139,6 +142,8 @@ function Wl_Classes_ClassView_ElementModel()
    *       <dd>The location key of the schedule.</dd>
    *       <dt>string <var>m_price</var></dt>
    *       <dd>The price of a single session of the schedule.</dd>
+   *       <dt>string <var>text_room</var></dt>
+   *       <dd>The room of the class period.</dd>
    *       <dt>string <var>text_time</var></dt>
    *       <dd>The time of the session in the following format: `[start_time] - [end_time]` in locale timezone.</dd>
    *     </dl>

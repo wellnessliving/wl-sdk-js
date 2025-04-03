@@ -39,6 +39,8 @@ function Wl_Schedule_ClassList_ClassListModel()
   /**
    * @typedef {{}} Wl_Schedule_ClassList_ClassListModel_a_session
    * @property {string[]} a_class_tab Keys of class tab.
+   * @property {string[]} a_image The class image. Empty array if there is no image.
+   * @property {string[]} a_search_tag Tags associated with individual class.
    * @property {string[]} a_staff The list of staff keys for the staff member conducting the session.
    * @property {string[]} a_virtual_location The list of virtual locations keys. Each value is a location key.
    * @property {string} dt_date The date/time of the session start in UTC.
@@ -46,10 +48,15 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @property {string} dtl_date The date/time of session start in the location's time zone.
    * @property {boolean} hide_application Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the
    *  class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
+   * @property {string} html_description The class description.
+   * @property {number} i_book Count of visits on this class.
+   * @property {null|number} i_capacity The capacity of the service. 'null' indicates that the capacity is not set.
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
+   * @property {number} i_wait Number of clients in wait list.
    * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
    * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
+   * @property {boolean} is_wait_list_enabled This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.
    * @property {string} k_class The class key.
    * @property {string} k_class_period The class period key.
    * @property {string} k_location The key of the session's location.
@@ -67,6 +74,18 @@ function Wl_Schedule_ClassList_ClassListModel()
    *   </dt>
    *   <dd>
    *     Keys of class tab.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_image</var>
+   *   </dt>
+   *   <dd>
+   *     The class image. Empty array if there is no image.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_search_tag</var>
+   *   </dt>
+   *   <dd>
+   *     Tags associated with individual class.
    *   </dd>
    *   <dt>
    *     string[] <var>a_staff</var>
@@ -106,6 +125,24 @@ function Wl_Schedule_ClassList_ClassListModel()
    *      class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
    *   </dd>
    *   <dt>
+   *     string <var>html_description</var>
+   *   </dt>
+   *   <dd>
+   *     The class description.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_book</var>
+   *   </dt>
+   *   <dd>
+   *     Count of visits on this class.
+   *   </dd>
+   *   <dt>
+   *     int <var>i_capacity</var>
+   *   </dt>
+   *   <dd>
+   *     The capacity of the service. 'null' indicates that the capacity is not set.
+   *   </dd>
+   *   <dt>
    *     int <var>i_day</var>
    *   </dt>
    *   <dd>
@@ -118,6 +155,12 @@ function Wl_Schedule_ClassList_ClassListModel()
    *     The duration of the session in minutes.
    *   </dd>
    *   <dt>
+   *     int <var>i_wait</var>
+   *   </dt>
+   *   <dd>
+   *     Number of clients in wait list.
+   *   </dd>
+   *   <dt>
    *     bool <var>is_cancel</var>
    *   </dt>
    *   <dd>
@@ -128,6 +171,12 @@ function Wl_Schedule_ClassList_ClassListModel()
    *   </dt>
    *   <dd>
    *     If `true`, this class is virtual. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     boolean <var>is_wait_list_enabled</var>
+   *   </dt>
+   *   <dd>
+   *     This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     string <var>k_class</var>

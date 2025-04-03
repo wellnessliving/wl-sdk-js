@@ -1,10 +1,12 @@
 /**
- * An endpoint that gets information about payment environments.
+ * Gets information about payment environments.
  *
  * This model is generated automatically based on API.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Pay_Form_EnvironmentUserModel} instead.
+ * @see Wl\Pay\Form\EnvironmentApi
  */
 function Wl_Pay_Form_EnvironmentModel()
 {
@@ -80,7 +82,9 @@ function Wl_Pay_Form_EnvironmentModel()
    * @property {?{}} a_public_keys Public keys configured for this payment processor.
    * Copy of result of {@link Wl\Pay\Processor\ProcessorInterface\PayProcessorPublicKeysInterface::publicKeys()}.
    * `null` if this payment processor does not support public keys.
-   * @property {number} id_pay_processor ID of the payment processor. One of {@link RsPayProcessorSid} constants.
+   * @property {number} id_pay_processor ID of the payment processor. One of {@link Wl_Pay_Processor_PayProcessorSid} constants.
+   * @property {?boolean} is_enabled_3ds `true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor.
+   * Only for {@link Wl_Pay_Processor_PayProcessorSid.NUVEI}
    * @property {string} k_business_merchant Key of the business merchant.
    */
 
@@ -97,7 +101,11 @@ function Wl_Pay_Form_EnvironmentModel()
    *     `null` if this payment processor does not support public keys.
    *   </dd>
    *   <dt>int <var>id_pay_processor</var></dt>
-   *   <dd>ID of the payment processor. One of {@link RsPayProcessorSid} constants.</dd>
+   *   <dd>ID of the payment processor. One of {@link Wl_Pay_Processor_PayProcessorSid} constants.</dd>
+   *   <dt>null|bool <var>is_enabled_3ds</var></dt>
+   *   <dd>`true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor.
+   *     Only for {@link Wl_Pay_Processor_PayProcessorSid.NUVEI}
+   *   </dd>
    *   <dt>string <var>k_business_merchant</var></dt>
    *   <dd>Key of the business merchant.</dd>
    * </dl>
@@ -110,7 +118,7 @@ function Wl_Pay_Form_EnvironmentModel()
   this.a_pay_processor = null;
 
   /**
-   * Local date with time now in current location {@link Wl_Pay_Form_EnvironmentModel.k_location}
+   * Current local date in current location {@link Wl_Pay_Form_EnvironmentModel.k_location}
    * or business {@link Wl_Pay_Form_EnvironmentModel.k_business} if not set location.
    *
    * @get result
@@ -213,6 +221,16 @@ function Wl_Pay_Form_EnvironmentModel()
    */
   this.m_surcharge_ach = null;
 
+  /**
+   * The user ID to retrieve payment information for.
+   *
+   * `null` if not defined.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.uid_owner = null;
+
   this.changeInit();
 }
 
@@ -223,7 +241,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Form_EnvironmentModel);
  */
 Wl_Pay_Form_EnvironmentModel.prototype.config=function()
 {
-  return {"a_field": {"a_card_system": {"get": {"result": true}},"a_method_staff": {"get": {"result": true}},"a_method_support": {"get": {"result": true}},"a_mobile_config": {"get": {"result": true}},"a_pay_processor": {"get": {"result": true}},"dl_now": {"get": {"result": true}},"f_surcharge": {"get": {"result": true}},"f_surcharge_ach": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"is_save_source": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_currency": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_surcharge": {"get": {"result": true}},"m_surcharge_ach": {"get": {"result": true}}}};
+  return {"a_field": {"a_card_system": {"get": {"result": true}},"a_method_staff": {"get": {"result": true}},"a_method_support": {"get": {"result": true}},"a_mobile_config": {"get": {"result": true}},"a_pay_processor": {"get": {"result": true}},"dl_now": {"get": {"result": true}},"f_surcharge": {"get": {"result": true}},"f_surcharge_ach": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"is_save_source": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_currency": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_surcharge": {"get": {"result": true}},"m_surcharge_ach": {"get": {"result": true}},"uid_owner": {"get": {"get": true}}}};
 };
 
 /**

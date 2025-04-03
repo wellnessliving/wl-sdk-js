@@ -11,6 +11,14 @@ function Wl_Event_EventCancelWholeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * Key of the business within which the action is performed.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.k_business = "0";
+
+  /**
    * An event key.
    *
    * @post post
@@ -36,5 +44,5 @@ WlSdk_ModelAbstract.extend(Wl_Event_EventCancelWholeModel);
  */
 Wl_Event_EventCancelWholeModel.prototype.config=function()
 {
-  return {"a_field": {"k_class": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
+  return {"a_field": {"k_business": {"post": {"post": true}},"k_class": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };
