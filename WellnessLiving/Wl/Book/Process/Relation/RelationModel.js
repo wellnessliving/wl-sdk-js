@@ -9,6 +9,18 @@ function Wl_Book_Process_Relation_RelationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * List of checks that must be ignored.
+   * Each element must be a member of {@link Wl_Book_Process_ProcessCheckSid}.
+   *
+   * @get get
+   * @type {number[]}
+   */
+  this.a_check = [
+    Wl_Book_Process_ProcessCheckSid.CARD,
+    Wl_Book_Process_ProcessCheckSid.WAIVER
+  ];
+
+  /**
    * The date/time to use for checking the session booking's availability.
    *
    * @get get
@@ -111,5 +123,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Relation_RelationModel);
  */
 Wl_Book_Process_Relation_RelationModel.prototype.config=function()
 {
-  return {"a_field": {"dtu_date": {"get": {"get": true}},"id_relation": {"post": {"post": true}},"is_mail_inherit": {"post": {"post": true}},"is_pay_self": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true}},"text_mail": {"post": {"post": true}},"text_name_first": {"post": {"post": true}},"text_name_last": {"post": {"post": true}},"uid_create": {"post": {"result": true}},"uid_from": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_check": {"get": {"get": true}},"dtu_date": {"get": {"get": true}},"id_relation": {"post": {"post": true}},"is_mail_inherit": {"post": {"post": true}},"is_pay_self": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true}},"text_mail": {"post": {"post": true}},"text_name_first": {"post": {"post": true}},"text_name_last": {"post": {"post": true}},"uid_create": {"post": {"result": true}},"uid_from": {"get": {"get": true},"post": {"get": true}}}};
 };
