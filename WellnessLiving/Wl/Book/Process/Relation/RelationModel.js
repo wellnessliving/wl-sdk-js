@@ -9,7 +9,7 @@ function Wl_Book_Process_Relation_RelationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of checks that must be ignored.
+   * List of checks that must be done.
    * Each element must be a member of {@link Wl_Book_Process_ProcessCheckSid}.
    *
    * @get get
