@@ -88,9 +88,7 @@ function Wl_Profile_Edit_EditModel()
    * @property {number} id_field_type The type of field. This is one of the {@link RsFieldTypeSid} constants.
    * @property {string} k_field The field ID (<tt>k_field</tt>). A copy of the key of this array element.
    * @property {string} s_title The title of the field.
-   * @property {*} x_value The value of the field. This value is defined by individual fields. For <tt>select</tt> and <tt>radio</tt> fields,
-   * x_value will contain <tt>a_item</tt>, and <tt>a_sort</tt>. <tt>a_item</tt> has sort index as key, and title
-   * of option as value. <tt>a_sort</tt> has option ID as key, and sort index as value.
+   * @property {*} x_value The value of the field. This value is defined by individual fields.
    */
 
   /**
@@ -108,9 +106,7 @@ function Wl_Profile_Edit_EditModel()
    *   <dt>string <var>s_title</var></dt>
    *   <dd>The title of the field.</dd>
    *   <dt>mixed <var>x_value</var></dt>
-   *   <dd>The value of the field. This value is defined by individual fields. For <tt>select</tt> and <tt>radio</tt> fields, x_value will contain
-   *   <tt>a_item</tt>, and <tt>a_sort</tt>. <tt>a_item</tt> has sort index as key, and title of option as value. <tt>a_sort</tt> has option ID as key,
-   *   and sort index as value. </dd>
+   *   <dd>The value of the field. This value is defined by individual fields.</dd>
    * </dl>
    *
    * @get result
