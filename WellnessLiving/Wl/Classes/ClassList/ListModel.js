@@ -84,6 +84,29 @@ function Wl_Classes_ClassList_ListModel()
   this.a_class = undefined;
 
   /**
+   * List of tabs keys. Each value is a primary key in the {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table.
+   * Filtering by Book Now Tab is not supported if {@link Wl_Classes_ClassList_ListModel.is_franchise} is `true`.
+   *
+   * `null` if no filtering by Book Now Tab is required.
+   *
+   * @get get
+   * @type {?string[]}
+   */
+  this.a_class_tab = null;
+
+  /**
+   * ID of book now tab. One of {@link Wl_Classes_Tab_TabSid} constants.
+   * Only {@link Wl_Classes_Tab_TabSid.TRAINING} and {@link Wl_Classes_Tab_TabSid.ENROLLMENT} book now tab are supported.
+   * Filtering by Book Now Tab is not supported if {@link Wl_Classes_ClassList_ListModel.is_franchise} is `true`.
+   *
+   * `null` if no filtering by Book Now Tab is required.
+   *
+   * @get get
+   * @type {?number}
+   */
+  this.id_class_tab = null;
+
+  /**
    * Whether all event should be returned from same enrollment block.
    *
    * @get get
@@ -118,7 +141,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_ClassList_ListModel);
  */
 Wl_Classes_ClassList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_class": {"get": {"result": true}},"is_enrollment_block_all": {"get": {"get": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field": {"a_class": {"get": {"result": true}},"a_class_tab": {"get": {"get": true}},"id_class_tab": {"get": {"get": true}},"is_enrollment_block_all": {"get": {"get": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
