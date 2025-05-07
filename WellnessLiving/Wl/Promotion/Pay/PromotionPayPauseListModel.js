@@ -69,6 +69,47 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
   this.id_action = null;
 
   /**
+   * Whether or not to send email notification.
+   *
+   * <tt>false</tt> if not initialized.
+   *
+   * @post post
+   * @put result
+   * @type {boolean}
+   */
+  this.is_mail = false;
+
+  /**
+   * Whether or not to send push notification.
+   *
+   * <tt>false</tt> if not initialized.
+   *
+   * @post post
+   * @put result
+   * @type {boolean}
+   */
+  this.is_push = false;
+
+  /**
+   * Whether or not to send SMS notification.
+   *
+   * <tt>false</tt> if not initialized.
+   *
+   * @post post
+   * @put result
+   * @type {boolean}
+   */
+  this.is_sms = false;
+
+  /**
+   * Key of the email pattern.
+   *
+   * @put result
+   * @type {null}
+   */
+  this.k_mail_pattern = null;
+
+  /**
    * Bulk of login promotions. Login promotion primary keys serialized with JSON.
    * This logic was selected, because there is possibility to transfer list with more than 1000 elements.
    *
@@ -100,5 +141,5 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_Pay_PromotionPayPauseListModel);
  */
 Wl_Promotion_Pay_PromotionPayPauseListModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_promotion_exclude": {"put": {"result": true}},"a_user": {"put": {"result": true}},"dl_end": {"post": {"post": true},"put": {"post": true}},"dl_start": {"post": {"post": true},"put": {"post": true}},"i_user": {"put": {"result": true}},"id_action": {"post": {"post": true}},"s_login_promotion": {"post": {"post": true},"put": {"post": true}},"text_note": {"post": {"post": true}}}};
+  return {"a_field": {"a_login_promotion_exclude": {"put": {"result": true}},"a_user": {"put": {"result": true}},"dl_end": {"post": {"post": true},"put": {"post": true}},"dl_start": {"post": {"post": true},"put": {"post": true}},"i_user": {"put": {"result": true}},"id_action": {"post": {"post": true}},"is_mail": {"post": {"post": true},"put": {"result": true}},"is_push": {"post": {"post": true},"put": {"result": true}},"is_sms": {"post": {"post": true},"put": {"result": true}},"k_mail_pattern": {"put": {"result": true}},"s_login_promotion": {"post": {"post": true},"put": {"post": true}},"text_note": {"post": {"post": true}}}};
 };
