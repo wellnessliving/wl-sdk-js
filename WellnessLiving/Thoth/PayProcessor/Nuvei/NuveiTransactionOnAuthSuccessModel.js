@@ -1,48 +1,12 @@
 /**
- * Authenticates `Nuvei` merchant credentials and sets up an order in the `Nuvei` system.
+ * Updates `Nuvei` transaction with the gateway transaction ID.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
+function Thoth_PayProcessor_Nuvei_NuveiTransactionOnAuthSuccessModel()
 {
   WlSdk_ModelAbstract.apply(this);
-
-  /**
-   * ID of the currency.
-   *
-   * One of {@link Core_Locale_CurrencySid} constants.
-   *
-   * `null` in case when not initialized yet.
-   *
-   * @post post
-   * @type {?number}
-   */
-  this.id_currency = null;
-
-  /**
-   * ID of the actor.
-   *
-   * One of {@link RsPayActorSid} constants.
-   *
-   * `null` in case when not initialized yet.
-   *
-   * @post post
-   * @type {?number}
-   */
-  this.id_pay_actor = null;
-
-  /**
-   * ID of pay method.
-   *
-   * One of {@link RsPayMethodSid} constants.
-   *
-   * `null` in case when not initialized yet.
-   *
-   * @post post
-   * @type {?number}
-   */
-  this.id_pay_method = null;
 
   /**
    * Whether authorization or capture should be performed.
@@ -77,6 +41,16 @@ function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
   this.k_business_merchant = null;
 
   /**
+   * Key of a selected payment source.
+   *
+   * `null` in case when an existed payment source is not used.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.k_pay_bank = null;
+
+  /**
    * Key of a custom payment method.
    *
    * `null` in case when not initialized yet or empty if payment is performed with a standard payment method.
@@ -87,11 +61,11 @@ function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
   this.k_pay_method = null;
 
   /**
-   * Key of payment transaction that was created.
+   * Key of payment transaction that was previously created with {@link Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel}.
    *
    * `null` in case when not initialized yet.
    *
-   * @post result
+   * @post post
    * @type {?string}
    */
   this.k_pay_transaction = null;
@@ -117,11 +91,21 @@ function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
   this.m_surcharge = null;
 
   /**
+   * Contents of the encrypted token.
+   *
+   * `null` in case when not initialized yet.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.s_encrypt = null;
+
+  /**
    * The order ID provided by Nuvei.
    *
-   * `null` in case of errors.
+   * `null` in case when not initialized yet.
    *
-   * @post result
+   * @post post
    * @type {?string}
    */
   this.s_nuvei_order = null;
@@ -129,22 +113,28 @@ function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
   /**
    * The session identifier to be used by the request that processes the newly opened order.
    *
-   * `null` in case of errors.
+   * `null` in case when not initialized yet.
    *
-   * @post result
+   * @post post
    * @type {?string}
    */
   this.s_nuvei_session = null;
 
   /**
-   * Error message.
+   * Payment gateway-specific response object.
    *
-   * `null` in case response has not received yet or request is not failed.
-   *
-   * @post result
+   * @post post
    * @type {?string}
    */
-  this.text_message = null;
+  this.s_response = null;
+
+  /**
+   * The Gateway transaction ID.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.s_transaction = null;
 
   /**
    * Payment owner user key.
@@ -159,12 +149,12 @@ function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel);
+WlSdk_ModelAbstract.extend(Thoth_PayProcessor_Nuvei_NuveiTransactionOnAuthSuccessModel);
 
 /**
  * @inheritDoc
  */
-Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel.prototype.config=function()
+Thoth_PayProcessor_Nuvei_NuveiTransactionOnAuthSuccessModel.prototype.config=function()
 {
-  return {"a_field": {"id_currency": {"post": {"post": true}},"id_pay_actor": {"post": {"post": true}},"id_pay_method": {"post": {"post": true}},"is_authorize": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_business_merchant": {"post": {"post": true}},"k_pay_method": {"post": {"post": true}},"k_pay_transaction": {"post": {"result": true}},"m_amount": {"post": {"post": true}},"m_surcharge": {"post": {"post": true}},"s_nuvei_order": {"post": {"result": true}},"s_nuvei_session": {"post": {"result": true}},"text_message": {"post": {"result": true}},"uid_purchase": {"post": {"post": true}}}};
+  return {"a_field": {"is_authorize": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_business_merchant": {"post": {"post": true}},"k_pay_bank": {"post": {"post": true}},"k_pay_method": {"post": {"post": true}},"k_pay_transaction": {"post": {"post": true}},"m_amount": {"post": {"post": true}},"m_surcharge": {"post": {"post": true}},"s_encrypt": {"post": {"post": true}},"s_nuvei_order": {"post": {"post": true}},"s_nuvei_session": {"post": {"post": true}},"s_response": {"post": {"post": true}},"s_transaction": {"post": {"post": true}},"uid_purchase": {"post": {"post": true}}}};
 };

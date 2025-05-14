@@ -1,12 +1,35 @@
 /**
- * Authenticates `Nuvei` merchant credentials and sets up an order in the `Nuvei` system.
+ * Creates new `Nuvei` transaction.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
+function Thoth_PayProcessor_Nuvei_NuveiTransactionStartModel()
 {
   WlSdk_ModelAbstract.apply(this);
+
+  /**
+   * Credit card data.
+   *
+   * Contents of the payment source as it presents on the payment form.
+   * This data is passed into {@link RsPayBankCardSelectWidget::data_set()}.
+   *
+   * Supplied in case payment source is card.
+   * `null` if payment source is other than card or payment is initialized before card data is known.
+   *
+   * @post post
+   * @type {{}}
+   */
+  this.a_card = undefined;
+
+  /**
+   * Credit card type.
+   * `null` in case card type can not be determined.
+   *
+   * @post result
+   * @type {?*}
+   */
+  this.id_card_type = null;
 
   /**
    * ID of the currency.
@@ -55,6 +78,14 @@ function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
    * @type {boolean}
    */
   this.is_authorize = false;
+
+  /**
+   * Whether the card information should be saved for future transactions.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_save = false;
 
   /**
    * Key of the business which receives the payment.
@@ -117,26 +148,6 @@ function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
   this.m_surcharge = null;
 
   /**
-   * The order ID provided by Nuvei.
-   *
-   * `null` in case of errors.
-   *
-   * @post result
-   * @type {?string}
-   */
-  this.s_nuvei_order = null;
-
-  /**
-   * The session identifier to be used by the request that processes the newly opened order.
-   *
-   * `null` in case of errors.
-   *
-   * @post result
-   * @type {?string}
-   */
-  this.s_nuvei_session = null;
-
-  /**
    * Error message.
    *
    * `null` in case response has not received yet or request is not failed.
@@ -159,12 +170,12 @@ function Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel);
+WlSdk_ModelAbstract.extend(Thoth_PayProcessor_Nuvei_NuveiTransactionStartModel);
 
 /**
  * @inheritDoc
  */
-Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel.prototype.config=function()
+Thoth_PayProcessor_Nuvei_NuveiTransactionStartModel.prototype.config=function()
 {
-  return {"a_field": {"id_currency": {"post": {"post": true}},"id_pay_actor": {"post": {"post": true}},"id_pay_method": {"post": {"post": true}},"is_authorize": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_business_merchant": {"post": {"post": true}},"k_pay_method": {"post": {"post": true}},"k_pay_transaction": {"post": {"result": true}},"m_amount": {"post": {"post": true}},"m_surcharge": {"post": {"post": true}},"s_nuvei_order": {"post": {"result": true}},"s_nuvei_session": {"post": {"result": true}},"text_message": {"post": {"result": true}},"uid_purchase": {"post": {"post": true}}}};
+  return {"a_field": {"a_card": {"post": {"post": true}},"id_card_type": {"post": {"result": true}},"id_currency": {"post": {"post": true}},"id_pay_actor": {"post": {"post": true}},"id_pay_method": {"post": {"post": true}},"is_authorize": {"post": {"post": true}},"is_save": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_business_merchant": {"post": {"post": true}},"k_pay_method": {"post": {"post": true}},"k_pay_transaction": {"post": {"result": true}},"m_amount": {"post": {"post": true}},"m_surcharge": {"post": {"post": true}},"text_message": {"post": {"result": true}},"uid_purchase": {"post": {"post": true}}}};
 };

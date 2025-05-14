@@ -1,8 +1,6 @@
 /**
  * Allow modifying the amount of a previously opened order {@link Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel}.
  *
- * This model is generated automatically based on API.
- *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
