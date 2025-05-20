@@ -27,6 +27,32 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.a_calendar = [];
 
   /**
+   * The list of classes keys to filter.
+   * A comma separated list of class keys.
+   * Return sessions with matching class IDs (where is_event = false)
+   *
+   * Example; ['1546','3452','2564'].
+   *
+   * @get get
+   * @var {string[]}
+   */
+  this.a_class = [];
+
+  /**
+   * Class filter by day of the week.
+   * Array of integers representing the days of the week.
+   * Return sessions matching the given weekdays.
+   * (7 = Sunday, 1 = Monday, ..., 6 = Saturday)
+   *
+   * Example; ['1','2','3'].
+   *
+   *
+   * @get get
+   * @var {string[]}
+   */
+  this.a_day = [];
+
+  /**
    * The list of location keys to filter results.
    * If it's empty, schedule for all locations will be returned.
    * All given locations should be from the same business, which is sent in {@link ClassListModel::$k_business}.
@@ -234,6 +260,20 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.dt_end = "";
 
   /**
+   * Class filter by time of day.
+   * Return sessions matching the time-of-day.
+   * Object with start and end in "HH:MM" format (24h).
+   * Example: { "start": "06:00", "end": "14:00" }.
+   * Include sessions that start between the specified time range.
+   *
+   * If `null` that the field has not been initialized yet.
+   *
+   * @get get
+   * @var {?string[]}
+   */
+  this.dt_time = null;
+
+  /**
    * `true` means to not generate {@link Wl_Schedule_ClassList_ClassListModel.a_session} result.
    * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassListModel.a_calendar} is enough.
    * any classes in the business.
@@ -259,6 +299,19 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @type {boolean}
    */
   this.is_timezone_different = undefined;
+
+  /**
+   * Class filter by type.
+   * The class is virtual.
+   *
+   * `true`: Only virtual classes.
+   * `false`: Only in-person.
+   * `null` or not set: No filtering.
+   *
+   * @get get
+   * @var {?boolean}
+   */
+  this.is_virtual = null;
 
   /**
    * If `true`, there exists at least one virtual service by a specified
@@ -332,7 +385,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
  */
 Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 {
-  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_location": {"get": {"result": true}},"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_class:": {"get": {"get": true}},"a_day:": {"get": {"get": true}},"a_location": {"get": {"result": true}},"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"dt_time:": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual:": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
