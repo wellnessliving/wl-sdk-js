@@ -262,9 +262,10 @@ function Wl_Schedule_ClassList_ClassListModel()
   /**
    * Class filter by time of day.
    * Return sessions matching the time-of-day.
-   * Object with start and end in "HH:MM" format (24h).
-   * Example: { "start": "06:00", "end": "14:00" }.
+   * Array with start and end in "HH:MM" format (24h).
    * Include sessions that start between the specified time range.
+   *
+   * Example: `{ 'dt_time_start': '06:00', 'dt_time_end': '14:00' }`.
    *
    * If `null` that the field has not been initialized yet.
    *
