@@ -31,7 +31,9 @@ function Wl_Schedule_ClassList_ClassListModel()
    * A comma separated list of class keys.
    * Return sessions with matching class IDs (where is_event = false)
    *
-   * Example; ['1546','3452','2564'].
+   * Example; {'1546','3452','2564'}.
+   *
+   * If it's empty, all classes/events will be returned.
    *
    * @get get
    * @var {string[]}
@@ -40,15 +42,16 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * Class filter by day of the week.
-   * Array of integers representing the days of the week.
+   * Array of number representing the days of the week.
    * Return sessions matching the given weekdays.
    * (7 = Sunday, 1 = Monday, ..., 6 = Saturday)
    *
-   * Example; ['1','2','3'].
+   * Example; {'1','2','3'}.
    *
+   * Empty array means no filtering.
    *
    * @get get
-   * @var {string[]}
+   * @var {number[]}
    */
   this.a_day = [];
 
@@ -242,6 +245,29 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.a_session = undefined;
 
   /**
+   * Class filter by time of day.
+   * Return sessions matching the time-of-day.
+   * Array with start and end in "HH:MM" format (24h).
+   * Include sessions that start between the specified time range.
+   *
+   * List of time parameters:
+   * <dl>
+   *   <dt>string <var>tl_start</var></dt>
+   *   <dd>Time when the session starts.</dd>
+   *   <dt>string <var>tl_end</var></dt>
+   *   <dd>Time when the session ends.</dd>
+   * </dl>
+   *
+   * Example: `{ 'tl_start': '06:00', 'tl_end': '14:00' }`.
+   *
+   * Empty array means no filtering.
+   *
+   * @get get
+   * @var {string[]}
+   */
+  this.a_time = [];
+
+  /**
    * The list start date in UTC and in MySQL format.
    *
    * @get get
@@ -258,21 +284,6 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @type {string}
    */
   this.dt_end = "";
-
-  /**
-   * Class filter by time of day.
-   * Return sessions matching the time-of-day.
-   * Array with start and end in "HH:MM" format (24h).
-   * Include sessions that start between the specified time range.
-   *
-   * Example: `{ 'dt_time_start': '06:00', 'dt_time_end': '14:00' }`.
-   *
-   * If `null` that the field has not been initialized yet.
-   *
-   * @get get
-   * @var {?string[]}
-   */
-  this.dt_time = null;
 
   /**
    * `true` means to not generate {@link Wl_Schedule_ClassList_ClassListModel.a_session} result.
@@ -374,7 +385,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @get get
    * @type {string}
    */
-  this.uid = undefined;
+  this.uid = '';
 
   this.changeInit();
 }
@@ -386,7 +397,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
  */
 Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 {
-  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_class:": {"get": {"get": true}},"a_day:": {"get": {"get": true}},"a_location": {"get": {"result": true}},"a_session": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"dt_time:": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual:": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_class:": {"get": {"get": true}},"a_day:": {"get": {"get": true}},"a_location": {"get": {"result": true}},"a_session": {"get": {"result": true}},"a_time:": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual:": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
