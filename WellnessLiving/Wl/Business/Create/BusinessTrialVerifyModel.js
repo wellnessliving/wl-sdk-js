@@ -11,8 +11,7 @@ function Wl_Business_Create_BusinessTrialVerifyModel()
   /**
    * The key of the business to be verified.
    *
-   * @get get
-   * @put get
+   * @put put
    * @type {string}
    */
   this.k_business = "";
