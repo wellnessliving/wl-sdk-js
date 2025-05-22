@@ -9,16 +9,6 @@ function Wl_Business_Create_BusinessTrialVerifyModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Business status for managing claim request behavior.
-   *
-   * Constant from {@link Wl_Business_Create_BusinessClaimSid}.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.id_claim_status = undefined;
-
-  /**
    * The key of the business to be verified.
    *
    * @get get

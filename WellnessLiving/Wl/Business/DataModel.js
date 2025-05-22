@@ -59,6 +59,16 @@ function Wl_Business_DataModel()
   this.id_category = undefined;
 
   /**
+   * Business status for managing claim request behavior.
+   *
+   * Constant from {@link Wl_Business_Create_BusinessClaimStatusSid}.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.id_claim_status = undefined;
+
+  /**
    * The currency ID of the given business (or the system currency ID if the business didn't pass).
    *
    * @get result

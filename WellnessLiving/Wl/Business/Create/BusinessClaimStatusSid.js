@@ -3,7 +3,7 @@
  *
  * Last used ID: 4
  */
-function Wl_Business_Create_BusinessClaimSid ()
+function Wl_Business_Create_BusinessClaimStatusSid ()
 {
   // Empty constructor.
 }
@@ -16,7 +16,7 @@ function Wl_Business_Create_BusinessClaimSid ()
  * @default 4
  * @type {number}
  */
-Wl_Business_Create_BusinessClaimSid.CHURN = 4
+Wl_Business_Create_BusinessClaimStatusSid.CHURN = 4
 
 /**
  * Business has a contract with WL, be it a trial (with all fields updated and actual), or a subscription.
@@ -25,7 +25,7 @@ Wl_Business_Create_BusinessClaimSid.CHURN = 4
  * @default 3
  * @type {number}
  */
-Wl_Business_Create_BusinessClaimSid.CUSTOMER = 3
+Wl_Business_Create_BusinessClaimStatusSid.CUSTOMER = 3
 
 /**
  * Business is not a WL client and never was, i.e. it is a true prospect business.
@@ -34,7 +34,7 @@ Wl_Business_Create_BusinessClaimSid.CUSTOMER = 3
  * @default 1
  * @type {number}
  */
-Wl_Business_Create_BusinessClaimSid.PROSPECT = 1
+Wl_Business_Create_BusinessClaimStatusSid.PROSPECT = 1
 
 /**
  * Business claiming process started, the contact information was verified, the trial has started, but company
@@ -44,4 +44,4 @@ Wl_Business_Create_BusinessClaimSid.PROSPECT = 1
  * @default 2
  * @type {number}
  */
-Wl_Business_Create_BusinessClaimSid.UNVERIFY = 2
+Wl_Business_Create_BusinessClaimStatusSid.UNVERIFY = 2
