@@ -21,14 +21,25 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Schedule time interval in minutes.
    *
    * @get result
+   * @post get
    * @type {number}
    */
   this.i_interval = undefined;
 
   /**
+   * Cell size. One of {@link CellSid} constants.
+   *
+   * @get result
+   * @post get
+   * @var int
+   */
+  this.id_cell = undefined;
+
+  /**
    * Option of appointments display. One of {@link Wl_Schedule_Design_OptionSid} constants.
    *
    * @get result
+   * @post get
    * @type {number}
    */
   this.id_option = undefined;
@@ -39,6 +50,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Constant from {@link Wl_Schedule_Design_WeekDaySid}.
    *
    * @get result
+   * @post get
    * @type {number}
    */
   this.id_start_week = undefined;
@@ -49,6 +61,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * `true` means to show the first profile alert on the schedule, `false` otherwise.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.is_appointment_alert = false;
@@ -58,6 +71,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Current setting from business schedule design.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.is_appointment_cancel_recurring = false;
@@ -67,6 +81,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Current setting from business schedule design.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.is_appointment_cancel_single = false;
@@ -76,6 +91,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Current setting from business schedule design.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.is_class_cancel = false;
@@ -84,9 +100,19 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * <tt>true</tt> - if need to show staff unavailable times with diagonal lines, <tt>false</tt> - otherwise.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.is_diagonal_staff_busy = undefined;
+
+  /**
+   * Whether sessions can be dragged and dropped on the schedule.
+   *
+   * @get result
+   * @post get
+   * @var bool
+   */
+  this.is_drag_and_drop = undefined;
 
   /**
    * Determines whether to show the forms icon on the schedule.
@@ -94,6 +120,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * `true` means to show the forms icon on the schedule, `false` otherwise.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.is_form_icon = false;
@@ -104,6 +131,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * `true` means to show icon in the corner, `false` otherwise.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.is_service_icon = false;
@@ -114,6 +142,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * `true` means to show QUICK and SOAP notes preview on the schedule, `false` otherwise.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.is_visit_note = false;
@@ -122,6 +151,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * <tt>true</tt> - if need to show work note, <tt>false</tt> - otherwise.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.is_work_note = undefined;
@@ -130,6 +160,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Business key.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_business = "0";
@@ -138,6 +169,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Cell background color when staff member is available.
    *
    * @get result
+   * @post get
    * @type {?string}
    */
   this.s_color_staff_available = null;
@@ -146,6 +178,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Cell background color when staff member is not available.
    *
    * @get result
+   * @post get
    * @type {?string}
    */
   this.s_color_staff_busy = null;
@@ -154,6 +187,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Color of staff name when staff was substituted.
    *
    * @get result
+   * @post get
    * @type {?string}
    */
   this.s_color_staff_substitute = null;
@@ -162,6 +196,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * Whether need to scroll schedule to last booked service.
    *
    * @get result
+   * @post get
    * @type {boolean}
    */
   this.show_booking_after_book = false;
@@ -170,6 +205,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * User key.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.uid = "0";
@@ -177,14 +213,36 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleDesign_ScheduleDesignModel);
+WlSdk_ModelAbstract.extends(Wl_Schedule_ScheduleDesign_ScheduleDesignModel);
 
 /**
  * @inheritDoc
  */
 Wl_Schedule_ScheduleDesign_ScheduleDesignModel.prototype.config=function()
 {
-  return {"a_field": {"i_interval": {"get": {"result": true}},"id_option": {"get": {"result": true}},"id_start_week": {"get": {"result": true}},"is_appointment_alert": {"get": {"result": true}},"is_appointment_cancel_recurring": {"get": {"result": true}},"is_appointment_cancel_single": {"get": {"result": true}},"is_class_cancel": {"get": {"result": true}},"is_diagonal_staff_busy": {"get": {"result": true}},"is_form_icon": {"get": {"result": true}},"is_service_icon": {"get": {"result": true}},"is_visit_note": {"get": {"result": true}},"is_work_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_color_staff_available": {"get": {"result": true}},"s_color_staff_busy": {"get": {"result": true}},"s_color_staff_substitute": {"get": {"result": true}},"show_booking_after_book": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
+  return {
+    "a_field": {
+      "i_interval": {"get": {"result": true}, "post": {"get": true}},
+      "id_cell": {"get": {"result": true}, "post": {"get": true}},
+      "id_option": {"get": {"result": true}, "post": {"get": true}},
+      "id_start_week": {"get": {"result": true}, "post": {"get": true}},
+      "is_appointment_alert": {"get": {"result": true}, "post": {"get": true}},
+      "is_appointment_cancel_recurring": {"get": {"result": true}, "post": {"get": true}},
+      "is_appointment_cancel_single": {"get": {"result": true}, "post": {"get": true}},
+      "is_class_cancel": {"get": {"result": true}, "post": {"get": true}},
+      "is_diagonal_staff_busy": {"get": {"result": true}, "post": {"get": true}},
+      "is_drag_and_drop": {"get": {"result": true}, "post": {"get": true}},
+      "is_form_icon": {"get": {"result": true}, "post": {"get": true}},
+      "is_service_icon": {"get": {"result": true}, "post": {"get": true}},
+      "is_visit_note": {"get": {"result": true}, "post": {"get": true}},
+      "is_work_note": {"get": {"result": true}, "post": {"get": true}},
+      "k_business": {"get": {"get": true}, "post": {"get": true}},
+      "s_color_staff_available": {"get": {"result": true}, "post": {"get": true}},
+      "s_color_staff_busy": {"get": {"result": true}, "post": {"get": true}},
+      "s_color_staff_substitute": {"get": {"result": true}, "post": {"get": true}},
+      "show_booking_after_book": {"get": {"result": true}, "post": {"get": true}},
+      "uid": {"get": {"get": true}}, "post": {"get": true}}
+  };
 };
 
 /**
