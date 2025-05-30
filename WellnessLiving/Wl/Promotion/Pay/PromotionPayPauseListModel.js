@@ -58,6 +58,14 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
   this.i_user = undefined;
 
   /**
+   * Number of all clients to which list of login promotion belong and are impacted.
+   *
+   * @put result
+   * @type {number}
+   */
+  this.i_user_impact = undefined;
+
+  /**
    * Action to perform with promotion payment pause periods.
    * One for the {@link Wl_Promotion_Pay_PromotionPayPauseActionSid} constants.
    *
@@ -74,7 +82,7 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
    * <tt>false</tt> if not initialized.
    *
    * @post post
-   * @put post,result
+   * @put result
    * @type {boolean}
    */
   this.is_mail = false;
@@ -85,7 +93,7 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
    * <tt>false</tt> if not initialized.
    *
    * @post post
-   * @put post,result
+   * @put result
    * @type {boolean}
    */
   this.is_push = false;
@@ -96,7 +104,7 @@ function Wl_Promotion_Pay_PromotionPayPauseListModel()
    * <tt>false</tt> if not initialized.
    *
    * @post post
-   * @put post,result
+   * @put result
    * @type {boolean}
    */
   this.is_sms = false;
@@ -141,5 +149,5 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_Pay_PromotionPayPauseListModel);
  */
 Wl_Promotion_Pay_PromotionPayPauseListModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_promotion_exclude": {"put": {"result": true}},"a_user": {"put": {"result": true}},"dl_end": {"post": {"post": true},"put": {"post": true}},"dl_start": {"post": {"post": true},"put": {"post": true}},"i_user": {"put": {"result": true}},"id_action": {"post": {"post": true}},"is_mail": {"post": {"post": true},"put": {"post": true, "result": true}},"is_push": {"post": {"post": true},"put": {"post": true, "result": true}},"is_sms": {"post": {"post": true},"put": {"post": true, "result": true}},"k_mail_pattern": {"put": {"result": true}},"s_login_promotion": {"post": {"post": true},"put": {"post": true}},"text_note": {"post": {"post": true}}}};
+  return {"a_field": {"a_login_promotion_exclude": {"put": {"result": true}},"a_user": {"put": {"result": true}},"dl_end": {"post": {"post": true},"put": {"post": true}},"dl_start": {"post": {"post": true},"put": {"post": true}},"i_user": {"put": {"result": true}},"i_user_impact":{"put": {"result": true}},"id_action": {"post": {"post": true}},"is_mail": {"post": {"post": true},"put": {"result": true}},"is_push": {"post": {"post": true},"put": {"result": true}},"is_sms": {"post": {"post": true},"put": {"result": true}},"k_mail_pattern": {"put": {"result": true}},"s_login_promotion": {"post": {"post": true},"put": {"post": true}},"text_note": {"post": {"post": true}}}};
 };
