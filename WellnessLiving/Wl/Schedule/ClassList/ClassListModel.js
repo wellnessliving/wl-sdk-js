@@ -397,7 +397,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
  */
 Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 {
-  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_class:": {"get": {"get": true}},"a_day:": {"get": {"get": true}},"a_location": {"get": {"result": true}},"a_session": {"get": {"result": true}},"a_time:": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual:": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_class:": {"get": {"get": true}},"a_day:": {"get": {"get": true}},"a_location": {"get": {"get": true}},"a_session": {"get": {"result": true}},"a_time:": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual:": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
