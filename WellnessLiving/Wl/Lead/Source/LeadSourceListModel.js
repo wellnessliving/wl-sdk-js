@@ -55,13 +55,6 @@ function Wl_Lead_Source_LeadSourceListModel()
    *     Only one skin in the business can be used for "Add Lead" form.
    *   </dd>
    *
-   *   <dt>bool <var>is_select</var></dt>
-   *   <dd>
-   *     Determines whether Lead Source selected for the user {@link Wl_Lead_Source_LeadSourceListModel.uid}.
-   *     `true` if {@link Wl_Lead_Source_LeadSourceListModel.uid} is not null and Lead Source is selected for this user.
-   *     `false` - otherwise.
-   *   </dd>
-   *
    *   <dt>bool <var>is_use</var></dt>
    *   <dd>
    *     Determines whether Lead Source is being used.
