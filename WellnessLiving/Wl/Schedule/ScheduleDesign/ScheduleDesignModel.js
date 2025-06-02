@@ -18,42 +18,42 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this._s_key = "k_business,uid";
 
   /**
-   * Schedule time interval in minutes.
-   *
-   * @get result
-   * @post get
-   * @type {number}
-   */
-  this.i_interval = undefined;
-
-  /**
-   * Cell size. One of {@link CellSid} constants.
+   * Cell size. One of {@link Wl_Schedule_CellSid} constants. 0 if not set yet.
    *
    * @get result
    * @post get
    * @var int
    */
-  this.id_cell = undefined;
+  this.id_cell = 0;
 
   /**
-   * Option of appointments display. One of {@link Wl_Schedule_Design_OptionSid} constants.
+   * Schedule time interval in minutes. One of {@link Wl_Schedule_IntervalSid} constants. 0 if not set yet.
    *
    * @get result
    * @post get
    * @type {number}
    */
-  this.id_option = undefined;
+  this.id_interval = 0;
+
+  /**
+   * Option of appointments display. One of {@link Wl_Schedule_OptionSid} constants. 0 if not set yet.
+   *
+   * @get result
+   * @post get
+   * @type {number}
+   */
+  this.id_option = 0;
 
   /**
    * Day ID of the start week.
    *
-   * Constant from {@link Wl_Schedule_Design_WeekDaySid}.
+   * Constant from {@link Wl_Schedule_WeekDaySid}. 0 if not set yet.
    *
    * @get result
    * @post get
    * @type {number}
    */
-  this.id_start_week = undefined;
+  this.id_start_week = 0;
 
   /**
    * Determines whether to show the first profile alert on the schedule.
@@ -106,13 +106,14 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.is_diagonal_staff_busy = undefined;
 
   /**
-   * Whether sessions can be dragged and dropped on the schedule.
+   * Whether sessions can be dragged and dropped on the schedule. `true` if sessions can be dragged and dropped,
+   * `false` otherwise.
    *
    * @get result
    * @post get
    * @var bool
    */
-  this.is_drag_and_drop = undefined;
+  this.is_drag_and_drop = false;
 
   /**
    * Determines whether to show the forms icon on the schedule.
@@ -155,6 +156,16 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @type {boolean}
    */
   this.is_work_note = undefined;
+
+  /**
+   * Whether only business hours should be shown on schedule. `true` if only business hours should be shown
+   * on schedule. `false` otherwise.
+   *
+   * @get result
+   * @post get
+   * @type {boolean}
+   */
+  this.is_work_only = false;
 
   /**
    * Business key.
@@ -236,6 +247,7 @@ Wl_Schedule_ScheduleDesign_ScheduleDesignModel.prototype.config=function()
       "is_service_icon": {"get": {"result": true}, "post": {"get": true}},
       "is_visit_note": {"get": {"result": true}, "post": {"get": true}},
       "is_work_note": {"get": {"result": true}, "post": {"get": true}},
+      "is_work_only": {"get": {"result": true}, "post": {"get": true}},
       "k_business": {"get": {"get": true}, "post": {"get": true}},
       "s_color_staff_available": {"get": {"result": true}, "post": {"get": true}},
       "s_color_staff_busy": {"get": {"result": true}, "post": {"get": true}},
