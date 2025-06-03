@@ -18,6 +18,15 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this._s_key = "k_business,uid";
 
   /**
+   * Schedule time interval in minutes. One of {@link Wl_Schedule_IntervalSid} constants. 0 if not set yet.
+   *
+   * @get result
+   * @post get
+   * @type {number}
+   */
+  this.i_interval = 0;
+
+  /**
    * Cell size. One of {@link Wl_Schedule_CellSid} constants. 0 if not set yet.
    *
    * @get result
@@ -25,15 +34,6 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @var int
    */
   this.id_cell = 0;
-
-  /**
-   * Schedule time interval in minutes. One of {@link Wl_Schedule_IntervalSid} constants. 0 if not set yet.
-   *
-   * @get result
-   * @post get
-   * @type {number}
-   */
-  this.id_interval = 0;
 
   /**
    * Option of appointments display. One of {@link Wl_Schedule_OptionSid} constants. 0 if not set yet.
