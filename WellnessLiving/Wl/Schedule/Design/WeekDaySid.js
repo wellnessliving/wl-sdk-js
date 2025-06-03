@@ -1,7 +1,7 @@
 /**
  * Start day of the week on the schedule.
  */
-function Wl_Schedule_WeekDaySid()
+function Wl_Schedule_Design_WeekDaySid()
 {
   // Empty constructor.
 }
@@ -9,39 +9,39 @@ function Wl_Schedule_WeekDaySid()
 /**
  * Current day.
  */
-Wl_Schedule_WeekDaySid.CURRENT_DAY = 8;
+Wl_Schedule_Design_WeekDaySid.CURRENT_DAY = 8;
 
 /**
  * Friday.
  */
-Wl_Schedule_WeekDaySid.FRIDAY = 5;
+Wl_Schedule_Design_WeekDaySid.FRIDAY = 5;
 
 /**
  * Monday.
  */
-Wl_Schedule_WeekDaySid.MONDAY = 1;
+Wl_Schedule_Design_WeekDaySid.MONDAY = 1;
 
 /**
  * Saturday.
  */
-Wl_Schedule_WeekDaySid.SATURDAY = 6;
+Wl_Schedule_Design_WeekDaySid.SATURDAY = 6;
 
 /**
  * Sunday.
  */
-Wl_Schedule_WeekDaySid.SUNDAY = 7;
+Wl_Schedule_Design_WeekDaySid.SUNDAY = 7;
 
 /**
  * Thursday.
  */
-Wl_Schedule_WeekDaySid.THURSDAY = 4;
+Wl_Schedule_Design_WeekDaySid.THURSDAY = 4;
 
 /**
  * Tuesday.
  */
-Wl_Schedule_WeekDaySid.TUESDAY = 2;
+Wl_Schedule_Design_WeekDaySid.TUESDAY = 2;
 
 /**
  * Wednesday.
  */
-Wl_Schedule_WeekDaySid.WEDNESDAY = 3;
+Wl_Schedule_Design_WeekDaySid.WEDNESDAY = 3;

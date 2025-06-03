@@ -18,7 +18,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this._s_key = "k_business,uid";
 
   /**
-   * Schedule time interval in minutes. One of {@link Wl_Schedule_IntervalSid} constants. 0 if not set yet.
+   * Schedule time interval in minutes. One of {@link Wl_Schedule_Design_IntervalSid} constants. 0 if not set yet.
    *
    * @get result
    * @post get
@@ -27,16 +27,16 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.i_interval = 0;
 
   /**
-   * Cell size. One of {@link Wl_Schedule_CellSid} constants. 0 if not set yet.
+   * Cell size. One of {@link Wl_Schedule_Design_CellSid} constants. 0 if not set yet.
    *
    * @get result
    * @post get
-   * @var int
+   * @type {number}
    */
   this.id_cell = 0;
 
   /**
-   * Option of appointments display. One of {@link Wl_Schedule_OptionSid} constants. 0 if not set yet.
+   * Option of appointments display. One of {@link Wl_Schedule_Design_OptionSid} constants. 0 if not set yet.
    *
    * @get result
    * @post get
@@ -47,7 +47,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   /**
    * Day ID of the start week.
    *
-   * Constant from {@link Wl_Schedule_WeekDaySid}. 0 if not set yet.
+   * Constant from {@link Wl_Schedule_Design_WeekDaySid}. 0 if not set yet.
    *
    * @get result
    * @post get

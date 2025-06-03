@@ -1,7 +1,7 @@
 /**
  * Height of cells on schedule.
  */
-function Wl_Schedule_CellSid()
+function Wl_Schedule_Design_CellSid()
 {
   // Empty constructor.
 }
@@ -9,14 +9,14 @@ function Wl_Schedule_CellSid()
 /**
  * Large height.
  */
-Wl_Schedule_CellSid.LARGE = 40;
+Wl_Schedule_Design_CellSid.LARGE = 40;
 
 /**
  * Medium height.
  */
-Wl_Schedule_CellSid.MEDIUM = 25;
+Wl_Schedule_Design_CellSid.MEDIUM = 25;
 
 /**
  * Small height.
  */
-Wl_Schedule_CellSid.SMALL = 15;
+Wl_Schedule_Design_CellSid.SMALL = 15;
