@@ -168,6 +168,17 @@ function Wl_Lead_LeadModel()
   this.k_business = "0";
 
   /**
+   * Key of the lead source.
+   *
+   * Must be `null` if <var>text_lead_source</var> is set.
+   * If both parameters are empty, the {@link Wl_Lead_Source_LeadSourceSid.ENDPOINT} lead source will be used.
+   *
+   * @post post,result
+   * @type {?string}
+   */
+  this.k_lead_source = null;
+
+  /**
    * The key of the widget skin. If left empty, then the default skin is used.
    * This will be the Lead Capture widget skin with "Use this widget for the Add Lead form" selected.
    * If your business doesn't have a skin selected, this endpoint will default to the system-wide default,
@@ -188,6 +199,18 @@ function Wl_Lead_LeadModel()
    * @type {string}
    */
   this.s_captcha = "";
+
+  /**
+   * Lead source title.
+   *
+   * A new lead source will be created if it does not exist.
+   * Must be `null` if <var>k_lead_source</var> is set.
+   * If both parameters are empty, the {@link Wl_Lead_Source_LeadSourceSid.ENDPOINT} lead source will be used.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.text_lead_source = null;
 
   /**
    * The key of the new user.
@@ -216,5 +239,5 @@ WlSdk_ModelAbstract.extend(Wl_Lead_LeadModel);
  */
 Wl_Lead_LeadModel.prototype.config=function()
 {
-  return {"a_field": {"a_field_data": {"post": {"post": true}},"a_field_list": {"get": {"result": true}},"a_skin": {"get": {"result": true}},"can_use_free_purchase": {"get": {"result": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_skin": {"get": {"get": true},"post": {"get": true}},"s_captcha": {"post": {"post": true}},"uid": {"post": {"result": true}},"url_captcha": {"get": {"result": true}}}};
+  return {"a_field": {"a_field_data": {"post": {"post": true}},"a_field_list": {"get": {"result": true}},"a_skin": {"get": {"result": true}},"can_use_free_purchase": {"get": {"result": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_lead_source": {"post": {"post": true,"result": true}},"k_skin": {"get": {"get": true},"post": {"get": true}},"s_captcha": {"post": {"post": true}},"text_lead_source": {"post": {"post": true}},"uid": {"post": {"result": true}},"url_captcha": {"get": {"result": true}}}};
 };
