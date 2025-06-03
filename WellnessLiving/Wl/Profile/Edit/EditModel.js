@@ -40,7 +40,7 @@ function Wl_Profile_Edit_EditModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,uid,is_staff,id_register_source";
+  this._s_key = "k_business,uid,is_staff";
 
   /**
    * A list of fields to change. Values are the new field values. Specific values depend on an individual field type.
@@ -358,7 +358,6 @@ Wl_Profile_Edit_EditModel.prototype.config=function()
  * @param {string} k_business The key of the business you're editing. An empty value will return the system-wide fields.
  * @param {string} uid The key of the user to edit. If empty, an empty form will be displayed to add a new user.
  * @param {boolean} is_staff Indicates whether to display the form as a user or as a staff member. Staff members may have access to different fields than the user.
- * @param {?number} id_register_source Registration source ID. One of {@link Wl_Profile_RegisterSourceSid} constants. Used only to register new clients. * If the client is already authorized, the field value will not be used. * If the client is not authorized and no value is set, {@link Wl_Profile_RegisterSourceSid.SELF} will be used. <no-sdk> Use the {@link Wl_Profile_Edit_EditModel._registerSourceGet()} method to get the value required for the field list object, for method {@link Wl\Profile\Field\FieldList::registerSourceSet()}. </no-sdk>
  * @returns {Wl_Profile_Edit_EditModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
