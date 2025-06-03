@@ -175,6 +175,7 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   /**
    * Key of the email pattern.
    *
+   * @get result
    * @type {?string}
    */
   this.k_mail_pattern = null;
