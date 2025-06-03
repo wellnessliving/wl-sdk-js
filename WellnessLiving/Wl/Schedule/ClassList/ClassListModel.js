@@ -5,6 +5,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @see Wl\Schedule\ClassList\ClassListApi
  */
 function Wl_Schedule_ClassList_ClassListModel()
 {
@@ -22,21 +23,18 @@ function Wl_Schedule_ClassList_ClassListModel()
    * Values are empty arrays for now. This is done to make possible to add some information about certain dates, if we need this.
    *
    * @get result
-   * @var {{}[]}
+   * @type {{}[]}
    */
   this.a_calendar = [];
 
   /**
    * The list of classes keys to filter.
-   * A comma separated list of class keys.
-   * Return sessions with matching class IDs (where is_event = false)
-   *
-   * Example; {'1546','3452','2564'}.
+   * Return sessions with matching class IDs.
    *
    * If it's empty, all classes/events will be returned.
    *
    * @get get
-   * @var {string[]}
+   * @type {string[]}
    */
   this.a_class = [];
 
@@ -46,22 +44,21 @@ function Wl_Schedule_ClassList_ClassListModel()
    * Return sessions matching the given weekdays.
    * (7 = Sunday, 1 = Monday, ..., 6 = Saturday)
    *
-   * Example; {'1','2','3'}.
-   *
    * Empty array means no filtering.
    *
    * @get get
-   * @var {number[]}
+   * @see ADateWeekSid
+   * @type {number[]}
    */
   this.a_day = [];
 
   /**
    * The list of location keys to filter results.
    * If it's empty, schedule for all locations will be returned.
-   * All given locations should be from the same business, which is sent in {@link ClassListModel::$k_business}.
+   * All given locations should be from the same business, which is sent in {@link Wl_Schedule_ClassList_ClassListModel.k_business}.
    *
    * @get get
-   * @var {string[]}
+   * @type {string[]}
    */
   this.a_location = [];
 
@@ -69,7 +66,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @typedef {{}} Wl_Schedule_ClassList_ClassListModel_a_session
    * @property {string[]} a_class_tab Keys of class tab.
    * @property {string[]} a_image The class image. Empty array if there is no image.
-   * @property {string[]} a_search_tag Tags associated with individual class.
+   * @property {string[]} a_search_tag Tags associated with an individual class.
    * @property {string[]} a_staff The list of staff keys for the staff member conducting the session.
    * @property {string[]} a_virtual_location The list of virtual locations keys. Each value is a location key.
    * @property {string} dt_date The date/time of the session start in UTC.
@@ -79,11 +76,12 @@ function Wl_Schedule_ClassList_ClassListModel()
    *  class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
    * @property {string} html_description The class description.
    * @property {number} i_book Count of visits on this class.
-   * @property {null|number} i_capacity The capacity of the service. 'null' indicates that the capacity is not set.
+   * @property {?number} i_capacity The capacity of the service. 'null' indicates that the capacity is not set.
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
    * @property {number} i_wait Number of clients in wait list.
    * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
+   * @property {boolean} is_event If `true`, this is an event. Otherwise, this will be `false`.
    * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
    * @property {boolean} is_wait_list_enabled This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.
    * @property {string} k_class The class key.
@@ -106,15 +104,15 @@ function Wl_Schedule_ClassList_ClassListModel()
    *   </dd>
    *   <dt>
    *     string[] <var>a_image</var>
-   *   </dt>
-   *   <dd>
+   *    </dt>
+   *    <dd>
    *     The class image. Empty array if there is no image.
    *   </dd>
    *   <dt>
    *     string[] <var>a_search_tag</var>
    *   </dt>
    *   <dd>
-   *     Tags associated with individual class.
+   *     Tags associated with an individual class.
    *   </dd>
    *   <dt>
    *     string[] <var>a_staff</var>
@@ -166,11 +164,11 @@ function Wl_Schedule_ClassList_ClassListModel()
    *     Count of visits on this class.
    *   </dd>
    *   <dt>
-   *     int <var>i_capacity</var>
+   *     int|null <var>i_capacity</var>
    *   </dt>
    *   <dd>
    *     The capacity of the service. 'null' indicates that the capacity is not set.
-   *   </dd>
+   *    </dd>
    *   <dt>
    *     int <var>i_day</var>
    *   </dt>
@@ -195,6 +193,12 @@ function Wl_Schedule_ClassList_ClassListModel()
    *   <dd>
    *     If `true`, this class period was canceled. Otherwise, this will be `false`.
    *   </dd>
+   *    <dt>
+   *      bool <var>is_event</var>
+   *    </dt>
+   *    <dd>
+   *      If `true`, this is an event. Otherwise, this will be `false`.
+   *    </dd>
    *   <dt>
    *     bool <var>is_virtual</var>
    *   </dt>
@@ -202,7 +206,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    *     If `true`, this class is virtual. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
-   *     boolean <var>is_wait_list_enabled</var>
+   *     bool <var>is_wait_list_enabled</var>
    *   </dt>
    *   <dd>
    *     This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.
@@ -245,25 +249,28 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.a_session = undefined;
 
   /**
+   * @typedef {{}} Wl_Schedule_ClassList_ClassListModel_a_time
+   * @property {string} tl_start Time when the session starts. Example: value `'06:00'`.
+   * @property {string} tl_end Time when the session ends. Example: value `'14:00'`.
+   */
+
+  /**
    * Class filter by time of day.
-   * Return sessions matching the time-of-day.
-   * Array with start and end in "HH:MM" format (24h).
+   * Array with start and end time in "HH:MM" format (24h).
    * Include sessions that start between the specified time range.
    *
    * List of time parameters:
    * <dl>
-   *   <dt>string <var>tl_start</var></dt>
-   *   <dd>Time when the session starts.</dd>
-   *   <dt>string <var>tl_end</var></dt>
-   *   <dd>Time when the session ends.</dd>
+   *    <dt>string <var>tl_start</var></dt>
+   *    <dd>Time when the session starts. Example: value `'06:00'`.</dd>
+   *    <dt>string <var>tl_end</var></dt>
+   *    <dd>Time when the session ends. Example: value `'14:00'`.</dd>
    * </dl>
-   *
-   * Example: `{ 'tl_start': '06:00', 'tl_end': '14:00' }`.
    *
    * Empty array means no filtering.
    *
    * @get get
-   * @var {string[]}
+   * @type {Wl_Schedule_ClassList_ClassListModel_a_time}
    */
   this.a_time = [];
 
@@ -277,8 +284,10 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * The list end date in UTC and in MySQL format.
+   * <no-sdk>
    * If left empty, the default duration is {@link Wl_Schedule_ClassList_ClassListModel.DEFAULT_PERIOD} days after
    * {@link Wl_Schedule_ClassList_ClassListModel.dt_date}.
+   * </no-sdk>
    *
    * @get get
    * @type {string}
@@ -288,10 +297,9 @@ function Wl_Schedule_ClassList_ClassListModel()
   /**
    * `true` means to not generate {@link Wl_Schedule_ClassList_ClassListModel.a_session} result.
    * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassListModel.a_calendar} is enough.
-   * any classes in the business.
    *
    * @get get
-   * @var {boolean}
+   * @type {boolean}
    */
   this.is_response_short = false;
 
@@ -321,7 +329,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * `null` or not set: No filtering.
    *
    * @get get
-   * @var {?boolean}
+   * @type {?boolean}
    */
   this.is_virtual = null;
 
@@ -359,9 +367,9 @@ function Wl_Schedule_ClassList_ClassListModel()
    * A comma seperated list of staff keys.
    *
    * @get get
-   * @var string
+   * @type {string}
    */
-  this.s_staff = '';
+  this.s_staff = "";
 
   /**
    * If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
@@ -385,7 +393,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @get get
    * @type {string}
    */
-  this.uid = '';
+  this.uid = "";
 
   this.changeInit();
 }
