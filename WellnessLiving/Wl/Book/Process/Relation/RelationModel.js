@@ -9,7 +9,7 @@ function Wl_Book_Process_Relation_RelationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of check that must be skipped.
+   * List of checks that must be skipped.
    * Each element must be a member of {@link Wl_Book_Process_ProcessCheckSid}.
    *
    * @get get
@@ -33,6 +33,17 @@ function Wl_Book_Process_Relation_RelationModel()
    * @type {number}
    */
   this.id_relation = 0;
+
+  /**
+   * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
+   *
+   * Use this field with caution.
+   * The final booking will not use this flag and the check will still be performed.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_credit_card_check = true;
 
   /**
    * This will be `true` if the linked client profile (relationship) uses the email of <var>uid_from</var>.
@@ -120,5 +131,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Relation_RelationModel);
  */
 Wl_Book_Process_Relation_RelationModel.prototype.config=function()
 {
-  return {"a_field": {"a_check_ignore": {"get": {"get": true}},"dtu_date": {"get": {"get": true}},"id_relation": {"post": {"post": true}},"is_mail_inherit": {"post": {"post": true}},"is_pay_self": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true}},"text_mail": {"post": {"post": true}},"text_name_first": {"post": {"post": true}},"text_name_last": {"post": {"post": true}},"uid_create": {"post": {"result": true}},"uid_from": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_check_ignore": {"get": {"get": true}},"dtu_date": {"get": {"get": true}},"id_relation": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true}},"is_mail_inherit": {"post": {"post": true}},"is_pay_self": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true}},"text_mail": {"post": {"post": true}},"text_name_first": {"post": {"post": true}},"text_name_last": {"post": {"post": true}},"uid_create": {"post": {"result": true}},"uid_from": {"get": {"get": true},"post": {"get": true}}}};
 };
