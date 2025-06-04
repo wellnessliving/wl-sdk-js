@@ -44,13 +44,23 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.id_start_week = undefined;
 
   /**
+   * Determines whether to show the first profile alert on the schedule.
+   *
+   * `true` means to show the first profile alert on the schedule, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_appointment_alert = false;
+
+  /**
    * <tt>true</tt> - If needed to show recurring canceled appointments on schedule. <tt>false</tt> - otherwise.
    * Current setting from business schedule design.
    *
    * @get result
    * @type {boolean}
    */
-  this.is_appointment_cancel_recurring = undefined;
+  this.is_appointment_cancel_recurring = false;
 
   /**
    * <tt>true</tt> - If needed to show single canceled appointments on schedule. <tt>false</tt> - otherwise.
@@ -59,7 +69,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @get result
    * @type {boolean}
    */
-  this.is_appointment_cancel_single = undefined;
+  this.is_appointment_cancel_single = false;
 
   /**
    * <tt>true</tt> - If needed to show canceled classes on schedule. <tt>false</tt> - otherwise.
@@ -68,7 +78,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @get result
    * @type {boolean}
    */
-  this.is_class_cancel = undefined;
+  this.is_class_cancel = false;
 
   /**
    * <tt>true</tt> - if need to show staff unavailable times with diagonal lines, <tt>false</tt> - otherwise.
@@ -77,6 +87,36 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @type {boolean}
    */
   this.is_diagonal_staff_busy = undefined;
+
+  /**
+   * Determines whether to show the forms icon on the schedule.
+   *
+   * `true` means to show the forms icon on the schedule, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_form_icon = false;
+
+  /**
+   * Determines whether to show icon in the corner.
+   *
+   * `true` means to show icon in the corner, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_service_icon = false;
+
+  /**
+   * Determines whether to show QUICK and SOAP notes preview on the schedule.
+   *
+   * `true` means to show QUICK and SOAP notes preview on the schedule, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_visit_note = false;
 
   /**
    * <tt>true</tt> - if need to show work note, <tt>false</tt> - otherwise.
@@ -144,7 +184,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleDesign_ScheduleDesignModel);
  */
 Wl_Schedule_ScheduleDesign_ScheduleDesignModel.prototype.config=function()
 {
-  return {"a_field": {"i_interval": {"get": {"result": true}},"id_option": {"get": {"result": true}},"id_start_week": {"get": {"result": true}},"is_appointment_cancel_recurring": {"get": {"result": true}},"is_appointment_cancel_single": {"get": {"result": true}},"is_class_cancel": {"get": {"result": true}},"is_diagonal_staff_busy": {"get": {"result": true}},"is_work_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_color_staff_available": {"get": {"result": true}},"s_color_staff_busy": {"get": {"result": true}},"s_color_staff_substitute": {"get": {"result": true}},"show_booking_after_book": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"i_interval": {"get": {"result": true}},"id_option": {"get": {"result": true}},"id_start_week": {"get": {"result": true}},"is_appointment_alert": {"get": {"result": true}},"is_appointment_cancel_recurring": {"get": {"result": true}},"is_appointment_cancel_single": {"get": {"result": true}},"is_class_cancel": {"get": {"result": true}},"is_diagonal_staff_busy": {"get": {"result": true}},"is_form_icon": {"get": {"result": true}},"is_service_icon": {"get": {"result": true}},"is_visit_note": {"get": {"result": true}},"is_work_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_color_staff_available": {"get": {"result": true}},"s_color_staff_busy": {"get": {"result": true}},"s_color_staff_substitute": {"get": {"result": true}},"show_booking_after_book": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
