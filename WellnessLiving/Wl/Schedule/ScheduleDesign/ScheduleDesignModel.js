@@ -64,7 +64,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_appointment_alert = undefined;
+  this.is_appointment_alert = null;
 
   /**
    * <tt>true</tt> - If needed to show recurring canceled appointments on schedule. <tt>false</tt> - otherwise.
@@ -74,7 +74,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_appointment_cancel_recurring = undefined;
+  this.is_appointment_cancel_recurring = null;
 
   /**
    * <tt>true</tt> - If needed to show single canceled appointments on schedule. <tt>false</tt> - otherwise.
@@ -84,7 +84,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_appointment_cancel_single = undefined;
+  this.is_appointment_cancel_single = null;
 
   /**
    * <tt>true</tt> - If needed to show canceled classes on schedule. <tt>false</tt> - otherwise.
@@ -94,7 +94,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_class_cancel = undefined;
+  this.is_class_cancel = null;
 
   /**
    * <tt>true</tt> - if need to show staff unavailable times with diagonal lines, <tt>false</tt> - otherwise.
@@ -104,7 +104,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_diagonal_staff_busy = undefined;
+  this.is_diagonal_staff_busy = null;
 
   /**
    * Whether sessions can be dragged and dropped on the schedule. `true` if sessions can be dragged and dropped,
@@ -114,7 +114,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_drag_and_drop = undefined;
+  this.is_drag_and_drop = null;
 
   /**
    * Determines whether to show the forms icon on the schedule.
@@ -125,7 +125,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_form_icon = undefined;
+  this.is_form_icon = null;
 
   /**
    * Determines whether to show icon in the corner.
@@ -136,7 +136,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_service_icon = undefined;
+  this.is_service_icon = null;
 
   /**
    * Determines whether to show QUICK and SOAP notes preview on the schedule.
@@ -147,7 +147,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_visit_note = undefined;
+  this.is_visit_note = null;
 
   /**
    * <tt>true</tt> - if need to show work note, <tt>false</tt> - otherwise. `null` if not set.
@@ -156,7 +156,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_work_note = undefined;
+  this.is_work_note = null;
 
   /**
    * Whether only business hours should be shown on schedule. `true` if only business hours should be shown
@@ -166,7 +166,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.is_work_only = undefined;
+  this.is_work_only = null;
 
   /**
    * Business key.
@@ -184,7 +184,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|string}
    */
-  this.s_color_staff_available = undefined;
+  this.s_color_staff_available = null;
 
   /**
    * Cell background color when staff member is not available. `null` if not set.
@@ -193,7 +193,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|string}
    */
-  this.s_color_staff_busy = undefined;
+  this.s_color_staff_busy = null;
 
   /**
    * Color of staff name when staff was substituted. `null` if not set.
@@ -202,7 +202,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|string}
    */
-  this.s_color_staff_substitute = undefined;
+  this.s_color_staff_substitute = null;
 
   /**
    * Whether to scroll schedule to last booked service. `true` to scroll, `false` otherwise. `null` if not set.
@@ -211,7 +211,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    * @post post
    * @type {null|boolean}
    */
-  this.show_booking_after_book = undefined;
+  this.show_booking_after_book = null;
 
   /**
    * User key.
