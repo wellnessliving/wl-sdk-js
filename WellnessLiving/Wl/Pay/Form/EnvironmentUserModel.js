@@ -155,6 +155,15 @@ function Wl_Pay_Form_EnvironmentUserModel()
   this.id_locale = null;
 
   /**
+   * `true` if clients can choose whether their banking and credit card information is saved at checkout,
+   * `false` if this information is always saved.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_save_optional = false;
+
+  /**
    * Determines whether newly added payment sources should be saved. This will be `true` if payment sources should be saved,
    * `false` if otherwise.
    *
@@ -240,7 +249,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Form_EnvironmentUserModel);
  */
 Wl_Pay_Form_EnvironmentUserModel.prototype.config=function()
 {
-  return {"a_field": {"a_card_system": {"get": {"result": true}},"a_method_staff": {"get": {"result": true}},"a_method_support": {"get": {"result": true}},"a_mobile_config": {"get": {"result": true}},"a_pay_processor": {"get": {"result": true}},"dl_now": {"get": {"result": true}},"f_surcharge": {"get": {"result": true}},"f_surcharge_ach": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"is_save_source": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_currency": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_surcharge": {"get": {"result": true}},"m_surcharge_ach": {"get": {"result": true}},"uid_owner": {"get": {"get": true}}}};
+  return {"a_field": {"a_card_system": {"get": {"result": true}},"a_method_staff": {"get": {"result": true}},"a_method_support": {"get": {"result": true}},"a_mobile_config": {"get": {"result": true}},"a_pay_processor": {"get": {"result": true}},"dl_now": {"get": {"result": true}},"f_surcharge": {"get": {"result": true}},"f_surcharge_ach": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"is_save_optional": {"get": {"result": true}},"is_save_source": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_currency": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_surcharge": {"get": {"result": true}},"m_surcharge_ach": {"get": {"result": true}},"uid_owner": {"get": {"get": true}}}};
 };
 
 /**
