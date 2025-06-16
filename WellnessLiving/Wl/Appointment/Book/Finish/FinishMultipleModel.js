@@ -285,6 +285,13 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    *   <dd>Amount of selected tips.</dd>
    *   <dt>sting <var>k_timezone</var></dt>
    *   <dd>Key of timezone. 'null' if the time has come in the time zone of the location.</dd>
+   *   <dt>
+   *     string [<var>uid</var>]
+   *   </dt>
+   *   <dd>
+   *     User's key.
+   *     Specify only in a case of booking for a lof of different users.
+   *   </dd>
    * </dl>
    *
    * @post post
