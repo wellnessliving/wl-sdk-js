@@ -184,6 +184,10 @@ function Wl_Event_EventListModel()
    *   <dd>The enrollment block key.The primary key in the {@link \RsEnrollmentBlockSql} table.</dd>
    *   <dt>string <var>k_location</var></dt>
    *   <dd>The location key. The primary key in the {@link \RsLocationSql} table.</dd>
+   *   <dt>string <var>m_price_max</var></dt>
+   *   <dd>Maximum price per session in the event.</dd>
+   *   <dt>string <var>m_price_min</var></dt>
+   *   <dd>Minimum price per session in the event.</dd>
    *   <dt>string <var>m_price_total</var></dt>
    *   <dd>The total price of booking a session.</dd>
    *   <dt>string <var>m_price_total_early</var></dt>
