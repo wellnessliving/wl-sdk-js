@@ -256,10 +256,10 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * Class filter by time of day.
-   * Array with start and end time in "HH:MM" format (24h).
+   * List of arrays with start and end time in "HH:MM" format (24h).
    * Include sessions that start between the specified time range.
    *
-   * List of time parameters:
+   * Each value is array with time parameters:
    * <dl>
    *    <dt>string <var>tl_start</var></dt>
    *    <dd>Time when the session starts. Example: value `'06:00'`.</dd>
