@@ -7,19 +7,18 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link Wl_Profile_Edit_Email_EditEmail67Model} instead.
  */
-function Wl_Profile_Edit_Email_EditEmailModel()
+function Wl_Profile_Edit_Email_EditEmail67Model()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,text_mail,uid_want";
+  this._s_key = "is_backend,k_business,text_mail,uid_want";
 
   /**
-   * @typedef {{}} Wl_Profile_Edit_Email_EditEmailModel_a_user
+   * @typedef {{}} Wl_Profile_Edit_Email_EditEmail67Model_a_user
    * @property {string} text_firstname First name.
    * @property {string} text_lastname Last name.
    * @property {string} text_phone Phone.
@@ -66,7 +65,7 @@ function Wl_Profile_Edit_Email_EditEmailModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Profile_Edit_Email_EditEmailModel_a_user}
+   * @type {Wl_Profile_Edit_Email_EditEmail67Model_a_user}
    */
   this.a_user = undefined;
 
@@ -80,7 +79,7 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.is_added = false;
 
   /**
-   * If `true`, user is already a member of current business, `false` - otherwise.
+   * If `true`, the API is being used from backend. Otherwise, this will be `false`.
    *
    * @get get
    * @type {boolean}
@@ -174,22 +173,23 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Profile_Edit_Email_EditEmailModel);
+WlSdk_ModelAbstract.extend(Wl_Profile_Edit_Email_EditEmail67Model);
 
 /**
  * @inheritDoc
  */
-Wl_Profile_Edit_Email_EditEmailModel.prototype.config=function()
+Wl_Profile_Edit_Email_EditEmail67Model.prototype.config=function()
 {
   return {"a_field": {"a_business_member_key": {"get": {"result": true}},"a_user": {"get": {"result": true}},"is_added": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"is_current_member": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_password_set": {"get": {"result": true}},"is_staff": {"get": {"result": true}},"is_staff_any_business": {"get": {"result": true}},"is_use": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true}},"uid_result": {"get": {"result": true}},"uid_want": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
- * @name Wl_Profile_Edit_Email_EditEmailModel.instanceGet
+ * @name Wl_Profile_Edit_Email_EditEmail67Model.instanceGet
+ * @param {boolean} is_backend If `true`, the API is being used from backend. Otherwise, this will be `false`.
  * @param {string} k_business The business key where the check must be performed.
  * @param {string} text_mail The email address to be checked.
  * @param {string} uid_want The key of user whose email will be edited. This will be `0` in the case of a new user creation.
- * @returns {Wl_Profile_Edit_Email_EditEmailModel}
+ * @returns {Wl_Profile_Edit_Email_EditEmail67Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
