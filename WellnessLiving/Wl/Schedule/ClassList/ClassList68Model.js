@@ -5,17 +5,16 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link Wl_Schedule_ClassList_ClassList68Model} instead.
- * @see Wl\Schedule\ClassList\ClassListApi
+ * @see Wl\Schedule\ClassList\ClassList68Api
  */
-function Wl_Schedule_ClassList_ClassListModel()
+function Wl_Schedule_ClassList_ClassList68Model()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
    */
-  this._s_key = "uid,k_business,k_class_tab,dt_date,show_cancel,show_event";
+  this._s_key = "uid,k_business,k_class_tab,dt_date,show_cancel,show_event,show_class";
 
   /**
    * Keys are dates of the days inside requested date range, when there is at least one class in the business.
@@ -64,7 +63,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.a_location = [];
 
   /**
-   * @typedef {{}} Wl_Schedule_ClassList_ClassListModel_a_session
+   * @typedef {{}} Wl_Schedule_ClassList_ClassList68Model_a_session
    * @property {string[]} a_class_tab Keys of class tab.
    * @property {string[]} a_image The class image. Empty array if there is no image.
    * @property {string[]} a_search_tag Tags associated with an individual class.
@@ -245,12 +244,12 @@ function Wl_Schedule_ClassList_ClassListModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Schedule_ClassList_ClassListModel_a_session[]}
+   * @type {Wl_Schedule_ClassList_ClassList68Model_a_session[]}
    */
   this.a_session = undefined;
 
   /**
-   * @typedef {{}} Wl_Schedule_ClassList_ClassListModel_a_time
+   * @typedef {{}} Wl_Schedule_ClassList_ClassList68Model_a_time
    * @property {string} tl_start Time when the session starts. Example: value `'06:00'`.
    * @property {string} tl_end Time when the session ends. Example: value `'14:00'`.
    */
@@ -271,7 +270,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * Empty array means no filtering.
    *
    * @get get
-   * @type {Wl_Schedule_ClassList_ClassListModel_a_time[]}
+   * @type {Wl_Schedule_ClassList_ClassList68Model_a_time[]}
    */
   this.a_time = [];
 
@@ -407,25 +406,26 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
+WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassList68Model);
 
 /**
  * @inheritDoc
  */
-Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
+Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
 {
   return {"a_field": {"a_calendar": {"get": {"result": true}},"a_class": {"get": {"get": true}},"a_day": {"get": {"get": true}},"a_location": {"get": {"get": true}},"a_session": {"get": {"result": true}},"a_time": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_class": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
- * @name Wl_Schedule_ClassList_ClassListModel.instanceGet
+ * @name Wl_Schedule_ClassList_ClassList68Model.instanceGet
  * @param {string} uid The user key.
  * @param {string} k_business The business key.
  * @param {string} k_class_tab The category tab key. This will be `null` if not set yet. This will be ignored if {@link Wl_Schedule_ClassList_ClassListModel.is_tab_all} is `true`.
  * @param {string} dt_date The list start date in UTC and in MySQL format.
  * @param {boolean} show_cancel If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
  * @param {boolean} show_event If `true`, events are also returned. If `false`, only classes are returned.
- * @returns {Wl_Schedule_ClassList_ClassListModel}
- * @see WlSdk_ModelAbstract.instanceGet()
+ * @param {boolean} show_class If `true`, classes will be included in the response. `false` - otherwise.
+ * @returns {Wl_Schedule_ClassList_ClassList68Model}
+ * @see Core_Spa_Model.instanceGet()
  */
