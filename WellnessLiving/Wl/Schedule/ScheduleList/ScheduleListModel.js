@@ -143,6 +143,18 @@ function Wl_Schedule_ScheduleList_ScheduleListModel()
    *   <dd>
    *     Class title.
    *   </dd>
+   *   <dt>
+   *     int <var>t_business_start</var>
+   *   </dt>
+   *   <dd>
+   *     The earliest time the business where the session takes place, opens. In Unix format.
+   *   </dd>
+   *   <dt>
+   *     int <var>t_business_end</var>
+   *   </dt>
+   *   <dd>
+   *     The latest time the business where the session takes place, closes. In Unix format.
+   *   </dd>
    * </dl>
    *
    * @get result

@@ -18,158 +18,206 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this._s_key = "k_business,uid";
 
   /**
-   * Schedule time interval in minutes.
+   * Schedule time interval in minutes. One of {@link Wl_Schedule_Design_IntervalSid} constants. 0 if not set yet.
    *
    * @get result
+   * @post post
    * @type {number}
    */
-  this.i_interval = undefined;
+  this.i_interval = 0;
 
   /**
-   * Option of appointments display. One of {@link Wl_Schedule_Design_OptionSid} constants.
+   * Cell size. One of {@link Wl_Schedule_Design_CellSid} constants. 0 if not set yet.
    *
    * @get result
+   * @post post
    * @type {number}
    */
-  this.id_option = undefined;
+  this.id_cell = 0;
+
+  /**
+   * Option of appointments display. One of {@link Wl_Schedule_Design_OptionSid} constants. 0 if not set yet.
+   *
+   * @get result
+   * @post post
+   * @type {number}
+   */
+  this.id_option = 0;
 
   /**
    * Day ID of the start week.
    *
-   * Constant from {@link Wl_Schedule_Design_WeekDaySid}.
+   * Constant from {@link Wl_Schedule_Design_WeekDaySid}. 0 if not set yet.
    *
    * @get result
+   * @post post
    * @type {number}
    */
-  this.id_start_week = undefined;
+  this.id_start_week = 0;
 
   /**
    * Determines whether to show the first profile alert on the schedule.
    *
-   * `true` means to show the first profile alert on the schedule, `false` otherwise.
+   * `true` means to show the first profile alert on the schedule, `false` otherwise. `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.is_appointment_alert = false;
+  this.is_appointment_alert = null;
 
   /**
    * <tt>true</tt> - If needed to show recurring canceled appointments on schedule. <tt>false</tt> - otherwise.
-   * Current setting from business schedule design.
+   * Current setting from business schedule design. `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.is_appointment_cancel_recurring = false;
+  this.is_appointment_cancel_recurring = null;
 
   /**
    * <tt>true</tt> - If needed to show single canceled appointments on schedule. <tt>false</tt> - otherwise.
-   * Current setting from business schedule design.
+   * Current setting from business schedule design. `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.is_appointment_cancel_single = false;
+  this.is_appointment_cancel_single = null;
 
   /**
    * <tt>true</tt> - If needed to show canceled classes on schedule. <tt>false</tt> - otherwise.
-   * Current setting from business schedule design.
+   * Current setting from business schedule design. `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.is_class_cancel = false;
+  this.is_class_cancel = null;
 
   /**
    * <tt>true</tt> - if need to show staff unavailable times with diagonal lines, <tt>false</tt> - otherwise.
+   * `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.is_diagonal_staff_busy = undefined;
+  this.is_diagonal_staff_busy = null;
+
+  /**
+   * Whether sessions can be dragged and dropped on the schedule. `true` if sessions can be dragged and dropped,
+   * `false` otherwise. `null` if not set.
+   *
+   * @get result
+   * @post post
+   * @type {null|boolean}
+   */
+  this.is_drag_and_drop = null;
 
   /**
    * Determines whether to show the forms icon on the schedule.
    *
-   * `true` means to show the forms icon on the schedule, `false` otherwise.
+   * `true` means to show the forms icon on the schedule, `false` otherwise. `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.is_form_icon = false;
+  this.is_form_icon = null;
 
   /**
    * Determines whether to show icon in the corner.
    *
-   * `true` means to show icon in the corner, `false` otherwise.
+   * `true` means to show icon in the corner, `false` otherwise. `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.is_service_icon = false;
+  this.is_service_icon = null;
 
   /**
    * Determines whether to show QUICK and SOAP notes preview on the schedule.
    *
-   * `true` means to show QUICK and SOAP notes preview on the schedule, `false` otherwise.
+   * `true` means to show QUICK and SOAP notes preview on the schedule, `false` otherwise. `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.is_visit_note = false;
+  this.is_visit_note = null;
 
   /**
-   * <tt>true</tt> - if need to show work note, <tt>false</tt> - otherwise.
+   * <tt>true</tt> - if need to show work note, <tt>false</tt> - otherwise. `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.is_work_note = undefined;
+  this.is_work_note = null;
+
+  /**
+   * Whether only business hours should be shown on schedule. `true` if only business hours should be shown
+   * on schedule. `false` otherwise. `null` if not set.
+   *
+   * @get result
+   * @post post
+   * @type {null|boolean}
+   */
+  this.is_work_only = null;
 
   /**
    * Business key.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_business = "0";
 
   /**
-   * Cell background color when staff member is available.
+   * Cell background color when staff member is available. `null` if not set.
    *
    * @get result
-   * @type {?string}
+   * @post post
+   * @type {null|string}
    */
   this.s_color_staff_available = null;
 
   /**
-   * Cell background color when staff member is not available.
+   * Cell background color when staff member is not available. `null` if not set.
    *
    * @get result
-   * @type {?string}
+   * @post post
+   * @type {null|string}
    */
   this.s_color_staff_busy = null;
 
   /**
-   * Color of staff name when staff was substituted.
+   * Color of staff name when staff was substituted. `null` if not set.
    *
    * @get result
-   * @type {?string}
+   * @post post
+   * @type {null|string}
    */
   this.s_color_staff_substitute = null;
 
   /**
-   * Whether need to scroll schedule to last booked service.
+   * Whether to scroll schedule to last booked service. `true` to scroll, `false` otherwise. `null` if not set.
    *
    * @get result
-   * @type {boolean}
+   * @post post
+   * @type {null|boolean}
    */
-  this.show_booking_after_book = false;
+  this.show_booking_after_book = null;
 
   /**
    * User key.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.uid = "0";
@@ -177,14 +225,37 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Schedule_ScheduleDesign_ScheduleDesignModel);
+WlSdk_ModelAbstract.extends(Wl_Schedule_ScheduleDesign_ScheduleDesignModel);
 
 /**
  * @inheritDoc
  */
 Wl_Schedule_ScheduleDesign_ScheduleDesignModel.prototype.config=function()
 {
-  return {"a_field": {"i_interval": {"get": {"result": true}},"id_option": {"get": {"result": true}},"id_start_week": {"get": {"result": true}},"is_appointment_alert": {"get": {"result": true}},"is_appointment_cancel_recurring": {"get": {"result": true}},"is_appointment_cancel_single": {"get": {"result": true}},"is_class_cancel": {"get": {"result": true}},"is_diagonal_staff_busy": {"get": {"result": true}},"is_form_icon": {"get": {"result": true}},"is_service_icon": {"get": {"result": true}},"is_visit_note": {"get": {"result": true}},"is_work_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_color_staff_available": {"get": {"result": true}},"s_color_staff_busy": {"get": {"result": true}},"s_color_staff_substitute": {"get": {"result": true}},"show_booking_after_book": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
+  return {
+    "a_field": {
+      "i_interval": {"get": {"result": true}, "post": {"post": true}},
+      "id_cell": {"get": {"result": true}, "post": {"post": true}},
+      "id_option": {"get": {"result": true}, "post": {"post": true}},
+      "id_start_week": {"get": {"result": true}, "post": {"post": true}},
+      "is_appointment_alert": {"get": {"result": true}, "post": {"post": true}},
+      "is_appointment_cancel_recurring": {"get": {"result": true}, "post": {"post": true}},
+      "is_appointment_cancel_single": {"get": {"result": true}, "post": {"post": true}},
+      "is_class_cancel": {"get": {"result": true}, "post": {"post": true}},
+      "is_diagonal_staff_busy": {"get": {"result": true}, "post": {"post": true}},
+      "is_drag_and_drop": {"get": {"result": true}, "post": {"post": true}},
+      "is_form_icon": {"get": {"result": true}, "post": {"post": true}},
+      "is_service_icon": {"get": {"result": true}, "post": {"post": true}},
+      "is_visit_note": {"get": {"result": true}, "post": {"post": true}},
+      "is_work_note": {"get": {"result": true}, "post": {"post": true}},
+      "is_work_only": {"get": {"result": true}, "post": {"post": true}},
+      "k_business": {"get": {"get": true}, "post": {"get": true}},
+      "s_color_staff_available": {"get": {"result": true}, "post": {"post": true}},
+      "s_color_staff_busy": {"get": {"result": true}, "post": {"post": true}},
+      "s_color_staff_substitute": {"get": {"result": true}, "post": {"post": true}},
+      "show_booking_after_book": {"get": {"result": true}, "post": {"post": true}},
+      "uid": {"get": {"get": true}}, "post": {"get": true}}
+  };
 };
 
 /**
