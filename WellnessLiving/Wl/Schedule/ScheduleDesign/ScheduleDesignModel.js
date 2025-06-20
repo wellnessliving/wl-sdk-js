@@ -58,51 +58,52 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
   /**
    * Determines whether to show the first profile alert on the schedule.
    *
-   * `true` means to show the first profile alert on the schedule, `false` otherwise. `null` if not set.
+   * `true` - to show the first profile alert on the schedule.
+   * `false` not to show. `null` if not set.
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_appointment_alert = null;
 
   /**
-   * <tt>true</tt> - If needed to show recurring canceled appointments on schedule. <tt>false</tt> - otherwise.
+   * `true` - If needed to show recurring canceled appointments on schedule. `false` - otherwise.
    * Current setting from business schedule design. `null` if not set.
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_appointment_cancel_recurring = null;
 
   /**
-   * <tt>true</tt> - If needed to show single canceled appointments on schedule. <tt>false</tt> - otherwise.
+   * `true` - If needed to show single canceled appointments on schedule. `false` - otherwise.
    * Current setting from business schedule design. `null` if not set.
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_appointment_cancel_single = null;
 
   /**
-   * <tt>true</tt> - If needed to show canceled classes on schedule. <tt>false</tt> - otherwise.
+   * `true` - If needed to show canceled classes on schedule. `false` - otherwise.
    * Current setting from business schedule design. `null` if not set.
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_class_cancel = null;
 
   /**
-   * <tt>true</tt> - if need to show staff unavailable times with diagonal lines, <tt>false</tt> - otherwise.
+   * `true` If needed to show staff unavailable times with diagonal lines, `false` - otherwise.
    * `null` if not set.
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_diagonal_staff_busy = null;
 
@@ -112,18 +113,18 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_drag_and_drop = null;
 
   /**
    * Determines whether to show the forms icon on the schedule.
    *
-   * `true` means to show the forms icon on the schedule, `false` otherwise. `null` if not set.
+   * `true` means to show the forms icon on the schedule, `false` not to show. `null` if not set.
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_form_icon = null;
 
@@ -134,27 +135,27 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_service_icon = null;
 
   /**
    * Determines whether to show QUICK and SOAP notes preview on the schedule.
    *
-   * `true` means to show QUICK and SOAP notes preview on the schedule, `false` otherwise. `null` if not set.
+   * `true` means to show QUICK and SOAP notes preview on the schedule, `false` not to show. `null` if not set.
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_visit_note = null;
 
   /**
-   * <tt>true</tt> - if need to show work note, <tt>false</tt> - otherwise. `null` if not set.
+   * `true` - if need to show work note, `false` - otherwise. `null` if not set.
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_work_note = null;
 
@@ -164,7 +165,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.is_work_only = null;
 
@@ -182,7 +183,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    *
    * @get result
    * @post post
-   * @type {null|string}
+   * @type {?string}
    */
   this.s_color_staff_available = null;
 
@@ -191,7 +192,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    *
    * @get result
    * @post post
-   * @type {null|string}
+   * @type {?string}
    */
   this.s_color_staff_busy = null;
 
@@ -200,7 +201,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    *
    * @get result
    * @post post
-   * @type {null|string}
+   * @type {?string}
    */
   this.s_color_staff_substitute = null;
 
@@ -209,7 +210,7 @@ function Wl_Schedule_ScheduleDesign_ScheduleDesignModel()
    *
    * @get result
    * @post post
-   * @type {null|boolean}
+   * @type {?boolean}
    */
   this.show_booking_after_book = null;
 
@@ -232,30 +233,7 @@ WlSdk_ModelAbstract.extends(Wl_Schedule_ScheduleDesign_ScheduleDesignModel);
  */
 Wl_Schedule_ScheduleDesign_ScheduleDesignModel.prototype.config=function()
 {
-  return {
-    "a_field": {
-      "i_interval": {"get": {"result": true}, "post": {"post": true}},
-      "id_cell": {"get": {"result": true}, "post": {"post": true}},
-      "id_option": {"get": {"result": true}, "post": {"post": true}},
-      "id_start_week": {"get": {"result": true}, "post": {"post": true}},
-      "is_appointment_alert": {"get": {"result": true}, "post": {"post": true}},
-      "is_appointment_cancel_recurring": {"get": {"result": true}, "post": {"post": true}},
-      "is_appointment_cancel_single": {"get": {"result": true}, "post": {"post": true}},
-      "is_class_cancel": {"get": {"result": true}, "post": {"post": true}},
-      "is_diagonal_staff_busy": {"get": {"result": true}, "post": {"post": true}},
-      "is_drag_and_drop": {"get": {"result": true}, "post": {"post": true}},
-      "is_form_icon": {"get": {"result": true}, "post": {"post": true}},
-      "is_service_icon": {"get": {"result": true}, "post": {"post": true}},
-      "is_visit_note": {"get": {"result": true}, "post": {"post": true}},
-      "is_work_note": {"get": {"result": true}, "post": {"post": true}},
-      "is_work_only": {"get": {"result": true}, "post": {"post": true}},
-      "k_business": {"get": {"get": true}, "post": {"get": true}},
-      "s_color_staff_available": {"get": {"result": true}, "post": {"post": true}},
-      "s_color_staff_busy": {"get": {"result": true}, "post": {"post": true}},
-      "s_color_staff_substitute": {"get": {"result": true}, "post": {"post": true}},
-      "show_booking_after_book": {"get": {"result": true}, "post": {"post": true}},
-      "uid": {"get": {"get": true}}, "post": {"get": true}}
-  };
+  return {"a_field": {"i_interval": {"get": {"result": true},"post": {"post": true}},"id_cell": {"get": {"result": true},"post": {"post": true}},"id_option": {"get": {"result": true},"post": {"post": true}},"id_start_week": {"get": {"result": true},"post": {"post": true}},"is_appointment_alert": {"get": {"result": true},"post": {"post": true}},"is_appointment_cancel_recurring": {"get": {"result": true},"post": {"post": true}},"is_appointment_cancel_single": {"get": {"result": true},"post": {"post": true}},"is_class_cancel": {"get": {"result": true},"post": {"post": true}},"is_diagonal_staff_busy": {"get": {"result": true},"post": {"post": true}},"is_drag_and_drop": {"get": {"result": true},"post": {"post": true}},"is_form_icon": {"get": {"result": true},"post": {"post": true}},"is_service_icon": {"get": {"result": true},"post": {"post": true}},"is_visit_note": {"get": {"result": true},"post": {"post": true}},"is_work_note": {"get": {"result": true},"post": {"post": true}},"is_work_only": {"get": {"result": true},"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"s_color_staff_available": {"get": {"result": true},"post": {"post": true}},"s_color_staff_busy": {"get": {"result": true},"post": {"post": true}},"s_color_staff_substitute": {"get": {"result": true},"post": {"post": true}},"show_booking_after_book": {"get": {"result": true},"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
