@@ -53,6 +53,23 @@ function Wl_Catalog_CatalogList_ElementModel()
    *
    * The structure may be different depending on the item category.
    * <dl>
+   *   <dt>array <var>a_service_access</var></dt>
+   *   <dd> Access to services for a purchase option.
+   *     Keys are one of the {@link Wl_Service_ServiceSid} constants, values are one of the {@link \AFlagSid}
+   *     constants. Set only for relevant purchase option service category.
+   *     {@link AFlagSid.ON} access to some services.
+   *     {@link AFlagSid.OFF} no access to services. It can be set only for classes and events.
+   *     {@link AFlagSid.ALL} access to all services. It can be set only for classes and events.
+   *     For purchase options with appointments and assets service category status is always {@link AFlagSid::ON}.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_renew_public</var>
+   *   </dt>
+   *   <dd>
+   *     This applies only for promotions.
+   *     <tt>true</tt> - clients can set promotion auto-renew.<br>
+   *     <tt>false</tt> - clients can't set promotion auto-renew.
+   *   </dd>
    *   <dt>
    *     array[] <var>a_component</var>
    *   </dt>
