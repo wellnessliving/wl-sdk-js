@@ -16,9 +16,10 @@ function Wl_Family_Relation_FamilyRelationModel()
   /**
    * The relationship types in the business.
    *
-   * Key is ID, value is SID. See {@link Wl_Family_Relation_RelationSid}.
+   * Key is ID, value is SID.
    *
    * @get result
+   * @see RsFamilyRelationSid
    * @type {{}}
    */
   this.a_business_relationships = [];
@@ -29,19 +30,19 @@ function Wl_Family_Relation_FamilyRelationModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extends(Wl_Family_Relation_FamilyRelationModel);
+WlSdk_ModelAbstract.extend(Wl_Family_Relation_FamilyRelationModel);
 
 /**
  * @inheritDoc
  */
 Wl_Family_Relation_FamilyRelationModel.prototype.config=function()
 {
-  return {"a_field": {"a_business_relationships": {"get": {"result": true}}},"k_business": {"get": {"get": true}}};
+  return {"a_field": {"a_business_relationships": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**
