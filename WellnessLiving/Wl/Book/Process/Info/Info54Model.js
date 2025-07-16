@@ -175,6 +175,14 @@ function Wl_Book_Process_Info_Info54Model()
    *   <dd>
    *     The date/time when session starts in MySQL format and in GMT.
    *   </dd>
+   *   <dt>int `i_active`</dt>
+   *   <dd>Total number of clients on the active list.</dd>
+   *   <dt>int `i_active_limit`</dt>
+   *   <dd>Total capacity of the active list.</dd>
+   *   <dt>int `i_wait`</dt>
+   *   <dd>Total number of clients on the wait list.</dd>
+   *   <dt>int|null `i_wait_limit`</dt>
+   *   <dd>Total capacity the wait list. `null` if wail list in unlimited.</dd>
    *   <dt>
    *     boolean <var>is_select</var>
    *   </dt>
