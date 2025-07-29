@@ -23,6 +23,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * Values are empty arrays for now. This is done to make possible to add some information about certain dates, if we need this.
    *
    * @get result
+   * @post result
    * @type {{}[]}
    */
   this.a_calendar = [];
@@ -31,9 +32,10 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * The list of classes keys to filter.
    * Return sessions with matching class IDs.
    *
-   * If it's empty, all classes/events will be returned.
+   * If it's empty, all classes will be returned.
    *
    * @get get
+   * @post get
    * @type {string[]}
    */
   this.a_class = [];
@@ -53,6 +55,17 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.a_day = [];
 
   /**
+   * The list of classes keys to filter.
+   * Return sessions with matching class IDs.
+   *
+   * If it's empty, all events will be returned.
+   *
+   * @post get
+   * @type {string[]}
+   */
+  this.a_event = [];
+
+  /**
    * The list of location keys to filter results.
    * If it's empty, schedule for all locations will be returned.
    * All given locations should be from the same business, which is sent in {@link Wl_Schedule_ClassList_ClassListModel.k_business}.
@@ -61,6 +74,22 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @type {string[]}
    */
   this.a_location = [];
+
+  /**
+   * Information about classes/events for quick filter.
+   *
+   * Every element has the following keys:
+   * <ul>
+   *   <li>string <var>text_type</var> Type of class ("class" || "event")</li>
+   *   <li>string <var>k_class</var> Type of the error.</li>
+   *   <li>string <var>s_class</var> Stack backtrace.</li>
+   *   <li>int <var>i_class</var> Total items found.</li>
+   * </ul>
+   *
+   * @post result
+   * @type {{}}
+   */
+  this.a_quick = [];
 
   /**
    * @typedef {{}} Wl_Schedule_ClassList_ClassList68Model_a_session
@@ -244,6 +273,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * </dl>
    *
    * @get result
+   * @post result
    * @type {Wl_Schedule_ClassList_ClassList68Model_a_session[]}
    */
   this.a_session = undefined;
@@ -295,6 +325,16 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.dt_end = "";
 
   /**
+   * ID of tab. One of {@link Wl_Classes_Tab_TabSid} constants.
+   *
+   * `null` if no filtering by Tab is required.
+   *
+   * @get get
+   * @type {?number}
+   */
+  this.id_class_tab = null;
+
+  /**
    * `true` means to not generate {@link Wl_Schedule_ClassList_ClassListModel.a_session} result.
    * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassListModel.a_calendar} is enough.
    *
@@ -316,6 +356,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * If `true`, the list of sessions contains sessions from different time zones. Otherwise, this will be `false`.
    *
    * @get result
+   * @post result
    * @type {boolean}
    */
   this.is_timezone_different = undefined;
@@ -339,6 +380,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * Otherwise, this will be `false`.
    *
    * @get result
+   * @post result
    * @type {boolean}
    */
   this.is_virtual_service = undefined;
@@ -367,6 +409,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * A comma seperated list of staff keys.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.s_staff = "";
@@ -396,6 +439,15 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.show_event = false;
 
   /**
+   * Whether to generate a quick filter.
+   * If `true`, a quick filter will be generated. `false` otherwise.
+   *
+   * @post get
+   * @type {boolean}
+   */
+  this.show_quick_filter = false;
+
+  /**
    * The user key.
    *
    * @get get
@@ -413,7 +465,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassList68Model);
  */
 Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
 {
-  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_class": {"get": {"get": true}},"a_day": {"get": {"get": true}},"a_location": {"get": {"get": true}},"a_session": {"get": {"result": true}},"a_time": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_class": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_calendar": {"get": {"result": true},"post": {"result": true}},"a_class": {"get": {"get": true},"post": {"get": true}},"a_day": {"get": {"get": true}},"a_event": {"post": {"get": true}},"a_location": {"get": {"get": true}},"a_quick": {"post": {"result": true}},"a_session": {"get": {"result": true},"post": {"result": true}},"a_time": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"id_class_tab": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true},"post": {"result": true}},"is_virtual": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true},"post": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true},"post": {"get": true}},"show_cancel": {"get": {"get": true}},"show_class": {"get": {"get": true}},"show_event": {"get": {"get": true}},"show_quick_filter": {"post": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
