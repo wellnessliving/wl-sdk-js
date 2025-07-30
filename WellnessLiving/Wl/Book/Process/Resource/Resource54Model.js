@@ -182,12 +182,12 @@ function Wl_Book_Process_Resource_Resource54Model()
    *     A list of available assets. Every element has next keys:
    *     <dl>
    *       <dt>
-   *           array [`a_class_period`]
+   *           array `a_class_period`
    *       </dt>
    *       <dd>
    *           List of class/event sessions that occupies the resource.
-   *           The field structure is `Session_key => Session_UTC_date_and_time => Quantity_of_occupied_spots`.
-   *           This field is present only if the resource is occupied by any class/event sessions.
+   *           The field structure is `[k_class_period][dtu_session] => i_quantity`.
+   *           This field is not empty only if the resource is occupied by any class/event sessions.
    *       </dd>
    *       <dt>
    *         array <var>a_image</var>
@@ -202,11 +202,13 @@ function Wl_Book_Process_Resource_Resource54Model()
    *         The asset number. Actual for assets with a quantity more than <tt>1</tt>.
    *       </dd>
    *       <dt>
-   *         int `i_quantity`
+   *         number `i_quantity`
    *       </dt>
    *       <dd>
    *         Total number of the asset spots.
    *       </dd>
+   *       <dt>number `i_use`</dt>
+   *       <dd>Number of already used asset units.</dd>
    *       <dt>
    *         bool <var>is_current</var>
    *       </dt>
