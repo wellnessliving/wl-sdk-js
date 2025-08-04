@@ -44,6 +44,15 @@ function Wl_Book_Process_Relation_RelationModel()
   this.i_year = null;
 
   /**
+   * The mode type.
+   * One of the {@link Wl_Mode_ModeSid} constants.
+   *
+   * @post post
+   * @type {number}
+   */
+  this.id_mode = 0;
+
+  /**
    * The relation type.
    * One of the {@link Wl_Family_Relation_RelationSid} constants.
    *
