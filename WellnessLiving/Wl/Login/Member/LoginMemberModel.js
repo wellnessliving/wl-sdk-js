@@ -58,7 +58,7 @@ WlSdk_ModelAbstract.extends(Wl_Login_Member_LoginMemberModel);
 /**
  * @inheritDoc
  */
-Wl_Login_Member_MemberModel.prototype.config=function()
+Wl_Login_Member_LoginMemberModel.prototype.config=function()
 {
   return {
     "a_field": {

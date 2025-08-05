@@ -15,16 +15,6 @@ function Wl_Announcement_AnnouncementElementModel()
   this._s_key = "k_business,k_announcement,is_backend";
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
-   * @inheritDoc
-   */
-  this.ACTIVE_OVERLAY = true;
-
-  /**
    * List of locations keys.
    *
    * @get result

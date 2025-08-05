@@ -11,16 +11,6 @@ function Wl_Lead_Source_LeadSourceElementModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
-   * Special value for {@link Wl_Lead_Source_LeadSourceElementModel.k_lead_source_replace}.
-   */
-  this.LEAD_SOURCE_REPLACE_NONE = 'none';
-
-  /**
    * @typedef {{}} Wl_Lead_Source_LeadSourceElementModel_a_lead_source
    * @property {number} i_sort Sorting order.
    * @property {?number} id_lead_source System-defined Lead Source ID. One of the {@link Wl\Lead\Source\LeadSourceSql} constants.
@@ -105,6 +95,11 @@ function Wl_Lead_Source_LeadSourceElementModel()
 
   this.changeInit();
 }
+
+/**
+ * Special value for {@link Wl_Lead_Source_LeadSourceElementModel.k_lead_source_replace}.
+ */
+Wl_Lead_Source_LeadSourceElementModel.prototype.LEAD_SOURCE_REPLACE_NONE = 'none';
 
 WlSdk_ModelAbstract.extend(Wl_Lead_Source_LeadSourceElementModel);
 

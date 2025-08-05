@@ -4,60 +4,60 @@ const path = require('path');
 const rootDir = process.argv[2] || '.';
 
 /**
- * Находит все поля, объявленные в классе через this.
+ * Finds all fields declared in the class.
  */
 function extractClassFields(content) {
   const fieldRegex = /this\.([a-zA-Z0-9_]+)\s*=/g;
   const fields = [];
   let match;
   while ((match = fieldRegex.exec(content)) !== null) {
+    if(match[1] === '_s_key') {
+      continue;
+    }
     fields.push(match[1]);
   }
   return fields;
 }
 
 /**
- * Находит все ключи, возвращаемые в методе config()
+ * Parse `config()` method to extract keys.
  */
-function extractConfigKeys(content, className) {
+function extractConfigKeys(content) {
   // Ищем тело config
-  const configRegex = new RegExp(`${className}\\.prototype\\.config\\s*=\\s*function\\s*\\(\\)\\s*{([\\s\\S]*?)}`, 'm');
+  const configRegex = new RegExp(`\\.prototype\\.config\\s*=\\s*function\\s*\\(\\)\\s*{([\\s\\S]*?};)\\s*};`, 'm');
   const match = content.match(configRegex);
-  if (!match) return [];
-
-  const body = match[1];
-
-  // Ищем return { ... };
-  const returnObjRegex = /return\s*{([\s\S]*?)}/m;
-  const returnMatch = body.match(returnObjRegex);
-  if (!returnMatch) return [];
-
-  const keysBlock = returnMatch[1];
-  const keys = [];
-
-  // Ищем ключи вида 'field': { ... } или field: { ... }
-  const keyRegex = /['"]?([a-zA-Z0-9_]+)['"]?\s*:/g;
-  let keyMatch;
-  while ((keyMatch = keyRegex.exec(keysBlock)) !== null) {
-    keys.push(keyMatch[1]);
+  if (!match) {
+    return [];
   }
 
-  return keys;
+  const body = match[1].trim().replace('return ', '').replace(';', '');
+  if(!body) {
+    return [];
+  }
+
+  return JSON.parse(body);
 }
 
-function checkFile(filePath) {
+function checkModel(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
   const fileName = path.basename(filePath);
-  const className = fileName.replace(/\.js$/, '');
 
   const errors = [];
 
-  // Базовые проверки
+  const classMatch = content.match(/function\s+([A-Za-z0-9_]+)\s*\(/);
+  const className = classMatch ? classMatch[1] : null;
+
+  if (!className) {
+    errors.push('❌ Class name not found (pattern: function ClassName())');
+    return errors;
+  }
+
+  // Base checks.
   if (!fileName.endsWith('Model.js')) {
     errors.push('❌ File name must end with Model.js');
   }
 
-  if (content.includes('Core_Spa_Model')) {
+  if (content.includes('Core_Spa_Model.')) {
     errors.push('❌ Core_Spa_Model is not allowed in SDK.');
   }
 
@@ -65,28 +65,49 @@ function checkFile(filePath) {
     errors.push('❌ WlSdk_ModelAbstract.apply(this); not found');
   }
 
-  if (!content.includes('WlSdk_ModelAbstract.extend(')) {
+  if (
+    !content.includes('WlSdk_ModelAbstract.extend(') &&
+    !content.includes('WlSdk_ModelAbstract.extends(')
+  ) {
     errors.push('❌ WlSdk_ModelAbstract.extend(); not found');
   }
 
   const expectedConfig = `${className}.prototype.config=function()`;
-  if (!content.includes(expectedConfig)) {
+  if (!content.replaceAll(' ', '').includes(expectedConfig)) {
     errors.push(`❌ ${expectedConfig} not found`);
+    return errors;
   }
 
   // --- Новый функционал ---
   const fields = extractClassFields(content);
-  const configKeys = extractConfigKeys(content, className);
+  let configKeys = {};
+  try {
+    configKeys = extractConfigKeys(content);
+    if(!configKeys.hasOwnProperty('a_field')) {
+      errors.push('❌ config() must contain "a_field" key');
+      return errors;
+    }
 
-  // Поля есть в классе, но нет в config
+    configKeys = configKeys.a_field;
+  } catch (e) {
+    errors.push(`❌ Invalid content config()`);
+    return errors;
+  }
+
+  // Field has in class, but not in config.
   for (const field of fields) {
-    if (!configKeys.includes(field)) {
+    if(field === 'ERROR_SILENT' || field === 'ACTIVE_OVERLAY') {
+      errors.push(`❌ ${field} is not allowed in SDK.`);
+      continue;
+    }
+
+    if (!configKeys.hasOwnProperty(field)) {
       errors.push(`❌ Field "${field}" is declared in class but missing in config()`);
     }
   }
 
-  // Поля есть в config, но нет в классе
-  for (const key of configKeys) {
+  // Field has in config but not in class.
+  for (const key of Object.keys(configKeys)) {
     if (!fields.includes(key)) {
       errors.push(`❌ Key "${key}" exists in config() but missing in class`);
     }
@@ -106,7 +127,7 @@ function walk(dir) {
     if (stat.isDirectory()) {
       errors = errors.concat(walk(filePath));
     } else if (file.endsWith('Model.js')) {
-      const fileErrors = checkFile(filePath);
+      const fileErrors = checkModel(filePath);
       if (fileErrors.length) {
         errors.push({ file: filePath, errors: fileErrors });
       }
@@ -116,7 +137,6 @@ function walk(dir) {
   return errors;
 }
 
-// Запуск
 const results = walk(rootDir);
 
 if (results.length === 0) {

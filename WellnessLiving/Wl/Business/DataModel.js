@@ -377,5 +377,5 @@ Wl_Business_DataModel.prototype.config=function()
  * @name Wl_Business_DataModel.instanceGet
  * @param {string} k_business The business key.
  * @returns {Wl_Business_DataModel}
- * @see Core_Spa_Model.instanceGet()
+ * @see WlSdk_ModelAbstract.instanceGet()
  */

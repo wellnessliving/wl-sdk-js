@@ -16,11 +16,6 @@ function Wl_Quiz_QuizElementModel()
   this._s_key = "k_business,k_quiz,k_quiz_login,uid_client";
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Access log data.
    *
    * @get result
