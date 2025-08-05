@@ -1,0 +1,22 @@
+name: Validate Models
+
+on:
+  pull_request:
+    branches: [ main, stable ]
+  workflow_dispatch:
+
+jobs:
+  validate-models:
+    runs-on: ubuntu-latest
+    steps:
+      # Клонируем репозиторий
+      - uses: actions/checkout@v4
+
+      # Ставим Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Запускаем наш валидатор
+      - name: Run Model Validator
+        run: node validate-models.js ./WellnessLiving

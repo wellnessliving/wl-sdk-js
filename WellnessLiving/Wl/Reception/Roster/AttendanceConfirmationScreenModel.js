@@ -12,11 +12,6 @@ function Wl_Reception_Roster_AttendanceConfirmationScreenModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this.ACTIVE_OVERLAY = true;
-
-  /**
    * @typedef {{}} Wl_Reception_Roster_AttendanceConfirmationScreenModel_a_photo
    * @property {number} i_height Image height.
    * @property {number} i_width Image height.

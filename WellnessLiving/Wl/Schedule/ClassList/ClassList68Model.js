@@ -468,5 +468,5 @@ Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
  * @param {boolean} show_event If `true`, events are also returned. If `false`, only classes are returned.
  * @param {boolean} show_class If `true`, classes will be included in the response. `false` - otherwise.
  * @returns {Wl_Schedule_ClassList_ClassList68Model}
- * @see Core_Spa_Model.instanceGet()
+ * @see WlSdk_ModelAbstract.instanceGet()
  */

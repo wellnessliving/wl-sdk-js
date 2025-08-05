@@ -1,15 +1,12 @@
 /**
  * Manages client attachment list.
  *
- * This model is generated automatically based on API.
- *
- * @augments Core_Spa_Model
+ * @augments WlSdk_ModelAbstract
  * @constructor
- * @see Wl\Profile\Attach\AttachListApi
  */
 function Wl_Profile_Attach_AttachListModel()
 {
-  Core_Spa_Model.apply(this);
+  WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
@@ -59,7 +56,7 @@ function Wl_Profile_Attach_AttachListModel()
   this.changeInit();
 }
 
-Core_Spa_Model.extend(Wl_Profile_Attach_AttachListModel);
+WlSdk_ModelAbstract.extend(Wl_Profile_Attach_AttachListModel);
 
 /**
  * @inheritDoc
@@ -76,5 +73,5 @@ Wl_Profile_Attach_AttachListModel.prototype.config=function()
  * @param {string} uid Business key.
  * @param {boolean} is_backend If `true`, the API is being used from backend. Otherwise, this will be `false`.
  * @returns {Wl_Profile_Attach_AttachListModel}
- * @see Core_Spa_Model.instanceGet()
+ * @see WlSdk_ModelAbstract.instanceGet()
  */

@@ -1,20 +1,11 @@
 /**
  * Endpoint for upload and manage attachments.
  *
- * This model is generated automatically based on API.
- *
- * @augments Core_Spa_Model
  * @constructor
- * @see Wl\Profile\Attach\AttachElementApi
  */
 function Wl_Profile_Attach_AttachElementModel()
 {
-  Core_Spa_Model.apply(this);
-
-  /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
+  WlSdk_ModelAbstract.apply(this);
 
   /**
    * Uploaded file.
@@ -147,7 +138,7 @@ function Wl_Profile_Attach_AttachElementModel()
   this.changeInit();
 }
 
-Core_Spa_Model.extend(Wl_Profile_Attach_AttachElementModel);
+WlSdk_ModelAbstract.extend(Wl_Profile_Attach_AttachElementModel);
 
 /**
  * @inheritDoc
