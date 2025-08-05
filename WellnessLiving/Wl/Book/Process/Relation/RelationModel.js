@@ -18,6 +18,15 @@ function Wl_Book_Process_Relation_RelationModel()
   this.a_check_ignore = [];
 
   /**
+   * List of checks that must be skipped.
+   * Each element must be a member of {@link Wl_Book_Process_ProcessCheckSid}.
+   *
+   * @get get
+   * @type {number[]}
+   */
+  this.a_check_ignore_test = [];
+
+  /**
    * The date/time to use for checking the session booking's availability.
    *
    * @get get
