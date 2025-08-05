@@ -3,6 +3,7 @@ name: Validate Models
 on:
   pull_request:
     branches: [ stable ]
+  workflow_dispatch:
 
 jobs:
   validate-models:
