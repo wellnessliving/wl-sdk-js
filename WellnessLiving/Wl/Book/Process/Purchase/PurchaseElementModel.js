@@ -128,14 +128,6 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.m_price = undefined;
 
   /**
-   * The remaining price of one purchase item with or without taxes (depending on regional standards).
-   *
-   * @get result
-   * @type {string}
-   */
-  this.m_price_remaining = undefined;
-
-  /**
    * The subtotal amount for one purchase item.
    *
    * @get result
@@ -177,7 +169,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_tax": {"get": {"result": true}},"dtu_date": {"get": {"get": true}},"i_session": {"get": {"get": true}},"id_purchase_item": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_login_prize": {"get": {"get": true}},"k_pay_installment_template": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_remaining": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_tax": {"get": {"result": true}},"dtu_date": {"get": {"get": true}},"i_session": {"get": {"get": true}},"id_purchase_item": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_login_prize": {"get": {"get": true}},"k_pay_installment_template": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**

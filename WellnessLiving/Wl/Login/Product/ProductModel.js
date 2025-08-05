@@ -132,7 +132,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Product_ProductModel);
  */
 Wl_Login_Product_ProductModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_product": {"get": {"result": true}},"dtu_end": {"get": {"get": true}},"dtu_start": {"get": {"get": true}},"i_page": {"get": {"get": true}},"i_page_size": {"get": {"get": true}},"id_pay_method": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true}},"m_price_max": {"get": {"get": true}},"m_price_min": {"get": {"get": true}}}};
+  return {"a_field": {"a_login_product": {"get": {"result": true}},"dtu_end": {"get": {"get": true}},"dtu_start": {"get": {"get": true}},"i_page": {"get": {"get": true}},"i_page_size": {"get": {"get": true}},"id_pay_method": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true}},"m_price_max": {"get": {"get": true}},"m_price_min": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
