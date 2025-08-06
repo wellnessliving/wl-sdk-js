@@ -53,6 +53,14 @@ function Wl_Book_Process_Relation_RelationModel()
   this.i_year = null;
 
   /**
+   * The mode type.
+   * One of the {@link Wl_Mode_ModeSid} constants.
+   *
+   * @post post
+   * @type {number}
+   */
+  this.id_mode = 0;
+
   /**
    * The relationship type.
    * One of the {@link Wl_Family_Relation_RelationSid} constants.
@@ -159,5 +167,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Relation_RelationModel);
  */
 Wl_Book_Process_Relation_RelationModel.prototype.config=function()
 {
-  return {"a_field": {"a_check_ignore": {"get": {"get": true}},"dtu_date": {"get": {"get": true}},"i_day": {"post": {"post": true}},"i_month": {"post": {"post": true}},"i_year": {"post": {"post": true}},"id_relation": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true}},"is_mail_inherit": {"post": {"post": true}},"is_pay_self": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true}},"text_mail": {"post": {"post": true}},"text_name_first": {"post": {"post": true}},"text_name_last": {"post": {"post": true}},"uid_create": {"post": {"result": true}},"uid_from": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_check_ignore": {"get": {"get": true}},"dtu_date": {"get": {"get": true}},"i_day": {"post": {"post": true}},"i_month": {"post": {"post": true}},"i_year": {"post": {"post": true}},"id_mode": {"post": {"post": true}},"id_relation": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true}},"is_mail_inherit": {"post": {"post": true}},"is_pay_self": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true}},"text_mail": {"post": {"post": true}},"text_name_first": {"post": {"post": true}},"text_name_last": {"post": {"post": true}},"uid_create": {"post": {"result": true}},"uid_from": {"get": {"get": true},"post": {"get": true}}}};
 };
