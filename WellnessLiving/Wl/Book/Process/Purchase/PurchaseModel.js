@@ -19,7 +19,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      * @property {string} f_price The price, always '0'.
      * @property {number} i_count Login prize remaining quantity.
      * @property {number} i_limit The limit of sessions that can be booked with reward prize.
-     * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.
+     * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
      * @property {string} k_id The key of the Purchase Option in the database. The table depends on <tt>id_purchase_item</tt>.
      * @property {string} k_login_prize Key of login prize.
      * @property {string} s_value The unique identifier.
@@ -36,7 +36,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      *   <dt>int <var>i_limit</var></dt>
      *   <dd>The limit of sessions that can be booked with reward prize.</dd>
      *   <dt>int <var>id_purchase_item</var></dt>
-     *   <dd>The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.</dd>
+     *   <dd>The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
      *   <dt>string <var>k_id</var></dt>
      *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
      *   <dt>string <var>k_login_prize</var></dt>
@@ -88,6 +88,8 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      *    <dt>int|null <tt>i_remain_duration</tt></dt>
      *    <dd>The number of minutes left in the Purchase Option.</dd>
      *  </dl>
+     * @property {string[]} a_uid_share List of uids of users who share this promotion.
+     * List of those passed in the {@link Wl_Book_Process_Purchase_PurchaseModel.a_login_promotion_select} array.
      * @property {string[]} a_visit_limit The list of calendar restrictions of the promotion (for example, 4 per week).
      * @property {Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict} a_restrict Data about the shortest restriction period:
      * <dl>
@@ -148,6 +150,11 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      *        <dt>int|null <var>i_remain_duration</var></dt>
      *        <dd>The number of minutes left in the Purchase Option.</dd>
      *      </dl>
+     *   </dd>
+     *   <dt>string[] <var>a_uid_share</var></dt>
+     *   <dd>
+     *     List of uids of users who share this promotion.
+     *     List of those passed in the {@link Wl_Book_Process_Purchase_PurchaseModel.a_login_promotion_select} array.
      *   </dd>
      *   <dt>string[] <var>a_visit_limit</var></dt>
      *   <dd>The list of calendar restrictions of the promotion (for example, 4 per week).</dd>
@@ -278,6 +285,8 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      * <dd>The amount of the installment plan.</dd>
      * <dt>string <tt>s_duration</tt></dt>
      * <dd>The title of the installment plan.</dd></dl>
+     * @property {*} a_uid_share List of uids of users who share this promotion.
+     *   List of those passed in the {@link Wl_Book_Process_Purchase_PurchaseModel.a_purchase_select} array.
      * @property {Wl_Book_Process_Purchase_PurchaseModel_a_purchase_a_installment_template_a_visit_limit[]} a_visit_limit This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:<dl>
      * <dt>string <tt>s_title</tt></dt>
      * <dd>The limit description.</dd></dl>
@@ -291,7 +300,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      * @property {*} i_session This is only set for purchases of single sessions. The number of sessions booked simultaneously.
      * @property {*} id_program_category This is only set for promotions. The ID of the promotion program category. One of the {@link RsProgramCategorySid} constants.
      * @property {*} id_program_type This is only set for promotions. The ID of the promotion program type. One of the {@link RsProgramTypeSid} constants.
-     * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.
+     * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
      * @property {*} is_contract If `true`, the Purchase Option requires a contract assignment. Otherwise, this will be `false`.
      * @property {*} is_convert If `true`, the Purchase Option converts to another instance upon expiration. Otherwise, this will be `false`.
      * @property {*} is_renew If `true`, the Purchase Option is renewable. Otherwise, this will be `false`.
@@ -325,7 +334,13 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      *     <dt>string <var>m_amount</var></dt>
      *     <dd>The amount of the installment plan.</dd>
      *     <dt>string <var>s_duration</var></dt>
-     *     <dd>The title of the installment plan.</dd></dl></dd>
+     *     <dd>The title of the installment plan.</dd></dl>
+     *   </dd>
+     *   <dt>string[] [<var>a_uid_share</var>]</dt>
+     *   <dd>
+     *       List of uids of users who share this promotion.
+     *       List of those passed in the {@link Wl_Book_Process_Purchase_PurchaseModel.a_purchase_select} array.
+     *   </dd>
      *   <dt>array[] [<var>a_visit_limit</var>]</dt>
      *   <dd>This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:<dl>
      *     <dt>string <var>s_title</var></dt>
@@ -351,7 +366,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      *   <dt>int [<var>id_program_type</var>]</dt>
      *   <dd>This is only set for promotions. The ID of the promotion program type. One of the {@link RsProgramTypeSid} constants.</dd>
      *   <dt>int <var>id_purchase_item</var></dt>
-     *   <dd>The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.</dd>
+     *   <dd>The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
      *   <dt>bool [<var>is_contract</var>]</dt>
      *   <dd>If `true`, the Purchase Option requires a contract assignment. Otherwise, this will be `false`.</dd>
      *   <dt>bool [<var>is_convert</var>]</dt>
@@ -388,7 +403,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
     /**
      * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_purchase_select
      * @property {number} [i_session = 1] Number of sessions of the same class|event that were selected for the previous user.
-     * @property {number} id_purchase_item ID of purchase item type. One of {@link RsPurchaseItemSid}.
+     * @property {number} id_purchase_item ID of purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.
      * @property {string} k_id Key of certain purchase item in database. Name of table in database depends on <tt>id_purchase_item</tt>
      * @property {string} uid UID of the previous user.
      */
@@ -509,7 +524,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      * @property {string} f_price The price, always '0'.
      * @property {number} i_limit The limit of sessions that can be booked with reward prize.
      * @property {number} i_score Prize price in points.
-     * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.
+     * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
      * @property {string} k_id The key of the Purchase Option in the database. The table depends on <tt>id_purchase_item</tt>.
      * @property {string} k_reward_prize Key of redeemable prize.
      * @property {string} s_value The unique identifier.
@@ -524,9 +539,10 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      *   <dd>The price, always '0'.</dd>
      *   <dt>int <var>i_limit</var></dt>
      *   <dd>The limit of sessions that can be booked with reward prize.</dd>
-     *   <dt>int <var>i_score</var></dt><dd>Prize price in points.</dd>
+     *   <dt>int <var>i_score</var></dt>
+     *   <dd>Prize price in points.</dd>
      *   <dt>int <var>id_purchase_item</var></dt>
-     *   <dd>The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.</dd>
+     *   <dd>The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
      *   <dt>string <var>k_id</var></dt>
      *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
      *   <dt>string <var>k_reward_prize</var></dt>
@@ -557,7 +573,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_session_pass
      * @property {number} i_remain Number of remaining visits on session pass.
      * @property {string} k_session_pass Session pass key.
-     * @property {number} id_purchase_item Type of the session pass purchase. One of {@link RsPurchaseItemSid} constants.
+     * @property {number} id_purchase_item Type of the session pass purchase. One of {@link Wl_Purchase_Item_ItemSid} constants.
      * @property {string} s_title Session pass title.
      */
 
@@ -570,7 +586,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      *    <dt>string <var>k_session_pass</var></dt>
      *    <dd>Session pass key.</dd>
      *    <dt>int <var>id_purchase_item</var></dt>
-     *    <dd>Type of the session pass purchase. One of {@link RsPurchaseItemSid} constants.</dd>
+     *    <dd>Type of the session pass purchase. One of {@link Wl_Purchase_Item_ItemSid} constants.</dd>
      *    <dt>string <var>s_title</var></dt>
      *    <dd>Session pass title.</dd>
      *  </dl>
