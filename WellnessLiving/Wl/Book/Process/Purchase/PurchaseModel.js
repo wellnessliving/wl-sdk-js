@@ -12,7 +12,7 @@
  */
 function Wl_Book_Process_Purchase_PurchaseModel()
 {
-  WlSdk_ModelAbstract.apply(this);
+    WlSdk_ModelAbstract.apply(this);
 
     /**
      * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_login_prize
@@ -217,20 +217,29 @@ function Wl_Book_Process_Purchase_PurchaseModel()
 
     /**
      * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_select
-     * @property {string} uid UID of the previous user.
+     * @property {number} [i_session = 1] Number of sessions of the same class|event that were selected for the previous user.
      * @property {string} k_login_promotion Selected purchase option.
+     * @property {string} uid UID of the previous user.
      */
 
     /**
-     * A list of purchase options that were selected for previous users.
-     * Can affect the list of available login promotions {@link Wl_Book_Process_Purchase_PurchaseModel.a_login_promotion}.
+     * A list of existing purchase options that were selected for previous users.
+     *
+     * Note:
+     * * It makes sense if for all clients the list is loaded within
+     *      the same pair {@link Wl_Book_Process_Purchase_PurchaseModel.dt_date_gmt} and {@link Wl_Book_Process_Purchase_PurchaseModel.k_class_period}.
+     * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
+     *      client who has the same promotion.
+     * * Can affect the list of available login promotions {@link Wl_Book_Process_Purchase_PurchaseModel.a_login_promotion}.
      *
      * Each element has the following structure:
      * <dl>
-     *   <dt>string <var>uid</var></dt>
-     *   <dd>UID of the previous user.</dd>
+     *   <dt>int <var>[i_session = 1]</var></dt>
+     *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
      *   <dt>string <var>k_login_promotion</var></dt>
      *   <dd>Selected purchase option.</dd>
+     *   <dt>string <var>uid</var></dt>
+     *   <dd>UID of the previous user.</dd>
      * </dl>
      *
      * @get get
@@ -299,8 +308,8 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      */
 
     /**
-     * A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs, and
-     * values refer arrays with the next fields: <dl>
+     * A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs,
+     * and values refer arrays with the next fields: <dl>
      *   <dt>array[] <var>a_installment_template</var>.</dt>
      *   <dd>A list of installment plans. Every element has the next keys:<dl>
      *     <dt>int <var>i_count</var></dt>
@@ -375,6 +384,43 @@ function Wl_Book_Process_Purchase_PurchaseModel()
      * @type {Wl_Book_Process_Purchase_PurchaseModel_a_purchase[]}
      */
     this.a_purchase = [];
+
+    /**
+     * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_purchase_select
+     * @property {number} [i_session = 1] Number of sessions of the same class|event that were selected for the previous user.
+     * @property {number} id_purchase_item ID of purchase item type. One of {@link RsPurchaseItemSid}.
+     * @property {string} k_id Key of certain purchase item in database. Name of table in database depends on <tt>id_purchase_item</tt>
+     * @property {string} uid UID of the previous user.
+     */
+
+    /**
+     * A list of purchase options that were selected for previous users.
+     *
+     * Note:
+     * * It makes sense if for all clients the list is loaded within
+     *      the same pair {@link Wl_Book_Process_Purchase_PurchaseModel.dt_date_gmt} and {@link Wl_Book_Process_Purchase_PurchaseModel.k_class_period}.
+     * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
+     *      client who has the same promotion.
+     * * Can affect the list of available login promotions {@link Wl_Book_Process_Purchase_PurchaseModel.a_login_promotion}.
+     * * The list of promotions built for the client will be based on the principle that the owner of this promotion
+     *      will be the client for whom this list is requested.
+     *
+     * Each element has the following structure:
+     * <dl>
+     *   <dt>int <var>[i_session = 1]</var></dt>
+     *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
+     *   <dt>int <var>id_purchase_item</var></dt>
+     *   <dd>ID of purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.</dd>
+     *   <dt>string <var>k_id</var></dt>
+     *   <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd>
+     *   <dt>string <var>uid</var></dt>
+     *   <dd>UID of the previous user.</dd>
+     * </dl>
+     *
+     * @get get
+     * @type {Wl_Book_Process_Purchase_PurchaseModel_a_purchase_select[]}
+     */
+    this.a_purchase_select = [];
 
     /**
      * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_repeat
@@ -711,7 +757,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseModel);
  */
 Wl_Book_Process_Purchase_PurchaseModel.prototype.config=function()
 {
-    return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_login_promotion_select": {"get": {"get": true}},"a_purchase": {"get": {"result": true}},"a_repeat": {"post": {"post": true}},"a_reward_prize": {"get": {"result": true}},"a_session": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_session_wait_list_unpaid": {"get": {"get": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_card_authorize": {"get": {"get": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_single_default": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_promotion_default": {"get": {"result": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+    return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_login_promotion_select": {"get": {"get": true}},"a_purchase": {"get": {"result": true}},"a_purchase_select": {"get": {"get": true}},"a_repeat": {"post": {"post": true}},"a_reward_prize": {"get": {"result": true}},"a_session": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_session_wait_list_unpaid": {"get": {"get": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_card_authorize": {"get": {"get": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_single_default": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_promotion_default": {"get": {"result": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
