@@ -16,6 +16,18 @@ function Wl_Staff_StaffList_StaffListModel()
   this._s_key = "k_business";
 
   /**
+   * A list of privileges to filter staff members by.
+   *
+   * This property acts as a filter.
+   * Only staff members possessing all the privileges specified in this list will be included in the result.
+   * Each element in the array represents a privilege ID, and should be one of {@link Wl_Privilege_PrivilegeSid} constants.
+   *
+   * @get get
+   * @type {number[]}
+   */
+  this.a_privilege = [];
+
+  /**
    * @typedef {{}} Wl_Staff_StaffList_StaffListModel_a_staff
    * @property {string[]} a_pay_rate A list of internal pay rate keys applicable to the staff member.
    * @property {string} html_name Staff name.
@@ -106,6 +118,26 @@ function Wl_Staff_StaffList_StaffListModel()
   this.a_staff = undefined;
 
   /**
+   * Determines that only staff members which the current user has access to should be retrieved.
+   *
+   *  `true` if only staff members which the current user has access to should be retrieved.
+   *  `false` otherwise.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_check_staff_access = false;
+
+  /**
+   * Whether inactive and removed staff members are available.
+   * If `true` inactive and removed staff members are available. `false` otherwise.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_staff_inactive = false;
+
+  /**
    * The key of the business to show information for.
    *
    * @get get
@@ -123,7 +155,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_StaffList_StaffListModel);
  */
 Wl_Staff_StaffList_StaffListModel.prototype.config=function()
 {
-  return {"a_field": {"a_staff": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field": {"a_privilege": {"get": {"get": true}},"a_staff": {"get": {"result": true}},"is_check_staff_access": {"get": {"get": true}},"is_staff_inactive": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**

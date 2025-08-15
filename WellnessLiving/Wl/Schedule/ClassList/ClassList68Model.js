@@ -69,18 +69,32 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.a_location = [];
 
   /**
+   * @typedef {{}} Wl_Schedule_ClassList_ClassList68Model_a_quick
+   * @property {string} text_type Type of class ("class" || "event")
+   * @property {string} k_class Class/event key.
+   * @property {string} s_class Class/event title.
+   * @property {number} i_class Total sessions found.
+   */
+
+  /**
    * Information about classes/events for quick filter.
    *
    * Every element has the following keys:
-   * <ul>
-   *   <li>string <var>text_type</var> Type of class ("class" || "event")</li>
-   *   <li>string <var>k_class</var> Type of the error.</li>
-   *   <li>string <var>s_class</var> Stack backtrace.</li>
-   *   <li>int <var>i_class</var> Total items found.</li>
-   * </ul>
+   * <dl>
+   *   <dt>string <var>text_type</var></dt> <dd>Type of class ("class" || "event")</dd>
+   *   <dt>string <var>k_class</var></dt> <dd>Class/event key.</dd>
+   *   <dt>string <var>s_class</var></dt> <dd>Class/event title.</dd>
+   *   <dt>int <var>i_class</var></dt> <dd>Total sessions found.</dd>
+   * </dl>
+   *
+   * For generating this filter, all filters are applied except:
+   * - {@link Wl_Schedule_ClassList_ClassList68Model.a_class};
+   * - {@link Wl_Schedule_ClassList_ClassList68Model.a_event};
+   * - {@link Wl_Schedule_ClassList_ClassList68Model.show_class};
+   * - {@link Wl_Schedule_ClassList_ClassList68Model.show_event}.
    *
    * @post result
-   * @type {{}}
+   * @type {Wl_Schedule_ClassList_ClassList68Model_a_quick}
    */
   this.a_quick = [];
 
