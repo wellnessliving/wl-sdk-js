@@ -30,16 +30,17 @@ function Wl_Classes_ClassView_ElementModel()
    *   <dd>The measuring unit of <tt>i_repeat</tt>.</dd>
    *   </dl>
    * @property {string[]} a_staff_key A list of staff member keys that provide sessions for this schedule.
+   * @property {string[]} a_uid_staff_key A list of staff member keys UID that provide sessions for this schedule.
    * @property {string} dl_end The end date of the schedule in the location's time zone.
-   * Empty or zero date if the schedule is ongoing.
+   * This will be empty or zero if the schedule is ongoing.
    * @property {string} dl_start The start date of the schedule in location's time zone.
-   * @property {number} i_day The day of the week where the class schedule exists. # 1 - Monday, 7 - Sunday.
+   * @property {number} i_day The day of the week, where the class schedule exists, starting with 1 for Monday and ending with 7 for Sunday.
    * @property {number} i_duration The duration of the schedule sessions in minutes.
    * @property {number} is_cancel Defines whether the schedule canceled or not.
    * @property {string} k_location The location key of the schedule.
    * @property {string} m_price The price of a single session of the schedule.
    * @property {string} text_room The room of the class period.
-   * @property {string} text_time The time of the session in the following format: `[start_time] - [end_time]` in locale timezone.
+   * @property {string} text_time The time of the session in the following format: `[start_time] - [end_time]` in the locale's time zone.
    */
   /**
    * @typedef {{}} Wl_Classes_ClassView_ElementModel_a_class_list
@@ -56,15 +57,17 @@ function Wl_Classes_ClassView_ElementModel()
    *   </dd>
    *   <dt>string[] <tt>a_staff_key</tt></dt>
    *   <dd>A list of staff member keys that provide sessions for this schedule.</dd>
+   *   <dt>string[] <tt>a_uid_staff_key</tt></dt>
+   *   <dd>A list of staff member keys UID that provide sessions for this schedule.</dd>
    *   <dt>string <tt>dl_end</tt></dt>
    *   <dd>
    *     The end date of the schedule in the location's time zone.
-   *     Empty or zero date if the schedule is ongoing.
+   *     This will be empty or zero if the schedule is ongoing.
    *   </dd>
    *   <dt>string <tt>dl_start</tt></dt>
    *   <dd>The start date of the schedule in location's time zone.</dd>
    *   <dt>int <tt>i_day</tt></dt>
-   *   <dd>The day of the week where the class schedule exists. # 1 - Monday, 7 - Sunday.</dd>
+   *   <dd>The day of the week, where the class schedule exists, starting with 1 for Monday and ending with 7 for Sunday.</dd>
    *   <dt>int <tt>i_duration</tt></dt>
    *   <dd>The duration of the schedule sessions in minutes.</dd>
    *   <dt>int <tt>is_cancel</tt></dt>
@@ -76,36 +79,41 @@ function Wl_Classes_ClassView_ElementModel()
    *   <dt>string <tt>text_room</tt></dt>
    *   <dd>The room of the class period.</dd>
    *   <dt>string <tt>text_time</tt></dt>
-   *   <dd>The time of the session in the following format: `[start_time] - [end_time]` in locale timezone.</dd>
+   *   <dd>The time of the session in the following format: `[start_time] - [end_time]` in the locale's time zone.</dd>
    * </dl>
-   * @property {{}} a_config Class specific business policies. <tt>null</tt> in case when using business policy.
+   * @property {{}} a_config Class-specific business policies. This will be <tt>null</tt> in cases when the business policy is used.
    * @property {{}} a_search_tag Tags for quick search.
-   * @property {{}} a_visits_required Information about visits that should be visited prior to visit this class/event.
-   * @property {string} html_description Description safe to be inserted to browser.
-   * @property {string} html_special_instruction Special instructions safe to be inserted to browser.
-   * @property {number} i_age_from Minimum age restriction.
-   * @property {number} i_age_to Maximum age restriction.
-   * @property {boolean} is_age_public Whether age restriction exist and should be taken into account prior to booking of this class/event.
-   * @property {boolean} is_bookable Whether clients can book class or event online or not.
-   * @property {boolean} is_online_private `true` means to show class only for clients who can book online,
-   * `false` means to show class for all clients.
-   * @property {boolean} is_promotion_client Whether clients of the business can see list of applicable purchase options.
-   * @property {boolean} is_promotion_only Whether the item can be booked only using promotions.
-   * @property {boolean} is_promotion_staff Whether staff members of the business can see list of applicable purchase options.
-   * @property {boolean} is_single_buy Whether the item can be paid with Drop In or not.
-   * If it can be paid with Drop In, then `m_price` shows price for one visit.
-   * If can be `0`, this means that class is free.
-   * @property {boolean} is_virtual Whether the item is virtual.
-   * @property {boolean} is_event Whether the item is event or class instance. `true` if item is event instance, `false` otherwise.
-   * @property {boolean|null} is_own This field will be `true` if the image used for the class is an image uploaded in class setup. If the image is
-   * not uploaded in the class setup, but there is at least one image in Setup->Locations image slider,
-   * this field will be `false`. `null` if class image is not uploaded, and there are no images in location slider, in this case empty image is used.
+   * @property {{}} a_visits_required Information about visits that should be reviewed prior to visiting this class/event.
+   * @property {?boolean} has_own_image This field will be `true` if the image used for the class is an image uploaded in the class setup.
+   * If an image isn't uploaded in the class setup, but there's at least one image in Setup-&gt;Locations image slider,
+   * this field will be `false`.
+   * This field will be `null` if the class image isn't uploaded, and there are no images in location slider.
+   * In such cases, an empty image is used.
+   * @property {string} html_description The browser-safe description.
+   * @property {string} html_special_instruction Special instructions safe to be inserted to a browser.
+   * @property {number} i_age_from The minimum age restriction.
+   * @property {number} i_age_to The maximum age restriction.
+   * @property {boolean} is_age_public Determines whether age restriction exist and should be taken into account prior to booking this class/event.
+   * @property {boolean} is_bookable Determines whether clients can book the class or event online.
+   * @property {boolean} is_online_private `true` - show classes only for clients who can book online.
+   * `false` - show classes for all clients.
+   * @property {boolean} is_promotion_client Determines whether clients of the business can see a list of applicable Purchase Options.
+   * @property {boolean} is_promotion_only Determines whether the item can be booked only using promotions.
+   * @property {boolean} is_promotion_staff Determines whether staff members of the business can see a list of applicable Purchase Options.
+   * @property {boolean} is_single_buy Determines whether the item can be paid with Drop In or not.
+   * If it can be paid with Drop In, then `m_price` shows the price for one visit.
+   * If this is `0`, it means the class is free.
+   * @property {boolean} is_virtual Determines whether the item is virtual.
+   * @property {boolean} is_event Determines whether the item is an event or class instance. If `true`, the item is an event instance.
+   * Otherwise, this will be `false`.
    * @property {string} k_class The class key.
-   * @property {string} m_price Drop In price, if class allows to pay for one visit.
-   * @property {boolean} show_special_instructions `true` if special instructions can be public, `false` if they should be shown only to the clients, who booked the class.
-   * @property {string} xml_description Item description.
-   * @property {string} xml_special_instruction Item special instructions.
-   * @property {string} url_image Url link to item image.
+   * @property {string} k_promotion_default Promotion key of the default promotion to use when paying for the class. `null` if no promotion is selected.
+   * @property {string} m_price Drop In price, if the class allows payment for one visit.
+   * @property {boolean} show_special_instructions This will be `true` if special instructions can be public.
+   * Otherwise, this will be `false` if they should only be shown to the clients who booked the class.
+   * @property {string} xml_description The item description.
+   * @property {string} xml_special_instruction The item's special instructions.
+   * @property {string} url_image The URL link to the item image.
    */
 
   /**
@@ -125,15 +133,17 @@ function Wl_Classes_ClassView_ElementModel()
    *       </dd>
    *       <dt>string[] <var>a_staff_key</var></dt>
    *       <dd>A list of staff member keys that provide sessions for this schedule.</dd>
+   *       <dt>string[] <var>a_uid_staff_key</var></dt>
+   *       <dd>A list of staff member keys UID that provide sessions for this schedule.</dd>
    *       <dt>string <var>dl_end</var></dt>
    *       <dd>
    *         The end date of the schedule in the location's time zone.
-   *         Empty or zero date if the schedule is ongoing.
+   *         This will be empty or zero if the schedule is ongoing.
    *       </dd>
    *       <dt>string <var>dl_start</var></dt>
    *       <dd>The start date of the schedule in location's time zone.</dd>
    *       <dt>int <var>i_day</var></dt>
-   *       <dd>The day of the week where the class schedule exists. # 1 - Monday, 7 - Sunday.</dd>
+   *       <dd>The day of the week, where the class schedule exists, starting with 1 for Monday and ending with 7 for Sunday.</dd>
    *       <dt>int <var>i_duration</var></dt>
    *       <dd>The duration of the schedule sessions in minutes.</dd>
    *       <dt>int <var>is_cancel</var></dt>
@@ -145,67 +155,76 @@ function Wl_Classes_ClassView_ElementModel()
    *       <dt>string <var>text_room</var></dt>
    *       <dd>The room of the class period.</dd>
    *       <dt>string <var>text_time</var></dt>
-   *       <dd>The time of the session in the following format: `[start_time] - [end_time]` in locale timezone.</dd>
+   *       <dd>The time of the session in the following format: `[start_time] - [end_time]` in the locale's time zone.</dd>
    *     </dl>
    *   </dd>
    *   <dt>array <var>a_config</var></dt>
-   *   <dd>Class specific business policies. <tt>null</tt> in case when using business policy.</dd>
+   *   <dd>Class-specific business policies. This will be <tt>null</tt> in cases when the business policy is used.</dd>
    *   <dt>array <var>a_search_tag</var></dt>
    *   <dd>Tags for quick search.</dd>
    *   <dt>array <var>a_visits_required</var></dt>
-   *   <dd>Information about visits that should be visited prior to visit this class/event.</dd>
+   *   <dd>Information about visits that should be reviewed prior to visiting this class/event.</dd>
    *   <dt>bool|null <var>has_own_image</var></dt>
    *   <dd>
-   *     This field will be `true` if the image used for the class is an image uploaded in class setup.
-   *     If the image is not uploaded in the class setup, but there is at least one image in Setup->Locations image slider,
+   *     This field will be `true` if the image used for the class is an image uploaded in the class setup.
+   *     If an image isn't uploaded in the class setup, but there's at least one image in Setup->Locations image slider,
    *     this field will be `false`.
-   *     `null` if class image is not uploaded, and there are no images in location slider, in this case empty image is used.
+   *     This field will be `null` if the class image isn't uploaded, and there are no images in location slider.
+   *     In such cases, an empty image is used.
    *   </dd>
    *   <dt>string <var>html_description</var></dt>
-   *   <dd>Description safe to be inserted to browser.</dd>
+   *   <dd>The browser-safe description.</dd>
    *   <dt>string <var>html_special_instruction</var></dt>
-   *   <dd>Special instructions safe to be inserted to browser.</dd>
+   *   <dd>Special instructions safe to be inserted to a browser.</dd>
    *   <dt>int <var>i_age_from</var></dt>
-   *   <dd>Minimum age restriction.</dd>
+   *   <dd>The minimum age restriction.</dd>
    *   <dt>int <var>i_age_to</var></dt>
-   *   <dd>Maximum age restriction.</dd>
+   *   <dd>The maximum age restriction.</dd>
    *   <dt>bool <var>is_age_public</var></dt>
-   *   <dd>Whether age restriction exist and should be taken into account prior to booking of this class/event.</dd>
+   *   <dd>Determines whether age restriction exist and should be taken into account prior to booking this class/event.</dd>
    *   <dt>bool <var>is_bookable</var></dt>
-   *   <dd>Whether clients can book class or event online or not.</dd>
+   *   <dd>Determines whether clients can book the class or event online.</dd>w
    *   <dt>bool <var>is_online_private</var></dt>
    *   <dd>
-   *     `true` means to show class only for clients who can book online,
-   *     `false` means to show class for all clients.
+   *     `true` - show classes only for clients who can book online.
+   *     `false` - show classes for all clients.
    *   </dd>
    *   <dt>bool <var>is_promotion_client</var></dt>
-   *   <dd>Whether clients of the business can see list of applicable purchase options.</dd>
+   *   <dd>Determines whether clients of the business can see a list of applicable Purchase Options.</dd>
    *   <dt>bool <var>is_promotion_only</var></dt>
-   *   <dd>Whether the item can be booked only using promotions.</dd>
+   *   <dd>Determines whether the item can be booked only using promotions.</dd>
    *   <dt>bool <var>is_promotion_staff</var></dt>
-   *   <dd>Whether staff members of the business can see list of applicable purchase options.</dd>
+   *   <dd>Determines whether staff members of the business can see a list of applicable Purchase Options.</dd>
    *   <dt>bool <var>is_single_buy</var></dt>
    *   <dd>
-   *     Whether the item can be paid with Drop In or not.
-   *     If it can be paid with Drop In, then `m_price` shows price for one visit.
-   *     If can be `0`, this means that class is free.
+   *     Determines whether the item can be paid with Drop In or not.
+   *     If it can be paid with Drop In, then `m_price` shows the price for one visit.
+   *     If this is `0`, it means the class is free.
    *   </dd>
    *   <dt>bool <var>is_virtual</var></dt>
-   *   <dd>Whether the item is virtual.</dd>
+   *   <dd>Determines whether the item is virtual.</dd>
    *   <dt>bool <var>is_event</var></dt>
-   *   <dd>Whether the item is event or class instance. `true` if item is event instance, `false` otherwise.</dd>
+   *   <dd>
+   *     Determines whether the item is an event or class instance. If `true`, the item is an event instance.
+   *     Otherwise, this will be `false`.
+   *   </dd>
    *   <dt>string <var>k_class</var></dt>
    *   <dd>The class key.</dd>
+   *   <dt>string<var>k_promotion_default</var></dt>
+   *   <dd> Promotion key of the default promotion to use when paying for the class. `null` if no promotion is selected.</dd>
    *   <dt>string <var>m_price</var></dt>
-   *   <dd>Drop In price, if class allows to pay for one visit.</dd>
+   *   <dd>Drop In price, if the class allows payment for one visit.</dd>
    *   <dt>bool <var>show_special_instructions</var></dt>
-   *   <dd>`true` if special instructions can be public, `false` if they should be shown only to the clients, who booked the class.</dd>
+   *   <dd>
+   *     This will be `true` if special instructions can be public.
+   *     Otherwise, this will be `false` if they should only be shown to the clients who booked the class.
+   *   </dd>
    *   <dt>string <var>xml_description</var></dt>
-   *   <dd>Item description.</dd>
+   *   <dd>The item description.</dd>
    *   <dt>string <var>xml_special_instruction</var></dt>
-   *   <dd>Item special instructions.</dd>
+   *   <dd>The item's special instructions.</dd>
    *   <dt>string <var>url_image</var></dt>
-   *   <dd>Url link to item image.</dd>
+   *   <dd>The URL link to the item image.</dd>
    * </dl>
    *
    * @get result
@@ -214,8 +233,8 @@ function Wl_Classes_ClassView_ElementModel()
   this.a_class_list = [];
 
   /**
-   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The image height in pixels. Specify this value if you need the image to be returned in a specific size.
+   * If this value isn't specified, the returned image will have default thumbnail size.
    *
    * @get get
    * @type {number}
@@ -223,8 +242,8 @@ function Wl_Classes_ClassView_ElementModel()
   this.i_image_height = 0;
 
   /**
-   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The image width in pixels. Specify this value if you need the image to be returned in a specific size.
+   * If this value isn't specified, the returned image will have default thumbnail size.
    *
    * @get get
    * @type {number}
@@ -240,7 +259,7 @@ function Wl_Classes_ClassView_ElementModel()
   this.k_business = "";
 
   /**
-   * The class key used to get information of a specific class.
+   * The class key used to get information for a specific class.
    *
    * An empty value returns information for all classes of the business.
    *
@@ -252,7 +271,7 @@ function Wl_Classes_ClassView_ElementModel()
   /**
    * Defines if canceled schedules should be included in the result.
    *
-   * `true` to show canceled schedules, `false` otherwise.
+   * If `true`, canceled schedules will be shown. Otherwise, this will be `false`.
    *
    * @get get
    * @type {boolean}

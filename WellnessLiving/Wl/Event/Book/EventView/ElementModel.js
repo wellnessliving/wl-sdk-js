@@ -45,18 +45,19 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_book_available
-   * @property {string} dt_date Date/time when session starts. In UTC.
+   * @property {string} dt_date Date/time when the session starts. In UTC.
    * @property {string} k_class_period Class session primary keys.
    */
 
   /**
    * Retrieves information about an event item.
    *
-   * Received only if {@link Wl_Event_Book_EventView_ElementModel.k_event} has been specified. In this case other fields aren't receivers.
+   * Received only if {@link Wl_Event_Book_EventView_ElementModel.k_event} has been specified.
+   * In this case, other fields aren't receivers.
    *
    * <dl>
    *   <dt>string <var>dt_date</var></dt>
-   *   <dd>Date/time when session starts. In UTC.</dd>
+   *   <dd>Date/time when the session starts. In UTC.</dd>
    *   <dt>string <var>k_class_period</var></dt>
    *   <dd>Class session primary keys.</dd>
    * </dl>
@@ -81,23 +82,23 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_class_logo
-   * @property {*} i_height Is returned only if staff has photo. Image height.
-   * @property {*} i_width Is returned only if staff has photo. Image width.
-   * @property {*} id_gender Is returned only if staff does not have photo. ID of staff gender. One of {@link Wl_Gender_GenderSid} constants.
-   * @property {*} url_logo Is returned only if staff has photo. URL to image.
+   * @property {*} i_height Is returned only if staff has a photo. Image height.
+   * @property {*} i_width Is returned only if staff has a photo. Image width.
+   * @property {*} id_gender Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.
+   * @property {*} url_logo Is returned only if staff has a photo. URL to image.
    */
 
   /**
    * The logo of event.
    * <dl>
    *   <dt>int [<var>i_height</var>]</dt>
-   *   <dd>Is returned only if staff has photo. Image height.</dd>
+   *   <dd>Is returned only if staff has a photo. Image height.</dd>
    *   <dt>int [<var>i_width</var>]</dt>
-   *   <dd>Is returned only if staff has photo. Image width.</dd>
+   *   <dd>Is returned only if staff has a photo. Image width.</dd>
    *   <dt>int [<var>id_gender</var>] </dt>
-   *   <dd>Is returned only if staff does not have photo. ID of staff gender. One of {@link Wl_Gender_GenderSid} constants.</dd>
+   *   <dd>Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.</dd>
    *   <dt>string [<var>url_logo</var>]</dt>
-   *   <dd>Is returned only if staff has photo. URL to image.</dd>
+   *   <dd>Is returned only if staff has a photo. URL to image.</dd>
    * </dl>
    *
    * @get result
@@ -114,12 +115,12 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_class_tab = undefined;
 
   /**
-   * Displays information for a bulk of events.
+   * Displays information for a large number of events.
    *
    * Received only if {@link Wl_Event_Book_EventView_ElementModel.s_event} has been specified. In this case, other fields aren't receivers.
    *
    * The event keys of this array.
-   * Values of this array and sub arrays with keys that correspond to all fields in this table that may be received.
+   * Values of this array and subarrays with keys that correspond to all fields in this table that may be received.
    *
    * @get result
    * @type {{}}
@@ -131,6 +132,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} k_staff The staff member key.
    * @property {string} s_name The staff member name.
    * @property {string} s_surname The first letter of staff member's surname.
+   * @property {number} uid_staff The user key of the staff member.
    */
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat
@@ -156,6 +158,8 @@ function Wl_Event_Book_EventView_ElementModel()
    *   <dd>The staff member name.</dd>
    *   <dt>string <tt>s_surname</tt></dt>
    *   <dd>The first letter of staff member's surname.</dd>
+   *   <dt>int <tt>uid_staff</tt></dt>
+   *   <dd>The user key of the staff member.</dd>
    * </dl>
    * @property {string[]} a_virtual_location List of virtual locations.
    * @property {string} dt_end The end date of the session.
@@ -174,7 +178,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} s_time The time when session occurred.
    * A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am</tt>
    * @property {string} s_timezone The name of the timezone in which the session is held.
-   * @property {string} text_room The room in which the session is held.
+   * @property {string} text_room The room of the event.
    */
 
   /**
@@ -209,6 +213,8 @@ function Wl_Event_Book_EventView_ElementModel()
    *       <dd>The staff member name.</dd>
    *       <dt>string <var>s_surname</var></dt>
    *       <dd>The first letter of staff member's surname.</dd>
+   *       <dt>int <var>uid_staff</var></dt>
+   *       <dd>The user key of the staff member.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
@@ -297,7 +303,7 @@ function Wl_Event_Book_EventView_ElementModel()
    *     string <var>text_room</var>
    *   </dt>
    *   <dd>
-   *     The room in which the session is held.
+   *     The room of the event.
    *   </dd>
    * </dl>
    *
@@ -333,8 +339,18 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_staff_logo = undefined;
 
   /**
+   * Information about timezones.
+   *
+   * Key is timezone key, value is array with timezone information.
+   *
+   * @get result
+   * @type {{}[]}
+   */
+  this.a_timezone_info = [];
+
+  /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_visits_required
-   * @property {number} i_count The number of visits.
+   * @property {number} i_count The number of visits required.
    * @property {number} i_has The number of visits the client has already attended.
    * @property {boolean} is_event `true` if this is an event, `false` if this is a class.
    * @property {string} k_class The key of the class or event.
@@ -346,7 +362,7 @@ function Wl_Event_Book_EventView_ElementModel()
    *
    * <dl>
    *   <dt>int <var>i_count</var></dt>
-   *   <dd>The number of visits.</dd>
+   *   <dd>The number of visits required.</dd>
    *   <dt>int <var>i_has</var></dt>
    *   <dd>The number of visits the client has already attended.</dd>
    *   <dt>bool <var>is_event</var></dt>
@@ -417,6 +433,16 @@ function Wl_Event_Book_EventView_ElementModel()
   this.dt_start = undefined;
 
   /**
+   * Datetime of the session.
+   * Is not `null` only if we need to get information for an event with a specific class period and datetime.
+   * If this is `null`, then the {@link Wl_Event_Book_EventView_ElementModel.k_class_period} should be `null` too.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.dtu_session = null;
+
+  /**
    * Whether event will be hidden in the White Label mobile application.
    * <tt>true</tt> means that event will not be displayed, <tt>false</tt> otherwise.
    *
@@ -443,7 +469,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * Image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * In case this value is not specified, the returned image will have the default thumbnail size.
    *
    * @get get
    * @type {number}
@@ -452,7 +478,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * Image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * In case this value is not specified, the returned image will have the default thumbnail size.
    *
    * @get get
    * @type {number}
@@ -477,7 +503,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * Staff image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * In case this value is not specified, the returned image will have the default thumbnail size.
    *
    * @get get
    * @type {number}
@@ -486,7 +512,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * Staff image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * In case this value is not specified, the returned image will have the default thumbnail size.
    *
    * @get get
    * @type {number}
@@ -513,7 +539,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_age_restrict = false;
 
   /**
-   * `true` if the event availability was checked; `false` if the event has too many sessions and calculating
+   * `true` if the event availability was checked; `false` if the event has too many sessions, and calculating
    *  the availability of each one takes a lot of time.
    *
    * @get result
@@ -547,6 +573,15 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_full = undefined;
 
   /**
+   * `true` if the selected session has already started and do not available to book.
+   * `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_past = false;
+
+  /**
    * `true` if the event can be paid with a Purchase Option only.
    * `false` if full event purchases or single session purchases are permitted.
    *
@@ -557,8 +592,10 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * `true` if clients, when they book event, which has been started, can pay only for the sessions in the future.
-   * `false` if clients, when they book event, has to pay for the entire event and number of left in the future sessions
+   * `false` if clients, when they book event, have to pay for the entire event and the number of lefts in the future sessions
    * does not matter.
+   *
+   * Copy of {@link \RsClassSql}.<tt>is_prorate</tt>.
    *
    * @get result
    * @type {boolean}
@@ -583,7 +620,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_single_session_buy = undefined;
 
   /**
-   * <tt>true</tt> -if event is virtual; <tt>false</tt> - otherwise.
+   * <tt>true</tt> if event is virtual; <tt>false</tt> - otherwise.
    *
    * @get result
    * @type {boolean}
@@ -599,7 +636,8 @@ function Wl_Event_Book_EventView_ElementModel()
   this.k_book_class_period = undefined;
 
   /**
-   * Key of the business that belongs requested event(s).
+   * Key of a business.
+   * Primary key in {@link \RsBusinessSql} table to that belongs requested event(s).
    *
    * @get get
    * @type {?string}
@@ -607,8 +645,19 @@ function Wl_Event_Book_EventView_ElementModel()
   this.k_business = null;
 
   /**
+   * Key of a class period to show information for.
+   *
+   * Is not `null` only if we need to get information for an event with a specific class period and datetime.
+   * If this is `null`, then the {@link Wl_Event_Book_EventView_ElementModel.dtu_session} should be `null` too.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_class_period = null;
+
+  /**
    * The event key.
-   * You can specify {@link Wl_Event_Book_EventView_ElementModel.s_event} instead to get information for a bulk of events.
+   * You can specify {@link Wl_Event_Book_EventView_ElementModel.s_event} instead to get information for a large number of events.
    *
    * @get get
    * @type {string}
@@ -632,7 +681,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.m_price_total = undefined;
 
   /**
-   * Price of the full event, should be used as full price while {@link Wl_Event_Book_EventView_ElementModel.dt_early} is actual.
+   * Price of the full event should be used as full price while {@link Wl_Event_Book_EventView_ElementModel.dt_early} is actual.
    *
    * @get result
    * @type {?string}
@@ -650,7 +699,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * A list of event keys serialized with JSON.
-   * Specify instead of {@link Wl_Event_Book_EventView_ElementModel.k_event} to get information for a bulk of events.
+   * Specify instead of {@link Wl_Event_Book_EventView_ElementModel.k_event} to get information for a large number of events.
    *
    * @get get
    * @type {string}
@@ -717,13 +766,13 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventView_ElementModel);
  */
 Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_session_remain": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
+  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_timezone_info": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"dtu_session": {"get": {"get": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_session_remain": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Event_Book_EventView_ElementModel.instanceGet
- * @param {string} k_event The event key. You can specify {@link Wl_Event_Book_EventView_ElementModel.s_event} instead to get information for a bulk of events.
+ * @param {string} k_event The event key. You can specify {@link Wl_Event_Book_EventView_ElementModel.s_event} instead to get information for a large number of events.
  * @param {string} uid The user key.
  * @returns {Wl_Event_Book_EventView_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
