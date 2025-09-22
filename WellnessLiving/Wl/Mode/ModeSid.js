@@ -1,7 +1,7 @@
 /**
  * The source of visit.
  *
- * Last used ID: 16.
+ * Last used ID: 29.
  */
 function Wl_Mode_ModeSid()
 {
@@ -9,21 +9,91 @@ function Wl_Mode_ModeSid()
 }
 
 /**
- * Visit has been created by ClassPass.
+ * Action made via Api Endpoint. Default for leads created via API, unless overridden.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.API = 28;
+
+/**
+ * Registered through <tt>Azure</tt>.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.AZURE = 21;
+
+/**
+ * Lead generated via the AI agent.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.CAASI_AI = 29;
+
+/**
+ * Visit has been created by <tt>CENTRED</tt>.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.CENTRED = 23;
+
+/**
+ * Visit has been created by <tt>ClassPass</tt>.
  *
  * @type {number}
  */
 Wl_Mode_ModeSid.CLASSPASS_BOOKING = 8;
 
 /**
- * Visit has been crated by Google Booking Service.
+ * Debt paid via collections.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.COLLECTIONS = 22;
+
+/**
+ * Debt paid via collections.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.COLLECTIONS_FUTURE = 26;
+
+/**
+ * Action from Concerto.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.CONCERTO = 27;
+
+/**
+ * Action made via email.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.EMAIL = 18;
+
+/**
+ * Indicating that the source is Facebook.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.FACEBOOK = 20;
+
+/**
+ * Indicating that the source is Google.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.GOOGLE = 19;
+
+/**
+ * Visit has been created by Google Booking Service.
  *
  * @type {number}
  */
 Wl_Mode_ModeSid.GOOGLE_BOOKING = 7;
 
 /**
- * Visit has been crated by <tt>GymPass</tt>.
+ * Visit has been created by <tt>GymPass</tt>.
  *
  * @type {number}
  */
@@ -46,11 +116,25 @@ Wl_Mode_ModeSid.IMPORT = 5;
 Wl_Mode_ModeSid.MICROSITE = 12;
 
 /**
+ * Indicating that the source is Microsoft.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.MICROSOFT = 24;
+
+/**
  * Client booked session on My Presence Site.
  *
  * @type {number}
  */
 Wl_Mode_ModeSid.MY_PRESENCE_SITE = 13;
+
+/**
+ * Action made via SMS.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.SMS = 17;
 
 /**
  * Staff booked session from spa backend.
@@ -114,3 +198,10 @@ Wl_Mode_ModeSid.WEB_FRONTEND = 1;
  * @type {number}
  */
 Wl_Mode_ModeSid.WIDGET = 11;
+
+/**
+ * Action from Zapier.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.ZAPIER = 25;
