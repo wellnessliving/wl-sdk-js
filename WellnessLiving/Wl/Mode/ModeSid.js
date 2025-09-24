@@ -16,11 +16,6 @@ function Wl_Mode_ModeSid()
 Wl_Mode_ModeSid.CLASSPASS_BOOKING = 8;
 
 /**
- * Action from Concerto.
- */
-Wl_Mode_ModeSid.CONCERTO = 27;
-
-/**
  * Visit has been crated by Google Booking Service.
  *
  * @type {number}
