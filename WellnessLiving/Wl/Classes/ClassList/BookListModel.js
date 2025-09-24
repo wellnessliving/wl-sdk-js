@@ -1,5 +1,5 @@
 /**
- * The endpoint to get all the classes for a location.
+ * An endpoint to get all the classes for a location.
  *
  * This model is generated automatically based on API.
  *
@@ -13,45 +13,77 @@ function Wl_Classes_ClassList_BookListModel()
   /**
    * @typedef {{}} Wl_Classes_ClassList_BookListModel_a_class
    * @property {{}} a_class_tab The list of tab keys for the class.
-   * @property {string} dt_class_book The book date of an event in UTC date/time format. Can be empty string if user cannot book the event.
-   * @property {boolean} is_active <tt>true</tt> if the class is active; <tt>false</tt> otherwise.
-   * @property {boolean} is_event <tt>true</tt> for events; <tt>false</tt> for classes.
-   * @property {*} k_class The class key. The primary key in {@link \RsClassSql} table.
-   * @property {*} k_enrollment_block The enrollment block key. The primary key in {@link \RsEnrollmentBlockSql} table.
+   * @property {string[]} a_login_type List of login types for current class.
+   * @property {string[]} a_member_group List of member groups for current class.
+   * @property {string[]} a_url_book The list of URL to book this class.
+   * @property {string} dtu_book_date The book date of an event in UTC date/time format. Can be empty string if user cannot book the event.
+   * @property {number} i_capacity Class capacity.
+   * @property {number} id_bookable Bookable type ID. One of {@link Wl_Service_BookableSid} constants.
+   * @property {boolean} is_active This will be `true` if the class is active. Otherwise, this will be `false`.
+   * @property {boolean} is_event This will be `true` for events. Otherwise, this will be `false` for classes.
+   * @property {boolean} is_online_private `true` means to show class only for clients who can book online,
+   * `false` means to show class for all clients.
+   * @property {*} k_class The class key.
+   * @property {*} k_enrollment_block The enrollment block key.
    * @property {string} m_price_total The total price for an event.
-   * @property {*} text_description The description of the class.
-   * @property {*} text_title The name of the class.
+   * @property {*} text_description The class description.
+   * @property {*} text_title The class name.
    */
 
   /**
-   * A class list. Every element has the following structure:
+   * The class list. Every element has the following structure:
    * <dl>
    *   <dt>array <var>a_class_tab</var></dt>
    *   <dd>The list of tab keys for the class.</dd>
    *
-   *   <dt>string <var>dt_class_book</var></dt>
+   *   <dt>string[] <var>a_login_type</var></dt>
+   *   <dd>
+   *     List of login types for current class.
+   *   </dd>
+   *
+   *   <dt>string[] <var>a_member_group</var></dt>
+   *   <dd>
+   *     List of member groups for current class.
+   *   </dd>
+   *
+   *   <dt>string[] <var>a_url_book</var></dt>
+   *   <dd>The list of URL to book this class.</dd>
+   *
+   *   <dt>string <var>dtu_book_date</var></dt>
    *   <dd>The book date of an event in UTC date/time format. Can be empty string if user cannot book the event.</dd>
    *
+   *   <dt>int <var>i_capacity</var></dt>
+   *   <dd>Class capacity.</dd>
+   *
+   *   <dt>int <var>id_bookable</var></dt>
+   *   <dd>Bookable type ID. One of {@link Wl_Service_BookableSid} constants.</dd>
+   *
    *   <dt>bool <var>is_active</var></dt>
-   *   <dd><tt>true</tt> if the class is active; <tt>false</tt> otherwise.</dd>
+   *   <dd>This will be `true` if the class is active. Otherwise, this will be `false`.</dd>
    *
    *   <dt>bool <var>is_event</var></dt>
-   *   <dd><tt>true</tt> for events; <tt>false</tt> for classes.</dd>
+   *   <dd>This will be `true` for events. Otherwise, this will be `false` for classes.</dd>
+   *
+   *   <dt>bool <var>is_online_private</var></dt>
+   *   <dd>
+   *     `true` means to show class only for clients who can book online,
+   *     `false` means to show class for all clients.
+   *   </dd>
    *
    *   <dt>sting <var>k_class</var></dt>
-   *   <dd>The class key. The primary key in {@link \RsClassSql} table.</dd>
+   *   <dd>The class key.</dd>
    *
    *   <dt>sting <var>k_enrollment_block</var></dt>
-   *   <dd>The enrollment block key. The primary key in {@link \RsEnrollmentBlockSql} table.</dd>
+   *   <dd>The enrollment block key.</dd>
    *
    *   <dt>string <var>m_price_total</var></dt>
    *   <dd>The total price for an event.</dd>
    *
    *   <dt>sting <var>text_description</var></dt>
-   *   <dd>The description of the class.</dd>
+   *   <dd>The class description.</dd>
    *
    *   <dt>sting <var>text_title</var></dt>
-   *   <dd>The name of the class.</dd>
+   *   <dd>The class name.</dd>
    * </dl>
    *
    * @get result
@@ -60,8 +92,8 @@ function Wl_Classes_ClassList_BookListModel()
   this.a_class = undefined;
 
   /**
-   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The image height in pixels. Specify this value if you need the image to be returned in a specific size.
+   * If this value isn't specified, the returned image will have default thumbnail size.
    *
    * @get get
    * @type {number}
@@ -69,8 +101,8 @@ function Wl_Classes_ClassList_BookListModel()
   this.i_image_height = 0;
 
   /**
-   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The image width in pixels. Specify this value if you need the image to be returned in a specific size.
+   * If this value isn't specified, the returned image will have default thumbnail size.
    *
    * @get get
    * @type {number}
