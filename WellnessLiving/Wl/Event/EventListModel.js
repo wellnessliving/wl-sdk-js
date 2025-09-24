@@ -174,6 +174,8 @@ function Wl_Event_EventListModel()
    *   <dd>`true` if the event is open to be booked, `false` if the event is not.</dd>
    *   <dt>bool <var>is_prorate</var></dt>
    *   <dd>`true` if the event is prorated, `false` if the event is not.</dd>
+   *   <dt>bool <var>is_single_buy</var></dt>
+   *   <dd>`true` if the event sessions can be paid with single session, `false` single sessions disabled.</dd>
    *   <dt>bool <var>is_virtual</var></dt>
    *   <dd>`true` if the event is only held virtually, `false` if the event is not.</dd>
    *   <dt>string <var>k_class</var></dt>
@@ -248,9 +250,9 @@ function Wl_Event_EventListModel()
    * <tt>null</tt> if the range has no end date.
    *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.dl_end = undefined;
+  this.dl_end = null;
 
   /**
    * The start date of the range from which a list of events should be retrieved.
@@ -258,9 +260,9 @@ function Wl_Event_EventListModel()
    * <tt>null</tt> if the range has no start date.
    *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.dl_start = undefined;
+  this.dl_start = null;
 
   /**
    * Defines how the event availability flag filter should be applied.
@@ -282,7 +284,7 @@ function Wl_Event_EventListModel()
    * @get get
    * @type {boolean}
    */
-  this.is_backend = undefined;
+  this.is_backend = false;
 
   /**
    * Model cache reset flag.
@@ -320,15 +322,16 @@ function Wl_Event_EventListModel()
    * @put get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "0";
 
   /**
    * The event class key to retrieve a list of all event sessions of a specific class.
+   * `null` to retrieve a list of event sessions of all classes.
    *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.k_class = undefined;
+  this.k_class = null;
 
   /**
    * The class tab key to retrieve a list of event sessions from a specific tab only.
@@ -341,17 +344,18 @@ function Wl_Event_EventListModel()
    * @get get
    * @type {string}
    */
-  this.k_class_tab = undefined;
+  this.k_class_tab = "0";
 
   /**
    * The event location key to retrieve a list of all event sessions in a specific location.
    *
    * Required if {@link Wl_Event_EventListModel.k_business} isn't specified.
+   * `null` if you need to retrieve a list of event sessions in all locations of {@link Wl_Event_EventListModel.k_business}.
    *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.k_location = undefined;
+  this.k_location = null;
 
   /**
    * The skin key if an event list is used for widget mode.
@@ -361,7 +365,7 @@ function Wl_Event_EventListModel()
    * @get get
    * @type {string}
    */
-  this.k_skin = undefined;
+  this.k_skin = "0";
 
   /**
    * Search string to filter events by name.
@@ -377,9 +381,9 @@ function Wl_Event_EventListModel()
    *
    * @get get
    * @put get
-   * @type {string}
+   * @type {?string}
    */
-  this.uid = undefined;
+  this.uid = "0";
 
   this.changeInit();
 }
