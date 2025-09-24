@@ -1,8 +1,6 @@
 /**
  * An endpoint to get all the classes for a location.
  *
- * This model is generated automatically based on API.
- *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
