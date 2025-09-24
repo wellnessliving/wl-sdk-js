@@ -21,11 +21,11 @@ function Wl_Classes_ClassList_BookListModel()
    * @property {boolean} is_event This will be `true` for events. Otherwise, this will be `false` for classes.
    * @property {boolean} is_online_private `true` means to show class only for clients who can book online,
    * `false` means to show class for all clients.
-   * @property {*} k_class The class key.
-   * @property {*} k_enrollment_block The enrollment block key.
+   * @property {string} k_class The class key.
+   * @property {string} k_enrollment_block The enrollment block key.
    * @property {string} m_price_total The total price for an event.
-   * @property {*} text_description The class description.
-   * @property {*} text_title The class name.
+   * @property {string} text_description The class description.
+   * @property {string} text_title The class name.
    */
 
   /**
@@ -68,19 +68,19 @@ function Wl_Classes_ClassList_BookListModel()
    *     `false` means to show class for all clients.
    *   </dd>
    *
-   *   <dt>sting <var>k_class</var></dt>
+   *   <dt>string <var>k_class</var></dt>
    *   <dd>The class key.</dd>
    *
-   *   <dt>sting <var>k_enrollment_block</var></dt>
+   *   <dt>string <var>k_enrollment_block</var></dt>
    *   <dd>The enrollment block key.</dd>
    *
    *   <dt>string <var>m_price_total</var></dt>
    *   <dd>The total price for an event.</dd>
    *
-   *   <dt>sting <var>text_description</var></dt>
+   *   <dt>string <var>text_description</var></dt>
    *   <dd>The class description.</dd>
    *
-   *   <dt>sting <var>text_title</var></dt>
+   *   <dt>string <var>text_title</var></dt>
    *   <dd>The class name.</dd>
    * </dl>
    *
