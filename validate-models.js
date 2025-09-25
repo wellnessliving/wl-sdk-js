@@ -47,8 +47,8 @@ function checkModel(filePath) {
   const classMatch = content.match(/function\s+([A-Za-z0-9_]+)\s*\(/);
   const className = classMatch ? classMatch[1] : null;
 
-  if (!className) {
-    errors.push('❌ Class name not found (pattern: function ClassName())');
+  if (!className || !className.endsWith('Model')) {
+    errors.push('❌ Class name not found (pattern: function ClassNameModel())');
     return errors;
   }
 

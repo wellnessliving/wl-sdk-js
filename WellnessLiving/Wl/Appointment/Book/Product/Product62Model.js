@@ -7,7 +7,7 @@
  * @constructor
  * @see Wl\Appointment\Book\Product\Product62Api
  */
-function Wl_Appointment_Book_Product_Product62ModelAbstract()
+function Wl_Appointment_Book_Product_Product62Model()
 {
   WlSdk_ModelAbstract.apply(this);
 
@@ -52,12 +52,12 @@ function Wl_Appointment_Book_Product_Product62ModelAbstract()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Product_Product62ModelAbstract);
+WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Product_Product62Model);
 
 /**
  * @inheritDoc
  */
-Wl_Appointment_Book_Product_Product62ModelAbstract.prototype.config=function()
+Wl_Appointment_Book_Product_Product62Model.prototype.config=function()
 {
   return {"a_field": {"a_product": {"get": {"result": true}},"k_service": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
