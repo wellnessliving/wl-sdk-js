@@ -69,6 +69,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @property {string[]} a_image The class image. Empty array if there is no image.
    * @property {string[]} a_search_tag Tags associated with an individual class.
    * @property {string[]} a_staff The list of staff keys for the staff member conducting the session.
+   * @property {string[]} a_staff_uid The list of staff user keys for the staff member conducting the session.
    * @property {string[]} a_virtual_location The list of virtual locations keys. Each value is a location key.
    * @property {string} dt_date The date/time of the session start in UTC.
    * @property {string} dt_time The time of the session start in the local time zone.
@@ -120,6 +121,12 @@ function Wl_Schedule_ClassList_ClassListModel()
    *   </dt>
    *   <dd>
    *     The list of staff keys for the staff member conducting the session.
+   *   </dd>
+   *   <dt>
+   *     string[] <var>a_staff_uid</var>
+   *   </dt>
+   *   <dd>
+   *     The list of staff user keys for the staff member conducting the session.
    *   </dd>
    *   <dt>
    *     string[] <var>a_virtual_location</var>
@@ -367,10 +374,20 @@ function Wl_Schedule_ClassList_ClassListModel()
    * The list of staff members to filter.
    * A comma seperated list of staff keys.
    *
+   * @deprecated Use {@link Wl_Schedule_ClassList_ClassListModel.s_staff_uid} instead.
    * @get get
    * @type {string}
    */
   this.s_staff = "";
+
+  /**
+   * The list of staff user keys to filter.
+   * A comma seperated list of staff user keys.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.s_staff_uid = "";
 
   /**
    * If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
@@ -414,7 +431,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
  */
 Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 {
-  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_class": {"get": {"get": true}},"a_day": {"get": {"get": true}},"a_location": {"get": {"get": true}},"a_session": {"get": {"result": true}},"a_time": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_class": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_calendar": {"get": {"result": true}},"a_class": {"get": {"get": true}},"a_day": {"get": {"get": true}},"a_location": {"get": {"get": true}},"a_session": {"get": {"result": true}},"a_time": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_end": {"get": {"get": true}},"is_response_short": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_timezone_different": {"get": {"result": true}},"is_virtual": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"s_staff": {"get": {"get": true}},"s_staff_uid": {"get": {"get": true}},"show_cancel": {"get": {"get": true}},"show_class": {"get": {"get": true}},"show_event": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
