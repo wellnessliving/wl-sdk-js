@@ -15,8 +15,8 @@ function Wl_Appointment_Book_Service_CategoryModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Service_CategoryModel_a_category
-   * @property {boolean} hide_application If <tt>true</tt>, all services are hidden in this category for the White Label mobile app.
-   * Otherwise, this will be <tt>false</tt>.
+   * @property {boolean} hide_application If `true`, all services are hidden in this category for the White Label mobile app.
+   * Otherwise, this will be `false`.
    * @property {boolean} i_sort The sort key for the category used to sort categories on category list page.
    * @property {string} k_service_category The service category key.
    * @property {string} s_title The service category title.
@@ -29,7 +29,7 @@ function Wl_Appointment_Book_Service_CategoryModel()
    *     bool <var>hide_application</var>
    *   </dt>
    *   <dd>
-   *     If <tt>true</tt>, all services are hidden in this category for the White Label mobile app. Otherwise, this will be <tt>false</tt>.
+   *     If `true`, all services are hidden in this category for the White Label mobile app. Otherwise, this will be `false`.
    *   </dd>
    *   <dt>
    *     bool <var>i_sort</var>
@@ -78,12 +78,21 @@ function Wl_Appointment_Book_Service_CategoryModel()
   this.is_backend = false;
 
   /**
-   * If <tt>true</tt>, if client has a flag. Otherwise, this will be <tt>false</tt>.
+   * If `true`, if client has a flag. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
    */
   this.is_client_flag = undefined;
+
+  /**
+   * Whether a flagged client is allowed to retrieve categories.
+   * `true` - allowed, `false` - not allowed.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_flag_ignore = false;
 
   /**
    * `true` - search in all tabs.
@@ -140,7 +149,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Service_CategoryModel);
  */
 Wl_Appointment_Book_Service_CategoryModel.prototype.config=function()
 {
-  return {"a_field": {"a_category": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true}},"is_client_flag": {"get": {"result": true}},"is_tab_all": {"get": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_category": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true}},"is_client_flag": {"get": {"result": true}},"is_flag_ignore": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
