@@ -232,6 +232,16 @@ function Wl_Schedule_ClassView_ClassViewModel()
   this.a_staff = null;
 
   /**
+   * List of other locations where virtual class can be booked. Each value is a key of location.
+   * Empty array if class isn't virtual or can't be booked in other locations. `null` if data isn't loaded yet.
+   *
+   * @get result
+   * @post result
+   * @type {?string[]}
+   */
+  this.a_virtual_location = null;
+
+  /**
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_visits_required
    * @property {number} i_count The number of visits.
    * @property {boolean} is_event This will be `true` if this is an event. Otherwise, this will be `false` if this is a class.
@@ -305,7 +315,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassView_ClassViewModel);
  */
 Wl_Schedule_ClassView_ClassViewModel.prototype.config=function()
 {
-  return {"a_field": {"a_asset": {"get": {"result": true},"post": {"result": true}},"a_class": {"get": {"result": true},"post": {"result": true}},"a_location": {"get": {"result": true},"post": {"result": true}},"a_session_request": {"get": {"get": true},"post": {"get": true}},"a_session_result": {"get": {"result": true},"post": {"result": true}},"a_staff": {"get": {"result": true},"post": {"result": true}},"a_visits_required": {"get": {"result": true}},"dt_date": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"s_session_request": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_asset": {"get": {"result": true},"post": {"result": true}},"a_class": {"get": {"result": true},"post": {"result": true}},"a_location": {"get": {"result": true},"post": {"result": true}},"a_session_request": {"get": {"get": true},"post": {"get": true}},"a_session_result": {"get": {"result": true},"post": {"result": true}},"a_staff": {"get": {"result": true},"post": {"result": true}},"a_virtual_location": {"get": {"result": true},"post": {"result": true}},"a_visits_required": {"get": {"result": true}},"dt_date": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"s_session_request": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
