@@ -1,5 +1,5 @@
 /**
- * An endpoint that retrieves information about Purchase Options that can be used to pay for an appointment
+ * Retrieves information about Purchase Options that can be used to pay for an appointment.
  *
  * This model is generated automatically based on API.
  *
@@ -23,7 +23,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    */
 
   /**
-   * Data about login prize which can be used to pay for service.
+   * Data about the login prize which can be used to pay for service.
    * <dl>
    *   <dt>int <var>i_count</var></dt><dd>Login prize remaining quantity.</dd>
    *   <dt>string <var>k_login_prize</var></dt><dd>Key of login prize.</dd>
@@ -42,7 +42,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * @property {number} i_remain The number of remaining visits for the restriction period.
    * @property {number} i_use The usage count of the Purchase Option.
    * @property {number} i_visit_past The count of attended sessions before the last renewal.
-   * This will be `0` if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
+   * This will be '0' if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
    * @property {string} text_restriction The description of restriction period. For example, "this week" or "for a four-day period".
    */
   /**
@@ -94,14 +94,17 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *   <dt>int <tt>i_visit_past</tt></dt>
    *   <dd>
    *     The count of attended sessions before the last renewal.
-   *     This will be `0` if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
+   *     This will be '0' if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
    *   </dd>
    *   <dt>string <tt>text_restriction</tt></dt>
    *   <dd>The description of restriction period. For example, "this week" or "for a four-day period".</dd>
    * </dl>
    * @property {number} i_limit The count of visits that the Purchase Option allows the client to make.
    * @property {?number} i_limit_duration The maximum number of minutes that current Purchase Option can be used for.
-   * @property {number} id_program The program ID for promotions. One of the {@link RsProgramSid} constants.
+   * @property {number} i_promotion_priority Priority of this promotion. Result of {@link Wl_Appointment_Book_Purchase_PromotionPrioritySid.priorityGet()} method.
+   * @property {number} id_program The program ID for promotions. One of the {@link Wl_WlProgramSid} constants.
+   * @property {boolean} is_share `true` if this purchase option is shared from another user.
+   * `false` if this purchase option belongs to the user for whom the request is made.
    * @property {string} k_login_promotion The Purchase Option login key.
    * @property {string} s_class_include The list of services provided by this Purchase Option.
    * @property {string} s_description The Purchase Option description.
@@ -111,7 +114,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    */
 
   /**
-   * A list of the client`s login promotions that can be applied to a given service.
+   * A list of the client's login promotions that can be applied to a given service.
    * <dl>
    *   <dt>array <var>a_login_promotion_info</var></dt>
    *   <dd>
@@ -154,7 +157,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *       <dt>int <var>i_visit_past</var></dt>
    *       <dd>
    *         The count of attended sessions before the last renewal.
-   *         This will be `0` if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
+   *         This will be '0' if no sessions before the last renewal or if the Purchase Option doesn't auto-renew.
    *       </dd>
    *       <dt>string <var>text_restriction</var></dt>
    *       <dd>The description of restriction period. For example, "this week" or "for a four-day period".</dd>
@@ -164,8 +167,15 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *   <dd>The count of visits that the Purchase Option allows the client to make.</dd>
    *   <dt>int|null <var>i_limit_duration</var></dt>
    *   <dd>The maximum number of minutes that current Purchase Option can be used for.</dd>
+   *   <dt>int <var>i_promotion_priority</var></dt>
+   *   <dd>Priority of this promotion. Result of {@link Wl_Appointment_Book_Purchase_PromotionPrioritySid.priorityGet()} method.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID for promotions. One of the {@link RsProgramSid} constants.</dd>
+   *   <dd>The program ID for promotions. One of the {@link Wl_WlProgramSid} constants.</dd>
+   *   <dt>bool <var>is_share</var></dt>
+   *   <dd>
+   *     `true` if this purchase option is shared from another user.
+   *     `false` if this purchase option belongs to the user for whom the request is made.
+   *   </dd>
    *   <dt>string <var>k_login_promotion</var></dt>
    *   <dd>The Purchase Option login key.</dd>
    *   <dt>string <var>s_class_include</var></dt>
@@ -186,21 +196,116 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.a_login_promotion = undefined;
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase_a_image_a_payment
+   * @property {string} m_discount The amount of the whole discount of one purchase item.
+   * @property {string} m_discount_login The discount amount for the client type of one purchase item.
+   */
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase_a_image
+   * @property {number} i_height Actual height of thumbnail image.
+   * @property {number} i_height_src Height of original image.
+   * @property {number} i_rotate Angle on which image was rotated compared to the original.
+   * @property {number} i_width Actual width of thumbnail image.
+   * @property {number} i_width_src Width of original image.
+   * @property {boolean} is-resize Whether thumbnail is a resized variant of original image. If set to <tt>false</tt>
+   * value returned in <tt>url-thumbnail</tt> equals value in <tt>url-view</tt>.
+   * @property {string} url-view Url to original image in file storage.
+   * @property {string} url-thumbnail Url to resized and rotated image in file storage. If size of original image is larger then specified by
+   * arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise link to
+   * original image is returned here.
+   */
+  /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase
-   * @property {{}} a_image Logo of the purchase option. Result of the {@link RsPromotionImageLogo::image()} method.
-   * @property {string[]} a_visit_limit List of calendar restrictions of the promotion, for example, 4 per week.
+   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase_a_image} a_image Information describing the logo of the purchase option. This value can be false if there is no logo described.
+   * Image information will have the following fields:
+   * <dl>
+   *   <dt>
+   *     int <tt>i_height</tt>
+   *   </dt>
+   *   <dd>
+   *     Actual height of thumbnail image.
+   *   </dd>
+   *   <dt>
+   *     int <tt>i_height_src</tt>
+   *   </dt>
+   *   <dd>
+   *     Height of original image.
+   *   </dd>
+   *   <dt>
+   *     int <tt>i_rotate</tt>
+   *   </dt>
+   *   <dd>
+   *     Angle on which image was rotated compared to the original.
+   *   </dd>
+   *   <dt>
+   *     int <tt>i_width</tt>
+   *   </dt>
+   *   <dd>
+   *     Actual width of thumbnail image.
+   *   </dd>
+   *   <dt>
+   *     int <tt>i_width_src</tt>
+   *   </dt>
+   *   <dd>
+   *     Width of original image.
+   *   </dd>
+   *   <dt>
+   *     bool <tt>is-resize</tt>
+   *   </dt>
+   *   <dd>
+   *     Whether thumbnail is a resized variant of original image. If set to <tt>false</tt>
+   *     value returned in <tt>url-thumbnail</tt> equals value in <tt>url-view</tt>.
+   *   </dd>
+   *   <dt>
+   *     string <tt>url-view</tt>
+   *   </dt>
+   *   <dd>
+   *     Url to original image in file storage.
+   *   </dd>
+   *   <dt>
+   *     string <tt>url-thumbnail</tt>
+   *   </dt>
+   *   <dd>
+   *     Url to resized and rotated image in file storage. If size of original image is larger then specified by
+   *     arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise link to
+   *     original image is returned here.
+   *   </dd>
+   * </dl>
+   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase_a_image_a_payment} a_payment The set of calculated values for payment:
+   * <dl>
+   *   <dt>
+   *     string <tt>m_discount</tt>
+   *   </dt>
+   *   <dd>
+   *     The amount of the whole discount of one purchase item.
+   *   </dd>
+   *   <dt>
+   *     string <tt>m_discount_login</tt>
+   *   </dt>
+   *   <dd>
+   *     The discount amount for the client type of one purchase item.
+   *   </dd>
+   * </dl>
+   * @property {string[]} a_visit_limit A list of calendar restrictions of the Purchase Option in a human readable format, for example: '4 per week'.
    * @property {string} dt_expire Date, when promotion expires.
    * @property {string} dt_start Date, when promotion starts.
+   * @property {string} f_price The price of the Purchase Option.
    * @property {number} i Order number of the purchase option in the list.
    * @property {number} i_limit Count of visits that purchase option allows to make.
    * @property {?number} i_limit_duration Maximum number of minutes that current promotion can be used.
    * @property {number} i_payment_period Count of calendar periods (weeks, months, years) between payment for membership.
    * @property {number} id_duration Duration ID. Constant from {@link ADurationSid}.
-   * @property {number} id_program Program ID for promotions from {@link RsProgramSid}.
-   * @property {number} id_program_type Program type ID. Constant from {@link RsProgramTypeSid}.
-   * @property {number} id_purchase_item ID of the purchase item from {@link RsPurchaseItemSid}
+   * @property {number} id_program Program ID for promotions from {@link Wl_WlProgramSid}.
+   * @property {number} id_program_type Program type ID. Constant from {@link Wl_WlProgramTypeSid}.
+   * @property {number} id_promotion_price How the Purchase Item price is specified. One of the {@link Wl_WlProgramTypeSid} constants.
+   * @property {number} id_purchase_item ID of the purchase item from {@link Wl_Purchase_Item_ItemSid}
+   * @property {boolean} is_contract This will be `true` if the Purchase Option is a contract. It will `false` otherwise.
    * @property {boolean} is_description `true` if purchase option has description.
    * @property {boolean} is_introductory `true` if promotion is introductory offer, `false` otherwise.
+   * @property {boolean} is_renew This will be `true` if the Purchase Option will auto-renew. It will be `false` otherwise.
+   * @property {boolean} is_renew_check If `true` - the Purchase Option is renewable and the "auto-renew" option should be turned on by default.
+   *    `This will be `false` otherwise.
+   * @property {boolean} is_start This will be `true` if the Purchase Option has a duration that begins on purchase. It will be `false` otherwise.
    * @property {number} k_id Primary ID of the element in it's table.
    * @property {string} m_price_old Price of single session purchase before online discount. `null` if service does not have online discount.
    * Is set only if this purchase option is purchase of single visit.
@@ -220,7 +325,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * An array with information about available Purchase Options.
    * <dl>
    *   <dt>
-   *     array|bool <var>a_image</var>
+   *     array <var>a_image</var>
    *   </dt>
    *   <dd>
    *     Information describing the logo of the purchase option. This value can be false if there is no logo described.
@@ -357,25 +462,25 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     Program ID for promotions from {@link RsProgramSid}.
+   *     Program ID for promotions from {@link Wl_WlProgramSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_type</var>
    *   </dt>
    *   <dd>
-   *     Program type ID. Constant from {@link RsProgramTypeSid}.
+   *     Program type ID. Constant from {@link Wl_WlProgramTypeSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_promotion_price</var>
    *   </dt>
    *   <dd>
-   *     How the Purchase Item price is specified. One of the {@link RsProgramTypeSid} constants.
+   *     How the Purchase Item price is specified. One of the {@link Wl_WlProgramTypeSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     ID of the purchase item from {@link RsPurchaseItemSid}
+   *     ID of the purchase item from {@link Wl_Purchase_Item_ItemSid}
    *   </dd>
    *   <dt>
    *     bool <var>is_contract</var>
@@ -516,7 +621,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_service_a_purchase
-   * @property {number} id_purchase_item Purchase item ID. Constant from {@link RsPurchaseItemSid}.
+   * @property {number} id_purchase_item Purchase item ID. Constant from {@link Wl_Purchase_Item_ItemSid}.
    * @property {string} k_id Purchase item key.
    */
   /**
@@ -525,7 +630,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *    Should be set if a new purchase option is selected for this service.
    *    <dl>
    *  <dt>int <tt>id_purchase_item</tt></dt>
-   *  <dd>Purchase item ID. Constant from {@link RsPurchaseItemSid}.</dd>
+   *  <dd>Purchase item ID. Constant from {@link Wl_Purchase_Item_ItemSid}.</dd>
    *  <dt>string <tt>k_id</tt></dt>
    *  <dd>Purchase item key.</dd>
    *    </dl>
@@ -534,7 +639,13 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *    `null` if no login prize used to pay for this service.
    * @property {?string} k_login_promotion Login promotion key.
    *    Should be set if login promotion selected for this service.
-   * @property {string} k_service Service key from {@link \RsServiceSql}.
+   * @property {string} k_service Service key. See table {@link \RsServiceSql}.
+   * @property {string} k_timezone The timezone key for `dt_date` field.
+   *
+   *    Can be `null` if timezone is not selected.
+   *    If not selected, the default client timezone will be used {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   *
+   *    In any case, the timezone will be used if the business allows client timezones.
    */
 
   /**
@@ -554,7 +665,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *    Should be set if a new purchase option is selected for this service.
    *    <dl>
    *      <dt>int <var>id_purchase_item</var></dt>
-   *      <dd>Purchase item ID. Constant from {@link RsPurchaseItemSid}.</dd>
+   *      <dd>Purchase item ID. Constant from {@link Wl_Purchase_Item_ItemSid}.</dd>
    *      <dt>string <var>k_id</var></dt>
    *      <dd>Purchase item key.</dd>
    *    </dl>
@@ -572,7 +683,16 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *    Should be set if login promotion selected for this service.
    *  </dd>
    *  <dt>string <var>k_service</var></dt>
-   *  <dd>Service key from {@link \RsServiceSql}.</dd>
+   *  <dd>Service key. See table {@link \RsServiceSql}.</dd>
+   *  <dt>string <var>k_timezone</var></dt>
+   *  <dd>
+   *    The timezone key for `dt_date` field.
+   *
+   *    Can be `null` if timezone is not selected.
+   *    If not selected, the default client timezone will be used {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   *
+   *    In any case, the timezone will be used if the business allows client timezones.
+   *  </dd>
    * </dl>
    *
    * @get get
@@ -589,7 +709,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.a_session_pass = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -633,6 +753,14 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.i_width = 0;
 
   /**
+   * The mode type. One of the {@link Wl_Mode_ModeSid} constants.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.id_mode = 0;
+
+  /**
    * `true` - get all Purchase Options suitable for appointment.
    * `false` - get only Purchase Options available for the client.
    *
@@ -645,12 +773,12 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * Indicates if drop-in rate should be the default purchase option.
    *
    * @get result
-   * @var {boolean}
+   * @type {boolean}
    */
   this.is_single_default = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -673,9 +801,9 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * This will be `null` if the client doesn't have a suitable Purchase Option.
    *
    * @get get,result
-   * @type {string}
+   * @type {?string}
    */
-  this.k_login_promotion = undefined;
+  this.k_login_promotion = null;
 
   /**
    * Default promotion key.
@@ -704,9 +832,12 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.k_service = "0";
 
   /**
-   * Key of timezone.
+   * The timezone key for {@link Wl_Appointment_Book_Purchase_PurchaseModel.dt_date}.
    *
-   * `null` if not set then use default client timezone {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   * Can be `null` if timezone is not selected.
+   * If not selected, the default client timezone will be used {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   *
+   * In any case, the timezone will be used if the business allows client timezones.
    *
    * @get get
    * @type {?string}
@@ -722,7 +853,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.text_login_promotion = "";
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get
@@ -740,7 +871,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Purchase_PurchaseModel);
  */
 Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_reward_prize": {"get": {"result": true}},"a_service": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"i_height": {"get": {"get": true}},"i_width": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_single_default": {"get": {"result": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_promotion": {"get": {"get": true,"result": true}},"k_promotion_default": {"get": {"result": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"text_login_promotion": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_reward_prize": {"get": {"result": true}},"a_service": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"i_height": {"get": {"get": true}},"i_width": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_single_default": {"get": {"result": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_promotion": {"get": {"get": true,"result": true}},"k_promotion_default": {"get": {"result": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"text_login_promotion": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -752,8 +883,8 @@ Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
  * @param {string} k_resource The resource key.
  * @param {number} i_duration The asset booking duration.
  * @param {boolean} is_backend `true` - get all Purchase Options suitable for appointment. `false` - get only Purchase Options available for the client.
- * @param {string} uid User to get information for.
- * @param {?string} k_timezone Key of timezone. `null` if not set then use default client timezone {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+ * @param {string} uid The user key.
+ * @param {?string} k_timezone The timezone key for {@link Wl_Appointment_Book_Purchase_PurchaseModel.dt_date}. Can be `null` if timezone is not selected. If not selected, the default client timezone will be used {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}. In any case, the timezone will be used if the business allows client timezones.
  * @returns {Wl_Appointment_Book_Purchase_PurchaseModel}
- * @see WlSdk_ModelAbstract.instanceGet()
+ * @see Core_Spa_Model.instanceGet()
  */
