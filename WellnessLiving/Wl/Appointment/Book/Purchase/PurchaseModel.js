@@ -886,5 +886,5 @@ Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
  * @param {string} uid The user key.
  * @param {?string} k_timezone The timezone key for {@link Wl_Appointment_Book_Purchase_PurchaseModel.dt_date}. Can be `null` if timezone is not selected. If not selected, the default client timezone will be used {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}. In any case, the timezone will be used if the business allows client timezones.
  * @returns {Wl_Appointment_Book_Purchase_PurchaseModel}
- * @see Core_Spa_Model.instanceGet()
+ * @see WlSdk_ModelAbstract.instanceGet()
  */
