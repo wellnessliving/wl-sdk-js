@@ -140,7 +140,7 @@ function Wl_Visit_VisitStatusModel()
    * If the status of this parameter is out of date, the API call will refresh it.
    *
    * @post post,error
-   * @type {?string}
+   * @type {?number}
    */
   this.id_visit_from = null;
 
