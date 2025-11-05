@@ -111,6 +111,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * @property {string} s_duration The Purchase Option duration.
    * @property {string} s_title The Purchase Option name.
    * @property {string} text_package_item If this Purchase Option is a package, then this field contains a list of Purchase Options contained in the package.
+   * @property {string} uid_owner The user key of the owner of the promotion.
+   * Will be different from the user for whom the request is made if the promotion is shared.
    */
 
   /**
@@ -188,6 +190,11 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *   <dd>The Purchase Option name.</dd>
    *   <dt>string <var>text_package_item</var></dt>
    *   <dd>If this Purchase Option is a package, then this field contains a list of Purchase Options contained in the package.</dd>
+   *   <dt>string <var>uid_owner</var></dt>
+   *   <dd>
+   *     The user key of the owner of the promotion.
+   *     Will be different from the user for whom the request is made if the promotion is shared.
+   *   </dd>
    * </dl>
    *
    * @get result
