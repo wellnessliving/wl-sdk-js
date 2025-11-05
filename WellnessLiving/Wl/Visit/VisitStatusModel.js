@@ -16,6 +16,11 @@ function Wl_Visit_VisitStatusModel()
   this._s_key = "k_visit,k_business";
 
   /**
+   * @inheritDoc
+   */
+  this.ERROR_SILENT = true;
+
+  /**
    * An array of service resources.
    *
    * The key refers to the `k_resource_type`. See {@link \RsResourceTypeSql}.
@@ -25,9 +30,19 @@ function Wl_Visit_VisitStatusModel()
    * This will be empty if not set yet.
    *
    * @get result
-   * @type {*}
+   * @type {?{}[]}
    */
   this.a_resource = [];
+
+  /**
+   * @typedef {{}} Wl_Visit_VisitStatusModel_a_resource_alias
+   * @property {string} k_resource Resource primary key in {@link \RsResourceSql} table.
+   * @property {string} k_resource_type Resource type primary key in {@link \RsResourceTypeSql} table.
+   * @property {number} i_index Index of the resource on the layout.
+   * @property {number} i_quantity Quantity of the resource on the layout.
+   * @property {string} text_alias Resource's custom name (alias) on the layout.
+   * @property {string} text_title Resource's title.
+   */
 
   /**
    * An array of service resources.
@@ -51,7 +66,7 @@ function Wl_Visit_VisitStatusModel()
    * </dl>
    *
    * @get result
-   * @type {*}
+   * @type {?Wl_Visit_VisitStatusModel_a_resource_alias[]}
    */
   this.a_resource_alias = [];
 
@@ -125,9 +140,9 @@ function Wl_Visit_VisitStatusModel()
    * If the status of this parameter is out of date, the API call will refresh it.
    *
    * @post post,error
-   * @type {*}
+   * @type {?number}
    */
-  this.id_visit_from = undefined;
+  this.id_visit_from = null;
 
   /**
    * The staff decision to charge (or not charge) a penalty when a client meets late cancel/no-show requirements.
@@ -146,6 +161,50 @@ function Wl_Visit_VisitStatusModel()
    * @type {boolean}
    */
   this.is_event = false;
+
+  /**
+   * Whether or not to send email notification.
+   *
+   * `true` - email notification will be sent.
+   * `false` - email notification will not be sent.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_mail = false;
+
+  /**
+   * Whether or not to send push notification.
+   *
+   * `true` - push notification will be sent.
+   * `false` - push notification will not be sent.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_push = false;
+
+  /**
+   * Whether this visit is requested and requires staff confirmation.
+   *
+   * * `true` - visit is requested.
+   * * `false` - visit is confirmed or denied or this is a system request.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_request = false;
+
+  /**
+   * Whether or not to send sms notification.
+   *
+   * `true` - sms notification will be sent.
+   * `false` - sms notification will not be sent.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_sms = false;
 
   /**
    * The business key.
@@ -194,9 +253,9 @@ function Wl_Visit_VisitStatusModel()
    * If 'null', the visit isn't from an appointment.
    *
    * @get result
-   * @type {*}
+   * @type {?string}
    */
-  this.k_service = undefined;
+  this.k_service = null;
 
   /**
    * The key of the staff providing the appointment.
@@ -285,7 +344,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_VisitStatusModel);
  */
 Wl_Visit_VisitStatusModel.prototype.config=function()
 {
-  return {"a_field": {"a_resource": {"get": {"result": true}},"a_resource_alias": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date": {"get": {"result": true}},"dtl_date": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"result": true},"post": {"post": true}},"id_visit": {"get": {"result": true},"post": {"post": true}},"id_visit_from": {"post": {"post": true,"error": true}},"is_charge_fee": {"post": {"get": true}},"is_event": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_mail_pattern_live": {"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"s_calendar_file_content": {"get": {"result": true}},"text_abbr_timezone": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_reason": {"post": {"get": true}},"text_staff": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
+  return {"a_field": {"a_resource": {"get": {"result": true}},"a_resource_alias": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date": {"get": {"result": true}},"dtl_date": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"result": true},"post": {"post": true}},"id_visit": {"get": {"result": true},"post": {"post": true}},"id_visit_from": {"post": {"post": true,"error": true}},"is_charge_fee": {"post": {"get": true}},"is_event": {"get": {"result": true}},"is_mail": {"post": {"post": true}},"is_push": {"post": {"post": true}},"is_request": {"get": {"result": true}},"is_sms": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_mail_pattern_live": {"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"s_calendar_file_content": {"get": {"result": true}},"text_abbr_timezone": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_reason": {"post": {"get": true}},"text_staff": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
 };
 
 /**
@@ -294,5 +353,81 @@ Wl_Visit_VisitStatusModel.prototype.config=function()
  * @param {string} k_visit The visit key.
  * @param {string} k_business The business key.
  * @returns {Wl_Visit_VisitStatusModel}
- * @see WlSdk_ModelAbstract.instanceGet()
+ * @see Core_Spa_Model.instanceGet()
+ */
+
+/**
+ * @typedef Wl_Visit_VisitStatusModel_GetResponse
+ * @type {object}
+ * @property {?{}[]} a_resource An array of service resources.
+ *
+ * The key refers to the `k_resource_type`. See {@link \RsResourceTypeSql}.
+ * The value is an array with the following key: `k_resource`. See {@link \RsResourceSql}.
+ * The array element contains a nested array with `i_index` and `i_quantity`. See {@link \RsResourceBusySql}.
+ *
+ * This will be empty if not set yet.
+ * @property {?Wl_Visit_VisitStatusModel_a_resource_alias[]} a_resource_alias An array of service resources.
+ *
+ * Contains an extended data set, as well as a different format than {@link Wl_Visit_VisitStatusModel.a_resource}.
+ *
+ * Each element contains the following set of data:
+ * <dl>
+ *  <dt>string <var>k_resource</var></dt>
+ *  <dd>Resource primary key in {@link \RsResourceSql} table.</dd>
+ *  <dt>string <var>k_resource_type</var></dt>
+ *  <dd>Resource type primary key in {@link \RsResourceTypeSql} table.</dd>
+ *  <dt>int <var>i_index</var></dt>
+ *  <dd>Index of the resource on the layout.</dd>
+ *  <dt>int <var>i_quantity</var></dt>
+ *  <dd>Quantity of the resource on the layout.</dd>
+ *  <dt>string <var>text_alias</var></dt>
+ *  <dd>Resource's custom name (alias) on the layout.</dd>
+ *  <dt>string <var>text_title</var></dt>
+ *  <dd>Resource's title.</dd>
+ * </dl>
+ * @property {string[]} a_staff The list of keys of staff members that conduct the class.
+ * @property {string} dt_date The visit date and time in UTC and in MySQL format.
+ * @property {string} dtl_date The visit date in the location's time zone and in MySQL format.
+ * @property {number} i_duration The service duration (in minutes).
+ * @property {number} i_wait_spot The client's place in a waiting list.
+ * @property {number} id_mode The source of the visit or the visit change.
+ * One of the {@link Wl_Mode_ModeSid} constants.
+ * If you're unsure about the value to use, keep the default value.
+ * @property {string} id_visit The status of the visit.
+ * One of the {@link Wl_Visit_VisitSid} constants.
+ * @property {boolean} is_event Determines whether the visit is from an event.
+ * @property {boolean} is_request Whether this visit is requested and requires staff confirmation.
+ *
+ * * `true` - visit is requested.
+ * * `false` - visit is confirmed or denied or this is a system request.
+ * @property {string} k_class The class key.
+ * @property {string} k_class_period The class period key.
+ * @property {string} k_location The key of the location where visit provides.
+ * @property {?string} k_service The service key.
+ * If 'null', the visit isn't from an appointment.
+ * @property {?string} k_staff The key of the staff providing the appointment.
+ * If `null`, the visit isn't from an appointment (for example, the visit is from an asset).
+ * @property {string} s_calendar_file_content The .ics file for adding the service to a phone calendar.
+ * @property {string} text_abbr_timezone The text abbreviation of the time zone.
+ * @property {string} text_location The full address of the location for the visit (not the name of the location).
+ * @property {string} text_staff The full name of the staff member who conducts this visit.
+ * If there are several staff members conducting the visit, their names will all be listed and separated by commas.
+ * @property {string} text_title The service title.
+ */
+
+/**
+ * @function
+ * @name Wl_Visit_VisitStatusModel.get
+ * @returns {Promise<Wl_Visit_VisitStatusModel_GetResponse>} Response from this request
+ */
+
+/**
+ * @typedef Wl_Visit_VisitStatusModel_PostResponse
+ * @type {object}
+ */
+
+/**
+ * @function
+ * @name Wl_Visit_VisitStatusModel.post
+ * @returns {Promise<Wl_Visit_VisitStatusModel_PostResponse>} Response from this request
  */
