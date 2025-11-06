@@ -1,5 +1,5 @@
 /**
- * An endpoint that returns receipt data of certain purchase.
+ * Returns receipt data of certain purchase.
  *
  * This model is generated automatically based on API.
  *
@@ -43,7 +43,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_account_rest}
    */
-  this.a_account_rest = undefined;
+  this.a_account_rest = [];
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_business_a_logo
@@ -151,7 +151,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_business}
    */
-  this.a_business = undefined;
+  this.a_business = [];
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_card
@@ -186,7 +186,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_card}
    */
-  this.a_card = undefined;
+  this.a_card = [];
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_customer
@@ -228,7 +228,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_customer}
    */
-  this.a_customer = undefined;
+  this.a_customer = [];
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_pay_method
@@ -263,7 +263,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_pay_method}
    */
-  this.a_pay_method = undefined;
+  this.a_pay_method = [];
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_price
@@ -333,7 +333,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_price}
    */
-  this.a_price = undefined;
+  this.a_price = [];
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo
@@ -372,7 +372,14 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    *   </dd>
    * </dl>
    * @property {number} i_count The number of items in the purchase.
+   * @property {?number} id_program Program ID. One of {@link RsProgramSid} constants. Only applies to promotions.
+   * `null` if the purchase item is not a promotion.
+   * @property {number} id_purchase_item Purchase item ID. One of {@link RsPurchaseItemSid} constants.
+   * @property {number} id_sale Sale ID. One of {@link RsSaleSid} constants.
+   * @property {number} k_id The identifier of the item.
    * @property {string} k_purchase_item The key of the purchase item.
+   * @property {string} [k_shop_product] Product key, primary key in {@link \RsShopProductSql}. Set only if <tt>id_purchase_item</tt>
+   * is {@link RsPurchaseItemSid.PRODUCT}.
    * @property {string} m_price The price of the single item.
    * @property {string} m_price_total The price of all items.
    * @property {string} text_category The type of the item (for example, a pass or membership).
@@ -380,6 +387,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @property {string} text_info Additional information about the purchase item.
    * @property {string} text_title The name of the purchase item.
    * @property {string} text_description The description of the purchase item.
+   * @property {string} url_print The URL to print. Only available if the purchase item is a coupon (gift card).
    */
 
   /**
@@ -424,10 +432,42 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    *     The number of items in the purchase.
    *   </dd>
    *   <dt>
+   *     int|null <var>id_program</var>
+   *   </dt>
+   *   <dd>
+   *     Program ID. One of {@link RsProgramSid} constants. Only applies to promotions.
+   *     `null` if the purchase item is not a promotion.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_purchase_item</var>
+   *   </dt>
+   *   <dd>
+   *     Purchase item ID. One of {@link RsPurchaseItemSid} constants.
+   *   </dd>
+   *   <dt>
+   *     int <var>id_sale</var>
+   *   </dt>
+   *   <dd>
+   *     Sale ID. One of {@link RsSaleSid} constants.
+   *   </dd>
+   *   <dt>
+   *     int <var>k_id</var>
+   *   </dt>
+   *   <dd>
+   *     The identifier of the item.
+   *   </dd>
+   *   <dt>
    *     string <var>k_purchase_item</var>
    *   </dt>
    *   <dd>
    *     The key of the purchase item.
+   *   </dd>
+   *   <dt>
+   *     string <var>[k_shop_product]</var>
+   *   </dt>
+   *   <dd>
+   *     Product key, primary key in {@link \RsShopProductSql}. Set only if <var>id_purchase_item</var>
+   *     is {@link RsPurchaseItemSid.PRODUCT}.
    *   </dd>
    *   <dt>
    *     string <var>m_price</var>
@@ -482,7 +522,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item[]}
    */
-  this.a_purchase_item = undefined;
+  this.a_purchase_item = [];
 
   /**
    * The local date of the purchase in MySQL format.
@@ -509,8 +549,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.html_receipt = undefined;
 
   /**
-   * Whether {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print} and
-   * {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print_receipt} require authentication.
+   * Whether {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print} and {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print_receipt} require authentication.
    *
    * If `true`, the URL contains a token that allows temporary access to the page without logging in. If 'false', the
    * page requires authentication.
@@ -524,9 +563,9 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * The key of the purchase.
    *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.k_purchase = undefined;
+  this.k_purchase = null;
 
   /**
    * The normalized purchase ID.
