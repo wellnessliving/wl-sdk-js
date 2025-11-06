@@ -16,11 +16,6 @@ function Wl_Visit_VisitStatusModel()
   this._s_key = "k_visit,k_business";
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * An array of service resources.
    *
    * The key refers to the `k_resource_type`. See {@link \RsResourceTypeSql}.
