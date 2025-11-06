@@ -16,6 +16,11 @@ function Wl_Visit_VisitStatusModel()
   this._s_key = "k_visit,k_business";
 
   /**
+   * @inheritDoc
+   */
+  this.ERROR_SILENT = true;
+
+  /**
    * An array of service resources.
    *
    * The key refers to the `k_resource_type`. See {@link \RsResourceTypeSql}.
@@ -25,9 +30,19 @@ function Wl_Visit_VisitStatusModel()
    * This will be empty if not set yet.
    *
    * @get result
-   * @type {*}
+   * @type {?{}[]}
    */
   this.a_resource = [];
+
+  /**
+   * @typedef {{}} Wl_Visit_VisitStatusModel_a_resource_alias
+   * @property {string} k_resource Resource primary key in {@link \RsResourceSql} table.
+   * @property {string} k_resource_type Resource type primary key in {@link \RsResourceTypeSql} table.
+   * @property {number} i_index Index of the resource on the layout.
+   * @property {number} i_quantity Quantity of the resource on the layout.
+   * @property {string} text_alias Resource's custom name (alias) on the layout.
+   * @property {string} text_title Resource's title.
+   */
 
   /**
    * An array of service resources.
@@ -51,7 +66,7 @@ function Wl_Visit_VisitStatusModel()
    * </dl>
    *
    * @get result
-   * @type {*}
+   * @type {?Wl_Visit_VisitStatusModel_a_resource_alias[]}
    */
   this.a_resource_alias = [];
 
@@ -125,9 +140,9 @@ function Wl_Visit_VisitStatusModel()
    * If the status of this parameter is out of date, the API call will refresh it.
    *
    * @post post,error
-   * @type {*}
+   * @type {?number}
    */
-  this.id_visit_from = undefined;
+  this.id_visit_from = null;
 
   /**
    * The staff decision to charge (or not charge) a penalty when a client meets late cancel/no-show requirements.
@@ -146,6 +161,50 @@ function Wl_Visit_VisitStatusModel()
    * @type {boolean}
    */
   this.is_event = false;
+
+  /**
+   * Whether or not to send email notification.
+   *
+   * `true` - email notification will be sent.
+   * `false` - email notification will not be sent.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_mail = false;
+
+  /**
+   * Whether or not to send push notification.
+   *
+   * `true` - push notification will be sent.
+   * `false` - push notification will not be sent.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_push = false;
+
+  /**
+   * Whether this visit is requested and requires staff confirmation.
+   *
+   * * `true` - visit is requested.
+   * * `false` - visit is confirmed or denied or this is a system request.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_request = false;
+
+  /**
+   * Whether or not to send sms notification.
+   *
+   * `true` - sms notification will be sent.
+   * `false` - sms notification will not be sent.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_sms = false;
 
   /**
    * The business key.
@@ -194,9 +253,9 @@ function Wl_Visit_VisitStatusModel()
    * If 'null', the visit isn't from an appointment.
    *
    * @get result
-   * @type {*}
+   * @type {?string}
    */
-  this.k_service = undefined;
+  this.k_service = null;
 
   /**
    * The key of the staff providing the appointment.
@@ -285,14 +344,5 @@ WlSdk_ModelAbstract.extend(Wl_Visit_VisitStatusModel);
  */
 Wl_Visit_VisitStatusModel.prototype.config=function()
 {
-  return {"a_field": {"a_resource": {"get": {"result": true}},"a_resource_alias": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date": {"get": {"result": true}},"dtl_date": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"result": true},"post": {"post": true}},"id_visit": {"get": {"result": true},"post": {"post": true}},"id_visit_from": {"post": {"post": true,"error": true}},"is_charge_fee": {"post": {"get": true}},"is_event": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_mail_pattern_live": {"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"s_calendar_file_content": {"get": {"result": true}},"text_abbr_timezone": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_reason": {"post": {"get": true}},"text_staff": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
+  return {"a_field": {"a_resource": {"get": {"result": true}},"a_resource_alias": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_date": {"get": {"result": true}},"dtl_date": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"result": true},"post": {"post": true}},"id_visit": {"get": {"result": true},"post": {"post": true}},"id_visit_from": {"post": {"post": true,"error": true}},"is_charge_fee": {"post": {"get": true}},"is_event": {"get": {"result": true}},"is_mail": {"post": {"post": true}},"is_push": {"post": {"post": true}},"is_request": {"get": {"result": true}},"is_sms": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_mail_pattern_live": {"post": {"get": true}},"k_service": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"k_timezone": {"get": {"get": true}},"k_visit": {"get": {"get": true},"post": {"get": true}},"s_calendar_file_content": {"get": {"result": true}},"text_abbr_timezone": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_reason": {"post": {"get": true}},"text_staff": {"get": {"result": true}},"text_title": {"get": {"result": true}}}};
 };
-
-/**
- * @function
- * @name Wl_Visit_VisitStatusModel.instanceGet
- * @param {string} k_visit The visit key.
- * @param {string} k_business The business key.
- * @returns {Wl_Visit_VisitStatusModel}
- * @see WlSdk_ModelAbstract.instanceGet()
- */
