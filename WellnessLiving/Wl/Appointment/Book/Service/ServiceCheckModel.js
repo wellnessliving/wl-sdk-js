@@ -75,5 +75,5 @@ Wl_Appointment_Book_Service_ServiceCheckModel.prototype.config=function()
  * @param {string} uid The user key.
  * @param {string} dt_date Date of booking in MySQL format.
  * @returns {Wl_Appointment_Book_Service_ServiceCheckModel}
- * @see Core_Spa_Model.instanceGet()
+ * @see WlSdk_ModelAbstract.instanceGet()
  */
