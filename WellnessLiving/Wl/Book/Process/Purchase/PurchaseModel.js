@@ -626,7 +626,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *
    * @get get
    * @post get
-   * @type {boolean|number}
+   * @type {boolean}
    */
   this.is_backend = false;
 

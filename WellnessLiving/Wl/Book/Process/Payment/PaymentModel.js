@@ -59,7 +59,7 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_pay_form_a_pay_card_a_pay_address
-   * @property {*} is_new Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+   * @property {*} is_new Set this value to `1` to add a new payment address or to `0` to use a saved payment address.
    * @property {*} k_geo_country The key of the country used for the payment address. Specify this to add a new address.
    * @property {*} k_geo_region The key of the region for the payment address. Specify this to add a new address.
    * @property {*} k_pay_address The key of the saved payment address. Specify this to use a saved address.
@@ -75,7 +75,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    * @property {Wl_Book_Process_Payment_PaymentModel_a_pay_form_a_pay_card_a_pay_address} a_pay_address The payment address:
    * <dl>
    *   <dt>boolean <tt>is_new</tt></dt>
-   *   <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
+   *   <dd>Set this value to `1` to add a new payment address or to `0` to use a saved payment address.</dd>
    *   <dt>string [<tt>k_geo_country</tt>]</dt>
    *   <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
    *   <dt>string [<tt>k_geo_region</tt>]</dt>
@@ -98,7 +98,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    * @property {*} i_csc The credit card CSC. Specify this to add a new card.
    * @property {*} i_month The credit card expiration month. Specify this to add a new card.
    * @property {*} i_year The credit card expiration year. Specify this to add a new card.
-   * @property {*} is_new Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
+   * @property {*} is_new Specify `1` to add a new card, or `0` to use a saved card.
    * @property {*} k_pay_bank The key of the credit card. Specify this to use saved card.
    * @property {*} s_comment Optional comment(s). Specify this to add a new card.
    * @property {*} s_number The card number. Specify this to add a new card.
@@ -114,7 +114,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    *     The payment address:
    *     <dl>
    *       <dt>boolean <tt>is_new</tt></dt>
-   *       <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
+   *       <dd>Set this value to `1` to add a new payment address or to `0` to use a saved payment address.</dd>
    *       <dt>string [<tt>k_geo_country</tt>]</dt>
    *       <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
    *       <dt>string [<tt>k_geo_region</tt>]</dt>
@@ -157,7 +157,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    *     boolean <tt>is_new</tt>
    *   </dt>
    *   <dd>
-   *     Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
+   *     Specify `1` to add a new card, or `0` to use a saved card.
    *   </dd>
    *   <dt>
    *     string [<tt>k_pay_bank</tt>]
@@ -414,7 +414,7 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_resource
-   * @property {number} i_index The number of asset(s). The actual number is returned for assets with a quantity greater than <tt>1</tt>.
+   * @property {number} i_index The number of asset(s). The actual number is returned for assets with a quantity greater than ``.
    * @property {string} k_resource The key of the asset.
    */
 
@@ -490,6 +490,30 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.id_mode = 0;
 
   /**
+   * `true` if action is performed as a staff member; `false` otherwise.
+   *
+   * If `true` is sent, access to the business and to the client will be checked.
+   * If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.
+   *
+   * @get get
+   * @post get
+   * @type {boolean}
+   */
+  this.is_backend = false;
+
+  /**
+   * `true` to book unpaid.
+   * `false` otherwise.
+   *
+   * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
+   * Allowed in {@link Wl_Mode_ModeSid.WIDGET} mode only.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_book_unpaid = false;
+
+  /**
    * If client must authorize credit card.
    *
    * @post post
@@ -501,7 +525,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
    *
    * Use this field with caution.
-   * The final booking will not use this flag and the check will still be performed.
+   * The final booking will not use this flag, and the check will still be performed.
    *
    * @get get
    * @post get
@@ -545,7 +569,7 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * The installment template key.
-   * This property is optional and it will be `null` if an installment plan doesn't exist for the purchased item.
+   * This property is optional, and it will be `null` if an installment plan doesn't exist for the purchased item.
    * This will be `0` if an installment plan isn't selected for the purchased item from the list of installment plans.
    *
    * @post post
@@ -579,7 +603,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.text_discount_code = "";
 
   /**
-   * Key of a user who is making a book.
+   * The client key for which the booking is being made.
    *
    * @get get
    * @post get
@@ -597,7 +621,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Payment_PaymentModel);
  */
 Wl_Book_Process_Payment_PaymentModel.prototype.config=function()
 {
-  return {"a_field": {"a_item": {"post": {"post": true}},"a_login_activity_book": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_quiz_response": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_card_authorize": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_login_promotion": {"post": {"post": true}},"k_pay_installment_template": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"text_discount_code": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_item": {"post": {"post": true}},"a_login_activity_book": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_quiz_response": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_card_authorize": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_login_promotion": {"post": {"post": true}},"k_pay_installment_template": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"text_discount_code": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -605,7 +629,7 @@ Wl_Book_Process_Payment_PaymentModel.prototype.config=function()
  * @name Wl_Book_Process_Payment_PaymentModel.instanceGet
  * @param {string} k_class_period Key of session which is booked.
  * @param {string} dt_date_gmt Date/time to which session is booked.
- * @param {string} uid Key of a user who is making a book.
+ * @param {string} uid The client key for which the booking is being made.
  * @returns {Wl_Book_Process_Payment_PaymentModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
