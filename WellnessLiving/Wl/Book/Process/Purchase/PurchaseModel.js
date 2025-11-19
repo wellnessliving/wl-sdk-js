@@ -978,20 +978,3 @@ Wl_Book_Process_Purchase_PurchaseModel.prototype.config=function()
  * @property {string} k_promotion_default The default Purchase Option key.
  * This will be empty if the class has no default Purchase Option.
  */
-
-/**
- * @function
- * @name Wl_Book_Process_Purchase_PurchaseModel.get
- * @returns {Promise<Wl_Book_Process_Purchase_PurchaseModel_GetResponse>} Response from this request
- */
-
-/**
- * @typedef Wl_Book_Process_Purchase_PurchaseModel_PostResponse
- * @type {object}
- */
-
-/**
- * @function
- * @name Wl_Book_Process_Purchase_PurchaseModel.post
- * @returns {Promise<Wl_Book_Process_Purchase_PurchaseModel_PostResponse>} Response from this request
- */

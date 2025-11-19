@@ -329,30 +329,3 @@ Wl_Book_Process_Store_StoreModel.prototype.config=function()
 {
   return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_purchase_item_check": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
-
-/**
- * @typedef Wl_Book_Process_Store_StoreModel_PostResponse
- * @type {object}
- * @property {string[]} a_login_activity The keys for the user's activities. This will be populated upon completion of the booking process.
- * @property {string[]} a_visit The keys of the bookings that have been made.
- * @property {boolean} is_next If `true`, the next steps of the booking wizard are required to purchase an item or book the selected session.
- *
- * If `false`, no further steps in the booking wizard are required.
- */
-
-/**
- * @function
- * @name Wl_Book_Process_Store_StoreModel.post
- * @returns {Promise<Wl_Book_Process_Store_StoreModel_PostResponse>} Response from this request
- */
-
-/**
- * @typedef Wl_Book_Process_Store_StoreModel_GetResponse
- * @type {object}
- */
-
-/**
- * @function
- * @name Wl_Book_Process_Store_StoreModel.get
- * @returns {Promise<Wl_Book_Process_Store_StoreModel_GetResponse>} Response from this request
- */
