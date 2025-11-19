@@ -1,5 +1,5 @@
 /**
- * Manages the booking wizard for the "Purchase Options" page.
+ * Manages the "Purchase Options" page of the booking wizard.
  *
  * This model is generated automatically based on API.
  *
@@ -11,7 +11,7 @@ function Wl_Book_Process_Store_StoreModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * The user's activity keys. This won't be empty when the booking process is finished.
+   * The keys for the user's activities. This will be populated upon completion of the booking process.
    *
    * @post result
    * @type {string[]}
@@ -21,8 +21,9 @@ function Wl_Book_Process_Store_StoreModel()
   /**
    * @typedef {{}} Wl_Book_Process_Store_StoreModel_a_purchase_item_check
    * @property {number} i_session The number of sessions that this item can cover.
-   * @property {number} s_value Unique identifier of the element being checked.
-   * Corresponds to the values:
+   *   This only applies to items of type {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
+   * @property {number} s_value The unique identifier of the item being checked.
+   * This corresponds to one of the following values:
    * <ul>
    *   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_purchase}`["s_value"]`</li>
    *   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_reward_prize}`["s_value"]`</li>
@@ -33,16 +34,19 @@ function Wl_Book_Process_Store_StoreModel()
   /**
    * The selected purchase item.
    *
-   * This new purchasable item should be checked to see if it can be applied to the current class or event before
-   * purchasing it.
+   * This new purchase item should be checked to determine if it can be applied to the current class or event before
+   * being purchased.
    *
    * <dl>
    *   <dt>int <var>i_session</var></dt>
-   *   <dd>The number of sessions that this item can cover.</dd>
+   *   <dd>
+   *       The number of sessions that this item can cover.
+   *       This only applies to items of type {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
+   *   </dd>
    *   <dt>int <var>s_value</var></dt>
    *   <dd>
-   *     Unique identifier of the element being checked.
-   *     Corresponds to the values:
+   *     The unique identifier of the item being checked.
+   *     This corresponds to one of the following values:
    *     <ul>
    *       <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_purchase}`["s_value"]`</li>
    *       <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_reward_prize}`["s_value"]`</li>
@@ -145,7 +149,7 @@ function Wl_Book_Process_Store_StoreModel()
    */
 
   /**
-   * A list of assets being booked. Every element has the next keys:
+   * A list of assets being booked. Each element has the following keys:
    * <dl>
    *   <dt>int <var>i_index</var></dt>
    *   <dd>The order number of the asset (from 1 to the asset quantity).</dd>
@@ -159,10 +163,10 @@ function Wl_Book_Process_Store_StoreModel()
   this.a_resource = [];
 
   /**
-   * The selected sessions.
+   * The selected sessions for an event.
    *
-   * Keys refer to class period keys.
-   * And values refer to the list of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * The key is the class period key.
+   * The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).
    *
    * @post post
    * @type {{}}
@@ -170,10 +174,10 @@ function Wl_Book_Process_Store_StoreModel()
   this.a_session_select = [];
 
   /**
-   * The selected sessions on the wait list that are unpaid.
+   * The selected sessions for an event that are on the wait list and unpaid.
    *
-   * Keys refer to session IDs.
-   * And values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * The key is the class period key.
+   * The value is an indexed array of dates and times when the session occurred (in MySQL format, UTC).
    *
    * @post post
    * @type {{}}
@@ -181,7 +185,7 @@ function Wl_Book_Process_Store_StoreModel()
   this.a_session_wait_list_unpaid = [];
 
   /**
-   * The keys of bookings that have been made.
+   * The keys of the bookings that have been made.
    *
    * @post result
    * @type {string[]}
@@ -216,11 +220,23 @@ function Wl_Book_Process_Store_StoreModel()
   this.id_mode = 0;
 
   /**
-   * `true` if book unpaid.
+   * `true` if action is performed as a staff member; `false` otherwise.
+   *
+   * If `true` is sent, access to the business and to the client will be checked.
+   * If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.
+   *
+   * @get get
+   * @post get
+   * @type {boolean|number}
+   */
+  this.is_backend = false;
+
+  /**
+   * `true` to book unpaid.
    * `false` otherwise.
    *
-   * Allows to book unpaid when client have a login promotion that can be used to pay for the service.
-   * Allowed in {@link Wl_Book_Process_ModeSid.WIDGET} mode only.
+   * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
+   * Allowed in {@link Wl_Mode_ModeSid.WIDGET} mode only.
    *
    * @post post
    * @type {boolean}
@@ -231,7 +247,7 @@ function Wl_Book_Process_Store_StoreModel()
    * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
    *
    * Use this field with caution.
-   * The final booking will not use this flag and the check will still be performed.
+   * The final booking will not use this flag, and the check will still be performed.
    *
    * @get get
    * @post get
@@ -249,9 +265,9 @@ function Wl_Book_Process_Store_StoreModel()
   this.is_force_pay_later = false;
 
   /**
-   * `true` - the next steps of booking wizard are required to purchase something or to book the selected session.
+   * If `true`, the next steps of the booking wizard are required to purchase an item or book the selected session.
    *
-   * `false` - no further steps in the booking wizard are required.
+   * If `false`, no further steps in the booking wizard are required.
    *
    * @post result
    * @type {boolean}
@@ -293,7 +309,7 @@ function Wl_Book_Process_Store_StoreModel()
   this.show_relation = false;
 
   /**
-   * Key of a user who is making a book.
+   * The client key for which the booking is being made.
    *
    * @get get
    * @post get
@@ -311,5 +327,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Store_StoreModel);
  */
 Wl_Book_Process_Store_StoreModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_purchase_item_check": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_purchase_item_check": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
