@@ -21,7 +21,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * @property {string} k_id The key of the Purchase Option in the database. The table depends on <tt>id_purchase_item</tt>.
    * @property {string} k_login_prize Key of login prize.
    * @property {string} s_value The unique identifier.
-   * @property {string} text_title User friendly login prize description.
+   * @property {string} text_title User-friendly login prize description.
    */
 
   /**
@@ -42,7 +42,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *   <dt>string <var>s_value</var></dt>
    *   <dd>The unique identifier.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>User friendly login prize description.</dd>
+   *   <dd>User-friendly login prize description.</dd>
    * </dl>
    *
    * @get result
@@ -86,7 +86,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *    <dt>int|null <tt>i_remain_duration</tt></dt>
    *    <dd>The number of minutes left in the Purchase Option.</dd>
    *  </dl>
-   * @property {string[]} a_uid_share List of uids of users who share this promotion.
+   * @property {string[]} a_uid_share List of UIDs of users who share this promotion.
    * List of those passed in the {@link Wl_Book_Process_Purchase_PurchaseModel.a_login_promotion_group} array.
    * @property {string[]} a_visit_limit The list of calendar restrictions of the promotion (for example, 4 per week).
    * @property {Wl_Book_Process_Purchase_Purchase56Model_a_login_promotion_a_login_promotion_info_a_restrict} a_restrict Data about the shortest restriction period:
@@ -119,7 +119,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * @property {number} i_limit The number of visits the Purchase Option allows the client to make.
    * @property {?number} i_limit_duration The maximum number of minutes the Purchase Option can be used for.
    * @property {number} i_promotion_priority Priority of this promotion. Result of {@link Wl_Promotion_Priority_PromotionPrioritySid.priorityGet()} method.
-   * @property {number} id_program The program ID for Purchase Options. One of the {@link RsProgramSid} constants.
+   * @property {number} id_program The program ID for Purchase Options. One of the {@link Wl_WlProgramSid} constants.
    * @property {boolean} is_convert If `true`, the promotion converts to another instance upon expiration. Otherwise, this will be `false`.
    * @property {boolean} is_shared `true` if the promotion is shared with the client, `false` if the client is owner of the promotion.
    * @property {string} k_login_promotion The login promotion key.
@@ -132,7 +132,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    */
 
   /**
-   * A list of the client`s login promotions that can be applied to a given service.
+   * A list of the client's login promotions that can be applied to a given service.
    * Each element has the following fields:
    * <dl>
    *   <dt>array <var>a_login_promotion_info</var></dt>
@@ -151,7 +151,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *   </dd>
    *   <dt>string[] <var>a_uid_share</var></dt>
    *   <dd>
-   *     List of uids of users who share this promotion.
+   *     List of UIDs of users who share this promotion.
    *     List of those passed in the {@link Wl_Book_Process_Purchase_PurchaseModel.a_login_promotion_group} array.
    *   </dd>
    *   <dt>string[] <var>a_visit_limit</var></dt>
@@ -194,7 +194,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *   <dt>int <var>i_promotion_priority</var></dt>
    *   <dd>Priority of this promotion. Result of {@link Wl_Promotion_Priority_PromotionPrioritySid.priorityGet()} method.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID for Purchase Options. One of the {@link RsProgramSid} constants.</dd>
+   *   <dd>The program ID for Purchase Options. One of the {@link Wl_WlProgramSid} constants.</dd>
    *   <dt>bool <var>is_convert</var></dt>
    *   <dd>If `true`, the promotion converts to another instance upon expiration. Otherwise, this will be `false`.</dd>
    *   <dt>bool <var>is_shared</var></dt>
@@ -222,7 +222,8 @@ function Wl_Book_Process_Purchase_Purchase56Model()
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_Purchase56Model_a_login_promotion_group
-   * @property {number} [i_session = 1] Number of sessions of the same class|event that were selected for the previous user.
+   * @property {number} [i_session = 1] Number of paid sessions of the same class|event that were selected for the previous user.
+   *   This number should not include free or waitlist unpaid sessions.
    * @property {string} k_login_promotion Selected purchase option.
    * @property {string} uid UID of the previous user.
    */
@@ -245,11 +246,14 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *
    * Each element has the following structure:
    * <dl>
-   *   <dt>int <var>[i_session = 1]</var></dt>
-   *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
-   *   <dt>string <var>k_login_promotion</var></dt>
+   *   <dt>int `[i_session = 1]`</dt>
+   *   <dd>
+   *       Number of paid sessions of the same class|event that were selected for the previous user.
+   *       This number should not include free or waitlist unpaid sessions.
+   *   </dd>
+   *   <dt>string `k_login_promotion`</dt>
    *   <dd>Selected purchase option.</dd>
-   *   <dt>string <var>uid</var></dt>
+   *   <dt>string `uid`</dt>
    *   <dd>UID of the previous user.</dd>
    * </dl>
    *
@@ -274,7 +278,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    */
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_Purchase56Model_a_purchase
-   * @property {Wl_Book_Process_Purchase_Purchase56Model_a_purchase_a_installment_template} a_installment_template A list of installment plans. Every element has the next keys:<dl>
+   * @property {Wl_Book_Process_Purchase_Purchase56Model_a_purchase_a_installment_template[]} a_installment_template A list of installment plans. Every element has the next keys:<dl>
    * <dt>int <tt>i_count</tt></dt>
    * <dd>The number of payments.</dd>
    * <dt>int <tt>id_duration</tt></dt>
@@ -289,8 +293,6 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * <dd>The amount of the installment plan.</dd>
    * <dt>string <tt>s_duration</tt></dt>
    * <dd>The title of the installment plan.</dd></dl>
-   * @property {*} a_uid_share List of uids of users who share this promotion.
-   *   List of those passed in the {@link Wl_Book_Process_Purchase_PurchaseModel.a_purchase_group} array.
    * @property {Wl_Book_Process_Purchase_Purchase56Model_a_purchase_a_installment_template_a_visit_limit[]} a_visit_limit This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:<dl>
    * <dt>string <tt>s_title</tt></dt>
    * <dd>The limit description.</dd></dl>
@@ -323,7 +325,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
   /**
    * A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs,
    * and values refer arrays with the next fields: <dl>
-   *   <dt>array[] <var>a_installment_template</var>.</dt>
+   *   <dt>array[] <var>a_installment_template</var></dt>
    *   <dd>A list of installment plans. Every element has the next keys:<dl>
    *     <dt>int <var>i_count</var></dt>
    *     <dd>The number of payments.</dd>
@@ -339,11 +341,6 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *     <dd>The amount of the installment plan.</dd>
    *     <dt>string <var>s_duration</var></dt>
    *     <dd>The title of the installment plan.</dd></dl>
-   *   </dd>
-   *   <dt>string[] [<var>a_uid_share</var>]</dt>
-   *   <dd>
-   *       List of uids of users who share this promotion.
-   *       List of those passed in the {@link Wl_Book_Process_Purchase_PurchaseModel.a_purchase_group} array.
    *   </dd>
    *   <dt>array[] [<var>a_visit_limit</var>]</dt>
    *   <dd>This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:<dl>
@@ -403,43 +400,6 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * @type {Wl_Book_Process_Purchase_Purchase56Model_a_purchase[]}
    */
   this.a_purchase = [];
-
-  /**
-   * @typedef {{}} Wl_Book_Process_Purchase_Purchase56Model_a_purchase_group
-   * @property {number} [i_session = 1] Number of sessions of the same class|event that were selected for the previous user.
-   * @property {number} id_purchase_item ID of purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.
-   * @property {string} k_id Key of certain purchase item in database. Name of table in database depends on <tt>id_purchase_item</tt>
-   * @property {string} uid UID of the previous user.
-   */
-
-  /**
-   * A list of purchase options that were selected for previous clients (group).
-   *
-   * Note:
-   * * It makes sense if for all clients the list is loaded within
-   *      the same pair {@link Wl_Book_Process_Purchase_PurchaseModel.dt_date_gmt} and {@link Wl_Book_Process_Purchase_PurchaseModel.k_class_period}.
-   * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
-   *      client who has the same promotion.
-   * * Can affect the list of available purchases {@link Wl_Book_Process_Purchase_PurchaseModel.a_purchase}.
-   * * The list of promotions built for the client will be based on the principle that the owner of this promotion
-   *      will be the client for whom this list is requested.
-   *
-   * Each element has the following structure:
-   * <dl>
-   *   <dt>int <var>[i_session = 1]</var></dt>
-   *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>ID of purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>UID of the previous user.</dd>
-   * </dl>
-   *
-   * @get get
-   * @type {Wl_Book_Process_Purchase_Purchase56Model_a_purchase_group[]}
-   */
-  this.a_purchase_group = [];
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_Purchase56Model_a_repeat
@@ -532,7 +492,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * @property {string} k_id The key of the Purchase Option in the database. The table depends on <tt>id_purchase_item</tt>.
    * @property {string} k_reward_prize Key of redeemable prize.
    * @property {string} s_value The unique identifier.
-   * @property {string} text_title User friendly prize description.
+   * @property {string} text_title User-friendly prize description.
    */
 
   /**
@@ -554,7 +514,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *   <dt>string <var>s_value</var></dt>
    *   <dd>The unique identifier.</dd>
    *   <dt>string <var>text_title</var></dt>
-   *   <dd>User friendly prize description.</dd>
+   *   <dd>User-friendly prize description.</dd>
    * </dl>
    *
    * @get result
@@ -657,6 +617,18 @@ function Wl_Book_Process_Purchase_Purchase56Model()
   this.id_mode = 0;
 
   /**
+   * `true` if action is performed as a staff member; `false` otherwise.
+   *
+   * If `true` is sent, access to the business and to the client will be checked.
+   * If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.
+   *
+   * @get get
+   * @post get
+   * @type {boolean|number}
+   */
+  this.is_backend = false;
+
+  /**
    * `true` to book unpaid.
    * `false` otherwise.
    *
@@ -710,12 +682,12 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *
    * Note:
    * * It makes sense if for all clients the list is loaded within
-   *      the same pair {@link Wl_Book_Process_Purchase_PurchaseModel.dt_date_gmt} and {@link Wl_Book_Process_Purchase_PurchaseModel.k_class_period}.
+   *      the same pair {@link Wl_Book_Process_Purchase_Purchase56Model.dt_date_gmt} and {@link Wl_Book_Process_Purchase_Purchase56Model.k_class_period}.
    * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
    *      client who has the same promotion.
    * * A very simple check is made based on a comparison of the remaining sessions for the promotion
    *      with the number of times it was selected.
-   * * Can affect the list of available login promotions {@link Wl_Book_Process_Purchase_PurchaseModel.a_login_promotion}.
+   * * Can affect the list of available login promotions {@link Wl_Book_Process_Purchase_Purchase56Model.a_login_promotion}.
    *      If a given client is eligible for such a promotion, but the remaining sessions (minus those previously
    *      selected) in it do not allow it to be applied to the selected session, then such promotion will simply
    *      not be returned for the client.
@@ -725,11 +697,14 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *
    * Each element has the following structure:
    * <dl>
-   *   <dt>int <var>[i_session = 1]</var></dt>
-   *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
-   *   <dt>string <var>k_login_promotion</var></dt>
+   *   <dt>int `[i_session = 1]`</dt>
+   *   <dd>
+   *       Number of paid sessions of the same class|event that were selected for the previous user.
+   *       This number should not include free or waitlist unpaid sessions.
+   *   </dd>
+   *   <dt>string `k_login_promotion`</dt>
    *   <dd>Selected purchase option.</dd>
-   *   <dt>string <var>uid</var></dt>
+   *   <dt>string `uid`</dt>
    *   <dd>UID of the previous user.</dd>
    * </dl>
    *
@@ -737,37 +712,6 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * @type {string}
    */
   this.json_login_promotion_group = "";
-
-  /**
-   * A list of purchase options that were selected for previous clients (group).
-   *
-   * Note:
-   * * It makes sense if for all clients the list is loaded within
-   *      the same pair {@link Wl_Book_Process_Purchase_PurchaseModel.dt_date_gmt} and {@link Wl_Book_Process_Purchase_PurchaseModel.k_class_period}.
-   * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
-   *      client who has the same promotion.
-   * * Can affect the list of available purchases {@link Wl_Book_Process_Purchase_PurchaseModel.a_purchase}.
-   * * The list of promotions built for the client will be based on the principle that the owner of this promotion
-   *      will be the client for whom this list is requested.
-   *
-   * Serialized with JSON.
-   *
-   * Each element has the following structure:
-   * <dl>
-   *   <dt>int <var>[i_session = 1]</var></dt>
-   *   <dd>Number of sessions of the same class|event that were selected for the previous user.</dd>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>ID of purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>Key of certain purchase item in database. Name of table in database depends on <var>id_purchase_item</var></dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>UID of the previous user.</dd>
-   * </dl>
-   *
-   * @get get
-   * @type {string}
-   */
-  this.json_purchase_group = "";
 
   /**
    * The selected sessions.
@@ -855,7 +799,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_Purchase56Model);
  */
 Wl_Book_Process_Purchase_Purchase56Model.prototype.config=function()
 {
-  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_login_promotion_group": {"get": {"get": true}},"a_purchase": {"get": {"result": true}},"a_purchase_group": {"get": {"get": true}},"a_repeat": {"post": {"post": true}},"a_reward_prize": {"get": {"result": true}},"a_session": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_session_wait_list_unpaid": {"get": {"get": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_card_authorize": {"get": {"get": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_single_default": {"get": {"result": true}},"json_login_promotion_group": {"get": {"get": true}},"json_purchase_group": {"get": {"get": true}},"json_session": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_promotion_default": {"get": {"result": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_login_promotion_group": {"get": {"get": true}},"a_purchase": {"get": {"result": true}},"a_repeat": {"post": {"post": true}},"a_reward_prize": {"get": {"result": true}},"a_session": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_session_wait_list_unpaid": {"get": {"get": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_card_authorize": {"get": {"get": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_single_default": {"get": {"result": true}},"json_login_promotion_group": {"get": {"get": true}},"json_session": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_promotion_default": {"get": {"result": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
@@ -868,4 +812,234 @@ Wl_Book_Process_Purchase_Purchase56Model.prototype.config=function()
  * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Purchase_Purchase56Model}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * @typedef Wl_Book_Process_Purchase_Purchase56Model_GetResponse
+ * @type {object}
+ * @property {Wl_Book_Process_Purchase_Purchase56Model_a_login_prize} a_login_prize Data about the login prize which can be used to pay for service.
+ * <dl>`
+ *   <dt>string <var>f_price</var></dt>
+ *   <dd>The price, always '0'.</dd>
+ *   <dt>int <var>i_count</var></dt>
+ *   <dd>Login prize remaining quantity.</dd>
+ *   <dt>int <var>i_limit</var></dt>
+ *   <dd>The limit of sessions that can be booked with reward prize.</dd>
+ *   <dt>int <var>id_purchase_item</var></dt>
+ *   <dd>The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
+ *   <dt>string <var>k_id</var></dt>
+ *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
+ *   <dt>string <var>k_login_prize</var></dt>
+ *   <dd>Key of login prize.</dd>
+ *   <dt>string <var>s_value</var></dt>
+ *   <dd>The unique identifier.</dd>
+ *   <dt>string <var>text_title</var></dt>
+ *   <dd>User-friendly login prize description.</dd>
+ * </dl>
+ * @property {Wl_Book_Process_Purchase_Purchase56Model_a_login_promotion[]} a_login_promotion A list of the client's login promotions that can be applied to a given service.
+ * Each element has the following fields:
+ * <dl>
+ *   <dt>array <var>a_login_promotion_info</var></dt>
+ *   <dd>
+ *      Information about the Purchase Option with the following information:
+ *      <dl>
+ *        <dt>int <var>i_limit</var></dt>
+ *        <dd>The number of visits the Purchase Option allows the client to make.</dd>
+ *        <dt>int|null <var>i_limit_duration</var></dt>
+ *        <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
+ *        <dt>int <var>i_remain</var></dt>
+ *        <dd>The number of the remaining visits the Purchase Option has left.</dd>
+ *        <dt>int|null <var>i_remain_duration</var></dt>
+ *        <dd>The number of minutes left in the Purchase Option.</dd>
+ *      </dl>
+ *   </dd>
+ *   <dt>string[] <var>a_uid_share</var></dt>
+ *   <dd>
+ *     List of UIDs of users who share this promotion.
+ *     List of those passed in the {@link Wl_Book_Process_Purchase_PurchaseModel.a_login_promotion_group} array.
+ *   </dd>
+ *   <dt>string[] <var>a_visit_limit</var></dt>
+ *   <dd>The list of calendar restrictions of the promotion (for example, 4 per week).</dd>
+ *   <dt>array <var>a_restrict</var></dt>
+ *   <dd>Data about the shortest restriction period:
+ *     <dl>
+ *       <dt>int <var>i_limit</var></dt>
+ *       <dd>The limit of visits for the shortest restriction period.</dd>
+ *       <dt>int <var>i_remain</var></dt>
+ *       <dd>The number of remaining visits for the shortest restriction period.</dd>
+ *       <dt>string <var>text_restriction</var></dt>
+ *       <dd>The description of the shortest restriction period (for example "this week" or "for a 4 day period").</dd>
+ *     </dl>
+ *   </dd>
+ *   <dt>array[] <var>a_restrict_data</var></dt>
+ *   <dd>Data about all restriction periods given as an array, where each record has the following structure:
+ *     <dl>
+ *       <dt>int <var>i_book</var></dt>
+ *       <dd>The number of future sessions paid using this Purchase Option.</dd>
+ *       <dt>int <var>i_limit</var></dt>
+ *       <dd>The limit of visits for the restriction period.</dd>
+ *       <dt>int <var>i_remain</var></dt>
+ *       <dd>The number of remaining visits for the restriction period.</dd>
+ *       <dt>int <var>i_use</var></dt>
+ *       <dd>The Purchase Option's usage count.</dd>
+ *       <dt>int <var>i_visit_past</var></dt>
+ *       <dd>
+ *         The number of attended sessions before the last renewal.
+ *         This will be `0` if there aren't any sessions before the last renewal or the Purchase Option doesn't auto-renew.
+ *       </dd>
+ *       <dt>string <var>text_restriction</var></dt>
+ *       <dd>The description of restriction period (for example "this week" or "for a 4 day period").</dd>
+ *     </dl>
+ *   </dd>
+ *   <dt>int <var>i_limit</var></dt>
+ *   <dd>The number of visits the Purchase Option allows the client to make.</dd>
+ *   <dt>int|null <var>i_limit_duration</var></dt>
+ *   <dd>The maximum number of minutes the Purchase Option can be used for.</dd>
+ *   <dt>int <var>i_promotion_priority</var></dt>
+ *   <dd>Priority of this promotion. Result of {@link Wl_Promotion_Priority_PromotionPrioritySid.priorityGet()} method.</dd>
+ *   <dt>int <var>id_program</var></dt>
+ *   <dd>The program ID for Purchase Options. One of the {@link Wl_WlProgramSid} constants.</dd>
+ *   <dt>bool <var>is_convert</var></dt>
+ *   <dd>If `true`, the promotion converts to another instance upon expiration. Otherwise, this will be `false`.</dd>
+ *   <dt>bool <var>is_shared</var></dt>
+ *   <dd>`true` if the promotion is shared with the client, `false` if the client is owner of the promotion.</dd>
+ *   <dt>string <var>k_login_promotion</var></dt>
+ *   <dd>The login promotion key.</dd>
+ *   <dt>string <var>s_class_include</var></dt>
+ *   <dd>The list of services provided by this Purchase Option.</dd>
+ *   <dt>string <var>s_description</var></dt>
+ *   <dd>The Purchase Option description.</dd>
+ *   <dt>string <var>s_duration</var></dt>
+ *   <dd>The Purchase Option duration.</dd>
+ *   <dt>string [<var>s_promotion_convert</var>]</dt>
+ *   <dd>This is only set if <var>is_convert</var> is `true`. The title to use for the new promotion instance upon auto-renewal.</dd>
+ *   <dt>string <var>s_title</var></dt>
+ *   <dd>The Purchase Option name.</dd>
+ *   <dt>string <var>text_package_item</var></dt>
+ *   <dd>If this promotion is a package, this field will contain a list of Purchase Options contained in the package.</dd>
+ * </dl>
+ * @property {Wl_Book_Process_Purchase_Purchase56Model_a_purchase[]} a_purchase A list of Purchase Options that are available for the session(s) being booked. Keys refer to unique string IDs,
+ * and values refer arrays with the next fields: <dl>
+ *   <dt>array[] <var>a_installment_template</var></dt>
+ *   <dd>A list of installment plans. Every element has the next keys:<dl>
+ *     <dt>int <var>i_count</var></dt>
+ *     <dd>The number of payments.</dd>
+ *     <dt>int <var>id_duration</var></dt>
+ *     <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
+ *     <dt>int <var>i_period</var></dt>
+ *     <dd>The number of periods specified by <var>id_period</var> between individual payments.</dd>
+ *     <dt>string <var>k_currency</var></dt>
+ *     <dd>The payment currency key.</dd>
+ *     <dt>string <var>k_pay_installment_template</var></dt>
+ *     <dd>The key of the installment plan template.</dd>
+ *     <dt>string <var>m_amount</var></dt>
+ *     <dd>The amount of the installment plan.</dd>
+ *     <dt>string <var>s_duration</var></dt>
+ *     <dd>The title of the installment plan.</dd></dl>
+ *   </dd>
+ *   <dt>array[] [<var>a_visit_limit</var>]</dt>
+ *   <dd>This is only set for Purchase Options. A list of limits on booking by the Purchase Option. Every element has the next keys:<dl>
+ *     <dt>string <var>s_title</var></dt>
+ *     <dd>The limit description.</dd></dl></dd>
+ *   <dt>string <var>dl_client_prorate</var></dt>
+ *   <dd>The client prorate date.</dd>
+ *   <dt>string <var>f_price</var></dt>
+ *   <dd>The price.</dd>
+ *   <dt>string [<var>f_price_early</var>]</dt>
+ *   <dd>The price for early bookings.</dd>
+ *   <dt>string <var>html_payment_period</var></dt>
+ *   <dd>This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var> in short form.</dd>
+ *   <dt>string <var>html_description</var></dt>
+ *   <dd>The description, ready to paste in a browser.</dd>
+ *   <dt>int [<var>i_limit</var>]</dt>
+ *   <dd>The limit of sessions that can be booked by Purchase Options.</dd>
+ *   <dt>int [<var>i_payment_period</var>]</dt>
+ *   <dd>This is only set for Purchase Options with the 'membership' program type. The duration of the regular payment interval.</dd>
+ *   <dt>int [<var>i_session</var>]</dt>
+ *   <dd>This is only set for purchases of single sessions. The number of sessions booked simultaneously.</dd>
+ *   <dt>int [<var>id_program_category</var>]</dt>
+ *   <dd>This is only set for promotions. The ID of the promotion program category. One of the {@link RsProgramCategorySid} constants.</dd>
+ *   <dt>int [<var>id_program_type</var>]</dt>
+ *   <dd>This is only set for promotions. The ID of the promotion program type. One of the {@link RsProgramTypeSid} constants.</dd>
+ *   <dt>int <var>id_purchase_item</var></dt>
+ *   <dd>The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
+ *   <dt>bool [<var>is_contract</var>]</dt>
+ *   <dd>If `true`, the Purchase Option requires a contract assignment. Otherwise, this will be `false`.</dd>
+ *   <dt>bool [<var>is_convert</var>]</dt>
+ *   <dd>If `true`, the Purchase Option converts to another instance upon expiration. Otherwise, this will be `false`.</dd>
+ *   <dt>bool [<var>is_renew</var>]</dt>
+ *   <dd>If `true`, the Purchase Option is renewable. Otherwise, this will be `false`.</dd>
+ *   <dt>bool [<var>is_renew_check</var>]</dt>
+ *   <dd>If `true`, the Purchase Option is renewable and the "auto-renew" option is turned on by default. Otherwise, this will be `false`.</dd>
+ *   <dt>string <var>k_id</var></dt>
+ *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
+ *   <dt>string [<var>k_login_prize</var>]</dt>
+ *   <dd>The key of the user's prize that can be used instead a Purchase Option to book the session.</dd>
+ *   <dt>string [<var>k_reward_prize</var>]</dt>
+ *   <dd>The key of the reward prize that can be used instead a Purchase Option to book the session.</dd>
+ *   <dt>string [`m_prorate`]</dt>
+ *   <dd>Payment for membership prorate. Not empty only if prorate payment is required.</dd>
+ *   <dt>string [<var>s_contract</var>]</dt>
+ *   <dd>The contract of the Purchase Option. This is only set if <var>is_contract</var> is `true`.</dd>
+ *   <dt>string [<var>s_payment_duration</var>]</dt>
+ *   <dd>This is only set for Purchase Options with the 'membership' program type. The measurement unit of <var>i_payment_period</var>.</dd>
+ *   <dt>string [<var>s_promotion_convert</var>]</dt>
+ *   <dd>This is only set if <var>is_convert</var> is `true`. The title to use for the new Purchase Option instance upon auto-renewal.</dd>
+ *   <dt>string <var>s_title</var></dt>
+ *   <dd>The title.</dd>
+ *   <dt>string <var>s_value</var></dt>
+ *   <dd>The unique identifier.</dd>
+ * </dl>
+ * @property {Wl_Book_Process_Purchase_Purchase56Model_a_reward_prize[]} a_reward_prize List of redeemable prizes which can be used to pay for service.
+ * Each element has the following fields:
+ * <dl>
+ *   <dt>string <var>f_price</var></dt>
+ *   <dd>The price, always '0'.</dd>
+ *   <dt>int <var>i_limit</var></dt>
+ *   <dd>The limit of sessions that can be booked with reward prize.</dd>
+ *   <dt>int <var>i_score</var></dt>
+ *   <dd>Prize price in points.</dd>
+ *   <dt>int <var>id_purchase_item</var></dt>
+ *   <dd>The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
+ *   <dt>string <var>k_id</var></dt>
+ *   <dd>The key of the Purchase Option in the database. The table depends on <var>id_purchase_item</var>.</dd>
+ *   <dt>string <var>k_reward_prize</var></dt>
+ *   <dd>Key of redeemable prize.</dd>
+ *   <dt>string <var>s_value</var></dt>
+ *   <dd>The unique identifier.</dd>
+ *   <dt>string <var>text_title</var></dt>
+ *   <dd>User-friendly prize description.</dd>
+ * </dl>
+ * @property {Wl_Book_Process_Purchase_Purchase56Model_a_session_pass[]} a_session_pass The list of session passes that might be used in booking process.
+ * Each element has the following fields:
+ *  <dl>
+ *    <dt>int <var>i_remain</var></dt>
+ *    <dd>Number of remaining visits on session pass.</dd>
+ *    <dt>string <var>k_session_pass</var></dt>
+ *    <dd>Session pass key.</dd>
+ *    <dt>int <var>id_purchase_item</var></dt>
+ *    <dd>Type of the session pass purchase. One of {@link Wl_Purchase_Item_ItemSid} constants.</dd>
+ *    <dt>string <var>s_title</var></dt>
+ *    <dd>Session pass title.</dd>
+ *  </dl>
+ * @property {boolean} is_single_default Indicates if the drop-in rate should be the default promotion.
+ * @property {string} k_promotion_default The default Purchase Option key.
+ * This will be empty if the class has no default Purchase Option.
+ */
+
+/**
+ * @function
+ * @name Wl_Book_Process_Purchase_Purchase56Model.get
+ * @returns {Promise<Wl_Book_Process_Purchase_Purchase56Model_GetResponse>} Response from this request
+ */
+
+/**
+ * @typedef Wl_Book_Process_Purchase_Purchase56Model_PostResponse
+ * @type {object}
+ */
+
+/**
+ * @function
+ * @name Wl_Book_Process_Purchase_Purchase56Model.post
+ * @returns {Promise<Wl_Book_Process_Purchase_Purchase56Model_PostResponse>} Response from this request
  */
