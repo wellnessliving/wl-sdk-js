@@ -11,7 +11,7 @@ function Wl_Skin_Widget_SkinWidgetListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @typedef {[]} Wl_Skin_Widget_SkinWidgetListModel_a_widget_skin
+   * @typedef {{}} Wl_Skin_Widget_SkinWidgetListModel_a_widget_skin
    * @property {string} k_skin Skin key.
    * @property {string} text_widget_name Widget name.
    */
@@ -30,7 +30,7 @@ function Wl_Skin_Widget_SkinWidgetListModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Skin_Widget_SkinWidgetListModel_a_widget_skin[]}
+   * @type {Wl_Skin_Widget_SkinWidgetListModel_a_widget_skin[][]}
    */
   this.a_widget_skin = [];
 
