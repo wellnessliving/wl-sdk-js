@@ -190,6 +190,16 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this.is_show_unavailable_assets = false;
 
   /**
+   * The appointment booking key to ignore when {@link Wl_Appointment_Book_Asset_Service_ServiceModel.a_resource_busy} is derived.
+   *
+   * `null` if no appointment booking must be ignored.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_appointment_ignore = null;
+
+  /**
    * The selected location key.
    *
    * @get get
@@ -233,7 +243,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_Service_ServiceModel);
  */
 Wl_Appointment_Book_Asset_Service_ServiceModel.prototype.config=function()
 {
-  return {"a_field": {"a_resource_busy": {"get": {"result": true}},"a_resource_type": {"get": {"result": true}},"can_book_unavailable_assets": {"get": {"result": true}},"dt_start": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_grid_any": {"get": {"get": true}},"is_show_unavailable_assets": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_resource_busy": {"get": {"result": true}},"a_resource_type": {"get": {"result": true}},"can_book_unavailable_assets": {"get": {"result": true}},"dt_start": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_grid_any": {"get": {"get": true}},"is_show_unavailable_assets": {"get": {"get": true}},"k_appointment_ignore": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
