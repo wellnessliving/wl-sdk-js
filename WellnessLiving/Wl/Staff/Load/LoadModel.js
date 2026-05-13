@@ -17,11 +17,6 @@ function Wl_Staff_Load_LoadModel()
   this._s_key = "k_business,k_staff";
 
   /**
-   * @inheritDoc
-   */
-  this.ERROR_SILENT = true;
-
-  /**
    * Staff pay rates info. See {@link Wl\Staff\PayRate\PayRate::staffHourlyCheckInRateGet()}.
    *
    * @get result

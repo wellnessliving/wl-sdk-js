@@ -17,11 +17,6 @@ function Wl_Staff_Load_Load74Model()
     this._s_key = "k_business,uid_staff";
 
     /**
-     * @inheritDoc
-     */
-    this.ERROR_SILENT = true;
-
-    /**
      * Staff pay rates info. See {@link Wl\Staff\PayRate\PayRate::staffHourlyCheckInRateGet()}.
      *
      * @get result
@@ -115,5 +110,5 @@ Wl_Staff_Load_Load74Model.prototype.config=function()
  * @param {string} k_business Business in which information about the staff load will be requested.
  * @param {string} uid_staff Staff uid.
  * @returns {Wl_Staff_Load_Load74Model}
- * @see Core_Spa_Model.instanceGet()
+ * @see WlSdk_ModelAbstract.instanceGet()
  */
