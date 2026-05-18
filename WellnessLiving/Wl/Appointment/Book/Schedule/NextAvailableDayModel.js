@@ -14,7 +14,7 @@ function Wl_Appointment_Book_Schedule_NextAvailableDayModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "id_gender_staff,dt_date,k_location,k_service,k_resource,i_index,i_duration,uid,is_unavailable,s_product,s_appointment,is_staff,is_back_to_back,k_timezone,k_class_tab,is_tab_all,uid_staff";
+  this._s_key = "id_gender_staff,dt_date,k_location,k_service,k_resource,i_index,i_duration,uid,s_product,s_appointment,is_staff,is_back_to_back,k_timezone,k_class_tab,is_tab_all,uid_staff";
 
   /**
    * List of user keys to book appointments.
