@@ -32,21 +32,23 @@ function Wl_Appointment_Book_Schedule_DayTime73Model()
   /**
    * An array with a schedule of available appointment booking times.
    * <dl>
-   *   <dt>string <var>dt_date</var></dt>
+   *   <dt>string `dt_date`</dt>
    *   <dd>Date of the calendar.</dd>
-   *   <dt>int <var>i_count</var></dt>
-   *   <dd>Amount of clients that have already booked this appointment.</dd>
-   *   <dt>int <var>i_time</var></dt>
+   *   <dt>int `i_count`</dt>
+   *   <dd>The count of clients that have already booked this appointment.</dd>
+   *   <dt>int `i_time`</dt>
    *   <dd>Integer representation of appointment schedule time.</dd>
-   *   <dt>bool <var>is_waitlist</var></dt>
+   *   <dt>int `i_wait`</dt>
+   *   <dd>The count of clients on the waiting list for this appointment.</dd>
+   *   <dt>bool `is_waitlist`</dt>
    *   <dd>Whether the appointment can be booked only in a wait list.</dd>
-   *   <dt>string <var>k_staff</var></dt>
+   *   <dt>string `k_staff`</dt>
    *   <dd>@deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted),
    *       this key contains key of staff member (primary key in {@link \RsStaffSql} table). Otherwise - `0`.</dd>
-   *   <dt>string <var>uid_staff</var></dt>
+   *   <dt>string `uid_staff`</dt>
    *   <dd>If this time is already occupied by any client and staff member (but service capacity is not exhausted),
    *       this key contains user key of staff member (primary key in {@link \PassportLoginSql} table). Otherwise - `0`.</dd>
-   *   <dt>string <var>s_title</var></dt>
+   *   <dt>string `s_title`</dt>
    *   <dd>String representation of appointment schedule time.</dd>
    * </dl>
    *
@@ -109,8 +111,8 @@ function Wl_Appointment_Book_Schedule_DayTime73Model()
   this.is_back_to_back = false;
 
   /**
-   * <tt>true</tt> if the request is made by staff member; in this case booking policy restrictions are ignored.
-   * <tt>false</tt> if the request is made by client; booking policy restrictions are applied.
+   * `true` if the request is made by staff member; in this case booking policy restrictions are ignored.
+   * `false` if the request is made by client; booking policy restrictions are applied.
    *
    * @get get
    * @type {boolean}
@@ -208,21 +210,21 @@ function Wl_Appointment_Book_Schedule_DayTime73Model()
    * For back-to-back booking ({@link Wl_Appointment_Book_Schedule_DayTimeModel.is_back_to_back} == `true`): array of appointments for back-to-back booking.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    * <dl>
-   *   <dt>array <var>a_addon</var></dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd>
-   *   <dt>int <var>i_duration</var></dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
-   *   <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
-   *   <dt>string <var>k_service</var></dt><dd>Service key.</dd>
-   *   <dt>string <var>k_staff</var></dt><dd>@deprecated Staff key. Zero means any available staff.</dd>
-   *   <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff.</dd>
+   *   <dt>array `a_addon`</dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd>
+   *   <dt>int `i_duration`</dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>
+   *   <dt>int `id_gender_staff`</dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>
+   *   <dt>string `k_service`</dt><dd>Service key.</dd>
+   *   <dt>string `k_staff`</dt><dd>@deprecated Staff key. Zero means any available staff.</dd>
+   *   <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff.</dd>
    * </dl>
    *
    * For multiple appointment booking ({@link Wl_Appointment_Book_Schedule_DayTimeModel.is_back_to_back} == `false`): array of previously booked appointments.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    * <dl>
-   *   <dt>string <var>dtl_date</var></dt><dd>Local date and time of appointment start in MySQL format.</dd>
-   *   <dt>int <var>i_duration</var></dt><dd>Duration of the appointment in minutes.</dd>
-   *   <dt>string <var>k_service</var></dt><dd>Service key.</dd>
-   *   <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff.</dd>
+   *   <dt>string `dtl_date`</dt><dd>Local date and time of appointment start in MySQL format.</dd>
+   *   <dt>int `i_duration`</dt><dd>Duration of the appointment in minutes.</dd>
+   *   <dt>string `k_service`</dt><dd>Service key.</dd>
+   *   <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff.</dd>
    * </dl>
    *
    * @get get
@@ -284,8 +286,8 @@ Wl_Appointment_Book_Schedule_DayTime73Model.prototype.config=function()
  * @param {string} uid The user key.
  * @param {boolean} is_unavailable `true` - return service categories that have no staff members able to conduct them. `false` - return only service categories that have staff members able to conduct them.
  * @param {string} s_product A list of service add-ons keys(encoded as JSON string). In case of back-to-back booking - add-ons of first appointment.
- * @param {string} s_appointment The staff key to show what days are available for booking. For back-to-back booking ({@link Wl_Appointment_Book_Schedule_DayTimeModel.is_back_to_back} == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl>  <dt>array <var>a_addon</var></dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd>  <dt>int <var>i_duration</var></dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>  <dt>int <var>id_gender_staff</var></dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>  <dt>string <var>k_service</var></dt><dd>Service key.</dd>  <dt>string <var>k_staff</var></dt><dd>@deprecated Staff key. Zero means any available staff.</dd>  <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff.</dd> </dl> For multiple appointment booking ({@link Wl_Appointment_Book_Schedule_DayTimeModel.is_back_to_back} == `false`): array of previously booked appointments. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl>  <dt>string <var>dtl_date</var></dt><dd>Local date and time of appointment start in MySQL format.</dd>  <dt>int <var>i_duration</var></dt><dd>Duration of the appointment in minutes.</dd>  <dt>string <var>k_service</var></dt><dd>Service key.</dd>  <dt>string <var>uid_staff</var></dt><dd>Staff user key. Zero means any available staff.</dd> </dl>
- * @param {boolean} is_staff <tt>true</tt> if the request is made by staff member; in this case booking policy restrictions are ignored. <tt>false</tt> if the request is made by client; booking policy restrictions are applied.
+ * @param {string} s_appointment The staff key to show what days are available for booking. For back-to-back booking ({@link Wl_Appointment_Book_Schedule_DayTimeModel.is_back_to_back} == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl>  <dt>array `a_addon`</dt><dd>Array of appointment addons. Each value is primary key in {@link \RsShopProductSql} table.</dd>  <dt>int `i_duration`</dt><dd>Custom duration of the appointment in minutes. Zero in case of service predefined duration.</dd>  <dt>int `id_gender_staff`</dt><dd>Staff gender. One of {@link AGenderSid} constants. Zero mean no limitations on staff gender.</dd>  <dt>string `k_service`</dt><dd>Service key.</dd>  <dt>string `k_staff`</dt><dd>@deprecated Staff key. Zero means any available staff.</dd>  <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff.</dd> </dl> For multiple appointment booking ({@link Wl_Appointment_Book_Schedule_DayTimeModel.is_back_to_back} == `false`): array of previously booked appointments. Converted to JSON string to be usable as model key. Each item is an array with next structure: <dl>  <dt>string `dtl_date`</dt><dd>Local date and time of appointment start in MySQL format.</dd>  <dt>int `i_duration`</dt><dd>Duration of the appointment in minutes.</dd>  <dt>string `k_service`</dt><dd>Service key.</dd>  <dt>string `uid_staff`</dt><dd>Staff user key. Zero means any available staff.</dd> </dl>
+ * @param {boolean} is_staff `true` if the request is made by staff member; in this case booking policy restrictions are ignored. `false` if the request is made by client; booking policy restrictions are applied.
  * @param {boolean} is_back_to_back Determines whether multiple appointments are booked in back-to-back mode.
  * @param {?string} k_timezone Key of timezone. `null` if not set then use default timezone client. See {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
  * @param {?string} k_class_tab Current booking tab. Only used for asset booking with "Allow clients to select a date and time, then the available asset" booking policy enabled. Cannot be set simultaneously with {DayTimeModel.is_tab_all}.
