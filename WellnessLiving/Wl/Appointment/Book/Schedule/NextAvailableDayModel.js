@@ -257,5 +257,5 @@ Wl_Appointment_Book_Schedule_NextAvailableDayModel.prototype.config=function()
  * @param {boolean} is_tab_all `true` - search in all tabs. `false` - search only for the selected bookable tab. Cannot be set simultaneously with {DayTimeModel.k_class_tab}.
  * @param {string} uid_staff The staff user key used for showing the available appointment booking schedule. In case of back-to-back booking - staff user key of first appointment. `0` means any available staff.
  * @returns {Wl_Appointment_Book_Schedule_NextAvailableDayModel}
- * @see Core_Spa_Model.instanceGet()
+ * @see WlSdk_ModelAbstract.instanceGet()
  */
