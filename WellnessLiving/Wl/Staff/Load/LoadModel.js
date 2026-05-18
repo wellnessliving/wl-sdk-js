@@ -5,6 +5,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Staff_Load_Load74Model} instead. This class will be removed in future versions.
  */
 function Wl_Staff_Load_LoadModel()
 {
@@ -14,6 +15,14 @@ function Wl_Staff_Load_LoadModel()
    * @inheritDoc
    */
   this._s_key = "k_business,k_staff";
+
+  /**
+   * Staff pay rates info. See {@link Wl\Staff\PayRate\PayRate::staffHourlyCheckInRateGet()}.
+   *
+   * @get result
+   * @type {{}}
+   */
+  this.a_pay_rate = [];
 
   /**
    * Staff work information. See {@link Wl\Staff\Load\rs_staff_load_check_work_trx()}.
@@ -60,6 +69,7 @@ function Wl_Staff_Load_LoadModel()
   /**
    * Staff member primary key.
    *
+   * @deprecated Use {@link Wl_Staff_Load_LoadModel.uid_staff} instead.
    * @get get
    * @put get
    * @type {string}
@@ -82,6 +92,15 @@ function Wl_Staff_Load_LoadModel()
    */
   this.text_work_start = "";
 
+  /**
+   * The staff user key.
+   *
+   * @get get
+   * @put get
+   * @type {string}
+   */
+  this.uid_staff = "";
+
   this.changeInit();
 }
 
@@ -92,7 +111,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_Load_LoadModel);
  */
 Wl_Staff_Load_LoadModel.prototype.config=function()
 {
-  return {"a_field": {"a_work": {"get": {"result": true},"put": {"result": true}},"is_start": {"put": {"result": true}},"is_time_manage": {"get": {"result": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_location": {"put": {"post": true}},"k_staff": {"get": {"get": true},"put": {"get": true}},"k_staff_pay": {"put": {"post": true}},"text_work_start": {"get": {"result": true}}}};
+  return {"a_field": {"a_pay_rate": {"get": {"result": true}},"a_work": {"get": {"result": true},"put": {"result": true}},"is_start": {"put": {"result": true}},"is_time_manage": {"get": {"result": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_location": {"put": {"post": true}},"k_staff": {"get": {"get": true},"put": {"get": true}},"k_staff_pay": {"put": {"post": true}},"text_work_start": {"get": {"result": true}},"uid_staff": {"get": {"get": true},"put": {"get": true}}}};
 };
 
 /**

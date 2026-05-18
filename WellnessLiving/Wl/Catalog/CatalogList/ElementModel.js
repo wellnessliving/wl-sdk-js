@@ -53,7 +53,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    *
    * The structure may be different depending on the item category.
    * <dl>
-   *   <dt>array <var>a_service_access</var></dt>
+   *   <dt>array `a_service_access`</dt>
    *   <dd> Access to services for a purchase option.
    *     Keys are one of the {@link Wl_Service_ServiceSid} constants, values are one of the {@link \AFlagSid}
    *     constants. Set only for relevant purchase option service category.
@@ -62,39 +62,42 @@ function Wl_Catalog_CatalogList_ElementModel()
    *     {@link AFlagSid.ALL} access to all services. It can be set only for classes and events.
    *     For purchase options with appointments and assets service category status is always {@link AFlagSid::ON}.
    *   </dd>
-   *   <dt>
-   *     bool <var>is_renew_public</var>
-   *   </dt>
-   *   <dd>
-   *     This applies only for promotions.
-   *     <tt>true</tt> - clients can set promotion auto-renew.<br>
-   *     <tt>false</tt> - clients can't set promotion auto-renew.
-   *   </dd>
-   *   <dt>
-   *     array[] <var>a_component</var>
-   *   </dt>
+   *   <dt>array[] `a_component`</dt>
    *   <dd>
    *     This applies only for coupons. Coupon components information. Each element will contain the following keys:
    *     <dl>
-   *       <dt>int <var>id_program</var></dt>
+   *       <dt>int `id_program`</dt>
    *       <dd>Program ID. Only applies to promotions.</dd>
-   *       <dt>int <var>id_purchase_item</var></dt>
+   *       <dt>int `id_purchase_item`</dt>
    *       <dd> Purchase item ID.</dd>
-   *       <dt>int <var>id_sale</var></dt>
+   *       <dt>int `id_sale`</dt>
    *       <dd>Sale ID.</dd>
-   *       <dt>int <var>k_id</var></dt>
+   *       <dt>int `k_id`</dt>
    *       <dd>The identifier of the item.</dd>
-   *       <dt>string <var>text_title</var></dt>
+   *       <dt>string `text_title`</dt>
    *       <dd>The title of the item.</dd>
    *     </dl>
    *   </dd>
-   *   <dt>
-   *     bool <var>is_renew_public</var>
-   *   </dt>
+   *   <dt>string `dl_expire`</dt>
+   *   <dd>Only for coupons. Date of expiration of coupon, local date in MySQL format.</dd>
+   *   <dt>string `dl_now`</dt>
+   *   <dd>Only for coupons. Current date, local date in MySQL format.</dd>
+   *   <dt>string `dl_start`</dt>
+   *   <dd>Only for coupons. Date to activate the coupon on, local date in MySQL format.</dd>
+   *   <dt>int `i_duration`</dt>
+   *   <dd>Number of periods the coupon is active. Type of period is specified by `id_duration`.</dd>
+   *   <dt>int `id_activation`</dt>
+   *   <dd>Type of coupon activation date specification.
+   *      One of {@link RsActivationSid.DAY}(7)/{@link RsActivationSid.FIXED}(3)/{@link RsActivationSid.SALE}(1) constants.</dd>
+   *   <dt>int `id_duration`</dt>
+   *   <dd>Duration of a period. A constant from {@link ADurationSid}.</dd>
+   *   <dt>int `id_duration_type`</dt>
+   *   <dd>A way to specify a duration. One of {@link RsDurationTypeSid} constants.</dd>
+   *   <dt>bool `is_renew_public`</dt>
    *   <dd>
    *     Only for promotions.
-   *     <tt>true</tt> - client can set promotion auto-renew.
-   *     <tt>false</tt> - client can't set promotion auto-renew.
+   *     `true` - client can set promotion auto-renew.
+   *     `false` - client can't set promotion auto-renew.
    *   </dd>
    * </dl>
    *
@@ -270,6 +273,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    *         `false` display a single total price for the package.
    *       </dd>
    *     </dl>
+   *     @see Wl_Catalog_CatalogList_ElementModel.a_data. That has the same structure.
    *   </dd>
    *
    *   <dt>array `a_image`</dt>
