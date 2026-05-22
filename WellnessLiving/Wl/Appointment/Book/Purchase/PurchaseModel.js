@@ -13,7 +13,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "dt_date,k_location,k_service,k_resource,i_duration,is_backend,uid,k_timezone";
+  this._s_key = "dt_date,k_location,k_service,k_resource,i_duration,is_backend,uid,k_timezone,k_appointment";
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_prize
@@ -806,6 +806,15 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.is_walk_in = false;
 
   /**
+   * Appointment key.
+   * Not empty in case when we return payment options for rescheduling existing appointment.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_appointment = null;
+
+  /**
    * Location to show available appointment booking schedule.
    *
    * @get get,result
@@ -890,7 +899,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Purchase_PurchaseModel);
  */
 Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_reward_prize": {"get": {"result": true}},"a_service": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"i_height": {"get": {"get": true}},"i_width": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_single_default": {"get": {"result": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_promotion": {"get": {"get": true,"result": true}},"k_promotion_default": {"get": {"result": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"text_login_promotion": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_reward_prize": {"get": {"result": true}},"a_service": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"i_height": {"get": {"get": true}},"i_width": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_single_default": {"get": {"result": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_promotion": {"get": {"get": true,"result": true}},"k_promotion_default": {"get": {"result": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"text_login_promotion": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
