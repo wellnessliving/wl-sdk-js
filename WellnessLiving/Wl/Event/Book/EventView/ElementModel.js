@@ -572,6 +572,19 @@ function Wl_Event_Book_EventView_ElementModel()
   this.id_pay_require = undefined;
 
   /**
+   * Default required value for {@link Wl_Classes_RequirePaySid.ADVANCE} payment mode,
+   *  one of {@link Wl_Classes_RequirePaySid.ONLINE} or {@link Wl_Classes_RequirePaySid.VISIT}.
+   *
+   * `null` means default value not selected.
+   *
+   * Copy of {@link \RsClassSql `rs_class.id_pay_require_option`}.
+   *
+   * @get result
+   * @type {?number}
+   */
+  this.id_pay_require_option = null;
+
+  /**
    * The virtual provider ID. One of the {@link Wl_Virtual_VirtualProviderSid} constants.
    *
    * `null` if an in-person event.
@@ -785,6 +798,15 @@ function Wl_Event_Book_EventView_ElementModel()
   this.s_title = null;
 
   /**
+   * `true` if special instructions can be public,
+   * `false` if they should be shown only to the clients, who booked the class.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.show_special_instructions = false;
+
+  /**
    * `true` to show schedule, which is not published yet.
    * `false` to show only published schedule.
    *
@@ -845,7 +867,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventView_ElementModel);
  */
 Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_shop_category": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_timezone_info": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"dtu_session": {"get": {"get": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_session_remain": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_pay_require": {"get": {"result": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_makeup": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_policy_custom": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"show_unpublished": {"get": {"get": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
+  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_shop_category": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_timezone_info": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"dtu_session": {"get": {"get": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_capacity": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_session_remain": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_pay_require": {"get": {"result": true}},"id_pay_require_option": {"get": {"result": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_makeup": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_policy_custom": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"show_special_instructions": {"get": {"result": true}},"show_unpublished": {"get": {"get": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
 };
 
 /**
