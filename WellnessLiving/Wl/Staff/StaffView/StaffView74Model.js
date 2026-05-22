@@ -249,12 +249,12 @@ function Wl_Staff_StaffView_StaffView74Model()
     this.changeInit();
 }
 
-Core_Spa_Model.extend(Wl_Staff_StaffView_StaffView74ModelAbstract);
+WlSdk_ModelAbstract.extend(Wl_Staff_StaffView_StaffView74Model);
 
 /**
  * @inheritDoc
  */
-Wl_Staff_StaffView_StaffView74ModelAbstract.prototype.config=function()
+Wl_Staff_StaffView_StaffView74Model.prototype.config=function()
 {
     return {"a_field": {"a_class_day": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"a_uid_staff_list": {"get": {"get": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid_staff": {"get": {"get": true}}}};
 };
