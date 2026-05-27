@@ -69,6 +69,9 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_duration The class duration in minutes.
    * @property {number} id_deny_reason ID of denying reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
    * @property {boolean} is_book This will be `true` if the current class was booked by the current client.
+   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.
+   *   `true` if clients can book on behalf of a guest.
+   *   `false` otherwise.
    * @property {boolean} is_cancel This will be `true` if the class period was canceled. Otherwise, this will be `false`.
    * @property {boolean} is_promotion_only This will be `true` if this class can only be paid for using a Purchase Option. Otherwise, this will be `false`.
    * @property {boolean} is_wait_list This will be `true` if user is only on the wait list. Otherwise, this will be `false`.
@@ -132,6 +135,11 @@ function Wl_Schedule_ClassView_ClassViewModel()
    *   </dd>
    *   <dt>bool <var>is_book</var></dt>
    *   <dd>This will be `true` if the current class was booked by the current client.</dd>
+   *   <dt>bool <var>is_book_for_guest</var></dt>
+   *   <dd>Allow clients to book on behalf of a guest.
+   *       `true` if clients can book on behalf of a guest.
+   *       `false` otherwise.
+   *    </dd>
    *   <dt>bool <var>is_cancel</var></dt>
    *   <dd>This will be `true` if the class period was canceled. Otherwise, this will be `false`.</dd>
    *   <dt>bool <var>is_promotion_only</var></dt>

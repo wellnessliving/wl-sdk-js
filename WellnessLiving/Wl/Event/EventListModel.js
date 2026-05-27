@@ -179,6 +179,11 @@ function Wl_Event_EventListModel()
    *      It is properly used in combination with a number of other flags.
    *      If you need a flag that covers most of the checks please use `can_book` field.
    *   </dd>
+   *   <dt>bool <var>is_book_for_guest</var></dt>
+   *   <dd>Allow clients to book on behalf of a guest.
+   *      `true` if clients can book on behalf of a guest.
+   *      `false` otherwise.
+   *   </dd>
    *   <dt>bool <var>is_booked</var></dt>
    *   <dd>`true` if the user has booked the event, `false` if the event is not.</dd>
    *   <dt>bool <var>is_closed</var></dt>
@@ -335,13 +340,13 @@ function Wl_Event_EventListModel()
   /**
    * The event business key to retrieve a list of all event sessions in business.
    *
-   * Required if {@link Wl_Event_EventListModel.k_location} isn't specified.
+   * `null` to retrieve events from {@link Wl_Event_EventListModel.k_location}.
    *
    * @get get
    * @put get
-   * @type {string}
+   * @type {?string}
    */
-  this.k_business = "0";
+  this.k_business = null;
 
   /**
    * The event class key to retrieve a list of all event sessions of a specific class.

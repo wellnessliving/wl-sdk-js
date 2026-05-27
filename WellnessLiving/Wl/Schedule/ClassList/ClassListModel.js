@@ -68,7 +68,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @property {string[]} a_class_tab Keys of class tab.
    * @property {string[]} a_image The class image. Empty array if there is no image.
    * @property {string[]} a_search_tag Tags associated with an individual class.
-   * @property {string[]} a_staff The list of staff keys for the staff member conducting the session.
+   * @property {string[]} a_staff The list of staff user keys for the staff member conducting the session.
    * @property {string[]} a_staff_uid The list of staff user keys for the staff member conducting the session.
    * @property {string[]} a_virtual_location The list of virtual locations keys. Each value is a location key.
    * @property {string} dt_date The date/time of the session start in UTC.
@@ -82,6 +82,9 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
    * @property {number} i_wait Number of clients in wait list.
+   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.
+   *  `true` if clients can book on behalf of a guest.
+   *  `false` otherwise.
    * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
    * @property {boolean} is_event If `true`, this is an event. Otherwise, this will be `false`.
    * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
@@ -120,7 +123,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    *     string[] <var>a_staff</var>
    *   </dt>
    *   <dd>
-   *     The list of staff keys for the staff member conducting the session.
+   *     The list of staff user keys for the staff member conducting the session.
    *   </dd>
    *   <dt>
    *     string[] <var>a_staff_uid</var>
@@ -194,6 +197,13 @@ function Wl_Schedule_ClassList_ClassListModel()
    *   </dt>
    *   <dd>
    *     Number of clients in wait list.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_book_for_guest</var>
+   *   </dt>
+   *   <dd>Allow clients to book on behalf of a guest.
+   *      `true` if clients can book on behalf of a guest.
+   *      `false` otherwise.
    *   </dd>
    *   <dt>
    *     bool <var>is_cancel</var>
@@ -372,7 +382,7 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * The list of staff members to filter.
-   * A comma seperated list of staff keys.
+   * A comma separated list of staff keys.
    *
    * @deprecated Use {@link Wl_Schedule_ClassList_ClassListModel.s_staff_uid} instead.
    * @get get
@@ -382,7 +392,7 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * The list of staff user keys to filter.
-   * A comma seperated list of staff user keys.
+   * A comma separated list of staff user keys.
    *
    * @get get
    * @type {string}
