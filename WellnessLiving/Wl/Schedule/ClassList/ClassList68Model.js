@@ -131,6 +131,9 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
    * @property {number} i_wait Number of clients in wait list.
+   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.
+   *  `true` if clients can book on behalf of a guest.
+   *  `false` otherwise.
    * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
    * @property {boolean} is_event If `true`, this is an event. Otherwise, this will be `false`.
    * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
@@ -243,6 +246,13 @@ function Wl_Schedule_ClassList_ClassList68Model()
    *   </dt>
    *   <dd>
    *     Number of clients in wait list.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_book_for_guest</var>
+   *   </dt>
+   *   <dd>Allow clients to book on behalf of a guest.
+   *      `true` if clients can book on behalf of a guest.
+   *      `false` otherwise.
    *   </dd>
    *   <dt>
    *     bool <var>is_cancel</var>
@@ -500,17 +510,3 @@ Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
 {
   return {"a_field": {"a_calendar": {"post": {"result": true}},"a_class": {"post": {"post": true}},"a_class_tab": {"post": {"post": true}},"a_day": {"post": {"post": true}},"a_event": {"post": {"post": true}},"a_location": {"post": {"post": true}},"a_quick": {"post": {"result": true}},"a_session": {"post": {"result": true}},"a_time": {"post": {"post": true}},"dt_date": {"post": {"post": true}},"dt_end": {"post": {"post": true}},"id_class_tab": {"post": {"post": true}},"is_response_short": {"post": {"post": true}},"is_tab_all": {"post": {"post": true}},"is_timezone_different": {"post": {"result": true}},"is_virtual": {"post": {"post": true}},"is_virtual_service": {"post": {"result": true}},"k_business": {"post": {"post": true}},"k_class_tab": {"post": {"post": true}},"s_staff": {"post": {"post": true}},"s_staff_uid": {"post": {"post": true}},"show_cancel": {"post": {"post": true}},"show_class": {"post": {"post": true}},"show_event": {"post": {"post": true}},"show_quick_filter": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };
-
-/**
- * @function
- * @name Wl_Schedule_ClassList_ClassList68Model.instanceGet
- * @param {string} uid The user key.
- * @param {string} k_business The business key.
- * @param {string} k_class_tab The category tab key. This will be `null` if not set yet. This will be ignored if {@link Wl_Schedule_ClassList_ClassListModel.is_tab_all} is `true`.
- * @param {string} dt_date The list start date in UTC and in MySQL format.
- * @param {boolean} show_cancel If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
- * @param {boolean} show_event If `true`, events are also returned. If `false`, only classes are returned.
- * @param {boolean} show_class If `true`, classes will be included in the response. `false` - otherwise.
- * @returns {Wl_Schedule_ClassList_ClassList68Model}
- * @see WlSdk_ModelAbstract.instanceGet()
- */
