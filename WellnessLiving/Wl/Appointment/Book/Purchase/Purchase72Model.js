@@ -6,17 +6,17 @@
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Wl_Appointment_Book_Purchase_PurchaseModel()
+function Wl_Appointment_Book_Purchase_Purchase72Model()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
    */
-  this._s_key = "dt_date,k_location,k_service,k_resource,i_duration,is_backend,uid,k_timezone";
+  this._s_key = "dt_date,k_location,k_service,k_resource,i_duration,is_backend,uid,k_timezone,k_appointment";
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_prize
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_login_prize
    * @property {number} i_count Login prize remaining quantity.
    * @property {string} k_login_prize Key of login prize.
    * @property {string} text_description User friendly login prize description.
@@ -31,12 +31,12 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_prize}
+   * @type {Wl_Appointment_Book_Purchase_Purchase72Model_a_login_prize}
    */
   this.a_login_prize = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data
    * @property {number} i_book The count of future sessions that are paid with this Purchase Option.
    * @property {number} i_limit The limit of visits for the restriction period.
    * @property {number} i_remain The number of remaining visits for the restriction period.
@@ -46,21 +46,21 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * @property {string} text_restriction The description of restriction period. For example, "this week" or "for a four-day period".
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_login_promotion_a_login_promotion_info_a_restrict
    * @property {number} i_limit The limit of visits for the shortest restriction period.
    * @property {number} i_remain The number of remaining visits for the shortest restriction period.
    * @property {string} text_restriction The description of the shortest restriction period. For example "this week" or "for a four-day period".
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_login_promotion_a_login_promotion_info
    * @property {number} i_limit The count of visits that the Purchase Option allows the client to make.
    * @property {?number} i_limit_duration The maximum number of minutes that current Purchase Option can be used for.
    * @property {number} i_remain The count of the remaining visits.
    * @property {?number} i_remain_duration The number of minutes left in this Purchase Option.
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info} a_login_promotion_info Information about the Purchase Option. It contains the following information:
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_login_promotion
+   * @property {Wl_Appointment_Book_Purchase_Purchase72Model_a_login_promotion_a_login_promotion_info} a_login_promotion_info Information about the Purchase Option. It contains the following information:
    *  <dl>
    *    <dt>int <tt>i_limit</tt></dt>
    *    <dd>The count of visits that the Purchase Option allows the client to make.</dd>
@@ -72,7 +72,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *    <dd>The number of minutes left in this Purchase Option.</dd>
    *  </dl>
    * @property {string[]} a_visit_limit The list of calendar restrictions of the Purchase Option. For example, four per week.
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict} a_restrict Data about the shortest restriction period:
+   * @property {Wl_Appointment_Book_Purchase_Purchase72Model_a_login_promotion_a_login_promotion_info_a_restrict} a_restrict Data about the shortest restriction period:
    * <dl>
    *   <dt>int <tt>i_limit</tt></dt>
    *   <dd>The limit of visits for the shortest restriction period.</dd>
@@ -81,7 +81,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *   <dt>string <tt>text_restriction</tt></dt>
    *   <dd>The description of the shortest restriction period. For example "this week" or "for a four-day period".</dd>
    * </dl>
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data[]} a_restrict_data Data about all restriction periods. Given as an array, where each record has the following structure:
+   * @property {Wl_Appointment_Book_Purchase_Purchase72Model_a_login_promotion_a_login_promotion_info_a_restrict_a_restrict_data[]} a_restrict_data Data about all restriction periods. Given as an array, where each record has the following structure:
    * <dl>
    *   <dt>int <tt>i_book</tt></dt>
    *   <dd>The count of future sessions that are paid with this Purchase Option.</dd>
@@ -198,17 +198,17 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Purchase_PurchaseModel_a_login_promotion[]}
+   * @type {Wl_Appointment_Book_Purchase_Purchase72Model_a_login_promotion[]}
    */
   this.a_login_promotion = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase_a_image_a_payment
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_purchase_a_image_a_payment
    * @property {string} m_discount The amount of the whole discount of one purchase item.
    * @property {string} m_discount_login The discount amount for the client type of one purchase item.
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase_a_image
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_purchase_a_image
    * @property {number} i_height Actual height of thumbnail image.
    * @property {number} i_height_src Height of original image.
    * @property {number} i_rotate Angle on which image was rotated compared to the original.
@@ -222,8 +222,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * original image is returned here.
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase_a_image} a_image Information describing the logo of the purchase option. This value can be false if there is no logo described.
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_purchase
+   * @property {Wl_Appointment_Book_Purchase_Purchase72Model_a_purchase_a_image} a_image Information describing the logo of the purchase option. This value can be false if there is no logo described.
    * Image information will have the following fields:
    * <dl>
    *   <dt>
@@ -278,7 +278,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *     original image is returned here.
    *   </dd>
    * </dl>
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase_a_image_a_payment} a_payment The set of calculated values for payment:
+   * @property {Wl_Appointment_Book_Purchase_Purchase72Model_a_purchase_a_image_a_payment} a_payment The set of calculated values for payment:
    * <dl>
    *   <dt>
    *     string <tt>m_discount</tt>
@@ -602,12 +602,12 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Purchase_PurchaseModel_a_purchase[]}
+   * @type {Wl_Appointment_Book_Purchase_Purchase72Model_a_purchase[]}
    */
   this.a_purchase = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_reward_prize
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_reward_prize
    * @property {number} i_score Prize price in points.
    * @property {string} k_reward_prize Key of redeemable prize.
    * @property {string} text_description User friendly prize description.
@@ -622,20 +622,20 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * </dl>
    *
    * @get result
-   * @type {Wl_Appointment_Book_Purchase_PurchaseModel_a_reward_prize}
+   * @type {Wl_Appointment_Book_Purchase_Purchase72Model_a_reward_prize}
    */
   this.a_reward_prize = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_service_a_purchase
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_service_a_purchase
    * @property {number} id_purchase_item Purchase item ID. Constant from {@link Wl_Purchase_Item_ItemSid}.
    * @property {string} k_id Purchase item key.
    * @property {boolean} [is_purchase_previous = false] Should be `true` if this promotion is selected again, i.e. one that has already been applied to another appointment.
    *  This is needed to correctly calculate the remaining quantity of promotions with limited uses.
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_service
-   * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_service_a_purchase} a_purchase List of purchase options selected for the service.
+   * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_service
+   * @property {Wl_Appointment_Book_Purchase_Purchase72Model_a_service_a_purchase} a_purchase List of purchase options selected for the service.
    *    Should be set if a new purchase option is selected for this service.
    *    <dl>
    *  <dt>int `id_purchase_item`</dt>
@@ -663,12 +663,12 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    */
 
   /**
-   * List of selected services without current {@link Wl_Appointment_Book_Purchase_PurchaseModel.k_service}.
+   * List of selected services without current {@link Wl_Appointment_Book_Purchase_Purchase72Model.k_service}.
    *
    * The list of these services directly affects the list of selected promotions.
    * Depending on the number and order of services, there may be different results.
    *
-   * The current {@link Wl_Appointment_Book_Purchase_PurchaseModel.k_service} will be added to the end of this list.
+   * The current {@link Wl_Appointment_Book_Purchase_Purchase72Model.k_service} will be added to the end of this list.
    * It is worth considering this list as a list of previously selected services.
    *
    * Each element has the following structure:
@@ -715,7 +715,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * </dl>
    *
    * @get get
-   * @type {Wl_Appointment_Book_Purchase_PurchaseModel_a_service[]}
+   * @type {Wl_Appointment_Book_Purchase_Purchase72Model_a_service[]}
    */
   this.a_service = [];
 
@@ -806,6 +806,15 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.is_walk_in = false;
 
   /**
+   * Appointment key.
+   * Not empty in case when we return payment options for rescheduling existing appointment.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_appointment = null;
+
+  /**
    * Location to show available appointment booking schedule.
    *
    * @get get,result
@@ -843,7 +852,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * The service key used to select available Purchase Options.
-   * If multiple services are selected, they should be specified in {@link Wl_Appointment_Book_Purchase_PurchaseModel.a_service} array.
+   * If multiple services are selected, they should be specified in {@link Wl_Appointment_Book_Purchase_Purchase72Model.a_service} array.
    *
    * @get get
    * @type {string}
@@ -851,7 +860,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.k_service = "0";
 
   /**
-   * The timezone key for {@link Wl_Appointment_Book_Purchase_PurchaseModel.dt_date}.
+   * The timezone key for {@link Wl_Appointment_Book_Purchase_Purchase72Model.dt_date}.
    *
    * Can be `null` if timezone is not selected.
    * If not selected, the default client timezone will be used {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
@@ -883,27 +892,28 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Purchase_PurchaseModel);
+WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Purchase_Purchase72Model);
 
 /**
  * @inheritDoc
  */
-Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
+Wl_Appointment_Book_Purchase_Purchase72Model.prototype.config=function()
 {
-  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_reward_prize": {"get": {"result": true}},"a_service": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"i_height": {"get": {"get": true}},"i_width": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_single_default": {"get": {"result": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_promotion": {"get": {"get": true,"result": true}},"k_promotion_default": {"get": {"result": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"text_login_promotion": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_login_prize": {"get": {"result": true}},"a_login_promotion": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_reward_prize": {"get": {"result": true}},"a_service": {"get": {"get": true}},"a_session_pass": {"get": {"result": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"i_height": {"get": {"get": true}},"i_width": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_single_default": {"get": {"result": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_promotion": {"get": {"get": true,"result": true}},"k_promotion_default": {"get": {"result": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"text_login_promotion": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**
  * @function
- * @name Wl_Appointment_Book_Purchase_PurchaseModel.instanceGet
+ * @name Wl_Appointment_Book_Purchase_Purchase72Model.instanceGet
  * @param {string} dt_date The date to use to check for expiration of Purchase Options.
  * @param {string} k_location Location to show available appointment booking schedule.
- * @param {string} k_service The service key used to select available Purchase Options. If multiple services are selected, they should be specified in {@link Wl_Appointment_Book_Purchase_PurchaseModel.a_service} array.
+ * @param {string} k_service The service key used to select available Purchase Options. If multiple services are selected, they should be specified in {@link Wl_Appointment_Book_Purchase_Purchase72Model.a_service} array.
  * @param {string} k_resource The resource key.
  * @param {number} i_duration The asset booking duration.
  * @param {boolean} is_backend `true` - get all Purchase Options suitable for appointment. `false` - get only Purchase Options available for the client.
  * @param {string} uid The user key.
- * @param {?string} k_timezone The timezone key for {@link Wl_Appointment_Book_Purchase_PurchaseModel.dt_date}. Can be `null` if timezone is not selected. If not selected, the default client timezone will be used {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}. In any case, the timezone will be used if the business allows client timezones.
- * @returns {Wl_Appointment_Book_Purchase_PurchaseModel}
+ * @param {?string} k_timezone The timezone key for {@link Wl_Appointment_Book_Purchase_Purchase72Model.dt_date}. Can be `null` if timezone is not selected. If not selected, the default client timezone will be used {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}. In any case, the timezone will be used if the business allows client timezones.
+ * @param {?string} k_appointment Appointment key. Not empty in case when we return payment options for rescheduling existing appointment.
+ * @returns {Wl_Appointment_Book_Purchase_Purchase72Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
