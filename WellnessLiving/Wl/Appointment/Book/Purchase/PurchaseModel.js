@@ -5,6 +5,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Appointment_Book_Purchase_Purchase72Model}.
  */
 function Wl_Appointment_Book_Purchase_PurchaseModel()
 {
