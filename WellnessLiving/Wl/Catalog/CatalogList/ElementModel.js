@@ -139,6 +139,47 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.a_discount_code = [];
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_guest_pass
+   * @property {?number} i_limit Number of times guest pass can be used per period. `null` for unlimited guest pass.
+   * @property {?number} i_limit_daily Number of times guest pass can be used per day. `null` for limited guest pass.
+   * @property {?number} i_period Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.
+   * @property {?number} id_period Period type by which guest pass limits are reset. `null` for unlimited guest pass.
+   * @property {?number} id_reset_type Type by which guest pass limits are reset. `null` for unlimited guest pass.
+   * @property {number} k_promotion_guest Guest pass promotion key.
+   * @property {string} text_limit Formatted guest pass limits.
+   * @property {string} text_title Guest pass promotion title.
+   */
+
+  /**
+   * Information about promotion guest pass. Empty array if promotion does not have guest pass or
+   * guest pass is not enabled. Has follow structure:<dl>
+   *     <dt>int|null `i_limit`</dt>
+   *     <dd>Number of times guest pass can be used per period. `null` for unlimited guest pass.</dd>
+   *     <dt>int|null `i_limit_daily`</dt>
+   *     <dd>Number of times guest pass can be used per day. `null` for limited guest pass.</dd>
+   *     <dt>int|null `i_period`</dt>
+   *     <dd>Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.</dd>
+   *     <dt>int|null `id_period`</dt>
+   *     <dd>Period type by which guest pass limits are reset. `null` for unlimited guest pass.</dd>
+   *     <dt>int|null `id_reset_type`</dt>
+   *     <dd>
+   *         Type by which guest pass limits are reset.
+   *         `null` for unlimited guest pass.
+   *     </dd>
+   *     <dt>int `k_promotion_guest`</dt>
+   *     <dd>Guest pass promotion key.</dd>
+   *     <dt>string `text_limit`</dt>
+   *     <dd>Formatted guest pass limits.</dd>
+   *     <dt>string `text_title`</dt>
+   *     <dd>Guest pass promotion title.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_Catalog_CatalogList_ElementModel_a_guest_pass}
+   */
+  this.a_guest_pass = {};
+
+  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_image
    * @property {number} i_height The height in pixels.
    * @property {number} i_width The width in pixels.
@@ -675,7 +716,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_CatalogList_ElementModel);
  */
 Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_age_restriction": {"get": {"result": true}},"a_data": {"get": {"result": true}},"a_discount_code": {"get": {"get": true}},"a_image": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_item": {"get": {"result": true}},"a_sale_id_group": {"get": {"get": true}},"a_tax": {"get": {"result": true}},"dl_client_prorate": {"get": {"get": true}},"f_price": {"get": {"result": true}},"f_price_include": {"get": {"result": true}},"f_price_retail_product": {"get": {"result": true}},"f_price_total_enrollment":{"get":{"result": true}},"f_tax": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_promotion_image_height": {"get": {"get": true}},"i_promotion_image_width": {"get": {"get": true}},"id_purchase_item": {"get": {"result": true}},"id_purchase_option_view": {"get": {"result": true}},"id_sale": {"get": {"get": true,"result": true}},"is_backend": {"get": {"get": true}},"is_contract": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_id": {"get": {"get": true,"result": true}},"k_location": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true,"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_include": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"s_comment": {"get": {"result": true}},"s_price": {"get": {"result": true}},"s_sale": {"get": {"result": true}},"s_title": {"get": {"result": true}},"text_item": {"get": {"get": true}},"text_price": {"get": {"result": true}},"text_sale": {"get": {"result": true}},"text_title": {"get": {"result": true}},"uid_customer": {"get": {"get": true}},"xml_description": {"get": {"result": true}},"xml_special": {"get": {"result": true}}}};
+  return {"a_field": {"a_age_restriction": {"get": {"result": true}},"a_data": {"get": {"result": true}},"a_discount_code": {"get": {"get": true}},"a_guest_pass": {"get": {"result": true}},"a_image": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_item": {"get": {"result": true}},"a_sale_id_group": {"get": {"get": true}},"a_tax": {"get": {"result": true}},"dl_client_prorate": {"get": {"get": true}},"f_price": {"get": {"result": true}},"f_price_include": {"get": {"result": true}},"f_price_retail_product": {"get": {"result": true}},"f_price_total_enrollment":{"get":{"result": true}},"f_tax": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_promotion_image_height": {"get": {"get": true}},"i_promotion_image_width": {"get": {"get": true}},"id_purchase_item": {"get": {"result": true}},"id_purchase_option_view": {"get": {"result": true}},"id_sale": {"get": {"get": true,"result": true}},"is_backend": {"get": {"get": true}},"is_contract": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_id": {"get": {"get": true,"result": true}},"k_location": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true,"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_include": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"s_comment": {"get": {"result": true}},"s_price": {"get": {"result": true}},"s_sale": {"get": {"result": true}},"s_title": {"get": {"result": true}},"text_item": {"get": {"get": true}},"text_price": {"get": {"result": true}},"text_sale": {"get": {"result": true}},"text_title": {"get": {"result": true}},"uid_customer": {"get": {"get": true}},"xml_description": {"get": {"result": true}},"xml_special": {"get": {"result": true}}}};
 };
 
 /**
