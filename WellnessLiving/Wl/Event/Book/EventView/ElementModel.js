@@ -29,11 +29,11 @@ function Wl_Event_Book_EventView_ElementModel()
    * An empty array if there are no age restrictions.
    *
    * <dl>
-   *   <dt>int|null <var>i_age_from</var></dt>
+   *   <dt>int|null `i_age_from`</dt>
    *   <dd>The minimum age for participation in the event. `null` if there's no minimum age set or information isn't available.</dd>
-   *   <dt>int|null <var>i_age_to</var></dt>
+   *   <dt>int|null `i_age_to`</dt>
    *   <dd>The age limit for participation in the event. `null` if there's no age limit set or information isn't available.</dd>
-   *   <dt>bool <var>is_age_public</var></dt>
+   *   <dt>bool `is_age_public`</dt>
    *   <dd>`true` if age restrictions are public and available, `false` if they're hidden.
    *     When restrictions are hidden and the current user isn't a staff member, the age range will be empty.</dd>
    * </dl>
@@ -56,9 +56,9 @@ function Wl_Event_Book_EventView_ElementModel()
    * In this case, other fields aren't receivers.
    *
    * <dl>
-   *   <dt>string <var>dt_date</var></dt>
+   *   <dt>string `dt_date`</dt>
    *   <dd>Date/time when the session starts. In UTC.</dd>
-   *   <dt>string <var>k_class_period</var></dt>
+   *   <dt>string `k_class_period`</dt>
    *   <dd>Class session primary keys.</dd>
    * </dl>
    *
@@ -82,22 +82,22 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_class_logo
-   * @property {*} i_height Is returned only if staff has a photo. Image height.
-   * @property {*} i_width Is returned only if staff has a photo. Image width.
-   * @property {*} id_gender Is returned only if staff does not have a photo. ID of staff gender. One of {@link Wl_Gender_GenderSid} constants.
-   * @property {*} url_logo Is returned only if staff has a photo. URL to image.
+   * @property {number} [i_height] Is returned only if staff has a photo. Image height.
+   * @property {number} [i_width] Is returned only if staff has a photo. Image width.
+   * @property {number} [id_gender] Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.
+   * @property {string} [url_logo] Is returned only if staff has a photo. URL to image.
    */
 
   /**
    * The logo of event.
    * <dl>
-   *   <dt>int [<var>i_height</var>]</dt>
+   *   <dt>int [`i_height`]</dt>
    *   <dd>Is returned only if staff has a photo. Image height.</dd>
-   *   <dt>int [<var>i_width</var>]</dt>
+   *   <dt>int [`i_width`]</dt>
    *   <dd>Is returned only if staff has a photo. Image width.</dd>
-   *   <dt>int [<var>id_gender</var>] </dt>
-   *   <dd>Is returned only if staff does not have a photo. ID of staff gender. One of {@link Wl_Gender_GenderSid} constants.</dd>
-   *   <dt>string [<var>url_logo</var>]</dt>
+   *   <dt>int [`id_gender`] </dt>
+   *   <dd>Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.</dd>
+   *   <dt>string [`url_logo`]</dt>
    *   <dd>Is returned only if staff has a photo. URL to image.</dd>
    * </dl>
    *
@@ -107,7 +107,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_class_logo = undefined;
 
   /**
-   * The list of keys from class tab.+
+   * The list of keys from class tab.
    *
    * @get result
    * @type {string[]}
@@ -128,6 +128,41 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_event = undefined;
 
   /**
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_installment_template
+   * @property {number} i_count The number of payments.
+   * @property {number} id_duration The duration of a single period. One of the {@link ADurationSid} constants.
+   * @property {number} i_period The number of periods specified by `id_period` between individual payments.
+   * @property {string} k_currency The payment currency Key.
+   * @property {string} k_pay_installment_template The key of the installment plan template.
+   * @property {string} m_amount The amount of the installment plan.
+   * @property {string} s_duration The title of the installment plan.
+   */
+
+  /**
+   * A list of installment plans. Each element has the following next keys:
+   * <dl>
+   *   <dt>int `i_count`</dt>
+   *   <dd>The number of payments.</dd>
+   *   <dt>int `id_duration`</dt>
+   *   <dd>The duration of a single period. One of the {@link ADurationSid} constants.</dd>
+   *   <dt>int `i_period`</dt>
+   *   <dd>The number of periods specified by `id_period` between individual payments.</dd>
+   *   <dt>string `k_currency`</dt>
+   *   <dd>The payment currency Key.</dd>
+   *   <dt>string `k_pay_installment_template`</dt>
+   *   <dd>The key of the installment plan template.</dd>
+   *   <dt>string `m_amount`</dt>
+   *   <dd>The amount of the installment plan.</dd>
+   *   <dt>string `s_duration`</dt>
+   *   <dd>The title of the installment plan.</dd>
+   * </dl>
+   *
+   * @get result
+   * @type {Wl_Event_Book_EventView_ElementModel_a_installment_template[]}
+   */
+  this.a_installment_template = undefined;
+
+  /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat_a_staff
    * @property {string} k_staff The staff member key.
    * @property {string} s_name The staff member name.
@@ -136,29 +171,29 @@ function Wl_Event_Book_EventView_ElementModel()
    */
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat
-   * @property {number} i_repeat Count of the periods which specified in <tt>id_repeat</tt>.
-   * @property {number} id_repeat Measuring unit of <tt>i_repeat</tt> (week, month, year).
+   * @property {number} i_repeat Count of the periods which specified in `id_repeat`.
+   * @property {number} id_repeat Measuring unit of `i_repeat` (week, month, year).
    */
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule
    * @property {{}} a_day A list of days of the week when the session has occurred.
-   * Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always <tt>true</tt>.
+   * Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always `true`.
    * @property {Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat} a_repeat Repeat periodicity instructions.
    * <dl>
-   *   <dt>int <tt>i_repeat</tt></dt>
-   *   <dd>Count of the periods which specified in <tt>id_repeat</tt>.</dd>
-   *   <dt>int <tt>id_repeat</tt></dt>
-   *   <dd>Measuring unit of <tt>i_repeat</tt> (week, month, year).</dd>
+   *   <dt>int `i_repeat`</dt>
+   *   <dd>Count of the periods which specified in `id_repeat`.</dd>
+   *   <dt>int `id_repeat`</dt>
+   *   <dd>Measuring unit of `i_repeat` (week, month, year).</dd>
    * </dl>
    * @property {Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat_a_staff[]} a_staff A list of staff members who conduct the session. Every element has the following next keys:
    * <dl>
-   *   <dt>string <tt>k_staff</tt></dt>
+   *   <dt>string `k_staff`</dt>
    *   <dd>The staff member key.</dd>
-   *   <dt>string <tt>s_name</tt></dt>
+   *   <dt>string `s_name`</dt>
    *   <dd>The staff member name.</dd>
-   *   <dt>string <tt>s_surname</tt></dt>
+   *   <dt>string `s_surname`</dt>
    *   <dd>The first letter of staff member's surname.</dd>
-   *   <dt>int <tt>uid_staff</tt></dt>
+   *   <dt>int `uid_staff`</dt>
    *   <dd>The user key of the staff member.</dd>
    * </dl>
    * @property {string[]} a_virtual_location List of virtual locations.
@@ -176,7 +211,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} k_location The key of the location where the session is held.
    * @property {string} s_location The location title.
    * @property {string} s_time The time when session occurred.
-   * A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am</tt>
+   * A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
    * @property {string} s_timezone The name of the timezone in which the session is held.
    * @property {string} text_room The room of the event.
    */
@@ -185,122 +220,122 @@ function Wl_Event_Book_EventView_ElementModel()
    * A list of event sessions. Every element has the following next keys:
    * <dl>
    *   <dt>
-   *     array <var>a_day</var>
+   *     array `a_day`
    *   </dt>
    *   <dd>
    *     A list of days of the week when the session has occurred.
-   *     Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always <tt>true</tt>.
+   *     Keys - a number corresponding to a day of the week (0 - Sunday, 6 - Saturday). The value is always `true`.
    *   </dd>
-   *   <dt>array <var>a_repeat</var></dt>
+   *   <dt>array `a_repeat`</dt>
    *   <dd>
    *     Repeat periodicity instructions.
    *     <dl>
-   *       <dt>int <var>i_repeat</var></dt>
-   *       <dd>Count of the periods which specified in <var>id_repeat</var>.</dd>
-   *       <dt>int <var>id_repeat</var></dt>
-   *       <dd>Measuring unit of <var>i_repeat</var> (week, month, year).</dd>
+   *       <dt>int `i_repeat`</dt>
+   *       <dd>Count of the periods which specified in `id_repeat`.</dd>
+   *       <dt>int `id_repeat`</dt>
+   *       <dd>Measuring unit of `i_repeat` (week, month, year).</dd>
    *     </dl>
    *   </dd>
    *   <dt>
-   *     array[] <var>a_staff</var>
+   *     array[] `a_staff`
    *   </dt>
    *   <dd>
    *     A list of staff members who conduct the session. Every element has the following next keys:
    *     <dl>
-   *       <dt>string <var>k_staff</var></dt>
+   *       <dt>string `k_staff`</dt>
    *       <dd>The staff member key.</dd>
-   *       <dt>string <var>s_name</var></dt>
+   *       <dt>string `s_name`</dt>
    *       <dd>The staff member name.</dd>
-   *       <dt>string <var>s_surname</var></dt>
+   *       <dt>string `s_surname`</dt>
    *       <dd>The first letter of staff member's surname.</dd>
-   *       <dt>int <var>uid_staff</var></dt>
+   *       <dt>int `uid_staff`</dt>
    *       <dd>The user key of the staff member.</dd>
    *     </dl>
    *   </dd>
    *   <dt>
-   *     string[] <var>a_virtual_location</var>
+   *     string[] `a_virtual_location`
    *   </dt>
    *   <dd>
    *     List of virtual locations.
    *   </dd>
    *   <dt>
-   *     string <var>dt_end</var>
+   *     string `dt_end`
    *   </dt>
    *   <dd>
    *     The end date of the session.
    *     The local date without time.
    *   </dd>
    *   <dt>
-   *     string <var>dt_start</var>
+   *     string `dt_start`
    *   </dt>
    *   <dd>
    *     The start date of the session.
    *     The local date without time.
    *   </dd>
    *   <dt>
-   *     bool <var>hide_location</var>
+   *     bool `hide_location`
    *   </dt>
    *   <dd>
    *     `true` if the location should be hidden in the event details. Hide if the event is virtual or if the business
    *     only has one location. `false` otherwise.
    *   </dd>
    *   <dt>
-   *     int <var>i_capacity</var>
+   *     int `i_capacity`
    *   </dt>
    *   <dd>
    *     The class capacity.
    *   </dd>
    *   <dt>
-   *     int <var>i_duration</var>
+   *     int `i_duration`
    *   </dt>
    *   <dd>
    *     The duration of the class in seconds.
    *   </dd>
    *   <dt>
-   *     bool <var>is_virtual</var>
+   *     bool `is_virtual`
    *   </dt>
    *   <dd>
    *     This will be `true` if the session is not held in person but offered remotely. It will be `false` otherwise.
    *   </dd>
    *   <dt>
-   *     string <var>f_price</var>
+   *     string `f_price`
    *   </dt>
    *   <dd>
    *     The price of the session, if it can be purchased separately.
    *   </dd>
    *   <dt>
-   *     string <var>k_class_period</var>
+   *     string `k_class_period`
    *   </dt>
    *   <dd>
    *     The key of the class period.
    *   </dd>
    *   <dt>
-   *     string <var>k_location</var>
+   *     string `k_location`
    *   </dt>
    *   <dd>
    *     The key of the location where the session is held.
    *   </dd>
    *   <dt>
-   *     string <var>s_location</var>
+   *     string `s_location`
    *   </dt>
    *   <dd>
    *     The location title.
    *   </dd>
    *   <dt>
-   *     string <var>s_time</var>
+   *     string `s_time`
    *   </dt>
    *   <dd>
    *     The time when session occurred.
-   *     A textual representation of the start and end time of a session. Example: <tt>10:00 am - 11:00 am</tt>
+   *     A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
    *   </dd>
    *   <dt>
-   *     string <var>s_timezone</var>
+   *     string `s_timezone`
    *   </dt>
    *   <dd>
    *     The name of the timezone in which the session is held.
    *   </dd>
    *   <dt>
-   *     string <var>text_room</var>
+   *     string `text_room`
    *   </dt>
    *   <dd>
    *     The room of the event.
@@ -313,6 +348,14 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_schedule = undefined;
 
   /**
+   * IDs of online store category.
+   *
+   * @get result
+   * @type {string[]}
+   */
+  this.a_shop_category = undefined;
+
+  /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_staff_logo
    * @property {number} i_height Image height.
    * @property {number} i_width Image width.
@@ -323,13 +366,13 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * Photos of staff members. Keys are the keys of staff members. The values are the following:
    * <dl>
-   *   <dt>int <var>i_height</var></dt>
+   *   <dt>int `i_height`</dt>
    *   <dd>Image height.</dd>
-   *   <dt>int <var>i_width</var></dt>
+   *   <dt>int `i_width`</dt>
    *   <dd>Image width.</dd>
-   *   <dt>string <var>uid</var></dt>
+   *   <dt>string `uid`</dt>
    *   <dd>Key of the user.</dd>
-   *   <dt>string <var>url_logo</var></dt>
+   *   <dt>string `url_logo`</dt>
    *   <dd>URL to image.</dd>
    * </dl>
    *
@@ -361,15 +404,15 @@ function Wl_Event_Book_EventView_ElementModel()
    * A list of classes and events that clients should attend before this one.
    *
    * <dl>
-   *   <dt>int <var>i_count</var></dt>
+   *   <dt>int `i_count`</dt>
    *   <dd>The number of visits required.</dd>
-   *   <dt>int <var>i_has</var></dt>
+   *   <dt>int `i_has`</dt>
    *   <dd>The number of visits the client has already attended.</dd>
-   *   <dt>bool <var>is_event</var></dt>
+   *   <dt>bool `is_event`</dt>
    *   <dd>`true` if this is an event, `false` if this is a class.</dd>
-   *   <dt>string <var>k_class</var></dt>
+   *   <dt>string `k_class`</dt>
    *   <dd>The key of the class or event.</dd>
-   *   <dt>string <var>text_title</var></dt>
+   *   <dt>string `text_title`</dt>
    *   <dd>The name of the class or event.</dd>
    * </dl>
    *
@@ -444,7 +487,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * Whether event will be hidden in the White Label mobile application.
-   * <tt>true</tt> means that event will not be displayed, <tt>false</tt> otherwise.
+   * `true` means that event will not be displayed, `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -466,6 +509,16 @@ function Wl_Event_Book_EventView_ElementModel()
    * @type {string}
    */
   this.html_special = undefined;
+
+  /**
+   * Class capacity.
+   *
+   * `null` if no set.
+   *
+   * @get result
+   * @type {?number}
+   */
+  this.i_capacity = null;
 
   /**
    * Image height in pixels. Please specify this value if you need image to be returned in specific size.
@@ -520,6 +573,26 @@ function Wl_Event_Book_EventView_ElementModel()
   this.i_staff_image_width = 0;
 
   /**
+   * The purchase rule ID.
+   * One of the {@link Wl_Classes_RequirePaySid} constants.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.id_pay_require = undefined;
+
+  /**
+   * Default required value for {@link Wl_Classes_RequirePaySid.ADVANCE} payment mode,
+   *  one of {@link Wl_Classes_RequirePaySid.ONLINE} or {@link Wl_Classes_RequirePaySid.VISIT}.
+   *
+   * `null` means default value not selected.
+   *
+   * @get result
+   * @type {?number}
+   */
+  this.id_pay_require_option = null;
+
+  /**
    * The virtual provider ID. One of the {@link Wl_Virtual_VirtualProviderSid} constants.
    *
    * `null` if an in-person event.
@@ -548,7 +621,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_availability_checked = undefined;
 
   /**
-   * <tt>true</tt> if the event is already booked; <tt>false</tt> if the event isn't booked.
+   * `true` if the event is already booked; `false` if the event isn't booked.
    *
    * @get result
    * @type {boolean}
@@ -573,6 +646,15 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_full = undefined;
 
   /**
+   * `true` if the selected session can be a make up session.
+   * `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_makeup = false;
+
+  /**
    * `true` if the selected session has already started and do not available to book.
    * `false` otherwise.
    *
@@ -580,6 +662,15 @@ function Wl_Event_Book_EventView_ElementModel()
    * @type {boolean}
    */
   this.is_past = false;
+
+  /**
+   * `true` if the {@link Wl_Event_Book_EventView_ElementModel.a_business_policy} contains the custom policies from the event.
+   * `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_policy_custom = false;
 
   /**
    * `true` if the event can be paid with a Purchase Option only.
@@ -594,8 +685,6 @@ function Wl_Event_Book_EventView_ElementModel()
    * `true` if clients, when they book event, which has been started, can pay only for the sessions in the future.
    * `false` if clients, when they book event, have to pay for the entire event and the number of lefts in the future sessions
    * does not matter.
-   *
-   * Copy of {@link \RsClassSql}.<tt>is_prorate</tt>.
    *
    * @get result
    * @type {boolean}
@@ -620,7 +709,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_single_session_buy = undefined;
 
   /**
-   * <tt>true</tt> if event is virtual; <tt>false</tt> - otherwise.
+   * `true` if event is virtual; `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -637,7 +726,6 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * Key of a business.
-   * Primary key in {@link \RsBusinessSql} table to that belongs requested event(s).
    *
    * @get get
    * @type {?string}
@@ -715,11 +803,20 @@ function Wl_Event_Book_EventView_ElementModel()
   this.s_title = null;
 
   /**
+   * `true` if special instructions can be public,
+   * `false` if they should be shown only to the clients, who booked the class.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.show_special_instructions = false;
+
+  /**
    * `true` to show schedule, which is not published yet.
    * `false` to show only published schedule.
    *
    * @get get
-   * @var bool
+   * @type {boolean}
    */
   this.show_unpublished = false;
 
@@ -775,7 +872,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventView_ElementModel);
  */
 Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_timezone_info": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"dtu_session": {"get": {"get": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_session_remain": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"show_unpublished": {"get": {"get": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
+  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_shop_category": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_timezone_info": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"dtu_session": {"get": {"get": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_capacity": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_session": {"get": {"result": true}},"i_session_remain": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_pay_require": {"get": {"result": true}},"id_pay_require_option": {"get": {"result": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_makeup": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_policy_custom": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"show_special_instructions": {"get": {"result": true}},"show_unpublished": {"get": {"get": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
 };
 
 /**
