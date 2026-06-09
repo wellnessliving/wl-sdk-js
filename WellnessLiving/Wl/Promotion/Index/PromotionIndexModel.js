@@ -163,10 +163,10 @@ function Wl_Promotion_Index_PromotionIndexModel()
    * See more information here: {@link RsDurationTypeSid}.
    * @property {number} id_program The type of the Purchase Option. The <tt>id_program</tt> relates to only one <tt>id_program_type</tt> and one
    * <tt>id_program_category</tt>.
-   * See more information here: {@link RsProgramSid}.
+   * See more information here: {@link Wl_WlProgramSid}.
    * @property {number} id_program_category The category of the program for promotions. The <tt>id_program_category</tt> relates to more than one
    * <tt>id_program</tt>.
-   * See more information here: {@link RsProgramCategorySid}.
+   * See more information here: {@link Wl_WlProgramCategorySid}.
    * @property {number} id_program_type The ID of the promotion program type. The <tt>id_program_type</tt> relates to more than one <tt>id_program</tt>.
    * See more information here: {@link RsProgramTypeSid}.
    * @property {boolean} is_direct_buy_only If `true`, the pricing option can be sold only by direct link. This means it shouldn't be shown in the store or
@@ -350,7 +350,7 @@ function Wl_Promotion_Index_PromotionIndexModel()
    *   <dd>
    *     The type of the Purchase Option. The <var>id_program</var> relates to only one <var>id_program_type</var> and one
    *     <var>id_program_category</var>.
-   *     See more information here: {@link RsProgramSid}.
+   *     See more information here: {@link Wl_WlProgramSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_category</var>
@@ -358,7 +358,7 @@ function Wl_Promotion_Index_PromotionIndexModel()
    *   <dd>
    *     The category of the program for promotions. The <var>id_program_category</var> relates to more than one
    *     <var>id_program</var>.
-   *     See more information here: {@link RsProgramCategorySid}.
+   *     See more information here: {@link Wl_WlProgramCategorySid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_type</var>

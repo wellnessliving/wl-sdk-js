@@ -127,7 +127,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo} a_logo The purchase item logo.
    * @property {string[]} a_visit List of visit keys. Only available if the purchase item is an event.
    * @property {number} i_count The number of items in the purchase.
-   * @property {?number} id_program Program ID. One of {@link RsProgramSid} constants. Only applies to promotions.
+   * @property {?number} id_program Program ID. One of {@link Wl_WlProgramSid} constants. Only applies to promotions.
    *   `null` if the purchase item is not a promotion.
    * @property {number} id_purchase_item Purchase item ID. One of {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {number} id_sale Sale ID. One of {@link RsSaleSid} constants.

@@ -59,7 +59,7 @@ Wl_WlProgramCategorySid.SERVICE = 3;
 
 /**
  * Purchase options to pay for videos:<ui>
- *   <li>{@link \RsProgramSid::VIDEO_MEMBERSHIP}</li>
+ *   <li>{@link Wl_WlProgramSid.VIDEO_MEMBERSHIP}</li>
  * </ui>
  */
 Wl_WlProgramCategorySid.VIDEO = 9;

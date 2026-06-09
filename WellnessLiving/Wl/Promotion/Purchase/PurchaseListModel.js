@@ -29,7 +29,7 @@ function Wl_Promotion_Purchase_PurchaseListModel()
    *   <dt>string <tt>text_title</tt></dt>
    *   <dd>Title of promotion.</dd>
    * </dl>
-   * @property {number} id_program Promotion program. One of {@link RsProgramSid} constants.
+   * @property {number} id_program Promotion program. One of {@link Wl_WlProgramSid} constants.
    * @property {number} id_program_type Promotion program type. One of {@link RsProgramTypeSid} constants.
    * @property {string} text_title Program type title.
    */
@@ -53,7 +53,7 @@ function Wl_Promotion_Purchase_PurchaseListModel()
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     Promotion program. One of {@link RsProgramSid} constants.
+   *     Promotion program. One of {@link Wl_WlProgramSid} constants.
    *   </dd>
    *   <dt>
    *     int <var>id_program_type</var>
