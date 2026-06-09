@@ -304,7 +304,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * @property {*} i_limit The limit of sessions that can be booked by Purchase Options.
    * @property {*} i_payment_period This is only set for Purchase Options with the 'membership' program type. The duration of the regular payment interval.
    * @property {*} i_session This is only set for purchases of single sessions. The number of sessions booked simultaneously.
-   * @property {*} id_program_category This is only set for promotions. The ID of the promotion program category. One of the {@link RsProgramCategorySid} constants.
+   * @property {*} id_program_category This is only set for promotions. The ID of the promotion program category. One of the {@link Wl_WlProgramCategorySid} constants.
    * @property {*} id_program_type This is only set for promotions. The ID of the promotion program type. One of the {@link RsProgramTypeSid} constants.
    * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {*} is_contract If `true`, the Purchase Option requires a contract assignment. Otherwise, this will be `false`.
@@ -363,7 +363,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    *   <dt>int [<var>i_session</var>]</dt>
    *   <dd>This is only set for purchases of single sessions. The number of sessions booked simultaneously.</dd>
    *   <dt>int [<var>id_program_category</var>]</dt>
-   *   <dd>This is only set for promotions. The ID of the promotion program category. One of the {@link RsProgramCategorySid} constants.</dd>
+   *   <dd>This is only set for promotions. The ID of the promotion program category. One of the {@link Wl_WlProgramCategorySid} constants.</dd>
    *   <dt>int [<var>id_program_type</var>]</dt>
    *   <dd>This is only set for promotions. The ID of the promotion program type. One of the {@link RsProgramTypeSid} constants.</dd>
    *   <dt>int <var>id_purchase_item</var></dt>

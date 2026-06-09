@@ -322,7 +322,7 @@ function Wl_Appointment_Book_Purchase_Purchase72Model()
    * @property {string} s_description Description of the purchase option.
    * @property {string} s_duration Duration of the promotion.
    * @property {string} s_payment_duration Period between payments for memberships.
-   * @property {string} sid_program_category Category of the program for promotions from {@link RsProgramCategorySid}.
+   * @property {string} sid_program_category Category of the program for promotions from {@link Wl_WlProgramCategorySid}.
    * @property {string} s_title Name of the purchase option.
    * @property {string} s_value Key of the purchase option in the format [<tt>purchase_item_id</tt>]::[<tt>k_id</tt>]
    * @property {string} text_package_item If this promotion is a package. This field contains list of promotions contained in the package.
@@ -579,7 +579,7 @@ function Wl_Appointment_Book_Purchase_Purchase72Model()
    *     string <var>sid_program_category</var>
    *   </dt>
    *   <dd>
-   *     Category of the program for promotions from {@link RsProgramCategorySid}.
+   *     Category of the program for promotions from {@link Wl_WlProgramCategorySid}.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>

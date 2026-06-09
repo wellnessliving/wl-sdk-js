@@ -14,7 +14,7 @@ function Wl_Classes_Promotion_ClassPromotionModel()
    * @typedef {{}} Wl_Classes_Promotion_ClassPromotionModel_a_promotion
    * @property {string} k_promotion The promotion key.
    * @property {string} text_title The title of the promotion.
-   * @property {number} id_program One of {@link RsProgramSid} constants.
+   * @property {number} id_program One of {@link Wl_WlProgramSid} constants.
    * @property {boolean} is_select <tt>true</tt> if the promotion is related to the class or event, <tt>false</tt> otherwise.
    */
 
@@ -25,7 +25,7 @@ function Wl_Classes_Promotion_ClassPromotionModel()
    *   <dt>string <var>text_title</var></dt>
    *   <dd>The title of the promotion.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>One of {@link RsProgramSid} constants.</dd>
+   *   <dd>One of {@link Wl_WlProgramSid} constants.</dd>
    *   <dt>bool <var>is_select</var></dt>
    *   <dd><tt>true</tt> if the promotion is related to the class or event, <tt>false</tt> otherwise.</dd>
    * </dl>.

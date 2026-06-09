@@ -71,7 +71,7 @@ function Wl_Promotion_PromotionModel()
    * @property {number} id_duration_type The duration type. Possible duration types can be 'Without End', 'Expires on a certain date', 'Period'.
    * For more information, see {@link RsDurationTypeSid}.
    * @property {number} id_program The Purchase Option type.
-   * For more information, see {@link RsProgramSid}.
+   * For more information, see {@link Wl_WlProgramSid}.
    * @property {boolean} is_introductory If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.
    * @property {boolean} is_online If `true`, this promotion is available for online purchase. Otherwise, this will be `false`.
    * @property {string} k_promotion The key of the promotion.
@@ -163,7 +163,7 @@ function Wl_Promotion_PromotionModel()
    *   </dt>
    *   <dd>
    *     The Purchase Option type.
-   *     For more information, see {@link RsProgramSid}.
+   *     For more information, see {@link Wl_WlProgramSid}.
    *   </dd>
    *   <dt>
    *     bool <var>is_introductory</var>
