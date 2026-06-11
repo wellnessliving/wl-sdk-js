@@ -25,6 +25,26 @@ function Wl_Login_Promotion_GuestPass_GuestPassListModel()
   this.k_business = "";
 
   /**
+   * Class key to filter guest passes by.
+   *
+   * `null` if guest passes should not be filtered by class.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_class = null;
+
+  /**
+   * Location key to filter guest passes by.
+   *
+   * `null` if guest passes should not be filtered by location.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_location = null;
+
+  /**
    * User key.
    *
    * @get get
@@ -42,5 +62,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_GuestPass_GuestPassListModel);
  */
 Wl_Login_Promotion_GuestPass_GuestPassListModel.prototype.config=function()
 {
-  return {"a_field": {"a_list": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_list": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
