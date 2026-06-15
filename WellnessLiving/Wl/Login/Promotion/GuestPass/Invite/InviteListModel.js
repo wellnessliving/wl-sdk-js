@@ -20,12 +20,6 @@ function Wl_Login_Promotion_GuestPass_Invite_InviteListModel()
    * &gt; Used only for `POST` request to send invitation to the guest without account.
    *
    * Required fields:
-   * <dl>
-   *     <dt>string `text_mail`</dt>
-   *     <dd>Email address to which the invitation will be sent.</dd>
-   *     <dt>string `text_phone`</dt>
-   *     <dd>Phone number to which the invitation SMS will be sent.</dd>
-   * </dl>
    *
    * @post post
    * @type {Wl_Login_Promotion_GuestPass_Invite_InviteListModel_a_guest}
@@ -33,10 +27,70 @@ function Wl_Login_Promotion_GuestPass_Invite_InviteListModel()
   this.a_guest = [];
 
   /**
+   * @typedef {{}} Wl_Login_Promotion_GuestPass_Invite_InviteListModel_a_list_a_guest
+   * @property {string} text_mail Guest email address.
+   * @property {string} text_name_first Guest first name.
+   * @property {string} text_name_last Guest last name.
+   * @property {?string} text_phone Guest phone number, or `null` if not available.
+   * @property {?string} uid Guest user key.
+   * `null` if the guest did not have an account when the invitation was sent.
+   */
+  /**
+   * @typedef {{}} Wl_Login_Promotion_GuestPass_Invite_InviteListModel_a_list
+   * @property {Wl_Login_Promotion_GuestPass_Invite_InviteListModel_a_list_a_guest} a_guest Guest user identity data.
+   * @property {?string} dtl_accept Acceptance date and time in business timezone in MySQL datetime format.
+   * `null` if the invitation has not been accepted.
+   * @property {?string} dtl_expire Expiry date and time in business timezone in MySQL datetime format.
+   * `null` if the invitation has no expiry date.
+   * @property {string} dtl_invite Date and time the invitation was sent, in business timezone in MySQL datetime format.
+   * @property {?string} dtl_redeem Redemption date and time in business timezone in MySQL datetime format.
+   *    `null` if the invitation has not been redeemed.
+   * @property {?string} dtl_reject Rejection date and time in business timezone in MySQL datetime format.
+   * `null` if the invitation has not been rejected.
+   * @property {?string} dtl_visit Visit date and time in MySQL datetime format.
+   * `null` if no visit is associated.
+   * @property {?string} dtu_accept Acceptance date and time in UTC in MySQL datetime format.
+   * `null` if the invitation has not been accepted.
+   * @property {?string} dtu_expire Expiry date and time in UTC in MySQL datetime format.
+   *    `null` if the invitation has  no expiry date.
+   * @property {string} dtu_invite Date and time the invitation was sent, in UTC in MySQL datetime format.
+   * @property {?string} dtu_redeem Redemption date and time in UTC in MySQL datetime format.
+   *    `null` if the invitation  has not been redeemed.
+   * @property {?string} dtu_reject Rejection date and time in UTC in MySQL datetime format.
+   * `null` if the invitation has not been rejected.
+   * @property {number} id_status Invitation lifecycle status. One of {@link Wl\Login\Promotion\GuestPass\Invite\InviteStatusEnum} values.
+   * @property {?boolean} is_checkin `true` if the guest may only enter when the inviting member is checked in.
+   * `null` if no guest pass settings are configured for the promotion.
+   * @property {?string} k_login_promotion_guest Login promotion key granted to the guest upon acceptance.
+   *
+   * `null` if the invitation has not been accepted.
+   * @property {string} k_login_promotion_host Login promotion key of the host membership.
+   *
+   * @property {string} k_promotion Guest promotion key.
+   *
+   * @property {?string} k_visit Visit key redeemed with this guest pass.
+   *
+   * `null` if no visit is associated.
+   * @property {string} s_secret Secret token used to accept or reject the invitation via a direct link.
+   * @property {?string} text_host_name Full name of the host user who sent the invitation.
+   *    `null` if the host could not be resolved.
+   * @property {string} text_promotion_guest Title of the guest promotion.
+   * @property {string} text_promotion_host Title of the host promotion.
+   * @property {?string} text_service_title Title of the service booked with the guest pass.
+   * `null` if no visit is associated.
+   * @property {string} text_timezone Name of the business timezone used for all `dtl_*` fields (e.g. "America/New_York").
+   * @property {?string} uid_host User key of the host who sent the invitation.
+   *
+   * `null` if the host could not be resolved.
+   * @property {string} url_service URL to the attendance page for the associated class period.
+   * Empty string if no visit is associated or the visit is not a class.
+   */
+
+  /**
    * List of guest pass invitations suitable for the specific request parameters.
    *
    * @get result
-   * @type {{}[]}
+   * @type {Wl_Login_Promotion_GuestPass_Invite_InviteListModel_a_list[]}
    */
   this.a_list = [];
 

@@ -1,15 +1,15 @@
 /**
- * API for managing guest passes of specific client.
+ * API for managing guest passes.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Wl_Login_Promotion_GuestPass_GuestPassListModel()
+function Wl_Login_Promotion_GuestPass_GuestPassModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassListModel_a_list_a_image_a_period_dl_a_settings
+   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image_a_period_dl_a_settings
    * @property {number} i_claim_day Count of days for accept guest invite.
    *
    * If the invitation is not accepted within this time, it will be canceled.
@@ -20,22 +20,22 @@ function Wl_Login_Promotion_GuestPass_GuestPassListModel()
    * @property {boolean} is_limit Whether there are limits for a guest promotion.
    */
   /**
-   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassListModel_a_list_a_image_a_period_dl
+   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image_a_period_dl
    * @property {string} dl_end Period end date in MySQL date format.
    * @property {string} dl_start Period start date in MySQL date format.
    */
   /**
-   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassListModel_a_list_a_image
+   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image
    * @property {number} i_height Image height.
    * @property {number} i_width Image width.
    * @property {string} url-thumbnail Thumbnail url.
    */
   /**
-   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassListModel_a_list
-   * @property {Wl_Login_Promotion_GuestPass_GuestPassListModel_a_list_a_image} a_image Thumbnail image data for the guest promotion.
-   * @property {Wl_Login_Promotion_GuestPass_GuestPassListModel_a_list_a_image_a_period_dl} a_period_dl Start and end dates of the current reset period.
+   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass
+   * @property {Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image} a_image Thumbnail image data for the guest promotion.
+   * @property {Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image_a_period_dl} a_period_dl Start and end dates of the current reset period.
    *   `null` if there is no reset period or the reset date is unavailable.
-   * @property {Wl_Login_Promotion_GuestPass_GuestPassListModel_a_list_a_image_a_period_dl_a_settings} a_settings Guest pass settings.
+   * @property {Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image_a_period_dl_a_settings} a_settings Guest pass settings.
    * Empty array when the guest pass has no settings (class-type passes).
    * @property {boolean} can_invite `true` if the guest pass is invite-type (the member sends invitations to guests).
    * @property {boolean} can_send `true` if the member can currently send a guest pass (eligible and within quota).
@@ -78,58 +78,48 @@ function Wl_Login_Promotion_GuestPass_GuestPassListModel()
    */
 
   /**
-   * List of client's guest passes.
+   * Guest pass information.
    *
    * @get result
-   * @type {Wl_Login_Promotion_GuestPass_GuestPassListModel_a_list[]}
+   * @type {Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass}
    */
-  this.a_list = [];
+  this.a_guest_pass = [];
+
+  /**
+   * Number of guest passes remaining for the current period.
+   *
+   * @put post
+   * @type {number}
+   */
+  this.i_adjust = 0;
 
   /**
    * Business key.
    *
    * @get get
+   * @put get
    * @type {string}
    */
   this.k_business = "";
 
   /**
-   * Class key to filter guest passes by.
-   *
-   * `null` if guest passes should not be filtered by class.
+   * Login promotion key.
    *
    * @get get
-   * @type {?string}
-   */
-  this.k_class = null;
-
-  /**
-   * Location key to filter guest passes by.
-   *
-   * `null` if guest passes should not be filtered by location.
-   *
-   * @get get
-   * @type {?string}
-   */
-  this.k_location = null;
-
-  /**
-   * User key.
-   *
-   * @get get
+   * @put get
    * @type {string}
    */
-  this.uid = "";
+  this.k_login_promotion = "";
 
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Login_Promotion_GuestPass_GuestPassListModel);
+WlSdk_ModelAbstract.extend(Wl_Login_Promotion_GuestPass_GuestPassModel);
 
 /**
  * @inheritDoc
  */
-Wl_Login_Promotion_GuestPass_GuestPassListModel.prototype.config=function()
+Wl_Login_Promotion_GuestPass_GuestPassModel.prototype.config=function()
 {
-  return {"a_field": {"a_list": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_guest_pass": {"get": {"result": true}},"i_adjust": {"put": {"post": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_login_promotion": {"get": {"get": true},"put": {"get": true}}}};
 };
