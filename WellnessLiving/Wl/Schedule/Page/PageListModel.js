@@ -19,29 +19,20 @@ function Wl_Schedule_Page_PageListModel()
 
   /**
    * @typedef {{}} Wl_Schedule_Page_PageListModel_a_visit
+   * @property {string} dtu_date Date and time of the visit in UTC.
    * @property {string} k_business Key of the business in which this visit was made.
+   *
    * @property {string} k_visit Key of a book/visit.
+   * @property {number} id_visit Visit status ID. One of {@link Wl_Visit_VisitSid} constants.
    */
 
   /**
    * Elements of user's schedule. Every element has next keys:
-   * <dl>
-   *   <dt>string <var>k_business</var></dt>
-   *   <dd>
-   *     Key of the business in which this visit was made.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_visit</var>
-   *   </dt>
-   *   <dd>
-   *     Key of a book/visit.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Schedule_Page_PageListModel_a_visit[]}
    */
-  this.a_visit = undefined;
+  this.a_visit = [];
 
   /**
    * If the date is set, a list of services before this date will be returned.
