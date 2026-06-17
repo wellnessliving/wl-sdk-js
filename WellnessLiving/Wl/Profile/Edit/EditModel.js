@@ -53,22 +53,35 @@ function Wl_Profile_Edit_EditModel()
   this.a_change = [];
 
   /**
-   * List of errors.
-   * `null` if there was no mistake.
+   * @typedef {{}} Wl_Profile_Edit_EditModel_a_error_list
+   * @property {string} code Error code identifying the type of validation failure.
+   * @property {string} field Field identifier that caused the error.
+   * @property {string} message Human-readable error message.
+   */
+
+  /**
+   * List of validation errors. `null` if no error occurred.
    *
-   * @get result
-   * @post result
-   * @type {?{}}
+   * @get result,error
+   * @post result,error
+   * @type {?Wl_Profile_Edit_EditModel_a_error_list[]}
    */
   this.a_error_list = null;
 
   /**
-   * Family relation data for new created user.
+   * @typedef {{}} Wl_Profile_Edit_EditModel_a_family_relation
+   * @property {number} id_family_relation Relation type. One of {@link RsFamilyRelationSid} constants.
+   * @property {boolean} [is_relative_pay] `true` if the relative will pay for this user; `false` or absent otherwise.
+   * @property {string} uid_from User key of the relative (must be the currently logged-in user).
    *
-   * `null` if family relation is not required.
+   */
+
+  /**
+   * Family relation data for the newly created user.
+   * `null` if no family relation is required:
    *
    * @post post
-   * @type {?{}}
+   * @type {?Wl_Profile_Edit_EditModel_a_family_relation}
    */
   this.a_family_relation = null;
 
@@ -85,6 +98,17 @@ function Wl_Profile_Edit_EditModel()
   this.a_image_upload = [];
 
   /**
+   * List of intent identifiers. Each element is one of {@link Wl_Login_Member_Intents_MemberIntentsSid} constants.
+   *
+   * Available only for leads added by CAASI agent.
+   *
+   * @post post
+   * @put post
+   * @type {number[]}
+   */
+  this.a_intents = [];
+
+  /**
    * A copy of the {@link Wl_Profile_Edit_EditModel.a_change}.
    * This is used for POST requests when creating a new user.
    *
@@ -94,18 +118,25 @@ function Wl_Profile_Edit_EditModel()
   this.a_new = [];
 
   /**
-   *
+   * @typedef {{}} Wl_Profile_Edit_EditModel_a_phone_inherit
+   * @property {boolean} [is_phone_inherit] Indicates weather to inherit phone numbers from relative or not. `1` if phone inheritance is needed, '0' otherwise.
+   * @property {string} [text_relative] Relative's name.
+   * @property {string} uid_relative User key of relative.
+   */
+
+  /**
+   * An array contained with information about phone inheritance.
    *
    * @get result
    * @post post
    * @put post
-   * @type {*}
+   * @type {Wl_Profile_Edit_EditModel_a_phone_inherit}
    */
   this.a_phone_inherit = [];
 
   /**
    * @typedef {{}} Wl_Profile_Edit_EditModel_a_structure
-   * @property {*} id_field_general The ID of a system field. One of the {@link RsFieldGeneralSid} constants.
+   * @property {number} [id_field_general] The ID of a system field. One of the {@link RsFieldGeneralSid} constants.
    * This value is only defined if <tt>id_field_type</tt>={@link RsFieldTypeSid.GENERAL}.
    * @property {boolean} is_require Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.
    * @property {number} id_field_type The type of field. One of the {@link RsFieldTypeSid} constants.
@@ -116,29 +147,22 @@ function Wl_Profile_Edit_EditModel()
 
   /**
    * The values and structure of all fields. Array keys are field IDs (`k_field`).
-   * Array values are the field values. The array has the following structure:
-   * <dl>
-   *   <dt>int [<var>id_field_general</var>]</dt>
-   *   <dd>
-   *     The ID of a system field. One of the {@link RsFieldGeneralSid} constants.
-   *     This value is only defined if <var>id_field_type</var>={@link RsFieldTypeSid.GENERAL}.
-   *   </dd>
-   *   <dt>bool <var>is_require</var></dt>
-   *   <dd>Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.</dd>
-   *   <dt>int <var>id_field_type</var></dt>
-   *   <dd>The type of field. One of the {@link RsFieldTypeSid} constants.</dd>
-   *   <dt>string <var>k_field</var></dt>
-   *   <dd>The field ID (<var>k_field</var>). A copy of the key of this array element.</dd>
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>The title of the field.</dd>
-   *   <dt>mixed <var>x_value</var></dt>
-   *   <dd>The value of the field. This value is defined by individual fields.</dd>
-   * </dl>
+   * Array values are the field values.
    *
    * @get result
    * @type {Wl_Profile_Edit_EditModel_a_structure[]}
    */
   this.a_structure = undefined;
+
+  /**
+   * Whether current user can change password of the given user or not.
+   * If client is part of multiple businesses, then staff of the business can only request reset of the password,
+   * but cannot change it.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_password_change = false;
 
   /**
    * ID of source mode. One of {@link Wl_Mode_ModeSid} constants.
@@ -156,10 +180,7 @@ function Wl_Profile_Edit_EditModel()
    * * If the client is already authorized, the field value will not be used.
    * * If the client is not authorized and no value is set, {@link Wl_Profile_RegisterSourceSid.SELF} will be used.
    *
-   * <no-sdk>
-   * Use the {@link Wl_Profile_Edit_EditModel._registerSourceGet()} method to get the value required for
-   *  the field list object, for method {@link Wl\Profile\Field\FieldList::registerSourceSet()}.
-   * </no-sdk>
+   *
    *
    * @get get
    * @post get
@@ -167,6 +188,14 @@ function Wl_Profile_Edit_EditModel()
    * @type {?number}
    */
   this.id_register_source = null;
+
+  /**
+   * `true` if the A2P 10DLC registration feature is enabled for this business, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_a2p = undefined;
 
   /**
    * Whether the address be inherited.
@@ -204,6 +233,38 @@ function Wl_Profile_Edit_EditModel()
    * @type {boolean}
    */
   this.is_sing_in = false;
+
+  /**
+   * <tt>true</tt> - user agreed to receive marketing SMS;
+   * <tt>false</tt> - otherwise.
+   *
+   * Only matters if {@link Wl_Profile_Edit_EditModel.is_sms_subscription_presented} is `true`.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_sms_subscription_marketing = false;
+
+  /**
+   * <tt>true</tt> - user was shown checkboxes to subscribe to marketing and transactional sms messages.
+   *   This means we need to modify his subscription based on the values in these fields.
+   * <tt>false</tt> - otherwise. This means we should not change subscription settings.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_sms_subscription_presented = false;
+
+  /**
+   * <tt>true</tt> - user agreed to receive transactional SMS;
+   * <tt>false</tt> - otherwise.
+   *
+   * Only matters if {@link Wl_Profile_Edit_EditModel.is_sms_subscription_presented} is `true`.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_sms_subscription_transactional = false;
 
   /**
    * Indicates whether to display the form as a user or as a staff member.
@@ -273,7 +334,8 @@ function Wl_Profile_Edit_EditModel()
   this.status = null;
 
   /**
-   * Compound key delimited wit a colon. First part is business key, where selected client exists. Second part - uid of already existed user we want to add. Empty if non-existent client is being added.
+   * Compound key delimited with a colon. First part is the business key where the selected client exists.
+   * Second part is the uid of the already existing user we want to add. Empty if a non-existent client is being added.
    *
    * @post get
    * @type {string}
@@ -349,7 +411,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_EditModel);
  */
 Wl_Profile_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field": {"a_change": {"put": {"post": true}},"a_error_list": {"get": {"result": true},"post": {"result": true}},"a_family_relation": {"post": {"post": true}},"a_image_upload": {"post": {"post": true}},"a_new": {"post": {"post": true}},"a_phone_inherit": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"a_structure": {"get": {"result": true}},"id_mode": {"post": {"get": true}},"id_register_source": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"is_address_inherit": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"is_exception_throw": {"post": {"post": true}},"is_short": {"get": {"result": true},"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"is_staff": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_lead_source": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"class": {"get": {"result": true},"post": {"result": true}},"code": {"get": {"result": true},"post": {"result": true}},"status": {"post": {"result": true}},"text_business_uid_key": {"post": {"get": true}},"message": {"get": {"result": true},"post": {"result": true}},"text_password": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"uid_existed": {"post": {"get": true}},"uid_inherit_address": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"uid_relative_key": {"post": {"get": true}}}};
+  return {"a_field": {"a_change": {"put": {"post": true}},"a_error_list": {"get": {"result": true,"error": true},"post": {"result": true,"error": true}},"a_family_relation": {"post": {"post": true}},"a_image_upload": {"post": {"post": true}},"a_intents": {"post": {"post": true},"put": {"post": true}},"a_new": {"post": {"post": true}},"a_phone_inherit": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"a_structure": {"get": {"result": true}},"can_password_change": {"get": {"result": true}},"id_mode": {"post": {"get": true}},"id_register_source": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"is_a2p": {"get": {"result": true}},"is_address_inherit": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"is_exception_throw": {"post": {"post": true}},"is_short": {"get": {"result": true},"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"is_sms_subscription_marketing": {"post": {"post": true}},"is_sms_subscription_presented": {"post": {"post": true}},"is_sms_subscription_transactional": {"post": {"post": true}},"is_staff": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_lead_source": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"class": {"get": {"result": true},"post": {"result": true}},"code": {"get": {"result": true},"post": {"result": true}},"status": {"post": {"result": true}},"text_business_uid_key": {"post": {"get": true}},"message": {"get": {"result": true},"post": {"result": true}},"text_password": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"uid_existed": {"post": {"get": true}},"uid_inherit_address": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"uid_relative_key": {"post": {"get": true}}}};
 };
 
 /**
