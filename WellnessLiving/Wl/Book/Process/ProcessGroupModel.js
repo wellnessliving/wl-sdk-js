@@ -3,8 +3,6 @@
  *
  * This API allows to book a class/event for multiple clients at once.
  *
- * This model is generated automatically based on API.
- *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
@@ -13,17 +11,26 @@ function Wl_Book_Process_ProcessGroupModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_book_error
+   * @property {string} text_code Error code identifying the type of error that occurred.
+   * @property {string} text_message Human-readable error message describing the booking failure.
+   */
+
+  /**
    * List of errors that occurred during booking.
    *
+   * Keys are user keys.
+   * Each value has the next structure:
+   *
    * @post result
-   * @type {{}[]}
+   * @type {Wl_Book_Process_ProcessGroupModel_a_book_error[]}
    */
   this.a_book_error = [];
 
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_event_session_a_purchase_item_a_repeat_a_resource
    * @property {number} i_index Order number of the asset.
-   * @property {number} k_resource Asset primary key.
+   * @property {string} k_resource Asset key.
    */
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_event_session_a_purchase_item_a_repeat
@@ -44,18 +51,18 @@ function Wl_Book_Process_ProcessGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_event_session_a_purchase_item
    * @property {number} [i_count] Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
-   * @property {number} [id_purchase_item] Kind of option to purchase. One of {@link Wl_Purchase_Item_ItemSid} constants.
+   * @property {number} [id_purchase_item] Kind of option to purchase. One of {@link RsPurchaseItemSid} constants.
    *          Specify only if you want to purchase a new option.
    * @property {boolean} [is_renew] `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.
    *          Specify only if you want to purchase a new option.
    * @property {boolean} [is_owner] `true` if client is owner of this purchase option.
    *          This means that this purchase option will be purchased for this client, even if another client
    *          can share a similar purchase option.
-   * @property {string} [k_id] Primary key of option to purchase.
+   * @property {string} [k_id]
    *          Specify only if you want to purchase a new option.
-   * @property {string} [k_login_prize] Primary key of user's prize.
+   * @property {string} [k_login_prize]
    *          Specify if you want to pay by user's prize.
-   * @property {string} [k_reward_prize] Primary key of a prize to redeem.
+   * @property {string} [k_reward_prize]
    *          Specify if you want to redeem a prize for payment.
    * @property {string} [s_signature] Signature of the client in base64 format.
    *          Specify only if you want to buy a purchase option that requires signature.
@@ -63,297 +70,36 @@ function Wl_Book_Process_ProcessGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_event_session
    * @property {string} dtu_date Session date/time.
-   * @property {string} k_class_period Session primary key.
+   * @property {string} k_class_period Session key.
    */
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client
    * @property {Wl_Book_Process_ProcessGroupModel_a_client_a_event_session[]} [a_event_session] List of event sessions to book. Required for only for event that allows to select sessions to book.
    *     Each element has next keys:
-   *     <dl>
-   *         <dt>string `dtu_date`</dt>
-   *         <dd>Session date/time.</dd>
-   *         <dt>string `k_class_period`</dt>
-   *         <dd>Session primary key.</dd>
-   *     </dl>
    * @property {Wl_Book_Process_ProcessGroupModel_a_client_a_event_session_a_purchase_item[]} [a_purchase_item] Purchase option information. Required if the service requires online payment. Elements have next keys:
-   *     <dl>
-   *         <dt>
-   *              int [`i_count`]
-   *          </dt>
-   *          <dd>
-   *              Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
-   *          </dd>
-   *          <dt>
-   *              int [`id_purchase_item`]
-   *          </dt>
-   *          <dd>
-   *              Kind of option to purchase. One of {@link Wl_Purchase_Item_ItemSid} constants.
-   *              Specify only if you want to purchase a new option.
-   *          </dd>
-   *          <dt>
-   *              bool [`is_renew`]
-   *          </dt>
-   *          <dd>
-   *              `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.
-   *              Specify only if you want to purchase a new option.
-   *          </dd>
-   *          <dt>
-   *              bool [`is_owner`]
-   *          </dt>
-   *          <dd>
-   *              `true` if client is owner of this purchase option.
-   *              This means that this purchase option will be purchased for this client, even if another client
-   *              can share a similar purchase option.
-   *          </dd>
-   *          <dt>
-   *              string [`k_id`]
-   *          </dt>
-   *          <dd>
-   *              Primary key of option to purchase.
-   *              Specify only if you want to purchase a new option.
-   *          </dd>
-   *          <dt>
-   *              string [`k_login_prize`]
-   *          </dt>
-   *          <dd>
-   *              Primary key of user's prize.
-   *              Specify if you want to pay by user's prize.
-   *          </dd>
-   *          <dt>
-   *              string [`k_reward_prize`]
-   *          </dt>
-   *          <dd>
-   *              Specify if you want to redeem a prize for payment.
-   *          </dd>
-   *          <dt>
-   *              string [`s_signature`]
-   *          </dt>
-   *          <dd>
-   *              Signature of the client in base64 format.
-   *              Specify only if you want to buy a purchase option that requires signature.
-   *          </dd>
-   *     </dl>
-   * @property {{}} [a_quiz_response] Answers for questions. Required if the service requires answers for questions.
+   * @property {string[]} [a_quiz_response] Answers for questions.
+   *     Required if the service requires answers for questions.
    *     Keys are quiz keys.
    *     Values are response keys.
+   *     Or the {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} to skip the quiz.
    * @property {Wl_Book_Process_ProcessGroupModel_a_client_a_event_session_a_purchase_item_a_repeat} [a_repeat] Recurring booking configuration:
-   *     <dl>
-   *       <dt>int[] `a_day`</dt>
-   *       <dd>
-   *         The days of week when the session repeats. One of the {@link ADateWeekSid} constants.
-   *         Should be passed for any type of repetition.
-   *       </dd>
-   *       <dt>
-   *         string [`dt_from`]
-   *       </dt>
-   *       <dd>
-   *         Date to start recurring booking.
-   *         Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *       </dd>
-   *       <dt>
-   *         string [`dt_to`]
-   *       </dt>
-   *       <dd>
-   *         Date to complete recurring booking.
-   *         Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *       </dd>
-   *       <dt>
-   *          int [`i_count`]
-   *        </dt>
-   *        <dd>
-   *          The number of occurrences after which the appointment's repeat cycle stops.
-   *          Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *          Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
-   *        </dd>
-   *       <dt>int `i_duration`</dt>
-   *       <dd>Count of days\weeks\months between recurring bookings.</dd>
-   *       <dt>
-   *         int `id_duration`
-   *       </dt>
-   *       <dd>
-   *         The measurement unit of `i_duration`. One of the {@link ADurationSid} constants.
-   *         Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   *       </dd>
-   *       <dt>int `id_repeat_end`</dt>
-   *       <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
-   *     </dl>
+   *
    *     You can test this key only in a case of `1` client.
    * @property {Wl_Book_Process_ProcessGroupModel_a_client_a_event_session_a_purchase_item_a_repeat_a_resource[]} [a_resource] Asset information. Required if the service requires asset booking. Each element has next keys:
-   *     <dl>
-   *         <dt>int <tt>i_index</tt></dt>
-   *         <dd>Order number of the asset.</dd>
-   *         <dt>int <tt>k_resource</tt></dt>
-     *         <dd>Asset primary key.</dd>
-   *     </dl>
-   * @property {string} [k_login_promotion] Primary key of user's purchase option.
+   * @property {string} [k_login_promotion] Login promotion key.
    *     Specify only if you want to pay by already purchased option.
+   *
+   * @property {string} [k_login_promotion_guest_pass] Guest pass login promotion key.
+   *     Specify only if you want to pay with guest pass granted by this login promotion.
+   *
    * @property {string} [k_session_pass] Session pass to be used to book a session.
-   * @property {string} uid User's primary key.
+   *
+   * @property {string} uid User key.
    */
 
   /**
    * List of clients to book.
    * Each value is an array with next keys:
-   * <dl>
-   *     <dt>
-   *         array[] [`a_event_session`]
-   *     </dt>
-   *     <dd>
-   *         List of event sessions to book. Required for only for event that allows to select sessions to book.
-   *         Each element has next keys:
-   *         <dl>
-   *             <dt>string `dtu_date`</dt>
-   *             <dd>Session date/time.</dd>
-   *             <dt>string `k_class_period`</dt>
-   *             <dd>Session primary key.</dd>
-   *         </dl>
-   *     </dd>
-   *     <dt>
-   *         array[] [`a_purchase_item`]
-   *     </dt>
-   *     <dd>
-   *         Purchase option information. Required if the service requires online payment. Elements have next keys:
-   *         <dl>
-   *             <dt>
-   *                  int [`i_count`]
-   *              </dt>
-   *              <dd>
-   *                  Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
-   *              </dd>
-   *              <dt>
-   *                  int [`id_purchase_item`]
-   *              </dt>
-   *              <dd>
-   *                  Kind of option to purchase. One of {@link Wl_Purchase_Item_ItemSid} constants.
-   *                  Specify only if you want to purchase a new option.
-   *              </dd>
-   *              <dt>
-   *                  bool [`is_renew`]
-   *              </dt>
-   *              <dd>
-   *                  `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.
-   *                  Specify only if you want to purchase a new option.
-   *              </dd>
-   *              <dt>
-   *                  bool [`is_owner`]
-   *              </dt>
-   *              <dd>
-   *                  `true` if client is owner of this purchase option.
-   *                  This means that this purchase option will be purchased for this client, even if another client
-   *                  can share a similar purchase option.
-   *              </dd>
-   *              <dt>
-   *                  string [`k_id`]
-   *              </dt>
-   *              <dd>
-   *                  Primary key of option to purchase.
-   *                  Specify only if you want to purchase a new option.
-   *              </dd>
-   *              <dt>
-   *                  string [`k_login_prize`]
-   *              </dt>
-   *              <dd>
-   *                  Primary key of user's prize.
-   *                  Specify if you want to pay by user's prize.
-   *              </dd>
-   *              <dt>
-   *                  string [`k_reward_prize`]
-   *              </dt>
-   *              <dd>
-   *                  Specify if you want to redeem a prize for payment.
-   *              </dd>
-   *              <dt>
-   *                  string [`s_signature`]
-   *              </dt>
-   *              <dd>
-   *                  Signature of the client in base64 format.
-   *                  Specify only if you want to buy a purchase option that requires signature.
-   *              </dd>
-   *         </dl>
-   *     </dd>
-   *     <dt>
-   *         array [`a_quiz_response`]
-   *     </dt>
-   *     <dd>
-   *         Answers for questions. Required if the service requires answers for questions.
-   *         Keys are quiz keys.
-   *         Values are response keys.
-   *     </dd>
-   *     <dt>
-   *         array [`a_repeat`]
-   *     </dt>
-   *     <dd>
-   *         Recurring booking configuration:
-   *         <dl>
-   *           <dt>int[] `a_day`</dt>
-   *           <dd>
-   *             The days of week when the session repeats. One of the {@link ADateWeekSid} constants.
-   *             Should be passed for any type of repetition.
-   *           </dd>
-   *           <dt>
-   *             string [`dt_from`]
-   *           </dt>
-   *           <dd>
-   *             Date to start recurring booking.
-   *             Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *           </dd>
-   *           <dt>
-   *             string [`dt_to`]
-   *           </dt>
-   *           <dd>
-   *             Date to complete recurring booking.
-   *             Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *           </dd>
-   *           <dt>
-   *              int [`i_count`]
-   *            </dt>
-   *            <dd>
-   *              The number of occurrences after which the appointment's repeat cycle stops.
-   *              Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *              Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
-   *            </dd>
-   *           <dt>int `i_duration`</dt>
-   *           <dd>Count of days\weeks\months between recurring bookings.</dd>
-   *           <dt>
-   *             int `id_duration`
-   *           </dt>
-   *           <dd>
-   *             The measurement unit of `i_duration`. One of the {@link ADurationSid} constants.
-   *             Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   *           </dd>
-   *           <dt>int `id_repeat_end`</dt>
-   *           <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
-   *         </dl>
-   *         You can test this key only in a case of `1` client.
-   *     </dd>
-   *     <dt>
-   *         array[] [`a_resource`]
-   *     </dt>
-   *     <dd>
-   *         Asset information. Required if the service requires asset booking. Each element has next keys:
-   *         <dl>
-   *             <dt>int <var>i_index</var></dt>
-   *             <dd>Order number of the asset.</dd>
-   *             <dt>int <var>k_resource</var></dt>
-   *             <dd>Asset primary key.</dd>
-   *         </dl>
-   *     </dd>
-   *     <dt>
-   *         string [`k_login_promotion`]
-   *     </dt>
-   *     <dd>
-   *         Primary key of user's purchase option.
-   *         Specify only if you want to pay by already purchased option.
-   *     </dd>
-   *     <dt>
-   *         string [`k_session_pass`]
-   *     </dt>
-   *     <dd>
-   *         Session pass to be used to book a session.
-   *     </dd>
-   *     <dt>string `uid`</dt>
-   *     <dd>User's primary key.</dd>
-   * </dl>
    *
    * @post post
    * @type {Wl_Book_Process_ProcessGroupModel_a_client[]}
@@ -370,7 +116,7 @@ function Wl_Book_Process_ProcessGroupModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_pay_form_a_pay_card_a_pay_address
-   * @property {*} is_new Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+   * @property {boolean} is_new Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
    * @property {string} [k_geo_country] The key of the country used for the payment address. Specify this to add a new address.
    * @property {string} [k_geo_region] The key of the region for the payment address. Specify this to add a new address.
    * @property {string} [k_pay_address] The key of the saved payment address. Specify this to use a saved address.
@@ -384,32 +130,10 @@ function Wl_Book_Process_ProcessGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_pay_form_a_pay_card
    * @property {Wl_Book_Process_ProcessGroupModel_a_pay_form_a_pay_card_a_pay_address} a_pay_address The payment address:
-   * <dl>
-   *   <dt>boolean <tt>is_new</tt></dt>
-   *   <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
-   *   <dt>string [<tt>k_geo_country</tt>]</dt>
-   *   <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>k_geo_region</tt>]</dt>
-   *   <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>k_pay_address</tt>]</dt>
-   *   <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   *   <dt>string [<tt>s_city</tt>]</dt>
-   *   <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_name</tt>]</dt>
-   *   <dd>The card name. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_phone</tt>]</dt>
-   *   <dd>The payment phone. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_postal</tt>]</dt>
-   *   <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_street1</tt>]</dt>
-   *   <dd>The payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_street2</tt>]</dt>
-   *   <dd>The optional payment address. Specify this to add a new address.</dd>
-   * </dl>
    * @property {number} [i_csc] The credit card CSC. Specify this to add a new card.
    * @property {number} [i_month] The credit card expiration month. Specify this to add a new card.
    * @property {number} [i_year] The credit card expiration year. Specify this to add a new card.
-   * @property {*} is_new Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
+   * @property {boolean} is_new Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
    * @property {string} [k_pay_bank] The key of the credit card. Specify this to use saved card.
    * @property {string} [s_comment] Optional comment(s). Specify this to add a new card.
    * @property {string} [s_number] The card number. Specify this to add a new card.
@@ -417,82 +141,10 @@ function Wl_Book_Process_ProcessGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_pay_form
    * @property {Wl_Book_Process_ProcessGroupModel_a_pay_form_a_pay_card} [a_pay_card] The payment card information:
-   * <dl>
-   *   <dt>
-   *     array <tt>a_pay_address</tt>
-   *   </dt>
-   *   <dd>
-   *     The payment address:
-   *     <dl>
-   *       <dt>boolean <tt>is_new</tt></dt>
-   *       <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
-   *       <dt>string [<tt>k_geo_country</tt>]</dt>
-   *       <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>k_geo_region</tt>]</dt>
-   *       <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>k_pay_address</tt>]</dt>
-   *       <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   *       <dt>string [<tt>s_city</tt>]</dt>
-   *       <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_name</tt>]</dt>
-   *       <dd>The card name. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_phone</tt>]</dt>
-   *       <dd>The payment phone. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_postal</tt>]</dt>
-   *       <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_street1</tt>]</dt>
-   *       <dd>The payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_street2</tt>]</dt>
-   *       <dd>The optional payment address. Specify this to add a new address.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     int [<tt>i_csc</tt>]
-   *   </dt>
-   *   <dd>
-   *     The credit card CSC. Specify this to add a new card.
-   *   </dd>
-   *   <dt>
-   *     int [<tt>i_month</tt>]
-   *   </dt>
-   *   <dd>
-   *     The credit card expiration month. Specify this to add a new card.
-   *   </dd>
-   *   <dt>
-   *     int [<tt>i_year</tt>]
-   *   </dt>
-   *   <dd>
-   *     The credit card expiration year. Specify this to add a new card.
-   *   </dd>
-   *   <dt>
-   *     boolean <tt>is_new</tt>
-   *   </dt>
-   *   <dd>
-   *     Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-   *   </dd>
-   *   <dt>
-   *     string [<tt>k_pay_bank</tt>]
-   *   </dt>
-   *   <dd>
-   *     The key of the credit card. Specify this to use saved card.
-   *   </dd>
-   *   <dt>
-   *     string [<tt>s_comment</tt>]
-   *   </dt>
-   *   <dd>
-   *     Optional comment(s). Specify this to add a new card.
-   *   </dd>
-   *   <dt>
-   *     string [<tt>s_number</tt>]
-   *   </dt>
-   *   <dd>
-   *     The card number. Specify this to add a new card.
-   *   </dd>
-   * </dl>
    * @property {string} f_amount The amount of money to withdraw with this payment source.
-   * @property {*} [is_hide] Whether payment method should be saved to user's account.
-   * @property {*} is_save Determines whether this payment method is hidden.
-   * @property {*} is_success Identifies whether this source was successfully charged.
+   * @property {boolean} [is_hide] Whether payment method should be saved to user's account.
+   * @property {boolean} [is_save] Determines whether this payment method is hidden.
+   * @property {boolean} [is_success] Identifies whether this source was successfully charged.
    * @property {string} [m_surcharge] The client-side calculated surcharge.
    * @property {string} [s_index] The index of this form (optional).
    * @property {string} sid_pay_method The payment method ID.
@@ -502,128 +154,6 @@ function Wl_Book_Process_ProcessGroupModel()
    * A list of payment sources to pay with.
    *
    * Each element has next keys:
-   * <dl>
-   *   <dt>
-   *     array [<var>a_pay_card</var>]
-   *   </dt>
-   *   <dd>
-   *     The payment card information:
-   *     <dl>
-   *       <dt>
-   *         array <var>a_pay_address</var>
-   *       </dt>
-   *       <dd>
-   *         The payment address:
-   *         <dl>
-   *           <dt>boolean <var>is_new</var></dt>
-   *           <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
-   *           <dt>string [<var>k_geo_country</var>]</dt>
-   *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>k_geo_region</var>]</dt>
-   *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>k_pay_address</var>]</dt>
-   *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   *           <dt>string [<var>s_city</var>]</dt>
-   *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_name</var>]</dt>
-   *           <dd>The card name. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_phone</var>]</dt>
-   *           <dd>The payment phone. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_postal</var>]</dt>
-   *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_street1</var>]</dt>
-   *           <dd>The payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_street2</var>]</dt>
-   *           <dd>The optional payment address. Specify this to add a new address.</dd>
-   *         </dl>
-   *       </dd>
-   *       <dt>
-   *         int [<var>i_csc</var>]
-   *       </dt>
-   *       <dd>
-   *         The credit card CSC. Specify this to add a new card.
-   *       </dd>
-   *       <dt>
-   *         int [<var>i_month</var>]
-   *       </dt>
-   *       <dd>
-   *         The credit card expiration month. Specify this to add a new card.
-   *       </dd>
-   *       <dt>
-   *         int [<var>i_year</var>]
-   *       </dt>
-   *       <dd>
-   *         The credit card expiration year. Specify this to add a new card.
-   *       </dd>
-   *       <dt>
-   *         boolean <var>is_new</var>
-   *       </dt>
-   *       <dd>
-   *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-   *       </dd>
-   *       <dt>
-   *         string [<var>k_pay_bank</var>]
-   *       </dt>
-   *       <dd>
-   *         The key of the credit card. Specify this to use saved card.
-   *       </dd>
-   *       <dt>
-   *         string [<var>s_comment</var>]
-   *       </dt>
-   *       <dd>
-   *         Optional comment(s). Specify this to add a new card.
-   *       </dd>
-   *       <dt>
-   *         string [<var>s_number</var>]
-   *       </dt>
-   *       <dd>
-   *         The card number. Specify this to add a new card.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     string <var>f_amount</var>
-   *   </dt>
-   *   <dd>
-   *     The amount of money to withdraw with this payment source.
-   *   </dd>
-   *   <dt>
-   *     boolean [<var>is_hide</var>]
-   *   </dt>
-   *   <dt>
-   *     bool [<var>is_save</var>=true]
-   *   </dt>
-   *   <dd>
-   *     Whether payment method should be saved to user's account.
-   *   </dd>
-   *   <dd>
-   *     Determines whether this payment method is hidden.
-   *   </dd>
-   *   <dt>
-   *     boolean [<var>is_success</var>=<tt>false</tt>]
-   *   </dt>
-   *   <dd>
-   *     Identifies whether this source was successfully charged.
-   *   </dd>
-   *   <dt>
-   *     string [<var>m_surcharge</var>]
-   *   </dt>
-   *   <dd>
-   *     The client-side calculated surcharge.
-   *   </dd>
-   *   <dt>
-   *     string [<var>s_index</var>]
-   *   </dt>
-   *   <dd>
-   *     The index of this form (optional).
-   *   </dd>
-   *   <dt>
-   *     string <var>sid_pay_method</var>
-   *   </dt>
-   *   <dd>
-   *     The payment method ID.
-   *   </dd>
-   * </dl>
    *
    * @post post
    * @type {Wl_Book_Process_ProcessGroupModel_a_pay_form[]}
