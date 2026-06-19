@@ -83,3 +83,11 @@ Wl_Resource_ResourceList_ListModel.prototype.config=function()
 {
   return {"a_field": {"a_resource": {"get": {"result": true}},"id_category": {"get": {"get": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Resource_ResourceList_ListModel.instanceGet
+ * @param {string} k_business Business key, primary key in {@link \RsBusinessSql}.
+ * @returns {Wl_Resource_ResourceList_ListModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */

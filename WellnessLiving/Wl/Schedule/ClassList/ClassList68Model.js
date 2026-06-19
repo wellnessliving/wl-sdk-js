@@ -13,12 +13,13 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * Keys are dates of the days inside requested date range, when there is at least one class in the business.
-   * If, locations are sent as a parameter, then at least one class in the given locations.
+   * If locations are sent as a parameter, then at least one class must exist in the given locations.
    *
-   * Values are empty arrays for now. This is done to make possible to add some information about certain dates, if we need this.
+   * Each key is a date string in `YYYY-MM-DD` format (local date in the business time zone).
+   * Each value is an empty array reserved for future use.
    *
    * @post result
-   * @type {{}[]}
+   * @type {string[]}
    */
   this.a_calendar = [];
 
@@ -34,7 +35,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.a_class = [];
 
   /**
-   * List of tabs keys. Each value is a primary key in the {@link \Wl\Classes\Tab\Sql\ClassTab\Sql} table.
+   * List of tabs keys.
    *
    * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model.is_tab_all} is `true`.
    *
@@ -94,12 +95,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * Information about classes/events for quick filter.
    *
    * Every element has the following keys:
-   * <dl>
-   *   <dt>string <var>text_type</var></dt> <dd>Type of class ("class" || "event")</dd>
-   *   <dt>string <var>k_class</var></dt> <dd>Class/event key.</dd>
-   *   <dt>string <var>s_class</var></dt> <dd>Class/event title.</dd>
-   *   <dt>int <var>i_class</var></dt> <dd>Total sessions found.</dd>
-   * </dl>
+   *
    *
    * For generating this filter, all filters are applied except:
    * - {@link Wl_Schedule_ClassList_ClassList68Model.a_class};
@@ -118,8 +114,12 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @property {string[]} a_image The class image. Empty array if there is no image.
    * @property {string[]} a_search_tag Tags associated with an individual class.
    * @property {string[]} a_staff The list of staff keys for the staff member conducting the session.
+   * For legacy third-party apps listed in {@link Wl_Schedule_ClassList_ClassListModel.APPS_USE_OLD_K_STAFF},
+   * contains  `k_staff` for backward compatibility.
+   * Empty for all other applications. Use `a_staff_uid` instead.
    * @property {string[]} a_staff_uid The list of staff user keys for the staff member conducting the session.
    * @property {string[]} a_virtual_location The list of virtual locations keys. Each value is a location key.
+   *
    * @property {string} dt_date The date/time of the session start in UTC.
    * @property {string} dt_time The time of the session start in the local time zone.
    * @property {string} dtl_date The date/time of session start in the location's time zone.
@@ -141,6 +141,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @property {string} k_class The class key.
    * @property {string} k_class_period The class period key.
    * @property {string} k_location The key of the session's location.
+   * @property {string} k_resource_location Off-site location asset key. Empty if off-site location is not assigned to this class.
    * @property {string} s_title The title of the session.
    * @property {string} url_book The direct link to start booking on the WellnessLiving website.
    */
@@ -149,166 +150,6 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * A list of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel.dt_date}
    * and in the 62 days ahead (or up to {@link Wl_Schedule_ClassList_ClassListModel.dt_end}).
    * Every element has the following keys:
-   * <dl>
-   *   <dt>
-   *     string[] <var>a_class_tab</var>
-   *   </dt>
-   *   <dd>
-   *     Keys of class tab.
-   *   </dd>
-   *   <dt>
-   *     string[] <var>a_image</var>
-   *    </dt>
-   *    <dd>
-   *     The class image. Empty array if there is no image.
-   *   </dd>
-   *   <dt>
-   *     string[] <var>a_search_tag</var>
-   *   </dt>
-   *   <dd>
-   *     Tags associated with an individual class.
-   *   </dd>
-   *   <dt>
-   *     string[] <var>a_staff</var>
-   *   </dt>
-   *   <dd>
-   *     The list of staff keys for the staff member conducting the session.
-   *   </dd>
-   *   <dt>
-   *     string[] <var>a_staff_uid</var>
-   *   </dt>
-   *   <dd>
-   *     The list of staff user keys for the staff member conducting the session.
-   *   </dd>
-   *   <dt>
-   *     string[] <var>a_virtual_location</var>
-   *   </dt>
-   *   <dd>
-   *     The list of virtual locations keys. Each value is a location key.
-   *   </dd>
-   *   <dt>
-   *     string <var>dt_date</var>
-   *   </dt>
-   *   <dd>
-   *     The date/time of the session start in UTC.
-   *   </dd>
-   *   <dt>
-   *     string <var>dt_time</var>
-   *   </dt>
-   *   <dd>
-   *     The time of the session start in the local time zone.
-   *   </dd>
-   *   <dt>
-   *     string <var>dtl_date</var>
-   *   </dt>
-   *   <dd>
-   *     The date/time of session start in the location's time zone.
-   *   </dd>
-   *   <dt>
-   *     bool <var>hide_application</var>
-   *   </dt>
-   *   <dd>
-   *      Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the
-   *      class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
-   *   </dd>
-   *   <dt>
-   *     string <var>html_description</var>
-   *   </dt>
-   *   <dd>
-   *     The class description.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_book</var>
-   *   </dt>
-   *   <dd>
-   *     Count of visits on this class.
-   *   </dd>
-   *   <dt>
-   *     int|null <var>i_capacity</var>
-   *   </dt>
-   *   <dd>
-   *     The capacity of the service. 'null' indicates that the capacity is not set.
-   *    </dd>
-   *   <dt>
-   *     int <var>i_day</var>
-   *   </dt>
-   *   <dd>
-   *     The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The duration of the session in minutes.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_wait</var>
-   *   </dt>
-   *   <dd>
-   *     Number of clients in wait list.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_book_for_guest</var>
-   *   </dt>
-   *   <dd>Allow clients to book on behalf of a guest.
-   *      `true` if clients can book on behalf of a guest.
-   *      `false` otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_cancel</var>
-   *   </dt>
-   *   <dd>
-   *     If `true`, this class period was canceled. Otherwise, this will be `false`.
-   *   </dd>
-   *    <dt>
-   *      bool <var>is_event</var>
-   *    </dt>
-   *    <dd>
-   *      If `true`, this is an event. Otherwise, this will be `false`.
-   *    </dd>
-   *   <dt>
-   *     bool <var>is_virtual</var>
-   *   </dt>
-   *   <dd>
-   *     If `true`, this class is virtual. Otherwise, this will be `false`.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_wait_list_enabled</var>
-   *   </dt>
-   *   <dd>
-   *     This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_class</var>
-   *   </dt>
-   *   <dd>
-   *     The class key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_class_period</var>
-   *   </dt>
-   *   <dd>
-   *     The class period key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the session's location.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_title</var>
-   *   </dt>
-   *   <dd>
-   *     The title of the session.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_book</var>
-   *   </dt>
-   *   <dd>
-   *     The direct link to start booking on the WellnessLiving website.
-   *   </dd>
-   * </dl>
    *
    * @post result
    * @type {Wl_Schedule_ClassList_ClassList68Model_a_session[]}
@@ -327,12 +168,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * Include sessions that start between the specified time range.
    *
    * Each value is array with time parameters:
-   * <dl>
-   *    <dt>string <var>tl_start</var></dt>
-   *    <dd>Time when the session starts. Example: value `'06:00'`.</dd>
-   *    <dt>string <var>tl_end</var></dt>
-   *    <dd>Time when the session ends. Example: value `'14:00'`.</dd>
-   * </dl>
+   *
    *
    * Empty array means no filtering.
    *
@@ -351,10 +187,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * The list end date in MySQL format.
-   * <no-sdk>
-   * If left empty, the default duration is {@link Wl_Schedule_ClassList_ClassList68Model.DEFAULT_PERIOD} days after
-   * {@link Wl_Schedule_ClassList_ClassList68Model.dt_date}.
-   * </no-sdk>
+   *
    *
    * @post post
    * @type {string}
@@ -442,7 +275,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * The list of staff members to filter.
    * A comma separated list of staff keys.
    *
-   * @deprecated Use {@link Wl_Schedule_ClassList_ClassList68Model.s_staff_uid} instead.
+   * @deprecated Use {@link Wl_Schedule_ClassList_ClassListModel.s_staff_uid} instead.
    * @post post
    * @type {string}
    */
@@ -482,7 +315,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.show_event = false;
 
   /**
-   * Whether to generate a {@link Wl_Schedule_ClassList_ClassList68Model.a_quick} quick filter.
+   * Whether to generate {@link Wl_Schedule_ClassList_ClassList68Model.a_quick} a quick filter.
    * If `true`, a quick filter will be generated. `false` otherwise.
    *
    * @post post

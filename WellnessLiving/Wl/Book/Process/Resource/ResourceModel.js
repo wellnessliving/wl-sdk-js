@@ -50,6 +50,7 @@ function Wl_Book_Process_Resource_ResourceModel()
   /**
    * Information about the recurring booking:
    *
+   *
    * This will be `null` if the booking isn't recurring.
    *
    * @post post
