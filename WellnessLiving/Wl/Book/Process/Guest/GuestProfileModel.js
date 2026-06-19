@@ -23,6 +23,15 @@ function Wl_Book_Process_Guest_GuestProfileModel()
   this.dl_birthday = "";
 
   /**
+   * The mode type used to determine the Lead Source for the created guest.
+   * One of the {@link Wl_Mode_ModeSid} constants. Default is {@link Wl_Mode_ModeSid.API}.
+   *
+   * @post post
+   * @var int
+   */
+  this.id_mode = 0;
+
+  /**
    * Type of the service to book. One of the {@link Wl_Service_ServiceSid} constants.
    *
    * @get get
@@ -96,5 +105,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Guest_GuestProfileModel);
  */
 Wl_Book_Process_Guest_GuestProfileModel.prototype.config=function()
 {
-  return {"a_field": {"dl_birthday": {"get": {"get": true},"post": {"get": true}},"id_service": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"text_first_name": {"get": {"get": true},"post": {"get": true}},"text_last_name": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"result": true},"post": {"result": true}}}};
+  return {"a_field": {"dl_birthday": {"get": {"get": true},"post": {"get": true}},"id_mode": {"post": {"get": true}},"id_service": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"text_first_name": {"get": {"get": true},"post": {"get": true}},"text_last_name": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"result": true},"post": {"result": true}}}};
 };
