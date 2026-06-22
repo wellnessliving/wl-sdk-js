@@ -53,9 +53,9 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {number} i_left The number of visits left on this Purchase Option. This will be <tt>NULL</tt> if there's no limit.
    * @property {number} i_order The default place in the list to show this client.
    * @property {number} i_total The total visits available from this Purchase Option.
-   * @property {number} id_gender The gender ID of the client. One of the {@link AGenderSid} constants.
+   * @property {number} id_gender The gender ID of the client. One of the {@link Wl_Gender_GenderSid} constants.
    * @property {number} id_pass_prospect If this visit was paid for by an external system, this ID will be set. Otherwise, it will be <tt>0</tt>.
-   * @property {number} id_program The program ID of the Purchase Option. One of the {@link RsProgramSid} constants.
+   * @property {number} id_program The program ID of the Purchase Option. One of the {@link Wl_WlProgramSid} constants.
    * @property {number} id_visit The status of the visit. One of the {@link Wl_Visit_VisitSid} constants.
    * @property {boolean} is_attend This will be <tt>true</tt> if the client has attended the visit.
    * @property {boolean} is_duration_pass This will be <tt>true</tt> if the Purchase Option used is a duration pass.
@@ -156,11 +156,11 @@ function Wl_Login_Attendance_AttendanceListModel()
    *   <dt>int <var>i_total</var></dt>
    *   <dd>The total visits available from this Purchase Option.</dd>
    *   <dt>int <var>id_gender</var></dt>
-   *   <dd>The gender ID of the client. One of the {@link AGenderSid} constants.</dd>
+   *   <dd>The gender ID of the client. One of the {@link Wl_Gender_GenderSid} constants.</dd>
    *   <dt>int <var>id_pass_prospect</var></dt>
    *   <dd>If this visit was paid for by an external system, this ID will be set. Otherwise, it will be <tt>0</tt>.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>The program ID of the Purchase Option. One of the {@link RsProgramSid} constants.</dd>
+   *   <dd>The program ID of the Purchase Option. One of the {@link Wl_WlProgramSid} constants.</dd>
    *   <dt>int <var>id_visit</var></dt>
    *   <dd>The status of the visit. One of the {@link Wl_Visit_VisitSid} constants.</dd>
    *   <dt>bool <var>is_attend</var></dt>

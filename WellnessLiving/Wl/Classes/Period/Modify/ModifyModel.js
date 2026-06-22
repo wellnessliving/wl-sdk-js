@@ -68,6 +68,14 @@ function Wl_Classes_Period_Modify_ModifyModel()
   this.id_class_modify_mode = 0;
 
   /**
+   * The mode type. One of the {@link Wl_Mode_ModeSid} constants.
+   *
+   * @post get
+   * @type {number}
+   */
+  this.id_mode = 0;
+
+  /**
    * Class modify action type, one of {@link RsClassModifyStepSid}.
    *
    * @get get
@@ -141,7 +149,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Period_Modify_ModifyModel);
  */
 Wl_Classes_Period_Modify_ModifyModel.prototype.config=function()
 {
-  return {"a_field": {"a_get": {"get": {"result": true}},"a_set": {"post": {"post": true}},"dt_end": {"get": {"get": true},"post": {"get": true}},"dt_start": {"get": {"get": true},"post": {"get": true}},"id_class_modify_action": {"get": {"get": true},"post": {"get": true}},"id_class_modify_mode": {"get": {"get": true},"post": {"get": true}},"id_step": {"get": {"get": true},"post": {"get": true,"result": true}},"is_back": {"get": {"get": true},"post": {"get": true,"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"s_id": {"get": {"get": true},"post": {"get": true,"result": true}}}};
+  return {"a_field": {"a_get": {"get": {"result": true}},"a_set": {"post": {"post": true}},"dt_end": {"get": {"get": true},"post": {"get": true}},"dt_start": {"get": {"get": true},"post": {"get": true}},"id_class_modify_action": {"get": {"get": true},"post": {"get": true}},"id_class_modify_mode": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_step": {"get": {"get": true},"post": {"get": true,"result": true}},"is_back": {"get": {"get": true},"post": {"get": true,"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"s_id": {"get": {"get": true},"post": {"get": true,"result": true}}}};
 };
 
 /**

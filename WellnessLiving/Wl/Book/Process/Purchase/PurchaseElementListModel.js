@@ -11,7 +11,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_request
    * @property {*} i_session The number of sessions which are booked simultaneously.
-   * @property {number} id_purchase_item The ID of the purchase item type. One of the {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item The ID of the purchase item type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} k_id The key of the purchase item in the database. The name of the table in the database depends on <tt>id_purchase_item</tt>
    * @property {*} k_login_prize The key of the user's prize.
    */
@@ -22,7 +22,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
    *   <dt>int [<var>i_session</var>]</dt>
    *   <dd>The number of sessions booked simultaneously.</dd>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The ID of the purchase item type. One of the {@link RsPurchaseItemSid} constants.</dd>
+   *   <dd>The ID of the purchase item type. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The key of the purchase item in the database. The name of the table in the database depends on <var>id_purchase_item</var></dd>
    *   <dt>string [<var>k_login_prize</var>]</dt>

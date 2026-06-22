@@ -1,5 +1,5 @@
 /**
- * An endpoint that gets information from the Lead Capture widget and saves a new user’s information.
+ * Gets information from the Lead Capture widget and saves a new user’s information.
  *
  * A user can be added to a second business by adding them first as a lead. If your business uses Enterprise Cloud,
  * there may be a restriction where clients can only be members in one enterprise location (travellers in all
@@ -171,7 +171,7 @@ function Wl_Lead_LeadModel()
    *
    * Lead will not be signed in if:
    * - email is used already for another existing user;
-   * - different user is signed in already.
+   * - different user is signed in already (can be changed with {@link Wl_Lead_LeadModel.is_sing_in_force}).
    *
    * If lead is not signed in, then {@link Wl_Lead_LeadModel.text_sign_in_error} will contain an error message.
    *
@@ -179,6 +179,16 @@ function Wl_Lead_LeadModel()
    * @type {boolean}
    */
   this.is_sing_in = false;
+
+  /**
+   * `true` if newly created lead should be automatically signed in instead of the currently signed-in user,
+   * `false` if currently singed-in user should not be signed out.
+   * If lead is not signed in, then {@link Wl_Lead_LeadModel.text_sign_in_error} will contain an error message.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_sing_in_force = false;
 
   /**
    * The key of business to which the new user must be captured.
@@ -195,7 +205,7 @@ function Wl_Lead_LeadModel()
    * Must be `null` if <var>text_lead_source</var> is set.
    * If both parameters are empty, the {@link Wl_Mode_ModeSid.API} lead source will be used.
    *
-   * If both parameters are empty, the {@link Wl_Lead_Source_LeadSourceSid.ENDPOINT} lead source will be used.
+   * {@link Wl_Lead_LeadSourceElementModel.LEAD_SOURCE_REPLACE_NONE} if Lead Source is to be unselected for the user.
    *
    * @post post,result
    * @type {?string}
@@ -252,6 +262,9 @@ function Wl_Lead_LeadModel()
   /**
    * The key of the new user.
    *
+   * Typing is not added because the variable is an integer.
+   * Specifying typing may break third party integration.
+   *
    * @post result
    * @type {string}
    */
@@ -276,5 +289,5 @@ WlSdk_ModelAbstract.extend(Wl_Lead_LeadModel);
  */
 Wl_Lead_LeadModel.prototype.config=function()
 {
-  return {"a_field": {"a_field_data": {"post": {"post": true}},"a_field_list": {"get": {"result": true}},"a_skin": {"get": {"result": true}},"can_use_free_purchase": {"get": {"result": true},"post": {"get": true}},"is_backend": {"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_lead_source": {"post": {"post": true,"result": true}},"k_skin": {"get": {"get": true},"post": {"get": true}},"s_captcha": {"post": {"post": true}},"text_lead_source": {"post": {"post": true}},"text_sign_in_error": {"post": {"result": true}},"uid": {"post": {"result": true}},"url_captcha": {"get": {"result": true}}}};
+  return {"a_field": {"a_field_data": {"post": {"post": true}},"a_field_list": {"get": {"result": true}},"a_skin": {"get": {"result": true}},"can_use_free_purchase": {"get": {"result": true},"post": {"get": true}},"is_backend": {"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"is_sing_in_force": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_lead_source": {"post": {"post": true,"result": true}},"k_skin": {"get": {"get": true},"post": {"get": true}},"s_captcha": {"post": {"post": true}},"text_lead_source": {"post": {"post": true}},"text_sign_in_error": {"post": {"result": true}},"uid": {"post": {"result": true}},"url_captcha": {"get": {"result": true}}}};
 };

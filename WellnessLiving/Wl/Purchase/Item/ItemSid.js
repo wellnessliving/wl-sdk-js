@@ -46,7 +46,7 @@ Wl_Purchase_Item_ItemSid.APPOINTMENT_DEPOSIT = 18;
  * Tips for the appointment.
  *
  * @see RsPurchaseItemAppointment Purchase item manager class.
- * @see RsPurchaseItemSid::SERVICE A purchased item that is created during the online booking process.
+ * @see Wl_Purchase_Item_ItemSid::SERVICE A purchased item that is created during the online booking process.
  * @type {number}
  */
 Wl_Purchase_Item_ItemSid.APPOINTMENT_TIP = 22;

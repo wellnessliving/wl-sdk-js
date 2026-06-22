@@ -28,7 +28,7 @@ function Wl_Purchase_Item_PurchaseItemAmountModel()
 
   /**
    * ID of the purchase item.
-   * One of {@link RsPurchaseItemSid} constants.
+   * One of {@link Wl_Purchase_Item_ItemSid} constants.
    * Key of the appropriate item stored in {@link Wl_Purchase_Item_PurchaseItemAmountModel.k_id}.
    *
    * @get get

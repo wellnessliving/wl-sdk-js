@@ -60,6 +60,14 @@ function Wl_Book_Process_Guest_GuestProfileModel()
   this.k_id = "";
 
   /**
+   * Primary key of a location.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_location = "";
+
+  /**
    * Guest's first name.
    *
    * @get get
@@ -105,5 +113,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Guest_GuestProfileModel);
  */
 Wl_Book_Process_Guest_GuestProfileModel.prototype.config=function()
 {
-  return {"a_field": {"dl_birthday": {"get": {"get": true},"post": {"get": true}},"id_mode": {"post": {"get": true}},"id_service": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"text_first_name": {"get": {"get": true},"post": {"get": true}},"text_last_name": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"result": true},"post": {"result": true}}}};
+  return {"a_field": {"dl_birthday": {"get": {"get": true},"post": {"get": true}},"id_mode": {"post": {"get": true}},"id_service": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true}},"text_first_name": {"get": {"get": true},"post": {"get": true}},"text_last_name": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"result": true},"post": {"result": true}}}};
 };

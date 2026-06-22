@@ -75,7 +75,7 @@ function Wl_User_Info_UserInfoModel()
    * @property {{}} a_photo Information about the user's photo.
    * @property {string} dt_add The date the user was added, given in UTC time.
    * @property {string} dt_birth The user's birthday. This will be `null` if the birthday isn't set yet.
-   * @property {number} id_gender The ID of the user's gender. One of the {@link AGenderSid} constants.
+   * @property {number} id_gender The ID of the user's gender. One of the {@link Wl_Gender_GenderSid} constants.
    * @property {boolean} is_customer_new This will be `true` if the user has never made purchases or reservations in this business.
    * Otherwise, this will be `false`.
    * @property {boolean} is_traveller This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
@@ -119,7 +119,7 @@ function Wl_User_Info_UserInfoModel()
    *     The user's birthday. This will be `null` if the birthday isn't set yet.
    *   </dd>
    *   <dt>int <var>id_gender</var></dt>
-   *   <dd>The ID of the user's gender. One of the {@link AGenderSid} constants.</dd>
+   *   <dd>The ID of the user's gender. One of the {@link Wl_Gender_GenderSid} constants.</dd>
    *   <dt>bool <var>is_customer_new</var></dt>
    *   <dd>
    *     This will be `true` if the user has never made purchases or reservations in this business.
@@ -203,7 +203,7 @@ function Wl_User_Info_UserInfoModel()
   this.has_discount = undefined;
 
   /**
-   * The ID of the user's gender. One of the {@link AGenderSid} constants.
+   * The ID of the user's gender. One of the {@link Wl_Gender_GenderSid} constants.
    *
    * This will be `null` if the gender isn't set yet.
    *

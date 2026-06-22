@@ -21,8 +21,8 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    * @property {string[]} a_login_type List of login types available to purchase sale item.
    * @property {string[]} a_member_group List of member groups available to purchase the sale item.
    * @property {string[]} a_shop_category A list of online store category keys.
-   * @property {number} [id_program] The program ID, sets for promotions. One of {@link RsProgramSid} constants. Set for promotions.
-   *  <p>If `id_program` is {@link RsProgramSid.INSURANCE_MEMBERSHIP}, then use:</p>
+   * @property {number} [id_program] The program ID, sets for promotions. One of {@link Wl_WlProgramSid} constants. Set for promotions.
+   *  <p>If `id_program` is {@link Wl_WlProgramSid.INSURANCE_MEMBERSHIP}, then use:</p>
    *  <ul>
    *    <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain a list of active programs.</li>
    *    <li>{@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} to get and validate fields for a given program.</li>
@@ -72,8 +72,8 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    *     int <var>[id_program]</var>
    *   </dt>
    *   <dd>
-   *      The program ID, sets for promotions. One of {@link RsProgramSid} constants. Set for promotions.
-   *      <p>If `id_program` is {@link RsProgramSid.INSURANCE_MEMBERSHIP}, then use:</p>
+   *      The program ID, sets for promotions. One of {@link Wl_WlProgramSid} constants. Set for promotions.
+   *      <p>If `id_program` is {@link Wl_WlProgramSid.INSURANCE_MEMBERSHIP}, then use:</p>
    *      <ul>
    *        <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain a list of active programs.</li>
    *        <li>{@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} to get and validate fields for a given program.</li>

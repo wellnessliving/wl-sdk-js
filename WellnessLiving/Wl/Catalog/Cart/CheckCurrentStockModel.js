@@ -49,7 +49,7 @@ function Wl_Catalog_Cart_CheckCurrentStockModel()
   /**
    * @typedef {{}} Wl_Catalog_Cart_CheckCurrentStockModel_a_item
    * @property {number} i_count Current stock quantity.
-   * @property {number} id_purchase_item Purchase Item ID, one of {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item Purchase Item ID, one of {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} k_id Product option key, primary key in {@link \RsShopProductOptionSql} table.
    */
 
@@ -60,7 +60,7 @@ function Wl_Catalog_Cart_CheckCurrentStockModel()
    *   <dt>int <var>i_count</var></dt>
    *   <dd>Current stock quantity.</dd>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>Purchase Item ID, one of {@link RsPurchaseItemSid} constants.</dd>
+   *   <dd>Purchase Item ID, one of {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>Product option key, primary key in {@link \RsShopProductOptionSql} table.</dd>
    * </dl>
@@ -74,7 +74,7 @@ function Wl_Catalog_Cart_CheckCurrentStockModel()
   /**
    * @typedef {{}} Wl_Catalog_Cart_CheckCurrentStockModel_a_item_post
    * @property {number} i_count Current stock quantity.
-   * @property {number} id_purchase_item Purchase Item ID, one of {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item Purchase Item ID, one of {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} k_id Product option key, primary key in {@link \RsShopProductOptionSql} table.
    */
 
@@ -90,7 +90,7 @@ function Wl_Catalog_Cart_CheckCurrentStockModel()
    *   <dt>int <var>i_count</var></dt>
    *   <dd>Current stock quantity.</dd>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>Purchase Item ID, one of {@link RsPurchaseItemSid} constants.</dd>
+   *   <dd>Purchase Item ID, one of {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>Product option key, primary key in {@link \RsShopProductOptionSql} table.</dd>
    * </dl>

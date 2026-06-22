@@ -19,7 +19,7 @@ function Wl_Book_Process_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_item
-   * @property {number} id_purchase_item The ID of purchase item type. One of {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item The ID of purchase item type. One of {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {*} is_renew `true` if the item should be set to auto-renew; `false` otherwise. If not set yet, use the default option for this item.
    * @property {string} k_id The key of the purchase item in the database.
    * @property {string} k_login_prize Key of user's prize. Not `0` only if user is paying book by prize.
@@ -30,7 +30,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   /**
    * A list of items to be bought. Every element has the next keys: <dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The ID of purchase item type. One of {@link RsPurchaseItemSid} constants.</dd>
+   *   <dd>The ID of purchase item type. One of {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    *   <dt>boolean [<var>is_renew</var>]</dt>
    *   <dd>`true` if the item should be set to auto-renew; `false` otherwise. If not set yet, use the default option for this item.</dd>
    *   <dt>string <var>k_id</var></dt>

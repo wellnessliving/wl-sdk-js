@@ -47,7 +47,7 @@ function Wl_Catalog_Payment_PaymentModel()
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_quick_gift
    * @property {number} i_count The quantity of elements.
-   * @property {number} id_purchase_item The purchase type of the element. One of the {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item The purchase type of the element. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} k_id The primary key of the element, depending on the element type.
    */
   /**
@@ -56,7 +56,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * <dt>int <tt>i_count</tt></dt>
    * <dd>The quantity of elements.</dd>
    * <dt>int <tt>id_purchase_item</tt></dt>
-   * <dd>The purchase type of the element. One of the {@link RsPurchaseItemSid} constants.</dd>
+   * <dd>The purchase type of the element. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    * <dt>string <tt>k_id</tt></dt>
    * <dd>The primary key of the element, depending on the element type.</dd></dl>
    * @property {*} a_uid_share An array of UIDs representing the client's relatives that share the Purchase Option.
@@ -108,7 +108,7 @@ function Wl_Catalog_Payment_PaymentModel()
    *     <dt>int <tt>i_count</tt></dt>
    *     <dd>The quantity of elements.</dd>
    *     <dt>int <tt>id_purchase_item</tt></dt>
-   *     <dd>The purchase type of the element. One of the {@link RsPurchaseItemSid} constants.</dd>
+   *     <dd>The purchase type of the element. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    *     <dt>string <tt>k_id</tt></dt>
    *     <dd>The primary key of the element, depending on the element type.</dd></dl>
    *   </dd>
@@ -294,7 +294,7 @@ function Wl_Catalog_Payment_PaymentModel()
    *         <dt>int <var>i_count</var></dt>
    *         <dd>The quantity of elements.</dd>
    *         <dt>int <var>id_purchase_item</var></dt>
-   *         <dd>The purchase type of the element. One of the {@link RsPurchaseItemSid} constants.</dd>
+   *         <dd>The purchase type of the element. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    *         <dt>string <var>k_id</var></dt>
    *         <dd>The primary key of the element, depending on the element type.</dd></dl>
    *       </dd>

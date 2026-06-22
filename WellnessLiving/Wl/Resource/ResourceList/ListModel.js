@@ -1,5 +1,5 @@
 /**
- * Resources list.
+ * Asset list by business.
  *
  * This model is generated automatically based on API.
  *
@@ -20,51 +20,39 @@ function Wl_Resource_ResourceList_ListModel()
    * @property {boolean} hide_application Whether resource will be hidden in the White Label mobile application.
    *  <tt>true</tt> means that resource will not be displayed, <tt>false</tt> otherwise.
    * @property {boolean} is_active Whether resource is active.
-   * @property {string} k_resource Resource key, primary key in {@link \RsResourceSql}.
-   * @property {string} k_resource_type Resource type key, primary key in {@link \RsResourceTypeSql}.
+   * @property {boolean} is_book Whether resource is bookable.
+   * @property {string} k_city Key of the city for off-site locations.}.
+   * <tt>null</tt> if the resource is not an off-site location.
+   * @property {string} k_resource Resource key.
+   * @property {string} k_resource_layout Asset layout key.
+   * @property {string} k_resource_type Resource type key.
+   * @property {string} text_address Street address of the resource for off-site locations.
+   * Empty string if the resource does not have an off-site address.
+   * @property {string} text_guide Additional directions or access tips for reaching an off-site location.
+   * Empty string if not specified.
+   * @property {string} text_postal Postal code of the resource for off-site locations.
+   * Empty string if the resource does not have an off-site address.
    * @property {string} text_title Resource name.
    */
 
   /**
    * Resources list:
-   * <dl>
-   *   <dt>
-   *     bool <var>hide_application</var>
-   *   </dt>
-   *   <dd>
-   *      Whether resource will be hidden in the White Label mobile application.
-   *      <tt>true</tt> means that resource will not be displayed, <tt>false</tt> otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_active</var>
-   *   </dt>
-   *   <dd>
-   *     Whether resource is active.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_resource</var>
-   *   </dt>
-   *   <dd>
-   *     Resource key, primary key in {@link \RsResourceSql}.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_resource_type</var>
-   *   </dt>
-   *   <dd>
-   *     Resource type key, primary key in {@link \RsResourceTypeSql}.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     Resource name.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Resource_ResourceList_ListModel_a_resource[]}
    */
   this.a_resource = undefined;
+
+  /**
+   * Type of the resource.
+   *
+   * 1 - if this is a bookable asset.
+   * 2 - if this is an off-site location with its own address.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.id_category = 0;
 
   /**
    * Whether to return franchisee-created resources (if business is franchisor).
@@ -93,7 +81,7 @@ WlSdk_ModelAbstract.extend(Wl_Resource_ResourceList_ListModel);
  */
 Wl_Resource_ResourceList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_resource": {"get": {"result": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field": {"a_resource": {"get": {"result": true}},"id_category": {"get": {"get": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
 };
 
 /**

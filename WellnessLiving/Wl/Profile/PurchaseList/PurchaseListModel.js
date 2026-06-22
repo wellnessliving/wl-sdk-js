@@ -1,5 +1,5 @@
 /**
- * An endpoint that gets a list of purchases for a user.
+ * Gets a list of purchases for a user.
  *
  * This model is generated automatically based on API.
  *
@@ -20,17 +20,18 @@ function Wl_Profile_PurchaseList_PurchaseListModel()
    * @property {boolean[]} a_active The value of <tt>a_purchase['is_active']</tt>. For packages, this also contains the values of <tt>a_purchase['is_active']</tt> of every component.
    * @property {number[]} a_sale The value of <tt>a_purchase['id_sale']</tt>. For packages, this also contains the values of <tt>a_purchase['id_sale']</tt> of every component.
    * @property {string} dt_add The date that the purchase was added.
-   * @property {number} id_purchase_item The ID of the purchase type. One of the constants {@link RsPurchaseItemSid}.
+   * @property {number} id_purchase_item The ID of the purchase type. One of the constants {@link Wl_Purchase_Item_ItemSid}.
    * @property {number} id_sale The ID of the sale category in the store. One of the constants {@link RsSaleSid}.
    * @property {boolean} is_active If `true`, then the purchase item is active. Otherwise, this will be `false`.
-   * @property {*} is_component If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
+   * @property {boolean} [is_component] If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
+   * @property {boolean} is_package If `true`, then the purchase item is a package, `false` otherwise.
    * @property {string} k_appointment Appointment key.
    * @property {string} k_code The redemption code key that was used to make a purchase.
    * This is used only if <tt>k_login_promotion</tt> and <tt>k_purchase</tt> are empty.
-   * @property {*} k_enrollment_book The key of an event that requires clients to book every session at once.
+   * @property {string} [k_enrollment_book] The key of an event that requires clients to book every session at once.
    * This is used only if the event is part of a package.
    * @property {string} k_id The key of the purchase type referring to different types of keys depending on the value of <tt>id_sale</tt>.
-   * @property {*} k_login_product The key of the purchased product.
+   * @property {string} [k_login_product] The key of the purchased product.
    * This is used only if the event is part of a package.
    * @property {string} k_login_promotion The key of the user's existing purchase options.
    * This is used only if `k_code` and `k_purchase` are empty.
@@ -38,7 +39,8 @@ function Wl_Profile_PurchaseList_PurchaseListModel()
    * This is used only used if `k_code` is empty.
    * @property {string} k_purchase_item The key of a purchase item where no special case rules are in effect.
    * This is used only if <tt>k_code</tt> is empty.
-   * @property {*} k_session_pass In certain cases a session can be canceled and makeup sessions can be granted to a client in lieu of
+   * @property {string} k_service Service key.
+   * @property {string} [k_session_pass] In certain cases a session can be canceled and makeup sessions can be granted to a client in lieu of
    * other compensation. This is the key of one of the makeup sessions used to attend an event. This is also
    * present for a repeat purchase of an event.
    * @property {string} k_service Service key.
@@ -71,7 +73,7 @@ function Wl_Profile_PurchaseList_PurchaseListModel()
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of the purchase type. One of the constants {@link RsPurchaseItemSid}.
+   *     The ID of the purchase type. One of the constants {@link Wl_Purchase_Item_ItemSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_sale</var>
@@ -90,6 +92,18 @@ function Wl_Profile_PurchaseList_PurchaseListModel()
    *   </dt>
    *   <dd>
    *     If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
+   *   </dd>
+   *   <dt>
+   *     bool <var>is_package</var>
+   *   </dt>
+   *   <dd>
+   *     If `true`, then the purchase item is a package, `false` otherwise.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_appointment</var>
+   *   </dt>
+   *   <dd>
+   *     Appointment key.
    *   </dd>
    *   <dt>
    *     string <var>k_code</var>
@@ -138,6 +152,12 @@ function Wl_Profile_PurchaseList_PurchaseListModel()
    *   <dd>
    *     The key of a purchase item where no special case rules are in effect.
    *     This is used only if <var>k_code</var> is empty.
+   *   </dd>
+   *   <dt>
+   *     string <var>k_service</var>
+   *   </dt>
+   *   <dd>
+   *     Service key.
    *   </dd>
    *   <dt>
    *     string [<var>k_session_pass</var>]

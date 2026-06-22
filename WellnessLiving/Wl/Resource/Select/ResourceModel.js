@@ -125,7 +125,7 @@ function Wl_Resource_Select_ResourceModel()
 
   /**
    * ID of the purchase item.
-   * One of {@link RsPurchaseItemSid} constants.
+   * One of {@link Wl_Purchase_Item_ItemSid} constants.
    * <tt>null</tt> if purchase item id not set.
    *
    * @get get

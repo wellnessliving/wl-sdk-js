@@ -138,7 +138,7 @@ function Wl_Login_LoginModel()
   this.i_photo_width = 0;
 
   /**
-   * The gender ID. It will be one of the {@link AGenderSid} constants.
+   * The gender ID. It will be one of the {@link Wl_Gender_GenderSid} constants.
    *
    * @get result
    * @type {number}

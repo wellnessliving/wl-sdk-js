@@ -51,7 +51,7 @@ function Wl_Profile_Contract_ContractModel()
   this.i_minor_age = undefined;
 
   /**
-   * The type of purchase item. This is one of the {@link RsPurchaseItemSid} constants.
+   * The type of purchase item. This is one of the {@link Wl_Purchase_Item_ItemSid} constants.
    * Optional if {@link Wl_Profile_Contract_ContractModel.k_purchase_item} is not empty.
    *
    * @get get
@@ -173,7 +173,7 @@ Wl_Profile_Contract_ContractModel.prototype.config=function()
  * @param {string} uid The key of the current user.
  * @param {string} k_business The key of the business to show information for.
  * @param {string} k_location The key of the selected location.
- * @param {number} id_purchase_item The type of purchase item. This is one of the {@link RsPurchaseItemSid} constants. Optional if {@link Wl_Profile_Contract_ContractModel.k_purchase_item} is not empty.
+ * @param {number} id_purchase_item The type of purchase item. This is one of the {@link Wl_Purchase_Item_ItemSid} constants. Optional if {@link Wl_Profile_Contract_ContractModel.k_purchase_item} is not empty.
  * @param {string} k_id The key of the purchase item in the database. The item key. Depends of {@link Wl_Profile_Contract_ContractModel.id_purchase_item} property.
  * @param {string} k_purchase_item The key of the selected purchase item.
  * @param {string} m_price_custom The custom price of the item.

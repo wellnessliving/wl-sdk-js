@@ -5,6 +5,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Quiz_QuizElement72Model} instead.
  */
 function Wl_Quiz_QuizElementModel()
 {
@@ -97,6 +98,23 @@ function Wl_Quiz_QuizElementModel()
   this.is_builder = false;
 
   /**
+   * `true` if quiz is imported, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_imported = undefined;
+
+  /**
+   * Whether form can be edited by franchisee.
+   * `true` prevent franchisees from editing this form, `false` - otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_prevent_franchisee = false;
+
+  /**
    * Whether quiz response received by kiosk or direct mode link.
    *
    * `true` quiz response received by kiosk mode.
@@ -119,6 +137,38 @@ function Wl_Quiz_QuizElementModel()
   this.json_element = "";
 
   /**
+   * List of purchase items for which this form is loaded in JSON format.
+   *
+   * This variable supports two structures:
+   *
+   * New structure:
+   * Each element key has the format `[id_purchase_item]::[k_id]`, where: <dl>
+   *   <dt>int <var>id_purchase_item</var></dt>
+   *   <dd>The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
+   *   <dt>string <var>k_id</var></dt>
+   *   <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
+   * </dl>
+   * Each element value has the format:
+   * <dl>
+   *   <dt>int <var>[i_duration]</var></dt>
+   *   <dd>Duration of the purchase option.</dd>
+   *   <dt>int <var>[i_payment_period]</var></dt>
+   *   <dd>Payment period for the purchase option.</dd>
+   *   <dt>int <var>[id_duration]</var></dt>
+   *   <dd>Duration type, one of {@link RsDurationTypeSid} constants.</dd>
+   * </dl>
+   *
+   * Old structure:
+   * Each element is a string in the format `[id_purchase_item]::[k_id]`.
+   *
+   * Empty in case when purchase item not specified or form loaded from direct link.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.json_purchase_item = "";
+
+  /**
    * Business key within which quiz is managed.
    *
    * @delete get
@@ -128,6 +178,17 @@ function Wl_Quiz_QuizElementModel()
    * @type {string}
    */
   this.k_business = "";
+
+  /**
+   * Business type key. Used only for forms in the system business.
+   *
+   * `null` if not initialized.
+   *
+   * @get result
+   * @post post
+   * @type {?string}
+   */
+  this.k_business_type = null;
 
   /**
    * Quiz key.
@@ -208,7 +269,7 @@ WlSdk_ModelAbstract.extend(Wl_Quiz_QuizElementModel);
  */
 Wl_Quiz_QuizElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_access_log": {"get": {"result": true}},"a_element": {"get": {"result": true},"post": {"post": true}},"a_setting": {"get": {"result": true},"post": {"post": true},"put": {"result": true}},"can_amend": {"get": {"result": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"i_responses": {"get": {"result": true}},"is_active": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"is_builder": {"get": {"get": true}},"is_simple": {"get": {"get": true},"post": {"get": true}},"json_element": {"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_quiz": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"k_quiz_login": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"show_numbering": {"get": {"result": true},"post": {"post": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"uid_client": {"get": {"get": true}},"url_quiz": {"get": {"result": true},"put": {"result": true}},"url_quiz_kiosk": {"get": {"result": true},"put": {"result": true}}}};
+  return {"a_field": {"a_access_log": {"get": {"result": true}},"a_element": {"get": {"result": true},"post": {"post": true}},"a_setting": {"get": {"result": true},"post": {"post": true},"put": {"result": true}},"can_amend": {"get": {"result": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"i_responses": {"get": {"result": true}},"is_active": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"is_builder": {"get": {"get": true}},"is_imported": {"get": {"result": true}},"is_prevent_franchisee": {"get": {"result": true}},"is_simple": {"get": {"get": true},"post": {"get": true}},"json_element": {"post": {"post": true}},"json_purchase_item": {"get": {"get": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business_type": {"get": {"result": true},"post": {"post": true}},"k_quiz": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"k_quiz_login": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"show_numbering": {"get": {"result": true},"post": {"post": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"uid_client": {"get": {"get": true}},"url_quiz": {"get": {"result": true},"put": {"result": true}},"url_quiz_kiosk": {"get": {"result": true},"put": {"result": true}}}};
 };
 
 /**

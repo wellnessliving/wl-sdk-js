@@ -43,62 +43,13 @@ function Wl_Book_Process_Resource_ResourceModel()
    * @property {number} i_period Deprecated, use `i_duration` instead!
    * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   * @property {number} id_period Deprecated, use `id_duration` instead!
+   * @property {number} id_period Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.
    * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**
    * Information about the recurring booking:
-   * <dl>
-   *   <dt>int[] <var>a_day</var></dt>
-   *   <dd>
-   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   *     Should be passed for any type of repetition.
-   *   </dd>
-   *   <dt>int[] <var>a_week</var></dt>
-   *   <dd>Deprecated, use `a_day` instead!</dd>
-   *   <dt>string [<var>dl_end</var>]</dt>
-   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
-   *   <dt>
-   *     string [<var>dt_from</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to start recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *     string [<var>dt_to</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to complete recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *      int [<var>i_count</var>]
-   *    </dt>
-   *    <dd>
-   *      The number of occurrences after which the appointment's repeat cycle stops.
-   *      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *      Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
-   *    </dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
-   *   <dt>int [<var>i_occurrence</var>]</dt>
-   *   <dd>Deprecated, use `i_count` instead!</dd>
-   *   <dt>int <var>i_period</var></dt>
-   *   <dd>Deprecated, use `i_duration` instead!</dd>
-   *   <dt>
-   *     int <var>id_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *     Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   *   </dd>
-   *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
-   *   <dt>int <var>id_repeat_end</var></dt>
-   *   <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
-   * </dl>
+   *
    *
    * This will be `null` if the booking isn't recurring.
    *
@@ -108,74 +59,48 @@ function Wl_Book_Process_Resource_ResourceModel()
   this.a_repeat = null;
 
   /**
+   * @typedef {{}} Wl_Book_Process_Resource_ResourceModel_a_resource_all_a_resource_list_a_image
+   * @property {number} [i_angle] Angle of shape rotation. Set only when `sid_image` equals 'shape'.
+   * @property {number} i_height Height of the image in pixels.
+   * @property {number} i_width Width of the image in pixels.
+   * @property {boolean} is_empty `true` if no image was uploaded, `false` otherwise.
+   * @property {string} sid_image Image kind. One of {@link Wl_Resource_Image_ImageSid} string constants.
+   * @property {string} [sid_image_icon] Icon name. One of {@link Wl_Resource_Image_ImageIconSid} string constants.
+   * Set only when `sid_image` equals 'icon'.
+   * @property {string} [sid_image_shape] Shape name. One of {@link Wl_Resource_Image_ImageShapeSid} string constants.
+   * Set only when `sid_image` equals 'shape'.
+   * @property {string} url Thumbnail image URL.
+   */
+  /**
    * @typedef {{}} Wl_Book_Process_Resource_ResourceModel_a_resource_all_a_resource_list
-   * @property {{}} a_class_period List of resources available for booking sessions.
+   * @property {number[][][]} a_class_period List of resources available for booking sessions.
    *   The field structure is `[k_class_period][dtu_session]['a_available']`.
    *   Contains indexes of resource available for each session.
-   * @property {{}} a_image Asset image data. See {@link RsResourceImage::data()} for details.
+   * @property {Wl_Book_Process_Resource_ResourceModel_a_resource_all_a_resource_list_a_image} a_image Asset image data.
+   *
    * @property {number} i_index The asset number. Actual for assets with a quantity more than <tt>1</tt>.
    * @property {number} i_quantity Total number of the asset spots.
    * @property {number} i_use Number of already used asset units.
-   * @property {boolean} is_current <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
+   * @property {boolean} is_current City for the off-site location.
+   * @property {string} k_city <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
    * @property {string} k_resource The key of the asset in database.
+   *
    * @property {string} s_resource The title of the asset.
+   * @property {string} text_address Address for the off-site location.
+   * @property {string} text_guide Additional address tips for the off-site location.
+   * @property {string} text_postal Postal code for the off-site location.
    */
   /**
    * @typedef {{}} Wl_Book_Process_Resource_ResourceModel_a_resource_all
-   * @property {{}} a_client A list of clients who have already occupied assets for this session.
-   * 1st level keys - asset keys; 2nd level keys - asset number.
-   * For example, if you want to check if 10th asset with key '125' is free,
-   * you have to check if <tt>a_client['125']['10']</tt> is empty.
+   * @property {boolean[][]} a_client A list of clients who have already occupied assets for this session.
+   * 1st level keys are asset keys.
+   * 2nd level keys are asset index numbers (starting from 1).
+   * Values are `true` if the asset spot is occupied.
+   * For example, to check if asset spot 10 with key '125' is occupied,
+   * check `a_client['125']['10']`.
    * @property {Wl_Book_Process_Resource_ResourceModel_a_resource_all_a_resource_list[]} a_resource_list A list of available assets. Every element has next keys:
-   * <dl>
-   *   <dt>
-   *       array `a_class_period`
-   *   </dt>
-   *   <dd>
-   *       List of resources available for booking sessions.
-   *       The field structure is `[k_class_period][dtu_session]['a_available']`.
-   *       Contains indexes of resource available for each session.
-   *   </dd>
-   *   <dt>
-   *     array <tt>a_image</tt>
-   *   </dt>
-   *   <dd>
-   *     Asset image data. See {@link RsResourceImage::data()} for details.
-   *   </dd>
-   *   <dt>
-   *     int <tt>i_index</tt>
-   *   </dt>
-   *   <dd>
-   *     The asset number. Actual for assets with a quantity more than <tt>1</tt>.
-   *   </dd>
-   *   <dt>
-   *     int `i_quantity`
-   *   </dt>
-   *   <dd>
-   *     Total number of the asset spots.
-   *   </dd>
-   *   <dt>int `i_use`</dt>
-   *   <dd>Number of already used asset units.</dd>
-   *   <dt>
-   *     bool <tt>is_current</tt>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
-   *   </dd>
-   *   <dt>
-   *     string <tt>k_resource</tt>
-   *   </dt>
-   *   <dd>
-   *     The key of the asset in database.
-   *   </dd>
-   *   <dt>
-   *     string <tt>s_resource</tt>
-   *   </dt>
-   *   <dd>
-   *     The title of the asset.
-   *   </dd>
-   * </dl>
    * @property {boolean} has_current <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
+   * @property {number} id_category Type of the asset category. One of {@link Wl\Resource\ResourceCategoryEnum} constants.
    * @property {boolean} is_client_select <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise.
    * @property {boolean} is_select <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
    * @property {boolean} is_share <tt>true</tt> resources in this category don't belong to certain users, but to the entire session.
@@ -187,114 +112,6 @@ function Wl_Book_Process_Resource_ResourceModel()
 
   /**
    * A list of asset categories which are available for specified session. Every element has next keys:
-   * <dl>
-   *   <dt>
-   *     array <var>a_client</var>
-   *   </dt>
-   *   <dd>
-   *     A list of clients who have already occupied assets for this session.
-   *     1st level keys - asset keys; 2nd level keys - asset number.
-   *     For example, if you want to check if 10th asset with key '125' is free,
-   *     you have to check if <tt>a_client['125']['10']</tt> is empty.
-   *   </dd>
-   *   <dt>
-   *     array[] <var>a_resource_list</var>
-   *   </dt>
-   *   <dd>
-   *     A list of available assets. Every element has next keys:
-   *     <dl>
-   *       <dt>
-   *           array `a_class_period`
-   *       </dt>
-   *       <dd>
-   *           List of resources available for booking sessions.
-   *           The field structure is `[k_class_period][dtu_session]['a_available']`.
-   *           Contains indexes of resource available for each session.
-   *       </dd>
-   *       <dt>
-   *         array <var>a_image</var>
-   *       </dt>
-   *       <dd>
-   *         Asset image data. See {@link RsResourceImage::data()} for details.
-   *       </dd>
-   *       <dt>
-   *         int <var>i_index</var>
-   *       </dt>
-   *       <dd>
-   *         The asset number. Actual for assets with a quantity more than <tt>1</tt>.
-   *       </dd>
-   *       <dt>
-   *         int `i_quantity`
-   *       </dt>
-   *       <dd>
-   *         Total number of the asset spots.
-   *       </dd>
-   *       <dt>int `i_use`</dt>
-   *       <dd>Number of already used asset units.</dd>
-   *       <dt>
-   *         bool <var>is_current</var>
-   *       </dt>
-   *       <dd>
-   *         <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
-   *       </dd>
-   *       <dt>
-   *         string <var>k_resource</var>
-   *       </dt>
-   *       <dd>
-   *         The key of the asset in database.
-   *       </dd>
-   *       <dt>
-   *         string <var>s_resource</var>
-   *       </dt>
-   *       <dd>
-   *         The title of the asset.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     bool <var>has_current</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_client_select</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_select</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_share</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> resources in this category don't belong to certain users, but to the entire session.
-   *     <tt>false</tt> belong to specific users.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_resource_layout</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the asset layout.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_resource_type</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the asset category.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_resource_type</var>
-   *   </dt>
-   *   <dd>
-   *     The title of the asset category.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Book_Process_Resource_ResourceModel_a_resource_all[]}
@@ -309,12 +126,6 @@ function Wl_Book_Process_Resource_ResourceModel()
 
   /**
    * The selected assets. Every element has the next keys:
-   * <dl>
-   *   <dt>int <var>i_index</var></dt>
-   *   <dd>The asset number. Applies only for assets with a quantity greater than <tt>1</tt>.</dd>
-   *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The asset key.</dd>
-   * </dl>
    *
    * @post post
    * @type {Wl_Book_Process_Resource_ResourceModel_a_resource_select}
@@ -326,23 +137,23 @@ function Wl_Book_Process_Resource_ResourceModel()
    * Only makes sense for session events.
    * Optional parameter for GET request: if not passed, all available sessions will be used.
    *
-   * Keys refer to class period keys.
-   * And values refer to a list of the dates/times when the session occurred (returned in MySQL format and in GMT).
+   * Keys are class period keys.
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
    * @post get
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_session = [];
 
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs.
-   * And values refer to index arrays of dates/times when the session occurred (returned in MySQL format and in GMT).
+   * Keys are class period keys.
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_session_wait_list_unpaid = [];
 
@@ -498,7 +309,7 @@ Wl_Book_Process_Resource_ResourceModel.prototype.config=function()
  * @param {string} k_class_period Key of session which is booked.
  * @param {string} dt_date_gmt Date/time to which session is booked.
  * @param {string} uid The client key for which the booking is being made.
- * @param {{}} a_session The selected sessions. Only makes sense for session events. Optional parameter for GET request: if not passed, all available sessions will be used. Keys refer to class period keys. And values refer to a list of the dates/times when the session occurred (returned in MySQL format and in GMT).
+ * @param {string[]} a_session The selected sessions. Only makes sense for session events. Optional parameter for GET request: if not passed, all available sessions will be used. Keys are class period keys. Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
  * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Resource_ResourceModel}
  * @see WlSdk_ModelAbstract.instanceGet()

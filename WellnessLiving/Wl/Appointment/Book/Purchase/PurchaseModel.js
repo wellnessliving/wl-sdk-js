@@ -5,6 +5,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Appointment_Book_Purchase_Purchase72Model}.
  */
 function Wl_Appointment_Book_Purchase_PurchaseModel()
 {
@@ -217,8 +218,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * @property {boolean} is-resize Whether thumbnail is a resized variant of original image. If set to <tt>false</tt>
    * value returned in <tt>url-thumbnail</tt> equals value in <tt>url-view</tt>.
    * @property {string} url-view Url to original image in file storage.
-   * @property {string} url-thumbnail Url to resized and rotated image in file storage. If size of original image is larger then specified by
-   * arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise link to
+   * @property {string} url-thumbnail Url to resized and rotated image in file storage. If size of original image is larger than specified by
+   * arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise, link to
    * original image is returned here.
    */
   /**
@@ -273,8 +274,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *     string <tt>url-thumbnail</tt>
    *   </dt>
    *   <dd>
-   *     Url to resized and rotated image in file storage. If size of original image is larger then specified by
-   *     arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise link to
+   *     Url to resized and rotated image in file storage. If size of original image is larger than specified by
+   *     arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise, link to
    *     original image is returned here.
    *   </dd>
    * </dl>
@@ -293,7 +294,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *     The discount amount for the client type of one purchase item.
    *   </dd>
    * </dl>
-   * @property {string[]} a_visit_limit A list of calendar restrictions of the Purchase Option in a human readable format, for example: '4 per week'.
+   * @property {string[]} a_visit_limit A list of calendar restrictions of the Purchase Option in a human-readable format, for example: '4 per week'.
    * @property {string} dt_expire Date, when promotion expires.
    * @property {string} dt_start Date, when promotion starts.
    * @property {string} f_price The price of the Purchase Option.
@@ -322,7 +323,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * @property {string} s_description Description of the purchase option.
    * @property {string} s_duration Duration of the promotion.
    * @property {string} s_payment_duration Period between payments for memberships.
-   * @property {string} sid_program_category Category of the program for promotions from {@link RsProgramCategorySid}.
+   * @property {string} sid_program_category Category of the program for promotions from {@link Wl_WlProgramCategorySid}.
    * @property {string} s_title Name of the purchase option.
    * @property {string} s_value Key of the purchase option in the format [<tt>purchase_item_id</tt>]::[<tt>k_id</tt>]
    * @property {string} text_package_item If this promotion is a package. This field contains list of promotions contained in the package.
@@ -385,8 +386,8 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *         string <var>url-thumbnail</var>
    *       </dt>
    *       <dd>
-   *         Url to resized and rotated image in file storage. If size of original image is larger then specified by
-   *         arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise link to
+   *         Url to resized and rotated image in file storage. If size of original image is larger than specified by
+   *         arguments, image thumbnail as created, and a link to this thumbnail is returned. Otherwise, link to
    *         original image is returned here.
    *       </dd>
    *     </dl>
@@ -415,7 +416,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *     string[] <var>a_visit_limit</var>
    *   </dt>
    *   <dd>
-   *     A list of calendar restrictions of the Purchase Option in a human readable format, for example: '4 per week'.
+   *     A list of calendar restrictions of the Purchase Option in a human-readable format, for example: '4 per week'.
    *   </dd>
    *   <dt>
    *     string <var>dt_expire</var>
@@ -579,7 +580,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *     string <var>sid_program_category</var>
    *   </dt>
    *   <dd>
-   *     Category of the program for promotions from {@link RsProgramCategorySid}.
+   *     Category of the program for promotions from {@link Wl_WlProgramCategorySid}.
    *   </dd>
    *   <dt>
    *     string <var>s_title</var>
@@ -609,7 +610,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_reward_prize
    * @property {number} i_score Prize price in points.
-   * @property {string} k_reward_prize Key of redeemable prize..
+   * @property {string} k_reward_prize Key of redeemable prize.
    * @property {string} text_description User friendly prize description.
    */
 
@@ -617,7 +618,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * List of redeemable prizes which can be used to pay for service.
    * <dl>
    *   <dt>int <var>i_score</var></dt><dd>Prize price in points.</dd>
-   *   <dt>string <var>k_reward_prize</var></dt><dd>Key of redeemable prize..</dd>
+   *   <dt>string <var>k_reward_prize</var></dt><dd>Key of redeemable prize.</dd>
    *   <dt>string <var>text_description</var></dt><dd>User friendly prize description.</dd>
    * </dl>
    *
@@ -630,16 +631,23 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_service_a_purchase
    * @property {number} id_purchase_item Purchase item ID. Constant from {@link Wl_Purchase_Item_ItemSid}.
    * @property {string} k_id Purchase item key.
+   * @property {boolean} [is_purchase_previous = false] Should be `true` if this promotion is selected again, i.e. one that has already been applied to another appointment.
+   *  This is needed to correctly calculate the remaining quantity of promotions with limited uses.
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_PurchaseModel_a_service
    * @property {Wl_Appointment_Book_Purchase_PurchaseModel_a_service_a_purchase} a_purchase List of purchase options selected for the service.
    *    Should be set if a new purchase option is selected for this service.
    *    <dl>
-   *  <dt>int <tt>id_purchase_item</tt></dt>
+   *  <dt>int `id_purchase_item`</dt>
    *  <dd>Purchase item ID. Constant from {@link Wl_Purchase_Item_ItemSid}.</dd>
-   *  <dt>string <tt>k_id</tt></dt>
+   *  <dt>string `k_id`</dt>
    *  <dd>Purchase item key.</dd>
+   *  <dt>bool `[is_purchase_previous = false]`</dt>
+   *  <dd>
+   *      Should be `true` if this promotion is selected again, i.e. one that has already been applied to another appointment.
+   *      This is needed to correctly calculate the remaining quantity of promotions with limited uses.
+   *  </dd>
    *    </dl>
    * @property {string} dt_date Local date/time to check purchase options expiration.
    * @property {?string} k_login_prize Login prize key.
@@ -671,10 +679,15 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *    List of purchase options selected for the service.
    *    Should be set if a new purchase option is selected for this service.
    *    <dl>
-   *      <dt>int <var>id_purchase_item</var></dt>
+   *      <dt>int `id_purchase_item`</dt>
    *      <dd>Purchase item ID. Constant from {@link Wl_Purchase_Item_ItemSid}.</dd>
-   *      <dt>string <var>k_id</var></dt>
+   *      <dt>string `k_id`</dt>
    *      <dd>Purchase item key.</dd>
+   *      <dt>bool `[is_purchase_previous = false]`</dt>
+   *      <dd>
+   *          Should be `true` if this promotion is selected again, i.e. one that has already been applied to another appointment.
+   *          This is needed to correctly calculate the remaining quantity of promotions with limited uses.
+   *      </dd>
    *    </dl>
    *  </dd>
    *  <dt>string <var>dt_date</var></dt>
@@ -690,7 +703,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    *    Should be set if login promotion selected for this service.
    *  </dd>
    *  <dt>string <var>k_service</var></dt>
-   *  <dd>Service key. See table {@link \RsServiceSql}.</dd>
+   *  <dd>Service key.</dd>
    *  <dt>string <var>k_timezone</var></dt>
    *  <dd>
    *    The timezone key for `dt_date` field.

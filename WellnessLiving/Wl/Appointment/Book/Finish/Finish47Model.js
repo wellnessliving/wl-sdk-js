@@ -1,5 +1,5 @@
 /**
- * An endpoint that completes an appointment booking.
+ * Completes an appointment booking.
  *
  * This model is generated automatically based on API.
  *
@@ -11,27 +11,11 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Information for sending an appointment notification.
-   * <dl>
-   *    <dt>bool [<var>is_mail</var>]</dt>
-   *    <dd>`true` to send mail; `false` to not send.</dd>
-   *    <dt>bool [<var>is_sms</var>]</dt>
-   *    <dd>`true` to send SMS; `false` to not send.</dd>
-   *    <dt>bool [<var>is_push</var>]</dt>
-   *    <dd>`true` to send push notification; `false` to not send.</dd>
-   *  </dl>
-   *
-   * @post post
-   * @var {{}}
-   */
-  this.a_notification = [];
-
-  /**
    * A list of answers for the questions from {@link Wl_Appointment_Book_Question_QuestionModel.a_question}.
-   * Key - hash of the question, value - answer for the question.
+   * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_answer = [];
 
@@ -74,6 +58,30 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_login_activity_visit = undefined;
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_notification
+   * @property {boolean} [is_mail] `true` to send mail; `false` to not send.
+   * @property {boolean} [is_sms] `true` to send SMS; `false` to not send.
+   * @property {boolean} [is_push] `true` to send push notification; `false` to not send.
+   */
+
+  /**
+   * Information for sending an appointment notification.
+   * <dl>
+   *    <dt>bool [<var>is_mail</var>]</dt>
+   *    <dd>`true` to send mail; `false` to not send.</dd>
+   *    <dt>bool [<var>is_sms</var>]</dt>
+   *    <dd>`true` to send SMS; `false` to not send.</dd>
+   *    <dt>bool [<var>is_push</var>]</dt>
+   *    <dd>`true` to send push notification; `false` to not send.</dd>
+   *  </dl>
+   *
+   * @get result
+   * @post post
+   * @type {Wl_Appointment_Book_Finish_Finish47Model_a_notification}
+   */
+  this.a_notification = [];
+
+  /**
    * A list of payment sources to pay with.
    *
    * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
@@ -85,7 +93,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_payment_data
-   * @property {number} id_purchase_item Type of the purchase item. One of the {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item Type of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} k_id Promotion key or appointment key. Depends on <tt>id_purchase_item</tt> of this array.
    * @property {string} k_login_promotion Login promotion key.
    * @property {string} k_session_pass Session pass key.
@@ -95,7 +103,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * Data required for payment. Has next structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>Type of the purchase item. One of the {@link RsPurchaseItemSid} constants.</dd>
+   *   <dd>Type of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
@@ -113,7 +121,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * The purchase item keys.
-   * Empty if no purchases are made for appointment booking.
+   * Empty if no purchases are made for the appointment booking.
    *
    * @post post
    * @type {string[]}
@@ -126,12 +134,12 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_quiz_response = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -151,7 +159,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * Data to create new user.
-   * Specify if <var>$uid</var> is empty.
+   * Specify this if <var>$uid</var> is empty.
    * Must contain the following keys:
    * <dl>
    *   <dt>string[] <var>a_note</var></dt>
@@ -180,6 +188,36 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_visit = undefined;
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_visit_payment
+   * @property {boolean} is_free `true` if the visit is free; `false` otherwise.
+   * @property {string} k_login_promotion Key of applied user's purchase option.
+   * @property {string} k_promotion Key of purchase option.
+   * @property {string} k_session_pass Key of applied session pass.
+   * @property {string} text_promotion Purchase option title.
+   */
+
+  /**
+   * Keys - keys of books made.
+   * Values - arrays with next keys:
+   * <dl>
+   *     <dt>bool `is_free`</dt>
+   *     <dd>`true` if the visit is free; `false` otherwise.</dd>
+   *     <dt>string `k_login_promotion`</dt>
+   *     <dd>Key of applied user's purchase option.</dd>
+   *     <dt>string `k_promotion`</dt>
+   *     <dd>Key of purchase option.</dd>
+   *     <dt>string `k_session_pass`</dt>
+   *     <dd>Key of applied session pass.</dd>
+   *     <dt>string `text_promotion`</dt>
+   *     <dd>Purchase option title.</dd>
+   * </dl>
+   *
+   * @post result
+   * @type {Wl_Appointment_Book_Finish_Finish47Model_a_visit_payment[]}
+   */
+  this.a_visit_payment = undefined;
+
+  /**
    * The booking mode ID. One of the {@link Wl_Mode_ModeSid} constants.
    *
    * @post post
@@ -188,7 +226,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link RsAppointmentPaySid} constants.
+   * The payment type ID for the appointment. One of the {@link Wl_Appointment_PaySid} constants.
    *
    * @post get
    * @type {number}
@@ -196,7 +234,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.id_pay = 0;
 
   /**
-   * Whether multiple appointments booked in back-to-back mode.
+   * Determines whether multiple appointments are booked in back-to-back mode.
    *
    * @post post
    * @type {boolean}
@@ -204,7 +242,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.is_back_to_back = false;
 
   /**
-   * `true` to book appointment unpaid; `false` to try to select available purchase option.
+   * If `true`, the appointment is booked as unpaid. Otherwise, this will be `false` to select an available Purchase Option.
    *
    * @post post
    * @type {boolean}
@@ -212,7 +250,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.is_unpaid_force = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -222,9 +260,9 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * The appointment key.
-   * This should be set if you are rebooking an existing appointment.
+   * This should be set if you're rebooking an existing appointment.
    *
-   * Otherwise use `0` to book a new appointment.
+   * Otherwise, use `0` to book a new appointment.
    *
    * @post get
    * @type {string}
@@ -234,6 +272,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * The business key.
    *
+   * @get get
    * @post get
    * @type {string}
    */
@@ -251,7 +290,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * Key of timezone.
    *
-   * `null` if not set then use default timezone client {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   * `null` if not set then use default timezone client.
    *
    * @post get
    * @type {?string}
@@ -275,7 +314,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.s_id = "";
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get
@@ -293,5 +332,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Finish_Finish47Model);
  */
 Wl_Appointment_Book_Finish_Finish47Model.prototype.config=function()
 {
-  return {"a_field": {"a_notification": {"get": {"result": true},"post": {"post": true}},"a_answer": {"post": {"post": true}},"a_appointment": {"post": {"result": true}},"a_book_data": {"post": {"post": true}},"a_login_activity_visit": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_payment_data": {"post": {"post": true}},"a_purchase_item": {"post": {"post": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"a_user": {"post": {"get": true}},"a_visit": {"post": {"result": true}},"id_mode": {"post": {"post": true}},"id_pay": {"post": {"get": true}},"is_back_to_back": {"post": {"post": true}},"is_unpaid_force": {"post": {"post": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_timezone": {"post": {"get": true}},"m_pay": {"post": {"post": true}},"s_id": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_answer": {"post": {"post": true}},"a_appointment": {"post": {"result": true}},"a_book_data": {"post": {"post": true}},"a_login_activity_visit": {"post": {"result": true}},"a_notification": {"get": {"result": true},"post": {"post": true}},"a_pay_form": {"post": {"post": true}},"a_payment_data": {"post": {"post": true}},"a_purchase_item": {"post": {"post": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"a_user": {"post": {"get": true}},"a_visit": {"post": {"result": true}},"a_visit_payment": {"post": {"result": true}},"id_mode": {"post": {"post": true}},"id_pay": {"post": {"get": true}},"is_back_to_back": {"post": {"post": true}},"is_unpaid_force": {"post": {"post": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_timezone": {"post": {"get": true}},"m_pay": {"post": {"post": true}},"s_id": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

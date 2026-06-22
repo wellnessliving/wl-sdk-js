@@ -14,7 +14,7 @@ function Wl_Service_Promotion_ServicePromotionModel()
    * @typedef {{}} Wl_Service_Promotion_ServicePromotionModel_a_promotion
    * @property {string} k_promotion Promotion key.
    * @property {string} text_title Title of promotion.
-   * @property {number} id_program One of {@link RsProgramSid} constants.
+   * @property {number} id_program One of {@link Wl_WlProgramSid} constants.
    * @property {boolean} is_select <tt>true</tt> if the promotion is related to the service, <tt>false</tt> otherwise.
    */
 
@@ -25,7 +25,7 @@ function Wl_Service_Promotion_ServicePromotionModel()
    *   <dt>string <var>text_title</var></dt>
    *   <dd>Title of promotion.</dd>
    *   <dt>int <var>id_program</var></dt>
-   *   <dd>One of {@link RsProgramSid} constants.</dd>
+   *   <dd>One of {@link Wl_WlProgramSid} constants.</dd>
    *   <dt>bool <var>is_select</var></dt>
    *   <dd><tt>true</tt> if the promotion is related to the service, <tt>false</tt> otherwise.</dd>
    * </dl>.

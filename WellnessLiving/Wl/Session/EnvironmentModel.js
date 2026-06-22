@@ -264,6 +264,14 @@ function Wl_Session_EnvironmentModel()
   this.is_request_required_information = undefined;
 
   /**
+   * `true` if you want the application to be in staff back office; `false` otherwise.
+   *
+   * @put post
+   * @type {boolean}
+   */
+  this.is_staff = false;
+
+  /**
    * <tt>true</tt> if user is traveller; <tt>false</tt> otherwise.
    *
    * @get result
@@ -340,5 +348,5 @@ WlSdk_ModelAbstract.extend(Wl_Session_EnvironmentModel);
  */
 Wl_Session_EnvironmentModel.prototype.config=function()
 {
-  return {"a_field": {"a_business": {"get": {"result": true}},"a_business_franchisee": {"get": {"result": true}},"a_payment_alert": {"get": {"result": true}},"a_splash_screen": {"get": {"result": true}},"dtl_now": {"get": {"result": true}},"has_form_quiz": {"get": {"result": true}},"id_currency": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"id_place": {"get": {"result": true}},"id_plan_achieve": {"get": {"result": true}},"id_plan_base": {"get": {"result": true}},"id_travel_mode": {"get": {"result": true}},"is_application_custom": {"get": {"result": true}},"is_billing_required": {"get": {"result": true}},"is_booking_appointment_authorize": {"get": {"result": true}},"is_booking_required_billing": {"get": {"result": true}},"is_business_location_multiple": {"get": {"result": true}},"is_client_select_date_asset": {"get": {"result": true}},"is_contract": {"get": {"result": true}},"is_franchisor": {"get": {"result": true}},"is_location_geo": {"get": {"result": true}},"is_location_redirect": {"get": {"result": true}},"is_profile_required": {"get": {"result": true}},"is_request_required_information": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"is_waiver_required": {"get": {"result": true}},"k_business": {"get": {"result": true},"put": {"post": true}},"k_business_franchisor": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"k_location": {"get": {"result": true},"put": {"post": true}},"s_application_id": {"get": {"get": true},"put": {"get": true}},"uid": {"get": {"result": true}}}};
+  return {"a_field": {"a_business": {"get": {"result": true}},"a_business_franchisee": {"get": {"result": true}},"a_payment_alert": {"get": {"result": true}},"a_splash_screen": {"get": {"result": true}},"dtl_now": {"get": {"result": true}},"has_form_quiz": {"get": {"result": true}},"id_currency": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"id_place": {"get": {"result": true}},"id_plan_achieve": {"get": {"result": true}},"id_plan_base": {"get": {"result": true}},"id_travel_mode": {"get": {"result": true}},"is_application_custom": {"get": {"result": true}},"is_billing_required": {"get": {"result": true}},"is_booking_appointment_authorize": {"get": {"result": true}},"is_booking_required_billing": {"get": {"result": true}},"is_business_location_multiple": {"get": {"result": true}},"is_client_select_date_asset": {"get": {"result": true}},"is_contract": {"get": {"result": true}},"is_franchisor": {"get": {"result": true}},"is_location_geo": {"get": {"result": true}},"is_location_redirect": {"get": {"result": true}},"is_profile_required": {"get": {"result": true}},"is_request_required_information": {"get": {"result": true}},"is_staff": {"put": {"post": true}},"is_traveller": {"get": {"result": true}},"is_waiver_required": {"get": {"result": true}},"k_business": {"get": {"result": true},"put": {"post": true}},"k_business_franchisor": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"k_location": {"get": {"result": true},"put": {"post": true}},"s_application_id": {"get": {"get": true},"put": {"get": true}},"uid": {"get": {"result": true}}}};
 };

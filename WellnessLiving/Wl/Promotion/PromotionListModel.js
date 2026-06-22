@@ -17,7 +17,7 @@ function Wl_Promotion_PromotionListModel()
 
   /**
    * @typedef {{}} Wl_Promotion_PromotionListModel_a_promotion
-   * @property {number} id_program The promotion program. One of the {@link RsProgramSid} constants.
+   * @property {number} id_program The promotion program. One of the {@link Wl_WlProgramSid} constants.
    * @property {string} k_promotion The key of the promotion.
    * @property {string} text_title The title of the promotion.
    */
@@ -29,7 +29,7 @@ function Wl_Promotion_PromotionListModel()
    *     int <var>id_program</var>
    *   </dt>
    *   <dd>
-   *     The promotion program. One of the {@link RsProgramSid} constants.
+   *     The promotion program. One of the {@link Wl_WlProgramSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_promotion</var>

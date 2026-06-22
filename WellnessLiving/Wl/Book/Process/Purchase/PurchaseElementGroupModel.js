@@ -39,7 +39,7 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
    *          Make sense only when `id_purchase_item` = {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
    *      </dd>
    *      <dt>int `id_purchase_item`</dt>
-   *      <dd>The ID of the purchase item type.</dd>
+   *      <dd>The ID of the purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.</dd>
    *      <dt>string `k_id`</dt>
    *      <dd>The key of the purchase item in the database.</dd>
    *      <dt>string [`k_login_prize`]</dt>
@@ -88,10 +88,16 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
   this.dtu_date = null;
 
   /**
+   * The key of the session to check for booking availability.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_class_period = "0";
+
+  /**
    * The key of the location in which the purchase is made.
    * This is also the booking process location.
-   *
-   * In case of {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD} purchase item, the location of the class period is used.
    *
    * @get get
    * @type {string}
@@ -180,5 +186,5 @@ WlSdk_ModelAbstract.extends(Wl_Book_Process_Purchase_PurchaseElementGroupModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementGroupModel.prototype.config=function()
 {
-  return {"a_field": {"a_purchase_item": {"get": {"get": true}},"a_tax": {"get": {"result": true}},"dtu_date": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_purchase_item": {"get": {"get": true}},"a_tax": {"get": {"result": true}},"dtu_date": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };

@@ -332,7 +332,7 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
    *   <dt>string <tt>text_title</tt></dt>
    *   <dd>The name of the tax.</dd>
    * </dl>
-   * @property {string} id_purchase_item The purchase item ID. A constant of {@link RsPurchaseItemSid}.
+   * @property {string} id_purchase_item The purchase item ID. A constant of {@link Wl_Purchase_Item_ItemSid}.
    * @property {string} k_id The value of the discount used for the purchase.
    * @property {string} m_discount The value of the discount used for the purchase.
    * @property {string} m_pay The payment for the Purchase Option or single visit without taxes.
@@ -360,7 +360,7 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
    *   </dd>
    *
    *   <dt>string <var>id_purchase_item</var></dt>
-   *   <dd>The purchase item ID. A constant of {@link RsPurchaseItemSid}.</dd>
+   *   <dd>The purchase item ID. A constant of {@link Wl_Purchase_Item_ItemSid}.</dd>
    *
    *   <dt>string <var>k_id</var></dt>
    *   <dd>The value of the discount used for the purchase.</dd>
@@ -420,7 +420,7 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
   this.id_mode = 0;
 
   /**
-   * The payment type for the appointment. A constant of {@link RsAppointmentPaySid}.
+   * The payment type for the appointment. A constant of {@link Wl_Appointment_PaySid}.
    *
    * @post result
    * @type {number}
@@ -428,7 +428,7 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
   this.id_pay = undefined;
 
   /**
-   * The purchase item ID. A constant of {@link RsPurchaseItemSid}.
+   * The purchase item ID. A constant of {@link Wl_Purchase_Item_ItemSid}.
    *
    * @get get
    * @post get
@@ -608,7 +608,7 @@ Wl_Appointment_Book_Payment_PaymentPostModel.prototype.config=function()
  * @param {number} id_mode The key of source mode. A constant of {@link Wl_Mode_ModeSid}.
  * @param {string} k_location Location to show available appointment booking schedule.
  * @param {string} uid The user key.
- * @param {number} id_purchase_item The purchase item ID. A constant of {@link RsPurchaseItemSid}.
+ * @param {number} id_purchase_item The purchase item ID. A constant of {@link Wl_Purchase_Item_ItemSid}.
  * @param {string} k_id The item key. Depends on {@link Wl_Appointment_Book_Payment_PaymentModel.id_purchase_item} property.
  * @param {string} k_login_promotion The login promotion key.
  * @param {string} k_session_pass Session pass key.

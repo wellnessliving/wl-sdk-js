@@ -18,139 +18,81 @@ function Wl_Schedule_ClassView_ClassViewModel()
   this._s_key = "dt_date,k_class_period,uid";
 
   /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_asset
+   * @property {number} i_count Number of sessions.
+   * @property {number} i_index Asset index.
+   * @property {string} id_category Type of the asset: Asset or Off-Site Location.
+   * @property {string} k_city City of the asset, if this is Off-Site Location.
+   * @property {string} k_resource Resource key.
+   * @property {string} text_address Address of the asset, if this is Off-Site Location.
+   * @property {string} text_guide Additional address guidance, if this is Off-Site Location.
+   * @property {string} text_index Asset index with '#' prefix.
+   * @property {string} text_postal Postal code of the asset, if this is Off-Site Location.
+   * @property {string} text_name Asset title that consists of the asset title itself concatenated with its index (in case of multiple assets) by '#'.
+   */
+
+  /**
    * Asset list data.
    *
    * @get result
    * @post result
-   * @type {?{}[]}
+   * @type {?Wl_Schedule_ClassView_ClassViewModel_a_asset[]}
    */
   this.a_asset = null;
 
   /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_class_a_image_a_search_tag
+   * @property {string} k_search_tag Search tag key.
+   * @property {string} text_title Search tag name.
+   */
+  /**
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_class_a_image
-   * @property {number} i_height The image height.
-   * @property {number} i_width The image width.
-   * @property {boolean} is_empty This will be `true` if there's no image and a default is used.
-   * @property {?boolean} is_own This field will be `true` if the image used for the class is an image uploaded in class setup. If the image is
-   * not uploaded in the class setup, but there is at least one image in Setup-&gt;Locations image slider,
-   * this field will be `false`. `null` if class image is not uploaded, and there are no images in location slider,
-   * in this case empty image is used.
-   * @property {string} s_url The URL link to the image.
+   * @property {number} i_height Image height.
+   * @property {number} i_width Image width.
+   * @property {boolean} is_empty Whether current image is empty.
+   * @property {string} s_url Url link to image.
    */
   /**
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_class
-   * @property {Wl_Schedule_ClassView_ClassViewModel_a_class_a_image} a_image Information describing a class image.<dl>
-   * <dt>int <tt>i_height</tt></dt>
-   * <dd>The image height.</dd>
-   * <dt>int <tt>i_width</tt></dt>
-   * <dd>The image width.</dd>
-   * <dt>bool <tt>is_empty</tt></dt>
-   * <dd>This will be `true` if there's no image and a default is used.</dd>
-   * <dt>bool|null <tt>is_own</tt></dt>
-   * <dd>This field will be `true` if the image used for the class is an image uploaded in class setup. If the image is
-   * not uploaded in the class setup, but there is at least one image in Setup-&gt;Locations image slider,
-   * this field will be `false`. `null` if class image is not uploaded, and there are no images in location slider,
-   * in this case empty image is used.</dd>
-   * <dt>string <tt>s_url</tt></dt>
-   * <dd>The URL link to the image.</dd>
-   *   </dl>
-   * @property {number[]} a_tag A list of tags that can be used to describe the class in the catalog.
-   * @property {boolean} can_book Determines whether the current client can book this class.
-   * @property {string} dt_date_global The session date/time in UTC.
-   * @property {string} dt_date_local The start date in the local time zone.
-   * @property {string} html_deny_reason The reason why the client can't book this class.
-   * This will be set only if <tt>can_book</tt> is `false`.
-   * @property {string} html_description The class description.
-   * @property {string} html_special The special instructions.
-   * @property {?number} i_age_from The lower bound of age permitted in the class. This will be `null` there's no age limit set.
-   * @property {?number} i_age_to The upper bound of age permitted in the class. This will be `null` there's no age limit.
-   * @property {number} i_book The count of booked visits.
-   * @property {number} i_capacity The class capacity.
-   * @property {number} i_duration The class duration in minutes.
-   * @property {number} id_deny_reason ID of denying reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
-   * @property {boolean} is_book This will be `true` if the current class was booked by the current client.
-   * @property {boolean} is_cancel This will be `true` if the class period was canceled. Otherwise, this will be `false`.
-   * @property {boolean} is_promotion_only This will be `true` if this class can only be paid for using a Purchase Option. Otherwise, this will be `false`.
-   * @property {boolean} is_wait_list This will be `true` if user is only on the wait list. Otherwise, this will be `false`.
-   * @property {boolean} is_wait_list_enabled This will be `true` if the wait list is enabled for this class. Otherwise, this will be `false`.
-   * @property {string} m_price The session price.
-   * @property {boolean} hide_price Hide individual price of the class session, if client has applicable pricing option.
-   * @property {string} s_duration The class duration in a human-readable format.
-   * @property {string} s_title The class name.
-   * @property {string} text_room The class room.
+   * @property {string[]} a_class_tab Keys are class key.
+   *   Values are class tab key.
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_class_a_image} a_image Class image data:
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_class_a_image_a_search_tag[]} a_search_tag List of search tags.
+   * @property {number[]} a_tag List of tags.
+   * @property {boolean} can_book Whether current client can book class.
+   * @property {string} dt_date_global Session date/time in UTC.
+   * @property {string} dt_date_local Start date in local time.
+   * @property {string} html_deny_reason Reason why client can not book class. Not empty only if <tt>can_book</tt> is `false`.
+   * @property {string} html_description Class description.
+   * @property {string} html_special Special instructions.
+   * @property {string} text_timezone Timezone title.
+   * @property {?number} i_age_from Age from that class is allowed. <tt>null</tt> if information is not available.
+   * @property {?number} i_age_to Age to that class is allowed. <tt>null</tt> if information is not available.
+   * @property {number} i_book A total number of booked visits in the class, including all lists: active and waitlist.
+   * @property {number} i_book_active A total number of booked active visits in the class.
+   * @property {number} i_capacity Class capacity.
+   * @property {number} i_duration Class duration. In number of minutes.
+   * @property {?number} i_wait_limit Limit of wait list. <tt>null</tt> if limit is not set.
+   * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
+   * @property {boolean} is_book Whether current class was booked by current client.
+   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.
+   * `true` if clients can book on behalf of a guest.
+   * `false` otherwise.
+   * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.
+   * @property {boolean} is_event `true` if it is event; `false` if it is class.
+   * @property {boolean} is_promotion_only `true` if this class can be paid with promotion only; `false` otherwise.
+   * @property {boolean} is_virtual `true` if class is virtual, `false` otherwise.
+   * @property {boolean} is_wait_list `true` if user can take place in wait list only; `false` otherwise.
+   * @property {boolean} is_wait_list_enabled `true` if wait list is enabled for class; `false` otherwise.
+   * @property {string} k_resource_location Off-site location asset key. Empty if off-site location is not assigned to this class.
+   * @property {string} m_price Session price.
+   * @property {string} s_duration Class duration. In human readable format.
+   * @property {string} s_title Class name.
+   * @property {string} text_room Class room.
    */
 
   /**
-   * Detailed information about the class. When loaded, it contains the following fields:
-   * <dl>
-   *   <dt>array <var>a_image</var></dt>
-   *   <dd>Information describing a class image.<dl>
-   *     <dt>int <var>i_height</var></dt>
-   *     <dd>The image height.</dd>
-   *     <dt>int <var>i_width</var></dt>
-   *     <dd>The image width.</dd>
-   *     <dt>bool <var>is_empty</var></dt>
-   *     <dd>This will be `true` if there's no image and a default is used.</dd>
-   *     <dt>bool|null <var>is_own</var></dt>
-   *     <dd>This field will be `true` if the image used for the class is an image uploaded in class setup. If the image is
-   *     not uploaded in the class setup, but there is at least one image in Setup-&gt;Locations image slider,
-   *     this field will be `false`. `null` if class image is not uploaded, and there are no images in location slider,
-   *     in this case empty image is used.</dd>
-   *     <dt>string <var>s_url</var></dt>
-   *     <dd>The URL link to the image.</dd>
-   *   </dl></dd>
-   *   <dt>int[] <var>a_tag</var></dt>
-   *   <dd>A list of tags that can be used to describe the class in the catalog.</dd>
-   *   <dt>bool <var>can_book</var></dt>
-   *   <dd>Determines whether the current client can book this class.</dd>
-   *   <dt>string <var>dt_date_global</var></dt>
-   *   <dd>The session date/time in UTC.</dd>
-   *   <dt>string <var>dt_date_local</var></dt>
-   *   <dd>The start date in the local time zone.</dd>
-   *   <dt>string <var>html_deny_reason</var></dt>
-   *   <dd>The reason why the client can't book this class.
-   *     This will be set only if <var>can_book</var> is `false`.</dd>
-   *   <dt>string <var>html_description</var></dt>
-   *   <dd>The class description.</dd>
-   *   <dt>string <var>html_special</var></dt>
-   *   <dd>The special instructions.</dd>
-   *   <dt>int|null <var>i_age_from</var></dt>
-   *   <dd>The lower bound of age permitted in the class. This will be `null` there's no age limit set.</dd>
-   *   <dt>int|null <var>i_age_to</var></dt>
-   *   <dd>The upper bound of age permitted in the class. This will be `null` there's no age limit.</dd>
-   *   <dt>int <var>i_book</var></dt>
-   *   <dd>The count of booked visits.</dd>
-   *   <dt>int <var>i_capacity</var></dt>
-   *   <dd>The class capacity.</dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>The class duration in minutes.</dd>
-   *   <dt>
-   *     int <var>id_deny_reason</var>
-   *   </dt>
-   *   <dd>
-   *     ID of denying reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
-   *   </dd>
-   *   <dt>bool <var>is_book</var></dt>
-   *   <dd>This will be `true` if the current class was booked by the current client.</dd>
-   *   <dt>bool <var>is_cancel</var></dt>
-   *   <dd>This will be `true` if the class period was canceled. Otherwise, this will be `false`.</dd>
-   *   <dt>bool <var>is_promotion_only</var></dt>
-   *   <dd>This will be `true` if this class can only be paid for using a Purchase Option. Otherwise, this will be `false`.</dd>
-   *   <dt>bool <var>is_wait_list</var></dt>
-   *   <dd>This will be `true` if user is only on the wait list. Otherwise, this will be `false`.</dd>
-   *   <dt>bool <var>is_wait_list_enabled</var></dt>
-   *   <dd>This will be `true` if the wait list is enabled for this class. Otherwise, this will be `false`.</dd>
-   *   <dt>string <var>m_price</var></dt>
-   *   <dd>The session price.</dd>
-   *   <dt>bool <var>hide_price</var></dt>
-   *   <dd>Hide individual price of the class session, if client has applicable pricing option.</dd>
-   *   <dt>string <var>s_duration</var></dt>
-   *   <dd>The class duration in a human-readable format.</dd>
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>The class name.</dd>
-   *   <dt>string <var>text_room</var></dt>
-   *   <dd>The class room.</dd>
-   * </dl>
+   * Detailed information about the class.
    *
    * This will be `null` if data isn't loaded yet.
    *
@@ -161,13 +103,25 @@ function Wl_Schedule_ClassView_ClassViewModel()
   this.a_class = null;
 
   /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_location
+   * @property {number} f_latitude Location latitude.
+   * @property {number} f_longitude Location longitude.
+   * @property {number} f_rate Location rating. From 1 to 5.
+   * @property {string} k_location Location key.
+   * @property {string} s_address Location address.
+   * @property {string} s_map Query to search location on "Google maps".
+   * @property {string} s_phone Location phone.
+   * @property {string} s_title Location name.
+   */
+
+  /**
    * Location data.
    *
    * This will be `null` if data isn't loaded yet.
    *
    * @get result
    * @post result
-   * @type {?{}}
+   * @type {?Wl_Schedule_ClassView_ClassViewModel_a_location}
    */
   this.a_location = null;
 
@@ -179,12 +133,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
 
   /**
    * A list of sessions to get information for. Every element has the following keys:
-   * <dl>
-   *   <dt>string <var>dt_date</var></dt>
-   *   <dd>The date/time of the session in UTC.</dd>
-   *   <dt>string <var>k_class_period</var></dt>
-   *   <dd>The session key.</dd>
-   * </dl>
+   *
    *
    * `null` if requesting a single session.
    *
@@ -195,32 +144,118 @@ function Wl_Schedule_ClassView_ClassViewModel()
   this.a_session_request = null;
 
   /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_location_a_staff_a_visits_required
+   * @property {number} i_count Number of visits.
+   * @property {boolean} is_event `true` if this is an event, `false` if this is a class.
+   * @property {string} k_class Key of the class or event.
+   * @property {string} text_title Name of the class or event.
+   */
+  /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_location_a_staff_a_logo
+   * @property {number} id_gender ID of gender. One of {@link Wl_Gender_GenderSid} constants.
+   * @property {boolean} is_empty `true` - staff has photo; `false` - has no photo.
+   * @property {string} s_url URL to staff photo.
+   */
+  /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_location_a_staff
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_location_a_staff_a_logo} a_logo Information about staff photo:
+   * @property {boolean} is_quick_substitute Whether staff or pay rate changed due quick substitution.
+   * @property {boolean} is_substitute Whether or not this staff member is a substitute.
+   * @property {string} k_staff
+   * Deprecated use `uid_staff` instead.
+   *
+   * @property {string} uid_staff Staff user key.
+   * @property {string} s_family 1st letter of surname of staff member.
+   * @property {string} s_name Staff name.
+   */
+  /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_location
+   * @property {number} f_latitude Location latitude.
+   * @property {number} f_longitude Location longitude.
+   * @property {number} f_rate Location rating. From 1 to 5.
+   * @property {string} k_location Location key.
+   * @property {string} s_address Location address.
+   * @property {string} s_map Query to search location on "Google maps".
+   * @property {string} s_phone Location phone.
+   * @property {string} s_title Location name.
+   */
+  /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_image_a_search_tag
+   * @property {string} k_search_tag Search tag key.
+   * @property {string} text_title Search tag name.
+   */
+  /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_image
+   * @property {number} i_height Image height.
+   * @property {number} i_width Image width.
+   * @property {boolean} is_empty Whether current image is empty.
+   * @property {string} s_url Url link to image.
+   */
+  /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class
+   * @property {string[]} a_class_tab Keys are class key.
+   *   Values are class tab key.
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_image} a_image Class image data:
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_image_a_search_tag[]} a_search_tag List of search tags.
+   * @property {number[]} a_tag List of tags.
+   * @property {boolean} can_book Whether current client can book class.
+   * @property {string} dt_date_global Session date/time in UTC.
+   * @property {string} dt_date_local Start date in local time.
+   * @property {string} html_deny_reason Reason why client can not book class. Not empty only if <tt>can_book</tt> is `false`.
+   * @property {string} html_description Class description.
+   * @property {string} html_special Special instructions.
+   * @property {string} text_timezone Timezone title.
+   * @property {?number} i_age_from Age from that class is allowed. <tt>null</tt> if information is not available.
+   * @property {?number} i_age_to Age to that class is allowed. <tt>null</tt> if information is not available.
+   * @property {number} i_book A total number of booked visits in the class, including all lists: active and waitlist.
+   * @property {number} i_book_active A total number of booked active visits in the class.
+   * @property {number} i_capacity Class capacity.
+   * @property {number} i_duration Class duration. In number of minutes.
+   * @property {?number} i_wait_limit Limit of wait list. <tt>null</tt> if limit is not set.
+   * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
+   * @property {boolean} is_book Whether current class was booked by current client.
+   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.
+   * `true` if clients can book on behalf of a guest.
+   * `false` otherwise.
+   * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.
+   * @property {boolean} is_event `true` if it is event; `false` if it is class.
+   * @property {boolean} is_promotion_only `true` if this class can be paid with promotion only; `false` otherwise.
+   * @property {boolean} is_virtual `true` if class is virtual, `false` otherwise.
+   * @property {boolean} is_wait_list `true` if user can take place in wait list only; `false` otherwise.
+   * @property {boolean} is_wait_list_enabled `true` if wait list is enabled for class; `false` otherwise.
+   * @property {string} k_resource_location Off-site location asset key. Empty if off-site location is not assigned to this class.
+   * @property {string} m_price Session price.
+   * @property {string} s_duration Class duration. In human readable format.
+   * @property {string} s_title Class name.
+   * @property {string} text_room Class room.
+   */
+  /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset
+   * @property {number} i_count Number of sessions.
+   * @property {number} i_index Asset index.
+   * @property {string} id_category Type of the asset: Asset or Off-Site Location.
+   * @property {string} k_city City of the asset, if this is Off-Site Location.
+   * @property {string} k_resource Resource key.
+   * @property {string} text_address Address of the asset, if this is Off-Site Location.
+   * @property {string} text_guide Additional address guidance, if this is Off-Site Location.
+   * @property {string} text_index Asset index with '#' prefix.
+   * @property {string} text_postal Postal code of the asset, if this is Off-Site Location.
+   * @property {string} text_name Asset title that consists of the asset title itself concatenated with its index (in case of multiple assets) by '#'.
+   */
+  /**
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result
-   * @property {{}} a_class Class information.
-   * @property {{}} a_location Location information.
-   * @property {{}} a_staff Staff member information.
-   * @property {string[]} a_virtual_location List of other locations where virtual class can be booked
-   * @property {{}} dt_date The session date/time in UTC.
-   * @property {{}} k_class_period The session key.
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset} a_asset Array of asset.
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class} a_class Class information.
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_location} a_location Location info.
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_location_a_staff[]} a_staff Staff list.
+   * @property {string[]} a_virtual_location List of other locations where virtual class can be booked.
+   * Empty array if class isn't virtual or can't be booked in other locations.
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset_a_class_a_location_a_staff_a_visits_required[]} a_visits_required List of classes and events, which client should visit before this one.
+   *
    */
 
   /**
    * A list of sessions with information, received in a multiple session mode.
-   * Every element has the following keys:
-   * <dl>
-   *   <dt>array <var>a_class</var></dt>
-   *   <dd>Class information.</dd>
-   *   <dt>array <var>a_location</var></dt>
-   *   <dd>Location information.</dd>
-   *   <dt>array <var>a_staff</var></dt>
-   *   <dd>Staff member information.</dd>
-   *   <dt>string[] <var>a_virtual_location</var></dt>
-   *   <dd>List of other locations where virtual class can be booked</dd>
-   *   <dt>array <var>dt_date</var></dt>
-   *   <dd>The session date/time in UTC.</dd>
-   *   <dt>array <var>k_class_period</var></dt>
-   *   <dd>The session key.</dd>
-   * </dl>
    *
    * @get result
    * @post result
@@ -229,47 +264,55 @@ function Wl_Schedule_ClassView_ClassViewModel()
   this.a_session_result = undefined;
 
   /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_staff_a_logo
+   * @property {number} id_gender ID of gender. One of {@link Wl_Gender_GenderSid} constants.
+   * @property {boolean} is_empty `true` - staff has photo; `false` - has no photo.
+   * @property {string} s_url URL to staff photo.
+   */
+  /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_staff
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_staff_a_logo} a_logo Information about staff photo:
+   * @property {boolean} is_quick_substitute Whether staff or pay rate changed due quick substitution.
+   * @property {boolean} is_substitute Whether or not this staff member is a substitute.
+   * @property {string} k_staff
+   * Deprecated use `uid_staff` instead.
+   *
+   * @property {string} uid_staff Staff user key.
+   * @property {string} s_family 1st letter of surname of staff member.
+   * @property {string} s_name Staff name.
+   */
+
+  /**
    * Staff member list data.
    *
    * This will be `null` if data isn't loaded yet.
    *
    * @get result
    * @post result
-   * @type {?{}[]}
+   * @type {?Wl_Schedule_ClassView_ClassViewModel_a_staff[]}
    */
   this.a_staff = null;
 
   /**
-   * List of other locations where virtual class can be booked. Each value is primary key in {@link \RsLocationSql} table.
+   * List of other locations where virtual class can be booked.
    * Empty array if class isn't virtual or can't be booked in other locations.
    *
    * @get result
    * @post result
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_virtual_location = [];
 
   /**
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_visits_required
-   * @property {number} i_count The number of visits.
-   * @property {boolean} is_event This will be `true` if this is an event. Otherwise, this will be `false` if this is a class.
-   * @property {string} k_class The key of the class or event.
-   * @property {string} text_title The name of the class or event.
+   * @property {number} i_count Number of visits.
+   * @property {boolean} is_event `true` if this is an event, `false` if this is a class.
+   * @property {string} k_class Key of the class or event.
+   * @property {string} text_title Name of the class or event.
    */
 
   /**
    * A list of classes and events that clients should visit before this one.
-   *
-   * <dl>
-   *   <dt>int <var>i_count</var></dt>
-   *   <dd>The number of visits.</dd>
-   *   <dt>bool <var>is_event</var></dt>
-   *   <dd>This will be `true` if this is an event. Otherwise, this will be `false` if this is a class.</dd>
-   *   <dt>string <var>k_class</var></dt>
-   *   <dd>The key of the class or event.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The name of the class or event.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Schedule_ClassView_ClassViewModel_a_visits_required[]}

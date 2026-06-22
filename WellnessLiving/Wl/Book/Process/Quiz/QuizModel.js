@@ -26,7 +26,7 @@ function Wl_Book_Process_Quiz_QuizModel()
   /**
    * The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl>
    *  <dt>int <var>id_purchase_item</var></dt>
-   *  <dd>The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants.</dd>
+   *  <dd>The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    *  <dt>string <var>k_id</var></dt>
    *  <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
    * </dl>
@@ -344,7 +344,7 @@ Wl_Book_Process_Quiz_QuizModel.prototype.config=function()
  * @name Wl_Book_Process_Quiz_QuizModel.instanceGet
  * @param {string} k_class_period Key of session which is booked.
  * @param {string} uid The client key for which the booking is being made.
- * @param {string[]} a_purchase_item The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl> <dt>int <var>id_purchase_item</var></dt> <dd>The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants.</dd> <dt>string <var>k_id</var></dt> <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd> </dl> This will be empty if no purchases are made for the booking.
+ * @param {string[]} a_purchase_item The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl> <dt>int <var>id_purchase_item</var></dt> <dd>The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd> <dt>string <var>k_id</var></dt> <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd> </dl> This will be empty if no purchases are made for the booking.
  * @param {string} dt_date_gmt Date/time to which session is booked.
  * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Quiz_QuizModel}

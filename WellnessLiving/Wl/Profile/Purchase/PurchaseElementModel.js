@@ -343,7 +343,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * The ID of the purchase item type.
-   * One of the {@link RsPurchaseItemSid} constants.
+   * One of the {@link Wl_Purchase_Item_ItemSid} constants.
    *
    * @get result
    * @type {number}

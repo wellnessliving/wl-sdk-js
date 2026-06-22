@@ -21,7 +21,7 @@ function Wl_Profile_Purchase_PurchaseListModel()
    * @property {boolean[]} a_active The value of <tt>a_purchase['is_active']</tt>. For packages, this also contains the values of <tt>a_purchase['is_active']</tt> of every component.
    * @property {number[]} a_sale The value of <tt>a_purchase['id_sale']</tt>. For packages, this also contains the values of <tt>a_purchase['id_sale']</tt> of every component.
    * @property {string} dt_add The date that the purchase was added.
-   * @property {number} id_purchase_item The ID of the purchase type. One of the constants {@link RsPurchaseItemSid}.
+   * @property {number} id_purchase_item The ID of the purchase type. One of the constants {@link Wl_Purchase_Item_ItemSid}.
    * @property {number} id_sale The ID of the sale category in the store. One of the constants {@link RsSaleSid}.
    * @property {boolean} is_active If `true`, then the purchase item is active. Otherwise, this will be `false`.
    * @property {*} is_component If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
@@ -70,7 +70,7 @@ function Wl_Profile_Purchase_PurchaseListModel()
    *     int <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The ID of the purchase type. One of the constants {@link RsPurchaseItemSid}.
+   *     The ID of the purchase type. One of the constants {@link Wl_Purchase_Item_ItemSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_sale</var>

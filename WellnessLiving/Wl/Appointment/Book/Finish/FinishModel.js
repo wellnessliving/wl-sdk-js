@@ -1,9 +1,9 @@
 /**
  * Completes the booking process for a service.
  *
- * This endpoint can be used with an existing client by specifying their uid. It can also be used to create a new
- * client by specifying user details in {@link Wl_Appointment_Book_Finish_FinishModel.a_user} and omitting any uid. This endpoint can be accessed anonymously without
- * authentication but only when creating clients.
+ * This endpoint can be used with an existing client by specifying their UID. It can also be used to create a new
+ * client by specifying user details in {@link Wl_Appointment_Book_Finish_FinishModel.a_user} and omitting any UID.
+ * This endpoint can be accessed anonymously without authentication, but only when creating clients.
  *
  * This model is generated automatically based on API.
  *
@@ -17,10 +17,10 @@ function Wl_Appointment_Book_Finish_FinishModel()
 
   /**
    * A list of answers for the questions from {@link Wl_Appointment_Book_Question_QuestionModel.a_question}.
-   * Key - hash of the question, value - answer for the question.
+   * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_answer = [];
 
@@ -47,115 +47,174 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.a_appointment = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_repeat_a_resource
-   * @property {*} i_index Asset index on layout. Specify only if asset category has a layout.
-   * @property {string} k_resource Asset.
+   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_conflict_a_product_a_repeat_a_resource
+   * @property {number} [i_index] The asset index on the layout. Specify this only if the asset category has a layout.
+   * @property {string} k_resource The asset.
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_repeat
-   * @property {*} a_week Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
-   * Empty if appointment must not repeat weekly.
-   * @property {*} dl_end Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
-   * @property {*} i_occurrence Number of occurrences after that appointment repeat must stop.
-   * Empty if repeat must not stop after a certain number of occurrences.
-   * @property {number} i_period Frequency of appointment repeating.
-   * @property {number} id_period Measurement unit of <tt>i_period</tt>. One of {@link ADurationSid} constants.
-   * @property {*} is_month <tt>true</tt> if appointment must repeat monthly at the same date.
-   * <tt>false</tt> if appointment must repeat monthly at the same week day.
-   * <tt>null</tt> if appointment must not repeat monthly.
+   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_conflict_a_product_a_repeat
+   * @property {number[]} [a_week] The days of week when appointment repeats. One of the {@link ADateWeekSid} constants.
+   * This will be empty if the appointment doesn't repeat weekly.
+   * @property {string} [dl_end] The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
+   * @property {number} [i_occurrence] The number of occurrences after which the appointment's repeat cycle must stop.
+   * This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   * @property {number} i_period The frequency of the appointment's repeat cycle.
+   * @property {number} id_period The measurement unit of <tt>i_period</tt>. One of the {@link ADurationSid} constants.
+   * @property {boolean} [is_month] <tt>true</tt> if the appointment repeats monthly on the same date.
+   * <tt>false</tt> if the appointment repeats monthly on the same day of the week.
+   * <tt>null</tt> if the appointment doesn't repeat monthly.
+   */
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_conflict_a_product
+   * @property {number} i_count The add-on count
+   * @property {number} [i_count_use] The add-on use count.
+   * @property {string} k_shop_product_option The key of add-on.
+   */
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_conflict
+   * @property {string} dt_date_local New appointment date/time in MySQL in locale timezone.
+   * @property {number} i_duration New asset booking duration.
+   * @property {number} i_index New asset index.
+   * @property {number} id_conflict Solution type.
+   * @property {string} k_resource New asset primary key.
+   * @property {?string} k_staff New staff member's primary key. `null` in a case of asset booking.
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_book_data
-   * @property {*} a_product Add-ons to appointment. Specify for appointment booking only.
-   * Old format: array keys - primary keys in {@link \RsShopProductOptionSql} table.
+   * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_conflict} [a_conflict] Information about booking conflicts. Keys are bookings dates/times in MySQL format in UTC. Values are arrays with next keys:
+   * <dl>
+   *   <dt>string <tt>dt_date_local</tt></dt>
+   *   <dd>New appointment date/time in MySQL in locale timezone.</dd>
+   *   <dt>int <tt>i_duration</tt></dt>
+   *   <dd>New asset booking duration.</dd>
+   *   <dt>int <tt>i_index</tt></dt>
+   *   <dd>New asset index.</dd>
+   *   <dt>int <tt>id_conflict</tt></dt>
+   *   <dd>Solution type. One of {@link RsAppointmentEditConflictSid} constants.</dd>
+   *   <dt>string <tt>k_resource</tt></dt>
+   *   <dd>New asset primary key.</dd>
+   *   <dt>string|null <tt>k_staff</tt></dt>
+   *   <dd>New staff member's primary key. `null` in a case of asset booking.</dd>
+   * </dl>
+   * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_conflict_a_product} [a_product] Add-ons to the appointment. Specify this for appointment bookings only.
+   * Old format: array keys refer to primary keys.
    * New format: each element is an array:
-   *   <dt>int <tt>i_count</tt></dt><dd>Add-on count</dd>
-   *   <dt>string <tt>k_shop_product_option</tt></dt><dd>Key of add-on, primary key in {@link \RsShopProductOptionSql} table.</dd>
-   * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_repeat[]} a_repeat Recurring booking information:
+   * <dl>
+   *   <dt>int <tt>i_count</tt></dt><dd>The add-on count</dd>
+   *   <dt>int [<tt>i_count_use</tt>]</dt><dd>The add-on use count.</dd>
+   *   <dt>string <tt>k_shop_product_option</tt></dt><dd>The key of add-on.</dd>
+   * </dl>
+   * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_conflict_a_product_a_repeat} [a_repeat] Recurring booking information:
    * <dl>
    *   <dt>
    *     int[] [<tt>a_week</tt>]
    *   </dt>
    *   <dd>
-   *     Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
-   *     Empty if appointment must not repeat weekly.
+   *     The days of week when appointment repeats. One of the {@link ADateWeekSid} constants.
+   *     This will be empty if the appointment doesn't repeat weekly.
    *   </dd>
    *   <dt>
    *     string [<tt>dl_end</tt>]
    *   </dt>
    *   <dd>
-   *     Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *     The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    *   </dd>
    *   <dt>
    *     int [<tt>i_occurrence</tt>]
    *   </dt>
    *   <dd>
-   *     Number of occurrences after that appointment repeat must stop.
-   *     Empty if repeat must not stop after a certain number of occurrences.
+   *     The number of occurrences after which the appointment's repeat cycle must stop.
+   *     This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *   </dd>
    *   <dt>
    *     int <tt>i_period</tt>
    *   </dt>
    *   <dd>
-   *     Frequency of appointment repeating.
+   *     The frequency of the appointment's repeat cycle.
    *   </dd>
    *   <dt>
    *     int <tt>id_period</tt>
    *   </dt>
    *   <dd>
-   *     Measurement unit of <tt>i_period</tt>. One of {@link ADurationSid} constants.
+   *     The measurement unit of <tt>i_period</tt>. One of the {@link ADurationSid} constants.
    *   </dd>
    *   <dt>
    *     bool [<tt>is_month</tt>]
    *   </dt>
    *   <dd>
-   *     <tt>true</tt> if appointment must repeat monthly at the same date.
-   *     <tt>false</tt> if appointment must repeat monthly at the same week day.
-   *     <tt>null</tt> if appointment must not repeat monthly.
+   *     <tt>true</tt> if the appointment repeats monthly on the same date.
+   *     <tt>false</tt> if the appointment repeats monthly on the same day of the week.
+   *     <tt>null</tt> if the appointment doesn't repeat monthly.
    *   </dd>
    * </dl>
-   * Empty if appointment must not be booked recurring.
-   * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_repeat_a_resource[]} a_resource List of assets for appointment booking.
-   * Keys - asset categories; primary keys in {@link \RsResourceTypeSql} table. Values - arrays with next keys:
+   * This will be empty if the appointment isn't recurring.
+   * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_conflict_a_product_a_repeat_a_resource} [a_resource] A list of assets for the appointment booking.
+   * Keys refer to asset categories. Values refer to arrays with the next keys:
    * <dl>
    *   <dt>int [<tt>i_index</tt>]</dt>
-   *   <dd>Asset index on layout. Specify only if asset category has a layout.</dd>
+   *   <dd>The asset index on the layout. Specify this only if the asset category has a layout.</dd>
    *   <dt>string <tt>k_resource</tt></dt>
-   *   <dd>Asset.</dd>
+   *   <dd>The asset.</dd>
    * </dl>
-   * Specify only for appointment booking.
-   * @property {string} dt_date Date/time for booking in MySQL format. It location timezone.
-   * @property {*} i_duration Duration for asset booking in minutes. Specify for separate asset booking only.
-   * @property {*} i_index Asset index on layout.
-   * Specify for separate asset booking only and for a case when asset category has layout only.
-   * @property {number} id_class_tab Kind of booking service. One of {@link Wl_Classes_Tab_TabSid} constants.
-   * @property {*} id_gender_staff Gender of staff member to conduct appointment. One of {@link Wl_Gender_GenderSid} constants.
-   * Specify for appointment booking only.
-   * @property {*} k_login_promotion User's pass (membership, package).
-   * Specify if you want to set which user's pass (membership, package) book must be payed by.
-   * @property {*} k_resource Asset booking. Specify for separate asset booking only.
-   * @property {*} k_service Appointment booking. Specify for appointment booking only.
-   * @property {*} k_staff Staff member to conduct an appointment.
-   * Specify for appointment booking only.
-   * @property {*} k_staff_date Staff member to conduct an appointment.
-   * The difference from the <tt>k_staff</tt> is that this value must be set only in a case
-   * when you want to add customer to an exists appointment.
-   * Specify for appointment booking only.
-   * @property {*} m_tip_appointment Amount of selected tips.
+   * Specify this only for the appointment booking.
+   * @property {string} dt_date The date/time for the booking in MySQL format in the location's time zone.
+   * @property {number} [i_duration] The duration of asset booking in minutes. Specify this for separate asset bookings only.
+   * @property {number} [i_index] The asset index on the layout.
+   * Specify this for separate asset bookings only and for cases when the asset category only has a layout.
+   * @property {number} [id_class_tab] The booking service type. One of the {@link Wl_Classes_Tab_TabSid} constants.
+   * @property {number} [id_gender_staff] The gender of the staff member conducting the appointment. One of the {@link Wl_Gender_GenderSid} constants.
+   * Specify this for appointment bookings only.
+   * @property {boolean} [is_wait_list_unpaid] If `true`, appointment waits unpaid.
+   * @property {string} [k_login_prize] The user's prize.
+   * @property {string} [k_login_promotion] The user's pass (for example, a membership or a package).
+   * Specify this if you want to set the pass to use to pay for the booking.
+   * @property {string} [k_resource] The asset booking. Specify this for separate asset bookings only.
+   * @property {string} [k_service] The appointment booking. Specify this for appointment bookings only.
+   * @property {string} [k_session_pass] The user's pass.
+   * @property {string} [k_staff] The staff member conducting the appointment.
+   * Specify this for appointment bookings only.
+   * @property {string} [k_staff_date] The staff member conducting the appointment.
+   * The difference between this an <tt>k_staff</tt> is that this value must be set only in cases
+   * when you want to add a customer to an appointment that already exists.
+   * Specify this for appointment bookings only.
+   * @property {string} [m_tip_appointment] The amount of selected tips.
    */
 
   /**
    * All data from the provider model <tt>Wl_Appointment_Book_ProviderModel</tt>:
    * <dl>
    *   <dt>
+   *     array [<var>a_conflict</var>]
+   *   </dt>
+   *   <dd>
+   *     Information about booking conflicts. Keys are bookings dates/times in MySQL format in UTC. Values are arrays with next keys:
+   *     <dl>
+   *       <dt>string <var>dt_date_local</var></dt>
+   *       <dd>New appointment date/time in MySQL in locale timezone.</dd>
+   *       <dt>int <var>i_duration</var></dt>
+   *       <dd>New asset booking duration.</dd>
+   *       <dt>int <var>i_index</var></dt>
+   *       <dd>New asset index.</dd>
+   *       <dt>int <var>id_conflict</var></dt>
+   *       <dd>Solution type. One of {@link RsAppointmentEditConflictSid} constants.</dd>
+   *       <dt>string <var>k_resource</var></dt>
+   *       <dd>New asset primary key.</dd>
+   *       <dt>string|null <var>k_staff</var></dt>
+   *       <dd>New staff member's primary key. `null` in a case of asset booking.</dd>
+   *     </dl>
+   *   </dd>
+   *   <dt>
    *     array [<var>a_product</var>]
    *   </dt>
    *   <dd>
-   *     Add-ons to appointment. Specify for appointment booking only.
-   *     Old format: array keys - primary keys in {@link \RsShopProductOptionSql} table.
+   *     Add-ons to the appointment. Specify this for appointment bookings only.
+   *     Old format: array keys refer to primary keys.
    *     New format: each element is an array:
-   *       <dt>int <var>i_count</var></dt><dd>Add-on count</dd>
-   *       <dt>string <var>k_shop_product_option</var></dt><dd>Key of add-on, primary key in {@link \RsShopProductOptionSql} table.</dd>
+   *     <dl>
+   *       <dt>int <var>i_count</var></dt><dd>The add-on count</dd>
+   *       <dt>int [<var>i_count_use</var>]</dt><dd>The add-on use count.</dd>
+   *       <dt>string <var>k_shop_product_option</var></dt><dd>The key of add-on.</dd>
+   *     </dl>
    *   </dd>
    *   <dt>
    *     array [<var>a_repeat</var>]
@@ -167,128 +226,146 @@ function Wl_Appointment_Book_Finish_FinishModel()
    *         int[] [<var>a_week</var>]
    *       </dt>
    *       <dd>
-   *         Days of week when appointment must repeat. Constants of {@link ADateWeekSid} class.
-   *         Empty if appointment must not repeat weekly.
+   *         The days of week when appointment repeats. One of the {@link ADateWeekSid} constants.
+   *         This will be empty if the appointment doesn't repeat weekly.
    *       </dd>
    *       <dt>
    *         string [<var>dl_end</var>]
    *       </dt>
    *       <dd>
-   *         Date when appointment repeat must stop. Empty if repeat must not stop at a certain date.
+   *         The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    *       </dd>
    *       <dt>
    *         int [<var>i_occurrence</var>]
    *       </dt>
    *       <dd>
-   *         Number of occurrences after that appointment repeat must stop.
-   *         Empty if repeat must not stop after a certain number of occurrences.
+   *         The number of occurrences after which the appointment's repeat cycle must stop.
+   *         This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *       </dd>
    *       <dt>
    *         int <var>i_period</var>
    *       </dt>
    *       <dd>
-   *         Frequency of appointment repeating.
+   *         The frequency of the appointment's repeat cycle.
    *       </dd>
    *       <dt>
    *         int <var>id_period</var>
    *       </dt>
    *       <dd>
-   *         Measurement unit of <tt>i_period</tt>. One of {@link ADurationSid} constants.
+   *         The measurement unit of <tt>i_period</tt>. One of the {@link ADurationSid} constants.
    *       </dd>
    *       <dt>
    *         bool [<var>is_month</var>]
    *       </dt>
    *       <dd>
-   *         <tt>true</tt> if appointment must repeat monthly at the same date.
-   *         <tt>false</tt> if appointment must repeat monthly at the same week day.
-   *         <tt>null</tt> if appointment must not repeat monthly.
+   *         <tt>true</tt> if the appointment repeats monthly on the same date.
+   *         <tt>false</tt> if the appointment repeats monthly on the same day of the week.
+   *         <tt>null</tt> if the appointment doesn't repeat monthly.
    *       </dd>
    *     </dl>
-   *     Empty if appointment must not be booked recurring.
+   *     This will be empty if the appointment isn't recurring.
    *   </dd>
    *   <dt>
    *     array [<var>a_resource</var>]
    *   </dt>
    *   <dd>
-   *     List of assets for appointment booking.
-   *     Keys - asset categories; primary keys in {@link \RsResourceTypeSql} table. Values - arrays with next keys:
+   *     A list of assets for the appointment booking.
+   *     Keys refer to asset categories. Values refer to arrays with the next keys:
    *     <dl>
    *       <dt>int [<var>i_index</var>]</dt>
-   *       <dd>Asset index on layout. Specify only if asset category has a layout.</dd>
+   *       <dd>The asset index on the layout. Specify this only if the asset category has a layout.</dd>
    *       <dt>string <var>k_resource</var></dt>
-   *       <dd>Asset.</dd>
+   *       <dd>The asset.</dd>
    *     </dl>
-   *     Specify only for appointment booking.
+   *     Specify this only for the appointment booking.
    *   </dd>
    *   <dt>
    *     string <var>dt_date</var>
    *   </dt>
    *   <dd>
-   *     Date/time for booking in MySQL format. It location timezone.
+   *     The date/time for the booking in MySQL format in the location's time zone.
    *   </dd>
    *   <dt>
    *     int [<var>i_duration</var>]
    *   </dt>
    *   <dd>
-   *     Duration for asset booking in minutes. Specify for separate asset booking only.
+   *     The duration of asset booking in minutes. Specify this for separate asset bookings only.
    *   </dd>
    *   <dt>
    *     int [<var>i_index</var>]
    *   </dt>
    *   <dd>
-   *     Asset index on layout.
-   *     Specify for separate asset booking only and for a case when asset category has layout only.
+   *     The asset index on the layout.
+   *     Specify this for separate asset bookings only and for cases when the asset category only has a layout.
    *   </dd>
    *   <dt>
-   *     int <var>id_class_tab</var>
+   *     int [<var>id_class_tab</var>]
    *   </dt>
    *   <dd>
-   *     Kind of booking service. One of {@link Wl_Classes_Tab_TabSid} constants.
+   *     The booking service type. One of the {@link Wl_Classes_Tab_TabSid} constants.
    *   </dd>
    *   <dt>
    *     int [<var>id_gender_staff</var>]
    *   </dt>
    *   <dd>
-   *     Gender of staff member to conduct appointment. One of {@link Wl_Gender_GenderSid} constants.
-   *     Specify for appointment booking only.
+   *     The gender of the staff member conducting the appointment. One of the {@link Wl_Gender_GenderSid} constants.
+   *     Specify this for appointment bookings only.
+   *   </dd>
+   *   <dt>
+   *     bool [<var>is_wait_list_unpaid</var>]
+   *   </dt>
+   *   <dd>
+   *     If `true`, appointment waits unpaid.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_login_prize</var>]
+   *   </dt>
+   *   <dd>
+   *     The user's prize.
    *   </dd>
    *   <dt>
    *     string [<var>k_login_promotion</var>]
    *   </dt>
    *   <dd>
-   *     User's pass (membership, package).
-   *     Specify if you want to set which user's pass (membership, package) book must be payed by.
+   *     The user's pass (for example, a membership or a package).
+   *     Specify this if you want to set the pass to use to pay for the booking.
    *   </dd>
    *   <dt>
    *     string [<var>k_resource</var>]
    *   </dt>
    *   <dd>
-   *     Asset booking. Specify for separate asset booking only.
+   *     The asset booking. Specify this for separate asset bookings only.
    *   </dd>
    *   <dt>
    *     string [<var>k_service</var>]
    *   </dt>
    *   <dd>
-   *     Appointment booking. Specify for appointment booking only.
+   *     The appointment booking. Specify this for appointment bookings only.
+   *   </dd>
+   *   <dt>
+   *     string [<var>k_session_pass</var>]
+   *   </dt>
+   *   <dd>
+   *     The user's pass.
    *   </dd>
    *   <dt>
    *     string [<var>k_staff</var>]
    *   </dt>
    *   <dd>
-   *     Staff member to conduct an appointment.
-   *     Specify for appointment booking only.
+   *     The staff member conducting the appointment.
+   *     Specify this for appointment bookings only.
    *   </dd>
    *   <dt>
    *     string [<var>k_staff_date</var>]
    *   </dt>
    *   <dd>
-   *     Staff member to conduct an appointment.
-   *     The difference from the <var>k_staff</var> is that this value must be set only in a case
-   *     when you want to add customer to an exists appointment.
-   *     Specify for appointment booking only.
+   *     The staff member conducting the appointment.
+   *     The difference between this an <var>k_staff</var> is that this value must be set only in cases
+   *     when you want to add a customer to an appointment that already exists.
+   *     Specify this for appointment bookings only.
    *   </dd>
    *   <dt>string [<var>m_tip_appointment</var>]</dt>
-   *   <dd>Amount of selected tips.</dd>
+   *   <dd>The amount of selected tips.</dd>
    * </dl>
    *
    * @post get
@@ -305,6 +382,30 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.a_login_activity_visit = undefined;
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_notification
+   * @property {boolean} [is_mail] `true` to send mail; `false` to not send.
+   * @property {boolean} [is_sms] `true` to send SMS; `false` to not send.
+   * @property {boolean} [is_push] `true` to send push notification; `false` to not send.
+   */
+
+  /**
+   * Information for sending an appointment notification.
+   * <dl>
+   *    <dt>bool [<var>is_mail</var>]</dt>
+   *    <dd>`true` to send mail; `false` to not send.</dd>
+   *    <dt>bool [<var>is_sms</var>]</dt>
+   *    <dd>`true` to send SMS; `false` to not send.</dd>
+   *    <dt>bool [<var>is_push</var>]</dt>
+   *    <dd>`true` to send push notification; `false` to not send.</dd>
+   *  </dl>
+   *
+   * @get result
+   * @post post
+   * @type {Wl_Appointment_Book_Finish_FinishModel_a_notification}
+   */
+  this.a_notification = [];
+
+  /**
    * A list of payment sources to pay with.
    *
    * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
@@ -316,7 +417,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_payment_data
-   * @property {number} id_purchase_item Type of the purchase item. One of the {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item Type of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} k_id Promotion key or appointment key. Depends on <tt>id_purchase_item</tt> of this array.
    * @property {string} k_login_promotion Login promotion key.
    * @property {string} k_session_pass Session pass key.
@@ -326,7 +427,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
   /**
    * Data required for payment. Has next structure:<dl>
    *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>Type of the purchase item. One of the {@link RsPurchaseItemSid} constants.</dd>
+   *   <dd>Type of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
    *   <dt>string <var>k_id</var></dt>
    *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
    *   <dt>string <var>k_login_promotion</var></dt>
@@ -344,7 +445,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
 
   /**
    * The purchase item keys.
-   * Empty if no purchases are made for appointment booking.
+   * Empty if no purchases are made for the appointment booking.
    *
    * @post post
    * @type {string[]}
@@ -352,17 +453,17 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.a_purchase_item = [];
 
   /**
-   * List of quiz response keys.
-   * Key is quiz key.
-   * Value is response key.
+   * A list of quiz response keys.
+   * Keys refer to quiz keys.
+   * Values refer to response keys.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_quiz_response = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -382,7 +483,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
 
   /**
    * Data to create new user.
-   * Specify if <var>$uid</var> is empty.
+   * Specify this if <var>uid</var> is empty.
    * Must contain the following keys:
    * <dl>
    *   <dt>string[] <var>a_note</var></dt>
@@ -419,7 +520,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link RsAppointmentPaySid} constants.
+   * The payment type ID for the appointment. One of the {@link Wl_Appointment_PaySid} constants.
    *
    * @post get
    * @type {number}
@@ -427,7 +528,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.id_pay = 0;
 
   /**
-   * Whether multiple appointments booked in back-to-back mode.
+   * Determines whether multiple appointments are booked in back-to-back mode.
    *
    * @post post
    * @type {boolean}
@@ -435,7 +536,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.is_back_to_back = false;
 
   /**
-   * `true` to book appointment unpaid; `false` to try to select available purchase option.
+   * If `true`, the appointment is booked as unpaid. Otherwise, this will be `false` to select an available Purchase Option.
    *
    * @post post
    * @type {boolean}
@@ -443,7 +544,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.is_unpaid_force = false;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -453,9 +554,9 @@ function Wl_Appointment_Book_Finish_FinishModel()
 
   /**
    * The appointment key.
-   * This should be set if you are rebooking an existing appointment.
+   * This should be set if you're rebooking an existing appointment.
    *
-   * Otherwise use `0` to book a new appointment.
+   * Otherwise, use `0` to book a new appointment.
    *
    * @post get
    * @type {string}
@@ -465,6 +566,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
   /**
    * The business key.
    *
+   * @get get
    * @post get
    * @type {string}
    */
@@ -482,7 +584,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
   /**
    * Key of timezone.
    *
-   * `null` if not set then use default timezone client {@link Wl\Profile\Timezone\ProfileTimezone::createInBusiness()}.
+   * `null` if not set then use default timezone client.
    *
    * @post get
    * @type {?string}
@@ -506,7 +608,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.s_id = "";
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get
@@ -524,5 +626,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Finish_FinishModel);
  */
 Wl_Appointment_Book_Finish_FinishModel.prototype.config=function()
 {
-  return {"a_field": {"a_answer": {"post": {"post": true}},"a_appointment": {"post": {"result": true}},"a_book_data": {"post": {"get": true}},"a_login_activity_visit": {"post": {"result": true}},"a_pay_form": {"post": {"post": true}},"a_payment_data": {"post": {"post": true}},"a_purchase_item": {"post": {"post": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"a_user": {"post": {"get": true}},"a_visit": {"post": {"result": true}},"id_mode": {"post": {"post": true}},"id_pay": {"post": {"get": true}},"is_back_to_back": {"post": {"post": true}},"is_unpaid_force": {"post": {"post": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"post": {"get": true}},"k_business": {"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_timezone": {"post": {"get": true}},"m_pay": {"post": {"post": true}},"s_id": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_answer": {"post": {"post": true}},"a_appointment": {"post": {"result": true}},"a_book_data": {"post": {"get": true}},"a_login_activity_visit": {"post": {"result": true}},"a_notification": {"get": {"result": true},"post": {"post": true}},"a_pay_form": {"post": {"post": true}},"a_payment_data": {"post": {"post": true}},"a_purchase_item": {"post": {"post": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"a_user": {"post": {"get": true}},"a_visit": {"post": {"result": true}},"id_mode": {"post": {"post": true}},"id_pay": {"post": {"get": true}},"is_back_to_back": {"post": {"post": true}},"is_unpaid_force": {"post": {"post": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_timezone": {"post": {"get": true}},"m_pay": {"post": {"post": true}},"s_id": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };

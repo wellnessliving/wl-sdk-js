@@ -32,7 +32,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.html_contract = undefined;
 
   /**
-   * The purchase item type. One of the {@link RsPurchaseItemSid} constants.
+   * The purchase item type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    *
    * @get result
    * @type {number}

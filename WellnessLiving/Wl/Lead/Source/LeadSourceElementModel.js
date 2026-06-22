@@ -17,7 +17,7 @@ function Wl_Lead_Source_LeadSourceElementModel()
    * `null` if it is a custom Lead Source.
    * @property {string} k_lead_source Key of the lead source.
    * @property {*} k_skin Key of the lead skin.
-   * Will be set only in case if <tt>id_lead_source</tt> is {@link Wl_Lead_Source_LeadSourceSid.WIDGET} and
+   * Will be set only in case if <tt>id_lead_source</tt> is {@link Wl_Mode_ModeSid.WIDGET} and
    * widget can't be used for "Add Lead" form. `false` - otherwise.
    * @property {string} text_title Name of the Lead Source.
    */
@@ -45,7 +45,7 @@ function Wl_Lead_Source_LeadSourceElementModel()
    *   <dt>string [<var>k_skin</var>]</dt>
    *   <dd>
    *     Key of the lead skin.
-   *     Will be set only in case if <var>id_lead_source</var> is {@link Wl_Lead_Source_LeadSourceSid.WIDGET} and
+   *     Will be set only in case if <var>id_lead_source</var> is {@link Wl_Mode_ModeSid.WIDGET} and
    *     widget can't be used for "Add Lead" form. `false` - otherwise.
    *   </dd>
    *

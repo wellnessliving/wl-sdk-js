@@ -20,7 +20,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @property {{}} a_product The add-on list.
    * Keys refer to add-on keys, and values refer to the add-on quantities.
    * @property {number} i_duration The asset duration in minutes. This won't be empty for asset bookings.
-   * @property {number} id_purchase_item The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * This won't be empty for new options purchased.
    * @property {boolean} is_pay_later This will be <tt>true</tt> if the customer wants to pay upon their visit. Otherwise, this will be <tt>false</tt>
    * if the user wants to pay now.
@@ -62,7 +62,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *     int <tt>id_purchase_item</tt>
    *   </dt>
    *   <dd>
-   *     The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants.
+   *     The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    *     This won't be empty for new options purchased.
    *   </dd>
    *   <dt>
@@ -159,7 +159,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *         int <var>id_purchase_item</var>
    *       </dt>
    *       <dd>
-   *         The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants.
+   *         The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    *         This won't be empty for new options purchased.
    *       </dd>
    *       <dt>
@@ -282,7 +282,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   this.a_login_prize = [];
 
   /**
-   * The payment type for the appointment. One of the {@link RsAppointmentPaySid} constants.
+   * The payment type for the appointment. One of the {@link Wl_Appointment_PaySid} constants.
    *
    * @post result
    * @type {number[]}
@@ -617,7 +617,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *     The name of the tax.
    *   </dd>
    * </dl>
-   * @property {string} id_purchase_item The purchase item ID. One of the {@link RsPurchaseItemSid} constants.
+   * @property {string} id_purchase_item The purchase item ID. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} k_id The value of the discount used for the purchase.
    * @property {string} m_discount The value of the discount used for the purchase.
    * @property {string} m_pay The payment for the promotion (or single visit) without taxes.
@@ -652,7 +652,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    *     string <var>id_purchase_item</var>
    *   </dt>
    *   <dd>
-   *     The purchase item ID. One of the {@link RsPurchaseItemSid} constants.
+   *     The purchase item ID. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    *   </dd>
    *   <dt>
    *     string <var>k_id</var>

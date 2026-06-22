@@ -6,6 +6,7 @@
  * @augments WlSdk_ModelAbstract
  * @constructor
  * @deprecated New version {@link Wl_Appointment_Book_Conflict_Conflict56Model} should be used instead.
+ * @see Wl\Appointment\Book\Conflict\ConflictApi
  */
 function Wl_Appointment_Book_Conflict_ConflictModel()
 {
@@ -40,7 +41,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Conflict_ConflictModel_a_resource
-   * @property {*} i_index Asset index in layout.
+   * @property {number} [i_index] Asset index in layout.
    * @property {string} k_resource Asset primary key in {@link \RsResourceSql} table.
    */
 
@@ -57,7 +58,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.a_resource = [];
 
   /**
-   * List of user keys to book appointments - primary keys in {@link \PassportLoginSql}.
+   * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
    * @get get
@@ -84,7 +85,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.i_duration = 0;
 
   /**
-   * `true` if client is walk-in, otherwise `false`.
+   * If `true`, the client is a walk-in. Otherwise, this will be `false`.
    *
    * @get get
    * @post get
@@ -131,19 +132,28 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   /**
    * Staff member primary key in {@link \RsStaffSql} table.
    *
+   * @deprecated Use {@link Wl_Appointment_Book_Conflict_Conflict56Model.uid_staff}.
    * @get get
    * @type {string}
    */
   this.k_staff = "0";
 
   /**
-   * User to get information for.
+   * The user key.
    *
    * @get get
    * @post get
    * @type {string}
    */
   this.uid = "0";
+
+  /**
+   * Staff member user ID in {@link \PassportLoginSql} table.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.uid_staff = "0";
 
   this.changeInit();
 }
@@ -155,5 +165,5 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Conflict_ConflictModel);
  */
 Wl_Appointment_Book_Conflict_ConflictModel.prototype.config=function()
 {
-  return {"a_field": {"a_conflict": {"get": {"result": true}},"a_product": {"get": {"get": true}},"a_repeat": {"get": {"get": true}},"a_resource": {"get": {"get": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_staff": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_conflict": {"get": {"result": true}},"a_product": {"get": {"get": true}},"a_repeat": {"get": {"get": true}},"a_resource": {"get": {"get": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"dt_date": {"get": {"get": true}},"i_duration": {"get": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_appointment": {"get": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_resource": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_staff": {"get": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}},"uid_staff": {"get": {"get": true}}}};
 };

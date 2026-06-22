@@ -30,7 +30,7 @@ Each element in the `a_purchase_item` array represents a line item:
 
 | Field | Type | Description |
 |---|---|---|
-| `id_purchase_item` | int | The type of item (e.g., Product, Appointment, Session). Corresponds to `RsPurchaseItemSid`. |
+| `id_purchase_item` | int | The type of item (e.g., Product, Appointment, Session). Corresponds to `Wl_Purchase_Item_ItemSid`. |
 | `k_id` | string | The primary key of the item being purchased (e.g., `k_shop_product`). |
 | `i_quantity` | int | Quantity of the item. |
 | `m_price_manual` | string | (Optional) Override price per item. |
@@ -45,11 +45,11 @@ Depends on `id_purchase_item`.
     *   `dl_start`: Start date.
     *   `is_renew`: Boolean, auto-renew status.
     *   `m_prorate_custom`: Custom prorate amount.
-*   **Gift Cards (`RsPurchaseItemSid::COUPON`):**
+*   **Gift Cards (`Wl_Purchase_Item_ItemSid::COUPON`):**
     *   `s_code`: The custom gift card code.
     *   `dt_send_local`: Date to send the email.
     *   `a_quick_gift`: List of components if it is a Quick Gift Card.
-*   **Tips (`RsPurchaseItemSid::APPOINTMENT_TIP`):**
+*   **Tips (`Wl_Purchase_Item_ItemSid::APPOINTMENT_TIP`):**
     *   `k_staff`: The staff member receiving the tip.
 
 ### Payment Form Structure (`a_pay_form`)

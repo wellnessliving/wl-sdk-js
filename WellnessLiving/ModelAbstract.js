@@ -145,7 +145,7 @@ WlSdk_ModelAbstract.VERSION='202404090954';
  *
  * <tt>null</tt> if not loaded.
  *
- * @type {?{s_key_secret: string}|{s_code: string,s_cookie_persistent: string,s_cookie_transient: string}}
+ * @type {?{s_key_secret: string}|{s_jwt: string}|{s_code: string,s_cookie_persistent: string,s_cookie_transient: string}}
  */
 WlSdk_ModelAbstract.a_credentials = null;
 

@@ -278,7 +278,15 @@ WlSdk_AuthorizationSignature.prototype.signatureAuthorize = function(a_request)
   var o_this = this;
   o_compute.done(function()
   {
-    if(WlSdk_Config_Mixin.SESSION==='local')
+    if (WlSdk_Config_Mixin.SESSION === 'jwt')
+    {
+      WlSdk_AssertException.assertTrue(WlSdk_ModelAbstract.a_credentials.hasOwnProperty('s_jwt'), {
+        'text_message': 'JWT token is not passed.'
+      });
+
+      o_this.s_header = WlSdk_ModelAbstract.a_credentials.s_jwt;
+    }
+    else if (WlSdk_Config_Mixin.SESSION === 'local')
     {
       WlSdk_AssertException.assertTrue(WlSdk_ModelAbstract.a_credentials.hasOwnProperty('s_csrf'),{
         'text_message': 'CSRF code is not passed.'
@@ -298,7 +306,7 @@ WlSdk_AuthorizationSignature.prototype.signatureAuthorize = function(a_request)
       o_this.s_header = '20210304-cors,'+WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID+',,'+s_csrf_check+','+
         o_this._s_signature;
     }
-    else if(WlSdk_Config_Mixin.CSRF_CODE)
+    else if (WlSdk_Config_Mixin.CSRF_CODE)
     {
       o_this.s_header = '20150518-cors,'+WlSdk_Config_Mixin.CONFIG_AUTHORIZE_ID+',,'+WlSdk_Config_Mixin.CSRF_CODE+','+
         o_this._s_signature;

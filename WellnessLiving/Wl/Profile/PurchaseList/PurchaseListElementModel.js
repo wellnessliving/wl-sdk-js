@@ -411,7 +411,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
 
   /**
    * The ID of the purchase item type. The measurement unit for key <var>i_payment_period</var>.
-   * The ID of purchase item type. One of the {@link RsPurchaseItemSid} constants.
+   * The ID of purchase item type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    *
    * @get result
    * @type {number}

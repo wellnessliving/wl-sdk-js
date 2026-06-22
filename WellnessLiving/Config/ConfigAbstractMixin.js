@@ -50,6 +50,7 @@ WlSdk_Config_MixinAbstract.REGION_URL = {
  * Session type.
  *
  * `cookie` based on cookies.
+ * `jwt` based on JWT token.
  * `local` base on session key which is saved in the browser local storage.
  *
  * @type {string}

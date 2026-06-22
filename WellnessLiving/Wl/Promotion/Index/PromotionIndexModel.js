@@ -33,11 +33,11 @@ function Wl_Promotion_Index_PromotionIndexModel()
    */
   /**
    * @typedef {{}} Wl_Promotion_Index_PromotionIndexModel_a_promotion_a_access_a_component
-   * @property {number} id_purchase_item The type of the component. This can only be {@link RsPurchaseItemSid.ENROLLMENT},
-   *  {@link RsPurchaseItemSid.PROMOTION} or {@link RsPurchaseItemSid.PRODUCT}.
+   * @property {number} id_purchase_item The type of the component. This can only be {@link Wl_Purchase_Item_ItemSid.ENROLLMENT},
+   *  {@link Wl_Purchase_Item_ItemSid.PROMOTION} or {@link Wl_Purchase_Item_ItemSid.PRODUCT}.
    * @property {string} k_id The primary key of the component in the related table. This depends on the type of the component.
-   * The key of the event for {@link RsPurchaseItemSid.ENROLLMENT}, the key of the Purchase Option for the
-   * {@link RsPurchaseItemSid.PROMOTION}, the key of the product option for the {@link RsPurchaseItemSid.PRODUCT}.
+   * The key of the event for {@link Wl_Purchase_Item_ItemSid.ENROLLMENT}, the key of the Purchase Option for the
+   * {@link Wl_Purchase_Item_ItemSid.PROMOTION}, the key of the product option for the {@link Wl_Purchase_Item_ItemSid.PRODUCT}.
    * Full information about events can be taken from the {@link Wl_Event_EventListModel}. Purchase Options from the {@link Wl_Promotion_Index_PromotionIndexModel}.
    * Full information about products are not available at this moment though API.
    * @property {number} i_quantity The quantity. If empty, it means the quantity is 1.
@@ -92,13 +92,13 @@ function Wl_Promotion_Index_PromotionIndexModel()
    * Some fields can be different depending on type of the component, but each element of the array includes:
    * <dl>
    *   <dt>int <tt>id_purchase_item</tt></dt>
-   *   <dd>The type of the component. This can only be {@link RsPurchaseItemSid.ENROLLMENT},
-   *      {@link RsPurchaseItemSid.PROMOTION} or {@link RsPurchaseItemSid.PRODUCT}.</dd>
+   *   <dd>The type of the component. This can only be {@link Wl_Purchase_Item_ItemSid.ENROLLMENT},
+   *      {@link Wl_Purchase_Item_ItemSid.PROMOTION} or {@link Wl_Purchase_Item_ItemSid.PRODUCT}.</dd>
    *   <dt>string <tt>k_id</tt></dt>
    *   <dd>
    *     The primary key of the component in the related table. This depends on the type of the component.
-   *     The key of the event for {@link RsPurchaseItemSid.ENROLLMENT}, the key of the Purchase Option for the
-   *     {@link RsPurchaseItemSid.PROMOTION}, the key of the product option for the {@link RsPurchaseItemSid.PRODUCT}.
+   *     The key of the event for {@link Wl_Purchase_Item_ItemSid.ENROLLMENT}, the key of the Purchase Option for the
+   *     {@link Wl_Purchase_Item_ItemSid.PROMOTION}, the key of the product option for the {@link Wl_Purchase_Item_ItemSid.PRODUCT}.
    *     Full information about events can be taken from the {@link Wl_Event_EventListModel}. Purchase Options from the {@link Wl_Promotion_Index_PromotionIndexModel}.
    *     Full information about products are not available at this moment though API.
    *   </dd>
@@ -163,10 +163,10 @@ function Wl_Promotion_Index_PromotionIndexModel()
    * See more information here: {@link RsDurationTypeSid}.
    * @property {number} id_program The type of the Purchase Option. The <tt>id_program</tt> relates to only one <tt>id_program_type</tt> and one
    * <tt>id_program_category</tt>.
-   * See more information here: {@link RsProgramSid}.
+   * See more information here: {@link Wl_WlProgramSid}.
    * @property {number} id_program_category The category of the program for promotions. The <tt>id_program_category</tt> relates to more than one
    * <tt>id_program</tt>.
-   * See more information here: {@link RsProgramCategorySid}.
+   * See more information here: {@link Wl_WlProgramCategorySid}.
    * @property {number} id_program_type The ID of the promotion program type. The <tt>id_program_type</tt> relates to more than one <tt>id_program</tt>.
    * See more information here: {@link RsProgramTypeSid}.
    * @property {boolean} is_direct_buy_only If `true`, the pricing option can be sold only by direct link. This means it shouldn't be shown in the store or
@@ -229,13 +229,13 @@ function Wl_Promotion_Index_PromotionIndexModel()
    *     Some fields can be different depending on type of the component, but each element of the array includes:
    *     <dl>
    *       <dt>int <var>id_purchase_item</var></dt>
-   *       <dd>The type of the component. This can only be {@link RsPurchaseItemSid.ENROLLMENT},
-   *          {@link RsPurchaseItemSid.PROMOTION} or {@link RsPurchaseItemSid.PRODUCT}.</dd>
+   *       <dd>The type of the component. This can only be {@link Wl_Purchase_Item_ItemSid.ENROLLMENT},
+   *          {@link Wl_Purchase_Item_ItemSid.PROMOTION} or {@link Wl_Purchase_Item_ItemSid.PRODUCT}.</dd>
    *       <dt>string <var>k_id</var></dt>
    *       <dd>
    *         The primary key of the component in the related table. This depends on the type of the component.
-   *         The key of the event for {@link RsPurchaseItemSid.ENROLLMENT}, the key of the Purchase Option for the
-   *         {@link RsPurchaseItemSid.PROMOTION}, the key of the product option for the {@link RsPurchaseItemSid.PRODUCT}.
+   *         The key of the event for {@link Wl_Purchase_Item_ItemSid.ENROLLMENT}, the key of the Purchase Option for the
+   *         {@link Wl_Purchase_Item_ItemSid.PROMOTION}, the key of the product option for the {@link Wl_Purchase_Item_ItemSid.PRODUCT}.
    *         Full information about events can be taken from the {@link Wl_Event_EventListModel}. Purchase Options from the {@link Wl_Promotion_Index_PromotionIndexModel}.
    *         Full information about products are not available at this moment though API.
    *       </dd>
@@ -350,7 +350,7 @@ function Wl_Promotion_Index_PromotionIndexModel()
    *   <dd>
    *     The type of the Purchase Option. The <var>id_program</var> relates to only one <var>id_program_type</var> and one
    *     <var>id_program_category</var>.
-   *     See more information here: {@link RsProgramSid}.
+   *     See more information here: {@link Wl_WlProgramSid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_category</var>
@@ -358,7 +358,7 @@ function Wl_Promotion_Index_PromotionIndexModel()
    *   <dd>
    *     The category of the program for promotions. The <var>id_program_category</var> relates to more than one
    *     <var>id_program</var>.
-   *     See more information here: {@link RsProgramCategorySid}.
+   *     See more information here: {@link Wl_WlProgramCategorySid}.
    *   </dd>
    *   <dt>
    *     int <var>id_program_type</var>
