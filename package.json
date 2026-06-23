@@ -12,5 +12,12 @@
     "url": "https://github.com/wellnessliving/wl-sdk-js/issues"
   },
   "homepage": "https://github.com/wellnessliving/wl-sdk-js#readme",
-  "private": true
+  "private": true,
+  "scripts": {
+    "generate": "node scripts/generate-models.js",
+    "validate": "node validate-models.js ./WellnessLiving"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
 }

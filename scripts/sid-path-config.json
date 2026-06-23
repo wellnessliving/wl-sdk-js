@@ -1,0 +1,82 @@
+{
+  "_comment": "Override Sid class name and/or file path. Key is the OpenAPI schema name (e.g. 'Wl.Gender.GenderSid'). className and filePath are both relative to WellnessLiving/.",
+  "_exclude_files": [
+    "Config/ConfigRegionSid.js"
+  ],
+  "ADateWeekSid": {
+    "className": "ADateWeekSid",
+    "filePath": "Core/a/ADateWeekSid"
+  },
+  "ADurationSid": {
+    "className": "ADurationSid",
+    "filePath": "Core/a/ADurationSid"
+  },
+  "AGenderSid": {
+    "className": "AGenderSid",
+    "filePath": "Core/a/AGenderSid"
+  },
+  "ASocialSid": {
+    "className": "ASocialSid",
+    "filePath": "Core/a/ASocialSid"
+  },
+  "RsAppointmentPaySid": {
+    "className": "Wl_Appointment_PaySid",
+    "filePath": "Wl/Appointment/PaySid"
+  },
+  "RsBusinessCategorySid": {
+    "className": "Wl_Business_BusinessCategorySid",
+    "filePath": "Wl/Business/BusinessCategorySid"
+  },
+  "RsBusinessDesignLogoPositionSid": {
+    "className": "Wl_Business_Design_RsBusinessDesignLogoPositionSid",
+    "filePath": "Wl/Business/Design/RsBusinessDesignLogoPositionSid"
+  },
+  "RsBusinessDesignLogoStyleSid": {
+    "className": "Wl_Business_Design_RsBusinessDesignLogoStyleSid",
+    "filePath": "Wl/Business/Design/RsBusinessDesignLogoStyleSid"
+  },
+  "RsFamilyRelationSid": {
+    "className": "Wl_Family_Relation_RelationSid",
+    "filePath": "Wl/Family/Relation/RelationSid"
+  },
+  "RsHomeTourSid": {
+    "className": "Wl_WlHomeTourSid",
+    "filePath": "Wl/WlHomeTourSid"
+  },
+  "RsPageFrontendHeaderLayoutSid": {
+    "className": "Wl_Business_Design_RsPageFrontendHeaderLayoutSid",
+    "filePath": "Wl/Business/Design/RsPageFrontendHeaderLayoutSid"
+  },
+  "RsPayMethodSid": {
+    "className": "WlPayMethodSid",
+    "filePath": "Wl/WlPayMethodSid"
+  },
+  "RsProgramCategorySid": {
+    "className": "Wl_WlProgramCategorySid",
+    "filePath": "Wl/WlProgramCategory"
+  },
+  "RsProgramSid": {
+    "className": "Wl_WlProgramSid",
+    "filePath": "Wl/WlProgramSid"
+  },
+  "RsProgramTypeSid": {
+    "className": "Wl_WlProgramTypeSid",
+    "filePath": "Wl/WlProgramTypeSid"
+  },
+  "RsPurchaseItemSid": {
+    "className": "Wl_Purchase_Item_ItemSid",
+    "filePath": "Wl/Purchase/Item/ItemSid"
+  },
+  "RsServiceRequireSid": {
+    "className": "Wl_Service_ServiceRequireSid",
+    "filePath": "Wl/Service/ServiceRequireSid"
+  },
+  "RsSkinSid": {
+    "className": "RsSkinSid",
+    "filePath": "Wl/RsSkinSid"
+  },
+  "Wl.Classes.RequirePaySid": {
+    "className": "Wl_Classes_RequirePaySid",
+    "filePath": "Wl/Classes/WlClassesRequirePaySid"
+  }
+}
