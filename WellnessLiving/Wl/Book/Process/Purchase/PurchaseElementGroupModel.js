@@ -6,19 +6,19 @@
  */
 function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
 {
-    WlSdk_ModelAbstract.apply(this);
+  WlSdk_ModelAbstract.apply(this);
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item
-   * @property {number} [i_session = 1] Number of sessions which are booked simultaneously.
-   *      Make sense only when `id_purchase_item` = {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
-   * @property {number} id_purchase_item The ID of the purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.
+   * @property {number} [i_session] Number of sessions which are booked simultaneously.
+   *      Make sense only when `id_purchase_item` = {@link RsPurchaseItemSid.CLASS_PERIOD}.
+   * @property {number} id_purchase_item The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
    * @property {string} k_id The key of the purchase item in the database.
    * @property {string} [k_login_prize] The key of the user's prize.
    *  Not empty only if the user wants to make a free visit from the prize.
    * @property {?string} [k_pay_installment_template] Installment template key.
    *  This property is optional.
-   *  * can only be set for the purchase option which supports installment plan, see {@link Wl\Purchase\Item\PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property;
+   *  * can only be set for the purchase option which supports installment plan.
    *  * `null` if installment plan doesn't exist for bought item;
    *  * `0` if installment plan doesn't selected for bought item from the list of installment plans.
    *  NOTE:
@@ -32,35 +32,6 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
 
   /**
    * A list of purchase items. Each item is an associative array with the following keys:
-   *  <dl>
-   *      <dt>int [`i_session` = 1]</dt>
-   *      <dd>
-   *          Number of sessions which are booked simultaneously.
-   *          Make sense only when `id_purchase_item` = {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
-   *      </dd>
-   *      <dt>int `id_purchase_item`</dt>
-   *      <dd>The ID of the purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.</dd>
-   *      <dt>string `k_id`</dt>
-   *      <dd>The key of the purchase item in the database.</dd>
-   *      <dt>string [`k_login_prize`]</dt>
-   *      <dd>The key of the user's prize.
-   *      Not empty only if the user wants to make a free visit from the prize.</dd>
-   *      <dt>string|null [`k_pay_installment_template`]</dt>
-   *      <dd>Installment template key.
-   *      This property is optional.
-   *      * can only be set for the purchase option which supports installment plan, see {@link Wl\Purchase\Item\PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property;
-   *      * `null` if installment plan doesn't exist for bought item;
-   *      * `0` if installment plan doesn't selected for bought item from the list of installment plans.
-   *      NOTE:
-   *      * Calculations of discounts and taxes for installment plans are for demonstration purposes only!
-   *      * Installment is not an independent purchase item and has no discounts or taxes.
-   *      * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.</dd>
-   *      <dt>string [`k_reward_prize`]</dt>
-   *      <dd>The key of the reward prize.
-   *      Not empty only if the user wants to redeem prize and use it to pay for a visit.</dd>
-   *      <dt>string `uid`</dt>
-   *      <dd>The key of the user for whom the purchase item is being bought.</dd>
-   *  </dl>
    *
    * @get get
    * @type {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item[]}
@@ -69,11 +40,10 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
 
   /**
    * A list of taxes for the given purchase options.
-   * Keys - tax keys.
-   * Values - tax amounts.
+   * Keys - tax keys, values - tax amounts.
    *
    * @get result
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_tax = undefined;
 
@@ -179,7 +149,7 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extends(Wl_Book_Process_Purchase_PurchaseElementGroupModel);
+WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementGroupModel);
 
 /**
  * @inheritDoc

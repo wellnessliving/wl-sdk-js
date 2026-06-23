@@ -81,7 +81,7 @@ function Wl_Book_Process_ProcessGroupModel()
    *     Required if the service requires answers for questions.
    *     Keys are quiz keys.
    *     Values are response keys.
-   *     Or the {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} to skip the quiz.
+   *     Or the {@link \Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} to skip the quiz.
    * @property {Wl_Book_Process_ProcessGroupModel_a_client_a_event_session_a_purchase_item_a_repeat} [a_repeat] Recurring booking configuration:
    *
    *     You can test this key only in a case of `1` client.
@@ -116,7 +116,7 @@ function Wl_Book_Process_ProcessGroupModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_pay_form_a_pay_card_a_pay_address
-   * @property {boolean} is_new Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
+   * @property {boolean} is_new Set this value to `1` to add a new payment address or to `0` to use a saved payment address.
    * @property {string} [k_geo_country] The key of the country used for the payment address. Specify this to add a new address.
    * @property {string} [k_geo_region] The key of the region for the payment address. Specify this to add a new address.
    * @property {string} [k_pay_address] The key of the saved payment address. Specify this to use a saved address.
@@ -133,7 +133,7 @@ function Wl_Book_Process_ProcessGroupModel()
    * @property {number} [i_csc] The credit card CSC. Specify this to add a new card.
    * @property {number} [i_month] The credit card expiration month. Specify this to add a new card.
    * @property {number} [i_year] The credit card expiration year. Specify this to add a new card.
-   * @property {boolean} is_new Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
+   * @property {boolean} is_new Specify `1` to add a new card, or `0` to use a saved card.
    * @property {string} [k_pay_bank] The key of the credit card. Specify this to use saved card.
    * @property {string} [s_comment] Optional comment(s). Specify this to add a new card.
    * @property {string} [s_number] The card number. Specify this to add a new card.
@@ -142,8 +142,8 @@ function Wl_Book_Process_ProcessGroupModel()
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_pay_form
    * @property {Wl_Book_Process_ProcessGroupModel_a_pay_form_a_pay_card} [a_pay_card] The payment card information:
    * @property {string} f_amount The amount of money to withdraw with this payment source.
-   * @property {boolean} [is_hide] Whether payment method should be saved to user's account.
-   * @property {boolean} [is_save] Determines whether this payment method is hidden.
+   * @property {boolean} [is_hide] Determines whether this payment method is hidden.
+   * @property {boolean} [is_save] Whether payment method should be saved to user's account.
    * @property {boolean} [is_success] Identifies whether this source was successfully charged.
    * @property {string} [m_surcharge] The client-side calculated surcharge.
    * @property {string} [s_index] The index of this form (optional).
@@ -257,7 +257,7 @@ function Wl_Book_Process_ProcessGroupModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extends(Wl_Book_Process_ProcessGroupModel);
+WlSdk_ModelAbstract.extend(Wl_Book_Process_ProcessGroupModel);
 
 /**
  * @inheritDoc

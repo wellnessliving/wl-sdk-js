@@ -24,12 +24,7 @@ function Wl_Book_Process_Quiz_QuizModel()
   this.a_login_activity = [];
 
   /**
-   * The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl>
-   *  <dt>int <var>id_purchase_item</var></dt>
-   *  <dd>The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
-   *  <dt>string <var>k_id</var></dt>
-   *  <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
-   * </dl>
+   * The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where:
    *
    * This will be empty if no purchases are made for the booking.
    *
@@ -45,12 +40,7 @@ function Wl_Book_Process_Quiz_QuizModel()
    */
 
   /**
-   * The list of quizzes. Each element has the next structure:<dl>
-   *  <dt>bool <var>is_require</var></dt>
-   *  <dd>Determines whether the quiz is required.</dd>
-   *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>The quiz key.</dd>
-   * </dl>
+   * The list of quizzes. Each element has the next structure:
    *
    * @get result
    * @type {Wl_Book_Process_Quiz_QuizModel_a_quiz[]}
@@ -60,12 +50,12 @@ function Wl_Book_Process_Quiz_QuizModel()
   /**
    * The list of quiz response keys.
    *
-   * Keys refer to quiz keys.
-   * And values refer to response keys.
-   * Or special values from the {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   * Keys are quiz keys.
+   * Values are response keys.
+   * Or the {@link \Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} to skip the quiz.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_quiz_response = [];
 
@@ -74,75 +64,26 @@ function Wl_Book_Process_Quiz_QuizModel()
    * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
    * Should be passed for any type of repetition.
    * @property {number[]} a_week Deprecated, use `a_day` instead!
-   * @property {*} dl_end Deprecated, use `dt_from` and `dt_to` instead!
-   * @property {*} dt_from Date to start recurring booking.
+   * @property {string} [dl_end] Deprecated, use `dt_from` and `dt_to` instead!
+   * @property {string} [dt_from] Date to start recurring booking.
    * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {*} dt_to Date to complete recurring booking.
+   * @property {string} [dt_to] Date to complete recurring booking.
    * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {*} i_count The number of occurrences after which the appointment's repeat cycle stops.
+   * @property {number} [i_count] The number of occurrences after which the appointment's repeat cycle stops.
    *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *  Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
-   * @property {*} i_occurrence Deprecated, use `i_count` instead!
+   * @property {number} [i_occurrence] Deprecated, use `i_count` instead!
    * @property {number} i_period Deprecated, use `i_duration` instead!
    * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   * @property {number} id_period Deprecated, use `id_duration` instead!
+   * @property {number} id_period Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.
    * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**
    * Information about the recurring booking:
-   * <dl>
-   *   <dt>int[] <var>a_day</var></dt>
-   *   <dd>
-   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   *     Should be passed for any type of repetition.
-   *   </dd>
-   *   <dt>int[] <var>a_week</var></dt>
-   *   <dd>Deprecated, use `a_day` instead!</dd>
-   *   <dt>string [<var>dl_end</var>]</dt>
-   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
-   *   <dt>
-   *     string [<var>dt_from</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to start recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *     string [<var>dt_to</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to complete recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *      int [<var>i_count</var>]
-   *    </dt>
-   *    <dd>
-   *      The number of occurrences after which the appointment's repeat cycle stops.
-   *      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *      Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
-   *    </dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
-   *   <dt>int [<var>i_occurrence</var>]</dt>
-   *   <dd>Deprecated, use `i_count` instead!</dd>
-   *   <dt>int <var>i_period</var></dt>
-   *   <dd>Deprecated, use `i_duration` instead!</dd>
-   *   <dt>
-   *     int <var>id_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *     Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   *   </dd>
-   *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
-   *   <dt>int <var>id_repeat_end</var></dt>
-   *   <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
-   * </dl>
+   *
    *
    * This will be `null` if the booking isn't recurring.
    *
@@ -161,12 +102,6 @@ function Wl_Book_Process_Quiz_QuizModel()
    * The selected assets.
    *
    * Every element has the next keys:
-   * <dl>
-   *   <dt>int <var>i_index</var></dt>
-   *   <dd>The order number of the asset (could be from 1 to the asset quantity).</dd>
-   *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The asset key.</dd>
-   * </dl>
    *
    * @post post
    * @type {Wl_Book_Process_Quiz_QuizModel_a_resource[]}
@@ -176,22 +111,22 @@ function Wl_Book_Process_Quiz_QuizModel()
   /**
    * The selected sessions.
    *
-   * Keys refer to class period keys.
-   * And values refer to the list of dates/times when the session occurred.
+   * Keys are class period keys.
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_session_select = [];
 
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs.
-   * And values refer to index arrays of dates/times when session occurred (n MySQL format and in GMT).
+   * Keys are class period keys.
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_session_wait_list_unpaid = [];
 
@@ -344,7 +279,7 @@ Wl_Book_Process_Quiz_QuizModel.prototype.config=function()
  * @name Wl_Book_Process_Quiz_QuizModel.instanceGet
  * @param {string} k_class_period Key of session which is booked.
  * @param {string} uid The client key for which the booking is being made.
- * @param {string[]} a_purchase_item The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl> <dt>int <var>id_purchase_item</var></dt> <dd>The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd> <dt>string <var>k_id</var></dt> <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd> </dl> This will be empty if no purchases are made for the booking.
+ * @param {string[]} a_purchase_item The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where:  This will be empty if no purchases are made for the booking.
  * @param {string} dt_date_gmt Date/time to which session is booked.
  * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Quiz_QuizModel}

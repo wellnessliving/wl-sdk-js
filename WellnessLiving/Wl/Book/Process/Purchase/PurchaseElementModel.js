@@ -6,15 +6,19 @@
  */
 function Wl_Book_Process_Purchase_PurchaseElementModel()
 {
-    WlSdk_ModelAbstract.apply(this);
+  WlSdk_ModelAbstract.apply(this);
+
+  /**
+   * @inheritDoc
+   */
+  this._s_key = "id_purchase_item,k_id,k_location,uid,i_session,k_login_prize,text_discount_code,k_pay_installment_template,k_reward_prize,dtu_date";
 
   /**
    * A list of taxes for the given purchase options.
-   * Keys - tax keys.
-   * Values - tax amounts.
+   * Keys - tax keys, values - tax amounts.
    *
    * @get result
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_tax = undefined;
 
@@ -31,7 +35,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   /**
    * The number of sessions which are booked simultaneously.
    *
-   * Required when {@link Wl_Book_Process_Purchase_PurchaseElementModel.id_purchase_item} = {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
+   * Required when {@link Wl_Book_Process_Purchase_PurchaseElementModel.id_purchase_item} = {@link RsPurchaseItemSid.CLASS_PERIOD}.
    *
    * @get get
    * @type {number}
@@ -39,12 +43,20 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.i_session = 0;
 
   /**
-   * The ID of the purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.
+   * The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
    *
    * @get get
    * @type {number}
    */
   this.id_purchase_item = 0;
+
+  /**
+   * The key of the session to check for booking availability.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.k_class_period = "0";
 
   /**
    * The key of the purchase item in the database.
@@ -76,8 +88,8 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
    * Installment template key.
    * This property is optional.
    *
-   * * can only be set for the purchase option which supports installment plan, see
-   * {@link Wl\Purchase\Item\PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property;
+   * * can only be set for the purchase option which supports installment plan.
+   *
    * * `null` if installment plan doesn't exist for bought item;
    * * `0` if installment plan doesn't selected for bought item from the list of installment plans.
    *
@@ -183,20 +195,20 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_tax": {"get": {"result": true}},"dtu_date": {"get": {"get": true}},"i_session": {"get": {"get": true}},"id_purchase_item": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_login_prize": {"get": {"get": true}},"k_pay_installment_template": {"get": {"get": true}},"k_reward_prize": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_tax": {"get": {"result": true}},"dtu_date": {"get": {"get": true}},"i_session": {"get": {"get": true}},"id_purchase_item": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_login_prize": {"get": {"get": true}},"k_pay_installment_template": {"get": {"get": true}},"k_reward_prize": {"get": {"get": true}},"m_cost": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Book_Process_Purchase_PurchaseElementModel.instanceGet
- * @param {number} id_purchase_item The ID of the purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.
+ * @param {number} id_purchase_item The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
  * @param {string} k_id The key of the purchase item in the database.
  * @param {string} k_location The key of the location in which the purchase is made. This is also the booking process location.
  * @param {string} uid The key of the current user.
- * @param {number} i_session The number of sessions which are booked simultaneously. Required when {@link Wl_Book_Process_Purchase_PurchaseElementModel.id_purchase_item} = {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
+ * @param {number} i_session The number of sessions which are booked simultaneously. Required when {@link Wl_Book_Process_Purchase_PurchaseElementModel.id_purchase_item} = {@link RsPurchaseItemSid.CLASS_PERIOD}.
  * @param {string} k_login_prize The key of the user's prize. Not empty only if the user wants to make a free visit from the prize.
  * @param {string} text_discount_code The discount code.
- * @param {?string} k_pay_installment_template Installment template key. This property is optional. * can only be set for the purchase option which supports installment plan, see {@link Wl\Purchase\Item\PurchaseItemAbstract::INSTALLMENT_ALLOW_USER} property; * `null` if installment plan doesn't exist for bought item; * `0` if installment plan doesn't selected for bought item from the list of installment plans. NOTE: * Calculations of discounts and taxes for installment plans are for demonstration purposes only! * Installment is not an independent purchase item and has no discounts or taxes. * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.
+ * @param {?string} k_pay_installment_template Installment template key. This property is optional. * can only be set for the purchase option which supports installment plan.  * `null` if installment plan doesn't exist for bought item; * `0` if installment plan doesn't selected for bought item from the list of installment plans. NOTE: * Calculations of discounts and taxes for installment plans are for demonstration purposes only! * Installment is not an independent purchase item and has no discounts or taxes. * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.
  * @param {string} k_reward_prize The key of the reward prize. Not empty only if the user wants to redeem prize and use it to pay for a visit.
  * @param {?string} dtu_date Date/time of session is booking. `null` until initialized.
  * @returns {Wl_Book_Process_Purchase_PurchaseElementModel}

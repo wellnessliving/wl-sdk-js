@@ -22,8 +22,8 @@ function Wl_Book_Process_Payment_PaymentModel()
    * @property {number} id_purchase_item The ID of purchase item type. One of {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {boolean} [is_renew] `true` if the item should be set to auto-renew; `false` otherwise. If not set yet, use the default option for this item.
    * @property {string} k_id The key of the purchase item in the database.
-   * @property {string} k_login_prize Key of user's prize. Not `0` only if user is paying book by prize.
-   * @property {string} k_reward_prize Key of reward prize. Not `0` only if user wants to redeem prize and use it to pay for visit.
+   * @property {string} k_login_prize Key of user's prize.  Not `0` only if user is paying book by prize.
+   * @property {string} k_reward_prize Key of reward prize.  Not `0` only if user wants to redeem prize and use it to pay for visit.
    * @property {string} [s_signature] The signature of the Purchase Option contract. This won't be set if the Purchase Option doesn't require a contract assignment.
    */
 

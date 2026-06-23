@@ -1,7 +1,5 @@
 /**
- * An endpoint that manages contracts for a selected class/event booking.
- *
- * Specifically, this endpoint can display, sign, or reject waivers on behalf of a client for a selected class/event.
+ * Contract tied to purchase option selected in class/event booking.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,7 +14,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this._s_key = "s_purchase_item,s_wizard_id";
 
   /**
-   * Determines whether there's a selected purchase item that can grant access to the class.
+   * Whether there remains a selected purchase item that grants access to the class.
    *
    * @delete result
    * @type {boolean}
@@ -32,7 +30,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.html_contract = undefined;
 
   /**
-   * The purchase item type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
+   * Type of purchase item, one of {@link Wl_Purchase_Item_ItemSid}.
    *
    * @get result
    * @type {number}
@@ -40,7 +38,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.id_purchase_item = undefined;
 
   /**
-   * Determines whether the client agrees to the contract.
+   * Whether client agrees to the contract.
    *
    * @get result
    * @put post
@@ -49,7 +47,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.is_agree = undefined;
 
   /**
-   * The purchase item ID within its type (represented by <var>id_purchase_item</var>).
+   * Id of purchase item within its type (represented by <var>id_purchase_item</var>).
    *
    * @get result
    * @type {string}
@@ -57,7 +55,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.k_id = undefined;
 
   /**
-   * The Purchase Option key. One of the array keys returned by {@link RsBookProcess::purchase()}.
+   * Key of purchase option, one of array keys returned by {@link \RsBookProcess::purchase()}.
    *
    * @delete get
    * @get get
@@ -76,7 +74,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.s_signature = undefined;
 
   /**
-   * The booking wizard session key.
+   * Booking wizard session key.
    *
    * @delete get
    * @get get
@@ -86,7 +84,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.s_wizard_id = undefined;
 
   /**
-   * The contract text signed by the client.
+   * Text of the contract signed by the client.
    *
    * @get result
    * @type {string}
@@ -94,7 +92,7 @@ function Wl_Book_Process_Contract_ContractItemModel()
   this.text_contract = undefined;
 
   /**
-   * The purchase item title.
+   * Purchase item title.
    *
    * @get result
    * @type {string}
@@ -117,8 +115,8 @@ Wl_Book_Process_Contract_ContractItemModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Book_Process_Contract_ContractItemModel.instanceGet
- * @param {string} s_purchase_item The Purchase Option key. One of the array keys returned by {@link RsBookProcess::purchase()}.
- * @param {string} s_wizard_id The booking wizard session key.
+ * @param {string} s_purchase_item Key of purchase option, one of array keys returned by {@link \RsBookProcess::purchase()}.
+ * @param {string} s_wizard_id Booking wizard session key.
  * @returns {Wl_Book_Process_Contract_ContractItemModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

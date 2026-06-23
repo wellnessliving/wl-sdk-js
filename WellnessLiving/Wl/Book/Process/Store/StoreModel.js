@@ -1,8 +1,6 @@
 /**
  * Manages the "Purchase Options" page of the booking wizard.
  *
- * This model is generated automatically based on API.
- *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
@@ -21,7 +19,7 @@ function Wl_Book_Process_Store_StoreModel()
   /**
    * @typedef {{}} Wl_Book_Process_Store_StoreModel_a_purchase_item_check
    * @property {number} i_session The number of sessions that this item can cover.
-   *   This only applies to items of type {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
+   *   This only applies to items of type {@link RsPurchaseItemSid.CLASS_PERIOD}.
    * @property {string} s_value The unique identifier of the item being checked.
    * This corresponds to one of the following values:
    * <ul>
@@ -66,6 +64,7 @@ function Wl_Book_Process_Store_StoreModel()
 
   /**
    * Information about the recurring booking:
+   *
    *
    * This will be `null` if the booking isn't recurring.
    *

@@ -27,15 +27,16 @@ function Wl_Book_Process_Guest_GuestProfileModel()
    * One of the {@link Wl_Mode_ModeSid} constants. Default is {@link Wl_Mode_ModeSid.API}.
    *
    * @post post
-   * @var int
+   * @type {number}
    */
   this.id_mode = 0;
 
   /**
-   * Type of the service to book. One of the {@link Wl_Service_ServiceSid} constants.
+   * Type of the service to book.
    *
    * @get get
    * @post get
+   * @see Wl_Service_ServiceSid
    * @type {number}
    */
   this.id_service = 0;
@@ -50,8 +51,13 @@ function Wl_Book_Process_Guest_GuestProfileModel()
   this.k_business = "";
 
   /**
-   * Key of service to book. Depending on {@link Wl_Book_Process_Guest_GuestProfileModel.id_service} value, it can be primary key in
-   * {@link \RsClassSql}, {@link \RsServiceSql} or {@link \RsResourceSql} table.
+   * Key of service to book.
+   * Depending on {@link Wl_Book_Process_Guest_GuestProfileModel.id_service} value:,
+   * <ul>
+   *     <li>{@link Wl_Service_ServiceSid.CLASSES} - class key. </li>
+   *     <li>{@link Wl_Service_ServiceSid.APPOINTMENT} - service key.</li>
+   *     <li>{@link Wl_Service_ServiceSid.BOOKABLE_ASSET} - resource key.</li>
+   * </ul>
    *
    * @get get
    * @post get
@@ -60,7 +66,7 @@ function Wl_Book_Process_Guest_GuestProfileModel()
   this.k_id = "";
 
   /**
-   * Primary key of a location.
+   * Location key.
    *
    * @get get
    * @type {string}
@@ -113,5 +119,19 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Guest_GuestProfileModel);
  */
 Wl_Book_Process_Guest_GuestProfileModel.prototype.config=function()
 {
-  return {"a_field": {"dl_birthday": {"get": {"get": true},"post": {"get": true}},"id_mode": {"post": {"get": true}},"id_service": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true}},"text_first_name": {"get": {"get": true},"post": {"get": true}},"text_last_name": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"result": true},"post": {"result": true}}}};
+  return {"a_field": {"dl_birthday": {"get": {"get": true},"post": {"get": true}},"id_mode": {"post": {"post": true}},"id_service": {"get": {"get": true},"post": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true}},"text_first_name": {"get": {"get": true},"post": {"get": true}},"text_last_name": {"get": {"get": true},"post": {"get": true}},"text_mail": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"result": true},"post": {"result": true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Book_Process_Guest_GuestProfileModel.instanceGet
+ * @param {string} k_business Business key.
+ * @param {number} id_service Type of the service to book.
+ * @param {string} k_id Key of service to book. Depending on {@link Wl_Book_Process_Guest_GuestProfileModel.id_service} value:, <ul>   <li>{@link Wl_Service_ServiceSid.CLASSES} - class key. </li>   <li>{@link Wl_Service_ServiceSid.APPOINTMENT} - service key.</li>   <li>{@link Wl_Service_ServiceSid.BOOKABLE_ASSET} - resource key.</li> </ul>
+ * @param {string} text_mail Guest's email.
+ * @param {string} text_first_name Guest's first name.
+ * @param {string} text_last_name Guest's last name.
+ * @param {string} dl_birthday Guest's birthday in MySQL format. Empty if service not restricted by age.
+ * @returns {Wl_Book_Process_Guest_GuestProfileModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */

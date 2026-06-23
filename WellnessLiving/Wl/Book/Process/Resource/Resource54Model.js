@@ -99,7 +99,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    * check `a_client['125']['10']`.
    * @property {Wl_Book_Process_Resource_Resource54Model_a_resource_all_a_resource_list[]} a_resource_list A list of available assets. Every element has next keys:
    * @property {boolean} has_current <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
-   * @property {number} id_category Type of the asset category. One of {@link Wl\Resource\ResourceCategoryEnum} constants.
+   * @property {number} id_category Type of the asset category. One of {@link \Wl\Resource\ResourceCategoryEnum} constants.
    * @property {boolean} is_client_select <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise.
    * @property {boolean} is_select <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
    * @property {boolean} is_share <tt>true</tt> resources in this category don't belong to certain users, but to the entire session.

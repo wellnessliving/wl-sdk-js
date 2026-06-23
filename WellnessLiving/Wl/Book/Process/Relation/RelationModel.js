@@ -1,5 +1,5 @@
 /**
- * An endpoint that adds a relationship to a client profile during the booking process.
+ * Adds a relative during the booking process.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -9,7 +9,12 @@ function Wl_Book_Process_Relation_RelationModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of checks that must be skipped.
+   * @inheritDoc
+   */
+  this._s_key = "dtu_date,k_business,k_class_period,uid_from";
+
+  /**
+   * List of check that must be skipped.
    * Each element must be a member of {@link Wl_Book_Process_ProcessCheckSid}.
    *
    * @get get
@@ -18,7 +23,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.a_check_ignore = [];
 
   /**
-   * The date/time to use for checking the session booking's availability.
+   * The date/time of the session to check for booking availability.
    *
    * @get get
    * @type {string}
@@ -62,8 +67,8 @@ function Wl_Book_Process_Relation_RelationModel()
   this.id_mode = 0;
 
   /**
-   * The relationship type.
-   * One of the {@link Wl_Family_Relation_RelationSid} constants.
+   * The relation type.
+   * One of the {@link RsFamilyRelationSid} constants.
    *
    * @post post
    * @type {number}
@@ -82,8 +87,9 @@ function Wl_Book_Process_Relation_RelationModel()
   this.is_credit_card_check = true;
 
   /**
-   * This will be `true` if the linked client profile (relationship) uses the email of <var>uid_from</var>.
-   * Otherwise, this will be `false` if they have their own email.
+   * `true` - the new relative uses the email from <var>uid_from</var>.
+   *
+   * `false` - the new relative has their own email.
    *
    * @post post
    * @type {boolean}
@@ -91,8 +97,9 @@ function Wl_Book_Process_Relation_RelationModel()
   this.is_mail_inherit = false;
 
   /**
-   * This will `true` if the linked client profile (relationship) pays for their own purchases.
-   * Otherwise, this will be `false` if <var>uid_from</var> pays for the linked profile's purchases.
+   * `true` - the new relative pays for themselves.
+   *
+   * `false` - <var>uid_from</var> pays for the new relative.
    *
    * @post post
    * @type {boolean}
@@ -100,7 +107,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.is_pay_self = false;
 
   /**
-   * The business in which <var>uid_from</var> records the new relationship.
+   * The business where <var>uid_from</var> creates the new relative.
    *
    * @get get
    * @post get
@@ -109,7 +116,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.k_business = "0";
 
   /**
-   * The session booking to check availability for.
+   * The key of the session to check for booking availability.
    *
    * @get get
    * @type {string}
@@ -117,7 +124,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.k_class_period = "0";
 
   /**
-   * The linked client profile's (relationship) email.
+   * The new relative's email.
    *
    * @post post
    * @type {string}
@@ -125,7 +132,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.text_mail = "";
 
   /**
-   * The linked client profile's (relationship) first name.
+   * The new relative's first name.
    *
    * @post post
    * @type {string}
@@ -133,7 +140,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.text_name_first = "";
 
   /**
-   * The linked client profile's (relationship) last name.
+   * The new relative's last name.
    *
    * @post post
    * @type {string}
@@ -141,7 +148,7 @@ function Wl_Book_Process_Relation_RelationModel()
   this.text_name_last = "";
 
   /**
-   * The newly added relationship.
+   * The newly added relative.
    *
    * @post result
    * @type {string}
@@ -149,7 +156,15 @@ function Wl_Book_Process_Relation_RelationModel()
   this.uid_create = undefined;
 
   /**
-   * The user (client profile) who's adding the linked client profile (relationship).
+   * UID of already existed in another business user.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.uid_existed = "";
+
+  /**
+   * The user who's adding the new relative.
    *
    * @get get
    * @post get
@@ -167,5 +182,16 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Relation_RelationModel);
  */
 Wl_Book_Process_Relation_RelationModel.prototype.config=function()
 {
-  return {"a_field": {"a_check_ignore": {"get": {"get": true}},"dtu_date": {"get": {"get": true}},"i_day": {"post": {"post": true}},"i_month": {"post": {"post": true}},"i_year": {"post": {"post": true}},"id_mode": {"post": {"post": true}},"id_relation": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true}},"is_mail_inherit": {"post": {"post": true}},"is_pay_self": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true}},"text_mail": {"post": {"post": true}},"text_name_first": {"post": {"post": true}},"text_name_last": {"post": {"post": true}},"uid_create": {"post": {"result": true}},"uid_from": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_check_ignore": {"get": {"get": true}},"dtu_date": {"get": {"get": true}},"i_day": {"post": {"post": true}},"i_month": {"post": {"post": true}},"i_year": {"post": {"post": true}},"id_mode": {"post": {"post": true}},"id_relation": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true}},"is_mail_inherit": {"post": {"post": true}},"is_pay_self": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true}},"text_mail": {"post": {"post": true}},"text_name_first": {"post": {"post": true}},"text_name_last": {"post": {"post": true}},"uid_create": {"post": {"result": true}},"uid_existed": {"post": {"post": true}},"uid_from": {"get": {"get": true},"post": {"get": true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Book_Process_Relation_RelationModel.instanceGet
+ * @param {string} dtu_date The date/time of the session to check for booking availability.
+ * @param {string} k_business The business where <var>uid_from</var> creates the new relative.
+ * @param {string} k_class_period The key of the session to check for booking availability.
+ * @param {string} uid_from The user who's adding the new relative.
+ * @returns {Wl_Book_Process_Relation_RelationModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */

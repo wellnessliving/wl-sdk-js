@@ -1,10 +1,15 @@
 /**
- * For recurrent class booking returns list of visits to be created for the given settings.
+ * Extension of {@link Wl_Book_Process_Frequency_RepeatModel} that adds control over whether parallel class period series
+ * (other sessions running at the same time and location) are included in the returned visit list.
+ *
+ * When `is_include_parallel` is `false` (default), only the originally selected class period's
+ * series (parent and its reschedules) is returned. When `true`, all parallel series are also
+ * included and can be reviewed or individually ignored by the client.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Wl_Book_Process_Frequency_RepeatModel()
+function Wl_Book_Process_Frequency_RepeatParallelModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
@@ -17,7 +22,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.a_day = [];
 
   /**
-   * @typedef {{}} Wl_Book_Process_Frequency_RepeatModel_a_visit
+   * @typedef {{}} Wl_Book_Process_Frequency_RepeatParallelModel_a_visit
    * @property {string} dt_date Visit date and time in UTC.
    * @property {string} dt_local Visit date and time in location's time zone.
    * @property {string} html_short_name_list List of names of the staff who provide this class.
@@ -38,7 +43,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
    * List of visits to be created for the given settings:
    *
    * @get result
-   * @type {Wl_Book_Process_Frequency_RepeatModel_a_visit[]}
+   * @type {Wl_Book_Process_Frequency_RepeatParallelModel_a_visit[]}
    */
   this.a_visit = [];
 
@@ -125,6 +130,19 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.is_cancel = false;
 
   /**
+   * `true` to also include sessions running in parallel at the same time and location
+   *  (other class period series); `false` to return only the selected series (parent
+   *  period and its reschedules).
+   *
+   * Controlled by the "Also include other sessions happening at the same time" toggle on the form.
+   * Defaults to `false`.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_include_parallel = false;
+
+  /**
    * `true` if current user is not created yet, `false` otherwise.
    *
    * @get get
@@ -192,12 +210,12 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Book_Process_Frequency_RepeatModel);
+WlSdk_ModelAbstract.extend(Wl_Book_Process_Frequency_RepeatParallelModel);
 
 /**
  * @inheritDoc
  */
-Wl_Book_Process_Frequency_RepeatModel.prototype.config=function()
+Wl_Book_Process_Frequency_RepeatParallelModel.prototype.config=function()
 {
-  return {"a_field": {"a_day": {"get": {"get": true}},"a_visit": {"get": {"result": true}},"a_visit_ignore": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_from": {"get": {"get": true,"result": true}},"dt_to": {"get": {"get": true,"result": true}},"i_count": {"get": {"get": true,"result": true}},"i_duration": {"get": {"get": true}},"id_duration": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"id_repeat_end": {"get": {"get": true}},"is_cancel": {"get": {"get": true}},"is_new_user": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"s_uid": {"get": {"get": true}},"text_date_from": {"get": {"result": true}},"text_date_to": {"get": {"result": true}},"uid": {"get": {"get": true}},"uid_actor": {"get": {"get": true}}}};
+  return {"a_field": {"a_day": {"get": {"get": true}},"a_visit": {"get": {"result": true}},"a_visit_ignore": {"get": {"get": true}},"dt_date": {"get": {"get": true}},"dt_from": {"get": {"get": true,"result": true}},"dt_to": {"get": {"get": true,"result": true}},"i_count": {"get": {"get": true,"result": true}},"i_duration": {"get": {"get": true}},"id_duration": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"id_repeat_end": {"get": {"get": true}},"is_cancel": {"get": {"get": true}},"is_include_parallel": {"get": {"get": true}},"is_new_user": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"s_uid": {"get": {"get": true}},"text_date_from": {"get": {"result": true}},"text_date_to": {"get": {"result": true}},"uid": {"get": {"get": true}},"uid_actor": {"get": {"get": true}}}};
 };

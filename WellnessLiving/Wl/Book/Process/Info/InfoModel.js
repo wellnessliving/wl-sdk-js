@@ -37,75 +37,26 @@ function Wl_Book_Process_Info_InfoModel()
    * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
    * Should be passed for any type of repetition.
    * @property {number[]} a_week Deprecated, use `a_day` instead!
-   * @property {*} dl_end Deprecated, use `dt_from` and `dt_to` instead!
-   * @property {*} dt_from Date to start recurring booking.
+   * @property {string} [dl_end] Deprecated, use `dt_from` and `dt_to` instead!
+   * @property {string} [dt_from] Date to start recurring booking.
    * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {*} dt_to Date to complete recurring booking.
+   * @property {string} [dt_to] Date to complete recurring booking.
    * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {*} i_count The number of occurrences after which the appointment's repeat cycle stops.
+   * @property {number} [i_count] The number of occurrences after which the appointment's repeat cycle stops.
    *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    *  Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
-   * @property {*} i_occurrence Deprecated, use `i_count` instead!
+   * @property {number} [i_occurrence] Deprecated, use `i_count` instead!
    * @property {number} i_period Deprecated, use `i_duration` instead!
    * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   * @property {number} id_period Deprecated, use `id_duration` instead!
+   * @property {number} id_period Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.
    * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**
    * Information about the recurring booking:
-   * <dl>
-   *   <dt>int[] <var>a_day</var></dt>
-   *   <dd>
-   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   *     Should be passed for any type of repetition.
-   *   </dd>
-   *   <dt>int[] <var>a_week</var></dt>
-   *   <dd>Deprecated, use `a_day` instead!</dd>
-   *   <dt>string [<var>dl_end</var>]</dt>
-   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
-   *   <dt>
-   *     string [<var>dt_from</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to start recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *     string [<var>dt_to</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to complete recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *      int [<var>i_count</var>]
-   *    </dt>
-   *    <dd>
-   *      The number of occurrences after which the appointment's repeat cycle stops.
-   *      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *      Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
-   *    </dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
-   *   <dt>int [<var>i_occurrence</var>]</dt>
-   *   <dd>Deprecated, use `i_count` instead!</dd>
-   *   <dt>int <var>i_period</var></dt>
-   *   <dd>Deprecated, use `i_duration` instead!</dd>
-   *   <dt>
-   *     int <var>id_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *     Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   *   </dd>
-   *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
-   *   <dt>int <var>id_repeat_end</var></dt>
-   *   <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
-   * </dl>
+   *
    *
    * This will be `null` if the booking isn't recurring.
    *
@@ -122,12 +73,6 @@ function Wl_Book_Process_Info_InfoModel()
 
   /**
    * A list of assets being booked. Every element has the next structure:
-   * <dl>
-   *   <dt>int <var>i_index</var></dt>
-   *   <dd>Order number of the asset (maybe from 1 to asset quantity).</dd>
-   *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The key of asset.</dd>
-   * </dl>
    *
    * @post post
    * @type {Wl_Book_Process_Info_InfoModel_a_resource[]}
@@ -141,109 +86,25 @@ function Wl_Book_Process_Info_InfoModel()
    * @property {string} dt_date The date/time when session starts in MySQL format and in GMT.
    * @property {number} i_active Total number of clients on the active list.
    * @property {number} i_active_limit Total capacity of the active list.
+   * @property {number} i_duration Duration of a service.
    * @property {number} i_wait Total number of clients on the wait list.
    * @property {?number} i_wait_limit Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.
-   * @property {*} is_select <tt>true</tt> if this session should be selected when page is initialized;
+   * @property {boolean} is_select <tt>true</tt> if this session should be selected when page is initialized;
    * <tt>false</tt> if otherwise.
    * @property {boolean} is_wait `true` if client is added to a wait list, `false` - to an active list.
    * @property {boolean} is_wait_list_unpaid Allow clients to join the wait list unpaid.
    * @property {string} k_class_period The key of the session.
    * @property {string} k_location Location key.
-   * @property {boolean} m_price Price of the session.
+   * @property {string} m_price Price of the session.
    * @property {string} s_location The name of the location where the session occurred.
    * @property {string} s_start The date/time when the session starts in human-readable format.
    * Returned in the time zone of the location.
    * @property {string} text_duration String representation of session duration.
-   * Duration formatting method {@link Wl_Book_Process_Info_InfoModel._classDurationFormat()}.
+   *
    */
 
   /**
    * A list of all class sessions that can be booked together. Every element has the next structure:
-   * <dl>
-   *   <dt>
-   *     string[] <var>a_staff</var>
-   *   </dt>
-   *   <dd>
-   *     List of staff names that are leading this session.
-   *   </dd>
-   *   <dt>
-   *     string[] <var>a_virtual_location</var>
-   *   </dt>
-   *   <dd>
-   *     List of virtual locations.
-   *   </dd>
-   *   <dt>
-   *     string <var>dt_date</var>
-   *   </dt>
-   *   <dd>
-   *     The date/time when session starts in MySQL format and in GMT.
-   *   </dd>
-   *   <dt>int `i_active`</dt>
-   *   <dd>Total number of clients on the active list.</dd>
-   *   <dt>int `i_active_limit`</dt>
-   *   <dd>Total capacity of the active list.</dd>
-   *   <dt>int `i_wait`</dt>
-   *   <dd>Total number of clients on the wait list.</dd>
-   *   <dt>int|null `i_wait_limit`</dt>
-   *   <dd>Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.</dd>
-   *   <dt>
-   *     boolean <var>is_select</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> if this session should be selected when page is initialized;
-   *     <tt>false</tt> if otherwise.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_wait</var>
-   *   </dt>
-   *   <dd>
-   *     `true` if client is added to a wait list, `false` - to an active list.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_wait_list_unpaid</var>
-   *   </dt>
-   *   <dd>
-   *     Allow clients to join the wait list unpaid.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_class_period</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the session.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
-   *   <dd>
-   *     Location key.
-   *   </dd>
-   *   <dt>
-   *     bool <var>m_price</var>
-   *   </dt>
-   *   <dd>
-   *     Price of the session.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_location</var>
-   *   </dt>
-   *   <dd>
-   *     The name of the location where the session occurred.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_start</var>
-   *   </dt>
-   *   <dd>
-   *     The date/time when the session starts in human-readable format.
-   *     Returned in the time zone of the location.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_duration</var>
-   *   </dt>
-   *   <dd>
-   *     String representation of session duration.
-   *     Duration formatting method {@link Wl_Book_Process_Info_InfoModel._classDurationFormat()}.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Book_Process_Info_InfoModel_a_session_all[]}
@@ -252,7 +113,6 @@ function Wl_Book_Process_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Info_InfoModel_a_session_free
-   * @property {string} dt_date::k_class_period Composite key of the array.
    * @property {string} dt_date Session date.
    * @property {string} k_class_period Class period key for the session.
    */
@@ -261,13 +121,10 @@ function Wl_Book_Process_Info_InfoModel()
    * List of sessions that can be paid without new purchases.
    * Such as previously prepaid or free sessions.
    *
-   * Each its item has the key of following format: <dl>
-   *   <dt>string <var>dt_date</var>::<var>k_class_period</var></dt><dd>Composite key of the array.</dd>
-   * </dl>
-   * and the value of following structure: <dl>
-   *   <dt>string <var>dt_date</var></dt><dd>Session date.</dd>
-   *   <dt>string <var>k_class_period</var></dt><dd>Class period key for the session.</dd>
-   * </dl>
+   *
+   *
+   * Each its item has the key of following format: `dt_date::k_class_period` and
+   * the value of following structure:
    *
    * @get result
    * @type {Wl_Book_Process_Info_InfoModel_a_session_free[]}
@@ -277,23 +134,22 @@ function Wl_Book_Process_Info_InfoModel()
   /**
    * The selected sessions.
    *
-   * <b>Keys</b> - The class period keys.
-   * <b>Values</b> - List of date/time when the session occurred in MySQL format and in GMT.
+   * Keys are class period keys.
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_session_select = [];
 
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * Keys - session IDs.
-   *
-   * Values - index arrays of dates/time when session is occurred. In MySQL format. In GMT.
+   * Keys are class period keys.
+   * Values are index arrays of dates/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_session_wait_list_unpaid = [];
 
@@ -306,43 +162,14 @@ function Wl_Book_Process_Info_InfoModel()
   /**
    * @typedef {{}} Wl_Book_Process_Info_InfoModel_a_staff
    * @property {Wl_Book_Process_Info_InfoModel_a_staff_a_logo} a_logo The staff member photo:
-   * <dl>
-   *   <dt>int <tt>i_height</tt></dt>
-   *   <dd>The image height.</dd>
-   *   <dt>int <tt>i_width</tt></dt>
-   *   <dd>The image width.</dd>
-   *   <dt>string <tt>s_url</tt></dt>
-   *   <dd>The image URL.</dd>
-   * </dl>
    * @property {string} s_family The first letter of staff member surname.
    * @property {string} s_staff The staff member's name.
-   * @property {string} uid UID of the staff member.
+   * @property {string} uid_staff UID of the staff member.
+   * @property {string} uid Alias of `uid_staff` for backward compatibility.
    */
 
   /**
    * The staff member conducting the session. Every element has the next structure:
-   * <dl>
-   *   <dt>
-   *     array <var>a_logo</var>
-   *   </dt>
-   *     <dd>
-   *     The staff member photo:
-   *     <dl>
-   *       <dt>int <var>i_height</var></dt>
-   *       <dd>The image height.</dd>
-   *       <dt>int <var>i_width</var></dt>
-   *       <dd>The image width.</dd>
-   *       <dt>string <var>s_url</var></dt>
-   *       <dd>The image URL.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>string <var>s_family</var></dt>
-   *   <dd>The first letter of staff member surname.</dd>
-   *   <dt>string <var>s_staff</var></dt>
-   *   <dd>The staff member's name.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>UID of the staff member.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Book_Process_Info_InfoModel_a_staff[]}
@@ -356,6 +183,24 @@ function Wl_Book_Process_Info_InfoModel()
    * @type {string[]}
    */
   this.a_visit = undefined;
+
+  /**
+   * @typedef {{}} Wl_Book_Process_Info_InfoModel_a_visit_payment
+   * @property {boolean} is_free `true` if the visit is free; `false` otherwise.
+   * @property {boolean} is_waitlist `true` whether the booked slot was waitlisted; `false` otherwise.
+   * @property {string} k_login_promotion Applied user's purchase option.
+   * @property {string} k_promotion Purchase option.
+   * @property {string} k_session_pass Applied session pass.
+   * @property {string} text_promotion Purchase option title.
+   */
+
+  /**
+   * Values are arrays with next keys:
+   *
+   * @post result
+   * @type {Wl_Book_Process_Info_InfoModel_a_visit_payment[]}
+   */
+  this.a_visit_payment = undefined;
 
   /**
    * Determines whether the class/event can be booked at this step or not.
@@ -617,8 +462,6 @@ function Wl_Book_Process_Info_InfoModel()
    * `true` if event can be paid with pricing option only.
    * `false` if full event purchase or single session purchase are allowed.
    *
-   * Copy of {@link \RsClassSql}.`is_promotion_only`.
-   *
    * @get result
    * @type {boolean}
    */
@@ -817,7 +660,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Info_InfoModel);
  */
 Wl_Book_Process_Info_InfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_day_available": {"get": {"result": true}},"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_all": {"get": {"result": true}},"a_session_free": {"get": {"result": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_staff": {"get": {"result": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dl_end": {"get": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"dt_date_local": {"get": {"result": true}},"hide_price": {"get": {"result": true}},"html_contract": {"get": {"result": true}},"html_duration": {"get": {"result": true}},"html_special": {"get": {"result": true}},"html_special_preview": {"get": {"result": true}},"i_available": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait": {"get": {"result": true}},"i_wait_limit": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_agree": {"post": {"post": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_repeat_client": {"get": {"result": true}},"is_book_repeat_no_end_date": {"get": {"result": true}},"is_book_unpaid": {"post": {"post": true}},"is_card_authorize": {"post": {"result": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_event_session": {"get": {"result": true}},"is_force_book": {"post": {"result": true}},"is_force_pay_later": {"post": {"post": true}},"is_location_phone": {"get": {"result": true}},"is_next": {"post": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_single_buy": {"get": {"result": true}},"is_special_preview": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"result": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_class": {"get": {"result": true}},"s_location_address": {"get": {"result": true}},"s_location_title": {"get": {"result": true}},"s_signature": {"post": {"post": true}},"s_time": {"get": {"result": true}},"show_class_capacity": {"get": {"get": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"text_location_phone": {"get": {"result": true}},"text_room": {"get": {"result": true}},"text_staff": {"get": {"result": true}},"text_timezone": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_day_available": {"get": {"result": true}},"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_all": {"get": {"result": true}},"a_session_free": {"get": {"result": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_staff": {"get": {"result": true}},"a_visit": {"post": {"result": true}},"a_visit_payment": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dl_end": {"get": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"dt_date_local": {"get": {"result": true}},"hide_price": {"get": {"result": true}},"html_contract": {"get": {"result": true}},"html_duration": {"get": {"result": true}},"html_special": {"get": {"result": true}},"html_special_preview": {"get": {"result": true}},"i_available": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait": {"get": {"result": true}},"i_wait_limit": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_agree": {"post": {"post": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_repeat_client": {"get": {"result": true}},"is_book_repeat_no_end_date": {"get": {"result": true}},"is_book_unpaid": {"post": {"post": true}},"is_card_authorize": {"post": {"result": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_event_session": {"get": {"result": true}},"is_force_book": {"post": {"result": true}},"is_force_pay_later": {"post": {"post": true}},"is_location_phone": {"get": {"result": true}},"is_next": {"post": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_single_buy": {"get": {"result": true}},"is_special_preview": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"result": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_class": {"get": {"result": true}},"s_location_address": {"get": {"result": true}},"s_location_title": {"get": {"result": true}},"s_signature": {"post": {"post": true}},"s_time": {"get": {"result": true}},"show_class_capacity": {"get": {"get": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"text_location_phone": {"get": {"result": true}},"text_room": {"get": {"result": true}},"text_staff": {"get": {"result": true}},"text_timezone": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
 };
 
 /**

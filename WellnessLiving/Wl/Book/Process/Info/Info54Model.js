@@ -3,7 +3,6 @@
  *
  * When using this endpoint, take into account the {@link Wl_Book_Process_ProcessSpaSid.QUIZ} step.
  *
- * @augments WlSdk_ModelAbstract
  * @constructor
  */
 function Wl_Book_Process_Info_Info54Model()
@@ -120,6 +119,8 @@ function Wl_Book_Process_Info_Info54Model()
   /**
    * List of sessions that can be paid without new purchases.
    * Such as previously prepaid or free sessions.
+   *
+   *
    *
    * Each its item has the key of following format: `dt_date::k_class_period` and
    * the value of following structure:
