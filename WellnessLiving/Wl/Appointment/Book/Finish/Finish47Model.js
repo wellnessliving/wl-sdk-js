@@ -27,14 +27,6 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * The keys of the booked appointments.
    * Every element has key:
-   * <dl>
-   *   <dt>
-   *     string <var>k_appointment</var>
-   *   </dt>
-   *   <dd>
-   *     The appointment key.
-   *   </dd>
-   * </dl>
    *
    * @post result
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_appointment[]}
@@ -42,10 +34,85 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_appointment = undefined;
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product_a_repeat_a_resource
+   * @property {number} [i_index] The asset index on the layout. Specify this only if the asset category has a layout.
+   * @property {string} k_resource The asset.
+   */
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product_a_repeat
+   * @property {number[]} [a_week] The days of week when appointment repeats. One of the {@link ADateWeekSid} constants.
+   * This will be empty if the appointment doesn't repeat weekly.
+   * @property {string} [dl_end] The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
+   * @property {number} [i_occurrence] The number of occurrences after which the appointment's repeat cycle must stop.
+   * This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
+   * @property {number} i_period The frequency of the appointment's repeat cycle.
+   * @property {number} id_period The measurement unit of <tt>i_period</tt>. One of the {@link ADurationSid} constants.
+   * @property {boolean} [is_month] <tt>true</tt> if the appointment repeats monthly on the same date.
+   * <tt>false</tt> if the appointment repeats monthly on the same day of the week.
+   * <tt>null</tt> if the appointment doesn't repeat monthly.
+   */
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product
+   * @property {number} i_count The add-on count
+   * @property {number} [i_count_use] The add-on use count.
+   * @property {string} k_shop_product_option The key of add-on.
+   */
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict
+   * @property {string} dt_date_local New appointment date/time in MySQL in locale timezone.
+   * @property {number} i_duration New asset booking duration.
+   * @property {number} i_index New asset index.
+   * @property {number} id_conflict Solution type. One of {@link RsAppointmentEditConflictSid} constants.
+   * @property {string} k_resource New asset.
+   * @property {?string} k_staff New staff member.  `null` in a case of asset booking.
+   */
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data
+   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict} [a_conflict] Information about booking conflicts. Keys are bookings dates/times in MySQL format in UTC. Values are arrays with next keys:
+   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product} [a_product] Add-ons to the appointment. Specify this for appointment bookings only.
+   * Old format: array keys refer to primary keys.
+   * New format: each element is an array:
+   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product_a_repeat} [a_repeat] Recurring booking information:
+   *
+   * This will be empty if the appointment isn't recurring.
+   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product_a_repeat_a_resource} [a_resource] A list of assets for the appointment booking.
+   * Keys refer to asset categories.  Values refer to arrays with the next keys:
+   *
+   * Specify this only for the appointment booking.
+   * @property {string} dt_date The date/time for the booking in MySQL format in the location's time zone.
+   * @property {number} [i_duration] The duration of asset booking in minutes. Specify this for separate asset bookings only.
+   * @property {number} [i_index] The asset index on the layout.
+   * Specify this for separate asset bookings only and for cases when the asset category only has a layout.
+   * @property {number} [id_class_tab] The booking service type. One of the {@link Wl_Classes_Tab_TabSid} constants.
+   * @property {number} [id_gender_staff] The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
+   * Specify this for appointment bookings only.
+   * @property {boolean} [is_wait_list_unpaid] If `true`, appointment waits unpaid.
+   * @property {string} [k_login_prize] The user's prize.
+   *
+   * @property {string} [k_login_promotion] The user's pass (for example, a membership or a package).
+   * Specify this if you want to set the pass to use to pay for the booking.
+   *
+   * @property {string} [k_resource] The asset booking. Specify this for separate asset bookings only.
+   *
+   * @property {string} [k_service] The appointment booking. Specify this for appointment bookings only.
+   *
+   * @property {string} [k_session_pass] The user's pass.
+   * @property {string} [k_staff] The staff member conducting the appointment.
+   * Specify this for appointment bookings only.
+   *
+   * @property {string} [k_staff_date] The staff member conducting the appointment.
+   * The difference between this an <tt>k_staff</tt> is that this value must be set only in cases
+   * when you want to add a customer to an appointment that already exists.
+   * Specify this for appointment bookings only.
+   *
+   * @property {string} [m_tip_appointment] The amount of selected tips.
+   */
+
+  /**
    * The documentation is the same as in {@link Wl_Appointment_Book_Finish_FinishModel.a_book_data}.
    *
    * @post post
-   * @type {{}}
+   * @type {Wl_Appointment_Book_Finish_Finish47Model_a_book_data}
    */
   this.a_book_data = [];
 
@@ -66,14 +133,6 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * Information for sending an appointment notification.
-   * <dl>
-   *    <dt>bool [<var>is_mail</var>]</dt>
-   *    <dd>`true` to send mail; `false` to not send.</dd>
-   *    <dt>bool [<var>is_sms</var>]</dt>
-   *    <dd>`true` to send SMS; `false` to not send.</dd>
-   *    <dt>bool [<var>is_push</var>]</dt>
-   *    <dd>`true` to send push notification; `false` to not send.</dd>
-   *  </dl>
    *
    * @get result
    * @post post
@@ -82,12 +141,52 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_notification = [];
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_pay_form_pa
+   * @property {string} [json_data] Additional payer authentication data.
+   *
+   *  Copy of value set with
+   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paDataSet()</tt>.
+   *
+   *  An empty string (or element not passed) if this payment processor does not provide additional payer
+   *  authentication data, or payer authentication was not performed.
+   * @property {string} [m_amount] Authenticated payment amount.
+   *
+   *  Copy of value set with
+   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paAmountSet()</tt>.
+   *
+   *  An empty string (or element not passed) if payer authentication was not performed.
+   * @property {string} [k_pay_transaction] Key of the payment transaction that was created during payer authentication.
+   *  In this case, payment transaction should be attached to this transaction.
+   *
+   *  An empty string (or element not passed) if transaction was not created during payer authentication, or payer
+   *  authentication was not executed.
+   */
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_pay_form
+   * @property {number} f_amount Amount of money to withdraw with this payment source.
+   * @property {number} id_pay_method Payment method. One of {@link WlPayMethodSid} constants.
+   * @property {boolean} is_hide Whether this payment method is hidden.
+   *
+   * @property {boolean} [is_success] Whether this source was successfully charged.
+   * @property {string} [m_fee] Fee amount for this payment source.
+   *
+   * @property {string} [m_surcharge] Surcharge amount for this payment source.
+   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_pay_form_pa} [pa] Payer authentication data. Element may not present for payment sources that do not support payer authentication,
+   *  or payer authentication is not implemented by this payment processor.
+   *
+   *  This array is represented by
+   *  <tt>namespace.Wl/Pay/Processor/ProcessorInterface/PayerAuthenticationForm.xml</tt>
+   *  at browser side.
+   *
+   *  Structure of the array:
+   * @property {string} s_index Index of this form. This corresponds the key this item is written in this array with.
+   */
+
+  /**
    * A list of payment sources to pay with.
    *
-   * Structure of this array corresponds structure of {@link RsPayForm::$a_pay_source}.
-   *
    * @post post
-   * @type {{}[]}
+   * @type {Wl_Appointment_Book_Finish_Finish47Model_a_pay_form[]}
    */
   this.a_pay_form = [];
 
@@ -101,18 +200,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    */
 
   /**
-   * Data required for payment. Has next structure:<dl>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>Type of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>Promotion key or appointment key. Depends on <var>id_purchase_item</var> of this array.</dd>
-   *   <dt>string <var>k_login_promotion</var></dt>
-   *   <dd>Login promotion key.</dd>
-   *   <dt>string <var>k_session_pass</var></dt>
-   *   <dd>Session pass key.</dd>
-   *   <dt>string <var>text_discount_code</var></dt>
-   *   <dd>Discount code.</dd>
-   * </dl>
+   * Data required for payment. Has next structure:
    *
    * @post post
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_payment_data}
@@ -130,8 +218,8 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
+   * Key is quiz key.
+   * Value is quiz response key.
    *
    * @post post
    * @type {string[]}
@@ -159,20 +247,8 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * Data to create new user.
-   * Specify this if <var>$uid</var> is empty.
+   * Specify this if <var>uid</var> is empty.
    * Must contain the following keys:
-   * <dl>
-   *   <dt>string[] <var>a_note</var></dt>
-   *   <dd>List of notes to add to user.</dd>
-   *   <dt>string <var>text_mail</var></dt>
-   *   <dd>Mail.</dd>
-   *   <dt>string <var>text_name_first</var></dt>
-   *   <dd>First name.</dd>
-   *   <dt>string <var>text_name_last</var></dt>
-   *   <dd>Last name.</dd>
-   *   <dt>string <var>text_phone</var></dt>
-   *   <dd>Phone.</dd>
-   * </dl>
    *
    * @post get
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_user}
@@ -190,27 +266,15 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_visit_payment
    * @property {boolean} is_free `true` if the visit is free; `false` otherwise.
-   * @property {string} k_login_promotion Key of applied user's purchase option.
-   * @property {string} k_promotion Key of purchase option.
-   * @property {string} k_session_pass Key of applied session pass.
+   * @property {boolean} is_waitlist `true` whether the booked slot was waitlisted; `false` otherwise.
+   * @property {string} k_login_promotion Applied user's purchase option.
+   * @property {string} k_promotion Purchase option.
+   * @property {string} k_session_pass Applied session pass.
    * @property {string} text_promotion Purchase option title.
    */
 
   /**
-   * Keys - keys of books made.
-   * Values - arrays with next keys:
-   * <dl>
-   *     <dt>bool `is_free`</dt>
-   *     <dd>`true` if the visit is free; `false` otherwise.</dd>
-   *     <dt>string `k_login_promotion`</dt>
-   *     <dd>Key of applied user's purchase option.</dd>
-   *     <dt>string `k_promotion`</dt>
-   *     <dd>Key of purchase option.</dd>
-   *     <dt>string `k_session_pass`</dt>
-   *     <dd>Key of applied session pass.</dd>
-   *     <dt>string `text_promotion`</dt>
-   *     <dd>Purchase option title.</dd>
-   * </dl>
+   * Values are arrays with next keys:
    *
    * @post result
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_visit_payment[]}
@@ -315,6 +379,12 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * The user key.
+   *
+   * This field is used if the client books for himself or for the relative.
+   *
+   * This field is incorrect to use for guest booking since in this case the client will be checked as a relative.
+   *
+   * In case of a group booking or a guest booking, the key of the client who is making the booking is set here.
    *
    * @get get
    * @post get
