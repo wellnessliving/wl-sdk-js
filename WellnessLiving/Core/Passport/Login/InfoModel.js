@@ -1,7 +1,5 @@
 /**
- * Gets the user ID for the current user and a password reset URL.
- *
- * This model is generated automatically based on API.
+ * Returns information about user that is currently signed in.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -13,7 +11,7 @@ function Core_Passport_Login_InfoModel()
   /**
    * The current user key.
    *
-   * It is `null` if user is not signed in.
+   * This will be `null` if the user isn't signed in.
    *
    * @get result
    * @type {?string}
@@ -29,7 +27,7 @@ function Core_Passport_Login_InfoModel()
   this.url_password_change = undefined;
 
   /**
-   * URL to register page.
+   * The URL to the registration page.
    *
    * @get result
    * @type {string}
@@ -46,5 +44,18 @@ WlSdk_ModelAbstract.extend(Core_Passport_Login_InfoModel);
  */
 Core_Passport_Login_InfoModel.prototype.config=function()
 {
-  return {"a_field": {"uid": {"get": {"result": true}},"url_password_change": {"get": {"result": true}},"url_register": {"get": {"result": true}}}};
+  return {"a_field":{"uid":{"get":{"result":true}},"url_password_change":{"get":{"result":true}},"url_register":{"get":{"result":true}}}};
 };
+
+/**
+ * Returns information about user that is currently signed in.
+ *
+ * Used to bootstrap the login widget: determines whether a session is active and provides the URLs needed
+ * to redirect an unauthenticated visitor to the password reset or registration flows without hard-coding
+ * those URLs on the frontend.
+ *
+ * @function
+ * @name Core_Passport_Login_InfoModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

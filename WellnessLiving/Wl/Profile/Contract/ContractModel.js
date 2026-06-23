@@ -1,10 +1,5 @@
 /**
- * An endpoint that gets information about a session pass or membership with a contract.
- *
- * The POST method will complete a sale of a Purchase Option requiring a contract.
- * The method that WellnessLiving uses to encode a signature into a string isn't currently available in the SDK.
- *
- * This model is generated automatically based on API.
+ * Returns contract information for the specified purchase option.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,7 +11,7 @@ function Wl_Profile_Contract_ContractModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "uid,k_business,k_location,id_purchase_item,k_id,k_purchase_item,m_price_custom";
+  this._s_key = "uid,k_business,k_location,id_purchase_item,k_id,k_purchase_item,m_price_custom,s_discount_code";
 
   /**
    * The start date of the contract.
@@ -51,18 +46,19 @@ function Wl_Profile_Contract_ContractModel()
   this.i_minor_age = undefined;
 
   /**
-   * The type of purchase item. This is one of the {@link Wl_Purchase_Item_ItemSid} constants.
-   * Optional if {@link Wl_Profile_Contract_ContractModel.k_purchase_item} is not empty.
+   * The type of purchase item. This is one of the {@link RsPurchaseItemSid} constants.
+   * Optional if `k_purchase_item` is not empty.
    *
    * @get get
+   * @see RsPurchaseItemSid
    * @type {number}
    */
   this.id_purchase_item = 0;
 
   /**
-   * <tt>false</tt> if user has not agreed to use Electronic Signatures,
-   * <tt>true</tt> if user has agreed to use Electronic Signatures,
-   * <tt>null</tt> otherwise.
+   * `false` if user has not agreed to use Electronic Signatures,
+   * `true` if user has agreed to use Electronic Signatures,
+   * `null` otherwise.
    *
    * @post post
    * @type {?boolean}
@@ -76,16 +72,16 @@ function Wl_Profile_Contract_ContractModel()
    * @post get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * The key of the purchase item in the database.
-   * The item key. Depends of {@link Wl_Profile_Contract_ContractModel.id_purchase_item} property.
+   * The item key. Depends on `id_purchase_item` property.
    *
    * @get get
    * @type {string}
    */
-  this.k_id = "0";
+  this.k_id = "";
 
   /**
    * The key of the selected location.
@@ -93,7 +89,7 @@ function Wl_Profile_Contract_ContractModel()
    * @get get
    * @type {string}
    */
-  this.k_location = "0";
+  this.k_location = "";
 
   /**
    * The key of the selected purchase item.
@@ -102,7 +98,7 @@ function Wl_Profile_Contract_ContractModel()
    * @post get
    * @type {string}
    */
-  this.k_purchase_item = "0";
+  this.k_purchase_item = "";
 
   /**
    * Amount of a flat manual discount.
@@ -110,7 +106,7 @@ function Wl_Profile_Contract_ContractModel()
    * @get get
    * @type {string}
    */
-  this.m_discount_flat = "0";
+  this.m_discount_flat = "";
 
   /**
    * The custom price of the item.
@@ -152,7 +148,7 @@ function Wl_Profile_Contract_ContractModel()
    * @post get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -164,7 +160,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Contract_ContractModel);
  */
 Wl_Profile_Contract_ContractModel.prototype.config=function()
 {
-  return {"a_field": {"dt_start": {"get": {"get": true}},"f_manual_discount": {"get": {"get": true}},"html_contract": {"get": {"result": true}},"i_minor_age": {"get": {"result": true}},"id_purchase_item": {"get": {"get": true}},"is_agree": {"post": {"post": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_purchase_item": {"get": {"get": true},"post": {"get": true}},"m_discount_flat": {"get": {"get": true}},"m_price_custom": {"get": {"get": true}},"s_discount_code": {"get": {"get": true}},"s_signature": {"post": {"post": true}},"text_title": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field":{"dt_start":{"get":{"get":true}},"f_manual_discount":{"get":{"get":true}},"html_contract":{"get":{"result":true}},"i_minor_age":{"get":{"result":true}},"id_purchase_item":{"get":{"get":true}},"is_agree":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_id":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_purchase_item":{"get":{"get":true},"post":{"get":true}},"m_discount_flat":{"get":{"get":true}},"m_price_custom":{"get":{"get":true}},"s_discount_code":{"get":{"get":true}},"s_signature":{"post":{"post":true}},"text_title":{"get":{"result":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**
@@ -173,10 +169,36 @@ Wl_Profile_Contract_ContractModel.prototype.config=function()
  * @param {string} uid The key of the current user.
  * @param {string} k_business The key of the business to show information for.
  * @param {string} k_location The key of the selected location.
- * @param {number} id_purchase_item The type of purchase item. This is one of the {@link Wl_Purchase_Item_ItemSid} constants. Optional if {@link Wl_Profile_Contract_ContractModel.k_purchase_item} is not empty.
- * @param {string} k_id The key of the purchase item in the database. The item key. Depends of {@link Wl_Profile_Contract_ContractModel.id_purchase_item} property.
+ * @param {number} id_purchase_item The type of purchase item. This is one of the {@link RsPurchaseItemSid} constants. Optional if `k_purchase_item` is not empty.
+ * @param {string} k_id The key of the purchase item in the database. The item key. Depends on `id_purchase_item` property.
  * @param {string} k_purchase_item The key of the selected purchase item.
  * @param {string} m_price_custom The custom price of the item.
+ * @param {string} s_discount_code The discount code used for the item.
  * @returns {Wl_Profile_Contract_ContractModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns contract information for the specified purchase option.
+ *
+ * Renders the contract text for the specified purchase option, applying any applicable
+ * discounts, and returns the content needed to display the contract acceptance modal to the
+ * client.
+ *
+ * @function
+ * @name Wl_Profile_Contract_ContractModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Completes a sale of a Purchase Option requiring a contract by submitting the signed contract.
+ *
+ * Accepts an encoded client signature and agreement flag, decodes the signature, and records
+ * the signed contract for the specified purchase item.
+ *
+ * @function
+ * @name Wl_Profile_Contract_ContractModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

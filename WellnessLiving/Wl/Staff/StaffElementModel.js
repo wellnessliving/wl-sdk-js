@@ -1,10 +1,5 @@
 /**
- * An endpoint that can create or edit a staff member in a business.
- *
- * You can also use this endpoint to get information about a staff member's activity in another business when using
- * the {@link Wl_Business_BusinessModel} endpoint.
- *
- * This model is generated automatically based on API.
+ * Update or create staff.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,15 +11,15 @@ function Wl_Staff_StaffElementModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,k_staff";
+  this._s_key = "k_business,uid_staff";
 
   /**
-   * Lis of locations where the staff member works. Each element is primary key from {@link \RsLocationSql} table.
+   * The list of locations where the staff member works.
    *
    * `null` means to not change the current value of the field.
    *
    * @post post
-   * @type {?{}}
+   * @type {?string[]}
    */
   this.a_location = null;
 
@@ -49,21 +44,32 @@ function Wl_Staff_StaffElementModel()
   this.dl_start = null;
 
   /**
-   * Gender of staff member. One of {@link Wl_Gender_GenderSid} constants.
+   * String identifiers for gender.
    *
-   * `null` means to not change the current value of the field or set gender by default for new staff.
+   * Values:
+   * - 2 (`FEMALE`): Female gender.
+   * - 1 (`MALE`): Male gender.
+   * - 3 (`UNDEFINED`): Gender is undefined in cases where the user preferred not to identify their gender.
    *
    * @post post
+   * @see AGenderSid
    * @type {?number}
    */
   this.id_gender = null;
 
   /**
-   * ID of the default system role from {@link RsPrivilegeRoleSid}.
+   * String identifiers for rs.privilege.role.
    *
-   * `null` means to not change the current value of the field.
+   * Do not reorder class constants. It is important during selecting all system roles and custom roles from database.
+   *
+   * Values:
+   * - 1 (`BUSINESS_OWNER`): Staff role business owner.
+   * - 4 (`FRONT_DESK`): Staff role front desk.
+   * - 3 (`INSTRUCTOR`): Staff role instructor.
+   * - 2 (`LOCATION_OWNER`): Staff role location owner.
    *
    * @post post
+   * @see RsPrivilegeRoleSid
    * @type {?number}
    */
   this.id_role = null;
@@ -89,12 +95,21 @@ function Wl_Staff_StaffElementModel()
   this.is_microsite = null;
 
   /**
+   * Whether password set is disabled. `true` - if the email is associated to a client profile which has a password set,
+   *   `false` - otherwise.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_password_set_disable = false;
+
+  /**
    * Whether the staff member can to sign in.
    *
    * @post post
    * @type {boolean}
    */
-  this.is_uid = true;
+  this.is_uid = false;
 
   /**
    * The key of the business in which the staff member is being created or edited.
@@ -136,9 +151,12 @@ function Wl_Staff_StaffElementModel()
   this.k_location = null;
 
   /**
-   * The key of the staff member who is being created or edited.
+   * The key of the staff member resolved and used internally by this API.
    *
-   * This will be `null` in cases where a new staff member is created.
+   * This property is populated from `uid_staff` in `post()` and
+   * returned in API result for compatibility.
+   *
+   * Passing `k_staff` in request payload is not supported and causes an error.
    *
    * @post get,result
    * @type {?string}
@@ -168,7 +186,7 @@ function Wl_Staff_StaffElementModel()
   /**
    * Custom city title.
    *
-   * `null` means to not change the current value of the field or <var>k_city</var> is specified.
+   * `null` means to not change the current value of the field or `k_city` is specified.
    *
    * @post post
    * @type {?string}
@@ -269,6 +287,17 @@ function Wl_Staff_StaffElementModel()
    */
   this.text_postal = null;
 
+  /**
+   * User key of a staff member.
+   *
+   * This is the supported request identifier for staff update operations.
+   * Value is normalized into `k_staff` in `post()`.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.uid_staff = null;
+
   this.changeInit();
 }
 
@@ -279,14 +308,28 @@ WlSdk_ModelAbstract.extend(Wl_Staff_StaffElementModel);
  */
 Wl_Staff_StaffElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_location": {"post": {"post": true}},"dl_end": {"post": {"post": true}},"dl_start": {"post": {"post": true}},"id_gender": {"post": {"post": true}},"id_role": {"post": {"post": true}},"is_employ": {"post": {"post": true}},"is_microsite": {"post": {"post": true}},"is_uid": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_business_role": {"post": {"post": true}},"k_city": {"post": {"post": true}},"k_location": {"post": {"post": true}},"k_staff": {"post": {"get": true,"result": true}},"text_address": {"post": {"post": true}},"text_biography": {"post": {"post": true}},"text_city": {"post": {"post": true}},"text_email": {"post": {"post": true}},"text_first_name": {"post": {"post": true}},"text_last_name": {"post": {"post": true}},"text_password": {"post": {"post": true}},"text_password_confirm": {"post": {"post": true}},"text_phone_home": {"post": {"post": true}},"text_phone_mobile": {"post": {"post": true}},"text_position": {"post": {"post": true}},"text_postal": {"post": {"post": true}}}};
+  return {"a_field":{"a_location":{"post":{"post":true}},"dl_end":{"post":{"post":true}},"dl_start":{"post":{"post":true}},"id_gender":{"post":{"post":true}},"id_role":{"post":{"post":true}},"is_employ":{"post":{"post":true}},"is_microsite":{"post":{"post":true}},"is_password_set_disable":{"post":{"post":true}},"is_uid":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_business_role":{"post":{"post":true}},"k_city":{"post":{"post":true}},"k_location":{"post":{"post":true}},"k_staff":{"post":{"get":true,"result":true}},"text_address":{"post":{"post":true}},"text_biography":{"post":{"post":true}},"text_city":{"post":{"post":true}},"text_email":{"post":{"post":true}},"text_first_name":{"post":{"post":true}},"text_last_name":{"post":{"post":true}},"text_password":{"post":{"post":true}},"text_password_confirm":{"post":{"post":true}},"text_phone_home":{"post":{"post":true}},"text_phone_mobile":{"post":{"post":true}},"text_position":{"post":{"post":true}},"text_postal":{"post":{"post":true}},"uid_staff":{"post":{"post":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Staff_StaffElementModel.instanceGet
  * @param {string} k_business The key of the business in which the staff member is being created or edited. This field is required.
- * @param {?string} k_staff The key of the staff member who is being created or edited. This will be `null` in cases where a new staff member is created.
+ * @param {?string} uid_staff User key of a staff member. This is the supported request identifier for staff update operations. Value is normalized into `k_staff` in `post()`.
  * @returns {Wl_Staff_StaffElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Update or create staff.
+ *
+ * Creates a new staff member or updates an existing one in the business. When creating,
+ * a new user account is provisioned if no matching email exists. When updating, the target
+ * staff member must already belong to the business. Role, location, contact details,
+ * employment dates, and custom profile fields can all be set in a single call.
+ *
+ * @function
+ * @name Wl_Staff_StaffElementModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

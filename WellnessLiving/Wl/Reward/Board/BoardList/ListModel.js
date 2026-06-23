@@ -1,7 +1,5 @@
 /**
- * Retrieves a list with information about reward board.
- *
- * This model is generated automatically based on API.
+ * Retrieves all reward boards for business specified in `k_business`.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,10 +14,17 @@ function Wl_Reward_Board_BoardList_ListModel()
   this._s_key = "k_business,uid";
 
   /**
-   * A list of information about reward boards.
+   * @typedef {{}} Wl_Reward_Board_BoardList_ListModel_a_reward_board
+   * @property {string} k_reward_board Reward board key. `0` for the all-time system board.
+   * @property {string} s_title Board title.
+   */
+
+  /**
+   * A list of reward boards. `null` if not loaded.
+   * Each element:
    *
    * @get result
-   * @type {?{}}
+   * @type {?Wl_Reward_Board_BoardList_ListModel_a_reward_board[]}
    */
   this.a_reward_board = null;
 
@@ -29,7 +34,7 @@ function Wl_Reward_Board_BoardList_ListModel()
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * User to retrieve information about.
@@ -37,7 +42,7 @@ function Wl_Reward_Board_BoardList_ListModel()
    * @get get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -49,7 +54,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Board_BoardList_ListModel);
  */
 Wl_Reward_Board_BoardList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_reward_board": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_reward_board":{"get":{"result":true}},"k_business":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -59,4 +64,16 @@ Wl_Reward_Board_BoardList_ListModel.prototype.config=function()
  * @param {string} uid User to retrieve information about.
  * @returns {Wl_Reward_Board_BoardList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves all reward boards for business specified in `k_business`.
+ *
+ * Returns the list of reward boards available to the given user in the business, including board key and title,
+ * filtered to exclude boards the user is not eligible to view.
+ *
+ * @function
+ * @name Wl_Reward_Board_BoardList_ListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

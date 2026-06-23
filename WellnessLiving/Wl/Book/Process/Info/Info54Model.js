@@ -1,7 +1,5 @@
 /**
- * Offers functionality for the class booking wizard on the "Class and Location" page.
- *
- * When using this endpoint, take into account the {@link Wl_Book_Process_ProcessSpaSid.QUIZ} step.
+ * Returns class and location booking information, enriched with localized date and time for each session.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -35,28 +33,23 @@ function Wl_Book_Process_Info_Info54Model()
 
   /**
    * @typedef {{}} Wl_Book_Process_Info_Info54Model_a_repeat
-   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   * Should be passed for any type of repetition.
+   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants. Should be passed for any type of repetition.
    * @property {number[]} a_week Deprecated, use `a_day` instead!
-   * @property {string} [dl_end] Deprecated, use `dt_from` and `dt_to` instead!
-   * @property {string} [dt_from] Date to start recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {string} [dt_to] Date to complete recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {number} [i_count] The number of occurrences after which the appointment's repeat cycle stops.
-   *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *  Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
+   * @property {string} dl_end Deprecated, use `dt_from` and `dt_to` instead!
+   * @property {string} dt_from Date to start recurring booking. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
+   * @property {string} dt_to Date to complete recurring booking. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
+   * @property {number} i_count The number of occurrences after which the appointment's repeat cycle stops.  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.  Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
-   * @property {number} [i_occurrence] Deprecated, use `i_count` instead!
+   * @property {number} i_occurrence Deprecated, use `i_count` instead!
    * @property {number} i_period Deprecated, use `i_duration` instead!
-   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   * @property {number} id_period Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.
-   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
+   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
+   * @property {number} id_period A class for managing time intervals. Last ID: 9.
+   * @property {number} id_repeat_end Possible ways to stop repeatable events.
    */
 
   /**
    * Information about the recurring booking:
+   *
    *
    * This will be `null` if the booking isn't recurring.
    *
@@ -77,7 +70,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @post post
    * @type {Wl_Book_Process_Info_Info54Model_a_resource[]}
    */
-  this.a_resource = [];
+  this.a_resource = undefined;
 
   /**
    * @typedef {{}} Wl_Book_Process_Info_Info54Model_a_session_all
@@ -89,18 +82,15 @@ function Wl_Book_Process_Info_Info54Model()
    * @property {number} i_duration Duration of a service.
    * @property {number} i_wait Total number of clients on the wait list.
    * @property {?number} i_wait_limit Total capacity the wait list. `null` if wail list in unlimited. `0` if wait list is disabled.
-   * @property {boolean} is_select <tt>true</tt> if this session should be selected when page is initialized;
-   * <tt>false</tt> if otherwise.
+   * @property {boolean} is_select `true` if this session should be selected when page is initialized; `false` if otherwise.
    * @property {boolean} is_wait `true` if client is added to a wait list, `false` - to an active list.
    * @property {boolean} is_wait_list_unpaid Allow clients to join the wait list unpaid.
    * @property {string} k_class_period The key of the session.
    * @property {string} k_location Location key.
    * @property {string} m_price Price of the session.
    * @property {string} s_location The name of the location where the session occurred.
-   * @property {string} s_start The date/time when the session starts in human-readable format.
-   * Returned in the time zone of the location.
+   * @property {string} s_start The date/time when the session starts in human-readable format. Returned in the time zone of the location.
    * @property {string} text_duration String representation of session duration.
-   *
    */
 
   /**
@@ -121,6 +111,8 @@ function Wl_Book_Process_Info_Info54Model()
    * List of sessions that can be paid without new purchases.
    * Such as previously prepaid or free sessions.
    *
+   *
+   *
    * Each its item has the key of following format: `dt_date::k_class_period` and
    * the value of following structure:
    *
@@ -132,24 +124,24 @@ function Wl_Book_Process_Info_Info54Model()
   /**
    * The selected sessions.
    *
-   * Keys are class period keys.
+   * Keys are class period keys. 
    * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @type {string[]}
    */
-  this.a_session_select = [];
+  this.a_session_select = undefined;
 
   /**
    * Selected sessions on the waiting list without pay.
    *
-   * Keys are class period keys.
+   * Keys are class period keys. 
    * Values are index arrays of dates/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @type {string[]}
    */
-  this.a_session_wait_list_unpaid = [];
+  this.a_session_wait_list_unpaid = undefined;
 
   /**
    * @typedef {{}} Wl_Book_Process_Info_Info54Model_a_staff_a_logo
@@ -157,13 +149,14 @@ function Wl_Book_Process_Info_Info54Model()
    * @property {number} i_width The image width.
    * @property {string} s_url The image URL.
    */
+
   /**
    * @typedef {{}} Wl_Book_Process_Info_Info54Model_a_staff
    * @property {Wl_Book_Process_Info_Info54Model_a_staff_a_logo} a_logo The staff member photo:
    * @property {string} s_family The first letter of staff member surname.
    * @property {string} s_staff The staff member's name.
-   * @property {string} uid_staff UID of the staff member.
    * @property {string} uid Alias of `uid_staff` for backward compatibility.
+   * @property {string} uid_staff UID of the staff member.
    */
 
   /**
@@ -207,7 +200,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @post post
    * @type {boolean}
    */
-  this.can_book = true;
+  this.can_book = false;
 
   /**
    * Date when this class session occurrences stop.
@@ -329,13 +322,14 @@ function Wl_Book_Process_Info_Info54Model()
    * @get result
    * @type {number}
    */
-  this.i_wait_spot = 0;
+  this.i_wait_spot = undefined;
 
   /**
    * The mode type. One of the {@link Wl_Mode_ModeSid} constants.
    *
    * @get get
    * @post get
+   * @see Wl_Mode_ModeSid
    * @type {number}
    */
   this.id_mode = 0;
@@ -383,7 +377,7 @@ function Wl_Book_Process_Info_Info54Model()
    * `false` otherwise.
    *
    * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
-   * Allowed in {@link Wl_Mode_ModeSid.WIDGET} mode only.
+   * Allowed in {@link Wl_Mode_ModeSid} mode only.
    *
    * @post post
    * @type {boolean}
@@ -396,7 +390,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @post result
    * @type {boolean}
    */
-  this.is_card_authorize = false;
+  this.is_card_authorize = undefined;
 
   /**
    * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
@@ -408,7 +402,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @post get
    * @type {boolean}
    */
-  this.is_credit_card_check = true;
+  this.is_credit_card_check = false;
 
   /**
    * Can client chooses several session per booking.
@@ -416,19 +410,19 @@ function Wl_Book_Process_Info_Info54Model()
    * @get result
    * @type {boolean}
    */
-  this.is_event_session = false;
+  this.is_event_session = undefined;
 
   /**
    * Can the class/event be booked immediately or not.
    *
    * The verification is based on the search for client's promotions and other features of the class/event.
    * But it does not take into account the presence of other mandatory steps.
-   * Their presence will be indicated by the {@link Wl_Book_Process_Info_InfoModel.is_next} flag.
+   * Their presence will be indicated by the [InfoApi](/Wl/Book/Process/Info/Info.json) flag.
    *
    * @post result
    * @type {boolean}
    */
-  this.is_force_book = false;
+  this.is_force_book = undefined;
 
   /**
    * `true` if user pressed 'Pay later'.
@@ -445,7 +439,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @get result
    * @type {boolean}
    */
-  this.is_location_phone = false;
+  this.is_location_phone = undefined;
 
   /**
    * `true` - next steps of the wizard are needed (for example, to purchase something to book the selected session).
@@ -479,7 +473,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @get result
    * @type {boolean}
    */
-  this.is_special_preview = false;
+  this.is_special_preview = undefined;
 
   /**
    * `true` if class is virtual, `false` otherwise.
@@ -496,7 +490,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @post get
    * @type {string}
    */
-  this.k_class_period = "0";
+  this.k_class_period = "";
 
   /**
    * Class period location key.
@@ -612,7 +606,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @get result
    * @type {string}
    */
-  this.text_location_phone = "";
+  this.text_location_phone = undefined;
 
   /**
    * Room where session takes place.
@@ -624,7 +618,7 @@ function Wl_Book_Process_Info_Info54Model()
 
   /**
    * Text representation of the list of staffs.
-   * List of staff see {@link Wl_Book_Process_Info_InfoModel.a_staff}.
+   * List of staff see [InfoApi](/Wl/Book/Process/Info/Info.json).
    *
    * @get result
    * @type {string}
@@ -646,7 +640,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @post get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -658,7 +652,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Info_Info54Model);
  */
 Wl_Book_Process_Info_Info54Model.prototype.config=function()
 {
-  return {"a_field": {"a_day_available": {"get": {"result": true}},"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_all": {"get": {"result": true}},"a_session_free": {"get": {"result": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_staff": {"get": {"result": true}},"a_visit": {"post": {"result": true}},"a_visit_payment": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dl_end": {"get": {"result": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"dt_date_local": {"get": {"result": true}},"hide_price": {"get": {"result": true}},"html_contract": {"get": {"result": true}},"html_duration": {"get": {"result": true}},"html_special": {"get": {"result": true}},"html_special_preview": {"get": {"result": true}},"i_available": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait": {"get": {"result": true}},"i_wait_limit": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_agree": {"post": {"post": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_repeat_client": {"get": {"result": true}},"is_book_repeat_no_end_date": {"get": {"result": true}},"is_book_unpaid": {"post": {"post": true}},"is_card_authorize": {"post": {"result": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_event_session": {"get": {"result": true}},"is_force_book": {"post": {"result": true}},"is_force_pay_later": {"post": {"post": true}},"is_location_phone": {"get": {"result": true}},"is_next": {"post": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_single_buy": {"get": {"result": true}},"is_special_preview": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"result": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_class": {"get": {"result": true}},"s_location_address": {"get": {"result": true}},"s_location_title": {"get": {"result": true}},"s_signature": {"post": {"post": true}},"s_time": {"get": {"result": true}},"show_class_capacity": {"get": {"get": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"text_location_phone": {"get": {"result": true}},"text_room": {"get": {"result": true}},"text_staff": {"get": {"result": true}},"text_timezone": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field":{"a_day_available":{"get":{"result":true}},"a_login_activity":{"post":{"result":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session_all":{"get":{"result":true}},"a_session_free":{"get":{"result":true}},"a_session_select":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_staff":{"get":{"result":true}},"a_visit":{"post":{"result":true}},"a_visit_payment":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dl_end":{"get":{"result":true}},"dt_date_gmt":{"get":{"get":true},"post":{"get":true}},"dt_date_local":{"get":{"result":true}},"hide_price":{"get":{"result":true}},"html_contract":{"get":{"result":true}},"html_duration":{"get":{"result":true}},"html_special":{"get":{"result":true}},"html_special_preview":{"get":{"result":true}},"i_available":{"get":{"result":true}},"i_book":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_wait":{"get":{"result":true}},"i_wait_limit":{"get":{"result":true}},"i_wait_spot":{"get":{"result":true}},"id_mode":{"get":{"get":true},"post":{"get":true}},"is_agree":{"post":{"post":true}},"is_backend":{"get":{"get":true},"post":{"get":true}},"is_book_repeat_client":{"get":{"result":true}},"is_book_repeat_no_end_date":{"get":{"result":true}},"is_book_unpaid":{"post":{"post":true}},"is_card_authorize":{"post":{"result":true}},"is_credit_card_check":{"get":{"get":true},"post":{"get":true}},"is_event_session":{"get":{"result":true}},"is_force_book":{"post":{"result":true}},"is_force_pay_later":{"post":{"post":true}},"is_location_phone":{"get":{"result":true}},"is_next":{"post":{"result":true}},"is_promotion_only":{"get":{"result":true}},"is_single_buy":{"get":{"result":true}},"is_special_preview":{"get":{"result":true}},"is_virtual":{"get":{"result":true}},"k_class_period":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"result":true}},"k_login_promotion":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"m_price":{"get":{"result":true}},"m_price_total":{"get":{"result":true}},"m_price_total_early":{"get":{"result":true}},"s_class":{"get":{"result":true}},"s_location_address":{"get":{"result":true}},"s_location_title":{"get":{"result":true}},"s_signature":{"post":{"post":true}},"s_time":{"get":{"result":true}},"show_class_capacity":{"get":{"get":true}},"show_relation":{"get":{"get":true},"post":{"get":true}},"text_location_phone":{"get":{"result":true}},"text_room":{"get":{"result":true}},"text_staff":{"get":{"result":true}},"text_timezone":{"get":{"result":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**
@@ -670,4 +664,29 @@ Wl_Book_Process_Info_Info54Model.prototype.config=function()
  * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Info_Info54Model}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns class and location booking information, enriched with localized date and time for each session.
+ *
+ * Delegates to the parent implementation and then appends a localized `html_date_time` string to each
+ * available session using the business locale and either the client's profile timezone or the location timezone.
+ *
+ * @function
+ * @name Wl_Book_Process_Info_Info54Model.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Processes the "Class and Location" step of the booking wizard, optionally recording the waiver agreement and booking the session.
+ *
+ * Accepts the selected sessions, asset assignments, recurring configuration, and waiver signature, then attempts
+ * to book the session immediately when no further payment or resource steps are needed. Returns booking keys,
+ * activity keys, and flags indicating whether additional wizard steps are required.
+ *
+ * @function
+ * @name Wl_Book_Process_Info_Info54Model.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

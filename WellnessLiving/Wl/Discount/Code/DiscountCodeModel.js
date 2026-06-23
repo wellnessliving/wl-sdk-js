@@ -1,7 +1,5 @@
 /**
- * Discount codes API point.
- *
- * This model is generated automatically based on API.
+ * Returns discount codes of the specified business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -24,12 +22,7 @@ function Wl_Discount_Code_DiscountCodeModel()
   /**
    * Discount codes list.
    *
-   * Each element has next structure:<dl>
-   * <dt>string <var>k_discount_code</var> </dt>
-   * <dd>Discount code key.</dd>
-   * <dt>string <var>text_discount_code</var></dt>
-   * <dd>Discount code title.</dd>
-   * </dl>
+   * Each element has next structure:
    *
    * @get result
    * @type {Wl_Discount_Code_DiscountCodeModel_a_list[]}
@@ -42,7 +35,7 @@ function Wl_Discount_Code_DiscountCodeModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   this.changeInit();
 }
@@ -54,7 +47,7 @@ WlSdk_ModelAbstract.extend(Wl_Discount_Code_DiscountCodeModel);
  */
 Wl_Discount_Code_DiscountCodeModel.prototype.config=function()
 {
-  return {"a_field": {"a_list": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_list":{"get":{"result":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
@@ -63,4 +56,16 @@ Wl_Discount_Code_DiscountCodeModel.prototype.config=function()
  * @param {string} k_business Business key of the discount codes.
  * @returns {Wl_Discount_Code_DiscountCodeModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns discount codes of the specified business.
+ *
+ * Used in the backend discount management UI to show the full list of discount codes for a business
+ * so the staff member can select one to view or edit.
+ *
+ * @function
+ * @name Wl_Discount_Code_DiscountCodeModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

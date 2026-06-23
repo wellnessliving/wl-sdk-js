@@ -1,14 +1,9 @@
 /**
- * An endpoint that displays information about payments for an appointment.
- * The POST method for this endpoint is implemented as a separate endpoint (see {@link Wl_Appointment_Book_Payment_PaymentPostModel}).
- *
- * This endpoint using captcha check.
- * To pass captcha need study the documentation by captcha API, there you will find that you need to send a captcha for a specific action.
- * For this API an action is `1064`.
+ * Calculates pricing information for an appointment booking, including taxes, discounts, surcharges, and totals.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link Wl_Appointment_Book_Payment_PaymentPostModel} instead.
+ * @deprecated Use {@link _Wl_Appointment_Book_Payment_PaymentPostModel} instead.
  */
 function Wl_Appointment_Book_Payment_PaymentModel()
 {
@@ -20,141 +15,68 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this._s_key = "id_mode,k_location,uid,id_purchase_item,k_id,k_login_promotion,k_session_pass,s_unique_key";
 
   /**
-   * Information detailing an appointment booking.
+   * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_book_data
+   * @property {number[]} a_product Add-on list. Keys are add-on option keys, values are quantities.
+   * @property {string} dl_client_prorate Client prorate date. Used when the purchased promotion is prorated.
+   * @property {number} i_duration Asset booking duration in minutes. Used only for asset bookings.
+   * @property {number} id_class_tab List of class tab objects.
+   * @property {boolean} is_pay_later `true` if the client wants to pay upon their visit, `false` if paying now.
+   * @property {boolean} is_purchase_previous `true` if a previously purchased option is used for this booking.
+   * @property {boolean} is_wait_list_unpaid `true` if the client is placed on a wait list without paying.
+   * @property {string} k_login_prize Login prize key used to pay for the booking. Empty if no prize is used.
+   * @property {string} k_login_promotion Key of an already-purchased promotion used for this booking. Empty if not applicable.
+   * @property {string} k_resource Asset key. Used only for asset bookings.
+   * @property {string} k_reward_prize Reward prize key used to redeem a free item. Empty if not applicable.
+   * @property {string} k_service Service key. Used only for appointment bookings.
+   * @property {string} k_session_pass Drop-in key. Used when booking via a drop-in pass.
+   * @property {string} m_tip_appointment Tip amount for the appointment.
+   * @property {string} s_signature Client signature for a contract. Required when the purchase option has a contract.
+   */
+
+  /**
+   * Information detailing an appointment booking:
    *
    * @get get
    * @post get
-   * @type {{}}
+   * @type {Wl_Appointment_Book_Payment_PaymentModel_a_book_data}
    */
-  this.a_book_data = [];
+  this.a_book_data = undefined;
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_pay_form_a_pay_card_a_pay_address
-   * @property {*} is_new Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.
-   * @property {*} k_geo_country The key of the country used for the payment address. Specify this to add a new address.
-   * @property {*} k_geo_region The key of the region for the payment address. Specify this to add a new address.
-   * @property {*} k_pay_address The key of the saved payment address. Specify this to use a saved address.
-   * @property {*} s_city The city used for the payment address. Specify this to add a new address.
-   * @property {*} s_name The card name. Specify this to add a new address.
-   * @property {*} s_phone The payment phone. Specify this to add a new address.
-   * @property {*} s_postal The postal code for the payment address. Specify this to add a new address.
-   * @property {*} s_street1 The payment address. Specify this to add a new address.
-   * @property {*} s_street2 The optional payment address. Specify this to add a new address.
+   * @property {boolean} is_new Set this value to `1` to add a new payment address or to `0` to use a saved payment address.
+   * @property {string} k_geo_country The key of the country used for the payment address. Specify this to add a new address.
+   * @property {string} k_geo_region The key of the region for the payment address. Specify this to add a new address.
+   * @property {string} k_pay_address The key of the saved payment address. Specify this to use a saved address.
+   * @property {string} s_city The city used for the payment address. Specify this to add a new address.
+   * @property {string} s_name The card name. Specify this to add a new address.
+   * @property {string} s_phone The payment phone. Specify this to add a new address.
+   * @property {string} s_postal The postal code for the payment address. Specify this to add a new address.
+   * @property {string} s_street1 The payment address. Specify this to add a new address.
+   * @property {string} s_street2 The optional payment address. Specify this to add a new address.
    */
+
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_pay_form_a_pay_card
    * @property {Wl_Appointment_Book_Payment_PaymentModel_a_pay_form_a_pay_card_a_pay_address} a_pay_address The payment address:
-   * <dl>
-   *   <dt>boolean <tt>is_new</tt></dt>
-   *   <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
-   *   <dt>string [<tt>k_geo_country</tt>]</dt>
-   *   <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>k_geo_region</tt>]</dt>
-   *   <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>k_pay_address</tt>]</dt>
-   *   <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   *   <dt>string [<tt>s_city</tt>]</dt>
-   *   <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_name</tt>]</dt>
-   *   <dd>The card name. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_phone</tt>]</dt>
-   *   <dd>The payment phone. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_postal</tt>]</dt>
-   *   <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_street1</tt>]</dt>
-   *   <dd>The payment address. Specify this to add a new address.</dd>
-   *   <dt>string [<tt>s_street2</tt>]</dt>
-   *   <dd>The optional payment address. Specify this to add a new address.</dd>
-   * </dl>
-   * @property {*} i_csc The credit card CSC. Specify this to add a new card.
-   * @property {*} i_month The credit card expiration month. Specify this to add a new card.
-   * @property {*} i_year The credit card expiration year. Specify this to add a new card.
-   * @property {*} is_new Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-   * @property {*} k_pay_bank The key of the credit card. Specify this to use saved card.
-   * @property {*} s_comment Optional comment(s). Specify this to add a new card.
-   * @property {*} s_number The card number. Specify this to add a new card.
+   * @property {number} i_csc The credit card CSC. Specify this to add a new card.
+   * @property {number} i_month The credit card expiration month. Specify this to add a new card.
+   * @property {number} i_year The credit card expiration year. Specify this to add a new card.
+   * @property {boolean} is_new Specify `1` to add a new card, or `0` to use a saved card.
+   * @property {string} k_pay_bank The key of the credit card. Specify this to use saved card.
+   * @property {string} s_comment Optional comment(s). Specify this to add a new card.
+   * @property {string} s_number The card number. Specify this to add a new card.
    */
+
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_pay_form
-   * @property {Wl_Appointment_Book_Payment_PaymentModel_a_pay_form_a_pay_card[]} a_pay_card The payment card information:
-   * <dl>
-   *   <dt>
-   *     array <tt>a_pay_address</tt>
-   *   </dt>
-   *   <dd>
-   *     The payment address:
-   *     <dl>
-   *       <dt>boolean <tt>is_new</tt></dt>
-   *       <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
-   *       <dt>string [<tt>k_geo_country</tt>]</dt>
-   *       <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>k_geo_region</tt>]</dt>
-   *       <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>k_pay_address</tt>]</dt>
-   *       <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   *       <dt>string [<tt>s_city</tt>]</dt>
-   *       <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_name</tt>]</dt>
-   *       <dd>The card name. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_phone</tt>]</dt>
-   *       <dd>The payment phone. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_postal</tt>]</dt>
-   *       <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_street1</tt>]</dt>
-   *       <dd>The payment address. Specify this to add a new address.</dd>
-   *       <dt>string [<tt>s_street2</tt>]</dt>
-   *       <dd>The optional payment address. Specify this to add a new address.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     int [<tt>i_csc</tt>]
-   *   </dt>
-   *   <dd>
-   *     The credit card CSC. Specify this to add a new card.
-   *   </dd>
-   *   <dt>
-   *     int [<tt>i_month</tt>]
-   *   </dt>
-   *   <dd>
-   *     The credit card expiration month. Specify this to add a new card.
-   *   </dd>
-   *   <dt>
-   *     int [<tt>i_year</tt>]
-   *   </dt>
-   *   <dd>
-   *     The credit card expiration year. Specify this to add a new card.
-   *   </dd>
-   *   <dt>
-   *     boolean <tt>is_new</tt>
-   *   </dt>
-   *   <dd>
-   *     Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-   *   </dd>
-   *   <dt>
-   *     string [<tt>k_pay_bank</tt>]
-   *   </dt>
-   *   <dd>
-   *     The key of the credit card. Specify this to use saved card.
-   *   </dd>
-   *   <dt>
-   *     string [<tt>s_comment</tt>]
-   *   </dt>
-   *   <dd>
-   *     Optional comment(s). Specify this to add a new card.
-   *   </dd>
-   *   <dt>
-   *     string [<tt>s_number</tt>]
-   *   </dt>
-   *   <dd>
-   *     The card number. Specify this to add a new card.
-   *   </dd>
-   * </dl>
+   * @property {Wl_Appointment_Book_Payment_PaymentModel_a_pay_form_a_pay_card} a_pay_card The payment card information:
    * @property {string} f_amount The amount of money to withdraw with this payment source.
-   * @property {*} is_hide Whether payment method should be saved to user's account.
-   * @property {*} is_save Determines whether this payment method is hidden.
-   * @property {*} is_success Identifies whether this source was successfully charged.
-   * @property {*} m_surcharge The client-side calculated surcharge.
-   * @property {*} s_index The index of this form (optional).
+   * @property {boolean} is_hide Determines whether this payment method is hidden.
+   * @property {boolean} is_save Whether payment method should be saved to user's account.
+   * @property {boolean} is_success Identifies whether this source was successfully charged.
+   * @property {string} m_surcharge The client-side calculated surcharge.
+   * @property {string} s_index The index of this form (optional).
    * @property {string} sid_pay_method The payment method ID.
    */
 
@@ -162,137 +84,15 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * A list of payment sources to pay with.
    *
    * Each element has next keys:
-   * <dl>
-   *   <dt>
-   *     array [<var>a_pay_card</var>]
-   *   </dt>
-   *   <dd>
-   *     The payment card information:
-   *     <dl>
-   *       <dt>
-   *         array <var>a_pay_address</var>
-   *       </dt>
-   *       <dd>
-   *         The payment address:
-   *         <dl>
-   *           <dt>boolean <var>is_new</var></dt>
-   *           <dd>Set this value to <tt>1</tt> to add a new payment address or to <tt>0</tt> to use a saved payment address.</dd>
-   *           <dt>string [<var>k_geo_country</var>]</dt>
-   *           <dd>The key of the country used for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>k_geo_region</var>]</dt>
-   *           <dd>The key of the region for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>k_pay_address</var>]</dt>
-   *           <dd>The key of the saved payment address. Specify this to use a saved address.</dd>
-   *           <dt>string [<var>s_city</var>]</dt>
-   *           <dd>The city used for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_name</var>]</dt>
-   *           <dd>The card name. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_phone</var>]</dt>
-   *           <dd>The payment phone. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_postal</var>]</dt>
-   *           <dd>The postal code for the payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_street1</var>]</dt>
-   *           <dd>The payment address. Specify this to add a new address.</dd>
-   *           <dt>string [<var>s_street2</var>]</dt>
-   *           <dd>The optional payment address. Specify this to add a new address.</dd>
-   *         </dl>
-   *       </dd>
-   *       <dt>
-   *         int [<var>i_csc</var>]
-   *       </dt>
-   *       <dd>
-   *         The credit card CSC. Specify this to add a new card.
-   *       </dd>
-   *       <dt>
-   *         int [<var>i_month</var>]
-   *       </dt>
-   *       <dd>
-   *         The credit card expiration month. Specify this to add a new card.
-   *       </dd>
-   *       <dt>
-   *         int [<var>i_year</var>]
-   *       </dt>
-   *       <dd>
-   *         The credit card expiration year. Specify this to add a new card.
-   *       </dd>
-   *       <dt>
-   *         boolean <var>is_new</var>
-   *       </dt>
-   *       <dd>
-   *         Specify <tt>1</tt> to add a new card, or <tt>0</tt> to use a saved card.
-   *       </dd>
-   *       <dt>
-   *         string [<var>k_pay_bank</var>]
-   *       </dt>
-   *       <dd>
-   *         The key of the credit card. Specify this to use saved card.
-   *       </dd>
-   *       <dt>
-   *         string [<var>s_comment</var>]
-   *       </dt>
-   *       <dd>
-   *         Optional comment(s). Specify this to add a new card.
-   *       </dd>
-   *       <dt>
-   *         string [<var>s_number</var>]
-   *       </dt>
-   *       <dd>
-   *         The card number. Specify this to add a new card.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     string <var>f_amount</var>
-   *   </dt>
-   *   <dd>
-   *     The amount of money to withdraw with this payment source.
-   *   </dd>
-   *   <dt>
-   *     boolean [<var>is_hide</var>]
-   *   </dt>
-   *   <dt>
-   *     bool [<var>is_save</var>=true]
-   *   </dt>
-   *   <dd>
-   *     Whether payment method should be saved to user's account.
-   *   </dd>
-   *   <dd>
-   *     Determines whether this payment method is hidden.
-   *   </dd>
-   *   <dt>
-   *     boolean [<var>is_success</var>=<tt>false</tt>]
-   *   </dt>
-   *   <dd>
-   *     Identifies whether this source was successfully charged.
-   *   </dd>
-   *   <dt>
-   *     string [<var>m_surcharge</var>]
-   *   </dt>
-   *   <dd>
-   *     The client-side calculated surcharge.
-   *   </dd>
-   *   <dt>
-   *     string [<var>s_index</var>]
-   *   </dt>
-   *   <dd>
-   *     The index of this form (optional).
-   *   </dd>
-   *   <dt>
-   *     string <var>sid_pay_method</var>
-   *   </dt>
-   *   <dd>
-   *     The payment method ID.
-   *   </dd>
-   * </dl>
    *
    * @post post
    * @type {Wl_Appointment_Book_Payment_PaymentModel_a_pay_form[]}
    */
-  this.a_pay_form = [];
+  this.a_pay_form = undefined;
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_promotion_data
-   * @property {string} i_limit The limit of total visits.
+   * @property {number} i_limit The limit of total visits.
    * @property {number} i_remain The number of remaining visits.
    * @property {string} s_expire The expiration date.
    * @property {string} s_title The title of the Purchase Option.
@@ -300,19 +100,6 @@ function Wl_Appointment_Book_Payment_PaymentModel()
 
   /**
    * Information about selected Purchase Options.
-   * <dl>
-   *   <dt>string <var>i_limit</var></dt>
-   *   <dd>The limit of total visits.</dd>
-   *
-   *   <dt>int <var>i_remain</var></dt>
-   *   <dd>The number of remaining visits.</dd>
-   *
-   *   <dt>string <var>s_expire</var></dt>
-   *   <dd>The expiration date.</dd>
-   *
-   *   <dt>string <var>s_title</var></dt>
-   *   <dd>The title of the Purchase Option.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Appointment_Book_Payment_PaymentModel_a_promotion_data[]}
@@ -321,22 +108,17 @@ function Wl_Appointment_Book_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_purchase_a_tax
-   * @property {number} m_tax The tax rate.
+   * @property {string} m_tax The tax rate.
    * @property {string} text_title The name of the tax.
    */
+
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_purchase
-   * @property {Wl_Appointment_Book_Payment_PaymentModel_a_purchase_a_tax} a_tax Contains information about taxes in the following format. A list of taxes to apply.
-   * The array keys are `k_tax` keys. Each element contains the following fields: <dl>
-   *   <dt>float <tt>m_tax</tt></dt>
-   *   <dd>The tax rate.</dd>
-   *
-   *   <dt>string <tt>text_title</tt></dt>
-   *   <dd>The name of the tax.</dd>
-   * </dl>
-   * @property {string} id_purchase_item The purchase item ID. A constant of {@link Wl_Purchase_Item_ItemSid}.
+   * @property {Wl_Appointment_Book_Payment_PaymentModel_a_purchase_a_tax} a_tax Contains information about taxes in the following format. A list of taxes to apply. The array keys are `k_tax` keys. Each element contains the following fields:
+   * @property {number} id_purchase_item A list of purchase types.
    * @property {string} k_id The value of the discount used for the purchase.
    * @property {string} m_discount The value of the discount used for the purchase.
+   * @property {string} m_discount_login The discount amount for the client type of one purchase item.
    * @property {string} m_pay The payment for the Purchase Option or single visit without taxes.
    * @property {string} m_price The price of the Purchase Option or single visit.
    */
@@ -347,35 +129,6 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * Indexes are strings in the format `id_purchase_item-k_id`.
    *
    * Values are an array with the following structure:
-   *
-   * <dl>
-   *   <dt>array <var>a_tax</var></dt>
-   *   <dd>
-   *     Contains information about taxes in the following format. A list of taxes to apply.
-   *     The array keys are `k_tax` keys. Each element contains the following fields: <dl>
-   *       <dt>float <var>m_tax</var></dt>
-   *       <dd>The tax rate.</dd>
-   *
-   *       <dt>string <var>text_title</var></dt>
-   *       <dd>The name of the tax.</dd>
-   *     </dl>
-   *   </dd>
-   *
-   *   <dt>string <var>id_purchase_item</var></dt>
-   *   <dd>The purchase item ID. A constant of {@link Wl_Purchase_Item_ItemSid}.</dd>
-   *
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>The value of the discount used for the purchase.</dd>
-   *
-   *   <dt>string <var>m_discount</var></dt>
-   *   <dd>The value of the discount used for the purchase.</dd>
-   *
-   *   <dt>string <var>m_pay</var></dt>
-   *   <dd>The payment for the Purchase Option or single visit without taxes.</dd>
-   *
-   *   <dt>string <var>m_price</var></dt>
-   *   <dd>The price of the Purchase Option or single visit.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Appointment_Book_Payment_PaymentModel_a_purchase[]}
@@ -394,13 +147,13 @@ function Wl_Appointment_Book_Payment_PaymentModel()
 
   /**
    * List of quiz response keys.
-   * Key is quiz key from {@link \Core\Quiz\QuizSql} table.
-   * Value is response key from {@link \Core\Quiz\Response\ResponseSql} table.
+   * Keys are quiz keys. 
+   * Values are quiz response keys.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
-  this.a_quiz_response = [];
+  this.a_quiz_response = undefined;
 
   /**
    * List of user keys to book appointments.
@@ -410,19 +163,26 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @post get
    * @type {string[]}
    */
-  this.a_uid = [];
+  this.a_uid = undefined;
 
   /**
    * The key of source mode. A constant of {@link Wl_Mode_ModeSid}.
    *
    * @get get
    * @post get
+   * @see Wl_Mode_ModeSid
    * @type {number}
    */
   this.id_mode = 0;
 
   /**
-   * The payment type for the appointment. A constant of {@link Wl_Appointment_PaySid}.
+   * The possible payment types an appointment can have.
+   *
+   * Values:
+   * - 2 (`DEPOSIT`): A deposit was paid.
+   * - 4 (`FREE`): Appointment is free and does not require payment.
+   * - 3 (`FULL`): The full price was paid.
+   * - 1 (`NONE`): Nothing was paid.
    *
    * @post result
    * @type {number}
@@ -430,10 +190,11 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.id_pay = undefined;
 
   /**
-   * The purchase item ID. A constant of {@link Wl_Purchase_Item_ItemSid}.
+   * The purchase item ID. A constant of {@link RsPurchaseItemSid}.
    *
    * @get get
    * @post get
+   * @see RsPurchaseItemSid
    * @type {number}
    */
   this.id_purchase_item = 0;
@@ -448,13 +209,21 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.is_walk_in = false;
 
   /**
-   * The item key. Depends on {@link Wl_Appointment_Book_Payment_PaymentModel.id_purchase_item} property.
+   * The business key. Currently used only with `k_session_pass` variable.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_business = null;
+
+  /**
+   * The item key. Depends on `id_purchase_item` property.
    *
    * @get get
    * @post get
    * @type {string}
    */
-  this.k_id = "0";
+  this.k_id = "";
 
   /**
    * Location to show available appointment booking schedule.
@@ -463,7 +232,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @post get
    * @type {string}
    */
-  this.k_location = "0";
+  this.k_location = "";
 
   /**
    * The key of activity of the purchase made.
@@ -480,7 +249,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @post result
    * @type {string}
    */
-  this.k_login_prize = "0";
+  this.k_login_prize = undefined;
 
   /**
    * The login promotion key.
@@ -488,7 +257,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get get
    * @type {string}
    */
-  this.k_login_promotion = "0";
+  this.k_login_promotion = "";
 
   /**
    * Session pass key.
@@ -496,7 +265,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get get
    * @type {string}
    */
-  this.k_session_pass = "0";
+  this.k_session_pass = "";
 
   /**
    * Gift card amount.
@@ -504,7 +273,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_coupon = "0.00";
+  this.m_coupon = undefined;
 
   /**
    * Discount amount.
@@ -512,7 +281,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_discount = "0.00";
+  this.m_discount = undefined;
 
   /**
    * Surcharge amount calculated for credit cards (Virtual Terminal and Card Swiper).
@@ -520,7 +289,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_surcharge = "0.00";
+  this.m_surcharge = undefined;
 
   /**
    * Surcharge amount calculated for money transfers from account: ACH, Direct Entry.
@@ -528,7 +297,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_surcharge_ach = "0.00";
+  this.m_surcharge_ach = undefined;
 
   /**
    * The tax of service.
@@ -536,7 +305,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_tax = "0.00";
+  this.m_tax = undefined;
 
   /**
    * The total cost of the purchase.
@@ -548,7 +317,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
 
   /**
    * Variable price. Is set only during booking an appointment with variable type of the price
-   *   {@link RsServicePriceSid.VARIES} from spa backend {@link Wl_Mode_ModeSid.SPA_BACKEND}.
+   *   {@link RsServicePriceSid} from spa backend {@link Wl_Mode_ModeSid}.
    *
    * @get get
    * @type {string}
@@ -585,11 +354,17 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   /**
    * The user key.
    *
+   * This field is used if the client books for himself or for the relative.
+   *
+   * This field is incorrect to use for guest booking since in this case the client will be checked as a relative.
+   *
+   * In case of a group booking or a guest booking, the key of the client who is making the booking is set here.
+   *
    * @get get
    * @post get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -601,7 +376,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Payment_PaymentModel);
  */
 Wl_Appointment_Book_Payment_PaymentModel.prototype.config=function()
 {
-  return {"a_field": {"a_book_data": {"get": {"get": true},"post": {"get": true}},"a_pay_form": {"post": {"post": true}},"a_promotion_data": {"get": {"result": true}},"a_purchase": {"get": {"result": true}},"a_purchase_item": {"post": {"result": true}},"a_quiz_response": {"post": {"post": true}},"a_uid": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay": {"post": {"result": true}},"id_purchase_item": {"get": {"get": true},"post": {"get": true}},"is_walk_in": {"get": {"get": true},"post": {"get": true}},"k_id": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"get": true,"result": true},"post": {"get": true}},"k_login_activity_purchase": {"post": {"result": true}},"k_login_prize": {"post": {"result": true}},"k_login_promotion": {"get": {"get": true}},"k_session_pass": {"get": {"get": true}},"m_coupon": {"get": {"result": true}},"m_discount": {"get": {"result": true}},"m_surcharge": {"get": {"result": true}},"m_surcharge_ach": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"m_variable_price": {"get": {"get": true}},"s_unique_key": {"get": {"get": true}},"text_coupon_code": {"get": {"get": true},"post": {"get": true}},"text_discount_code": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field":{"a_book_data":{"get":{"get":true},"post":{"get":true}},"a_pay_form":{"post":{"post":true}},"a_promotion_data":{"get":{"result":true}},"a_purchase":{"get":{"result":true}},"a_purchase_item":{"post":{"result":true}},"a_quiz_response":{"post":{"post":true}},"a_uid":{"get":{"get":true},"post":{"get":true}},"id_mode":{"get":{"get":true},"post":{"get":true}},"id_pay":{"post":{"result":true}},"id_purchase_item":{"get":{"get":true},"post":{"get":true}},"is_walk_in":{"get":{"get":true},"post":{"get":true}},"k_business":{"get":{"get":true}},"k_id":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"get":true,"result":true},"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"k_login_prize":{"post":{"result":true}},"k_login_promotion":{"get":{"get":true}},"k_session_pass":{"get":{"get":true}},"m_coupon":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_surcharge":{"get":{"result":true}},"m_surcharge_ach":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_total":{"get":{"result":true}},"m_variable_price":{"get":{"get":true}},"s_unique_key":{"get":{"get":true}},"text_coupon_code":{"get":{"get":true},"post":{"get":true}},"text_discount_code":{"get":{"get":true},"post":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**
@@ -609,12 +384,38 @@ Wl_Appointment_Book_Payment_PaymentModel.prototype.config=function()
  * @name Wl_Appointment_Book_Payment_PaymentModel.instanceGet
  * @param {number} id_mode The key of source mode. A constant of {@link Wl_Mode_ModeSid}.
  * @param {string} k_location Location to show available appointment booking schedule.
- * @param {string} uid The user key.
- * @param {number} id_purchase_item The purchase item ID. A constant of {@link Wl_Purchase_Item_ItemSid}.
- * @param {string} k_id The item key. Depends on {@link Wl_Appointment_Book_Payment_PaymentModel.id_purchase_item} property.
+ * @param {string} uid The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here.
+ * @param {number} id_purchase_item The purchase item ID. A constant of {@link RsPurchaseItemSid}.
+ * @param {string} k_id The item key. Depends on `id_purchase_item` property.
  * @param {string} k_login_promotion The login promotion key.
  * @param {string} k_session_pass Session pass key.
  * @param {string} s_unique_key Service unique key. Used for model cache.
  * @returns {Wl_Appointment_Book_Payment_PaymentModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Calculates pricing information for an appointment booking, including taxes, discounts, surcharges, and totals.
+ *
+ * Returns the full breakdown of amounts owed for the booking, including available Purchase Options,
+ * applicable discount codes, surcharge amounts, and the final total. Intended to be called before
+ * submitting payment so the client side can display a pricing summary to the user.
+ *
+ * @function
+ * @name Wl_Appointment_Book_Payment_PaymentModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Allows to pay an appointment or appointment purchase option for the client.
+ *
+ * Accepts payment method and booking data, charges the client for the appointment or the selected
+ * Purchase Option, and records the transaction. Requires the client to be authenticated and the
+ * booking data to include a valid service or asset key.
+ *
+ * @function
+ * @name Wl_Appointment_Book_Payment_PaymentModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

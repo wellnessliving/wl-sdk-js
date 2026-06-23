@@ -1,5 +1,7 @@
 /**
- * Class to work with vaccination status string identifiers.
+ * List of member vaccination statuses.
+ *
+ * Last used ID: 4
  */
 function Wl_Login_Member_VaccinationStatus_VaccinationStatusSid()
 {
@@ -7,29 +9,29 @@ function Wl_Login_Member_VaccinationStatus_VaccinationStatusSid()
 }
 
 /**
- * Fully vaccinated.
+ * Fully Vaccinated.
  *
  * @type {number}
  */
-Wl_Login_Member_VaccinationStatus_VaccinationStatusSid.FULL=3;
+Wl_Login_Member_VaccinationStatus_VaccinationStatusSid.FULL = 3;
 
 /**
- * Not vaccinated
+ * Unvaccinated.
  *
  * @type {number}
  */
-Wl_Login_Member_VaccinationStatus_VaccinationStatusSid.NONE=1;
+Wl_Login_Member_VaccinationStatus_VaccinationStatusSid.NONE = 1;
 
 /**
- * Partially vaccinated.
+ * Partially Vaccinated.
  *
  * @type {number}
  */
-Wl_Login_Member_VaccinationStatus_VaccinationStatusSid.PARTIAL=2;
+Wl_Login_Member_VaccinationStatus_VaccinationStatusSid.PARTIAL = 2;
 
 /**
- * Vaccination status is undefined.
+ * Unknown.
  *
  * @type {number}
  */
-Wl_Login_Member_VaccinationStatus_VaccinationStatusSid.UNKNOWN=2;
+Wl_Login_Member_VaccinationStatus_VaccinationStatusSid.UNKNOWN = 4;

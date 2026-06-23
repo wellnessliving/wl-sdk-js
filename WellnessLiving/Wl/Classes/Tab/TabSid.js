@@ -9,29 +9,29 @@ function Wl_Classes_Tab_TabSid()
 }
 
 /**
- * Enrollments.
+ * Enrolments.
  *
  * @type {number}
  */
-Wl_Classes_Tab_TabSid.ENROLLMENT=2;
+Wl_Classes_Tab_TabSid.ENROLLMENT = 2;
 
 /**
- * Bookable assets.
+ * Bookable Assets.
  *
  * @type {number}
  */
-Wl_Classes_Tab_TabSid.RESOURCE=4;
+Wl_Classes_Tab_TabSid.RESOURCE = 4;
 
 /**
  * Appointments.
  *
  * @type {number}
  */
-Wl_Classes_Tab_TabSid.SERVICE=3;
+Wl_Classes_Tab_TabSid.SERVICE = 3;
 
 /**
  * Classes.
  *
  * @type {number}
  */
-Wl_Classes_Tab_TabSid.TRAINING=1;
+Wl_Classes_Tab_TabSid.TRAINING = 1;

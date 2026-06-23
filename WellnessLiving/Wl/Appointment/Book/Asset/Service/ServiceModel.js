@@ -1,7 +1,5 @@
 /**
- * An endpoint that retrieves assets that are required for a service booking.
- *
- * This model is generated automatically based on API.
+ * Retrieves assets required for a service booking at the given date and time, including availability and busy status.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -23,34 +21,62 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    * Values refer to keys of appointment bookings that reserve the asset(s).
    *
    * For example, if you want to check if the 10th asset with the key of '15' is reserved,
-   * you can check if `a_resource_busy['15']['10']` is free.
+   * you can check if `a_resource_busy[&#039;15&#039;][&#039;10&#039;]` is free.
    *
-   * If you're rebooking an appointment, check the value of `a_resource_busy['15']['10']`.
+   * If you're rebooking an appointment, check the value of `a_resource_busy[&#039;15&#039;][&#039;10&#039;]`.
    * If it's equal to the key of your current appointment booking, you can assume the asset is available.
    *
    * @get result
-   * @type {{}}
+   * @type {string[][]}
    */
   this.a_resource_busy = undefined;
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource_a_image_a_image
+   * @property {number} i_height Actual height of thumbnail image.
+   * @property {number} i_height_src Height of original image.
+   * @property {number} i_rotate Angle on which image was rotated compared to the original.
+   * @property {number} i_width Actual width of thumbnail image.
+   * @property {number} i_width_src Width of original image.
+   * @property {boolean} is-resize Whether thumbnail is a resized variant of original image. If `false`, `url-thumbnail` equals `url-view`.
+   * @property {string} url-thumbnail URL to resized and rotated image in file storage. If the original is larger than the specified dimensions, a thumbnail is created and its link is returned. Otherwise, the link to the original image is returned here.
+   * @property {string} url-view URL to original image in file storage.
+   */
+
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource_a_image
+   * @property {Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource_a_image_a_image} a_image Image data.
+   * @property {number} i_angle Angle of shape rotation. Is set only if `sid_image` equals to `shape`.
+   * @property {number} i_height Height of image.
+   * @property {number} i_width Width of image.
+   * @property {boolean} is_empty Whether is empty.
+   * @property {string} k_resource Resource key.
+   * @property {string} sid_image Image kind. String representation of one of {@link Wl_Resource_Image_ImageSid} constants.
+   * @property {string} sid_image_icon Icon name.String representation of one of {@link Wl_Resource_Image_ImageIconSid} constants. Is set only if `sid_image` equals to `image`.
+   * @property {string} sid_image_shape Shape name. String representation of one of {@link Wl_Resource_Image_ImageShapeSid} constants. Is set only if `sid_image` equals to `shape`.
+   * @property {string} url Path to image.
+   */
+
+  /**
    * @typedef {{}} Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource
-   * @property {{}} a_image The asset's image data. See {@link RsResourceImage::data()} for details.
+   * @property {Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource_a_image} a_image The asset's image data.
    * @property {number} i_quantity Asset quantity.
    * @property {boolean} is_available Whether this asset has at least one free unit.
    * @property {string} k_resource The asset key.
    * @property {string} s_resource The asset title.
    */
+
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type
-   * @property {Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource[]} a_resource A list of resources.
-   * @property {?string} k_resource_layout The asset's layout key. This will be `null` if the asset category has no layout.
+   * @property {Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type_a_resource} a_resource A list of resources. Every element has the following keys:
+   * @property {?string} k_resource_layout The asset's layout key.  This will be `null` if the asset category has no layout.
    * @property {string} s_resource_type The title of asset category.
    */
 
   /**
    * A list of assets required for the service booking.
    * Keys refer the asset category key(s).
+   * Values refer to sub-arrays with next key(s).
    *
    * @get result
    * @type {Wl_Appointment_Book_Asset_Service_ServiceModel_a_resource_type}
@@ -77,6 +103,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    * Mode type, one of {@link Wl_Mode_ModeSid} constants.
    *
    * @get get
+   * @see Wl_Mode_ModeSid
    * @type {number}
    */
   this.id_mode = 0;
@@ -113,7 +140,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this.is_show_unavailable_assets = false;
 
   /**
-   * The appointment booking key to ignore when {@link Wl_Appointment_Book_Asset_Service_ServiceModel.a_resource_busy} is derived.
+   * The appointment booking key to ignore when `a_resource_busy` is derived.
    *
    * `null` if no appointment booking must be ignored.
    *
@@ -128,7 +155,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    * @get get
    * @type {string}
    */
-  this.k_location = "0";
+  this.k_location = "";
 
   /**
    * The selected service's key.
@@ -136,7 +163,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    * @get get
    * @type {string}
    */
-  this.k_service = "0";
+  this.k_service = "";
 
   /**
    * Timezone of date and time of service start.
@@ -154,7 +181,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    * @get get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -166,7 +193,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_Service_ServiceModel);
  */
 Wl_Appointment_Book_Asset_Service_ServiceModel.prototype.config=function()
 {
-  return {"a_field": {"a_resource_busy": {"get": {"result": true}},"a_resource_type": {"get": {"result": true}},"can_book_unavailable_assets": {"get": {"result": true}},"dt_start": {"get": {"get": true}},"id_mode": {"get": {"get": true}},"is_backend": {"get": {"get": true}},"is_grid_any": {"get": {"get": true}},"is_show_unavailable_assets": {"get": {"get": true}},"k_appointment_ignore": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_resource_busy":{"get":{"result":true}},"a_resource_type":{"get":{"result":true}},"can_book_unavailable_assets":{"get":{"result":true}},"dt_start":{"get":{"get":true}},"id_mode":{"get":{"get":true}},"is_backend":{"get":{"get":true}},"is_grid_any":{"get":{"get":true}},"is_show_unavailable_assets":{"get":{"get":true}},"k_appointment_ignore":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_timezone":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -182,4 +209,18 @@ Wl_Appointment_Book_Asset_Service_ServiceModel.prototype.config=function()
  * @param {string} uid User to get information for.
  * @returns {Wl_Appointment_Book_Asset_Service_ServiceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves assets required for a service booking at the given date and time, including availability and busy status.
+ *
+ * Returns the asset categories and individual assets linked to the service at the given location.
+ * Each asset includes its availability flag for the requested time slot. The response also includes
+ * `a_resource_busy` with currently reserved asset slots and a flag indicating
+ * whether the current user is allowed to book unavailable assets.
+ *
+ * @function
+ * @name Wl_Appointment_Book_Asset_Service_ServiceModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

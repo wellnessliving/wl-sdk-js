@@ -1,7 +1,7 @@
 /**
- * List of different types  for landing pages based on business types.
+ * List of different types for landing pages based on business types.
  *
- * @constructor
+ * Last ID: 33
  */
 function Wl_WlHomeTourSid()
 {
@@ -9,10 +9,15 @@ function Wl_WlHomeTourSid()
 }
 
 /**
+ * Barbershops.
+ *
+ * @type {number}
+ */
+Wl_WlHomeTourSid.BARBERSHOP = 26;
+
+/**
  * Boot camps.
  *
- * @constant
- * @default 24
  * @type {number}
  */
 Wl_WlHomeTourSid.BOOTCAMP = 24;
@@ -20,8 +25,6 @@ Wl_WlHomeTourSid.BOOTCAMP = 24;
 /**
  * Boxing studios.
  *
- * @constant
- * @default 25
  * @type {number}
  */
 Wl_WlHomeTourSid.BOXING = 25;
@@ -29,8 +32,6 @@ Wl_WlHomeTourSid.BOXING = 25;
 /**
  * Special industry free landing page with only contact us form.
  *
- * @constant
- * @default 21
  * @type {number}
  */
 Wl_WlHomeTourSid.BUSINESS_MANAGEMENT = 21;
@@ -38,8 +39,6 @@ Wl_WlHomeTourSid.BUSINESS_MANAGEMENT = 21;
 /**
  * Health clubs.
  *
- * @constant
- * @default 10
  * @type {number}
  */
 Wl_WlHomeTourSid.CLUB = 10;
@@ -47,8 +46,6 @@ Wl_WlHomeTourSid.CLUB = 10;
 /**
  * Affiliate Gym.
  *
- * @constant
- * @default 9
  * @type {number}
  */
 Wl_WlHomeTourSid.CROSSFIT = 9;
@@ -56,8 +53,6 @@ Wl_WlHomeTourSid.CROSSFIT = 9;
 /**
  * Dance studios.
  *
- * @constant
- * @default 11
  * @type {number}
  */
 Wl_WlHomeTourSid.DANCE = 11;
@@ -65,8 +60,6 @@ Wl_WlHomeTourSid.DANCE = 11;
 /**
  * Dental studios.
  *
- * @constant
- * @default 14
  * @type {number}
  */
 Wl_WlHomeTourSid.DENTAL = 14;
@@ -74,17 +67,20 @@ Wl_WlHomeTourSid.DENTAL = 14;
 /**
  * Fitness gyms.
  *
- * @constant
- * @default 6
  * @type {number}
  */
 Wl_WlHomeTourSid.FITNESS = 6;
 
 /**
+ * Functional fitness also known as functional training or functional movement.
+ *
+ * @type {number}
+ */
+Wl_WlHomeTourSid.FUNCTIONAL_FITNESS = 29;
+
+/**
  * Fitness gyms.
  *
- * @constant
- * @default 22
  * @type {number}
  */
 Wl_WlHomeTourSid.GYM = 22;
@@ -92,17 +88,20 @@ Wl_WlHomeTourSid.GYM = 22;
 /**
  * Health clubs.
  *
- * @constant
- * @default 23
  * @type {number}
  */
 Wl_WlHomeTourSid.HEALTH_CLUB = 23;
 
 /**
+ * Health and beauty salons at one place.
+ *
+ * @type {number}
+ */
+Wl_WlHomeTourSid.INTEGRATIVE_HEALTH_CENTER = 30;
+
+/**
  * Martial arts.
  *
- * @constant
- * @default 8
  * @type {number}
  */
 Wl_WlHomeTourSid.MARTIAL_ART = 8;
@@ -110,17 +109,20 @@ Wl_WlHomeTourSid.MARTIAL_ART = 8;
 /**
  * Massage salons.
  *
- * @constant
- * @default 4
  * @type {number}
  */
 Wl_WlHomeTourSid.MASSAGE = 4;
 
 /**
+ * Massage salons.
+ *
+ * @type {number}
+ */
+Wl_WlHomeTourSid.MEDICAL_SPA = 28;
+
+/**
  * Alternative medical offices.
  *
- * @constant
- * @default 15
  * @type {number}
  */
 Wl_WlHomeTourSid.MEDICINE_ALTERNATIVE = 15;
@@ -128,8 +130,6 @@ Wl_WlHomeTourSid.MEDICINE_ALTERNATIVE = 15;
 /**
  * Hospitals and private doctors.
  *
- * @constant
- * @default 13
  * @type {number}
  */
 Wl_WlHomeTourSid.MEDICINE_TRADITIONAL = 13;
@@ -137,8 +137,6 @@ Wl_WlHomeTourSid.MEDICINE_TRADITIONAL = 13;
 /**
  * Music schools.
  *
- * @constant
- * @default 19
  * @type {number}
  */
 Wl_WlHomeTourSid.MUSIC = 19;
@@ -146,8 +144,6 @@ Wl_WlHomeTourSid.MUSIC = 19;
 /**
  * Personal trainings.
  *
- * @constant
- * @default 5
  * @type {number}
  */
 Wl_WlHomeTourSid.PERSONAL_TRAINING = 5;
@@ -155,17 +151,20 @@ Wl_WlHomeTourSid.PERSONAL_TRAINING = 5;
 /**
  * Pilates.
  *
- * @constant
- * @default 7
  * @type {number}
  */
 Wl_WlHomeTourSid.PILATES = 7;
 
 /**
+ * Play cafes.
+ *
+ * @type {number}
+ */
+Wl_WlHomeTourSid.PLAY_CAFE = 32;
+
+/**
  * Pole dancing studios.
  *
- * @constant
- * @default 18
  * @type {number}
  */
 Wl_WlHomeTourSid.POLE_DANCING = 18;
@@ -173,8 +172,6 @@ Wl_WlHomeTourSid.POLE_DANCING = 18;
 /**
  * Salons.
  *
- * @constant
- * @default 3
  * @type {number}
  */
 Wl_WlHomeTourSid.SALON = 3;
@@ -182,8 +179,6 @@ Wl_WlHomeTourSid.SALON = 3;
 /**
  * Spa salons.
  *
- * @constant
- * @default 2
  * @type {number}
  */
 Wl_WlHomeTourSid.SPA = 2;
@@ -191,26 +186,34 @@ Wl_WlHomeTourSid.SPA = 2;
 /**
  * Spinning.
  *
- * @constant
- * @default 17
  * @type {number}
  */
 Wl_WlHomeTourSid.SPINNING = 17;
 
 /**
+ * Swim schools
+ *
+ * @type {number}
+ */
+Wl_WlHomeTourSid.SWIM_SCHOOL = 33;
+
+/**
+ * Tattoo salons.
+ *
+ * @type {number}
+ */
+Wl_WlHomeTourSid.TATTOO = 31;
+
+/**
  * Tours and events.
  *
- * @constant
- * @default 12
  * @type {number}
  */
 Wl_WlHomeTourSid.TOUR = 12;
 
 /**
- * Wellness Centers.
+ * Wellness Centers
  *
- * @constant
- * @default 20
  * @type {number}
  */
 Wl_WlHomeTourSid.WELLNESS_CENTER = 20;
@@ -218,8 +221,6 @@ Wl_WlHomeTourSid.WELLNESS_CENTER = 20;
 /**
  * Yoga.
  *
- * @constant
- * @default 1
  * @type {number}
  */
 Wl_WlHomeTourSid.YOGA = 1;
@@ -227,8 +228,6 @@ Wl_WlHomeTourSid.YOGA = 1;
 /**
  * Zumba.
  *
- * @constant
- * @default 27
  * @type {number}
  */
 Wl_WlHomeTourSid.ZUMBA = 27;

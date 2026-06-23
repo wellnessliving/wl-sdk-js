@@ -1,7 +1,5 @@
 /**
- * Retrieves information about redeemable prize.
- *
- * This model is generated automatically based on API.
+ * Retrieves information about redeemable prize item.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -30,7 +28,7 @@ function Wl_Reward_Prize_ElementModel()
    * @post get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * Key of login prize.
@@ -38,7 +36,7 @@ function Wl_Reward_Prize_ElementModel()
    * @post result
    * @type {string}
    */
-  this.k_login_prize = "0";
+  this.k_login_prize = undefined;
 
   /**
    * Key of redeemable prize.
@@ -47,7 +45,7 @@ function Wl_Reward_Prize_ElementModel()
    * @post get
    * @type {string}
    */
-  this.k_reward_prize = "0";
+  this.k_reward_prize = "";
 
   /**
    * User friendly prize description.
@@ -64,7 +62,7 @@ function Wl_Reward_Prize_ElementModel()
    * @post get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -76,7 +74,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Prize_ElementModel);
  */
 Wl_Reward_Prize_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"i_score": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_login_prize": {"post": {"result": true}},"k_reward_prize": {"get": {"get": true},"post": {"get": true}},"s_description": {"get": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field":{"i_score":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_login_prize":{"post":{"result":true}},"k_reward_prize":{"get":{"get":true},"post":{"get":true}},"s_description":{"get":{"result":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**
@@ -87,4 +85,27 @@ Wl_Reward_Prize_ElementModel.prototype.config=function()
  * @param {string} k_reward_prize Key of redeemable prize.
  * @returns {Wl_Reward_Prize_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves information about redeemable prize item.
+ *
+ * Returns the point cost and description for the specified redeemable prize in the given business.
+ *
+ * @function
+ * @name Wl_Reward_Prize_ElementModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Redeems selected prize.
+ *
+ * Deducts the required points from the user's reward balance and records the redemption, returning the key
+ * of the created login prize record.
+ *
+ * @function
+ * @name Wl_Reward_Prize_ElementModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

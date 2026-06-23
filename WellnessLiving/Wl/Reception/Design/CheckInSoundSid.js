@@ -1,13 +1,11 @@
-//Wl_Reception_Design_CheckInSoundSid
-
 /**
- * A list of sounds used for check ins.
+ * List of sounds used for check ins.
  *
  * Last used ID: 6.
  */
 function Wl_Reception_Design_CheckInSoundSid()
 {
-    // Empty constructor.
+  // Empty constructor.
 }
 
 /**

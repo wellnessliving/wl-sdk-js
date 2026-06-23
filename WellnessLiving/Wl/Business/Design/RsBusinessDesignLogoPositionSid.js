@@ -7,7 +7,6 @@ function Wl_Business_Design_RsBusinessDesignLogoPositionSid()
 }
 
 /**
- /**
  * Logo located in the center.
  *
  * @type {number}

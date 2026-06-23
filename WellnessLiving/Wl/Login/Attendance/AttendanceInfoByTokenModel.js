@@ -1,8 +1,5 @@
 /**
- * Displays information for certain sessions.
- * Version of {@link Wl_Login_Attendance_AttendanceInfoModel} for access validation by security token.
- *
- * This model is generated automatically based on API.
+ * Returns detailed information about a single class period, appointment, or asset session.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -26,21 +23,11 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
 
   /**
    * Additional visit information about this appointment. Empty array if it's not an appointment:
-   * <dl>
-   *   <dt>bool <var>is_deny</var></dt>
-   *   <dd>`true` means that appointment was requested and denied by the staff.</dd>
-   *   <dt>bool <var>is_notify_request_accept</var></dt>
-   *   <dd>`true` means that the client will receive a notification, if appointment will be confirmed by the staff.</dd>
-   *   <dt>bool <var>is_notify_request_deny</var></dt>
-   *   <dd>`true` means that the client will receive a notification, if appointment will be denied by the staff.</dd>
-   *   <dt>bool <var>is_request</var></dt>
-   *   <dd>`true` means that appointment was requested, but not confirmed by the staff.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Login_Attendance_AttendanceInfoByTokenModel_a_appointment_visit_info}
    */
-  this.a_appointment_visit_info = [];
+  this.a_appointment_visit_info = undefined;
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceInfoByTokenModel_a_logo
@@ -50,20 +37,6 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
 
   /**
    * Service logo information:
-   * <dl>
-   *   <dt>
-   *     bool <var>is_empty</var>
-   *   </dt>
-   *   <dd>
-   *     Whether service image is empty.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_url</var>
-   *   </dt>
-   *   <dd>
-   *     Url link to image.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Login_Attendance_AttendanceInfoByTokenModel_a_logo}
@@ -72,30 +45,18 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceInfoByTokenModel_a_purchase_option_default
-   * @property {*} id_sale The sale item type, one of the {@link RsSaleSid} constants.
-   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
-   * @property {*} k_id The default Purchase Option key.
-   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
+   * @property {?number} id_sale List of sale categories on the store page.
    * @property {boolean} is_single_default If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.
+   * @property {?string} k_id The default Purchase Option key.  This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
    */
 
   /**
    * Default purchase option information.
-   * <dl>
-   *   <dt>string? <var>id_sale</var></dt>
-   *   <dd>The sale item type, one of the {@link RsSaleSid} constants.
-   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
-   *   <dt>string? <var>k_id</var></dt>
-   *   <dd>The default Purchase Option key.
-   *   This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".</dd>
-   *   <dt>bool <var>is_single_default</var></dt>
-   *   <dd>If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Login_Attendance_AttendanceInfoByTokenModel_a_purchase_option_default}
    */
-  this.a_purchase_option_default = [];
+  this.a_purchase_option_default = undefined;
 
   /**
    * Assets which are bound to this session.
@@ -110,52 +71,17 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    * @property {string} text_client User's name.
    * @property {string} uid User's primary key.
    */
+
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceInfoByTokenModel_a_resource_layout
-   * @property {Wl_Login_Attendance_AttendanceInfoByTokenModel_a_resource_layout_a_client} a_client List of clients who occupy assets of class.
-   * It is a double nesting array.
-   * Keys - primary keys of assets. See {@link \RsResourceSql} table. Sub keys - asset index.
-   * Values - sub array with keys:
-   * <dl><dt>string <tt>text_client</tt></dt><dd>User's name.</dd>
-   * <dt>string <tt>uid</tt></dt><dd>User's primary key.</dd></dl>
+   * @property {Wl_Login_Attendance_AttendanceInfoByTokenModel_a_resource_layout_a_client} a_client List of clients who occupy assets of class. It is a double nesting array. Keys -  Sub keys - asset index. Values - sub array with keys:
    * @property {string[]} a_resource_available Key of asset.
-   * @property {string} k_resource_layout Key of layout. See table {@link \Wl\Resource\Layout\Sql}.
+   * @property {string} k_resource_layout Key of layout.
    * @property {string} text_resource_type Title of asset category.
    */
 
   /**
    * Asset layouts of session:
-   * <dl>
-   *   <dt>
-   *     array <var>a_client</var>
-   *   </dt>
-   *   <dd>
-   *     List of clients who occupy assets of class.
-   *     It is a double nesting array.
-   *     Keys - primary keys of assets. See {@link \RsResourceSql} table. Sub keys - asset index.
-   *     Values - sub array with keys:
-   *     <dl><dt>string <var>text_client</var></dt><dd>User's name.</dd>
-   *     <dt>string <var>uid</var></dt><dd>User's primary key.</dd></dl>
-   *   </dd>
-   *   <dt>
-   *     string[] <var>a_resource_available</var>
-   *   </dt>
-   *   <dd>
-   *     Key of asset.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_resource_layout</var>
-   *   </dt>
-   *   <dd>
-   *     Key of layout. See table {@link \Wl\Resource\Layout\Sql}.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_resource_type</var>
-   *   </dt>
-   *   <dd>
-   *     Title of asset category.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Login_Attendance_AttendanceInfoByTokenModel_a_resource_layout[]}
@@ -168,82 +94,18 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    * @property {number} i_width Width in pixels.
    * @property {string} url_logo Image URL.
    */
+
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceInfoByTokenModel_a_staff
    * @property {Wl_Login_Attendance_AttendanceInfoByTokenModel_a_staff_a_logo} a_logo Data of staff member's photo. Empty if staff has no photo. Otherwise contains next keys:
-   * <dl>
-   *   <dt>
-   *     int <tt>i_height</tt>
-   *   </dt>
-   *   <dd>
-   *     Height in pixels.
-   *   </dd>
-   *   <dt>
-   *     int <tt>i_width</tt>
-   *   </dt>
-   *   <dd>
-   *     Width in pixels.
-   *   </dd>
-   *   <dt>
-   *     string <tt>url_logo</tt>
-   *   </dt>
-   *   <dd>
-   *     Image URL.
-   *   </dd>
-   * </dl>
-   * @property {string} k_staff Staff key.
    * @property {string} html_firstname Staff member's first name.
    * @property {string} html_lastname Staff member's last name.
+   * @property {string} k_staff deprecated Legacy staff key. Returned only for applications from allow-list.
+   * @property {string} uid_staff Staff user key.
    */
 
   /**
    * List of staff members who provide service:
-   * <dl>
-   *   <dt>
-   *     array <var>a_logo</var>
-   *   </dt>
-   *   <dd>
-   *     Data of staff member's photo. Empty if staff has no photo. Otherwise contains next keys:
-   *     <dl>
-   *       <dt>
-   *         int <var>i_height</var>
-   *       </dt>
-   *       <dd>
-   *         Height in pixels.
-   *       </dd>
-   *       <dt>
-   *         int <var>i_width</var>
-   *       </dt>
-   *       <dd>
-   *         Width in pixels.
-   *       </dd>
-   *       <dt>
-   *         string <var>url_logo</var>
-   *       </dt>
-   *       <dd>
-   *         Image URL.
-   *       </dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     string <var>k_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff key.
-   *   </dd>
-   *   <dt>
-   *     string <var>html_firstname</var>
-   *   </dt>
-   *   <dd>
-   *     Staff member's first name.
-   *   </dd>
-   *   <dt>
-   *     string <var>html_lastname</var>
-   *   </dt>
-   *   <dd>
-   *     Staff member's last name.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Login_Attendance_AttendanceInfoByTokenModel_a_staff[]}
@@ -256,7 +118,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    * @get result
    * @type {string}
    */
-  this.dt_confirm = "";
+  this.dt_confirm = undefined;
 
   /**
    * Start date of the session in MySQL format in GMT.
@@ -280,7 +142,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    * @get result
    * @type {string}
    */
-  this.dtl_end = "";
+  this.dtl_end = undefined;
 
   /**
    * End date and time of the session in MySQL format in GMT.
@@ -288,7 +150,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    * @get result
    * @type {string}
    */
-  this.dtu_end = "";
+  this.dtu_end = undefined;
 
   /**
    * Date and time in UTC when the visit is promoted from wait list to active list.
@@ -297,7 +159,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    * @get result
    * @type {string}
    */
-  this.dtu_wait_promote = "";
+  this.dtu_wait_promote = undefined;
 
   /**
    * Whether notes added to visit.
@@ -316,15 +178,28 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.i_duration = undefined;
 
   /**
-   * Type of note. One of {@link Wl_Visit_Note_Sid_NoteSid} constants. <tt>false</tt> if notes not allowed.
+   * A list of types of visit note.
+   *
+   * Values:
+   * - 2 (`QUICK`): The usual quick accompanying note for the customer visit.
+   * - 1 (`SOAP`): Accompanying medical note for the customer visit.
    *
    * @get result
-   * @type {number|boolean}
+   * @type {number}
    */
   this.id_note = undefined;
 
   /**
-   * Service type, one of {@link RsServiceSid}.
+   * Identifiers for services types.
+   *
+   * Last used ID: 5.
+   *
+   * Values:
+   * - 1 (`APPOINTMENT`): Appointments.
+   * - 2 (`CLASSES`): Classes.
+   * - 3 (`ENROLLMENT`): Enrolments.
+   * - 5 (`RESOURCE`): Resources.
+   * - 4 (`VISIT`): Visits.
    *
    * @get result
    * @type {number}
@@ -333,13 +208,13 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
 
   /**
    * Whether this service be carried out in Zoom.
-   * <tt>true</tt> - If the service can be carried out in Zoom.
-   * <tt>false</tt> - otherwise.
+   * `true` - If the service can be carried out in Zoom.
+   * `false` - otherwise.
    *
    * @get result
    * @type {boolean}
    */
-  this.is_start_virtual_service = false;
+  this.is_start_virtual_service = undefined;
 
   /**
    * ID of appointment to get information for.
@@ -347,7 +222,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    * @get get
    * @type {string}
    */
-  this.k_appointment = "0";
+  this.k_appointment = "";
 
   /**
    * ID of business to get information for.
@@ -355,10 +230,10 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
-   * Class identifier, primary key in {@link \RsClassSql}. Not empty if service is class or event reservation.
+   * Class identifier. Not empty if service is class or event reservation.
    *
    * @get result
    * @type {string}
@@ -371,7 +246,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
    * @get get
    * @type {string}
    */
-  this.k_class_period = "0";
+  this.k_class_period = "";
 
   /**
    * Location identifier.
@@ -382,8 +257,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.k_location = undefined;
 
   /**
-   * Resource identifier.
-   * Not empty if service is asset reservation.
+   * Resource identifier. Not empty if service is asset reservation.
    *
    * @get result
    * @type {string}
@@ -391,8 +265,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.k_resource = undefined;
 
   /**
-   * Service identifier.
-   * Not empty if service is appointment reservation.
+   * Service identifier. Not empty if service is appointment reservation.
    *
    * @get result
    * @type {string}
@@ -408,7 +281,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.text_location = undefined;
 
   /**
-   * Time when service starts in format <tt>8:00AM</tt>.
+   * Time when service starts in format `8:00AM`.
    *
    * @get result
    * @type {string}
@@ -458,7 +331,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_AttendanceInfoByTokenModel);
  */
 Wl_Login_Attendance_AttendanceInfoByTokenModel.prototype.config=function()
 {
-  return {"a_field": {"a_appointment_visit_info": {"get": {"result": true}},"a_logo": {"get": {"result": true}},"a_purchase_option_default": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_resource_layout": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_confirm": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"get": true}},"dtl_end": {"get": {"result": true}},"dtu_end": {"get": {"result": true}},"dtu_wait_promote": {"get": {"result": true}},"has_note": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_service": {"get": {"result": true}},"is_start_virtual_service": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"get": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_time_end": {"get": {"result": true}},"text_time_start": {"get": {"result": true}},"text_title": {"get": {"result": true}},"text_token": {"get": {"get": true}},"url_booking": {"get": {"result": true}}}};
+  return {"a_field":{"a_appointment_visit_info":{"get":{"result":true}},"a_logo":{"get":{"result":true}},"a_purchase_option_default":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_resource_layout":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"dt_confirm":{"get":{"result":true}},"dt_date_global":{"get":{"result":true}},"dt_date_local":{"get":{"get":true}},"dtl_end":{"get":{"result":true}},"dtu_end":{"get":{"result":true}},"dtu_wait_promote":{"get":{"result":true}},"has_note":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"id_note":{"get":{"result":true}},"id_service":{"get":{"result":true}},"is_start_virtual_service":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"result":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_service":{"get":{"result":true}},"text_location":{"get":{"result":true}},"text_time_end":{"get":{"result":true}},"text_time_start":{"get":{"result":true}},"text_title":{"get":{"result":true}},"text_token":{"get":{"get":true}},"url_booking":{"get":{"result":true}}}};
 };
 
 /**
@@ -470,4 +343,17 @@ Wl_Login_Attendance_AttendanceInfoByTokenModel.prototype.config=function()
  * @param {string} k_business ID of business to get information for.
  * @returns {Wl_Login_Attendance_AttendanceInfoByTokenModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns detailed information about a single class period, appointment, or asset session.
+ *
+ * Accepts either a class period key with a local date or an appointment key, validates access, and returns
+ * scheduling details including title, start and end times, location, staff, assets, service type, and
+ * default purchase option information.
+ *
+ * @function
+ * @name Wl_Login_Attendance_AttendanceInfoByTokenModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

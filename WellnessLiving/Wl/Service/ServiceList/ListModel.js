@@ -1,7 +1,5 @@
 /**
- * Service list.
- *
- * This model is generated automatically based on API.
+ * Returns list of appointment type in the business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,42 +15,15 @@ function Wl_Service_ServiceList_ListModel()
 
   /**
    * @typedef {{}} Wl_Service_ServiceList_ListModel_a_service
-   * @property {boolean} hide_application Whether service will be hidden in the White Label mobile application.
-   *  <tt>true</tt> means that service will not be displayed, <tt>false</tt> otherwise.
-   * @property {string} k_service Service identifier, primary key in {@link \RsServiceSql}.
-   * @property {string} k_service_category Service category identifier, primary key in {@link \RsServiceCategorySql}.
-   * @property {string} text_service Service name.
+   * @property {boolean} hide_application Whether service will be hidden in the White Label mobile application.  `true` means that service will not be displayed, `false` otherwise.
+   * @property {string} k_service Appointment type identifier, primary key.
+   * @property {string} k_service_category Appointment type category identifier, primary key.
+   * @property {string} text_category Appointment type category name.
+   * @property {string} text_service Appointment type name.
    */
 
   /**
-   * Services list:
-   * <dl>
-   *   <dt>
-   *     bool <var>hide_application</var>
-   *   </dt>
-   *   <dd>
-   *      Whether service will be hidden in the White Label mobile application.
-   *      <tt>true</tt> means that service will not be displayed, <tt>false</tt> otherwise.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_service</var>
-   *   </dt>
-   *   <dd>
-   *     Service identifier, primary key in {@link \RsServiceSql}.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_service_category</var>
-   *   </dt>
-   *   <dd>
-   *     Service category identifier, primary key in {@link \RsServiceCategorySql}.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_service</var>
-   *   </dt>
-   *   <dd>
-   *     Service name.
-   *   </dd>
-   * </dl>
+   * Appointment types list:
    *
    * @get result
    * @type {Wl_Service_ServiceList_ListModel_a_service[]}
@@ -60,8 +31,8 @@ function Wl_Service_ServiceList_ListModel()
   this.a_service = undefined;
 
   /**
-   * Whether to return franchisee-created services (if business is franchisor).
-   * <tt>true</tt> to include franchisee-created services.
+   * Whether to return franchisee-created appointment types (if business is franchisor).
+   * `true` to include franchisee-created appointment types.
    *
    * @get get
    * @type {boolean}
@@ -69,7 +40,7 @@ function Wl_Service_ServiceList_ListModel()
   this.is_franchise = false;
 
   /**
-   * Business key, primary key in {@link \RsBusinessSql}.
+   * Business key, primary key.
    *
    * @get get
    * @type {string}
@@ -86,13 +57,24 @@ WlSdk_ModelAbstract.extend(Wl_Service_ServiceList_ListModel);
  */
 Wl_Service_ServiceList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_service": {"get": {"result": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_service":{"get":{"result":true}},"is_franchise":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Service_ServiceList_ListModel.instanceGet
- * @param {string} k_business Business key, primary key in {@link \RsBusinessSql}.
+ * @param {string} k_business Business key, primary key.
  * @returns {Wl_Service_ServiceList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns list of appointment type in the business.
+ *
+ * Gets key of the business and returns all available appointment types with their names and categories.
+ *
+ * @function
+ * @name Wl_Service_ServiceList_ListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

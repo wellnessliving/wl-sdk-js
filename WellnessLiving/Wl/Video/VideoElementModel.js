@@ -1,5 +1,5 @@
 /**
- * Returns a list of video categories.
+ * Deletes the specified video.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -23,45 +23,37 @@ function Wl_Video_VideoElementModel()
   this.a_location = undefined;
 
   /**
-   * The keys of the staff members who are on the video.
+   * The keys of the user staff members who are on the video.
    *
-   * @deprecated This property will be removed in the future. Use {@link Wl_Video_VideoElementModel.a_staff_uid} instead.
    * @get result
    * @post post
    * @type {string[]}
    */
-  this.a_staff = [];
+  this.a_staff = undefined;
 
   /**
    * @typedef {{}} Wl_Video_VideoElementModel_a_staff_info
-   * @property {*} k_staff The staff member key.
+   * @property {string} k_staff <b>Deprecated</b> The staff member key.
    * @property {string} text_name The staff member's full name.
-   * @property {string} uid_staff The staff user ID.`uid`.
+   * @property {string} uid_staff The staff user ID.
    */
 
   /**
-   * A list of staff members associated with the video. Every item has the following structure:<dl>
-   *   <dt>string <var>k_staff</var> <b>(deprecated)</b></dt>
-   *   <dd>The staff member key.</dd>
-   *   <dt>string <var>text_name</var></dt>
-   *   <dd>The staff member's full name.</dd>
-   *   <dt>string <var>uid_staff</var></dt>
-   *   <dd>The staff user ID.`uid`.</dd>
-   * </dl>
+   * A list of staff members associated with the video. Every item has the following structure:
    *
    * @get result
    * @type {Wl_Video_VideoElementModel_a_staff_info}
    */
-  this.a_staff_info = [];
+  this.a_staff_info = undefined;
 
   /**
-   * The user IDs of the staff members who are on the video.
+   * The user IDs of the staff members who are on the video (authoritative list for who is assigned to the video).
    *
    * @get result
    * @post post
    * @type {string[]}
    */
-  this.a_staff_uid = [];
+  this.a_staff_uid = undefined;
 
   /**
    * The video category keys where this video can be found.
@@ -113,12 +105,11 @@ function Wl_Video_VideoElementModel()
 
   /**
    * Video file.
-   * This property is not used, but need for correct generate model.
    *
    * @post post
-   * @type {{}}
+   * @type {string}
    */
-  this.file_video = undefined;
+  this.file_video = "";
 
   /**
    * The video embed code.
@@ -162,20 +153,17 @@ function Wl_Video_VideoElementModel()
    * @post post
    * @type {number}
    */
-  this.i_duration = undefined;
+  this.i_duration = 0;
 
   /**
    * The size of the uploaded file.
    *
    * If the file will be uploaded in parts, its size will be set.
    *
-   * In this case, the file will not be uploaded to this API.
-   * Method {@link Wl_Video_VideoElementModel._fileVideoGet()} will not return the result.
-   *
    * @post post
-   * @type {number|string}
+   * @type {number}
    */
-  this.i_file_upload_size = "";
+  this.i_file_upload_size = 0;
 
   /**
    * The number of video views.
@@ -186,10 +174,15 @@ function Wl_Video_VideoElementModel()
   this.i_watch = undefined;
 
   /**
-   * Embedded video source.
-   * One of {@link Wl_Video_VideoEmbedSourceSid} constants.
+   * List of embed video sources.
    *
-   * `null` if video is uploaded.
+   * Last used ID: 4
+   *
+   * Values:
+   * - 4 (`LES_MILLS`): Les Mills.
+   * - 2 (`VIMEO`): Vimeo.
+   * - 3 (`WISTIA`): Wistia.
+   * - 1 (`YOUTUBE`): YouTube.
    *
    * @get result
    * @put result
@@ -198,25 +191,34 @@ function Wl_Video_VideoElementModel()
   this.id_embed_source = null;
 
   /**
-   * {@link Core_Sid_YesNoSid.NO} if the video is available in all locations.
-   * {@link Core_Sid_YesNoSid.YES} if the video is available only in certain locations.
+   * A list of two answers for any question: Yes or No.
+   *
+   * Values:
+   * - 2 (`NO`): The answer is "no".
+   * - 1 (`YES`): The answer is "yes".
    *
    * @get result
    * @post post
+   * @see Core_Sid_YesNoSid
    * @type {number}
    */
-  this.id_location_select = undefined;
+  this.id_location_select = 0;
 
   /**
-   * Source of the video.
+   * List of video types.
    *
-   * One of {@link Wl_Video_VideoSourceSid} constants.
+   * Last used ID: 2
+   *
+   * Values:
+   * - 2 (`EMBED`): Embedded video.
+   * - 1 (`UPLOAD`): Uploaded video.
    *
    * @get result
    * @post post
+   * @see Wl_Video_VideoSourceSid
    * @type {number}
    */
-  this.id_source = 1;
+  this.id_source = 0;
 
   /**
    * If `true`, the API is being used from backend. Otherwise, this will be `false`.
@@ -236,7 +238,7 @@ function Wl_Video_VideoElementModel()
    * @post post
    * @type {boolean}
    */
-  this.is_calorie = undefined;
+  this.is_calorie = false;
 
   /**
    * If `true`, the video is converted.
@@ -246,7 +248,7 @@ function Wl_Video_VideoElementModel()
    * @post get
    * @type {boolean}
    */
-  this.is_converted = undefined;
+  this.is_converted = false;
 
   /**
    * If `true`, the video is published. Otherwise, this will be `false`.
@@ -264,7 +266,7 @@ function Wl_Video_VideoElementModel()
    * @post post
    * @type {boolean}
    */
-  this.is_video_level = undefined;
+  this.is_video_level = false;
 
   /**
    * Video.js media player initialization parameters in JSON format.
@@ -283,7 +285,7 @@ function Wl_Video_VideoElementModel()
    * @put result
    * @type {string}
    */
-  this.json_setup = "";
+  this.json_setup = undefined;
 
   /**
    * The business key.
@@ -293,22 +295,22 @@ function Wl_Video_VideoElementModel()
    * @post get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * The video key.
    *
-   * *Be careful, when use this property in code, use {@link Wl_Video_VideoElementModel.k_video_binary} instead.*
+   * *Be careful, when use this property in code, use `k_video_binary` instead.*
    * In this property can be key in next format:
-   * * [Deprecated] String key in old format. See {@link Core\Db\Shard\DbShardKey::keyString()}.
-   * * String key in new format. See {@link Core\Db\Shard\DbShardKey::keyBinary()} or {@link Core\Db\DbKey::generate()}.
+   * * [Deprecated] String key in old format. 
+   * * String key in new format.
    *
    * @delete get
    * @get get
    * @post get,result
    * @type {string}
    */
-  this.k_video = undefined;
+  this.k_video = "";
 
   /**
    * The binary string video key.
@@ -325,7 +327,7 @@ function Wl_Video_VideoElementModel()
    * @post post
    * @type {string}
    */
-  this.k_video_category_primary = undefined;
+  this.k_video_category_primary = "";
 
   /**
    * The video level key.
@@ -335,7 +337,7 @@ function Wl_Video_VideoElementModel()
    * @post post
    * @type {string}
    */
-  this.k_video_level = undefined;
+  this.k_video_level = "";
 
   /**
    * The action that must be performed to the video thumbnail image.
@@ -350,7 +352,6 @@ function Wl_Video_VideoElementModel()
    * If the file will be uploaded in parts, upload ID will be set.
    *
    * In this case, the file will not be uploaded to this API.
-   * Method {@link Wl_Video_VideoElementModel._fileVideoGet()} will not return the result.
    *
    * @post post
    * @type {string}
@@ -386,7 +387,7 @@ function Wl_Video_VideoElementModel()
    * @post post
    * @type {string}
    */
-  this.s_thumbnail = undefined;
+  this.s_thumbnail = "";
 
   /**
    * If `false`, the calorie count for videos is hidden. Otherwise, this will be `true`.
@@ -427,7 +428,7 @@ function Wl_Video_VideoElementModel()
    * @post post
    * @type {string}
    */
-  this.text_title = undefined;
+  this.text_title = "";
 
   /**
    * The URL of the video thumbnail.
@@ -442,7 +443,7 @@ function Wl_Video_VideoElementModel()
    *
    * This URL return with domain which you use when you call this API.
    * In case when you make request to local domain and video is
-   * {@link Wl_Video_VideoElementModel.is_converted} links in file will have global domain and for correct
+   * `is_converted` links in file will have global domain and for correct
    * work you must replace global domain to local.
    *
    * Example for `videojs` player you can override method `beforeRequest`: <code>
@@ -484,7 +485,7 @@ function Wl_Video_VideoElementModel()
    * @post post
    * @type {string}
    */
-  this.xml_description = undefined;
+  this.xml_description = "";
 
   this.changeInit();
 }
@@ -496,15 +497,69 @@ WlSdk_ModelAbstract.extend(Wl_Video_VideoElementModel);
  */
 Wl_Video_VideoElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_location": {"get": {"result": true},"post": {"post": true}},"a_staff": {"get": {"result": true},"post": {"post": true}},"a_staff_info": {"get": {"result": true}},"a_staff_uid": {"get": {"result": true},"post": {"post": true}},"a_video_category": {"get": {"result": true},"post": {"post": true}},"a_video_tag": {"get": {"result": true},"post": {"post": true}},"dtl_publish": {"get": {"result": true},"post": {"post": true}},"dtl_unpublish": {"get": {"result": true},"post": {"post": true}},"dtl_upload": {"get": {"result": true}},"file_video": {"post": {"post": true}},"html_embed": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"i_calorie": {"get": {"result": true},"post": {"post": true}},"i_current_percent": {"get": {"result": true}},"i_current_time": {"get": {"result": true}},"i_duration": {"get": {"result": true},"post": {"post": true}},"i_file_upload_size": {"post": {"post": true}},"i_watch": {"get": {"result": true}},"id_embed_source": {"get": {"result": true},"put": {"result": true}},"id_location_select": {"get": {"result": true},"post": {"post": true}},"id_source": {"get": {"result": true},"post": {"post": true}},"is_backend": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"is_calorie": {"get": {"result": true},"post": {"post": true}},"is_converted": {"get": {"result": true},"post": {"get": true}},"is_published": {"get": {"result": true}},"is_video_level": {"get": {"result": true},"post": {"post": true}},"json_setup": {"get": {"result": true},"put": {"result": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"k_video": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true}},"k_video_binary": {"get": {"result": true}},"k_video_category_primary": {"get": {"result": true},"post": {"post": true}},"k_video_level": {"get": {"result": true},"post": {"post": true}},"s_command": {"post": {"post": true}},"s_file_upload_id": {"post": {"post": true}},"s_file_upload_name": {"post": {"post": true}},"s_preview_video_key": {"get": {"result": true}},"s_thumbnail": {"post": {"post": true}},"show_calorie": {"get": {"result": true}},"show_level": {"get": {"result": true}},"show_view": {"get": {"result": true}},"text_level_title": {"get": {"result": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"url_thumbnail": {"get": {"result": true}},"url_video": {"get": {"result": true}},"url_video_direct": {"get": {"result": true}},"url_video_frame": {"get": {"result": true}},"xml_description": {"get": {"result": true},"post": {"post": true}}}};
+  return {"a_field":{"a_location":{"get":{"result":true},"post":{"post":true}},"a_staff":{"get":{"result":true},"post":{"post":true}},"a_staff_info":{"get":{"result":true}},"a_staff_uid":{"get":{"result":true},"post":{"post":true}},"a_video_category":{"get":{"result":true},"post":{"post":true}},"a_video_tag":{"get":{"result":true},"post":{"post":true}},"dtl_publish":{"get":{"result":true},"post":{"post":true}},"dtl_unpublish":{"get":{"result":true},"post":{"post":true}},"dtl_upload":{"get":{"result":true}},"file_video":{"post":{"post":true}},"html_embed":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"i_calorie":{"get":{"result":true},"post":{"post":true}},"i_current_percent":{"get":{"result":true}},"i_current_time":{"get":{"result":true}},"i_duration":{"get":{"result":true},"post":{"post":true}},"i_file_upload_size":{"post":{"post":true}},"i_watch":{"get":{"result":true}},"id_embed_source":{"get":{"result":true},"put":{"result":true}},"id_location_select":{"get":{"result":true},"post":{"post":true}},"id_source":{"get":{"result":true},"post":{"post":true}},"is_backend":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"is_calorie":{"get":{"result":true},"post":{"post":true}},"is_converted":{"get":{"result":true},"post":{"get":true}},"is_published":{"get":{"result":true}},"is_video_level":{"get":{"result":true},"post":{"post":true}},"json_setup":{"get":{"result":true},"put":{"result":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"k_video":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true}},"k_video_binary":{"get":{"result":true}},"k_video_category_primary":{"get":{"result":true},"post":{"post":true}},"k_video_level":{"get":{"result":true},"post":{"post":true}},"s_command":{"post":{"post":true}},"s_file_upload_id":{"post":{"post":true}},"s_file_upload_name":{"post":{"post":true}},"s_preview_video_key":{"get":{"result":true}},"s_thumbnail":{"post":{"post":true}},"show_calorie":{"get":{"result":true}},"show_level":{"get":{"result":true}},"show_view":{"get":{"result":true}},"text_level_title":{"get":{"result":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"url_thumbnail":{"get":{"result":true}},"url_video":{"get":{"result":true}},"url_video_direct":{"get":{"result":true}},"url_video_frame":{"get":{"result":true}},"xml_description":{"get":{"result":true},"post":{"post":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Video_VideoElementModel.instanceGet
  * @param {string} k_business The business key.
- * @param {string} k_video The video key. *Be careful, when use this property in code, use {@link Wl_Video_VideoElementModel.k_video_binary} instead.* In this property can be key in next format: * [Deprecated] String key in old format. See {@link Core\Db\Shard\DbShardKey::keyString()}. * String key in new format. See {@link Core\Db\Shard\DbShardKey::keyBinary()} or {@link Core\Db\DbKey::generate()}.
+ * @param {string} k_video The video key. *Be careful, when use this property in code, use `k_video_binary` instead.* In this property can be key in next format: * [Deprecated] String key in old format. * String key in new format.
  * @param {boolean} is_backend If `true`, the API is being used from backend. Otherwise, this will be `false`.
  * @returns {Wl_Video_VideoElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Deletes the specified video.
+ *
+ * Permanently removes the video, its localized CMS records, and all category associations
+ * from the business library. Also deletes the video file and thumbnail from storage.
+ * Requires backend access with the video library management privilege.
+ *
+ * @function
+ * @name Wl_Video_VideoElementModel.delete
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.delete()
+ */
+
+/**
+ * Returns the data for the specified video.
+ *
+ * Returns detailed information about a single video, including title, description, duration,
+ * categories, tags, difficulty level, assigned staff, virtual session settings, and playback
+ * progress for the current user. In frontend mode, access is restricted to videos the current
+ * user is allowed to watch based on their membership and login type.
+ *
+ * @function
+ * @name Wl_Video_VideoElementModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Creates or updates a video for the specified business.
+ *
+ * Saves a video record with its title, description, categories, tags, difficulty level,
+ * staff assignments, and access settings. When no video key is provided, a new record is
+ * created; otherwise the existing record is updated. Requires backend access with the
+ * video library management privilege and an active video subscription.
+ *
+ * @function
+ * @name Wl_Video_VideoElementModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */
+
+/**
+ * Validates video embed code.
+ *
+ * Checks that the provided embed snippet conforms to the supported embed code format. Throws
+ * if the snippet is malformed or uses an unsupported source. Call this before saving to give
+ * the user an immediate validation error without persisting the video record.
+ *
+ * @function
+ * @name Wl_Video_VideoElementModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
  */

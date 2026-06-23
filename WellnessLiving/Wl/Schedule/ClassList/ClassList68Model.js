@@ -1,11 +1,9 @@
 /**
- * Retrieves a list of classes and class information for a Class Tab.
- *
- * This model is generated automatically based on API.
+ * This method is a modified Get method `get()`.
+ * The difference is as follows:
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @see Wl\Schedule\ClassList\ClassList68Api
  */
 function Wl_Schedule_ClassList_ClassList68Model()
 {
@@ -21,25 +19,25 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @post result
    * @type {string[]}
    */
-  this.a_calendar = [];
+  this.a_calendar = undefined;
 
   /**
    * The list of classes keys to filter.
    * Return sessions with matching class IDs.
    *
-   * If it's empty and {@link Wl_Schedule_ClassList_ClassList68Model.show_class} is `true`, all classes will be returned.
+   * If it's empty and `show_class` is `true`, all classes will be returned.
    *
    * @post post
    * @type {string[]}
    */
-  this.a_class = [];
+  this.a_class = undefined;
 
   /**
    * List of tabs keys.
    *
-   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model.is_tab_all} is `true`.
+   * This will be ignored if `is_tab_all` is `true`.
    *
-   * If list of tab keys is not empty, {@link Wl_Schedule_ClassList_ClassList68Model.id_class_tab} is mandatory.
+   * If list of tab keys is not empty, `id_class_tab` is mandatory.
    *
    * `null` if no filtering by Book Now Tab is required.
    *
@@ -57,38 +55,37 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * Empty array means no filtering.
    *
    * @post post
-   * @see ADateWeekSid
    * @type {number[]}
    */
-  this.a_day = [];
+  this.a_day = undefined;
 
   /**
    * The list of event keys to filter.
    * Return sessions with matching event keys.
    *
-   * If it's empty and {@link Wl_Schedule_ClassList_ClassList68Model.show_event} is `true`, all events will be returned.
+   * If it's empty and `show_event` is `true`, all events will be returned.
    *
    * @post post
    * @type {string[]}
    */
-  this.a_event = [];
+  this.a_event = undefined;
 
   /**
    * The list of location keys to filter results.
    * If it's empty, schedule for all locations will be returned.
-   * All given locations should be from the same business, which is sent in {@link Wl_Schedule_ClassList_ClassListModel.k_business}.
+   * All given locations should be from the same business, which is sent in [ClassListApi](/Wl/Schedule/ClassList/ClassList.json).
    *
    * @post post
    * @type {string[]}
    */
-  this.a_location = [];
+  this.a_location = undefined;
 
   /**
    * @typedef {{}} Wl_Schedule_ClassList_ClassList68Model_a_quick
-   * @property {string} text_type Type of class ("class" || "event")
+   * @property {number} i_class Total sessions found.
    * @property {string} k_class Class/event key.
    * @property {string} s_class Class/event title.
-   * @property {number} i_class Total sessions found.
+   * @property {string} text_type Type of class ("class" || "event")
    */
 
   /**
@@ -98,42 +95,35 @@ function Wl_Schedule_ClassList_ClassList68Model()
    *
    *
    * For generating this filter, all filters are applied except:
-   * - {@link Wl_Schedule_ClassList_ClassList68Model.a_class};
-   * - {@link Wl_Schedule_ClassList_ClassList68Model.a_event};
-   * - {@link Wl_Schedule_ClassList_ClassList68Model.show_class};
-   * - {@link Wl_Schedule_ClassList_ClassList68Model.show_event}.
+   * - `a_class`;
+   * - `a_event`;
+   * - `show_class`;
+   * - `show_event`.
    *
    * @post result
    * @type {Wl_Schedule_ClassList_ClassList68Model_a_quick}
    */
-  this.a_quick = [];
+  this.a_quick = undefined;
 
   /**
    * @typedef {{}} Wl_Schedule_ClassList_ClassList68Model_a_session
    * @property {string[]} a_class_tab Keys of class tab.
    * @property {string[]} a_image The class image. Empty array if there is no image.
    * @property {string[]} a_search_tag Tags associated with an individual class.
-   * @property {string[]} a_staff The list of staff keys for the staff member conducting the session.
-   * For legacy third-party apps listed in {@link Wl_Schedule_ClassList_ClassListModel.APPS_USE_OLD_K_STAFF},
-   * contains  `k_staff` for backward compatibility.
-   * Empty for all other applications. Use `a_staff_uid` instead.
+   * @property {string[]} a_staff The list of staff keys for the staff member conducting the session. For legacy third-party apps listed in `APPS_USE_OLD_K_STAFF`, contains  `k_staff` for backward compatibility. Empty for all other applications. Use `a_staff_uid` instead.
    * @property {string[]} a_staff_uid The list of staff user keys for the staff member conducting the session.
    * @property {string[]} a_virtual_location The list of virtual locations keys. Each value is a location key.
-   *
    * @property {string} dt_date The date/time of the session start in UTC.
    * @property {string} dt_time The time of the session start in the local time zone.
    * @property {string} dtl_date The date/time of session start in the location's time zone.
-   * @property {boolean} hide_application Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the
-   *  class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
+   * @property {boolean} hide_application Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the  class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
    * @property {string} html_description The class description.
    * @property {number} i_book Count of visits on this class.
    * @property {?number} i_capacity The capacity of the service. 'null' indicates that the capacity is not set.
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
    * @property {number} i_wait Number of clients in wait list.
-   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.
-   *  `true` if clients can book on behalf of a guest.
-   *  `false` otherwise.
+   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.  `true` if clients can book on behalf of a guest.  `false` otherwise.
    * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
    * @property {boolean} is_event If `true`, this is an event. Otherwise, this will be `false`.
    * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
@@ -147,8 +137,8 @@ function Wl_Schedule_ClassList_ClassList68Model()
    */
 
   /**
-   * A list of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel.dt_date}
-   * and in the 62 days ahead (or up to {@link Wl_Schedule_ClassList_ClassListModel.dt_end}).
+   * A list of classes sessions starting with the date [ClassListApi](/Wl/Schedule/ClassList/ClassList.json)
+   * and in the 62 days ahead (or up to [ClassListApi](/Wl/Schedule/ClassList/ClassList.json)).
    * Every element has the following keys:
    *
    * @post result
@@ -158,8 +148,8 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * @typedef {{}} Wl_Schedule_ClassList_ClassList68Model_a_time
-   * @property {string} tl_start Time when the session starts. Example: value `'06:00'`.
-   * @property {string} tl_end Time when the session ends. Example: value `'14:00'`.
+   * @property {number} tl_end Time when the session ends. Example: value `'14:00'`.
+   * @property {number} tl_start Time when the session starts. Example: value `'06:00'`.
    */
 
   /**
@@ -175,7 +165,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @post post
    * @type {Wl_Schedule_ClassList_ClassList68Model_a_time[]}
    */
-  this.a_time = [];
+  this.a_time = undefined;
 
   /**
    * The list start date in MySQL format.
@@ -188,26 +178,31 @@ function Wl_Schedule_ClassList_ClassList68Model()
   /**
    * The list end date in MySQL format.
    *
-   *
    * @post post
    * @type {string}
    */
   this.dt_end = "";
 
   /**
-   * ID of tab. One of {@link Wl_Classes_Tab_TabSid} constants.
-   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model.is_tab_all} is `true`.
+   * List of class tab objects.
    *
-   * `null` if no filtering by tab is required.
+   * Last ID: 6.
+   *
+   * Values:
+   * - 2 (`ENROLLMENT`): Enrolments.
+   * - 4 (`RESOURCE`): Bookable Assets.
+   * - 3 (`SERVICE`): Appointments.
+   * - 1 (`TRAINING`): Classes.
    *
    * @post post
+   * @see Wl_Classes_Tab_TabSid
    * @type {?number}
    */
   this.id_class_tab = null;
 
   /**
-   * `true` means to not generate {@link Wl_Schedule_ClassList_ClassList68Model.a_session} result.
-   * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassList68Model.a_calendar} is enough.
+   * `true` means to not generate `a_session` result.
+   * Can be used, if you do not need full information about existing classes and result in `a_calendar` is enough.
    *
    * @post post
    * @type {boolean}
@@ -216,7 +211,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
-   * {@link Wl_Schedule_ClassList_ClassList68Model.k_class_tab} or {@link Wl_Schedule_ClassList_ClassList68Model.id_class_tab} to filter sessions by class tab.
+   * `k_class_tab` or `id_class_tab` to filter sessions by class tab.
    *
    * @post post
    * @type {boolean}
@@ -246,7 +241,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * If `true`, there exists at least one virtual service by a specified
-   * {@link Wl_Schedule_ClassList_ClassList68Model.k_business} and {@link Wl_Schedule_ClassList_ClassList68Model.k_class_tab},
+   * `k_business` and `k_class_tab`,
    * Otherwise, this will be `false`.
    *
    * @post result
@@ -260,22 +255,21 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @post post
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * The tab key.
-   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model.is_tab_all} is `true`.
+   * This will be ignored if `is_tab_all` is `true`.
    *
    * @post post
    * @type {string}
    */
-  this.k_class_tab = "0";
+  this.k_class_tab = "";
 
   /**
    * The list of staff members to filter.
    * A comma separated list of staff keys.
    *
-   * @deprecated Use {@link Wl_Schedule_ClassList_ClassListModel.s_staff_uid} instead.
    * @post post
    * @type {string}
    */
@@ -304,7 +298,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @post post
    * @type {boolean}
    */
-  this.show_class = true;
+  this.show_class = false;
 
   /**
    * If `true`, events are also returned. If `false`, only classes are returned.
@@ -315,7 +309,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.show_event = false;
 
   /**
-   * Whether to generate {@link Wl_Schedule_ClassList_ClassList68Model.a_quick} a quick filter.
+   * Whether to generate `a_quick` a quick filter.
    * If `true`, a quick filter will be generated. `false` otherwise.
    *
    * @post post
@@ -341,5 +335,25 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassList68Model);
  */
 Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
 {
-  return {"a_field": {"a_calendar": {"post": {"result": true}},"a_class": {"post": {"post": true}},"a_class_tab": {"post": {"post": true}},"a_day": {"post": {"post": true}},"a_event": {"post": {"post": true}},"a_location": {"post": {"post": true}},"a_quick": {"post": {"result": true}},"a_session": {"post": {"result": true}},"a_time": {"post": {"post": true}},"dt_date": {"post": {"post": true}},"dt_end": {"post": {"post": true}},"id_class_tab": {"post": {"post": true}},"is_response_short": {"post": {"post": true}},"is_tab_all": {"post": {"post": true}},"is_timezone_different": {"post": {"result": true}},"is_virtual": {"post": {"post": true}},"is_virtual_service": {"post": {"result": true}},"k_business": {"post": {"post": true}},"k_class_tab": {"post": {"post": true}},"s_staff": {"post": {"post": true}},"s_staff_uid": {"post": {"post": true}},"show_cancel": {"post": {"post": true}},"show_class": {"post": {"post": true}},"show_event": {"post": {"post": true}},"show_quick_filter": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
+  return {"a_field":{"a_calendar":{"post":{"result":true}},"a_class":{"post":{"post":true}},"a_class_tab":{"post":{"post":true}},"a_day":{"post":{"post":true}},"a_event":{"post":{"post":true}},"a_location":{"post":{"post":true}},"a_quick":{"post":{"result":true}},"a_session":{"post":{"result":true}},"a_time":{"post":{"post":true}},"dt_date":{"post":{"post":true}},"dt_end":{"post":{"post":true}},"id_class_tab":{"post":{"post":true}},"is_response_short":{"post":{"post":true}},"is_tab_all":{"post":{"post":true}},"is_timezone_different":{"post":{"result":true}},"is_virtual":{"post":{"post":true}},"is_virtual_service":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_class_tab":{"post":{"post":true}},"s_staff":{"post":{"post":true}},"s_staff_uid":{"post":{"post":true}},"show_cancel":{"post":{"post":true}},"show_class":{"post":{"post":true}},"show_event":{"post":{"post":true}},"show_quick_filter":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
 };
+
+/**
+ * This method is a modified Get method `get()`.
+The difference is as follows:
+ *
+ * - Some data for filtering is now transmitted by the post method.
+ * Because the addition of the filters creates a scenario where we can easily reach the maximum URL length of GET
+ * requests and the browser refuse to send the request (situations with long class ID, event ID or staff ID lists).
+ *
+ * - Added generation of a separate 'Quick filter'.
+ * This generation is enabled using the flag `show_quick_filter`.
+ *
+ * - Added a filter list of events `a_event`.
+ * - Added a filter ID of tab `id_class_tab`.
+ *
+ * @function
+ * @name Wl_Schedule_ClassList_ClassList68Model.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

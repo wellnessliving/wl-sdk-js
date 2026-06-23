@@ -1,7 +1,5 @@
 /**
- * An endpoint that returns tax information for a business.
- *
- * This model is generated automatically based on API.
+ * Returns the title for the specified tax.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -21,7 +19,7 @@ function Wl_Tax_TaxModel()
    * @get get
    * @type {string}
    */
-  this.k_tax = "0";
+  this.k_tax = "";
 
   /**
    * The tax title.
@@ -41,7 +39,7 @@ WlSdk_ModelAbstract.extend(Wl_Tax_TaxModel);
  */
 Wl_Tax_TaxModel.prototype.config=function()
 {
-  return {"a_field": {"k_tax": {"get": {"get": true}},"text_tax": {"get": {"result": true}}}};
+  return {"a_field":{"k_tax":{"get":{"get":true}},"text_tax":{"get":{"result":true}}}};
 };
 
 /**
@@ -50,4 +48,16 @@ Wl_Tax_TaxModel.prototype.config=function()
  * @param {string} k_tax The tax key to get information for.
  * @returns {Wl_Tax_TaxModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns the title for the specified tax.
+ *
+ * Returns the human-readable display name for the given tax record. Throws if the tax
+ * key is invalid or if the tax has been marked as removed.
+ *
+ * @function
+ * @name Wl_Tax_TaxModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

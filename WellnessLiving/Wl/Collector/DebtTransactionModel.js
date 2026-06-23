@@ -1,7 +1,5 @@
 /**
- * An endpoint that returns a list of payments for debts added within the previous day.
- *
- * This model is generated automatically based on API.
+ * Returns a list of debt payment transactions for the specified business within the given date range.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -13,15 +11,10 @@ function Wl_Collector_DebtTransactionModel()
   /**
    * @typedef {{}} Wl_Collector_DebtTransactionModel_a_transaction
    * @property {string} dtu_pay The date and time in UTC of the payment transaction.
+   * @property {?number} id_pay_method A list of payment methods.
+   * @property {boolean} is_debt_paid Defines whether the initial debt to which this related transaction is fully paid. `true` if the debt is fully paid. `false` if the debt is partially paid.
+   * @property {boolean} is_pay_collections Defines whether the payment was performed via a third party service. `true` if the payment was performed via a third party service and this transaction is responsible for an account credit transaction for that payment. See [DebtPayApi](/Wl/Collector/DebtPay.json). `false` if the payment was performed within the Wellnessliving system.
    * @property {string} m_pay_amount The amount of the payment's transaction.
-   * @property {number} id_pay_method The payment method ID that was used for the payment. One of {@link RsPayMethodSid} constants.
-   * @property {boolean} is_pay_collections Defines whether the payment was performed via a third party service.
-   * `true` if the payment was performed via a third party service and this transaction is
-   * responsible for an account credit transaction for that payment. See {@link Wl_Collector_DebtPayModel}.
-   * `false` if the payment was performed within the Wellnessliving system.
-   * @property {boolean} is_debt_paid Defines whether the initial debt to which this related transaction is fully paid.
-   * `true` if the debt is fully paid.
-   * `false` if the debt is partially paid.
    * @property {string} text_client_name The full name of the debtor client for whom the payment transaction was performed.
    * @property {string} uid The UID of the debtor client for whom the payment transaction was performed.
    */
@@ -30,43 +23,52 @@ function Wl_Collector_DebtTransactionModel()
    * A list of debt payments for a given business added within the previous day.
    *
    * Each value is an array with next structure:
-   * <dl>
-   *   <dt>string <var>dtu_pay</var></dt>
-   *   <dd>The date and time in UTC of the payment transaction.</dd>
-   *   <dt>string <var>m_pay_amount</var></dt>
-   *   <dd>The amount of the payment's transaction.</dd>
-   *   <dt>int <var>id_pay_method</var></dt>
-   *   <dd>The payment method ID that was used for the payment. One of {@link RsPayMethodSid} constants.</dd>
-   *   <dt>bool <var>is_pay_collections</var></dt>
-   *   <dd>Defines whether the payment was performed via a third party service.
-   *     `true` if the payment was performed via a third party service and this transaction is
-   *     responsible for an account credit transaction for that payment. See {@link Wl_Collector_DebtPayModel}.
-   *     `false` if the payment was performed within the Wellnessliving system.
-   *   </dd>
-   *   <dt>bool <var>is_debt_paid</var></dt>
-   *   <dd>
-   *     Defines whether the initial debt to which this related transaction is fully paid.
-   *     `true` if the debt is fully paid.
-   *     `false` if the debt is partially paid.
-   *   </dd>
-   *   <dt>string <var>text_client_name</var></dt>
-   *   <dd>The full name of the debtor client for whom the payment transaction was performed.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>The UID of the debtor client for whom the payment transaction was performed.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Collector_DebtTransactionModel_a_transaction[]}
    */
-  this.a_transaction = [];
+  this.a_transaction = undefined;
 
   /**
-   * The business key of the debt.
+   * If set, this is the end of the date window. Only debt payments added before or on this date will be shown.
+   *
+   * If left `null` and `dl_start` has been specified only debt payments added after the start date will be returned.
+   * If left `null` and `dl_start` is also `null`, this will return debt payments from the previous month.
    *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.k_business = "";
+  this.dl_end = null;
+
+  /**
+   * If set, this is the start of the date window. Only debt payments added on or after this date will be shown.
+   *
+   * If left `null` and `dl_end` has been specified, this will return debt payments since the beginning of time.
+   * If left `null` and `dl_end` is also `null`, this will return debt payments from the previous month.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.dl_start = null;
+
+  /**
+   * If `true`, debt payments from test businesses will be returned. Otherwise, this will be `false` if only
+   * debt payments from real businesses will be returned.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_test = false;
+
+  /**
+   * The business key for which debt payments should be returned.
+   *
+   * Use `null` if debt payments from all businesses should be returned.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_business = null;
 
   this.changeInit();
 }
@@ -78,5 +80,18 @@ WlSdk_ModelAbstract.extend(Wl_Collector_DebtTransactionModel);
  */
 Wl_Collector_DebtTransactionModel.prototype.config=function()
 {
-  return {"a_field": {"a_transaction": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_transaction":{"get":{"result":true}},"dl_end":{"get":{"get":true}},"dl_start":{"get":{"get":true}},"is_test":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
+
+/**
+ * Returns a list of debt payment transactions for the specified business within the given date range.
+ *
+ * Used by the Collections module to audit payments made against debts. The default date range
+ * covers the previous day relative to the business timezone. Requires an active Collections
+ * subscription and either the business privilege or emulation access.
+ *
+ * @function
+ * @name Wl_Collector_DebtTransactionModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

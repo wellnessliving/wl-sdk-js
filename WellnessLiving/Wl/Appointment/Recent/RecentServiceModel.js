@@ -1,8 +1,5 @@
 /**
- * Returns list of client's last booked services. Only unique services are returned, i.e. if a client
- * booked the same service several times, only last of these bookings is returned in the list.
- *
- * This model is generated automatically based on API.
+ * Gets list of client's last booked services.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -12,12 +9,12 @@ function Wl_Appointment_Recent_RecentServiceModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of last booked services. Values are visit keys.
+   * List of last booked services.
    *
    * @get result
    * @type {string[]}
    */
-  this.a_service_last = [];
+  this.a_service_last = undefined;
 
   /**
    * Count of last booked services to return. Default value is 5.
@@ -25,12 +22,13 @@ function Wl_Appointment_Recent_RecentServiceModel()
    * @get get
    * @type {number}
    */
-  this.i_visit = 5;
+  this.i_visit = 0;
 
   /**
    * Type of service to return. One of {@link Wl_Service_ServiceSid} constants.
    *
    * @get get
+   * @see Wl_Service_ServiceSid
    * @type {number}
    */
   this.id_service = 0;
@@ -61,5 +59,18 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Recent_RecentServiceModel);
  */
 Wl_Appointment_Recent_RecentServiceModel.prototype.config=function()
 {
-  return {"a_field": {"a_service_last": {"get": {"result": true}},"i_visit": {"get": {"get": true}},"id_service": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_service_last":{"get":{"result":true}},"i_visit":{"get":{"get":true}},"id_service":{"get":{"get":true}},"k_business":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
+
+/**
+ * Gets list of client's last booked services.
+ *
+ * Returns the most recently booked unique services for the given client at the given business,
+ * filtered by service type (appointment or bookable asset). Duplicate services are collapsed so
+ * only the most recent booking per service is included, up to `MAX_SERVICE_COUNT`.
+ *
+ * @function
+ * @name Wl_Appointment_Recent_RecentServiceModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

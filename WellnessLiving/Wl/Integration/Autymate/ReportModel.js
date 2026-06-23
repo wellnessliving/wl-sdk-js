@@ -1,10 +1,5 @@
 /**
- * An endpoint that retrieves all daily transactions for a business using the All Transactions report from the
- * {@link Wl_Report_Generator_QueryModel} endpoint. This endpoint is a streamlined interface and adds
- * additional columns to the report for Autymate.
- * Autymate will have one user to access all businesses, this user will require the wl.integration.autymate.report privilege.
- *
- * This model is generated automatically based on API.
+ * Gets the daily transaction data.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,32 +11,33 @@ function Wl_Integration_Autymate_ReportModel()
   /**
    * The list of fields in this report.
    *
-   * This array is effectively a title row for table that is returned in {@link Wl_Integration_Autymate_ReportModel.a_row}.
+   * This array is effectively a title row for table that is returned in `a_row`.
    *
    * @get result
    * @type {string[]}
    */
-  this.a_field = [];
+  this.a_field = undefined;
 
   /**
-   * List of payment methods to filter out in the report. Each element is one of the {@line RsPayMethodSid} constants.
+   * List of payment methods to filter out in the report.
+   * Each element is one of the {@link RsPayMethodSid} constants.
    *
    * @get get
    * @type {number[]}
    */
-  this.a_pay_method_remove = [7];
+  this.a_pay_method_remove = undefined;
 
   /**
    * The report data.
    *
    * This is an indexed array in which one row is an indexed array also.
    *
-   * Indexes of the columns correspond to columns in {@link Wl_Integration_Autymate_ReportModel.a_field}.
+   * Indexes of the columns correspond to columns in `a_field`.
    *
    * @get result
    * @type {string[][]}
    */
-  this.a_row = [];
+  this.a_row = undefined;
 
   /**
    * The warning list of the report, if applicable.
@@ -49,7 +45,7 @@ function Wl_Integration_Autymate_ReportModel()
    * @get result
    * @type {string[]}
    */
-  this.a_warning = [];
+  this.a_warning = undefined;
 
   /**
    * The date in local time to retrieve transactions for.
@@ -64,8 +60,6 @@ function Wl_Integration_Autymate_ReportModel()
    *
    * `null` if generation of this report isn't completed.
    *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_complete</tt> for additional details.
-   *
    * @get result
    * @type {?string}
    */
@@ -75,8 +69,6 @@ function Wl_Integration_Autymate_ReportModel()
    * The date and time when this report was put in the generation queue.
    *
    * Effectively, this is the time when a user clicked to view this report or the report for this day was first called.
-   *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_queue</tt> for additional details.
    *
    * @get result
    * @type {?string}
@@ -88,8 +80,6 @@ function Wl_Integration_Autymate_ReportModel()
    *
    * `null` if generation of this report hasn't started.
    *
-   * See {@link \Wl\Report\Generator\ReportStorageListSql}.<tt>dtu_start</tt> for additional details.
-   *
    * @get result
    * @type {?string}
    */
@@ -97,7 +87,7 @@ function Wl_Integration_Autymate_ReportModel()
 
   /**
    * The page of the report, starting from 0.
-   * Each page will contain a maximum of {@link Wl_Integration_Autymate_ReportModel.LIMIT} rows.
+   * Each page will contain a maximum of `LIMIT` rows.
    *
    * @get get
    * @type {number}
@@ -105,22 +95,75 @@ function Wl_Integration_Autymate_ReportModel()
   this.i_page = 0;
 
   /**
-   * The status of the report.
+   * Lists statuses of reports from point of view of its generation.
    *
-   * One of the {@link Wl_Report_Generator_ReportGeneratorStatusSid} constants.
+   * Values:
+   * - 6 (`ABORTED`): Report is in an inconsistent state.
+   *
+   *   There was an aborted operation which means this report is available partially.
+   *
+   *   The following transitions are possible:
+   *
+   *   * `ABORTED` -> `DELETING` when a background task finds that this report is old and should be deleted.
+   *
+   *   * `ABORTED` -> `QUEUED` if user clicks to regenerate this report.
+   * - 5 (`ABORTING`): Current operation is being aborted now.
+   *
+   *   The following transitions are possible:
+   *
+   *   * `ABORTING` -> `ABORTED` when current operation completes.
+   *     This transition is performed in two places: before the beginning of the actual generation,
+   *     and after completion of the generation.
+   * - 4 (`DELETING`): This report is being deleted now.
+   *
+   *   The following transitions are possible:
+   *
+   *   * `DELETING` -> (report does not exist anymore) when deletion of this report completes.
+   * - 2 (`GENERATING`): This report is being generated now.
+   *
+   *   This status is set when report is generated from zero point.
+   *   This status basically means that not all partition of the report present.
+   *   It also means that all partitions that exist have the newest values.
+   *
+   *   All new reports are created in this status.
+   *
+   *   The following transitions are possible:
+   *
+   *   * `GENERATING` -> `ABORTING` when generation of this report aborted by user.
+   *   * `GENERATING` -> `READY` when generation of this report completes.
+   *     This transition is performed when generation completes successfully.
+   * - 1 (`QUEUED`): Generation of this report is queued.
+   *   It will start automatically when generation of other reports completes.
+   *
+   *   The following transitions are possible:
+   *
+   *   * `QUEUED` -> (report does not exist anymore) If generation of this report was aborted while no data was generated.
+   *   * `QUEUED` -> `ABORTED` If generation of this report was aborted while there is data from previous generation of
+   *      this report.
+   *
+   *      This transition also occurs if a report stayed in the queue more than the set duration and
+   *      there is some data left from the previous generation of this report.
+   *   * `QUEUED` -> `GENERATING` when there is a free thread slot to start generation of this report immediately.
+   * - 3 (`READY`): Generation of this report is now completed.
+   *
+   *   The following transitions are possible:
+   *
+   *   * `READY` -> `DELETING` when a background tasks identifies that this report is old and starts deleting it.
+   *
+   *   * `READY` -> `QUEUED` when user clicks to regenerate this report
    *
    * @get result
    * @type {number}
    */
-  this.id_report_status = 0;
+  this.id_report_status = undefined;
 
   /**
-   * If <tt>true</tt> then there are more report rows to get. Otherwise, <tt>false</tt> if all rows have been sent.
+   * If `true` then there are more report rows to get. Otherwise, `false` if all rows have been sent.
    *
    * @get result
    * @type {boolean}
    */
-  this.is_more = false;
+  this.is_more = undefined;
 
   /**
    * Determines whether this report should be refreshed.
@@ -148,7 +191,7 @@ function Wl_Integration_Autymate_ReportModel()
    * @get result
    * @type {boolean}
    */
-  this.is_report_complete = false;
+  this.is_report_complete = undefined;
 
   /**
    * The key of the business for which the report must be generated.
@@ -176,5 +219,18 @@ WlSdk_ModelAbstract.extend(Wl_Integration_Autymate_ReportModel);
  */
 Wl_Integration_Autymate_ReportModel.prototype.config=function()
 {
-  return {"a_field": {"a_field": {"get": {"result": true}},"a_pay_method_remove": {"get": {"get": true}},"a_row": {"get": {"result": true}},"a_warning": {"get": {"result": true}},"dl_date": {"get": {"get": true}},"dtu_complete": {"get": {"result": true}},"dtu_queue": {"get": {"result": true}},"dtu_start": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_report_status": {"get": {"result": true}},"is_more": {"get": {"result": true}},"is_refresh": {"get": {"get": true}},"is_report_complete": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_guid": {"get": {"get": true}}}};
+  return {"a_field":{"a_field":{"get":{"result":true}},"a_pay_method_remove":{"get":{"get":true}},"a_row":{"get":{"result":true}},"a_warning":{"get":{"result":true}},"dl_date":{"get":{"get":true}},"dtu_complete":{"get":{"result":true}},"dtu_queue":{"get":{"result":true}},"dtu_start":{"get":{"result":true}},"i_page":{"get":{"get":true}},"id_report_status":{"get":{"result":true}},"is_more":{"get":{"result":true}},"is_refresh":{"get":{"get":true}},"is_report_complete":{"get":{"result":true}},"k_business":{"get":{"get":true}},"s_guid":{"get":{"get":true}}}};
 };
+
+/**
+ * Gets the daily transaction data.
+ *
+ * Authenticates the request using the business GUID, runs the All Transactions report for the specified date,
+ * and returns paginated rows augmented with Autymate-specific columns such as tax details, location address,
+ * batch number, and payment method information.
+ *
+ * @function
+ * @name Wl_Integration_Autymate_ReportModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

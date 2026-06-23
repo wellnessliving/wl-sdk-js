@@ -1,7 +1,7 @@
 /**
  * A list of client booking flow types.
  *
- * @constructor
+ * Last ID: 6.
  */
 function Wl_Business_BusinessCategorySid()
 {
@@ -9,55 +9,29 @@ function Wl_Business_BusinessCategorySid()
 }
 
 /**
- * Dental businesses.
+ * Musician schools.
  *
- * @constant
- * @default 4
  * @type {number}
  */
-Wl_Business_BusinessCategorySid.DENTIST = 4;
-
-/**
- * Complementary and alternative medicine.
- *
- * @constant
- * @default 5
- * @type {number}
- */
-Wl_Business_BusinessCategorySid.MEDICINE_ALTERNATIVE = 5;
+Wl_Business_BusinessCategorySid.EDUCATION = 6;
 
 /**
  * Traditional medicine
  *
- * @constant
- * @default 3
  * @type {number}
  */
-Wl_Business_BusinessCategorySid.MEDICINE_CLASSIC = 3;
-
-/**
- * Musician schools.
- *
- * @constant
- * @default 6
- * @type {number}
- */
-Wl_Business_BusinessCategorySid.MUSIC = 6;
+Wl_Business_BusinessCategorySid.HEALTH = 3;
 
 /**
  * Spa saloons.
  *
- * @constant
- * @default 2
  * @type {number}
  */
-Wl_Business_BusinessCategorySid.SPA = 2;
+Wl_Business_BusinessCategorySid.RECREATION = 2;
 
 /**
  * Yoga and Fitness studios and gyms.
  *
- * @constant
- * @default 1
  * @type {number}
  */
 Wl_Business_BusinessCategorySid.SPORT = 1;

@@ -1,7 +1,5 @@
 /**
- * An endpoint that cancels a whole event booked by a client.
- *
- * This model is generated automatically based on API.
+ * Cancels book of event `k_class`.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,12 +9,12 @@ function Wl_Event_EventCancelWholeModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Key of the business within which the action is performed.
+   * Key of the business in which the class resides.
    *
    * @post post
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * An event key.
@@ -24,7 +22,7 @@ function Wl_Event_EventCancelWholeModel()
    * @post post
    * @type {string}
    */
-  this.k_class = "0";
+  this.k_class = "";
 
   /**
    * A user key.
@@ -32,7 +30,7 @@ function Wl_Event_EventCancelWholeModel()
    * @post post
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -44,5 +42,18 @@ WlSdk_ModelAbstract.extend(Wl_Event_EventCancelWholeModel);
  */
 Wl_Event_EventCancelWholeModel.prototype.config=function()
 {
-  return {"a_field": {"k_business": {"post": {"post": true}},"k_class": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
+  return {"a_field":{"k_business":{"post":{"post":true}},"k_class":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
 };
+
+/**
+ * Cancels book of event `k_class`.
+ *
+ * Used when a client wants to drop out of a multi-session event entirely. Cancels all remaining
+ * upcoming sessions at once, including any waitlisted spots, without requiring the client to cancel
+ * each session individually.
+ *
+ * @function
+ * @name Wl_Event_EventCancelWholeModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

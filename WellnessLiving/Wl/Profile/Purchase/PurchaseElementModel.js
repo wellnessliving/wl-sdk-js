@@ -1,16 +1,9 @@
 /**
- * An endpoint that gets details of a specified purchase.
- *
- * This endpoint may require different IDs to be specified for different types of purchases.
- * The IDs required for a specific item will be the same IDs returned from the {@link Wl_Profile_PurchaseList_PurchaseListModel}
- * endpoint.
- *
- * This model is generated automatically based on API.
+ * Retrieves information about 1 purchase item.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link Wl_Profile_PurchaseList_PurchaseListElementModel} instead. It provides the same functionality
-and more.
+ * @deprecated Use {@link _Wl_Profile_PurchaseList_PurchaseListElementModel} instead. It provides the same functionality and more.
  */
 function Wl_Profile_Purchase_PurchaseElementModel()
 {
@@ -23,36 +16,14 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * @typedef {{}} Wl_Profile_Purchase_PurchaseElementModel_a_component
-   * @property {*} k_enrollment_book Primary key in {@link RsenrollmentBookSql} table.
-   * @property {*} k_login_product Primary key in {@link \RsLoginProductSql} table.
-   * @property {*} k_login_promotion Primary key in {@link \RsLoginPromotionSql} table.
-   * @property {*} k_session_pass Primary key in {@link \Wl\Session\Pass\Sql} table.
+   * @property {string} k_enrollment_book Key of enrollment book.
+   * @property {string} k_login_product Key of product.
+   * @property {string} k_login_promotion Key of promotion.
+   * @property {string} k_session_pass Session key.
    */
 
   /**
    * List of components (not empty if this purchase element is a package). Every element has keys:
-   * <dl>
-   *   <dt>
-   *     string [<var>k_enrollment_book</var>]
-   *   </dt>
-   *   <dd>
-   *   </dd>
-   *   <dt>
-   *     string [<var>k_login_product</var>]
-   *   </dt>
-   *   <dd>
-   *   </dd>
-   *   <dt>
-   *     string [<var>k_login_promotion</var>]
-   *   </dt>
-   *   <dd>
-   *   </dd>
-   *   <dt>
-   *     string [<var>k_session_pass</var>]
-   *   </dt>
-   *   <dd>
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Profile_Purchase_PurchaseElementModel_a_component[]}
@@ -69,16 +40,6 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * An array containing information about the image of the purchased item. Every element has the following keys:
-   * <dl>
-   *   <dt>int <var>i_height</var></dt>
-   *   <dd>The height of the image.</dd>
-   *   <dt>int <var>i_width</var></dt>
-   *   <dd>The width of the image.</dd>
-   *   <dt>bool <var>is_empty</var></dt>
-   *   <dd>If `true`, then the purchased item doesn't have image. If `false`, then the item has an image.</dd>
-   *   <dt>string <var>s_url</var></dt>
-   *   <dd>The URL for the image.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Profile_Purchase_PurchaseElementModel_a_logo}
@@ -95,14 +56,6 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   /**
    * This field is used only for promotions. It contains restrictions that will
    * apply to bookings made with this promotion. Every element has the following keys:
-   * <dl>
-   *   <dt>int <var>i_limit</var></dt>
-   *   <dd>The number of sessions that may be booked during this period.</dd>
-   *   <dt>int <var>i_remain</var></dt>
-   *   <dd>The number of sessions that remain available.</dd>
-   *   <dt>string <var>s_date</var></dt>
-   *   <dd>The name of the period type.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Profile_Purchase_PurchaseElementModel_a_restrict[]}
@@ -117,12 +70,6 @@ function Wl_Profile_Purchase_PurchaseElementModel()
 
   /**
    * The list of taxes paid for the purchased item. Every element has the following fields:
-   * <dl>
-   *   <dt>string <var>f_tax_discount</var></dt>
-   *   <dd>The amount of tax.</dd>
-   *   <dt>string <var>s_tax</var></dt>
-   *   <dd>The name of the tax.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Profile_Purchase_PurchaseElementModel_a_tax[]}
@@ -239,7 +186,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_discount_count = undefined;
 
   /**
-   * This field is only added for promotions. Duration of promotion. Measurement unit is <var>id_duration</var>.
+   * This field is only added for promotions. Duration of promotion. Measurement unit is `id_duration`.
    *
    * @get result
    * @type {number}
@@ -263,7 +210,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_limit = undefined;
 
   /**
-   * The duration of the regular payments interval. This is used only for “membership” type promotions.
+   * The duration of the regular payments interval. This is used only for "membership" type promotions.
    *
    * @get result
    * @type {number}
@@ -288,7 +235,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_remain_duration = undefined;
 
   /**
-   * Not <tt>0</tt> only for promotions. How many times promotion was updated.
+   * Not `0` only for promotions. How many times promotion was updated.
    *
    * @get result
    * @type {number}
@@ -304,7 +251,20 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.i_use = undefined;
 
   /**
-   * Activation mode. One on {@link RsActivationSid} constants. This field is only added for promotions.
+   * Promotion or package date start rule.
+   *
+   * sale - date start is a date of the sale.
+   * redeem - date start is a date of the first client visit by this promotion or package.
+   * fixed - date start is fixed by promotion or package settings and saved in DB.
+   *
+   * Values:
+   * - 7 (`DAY`): Number of a day of the month or of the week.
+   * - 3 (`FIXED`): Custom date.
+   * - 4 (`MONTH_FIRST`): The first day of month.
+   * - 6 (`MONTH_HALF`): The 15th day of the month.
+   * - 5 (`MONTH_LAST`): The last day of the month.
+   * - 1 (`SALE`): Date of the sale.
+   * - 2 (`VISIT`): Date of the first visit.
    *
    * @get result
    * @type {number}
@@ -312,9 +272,11 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_activation = undefined;
 
   /**
-   * The type of discount given via a reward prize.
-   * One on the {@link RsCommissionTypeSid} constants.
-   * This will be empty if this discount wasn't applied.
+   * String identifiers for tax type.
+   *
+   * Values:
+   * - 1 (`FLAT`): Fixed type.
+   * - 2 (`PERCENT`): Percent type.
    *
    * @get result
    * @type {number}
@@ -322,9 +284,14 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_discount_commission_type = undefined;
 
   /**
-   * The type of duration for the promotion. This is used only for “membership” type promotions.
-   * This determines whether the promotion lasts indefinitely, has a fixed duration, or ends on a specific date.
-   * One of the {@link RsDurationTypeSid} constants.
+   * Class to process string identifiers for duration types
+   *
+   * Last ID: 3.
+   *
+   * Values:
+   * - 2 (`DATE`): Specific date. Example, 2013-12-24.
+   * - 3 (`ETERNAL`): No ending date.
+   * - 1 (`PERIOD`): Examples: 12 days, 2 months, 2 hours etc.
    *
    * @get result
    * @type {number}
@@ -332,9 +299,35 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_duration = undefined;
 
   /**
-   * The ID of the promotion program.
-   * One of the {@link RsProgramTypeSid} constants.
-   * This is used only for promotions.
+   * Program types.
+   *
+   * See {@link RsProgramSid} for a list of promotions.
+   *
+   * Last used ID: 8.
+   *
+   * Values:
+   * - 7 (`DURATION`): Duration Pass.
+   *
+   *   Differs from {@link RsProgramTypeSid} in that this type of promotion is limited by time.
+   * - 8 (`GUEST`): Guest passes.
+   * - 1 (`LIMIT`): Class pass.
+   *
+   *   Differs from {@link RsProgramTypeSid} in that this type of promotion allows access to only a limited number
+   *   of classes.
+   * - 3 (`MEMBERSHIP`): This promotion is a membership.
+   *
+   *   Payment schedule can be set up for memberships.
+   * - 6 (`OTHER`): Type for programs that are not presented in {@link RsProgramSid}.
+   * - 4 (`PACKAGE`): Packages and Daily deals.
+   * - 2 (`PASS`): Unlimited pass. Day/week/month pass.
+   *
+   *   Allows access to unlimited number of classes.
+   *
+   *   Differs from {@link RsProgramTypeSid} in that this type of promotion can only be paid once.
+   * - 5 (`PROSPECT`): Special WellnessLiving promote passes that allow to visit specific classes to get acquainted with the business.
+   *
+   *   Such passes cannot be bought, they can be only components of the special system packages,
+   *   packages with `k_business` = `null`.
    *
    * @get result
    * @type {number}
@@ -342,8 +335,66 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_program_type = undefined;
 
   /**
-   * The ID of the purchase item type.
-   * One of the {@link Wl_Purchase_Item_ItemSid} constants.
+   * A list of purchase types.
+   *
+   * Last used ID: 25.
+   *
+   * Values:
+   * - 7 (`ACCOUNT`): Personal user's account refill.
+   * - 11 (`ACCOUNT_BUSINESS`): Business account payment.
+   * - 8 (`APPOINTMENT`): Single appointment reservation.
+   *
+   *   This purchase is created when a worker has charged a client for an appointment.
+   *
+   *   This purchase can only be created in POS.
+   *
+   *   Key of appointment.
+   *
+   *
+   *
+   *   A purchased item that is created during the online booking process {@link RsPurchaseItemSid}.
+   * - 18 (`APPOINTMENT_DEPOSIT`): Single appointment reservation with deposit.
+   *
+   *   This purchase created when client books a single appointment reservation with deposit amount,
+   *   to do so appointment should be managed with deposit.
+   * - 22 (`APPOINTMENT_TIP`): Tips for the appointment.
+   *
+   *
+   *
+   *   A purchased item that is created during the online booking process {@link RsPurchaseItemSid}.
+   * - 16 (`BUSINESS_EXPENSE`): Expense that comes along with the payment business. It contains information about additional services which are
+   *   included in the package. For example, payment for SMS.
+   * - 17 (`BUSINESS_SKIP`): A skipped purchase for the business account.
+   * - 23 (`BUSINESS_SUBSCRIPTION`): Business subscription payment.
+   * - 2 (`CLASS_PERIOD`): Single classes.
+   * - 24 (`COLLECTOR_DEBT`): Collectors payments
+   * - 13 (`COMMENT`): Arbitrary money withdrawal with comment.
+   * - 10 (`COUPON`): Gift Cards.
+   * - 4 (`ENROLLMENT`): Events and enrollments. Client can not book only one class, he needs to book the whole enrollment.
+   * - 19 (`ENROLLMENT_DEPOSIT`): Enrollment reservation with a deposit.
+   *
+   *   This purchase created when client books an enrollment reservation with deposit amount,
+   *   to do so enrollment should be managed with deposit.
+   * - 21 (`ENROLLMENT_DISCOUNT`): Enrollment reservation with a discount.
+   *
+   *   This purchase created when client books an enrollment reservation with early bird price.
+   * - 14 (`INSTALLMENT`): Payment by an installment plan.
+   * - 3 (`MEMBERSHIP`): Recurrent payments.
+   * - 9 (`PRODUCT`): Products.
+   * - 1 (`PROMOTION`): Promotions.
+   * - 25 (`PROMOTION_CANCEL_FEE`): Early cancellation fee for a memberships.
+   * - 12 (`PROMOTION_RENEW`): A purchase to renew a promotion.
+   * - 15 (`RESOURCE`): A purchase to book an asset.
+   * - 20 (`RESOURCE_DEPOSIT`): A purchase to book a deposit asset.
+   * - 6 (`SERVICE`): Purchase item for appointments.
+   *
+   *   This purchase item is created during the online booking process.
+   *
+   *
+   *
+   *   Purchase that is created when a staff adds payment for an appointment at POS {@link RsPurchaseItemSid}.
+   * - 26 (`TUITION`): Tuition purchase item.
+   *   Used when client purchases tuition for an event list.
    *
    * @get result
    * @type {number}
@@ -351,13 +402,30 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.id_purchase_item = undefined;
 
   /**
-   * The ID of the sale category.
-   * One of the {@link RsSaleSid} constants.
+   * List of sale categories on the store page.
+   *
+   * Last ID: 13.
+   *
+   * Values:
+   * - 8 (`APPOINTMENT`): Single appointment reservation.
+   * - 11 (`APPOINTMENT_DEPOSIT`): Single appointment deposit reservation.
+   * - 12 (`APPOINTMENT_TIP`): Tips for the appointment.
+   * - 6 (`CLASS_PERIOD`): Single class visit.
+   * - 7 (`COUPON`): Gift card.
+   * - 3 (`ENROLLMENT`): Enrollments. Classes where flag event is `true`.
+   * - 5 (`PACKAGE`): Promotions with program {@link RsProgramSid}.
+   * - 4 (`PRODUCT`): Products: water, t-shirts, etc.
+   * - 1 (`PROMOTION_CLASS`): Promotions with program category {@link RsProgramCategorySid} and {@link RsProgramCategorySid}.
+   * - 9 (`PROMOTION_RESOURCE`): Promotions with program category {@link RsProgramCategorySid}.
+   * - 2 (`PROMOTION_SERVICE`): Promotions with program category {@link RsProgramCategorySid} and {@link RsProgramCategorySid}.
+   * - 13 (`PROMOTION_VIDEO`): Promotions with program category {@link RsProgramCategorySid}.
+   * - 10 (`QUICK_BUY`): Products: water, t-shirts, etc. That is available for quick buy.
+   * - 14 (`TUITION`): Tuition.
    *
    * @get result
-   * @type {number}
+   * @type {?number}
    */
-  this.id_sale = undefined;
+  this.id_sale = null;
 
   /**
    * If `true`, then the purchase item is active. If `false`, then the purchase item isn't active.
@@ -468,6 +536,14 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_transfer = undefined;
 
   /**
+   * The business key. Currently used only with `k_session_pass` variable.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_business = null;
+
+  /**
    * The key of the redemption code used to obtain some goods.
    * This should be specified only for items obtained via redemption code (not for ordinary purchases or for purchased
    * promotions without purchases). This will be `null` if not set yet.
@@ -475,7 +551,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    * @get get
    * @type {string}
    */
-  this.k_code = "0";
+  this.k_code = "";
 
   /**
    * The key of the redemption code. This won't be `0` if the purchased item is obtained via a redemption code
@@ -501,7 +577,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    * @get get
    * @type {string}
    */
-  this.k_enrollment_book = "0";
+  this.k_enrollment_book = "";
 
   /**
    * The key of a purchased product.
@@ -510,7 +586,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    * @get get
    * @type {string}
    */
-  this.k_login_product = "0";
+  this.k_login_product = "";
 
   /**
    * The key of the user's promotion.
@@ -520,7 +596,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    * @get get
    * @type {string}
    */
-  this.k_login_promotion = "0";
+  this.k_login_promotion = "";
 
   /**
    * The key of the purchased promotion. This won't be `0` only for promotions.
@@ -537,7 +613,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    * @get get
    * @type {string}
    */
-  this.k_purchase_item = "0";
+  this.k_purchase_item = "";
 
   /**
    * The key of the whole purchase which includes the given purchased item.
@@ -553,7 +629,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    * @get get
    * @type {string}
    */
-  this.k_session_pass = "0";
+  this.k_session_pass = "";
 
   /**
    * The cost of the purchased item.
@@ -756,7 +832,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Purchase_PurchaseElementModel);
  */
 Wl_Profile_Purchase_PurchaseElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_component": {"get": {"result": true}},"a_logo": {"get": {"result": true}},"a_restrict": {"get": {"result": true}},"a_tax": {"get": {"result": true}},"can_renew": {"get": {"result": true}},"dl_purchase": {"get": {"result": true}},"dl_start": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_hold_end": {"get": {"result": true}},"dt_hold_start": {"get": {"result": true}},"dt_purchase": {"get": {"result": true}},"dt_send": {"get": {"result": true}},"f_discount_login_type_percent": {"get": {"result": true}},"html_description": {"get": {"result": true}},"i_book": {"get": {"result": true}},"i_buy": {"get": {"result": true}},"i_discount_count": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_left": {"get": {"result": true}},"i_limit": {"get": {"result": true}},"i_payment_period": {"get": {"result": true}},"i_remain": {"get": {"result": true}},"i_remain_duration": {"get": {"result": true}},"i_renew": {"get": {"result": true}},"i_use": {"get": {"result": true}},"id_activation": {"get": {"result": true}},"id_discount_commission_type": {"get": {"result": true}},"id_duration": {"get": {"result": true}},"id_program_type": {"get": {"result": true}},"id_purchase_item": {"get": {"result": true}},"id_sale": {"get": {"result": true}},"is_active": {"get": {"result": true}},"is_component": {"get": {"result": true}},"is_convert": {"get": {"result": true}},"is_expire": {"get": {"result": true}},"is_hold": {"get": {"result": true}},"is_limit": {"get": {"result": true}},"is_login_type_member": {"get": {"result": true}},"is_mail": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_redeem": {"get": {"result": true}},"is_renew": {"get": {"result": true}},"is_transfer": {"get": {"result": true}},"k_code": {"get": {"get": true}},"k_code_result": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"k_enrollment_book": {"get": {"get": true}},"k_login_product": {"get": {"get": true}},"k_login_promotion": {"get": {"get": true}},"k_login_promotion_result": {"get": {"result": true}},"k_purchase_item": {"get": {"get": true}},"k_purchase_result": {"get": {"result": true}},"k_session_pass": {"get": {"get": true}},"m_cost_item": {"get": {"result": true}},"m_cost_total": {"get": {"result": true}},"m_discount_amount": {"get": {"result": true}},"m_discount_login_type_amount": {"get": {"result": true}},"m_discount_manual": {"get": {"result": true}},"m_period_price": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_refund": {"get": {"result": true}},"s_code": {"get": {"result": true}},"s_gift_code": {"get": {"result": true}},"s_gift_recipient": {"get": {"result": true}},"s_limit_actor": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_message": {"get": {"result": true}},"s_payer": {"get": {"result": true}},"s_promotion_convert": {"get": {"result": true}},"s_purchase": {"get": {"result": true}},"s_recipient": {"get": {"result": true}},"s_sender": {"get": {"result": true}},"s_title": {"get": {"result": true}},"sid_value": {"get": {"result": true}},"uid_payer": {"get": {"result": true}},"uid_recipient": {"get": {"result": true}}}};
+  return {"a_field":{"a_component":{"get":{"result":true}},"a_logo":{"get":{"result":true}},"a_restrict":{"get":{"result":true}},"a_tax":{"get":{"result":true}},"can_renew":{"get":{"result":true}},"dl_purchase":{"get":{"result":true}},"dl_start":{"get":{"result":true}},"dt_end":{"get":{"result":true}},"dt_hold_end":{"get":{"result":true}},"dt_hold_start":{"get":{"result":true}},"dt_purchase":{"get":{"result":true}},"dt_send":{"get":{"result":true}},"f_discount_login_type_percent":{"get":{"result":true}},"html_description":{"get":{"result":true}},"i_book":{"get":{"result":true}},"i_buy":{"get":{"result":true}},"i_discount_count":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_left":{"get":{"result":true}},"i_limit":{"get":{"result":true}},"i_payment_period":{"get":{"result":true}},"i_remain":{"get":{"result":true}},"i_remain_duration":{"get":{"result":true}},"i_renew":{"get":{"result":true}},"i_use":{"get":{"result":true}},"id_activation":{"get":{"result":true}},"id_discount_commission_type":{"get":{"result":true}},"id_duration":{"get":{"result":true}},"id_program_type":{"get":{"result":true}},"id_purchase_item":{"get":{"result":true}},"id_sale":{"get":{"result":true}},"is_active":{"get":{"result":true}},"is_component":{"get":{"result":true}},"is_convert":{"get":{"result":true}},"is_expire":{"get":{"result":true}},"is_hold":{"get":{"result":true}},"is_limit":{"get":{"result":true}},"is_login_type_member":{"get":{"result":true}},"is_mail":{"get":{"result":true}},"is_past":{"get":{"result":true}},"is_redeem":{"get":{"result":true}},"is_renew":{"get":{"result":true}},"is_transfer":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_code":{"get":{"get":true}},"k_code_result":{"get":{"result":true}},"k_currency":{"get":{"result":true}},"k_enrollment_book":{"get":{"get":true}},"k_login_product":{"get":{"get":true}},"k_login_promotion":{"get":{"get":true}},"k_login_promotion_result":{"get":{"result":true}},"k_purchase_item":{"get":{"get":true}},"k_purchase_result":{"get":{"result":true}},"k_session_pass":{"get":{"get":true}},"m_cost_item":{"get":{"result":true}},"m_cost_total":{"get":{"result":true}},"m_discount_amount":{"get":{"result":true}},"m_discount_login_type_amount":{"get":{"result":true}},"m_discount_manual":{"get":{"result":true}},"m_period_price":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_refund":{"get":{"result":true}},"s_code":{"get":{"result":true}},"s_gift_code":{"get":{"result":true}},"s_gift_recipient":{"get":{"result":true}},"s_limit_actor":{"get":{"result":true}},"s_mail":{"get":{"result":true}},"s_message":{"get":{"result":true}},"s_payer":{"get":{"result":true}},"s_promotion_convert":{"get":{"result":true}},"s_purchase":{"get":{"result":true}},"s_recipient":{"get":{"result":true}},"s_sender":{"get":{"result":true}},"s_title":{"get":{"result":true}},"sid_value":{"get":{"result":true}},"uid_payer":{"get":{"result":true}},"uid_recipient":{"get":{"result":true}}}};
 };
 
 /**
@@ -770,4 +846,17 @@ Wl_Profile_Purchase_PurchaseElementModel.prototype.config=function()
  * @param {string} k_session_pass The key of the make-up session used to attend an event.
  * @returns {Wl_Profile_Purchase_PurchaseElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves information about 1 purchase item.
+ *
+ * Loads the full details of a single purchase item for display on the client profile, including
+ * pricing, discounts, taxes, refunds, and current status. The item can be identified by
+ * purchase item key, redemption code, or login promotion key.
+ *
+ * @function
+ * @name Wl_Profile_Purchase_PurchaseElementModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

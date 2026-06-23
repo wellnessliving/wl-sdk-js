@@ -1,7 +1,6 @@
 /**
- * Class for manage time intervals.
- *
- * Last used ID: 8.
+ * A class for managing time intervals.
+ * Last ID: 9.
  */
 function ADurationSid()
 {
@@ -13,53 +12,60 @@ function ADurationSid()
  *
  * @type {number}
  */
-ADateWeekSid.DAY = 4;
+ADurationSid.DAY = 4;
 
 /**
  * Hours.
  *
  * @type {number}
  */
-ADateWeekSid.HOUR = 3;
+ADurationSid.HOUR = 3;
 
 /**
  * Minutes.
  *
  * @type {number}
  */
-ADateWeekSid.MINUTE = 2;
+ADurationSid.MINUTE = 2;
 
 /**
  * Months.
  *
  * @type {number}
  */
-ADateWeekSid.MONTH = 5;
+ADurationSid.MONTH = 5;
 
 /**
  * Seconds.
  *
  * @type {number}
  */
-ADateWeekSid.SECOND = 1;
+ADurationSid.SECOND = 1;
 
 /**
  * Weeks (7 days).
  *
  * @type {number}
  */
-ADateWeekSid.WEEK = 7;
+ADurationSid.WEEK = 7;
+
+/**
+ * Two weeks (14 days).
+ *
+ * @type {number}
+ */
+ADurationSid.WEEK2 = 9;
 
 /**
  * Foursome of weeks (28 days).
  *
  * @type {number}
  */
-ADateWeekSid.WEEK4 = 8;
+ADurationSid.WEEK4 = 8;
 
 /**
  * Years.
  *
  * @type {number}
  */
-ADateWeekSid.YEAR = 6;
+ADurationSid.YEAR = 6;

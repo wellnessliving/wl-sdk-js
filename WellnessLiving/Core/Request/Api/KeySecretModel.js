@@ -1,11 +1,5 @@
 /**
- * Point to get a secret key for request signing.
- * It is necessary in a case of CORS request.
- *
- * Request to this point must be signed as ordinary requests from SDK (using transient and persistent cookies).
- * There must be no CORS (do not send from a browser).
- *
- * This model is generated automatically based on API.
+ * Gets a secret key for signing.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -15,15 +9,15 @@ function Core_Request_Api_KeySecretModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * CSRF code of a client side.
+   * The CSRF code from the client side.
    *
    * @get get
    * @type {string}
    */
-  this.s_csrf = undefined;
+  this.s_csrf = "";
 
   /**
-   * Secret key for request signing.
+   * The secret key for the request signing.
    *
    * @get result
    * @type {string}
@@ -31,21 +25,20 @@ function Core_Request_Api_KeySecretModel()
   this.s_key_secret = undefined;
 
   /**
-   * Session key.
+   * The session key.
    *
    * @get get
    * @type {string}
    */
-  this.s_key_session = undefined;
+  this.s_key_session = "";
 
   /**
-   * Alias of {@link Core_Request_Api_KeySecretModel.url_origin}.
+   * Alias of `url_origin`.
    *
-   * @deprecated Use {@link Core_Request_Api_KeySecretModel.url_origin} instead.
    * @get get
    * @type {string}
    */
-  this.url_domain = undefined;
+  this.url_domain = "";
 
   /**
    * Origin for client requests.
@@ -53,7 +46,7 @@ function Core_Request_Api_KeySecretModel()
    * @get get
    * @type {string}
    */
-  this.url_origin = undefined;
+  this.url_origin = "";
 
   this.changeInit();
 }
@@ -65,5 +58,18 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_KeySecretModel);
  */
 Core_Request_Api_KeySecretModel.prototype.config=function()
 {
-  return {"a_field": {"s_csrf": {"get": {"get": true}},"s_key_secret": {"get": {"result": true}},"s_key_session": {"get": {"get": true}},"url_domain": {"get": {"get": true}},"url_origin": {"get": {"get": true}}}};
+  return {"a_field":{"s_csrf":{"get":{"get":true}},"s_key_secret":{"get":{"result":true}},"s_key_session":{"get":{"get":true}},"url_domain":{"get":{"get":true}},"url_origin":{"get":{"get":true}}}};
 };
+
+/**
+ * Gets a secret key for signing.
+ *
+ * Accepts a CSRF code, a session key, and the client origin URL, validates the session key against
+ * the current application, and returns a secret key that the client uses to sign subsequent CORS requests.
+ * This endpoint must not be called directly from a browser.
+ *
+ * @function
+ * @name Core_Request_Api_KeySecretModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

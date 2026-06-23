@@ -1,7 +1,5 @@
 /**
- * Performs final action action to image uploaded with {@link Core_Drive_ImageUpload_ImageUploadTemporaryModel}.
- *
- * This model is generated automatically based on API.
+ * Returns information about the image.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -13,27 +11,67 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "s_class,k_id";
+  this._s_key = "s_class,k_id,a_config";
 
   /**
-   * Image information for every ID. Every element contains values like {@link Core_Drive_ImageUpload_ImageUploadModel._get()} result.
+   * Allows to give custom parameters which can be required for different types of images.
+   *
+   * @get get
+   * @post get
+   * @put get
+   * @type {*[]}
+   */
+  this.a_config = undefined;
+
+  /**
+   * @typedef {{}} Core_Drive_ImageUpload_ImageUploadModel_a_image_a_text_empty
+   * @property {string} s_class Class to change view of the upload form.
+   * @property {string} s_text Text to replacing.
+   */
+
+  /**
+   * @typedef {{}} Core_Drive_ImageUpload_ImageUploadModel_a_image
+   * @property {Core_Drive_ImageUpload_ImageUploadModel_a_image_a_text_empty} a_text_empty Information about the text on the empty upload image.
+   * @property {number} i_height_max The maximum height of the image.
+   * @property {number} i_height_min The minimum height of the image.
+   * @property {number} i_thumbnail_height The height of the thumbnail image.
+   * @property {number} i_thumbnail_width The width of thumbnail image.
+   * @property {number} i_width_max The maximum width of image.
+   * @property {number} i_width_min The minimum width of image.
+   * @property {boolean} is_circular `true` if image is treated as circular; `false` otherwise.
+   * @property {boolean} is_delete_allow `true` if image deleting is allowed; `false` otherwise.
+   * @property {string} s_link The image link.
+   * @property {string} url_empty The URL of the image that should be shown in a case image is not uploaded.
+   * @property {?string} url_thumbnail The URL of thumbnail of the image. `null` if image is not uploaded.
+   * @property {string} url_upload The URL the script where new image should be uploaded.
+   * @property {?string} url_view The URL of the full image. `null` if image is not uploaded.
+   */
+
+  /**
+   * Image information for every ID.
    *
    * @post result
-   * @type {{}[]}
+   * @type {Core_Drive_ImageUpload_ImageUploadModel_a_image[]}
    */
   this.a_image = undefined;
 
   /**
-   * Information about text on the empty upload image. See PHP-side to get more information about this.
+   * @typedef {{}} Core_Drive_ImageUpload_ImageUploadModel_a_text_empty
+   * @property {string} s_class Class to change view of the upload form.
+   * @property {string} s_text Text to replacing.
+   */
+
+  /**
+   * Information about the text for an empty image upload.
    *
    * @get result
    * @put result
-   * @type {?{}}
+   * @type {?Core_Drive_ImageUpload_ImageUploadModel_a_text_empty}
    */
   this.a_text_empty = null;
 
   /**
-   * Html string to use as the image recommendation.
+   * An HTML string to use for the image recommendation.
    *
    * @get result
    * @put result
@@ -42,7 +80,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.html_image_hint = undefined;
 
   /**
-   * Maximum height of image.
+   * The maximum height of image.
    *
    * @get result
    * @put result
@@ -51,7 +89,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.i_height_max = null;
 
   /**
-   * Minimum height of image.
+   * The minimum height of image.
    *
    * @get result
    * @put result
@@ -60,8 +98,8 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.i_height_min = null;
 
   /**
-   * Height of thumbnail image.
-   * <tt>null</tt> until loaded from server.
+   * The height of the thumbnail image.
+   * This will be `null` until it's loaded from the server.
    *
    * @get result
    * @put result
@@ -70,8 +108,8 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.i_thumbnail_height = null;
 
   /**
-   * Width of thumbnail image.
-   * <tt>null</tt> until loaded from server.
+   * The width of the thumbnail image.
+   * This will be `null` until it's loaded from the server.
    *
    * @get result
    * @put result
@@ -80,7 +118,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.i_thumbnail_width = null;
 
   /**
-   * Maximum width of image.
+   * The maximum width of the image.
    *
    * @get result
    * @put result
@@ -89,7 +127,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.i_width_max = null;
 
   /**
-   * Minimum width of image.
+   * The minimum width of the image.
    *
    * @get result
    * @put result
@@ -98,7 +136,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.i_width_min = null;
 
   /**
-   * <tt>true</tt> if image is treated as circular; <tt>false</tt> otherwise.
+   * If `true`, the image is treated as circular. Otherwise, this will be `false`.
    *
    * @get result
    * @put result
@@ -107,8 +145,9 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.is_circular = null;
 
   /**
-   * <tt>true</tt> if image deleting is allowed; <tt>false</tt> otherwise.
-   * <tt>null</tt> until loaded from server.
+   * If `true`, image deletion is permitted. Otherwise, this will be `false`.
+   *
+   * This will be `null` until it's loaded from the server.
    *
    * @get result
    * @put result
@@ -117,7 +156,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.is_delete_allow = null;
 
   /**
-   * <tt>true</tt> if temporary image to be retrieved; <tt>false</tt> otherwise.
+   * If `true`, the temporary image will be retrieved. Otherwise, this will be `false`.
    *
    * @get get
    * @put get
@@ -126,7 +165,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.is_temporary = false;
 
   /**
-   * ID of image within {@link Core_Drive_ImageUpload_ImageUploadModel.s_class}.
+   * The image ID set in `s_class`.
    *
    * @get get
    * @put get
@@ -135,7 +174,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.k_id = "";
 
   /**
-   * Name of class that manages this image.
+   * The name of the class that manages this image.
    *
    * @get get
    * @post get
@@ -145,7 +184,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.s_class = "";
 
   /**
-   * Link protection code.
+   * The link protection code.
    *
    * @get result
    * @put result
@@ -154,7 +193,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.s_code = null;
 
   /**
-   * Action that must be done to image.
+   * The action that must be performed to the image.
    *
    * @put post
    * @type {string}
@@ -162,7 +201,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.s_command = "";
 
   /**
-   * Image link.
+   * The image link.
    *
    * @get result
    * @put result
@@ -171,9 +210,9 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.s_link = null;
 
   /**
-   * List of image IDs within {@link Core_Drive_ImageUpload_ImageUploadModel.s_class}. Serialised via JSON.
+   * A list of image IDs set in `s_class`, serialized using JSON.
    *
-   * <tt>null</tt> if no data sent from client.
+   * This will be `null` if there's no data being sent by the client.
    *
    * @post post
    * @type {?string}
@@ -181,8 +220,8 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.text_id = null;
 
   /**
-   * URL of the image that should be shown in a case image is not uploaded.
-   * <tt>null</tt> until loaded from server.
+   * The image URL that should be displayed in cases where no image is uploaded.
+   * This will be `null` until it's loaded from the server.
    *
    * @get result
    * @put result
@@ -191,8 +230,8 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.url_empty = null;
 
   /**
-   * URL of thumbnail of the image.
-   * <tt>null</tt> until loaded from server.
+   * The thumbnail URL of the image.
+   * This will be `null` until it's loaded from the server.
    *
    * @get result
    * @put result
@@ -201,7 +240,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.url_thumbnail = null;
 
   /**
-   * URL the script where new image should be uploaded.
+   * The script URL where new image should be uploaded from.
    *
    * @get result
    * @put result
@@ -210,7 +249,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.url_upload = null;
 
   /**
-   * URL of the full image.
+   * The URL of the full image.
    *
    * @get result
    * @put result
@@ -228,14 +267,54 @@ WlSdk_ModelAbstract.extend(Core_Drive_ImageUpload_ImageUploadModel);
  */
 Core_Drive_ImageUpload_ImageUploadModel.prototype.config=function()
 {
-  return {"a_field": {"a_image": {"post": {"result": true}},"a_text_empty": {"get": {"result": true},"put": {"result": true}},"html_image_hint": {"get": {"result": true},"put": {"result": true}},"i_height_max": {"get": {"result": true},"put": {"result": true}},"i_height_min": {"get": {"result": true},"put": {"result": true}},"i_thumbnail_height": {"get": {"result": true},"put": {"result": true}},"i_thumbnail_width": {"get": {"result": true},"put": {"result": true}},"i_width_max": {"get": {"result": true},"put": {"result": true}},"i_width_min": {"get": {"result": true},"put": {"result": true}},"is_circular": {"get": {"result": true},"put": {"result": true}},"is_delete_allow": {"get": {"result": true},"put": {"result": true}},"is_temporary": {"get": {"get": true},"put": {"get": true}},"k_id": {"get": {"get": true},"put": {"get": true}},"s_class": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"s_code": {"get": {"result": true},"put": {"result": true}},"s_command": {"put": {"post": true}},"s_link": {"get": {"result": true},"put": {"result": true}},"text_id": {"post": {"post": true}},"url_empty": {"get": {"result": true},"put": {"result": true}},"url_thumbnail": {"get": {"result": true},"put": {"result": true}},"url_upload": {"get": {"result": true},"put": {"result": true}},"url_view": {"get": {"result": true},"put": {"result": true}}}};
+  return {"a_field":{"a_config":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"a_image":{"post":{"result":true}},"a_text_empty":{"get":{"result":true},"put":{"result":true}},"html_image_hint":{"get":{"result":true},"put":{"result":true}},"i_height_max":{"get":{"result":true},"put":{"result":true}},"i_height_min":{"get":{"result":true},"put":{"result":true}},"i_thumbnail_height":{"get":{"result":true},"put":{"result":true}},"i_thumbnail_width":{"get":{"result":true},"put":{"result":true}},"i_width_max":{"get":{"result":true},"put":{"result":true}},"i_width_min":{"get":{"result":true},"put":{"result":true}},"is_circular":{"get":{"result":true},"put":{"result":true}},"is_delete_allow":{"get":{"result":true},"put":{"result":true}},"is_temporary":{"get":{"get":true},"put":{"get":true}},"k_id":{"get":{"get":true},"put":{"get":true}},"s_class":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"s_code":{"get":{"result":true},"put":{"result":true}},"s_command":{"put":{"post":true}},"s_link":{"get":{"result":true},"put":{"result":true}},"text_id":{"post":{"post":true}},"url_empty":{"get":{"result":true},"put":{"result":true}},"url_thumbnail":{"get":{"result":true},"put":{"result":true}},"url_upload":{"get":{"result":true},"put":{"result":true}},"url_view":{"get":{"result":true},"put":{"result":true}}}};
 };
 
 /**
  * @function
  * @name Core_Drive_ImageUpload_ImageUploadModel.instanceGet
- * @param {string} s_class Name of class that manages this image.
- * @param {string} k_id ID of image within {@link Core_Drive_ImageUpload_ImageUploadModel.s_class}.
+ * @param {string} s_class The name of the class that manages this image.
+ * @param {string} k_id The image ID set in `s_class`.
+ * @param {*[]} a_config Allows to give custom parameters which can be required for different types of images.
  * @returns {Core_Drive_ImageUpload_ImageUploadModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns information about the image.
+ *
+ * Used to initialize an image upload widget for an existing entity. Returns thumbnail and full-size URLs,
+ * upload endpoint, dimension constraints, and whether deletion is allowed, so the frontend can render the
+ * current image and offer upload or delete actions.
+ *
+ * @function
+ * @name Core_Drive_ImageUpload_ImageUploadModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Loads image information for a list of IDs.
+The POST method is used instead of the GET method because the maximum permitted URI length is restricted.
+ *
+ * Bulk variant of the GET method for pages that must display many images at once. Accepts a JSON-encoded
+ * list of entity IDs and returns the same metadata as the single-item GET, loading all images in one
+ * round-trip to avoid N+1 requests.
+ *
+ * @function
+ * @name Core_Drive_ImageUpload_ImageUploadModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */
+
+/**
+ * Updates the image.
+ *
+ * Applies a command (such as delete or replace) to a previously uploaded image, then returns the
+ * refreshed image metadata so the frontend can update the widget state without a separate GET call.
+ *
+ * @function
+ * @name Core_Drive_ImageUpload_ImageUploadModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
  */

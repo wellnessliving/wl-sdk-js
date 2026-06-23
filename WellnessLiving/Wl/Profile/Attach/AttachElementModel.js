@@ -1,6 +1,7 @@
 /**
- * Endpoint for upload and manage attachments.
+ * Deletes the attachment.
  *
+ * @augments WlSdk_ModelAbstract
  * @constructor
  */
 function Wl_Profile_Attach_AttachElementModel()
@@ -11,9 +12,9 @@ function Wl_Profile_Attach_AttachElementModel()
    * Uploaded file.
    *
    * @post post
-   * @type {{}}
+   * @type {string}
    */
-  this.a_file = [];
+  this.a_file = "";
 
   /**
    * Date and time of the creation.
@@ -21,7 +22,7 @@ function Wl_Profile_Attach_AttachElementModel()
    * @get result
    * @type {string}
    */
-  this.dtu_create = "";
+  this.dtu_create = undefined;
 
   /**
    * Date and time of the last edit.
@@ -29,7 +30,7 @@ function Wl_Profile_Attach_AttachElementModel()
    * @get result
    * @type {string}
    */
-  this.dtu_edit = "";
+  this.dtu_edit = undefined;
 
   /**
    * `true` if the attachment is private; `false` otherwise.
@@ -46,7 +47,6 @@ function Wl_Profile_Attach_AttachElementModel()
    * @delete get
    * @get get
    * @post get,result
-   * @put get
    * @type {string}
    */
   this.k_attach = "";
@@ -57,7 +57,6 @@ function Wl_Profile_Attach_AttachElementModel()
    * @delete get
    * @get get
    * @post get
-   * @put get
    * @type {string}
    */
   this.k_business = "";
@@ -73,22 +72,24 @@ function Wl_Profile_Attach_AttachElementModel()
   /**
    * Attachment description.
    *
+   * `null` for not update description.
+   *
    * @get result
    * @post post
-   * @put post
-   * @type {string}
+   * @type {?string}
    */
-  this.text_description = "";
+  this.text_description = null;
 
   /**
    * Attachment file name.
    *
+   * `null` for not update file name.
+   *
    * @get result
    * @post post
-   * @put post
-   * @type {string}
+   * @type {?string}
    */
-  this.text_filename = "";
+  this.text_filename = null;
 
   /**
    * Attachment file size.
@@ -96,7 +97,7 @@ function Wl_Profile_Attach_AttachElementModel()
    * @get result
    * @type {string}
    */
-  this.text_filesize = "";
+  this.text_filesize = undefined;
 
   /**
    * Attachment file type.
@@ -104,7 +105,7 @@ function Wl_Profile_Attach_AttachElementModel()
    * @get result
    * @type {string}
    */
-  this.text_filetype = "";
+  this.text_filetype = undefined;
 
   /**
    * User key.
@@ -112,7 +113,6 @@ function Wl_Profile_Attach_AttachElementModel()
    * @delete get
    * @get get
    * @post get
-   * @put get
    * @type {string}
    */
   this.uid = "";
@@ -123,7 +123,7 @@ function Wl_Profile_Attach_AttachElementModel()
    * @get result
    * @type {string}
    */
-  this.url_file = "";
+  this.url_file = undefined;
 
   /**
    * URL to get preview attachment data.
@@ -133,7 +133,7 @@ function Wl_Profile_Attach_AttachElementModel()
    * @get result
    * @type {?string}
    */
-  this.url_preview = "";
+  this.url_preview = null;
 
   this.changeInit();
 }
@@ -145,5 +145,43 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Attach_AttachElementModel);
  */
 Wl_Profile_Attach_AttachElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_file": {"post": {"post": true}},"dtu_create": {"get": {"result": true}},"dtu_edit": {"get": {"result": true}},"is_private": {"post": {"post": true}},"k_attach": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"s_show_delete": {"get": {"result": true}},"text_description": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"text_filename": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"text_filesize": {"get": {"result": true}},"text_filetype": {"get": {"result": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"url_file": {"get": {"result": true}},"url_preview": {"get": {"result": true}}}};
+  return {"a_field":{"a_file":{"post":{"post":true}},"dtu_create":{"get":{"result":true}},"dtu_edit":{"get":{"result":true}},"is_private":{"post":{"post":true}},"k_attach":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"s_show_delete":{"get":{"result":true}},"text_description":{"get":{"result":true},"post":{"post":true}},"text_filename":{"get":{"result":true},"post":{"post":true}},"text_filesize":{"get":{"result":true}},"text_filetype":{"get":{"result":true}},"uid":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"url_file":{"get":{"result":true}},"url_preview":{"get":{"result":true}}}};
 };
+
+/**
+ * Deletes the attachment.
+ *
+ * Permanently removes the specified attachment from the client profile and logs the deletion
+ * action in the business audit trail.
+ *
+ * @function
+ * @name Wl_Profile_Attach_AttachElementModel.delete
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.delete()
+ */
+
+/**
+ * Gets the data for the attachment editing form.
+ *
+ * Returns attachment metadata including filename, description, filesize, file type, creation
+ * and edit timestamps, download URL, preview URL, and a flag indicating whether the current
+ * user has permission to delete the attachment.
+ *
+ * @function
+ * @name Wl_Profile_Attach_AttachElementModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * In case the attachment key is not specified, it adds a new attachment.
+In case the attachment key is specified, edits the attachment.
+ *
+ * When `k_attach` is empty, uploads a new file to the client profile; when set, updates the
+ * attachment metadata, file content, or visibility flag depending on the provided fields.
+ *
+ * @function
+ * @name Wl_Profile_Attach_AttachElementModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

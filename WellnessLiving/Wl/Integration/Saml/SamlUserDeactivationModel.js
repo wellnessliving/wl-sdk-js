@@ -1,7 +1,5 @@
 /**
- * An endpoint that retrieves user statuses in the business.
- *
- * This model is generated automatically based on API.
+ * Gets status of the user in business for given list of identifiers.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -38,5 +36,18 @@ WlSdk_ModelAbstract.extend(Wl_Integration_Saml_SamlUserDeactivationModel);
  */
 Wl_Integration_Saml_SamlUserDeactivationModel.prototype.config=function()
 {
-  return {"a_field": {"a_id": {"post": {"post": true}},"a_result": {"post": {"result": true}}}};
+  return {"a_field":{"a_id":{"post":{"post":true}},"a_result":{"post":{"result":true}}}};
 };
+
+/**
+ * Gets status of the user in business for given list of identifiers.
+ *
+ * Accepts a list of SAML identifier strings and returns a map of each identifier to a boolean indicating
+ * whether the corresponding user is active in their associated business. Requests with too many invalid
+ * identifiers are rate-limited with a penalty block mechanism.
+ *
+ * @function
+ * @name Wl_Integration_Saml_SamlUserDeactivationModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

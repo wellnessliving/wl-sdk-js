@@ -9,17 +9,22 @@ function ASocialSid()
 }
 
 /**
- * @link https://www.facebook.com
+ * Facebook social network.
+ *
+ * @type {number}
  */
 ASocialSid.FACEBOOK = 1;
 
 /**
- * @deprecated Not supported.
- * @link https://plus.google.com
+ * Google Plus social network.
+ *
+ * @type {number}
  */
 ASocialSid.GOOGLE = 2;
 
 /**
- * @link https://twitter.com
+ * Twitter social network.
+ *
+ * @type {number}
  */
 ASocialSid.TWITTER = 3;

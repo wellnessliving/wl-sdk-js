@@ -1,10 +1,5 @@
 /**
- * An endpoint that retrieves a list of tabs for bookable services specific to the user and the location.
- *
- * The names and contents of these tabs can be customized by the business. For example, a business may have tabs named
- * ‘Appointments’, ‘Group Appointments’, and ‘Room Rentals’.
- *
- * This model is generated automatically based on API.
+ * Gets information about tabs for page "Book now".
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -20,11 +15,8 @@ function Wl_Schedule_Tab_TabModel()
 
   /**
    * @typedef {{}} Wl_Schedule_Tab_TabModel_a_tab
-   * @property {number} id_class_tab_object The tab type ID which is one of the {@link Wl_Classes_Tab_TabSid} constants.
-   * @property {?number} id_class_tab_system If this tab has redefined a default system Class Tab then it references a constant defined in
-   * {@link Wl_Classes_Tab_TabSid}.
-   * 
-   * Otherwise, this will be `null`.
+   * @property {number} id_class_tab_object List of class tab objects.
+   * @property {number} id_class_tab_system List of class tab objects.
    * @property {?string} k_class_tab The class tab key. This will be `null` if it's a system tab.
    * @property {string} k_id A unique identifier in the list.
    * @property {string} s_title The tab title.
@@ -34,41 +26,6 @@ function Wl_Schedule_Tab_TabModel()
    * An array containing information about tabs to present to the user.
    * Each array index corresponds to a tab.
    * Each array element is an array that contains the following fields:
-   * <dl>
-   *   <dt>
-   *     int <var>id_class_tab_object</var>
-   *   </dt>
-   *   <dd>
-   *     The tab type ID which is one of the {@link Wl_Classes_Tab_TabSid} constants.
-   *   </dd>
-   *   <dt>
-   *     int|null <var>id_class_tab_system</var>
-   *   </dt>
-   *   <dd>
-   *     If this tab has redefined a default system Class Tab then it references a constant defined in
-   *     {@link Wl_Classes_Tab_TabSid}.
-   *
-   *     Otherwise, this will be `null`.
-   *   </dd>
-   *   <dt>
-   *     string|null <var>k_class_tab</var>
-   *   </dt>
-   *   <dd>
-   *     The class tab key. This will be `null` if it's a system tab.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     A unique identifier in the list.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_title</var>
-   *   </dt>
-   *   <dd>
-   *     The tab title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Schedule_Tab_TabModel_a_tab[]}
@@ -89,7 +46,7 @@ function Wl_Schedule_Tab_TabModel()
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * The key of the current location.
@@ -97,7 +54,7 @@ function Wl_Schedule_Tab_TabModel()
    * @get get
    * @type {string}
    */
-  this.k_location = undefined;
+  this.k_location = "";
 
   /**
    * The key of the current user.
@@ -111,7 +68,7 @@ function Wl_Schedule_Tab_TabModel()
    * @get get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -123,7 +80,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Tab_TabModel);
  */
 Wl_Schedule_Tab_TabModel.prototype.config=function()
 {
-  return {"a_field": {"a_tab": {"get": {"result": true}},"is_widget": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_tab":{"get":{"result":true}},"is_widget":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -135,4 +92,17 @@ Wl_Schedule_Tab_TabModel.prototype.config=function()
  * @param {boolean} is_widget Whether we are inside the widget or not.
  * @returns {Wl_Schedule_Tab_TabModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Gets information about tabs for page "Book now".
+ *
+ * Returns the set of service booking tabs configured by the business, filtered for the
+ * specified location and user. Used to populate the tab strip on the "Book Now" page or
+ * embedded widget. Tabs may represent classes, appointments, events, or other bookable services.
+ *
+ * @function
+ * @name Wl_Schedule_Tab_TabModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

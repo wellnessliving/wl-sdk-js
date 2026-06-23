@@ -1,7 +1,5 @@
 /**
- * Point to add or change a client group.
- *
- * This model is generated automatically based on API.
+ * Returns data for group edit form.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,50 +9,50 @@ function Wl_Member_Group_Edit_EditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Member_Group_Edit_EditModel_a_criteria
+   * @property {number} cid_search_criteria Base class for search criteria.
+   * @property {number} id_operation Search operation constants.
+   * @property {string} s_id Unique criteria key.
+   * @property {string} x_value Operation data value.
+   */
+
+  /**
    * Entity in array format.
-   * For more information about the format, see {@link Wl\Search\Criteria\SearchCriteriaList::createArray()} method.
    *
    * @post post
    * @put post
-   * @type {{}}
+   * @type {Wl_Member_Group_Edit_EditModel_a_criteria[]}
    */
-  this.a_criteria = [];
+  this.a_criteria = undefined;
 
   /**
    * Logic connection between criteria.
-   * See {@link Wl\Search\Criteria\SearchCriteriaList::$a_criteria_logic} for details.
+   * See `a_criteria_logic` for details.
    *
    * @post post
    * @put post
-   * @type {*}
+   * @type {?string[][][][]}
    */
-  this.a_logic = undefined;
+  this.a_logic = null;
 
   /**
    * Search entity CID list.
-   * Constants from {@link \Wl\Search\SearchEntityAbstract} subclasses.
+   * Constants from {@link Wl_Search_SearchEntityAbstract} subclasses.
    *
    * @post post
    * @put post
    * @type {number[]}
    */
-  this.a_search_entity = [];
+  this.a_search_entity = undefined;
 
   /**
    * @typedef {{}} Wl_Member_Group_Edit_EditModel_a_staff_role_selected
-   * @property {number} id_privilege_role ID of privilege role. Constant from {@link RsPrivilegeRoleSid}.
+   * @property {?number} id_privilege_role String identifiers for rs.privilege.role.
    * @property {string} k_business_role Key of the business role.
    */
 
   /**
    * Selected staff roles of the search template.
-   *
-   * <dl>
-   *   <dt>int <var>id_privilege_role</var></dt>
-   *   <dd>ID of privilege role. Constant from {@link RsPrivilegeRoleSid}.</dd>
-   *   <dt>string <var>k_business_role</var></dt>
-   *   <dd>Key of the business role.</dd>
-   * </dl>
    *
    * @post post
    * @put post
@@ -63,24 +61,57 @@ function Wl_Member_Group_Edit_EditModel()
   this.a_staff_role_selected = undefined;
 
   /**
-   * Shape of icon. One of {@link Wl_Member_Group_ShapeSid} constants.
+   * Lead conversion type.
+   *
+   * Last used ID: 3.
+   *
+   * Values:
+   * - 1 (`LOST`): Consider leads as 'Lost' or no longer interested.
+   * - 2 (`WON`): Consider leads as successfully 'Won'.
+   *
+   * @get result
+   * @post post
+   * @see Wl_Lead_Conversion_LeadConversionTypeSid
+   * @type {?number}
+   */
+  this.id_conversion_type = null;
+
+  /**
+   * Shapes of client group icons.
+   *
+   * Last used ID: 7.
+   *
+   * Values:
+   * - 1 (`CIRCLE`): Circle.
+   * - 2 (`HEXAGON`): Hexagon.
+   * - 3 (`OVAL`): Oval.
+   * - 4 (`PENTAGON`): Pentagon.
+   * - 5 (`RECTANGLE`): Rectangle.
+   * - 6 (`SQUARE`): Square.
+   * - 7 (`STAR`): Star.
    *
    * @get result
    * @post post
    * @put post
+   * @see Wl_Member_Group_ShapeSid
    * @type {number}
    */
   this.id_member_group_shape = 0;
 
   /**
-   * Type of share option.
-   * One of {@link Wl_Member_Group_Edit_ShareSid} constants.
+   * A list of share options.
+   *
+   * Values:
+   * - 2 (`EVERYONE`): Item is available for all staffs in a business.
+   * - 1 (`ONLY_ME`): Item is available for current user.
+   * - 3 (`SELECTED_STAFF_ROLE`): Item is available for selected staff roles.
    *
    * @post post
    * @put post
-   * @type {string}
+   * @see Wl_Share_ShareSid
+   * @type {number}
    */
-  this.id_share = undefined;
+  this.id_share = 0;
 
   /**
    * Whether Facility Access enabled for group.
@@ -92,7 +123,16 @@ function Wl_Member_Group_Edit_EditModel()
   this.is_brivo_active = false;
 
   /**
-   * <tt>true</tt> to enable group icon. <tt>false</tt> to disable.
+   * Whether Brivo invitation feature enabled for the group.
+   *
+   * @get result
+   * @post post
+   * @type {boolean}
+   */
+  this.is_brivo_invitation_active = false;
+
+  /**
+   * `true` to enable group icon. `false` to disable.
    *
    * @get result
    * @post post
@@ -111,25 +151,34 @@ function Wl_Member_Group_Edit_EditModel()
   this.is_update = false;
 
   /**
-   * Business to get information for.
+   * Entity in array format.
+   * Alternative of `a_criteria` to transfer data via HTTP as one variable.
    *
-   * @delete get
+   * @post post
+   * @put post
+   * @type {string}
+   */
+  this.json_criteria = "";
+
+  /**
+   * The business key.
+   *
    * @get get
    * @post get
    * @put get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
-   * Member group primary key in {@link \Wl\Member\Group\Sql} table.
+   * Member group key.
    *
    * @get get
    * @post get,result
    * @put get
    * @type {string}
    */
-  this.k_member_group = undefined;
+  this.k_member_group = "";
 
   /**
    * Key of existing template.
@@ -197,9 +246,9 @@ function Wl_Member_Group_Edit_EditModel()
    *
    * @post result
    * @put result
-   * @type {*}
+   * @type {?string}
    */
-  this.text_warning = undefined;
+  this.text_warning = null;
 
   /**
    * User key.
@@ -209,7 +258,7 @@ function Wl_Member_Group_Edit_EditModel()
    * @put get
    * @type {string}
    */
-  this.uid = undefined;
+  this.uid = "";
 
   this.changeInit();
 }
@@ -221,5 +270,38 @@ WlSdk_ModelAbstract.extend(Wl_Member_Group_Edit_EditModel);
  */
 Wl_Member_Group_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field": {"a_criteria": {"post": {"post": true},"put": {"post": true}},"a_logic": {"post": {"post": true},"put": {"post": true}},"a_search_entity": {"post": {"post": true},"put": {"post": true}},"a_staff_role_selected": {"post": {"post": true},"put": {"post": true}},"id_member_group_shape": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"id_share": {"post": {"post": true},"put": {"post": true}},"is_brivo_active": {"get": {"result": true},"post": {"post": true}},"is_icon": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"is_update": {"get": {"result": true},"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_member_group": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"k_search_template": {"get": {"get": true,"result": true},"post": {"get": true,"result": true},"put": {"get": true}},"s_color_background": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"s_color_foreground": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"s_icon": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"s_search_group": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"text_warning": {"post": {"result": true},"put": {"result": true}},"uid": {"get": {"get": true},"post": {"get": true},"put": {"get": true}}}};
+  return {"a_field":{"a_criteria":{"post":{"post":true},"put":{"post":true}},"a_logic":{"post":{"post":true},"put":{"post":true}},"a_search_entity":{"post":{"post":true},"put":{"post":true}},"a_staff_role_selected":{"post":{"post":true},"put":{"post":true}},"id_conversion_type":{"get":{"result":true},"post":{"post":true}},"id_member_group_shape":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"id_share":{"post":{"post":true},"put":{"post":true}},"is_brivo_active":{"get":{"result":true},"post":{"post":true}},"is_brivo_invitation_active":{"get":{"result":true},"post":{"post":true}},"is_icon":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_update":{"get":{"result":true},"post":{"post":true}},"json_criteria":{"post":{"post":true},"put":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_member_group":{"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"k_search_template":{"get":{"get":true,"result":true},"post":{"get":true,"result":true},"put":{"get":true}},"s_color_background":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_color_foreground":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_icon":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_search_group":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"text_warning":{"post":{"result":true},"put":{"result":true}},"uid":{"get":{"get":true},"post":{"get":true},"put":{"get":true}}}};
 };
+
+/**
+ * Returns data for group edit form.
+ *
+ * Gets full information about a client group.
+ *
+ * @function
+ * @name Wl_Member_Group_Edit_EditModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Adds or changes a client group.
+ *
+ * Use to update existing client group or create a new one.
+ *
+ * @function
+ * @name Wl_Member_Group_Edit_EditModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */
+
+/**
+ * Adds or edit client group Query.
+ *
+ * Use to update existing client group search query or create a new one. Member group should be already created.
+ *
+ * @function
+ * @name Wl_Member_Group_Edit_EditModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
+ */

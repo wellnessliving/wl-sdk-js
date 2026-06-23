@@ -1,7 +1,5 @@
 /**
- * An endpoint that gets a list of clients whose names match a search string.
- *
- * This model is generated automatically based on API.
+ * Performs access checks and returns a list of users, depending on the search query.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -32,20 +30,6 @@ function Wl_Login_Search_StaffApp_ListModel()
    * If the query is empty, recent users will be returned.
    *
    * Each element is an array with the following keys:
-   * <dl>
-   *   <dt>string <var>text_mail</var></dt>
-   *   <dd>Client's email.</dd>
-   *   <dt>string <var>text_name_first</var></dt>
-   *   <dd>Client's first name.</dd>
-   *   <dt>string <var>text_name_last</var></dt>
-   *   <dd>Client's last name.</dd>
-   *   <dt>string <var>text_phone</var></dt>
-   *   <dd>Client's phone.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The client name.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>The client key.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Login_Search_StaffApp_ListModel_a_list[]}
@@ -61,7 +45,7 @@ function Wl_Login_Search_StaffApp_ListModel()
   this.can_add = undefined;
 
   /**
-   * <tt>true</tt> - search among whole franchise; <tt>false</tt> - search in specified business only.
+   * `true` - search among whole franchise; `false` - search in specified business only.
    *
    * @get get
    * @type {boolean}
@@ -94,7 +78,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Search_StaffApp_ListModel);
  */
 Wl_Login_Search_StaffApp_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_list": {"get": {"result": true}},"can_add": {"get": {"result": true}},"is_franchisee_search_wide": {"get": {"get": true}},"k_business": {"get": {"get": true}},"text_search": {"get": {"get": true}}}};
+  return {"a_field":{"a_list":{"get":{"result":true}},"can_add":{"get":{"result":true}},"is_franchisee_search_wide":{"get":{"get":true}},"k_business":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
 };
 
 /**
@@ -102,7 +86,20 @@ Wl_Login_Search_StaffApp_ListModel.prototype.config=function()
  * @name Wl_Login_Search_StaffApp_ListModel.instanceGet
  * @param {string} text_search The search string. Clients can be matched by name or email.
  * @param {string} k_business The business key number used internally by WellnessLiving.
- * @param {boolean} is_franchisee_search_wide <tt>true</tt> - search among whole franchise; <tt>false</tt> - search in specified business only.
+ * @param {boolean} is_franchisee_search_wide `true` - search among whole franchise; `false` - search in specified business only.
  * @returns {Wl_Login_Search_StaffApp_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Performs access checks and returns a list of users, depending on the search query.
+ *
+ * When a search string is provided, returns clients whose name or email matches the query within the specified
+ * business. When the search string is empty, returns recently viewed clients. Each result includes the client's
+ * name, email, phone, member ID, and user key.
+ *
+ * @function
+ * @name Wl_Login_Search_StaffApp_ListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

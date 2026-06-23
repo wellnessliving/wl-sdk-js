@@ -1,7 +1,5 @@
 /**
- * An endpoint that returns information about a specified visit.
- *
- * This model is generated automatically based on API.
+ * Retrieves information about one element of schedule.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,7 +15,7 @@ function Wl_Schedule_Page_PageElementModel()
 
   /**
    * @typedef {{}} Wl_Schedule_Page_PageElementModel_a_appointment_visit_info
-   * @property {number} id_visit Visit status. One of {@link Wl_Visit_VisitSid} constants.
+   * @property {number} id_visit Possible states of the visit: book, attended, cancelled, etc.
    * @property {boolean} is_confirmed `true` means that appointment was requested and confirmed by the staff.
    * @property {boolean} is_deny `true` means that appointment was requested and denied by the staff.
    * @property {boolean} is_notify_request_accept `true` means that the client will receive a notification, if appointment will be confirmed by the staff.
@@ -26,63 +24,21 @@ function Wl_Schedule_Page_PageElementModel()
    */
 
   /**
-   * Additional visit information about this appointment. Empty array if it's not an appointment. <dl>
-   *   <dt>
-   *     int <var>id_visit</var>
-   *   </dt>
-   *   <dd>
-   *     Visit status. One of {@link Wl_Visit_VisitSid} constants.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_confirmed</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that appointment was requested and confirmed by the staff.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_deny</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that appointment was requested and denied by the staff.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_notify_request_accept</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that the client will receive a notification, if appointment will be confirmed by the staff.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_notify_request_deny</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that the client will receive a notification, if appointment will be denied by the staff.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_request</var>
-   *   </dt>
-   *   <dd>
-   *     `true` means that appointment was requested, but not confirmed by the staff.
-   *   </dd>
-   * </dl>
+   * Additional visit information about this appointment. Empty array if it's not an appointment.
    *
    * @get result
    * @type {Wl_Schedule_Page_PageElementModel_a_appointment_visit_info}
    */
-  this.a_appointment_visit_info = [];
+  this.a_appointment_visit_info = undefined;
 
   /**
    * @typedef {{}} Wl_Schedule_Page_PageElementModel_a_asset
+   * @property {number} i_count Number of sessions.
    * @property {string} s_name Asset title that consists of the asset title itself concatenated with its index (in case of multiple assets) by '#'.
-   * @property {string} i_count Number of sessions.
    */
 
   /**
-   * List of assets: <dl>
-   *   <dt>string <var>s_name</var></dt>
-   *   <dd>Asset title that consists of the asset title itself concatenated with its index (in case of multiple assets) by '#'.</dd>
-   *   <dt>string <var>i_count</var></dt>
-   *   <dd>Number of sessions.</dd>
-   * </dl>.
+   * List of assets: .
    *
    * @get result
    * @type {Wl_Schedule_Page_PageElementModel_a_asset[]}
@@ -97,21 +53,50 @@ function Wl_Schedule_Page_PageElementModel()
    */
 
   /**
-   * Class data:<dl>
-   *   <dt>int <var>i_book_active</var></dt>
-   *   <dd>A total number of booked visits in the class, including all lists: active and waitlist.</dd>
-   *   <dt>int <var>i_capacity</var></dt>
-   *   <dd>Class capacity.</dd>
-   *   <dt>int <var>i_wait</var></dt>
-   *   <dd>A total number of booked visits in the waitlist.</dd>
-   * </dl>
+   * Class data:
    *
-   * <tt>null</tt> if it isn't class visit.
+   * `null` if it isn't class visit.
    *
    * @get result
    * @type {?Wl_Schedule_Page_PageElementModel_a_class_info}
    */
   this.a_class_info = null;
+
+  /**
+   * @typedef {{}} Wl_Schedule_Page_PageElementModel_a_resource_image_a_image
+   * @property {number} i_height Actual height of thumbnail image.
+   * @property {number} i_height_src Height of original image.
+   * @property {number} i_rotate Angle on which image was rotated compared to the original.
+   * @property {number} i_width Actual width of thumbnail image.
+   * @property {number} i_width_src Width of original image.
+   * @property {boolean} is-resize Whether thumbnail is a resized variant of original image. If `false`, `url-thumbnail` equals `url-view`.
+   * @property {string} url-thumbnail URL to resized and rotated image in file storage. If the original is larger than the specified dimensions, a thumbnail is created and its link is returned. Otherwise, the link to the original image is returned here.
+   * @property {string} url-view URL to original image in file storage.
+   */
+
+  /**
+   * @typedef {{}} Wl_Schedule_Page_PageElementModel_a_resource_image
+   * @property {Wl_Schedule_Page_PageElementModel_a_resource_image_a_image} a_image Image data.
+   * @property {number} i_angle Angle of shape rotation. Is set only if `sid_image` equals to `shape`.
+   * @property {number} i_height Height of image.
+   * @property {number} i_width Width of image.
+   * @property {boolean} is_empty Whether is empty.
+   * @property {string} k_resource Resource key.
+   * @property {string} sid_image Image kind. String representation of one of {@link Wl_Resource_Image_ImageSid} constants.
+   * @property {string} sid_image_icon Icon name.String representation of one of {@link Wl_Resource_Image_ImageIconSid} constants. Is set only if `sid_image` equals to `image`.
+   * @property {string} sid_image_shape Shape name. String representation of one of {@link Wl_Resource_Image_ImageShapeSid} constants. Is set only if `sid_image` equals to `shape`.
+   * @property {string} url Path to image.
+   */
+
+  /**
+   * Resource image data.
+   *
+   * `null` for all services except resources.
+   *
+   * @get result
+   * @type {?Wl_Schedule_Page_PageElementModel_a_resource_image}
+   */
+  this.a_resource_image = null;
 
   /**
    * @typedef {{}} Wl_Schedule_Page_PageElementModel_a_staff
@@ -123,26 +108,6 @@ function Wl_Schedule_Page_PageElementModel()
   /**
    * A list of staff members involved in the visit.
    * Each element is an array with the following elements:
-   * <dl>
-   *   <dt>
-   *     string <var>k_staff</var>
-   *   </dt>
-   *   <dd>
-   *     The staff member key.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_family</var>
-   *   </dt>
-   *   <dd>
-   *     The surname of the staff member.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_name</var>
-   *   </dt>
-   *   <dd>
-   *     The first name of the staff member.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Schedule_Page_PageElementModel_a_staff[]}
@@ -199,16 +164,16 @@ function Wl_Schedule_Page_PageElementModel()
 
   /**
    * Capacity of the service.
-   * <tt>null</tt> indicates that the capacity is not set.
+   * `null` indicates that the capacity is not set.
    *
    * @get result
-   * @type {number}
+   * @type {?number}
    */
-  this.i_capacity = undefined;
+  this.i_capacity = null;
 
   /**
    * The scheduled duration of the visit.
-   * <tt>0</tt> means that session duration is hidden.
+   * `0` means that session duration is hidden.
    *
    * @get result
    * @type {number}
@@ -224,20 +189,25 @@ function Wl_Schedule_Page_PageElementModel()
   this.i_wait_spot = undefined;
 
   /**
-   * The note type ID. This will be set to `null` if notes aren't allowed.
-   * This is one of the {@link Wl_Visit_Note_Sid_NoteSid} constants.
+   * A list of types of visit note.
    *
-   * This will be `null` if notes aren't allowed.
+   * Values:
+   * - 2 (`QUICK`): The usual quick accompanying note for the customer visit.
+   * - 1 (`SOAP`): Accompanying medical note for the customer visit.
    *
    * @get result
-   * @type {?number}
+   * @type {number}
    */
-  this.id_note = null;
+  this.id_note = undefined;
 
   /**
-   * The virtual provider ID. One of the {@link Wl_Virtual_VirtualProviderSid} constants.
+   * List of possible value of virtual integrations.
    *
-   * This will be `null` for non-virtual services.
+   * Last used ID: 2.
+   *
+   * Values:
+   * - 2 (`NON_INTEGRATED`): Virtual integration non implemented.
+   * - 1 (`ZOOM`): Virtual Zoom service integration.
    *
    * @get result
    * @type {?number}
@@ -245,9 +215,24 @@ function Wl_Schedule_Page_PageElementModel()
   this.id_virtual_provider = null;
 
   /**
-   * The visit type ID. One of the {@link Wl_Visit_VisitSid} constants.
+   * Possible states of the visit: book, attended, cancelled, etc.
    *
-   * This will be `null` if not loaded yet.
+   * Last used ID: 8.
+   *
+   * Values:
+   * - 3 (`ATTEND`): Client has attended the session.
+   * - 1 (`BOOK`): Active reservation means that user is going to attend the session.
+   * - 6 (`CANCEL`): Client has cancelled the reservation in time and without penalty.
+   * - 4 (`PENALTY`): Client has cancelled his reservation too late.
+   * - 7 (`PENDING`): This state means that visit is registered, but it is unknown is it {@link Wl_Visit_VisitSid}
+   *   or {@link Wl_Visit_VisitSid} or {@link Wl_Visit_VisitSid} but definitely one of these states.
+   *
+   *   The real type of this visit must be set manually by staff.
+   *   Status can be changed automatically to {@link Wl_Visit_VisitSid}.
+   * - 8 (`REMOVE`): Visit was removed.
+   *   Visits with this status are not shown anywhere in system, but still are saved in database.
+   * - 5 (`TRUANCY`): Client has missed the session without cancellation.
+   * - 2 (`WAIT`): Reservation in a wait list means that user is going to attend the session if someone will cancel his reservation.
    *
    * @get result
    * @type {number}
@@ -279,7 +264,7 @@ function Wl_Schedule_Page_PageElementModel()
   this.is_event = undefined;
 
   /**
-   * <tt>true</tt> - service is in progress; <tt>false</tt> - otherwise.
+   * `true` - service is in progress; `false` - otherwise.
    *
    * @get result
    * @type {boolean}
@@ -287,7 +272,7 @@ function Wl_Schedule_Page_PageElementModel()
   this.is_in_progress = undefined;
 
   /**
-   * <tt>true</tt> - service is virtual; <tt>false</tt> - otherwise.
+   * `true` - service is virtual; `false` - otherwise.
    *
    * @get result
    * @type {boolean}
@@ -296,12 +281,14 @@ function Wl_Schedule_Page_PageElementModel()
 
   /**
    * The appointment key.
-   * This will be set only if the visit is an appointment. If the visit is a class or event, this will be `null`.
+   * This will be set only if the visit is an appointment.
+   *
+   * If the visit is a class or event, this will be `null`.
    *
    * @get result
-   * @type {string}
+   * @type {?string}
    */
-  this.k_appointment = undefined;
+  this.k_appointment = null;
 
   /**
    * Key of the business to which the visit belongs.
@@ -309,7 +296,7 @@ function Wl_Schedule_Page_PageElementModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * The class key. This will be set only if the visit is a class or an event.
@@ -318,16 +305,17 @@ function Wl_Schedule_Page_PageElementModel()
    * @get result
    * @type {?string}
    */
-  this.k_class = undefined;
+  this.k_class = null;
 
   /**
    * The class period key. This will be set only if the visit is a class or an event.
+   *
    * If the visit is an appointment, this will be `null`.
    *
    * @get result
-   * @type {string}
+   * @type {?string}
    */
-  this.k_class_period = undefined;
+  this.k_class_period = null;
 
   /**
    * The location key.
@@ -341,17 +329,17 @@ function Wl_Schedule_Page_PageElementModel()
    * Resource key.
    *
    * @get result
-   * @type {*}
+   * @type {?string}
    */
-  this.k_resource = undefined;
+  this.k_resource = null;
 
   /**
    * Session key.
    *
    * @get result
-   * @type {*}
+   * @type {?string}
    */
-  this.k_service = undefined;
+  this.k_service = null;
 
   /**
    * Visit key.
@@ -359,7 +347,7 @@ function Wl_Schedule_Page_PageElementModel()
    * @get get
    * @type {string}
    */
-  this.k_visit = "0";
+  this.k_visit = "";
 
   /**
    * The name of class or service.
@@ -427,7 +415,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Page_PageElementModel);
  */
 Wl_Schedule_Page_PageElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_appointment_visit_info": {"get": {"result": true}},"a_asset": {"get": {"result": true}},"a_class_info": {"get": {"result": true}},"a_staff": {"get": {"result": true}},"dt_cancel": {"get": {"result": true}},"dt_date_global": {"get": {"result": true}},"dt_date_local": {"get": {"result": true}},"dtl_location": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_capacity": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_wait_spot": {"get": {"result": true}},"id_note": {"get": {"result": true}},"id_virtual_provider": {"get": {"result": true}},"id_visit": {"get": {"result": true}},"is_checkin": {"get": {"result": true}},"is_enable_client_cancel": {"get": {"result": true}},"is_event": {"get": {"result": true}},"is_in_progress": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_appointment": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"result": true}},"k_class_period": {"get": {"result": true}},"k_location": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_service": {"get": {"result": true}},"k_visit": {"get": {"get": true}},"s_title": {"get": {"result": true}},"text_location": {"get": {"result": true}},"text_room": {"get": {"result": true}},"text_timezone": {"get": {"result": true}},"uid": {"get": {"result": true}},"url_image": {"get": {"result": true}},"url_virtual_join": {"get": {"result": true}}}};
+  return {"a_field":{"a_appointment_visit_info":{"get":{"result":true}},"a_asset":{"get":{"result":true}},"a_class_info":{"get":{"result":true}},"a_resource_image":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"dt_cancel":{"get":{"result":true}},"dt_date_global":{"get":{"result":true}},"dt_date_local":{"get":{"result":true}},"dtl_location":{"get":{"result":true}},"html_description":{"get":{"result":true}},"html_special":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_wait_spot":{"get":{"result":true}},"id_note":{"get":{"result":true}},"id_virtual_provider":{"get":{"result":true}},"id_visit":{"get":{"result":true}},"is_checkin":{"get":{"result":true}},"is_enable_client_cancel":{"get":{"result":true}},"is_event":{"get":{"result":true}},"is_in_progress":{"get":{"result":true}},"is_virtual":{"get":{"result":true}},"k_appointment":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"result":true}},"k_class_period":{"get":{"result":true}},"k_location":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_service":{"get":{"result":true}},"k_visit":{"get":{"get":true}},"s_title":{"get":{"result":true}},"text_location":{"get":{"result":true}},"text_room":{"get":{"result":true}},"text_timezone":{"get":{"result":true}},"uid":{"get":{"result":true}},"url_image":{"get":{"result":true}},"url_virtual_join":{"get":{"result":true}}}};
 };
 
 /**
@@ -437,4 +425,17 @@ Wl_Schedule_Page_PageElementModel.prototype.config=function()
  * @param {string} k_visit Visit key.
  * @returns {Wl_Schedule_Page_PageElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves information about one element of schedule.
+ *
+ * Returns full details for a single visit, including staff, location, timing, assigned assets,
+ * virtual join URL, and class-specific or appointment-specific information. Used to render the
+ * visit detail page in the client's schedule view.
+ *
+ * @function
+ * @name Wl_Schedule_Page_PageElementModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

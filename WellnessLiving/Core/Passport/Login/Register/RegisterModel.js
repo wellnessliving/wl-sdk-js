@@ -1,10 +1,5 @@
 /**
- * Allows new clients to be registered.
- *
- * WellnessLiving recommends using the {@link Wl_Lead_LeadModel} endpoint to register new users.
- * This endpoint is not enabled by default. Contact WellnessLiving to enable this endpoint for your business.
- *
- * This model is generated automatically based on API.
+ * Validates the new user's data and sends a confirmation email to complete registration.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -15,37 +10,67 @@ function Core_Passport_Login_Register_RegisterModel()
 
   /**
    * @typedef {{}} Core_Passport_Login_Register_RegisterModel_a_data
-   * @property {string} [k_business] The key of the business for wellnessliving project to register user in.
-   * 
-   * Behavior is different for different applications. If application is connected to the certain business, this
-   * property can be always empty - all clients will be registered in the connected business. If business is set
-   * for such application and is different from the business from application settings, error occurs.
-   * 
-   * If application is not connected to the business, any business key can be set. This does not require any special
-   * privileges, as registration is a public available action.
+   * @property {string} k_business The key of the business for the WellnessLiving project to register the user in.
    */
 
   /**
    * The additional data about new users.
    *
-   * <dl>
-   *   <dt>string <var>[k_business]</var></dt>
-   *   <dd>
-   *     The key of the business for wellnessliving project to register user in.
-   *
-   *     Behavior is different for different applications. If application is connected to the certain business, this
-   *     property can be always empty - all clients will be registered in the connected business. If business is set
-   *     for such application and is different from the business from application settings, error occurs.
-   *
-   *     If application is not connected to the business, any business key can be set. This does not require any special
-   *     privileges, as registration is a public available action.
-   *   </dd>
-   * </dl>
-   *
    * @post post
    * @type {Core_Passport_Login_Register_RegisterModel_a_data}
    */
-  this.a_data = [];
+  this.a_data = undefined;
+
+  /**
+   * The source of a visit.
+   *
+   * Last used ID: 30.
+   *
+   * Values:
+   * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
+   * - 21 (`AZURE`): Registered through `Azure`.
+   * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
+   * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
+   * - 22 (`COLLECTIONS`): Debt paid via collections.
+   * - 26 (`COLLECTIONS_FUTURE`): Debt paid via collections.
+   * - 27 (`CONCERTO`): Action from Concerto.
+   * - 18 (`EMAIL`): Action made via email.
+   * - 20 (`FACEBOOK`): Indicating that the source is Facebook.
+   * - 30 (`GO_HIGH_LEVEL`): Action from Go High Level.
+   * - 19 (`GOOGLE`): Indicating that the source is Google.
+   * - 7 (`GOOGLE_BOOKING`): Visit has been created by Google Booking Service.
+   * - 14 (`GYMPASS_BOOKING`): Visit has been created by `GymPass`.
+   * - 5 (`IMPORT`): Visit was created during import.
+   * - 12 (`MICROSITE`): Action made via microsite.
+   *
+   *   It is also names as directory listing.
+   * - 24 (`MICROSOFT`): Indicating that the source is Microsoft.
+   * - 13 (`MY_PRESENCE_SITE`): Client booked session on My Presence Site.
+   * - 17 (`SMS`): Action made via SMS.
+   * - 4 (`SPA_BACKEND`): Staff booked session from spa backend.
+   * - 3 (`SPA_FRONTEND`): Client booked session from spa frontend.
+   * - 10 (`SYSTEM`): Created by system.
+   * - 6 (`UNDEFINED`): Means that we did not define mode.
+   * - 16 (`WEB_APP_ATTENDANCE`): Client booked session from Attendance Web App.
+   * - 15 (`WEB_APP_CHECK_IN`): Client checked-in for the session through Check-In Web App.
+   * - 2 (`WEB_BACKEND`): Staff booked session for client from website backend.
+   * - 1 (`WEB_FRONTEND`): Client booked session from website frontend.
+   * - 11 (`WIDGET`): Action made via widget (purchase, book etc).
+   * - 25 (`ZAPIER`): Action from Zapier.
+   *
+   * @post post
+   * @see Wl_Mode_ModeSid
+   * @type {?number}
+   */
+  this.id_mode = null;
+
+  /**
+   * JSON configuration for confirmation email.
+   *
+   * @post result
+   * @type {string}
+   */
+  this.json_confirm_config = undefined;
 
   /**
    * The application ID. This is a business specific ID required to register clients.
@@ -92,7 +117,7 @@ function Core_Passport_Login_Register_RegisterModel()
    *
    * If empty, URL to default page is used.
    *
-   * @post post
+   * @post post,result
    * @type {string}
    */
   this.url_confirm = "";
@@ -107,5 +132,18 @@ WlSdk_ModelAbstract.extend(Core_Passport_Login_Register_RegisterModel);
  */
 Core_Passport_Login_Register_RegisterModel.prototype.config=function()
 {
-  return {"a_field": {"a_data": {"post": {"post": true}},"s_application": {"post": {"post": true}},"s_mail": {"post": {"post": true}},"s_name_first": {"post": {"post": true}},"s_name_last": {"post": {"post": true}},"s_password": {"post": {"post": true}},"url_confirm": {"post": {"post": true}}}};
+  return {"a_field":{"a_data":{"post":{"post":true}},"id_mode":{"post":{"post":true}},"json_confirm_config":{"post":{"result":true}},"s_application":{"post":{"post":true}},"s_mail":{"post":{"post":true}},"s_name_first":{"post":{"post":true}},"s_name_last":{"post":{"post":true}},"s_password":{"post":{"post":true}},"url_confirm":{"post":{"post":true,"result":true}}}};
 };
+
+/**
+ * Validates the new user's data and sends a confirmation email to complete registration.
+ *
+ * Accepts the new user's name, email, and password, validates each field, stores the pending registration,
+ * and sends a confirmation email with a link to complete registration via [RegisterConfirmApi](/Core/Passport/Login/Register/RegisterConfirm.json).
+ * An optional application ID and custom confirmation URL may be provided.
+ *
+ * @function
+ * @name Core_Passport_Login_Register_RegisterModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

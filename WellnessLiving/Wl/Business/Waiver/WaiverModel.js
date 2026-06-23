@@ -1,7 +1,5 @@
 /**
- * Information about business waiver.
- *
- * This model is generated automatically based on API.
+ * Returns the business waiver text rendered as HTML with user-specific variables substituted.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -52,7 +50,7 @@ function Wl_Business_Waiver_WaiverModel()
   /**
    * User key for which the waiver is shown.
    * Used to fill the variables in the contract
-   * Not necessarily if the user does not already exist. In this case, you need to set {@link Wl_Business_Waiver_WaiverModel.text_fullname}.
+   * Not necessarily if the user does not already exist. In this case, you need to set `text_fullname`.
    *
    * @get get
    * @type {string}
@@ -69,15 +67,28 @@ WlSdk_ModelAbstract.extend(Wl_Business_Waiver_WaiverModel);
  */
 Wl_Business_Waiver_WaiverModel.prototype.config=function()
 {
-  return {"a_field": {"has_waiver": {"get": {"result": true}},"html_waiver": {"get": {"result": true}},"k_business": {"get": {"get": true}},"text_fullname": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"has_waiver":{"get":{"result":true}},"html_waiver":{"get":{"result":true}},"k_business":{"get":{"get":true}},"text_fullname":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Business_Waiver_WaiverModel.instanceGet
  * @param {string} k_business ID of business to get waiver for.
- * @param {string} uid User key for which the waiver is shown. Used to fill the variables in the contract Not necessarily if the user does not already exist. In this case, you need to set {@link Wl_Business_Waiver_WaiverModel.text_fullname}.
+ * @param {string} uid User key for which the waiver is shown. Used to fill the variables in the contract Not necessarily if the user does not already exist. In this case, you need to set `text_fullname`.
  * @param {string} text_fullname Full username. Used as a variable in a contract. It may be set if user does not exist.
  * @returns {Wl_Business_Waiver_WaiverModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns the business waiver text rendered as HTML with user-specific variables substituted.
+ *
+ * Used to display the waiver agreement to a client before they complete a purchase or check in.
+ * Renders the waiver template with the client's name filled in. If the business has no waiver
+ * configured, `has_waiver` is `false` and the waiver modal should not be shown.
+ *
+ * @function
+ * @name Wl_Business_Waiver_WaiverModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

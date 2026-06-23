@@ -1,7 +1,5 @@
 /**
- * Lists widget skins grouped by widget type for a business.
- *
- * This model is generated automatically based on API.
+ * Returns widget skins grouped by widget type for the given business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -24,15 +22,11 @@ function Wl_Skin_Widget_SkinWidgetListModel()
    * The array structure:
    * Keys - Skin type, one of {@link RsSkinSid} constants.
    * Values - arrays with next keys:
-   * <dl>
-   *   <dt>string `k_skin`</dt><dd>Skin key.</dd>
-   *   <dt>string `text_widget_name`</dt><dd>Widget name.</dd>
-   * </dl>
    *
    * @get result
-   * @type {Wl_Skin_Widget_SkinWidgetListModel_a_widget_skin[][]}
+   * @type {Wl_Skin_Widget_SkinWidgetListModel_a_widget_skin[]}
    */
-  this.a_widget_skin = [];
+  this.a_widget_skin = undefined;
 
   /**
    * Business key.
@@ -52,5 +46,17 @@ WlSdk_ModelAbstract.extend(Wl_Skin_Widget_SkinWidgetListModel);
  */
 Wl_Skin_Widget_SkinWidgetListModel.prototype.config=function()
 {
-  return {"a_field": {"a_widget_skin": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_widget_skin":{"get":{"result":true}},"k_business":{"get":{"get":true}}}};
 };
+
+/**
+ * Returns widget skins grouped by widget type for the given business.
+ *
+ * Returns all configured widget skins for the business, organized by widget type. Used to
+ * populate the widget management list so administrators can select and edit existing skins.
+ *
+ * @function
+ * @name Wl_Skin_Widget_SkinWidgetListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

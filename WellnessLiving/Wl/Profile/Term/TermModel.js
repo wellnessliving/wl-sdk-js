@@ -1,7 +1,5 @@
 /**
- * An endpoint that displays information about online waiver.
- *
- * This model is generated automatically based on API.
+ * Returns online waiver information for the specified user and business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,7 +15,7 @@ function Wl_Profile_Term_TermModel()
 
   /**
    * The date/time of the waiver confirmation.
-   * <tt>null</tt> if waiver is not confirmed.
+   * `null` if waiver is not confirmed.
    *
    * @get result
    * @type {?string}
@@ -42,7 +40,7 @@ function Wl_Profile_Term_TermModel()
 
   /**
    * The IP address from which the confirmation was carried out.
-   * <tt>null</tt> if waiver is not confirmed.
+   * `null` if waiver is not confirmed.
    *
    * @get result
    * @type {?string}
@@ -51,7 +49,7 @@ function Wl_Profile_Term_TermModel()
 
   /**
    * Flag of successful saving agreement.
-   * <tt>true</tt> if agreement was sign up successful <tt>false</tt> - otherwise.
+   * `true` if agreement was sign up successful `false` - otherwise.
    *
    * @get result
    * @type {boolean}
@@ -64,7 +62,7 @@ function Wl_Profile_Term_TermModel()
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * The user's name.
@@ -80,14 +78,14 @@ function Wl_Profile_Term_TermModel()
    * @get get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   /**
    * The URL to the image with the client's signature.
-   * <tt>false</tt> if waiver is not confirmed.
+   * `false` if waiver is not confirmed.
    *
    * @get result
-   * @type {string|boolean}
+   * @type {*}
    */
   this.url_signature = undefined;
 
@@ -101,7 +99,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Term_TermModel);
  */
 Wl_Profile_Term_TermModel.prototype.config=function()
 {
-  return {"a_field": {"dt_agree": {"get": {"result": true}},"html_contract": {"get": {"result": true}},"i_minor_age": {"get": {"result": true}},"ip_agree": {"get": {"result": true}},"is_agree": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_name": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_signature": {"get": {"result": true}}}};
+  return {"a_field":{"dt_agree":{"get":{"result":true}},"html_contract":{"get":{"result":true}},"i_minor_age":{"get":{"result":true}},"ip_agree":{"get":{"result":true}},"is_agree":{"get":{"result":true}},"k_business":{"get":{"get":true}},"s_name":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_signature":{"get":{"result":true}}}};
 };
 
 /**
@@ -111,4 +109,17 @@ Wl_Profile_Term_TermModel.prototype.config=function()
  * @param {string} k_business The key of the current business.
  * @returns {Wl_Profile_Term_TermModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns online waiver information for the specified user and business.
+ *
+ * Returns the rendered online waiver text for the business along with the client's current
+ * agreement status. Used to display the waiver page and show whether the client has already
+ * signed, including their signature image and the confirmation timestamp.
+ *
+ * @function
+ * @name Wl_Profile_Term_TermModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

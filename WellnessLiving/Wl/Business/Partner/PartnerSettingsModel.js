@@ -1,10 +1,5 @@
 /**
- * An endpoint that works with partner settings of the business.
- * The name of the business owner, review(s) about WellnessLiving, and more.
- * This information is entered by a staff member when a client enrolls into Partner Program and uses a custom landing page, which
- * is available by special business URL.
- *
- * This model is generated automatically based on API.
+ * Returns partner settings for the business identified by the given partner code.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -14,13 +9,48 @@ function Wl_Business_Partner_PartnerSettingsModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * The homepage tour of the business, which depends on the type.
+   * List of different types for landing pages based on business types.
+   *
+   * Last ID: 33
+   *
+   * Values:
+   * - 26 (`BARBERSHOP`): Barbershops.
+   * - 24 (`BOOTCAMP`): Boot camps.
+   * - 25 (`BOXING`): Boxing studios.
+   * - 21 (`BUSINESS_MANAGEMENT`): Special industry free landing page with only contact us form.
+   * - 10 (`CLUB`): Health clubs.
+   * - 9 (`CROSSFIT`): Affiliate Gym.
+   * - 11 (`DANCE`): Dance studios.
+   * - 14 (`DENTAL`): Dental studios.
+   * - 6 (`FITNESS`): Fitness gyms.
+   * - 29 (`FUNCTIONAL_FITNESS`): Functional fitness also known as functional training or functional movement.
+   * - 22 (`GYM`): Fitness gyms.
+   * - 23 (`HEALTH_CLUB`): Health clubs.
+   * - 30 (`INTEGRATIVE_HEALTH_CENTER`): Health and beauty salons at one place.
+   * - 8 (`MARTIAL_ART`): Martial arts.
+   * - 4 (`MASSAGE`): Massage salons.
+   * - 28 (`MEDICAL_SPA`): Massage salons.
+   * - 15 (`MEDICINE_ALTERNATIVE`): Alternative medical offices.
+   * - 13 (`MEDICINE_TRADITIONAL`): Hospitals and private doctors.
+   * - 19 (`MUSIC`): Music schools.
+   * - 5 (`PERSONAL_TRAINING`): Personal trainings.
+   * - 7 (`PILATES`): Pilates.
+   * - 32 (`PLAY_CAFE`): Play cafes.
+   * - 18 (`POLE_DANCING`): Pole dancing studios.
+   * - 3 (`SALON`): Salons.
+   * - 2 (`SPA`): Spa salons.
+   * - 17 (`SPINNING`): Spinning.
+   * - 33 (`SWIM_SCHOOL`): Swim schools
+   * - 31 (`TATTOO`): Tattoo salons.
+   * - 12 (`TOUR`): Tours and events.
+   * - 20 (`WELLNESS_CENTER`): Wellness Centers
+   * - 1 (`YOGA`): Yoga.
+   * - 27 (`ZUMBA`): Zumba.
    *
    * @get result
-   * @see RsHomeTourSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_business_tour = 0;
+  this.id_business_tour = null;
 
   /**
    * The business key.
@@ -28,7 +58,7 @@ function Wl_Business_Partner_PartnerSettingsModel()
    * @get result
    * @type {string}
    */
-  this.k_business = "";
+  this.k_business = undefined;
 
   /**
    * The unique code that a business can provide other businesses to tell them about system.
@@ -41,7 +71,6 @@ function Wl_Business_Partner_PartnerSettingsModel()
   /**
    * The first name of the business representative.
    *
-   * @deprecated This field is not used anymore.
    * @get result
    * @type {string}
    */
@@ -50,7 +79,6 @@ function Wl_Business_Partner_PartnerSettingsModel()
   /**
    * The last name of the business representative.
    *
-   * @deprecated This field is not used anymore.
    * @get result
    * @type {string}
    */
@@ -59,7 +87,6 @@ function Wl_Business_Partner_PartnerSettingsModel()
   /**
    * The job title of the business representative.
    *
-   * @deprecated This field is not used anymore.
    * @get result
    * @type {string}
    */
@@ -68,7 +95,6 @@ function Wl_Business_Partner_PartnerSettingsModel()
   /**
    * The text of the review about the WellnessLiving system.
    *
-   * @deprecated This field is not used anymore.
    * @get result
    * @type {string}
    */
@@ -79,7 +105,6 @@ function Wl_Business_Partner_PartnerSettingsModel()
    *
    * `null` in case when image is not uploaded.
    *
-   * @deprecated This field is not used anymore.
    * @get result
    * @type {?string}
    */
@@ -95,5 +120,18 @@ WlSdk_ModelAbstract.extend(Wl_Business_Partner_PartnerSettingsModel);
  */
 Wl_Business_Partner_PartnerSettingsModel.prototype.config=function()
 {
-  return {"a_field": {"id_business_tour": {"get": {"result": true}},"k_business": {"get": {"result": true}},"text_code": {"get": {"get": true}},"text_name_first": {"get": {"result": true}},"text_name_last": {"get": {"result": true}},"text_position": {"get": {"result": true}},"text_review": {"get": {"result": true}},"url_photo": {"get": {"result": true}}}};
+  return {"a_field":{"id_business_tour":{"get":{"result":true}},"k_business":{"get":{"result":true}},"text_code":{"get":{"get":true}},"text_name_first":{"get":{"result":true}},"text_name_last":{"get":{"result":true}},"text_position":{"get":{"result":true}},"text_review":{"get":{"result":true}},"url_photo":{"get":{"result":true}}}};
 };
+
+/**
+ * Returns partner settings for the business identified by the given partner code.
+ *
+ * Used when rendering the Partner Program landing page. Resolves the partner code to a business and
+ * returns the business key and the home tour type so the landing page can show the appropriate demo
+ * tour. A daily failed-request limit per IP prevents brute-force enumeration of partner codes.
+ *
+ * @function
+ * @name Wl_Business_Partner_PartnerSettingsModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

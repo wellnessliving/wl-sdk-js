@@ -1,5 +1,5 @@
 /**
- * An endpoint that manages franchisor locations.
+ * Returns country, region, state, city and location lists of the franchisor.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,44 +11,18 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,id_business_franchise_location,id_report,is_include_non_api,is_include_churn";
+  this._s_key = "k_business,id_business_franchise_location,is_include_non_api,is_include_churn";
 
   /**
    * @typedef {{}} Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_city_list
-   * @property {string} k_city The city key.
-   * @property {string} k_country The country key.
-   * @property {string} k_state The state key.
-   * @property {string} text_title The city title.
+   * @property {string} k_city City key.
+   * @property {string} k_country Country key.
+   * @property {string} k_state State key.
+   * @property {string} text_title City title.
    */
 
   /**
    * The city list. Each element has next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_city</var>
-   *   </dt>
-   *   <dd>
-   *     The city key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     The country key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_state</var>
-   *   </dt>
-   *   <dd>
-   *     The state key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The city title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_city_list[]}
@@ -57,26 +31,12 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
 
   /**
    * @typedef {{}} Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_country_list
-   * @property {string} k_country The country key.
-   * @property {string} text_title The country title.
+   * @property {string} k_country Country key.
+   * @property {string} text_title Country title.
    */
 
   /**
-   * The country list. Each element has the next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     The country key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The country title.
-   *   </dd>
-   * </dl>
+   * The country list. Each element has next structure:
    *
    * @get result
    * @type {Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_country_list[]}
@@ -85,54 +45,17 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
 
   /**
    * @typedef {{}} Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_location_list
-   * @property {string} k_city The city key.
-   * @property {string} k_country The country key.
-   * @property {string} k_location The location key.
-   * @property {string} k_region The franchise region key.
-   * @property {string} k_state The state key.
-   * @property {string} text_title The location title.
+   * @property {number} id_currency A list of currencies.
+   * @property {string} k_city City key.
+   * @property {string} k_country Country key.
+   * @property {string} k_location Location key.
+   * @property {string} k_region Franchise region key.
+   * @property {string} k_state State key.
+   * @property {string} text_title Location title.
    */
 
   /**
    * The location list. Each element has the next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_city</var>
-   *   </dt>
-   *   <dd>
-   *     The city key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     The country key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
-   *   <dd>
-   *     The location key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_region</var>
-   *   </dt>
-   *   <dd>
-   *     The franchise region key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_state</var>
-   *   </dt>
-   *   <dd>
-   *     The state key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The location title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_location_list[]}
@@ -141,26 +64,12 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
 
   /**
    * @typedef {{}} Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_region_list
-   * @property {string} k_region The franchise region key.
-   * @property {string} text_title The franchise region title.
+   * @property {string} k_region Franchise region key.
+   * @property {string} text_title Franchise region title.
    */
 
   /**
    * The region list. Each element has the next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_region</var>
-   *   </dt>
-   *   <dd>
-   *     The franchise region key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The franchise region title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_region_list[]}
@@ -169,33 +78,13 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
 
   /**
    * @typedef {{}} Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_state_list
-   * @property {string} k_country The country key.
-   * @property {string} k_state The state key.
-   * @property {string} text_title The state title.
+   * @property {string} k_country Country key.
+   * @property {string} k_state State key.
+   * @property {string} text_title State title.
    */
 
   /**
    * The state list. Each element has the next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     The country key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_state</var>
-   *   </dt>
-   *   <dd>
-   *     The state key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The state title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_state_list[]}
@@ -207,29 +96,18 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
    *
    * One of the {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} constants.
    *
-   * This will be `null` if {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid.ALL} is used.
+   * If `null`, {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} is used.
    *
    * @get get
+   * @see Wl_Business_Franchise_Location_BusinessFranchiseLocationSid
    * @type {number}
    */
-  this.id_business_franchise_location = undefined;
-
-  /**
-   * Determines the report data to be returned.
-   *
-   * One of the {@link RsReportSid} constants.
-   *
-   * This will be `null` if the report isn't set yet.
-   *
-   * @get get
-   * @type {number}
-   */
-  this.id_report = undefined;
+  this.id_business_franchise_location = 0;
 
   /**
    * Determines whether to include churned/removed locations.
    *
-   * If `true`, all locations are listed regardless of their status. Otherwise, this will be `false`.
+   * If `true`, all locations are listed (regardless of their status).
    *
    * @get get
    * @type {boolean}
@@ -237,9 +115,9 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
   this.is_include_churn = false;
 
   /**
-   * Determines whether to include locations marked as not to be displayed on the franchisor website.
+   * Determines whether to include locations marked to not be displayed on franchisor website.
    *
-   * If `true`, all locations are listed regardless of this setting. Otherwise, this will be `false`.
+   * If `true`, all locations are listed (regardless of this setting).
    *
    * @get get
    * @type {boolean}
@@ -252,7 +130,7 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   this.changeInit();
 }
@@ -264,23 +142,29 @@ WlSdk_ModelAbstract.extend(Wl_Business_Franchise_Location_BusinessFranchiseLocat
  */
 Wl_Business_Franchise_Location_BusinessFranchiseLocationModel.prototype.config=function()
 {
-  return {"a_field": {"a_city_list": {"get": {"result": true}},"a_country_list": {"get": {"result": true}},"a_location_list": {"get": {"result": true}},"a_region_list": {"get": {"result": true}},"a_state_list": {"get": {"result": true}},"id_business_franchise_location": {"get": {"get": true}},"id_report": {"get": {"get": true}},"is_include_churn": {"get": {"get": true}},"is_include_non_api": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_city_list":{"get":{"result":true}},"a_country_list":{"get":{"result":true}},"a_location_list":{"get":{"result":true}},"a_region_list":{"get":{"result":true}},"a_state_list":{"get":{"result":true}},"id_business_franchise_location":{"get":{"get":true}},"is_include_churn":{"get":{"get":true}},"is_include_non_api":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Business_Franchise_Location_BusinessFranchiseLocationModel.instanceGet
  * @param {string} k_business The business key.
- * @param {number} id_business_franchise_location Determines which locations should be returned.
- * One of the {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} constants.
- * This will be `null` if {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid.ALL} is used.
- * @param {number} id_report Determines the report data to be returned.
- * One of the the {@link RsReportSid} constants.
- * This will be `null` if the report isn't set yet.
- * @param {boolean} is_include_non_api Determines whether to include locations marked as not to be displayed on the franchisor website.
- * If `true`, all locations are listed regardless of this setting. Otherwise, this will be `false`.
- * @param {boolean} is_include_churn Determines whether to include churned/removed locations.
- * If `true`, all locations are listed regardless of their status. Otherwise, this will be `false`.
+ * @param {number} id_business_franchise_location Determines which locations should be returned. One of the {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} constants. If `null`, {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} is used.
+ * @param {boolean} is_include_non_api Determines whether to include locations marked to not be displayed on franchisor website. If `true`, all locations are listed (regardless of this setting).
+ * @param {boolean} is_include_churn Determines whether to include churned/removed locations. If `true`, all locations are listed (regardless of their status).
  * @returns {Wl_Business_Franchise_Location_BusinessFranchiseLocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns country, region, state, city and location lists of the franchisor.
+ *
+ * Used on the franchisor's website location finder to display all franchisee locations on a map or
+ * list, grouped by country, state, and city. Results can be filtered to only locations assigned to a
+ * specific franchise region or to exclude churned locations. Results are cached for 3 minutes.
+ *
+ * @function
+ * @name Wl_Business_Franchise_Location_BusinessFranchiseLocationModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

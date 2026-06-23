@@ -1,7 +1,5 @@
 /**
- * Returns data about a user's relationships.
- *
- * This model is generated automatically based on API.
+ * Deletes family relation between 2 users.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,28 +15,22 @@ function Wl_Family_Relation_RelationModel()
 
   /**
    * @typedef {{}} Wl_Family_Relation_RelationModel_a_new
-   * @property {number} id_family_relation The relationship type. One of the {@link Wl_Family_Relation_RelationSid} constants.
+   * @property {number} id_family_relation Relation type between two relatives.
    * @property {string} uid The related user's key.
    */
 
   /**
-   * The new relationship to be added to user, specified with {@link Wl_Family_Relation_RelationModel.uid}:
-   * <dl>
-   *   <dt>int <var>id_family_relation</var></dt>
-   *   <dd>The relationship type. One of the {@link Wl_Family_Relation_RelationSid} constants.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>The related user's key.</dd>
-   * </dl>
+   * The new relationship to be added to user, specified with `uid`:
    *
    * @post post
    * @type {Wl_Family_Relation_RelationModel_a_new}
    */
-  this.a_new = [];
+  this.a_new = undefined;
 
   /**
    * @typedef {{}} Wl_Family_Relation_RelationModel_a_relation
-   * @property {number} id_family_relation The relationship type. One of the {@link Wl_Family_Relation_RelationSid} constants.
-   * @property {number} id_family_relation_reverse The type of reciprocated relationship. One of the {@link Wl_Family_Relation_RelationSid} constants.
+   * @property {number} id_family_relation Relation type between two relatives.
+   * @property {number} id_family_relation_reverse Relation type between two relatives.
    * @property {string} text_name The name of the relation.
    * @property {string} text_name_first The first name of the relation.
    * @property {string} uid The key of the related user.
@@ -46,18 +38,6 @@ function Wl_Family_Relation_RelationModel()
 
   /**
    * Information about the user's relationships. Every element has the following fields:
-   * <dl>
-   *   <dt>int <var>id_family_relation</var></dt>
-   *   <dd>The relationship type. One of the {@link Wl_Family_Relation_RelationSid} constants.</dd>
-   *   <dt>int <var>id_family_relation_reverse</var></dt>
-   *   <dd>The type of reciprocated relationship. One of {@link Wl_Family_Relation_RelationSid} constants.</dd>
-   *   <dt>string <var>text_name</var></dt>
-   *   <dd>The name of the relation.</dd>
-   *   <dt>string <var>text_name_first</var></dt>
-   *   <dd>The first name of the relation.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>The key of the related user.</dd>
-   * </dl>
    *
    * @delete result
    * @get result
@@ -73,16 +53,51 @@ function Wl_Family_Relation_RelationModel()
    * @delete get
    * @get get
    * @post get
+   * @see Wl_User_Tracking_FlowSid
    * @type {number}
    */
   this.id_flow = 0;
 
   /**
-   * ID of source mode.
-   * One of {@link Wl_Mode_ModeSid} constants.
+   * The source of a visit.
+   *
+   * Last used ID: 30.
+   *
+   * Values:
+   * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
+   * - 21 (`AZURE`): Registered through `Azure`.
+   * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
+   * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
+   * - 22 (`COLLECTIONS`): Debt paid via collections.
+   * - 26 (`COLLECTIONS_FUTURE`): Debt paid via collections.
+   * - 27 (`CONCERTO`): Action from Concerto.
+   * - 18 (`EMAIL`): Action made via email.
+   * - 20 (`FACEBOOK`): Indicating that the source is Facebook.
+   * - 30 (`GO_HIGH_LEVEL`): Action from Go High Level.
+   * - 19 (`GOOGLE`): Indicating that the source is Google.
+   * - 7 (`GOOGLE_BOOKING`): Visit has been created by Google Booking Service.
+   * - 14 (`GYMPASS_BOOKING`): Visit has been created by `GymPass`.
+   * - 5 (`IMPORT`): Visit was created during import.
+   * - 12 (`MICROSITE`): Action made via microsite.
+   *
+   *   It is also names as directory listing.
+   * - 24 (`MICROSOFT`): Indicating that the source is Microsoft.
+   * - 13 (`MY_PRESENCE_SITE`): Client booked session on My Presence Site.
+   * - 17 (`SMS`): Action made via SMS.
+   * - 4 (`SPA_BACKEND`): Staff booked session from spa backend.
+   * - 3 (`SPA_FRONTEND`): Client booked session from spa frontend.
+   * - 10 (`SYSTEM`): Created by system.
+   * - 6 (`UNDEFINED`): Means that we did not define mode.
+   * - 16 (`WEB_APP_ATTENDANCE`): Client booked session from Attendance Web App.
+   * - 15 (`WEB_APP_CHECK_IN`): Client checked-in for the session through Check-In Web App.
+   * - 2 (`WEB_BACKEND`): Staff booked session for client from website backend.
+   * - 1 (`WEB_FRONTEND`): Client booked session from website frontend.
+   * - 11 (`WIDGET`): Action made via widget (purchase, book etc).
+   * - 25 (`ZAPIER`): Action from Zapier.
    *
    * @delete post
    * @post post
+   * @see Wl_Mode_ModeSid
    * @type {number}
    */
   this.id_mode = 0;
@@ -95,7 +110,7 @@ function Wl_Family_Relation_RelationModel()
    * @post get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * The key of the user whose relationships are being assessed.
@@ -105,15 +120,15 @@ function Wl_Family_Relation_RelationModel()
    * @post get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   /**
-   * The key of the related user who {@link Wl_Family_Relation_RelationModel.uid} must be removed.
+   * The key of the related user who `uid` must be removed.
    *
    * @delete get
    * @type {string}
    */
-  this.uid_delete = "0";
+  this.uid_delete = "";
 
   this.changeInit();
 }
@@ -125,7 +140,7 @@ WlSdk_ModelAbstract.extend(Wl_Family_Relation_RelationModel);
  */
 Wl_Family_Relation_RelationModel.prototype.config=function()
 {
-  return {"a_field": {"a_new": {"post": {"post": true}},"a_relation": {"delete": {"result": true},"get": {"result": true},"post": {"result": true}},"id_flow": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"id_mode": {"delete": {"post": true},"post": {"post": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"uid": {"delete": {"get": true},"get": {"get": true},"post": {"get": true}},"uid_delete": {"delete": {"get": true}}}};
+  return {"a_field":{"a_new":{"post":{"post":true}},"a_relation":{"delete":{"result":true},"get":{"result":true},"post":{"result":true}},"id_flow":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"id_mode":{"delete":{"post":true},"post":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"uid":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"uid_delete":{"delete":{"get":true}}}};
 };
 
 /**
@@ -135,4 +150,41 @@ Wl_Family_Relation_RelationModel.prototype.config=function()
  * @param {string} k_business The business key.
  * @returns {Wl_Family_Relation_RelationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Deletes family relation between 2 users.
+ *
+ * Removes the relationship between the user identified by `uid` and the user identified by `uid_delete`
+ * within the given business, then returns the updated list of relationships for `uid`.
+ *
+ * @function
+ * @name Wl_Family_Relation_RelationModel.delete
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.delete()
+ */
+
+/**
+ * Gets relative list.
+ *
+ * Returns the list of all family relationships for the specified user within the given business, including
+ * relationship type, reverse relationship type, name, and photo information for each related user.
+ *
+ * @function
+ * @name Wl_Family_Relation_RelationModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Adds to user `uid`
+relative `a_new`.
+ *
+ * Creates a bidirectional family relationship between the user identified by `uid` and the user specified in
+ * `a_new`, then returns the updated list of relationships for `uid`.
+ *
+ * @function
+ * @name Wl_Family_Relation_RelationModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

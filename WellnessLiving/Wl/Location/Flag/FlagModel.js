@@ -1,7 +1,6 @@
 /**
- * Retrieves information if a user is flagged in a location.
- *
- * This model is generated automatically based on API.
+ * Checks if user `uid` is flagged in location `k_location` or
+ * each of users `a_uid` is flagged in location `k_location`.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,18 +16,13 @@ function Wl_Location_Flag_FlagModel()
 
   /**
    * @typedef {{}} Wl_Location_Flag_FlagModel_a_flag
+   * @property {boolean} is_flag Value: `true` if user is flagged; `false` otherwise.
    * @property {string} uid Key is passport login ID.
-   * @property {boolean} is_flag Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.
    */
 
   /**
-   * Array with structure:<dl>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>Key is passport login ID.</dd>
-   *   <dt>bool <var>is_flag</var></dt>
-   *   <dd>Value: <tt>true</tt> if user is flagged; <tt>false</tt> otherwise.</dd>
-   * </dl>
-   * <tt>null</tt> until loaded or when <var>a_uid</var> was not set.
+   * Array with structure:
+   * `null` until loaded or when `a_uid` was not set.
    *
    * @get result
    * @type {Wl_Location_Flag_FlagModel_a_flag}
@@ -36,13 +30,22 @@ function Wl_Location_Flag_FlagModel()
   this.a_flag = undefined;
 
   /**
-   * Array, where keys are UIDs to be checked and values are same as {@link Wl_Location_Flag_FlagModel.a_restrictions_single}.
-   * <tt>null</tt> if user is not flagged in the location.
+   * @typedef {{}} Wl_Location_Flag_FlagModel_a_restrictions_multiple
+   * @property {boolean} is_book `true` if the user cannot make new reservations.
+   * @property {boolean} is_purchase `true` if the user cannot make new purchases.
+   */
+
+  /**
+   * Array, where keys are UIDs to be checked and values are same as `a_restrictions_single`.
+   * `null` if user is not flagged in the location.
    *
-   * This field is set, if API gets {@link Wl_Location_Flag_FlagModel.a_uid} and not {@link Wl_Location_Flag_FlagModel.uid} properties.
+   * This field is set, if API gets `a_uid` and not `uid` properties.
+   *
+   * Keys are user keys. 
+   * Values are flag restriction arrays:
    *
    * @get result
-   * @type {?{}}
+   * @type {?Wl_Location_Flag_FlagModel_a_restrictions_multiple}
    */
   this.a_restrictions_multiple = null;
 
@@ -53,16 +56,9 @@ function Wl_Location_Flag_FlagModel()
    */
 
   /**
-   * <dl>
-   *   <dt>bool <var>is_book</var></dt>
-   *   <dd>`true` if client cannot make new reservations.</dd>
-   *   <dt>bool <var>is_purchase</var></dt>
-   *   <dd>`true` if client cannot make new purchases.</dd>
-   * </dl>
+   * `null` if user is not flagged in the location.
    *
-   * <tt>null</tt> if user is not flagged in the location.
-   *
-   * This field is set, if API gets {@link Wl_Location_Flag_FlagModel.uid} and not {@link Wl_Location_Flag_FlagModel.a_uid} properties.
+   * This field is set, if API gets `uid` and not `a_uid` properties.
    *
    * @get result
    * @type {?Wl_Location_Flag_FlagModel_a_restrictions_single}
@@ -70,8 +66,8 @@ function Wl_Location_Flag_FlagModel()
   this.a_restrictions_single = null;
 
   /**
-   * User keys. Each element is a primary key in the {@link \PassportLoginSql} table.
-   * <tt>null</tt> if not set.
+   * User keys.
+   * `null` if not set.
    *
    * @get get
    * @type {?string[]}
@@ -79,9 +75,9 @@ function Wl_Location_Flag_FlagModel()
   this.a_uid = null;
 
   /**
-   * <tt>true</tt> if the user is flagged and can make purchases, but cannot make new reservations, <tt>false</tt> if otherwise.
+   * `true` if the user is flagged and can make purchases, but cannot make new reservations, `false` if otherwise.
    *
-   * <tt>null</tt> until loaded or when {@link Wl_Location_Flag_FlagModel.a_uid} was not set.
+   * `null` until loaded or when `a_uid` was not set.
    *
    * @get result
    * @type {boolean}
@@ -94,11 +90,11 @@ function Wl_Location_Flag_FlagModel()
    * @get get
    * @type {string}
    */
-  this.k_location = undefined;
+  this.k_location = "";
 
   /**
    * The user's key.
-   * <tt>null</tt> if not set.
+   * `null` if not set.
    *
    * @get get
    * @type {?string}
@@ -115,14 +111,27 @@ WlSdk_ModelAbstract.extend(Wl_Location_Flag_FlagModel);
  */
 Wl_Location_Flag_FlagModel.prototype.config=function()
 {
-  return {"a_field": {"a_flag": {"get": {"result": true}},"a_restrictions_multiple": {"get": {"result": true}},"a_restrictions_single": {"get": {"result": true}},"a_uid": {"get": {"get": true}},"is_flag": {"get": {"result": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_flag":{"get":{"result":true}},"a_restrictions_multiple":{"get":{"result":true}},"a_restrictions_single":{"get":{"result":true}},"a_uid":{"get":{"get":true}},"is_flag":{"get":{"result":true}},"k_location":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Location_Flag_FlagModel.instanceGet
  * @param {string} k_location The location key.
- * @param {?string} uid The user's key. <tt>null</tt> if not set.
+ * @param {?string} uid The user's key. `null` if not set.
  * @returns {Wl_Location_Flag_FlagModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Checks if user `uid` is flagged in location `k_location` or
+each of users `a_uid` is flagged in location `k_location`.
+ *
+ * Accepts either a single user key (`uid`) or an array of user keys (`a_uid`) and returns the flag status
+ * for each, including whether the flagged user is restricted from booking or purchasing at the location.
+ *
+ * @function
+ * @name Wl_Location_Flag_FlagModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

@@ -1,5 +1,5 @@
 /**
- * An endpoint that displays appointment information.
+ * Gets information about appointment.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -15,12 +15,18 @@ function Wl_Appointment_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_next
-   * @property {string} dt_date_local The start date and time of the next appointment in the location's time zone in MySQL format.
-   * @property {string} k_appointment The key of the next appointment.
+   * @property {boolean} can_view `true` if employees (staff) can view this appointment, `false` otherwise.
+   * @property {string} dt_date_local Start date and time of the next appointment in local time in MySQL format.
+   * @property {boolean} has_note `true` if visit has a note, `false` otherwise.
+   * @property {number} i_duration Duration of the next appointment in minutes.
+   * @property {string} k_appointment Next appointment key.
+   * @property {string} k_visit Visit key of next appointment.
+   * @property {string} text_appointment_title Title of next appointment.
+   * @property {string} text_staff_name Full staff name or empty if no staff assigned.
    */
 
   /**
-   * Data for the next appointment data (or an empty array if there no future appointments):
+   * Next appointment data, or empty array if there are no appointments in the future:
    *
    * @get result
    * @type {Wl_Appointment_Info_InfoModel_a_next}
@@ -29,12 +35,18 @@ function Wl_Appointment_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_previous
-   * @property {string} dt_date_local The start date and time of the previous appointment in local time in MySQL format.
-   * @property {string} k_appointment The key of the previous appointment.
+   * @property {boolean} can_view `true` if employees (staff) can view this appointment, `false` otherwise.
+   * @property {string} dt_date_local Start date and time of the previous appointment in local time in MySQL format.
+   * @property {boolean} has_note `true` if visit has a note, `false` otherwise.
+   * @property {number} i_duration Duration of the previous appointment in minutes.
+   * @property {string} k_appointment Previous appointment key.
+   * @property {string} k_visit Visit key of previous appointment.
+   * @property {string} text_appointment_title Title of previous appointment.
+   * @property {string} text_staff_name Full staff name or empty if no staff assigned.
    */
 
   /**
-   * Data for the previous appointment data (or an empty array if there no future appointments):
+   * Previous appointment data, or empty array if there are no appointments in the past:
    *
    * @get result
    * @type {Wl_Appointment_Info_InfoModel_a_previous}
@@ -43,34 +55,36 @@ function Wl_Appointment_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_question
-   * @property {int} i_size The size of rows for answer.
-   * @property {bool} is_multiple `true` if <var>i_size</var> greater than 1, `false` otherwise. This can be empty if an answer is loaded.
-   * @property {string} s_answer The answer for <var>s_question</var>.
-   * @property {string} s_key The answer key.
-   * @property {string} s_question The question.
+   * @property {number} i_size Size of rows for answer.
+   * @property {boolean} is_multiple `true` if `i_size` greater than 1, `false` otherwise. Can be empty if answer is loaded.
+   * @property {string} s_answer Answer for `s_question`.
+   * @property {string} s_key Answer key.
+   * @property {string} s_question Question.
    */
 
   /**
-   * A list of questions and answers.
+   * List of questions and answers:
    *
    * @get result
    * @type {Wl_Appointment_Info_InfoModel_a_question[]}
    */
-  this.a_question = [];
-
+  this.a_question = undefined;
 
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_resource
-   * @property {int} i_color_border Border color for schedule. In 24-bit representation of a hexadecimal color..
-   * @property {int} i_color_background Background color for schedule. In 24-bit representation of a hexadecimal color..
-   * @property {string} k_resource Resource key.
-   * @property {string} k_resource_type TResource type key.
-   * @property {string} s_resource Name of the resource.
-   * @property {string} s_resource_type Name of the resource type.
+   * @property {number} i_color_background Background color of the asset as an integer (RGB).
+   * @property {number} i_color_border Border color of the asset as an integer (RGB).
+   * @property {number} i_index Index of the booked asset slot.
+   * @property {boolean} is_remove `true` if the asset was removed from the booking, `false` otherwise.
+   * @property {string} k_resource Asset key.
+   * @property {string} k_resource_type Asset category key.
+   * @property {string} s_resource Asset name.
+   * @property {string} s_resource_type Asset category name.
+   * @property {string} text_resource_alias Display alias for the asset slot, if configured.
    */
 
   /**
-   * A list of assets used by this appointment.
+   * List of assets used by this appointment. Each element contains:
    *
    * @get result
    * @type {Wl_Appointment_Info_InfoModel_a_resource[]}
@@ -78,16 +92,21 @@ function Wl_Appointment_Info_InfoModel()
   this.a_resource = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Info_InfoModel_a_shop_product_option
-   * @property {[]} a_login_product List of purchased products. Empty if no products purchased.
-   * @property {?string} k_login_product Deprecated and always have `null` value.
-   * @property {string} k_shop_product The primary key of the add-on.
-   * @property {string} k_shop_product_option The primary key of the shop product option. T-shirts can have an option like size or color.
-   * @property {string} m_amount The add-on price.
+   * @typedef {{}} Wl_Appointment_Info_InfoModel_a_shop_product_option_a_login_product
+   * @property {string} k_login_product Purchased product key.
    */
 
   /**
-   * A list of appointment add-ons.
+   * @typedef {{}} Wl_Appointment_Info_InfoModel_a_shop_product_option
+   * @property {Wl_Appointment_Info_InfoModel_a_shop_product_option_a_login_product} a_login_product List of purchased product keys. Empty if no products were purchased. Each element:
+   * @property {string} k_login_product Deprecated, always `null`.
+   * @property {string} k_shop_product Primary key of add-on.
+   * @property {string} k_shop_product_option Add-on option.
+   * @property {string} m_amount Price that it adds to an appointment.
+   */
+
+  /**
+   * List of appointment add-ons. Every element has next keys:
    *
    * @get result
    * @type {Wl_Appointment_Info_InfoModel_a_shop_product_option[]}
@@ -95,7 +114,7 @@ function Wl_Appointment_Info_InfoModel()
   this.a_shop_product_option = undefined;
 
   /**
-   * The date/time of the appointment in the location's time zone.
+   * Date/time of appointment in location timezone.
    *
    * @get result
    * @type {string}
@@ -103,7 +122,7 @@ function Wl_Appointment_Info_InfoModel()
   this.dt_date_local = undefined;
 
   /**
-   * The appointment duration (in minutes).
+   * Appointment duration (in minutes).
    *
    * @get result
    * @type {?number}
@@ -111,7 +130,7 @@ function Wl_Appointment_Info_InfoModel()
   this.i_duration = null;
 
   /**
-   * The index of the booked asset.
+   * Index of booked asset.
    *
    * @get result
    * @type {?number}
@@ -119,7 +138,13 @@ function Wl_Appointment_Info_InfoModel()
   this.i_index = null;
 
   /**
-   * The status of the appointment payment. One of the {@link Wl_Appointment_PaySid} constants.
+   * The possible payment types an appointment can have.
+   *
+   * Values:
+   * - 2 (`DEPOSIT`): A deposit was paid.
+   * - 4 (`FREE`): Appointment is free and does not require payment.
+   * - 3 (`FULL`): The full price was paid.
+   * - 1 (`NONE`): Nothing was paid.
    *
    * @get result
    * @type {number}
@@ -127,12 +152,12 @@ function Wl_Appointment_Info_InfoModel()
   this.id_appointment_pay = undefined;
 
   /**
-   * The class identifier to get information for.
+   * Class identifier to get information for.
    *
    * @get get
    * @type {string}
    */
-  this.k_appointment = "0";
+  this.k_appointment = "";
 
   /**
    * Location key.
@@ -143,7 +168,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_location = undefined;
 
   /**
-   * The Purchase Option used to purchase the appointment.
+   * Purchased promotion which provides this appointment.
    *
    * @get result
    * @type {?string}
@@ -151,7 +176,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_login_promotion = null;
 
   /**
-   * The asset key.
+   * Asset key.
    *
    * @get result
    * @type {?string}
@@ -159,7 +184,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_resource = null;
 
   /**
-   * The asset category key.
+   * Asset category key.
    *
    * @get result
    * @type {?string}
@@ -167,7 +192,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_resource_type = null;
 
   /**
-   * The service key.
+   * Service key.
    *
    * @get result
    * @type {?string}
@@ -175,7 +200,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_service = null;
 
   /**
-   * The service category key.
+   * Service category key.
    *
    * @get result
    * @type {?string}
@@ -183,7 +208,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_service_category = null;
 
   /**
-   * Drop-in used to purchase the appointment.
+   * Purchased drop-in which provides this appointment.
    *
    * @get result
    * @type {?string}
@@ -191,7 +216,10 @@ function Wl_Appointment_Info_InfoModel()
   this.k_session_pass = null;
 
   /**
-   * The staff member conducting the appointment.
+   * Staff member who conducts this appointment.
+   *
+   * Deprecated: returned only for a limited list of third-party apps to keep backward compatibility.
+   * Use `uid_staff` instead.
    *
    * @get result
    * @type {string}
@@ -199,7 +227,7 @@ function Wl_Appointment_Info_InfoModel()
   this.k_staff = undefined;
 
   /**
-   * The title of the appointment.
+   * Title of the appointment.
    *
    * @get result
    * @type {string}
@@ -207,12 +235,20 @@ function Wl_Appointment_Info_InfoModel()
   this.text_title = undefined;
 
   /**
-   * The user for whom the appointment was booked.
+   * User for whom this appointment was booked.
    *
    * @get result
    * @type {string}
    */
   this.uid_appointment = undefined;
+
+  /**
+   * Staff member who conducts this appointment.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.uid_staff = null;
 
   this.changeInit();
 }
@@ -224,13 +260,26 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Info_InfoModel);
  */
 Wl_Appointment_Info_InfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_next": {"get": {"result": true}},"a_previous": {"get": {"result": true}},"a_question": {"get": {"result": true}},"a_resource": {"get": {"result": true}},"a_shop_product_option": {"get": {"result": true}},"dt_date_local": {"get": {"result": true}},"i_duration": {"get": {"result": true}},"i_index": {"get": {"result": true}},"id_appointment_pay": {"get": {"result": true}},"k_appointment": {"get": {"get": true}},"k_location": {"get": {"result": true}},"k_login_promotion": {"get": {"result": true}},"k_resource": {"get": {"result": true}},"k_resource_type": {"get": {"result": true}},"k_service": {"get": {"result": true}},"k_service_category": {"get": {"result": true}},"k_session_pass": {"get": {"result": true}},"k_staff": {"get": {"result": true}},"text_title": {"get": {"result": true}},"uid_appointment": {"get": {"result": true}}}};
+  return {"a_field":{"a_next":{"get":{"result":true}},"a_previous":{"get":{"result":true}},"a_question":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_shop_product_option":{"get":{"result":true}},"dt_date_local":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_index":{"get":{"result":true}},"id_appointment_pay":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_login_promotion":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_resource_type":{"get":{"result":true}},"k_service":{"get":{"result":true}},"k_service_category":{"get":{"result":true}},"k_session_pass":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid_appointment":{"get":{"result":true}},"uid_staff":{"get":{"result":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Appointment_Info_InfoModel.instanceGet
- * @param {string} k_appointment The class identifier to get information for.
+ * @param {string} k_appointment Class identifier to get information for.
  * @returns {Wl_Appointment_Info_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Gets information about appointment.
+ *
+ * Returns detailed information about the specified appointment, including service details, staff member,
+ * date and time in the location's timezone, booking status, client information, and any associated
+ * assets or add-ons. Access is validated against the current user's permissions.
+ *
+ * @function
+ * @name Wl_Appointment_Info_InfoModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

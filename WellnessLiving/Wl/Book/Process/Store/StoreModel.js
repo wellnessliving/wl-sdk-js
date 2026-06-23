@@ -1,7 +1,5 @@
 /**
- * Manages the "Purchase Options" page of the booking wizard.
- *
- * This model is generated automatically based on API.
+ * Processes the "Purchase Options" step of the booking wizard, validates selections, and books the session when possible.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -20,15 +18,8 @@ function Wl_Book_Process_Store_StoreModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Store_StoreModel_a_purchase_item_check
-   * @property {number} i_session The number of sessions that this item can cover.
-   *   This only applies to items of type {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
-   * @property {string} s_value The unique identifier of the item being checked.
-   * This corresponds to one of the following values:
-   * <ul>
-   *   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_purchase}`["s_value"]`</li>
-   *   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_reward_prize}`["s_value"]`</li>
-   *   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_login_prize}`["s_value"]`</li>
-   * </ul>
+   * @property {number} i_session The number of sessions that this item can cover.   This only applies to items of type {@link RsPurchaseItemSid}.
+   * @property {string} s_value The unique identifier of the item being checked. This corresponds to one of the following values: <ul>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li> </ul>
    */
 
   /**
@@ -40,32 +31,27 @@ function Wl_Book_Process_Store_StoreModel()
    * @post post
    * @type {Wl_Book_Process_Store_StoreModel_a_purchase_item_check}
    */
-  this.a_purchase_item_check = [];
+  this.a_purchase_item_check = undefined;
 
   /**
    * @typedef {{}} Wl_Book_Process_Store_StoreModel_a_repeat
-   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   * Should be passed for any type of repetition.
+   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants. Should be passed for any type of repetition.
    * @property {number[]} a_week Deprecated, use `a_day` instead!
-   * @property {string} [dl_end] Deprecated, use `dt_from` and `dt_to` instead!
-   * @property {string} [dt_from] Date to start recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {string} [dt_to] Date to complete recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {number} [i_count] The number of occurrences after which the appointment's repeat cycle stops.
-   *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *  Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
+   * @property {string} dl_end Deprecated, use `dt_from` and `dt_to` instead!
+   * @property {string} dt_from Date to start recurring booking. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
+   * @property {string} dt_to Date to complete recurring booking. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
+   * @property {number} i_count The number of occurrences after which the appointment's repeat cycle stops.  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.  Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
-   * @property {number} [i_occurrence] Deprecated, use `i_count` instead!
+   * @property {number} i_occurrence Deprecated, use `i_count` instead!
    * @property {number} i_period Deprecated, use `i_duration` instead!
-   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   * @property {number} id_period Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.
-   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
+   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
+   * @property {number} id_period A class for managing time intervals. Last ID: 9.
+   * @property {number} id_repeat_end Possible ways to stop repeatable events.
    */
 
   /**
    * Information about the recurring booking:
+   *
    *
    * This will be `null` if the booking isn't recurring.
    *
@@ -86,7 +72,7 @@ function Wl_Book_Process_Store_StoreModel()
    * @post post
    * @type {Wl_Book_Process_Store_StoreModel_a_resource[]}
    */
-  this.a_resource = [];
+  this.a_resource = undefined;
 
   /**
    * The selected sessions for an event.
@@ -97,7 +83,7 @@ function Wl_Book_Process_Store_StoreModel()
    * @post post
    * @type {string[][]}
    */
-  this.a_session_select = [];
+  this.a_session_select = undefined;
 
   /**
    * The selected sessions for an event that are on the wait list and unpaid.
@@ -108,7 +94,7 @@ function Wl_Book_Process_Store_StoreModel()
    * @post post
    * @type {string[][]}
    */
-  this.a_session_wait_list_unpaid = [];
+  this.a_session_wait_list_unpaid = undefined;
 
   /**
    * The keys of the bookings that have been made.
@@ -143,12 +129,11 @@ function Wl_Book_Process_Store_StoreModel()
    * @post post
    * @type {boolean}
    */
-  this.can_book = true;
+  this.can_book = false;
 
   /**
    * Date/time to which session is booked.
    *
-   * @get get
    * @post get
    * @type {string}
    */
@@ -157,8 +142,8 @@ function Wl_Book_Process_Store_StoreModel()
   /**
    * The mode type. One of the {@link Wl_Mode_ModeSid} constants.
    *
-   * @get get
    * @post get
+   * @see Wl_Mode_ModeSid
    * @type {number}
    */
   this.id_mode = 0;
@@ -169,7 +154,6 @@ function Wl_Book_Process_Store_StoreModel()
    * If `true` is sent, access to the business and to the client will be checked.
    * If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.
    *
-   * @get get
    * @post get
    * @type {boolean}
    */
@@ -180,7 +164,7 @@ function Wl_Book_Process_Store_StoreModel()
    * `false` otherwise.
    *
    * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
-   * Allowed in {@link Wl_Mode_ModeSid.WIDGET} mode only.
+   * Allowed in {@link Wl_Mode_ModeSid} mode only.
    *
    * @post post
    * @type {boolean}
@@ -193,11 +177,10 @@ function Wl_Book_Process_Store_StoreModel()
    * Use this field with caution.
    * The final booking will not use this flag, and the check will still be performed.
    *
-   * @get get
    * @post get
    * @type {boolean}
    */
-  this.is_credit_card_check = true;
+  this.is_credit_card_check = false;
 
   /**
    * `true` if user pressed 'Pay later'.
@@ -221,11 +204,10 @@ function Wl_Book_Process_Store_StoreModel()
   /**
    * Key of session which is booked.
    *
-   * @get get
    * @post get
    * @type {string}
    */
-  this.k_class_period = "0";
+  this.k_class_period = "";
 
   /**
    * Login promotion to be used to book a class.
@@ -246,7 +228,6 @@ function Wl_Book_Process_Store_StoreModel()
   /**
    * `true` to show "book for" option in booking wizard. `false` for default behavior.
    *
-   * @get get
    * @post get
    * @type {boolean}
    */
@@ -255,11 +236,10 @@ function Wl_Book_Process_Store_StoreModel()
   /**
    * The client key for which the booking is being made.
    *
-   * @get get
    * @post get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -271,5 +251,19 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Store_StoreModel);
  */
 Wl_Book_Process_Store_StoreModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_purchase_item_check": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"a_visit_payment": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field":{"a_login_activity":{"post":{"result":true}},"a_purchase_item_check":{"post":{"post":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session_select":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"a_visit_payment":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_book_unpaid":{"post":{"post":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"is_next":{"post":{"result":true}},"k_class_period":{"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"show_relation":{"post":{"get":true}},"uid":{"post":{"get":true}}}};
 };
+
+/**
+ * Processes the "Purchase Options" step of the booking wizard, validates selections, and books the session when possible.
+ *
+ * Stores the selected purchase option (existing login promotion or new purchasable item) and session data in
+ * the booking process context, validates availability and eligibility, and attempts to complete the booking
+ * immediately when no payment or quiz step is needed. Returns visit keys, activity keys, and a flag indicating
+ * whether further wizard steps are required.
+ *
+ * @function
+ * @name Wl_Book_Process_Store_StoreModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

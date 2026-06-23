@@ -1,7 +1,5 @@
 /**
- * A class is for authorizing user with Google.
- *
- * This model is generated automatically based on API.
+ * Authorizes user with Google.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,9 +9,13 @@ function Social_Google_Plus_LoginModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Application ID.
+   * The application id.
    *
-   * <tt>null</tt> for use application, which makes request. And use credential of application from {@link Core_Request_Model\Application\Credential\GoogleCredential} class for authorization user.
+   * When application not passed, credential loaded from the application, which makes the request,
+   * used {@link Core_Request_Api_Application_Credential_CredentialAbstract} for load the credential.
+   * For set credential need used [CredentialApi](/Core/Request/Api/Application/Credential/Credential.json) and set [CredentialApi](/Core/Request/Api/Application/Credential/Credential.json) to {@link Core_Request_Api_Application_Credential_CredentialAbstract}.
+   *
+   * When application passed, the credential loaded by application id.
    *
    * @post post
    * @type {?string}
@@ -21,12 +23,12 @@ function Social_Google_Plus_LoginModel()
   this.s_application = null;
 
   /**
-   * Google server auth code.
+   * The Google server authorization code.
    *
    * @post post
    * @type {string}
    */
-  this.s_code = undefined;
+  this.s_code = "";
 
   this.changeInit();
 }
@@ -38,5 +40,17 @@ WlSdk_ModelAbstract.extend(Social_Google_Plus_LoginModel);
  */
 Social_Google_Plus_LoginModel.prototype.config=function()
 {
-  return {"a_field": {"s_application": {"post": {"post": true}},"s_code": {"post": {"post": true}}}};
+  return {"a_field":{"s_application":{"post":{"post":true}},"s_code":{"post":{"post":true}}}};
 };
+
+/**
+ * Authorizes user with Google.
+ *
+ * Accepts a Google server authorization code and an optional application ID, loads the configured Google
+ * credential for the application, and completes the OAuth 2.0 flow to sign the user in or create a new account.
+ *
+ * @function
+ * @name Social_Google_Plus_LoginModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

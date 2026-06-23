@@ -1,7 +1,5 @@
 /**
- * An endpoint that registers a debt payment that was performed beyond Wellnessliving, with a specified credit amount applied to a client's account balance.
- *
- * This model is generated automatically based on API.
+ * Registers a debt payment made outside WellnessLiving and applies a credit to the client's account balance.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,17 +15,38 @@ function Wl_Collector_DebtPayModel()
    * Important! The currency must coincide with currency of the debt that was sent to collections.
    *
    * @post get
+   * @see Core_Locale_CurrencySid
    * @type {number}
    */
   this.id_currency = 0;
 
   /**
-   * The payment method ID.
-   * One of {@link RsPayMethodSid} constants.
+   * A list of payment methods.
    *
-   * `null` if the payment method is unknown. In such cases, {@link RsPayMethodSid.CASH} would be used.
+   *
+   *
+   * Last used ID: 13.
+   *
+   * Values:
+   * - 7 (`ACCOUNT`): Payment with personal user account (rs.pay.account).
+   * - 9 (`ACH`): ACH system (USA-specific direct banking transactions).
+   * - 4 (`CASH`): Payment with cash.
+   * - 5 (`CHEQUE`): Payment with a cheque.
+   * - 8 (`COUPON`): Payment with a coupon.
+   * - 10 (`DIRECT_ENTRY`): Direct Entry system (australian-specific direct banking transactions).
+   * - 2 (`ECOMMERCE`): Online payment. Card not present.
+   * - 6 (`EXTERNAL`): Payment with an external terminal.
+   * - 11 (`IMPORT_ACCRUAL`): Special method to be used for migration process.
+   *
+   *   There are sales in Mindbody that were not bought using account balance or reward points.
+   *   This is not real revenue and cannot be imported as real sales. So, they can be imported as this special method
+   *   to be in the system and to allow business owner to hide on sales report.
+   *
+   *   In online store this method should not be available.
+   * - 1 (`POS`): Payment method at a Points of sale.
    *
    * @post post
+   * @see RsPayMethodSid
    * @type {?number}
    */
   this.id_pay_method = null;
@@ -54,7 +73,7 @@ function Wl_Collector_DebtPayModel()
    * @post result
    * @type {string}
    */
-  this.k_pay_transaction = "";
+  this.k_pay_transaction = undefined;
 
   /**
    * The amount of money that's been paid towards the debt.
@@ -82,5 +101,18 @@ WlSdk_ModelAbstract.extend(Wl_Collector_DebtPayModel);
  */
 Wl_Collector_DebtPayModel.prototype.config=function()
 {
-  return {"a_field": {"id_currency": {"post": {"get": true}},"id_pay_method": {"post": {"post": true}},"k_business": {"post": {"get": true}},"k_collector_debt": {"post": {"post": true}},"k_pay_transaction": {"post": {"result": true}},"m_amount": {"post": {"post": true}},"uid": {"post": {"get": true}}}};
+  return {"a_field":{"id_currency":{"post":{"get":true}},"id_pay_method":{"post":{"post":true}},"k_business":{"post":{"get":true}},"k_collector_debt":{"post":{"post":true}},"k_pay_transaction":{"post":{"result":true}},"m_amount":{"post":{"post":true}},"uid":{"post":{"get":true}}}};
 };
+
+/**
+ * Registers a debt payment made outside WellnessLiving and applies a credit to the client's account balance.
+ *
+ * Used by collectors to record cash or external payments against outstanding debts. The specified
+ * amount is credited to the client's account and the debt status is updated accordingly.
+ * Requires an active Collections subscription and the business privilege or emulation access.
+ *
+ * @function
+ * @name Wl_Collector_DebtPayModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

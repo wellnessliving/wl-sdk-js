@@ -1,9 +1,5 @@
 /**
- * An endpoint that returns a list of either previous or upcoming visits for a specific user.
- *
- * A visit can be for an appointment, class, or an event.
- *
- * This model is generated automatically based on API.
+ * Retrieves items of schedule for the client.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -20,10 +16,9 @@ function Wl_Schedule_Page_PageListModel()
   /**
    * @typedef {{}} Wl_Schedule_Page_PageListModel_a_visit
    * @property {string} dtu_date Date and time of the visit in UTC.
+   * @property {number} id_visit Possible states of the visit: book, attended, cancelled, etc.
    * @property {string} k_business Key of the business in which this visit was made.
-   *
    * @property {string} k_visit Key of a book/visit.
-   * @property {number} id_visit Visit status ID. One of {@link Wl_Visit_VisitSid} constants.
    */
 
   /**
@@ -32,7 +27,7 @@ function Wl_Schedule_Page_PageListModel()
    * @get result
    * @type {Wl_Schedule_Page_PageListModel_a_visit[]}
    */
-  this.a_visit = [];
+  this.a_visit = undefined;
 
   /**
    * If the date is set, a list of services before this date will be returned.
@@ -69,7 +64,7 @@ function Wl_Schedule_Page_PageListModel()
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * The user key.
@@ -77,7 +72,7 @@ function Wl_Schedule_Page_PageListModel()
    * @get get
    * @type {?string}
    */
-  this.uid = "0";
+  this.uid = null;
 
   this.changeInit();
 }
@@ -89,7 +84,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Page_PageListModel);
  */
 Wl_Schedule_Page_PageListModel.prototype.config=function()
 {
-  return {"a_field": {"a_visit": {"get": {"result": true}},"dtu_end": {"get": {"get": true}},"dtu_start": {"get": {"get": true}},"is_past": {"get": {"get": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_visit":{"get":{"result":true}},"dtu_end":{"get":{"get":true}},"dtu_start":{"get":{"get":true}},"is_past":{"get":{"get":true}},"k_business":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -100,4 +95,17 @@ Wl_Schedule_Page_PageListModel.prototype.config=function()
  * @param {boolean} is_past If `true`, then all the client previous visits will be retrieved. If `false` or left as `null`, then all the client upcoming visits will be retrieved.
  * @returns {Wl_Schedule_Page_PageListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves items of schedule for the client.
+ *
+ * Returns the client's upcoming or past visits for a given business, ordered by date. Supports
+ * optional date range boundaries to retrieve visits within a specific window. Used to populate
+ * the schedule history and upcoming bookings pages in the client portal.
+ *
+ * @function
+ * @name Wl_Schedule_Page_PageListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

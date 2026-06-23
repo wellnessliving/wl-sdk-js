@@ -1,7 +1,5 @@
 /**
- * Information about business of given staff member.
- *
- * This model is generated automatically based on API.
+ * Gets information about businesses where given user is a staff member.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,54 +9,42 @@ function Wl_Business_BusinessAccessModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Businesses where giver user is a staff member.
-   * Leaving this field for backwards compatibility.
+   * The businesses the staff member belongs to.
+   * Note that this field is here for backwards compatibility.
    *
    * @get result
    * @type {string[]}
    */
-  this.a_business = [];
+  this.a_business = undefined;
 
   /**
    * @typedef {{}} Wl_Business_BusinessAccessModel_a_business_data
-   * @property {number} id_region Business region, one of {@link Core_Amazon_Region_AmazonRegionSid} constants, `null` if no regions are set as current.
-   * @property {string} k_business Business key, primary key in table {@link \RsBusinessSql}.
-   * @property {string} text_office_address Business address.
-   * @property {string} text_title Business title.
-   * @property {string} url_logo Business logo url. Empty if there is no logo in business.
+   * @property {number} id_region List of available data center regions.
+   * @property {string} k_business The business key.
+   * @property {string} text_office_address The business address.
+   * @property {string} text_title The business title.
+   * @property {string} url_logo The business logo URL. This will be empty if the business hasn't added a logo.
    */
 
   /**
-   * The list of accessible businesses with their corresponding data, each value is an array of structure:
-   * <dl>
-   *   <dt>int <var>id_region</var></dt>
-   *   <dd>Business region, one of {@link Core_Amazon_Region_AmazonRegionSid} constants, `null` if no regions are set as current.</dd>
-   *   <dt>string <var>k_business</var></dt>
-   *   <dd>Business key, primary key in table {@link \RsBusinessSql}.</dd>
-   *   <dt>string <var>text_office_address</var></dt>
-   *   <dd>Business address.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>Business title.</dd>
-   *   <dt>string <var>url_logo</var></dt>
-   *   <dd>Business logo url. Empty if there is no logo in business.</dd>
-   * </dl>
+   * The list of accessible businesses with their corresponding data. Each value is an array with the next structure:
    *
    * @get result
    * @type {Wl_Business_BusinessAccessModel_a_business_data[]}
    */
-  this.a_business_data = [];
+  this.a_business_data = undefined;
 
   /**
-   * `true` if API is being used from backend, `false` otherwise.
+   * This will be `true` if the API is being used from the backend. Otherwise, this will be `false`.
    *
    * @get get
    * @type {boolean}
    */
-  this.is_backend = true;
+  this.is_backend = false;
 
   /**
-   * User Facebook id. Not empty if user is logging with facebook.
-   * Empty if uid is already known or user is logging in another way.
+   * The staff member's Facebook ID. This won't be empty if the staff member is logging in with Facebook.
+   * This will be empty if the UID is already known or the staff member is logging in another way.
    *
    * @get get
    * @type {string}
@@ -66,8 +52,8 @@ function Wl_Business_BusinessAccessModel()
   this.s_facebook_id = "";
 
   /**
-   * Key of Microsoft user.
-   * Not empty if user is logging with Microsoft.
+   * The staff member's Microsoft key.
+   * This won't be empty if the staff member is logging in with Microsoft.
    *
    * @get get
    * @type {string}
@@ -75,8 +61,8 @@ function Wl_Business_BusinessAccessModel()
   this.s_microsoft_id = "";
 
   /**
-   * User apple authorization code. Not empty if user is logging with apple.
-   * Empty if uid is already known or user is logging in another way.
+   * The staff member's Apple authorization code. This won't be empty if the staff member is logging in with Apple.
+   * This will be empty if the UID is already known or the staff member is logging in another way.
    *
    * @get get
    * @type {string}
@@ -84,8 +70,8 @@ function Wl_Business_BusinessAccessModel()
   this.text_authorization_apple = "";
 
   /**
-   * Google plus user id. Not empty if user is logging with Google.
-   * Empty if uid is already known or user is logging in another way.
+   * The Google Plus user ID. This won't be empty if the staff member is logging in with Google.
+   * This will be empty if the UID is already known or the staff member is logging in another way.
    *
    * @get get
    * @type {string}
@@ -93,8 +79,8 @@ function Wl_Business_BusinessAccessModel()
   this.text_google_plus = "";
 
   /**
-   * User's email to determine uid. Not empty if user is logging with email or with Google.
-   * Empty if uid is already known or user is logging in another way.
+   * The staff member's email to determine their UID. This won't be empty if the staff member is logging in with email or with Google.
+   * This will be empty if the UID is already known or the staff member is logging in another way.
    *
    * @get get
    * @type {string}
@@ -110,12 +96,12 @@ function Wl_Business_BusinessAccessModel()
   this.uid = "";
 
   /**
-   * User key, determined by user email. Empty if uid is not empty.
+   * The staff member key, determined by their email. This will be empty if the UID isn't empty.
    *
    * @get result
    * @type {string}
    */
-  this.uid_mail = "";
+  this.uid_mail = undefined;
 
   this.changeInit();
 }
@@ -127,5 +113,19 @@ WlSdk_ModelAbstract.extend(Wl_Business_BusinessAccessModel);
  */
 Wl_Business_BusinessAccessModel.prototype.config=function()
 {
-  return {"a_field": {"a_business": {"get": {"result": true}},"a_business_data": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"s_facebook_id": {"get": {"get": true}},"s_microsoft_id": {"get": {"get": true}},"text_authorization_apple": {"get": {"get": true}},"text_google_plus": {"get": {"get": true}},"text_mail": {"get": {"get": true}},"uid": {"get": {"get": true}},"uid_mail": {"get": {"result": true}}}};
+  return {"a_field":{"a_business":{"get":{"result":true}},"a_business_data":{"get":{"result":true}},"is_backend":{"get":{"get":true}},"s_facebook_id":{"get":{"get":true}},"s_microsoft_id":{"get":{"get":true}},"text_authorization_apple":{"get":{"get":true}},"text_google_plus":{"get":{"get":true}},"text_mail":{"get":{"get":true}},"uid":{"get":{"get":true}},"uid_mail":{"get":{"result":true}}}};
 };
+
+/**
+ * Gets information about businesses where given user is a staff member.
+ *
+ * Used during staff login to determine which businesses the user can access. Accepts identity via UID
+ * or any supported social login identifier, then returns the matching list of businesses to display
+ * on the business selection screen. In backend mode, franchisee locations and IP access restrictions
+ * are also evaluated.
+ *
+ * @function
+ * @name Wl_Business_BusinessAccessModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

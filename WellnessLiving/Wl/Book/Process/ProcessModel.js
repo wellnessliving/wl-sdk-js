@@ -1,9 +1,9 @@
 /**
- * Performs the booking wizard steps.
+ * Returns the ordered list of booking wizard steps for the given session and client.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link Wl_Book_Process_Process54Model} instead.
+ * @deprecated Use {@link _Wl_Book_Process_Process54Model} instead.
  */
 function Wl_Book_Process_ProcessModel()
 {
@@ -27,130 +27,22 @@ function Wl_Book_Process_ProcessModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_ProcessModel_a_path
-   * @property {number} id_book_process The step ID. One of the {@link Wl_Book_Process_ProcessSpaSid} constants.
-   * @property {*} is_current <tt>true</tt> - this item is current.
-   * <tt>false</tt> - this item isn't current or not set yet.
+   * @property {number} id_book_process Class/Event booking process sid class.
+   * @property {boolean} is_current `true` - this item is current. `false` - this item isn't current or not set yet.
    */
 
   /**
    * All the steps to be performed to make a booking. Every element has the next keys:
-   * <dl>
-   *   <dt>
-   *     int <var>id_book_process</var>
-   *   </dt>
-   *   <dd>
-   *     The step ID. One of the {@link Wl_Book_Process_ProcessSpaSid} constants.
-   *   </dd>
-   *   <dt>
-   *     bool [<var>is_current</var>]
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> - this item is current.
-   *     <tt>false</tt> - this item isn't current or not set yet.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Book_Process_ProcessModel_a_path[]}
    */
-  this.a_path = [];
-
-  /**
-   * @typedef {{}} Wl_Book_Process_ProcessModel_a_repeat
-   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   * Should be passed for any type of repetition.
-   * @property {number[]} a_week Deprecated, use `a_day` instead!
-   * @property {*} dl_end Deprecated, use `dt_from` and `dt_to` instead!
-   * @property {*} dt_from Date to start recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {*} dt_to Date to complete recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {*} i_count The number of occurrences after which the appointment's repeat cycle stops.
-   *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *  Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
-   * @property {number} i_duration Count of days\weeks\months between recurring bookings.
-   * @property {*} i_occurrence Deprecated, use `i_count` instead!
-   * @property {number} i_period Deprecated, use `i_duration` instead!
-   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   * @property {number} id_period Deprecated, use `id_duration` instead!
-   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
-   */
-
-  /**
-   * Information about the recurring booking:
-   * <dl>
-   *   <dt>int[] <var>a_day</var></dt>
-   *   <dd>
-   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   *     Should be passed for any type of repetition.
-   *   </dd>
-   *   <dt>int[] <var>a_week</var></dt>
-   *   <dd>Deprecated, use `a_day` instead!</dd>
-   *   <dt>string [<var>dl_end</var>]</dt>
-   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
-   *   <dt>
-   *     string [<var>dt_from</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to start recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *     string [<var>dt_to</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to complete recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *      int [<var>i_count</var>]
-   *    </dt>
-   *    <dd>
-   *      The number of occurrences after which the appointment's repeat cycle stops.
-   *      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *      Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
-   *    </dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
-   *   <dt>int [<var>i_occurrence</var>]</dt>
-   *   <dd>Deprecated, use `i_count` instead!</dd>
-   *   <dt>int <var>i_period</var></dt>
-   *   <dd>Deprecated, use `i_duration` instead!</dd>
-   *   <dt>
-   *     int <var>id_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *     Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   *   </dd>
-   *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
-   *   <dt>int <var>id_repeat_end</var></dt>
-   *   <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
-   * </dl>
-   *
-   * This will be `null` if the booking isn't recurring.
-   *
-   * @post post
-   * @type {?Wl_Book_Process_ProcessModel_a_repeat}
-   */
-  this.a_repeat = null;
-
-  /**
-   * Determines whether the class/event can be booked at this step or not.
-   * This is an external process control flag.
-   *
-   * @post post
-   * @type {boolean}
-   */
-  this.can_book = true;
+  this.a_path = undefined;
 
   /**
    * Date/time to which session is booked.
    *
    * @get get
-   * @post get
    * @type {string}
    */
   this.dt_date_gmt = "";
@@ -159,14 +51,21 @@ function Wl_Book_Process_ProcessModel()
    * The mode type. One of the {@link Wl_Mode_ModeSid} constants.
    *
    * @get get
-   * @post get
+   * @see Wl_Mode_ModeSid
    * @type {number}
    */
   this.id_mode = 0;
 
   /**
-   * The purchase rule ID.
-   * One of the {@link Wl_Classes_RequirePaySid} constants.
+   * List of possible modes to require amount while booking a class.
+   *
+   * Values:
+   * - 3 (`ADVANCE`): Clients can pay online or pay when they visit.
+   *   If set "pay when visit" then it has additional options. See {@link Wl_Classes_RequirePayVisitOptionSid}.
+   * - 4 (`DEPOSIT`): Client should leave a deposit before booking an event.
+   * - 1 (`ONLINE`): Client must purchase online.
+   * - 2 (`VISIT`): Clients can only pay when they visit. Online payment is not available.
+   *   It has additional options {@link Wl_Classes_RequirePayVisitOptionSid}.
    *
    * @get result
    * @type {number}
@@ -182,24 +81,34 @@ function Wl_Book_Process_ProcessModel()
   this.is_age_require = undefined;
 
   /**
+   * `true` if action is performed as a staff member; `false` otherwise.
+   *
+   * If `true` is sent, access to the business and to the client will be checked.
+   * If `false` is sent, user can book only for himself or for relatives if this is allowed in business settings.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_backend = false;
+
+  /**
    * Determines if the client must authorize the credit card.
    *
    * @get result
    * @type {boolean}
    */
-  this.is_card_authorize = false;
+  this.is_card_authorize = undefined;
 
   /**
    * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.
    *
    * Use this field with caution.
-   * The final booking will not use this flag and the check will still be performed.
+   * The final booking will not use this flag, and the check will still be performed.
    *
    * @get get
-   * @post get
    * @type {boolean}
    */
-  this.is_credit_card_check = true;
+  this.is_credit_card_check = false;
 
   /**
    * If `true`, the session being booked is an event. Otherwise, this will be `false`.
@@ -218,21 +127,12 @@ function Wl_Book_Process_ProcessModel()
   this.is_family_relation_book = undefined;
 
   /**
-   * `true` if user pressed 'Pay later'.
-   * `false` if user pressed 'Pay now'.
-   *
-   * @post post
-   * @type {boolean}
-   */
-  this.is_force_pay_later = false;
-
-  /**
    * Determines whether the class/event is free (price).
    *
    * @get result
    * @type {boolean}
    */
-  this.is_free = false;
+  this.is_free = undefined;
 
   /**
    * `true` if the client has an ach account, `false` otherwise.
@@ -240,7 +140,7 @@ function Wl_Book_Process_ProcessModel()
    * @get result
    * @type {boolean}
    */
-  this.is_have_ach = false;
+  this.is_have_ach = undefined;
 
   /**
    * If `true`, the client has a credit card. Otherwise, this will be `false`.
@@ -248,7 +148,7 @@ function Wl_Book_Process_ProcessModel()
    * @get result
    * @type {boolean}
    */
-  this.is_have_credit_card = false;
+  this.is_have_credit_card = undefined;
 
   /**
    * `true` - the client can select several sessions per booking.
@@ -280,10 +180,9 @@ function Wl_Book_Process_ProcessModel()
    * Key of session which is booked.
    *
    * @get get
-   * @post get
    * @type {string}
    */
-  this.k_class_period = "0";
+  this.k_class_period = "";
 
   /**
    * The key of the location where the session is booked.
@@ -294,29 +193,20 @@ function Wl_Book_Process_ProcessModel()
   this.k_location = undefined;
 
   /**
-   * Login promotion to be used to book a class.
-   *
-   * @post post
-   * @type {string}
-   */
-  this.k_login_promotion = "";
-
-  /**
-   * Session pass to be used to book a class.
-   *
-   * @post post
-   * @type {string}
-   */
-  this.k_session_pass = "";
-
-  /**
-   * Key of a user who is making a book.
+   * `true` to show "book for" option in booking wizard. `false` for default behavior.
    *
    * @get get
-   * @post get
+   * @type {boolean}
+   */
+  this.show_relation = false;
+
+  /**
+   * The client key for which the booking is being made.
+   *
+   * @get get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -328,7 +218,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_ProcessModel);
  */
 Wl_Book_Process_ProcessModel.prototype.config=function()
 {
-  return {"a_field": {"a_family_relation_login_allow": {"get": {"result": true}},"a_path": {"get": {"result": true}},"a_repeat": {"post": {"post": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"id_pay_require": {"get": {"result": true}},"is_age_require": {"get": {"result": true}},"is_card_authorize": {"get": {"result": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_event": {"get": {"result": true}},"is_family_relation_book": {"get": {"result": true}},"is_force_pay_later": {"post": {"post": true}},"is_free": {"get": {"result": true}},"is_have_ach": {"get": {"result": true}},"is_have_credit_card": {"get": {"result": true}},"is_session": {"get": {"result": true}},"is_wait": {"get": {"result": true}},"is_wait_list_unpaid": {"get": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_location": {"get": {"result": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field":{"a_family_relation_login_allow":{"get":{"result":true}},"a_path":{"get":{"result":true}},"dt_date_gmt":{"get":{"get":true}},"id_mode":{"get":{"get":true}},"id_pay_require":{"get":{"result":true}},"is_age_require":{"get":{"result":true}},"is_backend":{"get":{"get":true}},"is_card_authorize":{"get":{"result":true}},"is_credit_card_check":{"get":{"get":true}},"is_event":{"get":{"result":true}},"is_family_relation_book":{"get":{"result":true}},"is_free":{"get":{"result":true}},"is_have_ach":{"get":{"result":true}},"is_have_credit_card":{"get":{"result":true}},"is_session":{"get":{"result":true}},"is_wait":{"get":{"result":true}},"is_wait_list_unpaid":{"get":{"result":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"result":true}},"show_relation":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -336,8 +226,21 @@ Wl_Book_Process_ProcessModel.prototype.config=function()
  * @name Wl_Book_Process_ProcessModel.instanceGet
  * @param {string} k_class_period Key of session which is booked.
  * @param {string} dt_date_gmt Date/time to which session is booked.
- * @param {string} uid Key of a user who is making a book.
+ * @param {string} uid The client key for which the booking is being made.
  * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_ProcessModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns the ordered list of booking wizard steps for the given session and client.
+ *
+ * Evaluates the session, user profile, payment requirements, asset selection, and subscription state to build
+ * an ordered list of steps the client must complete to finish the booking. The first step in the list is marked
+ * as current, and additional flags about event type, wait-list availability, and payment options are returned.
+ *
+ * @function
+ * @name Wl_Book_Process_ProcessModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

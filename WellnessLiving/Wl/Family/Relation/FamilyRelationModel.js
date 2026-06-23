@@ -1,5 +1,5 @@
 /**
- * Returns business' enabled relationship types.
+ * Gets relationships list.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -19,10 +19,9 @@ function Wl_Family_Relation_FamilyRelationModel()
    * Key is ID, value is SID.
    *
    * @get result
-   * @see RsFamilyRelationSid
-   * @type {{}}
+   * @type {number[]}
    */
-  this.a_business_relationships = [];
+  this.a_business_relationships = undefined;
 
   /**
    * The business key.
@@ -42,7 +41,7 @@ WlSdk_ModelAbstract.extend(Wl_Family_Relation_FamilyRelationModel);
  */
 Wl_Family_Relation_FamilyRelationModel.prototype.config=function()
 {
-  return {"a_field": {"a_business_relationships": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_business_relationships":{"get":{"result":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
@@ -51,4 +50,16 @@ Wl_Family_Relation_FamilyRelationModel.prototype.config=function()
  * @param {string} k_business The business key.
  * @returns {Wl_Family_Relation_FamilyRelationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Gets relationships list.
+ *
+ * Returns all relationship types enabled for the given business, or all system-defined relationship types if no
+ * business key is provided.
+ *
+ * @function
+ * @name Wl_Family_Relation_FamilyRelationModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

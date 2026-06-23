@@ -1,7 +1,5 @@
 /**
- * Selects assets when making a booking.
- *
- * Take note of the {@link Wl_Book_Process_ProcessSpaSid.QUIZ} step.
+ * Returns available assets for the booking, decoding the JSON-encoded session input before delegating to the parent.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -22,28 +20,22 @@ function Wl_Book_Process_Resource_Resource54Model()
    * @post result
    * @type {string[]}
    */
-  this.a_login_activity = [];
+  this.a_login_activity = undefined;
 
   /**
    * @typedef {{}} Wl_Book_Process_Resource_Resource54Model_a_repeat
-   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   * Should be passed for any type of repetition.
+   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants. Should be passed for any type of repetition.
    * @property {number[]} a_week Deprecated, use `a_day` instead!
-   * @property {string} [dl_end] Deprecated, use `dt_from` and `dt_to` instead!
-   * @property {string} [dt_from] Date to start recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {string} [dt_to] Date to complete recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {number} [i_count] The number of occurrences after which the appointment's repeat cycle stops.
-   *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *  Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
+   * @property {string} dl_end Deprecated, use `dt_from` and `dt_to` instead!
+   * @property {string} dt_from Date to start recurring booking. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
+   * @property {string} dt_to Date to complete recurring booking. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
+   * @property {number} i_count The number of occurrences after which the appointment's repeat cycle stops.  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.  Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
-   * @property {number} [i_occurrence] Deprecated, use `i_count` instead!
+   * @property {number} i_occurrence Deprecated, use `i_count` instead!
    * @property {number} i_period Deprecated, use `i_duration` instead!
-   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   * @property {number} id_period Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.
-   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
+   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
+   * @property {number} id_period A class for managing time intervals. Last ID: 9.
+   * @property {number} id_repeat_end Possible ways to stop repeatable events.
    */
 
   /**
@@ -59,51 +51,41 @@ function Wl_Book_Process_Resource_Resource54Model()
 
   /**
    * @typedef {{}} Wl_Book_Process_Resource_Resource54Model_a_resource_all_a_resource_list_a_image
-   * @property {number} [i_angle] Angle of shape rotation. Set only when `sid_image` equals 'shape'.
+   * @property {number} i_angle Angle of shape rotation. Set only when `sid_image` equals 'shape'.
    * @property {number} i_height Height of the image in pixels.
    * @property {number} i_width Width of the image in pixels.
    * @property {boolean} is_empty `true` if no image was uploaded, `false` otherwise.
    * @property {string} sid_image Image kind. One of {@link Wl_Resource_Image_ImageSid} string constants.
-   * @property {string} [sid_image_icon] Icon name. One of {@link Wl_Resource_Image_ImageIconSid} string constants.
-   * Set only when `sid_image` equals 'icon'.
-   * @property {string} [sid_image_shape] Shape name. One of {@link Wl_Resource_Image_ImageShapeSid} string constants.
-   * Set only when `sid_image` equals 'shape'.
+   * @property {string} sid_image_icon Icon name. One of {@link Wl_Resource_Image_ImageIconSid} string constants. Set only when `sid_image` equals 'icon'.
+   * @property {string} sid_image_shape Shape name. One of {@link Wl_Resource_Image_ImageShapeSid} string constants. Set only when `sid_image` equals 'shape'.
    * @property {string} url Thumbnail image URL.
    */
+
   /**
    * @typedef {{}} Wl_Book_Process_Resource_Resource54Model_a_resource_all_a_resource_list
-   * @property {number[][][]} a_class_period List of resources available for booking sessions.
-   *   The field structure is `[k_class_period][dtu_session]['a_available']`.
-   *   Contains indexes of resource available for each session.
+   * @property {number[][][]} a_class_period List of resources available for booking sessions.   The field structure is `[k_class_period][dtu_session]['a_available']`.   Contains indexes of resource available for each session.
    * @property {Wl_Book_Process_Resource_Resource54Model_a_resource_all_a_resource_list_a_image} a_image Asset image data.
-   *
-   * @property {number} i_index The asset number. Actual for assets with a quantity more than <tt>1</tt>.
+   * @property {number} i_index The asset number. Actual for assets with a quantity more than `1`.
    * @property {number} i_quantity Total number of the asset spots.
    * @property {number} i_use Number of already used asset units.
    * @property {boolean} is_current City for the off-site location.
-   * @property {string} k_city <tt>true</tt> means that this asset is selected by client, <tt>false</tt> - otherwise.
+   * @property {string} k_city `true` means that this asset is selected by client, `false` - otherwise.
    * @property {string} k_resource The key of the asset in database.
-   *
    * @property {string} s_resource The title of the asset.
    * @property {string} text_address Address for the off-site location.
    * @property {string} text_guide Additional address tips for the off-site location.
    * @property {string} text_postal Postal code for the off-site location.
    */
+
   /**
    * @typedef {{}} Wl_Book_Process_Resource_Resource54Model_a_resource_all
-   * @property {boolean[][]} a_client A list of clients who have already occupied assets for this session.
-   * 1st level keys are asset keys.
-   * 2nd level keys are asset index numbers (starting from 1).
-   * Values are `true` if the asset spot is occupied.
-   * For example, to check if asset spot 10 with key '125' is occupied,
-   * check `a_client['125']['10']`.
-   * @property {Wl_Book_Process_Resource_Resource54Model_a_resource_all_a_resource_list[]} a_resource_list A list of available assets. Every element has next keys:
-   * @property {boolean} has_current <tt>true</tt> - has current resource in the list of available assets; <tt>false</tt> - otherwise.
-   * @property {number} id_category Type of the asset category. One of {@link Wl\Resource\ResourceCategoryEnum} constants.
-   * @property {boolean} is_client_select <tt>true</tt> - the client selected the resource from the current group; <tt>false</tt> otherwise.
-   * @property {boolean} is_select <tt>true</tt> - has selected resources; <tt>false</tt> - otherwise.
-   * @property {boolean} is_share <tt>true</tt> resources in this category don't belong to certain users, but to the entire session.
-   * <tt>false</tt> belong to specific users.
+   * @property {boolean[][]} a_client A list of clients who have already occupied assets for this session. 1st level keys are asset keys.  2nd level keys are asset index numbers (starting from 1). Values are `true` if the asset spot is occupied. For example, to check if asset spot 10 with key '125' is occupied, check `a_client['125']['10']`.
+   * @property {Wl_Book_Process_Resource_Resource54Model_a_resource_all_a_resource_list} a_resource_list A list of available assets. Every element has next keys:
+   * @property {boolean} has_current `true` - has current resource in the list of available assets; `false` - otherwise.
+   * @property {number} id_category List of resource categories.
+   * @property {boolean} is_client_select `true` - the client selected the resource from the current group; `false` otherwise.
+   * @property {boolean} is_select `true` - has selected resources; `false` - otherwise.
+   * @property {boolean} is_share `true` resources in this category don't belong to certain users, but to the entire session. `false` belong to specific users.
    * @property {string} k_resource_layout The key of the asset layout.
    * @property {string} k_resource_type The key of the asset category.
    * @property {string} s_resource_type The title of the asset category.
@@ -115,11 +97,11 @@ function Wl_Book_Process_Resource_Resource54Model()
    * @get result
    * @type {Wl_Book_Process_Resource_Resource54Model_a_resource_all[]}
    */
-  this.a_resource_all = [];
+  this.a_resource_all = undefined;
 
   /**
    * @typedef {{}} Wl_Book_Process_Resource_Resource54Model_a_resource_select
-   * @property {number} i_index The asset number. Applies only for assets with a quantity greater than <tt>1</tt>.
+   * @property {number} i_index The asset number. Applies only for assets with a quantity greater than `1`.
    * @property {string} k_resource The asset key.
    */
 
@@ -129,32 +111,32 @@ function Wl_Book_Process_Resource_Resource54Model()
    * @post post
    * @type {Wl_Book_Process_Resource_Resource54Model_a_resource_select}
    */
-  this.a_resource_select = [];
+  this.a_resource_select = undefined;
 
   /**
    * The selected sessions.
    * Only makes sense for session events.
    * Optional parameter for GET request: if not passed, all available sessions will be used.
    *
-   * Keys are class period keys.
+   * Keys are class period keys. 
    * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @get get
    * @post get
    * @type {string[]}
    */
-  this.a_session = [];
+  this.a_session = undefined;
 
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys are class period keys.
+   * Keys are class period keys. 
    * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
    * @type {string[]}
    */
-  this.a_session_wait_list_unpaid = [];
+  this.a_session_wait_list_unpaid = undefined;
 
   /**
    * The keys of the bookings that have been made.
@@ -163,7 +145,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    * @post result
    * @type {string[]}
    */
-  this.a_visit = [];
+  this.a_visit = undefined;
 
   /**
    * Determines whether the class/event can be booked at this step or not.
@@ -172,7 +154,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    * @post post
    * @type {boolean}
    */
-  this.can_book = true;
+  this.can_book = false;
 
   /**
    * Date/time to which session is booked.
@@ -188,6 +170,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    *
    * @get get
    * @post get
+   * @see Wl_Mode_ModeSid
    * @type {number}
    */
   this.id_mode = 0;
@@ -209,7 +192,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    * `false` otherwise.
    *
    * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
-   * Allowed in {@link Wl_Mode_ModeSid.WIDGET} mode only.
+   * Allowed in {@link Wl_Mode_ModeSid} mode only.
    *
    * @post post
    * @type {boolean}
@@ -226,7 +209,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    * @post get
    * @type {boolean}
    */
-  this.is_credit_card_check = true;
+  this.is_credit_card_check = false;
 
   /**
    * `true` if user pressed 'Pay later'.
@@ -244,7 +227,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    * @post result
    * @type {boolean}
    */
-  this.is_next = false;
+  this.is_next = undefined;
 
   /**
    * Selected sessions.
@@ -269,7 +252,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    * @post get
    * @type {string}
    */
-  this.k_class_period = "0";
+  this.k_class_period = "";
 
   /**
    * Login promotion to be used to book a class.
@@ -303,7 +286,7 @@ function Wl_Book_Process_Resource_Resource54Model()
    * @post get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -315,7 +298,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Resource_Resource54Model);
  */
 Wl_Book_Process_Resource_Resource54Model.prototype.config=function()
 {
-  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource_all": {"get": {"result": true}},"a_resource_select": {"post": {"post": true}},"a_session": {"get": {"get": true},"post": {"get": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"json_session": {"get": {"get": true},"post": {"get": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field":{"a_login_activity":{"post":{"result":true}},"a_repeat":{"post":{"post":true}},"a_resource_all":{"get":{"result":true}},"a_resource_select":{"post":{"post":true}},"a_session":{"get":{"get":true},"post":{"get":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dt_date_gmt":{"get":{"get":true},"post":{"get":true}},"id_mode":{"get":{"get":true},"post":{"get":true}},"is_backend":{"get":{"get":true},"post":{"get":true}},"is_book_unpaid":{"post":{"post":true}},"is_credit_card_check":{"get":{"get":true},"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"is_next":{"post":{"result":true}},"json_session":{"get":{"get":true},"post":{"get":true}},"k_class_period":{"get":{"get":true},"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"show_relation":{"get":{"get":true},"post":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**
@@ -328,4 +311,28 @@ Wl_Book_Process_Resource_Resource54Model.prototype.config=function()
  * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Resource_Resource54Model}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns available assets for the booking, decoding the JSON-encoded session input before delegating to the parent.
+ *
+ * Deserializes the JSON-encoded session selection into `a_session` and then delegates to
+ * `get()` to return the available asset categories and items for the booking.
+ *
+ * @function
+ * @name Wl_Book_Process_Resource_Resource54Model.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Processes the asset selection step of the booking wizard, decoding the JSON-encoded session input before delegating to the parent.
+ *
+ * Deserializes the JSON-encoded session selection into `a_session` and then delegates to
+ * `post()` to save the selected assets and advance the booking wizard.
+ *
+ * @function
+ * @name Wl_Book_Process_Resource_Resource54Model.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

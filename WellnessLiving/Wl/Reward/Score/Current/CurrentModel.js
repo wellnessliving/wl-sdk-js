@@ -1,7 +1,5 @@
 /**
- * Retrieves information about current score.
- *
- * This model is generated automatically based on API.
+ * Retrieves information about current score in wellnessliving points.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -37,7 +35,7 @@ function Wl_Reward_Score_Current_CurrentModel()
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * Title of the first leaderboard.
@@ -53,7 +51,7 @@ function Wl_Reward_Score_Current_CurrentModel()
    * @get get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -65,7 +63,7 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Score_Current_CurrentModel);
  */
 Wl_Reward_Score_Current_CurrentModel.prototype.config=function()
 {
-  return {"a_field": {"i_board_rank": {"get": {"result": true}},"i_score": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_board_title": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"i_board_rank":{"get":{"result":true}},"i_score":{"get":{"result":true}},"k_business":{"get":{"get":true}},"s_board_title":{"get":{"result":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -75,4 +73,16 @@ Wl_Reward_Score_Current_CurrentModel.prototype.config=function()
  * @param {string} k_business ID of a business to show information for.
  * @returns {Wl_Reward_Score_Current_CurrentModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves information about current score in wellnessliving points.
+ *
+ * Returns the user's current reward point balance, their rank in the first available leaderboard, and the
+ * leaderboard title for the specified business.
+ *
+ * @function
+ * @name Wl_Reward_Score_Current_CurrentModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

@@ -1,7 +1,5 @@
 /**
- * A class is for authorizing user with facebook.
- *
- * This model is generated automatically based on API.
+ * Authorizes user with facebook.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,9 +14,13 @@ function Social_Facebook_Login_LoginModel()
   this._s_key = "s_token";
 
   /**
-   * Application ID.
+   * The application id.
    *
-   * <tt>null</tt> for use application, which makes request. And use credential of application from {@link Core_Request_Model\Application\Credential\FacebookCredential} class for authorization user.
+   * When application not passed, credential loaded from the application, which makes the request,
+   * used {@link Core_Request_Api_Application_Credential_CredentialAbstract} for load the credential.
+   * For set credential need used [CredentialApi](/Core/Request/Api/Application/Credential/Credential.json) and set [CredentialApi](/Core/Request/Api/Application/Credential/Credential.json) to {@link Core_Request_Api_Application_Credential_CredentialAbstract}.
+   *
+   * When application passed, the credential loaded by application id.
    *
    * @post post
    * @type {?string}
@@ -26,12 +28,12 @@ function Social_Facebook_Login_LoginModel()
   this.s_application = null;
 
   /**
-   * Facebook token.
+   * The Facebook token.
    *
    * @post post
    * @type {string}
    */
-  this.s_token = undefined;
+  this.s_token = "";
 
   this.changeInit();
 }
@@ -43,13 +45,26 @@ WlSdk_ModelAbstract.extend(Social_Facebook_Login_LoginModel);
  */
 Social_Facebook_Login_LoginModel.prototype.config=function()
 {
-  return {"a_field": {"s_application": {"post": {"post": true}},"s_token": {"post": {"post": true}}}};
+  return {"a_field":{"s_application":{"post":{"post":true}},"s_token":{"post":{"post":true}}}};
 };
 
 /**
  * @function
  * @name Social_Facebook_Login_LoginModel.instanceGet
- * @param {string} s_token Facebook token.
+ * @param {string} s_token The Facebook token.
  * @returns {Social_Facebook_Login_LoginModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Authorizes user with facebook.
+ *
+ * Accepts a Facebook access token and an optional application ID. If the user is already signed in,
+ * links the Facebook account to their existing account; otherwise, signs them in or creates a new account
+ * using the Facebook identity and the configured Facebook credentials.
+ *
+ * @function
+ * @name Social_Facebook_Login_LoginModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

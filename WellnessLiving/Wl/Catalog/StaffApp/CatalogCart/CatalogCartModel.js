@@ -1,7 +1,5 @@
 /**
- * A model to calculate price data for a sale item.
- *
- * This model is generated automatically based on API.
+ * Calculates amount of cart.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -25,174 +23,66 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
 
   /**
    * A list of available discount codes with the next structure:
-   * <dl>
-   *   <dt>bool <var>is_select</var></dt>
-   *   <dd>`true` if this code is selected currently, `false` otherwise.</dd>
-   *   <dt>string <var>k_discount_code</var></dt>
-   *   <dd>Discount code key.</dd>
-   *   <dt>string <var>text_discount_code</var></dt>
-   *   <dd>Value of the code that can be used to get discount.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>Name of the code.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_discount_code}
    */
-  this.a_discount_code = [];
+  this.a_discount_code = undefined;
 
   /**
-   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_tax_custom
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_tuition_component
+   * @property {string} k_class Key of the event class within the tuition which should be granted to the client.       `null` if this component represents tuition fees only.
+   * @property {string} m_price Price of the component within the tuition.      `null` if price should be taken from the setup.
+   * @property {string} uid Key of the client for which component should be granted.
+   */
+
+  /**
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config
+   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_tuition_component} a_tuition_component List of tuition components:
+   * @property {string} dt_prorate The prorate date. This should be passed when `is_prorate`=`true`.
+   * @property {string} dt_send_local The date when the gift card email must be sent.
+   * @property {string} dt_start The promotion start date.
+   * @property {string} f_price The custom price.
+   * @property {boolean} is_mail If `true`, the gift card will be sent via email. Otherwise, `false` if the gift card will be printed.
+   * @property {boolean} is_prorate Determines whether to prorate the first payment.
+   * @property {boolean} is_prorate_fix Determines if the client should pay for the first period now.
+   * @property {boolean} is_prorate_only Determines whether the selected option 'pay prorate amount only' should only include the prorate amount.
+   * @property {string} k_coupon The coupon key.
+   * @property {string} k_coupon_amount The coupon amount key.
+   * @property {string} m_custom The custom price of the gift card.
+   * @property {string} m_prorate_custom The amount of money for the prorate period. This should only be passed in the case of manual entry.
+   * @property {string} s_mail The recipient's email.
+   * @property {string} s_message The message.
+   * @property {string} s_recipient The recipient's name.
+   * @property {string} s_sender The sender's name.
+   */
+
+  /**
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_tax_custom
    * @property {string} f_tax The tax amount.
    * @property {string} k_tax The tax keys.
    */
-  /**
-   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config
-   * @property {*} f_price Custom price.
-   * @property {*} dt_prorate The prorate date. Should be passed when <tt>is_prorate</tt>=<tt>true</tt>.
-   * @property {*} dt_start The date when the promotion starts.
-   * @property {*} is_prorate Determines whether to prorate the first payment.
-   * @property {*} is_prorate_fix Determines if the client should pay for the first period now or not.
-   * @property {*} is_prorate_only Whether selected option 'pay prorate amount only' to include to price prorate amount only.
-   * @property {*} m_custom Custom price for gift card.
-   * @property {*} dt_send_local Date when mail with gift card must be sent.
-   * @property {boolean} is_mail <tt>true</tt> if gift card will be sent on email, <tt>false</tt> if gift card will be printed.
-   * @property {*} s_mail Recipient's email.
-   * @property {*} s_message Message.
-   * @property {string} s_recipient Recipient's name.
-   * @property {string} s_sender Sender's name.
-   * @property {string} m_prorate_custom The amount of money for prorate period. Should be passed only in a case of manual entry.
-   * @property {string} k_coupon The coupon key.
-   * @property {string} k_coupon_amount The coupon amount key.
-   */
+
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item
-   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config[]} a_config List of purchase item additional options:
-   * <dl>
-   *   <dt>string [<tt>f_price</tt>]</dt>
-   *   <dd>Custom price.</dd>
-   *   <dt>string [<tt>dt_prorate</tt>]</dt>
-   *   <dd>The prorate date. Should be passed when <tt>is_prorate</tt>=<tt>true</tt>.</dd>
-   *   <dt>string [<tt>dt_start</tt>]</dt>
-   *   <dd>The date when the promotion starts.</dd>
-   *   <dt>bool [<tt>is_prorate</tt>]</dt>
-   *   <dd>Determines whether to prorate the first payment.</dd>
-   *   <dt>bool [<tt>is_prorate_fix</tt>]</dt>
-   *   <dd>Determines if the client should pay for the first period now or not.</dd>
-   *   <dt>bool [<tt>is_prorate_only</tt>]</dt>
-   *   <dd>Whether selected option 'pay prorate amount only' to include to price prorate amount only.</dd>
-   *   <dt>string [<tt>m_custom</tt>]</dt>
-   *   <dd>Custom price for gift card.</dd>
-   *   <dt>string [<tt>dt_send_local</tt>]</dt>
-   *   <dd>Date when mail with gift card must be sent.</dd>
-   *   <dt>bool <tt>is_mail</tt></dt>
-   *   <dd><tt>true</tt> if gift card will be sent on email, <tt>false</tt> if gift card will be printed.</dd>
-   *   <dt>string [<tt>s_mail</tt>]</dt>
-   *   <dd>Recipient's email.</dd>
-   *   <dt>string [<tt>s_message</tt>]</dt>
-   *   <dd>Message.</dd>
-   *   <dt>string <tt>s_recipient</tt></dt>
-   *   <dd>Recipient's name.</dd>
-   *   <dt>string <tt>s_sender</tt></dt>
-   *   <dd>Sender's name.</dd>
-   *   <dt>string <tt>m_prorate_custom</tt></dt>
-   *   <dd>The amount of money for prorate period. Should be passed only in a case of manual entry.</dd>
-   *   <dt>string <tt>k_coupon</tt></dt>
-   *   <dd>The coupon key.</dd>
-   *   <dt>string <tt>k_coupon_amount</tt></dt>
-   *   <dd>The coupon amount key.</dd>
-   * </dl>
-   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_tax_custom[]} a_tax_custom Information about taxes. If not passed means no custom taxes have been applied to the sale item.
-   * If a record is present, it means that the tax is custom. Structured as follows:
-   * <dl>
-   *   <dt>string <tt>f_tax</tt></dt>
-   *   <dd>The tax amount.</dd>
-   *   <dt>string <tt>k_tax</tt></dt>
-   *   <dd>The tax keys.</dd>
-   * </dl>
-   * @property {*} f_discount_percent The discount percentage, applied to the current item.
+   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config} a_config The list of purchase item additional options:
+   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_tax_custom} a_tax_custom Information about taxes. If not passed, no custom taxes have been applied to the sale item. If a record is present, the tax is custom using the next structure:
+   * @property {number} f_discount_percent The discount percentage, applied to the current item.
    * @property {number} i_quantity The quantity of sale items.
-   * @property {number} id_sale The sale item type. One of {@link RsSaleSid} constants.
+   * @property {?number} id_sale List of sale categories on the store page.
    * @property {string} k_id The sale item key.
-   * @property {string} k_shop_product_option The store product option key. <tt>null</tt> if the sale item has no options.
-   * @property {*} m_discount_fix The fixed price discount, applied to the current item.
-   * @property {*} m_price_custom The custom price of sale item. If not passed means no custom price has been applied to the sale item.
+   * @property {string} k_shop_product_option The store product option key. This will be `null` if the sale item has no options.
+   * @property {string} m_discount_fix The fixed price discount, applied to the current item.
+   * @property {string} m_price_custom The custom price of the sale item. If not passed, no custom price has been applied to the sale item.
    */
 
   /**
-   * A list of cart items with the next structure:
-   * <dl>
-   *   <dt>array [<var>a_config</var>]</dt>
-   *   <dd>
-   *     List of purchase item additional options:
-   *     <dl>
-   *       <dt>string [<var>f_price</var>]</dt>
-   *       <dd>Custom price.</dd>
-   *       <dt>string [<var>dt_prorate</var>]</dt>
-   *       <dd>The prorate date. Should be passed when <var>is_prorate</var>=<tt>true</tt>.</dd>
-   *       <dt>string [<var>dt_start</var>]</dt>
-   *       <dd>The date when the promotion starts.</dd>
-   *       <dt>bool [<var>is_prorate</var>]</dt>
-   *       <dd>Determines whether to prorate the first payment.</dd>
-   *       <dt>bool [<var>is_prorate_fix</var>]</dt>
-   *       <dd>Determines if the client should pay for the first period now or not.</dd>
-   *       <dt>bool [<var>is_prorate_only</var>]</dt>
-   *       <dd>Whether selected option 'pay prorate amount only' to include to price prorate amount only.</dd>
-   *       <dt>string [<var>m_custom</var>]</dt>
-   *       <dd>Custom price for gift card.</dd>
-   *       <dt>string [<var>dt_send_local</var>]</dt>
-   *       <dd>Date when mail with gift card must be sent.</dd>
-   *       <dt>bool <var>is_mail</var></dt>
-   *       <dd><tt>true</tt> if gift card will be sent on email, <tt>false</tt> if gift card will be printed.</dd>
-   *       <dt>string [<var>s_mail</var>]</dt>
-   *       <dd>Recipient's email.</dd>
-   *       <dt>string [<var>s_message</var>]</dt>
-   *       <dd>Message.</dd>
-   *       <dt>string <var>s_recipient</var></dt>
-   *       <dd>Recipient's name.</dd>
-   *       <dt>string <var>s_sender</var></dt>
-   *       <dd>Sender's name.</dd>
-   *       <dt>string <var>m_prorate_custom</var></dt>
-   *       <dd>The amount of money for prorate period. Should be passed only in a case of manual entry.</dd>
-   *       <dt>string <var>k_coupon</var></dt>
-   *       <dd>The coupon key.</dd>
-   *       <dt>string <var>k_coupon_amount</var></dt>
-   *       <dd>The coupon amount key.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>array [<var>a_tax_custom</var>]</dt>
-   *   <dd>
-   *     Information about taxes. If not passed means no custom taxes have been applied to the sale item.
-   *     If a record is present, it means that the tax is custom. Structured as follows:
-   *     <dl>
-   *       <dt>string <var>f_tax</var></dt>
-   *       <dd>The tax amount.</dd>
-   *       <dt>string <var>k_tax</var></dt>
-   *       <dd>The tax keys.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>int [<var>f_discount_percent</var>]</dt>
-   *   <dd>The discount percentage, applied to the current item.</dd>
-   *   <dt>int <var>i_quantity</var></dt>
-   *   <dd>The quantity of sale items.</dd>
-   *   <dt>int <var>id_sale</var></dt>
-   *   <dd>The sale item type. One of {@link RsSaleSid} constants.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>The sale item key.</dd>
-   *   <dt>string <var>k_shop_product_option</var></dt>
-   *   <dd>
-   *     The store product option key. <tt>null</tt> if the sale item has no options.
-   *   </dd>
-   *   <dt>string [<var>m_discount_fix</var>]</dt>
-   *   <dd>The fixed price discount, applied to the current item.</dd>
-   *   <dt>string [<var>m_price_custom</var>]</dt>
-   *   <dd>The custom price of sale item. If not passed means no custom price has been applied to the sale item.</dd>
-   * </dl>
+   * The list of cart items with the next structure:
    *
    * @get get
    * @type {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item[]}
    */
-  this.a_item = [];
+  this.a_item = undefined;
 
   /**
    * The discount as a percentage.
@@ -203,7 +93,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.f_discount_percent = 0;
 
   /**
-   * `true` to enable checking every item at the cart, `false` to disable.
+   * If `true`, every item is checked at the cart. Otherwise, this will be `false`.
    *
    * @get get
    * @type {boolean}
@@ -216,7 +106,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @get result
    * @type {boolean}
    */
-  this.is_commission = false;
+  this.is_commission = undefined;
 
   /**
    * Determines, how staff sees discount codes in Store.
@@ -225,7 +115,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @get result
    * @type {boolean}
    */
-  this.is_discount_code_mode_select = false;
+  this.is_discount_code_mode_select = undefined;
 
   /**
    * Determines whether to display custom receipt notes at checkout.
@@ -233,17 +123,17 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @get result
    * @type {boolean}
    */
-  this.is_receipt_note = false;
+  this.is_receipt_note = undefined;
 
   /**
    * The business key.
    *
-   * <b>This field isn't used directly but described for correct auto generation JavaScript.</b>
+   * This field isn't used directly, but described for correct JavaScript auto-generation.
    *
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * The business location key.
@@ -254,7 +144,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.k_location = "";
 
   /**
-   * The discount amount.
+   * The discount amount in dollars, excluding tax.
    *
    * @get result
    * @type {string}
@@ -262,7 +152,8 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.m_discount = undefined;
 
   /**
-   * The discount amount of money.
+   * The manual discount amount in dollars, excluding tax.
+   * Staff members can set this amount when making a sale.
    *
    * @get get
    * @type {string}
@@ -270,7 +161,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.m_discount_flat = "";
 
   /**
-   * Amount of total discount.
+   * The discount amount applied to the cart's total amount, including taxes.
    *
    * @get result
    * @type {string}
@@ -320,7 +211,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   /**
    * The discount code.
    *
-   * <tt>null</tt> if not set.
+   * This will be `null` if not set yet.
    *
    * @get get
    * @type {?string}
@@ -328,12 +219,24 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.text_discount_code = null;
 
   /**
-   * The discount code's error message.
+   * The discount code's error code.
+   *
+   * `null` if no error.
    *
    * @get result
-   * @type {string}
+   * @type {?string}
    */
-  this.text_error_code = undefined;
+  this.text_error_code = null;
+
+  /**
+   * The discount code's error message.
+   *
+   * `null` if no error.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.text_error_message = null;
 
   /**
    * The custom receipt note's text.
@@ -341,7 +244,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @get result
    * @type {string}
    */
-  this.text_receipt_note = "";
+  this.text_receipt_note = undefined;
 
   /**
    * The key of the current user.
@@ -349,7 +252,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @get get
    * @type {string}
    */
-  this.uid_current = undefined;
+  this.uid_current = "";
 
   /**
    * The key of the user who performed the purchase.
@@ -369,14 +272,27 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel);
  */
 Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.prototype.config=function()
 {
-  return {"a_field": {"a_discount_code": {"get": {"result": true}},"a_item": {"get": {"get": true}},"f_discount_percent": {"get": {"get": true}},"is_check_cart_item": {"get": {"get": true}},"is_commission": {"get": {"result": true}},"is_discount_code_mode_select": {"get": {"result": true}},"is_receipt_note": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"m_discount": {"get": {"result": true}},"m_discount_flat": {"get": {"get": true}},"m_discount_total": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_tip": {"get": {"get": true}},"m_tip_purchase": {"get": {"result": true}},"m_total": {"get": {"result": true}},"text_discount_code": {"get": {"get": true}},"text_error_code": {"get": {"result": true}},"text_receipt_note": {"get": {"result": true}},"uid_current": {"get": {"get": true}},"uid_customer": {"get": {"get": true}}}};
+  return {"a_field":{"a_discount_code":{"get":{"result":true}},"a_item":{"get":{"get":true}},"f_discount_percent":{"get":{"get":true}},"is_check_cart_item":{"get":{"get":true}},"is_commission":{"get":{"result":true}},"is_discount_code_mode_select":{"get":{"result":true}},"is_receipt_note":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_discount":{"get":{"result":true}},"m_discount_flat":{"get":{"get":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip":{"get":{"get":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"text_error_code":{"get":{"result":true}},"text_error_message":{"get":{"result":true}},"text_receipt_note":{"get":{"result":true}},"uid_current":{"get":{"get":true}},"uid_customer":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.instanceGet
- * @param {string} k_business The business key. <b>This field isn't used directly but described for correct auto generation JavaScript.</b>
+ * @param {string} k_business The business key. This field isn't used directly, but described for correct JavaScript auto-generation.
  * @param {string} uid_current The key of the current user.
  * @returns {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Calculates amount of cart.
+ *
+ * Used in the staff app checkout flow to show a live price summary before the staff member processes
+ * a client's payment. Returns the full breakdown so the staff member can confirm the total with
+ * the client before charging.
+ *
+ * @function
+ * @name Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

@@ -1,5 +1,5 @@
 /**
- * API to claim a guest pass invitation on behalf of the currently signed-in user.
+ * Claims the guest pass invitation for the current user and accepts it.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -34,5 +34,17 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_GuestPass_Claim_ClaimModel);
  */
 Wl_Login_Promotion_GuestPass_Claim_ClaimModel.prototype.config=function()
 {
-  return {"a_field": {"k_business": {"post": {"post": true}},"s_secret": {"post": {"post": true}}}};
+  return {"a_field":{"k_business":{"post":{"post":true}},"s_secret":{"post":{"post":true}}}};
 };
+
+/**
+ * Claims the guest pass invitation for the current user and accepts it.
+ *
+ * Validates the invitation secret, verifies the current user is the intended recipient,
+ * and marks the invitation as accepted.
+ *
+ * @function
+ * @name Wl_Login_Promotion_GuestPass_Claim_ClaimModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

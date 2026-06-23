@@ -1,5 +1,9 @@
 /**
- * Possible ways to stop repeatable events.
+ * A list of payment methods.
+ *
+ *
+ *
+ * Last used ID: 13.
  */
 function WlPayMethodSid()
 {
@@ -14,19 +18,8 @@ function WlPayMethodSid()
 WlPayMethodSid.ACCOUNT = 7;
 
 /**
- * Payment with personal user account.
- * Special payment method to indicate payments related only to manual adjustment of user account balance.
- * This payment method actually does not exist and used only for filtering purpose.
- *
- * @deprecated
- * @type {number}
- */
-WlPayMethodSid.ACCOUNT_MANUAL = 13;
-
-/**
  * ACH system (USA-specific direct banking transactions).
  *
- * @link http://en.wikipedia.org/wiki/Automated_Clearing_House
  * @type {number}
  */
 WlPayMethodSid.ACH = 9;
@@ -46,13 +39,6 @@ WlPayMethodSid.CASH = 4;
 WlPayMethodSid.CHEQUE = 5;
 
 /**
- * Payment by clear balance.
- *
- * @type {number}
- */
-WlPayMethodSid.CLEAR_BALANCE = 12;
-
-/**
  * Payment with a coupon.
  *
  * @type {number}
@@ -62,7 +48,6 @@ WlPayMethodSid.COUPON = 8;
 /**
  * Direct Entry system (australian-specific direct banking transactions).
  *
- * @link http://en.wikipedia.org/wiki/Financial_system_in_Australia#Direct_Entry
  * @type {number}
  */
 WlPayMethodSid.DIRECT_ENTRY = 10;
@@ -83,12 +68,6 @@ WlPayMethodSid.EXTERNAL = 6;
 
 /**
  * Special method to be used for migration process.
- *
- * There are sales in Mindbody that were not bought using account balance or reward points.
- * This is not real revenue and cannot be imported as real sales. So, they can be imported as this special method
- * to be in the system and to allow business owner to hide on sales report.
- *
- * In online store this method should not be available.
  *
  * @type {number}
  */

@@ -21,7 +21,7 @@ RsRepeatEndSid.COUNT = 2;
 RsRepeatEndSid.DATE = 3;
 
 /**
- * Eternal appointments. Such appointments are scheduled for six months and will be scheduled again every month.
+ * Eternal appointments. Such appointments are scheduled for one year and will be scheduled again every month.
  *
  * @type {number}
  */

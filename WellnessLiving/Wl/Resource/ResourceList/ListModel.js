@@ -1,7 +1,5 @@
 /**
- * Asset list by business.
- *
- * This model is generated automatically based on API.
+ * Returns assets list in the business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,21 +15,16 @@ function Wl_Resource_ResourceList_ListModel()
 
   /**
    * @typedef {{}} Wl_Resource_ResourceList_ListModel_a_resource
-   * @property {boolean} hide_application Whether resource will be hidden in the White Label mobile application.
-   *  <tt>true</tt> means that resource will not be displayed, <tt>false</tt> otherwise.
+   * @property {boolean} hide_application Whether resource will be hidden in the White Label mobile application.  `true` means that resource will not be displayed, `false` otherwise.
    * @property {boolean} is_active Whether resource is active.
    * @property {boolean} is_book Whether resource is bookable.
-   * @property {string} k_city Key of the city for off-site locations.}.
-   * <tt>null</tt> if the resource is not an off-site location.
+   * @property {string} k_city Key of the city for off-site locations.}. `null` if the resource is not an off-site location.
    * @property {string} k_resource Resource key.
    * @property {string} k_resource_layout Asset layout key.
    * @property {string} k_resource_type Resource type key.
-   * @property {string} text_address Street address of the resource for off-site locations.
-   * Empty string if the resource does not have an off-site address.
-   * @property {string} text_guide Additional directions or access tips for reaching an off-site location.
-   * Empty string if not specified.
-   * @property {string} text_postal Postal code of the resource for off-site locations.
-   * Empty string if the resource does not have an off-site address.
+   * @property {string} text_address Street address of the resource for off-site locations. Empty string if the resource does not have an off-site address.
+   * @property {string} text_guide Additional directions or access tips for reaching an off-site location. Empty string if not specified.
+   * @property {string} text_postal Postal code of the resource for off-site locations. Empty string if the resource does not have an off-site address.
    * @property {string} text_title Resource name.
    */
 
@@ -56,7 +49,7 @@ function Wl_Resource_ResourceList_ListModel()
 
   /**
    * Whether to return franchisee-created resources (if business is franchisor).
-   * <tt>true</tt> to include franchisee-created resources.
+   * `true` to include franchisee-created resources.
    *
    * @get get
    * @type {boolean}
@@ -64,7 +57,7 @@ function Wl_Resource_ResourceList_ListModel()
   this.is_franchise = false;
 
   /**
-   * Business key, primary key in {@link \RsBusinessSql}.
+   * Business key.
    *
    * @get get
    * @type {string}
@@ -81,13 +74,25 @@ WlSdk_ModelAbstract.extend(Wl_Resource_ResourceList_ListModel);
  */
 Wl_Resource_ResourceList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_resource": {"get": {"result": true}},"id_category": {"get": {"get": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_resource":{"get":{"result":true}},"id_category":{"get":{"get":true}},"is_franchise":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Resource_ResourceList_ListModel.instanceGet
- * @param {string} k_business Business key, primary key in {@link \RsBusinessSql}.
+ * @param {string} k_business Business key.
  * @returns {Wl_Resource_ResourceList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns assets list in the business.
+ *
+ * Returns all assets if `$id_category` is not specified or only certain category assets. Includes
+ * main information about assets.
+ *
+ * @function
+ * @name Wl_Resource_ResourceList_ListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

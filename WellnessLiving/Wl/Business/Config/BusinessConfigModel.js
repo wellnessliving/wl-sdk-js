@@ -1,5 +1,5 @@
 /**
- * Manages business configurations for clients, bookings, payments, and related things.
+ * Gets information about a business config.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -14,67 +14,43 @@ function Wl_Business_Config_BusinessConfigModel()
   this._s_key = "k_business";
 
   /**
+   * @typedef {{}} Wl_Business_Config_BusinessConfigModel_a_business_policy
+   * @property {string[]} a_family_relation List of allowed relation types specific to a given business.  Key is ID. One of {@link RsFamilyRelationSid} constant.  Value is SID.
+   * @property {number[]} a_family_relation_login_allow List of allowed relation types specific to a given business.  Each value constant from {@link RsFamilyRelationSid} class.
+   * @property {number[]} a_payment_reattempt_not_decline_reason List of not allowed decline reasons to payment reattempt. Each element is one of {@link Thoth_WlPay_PayExceptionSid} constants.
+   * @property {number} a_wait_service Keys are list of IDs from {@link Wl_Service_ServiceSid}, and values are flags whether wait list is allowed.
+   * @property {number} i_book_before Minimum hours|days|months before class should be booked.
+   * @property {number} i_book_future Maximum hours|days|months after class can be booked.
+   * @property {number} i_cancel Minimum hours|days|months before class should be canceled without penalty.
+   * @property {number} i_promote Minimum hours|days|months before class should be promoted from wait list.
+   * @property {number} i_promote_fastest_response Minimum hours|days|months the notifications which are sent for client confirmation required should be sent to all clients on the wait list at the same time up to the cut off time.
+   * @property {number} i_promote_require_confirm Minimum hours|days|months the notifications which are sent for client confirmation must confirm their a promote from the waiting list to the active list.
+   * @property {number} i_reattempt_count Number of failed auto-payments reattempts.
+   * @property {number} id_book_before A class for managing time intervals. Last ID: 9.
+   * @property {number} id_book_future A class for managing time intervals. Last ID: 9.
+   * @property {number} id_cancel A class for managing time intervals. Last ID: 9.
+   * @property {number} id_promote A class for managing time intervals. Last ID: 9.
+   * @property {number} id_promote_fastest_response A class for managing time intervals. Last ID: 9.
+   * @property {number} id_promote_require_confirm A class for managing time intervals. Last ID: 9.
+   * @property {boolean} is_book_inside_active_pay_period if `true` - clients with purchase options are only allowed to book sessions within their current paid period, `false` - during purchase option's duration.
+   * @property {boolean} is_disable_promotion 1 if a client's automatic payment fails, their account should not be debited and their purchase option becomes inactive, 0 - otherwise. Default 0.
+   * @property {boolean} is_enable_payment_penalty Whether to charge penalty after final auto-payment attempt.
+   * @property {boolean} is_enable_payment_reattempt Whether to reattempt failed auto-payments.
+   * @property {boolean} is_enable_staff_ip_restriction Whether to restrict which IP addresses staff can login from.
+   * @property {boolean} is_prevent_booking 1 if booking for a client with negative balance is disabled, 0 - otherwise. Default 0.
+   * @property {boolean} is_staff_restrict If true, client can not choose provider while appointment wizard.
+   * @property {boolean} is_wait Enable\disable wait list.
+   * @property {string} k_currency Currency from rs.currency table.
+   * @property {string} k_timezone Timezone from get.timezone table.
+   * @property {string} m_payment_penalty Penalty amount to charge after final auto-payment attempt.
+   * @property {string} url_custom Custom Url of a business
+   */
+
+  /**
    * All business policies connected to clients and bookings.
    *
-   * <dl>
-   *   <dt>array <var>a_family_relation</var></dt>
-   *   <dd>
-   *      List of allowed relation types specific to a given business.
-   *   </dd>
-   *   <dt>array <var>a_wait_service</var></dt>
-   *   <dd>The keys are listed as IDs from {@link RsServiceSid}, and values are flags outlining whether wait listing is allowed.</dd>
-   *   <dt>int <var>i_book_before</var></dt>
-   *   <dd>The minimum hours|days|months before a class can be booked.</dd>
-   *   <dt>int <var>i_book_future</var></dt>
-   *   <dd>The maximum hours|days|months after a class can be booked.</dd>
-   *   <dt>int <var>i_cancel</var></dt>
-   *   <dd>The minimum hours|days|months before a class can be canceled without penalty.</dd>
-   *   <dt>int <var>i_promote</var></dt>
-   *   <dd>The minimum hours|days|months before a class can be promoted from a wait list.</dd>
-   *   <dt>int <var>i_reattempt_count</var></dt>
-   *   <dd>The number of failed auto-payment reattempts.</dd>
-   *   <dt>int <var>id_book_before</var></dt>
-   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
-   *   <dt>int <var>id_book_future</var></dt>
-   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
-   *   <dt>int <var>id_cancel</var></dt>
-   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
-   *   <dt>int <var>id_promote</var></dt>
-   *   <dd>The hours|days|months from {@link ADurationSid}.</dd>
-   *   <dt>bool <var>is_book_inside_active_pay_period</var></dt>
-   *   <dd>
-   *     `true` - clients with Purchase Options are only allowed to book sessions within their current paid period.<br>
-   *     `false` - clients with Purchase Options are only allowed to book sessions during the Purchase Option's duration.
-   *   </dd>
-   *   <dt>int <var>is_disable_promotion</var></dt>
-   *   <dd>
-   *     If `true`, a client's automatic payment fails, their account shouldn't be debited, and their Purchase Option becomes inactive.
-   *     Otherwise, this will be `false` (the default value).
-   *   </dd>
-   *   <dt>bool <var>is_enable_payment_penalty</var></dt>
-   *   <dd>Determines whether to charge a penalty after the final auto-payment attempt.</dd>
-   *   <dt>bool <var>is_enable_payment_reattempt</var></dt>
-   *   <dd>Determines whether to reattempt failed auto-payments.</dd>
-   *   <dt>bool <var>is_enable_staff_ip_restriction</var></dt>
-   *   <dd>Determines whether to restrict which IP addresses staff can login from.</dd>
-   *   <dt>int <var>is_prevent_booking</var></dt>
-   *   <dd>If `true`, booking for a client with negative balance is disabled. Otherwise, this will be `false` (the default value).</dd>
-   *   <dt>bool <var>is_staff_restrict</var></dt>
-   *   <dd>If true, clients can't choose a provider in the appointment wizard. Otherwise, this will be `false`.</dd>
-   *   <dt>bool <var>is_wait</var></dt>
-   *   <dd>Determines whether to enable or disable the wait list.</dd>
-   *   <dt>int <var>k_currency</var></dt>
-   *   <dd>The currency.</dd>
-   *   <dt>int <var>k_timezone</var></dt>
-   *   <dd>The time zone.</dd>
-   *   <dt>string <var>m_payment_penalty</var></dt>
-   *   <dd>The penalty amount to charge after the final auto-payment attempt.</dd>
-   *   <dt>string <var>url_custom</var></dt>
-   *   <dd>The custom URL from Business URLs.</dd>
-   * </dl>
-   *
    * @get result
-   * @type {{}}
+   * @type {Wl_Business_Config_BusinessConfigModel_a_business_policy}
    */
   this.a_business_policy = undefined;
 
@@ -82,50 +58,26 @@ function Wl_Business_Config_BusinessConfigModel()
    * @typedef {{}} Wl_Business_Config_BusinessConfigModel_a_penalty
    * @property {string[]} a_class_period List of class period keys.
    * @property {string[]} a_login_type List of client type keys.
-   * Empty array means all active login types at concrete business.
    * @property {string[]} a_resource List of resources keys.
    * @property {string[]} a_service List of services keys.
    * @property {number} i_blame Number of blamed visits.
    * @property {number} i_cancel_period Count of days/weeks/months.
    * @property {number} i_charge_measure Count of applied penalty.
-   * @property {number} id_blame One of {@link Wl_Business_Policy_BlameSid} constants.
-   * @property {number} id_cancel_period Duration ID. One of {@link ADurationSid} constants.
-   * @property {number} id_charge One of {@link Wl_Business_Policy_ChargeSid} constants.
-   * @property {number} id_charge_measure Percent or money sign.
-   * @property {number} is_appointment_all `1` if all classes are selected, `0` - otherwise.
-   * @property {number} is_class_all `1` if all classes are selected, `0` - otherwise.
-   * @property {number} is_enable_cancel_charge <tt>true</tt> if promotion penalties is enable, <tt>false</tt> otherwise.
-   * @property {number} is_event_all `1` if all events are selected, `0` - otherwise.
-   * @property {number} is_login_type_all `1` if all login types are selected, `0` - otherwise.
-   * @property {number} is_resource_all `1` if all resources are selected, `0` - otherwise.
-   * @property {number} is_service_all `1` if all services are selected, `0` - otherwise.
+   * @property {number} id_blame Defines if client has "Late cancel" or "No shows" sessions.
+   * @property {number} id_cancel_period A class for managing time intervals. Last ID: 9.
+   * @property {number} id_charge Client's charge if he has "Late cancel" or "No shows" sessions.
+   * @property {number} id_charge_measure Charge measure type. `0` for percent, `1` for money amount.
+   * @property {boolean} is_appointment_all `1` if all classes are selected, `0` - otherwise.
+   * @property {boolean} is_class_all `1` if all classes are selected, `0` - otherwise.
+   * @property {boolean} is_enable_cancel_charge `true` if promotion penalties is enable, `false` otherwise.
+   * @property {boolean} is_event_all `1` if all events are selected, `0` - otherwise.
+   * @property {boolean} is_login_type_all `1` if all login types are selected, `0` - otherwise.
+   * @property {boolean} is_resource_all `1` if all resources are selected, `0` - otherwise.
+   * @property {boolean} is_service_all `1` if all services are selected, `0` - otherwise.
    */
 
   /**
-   * A list of business penalties. Each element contains:
-   * <dl>
-   *   <dt>string[] <var>a_class_period</var></dt><dd>List of class period keys.</dd>
-   *   <dt>string[] <var>a_login_type</var></dt>
-   *   <dd>List of client type keys.
-   *     Empty array means all active login types at concrete business.
-   *   </dd>
-   *   <dt>string[] <var>a_resource</var></dt><dd>List of resources keys.</dd>
-   *   <dt>string[] <var>a_service</var></dt><dd>List of services keys.</dd>
-   *   <dt>int <var>i_blame</var></dt><dd>Number of blamed visits.</dd>
-   *   <dt>int <var>i_cancel_period</var></dt><dd>Count of days/weeks/months.</dd>
-   *   <dt>int <var>i_charge_measure</var></dt><dd>Count of applied penalty.</dd>
-   *   <dt>int <var>id_blame</var></dt><dd>One of {@link Wl_Business_Policy_BlameSid} constants.</dd>
-   *   <dt>int <var>id_cancel_period</var></dt><dd>Duration ID. One of {@link ADurationSid} constants.</dd>
-   *   <dt>int <var>id_charge</var></dt><dd>One of {@link Wl_Business_Policy_ChargeSid} constants.</dd>
-   *   <dt>int <var>id_charge_measure</var></dt><dd>Percent or money sign.</dd>
-   *   <dt>int <var>is_appointment_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_class_all</var></dt><dd> `1` if all classes are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_enable_cancel_charge</var></dt><dd><tt>true</tt> if promotion penalties is enable, <tt>false</tt> otherwise.</dd>
-   *   <dt>int <var>is_event_all</var></dt><dd> `1` if all events are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_login_type_all</var></dt><dd> `1` if all login types are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_resource_all</var></dt><dd> `1` if all resources are selected, `0` - otherwise.</dd>
-   *   <dt>int <var>is_service_all</var></dt><dd> `1` if all services are selected, `0` - otherwise.</dd>
-   * </dl>
+   * A list of business penalties.
    *
    * @get result
    * @type {Wl_Business_Config_BusinessConfigModel_a_penalty}
@@ -138,7 +90,7 @@ function Wl_Business_Config_BusinessConfigModel()
    * @get result
    * @type {boolean}
    */
-  this.is_location_client_select = false;
+  this.is_location_client_select = undefined;
 
   /**
    * Determines whether staff members should select a location at checkout.
@@ -158,7 +110,7 @@ function Wl_Business_Config_BusinessConfigModel()
    * @get result
    * @type {boolean}
    */
-  this.is_white_label = false;
+  this.is_white_label = undefined;
 
   /**
    * The business key.
@@ -166,7 +118,7 @@ function Wl_Business_Config_BusinessConfigModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   this.changeInit();
 }
@@ -178,7 +130,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Config_BusinessConfigModel);
  */
 Wl_Business_Config_BusinessConfigModel.prototype.config=function()
 {
-  return {"a_field": {"a_business_policy": {"get": {"result": true}},"a_penalty": {"get": {"result": true}},"is_location_client_select": {"get": {"result": true}},"is_location_select": {"get": {"result": true}},"is_white_label": {"get": {"result": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_business_policy":{"get":{"result":true}},"a_penalty":{"get":{"result":true}},"is_location_client_select":{"get":{"result":true}},"is_location_select":{"get":{"result":true}},"is_white_label":{"get":{"result":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
@@ -187,4 +139,17 @@ Wl_Business_Config_BusinessConfigModel.prototype.config=function()
  * @param {string} k_business The business key.
  * @returns {Wl_Business_Config_BusinessConfigModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Gets information about a business config.
+ *
+ * Used by the booking widget and checkout flow to know the rules governing client interactions: which
+ * family member relations are allowed, whether clients or staff must select a location at checkout,
+ * what cancellation penalties apply, and whether white-label mode is active.
+ *
+ * @function
+ * @name Wl_Business_Config_BusinessConfigModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

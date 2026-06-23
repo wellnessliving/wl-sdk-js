@@ -1,10 +1,19 @@
 /**
  * Relation type between two relatives.
+ *
+ * Last used ID: 16.
  */
 function Wl_Family_Relation_RelationSid()
 {
   // Empty constructor.
 }
+
+/**
+ * Care provider.
+ *
+ * @type {number}
+ */
+Wl_Family_Relation_RelationSid.CAREGIVER = 8;
 
 /**
  * Care participant.
@@ -19,13 +28,6 @@ Wl_Family_Relation_RelationSid.CARE_PARTICIPANT = 12;
  * @type {number}
  */
 Wl_Family_Relation_RelationSid.CARE_RECEIVER = 9;
-
-/**
- * Care provider.
- *
- * @type {number}
- */
-Wl_Family_Relation_RelationSid.CAREGIVER = 8;
 
 /**
  * Case load.

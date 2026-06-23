@@ -1,14 +1,5 @@
 /**
- * An endpoint that registers an existing user in the specified Enterprise Headquarters account.
- *
- * This endpoint isn't applicable for users who are already members of the business. After a profile is edited, there can
- * be a delay while the data replicates to system caches. As a result, you may see a 'profile-field-empty' status code. In most
- * cases, this delay is less than 20 seconds.
- *
- * For Enterprise Cloud in WellnessLiving, clients can only be members in one Enterprise Location.
- * In all other Enterprise Locations, they'll be treated as travelers in the system.
- *
- * This model is generated automatically based on API.
+ * Checks required profile fields and, if complete, registers the existing user in the specified business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -18,35 +9,19 @@ function Wl_Login_Add_MailUseOkModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @typedef {{}} Wl_Login_Add_MailUseOkModel_a_error
+   * @typedef {{}} Wl_Login_Add_MailUseOkModel_a_error_list
    * @property {string} html_message The error message.
-   * @property {string} s_field The name of the field missing information.
-   * Given in the format `k_field.name`.
+   * @property {string} s_field The name of the field missing information. Given in the format `k_field.name`.
    */
 
   /**
    * The list of fields with missing information.
    * Each element is an array containing the following data:
-   * <dl>
-   *   <dt>
-   *     string <var>html_message</var>
-   *   </dt>
-   *   <dd>
-   *     The error message.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_field</var>
-   *   </dt>
-   *   <dd>
-   *     The name of the field missing information.
-   *     Given in the format `k_field.name`.
-   *   </dd>
-   * </dl>
    *
    * @post result
-   * @type {Wl_Login_Add_MailUseOkModel_a_error}
+   * @type {Wl_Login_Add_MailUseOkModel_a_error_list}
    */
-  this.a_error = undefined;
+  this.a_error_list = undefined;
 
   /**
    * This value is `true` if this user is a lead. `false` if otherwise.
@@ -106,5 +81,17 @@ WlSdk_ModelAbstract.extend(Wl_Login_Add_MailUseOkModel);
  */
 Wl_Login_Add_MailUseOkModel.prototype.config=function()
 {
-  return {"a_field": {"a_error": {"post": {"result": true}},"is_lead": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_skin": {"post": {"post": true}},"s_code": {"post": {"result": true}},"text_message": {"post": {"result": true}},"uid": {"post": {"post": true}}}};
+  return {"a_field":{"a_error_list":{"post":{"result":true}},"is_lead":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_skin":{"post":{"post":true}},"s_code":{"post":{"result":true}},"text_message":{"post":{"result":true}},"uid":{"post":{"post":true}}}};
 };
+
+/**
+ * Checks required profile fields and, if complete, registers the existing user in the specified business.
+ *
+ * Validates the user's profile for any missing required fields and, if all fields are complete, adds the user as
+ * a member of the business. Returns a status code and a list of any fields that still need to be filled in.
+ *
+ * @function
+ * @name Wl_Login_Add_MailUseOkModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

@@ -1,7 +1,5 @@
 /**
- * An endpoint that retrieves a list of programs' information.
- *
- * This model is generated automatically based on API.
+ * Returns a list of active insurance programs for the specified promotion.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -23,21 +21,6 @@ function Wl_Insurance_Catalog_ProgramListModel()
   /**
    * A List of active programs.
    * Every element has next keys:
-   *
-   * <dl>
-   *   <dt>string <var>k_wellness_program</var></dt>
-   *   <dd>The insurance key.</dd>
-   *   <dt>string <var>m_price</var></dt>
-   *   <dd>The Purchase Option price.</dd>
-   *   <dt>string <var>text_insurance_organization</var></dt>
-   *   <dd>The insurance organization name.</dd>
-   *   <dt>string <var>text_partner</var></dt>
-   *   <dd>The insurance partner name.</dd>
-   *   <dt>string <var>text_program</var></dt>
-   *   <dd>The insurance name.</dd>
-   *   <dt>string <var>url_insurance_detail</var></dt>
-   *   <dd>The insurance organization URL.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Insurance_Catalog_ProgramListModel_a_wellness_program[]}
@@ -70,5 +53,17 @@ WlSdk_ModelAbstract.extend(Wl_Insurance_Catalog_ProgramListModel);
  */
 Wl_Insurance_Catalog_ProgramListModel.prototype.config=function()
 {
-  return {"a_field": {"a_wellness_program": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_promotion": {"get": {"get": true}}}};
+  return {"a_field":{"a_wellness_program":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_promotion":{"get":{"get":true}}}};
 };
+
+/**
+ * Returns a list of active insurance programs for the specified promotion.
+ *
+ * Requires backend access and an active Wellness Program feature for the business. Returns all available
+ * insurance programs with pricing, organization name, partner name, and a link to the insurance detail page.
+ *
+ * @function
+ * @name Wl_Insurance_Catalog_ProgramListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

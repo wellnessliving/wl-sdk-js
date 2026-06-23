@@ -1,5 +1,5 @@
 /**
- * API to manage a single guest pass invitation.
+ * Revokes a guest pass invitation.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -36,5 +36,27 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_GuestPass_Invite_InviteModel);
  */
 Wl_Login_Promotion_GuestPass_Invite_InviteModel.prototype.config=function()
 {
-  return {"a_field": {"k_business": {"delete": {"get": true},"put": {"get": true}},"s_secret": {"delete": {"get": true},"put": {"get": true}}}};
+  return {"a_field":{"k_business":{"delete":{"get":true},"put":{"get":true}},"s_secret":{"delete":{"get":true},"put":{"get":true}}}};
 };
+
+/**
+ * Revokes a guest pass invitation.
+ *
+ * Marks the invitation as rejected and sends an expiry notification to the guest.
+ *
+ * @function
+ * @name Wl_Login_Promotion_GuestPass_Invite_InviteModel.delete
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.delete()
+ */
+
+/**
+ * Sends a reminder notification for a guest pass invitation.
+ *
+ * Resends the invitation notification to the guest using the reminder email or SMS template.
+ *
+ * @function
+ * @name Wl_Login_Promotion_GuestPass_Invite_InviteModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
+ */

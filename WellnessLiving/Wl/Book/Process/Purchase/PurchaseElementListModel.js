@@ -1,5 +1,5 @@
 /**
- * An endpoint that provides a list of purchase items.
+ * Returns the pricing breakdown for a list of purchase items, applying applicable discounts and taxes.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -10,34 +10,24 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_request
-   * @property {*} i_session The number of sessions which are booked simultaneously.
-   * @property {number} id_purchase_item The ID of the purchase item type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
-   * @property {string} k_id The key of the purchase item in the database. The name of the table in the database depends on <tt>id_purchase_item</tt>
-   * @property {*} k_login_prize The key of the user's prize.
+   * @property {number} i_session The number of sessions booked simultaneously.
+   * @property {number} id_purchase_item A list of purchase types.
+   * @property {string} k_id The key of the purchase item in the database. The name of the table in the database depends on `id_purchase_item`
+   * @property {string} k_login_prize The key of the user's prize.
    */
 
   /**
    * A list of purchase items to get information for. Every element has the next keys:
-   * <dl>
-   *   <dt>int [<var>i_session</var>]</dt>
-   *   <dd>The number of sessions booked simultaneously.</dd>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The ID of the purchase item type. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>The key of the purchase item in the database. The name of the table in the database depends on <var>id_purchase_item</var></dd>
-   *   <dt>string [<var>k_login_prize</var>]</dt>
-   *   <dd>The key of the user's prize.</dd>
-   * </dl>
    *
    * @get get
    * @type {Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_request[]}
    */
-  this.a_purchase_item_request = [];
+  this.a_purchase_item_request = undefined;
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result
-   * @property {{}} a_tax Information about taxes. The key refers to the tax key and the value refers to the tax amount.
-   * @property {string} id_purchase_item The ID of the purchase item type.
+   * @property {string[]} a_tax Information about taxes. The key refers to the tax key, and the value refers to the tax amount.
+   * @property {number} id_purchase_item A list of purchase types.
    * @property {string} k_id The key of the purchase item in the database.
    * @property {string} m_cost The cost of the purchase item (with taxes).
    * @property {string} m_discount The amount of the whole discount.
@@ -49,49 +39,6 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
   /**
    * Detailed information about the amounts for the purchase item list.
    * Every element has the next keys:
-   * <dl>
-   *   <dt>
-   *     array <var>a_tax</var>
-   *   </dt>
-   *   <dd>
-   *     Information about taxes. The key refers to the tax key and the value refers to the tax amount.
-   *   </dd>
-   *   <dt>
-   *     string <var>id_purchase_item</var></dt>
-   *   <dd>
-   *     The ID of purchase item type.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_id</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the purchase item in the database.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_cost</var></dt>
-   *   <dd>
-   *     The cost of the purchase item (with taxes).
-   *   </dd>
-   *   <dt>
-   *     string <var>m_discount</var></dt>
-   *   <dd>
-   *     The amount of the whole discount.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_discount_login</var></dt>
-   *   <dd>
-   *     The amount of the discount for the client type.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_price</var></dt>
-   *   <dd>
-   *     The price of the purchase item (with or without taxes, depending on regional standards).</dd>
-   *   <dt>
-   *     string <var>m_tax</var></dt>
-   *   <dd>
-   *     The amount of taxes for the purchase item.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result[]}
@@ -104,7 +51,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * The key of the location in which the purchase is made.
@@ -131,7 +78,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
    * @get get
    * @type {string}
    */
-  this.uid = undefined;
+  this.uid = "";
 
   this.changeInit();
 }
@@ -143,5 +90,18 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementListModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementListModel.prototype.config=function()
 {
-  return {"a_field": {"a_purchase_item_request": {"get": {"get": true}},"a_purchase_item_result": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"text_discount_code": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_purchase_item_request":{"get":{"get":true}},"a_purchase_item_result":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
+
+/**
+ * Returns the pricing breakdown for a list of purchase items, applying applicable discounts and taxes.
+ *
+ * Validates the business, location, and user, then for each item in `a_purchase_item_request` computes the price,
+ * applicable discount code reduction, login-type discount, and taxes, and returns per-item cost, discount,
+ * price, tax, and subtotal amounts in `a_purchase_item_result`.
+ *
+ * @function
+ * @name Wl_Book_Process_Purchase_PurchaseElementListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

@@ -1,7 +1,5 @@
 /**
- * An endpoint that returns a list of client activities.
- *
- * This model is generated automatically based on API.
+ * Retrieves a list of activity items to show in user profile.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -26,12 +24,32 @@ function Wl_Profile_Activity_ListModel()
   this.a_activity = undefined;
 
   /**
+   * Ending date of the date range. Optional.
+   *
+   * This is local business timezone date. This day is included in the result.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.dl_end = "";
+
+  /**
+   * Starting date of the date range. Optional.
+   *
+   * This is local business timezone date. This day is included in the result.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.dl_start = "";
+
+  /**
    * The key of the business to show information for.
    *
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * The key of the client to show information for.
@@ -39,7 +57,7 @@ function Wl_Profile_Activity_ListModel()
    * @get get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -51,7 +69,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Activity_ListModel);
  */
 Wl_Profile_Activity_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_activity": {"get": {"result": true}},"k_business": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_activity":{"get":{"result":true}},"dl_end":{"get":{"get":true}},"dl_start":{"get":{"get":true}},"k_business":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -61,4 +79,17 @@ Wl_Profile_Activity_ListModel.prototype.config=function()
  * @param {string} uid The key of the client to show information for.
  * @returns {Wl_Profile_Activity_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves a list of activity items to show in user profile.
+ *
+ * Returns the client's activity history for the specified business, filtered by an optional
+ * date range. Requires profile-view access and respects activity-type visibility rules for the
+ * requesting user.
+ *
+ * @function
+ * @name Wl_Profile_Activity_ListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

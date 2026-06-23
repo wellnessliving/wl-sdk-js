@@ -1,7 +1,5 @@
 /**
- * Manages quizzes and a selected Purchase Option for a class or event during the booking process.
- *
- * Note that the terms "Purchase Option" and "promotion" are used interchangeably.
+ * Defines list of required quizzes.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -21,22 +19,23 @@ function Wl_Book_Process_Quiz_QuizModel()
    * @post result
    * @type {string[]}
    */
-  this.a_login_activity = [];
+  this.a_login_activity = undefined;
 
   /**
-   * The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl>
-   *  <dt>int <var>id_purchase_item</var></dt>
-   *  <dd>The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
-   *  <dt>string <var>k_id</var></dt>
-   *  <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
-   * </dl>
+   * @typedef {{}} Wl_Book_Process_Quiz_QuizModel_a_purchase_item
+   * @property {number} id_purchase_item A list of purchase types.
+   * @property {string} k_id The item key. This depends on `id_purchase_item` of this array.
+   */
+
+  /**
+   * The list of purchase items. Each element has the format `[id_purchase_item]::[k_id]`, where: 
    *
    * This will be empty if no purchases are made for the booking.
    *
    * @get get
-   * @type {string[]}
+   * @type {Wl_Book_Process_Quiz_QuizModel_a_purchase_item[]}
    */
-  this.a_purchase_item = [];
+  this.a_purchase_item = undefined;
 
   /**
    * @typedef {{}} Wl_Book_Process_Quiz_QuizModel_a_quiz
@@ -45,104 +44,44 @@ function Wl_Book_Process_Quiz_QuizModel()
    */
 
   /**
-   * The list of quizzes. Each element has the next structure:<dl>
-   *  <dt>bool <var>is_require</var></dt>
-   *  <dd>Determines whether the quiz is required.</dd>
-   *  <dt>string <var>k_quiz</var></dt>
-   *  <dd>The quiz key.</dd>
-   * </dl>
+   * The list of quizzes. Each element has the next structure:
    *
    * @get result
    * @type {Wl_Book_Process_Quiz_QuizModel_a_quiz[]}
    */
-  this.a_quiz = [];
+  this.a_quiz = undefined;
 
   /**
    * The list of quiz response keys.
    *
-   * Keys refer to quiz keys.
-   * And values refer to response keys.
-   * Or special values from the {@link Wl\Quiz\Response\QuizResponse::RESPONSE_SKIP} constant.
+   * Keys are quiz keys. 
+   * Values are response keys. 
+   * Or the `skip` to skip the quiz.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
-  this.a_quiz_response = [];
+  this.a_quiz_response = undefined;
 
   /**
    * @typedef {{}} Wl_Book_Process_Quiz_QuizModel_a_repeat
-   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   * Should be passed for any type of repetition.
+   * @property {number[]} a_day The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants. Should be passed for any type of repetition.
    * @property {number[]} a_week Deprecated, use `a_day` instead!
-   * @property {*} dl_end Deprecated, use `dt_from` and `dt_to` instead!
-   * @property {*} dt_from Date to start recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {*} dt_to Date to complete recurring booking.
-   * Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   * @property {*} i_count The number of occurrences after which the appointment's repeat cycle stops.
-   *  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *  Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
+   * @property {string} dl_end Deprecated, use `dt_from` and `dt_to` instead!
+   * @property {string} dt_from Date to start recurring booking. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
+   * @property {string} dt_to Date to complete recurring booking. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
+   * @property {number} i_count The number of occurrences after which the appointment's repeat cycle stops.  Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.  Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
-   * @property {*} i_occurrence Deprecated, use `i_count` instead!
+   * @property {number} i_occurrence Deprecated, use `i_count` instead!
    * @property {number} i_period Deprecated, use `i_duration` instead!
-   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   * Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   * @property {number} id_period Deprecated, use `id_duration` instead!
-   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
+   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
+   * @property {number} id_period A class for managing time intervals. Last ID: 9.
+   * @property {number} id_repeat_end Possible ways to stop repeatable events.
    */
 
   /**
    * Information about the recurring booking:
-   * <dl>
-   *   <dt>int[] <var>a_day</var></dt>
-   *   <dd>
-   *     The days of week when the appointment repeat.One of the {@link ADateWeekSid} constants.
-   *     Should be passed for any type of repetition.
-   *   </dd>
-   *   <dt>int[] <var>a_week</var></dt>
-   *   <dd>Deprecated, use `a_day` instead!</dd>
-   *   <dt>string [<var>dl_end</var>]</dt>
-   *   <dd>Deprecated, use `dt_from` and `dt_to` instead!</dd>
-   *   <dt>
-   *     string [<var>dt_from</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to start recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *     string [<var>dt_to</var>]
-   *   </dt>
-   *   <dd>
-   *     Date to complete recurring booking.
-   *     Expected for `id_repeat_end` = {@link RsRepeatEndSid.DATE}.
-   *   </dd>
-   *   <dt>
-   *      int [<var>i_count</var>]
-   *    </dt>
-   *    <dd>
-   *      The number of occurrences after which the appointment's repeat cycle stops.
-   *      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.
-   *      Expected for `id_repeat_end` = {@link RsRepeatEndSid.COUNT}.
-   *    </dd>
-   *   <dt>int <var>i_duration</var></dt>
-   *   <dd>Count of days\weeks\months between recurring bookings.</dd>
-   *   <dt>int [<var>i_occurrence</var>]</dt>
-   *   <dd>Deprecated, use `i_count` instead!</dd>
-   *   <dt>int <var>i_period</var></dt>
-   *   <dd>Deprecated, use `i_duration` instead!</dd>
-   *   <dt>
-   *     int <var>id_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
-   *     Available duration units are: {@link ADurationSid.DAY}, {@link ADurationSid.WEEK}, {@link ADurationSid.MONTH}.
-   *   </dd>
-   *   <dt>int <var>id_period</var></dt>
-   *   <dd>Deprecated, use `id_duration` instead!</dd>
-   *   <dt>int <var>id_repeat_end</var></dt>
-   *   <dd>Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.</dd>
-   * </dl>
+   *
    *
    * This will be `null` if the booking isn't recurring.
    *
@@ -161,39 +100,33 @@ function Wl_Book_Process_Quiz_QuizModel()
    * The selected assets.
    *
    * Every element has the next keys:
-   * <dl>
-   *   <dt>int <var>i_index</var></dt>
-   *   <dd>The order number of the asset (could be from 1 to the asset quantity).</dd>
-   *   <dt>string <var>k_resource</var></dt>
-   *   <dd>The asset key.</dd>
-   * </dl>
    *
    * @post post
    * @type {Wl_Book_Process_Quiz_QuizModel_a_resource[]}
    */
-  this.a_resource = [];
+  this.a_resource = undefined;
 
   /**
    * The selected sessions.
    *
-   * Keys refer to class period keys.
-   * And values refer to the list of dates/times when the session occurred.
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
-  this.a_session_select = [];
+  this.a_session_select = undefined;
 
   /**
    * The selected sessions on the wait list that are unpaid.
    *
-   * Keys refer to session IDs.
-   * And values refer to index arrays of dates/times when session occurred (n MySQL format and in GMT).
+   * Keys are class period keys. 
+   * Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
    *
    * @post post
-   * @type {{}}
+   * @type {string[]}
    */
-  this.a_session_wait_list_unpaid = [];
+  this.a_session_wait_list_unpaid = undefined;
 
   /**
    * The keys the bookings that have been made.
@@ -201,7 +134,7 @@ function Wl_Book_Process_Quiz_QuizModel()
    * @post result
    * @type {string[]}
    */
-  this.a_visit = [];
+  this.a_visit = undefined;
 
   /**
    * Determines whether the class/event can be booked at this step or not.
@@ -210,7 +143,7 @@ function Wl_Book_Process_Quiz_QuizModel()
    * @post post
    * @type {boolean}
    */
-  this.can_book = true;
+  this.can_book = false;
 
   /**
    * Date/time to which session is booked.
@@ -226,6 +159,7 @@ function Wl_Book_Process_Quiz_QuizModel()
    *
    * @get get
    * @post get
+   * @see Wl_Mode_ModeSid
    * @type {number}
    */
   this.id_mode = 0;
@@ -247,7 +181,7 @@ function Wl_Book_Process_Quiz_QuizModel()
    * `false` otherwise.
    *
    * Allows booking unpaid when client has a login promotion that can be used to pay for the service.
-   * Allowed in {@link Wl_Mode_ModeSid.WIDGET} mode only.
+   * Allowed in {@link Wl_Mode_ModeSid} mode only.
    *
    * @post post
    * @type {boolean}
@@ -264,7 +198,7 @@ function Wl_Book_Process_Quiz_QuizModel()
    * @post get
    * @type {boolean}
    */
-  this.is_credit_card_check = true;
+  this.is_credit_card_check = false;
 
   /**
    * `true` if user pressed 'Pay later'.
@@ -290,7 +224,7 @@ function Wl_Book_Process_Quiz_QuizModel()
    * @post get
    * @type {string}
    */
-  this.k_class_period = "0";
+  this.k_class_period = "";
 
   /**
    * Login promotion to be used to book a class.
@@ -324,7 +258,7 @@ function Wl_Book_Process_Quiz_QuizModel()
    * @post get
    * @type {string}
    */
-  this.uid = "0";
+  this.uid = "";
 
   this.changeInit();
 }
@@ -336,7 +270,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Quiz_QuizModel);
  */
 Wl_Book_Process_Quiz_QuizModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_activity": {"post": {"result": true}},"a_purchase_item": {"get": {"get": true}},"a_quiz": {"get": {"result": true}},"a_quiz_response": {"post": {"post": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"a_visit": {"post": {"result": true}},"can_book": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_book_unpaid": {"post": {"post": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"is_next": {"post": {"result": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_session_pass": {"post": {"post": true}},"show_relation": {"get": {"get": true},"post": {"get": true}},"uid": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field":{"a_login_activity":{"post":{"result":true}},"a_purchase_item":{"get":{"get":true}},"a_quiz":{"get":{"result":true}},"a_quiz_response":{"post":{"post":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session_select":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dt_date_gmt":{"get":{"get":true},"post":{"get":true}},"id_mode":{"get":{"get":true},"post":{"get":true}},"is_backend":{"get":{"get":true},"post":{"get":true}},"is_book_unpaid":{"post":{"post":true}},"is_credit_card_check":{"get":{"get":true},"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"is_next":{"post":{"result":true}},"k_class_period":{"get":{"get":true},"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"show_relation":{"get":{"get":true},"post":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**
@@ -344,9 +278,34 @@ Wl_Book_Process_Quiz_QuizModel.prototype.config=function()
  * @name Wl_Book_Process_Quiz_QuizModel.instanceGet
  * @param {string} k_class_period Key of session which is booked.
  * @param {string} uid The client key for which the booking is being made.
- * @param {string[]} a_purchase_item The list of purchase items. Each element has the format <tt>[id_purchase_item]::[k_id]</tt>, where: <dl> <dt>int <var>id_purchase_item</var></dt> <dd>The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd> <dt>string <var>k_id</var></dt> <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd> </dl> This will be empty if no purchases are made for the booking.
+ * @param {Wl_Book_Process_Quiz_QuizModel_a_purchase_item[]} a_purchase_item The list of purchase items. Each element has the format `[id_purchase_item]::[k_id]`, where: This will be empty if no purchases are made for the booking.
  * @param {string} dt_date_gmt Date/time to which session is booked.
  * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Quiz_QuizModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Defines list of required quizzes.
+ *
+ * Merges the quizzes required by the booking itself with quizzes tied to the selected purchase options,
+ * filters out internal (staff-only) quizzes for non-backend requests, and returns the unified list in `a_quiz`.
+ *
+ * @function
+ * @name Wl_Book_Process_Quiz_QuizModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Finished booking process and save quiz responses (if quiz step is the last in booking wizard).
+ *
+ * Validates session selection and asset requirements, stores quiz responses in the booking process context,
+ * and attempts to complete the booking without payment when no payment step is needed. Returns visit keys,
+ * activity keys, and a flag indicating whether additional wizard steps are still required.
+ *
+ * @function
+ * @name Wl_Book_Process_Quiz_QuizModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

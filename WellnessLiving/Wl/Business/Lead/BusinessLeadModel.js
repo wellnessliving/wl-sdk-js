@@ -1,7 +1,5 @@
 /**
- * An endpoint that creates a new business lead request within the Partner Program.
- *
- * This model is generated automatically based on API.
+ * Saves a new business lead referral record submitted through the Partner Program.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,7 +14,7 @@ function Wl_Business_Lead_BusinessLeadModel()
    * @post post
    * @type {string}
    */
-  this.k_business_partner = undefined;
+  this.k_business_partner = "";
 
   /**
    * The business's name.
@@ -24,7 +22,7 @@ function Wl_Business_Lead_BusinessLeadModel()
    * @post post
    * @type {string}
    */
-  this.text_business_name = undefined;
+  this.text_business_name = "";
 
   /**
    * The client's full name.
@@ -32,7 +30,7 @@ function Wl_Business_Lead_BusinessLeadModel()
    * @post post
    * @type {string}
    */
-  this.text_client_name = undefined;
+  this.text_client_name = "";
 
   /**
    * The client's email.
@@ -40,7 +38,7 @@ function Wl_Business_Lead_BusinessLeadModel()
    * @post post
    * @type {string}
    */
-  this.text_email = undefined;
+  this.text_email = "";
 
   /**
    * The client's phone number.
@@ -48,7 +46,7 @@ function Wl_Business_Lead_BusinessLeadModel()
    * @post post
    * @type {string}
    */
-  this.text_phone = undefined;
+  this.text_phone = "";
 
   /**
    * The business's partner promo code.
@@ -56,7 +54,7 @@ function Wl_Business_Lead_BusinessLeadModel()
    * @post post
    * @type {string}
    */
-  this.text_promo_code = undefined;
+  this.text_promo_code = "";
 
   /**
    * The website URL.
@@ -64,7 +62,7 @@ function Wl_Business_Lead_BusinessLeadModel()
    * @post post
    * @type {string}
    */
-  this.url_website = undefined;
+  this.url_website = "";
 
   this.changeInit();
 }
@@ -76,5 +74,18 @@ WlSdk_ModelAbstract.extend(Wl_Business_Lead_BusinessLeadModel);
  */
 Wl_Business_Lead_BusinessLeadModel.prototype.config=function()
 {
-  return {"a_field": {"k_business_partner": {"post": {"post": true}},"text_business_name": {"post": {"post": true}},"text_client_name": {"post": {"post": true}},"text_email": {"post": {"post": true}},"text_phone": {"post": {"post": true}},"text_promo_code": {"post": {"post": true}},"url_website": {"post": {"post": true}}}};
+  return {"a_field":{"k_business_partner":{"post":{"post":true}},"text_business_name":{"post":{"post":true}},"text_client_name":{"post":{"post":true}},"text_email":{"post":{"post":true}},"text_phone":{"post":{"post":true}},"text_promo_code":{"post":{"post":true}},"url_website":{"post":{"post":true}}}};
 };
+
+/**
+ * Saves a new business lead referral record submitted through the Partner Program.
+ *
+ * Used when a Partner Program member refers a new prospective client to WellnessLiving. Stores the
+ * lead's contact details linked to the referring partner so that sales can follow up and attribute
+ * the conversion to the correct partner.
+ *
+ * @function
+ * @name Wl_Business_Lead_BusinessLeadModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

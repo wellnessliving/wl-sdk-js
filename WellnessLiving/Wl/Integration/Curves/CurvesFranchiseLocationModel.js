@@ -1,7 +1,7 @@
 /**
- * An endpoint that gets information for enterprise locations.
- *
- * This model is generated automatically based on API.
+ * Returns country, region, state, city and location lists of the franchisor.
+ * This method returns all the information from the parent
+ * `get()` and the Curves territory ID.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -13,7 +13,7 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,id_business_franchise_location,id_report,is_include_non_api,is_include_churn";
+  this._s_key = "k_business,id_business_franchise_location,is_include_non_api,is_include_churn";
 
   /**
    * @typedef {{}} Wl_Integration_Curves_CurvesFranchiseLocationModel_a_city_list
@@ -25,32 +25,6 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
 
   /**
    * The city list. Each element has next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_city</var>
-   *   </dt>
-   *   <dd>
-   *     City key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     Country key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_state</var>
-   *   </dt>
-   *   <dd>
-   *     State key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     City title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Integration_Curves_CurvesFranchiseLocationModel_a_city_list[]}
@@ -65,20 +39,6 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
 
   /**
    * The country list. Each element has next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     Country key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     Country title.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Integration_Curves_CurvesFranchiseLocationModel_a_country_list[]}
@@ -87,6 +47,7 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
 
   /**
    * @typedef {{}} Wl_Integration_Curves_CurvesFranchiseLocationModel_a_location_list
+   * @property {number} id_currency A list of currencies.
    * @property {string} k_city City key.
    * @property {string} k_country Country key.
    * @property {string} k_location Location key.
@@ -96,45 +57,7 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
    */
 
   /**
-   * The location list. Each element has next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_city</var>
-   *   </dt>
-   *   <dd>
-   *     City key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     Country key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_location</var>
-   *   </dt>
-   *   <dd>
-   *     Location key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_region</var>
-   *   </dt>
-   *   <dd>
-   *     Franchise region key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_state</var>
-   *   </dt>
-   *   <dd>
-   *     State key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     Location title.
-   *   </dd>
-   * </dl>
+   * The location list. Each element has the next structure:
    *
    * @get result
    * @type {Wl_Integration_Curves_CurvesFranchiseLocationModel_a_location_list[]}
@@ -148,21 +71,7 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
    */
 
   /**
-   * The region list. Each element has next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_region</var>
-   *   </dt>
-   *   <dd>
-   *     Franchise region key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     Franchise region title.
-   *   </dd>
-   * </dl>
+   * The region list. Each element has the next structure:
    *
    * @get result
    * @type {Wl_Integration_Curves_CurvesFranchiseLocationModel_a_region_list[]}
@@ -177,27 +86,7 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
    */
 
   /**
-   * The state list. Each element has next structure:
-   * <dl>
-   *   <dt>
-   *     string <var>k_country</var>
-   *   </dt>
-   *   <dd>
-   *     Country key.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_state</var>
-   *   </dt>
-   *   <dd>
-   *     State key.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     State title.
-   *   </dd>
-   * </dl>
+   * The state list. Each element has the next structure:
    *
    * @get result
    * @type {Wl_Integration_Curves_CurvesFranchiseLocationModel_a_state_list[]}
@@ -209,27 +98,18 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
    *
    * One of the {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} constants.
    *
-   * <tt>null</tt> means that {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid.ALL} is used.
+   * If `null`, {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} is used.
    *
    * @get get
+   * @see Wl_Business_Franchise_Location_BusinessFranchiseLocationSid
    * @type {number}
    */
-  this.id_business_franchise_location = undefined;
+  this.id_business_franchise_location = 0;
 
   /**
-   * Determines report for which data should be returned.
+   * Determines whether to include churned/removed locations.
    *
-   * One of the {@link RsReportSid} constants.
-   *
-   * <tt>null</tt> means that report is not set.
-   *
-   * @get get
-   * @type {number}
-   */
-  this.id_report = undefined;
-
-  /**
-   * Whether to include churned/removed locations. `true` to list all locations regardless of their status.
+   * If `true`, all locations are listed (regardless of their status).
    *
    * @get get
    * @type {boolean}
@@ -237,8 +117,9 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
   this.is_include_churn = false;
 
   /**
-   * Whether to include locations marked to not be displayed on franchisor website. `true` to list all locations
-   * regardless of this setting.
+   * Determines whether to include locations marked to not be displayed on franchisor website.
+   *
+   * If `true`, all locations are listed (regardless of this setting).
    *
    * @get get
    * @type {boolean}
@@ -251,7 +132,7 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   this.changeInit();
 }
@@ -263,17 +144,30 @@ WlSdk_ModelAbstract.extend(Wl_Integration_Curves_CurvesFranchiseLocationModel);
  */
 Wl_Integration_Curves_CurvesFranchiseLocationModel.prototype.config=function()
 {
-  return {"a_field": {"a_city_list": {"get": {"result": true}},"a_country_list": {"get": {"result": true}},"a_location_list": {"get": {"result": true}},"a_region_list": {"get": {"result": true}},"a_state_list": {"get": {"result": true}},"id_business_franchise_location": {"get": {"get": true}},"id_report": {"get": {"get": true}},"is_include_churn": {"get": {"get": true}},"is_include_non_api": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_city_list":{"get":{"result":true}},"a_country_list":{"get":{"result":true}},"a_location_list":{"get":{"result":true}},"a_region_list":{"get":{"result":true}},"a_state_list":{"get":{"result":true}},"id_business_franchise_location":{"get":{"get":true}},"is_include_churn":{"get":{"get":true}},"is_include_non_api":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Integration_Curves_CurvesFranchiseLocationModel.instanceGet
  * @param {string} k_business The business key.
- * @param {number} id_business_franchise_location Determines which locations should be returned. One of the {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} constants. <tt>null</tt> means that {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid.ALL} is used.
- * @param {number} id_report Determines report for which data should be returned. One of the {@link RsReportSid} constants. <tt>null</tt> means that report is not set.
- * @param {boolean} is_include_non_api Whether to include locations marked to not be displayed on franchisor website. `true` to list all locations regardless of this setting.
- * @param {boolean} is_include_churn Whether to include churned/removed locations. `true` to list all locations regardless of their status.
+ * @param {number} id_business_franchise_location Determines which locations should be returned. One of the {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} constants. If `null`, {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} is used.
+ * @param {boolean} is_include_non_api Determines whether to include locations marked to not be displayed on franchisor website. If `true`, all locations are listed (regardless of this setting).
+ * @param {boolean} is_include_churn Determines whether to include churned/removed locations. If `true`, all locations are listed (regardless of their status).
  * @returns {Wl_Integration_Curves_CurvesFranchiseLocationModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns country, region, state, city and location lists of the franchisor.
+This method returns all the information from the parent
+`get()` and the Curves territory ID.
+ *
+ * Extends the parent location list with the Curves-specific territory ID (`k_territory_id`) for each
+ * franchisee location by joining against the Curves franchisee integration table.
+ *
+ * @function
+ * @name Wl_Integration_Curves_CurvesFranchiseLocationModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

@@ -7,7 +7,6 @@ function Wl_Business_Design_RsPageFrontendHeaderLayoutSid()
 }
 
 /**
- /**
  * Logo is under the main menu.
  *
  * @type {number}

@@ -1,7 +1,5 @@
 /**
- * An endpoint that searches for a referrer using a string.
- *
- * This model is generated automatically based on API.
+ * Searches for a referrer by the given search string and returns their profile information.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -24,26 +22,6 @@ function Wl_User_Referrer_ReferrerModel()
 
   /**
    * Information about the referrer's photo. The information returned has the following structure:
-   * <dl>
-   *   <dt>
-   *     int <var>i_height</var>
-   *   </dt>
-   *   <dd>
-   *     The height of the photo.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_width</var>
-   *   </dt>
-   *   <dd>
-   *     The width of the photo.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_photo</var>
-   *   </dt>
-   *   <dd>
-   *     The URL of the photo.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_User_Referrer_ReferrerModel_a_photo}
@@ -56,7 +34,7 @@ function Wl_User_Referrer_ReferrerModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * The email address of the referrer.
@@ -107,6 +85,15 @@ function Wl_User_Referrer_ReferrerModel()
   this.s_search = "";
 
   /**
+   * Composes name of the referrer for public usage.
+   * `null` if the referrer is not found.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.text_name_public = null;
+
+  /**
    * The referrer's user key.
    *
    * @get result
@@ -124,7 +111,7 @@ WlSdk_ModelAbstract.extend(Wl_User_Referrer_ReferrerModel);
  */
 Wl_User_Referrer_ReferrerModel.prototype.config=function()
 {
-  return {"a_field": {"a_photo": {"get": {"result": true}},"k_business": {"get": {"get": true}},"s_email": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_name_first": {"get": {"result": true}},"s_name_last": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_search": {"get": {"get": true}},"uid_referrer": {"get": {"result": true}}}};
+  return {"a_field":{"a_photo":{"get":{"result":true}},"k_business":{"get":{"get":true}},"s_email":{"get":{"result":true}},"s_member":{"get":{"result":true}},"s_name_first":{"get":{"result":true}},"s_name_last":{"get":{"result":true}},"s_phone":{"get":{"result":true}},"s_search":{"get":{"get":true}},"text_name_public":{"get":{"result":true}},"uid_referrer":{"get":{"result":true}}}};
 };
 
 /**
@@ -134,4 +121,17 @@ Wl_User_Referrer_ReferrerModel.prototype.config=function()
  * @param {string} k_business The key of the current business.
  * @returns {Wl_User_Referrer_ReferrerModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Searches for a referrer by the given search string and returns their profile information.
+ *
+ * Searches for a matching client by member ID, email address, phone number, or encrypted user
+ * key, and returns their name, email, phone, and photo. Returns empty or `null` fields when
+ * no matching client is found. Search is rate-limited for guest and client callers.
+ *
+ * @function
+ * @name Wl_User_Referrer_ReferrerModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

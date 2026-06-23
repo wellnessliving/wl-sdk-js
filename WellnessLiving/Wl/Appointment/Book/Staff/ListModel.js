@@ -1,5 +1,5 @@
 /**
- * Retrieves information about staff members for the current service.
+ * Retrieves an information about staff members for the current service.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -15,44 +15,19 @@ function Wl_Appointment_Book_Staff_ListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Staff_ListModel_a_staff
-   * @property {number} id_gender Staff member's gender.
-   * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached daily limits, this field
-   * will be different for client and staff booking flows. If client books, such staff member is not available and
-   * this field is `false`. If staff member books, such staff member is available.
+   * @property {number} id_gender String identifiers for gender.
+   * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached daily limits, this field will be different for client and staff booking flows. If client books, such staff member is not available and this field is `false`. If staff member books, such staff member is available.
    * @property {boolean} is_daily_limit Whether staff member reached daily limits on number or total duration of the appointments for one day.
    * @property {boolean} is_wait_list Whether staff member available only for wait list booking.
-   * @property {string} k_staff Primary key of the staff member.
+   * @property {string} k_staff @deprecated Legacy staff key.  Returned only for allow-listed apps.
    * @property {string} s_position Position of the staff member in the business.
-   * @property {number} s_staff Name of the staff member.
+   * @property {string} s_staff Name of the staff member.
    * @property {string} uid UID of the staff member.
    * @property {string} xml_biography Biography of the staff member.
    */
 
   /**
    * A list of staff members with information about them.
-   *
-   * <dl>
-   *   <dt>int <var>id_gender</var></dt>
-   *   <dd>Staff member's gender.</dd>
-   *   <dt>bool <var>is_available</var></dt>
-   *   <dd>Whether staff member is available for booking. Note, if staff member reached daily limits, this field
-   *     will be different for client and staff booking flows. If client books, such staff member is not available and
-   *     this field is `false`. If staff member books, such staff member is available.</dd>
-   *   <dt>bool <var>is_daily_limit</var></dt>
-   *   <dd>Whether staff member reached daily limits on number or total duration of the appointments for one day.</dd>
-   *   <dt>bool <var>is_wait_list</var></dt>
-   *   <dd>Whether staff member available only for wait list booking.</dd>
-   *   <dt>string <var>k_staff</var></dt>
-   *   <dd>Primary key of the staff member.</dd>
-   *   <dt>string <var>s_position</var></dt>
-   *   <dd>Position of the staff member in the business.</dd>
-   *   <dt>int <var>s_staff</var></dt>
-   *   <dd>Name of the staff member.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>UID of the staff member.</dd>
-   *   <dt>string <var>xml_biography</var></dt>
-   *   <dd>Biography of the staff member.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Appointment_Book_Staff_ListModel_a_staff[]}
@@ -106,9 +81,10 @@ function Wl_Appointment_Book_Staff_ListModel()
    * For different roles different results might be generated.
    *
    * @get get
+   * @see Wl_Login_LoginRoleSid
    * @type {number}
    */
-  this.id_role = 2;
+  this.id_role = 0;
 
   /**
    * Determines if the staff list has male and female members.
@@ -133,7 +109,7 @@ function Wl_Appointment_Book_Staff_ListModel()
    * @get get
    * @type {string}
    */
-  this.k_appointment_ignore = "0";
+  this.k_appointment_ignore = "";
 
   /**
    * The key of the location.
@@ -141,7 +117,7 @@ function Wl_Appointment_Book_Staff_ListModel()
    * @get get
    * @type {string}
    */
-  this.k_location = "0";
+  this.k_location = "";
 
   /**
    * The key of a service for which to show information.
@@ -149,7 +125,7 @@ function Wl_Appointment_Book_Staff_ListModel()
    * @get get
    * @type {string}
    */
-  this.k_service = "0";
+  this.k_service = "";
 
   /**
    * User's timezone.
@@ -181,7 +157,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Staff_ListModel);
  */
 Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_staff": {"get": {"result": true}},"can_book_unavailable_staff": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"has_gender": {"get": {"result": true}},"has_staff": {"get": {"result": true}},"i_duration_custom": {"get": {"get": true}},"id_role": {"get": {"get": true}},"is_gender_different": {"get": {"result": true}},"is_unavailable": {"get": {"get": true}},"k_appointment_ignore": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_staff":{"get":{"result":true}},"can_book_unavailable_staff":{"get":{"result":true}},"dt_date":{"get":{"get":true}},"has_gender":{"get":{"result":true}},"has_staff":{"get":{"result":true}},"i_duration_custom":{"get":{"get":true}},"id_role":{"get":{"get":true}},"is_gender_different":{"get":{"result":true}},"is_unavailable":{"get":{"get":true}},"k_appointment_ignore":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_timezone":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -197,4 +173,17 @@ Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
  * @param {?string} uid The user key for whom the service is booking. `null` when not set.
  * @returns {Wl_Appointment_Book_Staff_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves an information about staff members for the current service.
+ *
+ * Returns the list of staff members who can perform the specified service at the given location
+ * on the specified date and time. Each entry includes the staff member's name, image, gender,
+ * and availability. An 'any staff' option is included when the service allows random staff assignment.
+ *
+ * @function
+ * @name Wl_Appointment_Book_Staff_ListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

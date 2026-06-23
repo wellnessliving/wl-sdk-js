@@ -1,7 +1,5 @@
 /**
- * Signs a user in.
- *
- * This model is generated automatically based on API.
+ * Signs the user in using their login and hashed password.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -14,12 +12,12 @@ function Core_Passport_Login_Enter_EnterModel()
    * Additional data for user authorization.
    *
    * @post post
-   * @type {{}}
+   * @type {string}
    */
-  this.json_data = [];
+  this.json_data = "";
 
   /**
-   * Answer to the captcha if needed.
+   * The answer to the captcha, if needed.
    *
    * @post post
    * @type {string}
@@ -35,9 +33,9 @@ function Core_Passport_Login_Enter_EnterModel()
   this.s_login = "";
 
   /**
-   * A copy of notepad that was used to hash user password.
+   * A copy of the notepad that was used to hash the user password.
    *
-   * See {@link Core_Passport_Login_Enter_EnterModel.s_password} for details.
+   * See `s_password` for details.
    *
    * @post post
    * @type {string}
@@ -47,7 +45,7 @@ function Core_Passport_Login_Enter_EnterModel()
   /**
    * The hash of the user password.
    *
-   * Use `Core_Passport_Login_Enter_NotepadModel.hash()` to evaluate password hash.
+   * Use `Core_Passport_Login_Enter_NotepadModel.hash()` to evaluate the password hash.
    *
    * @post post
    * @type {string}
@@ -55,13 +53,13 @@ function Core_Passport_Login_Enter_EnterModel()
   this.s_password = "";
 
   /**
-   * Whether and how the user login and password should be remembered.
+   * Determines whether the user login and password should be remembered, and how they should be remembered.
    *
-   * The accepted values are as follows:
+   * The accepted values are:
    * <ul>
-   *   <li>`''` Empty line (default value) if you do not want to remember anything.</li>
-   *   <li>`'login'` Remember only user login.</li>
-   *   <li>`'password'` Remember user login and password.</li>
+   *   <li>`&#039;&#039;` Empty line (default value) if you do not want to remember anything.</li>
+   *   <li>`&#039;login&#039;` Remember only user login.</li>
+   *   <li>`&#039;password&#039;` Remember user login and password.</li>
    * </ul>
    *
    * @post post
@@ -70,22 +68,20 @@ function Core_Passport_Login_Enter_EnterModel()
   this.s_remember = "";
 
   /**
-   * Optional URL to get captcha image.
-   *
-   * This field is filled in a case when a captcha code is required to sign in.
-   *
-   * @post error
-   * @type {string}
-   */
-  this.url_captcha = undefined;
-
-  /**
-   * Optional url for redirection after sign in in web application.
+   * An optional URL for redirection after the user has signed in to the web application.
    *
    * @post result
    * @type {string}
    */
   this.url_redirect = undefined;
+
+  /**
+   * Url of previous page if the user was redirected to login.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.url_return = "";
 
   this.changeInit();
 }
@@ -97,5 +93,18 @@ WlSdk_ModelAbstract.extend(Core_Passport_Login_Enter_EnterModel);
  */
 Core_Passport_Login_Enter_EnterModel.prototype.config=function()
 {
-  return {"a_field": {"json_data": {"post": {"post": true}},"s_captcha": {"post": {"post": true}},"s_login": {"post": {"post": true}},"s_notepad": {"post": {"post": true}},"s_password": {"post": {"post": true}},"s_remember": {"post": {"post": true}},"url_captcha": {"post": {"error": true}},"url_redirect": {"post": {"result": true}}}};
+  return {"a_field":{"json_data":{"post":{"post":true}},"s_captcha":{"post":{"post":true}},"s_login":{"post":{"post":true}},"s_notepad":{"post":{"post":true}},"s_password":{"post":{"post":true}},"s_remember":{"post":{"post":true}},"url_redirect":{"post":{"result":true}},"url_return":{"post":{"post":true}}}};
 };
+
+/**
+ * Signs the user in using their login and hashed password.
+ *
+ * Accepts the user login, a password hash derived using the notepad obtained from [NotepadApi](/Core/Passport/Login/Enter/Notepad.json),
+ * and an optional remember preference. Validates credentials, enforces CAPTCHA when too many failed
+ * attempts have occurred, starts a session for the user, and returns a redirect URL if applicable.
+ *
+ * @function
+ * @name Core_Passport_Login_Enter_EnterModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

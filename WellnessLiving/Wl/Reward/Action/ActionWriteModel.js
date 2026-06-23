@@ -1,7 +1,5 @@
 /**
- * Point for modify the reward action.
- *
- * This model is generated automatically based on API.
+ * Updates configuration fields for the specified reward action.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,9 +9,9 @@ function Wl_Reward_Action_ActionWriteModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Promotions' list. Each element is a primary key in {@link \RsPromotionSql} table.
+   * Promotions' list.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?string[]}
@@ -23,7 +21,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Maximum count of score.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?number}
@@ -33,7 +31,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Count of the duration period.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?number}
@@ -43,7 +41,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Score of the reward.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?number}
@@ -51,33 +49,52 @@ function Wl_Reward_Action_ActionWriteModel()
   this.i_score = null;
 
   /**
-   * Period to apply maximum count of score.
+   * A class for managing time intervals.
+   * Last ID: 9.
    *
-   * <tt>null</tt> if not set yet.
+   * Values:
+   * - 4 (`DAY`): Days.
+   * - 3 (`HOUR`): Hours.
+   * - 2 (`MINUTE`): Minutes.
+   * - 5 (`MONTH`): Months.
+   * - 1 (`SECOND`): Seconds.
+   * - 7 (`WEEK`): Weeks (7 days).
+   * - 9 (`WEEK2`): Two weeks (14 days).
+   * - 8 (`WEEK4`): Foursome of weeks (28 days).
+   * - 6 (`YEAR`): Years.
    *
    * @post post
+   * @see ADurationSid
    * @type {?number}
    */
   this.id_cap = null;
 
   /**
-   * Type of a period.
+   * A class for managing time intervals.
+   * Last ID: 9.
    *
-   * This field contains one of {@link ADurationSid} constants.
-   *
-   * <tt>null</tt> if not set yet.
+   * Values:
+   * - 4 (`DAY`): Days.
+   * - 3 (`HOUR`): Hours.
+   * - 2 (`MINUTE`): Minutes.
+   * - 5 (`MONTH`): Months.
+   * - 1 (`SECOND`): Seconds.
+   * - 7 (`WEEK`): Weeks (7 days).
+   * - 9 (`WEEK2`): Two weeks (14 days).
+   * - 8 (`WEEK4`): Foursome of weeks (28 days).
+   * - 6 (`YEAR`): Years.
    *
    * @post post
+   * @see ADurationSid
    * @type {?number}
    */
   this.id_duration = null;
 
   /**
    * Flag to define points type (account credits or points) in the 'Refer-a-Friend' section on the 'Enable Points' page.
-   * <tt>true</tt>, if these are account credits.
-   * <tt>false</tt>, if these are points.
-   * <tt>null</tt> if field left unchanged.
-   * <var>is_account_credit</var> field in the {@link \RsRewardActionSql} table.
+   * `true`, if these are account credits.
+   * `false`, if these are points.
+   * `null` if field left unchanged.
    *
    * @post post
    * @type {?boolean}
@@ -85,7 +102,7 @@ function Wl_Reward_Action_ActionWriteModel()
   this.is_account_credit = null;
 
   /**
-   * Value of field `is_auto_renewal` for a {@link \RsRewardActionSql} table.
+   * Whether auto-renewal is enabled for this reward action.
    *
    * @post post
    * @type {?boolean}
@@ -95,7 +112,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Business key.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?string}
@@ -105,7 +122,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Class ID.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?string}
@@ -115,7 +132,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Promotion key.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?string}
@@ -125,7 +142,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Reward action ID.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?string}
@@ -135,7 +152,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Service key.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?string}
@@ -145,7 +162,7 @@ function Wl_Reward_Action_ActionWriteModel()
   /**
    * Shop product ID.
    *
-   * <tt>null</tt> if not set yet.
+   * `null` if not set yet.
    *
    * @post post
    * @type {?string}
@@ -162,5 +179,17 @@ WlSdk_ModelAbstract.extend(Wl_Reward_Action_ActionWriteModel);
  */
 Wl_Reward_Action_ActionWriteModel.prototype.config=function()
 {
-  return {"a_field": {"a_promotion": {"post": {"post": true}},"i_cap": {"post": {"post": true}},"i_count": {"post": {"post": true}},"i_score": {"post": {"post": true}},"id_cap": {"post": {"post": true}},"id_duration": {"post": {"post": true}},"is_account_credit": {"post": {"post": true}},"is_auto_renewal": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_class": {"post": {"post": true}},"k_promotion": {"post": {"post": true}},"k_reward_action": {"post": {"post": true}},"k_service": {"post": {"post": true}},"k_shop_product": {"post": {"post": true}}}};
+  return {"a_field":{"a_promotion":{"post":{"post":true}},"i_cap":{"post":{"post":true}},"i_count":{"post":{"post":true}},"i_score":{"post":{"post":true}},"id_cap":{"post":{"post":true}},"id_duration":{"post":{"post":true}},"is_account_credit":{"post":{"post":true}},"is_auto_renewal":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_class":{"post":{"post":true}},"k_promotion":{"post":{"post":true}},"k_reward_action":{"post":{"post":true}},"k_service":{"post":{"post":true}},"k_shop_product":{"post":{"post":true}}}};
 };
+
+/**
+ * Updates configuration fields for the specified reward action.
+ *
+ * Accepts changes to fields such as auto-renewal flag, point cap, point value, and linked promotions, and
+ * persists only the provided fields while logging the changes.
+ *
+ * @function
+ * @name Wl_Reward_Action_ActionWriteModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

@@ -1,20 +1,5 @@
 /**
- * Point to finish password change procedure.
- *
- * It advance post {@link Core_Passport_ChangePassword_ChangePasswordBeginModel} endpoint.
- * Set into {@link Core_Passport_ChangePassword_ChangePasswordBeginModel.url_reset} field URL to page
- * where you go to get new password from user.
- * It will send to user mail with "reset password" link.
- *
- * When user follows to your page, get <tt>text_mail</tt> and <tt>text_code</tt> from URL.
- *
- * Post this model to set a password for user.
- *
- * Use <tt>text_mail</tt> as value for {@link Core_Passport_ChangePassword_ChangePasswordApplyModel.text_login} and
- * {@link Core_Passport_ChangePassword_ChangePasswordApplyModel.text_mail},
- * <tt>text_code</tt> - for {@link Core_Passport_ChangePassword_ChangePasswordApplyModel.text_code}.
- *
- * This model is generated automatically based on API.
+ * Saves for user new password.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -24,11 +9,7 @@ function Core_Passport_ChangePassword_ChangePasswordApplyModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Verification code.
-   *
-   * <b>Required!</b>
-   *
-   * Get it from link to "password reset" page.
+   * The verification code, which can be obtained from the "reset password" email link. This is a required value.
    *
    * @post get
    * @type {string}
@@ -36,11 +17,7 @@ function Core_Passport_ChangePassword_ChangePasswordApplyModel()
   this.text_code = "";
 
   /**
-   * User's login.
-   *
-   * <b>Required!</b>
-   *
-   * Get it from link to "password reset" page.
+   * The user's login, which can be obtained from the "reset password" email link. This is a required value.
    *
    * @post get
    * @type {string}
@@ -48,11 +25,7 @@ function Core_Passport_ChangePassword_ChangePasswordApplyModel()
   this.text_login = "";
 
   /**
-   * User's email.
-   *
-   * <b>Required!</b>
-   *
-   * Get it from link to "password reset" page.
+   * The user's email address, which can be obtained from the "reset password" email link. This is a required value.
    *
    * @post get
    * @type {string}
@@ -60,9 +33,7 @@ function Core_Passport_ChangePassword_ChangePasswordApplyModel()
   this.text_mail = "";
 
   /**
-   * New password.
-   *
-   * <b>Required!</b>
+   * The user's new password. This is a required value.
    *
    * @post post
    * @type {string}
@@ -79,5 +50,18 @@ WlSdk_ModelAbstract.extend(Core_Passport_ChangePassword_ChangePasswordApplyModel
  */
 Core_Passport_ChangePassword_ChangePasswordApplyModel.prototype.config=function()
 {
-  return {"a_field": {"text_code": {"post": {"get": true}},"text_login": {"post": {"get": true}},"text_mail": {"post": {"get": true}},"text_password": {"post": {"post": true}}}};
+  return {"a_field":{"text_code":{"post":{"get":true}},"text_login":{"post":{"get":true}},"text_mail":{"post":{"get":true}},"text_password":{"post":{"post":true}}}};
 };
+
+/**
+ * Saves for user new password.
+ *
+ * Accepts the login, email, verification code (from the reset password link), and the new password,
+ * validates each against the stored state, and updates the user's password. If the user is not already
+ * signed in, a new session is started for them.
+ *
+ * @function
+ * @name Core_Passport_ChangePassword_ChangePasswordApplyModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

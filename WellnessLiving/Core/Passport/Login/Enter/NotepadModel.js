@@ -1,7 +1,5 @@
 /**
- * Retrieve the notepad value from the server which is used to log someone in to the SDK.
- *
- * This model is generated automatically based on API.
+ * Generates notepad for user sign in form.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,7 +9,27 @@ function Core_Passport_Login_Enter_NotepadModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Type of the hash.
+   * List of available data center regions.
+   *
+   * The business independently chooses the data center region in which it will be registered.
+   * The choice of the data center region does not depend on the actual location of the business.
+   * The region determines the data center in which the Wellnessliving system operates.
+   * The region should be chosen based on the access speed to the data center from business clients.
+   * Business from any region can be registered in any data center, but only in one.
+   *
+   * Last ID: 2.
+   *
+   * Values:
+   * - 2 (`AP_SOUTHEAST_2`): Sydney, Australia.
+   * - 1 (`US_EAST_1`): North Virginia, USA.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.id_region = undefined;
+
+  /**
+   * The hash type.
    *
    * @get result
    * @type {string}
@@ -19,7 +37,24 @@ function Core_Passport_Login_Enter_NotepadModel()
   this.s_hash = undefined;
 
   /**
-   * The notepad value, it is used to hash user's the password. Length is {@link Core_Passport_Login_Enter_NotepadModel.NONCE_LENGTH} characters.
+   * User login.
+   *
+   * If specified, additional information about user may be returned such as datacenter of the user.
+   *
+   * This value is only considered when {@link Core_Amazon_Region_AmazonRegionSid} is not empty,
+   * and {@link Core_Amazon_Region_AmazonRegionSid} returns `false`.
+   * In this case, regional cookie may be set, and the request may be forwarded internally to a different datacenter.
+   *
+   * `null` if additional information is not needed.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.s_login = null;
+
+  /**
+   * The notepad value, which is used to hash the user's password.
+   * The password length is `NONCE_LENGTH` characters.
    *
    * @get result
    * @type {string}
@@ -27,10 +62,9 @@ function Core_Passport_Login_Enter_NotepadModel()
   this.s_notepad = undefined;
 
   /**
-   * Type of session to store notepad in.
+   * The session type to store the notepad in.
    *
-   * Allowed values: <tt>system</tt> to store in system session (this is used to sign in at programmer pages).
-   * Empty string to store in temporary session.
+   * This will be an empty string for a temporary session. Otherwise, you can use `system` for a system session.
    *
    * @get get
    * @type {string}
@@ -43,39 +77,22 @@ function Core_Passport_Login_Enter_NotepadModel()
 WlSdk_ModelAbstract.extend(Core_Passport_Login_Enter_NotepadModel);
 
 /**
- * Evaluates hash based on notepad and plain user password.
- *
- * @param {String} s_password Plain user password.
- * @return {String} Password hash, depends on hash, solt, type of the hash and plain user password.
- */
-Core_Passport_Login_Enter_NotepadModel.prototype.hash=function(s_password)
-{
-  return sha3_512(this.s_notepad+this.passwordHash(s_password));
-};
-
-/**
- * Evaluates initial hash based on notepad and plain user password (this is value of hash that is stored in the database).
- *
- * <b>Be attentive!</b> This method has a PHP-side counterpart: {@link \Core\Passport\Login\PassportLogin::passwordHash()}.
- *
- * @param {String} s_password Plain user password.
- * @return {String} Password hash that is stored in the database.
- */
-Core_Passport_Login_Enter_NotepadModel.prototype.passwordHash=function(s_password)
-{
-  var a_delimiter=['r','4S','zqX','zqiOK','TLVS75V','Ue5aLaIIG75','uODJYM2JsCX4G','kt58wZfHHGQkHW4QN','Lh9Fl5989crMU4E7P6E'];
-  var s_hash='';
-
-  for(var i=0;i<9;i++)
-    s_hash=s_hash+a_delimiter[i]+s_password;
-
-  return sha3_512(s_hash);
-};
-
-/**
  * @inheritDoc
  */
 Core_Passport_Login_Enter_NotepadModel.prototype.config=function()
 {
-  return {"a_field": {"s_hash": {"get": {"result": true}},"s_notepad": {"get": {"result": true}},"s_type": {"get": {"get": true}}}};
+  return {"a_field":{"id_region":{"get":{"result":true}},"s_hash":{"get":{"result":true}},"s_login":{"get":{"get":true}},"s_notepad":{"get":{"result":true}},"s_type":{"get":{"get":true}}}};
 };
+
+/**
+ * Generates notepad for user sign in form.
+ *
+ * Generates a cryptographic nonce (one-time random string) and stores it in the session so that the
+ * client can hash the user's password with it before sending it to [EnterApi](/Core/Passport/Login/Enter/Enter.json). This prevents
+ * replay attacks and avoids transmitting passwords in plain text.
+ *
+ * @function
+ * @name Core_Passport_Login_Enter_NotepadModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

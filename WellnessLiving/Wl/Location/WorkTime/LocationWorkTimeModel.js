@@ -1,9 +1,5 @@
 /**
- * This API saves working hours of specified location.
- * Access for this action has logged user with specified permissions or guest during process of registration a new
- * business (see {@link Wl_Business_BusinessModel.sessionKey()}).
- *
- * This model is generated automatically based on API.
+ * Saves working hours of the location.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -14,43 +10,36 @@ function Wl_Location_WorkTime_LocationWorkTimeModel()
 
   /**
    * @typedef {{}} Wl_Location_WorkTime_LocationWorkTimeModel_a_work_time
-   * @property {number} i_day Day of the week from 1(Monday) to 7(Sunday). One of the constants from {@link ADateWeekSid}.
-   * @property {string} t_end End time of work in format HH:MM.
-   * @property {string} t_start Start time of work in format HH:MM.
+   * @property {number} i_day The day of the week, from Monday (1) to Sunday (7). One of the{@link ADateWeekSid} constants.
+   * @property {number} t_end The end time of work, formatted as HH:MM.
+   * @property {number} t_start The start time of work, formatted as HH:MM
    */
 
   /**
-   * List of working hours of the location. Each element has next structure:<dl>
-   *   <dt>int <var>i_day</var></dt>
-   *   <dd>Day of the week from 1(Monday) to 7(Sunday). One of the constants from {@link ADateWeekSid}.</dd>
-   *   <dt>string <var>t_end</var></dt>
-   *   <dd>End time of work in format HH:MM.</dd>
-   *   <dt>string <var>t_start</var></dt>
-   *   <dd>Start time of work in format HH:MM.</dd>
-   * </dl>
+   * The list of the location's business hours. Each element has the next structure:
    *
-   * <b>Important.</b> Days of the week that are not represented in this list will be saved as non-working days.
+   * Note that the days of the week that aren't represented in this list will be saved as non-working days.
    *
    * @post post
    * @type {Wl_Location_WorkTime_LocationWorkTimeModel_a_work_time[]}
    */
-  this.a_work_time = [];
+  this.a_work_time = undefined;
 
   /**
-   * Key of the business.
+   * The business key.
    *
    * @post post
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
-   * Key of the location.
+   * The location key.
    *
    * @post post
    * @type {string}
    */
-  this.k_location = undefined;
+  this.k_location = "";
 
   this.changeInit();
 }
@@ -62,5 +51,17 @@ WlSdk_ModelAbstract.extend(Wl_Location_WorkTime_LocationWorkTimeModel);
  */
 Wl_Location_WorkTime_LocationWorkTimeModel.prototype.config=function()
 {
-  return {"a_field": {"a_work_time": {"post": {"post": true}},"k_business": {"post": {"post": true}},"k_location": {"post": {"post": true}}}};
+  return {"a_field":{"a_work_time":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_location":{"post":{"post":true}}}};
 };
+
+/**
+ * Saves working hours of the location.
+ *
+ * Accepts a list of day-and-time-range entries representing the weekly schedule and replaces all existing
+ * working hours for the location. Days not present in the list are treated as non-working days.
+ *
+ * @function
+ * @name Wl_Location_WorkTime_LocationWorkTimeModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

@@ -1,8 +1,5 @@
 /**
- * An endpoint used to get a list of active businesses.
- *
- * This endpoint isn't available without user authorization. It requires the authorized user to have the
- * `rs.business.view` privilege.
+ * Generates list of active business keys for the same region as the requesting user (proper permissions required).
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,13 +14,14 @@ function Wl_Business_Account_BusinessAccountModel()
    * @get result
    * @type {string[]}
    */
-  this.a_business_keys = [];
+  this.a_business_keys = undefined;
 
   /**
-   * If `true`, this will only return paying WellnessLiving customers. Otherwise, this will be `false` to return only
-   * prospects.
+   * `true` returns WellnessLiving customers.
    *
-   * Note that test and churned businesses are never returned.
+   * `false` returns prospects.
+   *
+   * Test and churned businesses are never returned.
    *
    * @get get
    * @type {boolean}
@@ -31,7 +29,7 @@ function Wl_Business_Account_BusinessAccountModel()
   this.is_prospects = false;
 
   /**
-   * Determines if only businesses with published locations should be returned.
+   * Specifies if only businesses having published locations should be returned.
    *
    * @get get
    * @type {boolean}
@@ -48,5 +46,18 @@ WlSdk_ModelAbstract.extend(Wl_Business_Account_BusinessAccountModel);
  */
 Wl_Business_Account_BusinessAccountModel.prototype.config=function()
 {
-  return {"a_field": {"a_business_keys": {"get": {"result": true}},"is_prospects": {"get": {"get": true}},"is_published": {"get": {"get": true}}}};
+  return {"a_field":{"a_business_keys":{"get":{"result":true}},"is_prospects":{"get":{"get":true}},"is_published":{"get":{"get":true}}}};
 };
+
+/**
+ * Generates list of active business keys for the same region as the requesting user (proper permissions required).
+ *
+ * Used internally by WellnessLiving operations tools to enumerate all customer businesses in the current region.
+ * Returns only active, non-test businesses; set `is_prospects` to also include prospect businesses that have not
+ * yet churned. Requires the `rs.business.view` privilege.
+ *
+ * @function
+ * @name Wl_Business_Account_BusinessAccountModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

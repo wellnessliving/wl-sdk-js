@@ -1,7 +1,5 @@
 /**
- * An endpoint that gets a promotion list of the specified business.
- *
- * This model is generated automatically based on API.
+ * Returns promotion list of the specified business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -17,33 +15,15 @@ function Wl_Promotion_PromotionListModel()
 
   /**
    * @typedef {{}} Wl_Promotion_PromotionListModel_a_promotion
-   * @property {number} id_program The promotion program. One of the {@link Wl_WlProgramSid} constants.
+   * @property {number} id_program Program types.
+   * @property {number} id_program_type Program types.
+   * @property {boolean} is_active Whether the promotion is active.
    * @property {string} k_promotion The key of the promotion.
    * @property {string} text_title The title of the promotion.
    */
 
   /**
    * A list of promotions.
-   * <dl>
-   *   <dt>
-   *     int <var>id_program</var>
-   *   </dt>
-   *   <dd>
-   *     The promotion program. One of the {@link Wl_WlProgramSid} constants.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_promotion</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the promotion.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The title of the promotion.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Promotion_PromotionListModel_a_promotion[]}
@@ -65,7 +45,7 @@ function Wl_Promotion_PromotionListModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   this.changeInit();
 }
@@ -77,7 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_PromotionListModel);
  */
 Wl_Promotion_PromotionListModel.prototype.config=function()
 {
-  return {"a_field": {"a_promotion": {"get": {"result": true}},"is_franchise": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_promotion":{"get":{"result":true}},"is_franchise":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
@@ -87,4 +67,16 @@ Wl_Promotion_PromotionListModel.prototype.config=function()
  * @param {boolean} is_franchise Determines whether to return promotions created by Enterprise Locations (for Enterprise Cloud businesses only). If `true`, promotions created by Enterprise Locations are included. Otherwise, this will be `false`.
  * @returns {Wl_Promotion_PromotionListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns promotion list of the specified business.
+ *
+ * Returns all active promotions for the given business, with optional inclusion of Enterprise Location promotions
+ * when the business is a franchisor and `is_franchise` is set to `true`.
+ *
+ * @function
+ * @name Wl_Promotion_PromotionListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

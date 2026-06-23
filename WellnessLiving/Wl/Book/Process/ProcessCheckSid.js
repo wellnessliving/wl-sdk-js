@@ -5,7 +5,7 @@
  */
 function Wl_Book_Process_ProcessCheckSid()
 {
-    // Empty constructor.
+  // Empty constructor.
 }
 
 /**

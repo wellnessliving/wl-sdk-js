@@ -1,9 +1,11 @@
 /**
  * Define types of icons for notice messages.
+ *
+ * Last ID: 10.
  */
 function Wl_Reception_Application_MemberInfoIconSid()
 {
-    // Empty constructor.
+  // Empty constructor.
 }
 
 /**
@@ -46,7 +48,7 @@ Wl_Reception_Application_MemberInfoIconSid.DOLLAR = 5;
  *
  * @type {number}
  */
-Wl_Reception_Application_MemberInfoIconSid.DUMBELL = 6;
+Wl_Reception_Application_MemberInfoIconSid.DUMBBELL = 6;
 
 /**
  * Icon of a form.

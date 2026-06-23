@@ -3,7 +3,7 @@
  */
 function Wl_Service_BookableSid()
 {
-    // Empty constructor.
+  // Empty constructor.
 }
 
 /**
@@ -11,18 +11,18 @@ function Wl_Service_BookableSid()
  *
  * @type {number}
  */
-Wl_Service_BookableSid.ALL=1;
+Wl_Service_BookableSid.ALL = 1;
 
 /**
  * Only special client groups can book.
  *
  * @type {number}
  */
-Wl_Service_BookableSid.CUSTOM=3;
+Wl_Service_BookableSid.CUSTOM = 3;
 
 /**
  * Nobody can book.
  *
  * @type {number}
  */
-Wl_Service_BookableSid.NONE=2;
+Wl_Service_BookableSid.NONE = 2;

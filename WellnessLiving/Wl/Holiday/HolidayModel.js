@@ -1,7 +1,5 @@
 /**
- * An endpoint displaying information about locations' business holidays.
- *
- * This model is generated automatically based on API.
+ * Returns information about holiday day of business/locations.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,10 +14,12 @@ function Wl_Holiday_HolidayModel()
   this._s_key = "dl_work,k_business";
 
   /**
-   * A list of the location's closed day titles by location keys on the date {@link Wl_Holiday_HolidayModel.dl_work}.
+   * A list of the location's closed day titles by location keys on the date `dl_work`.
+   *
+   * Keys are location keys. Values are holiday title strings.
    *
    * @get result
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_location_holiday = undefined;
 
@@ -33,7 +33,7 @@ function Wl_Holiday_HolidayModel()
   this.dl_work = "";
 
   /**
-   * <tt>true</tt> if the business has a closed day on the date {@link Wl_Holiday_HolidayModel.dl_work}, <tt>false</tt> if otherwise.
+   * `true` if the business has a closed day on the date `dl_work`, `false` if otherwise.
    *
    * @get result
    * @type {boolean}
@@ -46,15 +46,15 @@ function Wl_Holiday_HolidayModel()
    * @get get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
-   * The message used for the business's closed day on the date {@link Wl_Holiday_HolidayModel.dl_work}.
+   * The message used for the business's closed day on the date `dl_work`.
    *
    * @get result
    * @type {string}
    */
-  this.text_business_title = "";
+  this.text_business_title = undefined;
 
   this.changeInit();
 }
@@ -66,7 +66,7 @@ WlSdk_ModelAbstract.extend(Wl_Holiday_HolidayModel);
  */
 Wl_Holiday_HolidayModel.prototype.config=function()
 {
-  return {"a_field": {"a_location_holiday": {"get": {"result": true}},"dl_work": {"get": {"get": true}},"is_business_holiday": {"get": {"result": true}},"k_business": {"get": {"get": true}},"text_business_title": {"get": {"result": true}}}};
+  return {"a_field":{"a_location_holiday":{"get":{"result":true}},"dl_work":{"get":{"get":true}},"is_business_holiday":{"get":{"result":true}},"k_business":{"get":{"get":true}},"text_business_title":{"get":{"result":true}}}};
 };
 
 /**
@@ -76,4 +76,17 @@ Wl_Holiday_HolidayModel.prototype.config=function()
  * @param {string} k_business The business key.
  * @returns {Wl_Holiday_HolidayModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns information about holiday day of business/locations.
+ *
+ * For the specified business and date, returns whether that date is a business-wide closed day, the closed day
+ * title if applicable, and a map of location keys to their closed day titles for any locations also closed on
+ * that date.
+ *
+ * @function
+ * @name Wl_Holiday_HolidayModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

@@ -1,6 +1,5 @@
 /**
- * Endpoint designed to pay for a visit with guest pass options attached to specific promotion.
- * If visit is paid already then old payment option will be revoked without penalties.
+ * Applies the guest pass of the specified login promotion to the attendee's visit.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -8,22 +7,6 @@
 function Wl_Login_Promotion_GuestPass_Apply_ApplyModel()
 {
   WlSdk_ModelAbstract.apply(this);
-
-  /**
-   * Full name of the inviting member, for display in the attendance row.
-   *
-   * @post result
-   * @type {string}
-   */
-  this.html_inviter_name = "";
-
-  /**
-   * Name of the guest pass promotion used.
-   *
-   * @post result
-   * @type {string}
-   */
-  this.html_pass_name = "";
 
   /**
    * Business key.
@@ -60,5 +43,17 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_GuestPass_Apply_ApplyModel);
  */
 Wl_Login_Promotion_GuestPass_Apply_ApplyModel.prototype.config=function()
 {
-  return {"a_field": {"html_inviter_name": {"post": {"result": true}},"html_pass_name": {"post": {"result": true}},"k_business": {"post": {"get": true}},"k_login_promotion": {"post": {"post": true}},"k_visit": {"post": {"post": true}}}};
+  return {"a_field":{"k_business":{"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_visit":{"post":{"post":true}}}};
 };
+
+/**
+ * Applies the guest pass of the specified login promotion to the attendee's visit.
+ *
+ * If the visit is already paid (with a regular session pass or an existing guest pass),
+ * the previous payment is unwound before the new guest pass is applied.
+ *
+ * @function
+ * @name Wl_Login_Promotion_GuestPass_Apply_ApplyModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

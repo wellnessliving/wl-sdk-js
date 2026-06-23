@@ -1,7 +1,5 @@
 /**
- * Retrieves a list of information about asset categories on the appointment booking page.
- *
- * This model is generated automatically based on API.
+ * Retrieves a list of information about asset categories for the appointment booking page.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -13,44 +11,18 @@ function Wl_Appointment_Book_Asset_CategoryModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_location,k_class_tab,is_backend";
+  this._s_key = "k_location,k_class_tab,is_backend,is_tab_all";
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_CategoryModel_a_category
-   * @property {*} hide_application <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
-   * @property {string} k_resource_type Resource type ID.
+   * @property {boolean} hide_application `true` - all resources are hidden in this category for White Label mobile application. `false` - otherwise.
    * @property {string} html_title Title of resource type.
+   * @property {string} k_resource_type Resource type ID.
    * @property {string} text_title Title of resource type as text.
    */
 
   /**
-   * A list of information about service categories.
-   * <dl>
-   *   <dt>
-   *     boolean <var>hide_application</var>
-   *   </dt>
-   *   <dd>
-   *     <tt>true</tt> - all resources are hidden in this category for White Label mobile application. <tt>false</tt> - otherwise.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_resource_type</var>
-   *   </dt>
-   *   <dd>
-   *     Resource type ID.
-   *   </dd>
-   *   <dt>
-   *     string <var>html_title</var>
-   *   </dt>
-   *   <dd>
-   *     Title of resource type.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     Title of resource type as text.
-   *   </dd>
-   * </dl>
+   * A list of information about asset categories.
    *
    * @get result
    * @type {Wl_Appointment_Book_Asset_CategoryModel_a_category[]}
@@ -81,7 +53,7 @@ function Wl_Appointment_Book_Asset_CategoryModel()
    * @get get
    * @type {string}
    */
-  this.k_class_tab = "0";
+  this.k_class_tab = "";
 
   /**
    * The key of the location to show information for.
@@ -89,7 +61,7 @@ function Wl_Appointment_Book_Asset_CategoryModel()
    * @get get
    * @type {string}
    */
-  this.k_location = "0";
+  this.k_location = "";
 
   this.changeInit();
 }
@@ -101,7 +73,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Asset_CategoryModel);
  */
 Wl_Appointment_Book_Asset_CategoryModel.prototype.config=function()
 {
-  return {"a_field": {"a_category": {"get": {"result": true}},"is_backend": {"get": {"get": true}},"is_tab_all": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_location": {"get": {"get": true}}}};
+  return {"a_field":{"a_category":{"get":{"result":true}},"is_backend":{"get":{"get":true}},"is_tab_all":{"get":{"get":true}},"k_class_tab":{"get":{"get":true}},"k_location":{"get":{"get":true}}}};
 };
 
 /**
@@ -110,6 +82,20 @@ Wl_Appointment_Book_Asset_CategoryModel.prototype.config=function()
  * @param {string} k_location The key of the location to show information for.
  * @param {string} k_class_tab The class tab key to use for filtering services.
  * @param {boolean} is_backend If `true`, asset categories are loaded for backend mode. Otherwise, this will be `false` if asset categories are loaded for frontend mode.
+ * @param {boolean} is_tab_all `true` - search in all tabs. `false` - search only for the selected book tab.
  * @returns {Wl_Appointment_Book_Asset_CategoryModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves a list of information about asset categories for the appointment booking page.
+ *
+ * Returns all asset categories available at the given location, optionally filtered by book now tab.
+ * Each category includes its title and a flag indicating whether all its assets are hidden in
+ * the White Label mobile application. Supports both frontend and backend modes.
+ *
+ * @function
+ * @name Wl_Appointment_Book_Asset_CategoryModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

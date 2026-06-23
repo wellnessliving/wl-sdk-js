@@ -1,7 +1,5 @@
 /**
- * An endpoint that returns information on a specified location.
- *
- * This model is generated automatically based on API.
+ * Returns detailed information about the specified location.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -19,19 +17,17 @@ function Wl_Location_View_ViewModel()
    * A list of ages that are permitted for visiting this location.
    *
    * @get result
-   * @see RsAgeSid
    * @type {number[]}
    */
-  this.a_age = [];
+  this.a_age = undefined;
 
   /**
    * A list of facilities that are available in this location.
    *
    * @get result
-   * @see RsFacilitySid
    * @type {number[]}
    */
-  this.a_amenities = [];
+  this.a_amenities = undefined;
 
   /**
    * A list of levels that are suitable for visiting this location.
@@ -39,7 +35,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string[]}
    */
-  this.a_level = [];
+  this.a_level = undefined;
 
   /**
    * @typedef {{}} Wl_Location_View_ViewModel_a_logo
@@ -50,26 +46,6 @@ function Wl_Location_View_ViewModel()
 
   /**
    * Information about the location logo used in WellnessLiving:
-   * <dl>
-   *   <dt>
-   *     int <var>i_height</var>
-   *   </dt>
-   *   <dd>
-   *     The image height.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_width</var>
-   *   </dt>
-   *   <dd>
-   *     The image width.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_url</var>
-   *   </dt>
-   *   <dd>
-   *     The URL to the image.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Location_View_ViewModel_a_logo}
@@ -87,32 +63,6 @@ function Wl_Location_View_ViewModel()
   /**
    * A list of the location images.
    * Every element has the following keys:
-   * <dl>
-   *   <dt>
-   *     int <var>i_height</var>
-   *   </dt>
-   *   <dd>
-   *     Height.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_width</var>
-   *   </dt>
-   *   <dd>
-   *     Width.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_preview</var>
-   *   </dt>
-   *   <dd>
-   *     URL to image preview.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_slide</var>
-   *   </dt>
-   *   <dd>
-   *     URL to full image.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Location_View_ViewModel_a_slide}
@@ -128,20 +78,6 @@ function Wl_Location_View_ViewModel()
   /**
    * The hours of operation for the location.
    * Fields are numbers representing specific days (1 is Monday, 7 is Sunday). Values are objects with the next fields:
-   * <dl>
-   *   <dt>
-   *     string <var>s_end</var>
-   *   </dt>
-   *   <dd>
-   *     The time of day end in MySQL format.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_start</var>
-   *   </dt>
-   *   <dd>
-   *     The time of day start in MySQL format.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Location_View_ViewModel_a_work}
@@ -154,7 +90,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {number}
    */
-  this.f_latitude = 0;
+  this.f_latitude = undefined;
 
   /**
    * The longitude coordinate of the location.
@@ -162,7 +98,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {number}
    */
-  this.f_longitude = 0;
+  this.f_longitude = undefined;
 
   /**
    * The full description of the location.
@@ -173,7 +109,7 @@ function Wl_Location_View_ViewModel()
   this.html_description_full = undefined;
 
   /**
-   * A shorter description of the location. A preview of {@link Wl_Location_View_ViewModel.html_description_full}.
+   * A shorter description of the location. A preview of `html_description_full`.
    *
    * @get result
    * @type {string}
@@ -186,7 +122,7 @@ function Wl_Location_View_ViewModel()
    * @get get
    * @type {number}
    */
-  this.i_logo_height = 100;
+  this.i_logo_height = 0;
 
   /**
    * Maximum location image width.
@@ -194,26 +130,59 @@ function Wl_Location_View_ViewModel()
    * @get get
    * @type {number}
    */
-  this.i_logo_width = 220;
+  this.i_logo_width = 0;
 
   /**
-   * The industry of the business.
-   * `null` in case when industry didn't set for chosen business type, or for business types
-   * where set value which is absent.
+   * List of different types for landing pages based on business types.
+   *
+   * Last ID: 33
+   *
+   * Values:
+   * - 26 (`BARBERSHOP`): Barbershops.
+   * - 24 (`BOOTCAMP`): Boot camps.
+   * - 25 (`BOXING`): Boxing studios.
+   * - 21 (`BUSINESS_MANAGEMENT`): Special industry free landing page with only contact us form.
+   * - 10 (`CLUB`): Health clubs.
+   * - 9 (`CROSSFIT`): Affiliate Gym.
+   * - 11 (`DANCE`): Dance studios.
+   * - 14 (`DENTAL`): Dental studios.
+   * - 6 (`FITNESS`): Fitness gyms.
+   * - 29 (`FUNCTIONAL_FITNESS`): Functional fitness also known as functional training or functional movement.
+   * - 22 (`GYM`): Fitness gyms.
+   * - 23 (`HEALTH_CLUB`): Health clubs.
+   * - 30 (`INTEGRATIVE_HEALTH_CENTER`): Health and beauty salons at one place.
+   * - 8 (`MARTIAL_ART`): Martial arts.
+   * - 4 (`MASSAGE`): Massage salons.
+   * - 28 (`MEDICAL_SPA`): Massage salons.
+   * - 15 (`MEDICINE_ALTERNATIVE`): Alternative medical offices.
+   * - 13 (`MEDICINE_TRADITIONAL`): Hospitals and private doctors.
+   * - 19 (`MUSIC`): Music schools.
+   * - 5 (`PERSONAL_TRAINING`): Personal trainings.
+   * - 7 (`PILATES`): Pilates.
+   * - 32 (`PLAY_CAFE`): Play cafes.
+   * - 18 (`POLE_DANCING`): Pole dancing studios.
+   * - 3 (`SALON`): Salons.
+   * - 2 (`SPA`): Spa salons.
+   * - 17 (`SPINNING`): Spinning.
+   * - 33 (`SWIM_SCHOOL`): Swim schools
+   * - 31 (`TATTOO`): Tattoo salons.
+   * - 12 (`TOUR`): Tours and events.
+   * - 20 (`WELLNESS_CENTER`): Wellness Centers
+   * - 1 (`YOGA`): Yoga.
+   * - 27 (`ZUMBA`): Zumba.
    *
    * @get result
-   * @see RsHomeTourSid
    * @type {?number}
    */
-  this.id_industry = 0;
+  this.id_industry = null;
 
   /**
-   * `true` if to display phone number on location page. `False` otherwise.
+   * `true` if to display phone number on location page. `false` otherwise.
    *
    * @get result
    * @type {boolean}
    */
-  this.is_phone = false;
+  this.is_phone = undefined;
 
   /**
    * `true` if WellnessLiving identifies this is a top choice location, `false` otherwise.
@@ -221,7 +190,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {boolean}
    */
-  this.is_top_choice = false;
+  this.is_top_choice = undefined;
 
   /**
    * The key of the business this location belongs to.
@@ -229,7 +198,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = undefined;
 
   /**
    * The key of the business type this location belongs to.
@@ -237,7 +206,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.k_business_type = "0";
+  this.k_business_type = undefined;
 
   /**
    * The location key.
@@ -245,10 +214,10 @@ function Wl_Location_View_ViewModel()
    * @get get
    * @type {string}
    */
-  this.k_location = "0";
+  this.k_location = "";
 
   /**
-   * Timezone primary key in {@link \AGeoTimezoneSql} table.
+   * The timezone.
    *
    * @get result
    * @type {string}
@@ -319,7 +288,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.text_business_type = "";
+  this.text_business_type = undefined;
 
   /**
    * The city name of the location.
@@ -341,10 +310,9 @@ function Wl_Location_View_ViewModel()
    * The name of the industry of the business.
    *
    * @get result
-   * @see RsHomeTourSid
    * @type {string}
    */
-  this.text_industry = "";
+  this.text_industry = undefined;
 
   /**
    * The email address.
@@ -384,7 +352,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.url_facebook = "";
+  this.url_facebook = undefined;
 
   /**
    * The Instagram URL of the location.
@@ -392,7 +360,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.url_instagram = "";
+  this.url_instagram = undefined;
 
   /**
    * The Linked In URL of the location.
@@ -400,7 +368,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.url_linkedin = "";
+  this.url_linkedin = undefined;
 
   /**
    * The URL of the location in Google Maps.
@@ -424,7 +392,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.url_site = "";
+  this.url_site = undefined;
 
   /**
    * The URL of the location's Twitter account.
@@ -432,7 +400,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.url_twitter = "";
+  this.url_twitter = undefined;
 
   /**
    * The URL to the business's Client Web App.
@@ -440,7 +408,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.url_web = "";
+  this.url_web = undefined;
 
   /**
    * The YouTube URL of the location.
@@ -448,7 +416,7 @@ function Wl_Location_View_ViewModel()
    * @get result
    * @type {string}
    */
-  this.url_youtube = "";
+  this.url_youtube = undefined;
 
   this.changeInit();
 }
@@ -460,7 +428,7 @@ WlSdk_ModelAbstract.extend(Wl_Location_View_ViewModel);
  */
 Wl_Location_View_ViewModel.prototype.config=function()
 {
-  return {"a_field": {"a_age": {"get": {"result": true}},"a_amenities": {"get": {"result": true}},"a_level": {"get": {"result": true}},"a_logo": {"get": {"result": true}},"a_slide": {"get": {"result": true}},"a_work": {"get": {"result": true}},"f_latitude": {"get": {"result": true}},"f_longitude": {"get": {"result": true}},"html_description_full": {"get": {"result": true}},"html_description_preview": {"get": {"result": true}},"i_logo_height": {"get": {"get": true}},"i_logo_width": {"get": {"get": true}},"id_industry": {"get": {"result": true}},"is_phone": {"get": {"result": true}},"is_top_choice": {"get": {"result": true}},"k_business": {"get": {"result": true}},"k_business_type": {"get": {"result": true}},"k_location": {"get": {"get": true}},"k_timezone": {"get": {"result": true}},"s_address": {"get": {"result": true}},"s_map": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_timezone": {"get": {"result": true}},"s_title": {"get": {"result": true}},"text_address_individual": {"get": {"result": true}},"text_alias": {"get": {"result": true}},"text_business_type": {"get": {"result": true}},"text_city": {"get": {"result": true}},"text_country": {"get": {"result": true}},"text_industry": {"get": {"result": true}},"text_mail": {"get": {"result": true}},"text_postal": {"get": {"result": true}},"text_region": {"get": {"result": true}},"text_region_code": {"get": {"result": true}},"url_facebook": {"get": {"result": true}},"url_instagram": {"get": {"result": true}},"url_linkedin": {"get": {"result": true}},"url_map": {"get": {"result": true}},"url_microsite": {"get": {"result": true}},"url_site": {"get": {"result": true}},"url_twitter": {"get": {"result": true}},"url_web": {"get": {"result": true}},"url_youtube": {"get": {"result": true}}}};
+  return {"a_field":{"a_age":{"get":{"result":true}},"a_amenities":{"get":{"result":true}},"a_level":{"get":{"result":true}},"a_logo":{"get":{"result":true}},"a_slide":{"get":{"result":true}},"a_work":{"get":{"result":true}},"f_latitude":{"get":{"result":true}},"f_longitude":{"get":{"result":true}},"html_description_full":{"get":{"result":true}},"html_description_preview":{"get":{"result":true}},"i_logo_height":{"get":{"get":true}},"i_logo_width":{"get":{"get":true}},"id_industry":{"get":{"result":true}},"is_phone":{"get":{"result":true}},"is_top_choice":{"get":{"result":true}},"k_business":{"get":{"result":true}},"k_business_type":{"get":{"result":true}},"k_location":{"get":{"get":true}},"k_timezone":{"get":{"result":true}},"s_address":{"get":{"result":true}},"s_map":{"get":{"result":true}},"s_phone":{"get":{"result":true}},"s_timezone":{"get":{"result":true}},"s_title":{"get":{"result":true}},"text_address_individual":{"get":{"result":true}},"text_alias":{"get":{"result":true}},"text_business_type":{"get":{"result":true}},"text_city":{"get":{"result":true}},"text_country":{"get":{"result":true}},"text_industry":{"get":{"result":true}},"text_mail":{"get":{"result":true}},"text_postal":{"get":{"result":true}},"text_region":{"get":{"result":true}},"text_region_code":{"get":{"result":true}},"url_facebook":{"get":{"result":true}},"url_instagram":{"get":{"result":true}},"url_linkedin":{"get":{"result":true}},"url_map":{"get":{"result":true}},"url_microsite":{"get":{"result":true}},"url_site":{"get":{"result":true}},"url_twitter":{"get":{"result":true}},"url_web":{"get":{"result":true}},"url_youtube":{"get":{"result":true}}}};
 };
 
 /**
@@ -469,4 +437,16 @@ Wl_Location_View_ViewModel.prototype.config=function()
  * @param {string} k_location The location key.
  * @returns {Wl_Location_View_ViewModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns detailed information about the specified location.
+ *
+ * Returns the full profile of a location, including address, coordinates, timezone, contact information,
+ * business hours, logo, slide images, amenities, social media links, and a description.
+ *
+ * @function
+ * @name Wl_Location_View_ViewModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

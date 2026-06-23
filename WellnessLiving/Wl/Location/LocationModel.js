@@ -1,14 +1,5 @@
 /**
- * An endpoint that creates a new location in the business or edits a specified location.
- * Access to this endpoint is logged with specified permissions. It can also be accessed by guests during the
- * registration process for new businesses (see {@link Wl_Business_BusinessModel.sessionKey()}).
- *
- * Field <tt>k_business</tt> is required.
- * Other fields are optionally if the location should be edited. This means if a field is not specified it is not be changed.
- * If <tt>k_location</tt> is not specified that new location will be created. In this case <tt>k_city</tt>,
- * <tt>text_address</tt> and <tt>text_title</tt> are required.
- *
- * This model is generated automatically based on API.
+ * Creates new location or edits the existing location.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -24,7 +15,7 @@ function Wl_Location_LocationModel()
    * @post post
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * The key of the city.
@@ -105,5 +96,19 @@ WlSdk_ModelAbstract.extend(Wl_Location_LocationModel);
  */
 Wl_Location_LocationModel.prototype.config=function()
 {
-  return {"a_field": {"k_business": {"post": {"post": true}},"k_city": {"post": {"post": true}},"k_location": {"post": {"post": true,"result": true}},"k_timezone": {"post": {"post": true}},"text_address": {"post": {"post": true}},"text_email": {"post": {"post": true}},"text_phone": {"post": {"post": true}},"text_postal": {"post": {"post": true}},"text_title": {"post": {"post": true}}}};
+  return {"a_field":{"k_business":{"post":{"post":true}},"k_city":{"post":{"post":true}},"k_location":{"post":{"post":true,"result":true}},"k_timezone":{"post":{"post":true}},"text_address":{"post":{"post":true}},"text_email":{"post":{"post":true}},"text_phone":{"post":{"post":true}},"text_postal":{"post":{"post":true}},"text_title":{"post":{"post":true}}}};
 };
+
+/**
+ * Creates new location or edits the existing location.
+ *
+ * When `k_location` is omitted, creates a new location requiring `k_city`,
+ * `text_address`, and `text_title`.
+ * When `k_location` is provided, updates only the supplied fields of the existing location.
+ * Returns the key of the created or updated location.
+ *
+ * @function
+ * @name Wl_Location_LocationModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

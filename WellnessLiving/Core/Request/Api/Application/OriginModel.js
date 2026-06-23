@@ -1,16 +1,5 @@
 /**
- * Allows to get, delete and add origins for application.
- *
- * Origins are links on the sites, where API can be used sign CORS authorization - from client's browser.
- * If site is not in the list, you can use API only for requests between two servers. Requests directly from client's
- * browser are restricted.
- *
- * Origin should be exact full link on the site.
- *
- * Important to understand that application can add allowed sites only for itself and cannot add for another application.
- * This means that you need to call this API point using only the application, which you are going to use on the sites.
- *
- * This model is generated automatically based on API.
+ * Restricts access to API for all sites, which are given in the list.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -22,17 +11,14 @@ function Core_Request_Api_Application_OriginModel()
   /**
    * A list of origins.
    *
-   * Key is link on the site, where API is allowed.
-   *
-   * Value is a domain which used to make API requests.
-   * May be <tt>null</tt> and in this case the API requests are made directly to WL web server.
-   *
-   * <tt>null</tt> if is not initialized yet.
+   * An associative array where the key is the origin URL of the site where API calls can be made,
+   *  and the value is the additional API domain used to make API requests to the WellnessLiving server.
+   * `null` if not yet initialized.
    *
    * @delete post
    * @get result
    * @put post
-   * @type {?{}}
+   * @type {?string[]}
    */
   this.a_list = null;
 
@@ -46,5 +32,41 @@ WlSdk_ModelAbstract.extend(Core_Request_Api_Application_OriginModel);
  */
 Core_Request_Api_Application_OriginModel.prototype.config=function()
 {
-  return {"a_field": {"a_list": {"delete": {"post": true},"get": {"result": true},"put": {"post": true}}}};
+  return {"a_field":{"a_list":{"delete":{"post":true},"get":{"result":true},"put":{"post":true}}}};
 };
+
+/**
+ * Restricts access to API for all sites, which are given in the list.
+ *
+ * Accepts a list of origin URLs (with optional API domain overrides), validates each URL, and removes
+ * the matching entries from the allowed origins for the current application, then clears the origin cache.
+ *
+ * @function
+ * @name Core_Request_Api_Application_OriginModel.delete
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.delete()
+ */
+
+/**
+ * Gets list of all sites, where usage of the API is allowed for the current application.
+ *
+ * Returns the list of allowed CORS origins for the current API application, where each key is an
+ * origin URL and each value is an optional API domain used to proxy requests from that origin.
+ *
+ * @function
+ * @name Core_Request_Api_Application_OriginModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Allows access to API for all sites, which are given in the list.
+ *
+ * Accepts a list of origin URLs (with optional API domain overrides), validates each URL and domain,
+ * inserts or updates the entries in the allowed origins for the current application, then clears the origin cache.
+ *
+ * @function
+ * @name Core_Request_Api_Application_OriginModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
+ */

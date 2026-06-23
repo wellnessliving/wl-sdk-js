@@ -7,7 +7,6 @@ function Wl_Business_Design_RsBusinessDesignLogoStyleSid()
 }
 
 /**
- /**
  * Logo is invisible.
  *
  * @type {number}
@@ -22,7 +21,7 @@ Wl_Business_Design_RsBusinessDesignLogoStyleSid.HIDE = 1;
 Wl_Business_Design_RsBusinessDesignLogoStyleSid.RECTANGLE = 4;
 
 /**
- * Logo is round.
+ * Logo is a round.
  *
  * @type {number}
  */

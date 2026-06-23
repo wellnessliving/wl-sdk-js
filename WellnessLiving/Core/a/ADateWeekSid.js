@@ -1,7 +1,5 @@
 /**
- * Week days.
- *
- * Last used ID: 7.
+ * A class for the days of the week.
  */
 function ADateWeekSid()
 {

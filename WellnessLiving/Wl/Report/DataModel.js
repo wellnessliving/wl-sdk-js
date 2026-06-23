@@ -1,11 +1,5 @@
 /**
- * An endpoint that returns information from a WellnessLiving report.
- *
- * There are two All Clients Reports that can be used to find user IDs. The results from each report can be filtered by different
- * fields. The two reports are similar, but not exactly the same. The `LOGIN_LIST` (ID 22) report requires filters to be set to
- * retrieve information. The `LOGIN_LIST_ALL` (ID 33) doesn’t require any filters to be set when specifying a date range.
- *
- * This model is generated automatically based on API.
+ * Gets data of required report.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -25,9 +19,19 @@ function Wl_Report_DataModel()
    * Contents of this array can vary based on the report that's loaded.
    *
    * @get result
-   * @type {{}}
+   * @type {*[]}
    */
   this.a_data = undefined;
+
+  /**
+   * The report total.
+   *
+   * Contents of this array can vary based on the report that's loaded.
+   *
+   * @get result
+   * @type {*[]}
+   */
+  this.a_total = undefined;
 
   /**
    * The page of results to show, starting at zero. The API will return 256 results per page.
@@ -38,18 +42,27 @@ function Wl_Report_DataModel()
   this.i_page = 0;
 
   /**
-   * The report ID. One of the {@link RsReportSid} constants.
+   * The report ID.
+   * The following reports are currently available via the API:
+   * <ul>
+   *     <li>{@link RsReportSid} - All Clients Report (Reports tab, features date search)</li>
+   *     <li>{@link RsReportSid} - All Clients Report (Clients tab) Batch Report</li>
+   *     <li>{@link RsReportSid} - Batch Report</li>
+   *     <li>{@link RsReportSid} - Sales per Client Report</li>
+   *     <li>{@link RsReportSid} - All Sales Report</li>
+   * </ul>
    *
    * @get get
+   * @see RsReportSid
    * @type {number}
    */
   this.id_report = 0;
 
   /**
-   * The report group ID. One of the {@link RsReportGroupSid} constants that describes the time
-   * period (day, week, month, or year) for the report to cover.
+   * The report group ID.
    *
    * @get get
+   * @see RsReportGroupSid
    * @type {number}
    */
   this.id_report_group = 0;
@@ -59,6 +72,7 @@ function Wl_Report_DataModel()
    * If set, the collection of that page will be used, otherwise a collection of single report will be used.
    *
    * @get get
+   * @see RsReportPageSid
    * @type {?number}
    */
   this.id_report_page = null;
@@ -67,6 +81,7 @@ function Wl_Report_DataModel()
    * The report view ID. One of the {@link RsReportChartViewSid} constants.
    *
    * @get get
+   * @see RsReportChartViewSid
    * @type {number}
    */
   this.id_report_view = 0;
@@ -77,10 +92,10 @@ function Wl_Report_DataModel()
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
-   * Filter settings in encoded format. May be decoded by {@link Core\Tool\UrlEncode\UrlDecode::decode()}.
+   * Filter settings in encoded format.
    *
    * @get get
    * @type {string}
@@ -105,19 +120,31 @@ WlSdk_ModelAbstract.extend(Wl_Report_DataModel);
  */
 Wl_Report_DataModel.prototype.config=function()
 {
-  return {"a_field": {"a_data": {"get": {"result": true}},"i_page": {"get": {"get": true}},"id_report": {"get": {"get": true}},"id_report_group": {"get": {"get": true}},"id_report_page": {"get": {"get": true}},"id_report_view": {"get": {"get": true}},"k_business": {"get": {"get": true}},"s_filter": {"get": {"get": true}},"s_sort": {"get": {"get": true}}}};
+  return {"a_field":{"a_data":{"get":{"result":true}},"a_total":{"get":{"result":true}},"i_page":{"get":{"get":true}},"id_report":{"get":{"get":true}},"id_report_group":{"get":{"get":true}},"id_report_page":{"get":{"get":true}},"id_report_view":{"get":{"get":true}},"k_business":{"get":{"get":true}},"s_filter":{"get":{"get":true}},"s_sort":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Report_DataModel.instanceGet
  * @param {number} i_page The page of results to show, starting at zero. The API will return 256 results per page.
- * @param {number} id_report The report ID. One of the {@link RsReportSid} constants.
- * @param {number} id_report_group The report group ID. One of the {@link RsReportGroupSid} constants that describes the time period (day, week, month, or year) for the report to cover.
+ * @param {number} id_report The report ID. The following reports are currently available via the API: <ul> <li>{@link RsReportSid} - All Clients Report (Reports tab, features date search)</li> <li>{@link RsReportSid} - All Clients Report (Clients tab) Batch Report</li> <li>{@link RsReportSid} - Batch Report</li> <li>{@link RsReportSid} - Sales per Client Report</li> <li>{@link RsReportSid} - All Sales Report</li> </ul>
+ * @param {number} id_report_group The report group ID.
  * @param {number} id_report_view The report view ID. One of the {@link RsReportChartViewSid} constants.
  * @param {string} k_business The key of business for which the report must be generated.
- * @param {string} s_filter Filter settings in encoded format. May be decoded by {@link Core\Tool\UrlEncode\UrlDecode::decode()}.
+ * @param {string} s_filter Filter settings in encoded format.
  * @param {string} s_sort The field to use for sorting report data.
  * @returns {Wl_Report_DataModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Gets data of required report.
+ *
+ * Loads the specified report for the given business, applying filter, sort, and pagination parameters,
+ * and returns the report rows and totals.
+ *
+ * @function
+ * @name Wl_Report_DataModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

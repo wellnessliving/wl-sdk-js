@@ -1,5 +1,5 @@
 /**
- * An endpoint that performs authorization actions with Microsoft.
+ * Removes the association between a website client and a Microsoft account.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -14,7 +14,7 @@ function Wl_Microsoft_Login_MicrosoftLoginModel()
    * @get result
    * @type {boolean}
    */
-  this.is_exists = false;
+  this.is_exists = undefined;
 
   /**
    * If authorization is performed in a third-party application, set this flag in case of authorization errors.
@@ -64,7 +64,7 @@ function Wl_Microsoft_Login_MicrosoftLoginModel()
    * @get result
    * @type {string}
    */
-  this.url_login = "";
+  this.url_login = undefined;
 
   /**
    * The Redirect URI for external applications.
@@ -73,9 +73,9 @@ function Wl_Microsoft_Login_MicrosoftLoginModel()
    * * All possible links must be registered in the Microsoft application used for authorization.
    * * WARNING: Do not use this link for a direct redirect. This will present a vulnerability.
    *
-   * * A {@link Social_Microsoft_LoginModel.url_login} link will be generated along with this redirect URI.
-   * * When checking the received {@link Social_Microsoft_LoginModel.s_code} from Microsoft, the link must be sent along with it
-   * to the {@link Social_Microsoft_LoginModel.post()} method.
+   * * A [LoginApi](/Social/Microsoft/Login.json) link will be generated along with this redirect URI.
+   * * When checking the received [LoginApi](/Social/Microsoft/Login.json) from Microsoft.
+   * The link must be sent along with it to the `post()` method.
    *
    * @get get
    * @post get
@@ -93,5 +93,42 @@ WlSdk_ModelAbstract.extend(Wl_Microsoft_Login_MicrosoftLoginModel);
  */
 Wl_Microsoft_Login_MicrosoftLoginModel.prototype.config=function()
 {
-  return {"a_field": {"is_exists": {"get": {"result": true}},"is_external": {"post": {"get": true}},"k_business": {"post": {"post": true}},"s_code": {"post": {"post": true}},"s_state": {"post": {"post": true}},"uid": {"delete": {"get": true},"get": {"get": true}},"url_login": {"get": {"result": true}},"url_redirect": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field":{"is_exists":{"get":{"result":true}},"is_external":{"post":{"get":true}},"k_business":{"post":{"post":true}},"s_code":{"post":{"post":true}},"s_state":{"post":{"post":true}},"uid":{"delete":{"get":true},"get":{"get":true}},"url_login":{"get":{"result":true}},"url_redirect":{"get":{"get":true},"post":{"get":true}}}};
 };
+
+/**
+ * Removes the association between a website client and a Microsoft account.
+ *
+ * Accepts the user's UID, verifies that the caller is the account owner, and unlinks the Microsoft
+ * account from the user's profile.
+ *
+ * @function
+ * @name Wl_Microsoft_Login_MicrosoftLoginModel.delete
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.delete()
+ */
+
+/**
+ * Collects data for the Microsoft login button.
+ *
+ * Called when rendering the "Sign in with Microsoft" button. Generates the OAuth 2.0 authorization URL
+ * the button must link to. When a UID is provided, also reports whether that user already has a Microsoft
+ * account linked, so the frontend can show "Link" or "Unlink" instead of the default sign-in label.
+ *
+ * @function
+ * @name Wl_Microsoft_Login_MicrosoftLoginModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Authenticates a user via Microsoft OAuth for the specified business.
+ *
+ * Validates the business key, sets it as the current frontend business context, and then delegates to the
+ * parent Microsoft OAuth flow to complete sign-in.
+ *
+ * @function
+ * @name Wl_Microsoft_Login_MicrosoftLoginModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

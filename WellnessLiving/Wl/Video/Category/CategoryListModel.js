@@ -1,7 +1,5 @@
 /**
- * An endpoint that returns a list of video categories.
- *
- * This model is generated automatically based on API.
+ * Returns the list of video categories for the business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -18,6 +16,10 @@ function Wl_Video_Category_CategoryListModel()
   /**
    * A list of shared video category keys displayed in the order to be saved.
    *
+   * Values can be:
+   * * <b>[Deprecated]</b> String keys in old format. 
+   * * String keys in new format.
+   *
    * @put post
    * @type {string[]}
    */
@@ -33,20 +35,9 @@ function Wl_Video_Category_CategoryListModel()
    */
 
   /**
-   * The business video library categories as found in {@link Wl_Video_Category_CategoryListModel.k_business}.
+   * The business video library categories as found in `k_business`.
    *
-   * Each element has the following structure: <dl>
-   *   <dt>bool <var>can_delete</var></dt>
-   *   <dd>Determines whether the video category can be deleted.</dd>
-   *   <dt>int <var>i_video</var></dt>
-   *   <dd>The number of videos.</dd>
-   *   <dt>string <var>k_video_category</var></dt>
-   *   <dd>The key of the video category.</dd>
-   *   <dt>string <var>k_video_category_full</var></dt>
-   *   <dd>The string key of the video category.</dd>
-   *   <dt>string <var>text_title</var></dt>
-   *   <dd>The title of the category.</dd>
-   * </dl>
+   * Each element has the following structure:
    *
    * @get result
    * @type {Wl_Video_Category_CategoryListModel_a_video_category[]}
@@ -68,7 +59,7 @@ function Wl_Video_Category_CategoryListModel()
    * @get get
    * @type {boolean}
    */
-  this.is_skip_empty_group = undefined;
+  this.is_skip_empty_group = false;
 
   /**
    * The business key.
@@ -77,7 +68,7 @@ function Wl_Video_Category_CategoryListModel()
    * @put get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * The filter phrase used to filter categories by name.
@@ -85,7 +76,7 @@ function Wl_Video_Category_CategoryListModel()
    * @get get
    * @type {string}
    */
-  this.text_filter = undefined;
+  this.text_filter = "";
 
   this.changeInit();
 }
@@ -97,7 +88,7 @@ WlSdk_ModelAbstract.extend(Wl_Video_Category_CategoryListModel);
  */
 Wl_Video_Category_CategoryListModel.prototype.config=function()
 {
-  return {"a_field": {"a_order": {"put": {"post": true}},"a_video_category": {"get": {"result": true}},"is_backend": {"get": {"get": true},"put": {"get": true}},"is_skip_empty_group": {"get": {"get": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"text_filter": {"get": {"get": true}}}};
+  return {"a_field":{"a_order":{"put":{"post":true}},"a_video_category":{"get":{"result":true}},"is_backend":{"get":{"get":true},"put":{"get":true}},"is_skip_empty_group":{"get":{"get":true}},"k_business":{"get":{"get":true},"put":{"get":true}},"text_filter":{"get":{"get":true}}}};
 };
 
 /**
@@ -107,4 +98,29 @@ Wl_Video_Category_CategoryListModel.prototype.config=function()
  * @param {boolean} is_backend If `true`, the API is being used from backend. Otherwise, this will be `false`.
  * @returns {Wl_Video_Category_CategoryListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns the list of video categories for the business.
+ *
+ * Returns all video categories for the business with their titles, video counts, and cloud
+ * recording assignment. In frontend mode, only categories accessible to the current user are
+ * included. Results can be filtered by name and optionally limited to non-empty categories.
+ *
+ * @function
+ * @name Wl_Video_Category_CategoryListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Updates the order of video categories.
+ *
+ * Reorders the video library categories for the business according to the provided list.
+ * Requires backend access with the video library management privilege.
+ *
+ * @function
+ * @name Wl_Video_Category_CategoryListModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
  */

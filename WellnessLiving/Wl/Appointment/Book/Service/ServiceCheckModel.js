@@ -1,5 +1,5 @@
 /**
- * Checks if service can be booked by client. Throws exception if booking is restricted.
+ * Checks whether a service can be booked by the given client at the given date, throwing an exception if booking is restricted.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -63,7 +63,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Service_ServiceCheckModel);
  */
 Wl_Appointment_Book_Service_ServiceCheckModel.prototype.config=function()
 {
-  return {"a_field": {"dt_date": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"dt_date":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_service":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -76,4 +76,16 @@ Wl_Appointment_Book_Service_ServiceCheckModel.prototype.config=function()
  * @param {string} dt_date Date of booking in MySQL format.
  * @returns {Wl_Appointment_Book_Service_ServiceCheckModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Checks whether a service can be booked by the given client at the given date, throwing an exception if booking is restricted.
+ *
+ * Validates the client's age against the service's age restrictions and checks the booking date
+ * against the service's booking window. Returns without data on success; throws exception with a descriptive message when booking is not allowed.
+ *
+ * @function
+ * @name Wl_Appointment_Book_Service_ServiceCheckModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

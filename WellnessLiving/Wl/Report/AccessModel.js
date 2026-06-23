@@ -1,7 +1,5 @@
 /**
- * Data about access of current user to certain report.
- *
- * This model is generated automatically based on API.
+ * Checks access to given report.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -16,7 +14,20 @@ function Wl_Report_AccessModel()
   this._s_key = "id_report,k_business";
 
   /**
-   * <tt>true</tt> - access is granted; <tt>false</tt> - access is denied.
+   * Report CID.
+   *
+   * It's used mostly for second generation reports.
+   * For first generation reports use `id_report` instead.
+   *
+   * Only one of these two fields should be sent, but not both.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.cid_report = 0;
+
+  /**
+   * `true` - access is granted; `false` - access is denied.
    *
    * @get result
    * @type {boolean}
@@ -24,9 +35,15 @@ function Wl_Report_AccessModel()
   this.has_access = undefined;
 
   /**
-   * Report ID. One of {@link RsReportSid} constants.
+   * Report ID.
+   *
+   * It's used mostly for first generation reports.
+   * For second generation reports use `cid_report` instead.
+   *
+   * Only one of these two fields should be sent, but not both.
    *
    * @get get
+   * @see RsReportSid
    * @type {number}
    */
   this.id_report = 0;
@@ -37,7 +54,7 @@ function Wl_Report_AccessModel()
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   this.changeInit();
 }
@@ -49,14 +66,26 @@ WlSdk_ModelAbstract.extend(Wl_Report_AccessModel);
  */
 Wl_Report_AccessModel.prototype.config=function()
 {
-  return {"a_field": {"has_access": {"get": {"result": true}},"id_report": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"cid_report":{"get":{"get":true}},"has_access":{"get":{"result":true}},"id_report":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Report_AccessModel.instanceGet
- * @param {number} id_report Report ID. One of {@link RsReportSid} constants.
+ * @param {number} id_report Report ID. It's used mostly for first generation reports. For second generation reports use `cid_report` instead. Only one of these two fields should be sent, but not both.
  * @param {string} k_business ID of business for which access must be checked.
  * @returns {Wl_Report_AccessModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Checks access to given report.
+ *
+ * Accepts either `id_report` (first-generation reports) or `cid_report` (second-generation reports), but not both,
+ * and returns `has_access` indicating whether the current user may view the report in the given business.
+ *
+ * @function
+ * @name Wl_Report_AccessModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

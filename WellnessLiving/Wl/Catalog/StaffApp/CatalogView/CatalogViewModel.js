@@ -1,7 +1,5 @@
 /**
- * Returns information about an item’s price after taxes.
- *
- * This model is generated automatically based on API.
+ * Calculates price information about sale item.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -13,7 +11,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_config
    * @property {number} f_promote The amount to prorate the item by.
-   * @property {boolean} is_prorate If <tt>true</tt> this item is prorated.
+   * @property {boolean} is_prorate If `true`, this item is prorated.
    * @property {string} m_prorate_custom The custom prorate amount.
    */
 
@@ -22,19 +20,10 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
    *
    * If set, these values will change the values returned by the endpoint call.
    *
-   * <dl>
-   *   <dt>float <var>f_promote</var></dt>
-   *   <dd>The amount to prorate the item by.</dd>
-   *   <dt>bool <var>is_prorate</var></dt>
-   *   <dd>If <tt>true</tt> this item is prorated.</dd>
-   *   <dt>string <var>m_prorate_custom</var></dt>
-   *   <dd>The custom prorate amount.</dd>
-   * </dl>
-   *
    * @get get
    * @type {Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_config}
    */
-  this.a_config = [];
+  this.a_config = undefined;
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_tax
@@ -45,26 +34,31 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   /**
    * Contains information about edited taxes.
    *
-   * It is `null` if not set yet or taxes are default.
+   * This will be `null` if not set yet or default taxes are used.
    *
-   * The key is the tax identifier and the value is:
-   * <dl>
-   *   <dt>string <var>k_tax</var></dt>
-   *   <dd>The tax ID.</dd>
-   *   <dt>string <var>m_tax_custom</var></dt>
-   *   <dd>The amount of custom tax.</dd>
-   * </dl>
+   * The key is the tax identifier, where the value is:
    *
    * @get get
    * @type {Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_tax}
    */
-  this.a_tax = [];
+  this.a_tax = undefined;
 
   /**
-   * Contains information about calculated taxes. The structure of this array is described in {@link RsTax::$a_tax}.
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_tax_data
+   * @property {number} f_tax The calculated tax amount applied by this rule.
+   * @property {string} f_tax_discount The tax amount after applying all discounts.
+   * @property {string} f_tax_discount_login The tax amount after applying the client type discount only.
+   * @property {number} f_value The tax rate. Its meaning depends on `id_tax`.
+   * @property {number} id_tax Types of taxes.
+   * @property {string} k_tax The tax key.
+   * @property {string} s_tax The tax name.
+   */
+
+  /**
+   * Contains information about calculated taxes.
    *
    * @get result
-   * @type {{}}
+   * @type {Wl_Catalog_StaffApp_CatalogView_CatalogViewModel_a_tax_data}
    */
   this.a_tax_data = undefined;
 
@@ -74,19 +68,20 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
    * @get get
    * @type {number}
    */
-  this.i_quantity = "";
+  this.i_quantity = 0;
 
   /**
-   * The ID of the sale category. One of {@link RsSaleSid} constants.
+   * The ID of the sale category. One of the {@link RsSaleSid} constants.
    *
    * @get get
-   * @type {number}
+   * @see RsSaleSid
+   * @type {?number}
    */
-  this.id_sale = 0;
+  this.id_sale = null;
 
   /**
    * The business key.
-   * `null` means system business.
+   * This will be `null` for the system business.
    *
    * @get get
    * @type {string}
@@ -95,8 +90,8 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * The key of the sale item.
-   * It can be retrieved with the {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel} endpoint (see the
-   * <var>a_shop_product</var> parameter).
+   * This can be retrieved with the [CatalogListApi](/Wl/Catalog/StaffApp/CatalogList/CatalogList.json) endpoint (see the
+   * `a_shop_product` parameter).
    *
    * @get get
    * @type {string}
@@ -104,7 +99,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.k_id = "";
 
   /**
-   * The key of the product option.
+   * The product option key.
    *
    * @get get
    * @type {string}
@@ -128,7 +123,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
   this.m_prorate = undefined;
 
   /**
-   * Amount of sale item without taxes.
+   * The amount of the sale item, excluding taxes.
    *
    * @get result
    * @type {string}
@@ -169,5 +164,18 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogView_CatalogViewModel);
  */
 Wl_Catalog_StaffApp_CatalogView_CatalogViewModel.prototype.config=function()
 {
-  return {"a_field": {"a_config": {"get": {"get": true}},"a_tax": {"get": {"get": true}},"a_tax_data": {"get": {"result": true}},"i_quantity": {"get": {"get": true}},"id_sale": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_id": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true}},"m_price": {"get": {"get": true}},"m_prorate": {"get": {"result": true}},"m_subtotal": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"m_total": {"get": {"result": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field":{"a_config":{"get":{"get":true}},"a_tax":{"get":{"get":true}},"a_tax_data":{"get":{"result":true}},"i_quantity":{"get":{"get":true}},"id_sale":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_id":{"get":{"get":true}},"k_shop_product_option":{"get":{"get":true}},"m_price":{"get":{"get":true}},"m_prorate":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_total":{"get":{"result":true}},"uid":{"get":{"get":true}}}};
 };
+
+/**
+ * Calculates price information about sale item.
+ *
+ * Used in the staff app checkout to show the real-time price of a single line item as the staff
+ * member configures it (adjusting quantity, custom price, or proration). Returns the full tax
+ * breakdown so the staff member sees exactly what the client will be charged.
+ *
+ * @function
+ * @name Wl_Catalog_StaffApp_CatalogView_CatalogViewModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

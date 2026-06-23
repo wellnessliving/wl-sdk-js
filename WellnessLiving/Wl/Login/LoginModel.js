@@ -1,10 +1,5 @@
 /**
- * An endpoint that returns the profile information for a specific user.
- *
- * This endpoint can be used to return public information about a staff member or a user`s image. To obtain the
- * user's full information, you'll need access to the requested user.
- *
- * This model is generated automatically based on API.
+ * Retrieves information about user.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -20,91 +15,21 @@ function Wl_Login_LoginModel()
 
   /**
    * @typedef {{}} Wl_Login_LoginModel_a_login
-   * @property {number} id_gender User's gender. One of {@link Wl_Gender_GenderSid} constants.
+   * @property {number} id_gender String identifiers for gender.
    * @property {string} k_staff User's key as staff member.
    * @property {string} s_first_name User first name.
    * @property {string} s_last_name First letter of user last name.
-   * @property {string} text_mail_client Client`s mail.
-   * @property {string} text_mail_staff Staff`s mail.
-   * @property {string} text_name_first_staff Staff`s first name.
-   * @property {string} text_name_full_client Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See
-   * description of the {@link Wl\User\Info\UserInfo::nameFullText()} method.
+   * @property {string} text_mail_client Client`s mail.   </dd>
+   * @property {string} text_name_first_staff Staff's first name.
+   * @property {string} text_name_full_client Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
    * @property {string} text_name_full_staff Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
    * @property {string} text_name_last_staff Staff`s last name.
+   * @property {string} uid_staff The user's UID as a staff member.
    * @property {string} url_photo User photo URL.
    */
 
   /**
    * List of information about users:
-   * <dl>
-   *   <dt>
-   *     int <var>id_gender</var>
-   *   </dt>
-   *   <dd>
-   *     User's gender. One of {@link Wl_Gender_GenderSid} constants.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_staff</var>
-   *   </dt>
-   *   <dd>
-   *     User's key as staff member.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_first_name</var>
-   *   </dt>
-   *   <dd>
-   *     User first name.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_last_name</var>
-   *   </dt>
-   *   <dd>
-   *     First letter of user last name.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_mail_client</var>
-   *   </dt>
-   *   <dd>
-   *     Client`s mail.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_mail_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff`s mail.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_name_first_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff`s first name.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_name_full_client</var>
-   *   </dt>
-   *   <dd>
-   *     Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login. See
-   *     description of the {@link Wl\User\Info\UserInfo::nameFullText()} method.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_name_full_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
-   *   </dd>`
-   *   <dt>
-   *     string <var>text_name_last_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff`s last name.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_photo</var>
-   *   </dt>
-   *   <dd>
-   *     User photo URL.
-   *   </dd>
-   * </dl>
    *
    * @post result
    * @type {Wl_Login_LoginModel_a_login[]}
@@ -118,6 +43,14 @@ function Wl_Login_LoginModel()
    * @type {boolean}
    */
   this.can_postcard = undefined;
+
+  /**
+   * Whether this user can send SMS. If `true` - user can send SMS, otherwise - `false`.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_send_message = undefined;
 
   /**
    * The height of the requested photo.
@@ -138,12 +71,26 @@ function Wl_Login_LoginModel()
   this.i_photo_width = 0;
 
   /**
-   * The gender ID. It will be one of the {@link Wl_Gender_GenderSid} constants.
+   * String identifiers for gender.
+   *
+   * Values:
+   * - 2 (`FEMALE`): Female gender.
+   * - 1 (`MALE`): Male gender.
+   * - 3 (`UNDEFINED`): Gender is undefined in cases where the user preferred not to identify their gender.
    *
    * @get result
    * @type {number}
    */
   this.id_gender = undefined;
+
+  /**
+   * Whether photo is uploaded.
+   * `true` if photo is not uploaded, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_photo_empty = undefined;
 
   /**
    * The key of the business. Users can be in multiple businesses.
@@ -153,7 +100,7 @@ function Wl_Login_LoginModel()
    * @post get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * The user's staff key for the specified business.
@@ -189,7 +136,7 @@ function Wl_Login_LoginModel()
 
   /**
    * The staff member's mailing address.
-   * This will be set if the user is a staff member ({@link Wl_Login_LoginModel.k_staff}).
+   * This will be set if the user is a staff member (`k_staff`).
    *
    * @get result
    * @type {string}
@@ -198,7 +145,7 @@ function Wl_Login_LoginModel()
 
   /**
    * The staff member's first name.
-   * This will be set if the user is a staff member ({@link Wl_Login_LoginModel.k_staff}).
+   * This will be set if the user is a staff member (`k_staff`).
    *
    * @get result
    * @type {string}
@@ -218,7 +165,7 @@ function Wl_Login_LoginModel()
    * The staff member's full name.
    * The user login is returned in cases where neither the first name nor the last name have been specified.
    * An empty string is returned in cases where neither the first name, last name, nor login have been specified.
-   * This will be set if the user is a staff member ({@link Wl_Login_LoginModel.k_staff}).
+   * This will be set if the user is a staff member (`k_staff`).
    *
    * @get result
    * @type {string}
@@ -227,7 +174,7 @@ function Wl_Login_LoginModel()
 
   /**
    * The staff member's last name.
-   * This will be set if the user is a staff member ({@link Wl_Login_LoginModel.k_staff}).
+   * This will be set if the user is a staff member (`k_staff`).
    *
    * @get result
    * @type {string}
@@ -235,9 +182,9 @@ function Wl_Login_LoginModel()
   this.text_name_last_staff = undefined;
 
   /**
-   * List of users to get information for. Serialized as JSON string.
+   * List of users to get information for serialized as JSON string.
    *
-   * <tt>null</tt> for mode of single user.
+   * `null` for mode of single user.
    *
    * @post post
    * @type {?string}
@@ -252,7 +199,15 @@ function Wl_Login_LoginModel()
    * @get get,result
    * @type {?string}
    */
-  this.uid = "0";
+  this.uid = null;
+
+  /**
+   * The user's UID as a staff member for the specified business.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.uid_staff = null;
 
   /**
    * The URL where the user photo can be retrieved.
@@ -272,7 +227,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_LoginModel);
  */
 Wl_Login_LoginModel.prototype.config=function()
 {
-  return {"a_field": {"a_login": {"post": {"result": true}},"can_postcard": {"get": {"result": true}},"i_photo_height": {"get": {"get": true},"post": {"get": true}},"i_photo_width": {"get": {"get": true},"post": {"get": true}},"id_gender": {"get": {"result": true}},"k_business": {"get": {"get": true},"post": {"get": true}},"k_staff": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"text_mail_client": {"get": {"result": true}},"text_mail_staff": {"get": {"result": true}},"text_name_first_staff": {"get": {"result": true}},"text_name_full_client": {"get": {"result": true}},"text_name_full_staff": {"get": {"result": true}},"text_name_last_staff": {"get": {"result": true}},"text_uid": {"post": {"post": true}},"uid": {"get": {"get": true,"result": true}},"url_photo": {"get": {"result": true}}}};
+  return {"a_field":{"a_login":{"post":{"result":true}},"can_postcard":{"get":{"result":true}},"can_send_message":{"get":{"result":true}},"i_photo_height":{"get":{"get":true},"post":{"get":true}},"i_photo_width":{"get":{"get":true},"post":{"get":true}},"id_gender":{"get":{"result":true}},"is_photo_empty":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_staff":{"get":{"result":true}},"s_first_name":{"get":{"result":true}},"s_last_name":{"get":{"result":true}},"text_mail_client":{"get":{"result":true}},"text_mail_staff":{"get":{"result":true}},"text_name_first_staff":{"get":{"result":true}},"text_name_full_client":{"get":{"result":true}},"text_name_full_staff":{"get":{"result":true}},"text_name_last_staff":{"get":{"result":true}},"text_uid":{"post":{"post":true}},"uid":{"get":{"get":true,"result":true}},"uid_staff":{"get":{"result":true}},"url_photo":{"get":{"result":true}}}};
 };
 
 /**
@@ -282,4 +237,31 @@ Wl_Login_LoginModel.prototype.config=function()
  * @param {string} k_business The key of the business. Users can be in multiple businesses. This can be left as `null` to retrieve system-wide information.
  * @returns {Wl_Login_LoginModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Retrieves information about user.
+ *
+ * Returns name, gender, photo URL, email, and staff details for the specified user within the given business.
+ * Public staff information is returned even without profile access; full client details require access to the
+ * user's profile.
+ *
+ * @function
+ * @name Wl_Login_LoginModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Retrieves information about a list of users.
+This is done via "post" method because only "post" allows large requests.
+ *
+ * Accepts a JSON-encoded array of user keys, validates each one, resolves staff and client roles, and returns
+ * name, gender, photo URL, email, and staff details for every user in the list, respecting per-user profile access
+ * rules.
+ *
+ * @function
+ * @name Wl_Login_LoginModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

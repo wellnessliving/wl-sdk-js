@@ -1,7 +1,5 @@
 /**
- * Returns receipt data of certain purchase.
- *
- * This model is generated automatically based on API.
+ * Gets purchase information.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -23,7 +21,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_account_rest}
    */
-  this.a_account_rest = [];
+  this.a_account_rest = undefined;
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_business_a_logo
@@ -32,6 +30,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @property {boolean} is_empty This will be `true` if the image is empty. Otherwise, this will be `false`.
    * @property {string} text_url The URL of the image.
    */
+
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_business
    * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_business_a_logo} a_logo The business logo.
@@ -47,7 +46,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_business}
    */
-  this.a_business = [];
+  this.a_business = undefined;
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_card
@@ -62,7 +61,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_card}
    */
-  this.a_card = [];
+  this.a_card = undefined;
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_customer
@@ -78,7 +77,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_customer}
    */
-  this.a_customer = [];
+  this.a_customer = undefined;
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_pay_method
@@ -93,7 +92,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_pay_method}
    */
-  this.a_pay_method = [];
+  this.a_pay_method = undefined;
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_price
@@ -113,35 +112,34 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_price}
    */
-  this.a_price = [];
+  this.a_price = undefined;
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo
    * @property {number} i_height The image height.
    * @property {number} i_width The image width.
    * @property {boolean} is_empty Determines whether the image is empty.
-   * @property {string} text_url The URL of the image.
+   * @property {string} text_url he URL of the image.
    */
+
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item
    * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo} a_logo The purchase item logo.
-   * @property {string[]} a_visit List of visit keys. Only available if the purchase item is an event.
+   * @property {string[]} a_visit List of visit keys. Only available if the purchase item is a class period, enrollment, enrollment deposit, or enrollment discount. Each element is a string visit key.
    * @property {number} i_count The number of items in the purchase.
-   * @property {?number} id_program Program ID. One of {@link Wl_WlProgramSid} constants. Only applies to promotions.
-   *   `null` if the purchase item is not a promotion.
-   * @property {number} id_purchase_item Purchase item ID. One of {@link Wl_Purchase_Item_ItemSid} constants.
-   * @property {number} id_sale Sale ID. One of {@link RsSaleSid} constants.
-   * @property {number} k_id The identifier of the item.
+   * @property {number} id_program Program types.
+   * @property {number} id_purchase_item A list of purchase types.
+   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {string} k_id The identifier of the item.
    * @property {string} k_purchase_item The key of the purchase item.
-   * @property {string} [k_shop_product] Product key, primary key in {@link \RsShopProductSql}. Set only if <tt>id_purchase_item</tt>
-   *   is {@link Wl_Purchase_Item_ItemSid.PRODUCT}.
+   * @property {string} k_shop_product Product key. Set only if `id_purchase_item`is {@link RsPurchaseItemSid}.
    * @property {string} m_price The price of the single item.
    * @property {string} m_price_total The price of all items.
    * @property {string} text_category The type of the item (for example, a pass or membership).
    * @property {string} text_currency The currency of the price.
+   * @property {string} text_description The description of the purchase item.
    * @property {string} text_info Additional information about the purchase item.
    * @property {string} text_title The name of the purchase item.
-   * @property {string} text_description The description of the purchase item.
    * @property {string} url_print The URL to print. Only available if the purchase item is a coupon (gift card).
    */
 
@@ -151,7 +149,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @get result
    * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item[]}
    */
-  this.a_purchase_item = [];
+  this.a_purchase_item = undefined;
 
   /**
    * The local date of the purchase in MySQL format.
@@ -178,7 +176,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.html_receipt = undefined;
 
   /**
-   * Whether {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print} and {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print_receipt} require authentication.
+   * Whether `url_print` and `url_print_receipt` require authentication.
    *
    * If `true`, the URL contains a token that allows temporary access to the page without logging in. If 'false', the
    * page requires authentication.
@@ -238,5 +236,17 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Receipt_PurchaseReceiptModel);
  */
 Wl_Purchase_Receipt_PurchaseReceiptModel.prototype.config=function()
 {
-  return {"a_field": {"a_account_rest": {"get": {"result": true}},"a_business": {"get": {"result": true}},"a_card": {"get": {"result": true}},"a_customer": {"get": {"result": true}},"a_pay_method": {"get": {"result": true}},"a_price": {"get": {"result": true}},"a_purchase_item": {"get": {"result": true}},"dtl_purchase": {"get": {"result": true}},"has_signature": {"get": {"result": true}},"html_receipt": {"get": {"result": true}},"is_url_public": {"get": {"get": true}},"k_purchase": {"get": {"get": true}},"text_purchase_id": {"get": {"result": true}},"text_receipt": {"get": {"result": true}},"url_print": {"get": {"result": true}},"url_print_receipt": {"get": {"result": true}}}};
+  return {"a_field":{"a_account_rest":{"get":{"result":true}},"a_business":{"get":{"result":true}},"a_card":{"get":{"result":true}},"a_customer":{"get":{"result":true}},"a_pay_method":{"get":{"result":true}},"a_price":{"get":{"result":true}},"a_purchase_item":{"get":{"result":true}},"dtl_purchase":{"get":{"result":true}},"has_signature":{"get":{"result":true}},"html_receipt":{"get":{"result":true}},"is_url_public":{"get":{"get":true}},"k_purchase":{"get":{"get":true}},"text_purchase_id":{"get":{"result":true}},"text_receipt":{"get":{"result":true}},"url_print":{"get":{"result":true}},"url_print_receipt":{"get":{"result":true}}}};
 };
+
+/**
+ * Gets purchase information.
+ *
+ * Returns full receipt data for the specified purchase, including business details, customer information,
+ * itemized purchase items, payment methods, pricing summary, and print URLs.
+ *
+ * @function
+ * @name Wl_Purchase_Receipt_PurchaseReceiptModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */

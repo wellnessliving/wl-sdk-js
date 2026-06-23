@@ -1,7 +1,5 @@
 /**
- * An endpoint that returns a list of all staff members working for a business.
- *
- * This model is generated automatically based on API.
+ * Returns the list of staff members for the given business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -25,21 +23,31 @@ function Wl_Staff_StaffList_StaffListModel()
    * @get get
    * @type {number[]}
    */
-  this.a_privilege = [];
+  this.a_privilege = undefined;
+
+  /**
+   * @typedef {{}} Wl_Staff_StaffList_StaffListModel_a_staff_a_staff_service
+   * @property {string} k_service Service key.
+   * @property {string} k_staff_pay Staff pay key for this service.
+   */
 
   /**
    * @typedef {{}} Wl_Staff_StaffList_StaffListModel_a_staff
    * @property {string[]} a_pay_rate A list of internal pay rate keys applicable to the staff member.
+   * @property {Wl_Staff_StaffList_StaffListModel_a_staff_a_staff_service} a_staff_service A list of all services, provided by the staff member. Each element is an array with structure:
    * @property {string} html_name Staff name.
    * @property {number} i_order Order for sorting.
-   * @property {string} k_staff Staff key; primary key in {@link \RsStaffSql} table.
-   * @property {string} s_name The staff member first name.
+   * @property {boolean} is_appointment Whether this staff provides appointments service.
+   * @property {boolean} is_class Whether this staff provides class service.
+   * @property {boolean} is_event Whether this staff provides events service.
+   * @property {string} k_staff The staff key.  deprecated Use `uid_staff` instead. Returned only for backward-compatible applications.
+   * @property {string} s_name The staff member first name. If there are rights, the full first name, if not, then depending on the business settings.
    * @property {string} s_position The staff member position in the organization.
-   * @property {string} s_surname The first letter of the staff member surname.
+   * @property {string} s_surname The first letter of the staff member surname. If there are rights, the full surname, if not, then depending on the business settings.
    * @property {?string} s_surname_full The entire surname of the staff member. This will be `null` if private staff member information isn't accessible.
-   * @property {string} uid The user key.
-   * Each staff member in WellnessLiving can also access the system as a client of their business.
-   * This is the key used to represent the staff member as a client.
+   * @property {string} text_name_full The full name of the staff member.
+   * @property {string} uid The user key. Each staff member in WellnessLiving can also access the system as a client of their business. This is the key used to represent the staff member as a client.
+   * @property {string} uid_staff The staff member user key.
    * @property {string} url_image Url link to user photo, or empty string, if photo is not loaded.
    */
 
@@ -47,70 +55,6 @@ function Wl_Staff_StaffList_StaffListModel()
    * Information about staff members.
    * Each array index is the staff member keys.
    * Each array element is an array containing the following fields:
-   * <dl>
-   *   <dt>
-   *     string[] <var>a_pay_rate</var>
-   *   </dt>
-   *   <dd>
-   *     A list of internal pay rate keys applicable to the staff member.
-   *   </dd>
-   *   <dt>
-   *     string <var>html_name</var>
-   *   </dt>
-   *   <dd>
-   *     Staff name.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_order</var>
-   *   </dt>
-   *   <dd>
-   *     Order for sorting.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_staff</var>
-   *   </dt>
-   *   <dd>
-   *     Staff key; primary key in {@link \RsStaffSql} table.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_name</var>
-   *   </dt>
-   *   <dd>
-   *     The staff member first name.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_position</var>
-   *   </dt>
-   *   <dd>
-   *     The staff member position in the organization.
-   *   </dd>
-   *   <dt>
-   *     string <var>s_surname</var>
-   *   </dt>
-   *   <dd>
-   *     The first letter of the staff member surname.
-   *   </dd>
-   *   <dt>
-   *     string|null <var>s_surname_full</var>
-   *   </dt>
-   *   <dd>
-   *     The entire surname of the staff member. This will be `null` if private staff member information isn't accessible.
-   *   </dd>
-   *   <dt>
-   *     string <var>uid</var>
-   *   </dt>
-   *   <dd>
-   *     The user key.
-   *     Each staff member in WellnessLiving can also access the system as a client of their business.
-   *     This is the key used to represent the staff member as a client.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_image</var>
-   *   </dt>
-   *   <dd>
-   *     Url link to user photo, or empty string, if photo is not loaded.
-   *   </dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Staff_StaffList_StaffListModel_a_staff[]}
@@ -143,7 +87,7 @@ function Wl_Staff_StaffList_StaffListModel()
    * @get get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   this.changeInit();
 }
@@ -155,7 +99,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_StaffList_StaffListModel);
  */
 Wl_Staff_StaffList_StaffListModel.prototype.config=function()
 {
-  return {"a_field": {"a_privilege": {"get": {"get": true}},"a_staff": {"get": {"result": true}},"is_check_staff_access": {"get": {"get": true}},"is_staff_inactive": {"get": {"get": true}},"k_business": {"get": {"get": true}}}};
+  return {"a_field":{"a_privilege":{"get":{"get":true}},"a_staff":{"get":{"result":true}},"is_check_staff_access":{"get":{"get":true}},"is_staff_inactive":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
@@ -164,4 +108,18 @@ Wl_Staff_StaffList_StaffListModel.prototype.config=function()
  * @param {string} k_business The key of the business to show information for.
  * @returns {Wl_Staff_StaffList_StaffListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Returns the list of staff members for the given business.
+ *
+ * Returns all active (or optionally inactive) staff members for the business, including
+ * their name, role, assigned services, contact details, and location assignments. Can be
+ * filtered to only staff who have a specific privilege, and whether access-level checks
+ * should be applied when building the result.
+ *
+ * @function
+ * @name Wl_Staff_StaffList_StaffListModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */

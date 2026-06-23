@@ -1,7 +1,5 @@
 /**
- * Performs ajax requests for progress fields edit page.
- *
- * This model is generated automatically based on API.
+ * Changes states of field.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,25 +9,43 @@ function Wl_Member_Progress_Field_StateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Field ID.
+   * List of progress log fields.
+   *
+   * Last used ID: 14.
+   *
+   * Values:
+   * - 6 (`ABDOMEN`): Abdomen field.
+   * - 3 (`ARMS`): Arms field.
+   * - 2 (`BLOOD_PRESSURE`): Blood pressure field.
+   * - 11 (`BODY_FAT`): Body fat field.
+   * - 4 (`BUST`): Bust field.
+   * - 9 (`HEIGHT`): Height of the client.
+   * - 7 (`HIPS`): Client hips size.
+   * - 14 (`LONG_TERM_GOALS`): Long term goals.
+   * - 1 (`PRE_WORKOUT_HEART_RATE`): Pre workout heart rate.
+   * - 12 (`PROGRESS_PICTURE`): Progress picture.
+   * - 13 (`SHORT_TERM_GOALS`): Short term goals.
+   * - 8 (`THIGHS`): THIGHS
+   * - 5 (`WAIST`): Waist
+   * - 10 (`WEIGHT`): Client weight.
    *
    * @put result
-   * @type {?number}
+   * @type {number}
    */
-  this.id_field = null;
+  this.id_field = undefined;
 
   /**
    * Whether field is active and should be displayed on page.
    *
-   * @put result,post
+   * @put post,result
    * @type {?boolean}
    */
   this.is_active = null;
 
   /**
-   * Whether this field is public. If this field is set to <tt>false</tt>, this field is not visible to clients.
+   * Whether this field is public. If this field is set to `false`, this field is not visible to clients.
    *
-   * @put result,post
+   * @put post,result
    * @type {?boolean}
    */
   this.is_public = null;
@@ -37,7 +53,7 @@ function Wl_Member_Progress_Field_StateModel()
   /**
    * Whether field value is required for clients.
    *
-   * @put result,post
+   * @put post,result
    * @type {?boolean}
    */
   this.is_require = null;
@@ -45,7 +61,7 @@ function Wl_Member_Progress_Field_StateModel()
   /**
    * Whether field value is required for staffs.
    *
-   * @put result,post
+   * @put post,result
    * @type {?boolean}
    */
   this.is_require_staff = null;
@@ -56,7 +72,7 @@ function Wl_Member_Progress_Field_StateModel()
    * @put get
    * @type {string}
    */
-  this.k_business = undefined;
+  this.k_business = "";
 
   /**
    * Field key.
@@ -64,7 +80,7 @@ function Wl_Member_Progress_Field_StateModel()
    * @put get
    * @type {string}
    */
-  this.k_field = undefined;
+  this.k_field = "";
 
   /**
    * Field title.
@@ -84,5 +100,18 @@ WlSdk_ModelAbstract.extend(Wl_Member_Progress_Field_StateModel);
  */
 Wl_Member_Progress_Field_StateModel.prototype.config=function()
 {
-  return {"a_field": {"id_field": {"put": {"result": true}},"is_active": {"put": {"result": true,"post": true}},"is_public": {"put": {"result": true,"post": true}},"is_require": {"put": {"result": true,"post": true}},"is_require_staff": {"put": {"result": true,"post": true}},"k_business": {"put": {"get": true}},"k_field": {"put": {"get": true}},"text_title": {"put": {"result": true}}}};
+  return {"a_field":{"id_field":{"put":{"result":true}},"is_active":{"put":{"post":true,"result":true}},"is_public":{"put":{"post":true,"result":true}},"is_require":{"put":{"post":true,"result":true}},"is_require_staff":{"put":{"post":true,"result":true}},"k_business":{"put":{"get":true}},"k_field":{"put":{"get":true}},"text_title":{"put":{"result":true}}}};
 };
+
+/**
+ * Changes states of field.
+ *
+ * Updates one or more state flags (`is_active`, `is_public`, `is_require`, `is_require_staff`) for the specified
+ * progress field and returns the new values. At least one flag must be provided; the field must be active to
+ * change its required state.
+ *
+ * @function
+ * @name Wl_Member_Progress_Field_StateModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
+ */

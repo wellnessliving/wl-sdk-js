@@ -1,7 +1,5 @@
 /**
- * An endpoint that gets promotions for the specified business and promotion keys.
- *
- * This model is generated automatically based on API.
+ * Soft-deletes the specified promotion if it has no associated sales.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -11,205 +9,85 @@ function Wl_Promotion_PromotionModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @typedef {{}} Wl_Promotion_PromotionModel_a_promotion_a_access_a_image
-   * @property {string} i_height The height of the image.
-   * @property {string} i_width The width of the image.
-   * @property {string} url-thumbnail The link to the image.
+   * @inheritDoc
    */
+  this._s_key = "k_business,k_promotion";
+
+  /**
+   * @typedef {{}} Wl_Promotion_PromotionModel_a_promotion_a_access_a_class
+   * @property {string} k_class Key of the class.
+   */
+
+  /**
+   * @typedef {{}} Wl_Promotion_PromotionModel_a_promotion_a_access_a_event
+   * @property {string} k_class Key of the event.
+   */
+
+  /**
+   * @typedef {{}} Wl_Promotion_PromotionModel_a_promotion_a_access_a_resource
+   * @property {string} k_resource Key of the asset.
+   */
+
+  /**
+   * @typedef {{}} Wl_Promotion_PromotionModel_a_promotion_a_access_a_service
+   * @property {string} k_service Key of the appointment type.
+   */
+
   /**
    * @typedef {{}} Wl_Promotion_PromotionModel_a_promotion_a_access
-   * @property {{}[]} a_class A list of available classes. Each element is primary key from {@link \RsClassSql} table.
-   * @property {{}[]} a_event A list of available events. Each element is primary key from {@link \RsClassSql} table.
-   * @property {{}[]} a_resource A list of available assets. Each element is primary key from {@link \RsResourceSql} table.
-   * @property {{}[]} a_service A list of available appointment types. Each element is primary key from {@link \RsServiceSql} table.
-   * @property {boolean} is_class_all This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this
-   * will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found
-   * in the list of available classes and events.
-   * @property {boolean} is_event_all This will be `true` if any event in the business can be visited with this Purchase Option. Otherwise, this
-   * will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found
-   * in the list of available classes and events.
+   * @property {Wl_Promotion_PromotionModel_a_promotion_a_access_a_class} a_class A list of available classes.
+   * @property {Wl_Promotion_PromotionModel_a_promotion_a_access_a_event} a_event A list of available events.
+   * @property {Wl_Promotion_PromotionModel_a_promotion_a_access_a_resource} a_resource A list of available assets.
+   * @property {Wl_Promotion_PromotionModel_a_promotion_a_access_a_service} a_service A list of available appointment types.
+   * @property {boolean} is_class_all This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found in the list of available classes and events.
+   * @property {boolean} is_event_all This will be `true` if any event in the business can be visited with this Purchase Option. Otherwise, this will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found in the list of available classes and events.
    */
+
+  /**
+   * @typedef {{}} Wl_Promotion_PromotionModel_a_promotion_a_image
+   * @property {number} i_height The height of the image.
+   * @property {number} i_width The width of the image.
+   * @property {string} url-thumbnail The link to the image.
+   */
+
   /**
    * @typedef {{}} Wl_Promotion_PromotionModel_a_promotion
    * @property {Wl_Promotion_PromotionModel_a_promotion_a_access} a_access Information about services that can be attended with this pass or membership.
-   * <dl>
-   *   <dt>array[] <tt>a_class</tt></dt>
-   *   <dd>A list of available classes. Each element is primary key from {@link \RsClassSql} table.</dd>
-   *   <dt>array[] <tt>a_event</tt></dt>
-   *   <dd>A list of available events. Each element is primary key from {@link \RsClassSql} table.</dd>
-   *   <dt>array[] <tt>a_resource</tt></dt>
-   *   <dd>A list of available assets. Each element is primary key from {@link \RsResourceSql} table.</dd>
-   *   <dt>array[] <tt>a_service</tt></dt>
-   *   <dd>A list of available appointment types. Each element is primary key from {@link \RsServiceSql} table.</dd>
-   *   <dt>bool <tt>is_class_all</tt></dt>
-   *   <dd>This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this
-   *     will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found
-   *     in the list of available classes and events.</dd>
-   *   <dt>bool <tt>is_event_all</tt></dt>
-   *   <dd>This will be `true` if any event in the business can be visited with this Purchase Option. Otherwise, this
-   *     will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found
-   *     in the list of available classes and events.</dd>
-   * </dl>
-   * @property {Wl_Promotion_PromotionModel_a_promotion_a_access_a_image} a_image Information about Purchase Option image. This will be an empty array if the Purchase Option doesn't have an image.
-   * <dl>
-   *   <dt>string <tt>i_height</tt></dt>
-   *   <dd>The height of the image.</dd>
-   *   <dt>string <tt>i_width</tt></dt>
-   *   <dd>The width of the image.</dd>
-   *   <dt>string <tt>url-thumbnail</tt></dt>
-   *   <dd>The link to the image.</dd>
-   * </dl>
-   * @property {string} dl_expire The local expiration date. This is the last day when the Purchase Option is active.
-   * This is used only when the 'Expires on a certain date' duration type is set.
-   * @property {number} i_duration The number of periods for the 'Period' duration type.
-   * For example, if the duration of the Purchase Option is 12 months, this field will be 12.
-   * @property {number} i_limit The number of visits that the owner can use for the Purchase Option.
-   * This will be `0` if the Purchase Option allows for unlimited visits.
-   * @property {number} id_duration The type of period for the 'Period' duration type.
-   * For example, if the duration of the Purchase Option is 12 months, this field will display the ID of the month.
-   * For all possible options, see {@link ADurationSid}.
-   * @property {number} id_duration_type The duration type. Possible duration types can be 'Without End', 'Expires on a certain date', 'Period'.
-   * For more information, see {@link RsDurationTypeSid}.
-   * @property {number} id_program The Purchase Option type.
-   * For more information, see {@link Wl_WlProgramSid}.
+   * @property {Wl_Promotion_PromotionModel_a_promotion_a_image} a_image Information about Purchase Option image. This will be an empty array if the Purchase Option doesn't have an image.
+   * @property {string[]} a_location A list of locations where this promotion is available.
+   * @property {string[]} a_login_type A list of login types linked with this promotion.
+   * @property {string[]} a_member_group A list of login types linked with this promotion.
+   * @property {string[]} a_tag List of selected tags.
+   * @property {string} dl_expire The local expiration date. This is the last day when the Purchase Option is active.  This is used only when the 'Expires on a certain date' duration type is set.
+   * @property {string} dl_terminate Date when promotion should be terminated. `null` if there is no terminate date.
+   * @property {string} f_revenue_single Approximate revenue per session value.
+   * @property {number} i_duration The number of periods for the 'Period' duration type. For example, if the duration of the Purchase Option is 12 months, this field will be 12.
+   * @property {number} i_limit The number of visits that the owner can use for the Purchase Option. This will be `0` if the Purchase Option allows for unlimited visits.
+   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
+   * @property {number} id_duration_type Class to process string identifiers for duration types
+   * @property {number} id_program Program types.
+   * @property {number} id_restriction Purchase restrictions.
+   * @property {boolean} is_active Whether this promotion is active.
+   * @property {boolean} is_business_wide Whether this promotion is available for all locations of the business.
    * @property {boolean} is_introductory If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.
    * @property {boolean} is_online If `true`, this promotion is available for online purchase. Otherwise, this will be `false`.
+   * @property {boolean} is_payroll Whether clients who purchase this item excluded from payroll calculations.
+   * @property {boolean} is_revenue_single If `true` need to add approximate revenue per session value.
+   * @property {boolean} is_use Whether promotion can be used for booking. `null` if there is no termination.
    * @property {string} k_promotion The key of the promotion.
+   * @property {string} k_tag_primary Primary tag.
    * @property {string} m_price The price.
    * @property {string} text_description The description of the Purchase Option.
    * @property {string} text_title The title of the Purchase Option.
    * @property {string} url_buy The direct URL to the promotion purchase page.
+   * @property {string} url_catalog The direct URL to the promotion details page in the online store.
    */
 
   /**
    * Promotion information.
-   * <dl>
-   *   <dt>
-   *     array <var>a_access</var>
-   *   </dt>
-   *   <dd>
-   *     Information about services that can be attended with this pass or membership.
-   *     <dl>
-   *       <dt>array[] <var>a_class</var></dt>
-   *       <dd>A list of available classes. Each element is primary key from {@link \RsClassSql} table.</dd>
-   *       <dt>array[] <var>a_event</var></dt>
-   *       <dd>A list of available events. Each element is primary key from {@link \RsClassSql} table.</dd>
-   *       <dt>array[] <var>a_resource</var></dt>
-   *       <dd>A list of available assets. Each element is primary key from {@link \RsResourceSql} table.</dd>
-   *       <dt>array[] <var>a_service</var></dt>
-   *       <dd>A list of available appointment types. Each element is primary key from {@link \RsServiceSql} table.</dd>
-   *       <dt>bool <var>is_class_all</var></dt>
-   *       <dd>This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this
-   *         will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found
-   *         in the list of available classes and events.</dd>
-   *       <dt>bool <var>is_event_all</var></dt>
-   *       <dd>This will be `true` if any event in the business can be visited with this Purchase Option. Otherwise, this
-   *         will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found
-   *         in the list of available classes and events.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     array <var>a_image</var>
-   *   </dt>
-   *   <dd>
-   *     Information about Purchase Option image. This will be an empty array if the Purchase Option doesn't have an image.
-   *     <dl>
-   *       <dt>string <var>i_height</var></dt>
-   *       <dd>The height of the image.</dd>
-   *       <dt>string <var>i_width</var></dt>
-   *       <dd>The width of the image.</dd>
-   *       <dt>string <var>url-thumbnail</var></dt>
-   *       <dd>The link to the image.</dd>
-   *     </dl>
-   *   </dd>
-   *   <dt>
-   *     string <var>dl_expire</var>
-   *   </dt>
-   *   <dd>
-   *     The local expiration date. This is the last day when the Purchase Option is active.
-   *     This is used only when the 'Expires on a certain date' duration type is set.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The number of periods for the 'Period' duration type.
-   *     For example, if the duration of the Purchase Option is 12 months, this field will be 12.
-   *   </dd>
-   *   <dt>
-   *     int <var>i_limit</var>
-   *   </dt>
-   *   <dd>
-   *     The number of visits that the owner can use for the Purchase Option.
-   *     This will be `0` if the Purchase Option allows for unlimited visits.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_duration</var>
-   *   </dt>
-   *   <dd>
-   *     The type of period for the 'Period' duration type.
-   *     For example, if the duration of the Purchase Option is 12 months, this field will display the ID of the month.
-   *     For all possible options, see {@link ADurationSid}.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_duration_type</var>
-   *   </dt>
-   *   <dd>
-   *     The duration type. Possible duration types can be 'Without End', 'Expires on a certain date', 'Period'.
-   *     For more information, see {@link RsDurationTypeSid}.
-   *   </dd>
-   *   <dt>
-   *     int <var>id_program</var>
-   *   </dt>
-   *   <dd>
-   *     The Purchase Option type.
-   *     For more information, see {@link Wl_WlProgramSid}.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_introductory</var>
-   *   </dt>
-   *   <dd>
-   *     If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.
-   *   </dd>
-   *   <dt>
-   *     bool <var>is_online</var>
-   *   </dt>
-   *   <dd>
-   *     If `true`, this promotion is available for online purchase. Otherwise, this will be `false`.
-   *   </dd>
-   *   <dt>
-   *     string <var>k_promotion</var>
-   *   </dt>
-   *   <dd>
-   *     The key of the promotion.
-   *   </dd>
-   *   <dt>
-   *     string <var>m_price</var>
-   *   </dt>
-   *   <dd>
-   *     The price.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_description</var>
-   *   </dt>
-   *   <dd>
-   *     The description of the Purchase Option.
-   *   </dd>
-   *   <dt>
-   *     string <var>text_title</var>
-   *   </dt>
-   *   <dd>
-   *     The title of the Purchase Option.
-   *   </dd>
-   *   <dt>
-   *     string <var>url_buy</var>
-   *   </dt>
-   *   <dd>
-   *     The direct URL to the promotion purchase page.
-   *   </dd>
-   * </dl>
    *
    * @get result
+   * @post post
    * @type {Wl_Promotion_PromotionModel_a_promotion[]}
    */
   this.a_promotion = undefined;
@@ -217,18 +95,31 @@ function Wl_Promotion_PromotionModel()
   /**
    * The key of the business.
    *
+   * @delete get
    * @get get
+   * @post get
    * @type {string}
    */
-  this.k_business = "0";
+  this.k_business = "";
 
   /**
    * The key of the promotion.
    *
+   * @delete get
    * @get get
+   * @post get
    * @type {string}
    */
-  this.k_promotion = "0";
+  this.k_promotion = "";
+
+  /**
+   * Guest passes settings for promotion. This will be `null` if there are no guest pass settings for the promotion.
+   *
+   * @get result
+   * @post post
+   * @type {?*}
+   */
+  this.o_guest_settings = null;
 
   this.changeInit();
 }
@@ -240,5 +131,49 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_PromotionModel);
  */
 Wl_Promotion_PromotionModel.prototype.config=function()
 {
-  return {"a_field": {"a_promotion": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_promotion": {"get": {"get": true}}}};
+  return {"a_field":{"a_promotion":{"get":{"result":true},"post":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"k_promotion":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"o_guest_settings":{"get":{"result":true},"post":{"post":true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Promotion_PromotionModel.instanceGet
+ * @param {string} k_business The key of the business.
+ * @param {string} k_promotion The key of the promotion.
+ * @returns {Wl_Promotion_PromotionModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * Soft-deletes the specified promotion if it has no associated sales.
+ *
+ * Validates staff privileges and checks that the promotion has not been sold before marking it as removed.
+ *
+ * @function
+ * @name Wl_Promotion_PromotionModel.delete
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.delete()
+ */
+
+/**
+ * Returns promotion by the specified business and promotion keys.
+ *
+ * Returns full promotion details including access restrictions, image, pricing, duration, tags,
+ * locations, and guest pass settings if applicable.
+ *
+ * @function
+ * @name Wl_Promotion_PromotionModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Saves promotion data.
+ *
+ * Accepts the full promotion configuration including title, description, access rules, duration, tags, and guest
+ * pass settings, then validates and persists the changes.
+ *
+ * @function
+ * @name Wl_Promotion_PromotionModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

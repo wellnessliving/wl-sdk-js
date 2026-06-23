@@ -1,5 +1,5 @@
 /**
- * API for managing guest passes.
+ * Retrieves guest pass information for a client's membership.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -9,72 +9,58 @@ function Wl_Login_Promotion_GuestPass_GuestPassModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image_a_period_dl_a_settings
-   * @property {number} i_claim_day Count of days for accept guest invite.
-   *
-   * If the invitation is not accepted within this time, it will be canceled.
-   * @property {number} i_limit Times that member can invite the same guest.
-   * @property {number} i_limit_duration The time during which a member can invite a guest {@link Wl\Promotion\Guest\Pass\GuestPassSettingsEntity::$i_limit} times.
-   * @property {number} id_limit_duration Type of the duration of {@link Wl\Promotion\Guest\Pass\GuestPassSettingsEntity::$i_limit_duration}. One of {@link ADurationSid} constants.
-   * @property {boolean} is_checkin Whether guests can only enter the gym when the inviting member is checked in.
-   * @property {boolean} is_limit Whether there are limits for a guest promotion.
-   */
-  /**
-   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image_a_period_dl
-   * @property {string} dl_end Period end date in MySQL date format.
-   * @property {string} dl_start Period start date in MySQL date format.
-   */
-  /**
    * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image
    * @property {number} i_height Image height.
    * @property {number} i_width Image width.
    * @property {string} url-thumbnail Thumbnail url.
    */
+
+  /**
+   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_period_dl
+   * @property {string} dl_end Period end date in MySQL date format.
+   * @property {string} dl_start Period start date in MySQL date format.
+   */
+
+  /**
+   * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_settings
+   * @property {number} i_claim_day Count of days for accept guest invite.
+   * @property {number} i_limit Times that member can invite the same guest.
+   * @property {number} i_limit_duration The time during which a member can invite a guest `i_limit` times.
+   * @property {number} id_limit_duration A class for managing time intervals. Last ID: 9.
+   * @property {boolean} is_checkin Whether guests can only enter the gym when the inviting member is checked in.
+   * @property {boolean} is_limit Whether there are limits for a guest promotion.
+   */
+
   /**
    * @typedef {{}} Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass
    * @property {Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image} a_image Thumbnail image data for the guest promotion.
-   * @property {Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image_a_period_dl} a_period_dl Start and end dates of the current reset period.
-   *   `null` if there is no reset period or the reset date is unavailable.
-   * @property {Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_image_a_period_dl_a_settings} a_settings Guest pass settings.
-   * Empty array when the guest pass has no settings (class-type passes).
+   * @property {?Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_period_dl} a_period_dl Start and end dates of the current reset period.   `null` if there is no reset period or the reset date is unavailable.
+   * @property {Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass_a_settings} a_settings Guest pass settings. Empty array when the guest pass has no settings (class-type passes).
    * @property {boolean} can_invite `true` if the guest pass is invite-type (the member sends invitations to guests).
    * @property {boolean} can_send `true` if the member can currently send a guest pass (eligible and within quota).
-   * @property {?string} dl_reset Date on which the pass resets or expires, in MySQL date format.
-   * `null` if no expiry date is determined.
+   * @property {?string} dl_reset Date on which the pass resets or expires, in MySQL date format. `null` if no expiry date is determined.
    * @property {boolean} has_service `true` if the guest pass is service-type (not invite-type). Inverse of `can_invite`.
    * @property {?number} i_cap_day Maximum guest passes that can be sent per day. `null` if there is no daily cap.
    * @property {?number} i_limit Total number of guest passes initially granted. `null` if the supply is unlimited.
-   * @property {?number} i_period Numeric length of the reset period (for example `1` for a one-month period).
-   * `null` if the promotion has no reset period.
-   * @property {?number} i_remain Number of guest passes remaining in the current period.
-   * `null` if the supply is unlimited.
-   * @property {?number} i_remain_day Number of guest passes remaining today per the daily cap.
-   * `null` if there is no daily cap.
+   * @property {?number} i_period Numeric length of the reset period (for example `1` for a one-month period). `null` if the promotion has no reset period.
+   * @property {?number} i_remain Number of guest passes remaining in the current period. `null` if the supply is unlimited.
+   * @property {?number} i_remain_day Number of guest passes remaining today per the daily cap. `null` if there is no daily cap.
    * @property {number} i_use Number of accepted invitations for this guest pass.
-   * @property {?number} id_period Unit of the reset period. One of {@link ADurationSid} constants.
-   * `null` if the promotion has no reset period.
-   * @property {number} id_reset_type_guest Reset type of the host promotion. One of {@link Wl_Promotion_Guest_Pass_GuestPassResetTypeSid} constants.
-   * @property {boolean} is_expire_note `true` if the pass is close enough to its reset or expiry date that the UI should
-   * display a warning.
-   * @property {boolean} is_reset `true` if the remaining count resets on `dl_reset`;
-   * `false` if the pass expires on that date.
+   * @property {number} id_period A class for managing time intervals. Last ID: 9.
+   * @property {number} id_program_guest Program types.
+   * @property {number} id_reset_type_guest Guest Pass reset type.
+   * @property {boolean} is_expire_note `true` if the pass is close enough to its reset or expiry date that the UI should display a warning.
+   * @property {boolean} is_reset `true` if the remaining count resets on `dl_reset`; `false` if the pass expires on that date.
    * @property {string} k_business Business key.
-   *
    * @property {string} k_login_promotion Login promotion key of the host membership.
-   *
    * @property {string} k_promotion Guest promotion key.
-   *
-   * @property {string} text_location Comma-separated list of location titles where the promotion is valid.
-   * Empty when the promotion is business-wide.
+   * @property {string} text_location Comma-separated list of location titles where the promotion is valid. Empty when the promotion is business-wide.
    * @property {string} text_owner Full name of the membership owner.
-   * @property {string} text_period Human-readable reset period label (e.g. "1 month").
-   * Empty when there is no reset period.
-   * @property {string} text_period_date Human-readable date range of the current period (e.g. "Jan 1 - Jan 31").
-   * Empty when there is no reset period or the reset date is unavailable.
+   * @property {string} text_period Human-readable reset period label (e.g. "1 month"). Empty when there is no reset period.
+   * @property {string} text_period_date Human-readable date range of the current period (e.g. "Jan 1 - Jan 31"). Empty when there is no reset period or the reset date is unavailable.
    * @property {string} text_promotion_grant Title of the host (granting) promotion.
    * @property {string} text_promotion_guest Title of the guest promotion.
    * @property {string} uid_owner User key of the membership owner.
-   *
    */
 
   /**
@@ -83,7 +69,7 @@ function Wl_Login_Promotion_GuestPass_GuestPassModel()
    * @get result
    * @type {Wl_Login_Promotion_GuestPass_GuestPassModel_a_guest_pass}
    */
-  this.a_guest_pass = [];
+  this.a_guest_pass = undefined;
 
   /**
    * Number of guest passes remaining for the current period.
@@ -121,5 +107,28 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_GuestPass_GuestPassModel);
  */
 Wl_Login_Promotion_GuestPass_GuestPassModel.prototype.config=function()
 {
-  return {"a_field": {"a_guest_pass": {"get": {"result": true}},"i_adjust": {"put": {"post": true}},"k_business": {"get": {"get": true},"put": {"get": true}},"k_login_promotion": {"get": {"get": true},"put": {"get": true}}}};
+  return {"a_field":{"a_guest_pass":{"get":{"result":true}},"i_adjust":{"put":{"post":true}},"k_business":{"get":{"get":true},"put":{"get":true}},"k_login_promotion":{"get":{"get":true},"put":{"get":true}}}};
 };
+
+/**
+ * Retrieves guest pass information for a client's membership.
+ *
+ * Returns the guest pass configuration and remaining usage count for the specified login promotion.
+ *
+ * @function
+ * @name Wl_Login_Promotion_GuestPass_GuestPassModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Updates the guest pass remaining usages for a client's membership.
+ *
+ * Adjusts the remaining guest pass count to the specified value and logs the change. Requires
+ * staff-level edit access for the login promotion.
+ *
+ * @function
+ * @name Wl_Login_Promotion_GuestPass_GuestPassModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
+ */
