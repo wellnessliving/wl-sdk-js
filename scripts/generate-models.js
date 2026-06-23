@@ -755,7 +755,6 @@ function generateModels(spec)
 {
   const paths = spec.paths || {};
   let count = 0;
-  let skipped = 0;
 
   for (const [apiPath, pathItem] of Object.entries(paths))
   {
@@ -764,11 +763,6 @@ function generateModels(spec)
 
     const className = pathToModelClass(apiPath);
     const fields = collectFields(pathItem, spec, className);
-    if (Object.keys(fields).length === 0)
-    {
-      skipped++;
-      continue;
-    }
 
     let description = '';
     let isDeprecated = false;
@@ -801,7 +795,7 @@ function generateModels(spec)
     count++;
   }
 
-  console.log('Generated ' + count + ' Model files. Skipped ' + skipped + ' paths with no fields.');
+  console.log('Generated ' + count + ' Model files.');
 }
 
 // -----------------------------------------------------------------------
