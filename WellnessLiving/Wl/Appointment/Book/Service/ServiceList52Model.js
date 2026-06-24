@@ -56,11 +56,15 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    * @property {string} f_online The online price.
    * @property {boolean} hide_application Determines whether the service will be hidden in the White Label mobile app.
    * If `true`, the service won't be displayed. Otherwise, this will be `false`.
+   * @property {string} html_deny_reason Human-readable reason why the client cannot book this service.
+   *   Empty string if there is no deny reason.
    * @property {number} i_age_from The required minimum client age to book an appointment.
    * @property {number} i_age_to The required maximum client age to book an appointment.
    * @property {number} i_price The price type ID. One of the {@link RsServicePriceSid} constants.
    * @property {number} i_duration The appointment duration in minutes.
    * @property {number} id_book_flow The type of client booking flow. One of the {@link Wl_Service_ServiceBookFlowSid} constants.
+   * @property {?number} id_deny_reason The ID of the reason why the client cannot book this service. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
+   *   `null` if there is no deny reason.
    * @property {number} id_service_require The required payment type ID. One of the {@link RsServiceRequireSid} constants.
    * @property {boolean} is_age_public This will be `true` if age restrictions are public. Otherwise, this will be `false`
    * if age restrictions are hidden from clients.
@@ -83,6 +87,7 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    * @property {string} k_service_category The service category primary key.
    * @property {string} s_duration The appointment duration in a human-readable format.
    * @property {string} s_service The appointment title.
+   * @property {?string} sid_deny_reason String representation of the deny reason. `null` if no deny reason.
    * @property {string} text_age_restriction The age restriction header.
    * @property {string} xml_description The appointment description.
    * @property {string} xml_description_short The appointment short description.
@@ -173,6 +178,10 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    *      Determines whether the service will be hidden in the White Label mobile app.
    *      If `true`, the service won't be displayed. Otherwise, this will be `false`.
    *   </dd>
+   *   <dt>string `html_deny_reason`</dt>
+   *   <dd>
+   *      Human-readable reason why the client cannot book this service. Empty string if there is no deny reason.
+   *   </dd>
    *   <dt>
    *     int <var>i_age_from</var>
    *   </dt>
@@ -202,6 +211,11 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    *   </dt>
    *   <dd>
    *     The type of client booking flow. One of the {@link Wl_Service_ServiceBookFlowSid} constants.
+   *   </dd>
+   *   <dt>int|null `id_deny_reason`</dt>
+   *   <dd>
+   *     The ID of the reason why the client cannot book this service. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
+   *     `null` if there is no deny reason.
    *   </dd>
    *   <dt>
    *     int <var>id_service_require</var>
@@ -319,6 +333,8 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    *   <dd>
    *     The appointment title.
    *   </dd>
+   *   <dt>string|null `sid_deny_reason`</dt>
+   *   <dd>String representation of the deny reason. `null` if no deny reason.</dd>
    *   <dt>
    *     string <var>text_age_restriction</var>
    *   </dt>
@@ -348,7 +364,7 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    * @get result
    * @type {Wl_Appointment_Book_Service_ServiceList52Model_a_service}
    */
-  this.a_service = undefined;
+  this.a_service = [];
 
   /**
    * List of staff members to filter a result.
