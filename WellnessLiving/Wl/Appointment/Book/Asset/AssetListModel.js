@@ -46,9 +46,9 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset
    * @property {Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_age_restrictions} a_age_restrictions Information about age restrictions for this event.
-   * 
+   *
    * This will be an empty array if there aren't any age restrictions.
-   * 
+   *
    * <dl>
    *   <dt>int|null <tt>i_age_from</tt></dt>
    *   <dd>The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.</dd>
@@ -99,12 +99,17 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    * @property {boolean} hide_application Determines whether the asset will be hidden in the White Label mobile apps.
    * If `true`, the asset won't be displayed. Otherwise, this will be `false`.
    * @property {string} html_age_restriction The resource age restriction
+   * @property {string} html_deny_reason Human-readable reason why the client cannot book this asset.
+   *   Empty string if there is no deny reason.
    * @property {string} html_title The resource name.
+   * @property {?number} id_deny_reason The ID of the reason why the client cannot book this asset.
+   *   One of the {@link Wl_Schedule_ClassView_DenyReasonSid} constants. `null` if there is no deny reason.
    * @property {number} id_service_require The purchase rule. One of the {@link RsServiceRequireSid} constants.
    * @property {boolean} is_age_restricted Determines whether this service can't be booked due to age restrictions.
    * @property {string} k_class_tab Quick book tab key.
    * @property {string} k_resource The resource key.
    * @property {string} k_resource_category The resource category key.
+   * @property {?string} sid_deny_reason String representation of the deny reason. `null` if no deny reason.
    */
 
   /**
@@ -183,8 +188,15 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *   </dd>
    *   <dt>string <var>html_age_restriction</var></dt>
    *   <dd>The resource age restriction</dd>
+   *   <dt>string `html_deny_reason`</var></dt>
+   *   <dd>Human-readable reason why the client cannot book this asset. Empty string if there is no deny reason.</dd>
    *   <dt>string <var>html_title</var></dt>
    *   <dd>The resource name.</dd>
+   *   <dt>int|null `id_deny_reason`</dt>
+   *   <dd>
+   *     The ID of the reason why the client cannot book this asset.
+   *     One of DenyReasonSid constants. `null` if there is no deny reason.
+   *   </dd>
    *   <dt>int <var>id_service_require</var></dt>
    *   <dd>The purchase rule. One of the {@link RsServiceRequireSid} constants.</dd>
    *   <dt>bool <var>is_age_restricted</var></dt>
@@ -195,6 +207,8 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *   <dd>The resource key.</dd>
    *   <dt>string <var>k_resource_category</var></dt>
    *   <dd>The resource category key.</dd>
+   *   <dt>string|null `sid_deny_reason`</var></dt>
+   *   <dd>String representation of the deny reason. `null` if no deny reason.</dd>
    * </dl>
    *
    * @get result
