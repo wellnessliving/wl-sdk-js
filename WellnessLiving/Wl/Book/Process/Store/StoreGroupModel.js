@@ -22,6 +22,18 @@ function Wl_Book_Process_Store_StoreGroupModel()
   this.a_login_promotion = [];
 
   /**
+   * A list of host guest passes which are selected by a group of clients to pay for the guests visits.
+   *
+   * These guest passes will be checked to determine if they can be applied to the current class or event.
+   *
+   * Keys are UIDs of clients, values are host login promotion keys that grant the guest passes.
+   *
+   * @post post
+   * @type {string[]}
+   */
+  this.a_login_promotion_guest_pass = [];
+
+  /**
    * @typedef {{}} Wl_Book_Process_Store_StoreGroupModel_a_purchase_item_check
    * @property {number} i_session The number of sessions that this item can cover.
    *   This only applies to items of type {@link RsPurchaseItemSid.CLASS_PERIOD}.
@@ -58,6 +70,8 @@ function Wl_Book_Process_Store_StoreGroupModel()
    *   `0` if not applicable.
    * @property {?string} k_login_promotion Login promotion key.
    *   The same as in {@link Wl_Book_Process_Store_StoreGroupModel.a_login_promotion}.
+   *   `null` if not applicable.
+   * @property {?string} k_login_promotion_guest_pass Host login promotion key that grants the guest pass.
    *   `null` if not applicable.
    * @property {?string} k_session_pass Session pass key.
    *   The same as in {@link Wl_Book_Process_Store_StoreGroupModel.a_session_pass}.
@@ -229,5 +243,5 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Store_StoreGroupModel);
  */
 Wl_Book_Process_Store_StoreGroupModel.prototype.config=function()
 {
-  return {"a_field": {"a_login_promotion": {"post": {"post": true}},"a_purchase_item_check": {"post": {"post": true}},"a_purchase_item_distribute": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_pass": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}}}};
+  return {"a_field": {"a_login_promotion": {"post": {"post": true}},"a_login_promotion_guest_pass": {"post": {"post": true}},"a_purchase_item_check": {"post": {"post": true}},"a_purchase_item_distribute": {"post": {"result": true}},"a_repeat": {"post": {"post": true}},"a_resource": {"post": {"post": true}},"a_session_pass": {"post": {"post": true}},"a_session_select": {"post": {"post": true}},"a_session_wait_list_unpaid": {"post": {"post": true}},"dt_date_gmt": {"get": {"get": true},"post": {"get": true}},"id_mode": {"get": {"get": true},"post": {"get": true}},"is_backend": {"get": {"get": true},"post": {"get": true}},"is_credit_card_check": {"get": {"get": true},"post": {"get": true}},"is_force_pay_later": {"post": {"post": true}},"k_class_period": {"get": {"get": true},"post": {"get": true}}}};
 };
