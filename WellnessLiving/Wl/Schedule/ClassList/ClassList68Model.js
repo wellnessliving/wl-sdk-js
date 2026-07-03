@@ -272,6 +272,15 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.k_class_tab = "0";
 
   /**
+   * Key of timezone.
+   * If not set then use default client timezone.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.k_timezone = null;
+
+  /**
    * The list of staff members to filter.
    * A comma separated list of staff keys.
    *
@@ -341,5 +350,5 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassList68Model);
  */
 Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
 {
-  return {"a_field": {"a_calendar": {"post": {"result": true}},"a_class": {"post": {"post": true}},"a_class_tab": {"post": {"post": true}},"a_day": {"post": {"post": true}},"a_event": {"post": {"post": true}},"a_location": {"post": {"post": true}},"a_quick": {"post": {"result": true}},"a_session": {"post": {"result": true}},"a_time": {"post": {"post": true}},"dt_date": {"post": {"post": true}},"dt_end": {"post": {"post": true}},"id_class_tab": {"post": {"post": true}},"is_response_short": {"post": {"post": true}},"is_tab_all": {"post": {"post": true}},"is_timezone_different": {"post": {"result": true}},"is_virtual": {"post": {"post": true}},"is_virtual_service": {"post": {"result": true}},"k_business": {"post": {"post": true}},"k_class_tab": {"post": {"post": true}},"s_staff": {"post": {"post": true}},"s_staff_uid": {"post": {"post": true}},"show_cancel": {"post": {"post": true}},"show_class": {"post": {"post": true}},"show_event": {"post": {"post": true}},"show_quick_filter": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
+  return {"a_field": {"a_calendar": {"post": {"result": true}},"a_class": {"post": {"post": true}},"a_class_tab": {"post": {"post": true}},"a_day": {"post": {"post": true}},"a_event": {"post": {"post": true}},"a_location": {"post": {"post": true}},"a_quick": {"post": {"result": true}},"a_session": {"post": {"result": true}},"a_time": {"post": {"post": true}},"dt_date": {"post": {"post": true}},"dt_end": {"post": {"post": true}},"id_class_tab": {"post": {"post": true}},"is_response_short": {"post": {"post": true}},"is_tab_all": {"post": {"post": true}},"is_timezone_different": {"post": {"result": true}},"is_virtual": {"post": {"post": true}},"is_virtual_service": {"post": {"result": true}},"k_business": {"post": {"post": true}},"k_class_tab": {"post": {"post": true}},"k_timezone": {"post": {"post": true}},"s_staff": {"post": {"post": true}},"s_staff_uid": {"post": {"post": true}},"show_cancel": {"post": {"post": true}},"show_class": {"post": {"post": true}},"show_event": {"post": {"post": true}},"show_quick_filter": {"post": {"post": true}},"uid": {"post": {"post": true}}}};
 };
