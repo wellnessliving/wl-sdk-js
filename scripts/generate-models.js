@@ -376,7 +376,7 @@ function generateSidContent(schemaName, schema)
   return lines.join('\n') + '\n';
 }
 
-function generateSids(spec)
+function generateSIDs(spec)
 {
   const schemas = (spec.components && spec.components.schemas) || {};
   let count = 0;
@@ -826,7 +826,7 @@ function main()
   cleanGeneratedFiles(OUTPUT_DIR);
 
   console.log('Generating Sid files...');
-  generateSids(spec);
+  generateSIDs(spec);
 
   console.log('Generating Model files...');
   generateModels(spec);

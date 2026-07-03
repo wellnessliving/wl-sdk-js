@@ -1,4 +1,4 @@
-name: Generate Models and Sids
+name: Generate Models and SIDs
 
 on:
   repository_dispatch:
@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Generate models and Sids
+      - name: Generate models and SIDs
         env:
           OPENAPI_PATH: ${{ github.workspace }}/openapi-spec/dev/openapi.yaml
         run: node scripts/generate-models.js
@@ -47,6 +47,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Generate models and Sids from dev OpenAPI spec"
+            git commit -m "Generate models and SIDs from dev OpenAPI spec"
             git push
           fi
