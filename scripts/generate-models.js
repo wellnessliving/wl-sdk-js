@@ -65,6 +65,8 @@ function escDoc(text)
  *
  * Handles:
  * - Markdown: [Label](#/components/schemas/A.B.CSid) -> {@link A_B_CSid}
+ * - Markdown: [Label](/A/B/CApi.json) -> {@link A_B_CModel}
+ * - Markdown: [CApi::$prop](/A/B/CApi.json) -> {@link A_B_CModel.prop}
  * - PHP backslash: {@link A\B\CSid::CONST} -> {@link A_B_CSid.CONST}
  * - PHP backslash: {@link A\B\CApi} -> {@link A_B_CModel}
  */
@@ -75,6 +77,17 @@ function convertLinks(text)
   text = text.replace(
     /\[([^\]]+)\]\(#\/components\/schemas\/([^)]+)\)/g,
     (match, label, schemaRef) => '{@link ' + schemaRef.replace(/\./g, '_') + '}'
+  );
+
+  text = text.replace(
+    /\[([^\]]+)\]\((\/[^)]+\.json)\)/g,
+    (match, label, apiPath) =>
+    {
+      const jsClass = pathToModelClass(apiPath);
+      // Label carries the property, not the URL: "ShortApi::$prop" -> ".prop".
+      const propMatch = label.match(/::\$(\w+)$/);
+      return propMatch ? '{@link ' + jsClass + '.' + propMatch[1] + '}' : '{@link ' + jsClass + '}';
+    }
   );
 
   text = text.replace(
