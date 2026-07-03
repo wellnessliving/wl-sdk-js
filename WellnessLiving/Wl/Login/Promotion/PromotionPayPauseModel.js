@@ -24,7 +24,7 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   /**
    * List of all promotion payment pause periods. Each element has next structure:
    *
-   * `null` if {@link Wl_Login_Promotion_PromotionPayPauseModel} is false.
+   * `null` if {@link Wl_Login_Promotion_PromotionPayPauseModel.is_list} is false.
    *
    * @get result
    * @type {?Wl_Login_Promotion_PromotionPayPauseModel_a_pay_pause_list[]}
@@ -68,10 +68,10 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
 
   /**
    * Whether need to get all pause periods for the login promotion.
-   * If `true` then {@link Wl_Login_Promotion_PromotionPayPauseModel} will be returned.
-   * If `false` then information about specified {@link Wl_Login_Promotion_PromotionPayPauseModel} or
-   * currently active pause period will be returned ({@link Wl_Login_Promotion_PromotionPayPauseModel},
-   * {@link Wl_Login_Promotion_PromotionPayPauseModel} and {@link Wl_Login_Promotion_PromotionPayPauseModel}).
+   * If `true` then {@link Wl_Login_Promotion_PromotionPayPauseModel.a_pay_pause_list} will be returned.
+   * If `false` then information about specified {@link Wl_Login_Promotion_PromotionPayPauseModel.k_promotion_pay_pause} or
+   * currently active pause period will be returned ({@link Wl_Login_Promotion_PromotionPayPauseModel.dt_start},
+   * {@link Wl_Login_Promotion_PromotionPayPauseModel.dt_end} and {@link Wl_Login_Promotion_PromotionPayPauseModel.text_note}).
    *
    * @get get
    * @type {boolean}
@@ -131,7 +131,7 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
    * The Purchase Option key. If this key is used, a new hold will be created. The endpoint will return a `start-cross`
    * status code if a hold is already in place.
    *
-   * Ignored if {@link Wl_Login_Promotion_PromotionPayPauseModel} is provided.
+   * Ignored if {@link Wl_Login_Promotion_PromotionPayPauseModel.k_promotion_pay_pause} is provided.
    *
    * `null` if not yet initialized.
    *
@@ -154,7 +154,7 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
    * The promotion payment hold key. If this key is used, it will edit an existing hold.
    * This key will be empty if there's no active hold in place or if a scheduled hold isn't in effect.
    *
-   * `null` if not yet initialized or if the request is based on {@link Wl_Login_Promotion_PromotionPayPauseModel}.
+   * `null` if not yet initialized or if the request is based on {@link Wl_Login_Promotion_PromotionPayPauseModel.k_login_promotion}.
    *
    * @delete get
    * @get get,result
@@ -203,8 +203,8 @@ Wl_Login_Promotion_PromotionPayPauseModel.prototype.config=function()
  */
 
 /**
- * Returns promotion payment pause data: all hold periods when {@link Wl_Login_Promotion_PromotionPayPauseModel} is `true`,
- the specified hold period when {@link Wl_Login_Promotion_PromotionPayPauseModel} is provided, or the currently
+ * Returns promotion payment pause data: all hold periods when {@link Wl_Login_Promotion_PromotionPayPauseModel.is_list} is `true`,
+ the specified hold period when {@link Wl_Login_Promotion_PromotionPayPauseModel.k_promotion_pay_pause} is provided, or the currently
  active hold period otherwise.
  *
  * Also returns notification settings (email, push, SMS flags and email pattern key) and the date the last

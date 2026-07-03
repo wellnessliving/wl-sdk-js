@@ -153,7 +153,7 @@ function Wl_Staff_StaffElementModel()
   /**
    * The key of the staff member resolved and used internally by this API.
    *
-   * This property is populated from {@link Wl_Staff_StaffElementModel} in `post()` and
+   * This property is populated from {@link Wl_Staff_StaffElementModel.uid_staff} in `post()` and
    * returned in API result for compatibility.
    *
    * Passing `k_staff` in request payload is not supported and causes an error.
@@ -291,7 +291,7 @@ function Wl_Staff_StaffElementModel()
    * User key of a staff member.
    *
    * This is the supported request identifier for staff update operations.
-   * Value is normalized into {@link Wl_Staff_StaffElementModel} in `post()`.
+   * Value is normalized into {@link Wl_Staff_StaffElementModel.k_staff} in `post()`.
    *
    * @post post
    * @type {?string}
@@ -315,7 +315,7 @@ Wl_Staff_StaffElementModel.prototype.config=function()
  * @function
  * @name Wl_Staff_StaffElementModel.instanceGet
  * @param {string} k_business The key of the business in which the staff member is being created or edited. This field is required.
- * @param {?string} uid_staff User key of a staff member. This is the supported request identifier for staff update operations. Value is normalized into {@link Wl_Staff_StaffElementModel} in `post()`.
+ * @param {?string} uid_staff User key of a staff member. This is the supported request identifier for staff update operations. Value is normalized into {@link Wl_Staff_StaffElementModel.k_staff} in `post()`.
  * @returns {Wl_Staff_StaffElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

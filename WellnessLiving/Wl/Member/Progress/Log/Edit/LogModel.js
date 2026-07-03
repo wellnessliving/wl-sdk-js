@@ -56,7 +56,7 @@ function Wl_Member_Progress_Log_Edit_LogModel()
   this.dt_date = "";
 
   /**
-   * Last local date when the user entered progress values. `null` if the user had not entered progress data before the {@link Wl_Member_Progress_Log_Edit_LogModel} date.
+   * Last local date when the user entered progress values. `null` if the user had not entered progress data before the {@link Wl_Member_Progress_Log_Edit_LogModel.dt_date} date.
    *
    * @get result
    * @type {?string}

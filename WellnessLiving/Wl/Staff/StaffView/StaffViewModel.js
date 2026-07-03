@@ -103,8 +103,8 @@ function Wl_Staff_StaffView_StaffViewModel()
 
   /**
    * @typedef {{}} Wl_Staff_StaffView_StaffViewModel_a_result_list
-   * @property {Wl_Staff_StaffView_StaffViewModel_a_result_list_a_class_day} a_class_day Contains a schedule of classes per day. Each element has a structure like in {@link Wl_Staff_StaffView_StaffViewModel} property.
-   * @property {Wl_Staff_StaffView_StaffViewModel_a_result_list_a_staff} a_staff Staff information. Each element has a structure like in {@link Wl_Staff_StaffView_StaffViewModel} property.
+   * @property {Wl_Staff_StaffView_StaffViewModel_a_result_list_a_class_day} a_class_day Contains a schedule of classes per day. Each element has a structure like in {@link Wl_Staff_StaffView_StaffViewModel.a_class_day} property.
+   * @property {Wl_Staff_StaffView_StaffViewModel_a_result_list_a_staff} a_staff Staff information. Each element has a structure like in {@link Wl_Staff_StaffView_StaffViewModel.a_staff} property.
    */
 
   /**
@@ -260,8 +260,8 @@ Wl_Staff_StaffView_StaffViewModel.prototype.config=function()
 /**
  * Retrieves information about staff.
  *
- * This method can accept or one staff key {@link Wl_Staff_StaffView_StaffViewModel} or staff list
- * {@link Wl_Staff_StaffView_StaffViewModel} but not both (exception would be thrown).
+ * This method can accept or one staff key {@link Wl_Staff_StaffView_StaffViewModel.k_staff} or staff list
+ * {@link Wl_Staff_StaffView_StaffViewModel.a_staff_list} but not both (exception would be thrown).
  *
  * @function
  * @name Wl_Staff_StaffView_StaffViewModel.get

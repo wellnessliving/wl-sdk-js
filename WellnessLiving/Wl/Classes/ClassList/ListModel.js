@@ -31,8 +31,8 @@ function Wl_Classes_ClassList_ListModel()
    * List of classes and events.
    *
    * The result may depend on the following flags:
-   * * {@link Wl_Classes_ClassList_ListModel}
-   * * {@link Wl_Classes_ClassList_ListModel}
+   * * {@link Wl_Classes_ClassList_ListModel.is_enrollment_block_all}
+   * * {@link Wl_Classes_ClassList_ListModel.is_enrollment_block_empty}
    *
    * Each element has the following structure:
    *
@@ -43,7 +43,7 @@ function Wl_Classes_ClassList_ListModel()
 
   /**
    * List of tabs keys.
-   * Filtering by Book Now Tab is not supported if {@link Wl_Classes_ClassList_ListModel} is `true`.
+   * Filtering by Book Now Tab is not supported if {@link Wl_Classes_ClassList_ListModel.is_franchise} is `true`.
    *
    * `null` if no filtering by Book Now Tab is required.
    *
@@ -55,7 +55,7 @@ function Wl_Classes_ClassList_ListModel()
   /**
    * ID of book now tab. One of {@link Wl_Classes_Tab_TabSid} constants.
    * Only {@link Wl_Classes_Tab_TabSid} and {@link Wl_Classes_Tab_TabSid} book now tab are supported.
-   * Filtering by Book Now Tab is not supported if {@link Wl_Classes_ClassList_ListModel} is `true`.
+   * Filtering by Book Now Tab is not supported if {@link Wl_Classes_ClassList_ListModel.is_franchise} is `true`.
    *
    * `null` if no filtering by Book Now Tab is required.
    *
@@ -72,7 +72,7 @@ function Wl_Classes_ClassList_ListModel()
    * * `false` to return only one event from each enrollment block.
    *
    * Only published and non-empty events will be returned for the client.
-   * To return empty events, use {@link Wl_Classes_ClassList_ListModel}.
+   * To return empty events, use {@link Wl_Classes_ClassList_ListModel.is_enrollment_block_empty}.
    *
    * For the staff, filtering by publication or emptiness is not applied.
    *
@@ -89,7 +89,7 @@ function Wl_Classes_ClassList_ListModel()
    * Affects clients only.
    * Does not affect staff. Staff always see empty events.
    *
-   * Makes sense in conjunction with the flag {@link Wl_Classes_ClassList_ListModel}.
+   * Makes sense in conjunction with the flag {@link Wl_Classes_ClassList_ListModel.is_enrollment_block_all}.
    *
    * * `true` to include events without sessions.
    * * `false` to exclude events without sessions.
@@ -144,7 +144,7 @@ Wl_Classes_ClassList_ListModel.prototype.config=function()
  * @function
  * @name Wl_Classes_ClassList_ListModel.instanceGet
  * @param {string} k_business Business key.
- * @param {boolean} is_enrollment_block_all Whether all events should be returned from same enrollment block. * `true` to return all events from same enrollment block. * `false` to return only one event from each enrollment block. Only published and non-empty events will be returned for the client. To return empty events, use {@link Wl_Classes_ClassList_ListModel}. For the staff, filtering by publication or emptiness is not applied.
+ * @param {boolean} is_enrollment_block_all Whether all events should be returned from same enrollment block. * `true` to return all events from same enrollment block. * `false` to return only one event from each enrollment block. Only published and non-empty events will be returned for the client. To return empty events, use {@link Wl_Classes_ClassList_ListModel.is_enrollment_block_empty}. For the staff, filtering by publication or emptiness is not applied.
  * @param {boolean} is_franchise Whether to return franchisee-created classes (if business is franchisor). `true` to include franchisee-created classes.
  * @returns {Wl_Classes_ClassList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()

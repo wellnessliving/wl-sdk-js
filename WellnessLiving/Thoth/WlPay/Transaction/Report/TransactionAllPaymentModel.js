@@ -11,7 +11,7 @@ function Thoth_WlPay_Transaction_Report_TransactionAllPaymentModel()
   /**
    * A list of fields in the report.
    *
-   * This array is effectively a title row for the table returned in {@link Thoth_WlPay_Transaction_Report_TransactionAllPaymentModel}.
+   * This array is effectively a title row for the table returned in {@link Thoth_WlPay_Transaction_Report_TransactionAllPaymentModel.a_row}.
    *
    * @get result
    * @type {string[]}
@@ -54,9 +54,9 @@ function Thoth_WlPay_Transaction_Report_TransactionAllPaymentModel()
    * The report data.
    *
    * This is an indexed array where each element is also an indexed array representing one report row.
-   * Column positions in each row correspond to the field names in {@link Thoth_WlPay_Transaction_Report_TransactionAllPaymentModel}.
+   * Column positions in each row correspond to the field names in {@link Thoth_WlPay_Transaction_Report_TransactionAllPaymentModel.a_field}.
    *
-   * Known columns (use {@link Thoth_WlPay_Transaction_Report_TransactionAllPaymentModel} to resolve their positional indexes):
+   * Known columns (use {@link Thoth_WlPay_Transaction_Report_TransactionAllPaymentModel.a_field} to resolve their positional indexes):
    *
    * @get result
    * @type {Thoth_WlPay_Transaction_Report_TransactionAllPaymentModel_a_row[]}

@@ -70,7 +70,7 @@ function Wl_Profile_Alert_AlertEditModel()
   this.id_login_note_access = 0;
 
   /**
-   * Whether flagged user can book. Does not matter if {@link Wl_Profile_Alert_AlertEditModel} is `false`.
+   * Whether flagged user can book. Does not matter if {@link Wl_Profile_Alert_AlertEditModel.is_flag} is `false`.
    *
    * @post post
    * @type {boolean}
@@ -86,7 +86,7 @@ function Wl_Profile_Alert_AlertEditModel()
   this.is_flag = false;
 
   /**
-   * Whether flagged user can make purchases. Does not matter if {@link Wl_Profile_Alert_AlertEditModel} is `false`.
+   * Whether flagged user can make purchases. Does not matter if {@link Wl_Profile_Alert_AlertEditModel.is_flag} is `false`.
    *
    * @post post
    * @type {boolean}

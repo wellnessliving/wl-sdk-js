@@ -539,7 +539,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_transfer = undefined;
 
   /**
-   * The business key. Currently used only with {@link Wl_Profile_Purchase_PurchaseElementModel} variable.
+   * The business key. Currently used only with {@link Wl_Profile_Purchase_PurchaseElementModel.k_session_pass} variable.
    *
    * @get get
    * @type {?string}

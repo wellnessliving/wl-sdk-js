@@ -25,7 +25,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * The list of classes keys to filter.
    * Return sessions with matching class IDs.
    *
-   * If it's empty and {@link Wl_Schedule_ClassList_ClassList68Model} is `true`, all classes will be returned.
+   * If it's empty and {@link Wl_Schedule_ClassList_ClassList68Model.show_class} is `true`, all classes will be returned.
    *
    * @post post
    * @type {string[]}
@@ -35,9 +35,9 @@ function Wl_Schedule_ClassList_ClassList68Model()
   /**
    * List of tabs keys.
    *
-   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model} is `true`.
+   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model.is_tab_all} is `true`.
    *
-   * If list of tab keys is not empty, {@link Wl_Schedule_ClassList_ClassList68Model} is mandatory.
+   * If list of tab keys is not empty, {@link Wl_Schedule_ClassList_ClassList68Model.id_class_tab} is mandatory.
    *
    * `null` if no filtering by Book Now Tab is required.
    *
@@ -63,7 +63,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * The list of event keys to filter.
    * Return sessions with matching event keys.
    *
-   * If it's empty and {@link Wl_Schedule_ClassList_ClassList68Model} is `true`, all events will be returned.
+   * If it's empty and {@link Wl_Schedule_ClassList_ClassList68Model.show_event} is `true`, all events will be returned.
    *
    * @post post
    * @type {string[]}
@@ -73,7 +73,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
   /**
    * The list of location keys to filter results.
    * If it's empty, schedule for all locations will be returned.
-   * All given locations should be from the same business, which is sent in {@link Wl_Schedule_ClassList_ClassListModel}.
+   * All given locations should be from the same business, which is sent in {@link Wl_Schedule_ClassList_ClassListModel.k_business}.
    *
    * @post post
    * @type {string[]}
@@ -95,10 +95,10 @@ function Wl_Schedule_ClassList_ClassList68Model()
    *
    *
    * For generating this filter, all filters are applied except:
-   * - {@link Wl_Schedule_ClassList_ClassList68Model};
-   * - {@link Wl_Schedule_ClassList_ClassList68Model};
-   * - {@link Wl_Schedule_ClassList_ClassList68Model};
-   * - {@link Wl_Schedule_ClassList_ClassList68Model}.
+   * - {@link Wl_Schedule_ClassList_ClassList68Model.a_class};
+   * - {@link Wl_Schedule_ClassList_ClassList68Model.a_event};
+   * - {@link Wl_Schedule_ClassList_ClassList68Model.show_class};
+   * - {@link Wl_Schedule_ClassList_ClassList68Model.show_event}.
    *
    * @post result
    * @type {Wl_Schedule_ClassList_ClassList68Model_a_quick}
@@ -137,8 +137,8 @@ function Wl_Schedule_ClassList_ClassList68Model()
    */
 
   /**
-   * A list of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel}
-   * and in the 62 days ahead (or up to {@link Wl_Schedule_ClassList_ClassListModel}).
+   * A list of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel.dt_date}
+   * and in the 62 days ahead (or up to {@link Wl_Schedule_ClassList_ClassListModel.dt_end}).
    * Every element has the following keys:
    *
    * @post result
@@ -201,8 +201,8 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.id_class_tab = null;
 
   /**
-   * `true` means to not generate {@link Wl_Schedule_ClassList_ClassList68Model} result.
-   * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassList68Model} is enough.
+   * `true` means to not generate {@link Wl_Schedule_ClassList_ClassList68Model.a_session} result.
+   * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassList68Model.a_calendar} is enough.
    *
    * @post post
    * @type {boolean}
@@ -211,7 +211,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
-   * {@link Wl_Schedule_ClassList_ClassList68Model} or {@link Wl_Schedule_ClassList_ClassList68Model} to filter sessions by class tab.
+   * {@link Wl_Schedule_ClassList_ClassList68Model.k_class_tab} or {@link Wl_Schedule_ClassList_ClassList68Model.id_class_tab} to filter sessions by class tab.
    *
    * @post post
    * @type {boolean}
@@ -241,7 +241,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * If `true`, there exists at least one virtual service by a specified
-   * {@link Wl_Schedule_ClassList_ClassList68Model} and {@link Wl_Schedule_ClassList_ClassList68Model},
+   * {@link Wl_Schedule_ClassList_ClassList68Model.k_business} and {@link Wl_Schedule_ClassList_ClassList68Model.k_class_tab},
    * Otherwise, this will be `false`.
    *
    * @post result
@@ -259,7 +259,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * The tab key.
-   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model} is `true`.
+   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model.is_tab_all} is `true`.
    *
    * @post post
    * @type {string}
@@ -319,7 +319,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.show_event = false;
 
   /**
-   * Whether to generate {@link Wl_Schedule_ClassList_ClassList68Model} a quick filter.
+   * Whether to generate {@link Wl_Schedule_ClassList_ClassList68Model.a_quick} a quick filter.
    * If `true`, a quick filter will be generated. `false` otherwise.
    *
    * @post post
@@ -357,10 +357,10 @@ The difference is as follows:
  * requests and the browser refuse to send the request (situations with long class ID, event ID or staff ID lists).
  *
  * - Added generation of a separate 'Quick filter'.
- * This generation is enabled using the flag {@link Wl_Schedule_ClassList_ClassList68Model}.
+ * This generation is enabled using the flag {@link Wl_Schedule_ClassList_ClassList68Model.show_quick_filter}.
  *
- * - Added a filter list of events {@link Wl_Schedule_ClassList_ClassList68Model}.
- * - Added a filter ID of tab {@link Wl_Schedule_ClassList_ClassList68Model}.
+ * - Added a filter list of events {@link Wl_Schedule_ClassList_ClassList68Model.a_event}.
+ * - Added a filter ID of tab {@link Wl_Schedule_ClassList_ClassList68Model.id_class_tab}.
  *
  * @function
  * @name Wl_Schedule_ClassList_ClassList68Model.post

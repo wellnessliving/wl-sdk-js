@@ -87,8 +87,8 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
   this.a_pay_processor = null;
 
   /**
-   * Current local date in current location {@link Thoth_WlPay_Form_EnvironmentModel}
-   * or business {@link Thoth_WlPay_Form_EnvironmentModel} if not set location.
+   * Current local date in current location {@link Thoth_WlPay_Form_EnvironmentModel.k_location}
+   * or business {@link Thoth_WlPay_Form_EnvironmentModel.k_business} if not set location.
    *
    * @get result
    * @type {string}

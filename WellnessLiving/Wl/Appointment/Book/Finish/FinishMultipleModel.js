@@ -9,7 +9,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * A list of answers for the questions from {@link Wl_Appointment_Book_Question_QuestionModel}.
+   * A list of answers for the questions from {@link Wl_Appointment_Book_Question_QuestionModel.a_question}.
    *
    * 1st dimension - provider index.
    * 2nd dimension - keys refer to hashes of the questions. Values refer to answers for the questions.
@@ -141,7 +141,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * * {@link RsPurchaseItemSid}
    * * {@link RsPurchaseItemSid}
    *
-   * This is a multi-provider equivalent of {@link Wl_Appointment_Book_Finish_FinishModel}.
+   * This is a multi-provider equivalent of {@link Wl_Appointment_Book_Finish_FinishModel.m_pay}.
    *
    * @post post
    * @type {number[]}
@@ -154,7 +154,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * * Keys refer to provider indexes.
    * * Values are one of the {@link RsAppointmentPaySid} constants.
    *
-   * This is a multi-provider equivalent of {@link Wl_Appointment_Book_Finish_FinishModel}.
+   * This is a multi-provider equivalent of {@link Wl_Appointment_Book_Finish_FinishModel.id_pay}.
    *
    * @post get
    * @type {number[]}
@@ -406,10 +406,10 @@ Wl_Appointment_Book_Finish_FinishMultipleModel.prototype.config=function()
 /**
  * Completes the appointment booking for one or more providers, optionally creating a new client.
  *
- * Accepts booking details for one or more providers in {@link Wl_Appointment_Book_Finish_FinishMultipleModel},
+ * Accepts booking details for one or more providers in {@link Wl_Appointment_Book_Finish_FinishMultipleModel.a_book_data},
  * processes payment using the selected Purchase Option, creates appointment records, and sends
  * booking confirmation notifications. A new client account can be created by supplying user
- * details in {@link Wl_Appointment_Book_Finish_FinishMultipleModel} when no UID is provided.
+ * details in {@link Wl_Appointment_Book_Finish_FinishMultipleModel.a_user} when no UID is provided.
  *
  * @function
  * @name Wl_Appointment_Book_Finish_FinishMultipleModel.post

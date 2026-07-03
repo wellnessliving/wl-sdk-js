@@ -147,9 +147,9 @@ function Wl_Lead_LeadModel()
    *
    * Lead will not be signed in if:
    * - email is used already for another existing user;
-   * - different user is signed in already (can be changed with {@link Wl_Lead_LeadModel}).
+   * - different user is signed in already (can be changed with {@link Wl_Lead_LeadModel.is_sing_in_force}).
    *
-   * If lead is not signed in, then {@link Wl_Lead_LeadModel} will contain an error message.
+   * If lead is not signed in, then {@link Wl_Lead_LeadModel.text_sign_in_error} will contain an error message.
    *
    * @post post
    * @type {boolean}
@@ -159,7 +159,7 @@ function Wl_Lead_LeadModel()
   /**
    * `true` if newly created lead should be automatically signed in instead of the currently signed-in user,
    * `false` if currently singed-in user should not be signed out.
-   * If lead is not signed in, then {@link Wl_Lead_LeadModel} will contain an error message.
+   * If lead is not signed in, then {@link Wl_Lead_LeadModel.text_sign_in_error} will contain an error message.
    *
    * @post post
    * @type {boolean}
@@ -202,8 +202,8 @@ function Wl_Lead_LeadModel()
 
   /**
    * The characters entered by the lead for the captcha test.
-   * This isn't necessary if the GET method returned an empty {@link Wl_Lead_LeadModel}.
-   * This field isn't necessary if the GET method returned an empty {@link Wl_Lead_LeadModel}.
+   * This isn't necessary if the GET method returned an empty {@link Wl_Lead_LeadModel.url_captcha}.
+   * This field isn't necessary if the GET method returned an empty {@link Wl_Lead_LeadModel.url_captcha}.
    *
    * @post post
    * @type {string}

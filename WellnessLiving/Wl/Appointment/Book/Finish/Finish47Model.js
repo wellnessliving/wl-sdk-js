@@ -9,7 +9,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * A list of answers for the questions from {@link Wl_Appointment_Book_Question_QuestionModel}.
+   * A list of answers for the questions from {@link Wl_Appointment_Book_Question_QuestionModel.a_question}.
    * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post
@@ -86,7 +86,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    */
 
   /**
-   * The documentation is the same as in {@link Wl_Appointment_Book_Finish_FinishModel}.
+   * The documentation is the same as in {@link Wl_Appointment_Book_Finish_FinishModel.a_book_data}.
    *
    * @post post
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_book_data}

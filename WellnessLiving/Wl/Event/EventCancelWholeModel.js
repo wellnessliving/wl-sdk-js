@@ -1,5 +1,5 @@
 /**
- * Cancels book of event {@link Wl_Event_EventCancelWholeModel}.
+ * Cancels book of event {@link Wl_Event_EventCancelWholeModel.k_class}.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -46,7 +46,7 @@ Wl_Event_EventCancelWholeModel.prototype.config=function()
 };
 
 /**
- * Cancels book of event {@link Wl_Event_EventCancelWholeModel}.
+ * Cancels book of event {@link Wl_Event_EventCancelWholeModel.k_class}.
  *
  * Used when a client wants to drop out of a multi-session event entirely. Cancels all remaining
  * upcoming sessions at once, including any waitlisted spots, without requiring the client to cancel

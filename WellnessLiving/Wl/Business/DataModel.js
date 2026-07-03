@@ -287,7 +287,7 @@ function Wl_Business_DataModel()
   this.k_business_franchisor = undefined;
 
   /**
-   * The business key obtained by the security token {@link Wl_Business_DataModel}.
+   * The business key obtained by the security token {@link Wl_Business_DataModel.text_token}.
    * This can be used on the client side if authorization token should be used instead of the business key
    * (the business key isn't available).
    *
@@ -346,7 +346,7 @@ function Wl_Business_DataModel()
 
   /**
    * The authorization token.
-   * This may be used instead of {@link Wl_Business_DataModel} to
+   * This may be used instead of {@link Wl_Business_DataModel.k_business} to
    * identify a business.
    *
    * @get get

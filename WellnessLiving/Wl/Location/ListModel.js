@@ -15,7 +15,7 @@ function Wl_Location_ListModel()
 
   /**
    * A list of business keys.
-   * You can specify this instead of {@link Wl_Location_ListModel} to load data for many businesses in one call.
+   * You can specify this instead of {@link Wl_Location_ListModel.k_business} to load data for many businesses in one call.
    *
    * @get get
    * @type {string[]}
@@ -70,7 +70,7 @@ function Wl_Location_ListModel()
 
   /**
    * The primary keys of the selected businesses.
-   * You can specify this instead of {@link Wl_Location_ListModel} to load data for many businesses in one call.
+   * You can specify this instead of {@link Wl_Location_ListModel.k_business} to load data for many businesses in one call.
    *
    * This is the same as `$a_business`, but serialized with JSON (to make the URL shorter).
    *

@@ -72,7 +72,7 @@ function Wl_Member_Info_InfoModel()
 
   /**
    * Additional member data or `null` if any data can be shown.
-   * Will be filled if {@link Wl_Member_Info_InfoModel} flag is set.
+   * Will be filled if {@link Wl_Member_Info_InfoModel.is_full} flag is set.
    *
    * @get result
    * @type {?Wl_Member_Info_InfoModel_a_info}
@@ -245,7 +245,7 @@ function Wl_Member_Info_InfoModel()
 
   /**
    * If `true`, the client is a traveler. Otherwise, this will be `false`.
-   * This will be `null` in cases when the client is a walk-in. Or when {@link Wl_Member_Info_InfoModel} is `false`.
+   * This will be `null` in cases when the client is a walk-in. Or when {@link Wl_Member_Info_InfoModel.is_full} is `false`.
    *
    * @get result
    * @type {?boolean}

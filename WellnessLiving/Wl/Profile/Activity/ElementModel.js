@@ -62,7 +62,7 @@ function Wl_Profile_Activity_ElementModel()
   this.html_message = undefined;
 
   /**
-   * Total amount of account credits user got for {@link Wl_Profile_Activity_ElementModel}.
+   * Total amount of account credits user got for {@link Wl_Profile_Activity_ElementModel.k_login_activity}.
    *
    * @get result
    * @type {number}

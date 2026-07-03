@@ -20,7 +20,7 @@ function Wl_Book_Process_Info_InfoCanCompleteModel()
   /**
    * A list of sessions of an event that can be booked together.
    *
-   * This is the same as {@link Wl_Book_Process_Info_InfoCanCompleteModel}, but limited by query string
+   * This is the same as {@link Wl_Book_Process_Info_InfoCanCompleteModel.a_session_select_post}, but limited by query string
    * length and might fail if the user is booking more than 50 sessions at once.
    * Therefore, using the POST method is preferable.
    *

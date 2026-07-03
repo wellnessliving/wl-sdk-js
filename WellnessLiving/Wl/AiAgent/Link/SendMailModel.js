@@ -9,7 +9,7 @@ function Wl_AiAgent_Link_SendMailModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Purchase item ID. Required if {@link Wl_AiAgent_Link_SendMailModel} is 'purchase'.
+   * Purchase item ID. Required if {@link Wl_AiAgent_Link_SendMailModel.text_action} is 'purchase'.
    *
    * One of the {@link RsPurchaseItemSid} constants.
    *
@@ -20,7 +20,7 @@ function Wl_AiAgent_Link_SendMailModel()
   this.id_purchase_item = 0;
 
   /**
-   * Service ID. Required if {@link Wl_AiAgent_Link_SendMailModel} is 'booking'.
+   * Service ID. Required if {@link Wl_AiAgent_Link_SendMailModel.text_action} is 'booking'.
    *
    * @post get
    * @see RsServiceSid

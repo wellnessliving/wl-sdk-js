@@ -45,7 +45,7 @@ function Wl_Classes_Period_Modify_ModifyModel()
   /**
    * The list of data to save.
    *
-   * Data depends on current {@link Wl_Classes_Period_Modify_ModifyModel}:
+   * Data depends on current {@link Wl_Classes_Period_Modify_ModifyModel.id_step}:
    *
    * @post post
    * @type {Wl_Classes_Period_Modify_ModifyModel_a_set}

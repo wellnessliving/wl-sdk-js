@@ -20,7 +20,7 @@ function Wl_Family_Relation_RelationModel()
    */
 
   /**
-   * The new relationship to be added to user, specified with {@link Wl_Family_Relation_RelationModel}:
+   * The new relationship to be added to user, specified with {@link Wl_Family_Relation_RelationModel.uid}:
    *
    * @post post
    * @type {Wl_Family_Relation_RelationModel_a_new}
@@ -124,7 +124,7 @@ function Wl_Family_Relation_RelationModel()
   this.uid = "";
 
   /**
-   * The key of the related user who {@link Wl_Family_Relation_RelationModel} must be removed.
+   * The key of the related user who {@link Wl_Family_Relation_RelationModel.uid} must be removed.
    *
    * @delete get
    * @type {string}
@@ -178,8 +178,8 @@ Wl_Family_Relation_RelationModel.prototype.config=function()
  */
 
 /**
- * Adds to user {@link Wl_Family_Relation_RelationModel}
-relative {@link Wl_Family_Relation_RelationModel}.
+ * Adds to user {@link Wl_Family_Relation_RelationModel.uid}
+relative {@link Wl_Family_Relation_RelationModel.a_new}.
  *
  * Creates a bidirectional family relationship between the user identified by `uid` and the user specified in
  * `a_new`, then returns the updated list of relationships for `uid`.

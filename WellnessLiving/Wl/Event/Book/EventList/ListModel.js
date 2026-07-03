@@ -54,8 +54,8 @@ function Wl_Event_Book_EventList_ListModel()
 
   /**
    * `true` if exist at least one virtual event
-   * by specific {@link Wl_Event_Book_EventList_ListModel} and
-   * {@link Wl_Event_Book_EventList_ListModel},
+   * by specific {@link Wl_Event_Book_EventList_ListModel.k_business} and
+   * {@link Wl_Event_Book_EventList_ListModel.k_class_tab},
    * `false` otherwise.
    *
    * @get result

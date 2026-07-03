@@ -235,7 +235,7 @@ function Wl_Event_EventListModel()
   this.is_ignore_requirement = false;
 
   /**
-   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link Wl_Event_EventListModel}.
+   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link Wl_Event_EventListModel.k_class_tab}.
    *
    * * `true` - retrieves a list regardless of the specified tab.
    * * `false` - retrieves a list only for the specific tab.
@@ -248,7 +248,7 @@ function Wl_Event_EventListModel()
   /**
    * The event business key to retrieve a list of all event sessions in business.
    *
-   * `null` to retrieve events from {@link Wl_Event_EventListModel}.
+   * `null` to retrieve events from {@link Wl_Event_EventListModel.k_location}.
    *
    * @get get
    * @put get
@@ -270,8 +270,8 @@ function Wl_Event_EventListModel()
    * An empty value to retrieve a list of event sessions that don't belong to any tab.
    *
    * Will be ignored in next cases:
-   * * {@link Wl_Event_EventListModel} specified.
-   * * {@link Wl_Event_EventListModel} is `true`.
+   * * {@link Wl_Event_EventListModel.k_skin} specified.
+   * * {@link Wl_Event_EventListModel.is_tab_all} is `true`.
    *
    * @get get
    * @type {string}
@@ -281,8 +281,8 @@ function Wl_Event_EventListModel()
   /**
    * The event location key to retrieve a list of all event sessions in a specific location.
    *
-   * Required if {@link Wl_Event_EventListModel} isn't specified.
-   * `null` if you need to retrieve a list of event sessions in all locations of {@link Wl_Event_EventListModel}.
+   * Required if {@link Wl_Event_EventListModel.k_business} isn't specified.
+   * `null` if you need to retrieve a list of event sessions in all locations of {@link Wl_Event_EventListModel.k_business}.
    *
    * @get get
    * @type {?string}
@@ -292,7 +292,7 @@ function Wl_Event_EventListModel()
   /**
    * The skin key if an event list is used for widget mode.
    *
-   * {@link Wl_Event_EventListModel} will be ignored for widget mode.
+   * {@link Wl_Event_EventListModel.k_class_tab} will be ignored for widget mode.
    *
    * @get get
    * @type {string}

@@ -47,8 +47,8 @@ function Wl_Collector_DebtListModel()
    *
    * If set, this is the end of the date window. Only debts added before or on this date will be shown.
    *
-   * If left `null` and {@link Wl_Collector_DebtListModel} has been specified, only debts added after the start date will be returned.
-   * If left `null` and {@link Wl_Collector_DebtListModel} is also `null`, this will return debts from the previous month.
+   * If left `null` and {@link Wl_Collector_DebtListModel.dl_start} has been specified, only debts added after the start date will be returned.
+   * If left `null` and {@link Wl_Collector_DebtListModel.dl_start} is also `null`, this will return debts from the previous month.
    *
    * @get get
    * @type {?string}
@@ -60,8 +60,8 @@ function Wl_Collector_DebtListModel()
    *
    * If set, this is the start of the date window. Only debts added on or after this date will be shown.
    *
-   * If left `null` and {@link Wl_Collector_DebtListModel} has been specified will return debts added since the beginning of time.
-   * If left `null` and {@link Wl_Collector_DebtListModel} is also `null`, this will return debts from the previous month.
+   * If left `null` and {@link Wl_Collector_DebtListModel.dl_end} has been specified will return debts added since the beginning of time.
+   * If left `null` and {@link Wl_Collector_DebtListModel.dl_end} is also `null`, this will return debts from the previous month.
    *
    * @get get
    * @type {?string}

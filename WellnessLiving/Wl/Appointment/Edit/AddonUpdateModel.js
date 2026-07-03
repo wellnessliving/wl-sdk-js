@@ -99,7 +99,7 @@ function Wl_Appointment_Edit_AddonUpdateModel()
 
   /**
    * List of user keys to get add-ons for. Not empty only when getting add-ons for new appointment
-   * ({@link Wl_Appointment_Edit_AddonUpdateModel} is null). User key '-1' means walk-in, user key '0' means new user
+   * ({@link Wl_Appointment_Edit_AddonUpdateModel.k_appointment} is null). User key '-1' means walk-in, user key '0' means new user
    * (user will be created together with appointment).
    *
    * @get get
@@ -135,7 +135,7 @@ function Wl_Appointment_Edit_AddonUpdateModel()
 
   /**
    * Location key.
-   * Not empty only when getting add-ons for new appointment ({@link Wl_Appointment_Edit_AddonUpdateModel} is null).
+   * Not empty only when getting add-ons for new appointment ({@link Wl_Appointment_Edit_AddonUpdateModel.k_appointment} is null).
    *
    * @get get
    * @type {string}
@@ -144,7 +144,7 @@ function Wl_Appointment_Edit_AddonUpdateModel()
 
   /**
    * Service key.
-   * Not empty only when getting add-ons for new appointment ({@link Wl_Appointment_Edit_AddonUpdateModel} is null).
+   * Not empty only when getting add-ons for new appointment ({@link Wl_Appointment_Edit_AddonUpdateModel.k_appointment} is null).
    *
    * @get get
    * @type {string}

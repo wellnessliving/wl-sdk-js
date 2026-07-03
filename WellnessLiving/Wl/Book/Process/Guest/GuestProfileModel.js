@@ -87,7 +87,7 @@ function Wl_Book_Process_Guest_GuestProfileModel()
 
   /**
    * Key of service to book.
-   * Depending on {@link Wl_Book_Process_Guest_GuestProfileModel} value:,
+   * Depending on {@link Wl_Book_Process_Guest_GuestProfileModel.id_service} value:,
    * <ul>
    *     <li>{@link Wl_Service_ServiceSid} - class key. </li>
    *     <li>{@link Wl_Service_ServiceSid} - service key.</li>
@@ -162,7 +162,7 @@ Wl_Book_Process_Guest_GuestProfileModel.prototype.config=function()
  * @name Wl_Book_Process_Guest_GuestProfileModel.instanceGet
  * @param {string} k_business Business key.
  * @param {number} id_service Type of the service to book.
- * @param {string} k_id Key of service to book. Depending on {@link Wl_Book_Process_Guest_GuestProfileModel} value:, <ul> <li>{@link Wl_Service_ServiceSid} - class key. </li> <li>{@link Wl_Service_ServiceSid} - service key.</li> <li>{@link Wl_Service_ServiceSid} - resource key.</li> </ul>
+ * @param {string} k_id Key of service to book. Depending on {@link Wl_Book_Process_Guest_GuestProfileModel.id_service} value:, <ul> <li>{@link Wl_Service_ServiceSid} - class key. </li> <li>{@link Wl_Service_ServiceSid} - service key.</li> <li>{@link Wl_Service_ServiceSid} - resource key.</li> </ul>
  * @param {string} text_mail Guest's email.
  * @param {string} text_first_name Guest's first name.
  * @param {string} text_last_name Guest's last name.

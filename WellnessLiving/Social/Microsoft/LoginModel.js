@@ -65,8 +65,8 @@ function Social_Microsoft_LoginModel()
    * * All possible links must be registered in the Microsoft application used for authorization.
    * * WARNING: Do not use this link for a direct redirect. This will present a vulnerability.
    *
-   * * A {@link Social_Microsoft_LoginModel} link will be generated along with this redirect URI.
-   * * When checking the received {@link Social_Microsoft_LoginModel} from Microsoft.
+   * * A {@link Social_Microsoft_LoginModel.url_login} link will be generated along with this redirect URI.
+   * * When checking the received {@link Social_Microsoft_LoginModel.s_code} from Microsoft.
    * The link must be sent along with it to the `post()` method.
    *
    * @get get

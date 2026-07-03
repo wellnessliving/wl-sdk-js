@@ -31,7 +31,7 @@ function Wl_Book_Process_Store_StoreModel()
    * @typedef {{}} Wl_Book_Process_Store_StoreModel_a_purchase_item_check
    * @property {Wl_Book_Process_Store_StoreModel_a_purchase_item_check_a_config} a_config Additional configuration. Used only for `id_purchase_item` = {@link RsPurchaseItemSid}.
    * @property {number} i_session The number of sessions that this item can cover. This only applies to items of type {@link RsPurchaseItemSid}.
-   * @property {string} s_value The unique identifier of the item being checked. This corresponds to one of the following values: <ul>   <li>{@link Wl_Book_Process_Purchase_Purchase56Model}`["s_value"]`</li>   <li>{@link Wl_Book_Process_Purchase_Purchase56Model}`["s_value"]`</li>   <li>{@link Wl_Book_Process_Purchase_Purchase56Model}`["s_value"]`</li> </ul>
+   * @property {string} s_value The unique identifier of the item being checked. This corresponds to one of the following values: <ul>   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_purchase}`["s_value"]`</li>   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_reward_prize}`["s_value"]`</li>   <li>{@link Wl_Book_Process_Purchase_Purchase56Model.a_login_prize}`["s_value"]`</li> </ul>
    */
 
   /**

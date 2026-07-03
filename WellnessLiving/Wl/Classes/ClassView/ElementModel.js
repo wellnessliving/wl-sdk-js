@@ -57,7 +57,7 @@ function Wl_Classes_ClassView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Classes_ClassView_ElementModel_a_class_list
-   * @property {?Wl_Classes_ClassView_ElementModel_a_class_list_a_config} a_config Class-specific business policies overriding the business defaults. Has the same structure as {@link Wl_Business_Config_BusinessConfigModel}. `null` when the class uses the default business policy without overrides.
+   * @property {?Wl_Classes_ClassView_ElementModel_a_class_list_a_config} a_config Class-specific business policies overriding the business defaults. Has the same structure as {@link Wl_Business_Config_BusinessConfigModel.a_business_policy}. `null` when the class uses the default business policy without overrides.
    * @property {Wl_Classes_ClassView_ElementModel_a_class_list_a_schedule} a_schedule A list of class schedules. Each element has the next structure:
    * @property {Wl_Classes_ClassView_ElementModel_a_class_list_a_search_tag} a_search_tag Tags for quick search.
    * @property {Wl_Classes_ClassView_ElementModel_a_class_list_a_visits_required} a_visits_required Information about visits that should be reviewed prior to visiting this class/event.

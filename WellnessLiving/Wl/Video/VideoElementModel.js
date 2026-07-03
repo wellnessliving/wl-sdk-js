@@ -300,7 +300,7 @@ function Wl_Video_VideoElementModel()
   /**
    * The video key.
    *
-   * *Be careful, when use this property in code, use {@link Wl_Video_VideoElementModel} instead.*
+   * *Be careful, when use this property in code, use {@link Wl_Video_VideoElementModel.k_video_binary} instead.*
    * In this property can be key in next format:
    * * [Deprecated] String key in old format. 
    * * String key in new format.
@@ -443,7 +443,7 @@ function Wl_Video_VideoElementModel()
    *
    * This URL return with domain which you use when you call this API.
    * In case when you make request to local domain and video is
-   * {@link Wl_Video_VideoElementModel} links in file will have global domain and for correct
+   * {@link Wl_Video_VideoElementModel.is_converted} links in file will have global domain and for correct
    * work you must replace global domain to local.
    *
    * Example for `videojs` player you can override method `beforeRequest`: <code>
@@ -504,7 +504,7 @@ Wl_Video_VideoElementModel.prototype.config=function()
  * @function
  * @name Wl_Video_VideoElementModel.instanceGet
  * @param {string} k_business The business key.
- * @param {string} k_video The video key. *Be careful, when use this property in code, use {@link Wl_Video_VideoElementModel} instead.* In this property can be key in next format: * [Deprecated] String key in old format. * String key in new format.
+ * @param {string} k_video The video key. *Be careful, when use this property in code, use {@link Wl_Video_VideoElementModel.k_video_binary} instead.* In this property can be key in next format: * [Deprecated] String key in old format. * String key in new format.
  * @param {boolean} is_backend If `true`, the API is being used from backend. Otherwise, this will be `false`.
  * @returns {Wl_Video_VideoElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()

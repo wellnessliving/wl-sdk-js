@@ -37,7 +37,7 @@ function Wl_Review_ReviewList_ReviewListModel()
    */
 
   /**
-   * List of reviews. If passed {@link Wl_Review_ReviewList_ReviewListModel} then the result will be full, otherwise in result will be keys: `k_review`, `uid`.
+   * List of reviews. If passed {@link Wl_Review_ReviewList_ReviewListModel.i_page} then the result will be full, otherwise in result will be keys: `k_review`, `uid`.
    *
    * @get result
    * @type {Wl_Review_ReviewList_ReviewListModel_a_review[]}

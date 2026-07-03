@@ -48,7 +48,7 @@ function Wl_Announcement_AnnouncementListModel()
   /**
    * Order ID for list of announcements.
    *
-   * Used only when {@link Wl_Announcement_AnnouncementListModel} is `true`.
+   * Used only when {@link Wl_Announcement_AnnouncementListModel.is_backend} is `true`.
    *
    * `null` in case when use default order.
    *
@@ -61,7 +61,7 @@ function Wl_Announcement_AnnouncementListModel()
   /**
    * Sort field ID for list of announcements.
    *
-   * Used only when {@link Wl_Announcement_AnnouncementListModel} is `true`.
+   * Used only when {@link Wl_Announcement_AnnouncementListModel.is_backend} is `true`.
    *
    * `null` in case when use default field.
    *

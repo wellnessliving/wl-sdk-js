@@ -21,7 +21,7 @@ function Wl_Reception_Design_ReceptionDesignModel()
 
   /**
    * Array of image information for Self Check-In logo.
-   * Empty if {@link Wl_Reception_Design_ReceptionDesignModel} is not provided.
+   * Empty if {@link Wl_Reception_Design_ReceptionDesignModel.k_location} is not provided.
    *
    * Will contain the following keys:
    *

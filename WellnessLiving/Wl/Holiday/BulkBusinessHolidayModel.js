@@ -26,7 +26,7 @@ function Wl_Holiday_BulkBusinessHolidayModel()
    */
 
   /**
-   * An array consisting of the business's closed day data for all locations by holiday keys {@link Wl_Holiday_HolidayModel}.
+   * An array consisting of the business's closed day data for all locations by holiday keys {@link Wl_Holiday_HolidayModel.dl_work}.
    *
    * List of holidays.
    *

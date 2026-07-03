@@ -53,7 +53,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   /**
    * The list of location keys to filter results.
    * If it's empty, schedule for all locations will be returned.
-   * All given locations should be from the same business, which is sent in {@link Wl_Schedule_ClassList_ClassListModel}.
+   * All given locations should be from the same business, which is sent in {@link Wl_Schedule_ClassList_ClassListModel.k_business}.
    *
    * @get get
    * @type {string[]}
@@ -91,8 +91,8 @@ function Wl_Schedule_ClassList_ClassListModel()
    */
 
   /**
-   * A list of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel}
-   * and in the 62 days ahead (or up to {@link Wl_Schedule_ClassList_ClassListModel}).
+   * A list of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel.dt_date}
+   * and in the 62 days ahead (or up to {@link Wl_Schedule_ClassList_ClassListModel.dt_end}).
    * Every element has the following keys:
    *
    * @get result
@@ -138,8 +138,8 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.dt_end = "";
 
   /**
-   * `true` means to not generate {@link Wl_Schedule_ClassList_ClassListModel} result.
-   * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassListModel} is enough.
+   * `true` means to not generate {@link Wl_Schedule_ClassList_ClassListModel.a_session} result.
+   * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassListModel.a_calendar} is enough.
    *
    * @get get
    * @type {boolean}
@@ -148,7 +148,7 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
-   * {@link Wl_Schedule_ClassList_ClassListModel} value.
+   * {@link Wl_Schedule_ClassList_ClassListModel.k_class_tab} value.
    *
    * @get get
    * @type {boolean}
@@ -178,7 +178,7 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * If `true`, there exists at least one virtual service by a specified
-   * {@link Wl_Schedule_ClassList_ClassListModel} and {@link Wl_Schedule_ClassList_ClassListModel},
+   * {@link Wl_Schedule_ClassList_ClassListModel.k_business} and {@link Wl_Schedule_ClassList_ClassListModel.k_class_tab},
    * Otherwise, this will be `false`.
    *
    * @get result
@@ -198,7 +198,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * The category tab key.
    *
    * This will be `null` if not set yet.
-   * This will be ignored if {@link Wl_Schedule_ClassList_ClassListModel} is `true`.
+   * This will be ignored if {@link Wl_Schedule_ClassList_ClassListModel.is_tab_all} is `true`.
    *
    * @get get
    * @type {string}
@@ -283,7 +283,7 @@ Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
  * @name Wl_Schedule_ClassList_ClassListModel.instanceGet
  * @param {string} uid The user key.
  * @param {string} k_business The business key.
- * @param {string} k_class_tab The category tab key. This will be `null` if not set yet. This will be ignored if {@link Wl_Schedule_ClassList_ClassListModel} is `true`.
+ * @param {string} k_class_tab The category tab key. This will be `null` if not set yet. This will be ignored if {@link Wl_Schedule_ClassList_ClassListModel.is_tab_all} is `true`.
  * @param {string} dt_date The list start date in UTC and in MySQL format.
  * @param {boolean} show_cancel If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
  * @param {boolean} show_event If `true`, events are also returned. If `false`, only classes are returned.

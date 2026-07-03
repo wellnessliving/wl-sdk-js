@@ -82,7 +82,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    */
 
   /**
-   * A copy of {@link Wl_Appointment_Book_Payment_PaymentMultipleModel}. Has the same structure.
+   * A copy of {@link Wl_Appointment_Book_Payment_PaymentMultipleModel.a_book_data}. Has the same structure.
    * Set this field value for POST requests.
    *
    * @post post

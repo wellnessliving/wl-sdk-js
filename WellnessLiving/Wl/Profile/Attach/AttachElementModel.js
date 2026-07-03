@@ -177,7 +177,7 @@ Wl_Profile_Attach_AttachElementModel.prototype.config=function()
  * In case the attachment key is not specified, it adds a new attachment.
 In case the attachment key is specified, edits the attachment.
  *
- * When {@link Wl_Profile_Attach_AttachElementModel} is empty, uploads a new file to the client profile; when set, updates the
+ * When {@link Wl_Profile_Attach_AttachElementModel.k_attach} is empty, uploads a new file to the client profile; when set, updates the
  * attachment metadata, file content, or visibility flag depending on the provided fields.
  *
  * @function

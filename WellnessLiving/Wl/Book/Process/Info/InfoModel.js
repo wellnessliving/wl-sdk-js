@@ -418,7 +418,7 @@ function Wl_Book_Process_Info_InfoModel()
    *
    * The verification is based on the search for client's promotions and other features of the class/event.
    * But it does not take into account the presence of other mandatory steps.
-   * Their presence will be indicated by the {@link Wl_Book_Process_Info_InfoModel} flag.
+   * Their presence will be indicated by the {@link Wl_Book_Process_Info_InfoModel.is_next} flag.
    *
    * @post result
    * @type {boolean}
@@ -628,7 +628,7 @@ function Wl_Book_Process_Info_InfoModel()
 
   /**
    * Text representation of the list of staffs.
-   * List of staff see {@link Wl_Book_Process_Info_InfoModel}.
+   * List of staff see {@link Wl_Book_Process_Info_InfoModel.a_staff}.
    *
    * @get result
    * @type {string}

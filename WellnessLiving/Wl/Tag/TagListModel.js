@@ -49,8 +49,8 @@ function Wl_Tag_TagListModel()
 
   /**
    * List of tags in json format.
-   * See {@link Wl_Tag_TagListModel} for the structure of each tag.
-   * `null` to use {@link Wl_Tag_TagListModel} for getting the tag list.
+   * See {@link Wl_Tag_TagListModel.a_list} for the structure of each tag.
+   * `null` to use {@link Wl_Tag_TagListModel.a_list} for getting the tag list.
    *
    * @post post
    * @type {?string}

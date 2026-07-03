@@ -165,7 +165,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.is_temporary = false;
 
   /**
-   * The image ID set in {@link Core_Drive_ImageUpload_ImageUploadModel}.
+   * The image ID set in {@link Core_Drive_ImageUpload_ImageUploadModel.s_class}.
    *
    * @get get
    * @put get
@@ -210,7 +210,7 @@ function Core_Drive_ImageUpload_ImageUploadModel()
   this.s_link = null;
 
   /**
-   * A list of image IDs set in {@link Core_Drive_ImageUpload_ImageUploadModel}, serialized using JSON.
+   * A list of image IDs set in {@link Core_Drive_ImageUpload_ImageUploadModel.s_class}, serialized using JSON.
    *
    * This will be `null` if there's no data being sent by the client.
    *
@@ -274,7 +274,7 @@ Core_Drive_ImageUpload_ImageUploadModel.prototype.config=function()
  * @function
  * @name Core_Drive_ImageUpload_ImageUploadModel.instanceGet
  * @param {string} s_class The name of the class that manages this image.
- * @param {string} k_id The image ID set in {@link Core_Drive_ImageUpload_ImageUploadModel}.
+ * @param {string} k_id The image ID set in {@link Core_Drive_ImageUpload_ImageUploadModel.s_class}.
  * @param {*[]} a_config Allows to give custom parameters which can be required for different types of images.
  * @returns {Core_Drive_ImageUpload_ImageUploadModel}
  * @see WlSdk_ModelAbstract.instanceGet()

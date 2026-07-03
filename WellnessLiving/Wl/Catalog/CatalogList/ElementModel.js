@@ -580,9 +580,9 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Note that this must be serialized via JSON.
    *
    * If this field is specified, don't specify any of the following fields:
-   * * {@link Wl_Catalog_CatalogList_ElementModel}
-   * * {@link Wl_Catalog_CatalogList_ElementModel}
-   * * {@link Wl_Catalog_CatalogList_ElementModel}
+   * * {@link Wl_Catalog_CatalogList_ElementModel.id_sale}
+   * * {@link Wl_Catalog_CatalogList_ElementModel.k_id}
+   * * {@link Wl_Catalog_CatalogList_ElementModel.k_shop_product_option}
    *
    * This will be `null` to get information for only one item.
    *

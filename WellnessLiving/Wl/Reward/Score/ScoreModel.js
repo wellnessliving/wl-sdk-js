@@ -22,9 +22,9 @@ function Wl_Reward_Score_ScoreModel()
 
   /**
    * Depending on arguments specified during API request might be:
-   * * Total number of points which were earned for each activity in a list provided in {@link Wl_Reward_Score_ScoreModel}
+   * * Total number of points which were earned for each activity in a list provided in {@link Wl_Reward_Score_ScoreModel.a_login_activity}
    *   in a case if it was provided.
-   * * Total number of points user currently own in a cast if {@link Wl_Reward_Score_ScoreModel} specified.
+   * * Total number of points user currently own in a cast if {@link Wl_Reward_Score_ScoreModel.uid} specified.
    *
    * @get result
    * @put post

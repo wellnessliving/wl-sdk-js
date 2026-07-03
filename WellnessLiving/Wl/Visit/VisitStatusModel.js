@@ -65,7 +65,7 @@ function Wl_Visit_VisitStatusModel()
   /**
    * An array of service resources.
    *
-   * Contains an extended data set, as well as a different format than {@link Wl_Visit_VisitStatusModel}.
+   * Contains an extended data set, as well as a different format than {@link Wl_Visit_VisitStatusModel.a_resource}.
    *
    * Each element contains the following set of data:
    *

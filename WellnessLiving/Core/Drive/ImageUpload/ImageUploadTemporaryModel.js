@@ -87,7 +87,7 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
   this.is_resize = undefined;
 
   /**
-   * The key of the image within {@link Core_Drive_ImageUpload_ImageUploadTemporaryModel}.
+   * The key of the image within {@link Core_Drive_ImageUpload_ImageUploadTemporaryModel.s_class}.
    *
    * For example, for a user's photo, specify the user's key here.
    *

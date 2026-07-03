@@ -65,8 +65,8 @@ function Wl_Catalog_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program
-   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program_a_account} a_account The list of reimbursement account field values. Corresponds to the `a_account` list in {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel}. Each element:
-   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program_a_field} a_field The list of wellness program field values. Corresponds to the `a_field` list in {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel}. Each element:
+   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program_a_account} a_account The list of reimbursement account field values. Corresponds to the `a_account` list in {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel.a_field_list}. Each element:
+   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program_a_field} a_field The list of wellness program field values. Corresponds to the `a_field` list in {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel.a_field_list}. Each element:
    */
 
   /**

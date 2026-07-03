@@ -102,9 +102,9 @@ Wl_Location_LocationModel.prototype.config=function()
 /**
  * Creates new location or edits the existing location.
  *
- * When {@link Wl_Location_LocationModel} is omitted, creates a new location requiring {@link Wl_Location_LocationModel},
- * {@link Wl_Location_LocationModel}, and {@link Wl_Location_LocationModel}.
- * When {@link Wl_Location_LocationModel} is provided, updates only the supplied fields of the existing location.
+ * When {@link Wl_Location_LocationModel.k_location} is omitted, creates a new location requiring {@link Wl_Location_LocationModel.k_city},
+ * {@link Wl_Location_LocationModel.text_address}, and {@link Wl_Location_LocationModel.text_title}.
+ * When {@link Wl_Location_LocationModel.k_location} is provided, updates only the supplied fields of the existing location.
  * Returns the key of the created or updated location.
  *
  * @function

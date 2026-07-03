@@ -165,7 +165,7 @@ function Wl_Profile_ProfileCreateModel()
 
   /**
    * Email of the user.
-   * Required if {@link Wl_Profile_ProfileCreateModel} not provided.
+   * Required if {@link Wl_Profile_ProfileCreateModel.text_phone} not provided.
    *
    * @post post
    * @type {string}
@@ -174,7 +174,7 @@ function Wl_Profile_ProfileCreateModel()
 
   /**
    * Phone of the user.
-   * Required if {@link Wl_Profile_ProfileCreateModel} not provided.
+   * Required if {@link Wl_Profile_ProfileCreateModel.text_mail} not provided.
    *
    * @post post
    * @type {string}

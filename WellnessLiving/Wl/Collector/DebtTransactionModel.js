@@ -32,8 +32,8 @@ function Wl_Collector_DebtTransactionModel()
   /**
    * If set, this is the end of the date window. Only debt payments added before or on this date will be shown.
    *
-   * If left `null` and {@link Wl_Collector_DebtTransactionModel} has been specified only debt payments added after the start date will be returned.
-   * If left `null` and {@link Wl_Collector_DebtTransactionModel} is also `null`, this will return debt payments from the previous month.
+   * If left `null` and {@link Wl_Collector_DebtTransactionModel.dl_start} has been specified only debt payments added after the start date will be returned.
+   * If left `null` and {@link Wl_Collector_DebtTransactionModel.dl_start} is also `null`, this will return debt payments from the previous month.
    *
    * @get get
    * @type {?string}
@@ -43,8 +43,8 @@ function Wl_Collector_DebtTransactionModel()
   /**
    * If set, this is the start of the date window. Only debt payments added on or after this date will be shown.
    *
-   * If left `null` and {@link Wl_Collector_DebtTransactionModel} has been specified, this will return debt payments since the beginning of time.
-   * If left `null` and {@link Wl_Collector_DebtTransactionModel} is also `null`, this will return debt payments from the previous month.
+   * If left `null` and {@link Wl_Collector_DebtTransactionModel.dl_end} has been specified, this will return debt payments since the beginning of time.
+   * If left `null` and {@link Wl_Collector_DebtTransactionModel.dl_end} is also `null`, this will return debt payments from the previous month.
    *
    * @get get
    * @type {?string}

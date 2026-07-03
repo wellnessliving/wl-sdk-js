@@ -35,7 +35,7 @@ function Core_Passport_Login_Enter_EnterModel()
   /**
    * A copy of the notepad that was used to hash the user password.
    *
-   * See {@link Core_Passport_Login_Enter_EnterModel} for details.
+   * See {@link Core_Passport_Login_Enter_EnterModel.s_password} for details.
    *
    * @post post
    * @type {string}

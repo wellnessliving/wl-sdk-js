@@ -70,7 +70,7 @@ function Wl_Location_ListBulkModel()
    * @property {number} f_latitude The latitude coordinate of the location.
    * @property {number} f_longitude The longitude coordinate of the location.
    * @property {string} html_description_full The full description of the location.
-   * @property {string} html_description_preview A shorter description of the location. A preview of {@link Wl_Location_View_ViewModel}.
+   * @property {string} html_description_preview A shorter description of the location. A preview of {@link Wl_Location_View_ViewModel.html_description_full}.
    * @property {number} i_logo_height Maximum location image height.
    * @property {number} i_logo_width Maximum location image width.
    * @property {?number} id_industry List of different types for landing pages based on business types.
