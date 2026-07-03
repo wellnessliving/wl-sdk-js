@@ -20,7 +20,7 @@ function Wl_Family_Relation_RelationModel()
    */
 
   /**
-   * The new relationship to be added to user, specified with `uid`:
+   * The new relationship to be added to user, specified with [RelationApi](/Wl/Family/Relation/Relation.json):
    *
    * @post post
    * @type {Wl_Family_Relation_RelationModel_a_new}
@@ -61,11 +61,12 @@ function Wl_Family_Relation_RelationModel()
   /**
    * The source of a visit.
    *
-   * Last used ID: 30.
+   * Last used ID: 31.
    *
    * Values:
    * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
    * - 21 (`AZURE`): Registered through `Azure`.
+   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
    * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
    * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
    * - 22 (`COLLECTIONS`): Debt paid via collections.
@@ -123,7 +124,7 @@ function Wl_Family_Relation_RelationModel()
   this.uid = "";
 
   /**
-   * The key of the related user who `uid` must be removed.
+   * The key of the related user who [RelationApi](/Wl/Family/Relation/Relation.json) must be removed.
    *
    * @delete get
    * @type {string}
@@ -177,8 +178,8 @@ Wl_Family_Relation_RelationModel.prototype.config=function()
  */
 
 /**
- * Adds to user `uid`
-relative `a_new`.
+ * Adds to user [RelationApi](/Wl/Family/Relation/Relation.json)
+relative [RelationApi](/Wl/Family/Relation/Relation.json).
  *
  * Creates a bidirectional family relationship between the user identified by `uid` and the user specified in
  * `a_new`, then returns the updated list of relationships for `uid`.

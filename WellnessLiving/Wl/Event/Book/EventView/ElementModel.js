@@ -39,7 +39,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * Retrieves information about an event item.
    *
-   * Received only if `k_event` has been specified.
+   * Received only if [ElementApi](/Wl/Event/Book/EventView/Element.json) has been specified.
    * In this case, other fields aren't receivers.
    *
    * @get result
@@ -50,7 +50,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_business_policy
    * @property {number[]} a_payment_reattempt_not_decline_reason List of not allowed decline reasons to payment reattempt. Each element is one of {@link Thoth_WlPay_PayExceptionSid} constants.
-   * @property {number} a_wait_service Keys are list of IDs from {@link Wl_Service_ServiceSid}, and values are flags whether wait list is allowed.
+   * @property {boolean[]} a_wait_service Keys are list of IDs from {@link Wl_Service_ServiceSid}, and values are flags whether wait list is allowed.
    * @property {number} i_book_before Minimum hours|days|months before class should be booked.
    * @property {number} i_book_future Maximum hours|days|months after class can be booked.
    * @property {number} i_cancel Minimum hours|days|months before class should be canceled without penalty.
@@ -186,13 +186,13 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event
-   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_book_available} a_book_available List of sessions available for booking. See `a_book_available`.
-   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_class_logo} a_class_logo Image of event. See `a_class_logo`.
-   * @property {string[]} a_class_tab Class tab keys. See `a_class_tab`.
-   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_installment_template} a_installment_template List of installment plans. See `a_installment_template`.
-   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_schedule} a_schedule Schedule of event sessions. See `a_schedule`.
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_book_available} a_book_available List of sessions available for booking. See [ElementApi](/Wl/Event/Book/EventView/Element.json).
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_class_logo} a_class_logo Image of event. See [ElementApi](/Wl/Event/Book/EventView/Element.json).
+   * @property {string[]} a_class_tab Class tab keys. See [ElementApi](/Wl/Event/Book/EventView/Element.json).
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_installment_template} a_installment_template List of installment plans. See [ElementApi](/Wl/Event/Book/EventView/Element.json).
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_schedule} a_schedule Schedule of event sessions. See [ElementApi](/Wl/Event/Book/EventView/Element.json).
    * @property {string[]} a_shop_category IDs of online store category.
-   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_staff_logo} a_staff_logo Photos of staff. See `a_staff_logo`.
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_staff_logo} a_staff_logo Photos of staff. See [ElementApi](/Wl/Event/Book/EventView/Element.json).
    * @property {string} dt_book_date Date/time of first event session.
    * @property {string} dt_early Early date of event purchase.
    * @property {string} dt_end End date of the event instance.
@@ -208,7 +208,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {boolean} is_full `true` if there are no free spots in the event and booking is available only into wait list.
    * @property {boolean} is_makeup `true` if the selected session can be a make up session; `false` otherwise.
    * @property {boolean} is_past `true` if the event session has already started or ended and is not available to book.
-   * @property {boolean} is_policy_custom `true` `a_business_policy` contains the custom policies from the event; `false` otherwise.
+   * @property {boolean} is_policy_custom `true` [ElementApi](/Wl/Event/Book/EventView/Element.json) contains the custom policies from the event; `false` otherwise.
    * @property {boolean} is_virtual `true` if event is virtual; `false` otherwise.
    * @property {string} k_book_class_period Key of first event session.
    * @property {string} m_price Price of the event session.
@@ -222,7 +222,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * Information for a large number of events.
    *
-   * Received only if `s_event` has been specified. In this case, other fields are not populated.
+   * Received only if [ElementApi](/Wl/Event/Book/EventView/Element.json) has been specified. In this case, other fields are not populated.
    *
    * Key is the event class key.
    *
@@ -355,8 +355,8 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * The last available date for booking.
-   * If this is set and `dl_book_available_start` is a set list of
-   *   sessions available for booking, `a_book_available`
+   * If this is set and [ElementApi](/Wl/Event/Book/EventView/Element.json) is a set list of
+   *   sessions available for booking, [ElementApi](/Wl/Event/Book/EventView/Element.json)
    *   should match given date range.
    *
    * @get get
@@ -366,8 +366,8 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * The first available date for booking.
-   * If this is set and `dl_book_available_end` is a set list of
-   *   sessions available for booking `a_book_available`
+   * If this is set and [ElementApi](/Wl/Event/Book/EventView/Element.json) is a set list of
+   *   sessions available for booking [ElementApi](/Wl/Event/Book/EventView/Element.json)
    *   should match given date range.
    *
    * @get get
@@ -410,7 +410,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * Datetime of the session.
    * Is not `null` only if we need to get information for an event with a specific class period and datetime.
-   * If this is `null`, then the `k_class_period` should be `null` too.
+   * If this is `null`, then the [ElementApi](/Wl/Event/Book/EventView/Element.json) should be `null` too.
    *
    * @get get
    * @type {?string}
@@ -612,7 +612,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_past = undefined;
 
   /**
-   * `true` if the `a_business_policy` contains the custom policies from the event.
+   * `true` if the [ElementApi](/Wl/Event/Book/EventView/Element.json) contains the custom policies from the event.
    * `false` otherwise.
    *
    * @get result
@@ -684,7 +684,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * Key of a class period to show information for.
    *
    * Is not `null` only if we need to get information for an event with a specific class period and datetime.
-   * If this is `null`, then the `dtu_session` should be `null` too.
+   * If this is `null`, then the [ElementApi](/Wl/Event/Book/EventView/Element.json) should be `null` too.
    *
    * @get get
    * @type {?string}
@@ -693,7 +693,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * The event key.
-   * You can specify `s_event` instead to get information for a large number of events.
+   * You can specify [ElementApi](/Wl/Event/Book/EventView/Element.json) instead to get information for a large number of events.
    *
    * @get get
    * @type {string}
@@ -717,7 +717,7 @@ function Wl_Event_Book_EventView_ElementModel()
   this.m_price_total = undefined;
 
   /**
-   * Price of the full event should be used as full price while `dt_early` is actual.
+   * Price of the full event should be used as full price while [ElementApi](/Wl/Event/Book/EventView/Element.json) is actual.
    *
    * @get result
    * @type {?string}
@@ -726,7 +726,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * The reason why the event can't be booked.
-   * Empty if `k_book_class_period` isn't empty.
+   * Empty if [ElementApi](/Wl/Event/Book/EventView/Element.json) isn't empty.
    *
    * @get result
    * @type {string}
@@ -735,7 +735,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * A list of event keys serialized with JSON.
-   * Specify instead of `k_event` to get information for a large number of events.
+   * Specify instead of [ElementApi](/Wl/Event/Book/EventView/Element.json) to get information for a large number of events.
    *
    * @get get
    * @type {string}
@@ -826,7 +826,7 @@ Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Event_Book_EventView_ElementModel.instanceGet
- * @param {string} k_event The event key. You can specify `s_event` instead to get information for a large number of events.
+ * @param {string} k_event The event key. You can specify [ElementApi](/Wl/Event/Book/EventView/Element.json) instead to get information for a large number of events.
  * @param {string} uid The user key.
  * @returns {Wl_Event_Book_EventView_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()

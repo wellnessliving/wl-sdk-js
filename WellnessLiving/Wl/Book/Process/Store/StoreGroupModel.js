@@ -21,6 +21,18 @@ function Wl_Book_Process_Store_StoreGroupModel()
   this.a_login_promotion = undefined;
 
   /**
+   * A list of host guest passes which are selected by a group of clients to pay for the guests visits.
+   *
+   * These guest passes will be checked to determine if they can be applied to the current class or event.
+   *
+   * Keys are UIDs of clients, values are host login promotion keys that grant the guest passes.
+   *
+   * @post post
+   * @type {string[]}
+   */
+  this.a_login_promotion_guest_pass = undefined;
+
+  /**
    * @typedef {{}} Wl_Book_Process_Store_StoreGroupModel_a_purchase_item_check
    * @property {number} i_session The number of sessions that this item can cover.   This only applies to items of type {@link RsPurchaseItemSid}.
    * @property {string} s_value The unique identifier of the item being checked. This corresponds to one of the following values: <ul>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li> </ul>
@@ -42,10 +54,11 @@ function Wl_Book_Process_Store_StoreGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_Store_StoreGroupModel_a_purchase_item_distribute
    * @property {string[]} a_owner List of UIDs of owners who will share this promotion with this client.   If empty, this client is the owner of the promotion.   This only applies to the new promotions.
-   * @property {number} i_session The number of sessions that this item can cover.   The same as in `a_purchase_item_check`.   `0` if not applicable.
-   * @property {?string} k_login_promotion Login promotion key.    The same as in `a_login_promotion`.   `null` if not applicable.
-   * @property {?string} k_session_pass Session pass key.    The same as in `a_session_pass`.   `null` if not applicable.
-   * @property {?string} s_value The unique identifier of the purchase item.   The same as in `a_purchase_item_check`.   `null` if not applicable.
+   * @property {number} i_session The number of sessions that this item can cover.   The same as in [StoreGroupApi](/Wl/Book/Process/Store/StoreGroup.json).   `0` if not applicable.
+   * @property {?string} k_login_promotion Login promotion key.    The same as in [StoreGroupApi](/Wl/Book/Process/Store/StoreGroup.json).   `null` if not applicable.
+   * @property {?string} k_login_promotion_guest_pass Host login promotion key that grants the guest pass.    `null` if not applicable.
+   * @property {?string} k_session_pass Session pass key.    The same as in [StoreGroupApi](/Wl/Book/Process/Store/StoreGroup.json).   `null` if not applicable.
+   * @property {?string} s_value The unique identifier of the purchase item.   The same as in [StoreGroupApi](/Wl/Book/Process/Store/StoreGroup.json).   `null` if not applicable.
    * @property {string} text_error Error text if the purchase item cannot be applied to the current class or event for this client.
    * @property {string} text_error_code Error code if the purchase item cannot be applied to the current class or event for this client.
    */
@@ -190,6 +203,15 @@ function Wl_Book_Process_Store_StoreGroupModel()
    */
   this.k_class_period = "";
 
+  /**
+   * Host login promotion key that grants the guest pass used to pay for the guest's visit.
+   * Empty string if the booking is not paid with a guest pass.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.k_login_promotion_guest_pass = "";
+
   this.changeInit();
 }
 
@@ -200,7 +222,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Store_StoreGroupModel);
  */
 Wl_Book_Process_Store_StoreGroupModel.prototype.config=function()
 {
-  return {"a_field":{"a_login_promotion":{"post":{"post":true}},"a_purchase_item_check":{"post":{"post":true}},"a_purchase_item_distribute":{"post":{"result":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session_pass":{"post":{"post":true}},"a_session_select":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}}}};
+  return {"a_field":{"a_login_promotion":{"post":{"post":true}},"a_login_promotion_guest_pass":{"post":{"post":true}},"a_purchase_item_check":{"post":{"post":true}},"a_purchase_item_distribute":{"post":{"result":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session_pass":{"post":{"post":true}},"a_session_select":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}},"k_login_promotion_guest_pass":{"post":{"post":true}}}};
 };
 
 /**

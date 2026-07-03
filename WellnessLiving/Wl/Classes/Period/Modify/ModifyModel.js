@@ -45,7 +45,7 @@ function Wl_Classes_Period_Modify_ModifyModel()
   /**
    * The list of data to save.
    *
-   * Data depends on current `id_step`:
+   * Data depends on current [ModifyApi](/Wl/Classes/Period/Modify/Modify.json):
    *
    * @post post
    * @type {Wl_Classes_Period_Modify_ModifyModel_a_set}

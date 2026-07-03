@@ -527,7 +527,7 @@ Wl_Privilege_PrivilegeSid.FORM_MY_CLIENTS = 175;
 Wl_Privilege_PrivilegeSid.FORM_MY_LOCATION = 176;
 
 /**
- * Allow staff members to delete forms from the client’s profil
+ * Allow staff members to delete forms from the client’s profile.
  *
  * @type {number}
  */
@@ -576,14 +576,14 @@ Wl_Privilege_PrivilegeSid.INTEGRATION_BRIVO = 179;
 Wl_Privilege_PrivilegeSid.INTERFACE_ACHIEVE_APP = 87;
 
 /**
- * Modify the look and functionality business’s widgets. These settings are located within Setup > Widget
+ * Modify the look and functionality business’s widgets. These settings are located within Setup > Widgets.
  *
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.INTERFACE_WIDGET_EDIT = 39;
 
 /**
- * View the look and functionality business’s widgets. These settings are located within Setup > Widget
+ * View the look and functionality business’s widgets. These settings are located within Setup > Widgets.
  *
  * @type {number}
  */
@@ -716,7 +716,7 @@ Wl_Privilege_PrivilegeSid.MARKETING_SUBSCRIPTION = 237;
 Wl_Privilege_PrivilegeSid.MESSAGES_CALLS = 173;
 
 /**
- * Enabling this permission for a role will enable the role to use the ‘Assign to’ field and assign a conversation to a staff mem
+ * Enabling this permission for a role will enable the role to use the ‘Assign to’ field and assign a conversation to a staff member.
  *
  * @type {number}
  */
@@ -1052,7 +1052,7 @@ Wl_Privilege_PrivilegeSid.PROFILE_MERGE = 213;
 Wl_Privilege_PrivilegeSid.PROFILE_MY_LOCATION = 86;
 
 /**
- * View client’s upcoming and past schedul
+ * View client’s upcoming and past schedule.
  *
  * @type {number}
  */
@@ -1346,7 +1346,7 @@ Wl_Privilege_PrivilegeSid.SCHEDULE_PAST_EVENT = 100;
 Wl_Privilege_PrivilegeSid.SCHEDULE_SUMMARY_REVENUE_SERVICE = 234;
 
 /**
- * View a summary of projected pay from upcoming sessions and earned pay from completed sessions, based on the staff’s schedul
+ * View a summary of projected pay from upcoming sessions and earned pay from completed sessions, based on the staff’s schedule.
  *
  * @type {number}
  */

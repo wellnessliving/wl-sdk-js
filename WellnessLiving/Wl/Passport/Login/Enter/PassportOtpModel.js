@@ -149,7 +149,7 @@ Wl_Passport_Login_Enter_PassportOtpModel.prototype.config=function()
  * If none of the listed channels can be used, an error is thrown.
  *
  * Example: set `$text_delivery_priority = "sms,email"` to prefer SMS but fall back to email if the user
- * has no phone n
+ * has no phone number.
  *
  * @function
  * @name Wl_Passport_Login_Enter_PassportOtpModel.get

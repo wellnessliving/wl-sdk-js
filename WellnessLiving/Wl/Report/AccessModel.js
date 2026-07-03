@@ -17,7 +17,7 @@ function Wl_Report_AccessModel()
    * Report CID.
    *
    * It's used mostly for second generation reports.
-   * For first generation reports use `id_report` instead.
+   * For first generation reports use [AccessApi](/Wl/Report/Access.json) instead.
    *
    * Only one of these two fields should be sent, but not both.
    *
@@ -38,7 +38,7 @@ function Wl_Report_AccessModel()
    * Report ID.
    *
    * It's used mostly for first generation reports.
-   * For second generation reports use `cid_report` instead.
+   * For second generation reports use [AccessApi](/Wl/Report/Access.json) instead.
    *
    * Only one of these two fields should be sent, but not both.
    *
@@ -72,7 +72,7 @@ Wl_Report_AccessModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Report_AccessModel.instanceGet
- * @param {number} id_report Report ID. It's used mostly for first generation reports. For second generation reports use `cid_report` instead. Only one of these two fields should be sent, but not both.
+ * @param {number} id_report Report ID. It's used mostly for first generation reports. For second generation reports use [AccessApi](/Wl/Report/Access.json) instead. Only one of these two fields should be sent, but not both.
  * @param {string} k_business ID of business for which access must be checked.
  * @returns {Wl_Report_AccessModel}
  * @see WlSdk_ModelAbstract.instanceGet()
@@ -81,7 +81,7 @@ Wl_Report_AccessModel.prototype.config=function()
 /**
  * Checks access to given report.
  *
- * Accepts either `id_report` (first-generation reports) or `cid_report` (second-generation reports), but not both,
+ * Accepts either [AccessApi](/Wl/Report/Access.json) (first-generation reports) or [AccessApi](/Wl/Report/Access.json) (second-generation reports), but not both,
  * and returns `has_access` indicating whether the current user may view the report in the given business.
  *
  * @function

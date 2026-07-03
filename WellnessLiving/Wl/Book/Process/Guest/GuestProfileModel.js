@@ -25,11 +25,12 @@ function Wl_Book_Process_Guest_GuestProfileModel()
   /**
    * The source of a visit.
    *
-   * Last used ID: 30.
+   * Last used ID: 31.
    *
    * Values:
    * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
    * - 21 (`AZURE`): Registered through `Azure`.
+   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
    * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
    * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
    * - 22 (`COLLECTIONS`): Debt paid via collections.
@@ -86,7 +87,7 @@ function Wl_Book_Process_Guest_GuestProfileModel()
 
   /**
    * Key of service to book.
-   * Depending on `id_service` value:,
+   * Depending on [GuestProfileApi](/Wl/Book/Process/Guest/GuestProfile.json) value:,
    * <ul>
    *     <li>{@link Wl_Service_ServiceSid} - class key. </li>
    *     <li>{@link Wl_Service_ServiceSid} - service key.</li>
@@ -161,7 +162,7 @@ Wl_Book_Process_Guest_GuestProfileModel.prototype.config=function()
  * @name Wl_Book_Process_Guest_GuestProfileModel.instanceGet
  * @param {string} k_business Business key.
  * @param {number} id_service Type of the service to book.
- * @param {string} k_id Key of service to book. Depending on `id_service` value:, <ul> <li>{@link Wl_Service_ServiceSid} - class key. </li> <li>{@link Wl_Service_ServiceSid} - service key.</li> <li>{@link Wl_Service_ServiceSid} - resource key.</li> </ul>
+ * @param {string} k_id Key of service to book. Depending on [GuestProfileApi](/Wl/Book/Process/Guest/GuestProfile.json) value:, <ul> <li>{@link Wl_Service_ServiceSid} - class key. </li> <li>{@link Wl_Service_ServiceSid} - service key.</li> <li>{@link Wl_Service_ServiceSid} - resource key.</li> </ul>
  * @param {string} text_mail Guest's email.
  * @param {string} text_first_name Guest's first name.
  * @param {string} text_last_name Guest's last name.

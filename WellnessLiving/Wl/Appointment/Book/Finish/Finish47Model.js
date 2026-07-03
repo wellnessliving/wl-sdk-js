@@ -83,7 +83,6 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    * @property {string} k_session_pass The user's pass.
    * @property {string} k_staff The staff member conducting the appointment. Specify this for appointment bookings only.
    * @property {string} k_staff_date The staff member conducting the appointment. The difference between this an `k_staff` is that this value must be set only in cases when you want to add a customer to an appointment that already exists. Specify this for appointment bookings only.
-   * @property {string} m_tip_appointment The amount of selected tips.
    */
 
   /**
@@ -148,10 +147,6 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_payment_data
    * @property {number} id_purchase_item A list of purchase types.
-   * @property {string} k_id Promotion key or appointment key. Depends on `id_purchase_item` of this array.
-   * @property {string} k_login_promotion Login promotion key.
-   * @property {string} k_session_pass Session pass key.
-   * @property {string} text_discount_code Discount code.
    */
 
   /**
@@ -239,11 +234,12 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * The source of a visit.
    *
-   * Last used ID: 30.
+   * Last used ID: 31.
    *
    * Values:
    * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
    * - 21 (`AZURE`): Registered through `Azure`.
+   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
    * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
    * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
    * - 22 (`COLLECTIONS`): Debt paid via collections.
@@ -280,7 +276,9 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link RsAppointmentPaySid} constants.
+   * The payment type ID for the service.
+   *
+   * One of the {@link RsAppointmentPaySid} constants.
    *
    * @post get
    * @see RsAppointmentPaySid
@@ -353,7 +351,13 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.k_timezone = null;
 
   /**
-   * The sum paid for a deposit.
+   * The sum paid without tax.
+   *
+   * Only used for the following types of purchases:
+   * * {@link RsPurchaseItemSid}
+   * * {@link RsPurchaseItemSid}
+   * * {@link RsPurchaseItemSid}
+   * * {@link RsPurchaseItemSid}
    *
    * @post post
    * @type {string}

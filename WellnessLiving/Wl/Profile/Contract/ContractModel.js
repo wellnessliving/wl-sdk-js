@@ -47,7 +47,7 @@ function Wl_Profile_Contract_ContractModel()
 
   /**
    * The type of purchase item. This is one of the {@link RsPurchaseItemSid} constants.
-   * Optional if `k_purchase_item` is not empty.
+   * Optional if [ContractApi](/Wl/Profile/Contract/Contract.json) is not empty.
    *
    * @get get
    * @see RsPurchaseItemSid
@@ -76,7 +76,7 @@ function Wl_Profile_Contract_ContractModel()
 
   /**
    * The key of the purchase item in the database.
-   * The item key. Depends on `id_purchase_item` property.
+   * The item key. Depends on [ContractApi](/Wl/Profile/Contract/Contract.json) property.
    *
    * @get get
    * @type {string}
@@ -169,8 +169,8 @@ Wl_Profile_Contract_ContractModel.prototype.config=function()
  * @param {string} uid The key of the current user.
  * @param {string} k_business The key of the business to show information for.
  * @param {string} k_location The key of the selected location.
- * @param {number} id_purchase_item The type of purchase item. This is one of the {@link RsPurchaseItemSid} constants. Optional if `k_purchase_item` is not empty.
- * @param {string} k_id The key of the purchase item in the database. The item key. Depends on `id_purchase_item` property.
+ * @param {number} id_purchase_item The type of purchase item. This is one of the {@link RsPurchaseItemSid} constants. Optional if [ContractApi](/Wl/Profile/Contract/Contract.json) is not empty.
+ * @param {string} k_id The key of the purchase item in the database. The item key. Depends on [ContractApi](/Wl/Profile/Contract/Contract.json) property.
  * @param {string} k_purchase_item The key of the selected purchase item.
  * @param {string} m_price_custom The custom price of the item.
  * @param {string} s_discount_code The discount code used for the item.

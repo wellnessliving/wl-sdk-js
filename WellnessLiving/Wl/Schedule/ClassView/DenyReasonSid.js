@@ -1,7 +1,7 @@
 /**
  * Reasons why the client can't book this class.
  *
- * Last used ID: 24
+ * Last used ID: 26
  */
 function Wl_Schedule_ClassView_DenyReasonSid()
 {
@@ -98,6 +98,13 @@ Wl_Schedule_ClassView_DenyReasonSid.BUSINESS_INACTIVE = 10;
  * @type {number}
  */
 Wl_Schedule_ClassView_DenyReasonSid.CLASS_CANCELED = 11;
+
+/**
+ * Class is finished.
+ *
+ * @type {number}
+ */
+Wl_Schedule_ClassView_DenyReasonSid.CLASS_FINISHED = 26;
 
 /**
  * Class is full.

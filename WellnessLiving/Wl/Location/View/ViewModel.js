@@ -109,7 +109,7 @@ function Wl_Location_View_ViewModel()
   this.html_description_full = undefined;
 
   /**
-   * A shorter description of the location. A preview of `html_description_full`.
+   * A shorter description of the location. A preview of [ViewApi](/Wl/Location/View/View.json).
    *
    * @get result
    * @type {string}

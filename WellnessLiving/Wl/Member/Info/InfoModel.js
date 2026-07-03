@@ -41,7 +41,14 @@ function Wl_Member_Info_InfoModel()
    * @property {Wl_Member_Info_InfoModel_a_info_a_note} a_note List of client's notes. Every element has keys:
    * @property {Wl_Member_Info_InfoModel_a_info_a_vaccination_status} a_vaccination_status Information about users vaccination status.
    * @property {string} html_credit Amount the client owns to the business.
-   * @property {string} html_note User`s login notes.</dd>
+   * @property {string} html_note User`s login notes.
+   * @property {number} i_visit_credit Count of unpaid visits if client has at least one.
+   * @property {boolean} is_account_positive If the user has a positive balance on his account.
+   * @property {boolean} is_birthday If a user has a birthday today.
+   * @property {boolean} is_contract `true` if client has some contracts that he should agree.
+   * @property {boolean} is_family_payer `true` if the user makes payments for a family member, `false` otherwise.
+   * @property {boolean} is_first `true` if this is a first visit of the client.
+   * @property {boolean} is_form `true` if the client has uncompleted one or more forms.
    * @property {boolean} is_task_active `true` if for user exists not completed tasks.
    * @property {boolean} is_task_urgent `true` if for user exists urgent tasks.
    * @property {boolean} is_waiver `true` if client has not agreed with online waiver.
@@ -65,7 +72,7 @@ function Wl_Member_Info_InfoModel()
 
   /**
    * Additional member data or `null` if any data can be shown.
-   * Will be filled if `is_full` flag is set.
+   * Will be filled if [InfoApi](/Wl/Member/Info/Info.json) flag is set.
    *
    * @get result
    * @type {?Wl_Member_Info_InfoModel_a_info}
@@ -100,7 +107,14 @@ function Wl_Member_Info_InfoModel()
    * @property {Wl_Member_Info_InfoModel_a_result_list_a_info_a_note} a_note List of client's notes. Every element has keys:
    * @property {Wl_Member_Info_InfoModel_a_result_list_a_info_a_vaccination_status} a_vaccination_status Information about users vaccination status.
    * @property {string} html_credit Amount the client owns to the business.
-   * @property {string} html_note User`s login notes.</dd>
+   * @property {string} html_note User`s login notes.
+   * @property {number} i_visit_credit Count of unpaid visits if client has at least one.
+   * @property {boolean} is_account_positive If the user has a positive balance on his account.
+   * @property {boolean} is_birthday If a user has a birthday today.
+   * @property {boolean} is_contract `true` if client has some contracts that he should agree.
+   * @property {boolean} is_family_payer `true` if the user makes payments for a family member, `false` otherwise.
+   * @property {boolean} is_first `true` if this is a first visit of the client.
+   * @property {boolean} is_form `true` if the client has uncompleted one or more forms.
    * @property {boolean} is_task_active `true` if for user exists not completed tasks.
    * @property {boolean} is_task_urgent `true` if for user exists urgent tasks.
    * @property {boolean} is_waiver `true` if client has not agreed with online waiver.
@@ -231,7 +245,7 @@ function Wl_Member_Info_InfoModel()
 
   /**
    * If `true`, the client is a traveler. Otherwise, this will be `false`.
-   * This will be `null` in cases when the client is a walk-in. Or when `is_full` is `false`.
+   * This will be `null` in cases when the client is a walk-in. Or when [InfoApi](/Wl/Member/Info/Info.json) is `false`.
    *
    * @get result
    * @type {?boolean}

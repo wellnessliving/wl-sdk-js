@@ -84,52 +84,52 @@ function Wl_Event_EventListModel()
 
   /**
    * @typedef {{}} Wl_Event_EventListModel_a_event_list
-   * @property {Wl_Event_EventListModel_a_event_list_a_age_restriction} a_age_restriction
-   * @property {string[]} a_class_tab
-   * @property {*} a_logo
-   * @property {Wl_Event_EventListModel_a_event_list_a_schedule[]} a_schedule
-   * @property {Wl_Event_EventListModel_a_event_list_a_search_tag[]} a_search_tag
-   * @property {boolean} can_book
-   * @property {boolean} can_cancel
-   * @property {string} dl_early
-   * @property {string} dl_end
-   * @property {string} dl_session
-   * @property {string} dl_start
-   * @property {string} dtu_session
-   * @property {string} html_reason
-   * @property {number} i_session_all
-   * @property {number} i_session_future
-   * @property {number} i_session_past
-   * @property {number} id_reason
-   * @property {boolean} is_age_restrict
-   * @property {boolean} is_age_restrict_only
-   * @property {?boolean} is_available
-   * @property {boolean} is_block
-   * @property {boolean} is_book_for_guest
-   * @property {boolean} is_bookable
-   * @property {boolean} is_booked
-   * @property {boolean} is_closed
-   * @property {boolean} is_full
-   * @property {boolean} is_online
-   * @property {boolean} is_online_private
-   * @property {boolean} is_open
-   * @property {boolean} is_promotion_only
-   * @property {boolean} is_prorate
-   * @property {boolean} is_single_buy
-   * @property {boolean} is_virtual
-   * @property {string} k_class
-   * @property {string} k_class_period
-   * @property {string} k_enrollment_block
-   * @property {string} k_location
-   * @property {string} m_price_max
-   * @property {string} m_price_min
-   * @property {string} m_price_total
-   * @property {string} m_price_total_early
-   * @property {string} sid_reason
-   * @property {boolean} text_age_restrict
-   * @property {string} text_title
-   * @property {?string} url_book
-   * @property {string} xml_description
+   * @property {Wl_Event_EventListModel_a_event_list_a_age_restriction} a_age_restriction Information about age restrictions for this event, has the following structure:
+   * @property {string[]} a_class_tab List of book now tags connected to this event.
+   * @property {*} a_logo Data about logo of the event.
+   * @property {Wl_Event_EventListModel_a_event_list_a_schedule[]} a_schedule List of scheduled sessions of the event.
+   * @property {Wl_Event_EventListModel_a_event_list_a_search_tag[]} a_search_tag List of search tags connected to this event.
+   * @property {boolean} can_book Whether event can be booked or not. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked.
+   * @property {boolean} can_cancel Whether current user can cancel already booked event.
+   * @property {string} dl_early End date, when early bird price ends in `MySql` format.
+   * @property {string} dl_end End date of the scheduled session in `MySql` format.
+   * @property {string} dl_session Local date of the closest session of the event.
+   * @property {string} dl_start Start date of the scheduled sessions in `MySql` format.
+   * @property {string} dtu_session Date of the closest session of the event.
+   * @property {string} html_reason Reason why session can not be booked. Not empty only if `is_bookable` is `false`.
+   * @property {number} i_session_all Number of all sessions in the event.
+   * @property {number} i_session_future Number of future sessions in the event.
+   * @property {number} i_session_past Number of past sessions in the event.
+   * @property {number} id_reason ID of deny reason.
+   * @property {boolean} is_age_restrict Whether booking of this event restricted because of age rules for [EventListApi](/Wl/Event/EventList.json).
+   * @property {boolean} is_age_restrict_only `true` if this event booking is restricted and restricted because of client's age only. `false` otherwise.
+   * @property {?boolean} is_available Whether the event is available for booking or not. The flag refers to the Available/Unavailable filter.
+   * @property {boolean} is_block Whether single sessions of the event can be booked.
+   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.
+   * @property {boolean} is_bookable Whether event is bookable.
+   * @property {boolean} is_booked Whether event is already booked.
+   * @property {boolean} is_closed Whether booking of the event is closed already. Means that in general it is bookable but currently booking is closed.
+   * @property {boolean} is_full Whether event is full already.
+   * @property {boolean} is_online `true` if this class can be booked by any client; `false` otherwise.
+   * @property {boolean} is_online_private `true` means to show class only for clients who can book online, `false` means to show class for all clients.
+   * @property {boolean} is_open Whether event sessions can be booked after event has started.
+   * @property {boolean} is_promotion_only Whether clients of the business can pay for the event with purchase option only.
+   * @property {boolean} is_prorate Whether event sessions can be booked partially.
+   * @property {boolean} is_single_buy Whether class/event can be paid with single session.
+   * @property {boolean} is_virtual Whether event is virtual.
+   * @property {string} k_class Class key.
+   * @property {string} k_class_period Class period key of the closest session of the event.
+   * @property {string} k_enrollment_block Key of enrollment block that corresponds to current row.
+   * @property {string} k_location Location key of the closest session of the event.
+   * @property {string} m_price_max Maximum price per session in the event.
+   * @property {string} m_price_min Minimum price per session in the event.
+   * @property {string} m_price_total Price of the entire event.
+   * @property {string} m_price_total_early Early bird price of the entire event.
+   * @property {string} sid_reason Code of `html_reason`. Is used for testing purposes. Not empty only if `is_bookable` is `false`.
+   * @property {boolean} text_age_restrict Text message of the restriction based on age rules.
+   * @property {string} text_title Title of the event.
+   * @property {?string} url_book Link to the start of the booking wizard to book the closed session from this event or the entire event.
+   * @property {string} xml_description Description of the event.
    */
 
   /**
@@ -235,7 +235,7 @@ function Wl_Event_EventListModel()
   this.is_ignore_requirement = false;
 
   /**
-   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in `k_class_tab`.
+   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in [EventListApi](/Wl/Event/EventList.json).
    *
    * * `true` - retrieves a list regardless of the specified tab.
    * * `false` - retrieves a list only for the specific tab.
@@ -248,7 +248,7 @@ function Wl_Event_EventListModel()
   /**
    * The event business key to retrieve a list of all event sessions in business.
    *
-   * `null` to retrieve events from `k_location`.
+   * `null` to retrieve events from [EventListApi](/Wl/Event/EventList.json).
    *
    * @get get
    * @put get
@@ -270,8 +270,8 @@ function Wl_Event_EventListModel()
    * An empty value to retrieve a list of event sessions that don't belong to any tab.
    *
    * Will be ignored in next cases:
-   * * `k_skin` specified.
-   * * `is_tab_all` is `true`.
+   * * [EventListApi](/Wl/Event/EventList.json) specified.
+   * * [EventListApi](/Wl/Event/EventList.json) is `true`.
    *
    * @get get
    * @type {string}
@@ -281,8 +281,8 @@ function Wl_Event_EventListModel()
   /**
    * The event location key to retrieve a list of all event sessions in a specific location.
    *
-   * Required if `k_business` isn't specified.
-   * `null` if you need to retrieve a list of event sessions in all locations of `k_business`.
+   * Required if [EventListApi](/Wl/Event/EventList.json) isn't specified.
+   * `null` if you need to retrieve a list of event sessions in all locations of [EventListApi](/Wl/Event/EventList.json).
    *
    * @get get
    * @type {?string}
@@ -292,7 +292,7 @@ function Wl_Event_EventListModel()
   /**
    * The skin key if an event list is used for widget mode.
    *
-   * `k_class_tab` will be ignored for widget mode.
+   * [EventListApi](/Wl/Event/EventList.json) will be ignored for widget mode.
    *
    * @get get
    * @type {string}

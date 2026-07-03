@@ -182,3 +182,10 @@ Wl_Purchase_Item_ItemSid.SERVICE = 6;
  * @type {number}
  */
 Wl_Purchase_Item_ItemSid.TUITION = 26;
+
+/**
+ * Tuition fee purchase item. Used when client purchases tuition for an event list.
+ *
+ * @type {number}
+ */
+Wl_Purchase_Item_ItemSid.TUITION_FEE = 27;

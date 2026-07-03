@@ -22,7 +22,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * Each value is an empty array reserved for future use.
    *
    * @get result
-   * @type {string[]}
+   * @type {*[][]}
    */
   this.a_calendar = undefined;
 
@@ -53,7 +53,7 @@ function Wl_Schedule_ClassList_ClassListModel()
   /**
    * The list of location keys to filter results.
    * If it's empty, schedule for all locations will be returned.
-   * All given locations should be from the same business, which is sent in `k_business`.
+   * All given locations should be from the same business, which is sent in [ClassListApi](/Wl/Schedule/ClassList/ClassList.json).
    *
    * @get get
    * @type {string[]}
@@ -78,7 +78,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
    * @property {number} i_wait Number of clients in wait list.
-   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.      `true` if clients can book on behalf of a guest.  `false` otherwise.
+   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.  `true` if clients can book on behalf of a guest.  `false` otherwise.
    * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
    * @property {boolean} is_event If `true`, this is an event. Otherwise, this will be `false`.
    * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
@@ -91,8 +91,8 @@ function Wl_Schedule_ClassList_ClassListModel()
    */
 
   /**
-   * A list of classes sessions starting with the date `dt_date`
-   * and in the 62 days ahead (or up to `dt_end`).
+   * A list of classes sessions starting with the date [ClassListApi](/Wl/Schedule/ClassList/ClassList.json)
+   * and in the 62 days ahead (or up to [ClassListApi](/Wl/Schedule/ClassList/ClassList.json)).
    * Every element has the following keys:
    *
    * @get result
@@ -138,8 +138,8 @@ function Wl_Schedule_ClassList_ClassListModel()
   this.dt_end = "";
 
   /**
-   * `true` means to not generate `a_session` result.
-   * Can be used, if you do not need full information about existing classes and result in `a_calendar` is enough.
+   * `true` means to not generate [ClassListApi](/Wl/Schedule/ClassList/ClassList.json) result.
+   * Can be used, if you do not need full information about existing classes and result in [ClassListApi](/Wl/Schedule/ClassList/ClassList.json) is enough.
    *
    * @get get
    * @type {boolean}
@@ -148,7 +148,7 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
-   * `k_class_tab` value.
+   * [ClassListApi](/Wl/Schedule/ClassList/ClassList.json) value.
    *
    * @get get
    * @type {boolean}
@@ -178,7 +178,7 @@ function Wl_Schedule_ClassList_ClassListModel()
 
   /**
    * If `true`, there exists at least one virtual service by a specified
-   * `k_business` and `k_class_tab`,
+   * [ClassListApi](/Wl/Schedule/ClassList/ClassList.json) and [ClassListApi](/Wl/Schedule/ClassList/ClassList.json),
    * Otherwise, this will be `false`.
    *
    * @get result
@@ -198,12 +198,22 @@ function Wl_Schedule_ClassList_ClassListModel()
    * The category tab key.
    *
    * This will be `null` if not set yet.
-   * This will be ignored if `is_tab_all` is `true`.
+   * This will be ignored if [ClassListApi](/Wl/Schedule/ClassList/ClassList.json) is `true`.
    *
    * @get get
    * @type {string}
    */
   this.k_class_tab = "";
+
+  /**
+   * Key of timezone.
+   *
+   * If not set then use default client timezone.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_timezone = null;
 
   /**
    * The list of staff members to filter.
@@ -265,7 +275,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassListModel);
  */
 Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
 {
-  return {"a_field":{"a_calendar":{"get":{"result":true}},"a_class":{"get":{"get":true}},"a_day":{"get":{"get":true}},"a_location":{"get":{"get":true}},"a_session":{"get":{"result":true}},"a_time":{"get":{"get":true}},"dt_date":{"get":{"get":true}},"dt_end":{"get":{"get":true}},"is_response_short":{"get":{"get":true}},"is_tab_all":{"get":{"get":true}},"is_timezone_different":{"get":{"result":true}},"is_virtual":{"get":{"get":true}},"is_virtual_service":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_tab":{"get":{"get":true}},"s_staff":{"get":{"get":true}},"s_staff_uid":{"get":{"get":true}},"show_cancel":{"get":{"get":true}},"show_class":{"get":{"get":true}},"show_event":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_calendar":{"get":{"result":true}},"a_class":{"get":{"get":true}},"a_day":{"get":{"get":true}},"a_location":{"get":{"get":true}},"a_session":{"get":{"result":true}},"a_time":{"get":{"get":true}},"dt_date":{"get":{"get":true}},"dt_end":{"get":{"get":true}},"is_response_short":{"get":{"get":true}},"is_tab_all":{"get":{"get":true}},"is_timezone_different":{"get":{"result":true}},"is_virtual":{"get":{"get":true}},"is_virtual_service":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_tab":{"get":{"get":true}},"k_timezone":{"get":{"get":true}},"s_staff":{"get":{"get":true}},"s_staff_uid":{"get":{"get":true}},"show_cancel":{"get":{"get":true}},"show_class":{"get":{"get":true}},"show_event":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -273,7 +283,7 @@ Wl_Schedule_ClassList_ClassListModel.prototype.config=function()
  * @name Wl_Schedule_ClassList_ClassListModel.instanceGet
  * @param {string} uid The user key.
  * @param {string} k_business The business key.
- * @param {string} k_class_tab The category tab key. This will be `null` if not set yet. This will be ignored if `is_tab_all` is `true`.
+ * @param {string} k_class_tab The category tab key. This will be `null` if not set yet. This will be ignored if [ClassListApi](/Wl/Schedule/ClassList/ClassList.json) is `true`.
  * @param {string} dt_date The list start date in UTC and in MySQL format.
  * @param {boolean} show_cancel If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
  * @param {boolean} show_event If `true`, events are also returned. If `false`, only classes are returned.

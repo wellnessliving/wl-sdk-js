@@ -235,6 +235,15 @@ function Wl_Book_Process_Quiz_QuizModel()
   this.k_login_promotion = "";
 
   /**
+   * Host login promotion key that grants the guest pass used to pay for the guest's visit.
+   * Empty string if the booking is not paid with a guest pass.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.k_login_promotion_guest_pass = "";
+
+  /**
    * Session pass to be used to book a class.
    *
    * @post post
@@ -270,7 +279,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Quiz_QuizModel);
  */
 Wl_Book_Process_Quiz_QuizModel.prototype.config=function()
 {
-  return {"a_field":{"a_login_activity":{"post":{"result":true}},"a_purchase_item":{"get":{"get":true}},"a_quiz":{"get":{"result":true}},"a_quiz_response":{"post":{"post":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session_select":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dt_date_gmt":{"get":{"get":true},"post":{"get":true}},"id_mode":{"get":{"get":true},"post":{"get":true}},"is_backend":{"get":{"get":true},"post":{"get":true}},"is_book_unpaid":{"post":{"post":true}},"is_credit_card_check":{"get":{"get":true},"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"is_next":{"post":{"result":true}},"k_class_period":{"get":{"get":true},"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"show_relation":{"get":{"get":true},"post":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
+  return {"a_field":{"a_login_activity":{"post":{"result":true}},"a_purchase_item":{"get":{"get":true}},"a_quiz":{"get":{"result":true}},"a_quiz_response":{"post":{"post":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session_select":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dt_date_gmt":{"get":{"get":true},"post":{"get":true}},"id_mode":{"get":{"get":true},"post":{"get":true}},"is_backend":{"get":{"get":true},"post":{"get":true}},"is_book_unpaid":{"post":{"post":true}},"is_credit_card_check":{"get":{"get":true},"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"is_next":{"post":{"result":true}},"k_class_period":{"get":{"get":true},"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_login_promotion_guest_pass":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"show_relation":{"get":{"get":true},"post":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**

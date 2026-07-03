@@ -10,27 +10,27 @@ function Thoth_ReportCore_Generator_QueryModel()
 
   /**
    * @typedef {{}} Thoth_ReportCore_Generator_QueryModel_a_dynamic
-   * @property {{}[]} a_cell
-   * @property {*[][]} a_customization_element
-   * @property {*[]} a_type
-   * @property {boolean} is_dynamic
-   * @property {?boolean} is_export
-   * @property {boolean} is_hide_by_default
-   * @property {boolean} is_hide_if_empty
-   * @property {boolean} is_null
-   * @property {?boolean} is_order
-   * @property {boolean} is_show
-   * @property {boolean} is_store
-   * @property {?string} s_cast
-   * @property {?{}} s_class
-   * @property {string} s_class_css
-   * @property {?string} s_format
-   * @property {string} s_name
-   * @property {string} s_sort
-   * @property {string} s_type
-   * @property {?string} text_title
-   * @property {?string} text_title_export
-   * @property {?string} text_title_info
+   * @property {{}[]} a_cell Fields of the complex cell.
+   * @property {*[][]} a_customization_element Elements of a customization from that are required by this filter field. Keys are names of required form elements; values are classes of this elements.
+   * @property {*[]} a_type A list of scalar types of values that this field can get.
+   * @property {boolean} is_dynamic Whether this field is dynamic or static.
+   * @property {?boolean} is_export Whether this field is used for export.
+   * @property {boolean} is_hide_by_default Whether this field should be hidden by default. It can later be shown by using the customization form.
+   * @property {boolean} is_hide_if_empty Whether this field should be hidden if the entire column is empty.
+   * @property {boolean} is_null Whether this field is nullable.
+   * @property {?boolean} is_order Whether the ordering by this field is available.
+   * @property {boolean} is_show Whether this field should be shown during report render.
+   * @property {boolean} is_store Whether this field is stored in the report storage.
+   * @property {?string} s_cast Argument for the MySQL function `cast()`.
+   * @property {?{}} s_class Name of a cell class.
+   * @property {string} s_class_css CSS class that is used for formatting of this field. This class will be added to the column header.
+   * @property {?string} s_format Name of formatting method that is used for formatting of this field during export.
+   * @property {string} s_name Name of a public property in which value of this field is stored.
+   * @property {string} s_sort A string by which report columns are sorted.
+   * @property {string} s_type Type of this field, as specified in its PHP doc.
+   * @property {?string} text_title Data to derive title of a column which values are represented by this report field.
+   * @property {?string} text_title_export Title of this field that is used during export.
+   * @property {?string} text_title_info Text of the cell info tooltip.
    */
 
   /**
@@ -286,21 +286,21 @@ function Thoth_ReportCore_Generator_QueryModel()
    *
    *   The following transitions are possible:
    *
-   *   * `ABORTED` -> `DELETING` when a background task finds that this report is old and should be deleted.
+   *   * `ABORTED` => `DELETING` when a background task finds that this report is old and should be deleted.
    *
-   *   * `ABORTED` -> `QUEUED` if user clicks to regenerate this report.
+   *   * `ABORTED` => `QUEUED` if user clicks to regenerate this report.
    * - 5 (`ABORTING`): Current operation is being aborted now.
    *
    *   The following transitions are possible:
    *
-   *   * `ABORTING` -> `ABORTED` when current operation completes.
+   *   * `ABORTING` => `ABORTED` when current operation completes.
    *     This transition is performed in two places: before the beginning of the actual generation,
    *     and after completion of the generation.
    * - 4 (`DELETING`): This report is being deleted now.
    *
    *   The following transitions are possible:
    *
-   *   * `DELETING` -> (report does not exist anymore) when deletion of this report completes.
+   *   * `DELETING` => (report does not exist anymore) when deletion of this report completes.
    * - 2 (`GENERATING`): This report is being generated now.
    *
    *   This status is set when report is generated from zero point.
@@ -311,28 +311,28 @@ function Thoth_ReportCore_Generator_QueryModel()
    *
    *   The following transitions are possible:
    *
-   *   * `GENERATING` -> `ABORTING` when generation of this report aborted by user.
-   *   * `GENERATING` -> `READY` when generation of this report completes.
+   *   * `GENERATING` => `ABORTING` when generation of this report aborted by user.
+   *   * `GENERATING` => `READY` when generation of this report completes.
    *     This transition is performed when generation completes successfully.
    * - 1 (`QUEUED`): Generation of this report is queued.
    *   It will start automatically when generation of other reports completes.
    *
    *   The following transitions are possible:
    *
-   *   * `QUEUED` -> (report does not exist anymore) If generation of this report was aborted while no data was generated.
-   *   * `QUEUED` -> `ABORTED` If generation of this report was aborted while there is data from previous generation of
+   *   * `QUEUED` => (report does not exist anymore) If generation of this report was aborted while no data was generated.
+   *   * `QUEUED` => `ABORTED` If generation of this report was aborted while there is data from previous generation of
    *      this report.
    *
    *      This transition also occurs if a report stayed in the queue more than the set duration and
    *      there is some data left from the previous generation of this report.
-   *   * `QUEUED` -> `GENERATING` when there is a free thread slot to start generation of this report immediately.
+   *   * `QUEUED` => `GENERATING` when there is a free thread slot to start generation of this report immediately.
    * - 3 (`READY`): Generation of this report is now completed.
    *
    *   The following transitions are possible:
    *
-   *   * `READY` -> `DELETING` when a background tasks identifies that this report is old and starts deleting it.
+   *   * `READY` => `DELETING` when a background tasks identifies that this report is old and starts deleting it.
    *
-   *   * `READY` -> `QUEUED` when user clicks to regenerate this report
+   *   * `READY` => `QUEUED` when user clicks to regenerate this report
    *
    * @post result
    * @type {number}
@@ -357,17 +357,6 @@ function Thoth_ReportCore_Generator_QueryModel()
    * @type {boolean}
    */
   this.is_backend = false;
-
-  /**
-   * Whether the timeout check should be enforced during cell loading.
-   *
-   * Set to `true` by the export controller to abort cell loading with a user-facing error
-   * when the remaining execution time drops below `TIME_LIMIT_BUFFER_SECOND`.
-   *
-   * @post post
-   * @type {boolean}
-   */
-  this.is_export = false;
 
   /**
    * Whether this report should be refreshed.
@@ -488,7 +477,7 @@ WlSdk_ModelAbstract.extend(Thoth_ReportCore_Generator_QueryModel);
  */
 Thoth_ReportCore_Generator_QueryModel.prototype.config=function()
 {
-  return {"a_field":{"a_dynamic":{"post":{"result":true}},"a_field":{"post":{"result":true}},"a_row":{"post":{"result":true}},"a_stale":{"post":{"result":true}},"a_warning":{"post":{"result":true}},"cid_report":{"post":{"post":true}},"dtu_complete":{"post":{"result":true}},"dtu_queue":{"post":{"result":true}},"dtu_start":{"post":{"result":true}},"i_cas_change":{"post":{"result":true}},"i_limit":{"post":{"post":true}},"i_offset":{"post":{"post":true}},"id_report_status":{"post":{"result":true}},"is_actual":{"post":{"post":true}},"is_backend":{"post":{"post":true}},"is_export":{"post":{"post":true}},"is_refresh":{"post":{"post":true}},"json_filter":{"post":{"post":true}},"k_business":{"post":{"post":true}},"s_report":{"post":{"result":true}},"s_sort":{"post":{"post":true}},"s_sql":{"post":{"post":true}},"text_error":{"post":{"result":true}},"uid_actor":{"post":{"post":true}}}};
+  return {"a_field":{"a_dynamic":{"post":{"result":true}},"a_field":{"post":{"result":true}},"a_row":{"post":{"result":true}},"a_stale":{"post":{"result":true}},"a_warning":{"post":{"result":true}},"cid_report":{"post":{"post":true}},"dtu_complete":{"post":{"result":true}},"dtu_queue":{"post":{"result":true}},"dtu_start":{"post":{"result":true}},"i_cas_change":{"post":{"result":true}},"i_limit":{"post":{"post":true}},"i_offset":{"post":{"post":true}},"id_report_status":{"post":{"result":true}},"is_actual":{"post":{"post":true}},"is_backend":{"post":{"post":true}},"is_refresh":{"post":{"post":true}},"json_filter":{"post":{"post":true}},"k_business":{"post":{"post":true}},"s_report":{"post":{"result":true}},"s_sort":{"post":{"post":true}},"s_sql":{"post":{"post":true}},"text_error":{"post":{"result":true}},"uid_actor":{"post":{"post":true}}}};
 };
 
 /**

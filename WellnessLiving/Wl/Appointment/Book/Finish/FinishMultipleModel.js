@@ -87,7 +87,6 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * @property {string} k_staff The staff member conducting the appointment. Specify this for appointment bookings only. deprecated Use `uid_staff`. Available for legacy allow-list only.
    * @property {string} k_staff_date The staff member conducting the appointment. The difference between this and `k_staff` is that this value must be set only in cases when you want to add customer to an appointment that already exists. Specify this for appointment bookings only.
    * @property {string} k_timezone The time zone key. This will be 'null' if the time zone used matches the time zone of the location.
-   * @property {string} m_tip_appointment The amount of selected tips.
    * @property {string} uid User key.  Specify only in a case of booking for a lof of different users.
    * @property {string} uid_staff The staff member conducting the appointment. Specify this for appointment bookings only.
    * @property {string} uid_staff_date The staff member conducting the appointment. The difference between this and `uid_staff` is that this value must be set only in cases when you want to add customer to an appointment that already exists. Specify this for appointment bookings only.
@@ -131,19 +130,31 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   this.a_notification = undefined;
 
   /**
-   * The sum paid.
+   * The sum paid without tax for each provider.
    *
-   * Keys refer to provider indexes.
+   * * Keys refer to provider indexes.
+   * * Values are the paid amounts without tax.
+   *
+   * Only used for the following types of purchases:
+   * * {@link RsPurchaseItemSid}
+   * * {@link RsPurchaseItemSid}
+   * * {@link RsPurchaseItemSid}
+   * * {@link RsPurchaseItemSid}
+   *
+   * This is a multi-provider equivalent of [FinishApi](/Wl/Appointment/Book/Finish/Finish.json).
    *
    * @post post
-   * @type {string[]}
+   * @type {number[]}
    */
   this.a_paid = undefined;
 
   /**
-   * The payment type for the appointment. One of the {@link RsAppointmentPaySid} constants.
+   * The payment type ID for each provider.
    *
-   * Keys refer to provider indexes.
+   * * Keys refer to provider indexes.
+   * * Values are one of the {@link RsAppointmentPaySid} constants.
+   *
+   * This is a multi-provider equivalent of [FinishApi](/Wl/Appointment/Book/Finish/Finish.json).
    *
    * @post get
    * @type {number[]}
@@ -180,18 +191,15 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   this.a_pay_form = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_FinishMultipleModel_a_payment_data
-   * @property {number} id_purchase_item A list of purchase types.
-   * @property {string} k_id The promotion or appointment key, depending on `id_purchase_item` in this array.
-   * @property {string} k_login_promotion The login promotion key.
-   * @property {string} text_discount_code The discount code.
-   */
-
-  /**
-   * Data required for payment with the next structure:
+   * Payment is not processed by this API.
+   *
+   * Use the following APIs for payment:
+   * * [PaymentApi](/Wl/Appointment/Book/Payment/Payment.json)
+   * * [PaymentPostApi](/Wl/Appointment/Book/Payment/PaymentPost.json)
+   * * [PaymentMultipleApi](/Wl/Appointment/Book/Payment/PaymentMultiple.json)
    *
    * @post post
-   * @type {Wl_Appointment_Book_Finish_FinishMultipleModel_a_payment_data}
+   * @type {*[]}
    */
   this.a_payment_data = undefined;
 
@@ -228,7 +236,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishMultipleModel_a_user
-   * @property {string[]} a_note The list of notes to add to the new user's profile.
+   * @property {*} a_note The note or list of notes to add to the new user's profile.
    * @property {string} text_mail The new user's email address.
    * @property {string} text_name_first The new user's first name.
    * @property {string} text_name_last The new user's last name.
@@ -267,11 +275,12 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   /**
    * The source of a visit.
    *
-   * Last used ID: 30.
+   * Last used ID: 31.
    *
    * Values:
    * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
    * - 21 (`AZURE`): Registered through `Azure`.
+   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
    * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
    * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
    * - 22 (`COLLECTIONS`): Debt paid via collections.
@@ -397,10 +406,10 @@ Wl_Appointment_Book_Finish_FinishMultipleModel.prototype.config=function()
 /**
  * Completes the appointment booking for one or more providers, optionally creating a new client.
  *
- * Accepts booking details for one or more providers in `a_book_data`,
+ * Accepts booking details for one or more providers in [FinishMultipleApi](/Wl/Appointment/Book/Finish/FinishMultiple.json),
  * processes payment using the selected Purchase Option, creates appointment records, and sends
  * booking confirmation notifications. A new client account can be created by supplying user
- * details in `a_user` when no UID is provided.
+ * details in [FinishMultipleApi](/Wl/Appointment/Book/Finish/FinishMultiple.json) when no UID is provided.
  *
  * @function
  * @name Wl_Appointment_Book_Finish_FinishMultipleModel.post

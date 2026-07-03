@@ -23,6 +23,7 @@ function Wl_Resource_ResourceList_ListModel()
    * @property {string} k_resource_layout Asset layout key.
    * @property {string} k_resource_type Resource type key.
    * @property {string} text_address Street address of the resource for off-site locations. Empty string if the resource does not have an off-site address.
+   * @property {string} text_city Name of the city with region and country for off-site locations. Empty string if the resource does not have an off-site address.
    * @property {string} text_guide Additional directions or access tips for reaching an off-site location. Empty string if not specified.
    * @property {string} text_postal Postal code of the resource for off-site locations. Empty string if the resource does not have an off-site address.
    * @property {string} text_title Resource name.

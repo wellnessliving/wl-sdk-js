@@ -102,9 +102,9 @@ Wl_Location_LocationModel.prototype.config=function()
 /**
  * Creates new location or edits the existing location.
  *
- * When `k_location` is omitted, creates a new location requiring `k_city`,
- * `text_address`, and `text_title`.
- * When `k_location` is provided, updates only the supplied fields of the existing location.
+ * When [LocationApi](/Wl/Location/Location.json) is omitted, creates a new location requiring [LocationApi](/Wl/Location/Location.json),
+ * [LocationApi](/Wl/Location/Location.json), and [LocationApi](/Wl/Location/Location.json).
+ * When [LocationApi](/Wl/Location/Location.json) is provided, updates only the supplied fields of the existing location.
  * Returns the key of the created or updated location.
  *
  * @function

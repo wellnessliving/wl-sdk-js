@@ -150,7 +150,7 @@ function Wl_Discount_Code_Edit_DiscountCodeEditModel()
    * `true` means discount code can reduce price of the gift cards.
    * `false` means discount code cannot reduce price of the gift cards.
    *
-   * If `is_purchase_all` is `true` this fields does not matter.
+   * If [DiscountCodeEditApi](/Wl/Discount/Code/Edit/DiscountCodeEdit.json) is `true` this fields does not matter.
    *
    * @get result
    * @post post

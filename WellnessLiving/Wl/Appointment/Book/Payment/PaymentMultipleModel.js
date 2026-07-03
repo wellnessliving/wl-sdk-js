@@ -17,6 +17,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_a_provider
    * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_a_provider_a_product} a_product The add-on list. Keys are add-on option keys.  Values are quantities:
+   * @property {string} dl_client_prorate Client prorate date. Used when the purchased promotion is prorated.
    * @property {number} i_duration The asset duration in minutes. This won't be empty for asset bookings.
    * @property {number} id_purchase_item A list of purchase types.
    * @property {boolean} is_pay_later This will be `true` if the customer wants to pay upon their visit. Otherwise, this will be `false` if the user wants to pay now.
@@ -58,6 +59,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_post_a_provider
    * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_post_a_provider_a_product} a_product The add-on list. Keys are add-on option keys.  Values are quantities:
+   * @property {string} dl_client_prorate Client prorate date. Used when the purchased promotion is prorated.
    * @property {number} i_duration The asset duration in minutes. This won't be empty for asset bookings.
    * @property {number} id_purchase_item A list of purchase types.
    * @property {boolean} is_pay_later This will be `true` if the customer wants to pay upon their visit. Otherwise, this will be `false` if the user wants to pay now.
@@ -80,7 +82,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    */
 
   /**
-   * A copy of `a_book_data`. Has the same structure.
+   * A copy of [PaymentMultipleApi](/Wl/Appointment/Book/Payment/PaymentMultiple.json). Has the same structure.
    * Set this field value for POST requests.
    *
    * @post post

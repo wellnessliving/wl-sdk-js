@@ -24,11 +24,12 @@ function Core_Passport_Login_Register_RegisterModel()
   /**
    * The source of a visit.
    *
-   * Last used ID: 30.
+   * Last used ID: 31.
    *
    * Values:
    * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
    * - 21 (`AZURE`): Registered through `Azure`.
+   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
    * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
    * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
    * - 22 (`COLLECTIONS`): Debt paid via collections.

@@ -14,7 +14,19 @@ function Wl_Book_Process_Payment_PaymentModel()
   this._s_key = "k_class_period,dt_date_gmt,uid";
 
   /**
+   * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_item_a_config_a_event_list
+   * @property {string} k_class Key of the event class.
+   * @property {string} uid Key of the tuition participant.
+   */
+
+  /**
+   * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_item_a_config
+   * @property {Wl_Book_Process_Payment_PaymentModel_a_item_a_config_a_event_list} a_event_list List of tuition events. Each entry has the next structure:
+   */
+
+  /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_item
+   * @property {Wl_Book_Process_Payment_PaymentModel_a_item_a_config} a_config Additional configuration. Used only for `id_purchase_item` = {@link RsPurchaseItemSid}.
    * @property {number} id_purchase_item A list of purchase types.
    * @property {boolean} is_renew `true` if the item should be set to auto-renew; `false` otherwise. If not set yet, use the default option for this item.
    * @property {string} k_id The key of the purchase item in the database.
@@ -291,6 +303,15 @@ function Wl_Book_Process_Payment_PaymentModel()
   this.k_login_promotion = "";
 
   /**
+   * Host login promotion key that grants the guest pass used to pay for the guest's visit.
+   * Empty string if the booking is not paid with a guest pass.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.k_login_promotion_guest_pass = "";
+
+  /**
    * The installment template key.
    * This property is optional, and it will be `null` if an installment plan doesn't exist for the purchased item.
    * This will be `0` if an installment plan isn't selected for the purchased item from the list of installment plans.
@@ -342,7 +363,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Payment_PaymentModel);
  */
 Wl_Book_Process_Payment_PaymentModel.prototype.config=function()
 {
-  return {"a_field":{"a_item":{"post":{"post":true}},"a_login_activity_book":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_quiz_response":{"post":{"post":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"a_visit_payment":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_book_unpaid":{"post":{"post":true}},"is_card_authorize":{"post":{"post":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"k_login_promotion":{"post":{"post":true}},"k_pay_installment_template":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"show_relation":{"post":{"get":true}},"text_discount_code":{"post":{"post":true}},"uid":{"post":{"get":true}}}};
+  return {"a_field":{"a_item":{"post":{"post":true}},"a_login_activity_book":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_quiz_response":{"post":{"post":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"a_visit_payment":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_book_unpaid":{"post":{"post":true}},"is_card_authorize":{"post":{"post":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"k_login_promotion":{"post":{"post":true}},"k_login_promotion_guest_pass":{"post":{"post":true}},"k_pay_installment_template":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"show_relation":{"post":{"get":true}},"text_discount_code":{"post":{"post":true}},"uid":{"post":{"get":true}}}};
 };
 
 /**

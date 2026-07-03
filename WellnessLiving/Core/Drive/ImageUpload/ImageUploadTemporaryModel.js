@@ -87,7 +87,7 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
   this.is_resize = undefined;
 
   /**
-   * The key of the image within `s_class`.
+   * The key of the image within [ImageUploadTemporaryApi](/Core/Drive/ImageUpload/ImageUploadTemporary.json).
    *
    * For example, for a user's photo, specify the user's key here.
    *

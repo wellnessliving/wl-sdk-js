@@ -455,6 +455,8 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
    *   Purchase that is created when a staff adds payment for an appointment at POS {@link RsPurchaseItemSid}.
    * - 26 (`TUITION`): Tuition purchase item.
    *   Used when client purchases tuition for an event list.
+   * - 27 (`TUITION_FEE`): Tuition fee purchase item.
+   *   Used when client purchases tuition for an event list.
    *
    * @get result
    * @type {number}
@@ -481,6 +483,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
    * - 13 (`PROMOTION_VIDEO`): Promotions with program category {@link RsProgramCategorySid}.
    * - 10 (`QUICK_BUY`): Products: water, t-shirts, etc. That is available for quick buy.
    * - 14 (`TUITION`): Tuition.
+   * - 15 (`TUITION_FEE`): Tuition fees.
    *
    * @get result
    * @type {?number}
@@ -630,7 +633,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_transfer = undefined;
 
   /**
-   * The business key. Used with `k_session_pass` variable and
+   * The business key. Used with [PurchaseListElementApi](/Wl/Profile/PurchaseList/PurchaseListElement.json) variable and
    * also with gift card components.
    *
    * @get get
@@ -675,7 +678,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.k_enrollment_book = "";
 
   /**
-   * The key of the item. This can correspond to one of many values depending on `id_sale`.
+   * The key of the item. This can correspond to one of many values depending on [PurchaseListElementApi](/Wl/Profile/PurchaseList/PurchaseListElement.json).
    *
    * @get result
    * @type {string}

@@ -59,11 +59,12 @@ function Thoth_WlPay_Account_Charge_ChargeModel()
   /**
    * The source of a visit.
    *
-   * Last used ID: 30.
+   * Last used ID: 31.
    *
    * Values:
    * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
    * - 21 (`AZURE`): Registered through `Azure`.
+   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
    * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
    * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
    * - 22 (`COLLECTIONS`): Debt paid via collections.
@@ -122,7 +123,7 @@ function Thoth_WlPay_Account_Charge_ChargeModel()
    * The ID of the business the user account belongs to.
    *
    * This shouldn't be passed if a user account has already been created.
-   * In such cases, `k_pay_account` should be passed instead.
+   * In such cases, [ChargeApi](/Thoth/WlPay/Account/Charge/Charge.json) should be passed instead.
    *
    * If both the business ID and account ID passed, the system checks if the given business is the owner of the specified account.
    *
@@ -135,7 +136,7 @@ function Thoth_WlPay_Account_Charge_ChargeModel()
    * The ID of the user account to refill.
    *
    * This may be 0 if a user account hasn't been created yet.
-   * In such cases, `k_business` and `uid` should be passed instead.
+   * In such cases, [ChargeApi](/Thoth/WlPay/Account/Charge/Charge.json) and [ChargeApi](/Thoth/WlPay/Account/Charge/Charge.json) should be passed instead.
    *
    * If not passed, the currency of account equals the default business currency.
    *
@@ -147,7 +148,7 @@ function Thoth_WlPay_Account_Charge_ChargeModel()
   /**
    * The ID of the purchase that was created during payment.
    * This value is only returned in cases where a purchase was created.
-   * A new purchase is created when `id_pay_account_charge` equals {@link RsPayAccountChargeSid}.
+   * A new purchase is created when [ChargeApi](/Thoth/WlPay/Account/Charge/Charge.json) equals {@link RsPayAccountChargeSid}.
    *
    * @post result
    * @type {string}
@@ -174,7 +175,7 @@ function Thoth_WlPay_Account_Charge_ChargeModel()
    * The ID of the user whose account is being refilled.
    *
    * This shouldn't be passed if a user account has already been created.
-   * In such cases, `k_pay_account` should be passed instead.
+   * In such cases, [ChargeApi](/Thoth/WlPay/Account/Charge/Charge.json) should be passed instead.
    *
    * If both the user ID and account ID passed, the system checks if the given user is the owner of the specified account.
    *

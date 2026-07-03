@@ -35,7 +35,7 @@ function Core_Passport_Login_Enter_EnterModel()
   /**
    * A copy of the notepad that was used to hash the user password.
    *
-   * See `s_password` for details.
+   * See [EnterApi](/Core/Passport/Login/Enter/Enter.json) for details.
    *
    * @post post
    * @type {string}
@@ -57,9 +57,9 @@ function Core_Passport_Login_Enter_EnterModel()
    *
    * The accepted values are:
    * <ul>
-   *   <li>`&#039;&#039;` Empty line (default value) if you do not want to remember anything.</li>
-   *   <li>`&#039;login&#039;` Remember only user login.</li>
-   *   <li>`&#039;password&#039;` Remember user login and password.</li>
+   *   <li>`''` Empty line (default value) if you do not want to remember anything.</li>
+   *   <li>`'login'` Remember only user login.</li>
+   *   <li>`'password'` Remember user login and password.</li>
    * </ul>
    *
    * @post post

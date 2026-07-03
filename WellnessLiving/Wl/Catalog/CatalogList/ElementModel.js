@@ -407,6 +407,8 @@ function Wl_Catalog_CatalogList_ElementModel()
    *   Purchase that is created when a staff adds payment for an appointment at POS {@link RsPurchaseItemSid}.
    * - 26 (`TUITION`): Tuition purchase item.
    *   Used when client purchases tuition for an event list.
+   * - 27 (`TUITION_FEE`): Tuition fee purchase item.
+   *   Used when client purchases tuition for an event list.
    *
    * @get result
    * @type {number}
@@ -578,9 +580,9 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Note that this must be serialized via JSON.
    *
    * If this field is specified, don't specify any of the following fields:
-   * * `id_sale`
-   * * `k_id`
-   * * `k_shop_product_option`
+   * * [ElementApi](/Wl/Catalog/CatalogList/Element.json)
+   * * [ElementApi](/Wl/Catalog/CatalogList/Element.json)
+   * * [ElementApi](/Wl/Catalog/CatalogList/Element.json)
    *
    * This will be `null` to get information for only one item.
    *

@@ -74,7 +74,7 @@ function Wl_Business_DataModel()
    * - 3 (`CUSTOMER`): Business has a contract with WL, be it a trial (with all fields updated and actual), or a subscription.
    * - 1 (`PROSPECT`): Business is not a WL client and never was, i.e. it is a true prospect business.
    * - 2 (`UNVERIFY`): Business claiming process started, the contact information was verified, the trial has started, but company
-   *   information wasn’t yet update
+   *   information wasn’t yet updated.
    *
    * @get result
    * @type {number}
@@ -287,7 +287,7 @@ function Wl_Business_DataModel()
   this.k_business_franchisor = undefined;
 
   /**
-   * The business key obtained by the security token `text_token`.
+   * The business key obtained by the security token [DataApi](/Wl/Business/Data.json).
    * This can be used on the client side if authorization token should be used instead of the business key
    * (the business key isn't available).
    *
@@ -346,7 +346,7 @@ function Wl_Business_DataModel()
 
   /**
    * The authorization token.
-   * This may be used instead of `k_business` to
+   * This may be used instead of [DataApi](/Wl/Business/Data.json) to
    * identify a business.
    *
    * @get get

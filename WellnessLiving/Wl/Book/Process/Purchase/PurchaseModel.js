@@ -64,7 +64,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    * @property {Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_a_login_promotion_info} a_login_promotion_info Information about the Purchase Option with the following information:
    * @property {Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_a_restrict} a_restrict Data about the shortest restriction period:
    * @property {Wl_Book_Process_Purchase_PurchaseModel_a_login_promotion_a_restrict_data} a_restrict_data Data about all restriction periods given as an array, where each record has the following structure:
-   * @property {string[]} a_uid_share List of UIDs of users who share this promotion. List of those passed in the `a_login_promotion_group` array.
+   * @property {string[]} a_uid_share List of UIDs of users who share this promotion. List of those passed in the [PurchaseApi](/Wl/Book/Process/Purchase/Purchase.json) array.
    * @property {string[]} a_visit_limit The list of calendar restrictions of the promotion (for example, 4 per week).
    * @property {number} i_limit The number of visits the Purchase Option allows the client to make.
    * @property {?number} i_limit_duration The maximum number of minutes the Purchase Option can be used for.
@@ -102,12 +102,12 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *
    * Note:
    * * It makes sense if for all clients the list is loaded within
-   *      the same pair `dt_date_gmt` and `k_class_period`.
+   *      the same pair [PurchaseApi](/Wl/Book/Process/Purchase/Purchase.json) and [PurchaseApi](/Wl/Book/Process/Purchase/Purchase.json).
    * * If promotions are shared, the system will try to determine if there are enough sessions left for the next
    *      client who has the same promotion.
    * * A very simple check is carried out based on a comparison of the remaining sessions for the promotion
    *      with the number of times it was selected.
-   * * Can affect the list of available login promotions `a_login_promotion`.
+   * * Can affect the list of available login promotions [PurchaseApi](/Wl/Book/Process/Purchase/Purchase.json).
    *      If a given client is eligible for such a promotion, but the remaining sessions (minus those previously
    *      selected) in it do not allow it to be applied to the selected session, then such promotion will simply
    *      not be returned for the client.

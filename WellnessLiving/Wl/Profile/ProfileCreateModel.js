@@ -43,11 +43,12 @@ function Wl_Profile_ProfileCreateModel()
   /**
    * The source of a visit.
    *
-   * Last used ID: 30.
+   * Last used ID: 31.
    *
    * Values:
    * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
    * - 21 (`AZURE`): Registered through `Azure`.
+   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
    * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
    * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
    * - 22 (`COLLECTIONS`): Debt paid via collections.
@@ -164,7 +165,7 @@ function Wl_Profile_ProfileCreateModel()
 
   /**
    * Email of the user.
-   * Required if `text_phone` not provided.
+   * Required if [ProfileCreateApi](/Wl/Profile/ProfileCreate.json) not provided.
    *
    * @post post
    * @type {string}
@@ -173,7 +174,7 @@ function Wl_Profile_ProfileCreateModel()
 
   /**
    * Phone of the user.
-   * Required if `text_mail` not provided.
+   * Required if [ProfileCreateApi](/Wl/Profile/ProfileCreate.json) not provided.
    *
    * @post post
    * @type {string}

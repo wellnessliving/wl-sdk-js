@@ -9,8 +9,8 @@ function Wl_Social_Share_SocialShareModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * The primary keys of the shared objects. Depends on `id_share_object`.
-   * If `id_share_object` is:
+   * The primary keys of the shared objects. Depends on [SocialShareApi](/Wl/Social/Share/SocialShare.json).
+   * If [SocialShareApi](/Wl/Social/Share/SocialShare.json) is:
    * * {@link Wl_Social_Share_ShareObjectSid} - each value is key of the visit. 
    * * {@link Wl_Social_Share_ShareObjectSid} - each value is key of the location. 
    * * {@link Wl_Social_Share_ShareObjectSid} - each value is key of the purchase. 

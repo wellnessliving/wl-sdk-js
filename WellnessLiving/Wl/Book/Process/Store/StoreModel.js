@@ -17,8 +17,20 @@ function Wl_Book_Process_Store_StoreModel()
   this.a_login_activity = undefined;
 
   /**
+   * @typedef {{}} Wl_Book_Process_Store_StoreModel_a_purchase_item_check_a_config_a_event_list
+   * @property {string} k_class Key of the event class.
+   * @property {string} uid Key of the tuition participant.
+   */
+
+  /**
+   * @typedef {{}} Wl_Book_Process_Store_StoreModel_a_purchase_item_check_a_config
+   * @property {Wl_Book_Process_Store_StoreModel_a_purchase_item_check_a_config_a_event_list} a_event_list List of tuition events. Each entry has the next structure:
+   */
+
+  /**
    * @typedef {{}} Wl_Book_Process_Store_StoreModel_a_purchase_item_check
-   * @property {number} i_session The number of sessions that this item can cover.   This only applies to items of type {@link RsPurchaseItemSid}.
+   * @property {Wl_Book_Process_Store_StoreModel_a_purchase_item_check_a_config} a_config Additional configuration. Used only for `id_purchase_item` = {@link RsPurchaseItemSid}.
+   * @property {number} i_session The number of sessions that this item can cover. This only applies to items of type {@link RsPurchaseItemSid}.
    * @property {string} s_value The unique identifier of the item being checked. This corresponds to one of the following values: <ul>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li> </ul>
    */
 
@@ -218,6 +230,15 @@ function Wl_Book_Process_Store_StoreModel()
   this.k_login_promotion = "";
 
   /**
+   * Host login promotion key that grants the guest pass used to pay for the guest's visit.
+   * Empty string if the booking is not paid with a guest pass.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.k_login_promotion_guest_pass = "";
+
+  /**
    * Session pass to be used to book a class.
    *
    * @post post
@@ -251,7 +272,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Store_StoreModel);
  */
 Wl_Book_Process_Store_StoreModel.prototype.config=function()
 {
-  return {"a_field":{"a_login_activity":{"post":{"result":true}},"a_purchase_item_check":{"post":{"post":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session_select":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"a_visit_payment":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_book_unpaid":{"post":{"post":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"is_next":{"post":{"result":true}},"k_class_period":{"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"show_relation":{"post":{"get":true}},"uid":{"post":{"get":true}}}};
+  return {"a_field":{"a_login_activity":{"post":{"result":true}},"a_purchase_item_check":{"post":{"post":true}},"a_repeat":{"post":{"post":true}},"a_resource":{"post":{"post":true}},"a_session_select":{"post":{"post":true}},"a_session_wait_list_unpaid":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"a_visit_payment":{"post":{"result":true}},"can_book":{"post":{"post":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_book_unpaid":{"post":{"post":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"is_next":{"post":{"result":true}},"k_class_period":{"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_login_promotion_guest_pass":{"post":{"post":true}},"k_session_pass":{"post":{"post":true}},"show_relation":{"post":{"get":true}},"uid":{"post":{"get":true}}}};
 };
 
 /**

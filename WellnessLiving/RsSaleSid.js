@@ -105,3 +105,10 @@ RsSaleSid.QUICK_BUY = 10;
  * @type {number}
  */
 RsSaleSid.TUITION = 14;
+
+/**
+ * Tuition fees.
+ *
+ * @type {number}
+ */
+RsSaleSid.TUITION_FEE = 15;

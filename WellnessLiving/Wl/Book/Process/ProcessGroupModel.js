@@ -32,7 +32,19 @@ function Wl_Book_Process_ProcessGroupModel()
    */
 
   /**
+   * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_purchase_item_a_config_a_event_list
+   * @property {string} k_class Event class key to be booked as part of this tuition.
+   * @property {string} uid Key of the user for whom this event should be booked.
+   */
+
+  /**
+   * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_purchase_item_a_config
+   * @property {Wl_Book_Process_ProcessGroupModel_a_client_a_purchase_item_a_config_a_event_list} a_event_list List of events to register for as part of this tuition.          Each element is an array with the following keys:
+   */
+
+  /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_purchase_item
+   * @property {Wl_Book_Process_ProcessGroupModel_a_client_a_purchase_item_a_config} a_config Additional configuration data. Required when `id_purchase_item` is          {@link RsPurchaseItemSid}. Has the following keys:
    * @property {number} i_count Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
    * @property {number} id_purchase_item A list of purchase types.
    * @property {boolean} is_owner `true` if client is owner of this purchase option.          This means that this purchase option will be purchased for this client, even if another client          can share a similar purchase option.
@@ -212,6 +224,15 @@ function Wl_Book_Process_ProcessGroupModel()
   this.k_login_activity_purchase = null;
 
   /**
+   * Host login promotion key that grants the guest pass used to pay for the guest's visit.
+   * Empty string if the booking is not paid with a guest pass.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.k_login_promotion_guest_pass = "";
+
+  /**
    * The installment template primary key.
    * `null` to not use installment template.
    *
@@ -238,7 +259,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_ProcessGroupModel);
  */
 Wl_Book_Process_ProcessGroupModel.prototype.config=function()
 {
-  return {"a_field":{"a_book_error":{"post":{"result":true}},"a_client":{"post":{"post":true}},"a_login_activity_book":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"k_pay_installment_template":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}}}};
+  return {"a_field":{"a_book_error":{"post":{"result":true}},"a_client":{"post":{"post":true}},"a_login_activity_book":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"k_login_promotion_guest_pass":{"post":{"post":true}},"k_pay_installment_template":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}}}};
 };
 
 /**

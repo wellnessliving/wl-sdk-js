@@ -21,9 +21,9 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    * Values refer to keys of appointment bookings that reserve the asset(s).
    *
    * For example, if you want to check if the 10th asset with the key of '15' is reserved,
-   * you can check if `a_resource_busy[&#039;15&#039;][&#039;10&#039;]` is free.
+   * you can check if `a_resource_busy['15']['10']` is free.
    *
-   * If you're rebooking an appointment, check the value of `a_resource_busy[&#039;15&#039;][&#039;10&#039;]`.
+   * If you're rebooking an appointment, check the value of `a_resource_busy['15']['10']`.
    * If it's equal to the key of your current appointment booking, you can assume the asset is available.
    *
    * @get result
@@ -140,7 +140,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this.is_show_unavailable_assets = false;
 
   /**
-   * The appointment booking key to ignore when `a_resource_busy` is derived.
+   * The appointment booking key to ignore when [ServiceApi](/Wl/Appointment/Book/Asset/Service/Service.json) is derived.
    *
    * `null` if no appointment booking must be ignored.
    *
@@ -216,7 +216,7 @@ Wl_Appointment_Book_Asset_Service_ServiceModel.prototype.config=function()
  *
  * Returns the asset categories and individual assets linked to the service at the given location.
  * Each asset includes its availability flag for the requested time slot. The response also includes
- * `a_resource_busy` with currently reserved asset slots and a flag indicating
+ * [ServiceApi](/Wl/Appointment/Book/Asset/Service/Service.json) with currently reserved asset slots and a flag indicating
  * whether the current user is allowed to book unavailable assets.
  *
  * @function

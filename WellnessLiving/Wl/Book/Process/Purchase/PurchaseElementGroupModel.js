@@ -9,7 +9,19 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list
+   * @property {string} k_class Key of the event class.
+   * @property {string} uid Key of the tuition participant.
+   */
+
+  /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config
+   * @property {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list} a_event_list List of tuition events.       Each entry has the next structure:
+   */
+
+  /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item
+   * @property {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config} a_config Additional item configurations.
    * @property {number} i_session Number of sessions which are booked simultaneously.      Make sense only when `id_purchase_item` = {@link RsPurchaseItemSid}.
    * @property {number} id_purchase_item A list of purchase types.
    * @property {string} k_id The key of the purchase item in the database.

@@ -15,6 +15,7 @@ function Wl_Tax_TaxListModel()
 
   /**
    * @typedef {{}} Wl_Tax_TaxListModel_a_list
+   * @property {string[]} a_location The locations where the tax is applicable.
    * @property {number} f_value The amount of the tax.
    * @property {string} k_tax The tax key.
    * @property {string} text_title The name of the tax.

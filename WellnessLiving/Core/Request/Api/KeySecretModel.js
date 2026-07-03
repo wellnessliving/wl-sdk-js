@@ -33,7 +33,7 @@ function Core_Request_Api_KeySecretModel()
   this.s_key_session = "";
 
   /**
-   * Alias of `url_origin`.
+   * Alias of [KeySecretApi](/Core/Request/Api/KeySecret.json).
    *
    * @get get
    * @type {string}

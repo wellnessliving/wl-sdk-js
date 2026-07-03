@@ -30,15 +30,30 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.a_discount_code = undefined;
 
   /**
-   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_tuition_component
-   * @property {string} k_class Key of the event class within the tuition which should be granted to the client.       `null` if this component represents tuition fees only.
-   * @property {string} m_price Price of the component within the tuition.      `null` if price should be taken from the setup.
-   * @property {string} uid Key of the client for which component should be granted.
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_discount
+   * @property {string} m_discount Discount amount.
+   * @property {string} text_discount Discount title.
+   */
+
+  /**
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list
+   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_discount} a_discount Discount applied to the event price:
+   * @property {*[]} a_tax List of taxes to be applied to the event price:      Keys are internal system tax keys.       Values are amount of taxes to be applied to the event price.      If not specified or `null`, taxes will be calculated based on the class setup.
+   * @property {string} k_class Key of the event class within the tuition which should be granted to the client.
+   * @property {string} m_price Price of the event for the tuition participant.      If not specified or `null`, price will be calculated based on the class setup.
+   * @property {string} uid Key of the tuition participant.
+   */
+
+  /**
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_registration_fee_list
+   * @property {*[]} a_tax_fee List of taxes to be applied to the registration fee:      Keys are internal system tax keys.       Values are amount of taxes to be applied to the registration fee.
+   * @property {string} m_amount_fee Registration fee amount for the tuition participant.
    */
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config
-   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_tuition_component} a_tuition_component List of tuition components:
+   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list} a_event_list List of tuition events for tuition participant. Each record has the next structure:
+   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_registration_fee_list} a_registration_fee_list Registration fees for tuition participants.   Keys are participant keys.    Each value has the next structure:
    * @property {string} dt_prorate The prorate date. This should be passed when `is_prorate`=`true`.
    * @property {string} dt_send_local The date when the gift card email must be sent.
    * @property {string} dt_start The promotion start date.
@@ -79,7 +94,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   /**
    * The list of cart items with the next structure:
    *
-   * @get get
+   * @get get,result
    * @type {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item[]}
    */
   this.a_item = undefined;
@@ -272,7 +287,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel);
  */
 Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.prototype.config=function()
 {
-  return {"a_field":{"a_discount_code":{"get":{"result":true}},"a_item":{"get":{"get":true}},"f_discount_percent":{"get":{"get":true}},"is_check_cart_item":{"get":{"get":true}},"is_commission":{"get":{"result":true}},"is_discount_code_mode_select":{"get":{"result":true}},"is_receipt_note":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_discount":{"get":{"result":true}},"m_discount_flat":{"get":{"get":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip":{"get":{"get":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"text_error_code":{"get":{"result":true}},"text_error_message":{"get":{"result":true}},"text_receipt_note":{"get":{"result":true}},"uid_current":{"get":{"get":true}},"uid_customer":{"get":{"get":true}}}};
+  return {"a_field":{"a_discount_code":{"get":{"result":true}},"a_item":{"get":{"get":true,"result":true}},"f_discount_percent":{"get":{"get":true}},"is_check_cart_item":{"get":{"get":true}},"is_commission":{"get":{"result":true}},"is_discount_code_mode_select":{"get":{"result":true}},"is_receipt_note":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_discount":{"get":{"result":true}},"m_discount_flat":{"get":{"get":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip":{"get":{"get":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"text_error_code":{"get":{"result":true}},"text_error_message":{"get":{"result":true}},"text_receipt_note":{"get":{"result":true}},"uid_current":{"get":{"get":true}},"uid_customer":{"get":{"get":true}}}};
 };
 
 /**

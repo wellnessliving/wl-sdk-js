@@ -18,7 +18,7 @@ function Wl_Business_Config_BusinessConfigModel()
    * @property {string[]} a_family_relation List of allowed relation types specific to a given business.  Key is ID. One of {@link RsFamilyRelationSid} constant.  Value is SID.
    * @property {number[]} a_family_relation_login_allow List of allowed relation types specific to a given business.  Each value constant from {@link RsFamilyRelationSid} class.
    * @property {number[]} a_payment_reattempt_not_decline_reason List of not allowed decline reasons to payment reattempt. Each element is one of {@link Thoth_WlPay_PayExceptionSid} constants.
-   * @property {number} a_wait_service Keys are list of IDs from {@link Wl_Service_ServiceSid}, and values are flags whether wait list is allowed.
+   * @property {boolean[]} a_wait_service Keys are list of IDs from {@link Wl_Service_ServiceSid}, and values are flags whether wait list is allowed.
    * @property {number} i_book_before Minimum hours|days|months before class should be booked.
    * @property {number} i_book_future Maximum hours|days|months after class can be booked.
    * @property {number} i_cancel Minimum hours|days|months before class should be canceled without penalty.

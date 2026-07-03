@@ -96,8 +96,6 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
   /**
    * Determines which locations should be returned.
    *
-   * One of the {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} constants.
-   *
    * If `null`, {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} is used.
    *
    * @get get
@@ -151,7 +149,7 @@ Wl_Integration_Curves_CurvesFranchiseLocationModel.prototype.config=function()
  * @function
  * @name Wl_Integration_Curves_CurvesFranchiseLocationModel.instanceGet
  * @param {string} k_business The business key.
- * @param {number} id_business_franchise_location Determines which locations should be returned. One of the {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} constants. If `null`, {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} is used.
+ * @param {number} id_business_franchise_location Determines which locations should be returned. If `null`, {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationSid} is used.
  * @param {boolean} is_include_non_api Determines whether to include locations marked to not be displayed on franchisor website. If `true`, all locations are listed (regardless of this setting).
  * @param {boolean} is_include_churn Determines whether to include churned/removed locations. If `true`, all locations are listed (regardless of their status).
  * @returns {Wl_Integration_Curves_CurvesFranchiseLocationModel}

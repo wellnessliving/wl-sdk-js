@@ -61,11 +61,13 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    * @property {string} f_offline_min The minimum offline price.
    * @property {string} f_online The online price.
    * @property {boolean} hide_application Determines whether the service will be hidden in the White Label mobile application.  `true` means that service won't be displayed. Otherwise, this will be `false`.
+   * @property {string} html_deny_reason Human-readable reason why the client cannot book this service. Empty string if there is no deny reason.
    * @property {number} i_age_from The required minimum client age to book an appointment.
    * @property {number} i_age_to The required maximum client age to book an appointment.
    * @property {number} i_duration The appointment duration in minutes.
    * @property {number} i_price The price type ID. One of {@link RsServicePriceSid} constants.
    * @property {number} id_book_flow A list of client booking flow types.
+   * @property {number} id_deny_reason Reasons why the client can't book this class.
    * @property {number} id_service_require A list of client booking flow types.
    * @property {boolean} is_age_public `true` if age restrictions are public. Otherwise, `false` if they should be hidden from clients.
    * @property {boolean} is_age_restricted Determines whether this service can't be booked due to age restrictions.
@@ -73,19 +75,20 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    * @property {boolean} is_book_repeat_client `true` if clients can book classes and appointments on a recurring basis. Otherwise, this `false`.
    * @property {boolean} is_book_repeat_no_end_date_appointment `true` if appointment bookings default to weekly recurring with no end date, `false` otherwise.
    * @property {boolean} is_bookable Whether this appointment can be booked online.
-   * @property {boolean} is_deposit_percent `true` if `f_deposit` is a percentage. Otherwise, this will be `false` if `f_deposit` is an amount of money.
+   * @property {boolean} is_deposit_percent `true` if `f_deposit` is a percentage. `false` if `f_deposit` is an amount of money.
    * @property {boolean} is_gender_select `true` if clients can select the staff member's gender. Otherwise, this will be `false`.
-   * @property {boolean} is_online_sell `true` if clients can buy this appointment. Otherwise, this will be `false` if only staff members can sell it.
+   * @property {boolean} is_online_sell `true` if clients can buy this appointment. `false` if only staff members can sell it.
    * @property {boolean} is_question Determines whether the service will ask for questions or not.
    * @property {boolean} is_resource_type `true` if the service requires assets. Otherwise, this will be `false`.
-   * @property {boolean} is_single_buy `true` if the appointment can be booked without a Purchase Option. Otherwise, this will be `false` if it's necessary to buy a Purchase Option.
-   * @property {boolean} is_staff_confirm `true` if the appointment must be confirmed by a staff member after booking. Otherwise, this will be `false`.
-   * @property {boolean} is_staff_skip `true` if clients can select a staff member for the appointment. Otherwise, this will be `false` if otherwise.
+   * @property {boolean} is_single_buy `true` if the appointment can be booked without a Purchase Option. `false` if it's necessary to buy a Purchase Option.
+   * @property {boolean} is_staff_confirm `true` if the appointment must be confirmed by a staff member after booking. Otherwise, `false`.
+   * @property {boolean} is_staff_skip `true` if clients can select a staff member for the appointment. Otherwise, `false`.
    * @property {boolean} is_virtual `true` if the service is virtual. Otherwise, this will be `false`.
    * @property {string} k_service The appointment primary key.
    * @property {string} k_service_category The service category primary key.
    * @property {string} s_duration The appointment duration in a human-readable format.
    * @property {string} s_service The appointment title.
+   * @property {?string} sid_deny_reason String representation of the deny reason. `null` if no deny reason.
    * @property {string} text_age_restriction Age restriction header.
    * @property {string} xml_description Appointment description (deprecated, use `html_description`).
    * @property {string} xml_description_short Appointment short description (deprecated, use `html_description_short`).

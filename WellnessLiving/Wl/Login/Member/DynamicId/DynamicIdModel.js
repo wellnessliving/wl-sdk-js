@@ -39,7 +39,7 @@ function Wl_Login_Member_DynamicId_DynamicIdModel()
    * Barcode of the member.
    *
    * Dynamic, if business uses barcode as dynamic ID.
-   * Or static, if business uses static ID. In this case `i_expire` will be zero.
+   * Or static, if business uses static ID. In this case [DynamicIdApi](/Wl/Login/Member/DynamicId/DynamicId.json) will be zero.
    *
    * @get result
    * @type {string}

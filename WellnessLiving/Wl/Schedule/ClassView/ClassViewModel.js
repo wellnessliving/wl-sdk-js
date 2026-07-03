@@ -68,6 +68,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_book_active A total number of booked active visits in the class.
    * @property {number} i_capacity Class capacity.
    * @property {number} i_duration Class duration. In number of minutes.
+   * @property {number} i_visit Number of usages of promotion required to pay for a single class session.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
    * @property {number} id_deny_reason Reasons why the client can't book this class.
    * @property {boolean} is_book Whether current class was booked by current client.
@@ -184,6 +185,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_book_active A total number of booked active visits in the class.
    * @property {number} i_capacity Class capacity.
    * @property {number} i_duration Class duration. In number of minutes.
+   * @property {number} i_visit Number of usages of promotion required to pay for a single class session.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
    * @property {number} id_deny_reason Reasons why the client can't book this class.
    * @property {boolean} is_book Whether current class was booked by current client.
@@ -347,7 +349,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
 
   /**
    * A list of sessions to get information for.
-   * A serialized array. See `a_session_request` for the array structure.
+   * A serialized array. See [ClassViewApi](/Wl/Schedule/ClassView/ClassView.json) for the array structure.
    * Serialization and sending by POST is necessary to send big lists.
    *
    * @post post

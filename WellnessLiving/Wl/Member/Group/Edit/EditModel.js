@@ -123,6 +123,17 @@ function Wl_Member_Group_Edit_EditModel()
   this.is_brivo_active = false;
 
   /**
+   * Whether automatic check-in on Brivo access granted is enabled for the group.
+   * When enabled, a successful Brivo door access reported for a client of this group triggers an automatic
+   *  check-in attempt in WellnessLiving. When disabled, Brivo access events for these clients are ignored.
+   *
+   * @get result
+   * @post post
+   * @type {boolean}
+   */
+  this.is_brivo_checkin_active = false;
+
+  /**
    * Whether Brivo invitation feature enabled for the group.
    *
    * @get result
@@ -270,7 +281,7 @@ WlSdk_ModelAbstract.extend(Wl_Member_Group_Edit_EditModel);
  */
 Wl_Member_Group_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field":{"a_criteria":{"post":{"post":true},"put":{"post":true}},"a_logic":{"post":{"post":true},"put":{"post":true}},"a_search_entity":{"post":{"post":true},"put":{"post":true}},"a_staff_role_selected":{"post":{"post":true},"put":{"post":true}},"id_conversion_type":{"get":{"result":true},"post":{"post":true}},"id_member_group_shape":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"id_share":{"post":{"post":true},"put":{"post":true}},"is_brivo_active":{"get":{"result":true},"post":{"post":true}},"is_brivo_invitation_active":{"get":{"result":true},"post":{"post":true}},"is_icon":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_update":{"get":{"result":true},"post":{"post":true}},"json_criteria":{"post":{"post":true},"put":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_member_group":{"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"k_search_template":{"get":{"get":true,"result":true},"post":{"get":true,"result":true},"put":{"get":true}},"s_color_background":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_color_foreground":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_icon":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_search_group":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"text_warning":{"post":{"result":true},"put":{"result":true}},"uid":{"get":{"get":true},"post":{"get":true},"put":{"get":true}}}};
+  return {"a_field":{"a_criteria":{"post":{"post":true},"put":{"post":true}},"a_logic":{"post":{"post":true},"put":{"post":true}},"a_search_entity":{"post":{"post":true},"put":{"post":true}},"a_staff_role_selected":{"post":{"post":true},"put":{"post":true}},"id_conversion_type":{"get":{"result":true},"post":{"post":true}},"id_member_group_shape":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"id_share":{"post":{"post":true},"put":{"post":true}},"is_brivo_active":{"get":{"result":true},"post":{"post":true}},"is_brivo_checkin_active":{"get":{"result":true},"post":{"post":true}},"is_brivo_invitation_active":{"get":{"result":true},"post":{"post":true}},"is_icon":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_update":{"get":{"result":true},"post":{"post":true}},"json_criteria":{"post":{"post":true},"put":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_member_group":{"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"k_search_template":{"get":{"get":true,"result":true},"post":{"get":true,"result":true},"put":{"get":true}},"s_color_background":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_color_foreground":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_icon":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_search_group":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"text_warning":{"post":{"result":true},"put":{"result":true}},"uid":{"get":{"get":true},"post":{"get":true},"put":{"get":true}}}};
 };
 
 /**

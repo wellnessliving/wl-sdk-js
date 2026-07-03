@@ -61,7 +61,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
    * @typedef {{}} Wl_Appointment_Book_Schedule_CalendarModel_a_timezone_data_a_timezone
    * @property {number} i_order Timezone order.
    * @property {number} i_shift Timezone shift from UTC in hours.
-   * @property {boolean} is_select `true` for selected timezone - from `k_timezone` param or client's default timezone when param not set.
+   * @property {boolean} is_select `true` for selected timezone - from [CalendarApi](/Wl/Appointment/Book/Schedule/Calendar.json) param or client's default timezone when param not set.
    * @property {string} k_timezone Timezone key.
    * @property {string} s_title Timezone name.
    * @property {string} text_abbr Timezone abbreviation.

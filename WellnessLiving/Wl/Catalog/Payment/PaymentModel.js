@@ -24,10 +24,31 @@ function Wl_Catalog_Payment_PaymentModel()
   this.a_commission = undefined;
 
   /**
+   * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_event_list_a_discount
+   * @property {string} m_discount Discount amount.
+   * @property {string} text_discount Discount title.
+   */
+
+  /**
+   * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_event_list
+   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_event_list_a_discount} a_discount Discount applied to the event price. Staff-only: ignored when sent by a client.
+   * @property {*[]} a_tax List of taxes to be applied to the event price. Keys are tax keys.  Values are tax amounts. If not specified, taxes are calculated based on class setup. Staff-only: ignored when sent by a client.
+   * @property {string} k_class Key of the event class.
+   * @property {string} m_price Price of the event for the tuition participant. If not specified, price is calculated based on class setup. Staff-only: ignored when sent by a client.
+   * @property {string} uid Key of the tuition participant.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_quick_gift
    * @property {number} i_count The quantity of elements.
    * @property {number} id_purchase_item A list of purchase types.
    * @property {string} k_id The primary key of the element, depending on the element type. Pay attention that if you add a product into gift card, there must be specified not product key but product option key. Do not specify separate field `k_shop_product_option`.
+   */
+
+  /**
+   * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_registration_fee_list
+   * @property {*[]} a_tax_fee List of taxes to be applied to the registration fee. Keys are tax keys.  Values are tax amounts.
+   * @property {string} m_amount_fee Registration fee amount for the tuition participant.
    */
 
   /**
@@ -50,7 +71,9 @@ function Wl_Catalog_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config
+   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_event_list} a_event_list List of tuition events. Used only for {@link RsSaleSid}. Each entry has the next structure:
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_quick_gift} a_quick_gift A list of components to be added to the client. For quick gift cards only:
+   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_registration_fee_list} a_registration_fee_list Registration fees for tuition participants. Used only for `id_sale` = {@link RsSaleSid}. Keys are participant keys.  Staff-only: ignored when sent by a client. Each value has the next structure:
    * @property {string[]} a_uid_share An array of UIDs representing the client's relatives that share the Purchase Option.
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program} a_wellness_program "Wellness Program" fields. `k_wellness_program` must be passed along with this array. See the description below.
    * @property {string} dt_prorate The prorate date, used only for memberships.
@@ -65,7 +88,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {string} k_coupon_amount The key of the gift card amount, used only for gift cards.
    * @property {string} k_staff <b>Deprecated!</b>  The staff member key, used only for appointment tips.
    * @property {string} k_wellness_program The "Wellness Program" key. Set this for the insurance membership promotion. `a_wellness_program` array must be passed along with the key. See the array description above. <p>Use the following models to work with this type of promotion:</p> <ul>   <li>[ProgramListApi](/Wl/Insurance/Catalog/ProgramList.json) to obtain list of active programs.</li>   <li>[EnrollmentFieldListApi](/Wl/Insurance/Enrollment/Field/EnrollmentFieldList.json) to get and validate fields for a given program.</li> </ul>
-   * @property {string} m_prorate_custom The custom prorate price, used only memberships only. This is only used if `is_prorate_fix` is `true`.
+   * @property {string} m_prorate_custom The custom prorate price, used only for memberships. This is only used if `is_prorate_fix` is `true`.
    * @property {string} s_code The gift card code. This is required for gift cards.
    * @property {string} s_image The key of the image for the gift card. If empty, the business's first gift card image will be used. Specify this only for gift cards.
    * @property {string} s_mail The gift card receiver email. This is required for gift cards.

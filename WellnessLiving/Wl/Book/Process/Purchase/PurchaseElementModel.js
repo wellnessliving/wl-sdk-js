@@ -14,6 +14,28 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this._s_key = "id_purchase_item,k_id,k_location,uid,i_session,k_login_prize,text_discount_code,k_pay_installment_template,k_reward_prize,dtu_date";
 
   /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementModel_a_config_a_event_list
+   * @property {string} k_class Key of the event class.
+   * @property {string} uid Key of the tuition participant.
+   */
+
+  /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementModel_a_config
+   * @property {Wl_Book_Process_Purchase_PurchaseElementModel_a_config_a_event_list} a_event_list List of tuition events. Each entry has the next structure:
+   */
+
+  /**
+   * Additional configuration for the purchase item.
+   * Depending on purchase item type different configuration parameters can be passed.
+   *
+   * For purchase items with {@link RsPurchaseItemSid} type next structure expected:
+   *
+   * @get get
+   * @type {Wl_Book_Process_Purchase_PurchaseElementModel_a_config}
+   */
+  this.a_config = undefined;
+
+  /**
    * A list of taxes for the given purchase options.
    * Keys - tax keys, values - tax amounts.
    *
@@ -35,7 +57,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   /**
    * The number of sessions which are booked simultaneously.
    *
-   * Required when `id_purchase_item` = {@link RsPurchaseItemSid}.
+   * Required when [PurchaseElementApi](/Wl/Book/Process/Purchase/PurchaseElement.json) = {@link RsPurchaseItemSid}.
    *
    * @get get
    * @see RsPurchaseItemSid
@@ -197,7 +219,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementModel.prototype.config=function()
 {
-  return {"a_field":{"a_tax":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"i_session":{"get":{"get":true}},"id_purchase_item":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_id":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_login_prize":{"get":{"get":true}},"k_pay_installment_template":{"get":{"get":true}},"k_reward_prize":{"get":{"get":true}},"m_cost":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_code":{"get":{"result":true}},"m_discount_login":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_config":{"get":{"get":true}},"a_tax":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"i_session":{"get":{"get":true}},"id_purchase_item":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_id":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_login_prize":{"get":{"get":true}},"k_pay_installment_template":{"get":{"get":true}},"k_reward_prize":{"get":{"get":true}},"m_cost":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_code":{"get":{"result":true}},"m_discount_login":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -207,7 +229,7 @@ Wl_Book_Process_Purchase_PurchaseElementModel.prototype.config=function()
  * @param {string} k_id The key of the purchase item in the database.
  * @param {string} k_location The key of the location in which the purchase is made. This is also the booking process location.
  * @param {string} uid The key of the current user.
- * @param {number} i_session The number of sessions which are booked simultaneously. Required when `id_purchase_item` = {@link RsPurchaseItemSid}.
+ * @param {number} i_session The number of sessions which are booked simultaneously. Required when [PurchaseElementApi](/Wl/Book/Process/Purchase/PurchaseElement.json) = {@link RsPurchaseItemSid}.
  * @param {string} k_login_prize The key of the user's prize. Not empty only if the user wants to make a free visit from the prize.
  * @param {string} text_discount_code The discount code.
  * @param {?string} k_pay_installment_template Installment template key. This property is optional. * can only be set for the purchase option which supports installment plan. * `null` if installment plan doesn't exist for bought item; * `0` if installment plan doesn't selected for bought item from the list of installment plans. NOTE: * Calculations of discounts and taxes for installment plans are for demonstration purposes only! * Installment is not an independent purchase item and has no discounts or taxes. * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.

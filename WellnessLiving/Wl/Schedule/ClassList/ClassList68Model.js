@@ -17,7 +17,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * Each value is an empty array reserved for future use.
    *
    * @post result
-   * @type {string[]}
+   * @type {*[][]}
    */
   this.a_calendar = undefined;
 
@@ -25,7 +25,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * The list of classes keys to filter.
    * Return sessions with matching class IDs.
    *
-   * If it's empty and `show_class` is `true`, all classes will be returned.
+   * If it's empty and [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is `true`, all classes will be returned.
    *
    * @post post
    * @type {string[]}
@@ -35,9 +35,9 @@ function Wl_Schedule_ClassList_ClassList68Model()
   /**
    * List of tabs keys.
    *
-   * This will be ignored if `is_tab_all` is `true`.
+   * This will be ignored if [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is `true`.
    *
-   * If list of tab keys is not empty, `id_class_tab` is mandatory.
+   * If list of tab keys is not empty, [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is mandatory.
    *
    * `null` if no filtering by Book Now Tab is required.
    *
@@ -63,7 +63,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * The list of event keys to filter.
    * Return sessions with matching event keys.
    *
-   * If it's empty and `show_event` is `true`, all events will be returned.
+   * If it's empty and [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is `true`, all events will be returned.
    *
    * @post post
    * @type {string[]}
@@ -95,10 +95,10 @@ function Wl_Schedule_ClassList_ClassList68Model()
    *
    *
    * For generating this filter, all filters are applied except:
-   * - `a_class`;
-   * - `a_event`;
-   * - `show_class`;
-   * - `show_event`.
+   * - [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json);
+   * - [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json);
+   * - [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json);
+   * - [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json).
    *
    * @post result
    * @type {Wl_Schedule_ClassList_ClassList68Model_a_quick}
@@ -201,8 +201,8 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.id_class_tab = null;
 
   /**
-   * `true` means to not generate `a_session` result.
-   * Can be used, if you do not need full information about existing classes and result in `a_calendar` is enough.
+   * `true` means to not generate [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) result.
+   * Can be used, if you do not need full information about existing classes and result in [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is enough.
    *
    * @post post
    * @type {boolean}
@@ -211,7 +211,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
-   * `k_class_tab` or `id_class_tab` to filter sessions by class tab.
+   * [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) or [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) to filter sessions by class tab.
    *
    * @post post
    * @type {boolean}
@@ -241,7 +241,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * If `true`, there exists at least one virtual service by a specified
-   * `k_business` and `k_class_tab`,
+   * [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) and [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json),
    * Otherwise, this will be `false`.
    *
    * @post result
@@ -259,12 +259,22 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * The tab key.
-   * This will be ignored if `is_tab_all` is `true`.
+   * This will be ignored if [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is `true`.
    *
    * @post post
    * @type {string}
    */
   this.k_class_tab = "";
+
+  /**
+   * Key of timezone.
+   *
+   * If not set then use default client timezone.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.k_timezone = null;
 
   /**
    * The list of staff members to filter.
@@ -309,7 +319,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.show_event = false;
 
   /**
-   * Whether to generate `a_quick` a quick filter.
+   * Whether to generate [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) a quick filter.
    * If `true`, a quick filter will be generated. `false` otherwise.
    *
    * @post post
@@ -335,7 +345,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassList68Model);
  */
 Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
 {
-  return {"a_field":{"a_calendar":{"post":{"result":true}},"a_class":{"post":{"post":true}},"a_class_tab":{"post":{"post":true}},"a_day":{"post":{"post":true}},"a_event":{"post":{"post":true}},"a_location":{"post":{"post":true}},"a_quick":{"post":{"result":true}},"a_session":{"post":{"result":true}},"a_time":{"post":{"post":true}},"dt_date":{"post":{"post":true}},"dt_end":{"post":{"post":true}},"id_class_tab":{"post":{"post":true}},"is_response_short":{"post":{"post":true}},"is_tab_all":{"post":{"post":true}},"is_timezone_different":{"post":{"result":true}},"is_virtual":{"post":{"post":true}},"is_virtual_service":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_class_tab":{"post":{"post":true}},"s_staff":{"post":{"post":true}},"s_staff_uid":{"post":{"post":true}},"show_cancel":{"post":{"post":true}},"show_class":{"post":{"post":true}},"show_event":{"post":{"post":true}},"show_quick_filter":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
+  return {"a_field":{"a_calendar":{"post":{"result":true}},"a_class":{"post":{"post":true}},"a_class_tab":{"post":{"post":true}},"a_day":{"post":{"post":true}},"a_event":{"post":{"post":true}},"a_location":{"post":{"post":true}},"a_quick":{"post":{"result":true}},"a_session":{"post":{"result":true}},"a_time":{"post":{"post":true}},"dt_date":{"post":{"post":true}},"dt_end":{"post":{"post":true}},"id_class_tab":{"post":{"post":true}},"is_response_short":{"post":{"post":true}},"is_tab_all":{"post":{"post":true}},"is_timezone_different":{"post":{"result":true}},"is_virtual":{"post":{"post":true}},"is_virtual_service":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_class_tab":{"post":{"post":true}},"k_timezone":{"post":{"post":true}},"s_staff":{"post":{"post":true}},"s_staff_uid":{"post":{"post":true}},"show_cancel":{"post":{"post":true}},"show_class":{"post":{"post":true}},"show_event":{"post":{"post":true}},"show_quick_filter":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
 };
 
 /**
@@ -347,10 +357,10 @@ The difference is as follows:
  * requests and the browser refuse to send the request (situations with long class ID, event ID or staff ID lists).
  *
  * - Added generation of a separate 'Quick filter'.
- * This generation is enabled using the flag `show_quick_filter`.
+ * This generation is enabled using the flag [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json).
  *
- * - Added a filter list of events `a_event`.
- * - Added a filter ID of tab `id_class_tab`.
+ * - Added a filter list of events [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json).
+ * - Added a filter ID of tab [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json).
  *
  * @function
  * @name Wl_Schedule_ClassList_ClassList68Model.post

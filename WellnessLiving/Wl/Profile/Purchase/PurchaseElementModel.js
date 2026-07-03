@@ -395,6 +395,8 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    *   Purchase that is created when a staff adds payment for an appointment at POS {@link RsPurchaseItemSid}.
    * - 26 (`TUITION`): Tuition purchase item.
    *   Used when client purchases tuition for an event list.
+   * - 27 (`TUITION_FEE`): Tuition fee purchase item.
+   *   Used when client purchases tuition for an event list.
    *
    * @get result
    * @type {number}
@@ -421,6 +423,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    * - 13 (`PROMOTION_VIDEO`): Promotions with program category {@link RsProgramCategorySid}.
    * - 10 (`QUICK_BUY`): Products: water, t-shirts, etc. That is available for quick buy.
    * - 14 (`TUITION`): Tuition.
+   * - 15 (`TUITION_FEE`): Tuition fees.
    *
    * @get result
    * @type {?number}
@@ -536,7 +539,7 @@ function Wl_Profile_Purchase_PurchaseElementModel()
   this.is_transfer = undefined;
 
   /**
-   * The business key. Currently used only with `k_session_pass` variable.
+   * The business key. Currently used only with [PurchaseElementApi](/Wl/Profile/Purchase/PurchaseElement.json) variable.
    *
    * @get get
    * @type {?string}

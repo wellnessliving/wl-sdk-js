@@ -14,7 +14,7 @@ function Wl_Holiday_HolidayModel()
   this._s_key = "dl_work,k_business";
 
   /**
-   * A list of the location's closed day titles by location keys on the date `dl_work`.
+   * A list of the location's closed day titles by location keys on the date [HolidayApi](/Wl/Holiday/Holiday.json).
    *
    * Keys are location keys. Values are holiday title strings.
    *
@@ -33,7 +33,7 @@ function Wl_Holiday_HolidayModel()
   this.dl_work = "";
 
   /**
-   * `true` if the business has a closed day on the date `dl_work`, `false` if otherwise.
+   * `true` if the business has a closed day on the date [HolidayApi](/Wl/Holiday/Holiday.json), `false` if otherwise.
    *
    * @get result
    * @type {boolean}
@@ -49,7 +49,7 @@ function Wl_Holiday_HolidayModel()
   this.k_business = "";
 
   /**
-   * The message used for the business's closed day on the date `dl_work`.
+   * The message used for the business's closed day on the date [HolidayApi](/Wl/Holiday/Holiday.json).
    *
    * @get result
    * @type {string}

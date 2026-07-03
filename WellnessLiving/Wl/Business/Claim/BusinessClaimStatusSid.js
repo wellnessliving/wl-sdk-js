@@ -30,7 +30,7 @@ Wl_Business_Claim_BusinessClaimStatusSid.CUSTOMER = 3;
 Wl_Business_Claim_BusinessClaimStatusSid.PROSPECT = 1;
 
 /**
- * Business claiming process started, the contact information was verified, the trial has started, but company information wasn’t yet update
+ * Business claiming process started, the contact information was verified, the trial has started, but company information wasn’t yet updated.
  *
  * @type {number}
  */

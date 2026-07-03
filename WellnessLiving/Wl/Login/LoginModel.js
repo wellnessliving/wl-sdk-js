@@ -19,7 +19,8 @@ function Wl_Login_LoginModel()
    * @property {string} k_staff User's key as staff member.
    * @property {string} s_first_name User first name.
    * @property {string} s_last_name First letter of user last name.
-   * @property {string} text_mail_client Client`s mail.   </dd>
+   * @property {string} text_mail_client Client`s mail.
+   * @property {string} text_mail_staff Staff`s mail.
    * @property {string} text_name_first_staff Staff's first name.
    * @property {string} text_name_full_client Full client name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
    * @property {string} text_name_full_staff Full staff name. User login is returned in a case neither first name, nor last name specified. An empty string is returned in a case neither first name, nor last name specified, nor login.
@@ -136,7 +137,7 @@ function Wl_Login_LoginModel()
 
   /**
    * The staff member's mailing address.
-   * This will be set if the user is a staff member (`k_staff`).
+   * This will be set if the user is a staff member ([LoginApi](/Wl/Login/Login.json)).
    *
    * @get result
    * @type {string}
@@ -145,7 +146,7 @@ function Wl_Login_LoginModel()
 
   /**
    * The staff member's first name.
-   * This will be set if the user is a staff member (`k_staff`).
+   * This will be set if the user is a staff member ([LoginApi](/Wl/Login/Login.json)).
    *
    * @get result
    * @type {string}
@@ -165,7 +166,7 @@ function Wl_Login_LoginModel()
    * The staff member's full name.
    * The user login is returned in cases where neither the first name nor the last name have been specified.
    * An empty string is returned in cases where neither the first name, last name, nor login have been specified.
-   * This will be set if the user is a staff member (`k_staff`).
+   * This will be set if the user is a staff member ([LoginApi](/Wl/Login/Login.json)).
    *
    * @get result
    * @type {string}
@@ -174,7 +175,7 @@ function Wl_Login_LoginModel()
 
   /**
    * The staff member's last name.
-   * This will be set if the user is a staff member (`k_staff`).
+   * This will be set if the user is a staff member ([LoginApi](/Wl/Login/Login.json)).
    *
    * @get result
    * @type {string}

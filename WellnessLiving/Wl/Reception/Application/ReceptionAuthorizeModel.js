@@ -19,7 +19,7 @@ function Wl_Reception_Application_ReceptionAuthorizeModel()
   /**
    * List of the users, which can be authorized.
    *
-   * Can be set only this field or `uid`.
+   * Can be set only this field or [ReceptionAuthorizeApi](/Wl/Reception/Application/ReceptionAuthorize.json).
    * It depends, whether we found one user or multiple.
    *
    * @post result
@@ -64,7 +64,7 @@ function Wl_Reception_Application_ReceptionAuthorizeModel()
   /**
    * Key of the authorized user.
    *
-   * Can be set only this field or `a_select`.
+   * Can be set only this field or [ReceptionAuthorizeApi](/Wl/Reception/Application/ReceptionAuthorize.json).
    * It depends, whether we found one user or multiple.
    *
    * @post result

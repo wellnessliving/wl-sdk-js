@@ -44,7 +44,7 @@ function Wl_Book_Cancel_CancelCanModel()
   /**
    * `true` if the client's account will be flagged instead of charging a monetary fee, `false` otherwise.
    *
-   * Meaningful only when `is_late` is `true`.
+   * Meaningful only when [CancelCanApi](/Wl/Book/Cancel/CancelCan.json) is `true`.
    *
    * @get result
    * @type {boolean}

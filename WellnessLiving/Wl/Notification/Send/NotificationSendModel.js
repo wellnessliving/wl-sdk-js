@@ -123,12 +123,12 @@ function Wl_Notification_Send_NotificationSendModel()
    *     <li>Process tasks.</li>
    *     <li>Process cron.</li>
    *     <li>The message should now be sent to the user you selected.</li>
-   *   </o
+   *   </ol>
    * - 58 (`BOOK_CANCEL_FREE_ENROLLMENT`): Enrollment Cancelled by Client - Early.
    * - 4 (`BOOK_CANCEL_PENALTY_CLASS`): Class Cancelled By Client - Late.
    *
    *   Sent after a class reservation is cancelled by a client late. Cancellations are considered to be late if they are
-   *   made after the late cancel window that you’ve set in your Business Policy setting
+   *   made after the late cancel window that you’ve set in your Business Policy settings.
    * - 59 (`BOOK_CANCEL_PENALTY_ENROLLMENT`): Enrollment Cancelled By Client - Late.
    * - 48 (`BOOK_CANCEL_STAFF`): Class Booking Cancellation Notification - Staff.
    *

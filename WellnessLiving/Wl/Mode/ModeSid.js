@@ -1,7 +1,7 @@
 /**
  * The source of a visit.
  *
- * Last used ID: 30.
+ * Last used ID: 31.
  */
 function Wl_Mode_ModeSid()
 {
@@ -21,6 +21,13 @@ Wl_Mode_ModeSid.API = 28;
  * @type {number}
  */
 Wl_Mode_ModeSid.AZURE = 21;
+
+/**
+ * Visit has been checked-in by Brivo Door Access.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.BRIVO_DOOR_ACCESS = 31;
 
 /**
  * Visit has been created by `CENTRED`.
