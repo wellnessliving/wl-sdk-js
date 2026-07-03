@@ -23,7 +23,7 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    * @property {number} id_restriction Purchase restrictions.
    * @property {?number} id_sale List of sale categories on the store page.
    * @property {boolean} is_online_sell Determines whether the sale item can be purchased by the client.
-   * @property {boolean} is_visit This will be `true` if this Purchase Option is suitable to pay for the visit [CatalogListApi](/Wl/Catalog/StaffApp/CatalogList/CatalogList.json). Otherwise, this will be `false`. If [CatalogListApi](/Wl/Catalog/StaffApp/CatalogList/CatalogList.json) is empty, this will always be `false`.
+   * @property {boolean} is_visit This will be `true` if this Purchase Option is suitable to pay for the visit {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel}. Otherwise, this will be `false`. If {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel} is empty, this will always be `false`.
    * @property {string} k_id The sale item ID.
    * @property {string} text_title The category title.
    * @property {string} url_catalog Direct link to catalog view page of this purchase item.

@@ -58,7 +58,7 @@ function Thoth_WlPay_Account_AccountModel()
   /**
    * Determines whether the user is a debtor. If `true` - the owner of this account is a debtor.
    * If `false` - the user is not a debtor or the information is not returned for the
-   * account owner ([AccountApi](/Thoth/WlPay/Account/Account.json) is `false`).
+   * account owner ({@link Thoth_WlPay_Account_AccountModel} is `false`).
    *
    * @get result
    * @type {boolean}
@@ -119,7 +119,7 @@ Thoth_WlPay_Account_AccountModel.prototype.config=function()
  *
  * Returns the list of existing accounts and accounts not yet created for the user within the specified business,
  * including balance, currency, and payment method details.
- * When [AccountApi](/Thoth/WlPay/Account/Account.json) is `true`, resolves the money owner and includes the debtor status.
+ * When {@link Thoth_WlPay_Account_AccountModel} is `true`, resolves the money owner and includes the debtor status.
  *
  * @function
  * @name Thoth_WlPay_Account_AccountModel.get

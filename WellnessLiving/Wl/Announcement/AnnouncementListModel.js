@@ -48,7 +48,7 @@ function Wl_Announcement_AnnouncementListModel()
   /**
    * Order ID for list of announcements.
    *
-   * Used only when [AnnouncementListApi](/Wl/Announcement/AnnouncementList.json) is `true`.
+   * Used only when {@link Wl_Announcement_AnnouncementListModel} is `true`.
    *
    * `null` in case when use default order.
    *
@@ -61,7 +61,7 @@ function Wl_Announcement_AnnouncementListModel()
   /**
    * Sort field ID for list of announcements.
    *
-   * Used only when [AnnouncementListApi](/Wl/Announcement/AnnouncementList.json) is `true`.
+   * Used only when {@link Wl_Announcement_AnnouncementListModel} is `true`.
    *
    * `null` in case when use default field.
    *

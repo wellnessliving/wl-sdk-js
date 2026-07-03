@@ -19,7 +19,7 @@ function Thoth_PayProcessor_Nuvei_NuveiTransactionCancelModel()
   this.k_business = null;
 
   /**
-   * Key of payment transaction that was created in [NuveiOpenOrderApi](/Thoth/PayProcessor/Nuvei/NuveiOpenOrder.json).
+   * Key of payment transaction that was created in {@link Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel}.
    *
    * This will be `null` if not loaded yet.
    *
@@ -44,7 +44,7 @@ Thoth_PayProcessor_Nuvei_NuveiTransactionCancelModel.prototype.config=function()
 /**
  * Cancels the `Nuvei` transaction.
  *
- * Voids the payer authentication session opened by [NuveiOpenOrderApi](/Thoth/PayProcessor/Nuvei/NuveiOpenOrder.json) and schedules the
+ * Voids the payer authentication session opened by {@link Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel} and schedules the
  * underlying payment transaction to be voided.
  *
  * @function

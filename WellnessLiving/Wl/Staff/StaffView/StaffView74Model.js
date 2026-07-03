@@ -102,8 +102,8 @@ function Wl_Staff_StaffView_StaffView74Model()
 
   /**
    * @typedef {{}} Wl_Staff_StaffView_StaffView74Model_a_result_list
-   * @property {Wl_Staff_StaffView_StaffView74Model_a_result_list_a_class_day} a_class_day Contains a schedule of classes per day. Each element has a structure like in [StaffViewApi](/Wl/Staff/StaffView/StaffView.json) property.
-   * @property {Wl_Staff_StaffView_StaffView74Model_a_result_list_a_staff} a_staff Staff information. Each element has a structure like in [StaffViewApi](/Wl/Staff/StaffView/StaffView.json) property.
+   * @property {Wl_Staff_StaffView_StaffView74Model_a_result_list_a_class_day} a_class_day Contains a schedule of classes per day. Each element has a structure like in {@link Wl_Staff_StaffView_StaffViewModel} property.
+   * @property {Wl_Staff_StaffView_StaffView74Model_a_result_list_a_staff} a_staff Staff information. Each element has a structure like in {@link Wl_Staff_StaffView_StaffViewModel} property.
    */
 
   /**
@@ -209,7 +209,7 @@ function Wl_Staff_StaffView_StaffView74Model()
   /**
    * The staff member user ID.
    * A staff member can work for more than one business.
-   * This key can be found using the [StaffListApi](/Wl/Staff/StaffList/StaffList.json) endpoint.
+   * This key can be found using the {@link Wl_Staff_StaffList_StaffListModel} endpoint.
    *
    * @get get
    * @type {string}
@@ -233,7 +233,7 @@ Wl_Staff_StaffView_StaffView74Model.prototype.config=function()
  * @function
  * @name Wl_Staff_StaffView_StaffView74Model.instanceGet
  * @param {string} k_business The key of the business to show information for.
- * @param {string} uid_staff The staff member user ID. A staff member can work for more than one business. This key can be found using the [StaffListApi](/Wl/Staff/StaffList/StaffList.json) endpoint.
+ * @param {string} uid_staff The staff member user ID. A staff member can work for more than one business. This key can be found using the {@link Wl_Staff_StaffList_StaffListModel} endpoint.
  * @returns {Wl_Staff_StaffView_StaffView74Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
@@ -241,8 +241,8 @@ Wl_Staff_StaffView_StaffView74Model.prototype.config=function()
 /**
  * Retrieves information about staff.
  *
- * This method can accept or one staff key [StaffViewApi](/Wl/Staff/StaffView/StaffView.json) or staff list
- * [StaffViewApi](/Wl/Staff/StaffView/StaffView.json) but not both (exception would be thrown).
+ * This method can accept or one staff key {@link Wl_Staff_StaffView_StaffViewModel} or staff list
+ * {@link Wl_Staff_StaffView_StaffViewModel} but not both (exception would be thrown).
  *
  * @function
  * @name Wl_Staff_StaffView_StaffView74Model.get

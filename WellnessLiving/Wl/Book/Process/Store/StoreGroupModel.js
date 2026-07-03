@@ -35,7 +35,7 @@ function Wl_Book_Process_Store_StoreGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_Store_StoreGroupModel_a_purchase_item_check
    * @property {number} i_session The number of sessions that this item can cover.   This only applies to items of type {@link RsPurchaseItemSid}.
-   * @property {string} s_value The unique identifier of the item being checked. This corresponds to one of the following values: <ul>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li>   <li>[Purchase56Api](/Wl/Book/Process/Purchase/Purchase56.json)`["s_value"]`</li> </ul>
+   * @property {string} s_value The unique identifier of the item being checked. This corresponds to one of the following values: <ul>   <li>{@link Wl_Book_Process_Purchase_Purchase56Model}`["s_value"]`</li>   <li>{@link Wl_Book_Process_Purchase_Purchase56Model}`["s_value"]`</li>   <li>{@link Wl_Book_Process_Purchase_Purchase56Model}`["s_value"]`</li> </ul>
    */
 
   /**
@@ -54,11 +54,11 @@ function Wl_Book_Process_Store_StoreGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_Store_StoreGroupModel_a_purchase_item_distribute
    * @property {string[]} a_owner List of UIDs of owners who will share this promotion with this client.   If empty, this client is the owner of the promotion.   This only applies to the new promotions.
-   * @property {number} i_session The number of sessions that this item can cover.   The same as in [StoreGroupApi](/Wl/Book/Process/Store/StoreGroup.json).   `0` if not applicable.
-   * @property {?string} k_login_promotion Login promotion key.    The same as in [StoreGroupApi](/Wl/Book/Process/Store/StoreGroup.json).   `null` if not applicable.
+   * @property {number} i_session The number of sessions that this item can cover.   The same as in {@link Wl_Book_Process_Store_StoreGroupModel}.   `0` if not applicable.
+   * @property {?string} k_login_promotion Login promotion key.    The same as in {@link Wl_Book_Process_Store_StoreGroupModel}.   `null` if not applicable.
    * @property {?string} k_login_promotion_guest_pass Host login promotion key that grants the guest pass.    `null` if not applicable.
-   * @property {?string} k_session_pass Session pass key.    The same as in [StoreGroupApi](/Wl/Book/Process/Store/StoreGroup.json).   `null` if not applicable.
-   * @property {?string} s_value The unique identifier of the purchase item.   The same as in [StoreGroupApi](/Wl/Book/Process/Store/StoreGroup.json).   `null` if not applicable.
+   * @property {?string} k_session_pass Session pass key.    The same as in {@link Wl_Book_Process_Store_StoreGroupModel}.   `null` if not applicable.
+   * @property {?string} s_value The unique identifier of the purchase item.   The same as in {@link Wl_Book_Process_Store_StoreGroupModel}.   `null` if not applicable.
    * @property {string} text_error Error text if the purchase item cannot be applied to the current class or event for this client.
    * @property {string} text_error_code Error code if the purchase item cannot be applied to the current class or event for this client.
    */

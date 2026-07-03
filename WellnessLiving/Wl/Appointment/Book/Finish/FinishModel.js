@@ -10,7 +10,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * A list of answers for the questions from [QuestionApi](/Wl/Appointment/Book/Question/Question.json).
+   * A list of answers for the questions from {@link Wl_Appointment_Book_Question_QuestionModel}.
    * Keys refer to hashes of the questions. Values refer to answers for the questions.
    *
    * @post post

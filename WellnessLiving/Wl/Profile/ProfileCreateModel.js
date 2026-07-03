@@ -165,7 +165,7 @@ function Wl_Profile_ProfileCreateModel()
 
   /**
    * Email of the user.
-   * Required if [ProfileCreateApi](/Wl/Profile/ProfileCreate.json) not provided.
+   * Required if {@link Wl_Profile_ProfileCreateModel} not provided.
    *
    * @post post
    * @type {string}
@@ -174,7 +174,7 @@ function Wl_Profile_ProfileCreateModel()
 
   /**
    * Phone of the user.
-   * Required if [ProfileCreateApi](/Wl/Profile/ProfileCreate.json) not provided.
+   * Required if {@link Wl_Profile_ProfileCreateModel} not provided.
    *
    * @post post
    * @type {string}

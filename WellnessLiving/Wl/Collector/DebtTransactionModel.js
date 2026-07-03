@@ -13,7 +13,7 @@ function Wl_Collector_DebtTransactionModel()
    * @property {string} dtu_pay The date and time in UTC of the payment transaction.
    * @property {?number} id_pay_method A list of payment methods.
    * @property {boolean} is_debt_paid Defines whether the initial debt to which this related transaction is fully paid. `true` if the debt is fully paid. `false` if the debt is partially paid.
-   * @property {boolean} is_pay_collections Defines whether the payment was performed via a third party service. `true` if the payment was performed via a third party service and this transaction is responsible for an account credit transaction for that payment. See [DebtPayApi](/Wl/Collector/DebtPay.json). `false` if the payment was performed within the Wellnessliving system.
+   * @property {boolean} is_pay_collections Defines whether the payment was performed via a third party service. `true` if the payment was performed via a third party service and this transaction is responsible for an account credit transaction for that payment. See {@link Wl_Collector_DebtPayModel}. `false` if the payment was performed within the Wellnessliving system.
    * @property {string} m_pay_amount The amount of the payment's transaction.
    * @property {string} text_client_name The full name of the debtor client for whom the payment transaction was performed.
    * @property {string} uid The UID of the debtor client for whom the payment transaction was performed.
@@ -32,8 +32,8 @@ function Wl_Collector_DebtTransactionModel()
   /**
    * If set, this is the end of the date window. Only debt payments added before or on this date will be shown.
    *
-   * If left `null` and [DebtTransactionApi](/Wl/Collector/DebtTransaction.json) has been specified only debt payments added after the start date will be returned.
-   * If left `null` and [DebtTransactionApi](/Wl/Collector/DebtTransaction.json) is also `null`, this will return debt payments from the previous month.
+   * If left `null` and {@link Wl_Collector_DebtTransactionModel} has been specified only debt payments added after the start date will be returned.
+   * If left `null` and {@link Wl_Collector_DebtTransactionModel} is also `null`, this will return debt payments from the previous month.
    *
    * @get get
    * @type {?string}
@@ -43,8 +43,8 @@ function Wl_Collector_DebtTransactionModel()
   /**
    * If set, this is the start of the date window. Only debt payments added on or after this date will be shown.
    *
-   * If left `null` and [DebtTransactionApi](/Wl/Collector/DebtTransaction.json) has been specified, this will return debt payments since the beginning of time.
-   * If left `null` and [DebtTransactionApi](/Wl/Collector/DebtTransaction.json) is also `null`, this will return debt payments from the previous month.
+   * If left `null` and {@link Wl_Collector_DebtTransactionModel} has been specified, this will return debt payments since the beginning of time.
+   * If left `null` and {@link Wl_Collector_DebtTransactionModel} is also `null`, this will return debt payments from the previous month.
    *
    * @get get
    * @type {?string}

@@ -11,7 +11,7 @@ function Wl_Integration_Autymate_ReportModel()
   /**
    * The list of fields in this report.
    *
-   * This array is effectively a title row for table that is returned in [ReportApi](/Wl/Integration/Autymate/Report.json).
+   * This array is effectively a title row for table that is returned in {@link Wl_Integration_Autymate_ReportModel}.
    *
    * @get result
    * @type {string[]}
@@ -32,7 +32,7 @@ function Wl_Integration_Autymate_ReportModel()
    *
    * This is an indexed array in which one row is an indexed array also.
    *
-   * Indexes of the columns correspond to columns in [ReportApi](/Wl/Integration/Autymate/Report.json).
+   * Indexes of the columns correspond to columns in {@link Wl_Integration_Autymate_ReportModel}.
    *
    * @get result
    * @type {string[][]}

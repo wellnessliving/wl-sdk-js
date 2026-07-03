@@ -17,7 +17,7 @@ function Wl_Business_AmazonRegion_AmazonRegionModel()
   this.a_business = undefined;
 
   /**
-   * List of region IDs for [AmazonRegionApi](/Wl/Business/AmazonRegion/AmazonRegion.json).
+   * List of region IDs for {@link Wl_Business_AmazonRegion_AmazonRegionModel}.
    *
    * Key - is business key.
    * Value - is region ID. One of {@link Core_Amazon_Region_AmazonRegionSid} constants.

@@ -9,7 +9,7 @@ function Thoth_PayProcessor_CyberSource_CsPaValidateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Key of payment transaction that was previously created with [CsPaSetupApi](/Thoth/PayProcessor/CyberSource/CsPaSetup.json).
+   * Key of payment transaction that was previously created with {@link Thoth_PayProcessor_CyberSource_CsPaSetupModel}.
    *
    * @post post
    * @type {string}
@@ -40,7 +40,7 @@ Thoth_PayProcessor_CyberSource_CsPaValidateModel.prototype.config=function()
 /**
  * Validates the `CyberSource` Payer Authentication result.
  *
- * Retrieves the authentication result for the transaction validated by [CsPaEnrollmentApi](/Thoth/PayProcessor/CyberSource/CsPaEnrollment.json)
+ * Retrieves the authentication result for the transaction validated by {@link Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel}
  * and confirms whether the payer authentication succeeded, allowing the merchant to proceed with
  * processing the payment.
  *

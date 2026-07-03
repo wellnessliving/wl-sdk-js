@@ -1,7 +1,7 @@
 /**
  * Types of the location.
  *
- * Used in the [BusinessFranchiseLocationApi](/Wl/Business/Franchise/Location/BusinessFranchiseLocation.json).
+ * Used in the {@link Wl_Business_Franchise_Location_BusinessFranchiseLocationModel}.
  */
 function Wl_Business_Franchise_Location_BusinessFranchiseLocationSid()
 {

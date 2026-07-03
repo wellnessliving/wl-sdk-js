@@ -65,12 +65,12 @@ function Wl_Location_ListBulkModel()
    * @property {Wl_Location_ListBulkModel_a_location_full_a_logo} a_logo Information about the location logo used in WellnessLiving:
    * @property {Wl_Location_ListBulkModel_a_location_full_a_slide} a_slide A list of the location images. Every element has the following keys:
    * @property {Wl_Location_ListBulkModel_a_location_full_a_work} a_work The hours of operation for the location. Fields are numbers representing specific days (1 is Monday, 7 is Sunday). Values are objects with the next fields:
-   * @property {?string} dtu_check The date when the location actuality was last checked. `null` if the location has never been checked. Set only in [ListBulkApi](/Wl/Location/ListBulk.json), otherwise always `null`.
+   * @property {?string} dtu_check The date when the location actuality was last checked. `null` if the location has never been checked. Set only in {@link Wl_Location_ListBulkModel}, otherwise always `null`.
    * @property {string} dtu_create The date when the location was created.
    * @property {number} f_latitude The latitude coordinate of the location.
    * @property {number} f_longitude The longitude coordinate of the location.
    * @property {string} html_description_full The full description of the location.
-   * @property {string} html_description_preview A shorter description of the location. A preview of [ViewApi](/Wl/Location/View/View.json).
+   * @property {string} html_description_preview A shorter description of the location. A preview of {@link Wl_Location_View_ViewModel}.
    * @property {number} i_logo_height Maximum location image height.
    * @property {number} i_logo_width Maximum location image width.
    * @property {?number} id_industry List of different types for landing pages based on business types.

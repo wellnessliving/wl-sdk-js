@@ -1,5 +1,5 @@
 /**
- * Retrieves all reward boards for business specified in [ListApi](/Wl/Reward/Board/BoardList/List.json).
+ * Retrieves all reward boards for business specified in {@link Wl_Reward_Board_BoardList_ListModel}.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -67,7 +67,7 @@ Wl_Reward_Board_BoardList_ListModel.prototype.config=function()
  */
 
 /**
- * Retrieves all reward boards for business specified in [ListApi](/Wl/Reward/Board/BoardList/List.json).
+ * Retrieves all reward boards for business specified in {@link Wl_Reward_Board_BoardList_ListModel}.
  *
  * Returns the list of reward boards available to the given user in the business, including board key and title,
  * filtered to exclude boards the user is not eligible to view.

@@ -13,7 +13,7 @@ function Social_Google_Plus_LoginModel()
    *
    * When application not passed, credential loaded from the application, which makes the request,
    * used {@link Core_Request_Api_Application_Credential_CredentialAbstract} for load the credential.
-   * For set credential need used [CredentialApi](/Core/Request/Api/Application/Credential/Credential.json) and set [CredentialApi](/Core/Request/Api/Application/Credential/Credential.json) to {@link Core_Request_Api_Application_Credential_CredentialAbstract}.
+   * For set credential need used {@link Core_Request_Api_Application_Credential_CredentialModel} and set {@link Core_Request_Api_Application_Credential_CredentialModel} to {@link Core_Request_Api_Application_Credential_CredentialAbstract}.
    *
    * When application passed, the credential loaded by application id.
    *

@@ -87,7 +87,7 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
   this.is_resize = undefined;
 
   /**
-   * The key of the image within [ImageUploadTemporaryApi](/Core/Drive/ImageUpload/ImageUploadTemporary.json).
+   * The key of the image within {@link Core_Drive_ImageUpload_ImageUploadTemporaryModel}.
    *
    * For example, for a user's photo, specify the user's key here.
    *
@@ -140,7 +140,7 @@ Core_Drive_ImageUpload_ImageUploadTemporaryModel.prototype.config=function()
  *
  * First step of the two-step image upload flow. Stores the uploaded file in temporary drive storage and
  * returns preview URLs and dimension metadata so the user can review or crop the image before it is
- * permanently saved. Call [ImageUploadApi](/Core/Drive/ImageUpload/ImageUpload.json) to commit the temporary image to the entity.
+ * permanently saved. Call {@link Core_Drive_ImageUpload_ImageUploadModel} to commit the temporary image to the entity.
  *
  * @function
  * @name Core_Drive_ImageUpload_ImageUploadTemporaryModel.post

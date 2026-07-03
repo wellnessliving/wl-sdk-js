@@ -65,8 +65,8 @@ function Wl_Catalog_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program
-   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program_a_account} a_account The list of reimbursement account field values. Corresponds to the `a_account` list in [EnrollmentFieldListApi](/Wl/Insurance/Enrollment/Field/EnrollmentFieldList.json). Each element:
-   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program_a_field} a_field The list of wellness program field values. Corresponds to the `a_field` list in [EnrollmentFieldListApi](/Wl/Insurance/Enrollment/Field/EnrollmentFieldList.json). Each element:
+   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program_a_account} a_account The list of reimbursement account field values. Corresponds to the `a_account` list in {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel}. Each element:
+   * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_wellness_program_a_field} a_field The list of wellness program field values. Corresponds to the `a_field` list in {@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel}. Each element:
    */
 
   /**
@@ -87,7 +87,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {string} k_appointment The appointment key, used only for appointment add-ons.
    * @property {string} k_coupon_amount The key of the gift card amount, used only for gift cards.
    * @property {string} k_staff <b>Deprecated!</b>  The staff member key, used only for appointment tips.
-   * @property {string} k_wellness_program The "Wellness Program" key. Set this for the insurance membership promotion. `a_wellness_program` array must be passed along with the key. See the array description above. <p>Use the following models to work with this type of promotion:</p> <ul>   <li>[ProgramListApi](/Wl/Insurance/Catalog/ProgramList.json) to obtain list of active programs.</li>   <li>[EnrollmentFieldListApi](/Wl/Insurance/Enrollment/Field/EnrollmentFieldList.json) to get and validate fields for a given program.</li> </ul>
+   * @property {string} k_wellness_program The "Wellness Program" key. Set this for the insurance membership promotion. `a_wellness_program` array must be passed along with the key. See the array description above. <p>Use the following models to work with this type of promotion:</p> <ul>   <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain list of active programs.</li>   <li>{@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} to get and validate fields for a given program.</li> </ul>
    * @property {string} m_prorate_custom The custom prorate price, used only for memberships. This is only used if `is_prorate_fix` is `true`.
    * @property {string} s_code The gift card code. This is required for gift cards.
    * @property {string} s_image The key of the image for the gift card. If empty, the business's first gift card image will be used. Specify this only for gift cards.

@@ -23,7 +23,7 @@ function Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel()
   this.a_device_info = undefined;
 
   /**
-   * Key of payment transaction that was previously created with [CsPaSetupApi](/Thoth/PayProcessor/CyberSource/CsPaSetup.json).
+   * Key of payment transaction that was previously created with {@link Thoth_PayProcessor_CyberSource_CsPaSetupModel}.
    *
    * @post post
    * @type {string}
@@ -70,7 +70,7 @@ Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel.prototype.config=function()
  * Checks `CyberSource` Payer Authentication enrollment.
  *
  * Verifies whether the payer must complete additional authentication steps for the transaction
- * started by [CsPaSetupApi](/Thoth/PayProcessor/CyberSource/CsPaSetup.json), returning a JWT and interaction URL when a challenge is required.
+ * started by {@link Thoth_PayProcessor_CyberSource_CsPaSetupModel}, returning a JWT and interaction URL when a challenge is required.
  *
  * @function
  * @name Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel.post

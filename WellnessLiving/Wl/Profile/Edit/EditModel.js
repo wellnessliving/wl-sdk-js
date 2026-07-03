@@ -80,7 +80,7 @@ function Wl_Profile_Edit_EditModel()
   this.a_intents = undefined;
 
   /**
-   * A copy of the [EditApi](/Wl/Profile/Edit/Edit.json).
+   * A copy of the {@link Wl_Profile_Edit_EditModel}.
    * This is used for POST requests when creating a new user.
    *
    * @post post
@@ -210,7 +210,7 @@ function Wl_Profile_Edit_EditModel()
    * `true` - user agreed to receive marketing SMS;
    * `false` - otherwise.
    *
-   * Only matters if [EditApi](/Wl/Profile/Edit/Edit.json) is `true`.
+   * Only matters if {@link Wl_Profile_Edit_EditModel} is `true`.
    *
    * @post post
    * @type {boolean}
@@ -231,7 +231,7 @@ function Wl_Profile_Edit_EditModel()
    * `true` - user agreed to receive transactional SMS;
    * `false` - otherwise.
    *
-   * Only matters if [EditApi](/Wl/Profile/Edit/Edit.json) is `true`.
+   * Only matters if {@link Wl_Profile_Edit_EditModel} is `true`.
    *
    * @post post
    * @type {boolean}

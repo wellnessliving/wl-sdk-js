@@ -61,7 +61,7 @@ function Thoth_PayProcessor_Nuvei_NuveiTransactionOnAuthSuccessModel()
   this.k_pay_method = null;
 
   /**
-   * Key of payment transaction that was previously created with [NuveiOpenOrderApi](/Thoth/PayProcessor/Nuvei/NuveiOpenOrder.json).
+   * Key of payment transaction that was previously created with {@link Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel}.
    *
    * `null` in case when not initialized yet.
    *
@@ -163,7 +163,7 @@ Thoth_PayProcessor_Nuvei_NuveiTransactionOnAuthSuccessModel.prototype.config=fun
  * Finalizes the `Nuvei` transaction after successful payer authentication.
  *
  * Validates the payer authentication session and encrypted card token, then updates the payment
- * transaction created by [NuveiOpenOrderApi](/Thoth/PayProcessor/Nuvei/NuveiOpenOrder.json) with the gateway transaction ID and card data.
+ * transaction created by {@link Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel} with the gateway transaction ID and card data.
  *
  * @function
  * @name Thoth_PayProcessor_Nuvei_NuveiTransactionOnAuthSuccessModel.post

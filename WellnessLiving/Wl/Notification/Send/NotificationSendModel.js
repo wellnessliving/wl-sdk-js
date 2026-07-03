@@ -11,7 +11,7 @@ function Wl_Notification_Send_NotificationSendModel()
   /**
    * Custom array with information which can be used to generate notification.
    *
-   * Use [NotificationInfoApi](/Wl/Notification/Send/NotificationInfo.json) for more information about available fields.
+   * Use {@link Wl_Notification_Send_NotificationInfoModel} for more information about available fields.
    *
    * @post post
    * @type {*[]}

@@ -231,7 +231,7 @@ function Wl_Login_Attendance_Add_AddModel()
   this.m_price = null;
 
   /**
-   * The user's account balance if they were charged the [AddApi](/Wl/Login/Attendance/Add/Add.json) amount.
+   * The user's account balance if they were charged the {@link Wl_Login_Attendance_Add_AddModel} amount.
    *
    * @get result
    * @type {?string}

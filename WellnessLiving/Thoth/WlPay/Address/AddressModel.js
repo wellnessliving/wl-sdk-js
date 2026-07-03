@@ -65,7 +65,7 @@ function Thoth_WlPay_Address_AddressModel()
 
   /**
    * The primary key of a payment owner.
-   * This could be the business of the user depending on a [AddressApi](/Thoth/WlPay/Address/Address.json) value.
+   * This could be the business of the user depending on a {@link Thoth_WlPay_Address_AddressModel} value.
    *
    * @get get
    * @type {string}
@@ -89,7 +89,7 @@ Thoth_WlPay_Address_AddressModel.prototype.config=function()
  * @function
  * @name Thoth_WlPay_Address_AddressModel.instanceGet
  * @param {number} id_pay_owner The ID of the payment owner type. One of {@link RsPayOwnerSid} constants.
- * @param {string} k_id The primary key of a payment owner. This could be the business of the user depending on a [AddressApi](/Thoth/WlPay/Address/Address.json) value.
+ * @param {string} k_id The primary key of a payment owner. This could be the business of the user depending on a {@link Thoth_WlPay_Address_AddressModel} value.
  * @returns {Thoth_WlPay_Address_AddressModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

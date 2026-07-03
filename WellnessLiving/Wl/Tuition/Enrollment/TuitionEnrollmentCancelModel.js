@@ -41,7 +41,7 @@ function Wl_Tuition_Enrollment_TuitionEnrollmentCancelModel()
   this.is_pass_deactivate = false;
 
   /**
-   * Key of the tuition purchase item. This is enrollment key, which can be got from [TuitionEnrollmentListApi](/Wl/Tuition/Enrollment/TuitionEnrollmentList.json).
+   * Key of the tuition purchase item. This is enrollment key, which can be got from {@link Wl_Tuition_Enrollment_TuitionEnrollmentListModel}.
    *
    * @put post
    * @type {string}

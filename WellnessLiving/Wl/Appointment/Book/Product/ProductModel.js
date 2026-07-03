@@ -81,7 +81,7 @@ Wl_Appointment_Book_Product_ProductModel.prototype.config=function()
  * Retrieves list of available service add-ons.
  *
  * Returns all active add-on products available for the specified service, including title, image,
- * price, and quantity information. Results are not filtered by client type; use [Product62Api](/Wl/Appointment/Book/Product/Product62.json)
+ * price, and quantity information. Results are not filtered by client type; use {@link Wl_Appointment_Book_Product_Product62Model}
  * when filtering by client login type is required.
  *
  * @function

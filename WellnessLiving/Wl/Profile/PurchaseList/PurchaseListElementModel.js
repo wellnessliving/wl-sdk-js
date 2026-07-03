@@ -633,7 +633,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.is_transfer = undefined;
 
   /**
-   * The business key. Used with [PurchaseListElementApi](/Wl/Profile/PurchaseList/PurchaseListElement.json) variable and
+   * The business key. Used with {@link Wl_Profile_PurchaseList_PurchaseListElementModel} variable and
    * also with gift card components.
    *
    * @get get
@@ -678,7 +678,7 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.k_enrollment_book = "";
 
   /**
-   * The key of the item. This can correspond to one of many values depending on [PurchaseListElementApi](/Wl/Profile/PurchaseList/PurchaseListElement.json).
+   * The key of the item. This can correspond to one of many values depending on {@link Wl_Profile_PurchaseList_PurchaseListElementModel}.
    *
    * @get result
    * @type {string}

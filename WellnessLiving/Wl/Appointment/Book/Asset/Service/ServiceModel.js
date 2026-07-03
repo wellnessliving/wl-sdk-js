@@ -140,7 +140,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
   this.is_show_unavailable_assets = false;
 
   /**
-   * The appointment booking key to ignore when [ServiceApi](/Wl/Appointment/Book/Asset/Service/Service.json) is derived.
+   * The appointment booking key to ignore when {@link Wl_Appointment_Book_Asset_Service_ServiceModel} is derived.
    *
    * `null` if no appointment booking must be ignored.
    *
@@ -216,7 +216,7 @@ Wl_Appointment_Book_Asset_Service_ServiceModel.prototype.config=function()
  *
  * Returns the asset categories and individual assets linked to the service at the given location.
  * Each asset includes its availability flag for the requested time slot. The response also includes
- * [ServiceApi](/Wl/Appointment/Book/Asset/Service/Service.json) with currently reserved asset slots and a flag indicating
+ * {@link Wl_Appointment_Book_Asset_Service_ServiceModel} with currently reserved asset slots and a flag indicating
  * whether the current user is allowed to book unavailable assets.
  *
  * @function

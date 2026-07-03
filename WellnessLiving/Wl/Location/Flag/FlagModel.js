@@ -1,6 +1,6 @@
 /**
- * Checks if user [FlagApi](/Wl/Location/Flag/Flag.json) is flagged in location [FlagApi](/Wl/Location/Flag/Flag.json) or
- * each of users [FlagApi](/Wl/Location/Flag/Flag.json) is flagged in location [FlagApi](/Wl/Location/Flag/Flag.json).
+ * Checks if user {@link Wl_Location_Flag_FlagModel} is flagged in location {@link Wl_Location_Flag_FlagModel} or
+ * each of users {@link Wl_Location_Flag_FlagModel} is flagged in location {@link Wl_Location_Flag_FlagModel}.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -36,10 +36,10 @@ function Wl_Location_Flag_FlagModel()
    */
 
   /**
-   * Array, where keys are UIDs to be checked and values are same as [FlagApi](/Wl/Location/Flag/Flag.json).
+   * Array, where keys are UIDs to be checked and values are same as {@link Wl_Location_Flag_FlagModel}.
    * `null` if user is not flagged in the location.
    *
-   * This field is set, if API gets [FlagApi](/Wl/Location/Flag/Flag.json) and not [FlagApi](/Wl/Location/Flag/Flag.json) properties.
+   * This field is set, if API gets {@link Wl_Location_Flag_FlagModel} and not {@link Wl_Location_Flag_FlagModel} properties.
    *
    * Keys are user keys. 
    * Values are flag restriction arrays:
@@ -58,7 +58,7 @@ function Wl_Location_Flag_FlagModel()
   /**
    * `null` if user is not flagged in the location.
    *
-   * This field is set, if API gets [FlagApi](/Wl/Location/Flag/Flag.json) and not [FlagApi](/Wl/Location/Flag/Flag.json) properties.
+   * This field is set, if API gets {@link Wl_Location_Flag_FlagModel} and not {@link Wl_Location_Flag_FlagModel} properties.
    *
    * @get result
    * @type {?Wl_Location_Flag_FlagModel_a_restrictions_single}
@@ -77,7 +77,7 @@ function Wl_Location_Flag_FlagModel()
   /**
    * `true` if the user is flagged and can make purchases, but cannot make new reservations, `false` if otherwise.
    *
-   * `null` until loaded or when [FlagApi](/Wl/Location/Flag/Flag.json) was not set.
+   * `null` until loaded or when {@link Wl_Location_Flag_FlagModel} was not set.
    *
    * @get result
    * @type {boolean}
@@ -124,8 +124,8 @@ Wl_Location_Flag_FlagModel.prototype.config=function()
  */
 
 /**
- * Checks if user [FlagApi](/Wl/Location/Flag/Flag.json) is flagged in location [FlagApi](/Wl/Location/Flag/Flag.json) or
-each of users [FlagApi](/Wl/Location/Flag/Flag.json) is flagged in location [FlagApi](/Wl/Location/Flag/Flag.json).
+ * Checks if user {@link Wl_Location_Flag_FlagModel} is flagged in location {@link Wl_Location_Flag_FlagModel} or
+each of users {@link Wl_Location_Flag_FlagModel} is flagged in location {@link Wl_Location_Flag_FlagModel}.
  *
  * Accepts either a single user key (`uid`) or an array of user keys (`a_uid`) and returns the flag status
  * for each, including whether the flagged user is restricted from booking or purchasing at the location.

@@ -72,7 +72,7 @@ function Wl_Reception_Application_MemberInfoModel()
 
   /**
    * Additional member data or `null` if any data can be shown.
-   * Will be filled if [InfoApi](/Wl/Member/Info/Info.json) flag is set.
+   * Will be filled if {@link Wl_Member_Info_InfoModel} flag is set.
    *
    * @get result
    * @type {?Wl_Reception_Application_MemberInfoModel_a_info}
@@ -264,7 +264,7 @@ function Wl_Reception_Application_MemberInfoModel()
 
   /**
    * If `true`, the client is a traveler. Otherwise, this will be `false`.
-   * This will be `null` in cases when the client is a walk-in. Or when [MemberInfoApi](/Wl/Reception/Application/MemberInfo.json) is `false`.
+   * This will be `null` in cases when the client is a walk-in. Or when {@link Wl_Reception_Application_MemberInfoModel} is `false`.
    *
    * @get result
    * @type {?boolean}

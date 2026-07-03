@@ -201,7 +201,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
   /**
    * Timezone of date and time of asset booking.
    *
-   * Empty if [AssetListApi](/Wl/Appointment/Book/Asset/AssetList.json) not set or client can't change in which timezone dates should be shown.
+   * Empty if {@link Wl_Appointment_Book_Asset_AssetListModel} not set or client can't change in which timezone dates should be shown.
    *
    * @get get
    * @type {string}
@@ -239,7 +239,7 @@ Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
  * @param {string} k_class_tab The class tab key used to filter assets. This will be `null` if not set yet or if elements with no specified class tab are selected.
  * @param {boolean} is_backend This is `true` if asset categories are loaded for back-end mode. Otherwise, this will be `false` for front-end mode.
  * @param {string} dtl_date The selected date and time of the asset booking. It is used in cases when the business booking policy allows clients to select a date and time, and then the available asset.
- * @param {string} k_timezone Timezone of date and time of asset booking. Empty if [AssetListApi](/Wl/Appointment/Book/Asset/AssetList.json) not set or client can't change in which timezone dates should be shown.
+ * @param {string} k_timezone Timezone of date and time of asset booking. Empty if {@link Wl_Appointment_Book_Asset_AssetListModel} not set or client can't change in which timezone dates should be shown.
  * @param {number} id_mode Mode type, one of {@link Wl_Mode_ModeSid} constants.
  * @param {?string} uid Client to get information for. If client not set, returns full asset list without client restrictions.
  * @param {boolean} is_tab_all `true` - search in all tabs. `false` - search only for the selected book tab.
@@ -252,7 +252,7 @@ Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
  *
  * Returns the list of bookable assets at the given location, optionally filtered by category and book now tab.
  * When a date and time are provided, only assets available at that time are included and busy asset slots
- * are returned in [AssetListApi](/Wl/Appointment/Book/Asset/AssetList.json). Supports both frontend and backend modes.
+ * are returned in {@link Wl_Appointment_Book_Asset_AssetListModel}. Supports both frontend and backend modes.
  *
  * @function
  * @name Wl_Appointment_Book_Asset_AssetListModel.get

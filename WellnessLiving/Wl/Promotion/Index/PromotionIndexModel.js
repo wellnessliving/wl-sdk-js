@@ -42,7 +42,7 @@ function Wl_Promotion_Index_PromotionIndexModel()
    * @typedef {{}} Wl_Promotion_Index_PromotionIndexModel_a_promotion_a_component
    * @property {number} i_quantity The quantity. If empty, it means the quantity is 1.
    * @property {number} id_purchase_item A list of purchase types.
-   * @property {string} k_id The primary key of the component in the related table. This depends on the type of the component. The key of the event for {@link RsPurchaseItemSid}, the key of the Purchase Option for the {@link RsPurchaseItemSid}, the key of the product option for the {@link RsPurchaseItemSid}. Full information about events can be taken from the [EventListApi](/Wl/Event/EventList.json). Purchase Options from the [PromotionIndexApi](/Wl/Promotion/Index/PromotionIndex.json). Full information about products are not available at this moment though API.
+   * @property {string} k_id The primary key of the component in the related table. This depends on the type of the component. The key of the event for {@link RsPurchaseItemSid}, the key of the Purchase Option for the {@link RsPurchaseItemSid}, the key of the product option for the {@link RsPurchaseItemSid}. Full information about events can be taken from the {@link Wl_Event_EventListModel}. Purchase Options from the {@link Wl_Promotion_Index_PromotionIndexModel}. Full information about products are not available at this moment though API.
    * @property {string} text_title The name of the component.
    */
 

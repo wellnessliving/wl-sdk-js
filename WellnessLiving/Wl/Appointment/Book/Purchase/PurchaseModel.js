@@ -178,12 +178,12 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
    */
 
   /**
-   * List of selected services without current [PurchaseApi](/Wl/Appointment/Book/Purchase/Purchase.json).
+   * List of selected services without current {@link Wl_Appointment_Book_Purchase_PurchaseModel}.
    *
    * The list of these services directly affects the list of selected promotions.
    * Depending on the number and order of services, there may be different results.
    *
-   * The current [PurchaseApi](/Wl/Appointment/Book/Purchase/Purchase.json) will be added to the end of this list.
+   * The current {@link Wl_Appointment_Book_Purchase_PurchaseModel} will be added to the end of this list.
    * It is worth considering this list as a list of previously selected services.
    *
    * Each element has the following structure:
@@ -322,7 +322,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
 
   /**
    * The service key used to select available Purchase Options.
-   * If multiple services are selected, they should be specified in [PurchaseApi](/Wl/Appointment/Book/Purchase/Purchase.json) array.
+   * If multiple services are selected, they should be specified in {@link Wl_Appointment_Book_Purchase_PurchaseModel} array.
    *
    * @get get
    * @type {string}
@@ -330,7 +330,7 @@ function Wl_Appointment_Book_Purchase_PurchaseModel()
   this.k_service = "";
 
   /**
-   * The timezone key for [PurchaseApi](/Wl/Appointment/Book/Purchase/Purchase.json).
+   * The timezone key for {@link Wl_Appointment_Book_Purchase_PurchaseModel}.
    *
    * Can be `null` if timezone is not selected.
    * If not selected, the default client timezone will be used.
@@ -383,12 +383,12 @@ Wl_Appointment_Book_Purchase_PurchaseModel.prototype.config=function()
  * @name Wl_Appointment_Book_Purchase_PurchaseModel.instanceGet
  * @param {string} dt_date The date to use to check for expiration of Purchase Options.
  * @param {string} k_location Location to show available appointment booking schedule.
- * @param {string} k_service The service key used to select available Purchase Options. If multiple services are selected, they should be specified in [PurchaseApi](/Wl/Appointment/Book/Purchase/Purchase.json) array.
+ * @param {string} k_service The service key used to select available Purchase Options. If multiple services are selected, they should be specified in {@link Wl_Appointment_Book_Purchase_PurchaseModel} array.
  * @param {string} k_resource The resource key.
  * @param {number} i_duration The asset booking duration.
  * @param {boolean} is_backend `true` - get all Purchase Options suitable for appointment. `false` - get only Purchase Options available for the client.
  * @param {string} uid The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here.
- * @param {?string} k_timezone The timezone key for [PurchaseApi](/Wl/Appointment/Book/Purchase/Purchase.json). Can be `null` if timezone is not selected. If not selected, the default client timezone will be used. In any case, the timezone will be used if the business allows client timezones.
+ * @param {?string} k_timezone The timezone key for {@link Wl_Appointment_Book_Purchase_PurchaseModel}. Can be `null` if timezone is not selected. If not selected, the default client timezone will be used. In any case, the timezone will be used if the business allows client timezones.
  * @returns {Wl_Appointment_Book_Purchase_PurchaseModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

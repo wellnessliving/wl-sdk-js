@@ -85,7 +85,7 @@ function Thoth_WlPay_Bank_Card_Add_AddModel()
 
   /**
    * The payment owner ID. This is different from the user ID. It can be found with
-   * the [OwnerApi](/Thoth/WlPay/Owner/Owner.json).
+   * the {@link Thoth_WlPay_Owner_OwnerModel}.
    *
    * @get get
    * @post get
@@ -111,7 +111,7 @@ Thoth_WlPay_Bank_Card_Add_AddModel.prototype.config=function()
  * @name Thoth_WlPay_Bank_Card_Add_AddModel.instanceGet
  * @param {string} k_business The business key number used internally by WellnessLiving.
  * @param {string} k_location The location key.
- * @param {string} k_pay_owner The payment owner ID. This is different from the user ID. It can be found with the [OwnerApi](/Thoth/WlPay/Owner/Owner.json).
+ * @param {string} k_pay_owner The payment owner ID. This is different from the user ID. It can be found with the {@link Thoth_WlPay_Owner_OwnerModel}.
  * @returns {Thoth_WlPay_Bank_Card_Add_AddModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

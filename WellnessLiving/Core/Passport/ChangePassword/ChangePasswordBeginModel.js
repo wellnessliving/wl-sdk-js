@@ -63,7 +63,7 @@ Core_Passport_ChangePassword_ChangePasswordBeginModel.prototype.config=function(
  *
  * Accepts the user's email address and an optional custom reset-page URL, validates the input,
  * optionally checks a CAPTCHA, and sends a password reset email containing a link the user can follow
- * to set a new password using [ChangePasswordApplyApi](/Core/Passport/ChangePassword/ChangePasswordApply.json).
+ * to set a new password using {@link Core_Passport_ChangePassword_ChangePasswordApplyModel}.
  *
  * @function
  * @name Core_Passport_ChangePassword_ChangePasswordBeginModel.post

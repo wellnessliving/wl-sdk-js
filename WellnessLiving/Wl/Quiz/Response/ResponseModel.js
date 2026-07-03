@@ -296,7 +296,7 @@ function Wl_Quiz_Response_ResponseModel()
    * Quiz response key.
    *
    * `null` in a case of response creation or
-   * removing set of responses in [QuizResponseApi](/Core/Quiz/QuizResponse.json).
+   * removing set of responses in {@link Core_Quiz_QuizResponseModel}.
    *
    * @delete get
    * @get get
@@ -434,7 +434,7 @@ Wl_Quiz_Response_ResponseModel.prototype.config=function()
  * @function
  * @name Wl_Quiz_Response_ResponseModel.instanceGet
  * @param {string} k_business Business key within which quiz is managed.
- * @param {?string} k_quiz_response Quiz response key. `null` in a case of response creation or removing set of responses in [QuizResponseApi](/Core/Quiz/QuizResponse.json).
+ * @param {?string} k_quiz_response Quiz response key. `null` in a case of response creation or removing set of responses in {@link Core_Quiz_QuizResponseModel}.
  * @returns {Wl_Quiz_Response_ResponseModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
@@ -467,8 +467,8 @@ Wl_Quiz_Response_ResponseModel.prototype.config=function()
  * Saves a quiz response with the given element answers.
  *
  * Validates the submitted answers and persists the response record in a transaction. If
- * [QuizResponseApi](/Core/Quiz/QuizResponse.json) is set, only validation runs and no record is created.
- * Pass [QuizResponseApi](/Core/Quiz/QuizResponse.json) to bypass validation for pre-confirmed responses.
+ * {@link Core_Quiz_QuizResponseModel} is set, only validation runs and no record is created.
+ * Pass {@link Core_Quiz_QuizResponseModel} to bypass validation for pre-confirmed responses.
  *
  * @function
  * @name Wl_Quiz_Response_ResponseModel.post

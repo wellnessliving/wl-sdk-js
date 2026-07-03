@@ -60,7 +60,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_date = "";
 
   /**
-   * Date to start recurring booking. Not empty only when [RepeatApi](/Wl/Book/Process/Frequency/Repeat.json) == {@link RsRepeatEndSid}.
+   * Date to start recurring booking. Not empty only when {@link Wl_Book_Process_Frequency_RepeatModel} == {@link RsRepeatEndSid}.
    *
    * @get get,result
    * @type {string}
@@ -68,7 +68,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_from = "";
 
   /**
-   * Date to finish recurring booking. Not empty only when [RepeatApi](/Wl/Book/Process/Frequency/Repeat.json) == {@link RsRepeatEndSid}.
+   * Date to finish recurring booking. Not empty only when {@link Wl_Book_Process_Frequency_RepeatModel} == {@link RsRepeatEndSid}.
    *
    * @get get,result
    * @type {string}
@@ -76,7 +76,7 @@ function Wl_Book_Process_Frequency_RepeatModel()
   this.dt_to = "";
 
   /**
-   * Count of the visits to be created. Not empty only when [RepeatApi](/Wl/Book/Process/Frequency/Repeat.json) == {@link RsRepeatEndSid}.
+   * Count of the visits to be created. Not empty only when {@link Wl_Book_Process_Frequency_RepeatModel} == {@link RsRepeatEndSid}.
    *
    * @get get,result
    * @see RsRepeatEndSid

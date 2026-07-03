@@ -210,7 +210,7 @@ function Wl_Appointment_Book_Schedule_DayTimeModel()
   /**
    * The staff key to show what days are available for booking.
    *
-   * For back-to-back booking ([DayTimeApi](/Wl/Appointment/Book/Schedule/DayTime.json) == `true`): array of appointments for back-to-back booking.
+   * For back-to-back booking ({@link Wl_Appointment_Book_Schedule_DayTimeModel} == `true`): array of appointments for back-to-back booking.
    * Converted to JSON string to be usable as model key. Each item is an array with next structure:
    *
    * @get get
@@ -278,7 +278,7 @@ Wl_Appointment_Book_Schedule_DayTimeModel.prototype.config=function()
  * @param {string} uid The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here.
  * @param {boolean} is_unavailable `true` - return service categories that have no staff members able to conduct them. `false` - return only service categories that have staff members able to conduct them.
  * @param {string} s_product A list of service add-ons keys(encoded as JSON string). In case of back-to-back booking - add-ons of first appointment.
- * @param {string} s_appointment The staff key to show what days are available for booking. For back-to-back booking ([DayTimeApi](/Wl/Appointment/Book/Schedule/DayTime.json) == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure:
+ * @param {string} s_appointment The staff key to show what days are available for booking. For back-to-back booking ({@link Wl_Appointment_Book_Schedule_DayTimeModel} == `true`): array of appointments for back-to-back booking. Converted to JSON string to be usable as model key. Each item is an array with next structure:
  * @param {boolean} is_staff `true` if the request is made by staff member; in this case booking policy restrictions are ignored. `false` if the request is made by client; booking policy restrictions are applied.
  * @param {boolean} is_back_to_back Determines whether multiple appointments are booked in back-to-back mode.
  * @param {?string} k_timezone Key of timezone. `null` if not set then use default timezone client.

@@ -90,7 +90,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
 
   /**
    * The key of the sale item.
-   * This can be retrieved with the [CatalogListApi](/Wl/Catalog/StaffApp/CatalogList/CatalogList.json) endpoint (see the
+   * This can be retrieved with the {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel} endpoint (see the
    * `a_shop_product` parameter).
    *
    * @get get

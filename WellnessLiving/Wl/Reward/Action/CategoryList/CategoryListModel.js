@@ -1,6 +1,6 @@
 /**
  * Retrieves all reward action categories for business specified in
- * [CategoryListApi](/Wl/Reward/Action/CategoryList/CategoryList.json).
+ * {@link Wl_Reward_Action_CategoryList_CategoryListModel}.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -58,7 +58,7 @@ Wl_Reward_Action_CategoryList_CategoryListModel.prototype.config=function()
 
 /**
  * Retrieves all reward action categories for business specified in
-[CategoryListApi](/Wl/Reward/Action/CategoryList/CategoryList.json).
+{@link Wl_Reward_Action_CategoryList_CategoryListModel}.
  *
  * Returns the list of reward action categories including category type ID, database key, and title for the
  * given business.

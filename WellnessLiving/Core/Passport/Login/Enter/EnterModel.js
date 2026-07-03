@@ -35,7 +35,7 @@ function Core_Passport_Login_Enter_EnterModel()
   /**
    * A copy of the notepad that was used to hash the user password.
    *
-   * See [EnterApi](/Core/Passport/Login/Enter/Enter.json) for details.
+   * See {@link Core_Passport_Login_Enter_EnterModel} for details.
    *
    * @post post
    * @type {string}
@@ -99,7 +99,7 @@ Core_Passport_Login_Enter_EnterModel.prototype.config=function()
 /**
  * Signs the user in using their login and hashed password.
  *
- * Accepts the user login, a password hash derived using the notepad obtained from [NotepadApi](/Core/Passport/Login/Enter/Notepad.json),
+ * Accepts the user login, a password hash derived using the notepad obtained from {@link Core_Passport_Login_Enter_NotepadModel},
  * and an optional remember preference. Validates credentials, enforces CAPTCHA when too many failed
  * attempts have occurred, starts a session for the user, and returns a redirect URL if applicable.
  *

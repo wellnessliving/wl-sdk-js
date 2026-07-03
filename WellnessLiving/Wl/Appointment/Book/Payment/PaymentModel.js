@@ -209,7 +209,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.is_walk_in = false;
 
   /**
-   * The business key. Currently used only with [PaymentApi](/Wl/Appointment/Book/Payment/Payment.json) variable.
+   * The business key. Currently used only with {@link Wl_Appointment_Book_Payment_PaymentModel} variable.
    *
    * @get get
    * @type {?string}
@@ -217,7 +217,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.k_business = null;
 
   /**
-   * The item key. Depends on [PaymentApi](/Wl/Appointment/Book/Payment/Payment.json) property.
+   * The item key. Depends on {@link Wl_Appointment_Book_Payment_PaymentModel} property.
    *
    * @get get
    * @post get
@@ -386,7 +386,7 @@ Wl_Appointment_Book_Payment_PaymentModel.prototype.config=function()
  * @param {string} k_location Location to show available appointment booking schedule.
  * @param {string} uid The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here.
  * @param {number} id_purchase_item The purchase item ID. A constant of {@link RsPurchaseItemSid}.
- * @param {string} k_id The item key. Depends on [PaymentApi](/Wl/Appointment/Book/Payment/Payment.json) property.
+ * @param {string} k_id The item key. Depends on {@link Wl_Appointment_Book_Payment_PaymentModel} property.
  * @param {string} k_login_promotion The login promotion key.
  * @param {string} k_session_pass Session pass key.
  * @param {string} s_unique_key Service unique key. Used for model cache.

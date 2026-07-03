@@ -54,8 +54,8 @@ function Wl_Event_Book_EventList_ListModel()
 
   /**
    * `true` if exist at least one virtual event
-   * by specific [ListApi](/Wl/Event/Book/EventList/List.json) and
-   * [ListApi](/Wl/Event/Book/EventList/List.json),
+   * by specific {@link Wl_Event_Book_EventList_ListModel} and
+   * {@link Wl_Event_Book_EventList_ListModel},
    * `false` otherwise.
    *
    * @get result

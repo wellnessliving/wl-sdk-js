@@ -1,6 +1,6 @@
 /**
- * Gets schedule of business [ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json) for day
- * [ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json).
+ * Gets schedule of business {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel} for day
+ * {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel}.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -100,7 +100,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel()
    * The end date of the range from which the list of schedule sessions should be retrieved.
    *
    * This will be `null` if the range has no end date. If this value is used,
-   * [ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json) should not be set.
+   * {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel} should not be set.
    *
    * @get get
    * @type {string}
@@ -111,7 +111,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel()
    * The start date of the range from which the list of scheduled sessions should be retrieved.
    *
    * This will be `null` if the range has no start date. If this value is used,
-   * [ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json) should not be set.
+   * {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel} should not be set.
    *
    * @get get
    * @type {string}
@@ -122,8 +122,8 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel()
    * The date of the sessions in Coordinated Universal Time (UTC) and MySQL format.
    *
    * If this value is used, then
-   * [ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json) and
-   * [ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json) should not be set.
+   * {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel} and
+   * {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel} should not be set.
    *
    * @get get
    * @type {string}
@@ -178,7 +178,7 @@ Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel.prototype.config=func
 /**
  * @function
  * @name Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel.instanceGet
- * @param {string} dt_date The date of the sessions in Coordinated Universal Time (UTC) and MySQL format. If this value is used, then [ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json) and [ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json) should not be set.
+ * @param {string} dt_date The date of the sessions in Coordinated Universal Time (UTC) and MySQL format. If this value is used, then {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel} and {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel} should not be set.
  * @param {string} k_business Business key.
  * @param {string} uid User key.
  * @returns {Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel}
@@ -186,8 +186,8 @@ Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel.prototype.config=func
  */
 
 /**
- * Gets schedule of business [ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json) for day
-[ScheduleListApi](/Wl/Schedule/ScheduleList/StaffApp/ScheduleList.json).
+ * Gets schedule of business {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel} for day
+{@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel}.
  *
  * Returns all classes and appointments scheduled for the given business on the specified date,
  * sorted chronologically. Supports both single-day and date-range modes, and includes full

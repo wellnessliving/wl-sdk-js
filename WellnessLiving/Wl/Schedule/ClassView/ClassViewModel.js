@@ -330,7 +330,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    *
    * `null` if key of the business was not passed.
    *
-   * Key of the business is required if [ClassViewApi](/Wl/Schedule/ClassView/ClassView.json) was passed.
+   * Key of the business is required if {@link Wl_Schedule_ClassView_ClassViewModel} was passed.
    *
    * @get get
    * @post get
@@ -349,7 +349,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
 
   /**
    * A list of sessions to get information for.
-   * A serialized array. See [ClassViewApi](/Wl/Schedule/ClassView/ClassView.json) for the array structure.
+   * A serialized array. See {@link Wl_Schedule_ClassView_ClassViewModel} for the array structure.
    * Serialization and sending by POST is necessary to send big lists.
    *
    * @post post

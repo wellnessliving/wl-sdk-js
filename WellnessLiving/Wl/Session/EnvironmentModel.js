@@ -108,7 +108,7 @@ function Wl_Session_EnvironmentModel()
   this.a_splash_screen = null;
 
   /**
-   * Local date with time now in current location [EnvironmentApi](/Wl/Session/Environment.json).
+   * Local date with time now in current location {@link Wl_Session_EnvironmentModel}.
    *
    * @get result
    * @type {string}
@@ -124,7 +124,7 @@ function Wl_Session_EnvironmentModel()
   this.has_form_quiz = undefined;
 
   /**
-   * Whether the merchant is configured for the client's home location or for business [EnvironmentApi](/Wl/Session/Environment.json).
+   * Whether the merchant is configured for the client's home location or for business {@link Wl_Session_EnvironmentModel}.
    *
    * @get result
    * @type {boolean}

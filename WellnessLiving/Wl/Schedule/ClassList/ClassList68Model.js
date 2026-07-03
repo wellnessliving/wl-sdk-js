@@ -25,7 +25,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * The list of classes keys to filter.
    * Return sessions with matching class IDs.
    *
-   * If it's empty and [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is `true`, all classes will be returned.
+   * If it's empty and {@link Wl_Schedule_ClassList_ClassList68Model} is `true`, all classes will be returned.
    *
    * @post post
    * @type {string[]}
@@ -35,9 +35,9 @@ function Wl_Schedule_ClassList_ClassList68Model()
   /**
    * List of tabs keys.
    *
-   * This will be ignored if [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is `true`.
+   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model} is `true`.
    *
-   * If list of tab keys is not empty, [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is mandatory.
+   * If list of tab keys is not empty, {@link Wl_Schedule_ClassList_ClassList68Model} is mandatory.
    *
    * `null` if no filtering by Book Now Tab is required.
    *
@@ -63,7 +63,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * The list of event keys to filter.
    * Return sessions with matching event keys.
    *
-   * If it's empty and [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is `true`, all events will be returned.
+   * If it's empty and {@link Wl_Schedule_ClassList_ClassList68Model} is `true`, all events will be returned.
    *
    * @post post
    * @type {string[]}
@@ -73,7 +73,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
   /**
    * The list of location keys to filter results.
    * If it's empty, schedule for all locations will be returned.
-   * All given locations should be from the same business, which is sent in [ClassListApi](/Wl/Schedule/ClassList/ClassList.json).
+   * All given locations should be from the same business, which is sent in {@link Wl_Schedule_ClassList_ClassListModel}.
    *
    * @post post
    * @type {string[]}
@@ -95,10 +95,10 @@ function Wl_Schedule_ClassList_ClassList68Model()
    *
    *
    * For generating this filter, all filters are applied except:
-   * - [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json);
-   * - [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json);
-   * - [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json);
-   * - [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json).
+   * - {@link Wl_Schedule_ClassList_ClassList68Model};
+   * - {@link Wl_Schedule_ClassList_ClassList68Model};
+   * - {@link Wl_Schedule_ClassList_ClassList68Model};
+   * - {@link Wl_Schedule_ClassList_ClassList68Model}.
    *
    * @post result
    * @type {Wl_Schedule_ClassList_ClassList68Model_a_quick}
@@ -137,8 +137,8 @@ function Wl_Schedule_ClassList_ClassList68Model()
    */
 
   /**
-   * A list of classes sessions starting with the date [ClassListApi](/Wl/Schedule/ClassList/ClassList.json)
-   * and in the 62 days ahead (or up to [ClassListApi](/Wl/Schedule/ClassList/ClassList.json)).
+   * A list of classes sessions starting with the date {@link Wl_Schedule_ClassList_ClassListModel}
+   * and in the 62 days ahead (or up to {@link Wl_Schedule_ClassList_ClassListModel}).
    * Every element has the following keys:
    *
    * @post result
@@ -201,8 +201,8 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.id_class_tab = null;
 
   /**
-   * `true` means to not generate [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) result.
-   * Can be used, if you do not need full information about existing classes and result in [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is enough.
+   * `true` means to not generate {@link Wl_Schedule_ClassList_ClassList68Model} result.
+   * Can be used, if you do not need full information about existing classes and result in {@link Wl_Schedule_ClassList_ClassList68Model} is enough.
    *
    * @post post
    * @type {boolean}
@@ -211,7 +211,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * If `true`, sessions from every class tab are returned. If `false`, use the
-   * [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) or [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) to filter sessions by class tab.
+   * {@link Wl_Schedule_ClassList_ClassList68Model} or {@link Wl_Schedule_ClassList_ClassList68Model} to filter sessions by class tab.
    *
    * @post post
    * @type {boolean}
@@ -241,7 +241,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * If `true`, there exists at least one virtual service by a specified
-   * [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) and [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json),
+   * {@link Wl_Schedule_ClassList_ClassList68Model} and {@link Wl_Schedule_ClassList_ClassList68Model},
    * Otherwise, this will be `false`.
    *
    * @post result
@@ -259,7 +259,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * The tab key.
-   * This will be ignored if [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) is `true`.
+   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model} is `true`.
    *
    * @post post
    * @type {string}
@@ -319,7 +319,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.show_event = false;
 
   /**
-   * Whether to generate [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json) a quick filter.
+   * Whether to generate {@link Wl_Schedule_ClassList_ClassList68Model} a quick filter.
    * If `true`, a quick filter will be generated. `false` otherwise.
    *
    * @post post
@@ -357,10 +357,10 @@ The difference is as follows:
  * requests and the browser refuse to send the request (situations with long class ID, event ID or staff ID lists).
  *
  * - Added generation of a separate 'Quick filter'.
- * This generation is enabled using the flag [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json).
+ * This generation is enabled using the flag {@link Wl_Schedule_ClassList_ClassList68Model}.
  *
- * - Added a filter list of events [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json).
- * - Added a filter ID of tab [ClassList68Api](/Wl/Schedule/ClassList/ClassList68.json).
+ * - Added a filter list of events {@link Wl_Schedule_ClassList_ClassList68Model}.
+ * - Added a filter ID of tab {@link Wl_Schedule_ClassList_ClassList68Model}.
  *
  * @function
  * @name Wl_Schedule_ClassList_ClassList68Model.post

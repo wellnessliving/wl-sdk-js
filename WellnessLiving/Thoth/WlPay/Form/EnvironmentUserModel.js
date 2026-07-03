@@ -87,8 +87,8 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
   this.a_pay_processor = null;
 
   /**
-   * Current local date in current location [EnvironmentApi](/Thoth/WlPay/Form/Environment.json)
-   * or business [EnvironmentApi](/Thoth/WlPay/Form/Environment.json) if not set location.
+   * Current local date in current location {@link Thoth_WlPay_Form_EnvironmentModel}
+   * or business {@link Thoth_WlPay_Form_EnvironmentModel} if not set location.
    *
    * @get result
    * @type {string}
@@ -261,7 +261,7 @@ Thoth_WlPay_Form_EnvironmentUserModel.prototype.config=function()
  *
  * Called before rendering a payment form to determine which payment methods and card types are available
  * for a given business and location, what surcharges apply, and how the form should behave (tip prompt,
- * optional card save). This endpoint is deprecated; use [EnvironmentUserApi](/Thoth/WlPay/Form/EnvironmentUser.json)
+ * optional card save). This endpoint is deprecated; use {@link Thoth_WlPay_Form_EnvironmentUserModel}
  * for new integrations.
  *
  * @function

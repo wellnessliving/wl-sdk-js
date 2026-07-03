@@ -101,7 +101,7 @@ function Wl_Event_EventListModel()
    * @property {number} i_session_future Number of future sessions in the event.
    * @property {number} i_session_past Number of past sessions in the event.
    * @property {number} id_reason ID of deny reason.
-   * @property {boolean} is_age_restrict Whether booking of this event restricted because of age rules for [EventListApi](/Wl/Event/EventList.json).
+   * @property {boolean} is_age_restrict Whether booking of this event restricted because of age rules for {@link Wl_Event_EventListModel}.
    * @property {boolean} is_age_restrict_only `true` if this event booking is restricted and restricted because of client's age only. `false` otherwise.
    * @property {?boolean} is_available Whether the event is available for booking or not. The flag refers to the Available/Unavailable filter.
    * @property {boolean} is_block Whether single sessions of the event can be booked.
@@ -235,7 +235,7 @@ function Wl_Event_EventListModel()
   this.is_ignore_requirement = false;
 
   /**
-   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in [EventListApi](/Wl/Event/EventList.json).
+   * Determines whether you need to retrieve a list of event sessions regardless of the tab specified in {@link Wl_Event_EventListModel}.
    *
    * * `true` - retrieves a list regardless of the specified tab.
    * * `false` - retrieves a list only for the specific tab.
@@ -248,7 +248,7 @@ function Wl_Event_EventListModel()
   /**
    * The event business key to retrieve a list of all event sessions in business.
    *
-   * `null` to retrieve events from [EventListApi](/Wl/Event/EventList.json).
+   * `null` to retrieve events from {@link Wl_Event_EventListModel}.
    *
    * @get get
    * @put get
@@ -270,8 +270,8 @@ function Wl_Event_EventListModel()
    * An empty value to retrieve a list of event sessions that don't belong to any tab.
    *
    * Will be ignored in next cases:
-   * * [EventListApi](/Wl/Event/EventList.json) specified.
-   * * [EventListApi](/Wl/Event/EventList.json) is `true`.
+   * * {@link Wl_Event_EventListModel} specified.
+   * * {@link Wl_Event_EventListModel} is `true`.
    *
    * @get get
    * @type {string}
@@ -281,8 +281,8 @@ function Wl_Event_EventListModel()
   /**
    * The event location key to retrieve a list of all event sessions in a specific location.
    *
-   * Required if [EventListApi](/Wl/Event/EventList.json) isn't specified.
-   * `null` if you need to retrieve a list of event sessions in all locations of [EventListApi](/Wl/Event/EventList.json).
+   * Required if {@link Wl_Event_EventListModel} isn't specified.
+   * `null` if you need to retrieve a list of event sessions in all locations of {@link Wl_Event_EventListModel}.
    *
    * @get get
    * @type {?string}
@@ -292,7 +292,7 @@ function Wl_Event_EventListModel()
   /**
    * The skin key if an event list is used for widget mode.
    *
-   * [EventListApi](/Wl/Event/EventList.json) will be ignored for widget mode.
+   * {@link Wl_Event_EventListModel} will be ignored for widget mode.
    *
    * @get get
    * @type {string}

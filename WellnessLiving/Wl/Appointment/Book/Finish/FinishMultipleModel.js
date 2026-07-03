@@ -9,7 +9,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * A list of answers for the questions from [QuestionApi](/Wl/Appointment/Book/Question/Question.json).
+   * A list of answers for the questions from {@link Wl_Appointment_Book_Question_QuestionModel}.
    *
    * 1st dimension - provider index.
    * 2nd dimension - keys refer to hashes of the questions. Values refer to answers for the questions.
@@ -141,7 +141,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * * {@link RsPurchaseItemSid}
    * * {@link RsPurchaseItemSid}
    *
-   * This is a multi-provider equivalent of [FinishApi](/Wl/Appointment/Book/Finish/Finish.json).
+   * This is a multi-provider equivalent of {@link Wl_Appointment_Book_Finish_FinishModel}.
    *
    * @post post
    * @type {number[]}
@@ -154,7 +154,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * * Keys refer to provider indexes.
    * * Values are one of the {@link RsAppointmentPaySid} constants.
    *
-   * This is a multi-provider equivalent of [FinishApi](/Wl/Appointment/Book/Finish/Finish.json).
+   * This is a multi-provider equivalent of {@link Wl_Appointment_Book_Finish_FinishModel}.
    *
    * @post get
    * @type {number[]}
@@ -194,9 +194,9 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * Payment is not processed by this API.
    *
    * Use the following APIs for payment:
-   * * [PaymentApi](/Wl/Appointment/Book/Payment/Payment.json)
-   * * [PaymentPostApi](/Wl/Appointment/Book/Payment/PaymentPost.json)
-   * * [PaymentMultipleApi](/Wl/Appointment/Book/Payment/PaymentMultiple.json)
+   * * {@link Wl_Appointment_Book_Payment_PaymentModel}
+   * * {@link Wl_Appointment_Book_Payment_PaymentPostModel}
+   * * {@link Wl_Appointment_Book_Payment_PaymentMultipleModel}
    *
    * @post post
    * @type {*[]}
@@ -406,10 +406,10 @@ Wl_Appointment_Book_Finish_FinishMultipleModel.prototype.config=function()
 /**
  * Completes the appointment booking for one or more providers, optionally creating a new client.
  *
- * Accepts booking details for one or more providers in [FinishMultipleApi](/Wl/Appointment/Book/Finish/FinishMultiple.json),
+ * Accepts booking details for one or more providers in {@link Wl_Appointment_Book_Finish_FinishMultipleModel},
  * processes payment using the selected Purchase Option, creates appointment records, and sends
  * booking confirmation notifications. A new client account can be created by supplying user
- * details in [FinishMultipleApi](/Wl/Appointment/Book/Finish/FinishMultiple.json) when no UID is provided.
+ * details in {@link Wl_Appointment_Book_Finish_FinishMultipleModel} when no UID is provided.
  *
  * @function
  * @name Wl_Appointment_Book_Finish_FinishMultipleModel.post

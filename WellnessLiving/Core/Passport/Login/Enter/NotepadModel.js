@@ -88,7 +88,7 @@ Core_Passport_Login_Enter_NotepadModel.prototype.config=function()
  * Generates notepad for user sign in form.
  *
  * Generates a cryptographic nonce (one-time random string) and stores it in the session so that the
- * client can hash the user's password with it before sending it to [EnterApi](/Core/Passport/Login/Enter/Enter.json). This prevents
+ * client can hash the user's password with it before sending it to {@link Core_Passport_Login_Enter_EnterModel}. This prevents
  * replay attacks and avoids transmitting passwords in plain text.
  *
  * @function

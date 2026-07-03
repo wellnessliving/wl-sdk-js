@@ -98,7 +98,7 @@ function Wl_Video_VideoListModel()
    * @property {string} text_level_title Difficulty level title.
    * @property {string} text_title Video title.
    * @property {?string} url_thumbnail URL of the video thumbnail image.
-   * @property {?string} url_video URL of the video file (HLS stream). `null` if not available. See [VideoElementApi](/Wl/Video/VideoElement.json) for details about the video URL.
+   * @property {?string} url_video URL of the video file (HLS stream). `null` if not available. See {@link Wl_Video_VideoElementModel} for details about the video URL.
    */
 
   /**

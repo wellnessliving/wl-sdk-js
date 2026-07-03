@@ -580,9 +580,9 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Note that this must be serialized via JSON.
    *
    * If this field is specified, don't specify any of the following fields:
-   * * [ElementApi](/Wl/Catalog/CatalogList/Element.json)
-   * * [ElementApi](/Wl/Catalog/CatalogList/Element.json)
-   * * [ElementApi](/Wl/Catalog/CatalogList/Element.json)
+   * * {@link Wl_Catalog_CatalogList_ElementModel}
+   * * {@link Wl_Catalog_CatalogList_ElementModel}
+   * * {@link Wl_Catalog_CatalogList_ElementModel}
    *
    * This will be `null` to get information for only one item.
    *

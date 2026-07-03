@@ -72,7 +72,7 @@ function Wl_Appointment_Book_Product_Product62Model()
    *
    * `null` if the client is not logged in.
    *
-   * If you don't need to filter products by client type/group, use [ProductApi](/Wl/Appointment/Book/Product/Product.json).
+   * If you don't need to filter products by client type/group, use {@link Wl_Appointment_Book_Product_ProductModel}.
    *
    * @get get
    * @type {?string}
@@ -97,7 +97,7 @@ Wl_Appointment_Book_Product_Product62Model.prototype.config=function()
  * @name Wl_Appointment_Book_Product_Product62Model.instanceGet
  * @param {string} k_service The key of a service to show information for.
  * @param {string} k_location The key of a location where appointment is going to be booked.
- * @param {?string} uid The key of a user to show information for. Products with a {@link Wl_Shop_Product_PurchaseRestrictionSid} restriction will be filtered out. Only those products that match the client type or those that have no restrictions will be shown. `null` if the client is not logged in. If you don't need to filter products by client type/group, use [ProductApi](/Wl/Appointment/Book/Product/Product.json).
+ * @param {?string} uid The key of a user to show information for. Products with a {@link Wl_Shop_Product_PurchaseRestrictionSid} restriction will be filtered out. Only those products that match the client type or those that have no restrictions will be shown. `null` if the client is not logged in. If you don't need to filter products by client type/group, use {@link Wl_Appointment_Book_Product_ProductModel}.
  * @returns {Wl_Appointment_Book_Product_Product62Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

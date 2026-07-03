@@ -140,7 +140,7 @@ function Thoth_PayProcessor_Nuvei_NuveiUpdateOrderModel()
   this.k_pay_method = null;
 
   /**
-   * Key of payment transaction that was created in [NuveiOpenOrderApi](/Thoth/PayProcessor/Nuvei/NuveiOpenOrder.json).
+   * Key of payment transaction that was created in {@link Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel}.
    *
    * This will be `null` if not loaded yet.
    *
@@ -170,7 +170,7 @@ function Thoth_PayProcessor_Nuvei_NuveiUpdateOrderModel()
   this.m_surcharge = null;
 
   /**
-   * The order ID that was created in [NuveiOpenOrderApi](/Thoth/PayProcessor/Nuvei/NuveiOpenOrder.json).
+   * The order ID that was created in {@link Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel}.
    *
    * This will be `null` if not loaded yet.
    *
@@ -226,7 +226,7 @@ Thoth_PayProcessor_Nuvei_NuveiUpdateOrderModel.prototype.config=function()
  * Updates the amount of a previously opened `Nuvei` order.
  *
  * Validates the payer authentication session, then requests `Nuvei` to update the amount of the order
- * opened by [NuveiOpenOrderApi](/Thoth/PayProcessor/Nuvei/NuveiOpenOrder.json) and adjusts the payment transaction accordingly.
+ * opened by {@link Thoth_PayProcessor_Nuvei_NuveiOpenOrderModel} and adjusts the payment transaction accordingly.
  *
  * @function
  * @name Thoth_PayProcessor_Nuvei_NuveiUpdateOrderModel.post

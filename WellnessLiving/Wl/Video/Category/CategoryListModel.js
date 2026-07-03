@@ -35,7 +35,7 @@ function Wl_Video_Category_CategoryListModel()
    */
 
   /**
-   * The business video library categories as found in [CategoryListApi](/Wl/Video/Category/CategoryList.json).
+   * The business video library categories as found in {@link Wl_Video_Category_CategoryListModel}.
    *
    * Each element has the following structure:
    *

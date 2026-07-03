@@ -155,7 +155,7 @@ function Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel()
 
   /**
    * List of mail patterns data to load.
-   * Each element has the structure, described in [PatternApi](/Wl/Mail/Pattern/AutomatedMarketing/CustomTemplate/Pattern.json).
+   * Each element has the structure, described in {@link Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel}.
    *
    * @get result
    * @type {string}
@@ -229,7 +229,7 @@ Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel.prototype.config=
  * Validates and stores the submitted notification template (email, push or SMS) for the given
  * business. A system template edited under a business is copied into that business instead of
  * modifying the original. The saved mail pattern key is returned in
- * [PatternApi](/Wl/Mail/Pattern/AutomatedMarketing/CustomTemplate/Pattern.json).
+ * {@link Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel}.
  *
  * @function
  * @name Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel.post

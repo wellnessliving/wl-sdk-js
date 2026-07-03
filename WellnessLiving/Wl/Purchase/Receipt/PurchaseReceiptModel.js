@@ -176,7 +176,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.html_receipt = undefined;
 
   /**
-   * Whether [PurchaseReceiptApi](/Wl/Purchase/Receipt/PurchaseReceipt.json) and [PurchaseReceiptApi](/Wl/Purchase/Receipt/PurchaseReceipt.json) require authentication.
+   * Whether {@link Wl_Purchase_Receipt_PurchaseReceiptModel} and {@link Wl_Purchase_Receipt_PurchaseReceiptModel} require authentication.
    *
    * If `true`, the URL contains a token that allows temporary access to the page without logging in. If 'false', the
    * page requires authentication.

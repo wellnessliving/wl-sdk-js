@@ -51,7 +51,7 @@ function Thoth_WlPay_Bank_Card_ListModel()
 
   /**
    * List of bank cards.
-   * Duplicate of [ListApi](/Thoth/WlPay/Bank/Card/List.json) as a flat indexed array.
+   * Duplicate of {@link Thoth_WlPay_Bank_Card_ListModel} as a flat indexed array.
    *
    * @get result
    * @type {Thoth_WlPay_Bank_Card_ListModel_a_list[]}

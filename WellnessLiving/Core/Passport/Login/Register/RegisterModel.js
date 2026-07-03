@@ -140,7 +140,7 @@ Core_Passport_Login_Register_RegisterModel.prototype.config=function()
  * Validates the new user's data and sends a confirmation email to complete registration.
  *
  * Accepts the new user's name, email, and password, validates each field, stores the pending registration,
- * and sends a confirmation email with a link to complete registration via [RegisterConfirmApi](/Core/Passport/Login/Register/RegisterConfirm.json).
+ * and sends a confirmation email with a link to complete registration via {@link Core_Passport_Login_Register_RegisterConfirmModel}.
  * An optional application ID and custom confirmation URL may be provided.
  *
  * @function

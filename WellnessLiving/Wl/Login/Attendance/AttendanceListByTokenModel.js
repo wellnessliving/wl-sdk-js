@@ -167,7 +167,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} k_location The key of the location.
    * @property {string} k_login_promotion The key of the client's Purchase Option.
    * @property {string} k_visit The key of the visit.
-   * @property {?string} o_purchase_item The purchase used to pay for the session. Instance of [PurchaseListElementApi](/Wl/Profile/PurchaseList/PurchaseListElement.json). `null` if the visit has no associated purchase or access is denied. Only present when `is_purchase_info_return` is `true`.
+   * @property {?string} o_purchase_item The purchase used to pay for the session. Instance of {@link Wl_Profile_PurchaseList_PurchaseListElementModel}. `null` if the visit has no associated purchase or access is denied. Only present when `is_purchase_info_return` is `true`.
    * @property {string} s_expire The expiry information for the Purchase Option. This field is deprecated, use the text_ version instead.
    * @property {string} s_firstname The client's first name. This field is deprecated, use the text_ version instead.
    * @property {string} s_lastname The client's last name. This field is deprecated, use the text_ version instead.
@@ -355,7 +355,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} k_location The key of the location.
    * @property {string} k_login_promotion The key of the client's Purchase Option.
    * @property {string} k_visit The key of the visit.
-   * @property {?string} o_purchase_item The purchase used to pay for the session. Instance of [PurchaseListElementApi](/Wl/Profile/PurchaseList/PurchaseListElement.json). `null` if the visit has no associated purchase or access is denied. Only present when `is_purchase_info_return` is `true`.
+   * @property {?string} o_purchase_item The purchase used to pay for the session. Instance of {@link Wl_Profile_PurchaseList_PurchaseListElementModel}. `null` if the visit has no associated purchase or access is denied. Only present when `is_purchase_info_return` is `true`.
    * @property {string} s_expire The expiry information for the Purchase Option. This field is deprecated, use the text_ version instead.
    * @property {string} s_firstname The client's first name. This field is deprecated, use the text_ version instead.
    * @property {string} s_lastname The client's last name. This field is deprecated, use the text_ version instead.
@@ -542,7 +542,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} k_location The key of the location.
    * @property {string} k_login_promotion The key of the client's Purchase Option.
    * @property {string} k_visit The key of the visit.
-   * @property {?string} o_purchase_item The purchase used to pay for the session. Instance of [PurchaseListElementApi](/Wl/Profile/PurchaseList/PurchaseListElement.json). `null` if the visit has no associated purchase or access is denied. Only present when `is_purchase_info_return` is `true`.
+   * @property {?string} o_purchase_item The purchase used to pay for the session. Instance of {@link Wl_Profile_PurchaseList_PurchaseListElementModel}. `null` if the visit has no associated purchase or access is denied. Only present when `is_purchase_info_return` is `true`.
    * @property {string} s_expire The expiry information for the Purchase Option. This field is deprecated, use the text_ version instead.
    * @property {string} s_firstname The client's first name. This field is deprecated, use the text_ version instead.
    * @property {string} s_lastname The client's last name. This field is deprecated, use the text_ version instead.
@@ -601,7 +601,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * The maximum number of clients on wait list of the class or event session.
-   * `0` for appointments, use [AppointmentWaitListApi](/Wl/Appointment/WaitList/AppointmentWaitList.json) instead.
+   * `0` for appointments, use {@link Wl_Appointment_WaitList_AppointmentWaitListModel} instead.
    *
    * @get result
    * @type {number}
@@ -619,7 +619,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * `true` to use class/event specific wait list limit, `false` to use the limit from default policies.
-   * `false` for appointments. Use [AppointmentWaitListApi](/Wl/Appointment/WaitList/AppointmentWaitList.json) instead.
+   * `false` for appointments. Use {@link Wl_Appointment_WaitList_AppointmentWaitListModel} instead.
    *
    * @get result
    * @type {boolean}

@@ -417,7 +417,7 @@ function Wl_Book_Process_Info_Info54Model()
    *
    * The verification is based on the search for client's promotions and other features of the class/event.
    * But it does not take into account the presence of other mandatory steps.
-   * Their presence will be indicated by the [InfoApi](/Wl/Book/Process/Info/Info.json) flag.
+   * Their presence will be indicated by the {@link Wl_Book_Process_Info_InfoModel} flag.
    *
    * @post result
    * @type {boolean}
@@ -627,7 +627,7 @@ function Wl_Book_Process_Info_Info54Model()
 
   /**
    * Text representation of the list of staffs.
-   * List of staff see [InfoApi](/Wl/Book/Process/Info/Info.json).
+   * List of staff see {@link Wl_Book_Process_Info_InfoModel}.
    *
    * @get result
    * @type {string}
