@@ -8,6 +8,22 @@ function Wl_DoorAccess_Brivo_WebhookModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
+  /**
+   * Business the webhook belongs to. Taken from the webhook URL.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.k_business = "";
+
+  /**
+   * Secret token from the webhook URL used to authenticate the Brivo request.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.s_token = "";
+
   this.changeInit();
 }
 
@@ -18,7 +34,7 @@ WlSdk_ModelAbstract.extend(Wl_DoorAccess_Brivo_WebhookModel);
  */
 Wl_DoorAccess_Brivo_WebhookModel.prototype.config=function()
 {
-  return {"a_field":{}};
+  return {"a_field":{"k_business":{"post":{"get":true}},"s_token":{"post":{"get":true}}}};
 };
 
 /**
