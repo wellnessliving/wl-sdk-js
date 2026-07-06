@@ -9,23 +9,6 @@ function Wl_Book_Process_ProcessGroupModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_book_error
-   * @property {string} text_code Error code identifying the type of error that occurred.
-   * @property {string} text_message Human-readable error message describing the booking failure.
-   */
-
-  /**
-   * List of errors that occurred during booking.
-   *
-   * Keys are user keys. 
-   * Each value has the next structure:
-   *
-   * @post result
-   * @type {Wl_Book_Process_ProcessGroupModel_a_book_error[]}
-   */
-  this.a_book_error = undefined;
-
-  /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_event_session
    * @property {string} dtu_date Session date/time.
    * @property {string} k_class_period Session key.
@@ -259,7 +242,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_ProcessGroupModel);
  */
 Wl_Book_Process_ProcessGroupModel.prototype.config=function()
 {
-  return {"a_field":{"a_book_error":{"post":{"result":true}},"a_client":{"post":{"post":true}},"a_login_activity_book":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"k_login_promotion_guest_pass":{"post":{"post":true}},"k_pay_installment_template":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}}}};
+  return {"a_field":{"a_client":{"post":{"post":true}},"a_login_activity_book":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"k_login_promotion_guest_pass":{"post":{"post":true}},"k_pay_installment_template":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}}}};
 };
 
 /**
