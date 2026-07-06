@@ -4,7 +4,7 @@
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Wl_Service_ServiceList_ListModel()
+function Wl_Service_ServiceList_List75Model()
 {
   WlSdk_ModelAbstract.apply(this);
 
@@ -14,7 +14,7 @@ function Wl_Service_ServiceList_ListModel()
   this._s_key = "k_business";
 
   /**
-   * @typedef {{}} Wl_Service_ServiceList_ListModel_a_service
+   * @typedef {{}} Wl_Service_ServiceList_List75Model_a_service
    * @property {boolean} hide_application Whether service will be hidden in the White Label mobile application.  `true` means that service will not be displayed, `false` otherwise.
    * @property {boolean} is_active Whether appointment type is active.
    * @property {string} k_service Appointment type identifier, primary key.
@@ -27,7 +27,7 @@ function Wl_Service_ServiceList_ListModel()
    * Appointment types list:
    *
    * @get result
-   * @type {Wl_Service_ServiceList_ListModel_a_service[]}
+   * @type {Wl_Service_ServiceList_List75Model_a_service[]}
    */
   this.a_service = undefined;
 
@@ -51,21 +51,21 @@ function Wl_Service_ServiceList_ListModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Service_ServiceList_ListModel);
+WlSdk_ModelAbstract.extend(Wl_Service_ServiceList_List75Model);
 
 /**
  * @inheritDoc
  */
-Wl_Service_ServiceList_ListModel.prototype.config=function()
+Wl_Service_ServiceList_List75Model.prototype.config=function()
 {
   return {"a_field":{"a_service":{"get":{"result":true}},"is_franchise":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
  * @function
- * @name Wl_Service_ServiceList_ListModel.instanceGet
+ * @name Wl_Service_ServiceList_List75Model.instanceGet
  * @param {string} k_business Business key, primary key.
- * @returns {Wl_Service_ServiceList_ListModel}
+ * @returns {Wl_Service_ServiceList_List75Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
 
@@ -75,7 +75,7 @@ Wl_Service_ServiceList_ListModel.prototype.config=function()
  * Gets key of the business and returns all available appointment types with their names and categories.
  *
  * @function
- * @name Wl_Service_ServiceList_ListModel.get
+ * @name Wl_Service_ServiceList_List75Model.get
  * @returns {WlSdk_Deferred_Promise}
  * @see WlSdk_ModelAbstract.get()
  */
