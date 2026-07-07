@@ -23,10 +23,15 @@ const sidPathConfig = fs.existsSync(SID_CONFIG_PATH)
 // $ref resolution
 // -----------------------------------------------------------------------
 
+function unescapeJsonPointerToken(token)
+{
+  return token.replace(/~1/g, '/').replace(/~0/g, '~');
+}
+
 function resolveRef(spec, ref)
 {
   if (!ref || !ref.startsWith('#/')) return null;
-  return ref.slice(2).split('/').reduce(
+  return ref.slice(2).split('/').map(unescapeJsonPointerToken).reduce(
     (obj, key) => (obj != null && typeof obj === 'object') ? obj[key] : null,
     spec
   );
@@ -769,10 +774,14 @@ function generateModels(spec)
   const paths = spec.paths || {};
   let count = 0;
 
-  for (const [apiPath, pathItem] of Object.entries(paths))
+  for (const [apiPath, rawPathItem] of Object.entries(paths))
   {
-    if (!pathItem || typeof pathItem !== 'object') continue;
+    if (!rawPathItem || typeof rawPathItem !== 'object') continue;
     if (!apiPath.endsWith('.json')) continue;
+
+    // Path item may itself be a $ref to another path (an endpoint alias) - follow it to the
+    // actual operations/fields, but keep generating the model under the alias's own class name.
+    const pathItem = rawPathItem.$ref ? (resolveRef(spec, rawPathItem.$ref) || rawPathItem) : rawPathItem;
 
     const className = pathToModelClass(apiPath);
     const fields = collectFields(pathItem, spec, className);
