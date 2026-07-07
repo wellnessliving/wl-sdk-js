@@ -74,7 +74,7 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
    * @property {?string} text_staff Name of the staff leading the appointment. `null` for asset.
    * @property {string} text_time Appointment time.
    * @property {string} text_timezone_abbr Appointment timezone abbreviation.
-   * @property {string} uid_staff Appointment staff user key, primary key in PassportLoginSql table.
+   * @property {string} uid_staff Appointment user key.
    */
 
   /**

@@ -15,14 +15,14 @@ function Wl_Discount_Code_DiscountCodeModel()
 
   /**
    * @typedef {{}} Wl_Discount_Code_DiscountCodeModel_a_list
+   * @property {boolean} is_active `true` if the discount code is active, `false` otherwise.
+   * @property {boolean} is_remove `true` if the discount code is removed, `false` otherwise.
    * @property {string} k_discount_code Discount code key.
    * @property {string} text_discount_code Discount code title.
    */
 
   /**
-   * Discount codes list.
-   *
-   * Each element has next structure:
+   * Discount codes list. Each element has the following structure:
    *
    * @get result
    * @type {Wl_Discount_Code_DiscountCodeModel_a_list[]}
