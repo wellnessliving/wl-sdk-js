@@ -1,7 +1,7 @@
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 244.
+ * Last Used ID: 245.
  */
 function Wl_Privilege_PrivilegeSid()
 {
@@ -945,6 +945,13 @@ Wl_Privilege_PrivilegeSid.PARTNER_PROGRAM_MANAGE = 94;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.PAYMENT_PROCESSING = 166;
+
+/**
+ * Allows the staff member to initiate bulk billing of multiple clients in one batch.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.PERFORM_BULK_BILLING = 245;
 
 /**
  * Permission to perform Physical Inventory Count.

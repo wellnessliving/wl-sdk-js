@@ -41,6 +41,14 @@ function Wl_Tuition_Enrollment_TuitionEnrollmentCancelModel()
   this.is_pass_deactivate = false;
 
   /**
+   * Key of the business.
+   *
+   * @put post
+   * @type {string}
+   */
+  this.k_business = "";
+
+  /**
    * Key of the tuition purchase item. This is enrollment key, which can be got from {@link Wl_Tuition_Enrollment_TuitionEnrollmentListModel}.
    *
    * @put post
@@ -58,7 +66,7 @@ WlSdk_ModelAbstract.extend(Wl_Tuition_Enrollment_TuitionEnrollmentCancelModel);
  */
 Wl_Tuition_Enrollment_TuitionEnrollmentCancelModel.prototype.config=function()
 {
-  return {"a_field":{"a_event_cancel":{"put":{"post":true}},"is_cancel_visits":{"put":{"post":true}},"is_pass_deactivate":{"put":{"post":true}},"k_purchase_item_tuition":{"put":{"post":true}}}};
+  return {"a_field":{"a_event_cancel":{"put":{"post":true}},"is_cancel_visits":{"put":{"post":true}},"is_pass_deactivate":{"put":{"post":true}},"k_business":{"put":{"post":true}},"k_purchase_item_tuition":{"put":{"post":true}}}};
 };
 
 /**
