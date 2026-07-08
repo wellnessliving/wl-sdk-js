@@ -11,7 +11,7 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "dtl_date,k_business,k_location,k_visit,uid,is_simple";
+  this._s_key = "dtl_date,k_business,k_location,k_visit,uid,is_simple,a_appointment";
 
   /**
    * List of appointment keys for which to load unpaid data.
@@ -228,6 +228,7 @@ Wl_Profile_Attendance_Schedule_PaymentMultipleModel.prototype.config=function()
  * @param {string} k_visit Last booked visit key.
  * @param {string} uid The user's key.
  * @param {boolean} is_simple When set to `true` it's mean that need load full information about unpaid visits: * List of available/existing POs. * List of unpaid addons. When set to `false` loaded only general information about visits on passed day.
+ * @param {string[]} a_appointment List of appointment keys for which to load unpaid data. When specified, appointments are looked up directly by these keys, instead of by all unpaid appointments booked for {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.uid} on the day specified in {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.dtl_date}.
  * @returns {Wl_Profile_Attendance_Schedule_PaymentMultipleModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
