@@ -125,10 +125,12 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
   /**
    * Local date and time for which visit is booked in MySQL format.
    *
+   * Can be `null` in case when {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.a_appointment} passed.
+   *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.dtl_date = "";
+  this.dtl_date = null;
 
   /**
    * Total number of unpaid appointments.
@@ -179,10 +181,12 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
   /**
    * The location key.
    *
+   * Can be `null` in case when {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.a_appointment} passed.
+   *
    * @get get
-   * @type {string}
+   * @type {?string}
    */
-  this.k_location = "";
+  this.k_location = null;
 
   /**
    * Last booked visit key.
@@ -225,9 +229,9 @@ Wl_Profile_Attendance_Schedule_PaymentMultipleModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Attendance_Schedule_PaymentMultipleModel.instanceGet
- * @param {string} dtl_date Local date and time for which visit is booked in MySQL format.
+ * @param {?string} dtl_date Local date and time for which visit is booked in MySQL format. Can be `null` in case when {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.a_appointment} passed.
  * @param {string} k_business The business key.
- * @param {string} k_location The location key.
+ * @param {?string} k_location The location key. Can be `null` in case when {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.a_appointment} passed.
  * @param {string} k_visit Last booked visit key.
  * @param {string} uid The user's key.
  * @param {boolean} is_simple When set to `true` it's mean that need load full information about unpaid visits: * List of available/existing POs. * List of unpaid addons. When set to `false` loaded only general information about visits on passed day.
