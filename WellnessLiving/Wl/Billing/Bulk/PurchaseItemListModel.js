@@ -38,8 +38,8 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
 
   /**
    * @typedef {{}} Wl_Billing_Bulk_PurchaseItemListModel_a_promotion
-   * @property {number} id_program The promotion program.
-   * @property {number} id_program_type The promotion program type.
+   * @property {number} id_program Program types.
+   * @property {number} id_program_type Program types.
    * @property {string} k_promotion The promotion key.
    * @property {string} m_price The promotion price, excluding taxes.
    * @property {string} text_title The promotion title.
@@ -93,6 +93,9 @@ Wl_Billing_Bulk_PurchaseItemListModel.prototype.config=function()
 
 /**
  * Gets the list of promotions and products available at the location.
+ *
+ * Validates access to the business, then loads promotions with their prices and products expanded into
+ * their options, keeping only the items available at the requested location.
  *
  * @function
  * @name Wl_Billing_Bulk_PurchaseItemListModel.get
