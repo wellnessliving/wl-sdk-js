@@ -1,0 +1,211 @@
+/**
+ * Refills the user account balance by the specified payment amount or adjusts it manually.
+ *
+ * @augments WlSdk_ModelAbstract
+ * @constructor
+ */
+function Wl_Pay_Account_Charge_ChargeModel()
+{
+  WlSdk_ModelAbstract.apply(this);
+
+  /**
+   * @typedef {{}} Wl_Pay_Account_Charge_ChargeModel_a_pay_form_a_pay_card_a_pay_address
+   * @property {boolean} is_new Set this value to `1` to add a new payment address or to `0` to use a saved payment address.
+   * @property {string} k_geo_country The key of the country used for the payment address. Specify this to add a new address.
+   * @property {string} k_geo_region The key of the region for the payment address. Specify this to add a new address.
+   * @property {string} k_pay_address The key of the saved payment address. Specify this to use a saved address.
+   * @property {string} s_city The city used for the payment address. Specify this to add a new address.
+   * @property {string} s_name The card name. Specify this to add a new address.
+   * @property {string} s_phone The payment phone. Specify this to add a new address.
+   * @property {string} s_postal The postal code for the payment address. Specify this to add a new address.
+   * @property {string} s_street1 The payment address. Specify this to add a new address.
+   * @property {string} s_street2 The optional payment address. Specify this to add a new address.
+   */
+
+  /**
+   * @typedef {{}} Wl_Pay_Account_Charge_ChargeModel_a_pay_form_a_pay_card
+   * @property {Wl_Pay_Account_Charge_ChargeModel_a_pay_form_a_pay_card_a_pay_address} a_pay_address The payment address:
+   * @property {number} i_csc The credit card CSC. Specify this to add a new card.
+   * @property {number} i_month The credit card expiration month. Specify this to add a new card.
+   * @property {number} i_year The credit card expiration year. Specify this to add a new card.
+   * @property {boolean} is_new Specify `1` to add a new card, or `0` to use a saved card.
+   * @property {string} k_pay_bank The key of the credit card. Specify this to use saved card.
+   * @property {string} s_comment Optional comment(s). Specify this to add a new card.
+   * @property {string} s_number The card number. Specify this to add a new card.
+   */
+
+  /**
+   * @typedef {{}} Wl_Pay_Account_Charge_ChargeModel_a_pay_form
+   * @property {Wl_Pay_Account_Charge_ChargeModel_a_pay_form_a_pay_card} a_pay_card The payment card information:
+   * @property {string} f_amount The amount of money to withdraw with this payment source.
+   * @property {boolean} is_hide Determines whether this payment method is hidden.
+   * @property {boolean} is_save Whether payment method should be saved to user's account.
+   * @property {boolean} is_success Identifies whether this source was successfully charged.
+   * @property {string} m_surcharge The client-side calculated surcharge.
+   * @property {string} s_index The index of this form (optional).
+   * @property {string} sid_pay_method The payment method ID.
+   */
+
+  /**
+   * A list of payment sources to pay with.
+   *
+   * Each element has next keys:
+   *
+   * @post post
+   * @type {Wl_Pay_Account_Charge_ChargeModel_a_pay_form[]}
+   */
+  this.a_pay_form = undefined;
+
+  /**
+   * The source of a visit.
+   *
+   * Last used ID: 31.
+   *
+   * Values:
+   * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
+   * - 21 (`AZURE`): Registered through `Azure`.
+   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
+   * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
+   * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
+   * - 22 (`COLLECTIONS`): Debt paid via collections.
+   * - 26 (`COLLECTIONS_FUTURE`): Debt paid via collections.
+   * - 27 (`CONCERTO`): Action from Concerto.
+   * - 18 (`EMAIL`): Action made via email.
+   * - 20 (`FACEBOOK`): Indicating that the source is Facebook.
+   * - 30 (`GO_HIGH_LEVEL`): Action from Go High Level.
+   * - 19 (`GOOGLE`): Indicating that the source is Google.
+   * - 7 (`GOOGLE_BOOKING`): Visit has been created by Google Booking Service.
+   * - 14 (`GYMPASS_BOOKING`): Visit has been created by `GymPass`.
+   * - 5 (`IMPORT`): Visit was created during import.
+   * - 12 (`MICROSITE`): Action made via microsite.
+   *
+   *   It is also names as directory listing.
+   * - 24 (`MICROSOFT`): Indicating that the source is Microsoft.
+   * - 13 (`MY_PRESENCE_SITE`): Client booked session on My Presence Site.
+   * - 17 (`SMS`): Action made via SMS.
+   * - 4 (`SPA_BACKEND`): Staff booked session from spa backend.
+   * - 3 (`SPA_FRONTEND`): Client booked session from spa frontend.
+   * - 10 (`SYSTEM`): Created by system.
+   * - 6 (`UNDEFINED`): Means that we did not define mode.
+   * - 16 (`WEB_APP_ATTENDANCE`): Client booked session from Attendance Web App.
+   * - 15 (`WEB_APP_CHECK_IN`): Client checked-in for the session through Check-In Web App.
+   * - 2 (`WEB_BACKEND`): Staff booked session for client from website backend.
+   * - 1 (`WEB_FRONTEND`): Client booked session from website frontend.
+   * - 11 (`WIDGET`): Action made via widget (purchase, book etc).
+   * - 25 (`ZAPIER`): Action from Zapier.
+   *
+   * @post post
+   * @see Wl_Mode_ModeSid
+   * @type {number}
+   */
+  this.id_mode = 0;
+
+  /**
+   * The account charge mode.
+   *
+   * One of the {@link RsPayAccountChargeSid} constants.
+   *
+   * @post get
+   * @see RsPayAccountChargeSid
+   * @type {number}
+   */
+  this.id_pay_account_charge = 0;
+
+  /**
+   * If `true`, the account is filled by a staff member in the backend. Otherwise, this will be `false`.
+   *
+   * @post get
+   * @type {boolean}
+   */
+  this.is_staff = false;
+
+  /**
+   * The ID of the business the user account belongs to.
+   *
+   * This shouldn't be passed if a user account has already been created.
+   * In such cases, {@link Thoth_WlPay_Account_Charge_ChargeModel.k_pay_account} should be passed instead.
+   *
+   * If both the business ID and account ID passed, the system checks if the given business is the owner of the specified account.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.k_business = "";
+
+  /**
+   * The ID of the user account to refill.
+   *
+   * This may be 0 if a user account hasn't been created yet.
+   * In such cases, {@link Thoth_WlPay_Account_Charge_ChargeModel.k_business} and {@link Thoth_WlPay_Account_Charge_ChargeModel.uid} should be passed instead.
+   *
+   * If not passed, the currency of account equals the default business currency.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.k_pay_account = "";
+
+  /**
+   * The ID of the purchase that was created during payment.
+   * This value is only returned in cases where a purchase was created.
+   * A new purchase is created when {@link Thoth_WlPay_Account_Charge_ChargeModel.id_pay_account_charge} equals {@link RsPayAccountChargeSid}.
+   *
+   * @post result
+   * @type {string}
+   */
+  this.k_purchase = undefined;
+
+  /**
+   * The payment amount.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.m_amount = "";
+
+  /**
+   * The transaction comment.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.s_comment = "";
+
+  /**
+   * The ID of the user whose account is being refilled.
+   *
+   * This shouldn't be passed if a user account has already been created.
+   * In such cases, {@link Thoth_WlPay_Account_Charge_ChargeModel.k_pay_account} should be passed instead.
+   *
+   * If both the user ID and account ID passed, the system checks if the given user is the owner of the specified account.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.uid = "";
+
+  this.changeInit();
+}
+
+WlSdk_ModelAbstract.extend(Wl_Pay_Account_Charge_ChargeModel);
+
+/**
+ * @inheritDoc
+ */
+Wl_Pay_Account_Charge_ChargeModel.prototype.config=function()
+{
+  return {"a_field":{"a_pay_form":{"post":{"post":true}},"id_mode":{"post":{"post":true}},"id_pay_account_charge":{"post":{"get":true}},"is_staff":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_pay_account":{"post":{"get":true}},"k_purchase":{"post":{"result":true}},"m_amount":{"post":{"post":true}},"s_comment":{"post":{"post":true}},"uid":{"post":{"get":true}}}};
+};
+
+/**
+ * Refills the user account balance by the specified payment amount or adjusts it manually.
+ *
+ * Accepts the payment amount, account key or user-and-business identifiers, charge mode, and payment form
+ * data. Processes the payment through the configured payment environment and returns the purchase key
+ * when a new purchase is created (for the automatic charge mode).
+ *
+ * @function
+ * @name Wl_Pay_Account_Charge_ChargeModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */

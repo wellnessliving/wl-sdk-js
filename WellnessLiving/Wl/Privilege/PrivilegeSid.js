@@ -1,7 +1,7 @@
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 245.
+ * Last Used ID: 246.
  */
 function Wl_Privilege_PrivilegeSid()
 {
@@ -308,6 +308,13 @@ Wl_Privilege_PrivilegeSid.CLASS_LOCK_SEARCH = 152;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.CLASS_PERIOD = 5;
+
+/**
+ * Allows a staff member to see other staff members' class sessions on the schedule in read-only mode while the Classes scope is set to only their own schedules.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.CLASS_SCHEDULE_VIEW = 246;
 
 /**
  * Add and view client's contact logs.
