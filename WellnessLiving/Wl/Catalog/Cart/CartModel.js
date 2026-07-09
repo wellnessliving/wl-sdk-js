@@ -31,7 +31,7 @@ function Wl_Catalog_Cart_CartModel()
 
   /**
    * @typedef {{}} Wl_Catalog_Cart_CartModel_a_item_a_config_a_registration_fee_list
-   * @property {string} m_amount_fee Registration fee amount for the tuition participant.
+   * @property {string} m_amount Registration fee amount for the tuition participant.
    */
 
   /**

@@ -45,9 +45,16 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    */
 
   /**
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_registration_fee_list_a_discount
+   * @property {string} m_discount Discount amount.
+   * @property {string} text_discount Discount title.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_registration_fee_list
-   * @property {*[]} a_tax_fee List of taxes to be applied to the registration fee:      Keys are internal system tax keys.       Values are amount of taxes to be applied to the registration fee.
-   * @property {string} m_amount_fee Registration fee amount for the tuition participant.
+   * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_registration_fee_list_a_discount} a_discount Manual discount applied to the registration fee:
+   * @property {*[]} a_tax List of taxes to be applied to the registration fee:      Keys are internal system tax keys.       Values are amount of taxes to be applied to the registration fee.
+   * @property {string} m_amount Registration fee amount for the tuition participant.
    */
 
   /**
