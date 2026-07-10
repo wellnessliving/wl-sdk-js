@@ -89,6 +89,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    * @property {number} id_option Appointment display option.
    * @property {number} id_service Identifiers for services types.
    * @property {boolean} is_arrive For appointments: `true` if user has checked-in; `false` otherwise. For classes always `null`.
+   * @property {boolean} is_class_view `true` if this class session is visible only through the "View other staff schedules" permission and must be shown read-only (no attendance roster, no booked client identities, and no edit, cancel, reschedule, or booking actions); `false` otherwise.
    * @property {boolean} is_pay For appointments: `true` if appointment is paid; `false` otherwise. For classes always `null`.
    * @property {boolean} is_repeat For appointments: `true` if appointment is recurring; `false` otherwise. For classes always `null`.
    * @property {boolean} is_virtual_service `true` - If the business has at least one virtual service, `false` - otherwise.
