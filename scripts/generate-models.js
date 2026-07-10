@@ -215,14 +215,32 @@ function getSidRefClass(schema)
 }
 
 /**
+ * Returns whether a schema declares an explicit `default` value, and that value if present.
+ *
+ * @param {object} schema Resolved OpenAPI schema.
+ * @returns {{hasDefault: boolean, defaultValue: *}} Presence flag and the raw `default` value.
+ */
+function getSchemaDefault(schema)
+{
+  if (!schema || !Object.prototype.hasOwnProperty.call(schema, 'default'))
+  {
+    return { hasDefault: false, defaultValue: undefined };
+  }
+  return { hasDefault: true, defaultValue: schema.default };
+}
+
+/**
  * Returns the JS default value string for a field.
  *
  * @param {string} jsType JSDoc type string.
  * @param {boolean} isResultOnly True if the field appears only in response (not in request).
+ * @param {boolean} hasDefault True if the schema declares an explicit `default` value.
+ * @param {*} defaultValue Explicit `default` value from the schema, used only if `hasDefault` is `true`.
  * @returns {string} JS value literal.
  */
-function getDefaultValue(jsType, isResultOnly)
+function getDefaultValue(jsType, isResultOnly, hasDefault, defaultValue)
 {
+  if (hasDefault) return JSON.stringify(defaultValue);
   if (jsType.startsWith('?')) return 'null';
   if (isResultOnly) return 'undefined';
   if (jsType === 'string') return '""';
@@ -474,10 +492,14 @@ function collectFields(pathItem, spec, className)
       const effectiveType = (!isRequired && !jsType.startsWith('?')) ? '?' + jsType : jsType;
       const desc = convertLinks(escDoc(param.description || ''));
       const sidRef = getSidRefClass(paramSchema);
+      const { hasDefault, defaultValue } = getSchemaDefault(resolvedParamSchema);
 
       if (!fields[name])
       {
-        fields[name] = { a_method: {}, type: effectiveType, description: desc, sidRef, hasInput: false, typedefs: localTypedefs };
+        fields[name] = {
+          a_method: {}, type: effectiveType, description: desc, sidRef, hasInput: false,
+          typedefs: localTypedefs, hasDefault: false, defaultValue: undefined,
+        };
       }
       if (!fields[name].a_method[httpMethod]) fields[name].a_method[httpMethod] = {};
       fields[name].a_method[httpMethod].get = true;
@@ -485,6 +507,11 @@ function collectFields(pathItem, spec, className)
       if (fields[name].type === '*' && effectiveType !== '*') fields[name].type = effectiveType;
       if (!fields[name].description && desc) fields[name].description = desc;
       if (!fields[name].sidRef && sidRef) fields[name].sidRef = sidRef;
+      if (!fields[name].hasDefault && hasDefault)
+      {
+        fields[name].hasDefault = true;
+        fields[name].defaultValue = defaultValue;
+      }
     }
 
     // requestBody fields -> @{method} post
@@ -512,10 +539,14 @@ function collectFields(pathItem, spec, className)
           const effectiveType = (!isRequired && !jsType.startsWith('?')) ? '?' + jsType : jsType;
           const desc = convertLinks(escDoc((resolved && resolved.description) || ''));
           const sidRef = getSidRefClass(propSchema);
+          const { hasDefault, defaultValue } = getSchemaDefault(resolved);
 
           if (!fields[name])
           {
-            fields[name] = { a_method: {}, type: effectiveType, description: desc, sidRef, hasInput: false, typedefs: localTypedefs };
+            fields[name] = {
+              a_method: {}, type: effectiveType, description: desc, sidRef, hasInput: false,
+              typedefs: localTypedefs, hasDefault: false, defaultValue: undefined,
+            };
           }
           if (!fields[name].a_method[httpMethod]) fields[name].a_method[httpMethod] = {};
           fields[name].a_method[httpMethod].post = true;
@@ -523,6 +554,11 @@ function collectFields(pathItem, spec, className)
           if (fields[name].type === '*' && effectiveType !== '*') fields[name].type = effectiveType;
           if (!fields[name].description && desc) fields[name].description = desc;
           if (!fields[name].sidRef && sidRef) fields[name].sidRef = sidRef;
+          if (!fields[name].hasDefault && hasDefault)
+          {
+            fields[name].hasDefault = true;
+            fields[name].defaultValue = defaultValue;
+          }
         }
       }
     }
@@ -544,15 +580,24 @@ function collectFields(pathItem, spec, className)
             const localTypedefs = [];
             const jsType = schemaToJsType(resolved, spec, 0, localTypedefs, className + '_' + name);
             const desc = convertLinks(escDoc((resolved && resolved.description) || ''));
+            const { hasDefault, defaultValue } = getSchemaDefault(resolved);
 
             if (!fields[name])
             {
-              fields[name] = { a_method: {}, type: jsType, description: desc, sidRef: null, hasInput: false, typedefs: localTypedefs };
+              fields[name] = {
+                a_method: {}, type: jsType, description: desc, sidRef: null, hasInput: false,
+                typedefs: localTypedefs, hasDefault: false, defaultValue: undefined,
+              };
             }
             if (!fields[name].a_method[httpMethod]) fields[name].a_method[httpMethod] = {};
             fields[name].a_method[httpMethod].result = true;
             if (fields[name].type === '*' && jsType !== '*') fields[name].type = jsType;
             if (!fields[name].description && desc) fields[name].description = desc;
+            if (!fields[name].hasDefault && hasDefault)
+            {
+              fields[name].hasDefault = true;
+              fields[name].defaultValue = defaultValue;
+            }
           }
         }
       }
@@ -616,7 +661,7 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
   {
     const f = fields[name];
     const jsType = f.type || '*';
-    const defaultVal = getDefaultValue(jsType, !f.hasInput);
+    const defaultVal = getDefaultValue(jsType, !f.hasInput, f.hasDefault, f.defaultValue);
 
     // Output typedef blocks for this field (collection order: leaf typedefs first, then parent).
     for (const td of (f.typedefs || []))
