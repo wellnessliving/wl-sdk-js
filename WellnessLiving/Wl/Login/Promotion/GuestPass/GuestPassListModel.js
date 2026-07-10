@@ -86,6 +86,14 @@ function Wl_Login_Promotion_GuestPass_GuestPassListModel()
   this.a_list = [];
 
   /**
+   * Local calendar date for which guest pass availability should be calculated.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.dl_date = null;
+
+  /**
    * Business key.
    *
    * @get get
@@ -131,5 +139,5 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_GuestPass_GuestPassListModel);
  */
 Wl_Login_Promotion_GuestPass_GuestPassListModel.prototype.config=function()
 {
-  return {"a_field": {"a_list": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_list": {"get": {"result": true}},"dl_date": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class": {"get": {"get": true}},"k_location": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
