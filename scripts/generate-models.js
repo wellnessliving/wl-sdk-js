@@ -137,7 +137,7 @@ function schemaToJsType(schema, spec, depth, typedefs, typedefName)
     return resolved ? schemaToJsType(resolved, spec, depth + 1) : '*';
   }
 
-  if (schema.oneOf || schema.anyOf) return '*';
+  if (schema.oneOf || schema.anyOf) return oneOfToJsType(schema.oneOf || schema.anyOf, spec, depth, typedefs, typedefName);
 
   const rawTypes = schema.type
     ? (Array.isArray(schema.type) ? schema.type : [schema.type])
@@ -180,28 +180,99 @@ function schemaToJsType(schema, spec, depth, typedefs, typedefName)
       // Collect typedef for inline objects with properties.
       if (typedefs && typedefName && schema.properties)
       {
-        const props = [];
-        for (const [pName, pSchema] of Object.entries(schema.properties))
-        {
-          const resolved = resolveSchema(pSchema, spec);
-          const subName = typedefName + '_' + pName;
-          const pType = schemaToJsType(resolved, spec, depth + 1, typedefs, subName);
-          // Use only the first paragraph - @property is a single-line annotation.
-          const rawDesc = (resolved && resolved.description) || '';
-          const firstPara = rawDesc.split(/\n\s*\n/)[0].replace(/\n/g, ' ').trim();
-          const pDesc = convertLinks(escDoc(firstPara));
-          props.push({ name: pName, type: pType, desc: pDesc });
-        }
-        props.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
-        // Push after children so leaf typedefs appear first in the output.
-        typedefs.push({ name: typedefName, properties: props });
-        return prefix + typedefName;
+        return prefix + buildObjectTypedef(schema, spec, depth, typedefs, typedefName);
       }
       return prefix + '{}';
     }
     default:
       return prefix + '*';
   }
+}
+
+/**
+ * Builds a typedef for an inline object schema (`type: object` with `properties`) and pushes it
+ * to `typedefs`.
+ *
+ * @param {object} schema Resolved schema with `properties`.
+ * @param {object} spec Full parsed OpenAPI spec.
+ * @param {number} depth Current recursion depth.
+ * @param {object[]} typedefs Typedef collector - mutated in place.
+ * @param {string} typedefName Name to give the generated typedef.
+ * @returns {string} `typedefName`, returned for call-site convenience.
+ */
+function buildObjectTypedef(schema, spec, depth, typedefs, typedefName)
+{
+  const props = [];
+  for (const [pName, pSchema] of Object.entries(schema.properties))
+  {
+    const resolved = resolveSchema(pSchema, spec);
+    const subName = typedefName + '_' + pName;
+    const pType = schemaToJsType(resolved, spec, depth + 1, typedefs, subName);
+    // Use only the first paragraph - @property is a single-line annotation.
+    const rawDesc = (resolved && resolved.description) || '';
+    const firstPara = rawDesc.split(/\n\s*\n/)[0].replace(/\n/g, ' ').trim();
+    const pDesc = convertLinks(escDoc(firstPara));
+    props.push({ name: pName, type: pType, desc: pDesc });
+  }
+  props.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
+  // Push after children so leaf typedefs appear first in the output.
+  typedefs.push({ name: typedefName, properties: props });
+  return typedefName;
+}
+
+/**
+ * Converts an OpenAPI `oneOf`/`anyOf` variant list to a JSDoc union type string.
+ *
+ * Each object variant (inline, or `$ref` to a named schema with `properties`) becomes its own
+ * typedef, so the union reads as `TypedefA|TypedefB|...` instead of collapsing to `*`. A `$ref`
+ * variant reuses the referenced schema's name; an inline object variant is suffixed `A`, `B`,
+ * `C`, ... in declaration order. Non-object variants (scalars, arrays) fall back to their own JS
+ * type without a typedef.
+ *
+ * @param {object[]} variants `oneOf`/`anyOf` schema list.
+ * @param {object} spec Full parsed OpenAPI spec.
+ * @param {number} depth Current recursion depth.
+ * @param {?object[]} typedefs Typedef collector - mutated in place. `null` disables typedef
+ *  generation, falling back to `*`.
+ * @param {?string} typedefName Base name for generated typedefs.
+ * @returns {string} JSDoc union type string, e.g. `TypedefA|TypedefB`.
+ */
+function oneOfToJsType(variants, spec, depth, typedefs, typedefName)
+{
+  if (!typedefs || !typedefName) return '*';
+
+  const variantTypes = [];
+  let objectIdx = 0;
+
+  for (const variant of variants)
+  {
+    if (variant.$ref)
+    {
+      const resolvedVariant = resolveRef(spec, variant.$ref);
+      if (resolvedVariant && resolvedVariant.type === 'object' && resolvedVariant.properties)
+      {
+        const refName = variant.$ref.replace(/^.*\//, '').replace(/\./g, '_');
+        variantTypes.push(buildObjectTypedef(resolvedVariant, spec, depth + 1, typedefs, typedefName + '_' + refName));
+      }
+      else
+      {
+        variantTypes.push(schemaToJsType(resolvedVariant || variant, spec, depth + 1));
+      }
+      continue;
+    }
+
+    if (variant.type === 'object' && variant.properties)
+    {
+      const suffix = objectIdx < 26 ? String.fromCharCode(65 + objectIdx) : String(objectIdx);
+      objectIdx++;
+      variantTypes.push(buildObjectTypedef(variant, spec, depth + 1, typedefs, typedefName + '_' + suffix));
+      continue;
+    }
+
+    variantTypes.push(schemaToJsType(variant, spec, depth + 1));
+  }
+
+  return [...new Set(variantTypes)].join('|') || '*';
 }
 
 /**
@@ -475,9 +546,26 @@ function getFieldRawDescription(ownDescription, resolved, sidRef)
 }
 
 /**
+ * Returns whether any of the given schema-like objects declares `deprecated: true`, and the
+ * `x-deprecated` message to use (from the first candidate that has one).
+ *
+ * @param {...(?object)} candidates Parameter and/or schema objects to check, in priority order.
+ * @returns {{deprecated: boolean, message: string}} Deprecation flag and raw (not yet escaped
+ *  or link-converted) message text.
+ */
+function getDeprecatedInfo(...candidates)
+{
+  const isDeprecated = candidates.some(c => c && c.deprecated === true);
+  if (!isDeprecated) return { deprecated: false, message: '' };
+
+  const withMsg = candidates.find(c => c && c['x-deprecated']);
+  return { deprecated: true, message: (withMsg && withMsg['x-deprecated']) || 'This field is deprecated.' };
+}
+
+/**
  * Collects all fields from all HTTP operations of a path item.
  *
- * Each field entry: { a_method, type, description, sidRef, hasInput, typedefs }
+ * Each field entry: { a_method, type, description, sidRef, hasInput, typedefs, deprecated, deprecatedMsg }
  *   a_method: { [httpMethod]: { get?, post?, result? } }
  *   hasInput: true if the field appears in a request context (not result-only)
  *   typedefs: typedef definitions collected from inline object schemas for this field
@@ -513,12 +601,15 @@ function collectFields(pathItem, spec, className)
       const sidRef = getSidRefClass(paramSchema);
       const desc = convertLinks(escDoc(getFieldRawDescription(param.description, resolvedParamSchema, sidRef)));
       const { hasDefault, defaultValue } = getSchemaDefault(resolvedParamSchema);
+      const dep = getDeprecatedInfo(param, paramSchema, resolvedParamSchema);
+      const deprecatedMsg = dep.deprecated ? convertLinks(escDoc(dep.message)) : '';
 
       if (!fields[name])
       {
         fields[name] = {
           a_method: {}, type: effectiveType, description: desc, sidRef, hasInput: false,
           typedefs: localTypedefs, hasDefault: false, defaultValue: undefined,
+          deprecated: false, deprecatedMsg: '',
         };
       }
       if (!fields[name].a_method[httpMethod]) fields[name].a_method[httpMethod] = {};
@@ -531,6 +622,11 @@ function collectFields(pathItem, spec, className)
       {
         fields[name].hasDefault = true;
         fields[name].defaultValue = defaultValue;
+      }
+      if (!fields[name].deprecated && dep.deprecated)
+      {
+        fields[name].deprecated = true;
+        fields[name].deprecatedMsg = deprecatedMsg;
       }
     }
 
@@ -560,12 +656,15 @@ function collectFields(pathItem, spec, className)
           const sidRef = getSidRefClass(propSchema);
           const desc = convertLinks(escDoc(getFieldRawDescription(propSchema.description, resolved, sidRef)));
           const { hasDefault, defaultValue } = getSchemaDefault(resolved);
+          const dep = getDeprecatedInfo(propSchema, resolved);
+          const deprecatedMsg = dep.deprecated ? convertLinks(escDoc(dep.message)) : '';
 
           if (!fields[name])
           {
             fields[name] = {
               a_method: {}, type: effectiveType, description: desc, sidRef, hasInput: false,
               typedefs: localTypedefs, hasDefault: false, defaultValue: undefined,
+              deprecated: false, deprecatedMsg: '',
             };
           }
           if (!fields[name].a_method[httpMethod]) fields[name].a_method[httpMethod] = {};
@@ -578,6 +677,11 @@ function collectFields(pathItem, spec, className)
           {
             fields[name].hasDefault = true;
             fields[name].defaultValue = defaultValue;
+          }
+          if (!fields[name].deprecated && dep.deprecated)
+          {
+            fields[name].deprecated = true;
+            fields[name].deprecatedMsg = deprecatedMsg;
           }
         }
       }
@@ -602,12 +706,15 @@ function collectFields(pathItem, spec, className)
             const sidRef = getSidRefClass(propSchema);
             const desc = convertLinks(escDoc(getFieldRawDescription(propSchema.description, resolved, sidRef)));
             const { hasDefault, defaultValue } = getSchemaDefault(resolved);
+            const dep = getDeprecatedInfo(propSchema, resolved);
+            const deprecatedMsg = dep.deprecated ? convertLinks(escDoc(dep.message)) : '';
 
             if (!fields[name])
             {
               fields[name] = {
                 a_method: {}, type: jsType, description: desc, sidRef, hasInput: false,
                 typedefs: localTypedefs, hasDefault: false, defaultValue: undefined,
+                deprecated: false, deprecatedMsg: '',
               };
             }
             if (!fields[name].a_method[httpMethod]) fields[name].a_method[httpMethod] = {};
@@ -615,6 +722,11 @@ function collectFields(pathItem, spec, className)
             if (fields[name].type === '*' && jsType !== '*') fields[name].type = jsType;
             if (!fields[name].description && desc) fields[name].description = desc;
             if (!fields[name].sidRef && sidRef) fields[name].sidRef = sidRef;
+            if (!fields[name].deprecated && dep.deprecated)
+            {
+              fields[name].deprecated = true;
+              fields[name].deprecatedMsg = deprecatedMsg;
+            }
             if (!fields[name].hasDefault && hasDefault)
             {
               fields[name].hasDefault = true;
@@ -715,6 +827,10 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
     for (const method of Object.keys(f.a_method).sort())
     {
       fieldTags.push({ tag: method, value: Object.keys(f.a_method[method]).join(',') });
+    }
+    if (f.deprecated)
+    {
+      fieldTags.push({ tag: 'deprecated', value: f.deprecatedMsg });
     }
     if (f.sidRef)
     {
