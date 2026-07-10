@@ -106,10 +106,12 @@ function Wl_Login_LoginModel()
   /**
    * The user's staff key for the specified business.
    *
+   * `null` if staff key not available for this application.
+   *
    * @get result
-   * @type {string}
+   * @type {?string}
    */
-  this.k_staff = undefined;
+  this.k_staff = null;
 
   /**
    * The first name of the user.

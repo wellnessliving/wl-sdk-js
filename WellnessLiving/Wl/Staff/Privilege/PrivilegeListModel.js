@@ -20,7 +20,7 @@ function Wl_Staff_Privilege_PrivilegeListModel()
    * If you need to check access to certain place contact WellnessLiving integration team.
    *
    * @get result
-   * @type {string[]}
+   * @type {{}}
    */
   this.a_privilege_passport = undefined;
 

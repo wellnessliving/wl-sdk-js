@@ -17,9 +17,9 @@ function Wl_Shop_Product_Option_Inventory_Count_InventoryCountModel()
    *
    * @get get
    * @post get
-   * @type {string[]}
+   * @type {{}}
    */
-  this.a_note = undefined;
+  this.a_note = null;
 
   /**
    * @typedef {{}} Wl_Shop_Product_Option_Inventory_Count_InventoryCountModel_a_product_option_a_image
@@ -58,9 +58,9 @@ function Wl_Shop_Product_Option_Inventory_Count_InventoryCountModel()
    *
    * @get get
    * @post get
-   * @type {number[]}
+   * @type {{}}
    */
-  this.a_quantity = undefined;
+  this.a_quantity = null;
 
   /**
    * The current business.

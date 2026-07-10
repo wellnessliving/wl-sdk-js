@@ -22,7 +22,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * Each value is an empty array reserved for future use.
    *
    * @get result
-   * @type {*[][]}
+   * @type {{}}
    */
   this.a_calendar = undefined;
 

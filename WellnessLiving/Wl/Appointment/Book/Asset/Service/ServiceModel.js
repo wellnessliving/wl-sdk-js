@@ -27,7 +27,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    * If it's equal to the key of your current appointment booking, you can assume the asset is available.
    *
    * @get result
-   * @type {string[][]}
+   * @type {{}}
    */
   this.a_resource_busy = undefined;
 

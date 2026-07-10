@@ -20,9 +20,9 @@ function Wl_Passport_Login_Enter_PassportOtpModel()
    * Type of delivery strategy from {@link Wl_Passport_Login_Enter_OtpDeliveryStrategyEnum}.
    *
    * @get get
-   * @type {number}
+   * @type {?number}
    */
-  this.id_delivery_strategy = 0;
+  this.id_delivery_strategy = null;
 
   /**
    * Whether OTP code will be sending to user via email.
@@ -130,25 +130,25 @@ Wl_Passport_Login_Enter_PassportOtpModel.prototype.config=function()
  *
  * **1. Broadcast strategy** (default)
  *
- * Set `$id_delivery_strategy` to `0` or {@link Wl_Passport_Login_Enter_OtpDeliveryStrategyEnum} (or omit it entirely).
- * Use `$is_mail` and/or `$is_phone` to specify which channels to use.
+ * Set {@link Wl_Passport_Login_Enter_PassportOtpModel.id_delivery_strategy} to `null` or {@link Wl_Passport_Login_Enter_OtpDeliveryStrategyEnum} (or omit it entirely).
+ * Use {@link Wl_Passport_Login_Enter_PassportOtpModel.is_mail} and/or {@link Wl_Passport_Login_Enter_PassportOtpModel.is_phone} to specify which channels to use.
  * At least one of them must be `true`; the OTP is sent to every channel that is enabled.
- * The user must have a corresponding contact — a phone number when `$is_phone` is `true`, an email when
- * `$is_mail` is `true` — otherwise an error is thrown.
+ * The user must have a corresponding contact — a phone number when {@link Wl_Passport_Login_Enter_PassportOtpModel.is_phone} is `true`, an email when
+ * {@link Wl_Passport_Login_Enter_PassportOtpModel.is_mail} is `true` — otherwise an error is thrown.
  *
- * Example: set `$is_mail = true` and `$is_phone = true` to send OTP via both email and SMS simultaneously.
+ * Example: set {@link Wl_Passport_Login_Enter_PassportOtpModel.is_mail} to `true` and {@link Wl_Passport_Login_Enter_PassportOtpModel.is_phone} to `true` to send OTP via both email and SMS simultaneously.
  *
  * **2. Priority strategy**
  *
- * Set `$id_delivery_strategy` to {@link Wl_Passport_Login_Enter_OtpDeliveryStrategyEnum}.
- * Provide `$text_delivery_priority` — a comma-separated list of `sms` and `email` values in the preferred
+ * Set {@link Wl_Passport_Login_Enter_PassportOtpModel.id_delivery_strategy} to {@link Wl_Passport_Login_Enter_OtpDeliveryStrategyEnum}.
+ * Provide {@link Wl_Passport_Login_Enter_PassportOtpModel.text_delivery_priority} — a comma-separated list of `sms` and `email` values in the preferred
  * order, e.g. `"sms,email"`.
  * The system picks the first channel from the list for which the user has valid contact data and sends the OTP
- * only to that one channel. The selected channel is returned in `$text_delivery_selected`; when SMS is
- * selected, the last four digits of the phone are returned in `$text_phone_masked`.
+ * only to that one channel. The selected channel is returned in {@link Wl_Passport_Login_Enter_PassportOtpModel.text_delivery_selected}; when SMS is
+ * selected, the last four digits of the phone are returned in {@link Wl_Passport_Login_Enter_PassportOtpModel.text_phone_masked}.
  * If none of the listed channels can be used, an error is thrown.
  *
- * Example: set `$text_delivery_priority = "sms,email"` to prefer SMS but fall back to email if the user
+ * Example: set {@link Wl_Passport_Login_Enter_PassportOtpModel.text_delivery_priority} set to `sms,email` to prefer SMS but fall back to email if the user
  * has no phone number.
  *
  * @function

@@ -19,7 +19,7 @@ function Wl_Business_Config_Option_BusinessConfigOptionModel()
    * Values - config option value.
    *
    * @get result
-   * @type {string[]}
+   * @type {{}}
    */
   this.a_option = undefined;
 

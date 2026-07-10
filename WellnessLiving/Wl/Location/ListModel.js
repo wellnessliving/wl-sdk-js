@@ -23,37 +23,11 @@ function Wl_Location_ListModel()
   this.a_business = undefined;
 
   /**
-   * @typedef {{}} Wl_Location_ListModel_a_location_a_timezone
-   * @property {string} k_timezone Timezone key.
-   * @property {string} text_abbr User-friendly short timezone abbreviation, for example 'EST' or 'PST'.
-   * @property {string} text_name Full timezone name, for example 'America/New_York'.
-   */
-
-  /**
-   * @typedef {{}} Wl_Location_ListModel_a_location
-   * @property {number[]} a_directories List of directories from {@link RsProjectSid}, where location is published.
-   * @property {Wl_Location_ListModel_a_location_a_timezone} a_timezone Information about location timezone:
-   * @property {number} f_latitude The location latitude.
-   * @property {number} f_longitude The location longitude.
-   * @property {number} i_shift Timezone shift in hours.
-   * @property {string} k_business The business key.
-   * @property {string} k_country Country key.
-   * @property {string} k_location The location key.
-   * @property {string} k_region Region key.
-   * @property {string} s_mail The location email address.
-   * @property {string} s_phone The location phone number.
-   * @property {string} s_title The location title.
-   * @property {string} text_address The location's full address.
-   * @property {string} url_logo The location logo's URL. This will only be set if the location has a logo and contains small thumbnail of the image.
-   * @property {string} url_logo_source The location logo's URL. This will only be set if the location has a logo and contains full uploaded image.
-   */
-
-  /**
    * Information about the business's location(s). If you've specified multiple businesses for this endpoint, this will
    * return location information for multiple businesses. Keys refer to location keys. Values refer to nested arrays with the next keys:
    *
    * @get result
-   * @type {Wl_Location_ListModel_a_location[]}
+   * @type {{}}
    */
   this.a_location = undefined;
 
