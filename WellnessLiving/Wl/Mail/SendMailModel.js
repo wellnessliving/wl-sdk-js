@@ -75,6 +75,7 @@ function Wl_Mail_SendMailModel()
   /**
    * The message content.
    *
+   * @deprecated Planned to delete.
    * @post post
    * @type {string}
    */

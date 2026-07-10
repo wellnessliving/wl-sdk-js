@@ -176,6 +176,7 @@ function Wl_Staff_StaffView_StaffViewModel()
   /**
    * A list of staff keys.
    *
+   * @deprecated Use {@link Wl_Staff_StaffView_StaffViewModel.a_uid_staff_list} instead.
    * @get get
    * @type {?string[]}
    */
@@ -220,6 +221,7 @@ function Wl_Staff_StaffView_StaffViewModel()
    * A staff member can work for more than one business.
    * This key can be found using the {@link Wl_Staff_StaffList_StaffListModel} endpoint.
    *
+   * @deprecated Use {@link Wl_Staff_StaffView_StaffViewModel.uid_staff} instead.
    * @get get
    * @type {string}
    */

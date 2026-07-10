@@ -24,6 +24,7 @@ function Wl_Book_Process_Info_InfoCanCompleteModel()
    * length and might fail if the user is booking more than 50 sessions at once.
    * Therefore, using the POST method is preferable.
    *
+   * @deprecated Use {@link Wl_Book_Process_Info_InfoCanCompleteModel.a_session_select_post} along with POST call instead.
    * @get get
    * @type {Wl_Book_Process_Info_InfoCanCompleteModel_a_session_select[]}
    */

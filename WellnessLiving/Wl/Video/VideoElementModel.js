@@ -25,6 +25,7 @@ function Wl_Video_VideoElementModel()
   /**
    * The keys of the user staff members who are on the video.
    *
+   * @deprecated This property will be removed in the future. Use {@link Wl_Video_VideoElementModel.a_staff_uid} instead.
    * @get result
    * @post post
    * @type {string[]}

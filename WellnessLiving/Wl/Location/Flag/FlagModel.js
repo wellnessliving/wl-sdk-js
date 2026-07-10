@@ -24,6 +24,7 @@ function Wl_Location_Flag_FlagModel()
    * Array with structure:
    * `null` until loaded or when `a_uid` was not set.
    *
+   * @deprecated This is old property, which is left for back-compatibility. Use {@link Wl_Location_Flag_FlagModel.a_restrictions_multiple} instead.
    * @get result
    * @type {Wl_Location_Flag_FlagModel_a_flag}
    */
@@ -79,6 +80,7 @@ function Wl_Location_Flag_FlagModel()
    *
    * `null` until loaded or when {@link Wl_Location_Flag_FlagModel.a_uid} was not set.
    *
+   * @deprecated This is old property, which is left for back-compatibility. Use {@link Wl_Location_Flag_FlagModel.a_restrictions_single} instead.
    * @get result
    * @type {boolean}
    */

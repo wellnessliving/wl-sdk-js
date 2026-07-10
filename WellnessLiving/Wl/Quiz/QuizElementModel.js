@@ -52,7 +52,7 @@ function Wl_Quiz_QuizElementModel()
    * @property {string[]} a_notify_additional List of additional email addresses which should receive email notification after quiz is submitted.
    * @property {string[][]} a_service List of services grouped by service ID.
    * @property {boolean} hide_frontend Whether completed forms should be hidden for client in frontend.
-   * @property {*} i_notify_automated Number of periods email reminders should be sent for incomplete forms after. Type of a period is specified by   `id_notify_automated`.
+   * @property {number|string} i_notify_automated Number of periods email reminders should be sent for incomplete forms after. Type of a period is specified by   `id_notify_automated`.
    * @property {number} id_book_request_type List of quiz frequency types.
    * @property {number} id_notify_automated A class for managing time intervals. Last ID: 9.
    * @property {number} id_purchase_request_type List of quiz frequency types.
@@ -187,9 +187,9 @@ function Wl_Quiz_QuizElementModel()
    * Empty in case when purchase item not specified or form loaded from direct link.
    *
    * @get get
-   * @type {*}
+   * @type {number}
    */
-  this.json_purchase_item = undefined;
+  this.json_purchase_item = 0;
 
   /**
    * Business key within which quiz is managed.

@@ -51,7 +51,7 @@ function Wl_Quiz_QuizElement72Model()
    * @property {string[]} a_notify_additional List of additional email addresses which should receive email notification after quiz is submitted.
    * @property {string[][]} a_service List of services grouped by service ID.
    * @property {boolean} hide_frontend Whether completed forms should be hidden for client in frontend.
-   * @property {*} i_notify_automated Number of periods email reminders should be sent for incomplete forms after. Type of a period is specified by   `id_notify_automated`.
+   * @property {number|string} i_notify_automated Number of periods email reminders should be sent for incomplete forms after. Type of a period is specified by   `id_notify_automated`.
    * @property {number} id_book_request_type List of quiz frequency types.
    * @property {number} id_notify_automated A class for managing time intervals. Last ID: 9.
    * @property {number} id_purchase_request_type List of quiz frequency types.
@@ -186,9 +186,9 @@ function Wl_Quiz_QuizElement72Model()
    * Empty in case when purchase item not specified or form loaded from direct link.
    *
    * @get get
-   * @type {*}
+   * @type {number}
    */
-  this.json_purchase_item = undefined;
+  this.json_purchase_item = 0;
 
   /**
    * Business key within which quiz is managed.
@@ -301,7 +301,7 @@ Wl_Quiz_QuizElement72Model.prototype.config=function()
  * @param {string} k_quiz Quiz key.
  * @param {string} k_quiz_login Quiz login key.
  * @param {string} uid_client UID of the client for which quiz requested.
- * @param {*} json_purchase_item List of purchase items for which this form is loaded in JSON format. This variable supports two structures: New structure: Each element key has the format `[id_purchase_item]::[k_id]`, where: Old structure: Each element is a string in the format `[id_purchase_item]::[k_id]`. Empty in case when purchase item not specified or form loaded from direct link.
+ * @param {number} json_purchase_item List of purchase items for which this form is loaded in JSON format. This variable supports two structures: New structure: Each element key has the format `[id_purchase_item]::[k_id]`, where: Old structure: Each element is a string in the format `[id_purchase_item]::[k_id]`. Empty in case when purchase item not specified or form loaded from direct link.
  * @returns {Wl_Quiz_QuizElement72Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

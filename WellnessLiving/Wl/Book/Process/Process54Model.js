@@ -20,6 +20,7 @@ function Wl_Book_Process_Process54Model()
    *
    * This will be `null` if clients aren't allowed to book for their relationships.
    *
+   * @deprecated Use {@link Wl_Book_Process_ProcessModel.is_family_relation_book} instead. Full list of relatives available, see {@link RsFamilyRelationSid}.
    * @get result
    * @type {?number[]}
    */

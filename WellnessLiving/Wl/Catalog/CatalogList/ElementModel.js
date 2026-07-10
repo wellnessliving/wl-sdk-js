@@ -107,6 +107,8 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * Image information:
    *
+   * @deprecated This property is deprecated as it does not support multiple images.
+ Use {@link Wl_Catalog_CatalogList_ElementModel.a_image_list} instead.
    * @get result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_image}
    */
@@ -550,6 +552,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * A detailed description.
    *
+   * @deprecated Use `html_description`.
    * @get result
    * @type {?string}
    */
@@ -558,6 +561,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * Special instructions.
    *
+   * @deprecated Use `html_special`.
    * @get result
    * @type {?string}
    */

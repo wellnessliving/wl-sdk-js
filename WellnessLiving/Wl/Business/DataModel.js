@@ -240,6 +240,7 @@ function Wl_Business_DataModel()
   /**
    * The currency key of the given business, or the system currency if the business didn't pass.
    *
+   * @deprecated Use {@link Wl_Business_DataModel.id_currency} instead.
    * @get result
    * @type {string}
    */

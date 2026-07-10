@@ -143,6 +143,8 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    *
    * This is a multi-provider equivalent of {@link Wl_Appointment_Book_Finish_FinishModel.m_pay}.
    *
+   * @deprecated Paid amount is calculated and verified automatically from booking data.
+ The field is left for compatibility with old code and to control the new algorithm.
    * @post post
    * @type {number[]}
    */
@@ -156,6 +158,8 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    *
    * This is a multi-provider equivalent of {@link Wl_Appointment_Book_Finish_FinishModel.id_pay}.
    *
+   * @deprecated Payment type is calculated and verified automatically from booking data.
+ The field is left for compatibility with old code and to control the new algorithm.
    * @post get
    * @type {number[]}
    */
@@ -198,6 +202,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * * {@link Wl_Appointment_Book_Payment_PaymentPostModel}
    * * {@link Wl_Appointment_Book_Payment_PaymentMultipleModel}
    *
+   * @deprecated Not used. See documentation.
    * @post post
    * @type {*[]}
    */
@@ -236,7 +241,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishMultipleModel_a_user
-   * @property {*} a_note The note or list of notes to add to the new user's profile.
+   * @property {string|string[]} a_note The note or list of notes to add to the new user's profile.
    * @property {string} text_mail The new user's email address.
    * @property {string} text_name_first The new user's first name.
    * @property {string} text_name_last The new user's last name.

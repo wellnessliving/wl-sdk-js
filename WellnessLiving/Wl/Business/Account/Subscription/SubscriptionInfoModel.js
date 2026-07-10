@@ -36,7 +36,7 @@ function Wl_Business_Account_Subscription_SubscriptionInfoModel()
    * Depending on subscription type constant from one of {@link Wl_Business_Account_Subscription_PlanSid} inheritors.
    *
    * @get result
-   * @type {*}
+   * @type {number}
    */
   this.id_plan = undefined;
 

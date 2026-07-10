@@ -199,6 +199,7 @@ function Wl_Book_Process_Frequency_RepeatParallelModel()
   /**
    * Key of user, who perform booking.
    *
+   * @deprecated Current login user used instead.
    * @get get
    * @type {string}
    */

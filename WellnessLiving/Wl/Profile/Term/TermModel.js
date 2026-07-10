@@ -85,7 +85,7 @@ function Wl_Profile_Term_TermModel()
    * `false` if waiver is not confirmed.
    *
    * @get result
-   * @type {*}
+   * @type {string|boolean}
    */
   this.url_signature = undefined;
 

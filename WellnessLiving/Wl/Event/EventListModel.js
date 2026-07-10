@@ -51,6 +51,33 @@ function Wl_Event_EventListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_logo_A
+   * @property {number} i_height Thumbnail height in pixels.
+   * @property {number} i_width Thumbnail width in pixels.
+   * @property {boolean} is_old `false` for the new wide-rectangle format; `true` for the legacy square format.
+   * @property {string} s_url Thumbnail URL.
+   */
+
+  /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_logo_B
+   * @property {number} i_height_src Original image height in pixels.
+   * @property {number} i_rotate Rotation angle applied relative to the original.
+   * @property {number} i_width_src Original image width in pixels.
+   * @property {number} id_type_src List of image types.
+   * @property {boolean} is-resize `true` if the image was resized; `false` if `url-thumbnail` equals `url-view`.
+   * @property {string} url-thumbnail URL of the resized thumbnail image.
+   * @property {string} url-view URL of the original image in file storage.
+   */
+
+  /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_logo_C
+   * @property {boolean} is_empty `true` if a placeholder is shown instead of an actual logo.
+   * @property {?boolean} is_own `true` if the logo belongs to this class, `false` if inherited from the location, `null` if the image is empty.
+   * @property {string} k_business Business key.
+   * @property {string} k_class Class key.
+   */
+
+  /**
    * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_schedule_a_staff_member
    * @property {string} k_staff_member Staff member key.
    * @property {string} text_business_role Staff member role title.
@@ -86,7 +113,7 @@ function Wl_Event_EventListModel()
    * @typedef {{}} Wl_Event_EventListModel_a_event_list
    * @property {Wl_Event_EventListModel_a_event_list_a_age_restriction} a_age_restriction Information about age restrictions for this event, has the following structure:
    * @property {string[]} a_class_tab List of book now tags connected to this event.
-   * @property {*} a_logo Data about logo of the event.
+   * @property {Wl_Event_EventListModel_a_event_list_a_logo_A|Wl_Event_EventListModel_a_event_list_a_logo_B|Wl_Event_EventListModel_a_event_list_a_logo_C} a_logo Data about logo of the event.
    * @property {Wl_Event_EventListModel_a_event_list_a_schedule[]} a_schedule List of scheduled sessions of the event.
    * @property {Wl_Event_EventListModel_a_event_list_a_search_tag[]} a_search_tag List of search tags connected to this event.
    * @property {boolean} can_book Whether event can be booked or not. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked.

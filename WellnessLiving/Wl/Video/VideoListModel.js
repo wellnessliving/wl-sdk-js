@@ -156,6 +156,7 @@ function Wl_Video_VideoListModel()
   /**
    * A list of staff members who appear in videos.
    *
+   * @deprecated This property will be removed in the future. Use {@link Wl_Video_VideoListModel.a_staff_uid} instead.
    * @get get
    * @type {string[]}
    */

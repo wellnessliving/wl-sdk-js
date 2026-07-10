@@ -74,7 +74,7 @@ function Thoth_ExplorerSearch_ClassSession_ClassSessionSearchModel()
    * Empty array to not filter by location rating.
    *
    * @get get
-   * @type {*}
+   * @type {number[]|string[]}
    */
   this.a_location_rating = undefined;
 

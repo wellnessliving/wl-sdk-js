@@ -35,6 +35,7 @@ function Core_Request_Api_KeySecretModel()
   /**
    * Alias of {@link Core_Request_Api_KeySecretModel.url_origin}.
    *
+   * @deprecated Use {@link Core_Request_Api_KeySecretModel.url_origin} instead.
    * @get get
    * @type {string}
    */

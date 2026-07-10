@@ -275,6 +275,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * The list of staff members to filter.
    * A comma separated list of staff keys.
    *
+   * @deprecated Use {@link Wl_Schedule_ClassList_ClassListModel.s_staff_uid} instead.
    * @post post
    * @type {string}
    */

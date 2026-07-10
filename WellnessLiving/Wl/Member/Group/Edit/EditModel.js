@@ -19,6 +19,8 @@ function Wl_Member_Group_Edit_EditModel()
   /**
    * Entity in array format.
    *
+   * @deprecated Use `json_criteria` to prevent number of variables more than
+ can be transferred to server via HTTP.
    * @post post
    * @put post
    * @type {Wl_Member_Group_Edit_EditModel_a_criteria[]}

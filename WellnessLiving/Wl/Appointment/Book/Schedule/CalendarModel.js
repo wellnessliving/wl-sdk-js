@@ -287,6 +287,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
    * In case of back-to-back booking - staff key of first appointment.
    * `0` means any available staff.
    *
+   * @deprecated This property will be removed in the future. Use {@link Wl_Appointment_Book_Schedule_DayTimeModel.uid_staff} instead.
    * @get get
    * @type {string}
    */

@@ -94,10 +94,22 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
   this.a_client = undefined;
 
   /**
+   * @typedef {{}} Wl_Profile_Attendance_Schedule_PaymentMultipleModel_a_staff_list_A
+   * @property {string} k_staff Staff key.
+   * @property {string} text_name Name of the staff.
+   */
+
+  /**
+   * @typedef {{}} Wl_Profile_Attendance_Schedule_PaymentMultipleModel_a_staff_list_B
+   * @property {string} text_name Staff full name.
+   * @property {string} uid_staff Staff user key.
+   */
+
+  /**
    * List of available staff members for tips.
    *
    * @get result
-   * @type {*}
+   * @type {Wl_Profile_Attendance_Schedule_PaymentMultipleModel_a_staff_list_A|Wl_Profile_Attendance_Schedule_PaymentMultipleModel_a_staff_list_B}
    */
   this.a_staff_list = undefined;
 

@@ -77,6 +77,7 @@ function Wl_Visit_VisitStatusModel()
   /**
    * The list of keys of staff members that conduct the class.
    *
+   * @deprecated This field is deprecated. Use {@link Wl_Visit_VisitStatusModel.a_uid_staff} instead.
    * @get result
    * @type {string[]}
    */
@@ -276,6 +277,7 @@ function Wl_Visit_VisitStatusModel()
    * The key of the staff providing the appointment.
    * If `null`, the visit isn't from an appointment (for example, the visit is from an asset).
    *
+   * @deprecated This field is deprecated. Use {@link Wl_Visit_VisitStatusModel.uid_staff} instead.
    * @get result
    * @type {?string}
    */

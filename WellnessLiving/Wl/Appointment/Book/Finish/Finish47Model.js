@@ -245,6 +245,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    *
    * One of the {@link RsAppointmentPaySid} constants.
    *
+   * @deprecated This field is deprecated.
    * @post get
    * @see RsAppointmentPaySid
    * @type {number}
@@ -324,6 +325,8 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    * * {@link RsPurchaseItemSid}
    * * {@link RsPurchaseItemSid}
    *
+   * @deprecated Paid amount is calculated and verified automatically from booking data.
+ The field is left for compatibility with old code and to control the new algorithm.
    * @post post
    * @type {string}
    */

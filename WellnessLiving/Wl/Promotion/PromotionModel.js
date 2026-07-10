@@ -113,13 +113,23 @@ function Wl_Promotion_PromotionModel()
   this.k_promotion = "";
 
   /**
+   * @typedef {{}} Wl_Promotion_PromotionModel_o_guest_settings_A
+   * @property {number} i_claim_day Count of days for accept guest invite.
+   * @property {number} i_limit Times that member can invite the same guest.
+   * @property {number} i_limit_duration The time during which a member can invite a guest `i_limit` times.
+   * @property {number} id_limit_duration Type of the duration of `i_limit_duration`. One of {@link ADurationSid} constants.
+   * @property {boolean} is_checkin Whether guests can only enter the gym when the inviting member is checked in.
+   * @property {boolean} is_limit Whether there are limits for a guest promotion.
+   */
+
+  /**
    * Guest passes settings for promotion. This will be `null` if there are no guest pass settings for the promotion.
    *
    * @get result
    * @post post
-   * @type {?*}
+   * @type {Wl_Promotion_PromotionModel_o_guest_settings_A|*[]|?*}
    */
-  this.o_guest_settings = null;
+  this.o_guest_settings = undefined;
 
   this.changeInit();
 }
