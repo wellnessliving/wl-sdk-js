@@ -53,12 +53,8 @@ function Wl_Login_Attendance_Add_AddModel()
   this.dt_date_global = "";
 
   /**
-   * List of options to add client to attendance list.
-   *
-   * Values:
-   * - 2 (`DEBIT`): Add client to attendance list and charge his account.
-   * - 3 (`PAY`): Add client to attendance list and pay now.
-   * - 1 (`UNPAID`): Add client to attendance list without payment.
+   * Determines how the payment was handled for the session.
+   * One of the {@link Wl_Login_Attendance_AddOptionSid} constants.
    *
    * @post post
    * @see Wl_Login_Attendance_AddOptionSid
@@ -67,42 +63,9 @@ function Wl_Login_Attendance_Add_AddModel()
   this.id_add_option = 0;
 
   /**
-   * The source of a visit.
-   *
-   * Last used ID: 31.
-   *
-   * Values:
-   * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
-   * - 21 (`AZURE`): Registered through `Azure`.
-   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
-   * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
-   * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
-   * - 22 (`COLLECTIONS`): Debt paid via collections.
-   * - 26 (`COLLECTIONS_FUTURE`): Debt paid via collections.
-   * - 27 (`CONCERTO`): Action from Concerto.
-   * - 18 (`EMAIL`): Action made via email.
-   * - 20 (`FACEBOOK`): Indicating that the source is Facebook.
-   * - 30 (`GO_HIGH_LEVEL`): Action from Go High Level.
-   * - 19 (`GOOGLE`): Indicating that the source is Google.
-   * - 7 (`GOOGLE_BOOKING`): Visit has been created by Google Booking Service.
-   * - 14 (`GYMPASS_BOOKING`): Visit has been created by `GymPass`.
-   * - 5 (`IMPORT`): Visit was created during import.
-   * - 12 (`MICROSITE`): Action made via microsite.
-   *
-   *   It is also names as directory listing.
-   * - 24 (`MICROSOFT`): Indicating that the source is Microsoft.
-   * - 13 (`MY_PRESENCE_SITE`): Client booked session on My Presence Site.
-   * - 17 (`SMS`): Action made via SMS.
-   * - 4 (`SPA_BACKEND`): Staff booked session from spa backend.
-   * - 3 (`SPA_FRONTEND`): Client booked session from spa frontend.
-   * - 10 (`SYSTEM`): Created by system.
-   * - 6 (`UNDEFINED`): Means that we did not define mode.
-   * - 16 (`WEB_APP_ATTENDANCE`): Client booked session from Attendance Web App.
-   * - 15 (`WEB_APP_CHECK_IN`): Client checked-in for the session through Check-In Web App.
-   * - 2 (`WEB_BACKEND`): Staff booked session for client from website backend.
-   * - 1 (`WEB_FRONTEND`): Client booked session from website frontend.
-   * - 11 (`WIDGET`): Action made via widget (purchase, book etc).
-   * - 25 (`ZAPIER`): Action from Zapier.
+   * Determines how the session was booked.
+   * One of the {@link Wl_Mode_ModeSid} constants.
+   * We recommend using the `WEB_BACKEND` value.
    *
    * @post post
    * @see Wl_Mode_ModeSid
@@ -111,26 +74,11 @@ function Wl_Login_Attendance_Add_AddModel()
   this.id_mode = 0;
 
   /**
-   * Possible states of the visit: book, attended, cancelled, etc.
-   *
-   * Last used ID: 8.
-   *
-   * Values:
-   * - 3 (`ATTEND`): Client has attended the session.
-   * - 1 (`BOOK`): Active reservation means that user is going to attend the session.
-   * - 6 (`CANCEL`): Client has cancelled the reservation in time and without penalty.
-   * - 4 (`PENALTY`): Client has cancelled his reservation too late.
-   * - 7 (`PENDING`): This state means that visit is registered, but it is unknown is it {@link Wl_Visit_VisitSid}
-   *   or {@link Wl_Visit_VisitSid} or {@link Wl_Visit_VisitSid} but definitely one of these states.
-   *
-   *   The real type of this visit must be set manually by staff.
-   *   Status can be changed automatically to {@link Wl_Visit_VisitSid}.
-   * - 8 (`REMOVE`): Visit was removed.
-   *   Visits with this status are not shown anywhere in system, but still are saved in database.
-   * - 5 (`TRUANCY`): Client has missed the session without cancellation.
-   * - 2 (`WAIT`): Reservation in a wait list means that user is going to attend the session if someone will cancel his reservation.
+   * The status of the visit.
+   * One of the {@link Wl_Visit_VisitSid} constants.
    *
    * @post result
+   * @see Wl_Visit_VisitSid
    * @type {number}
    */
   this.id_visit = undefined;

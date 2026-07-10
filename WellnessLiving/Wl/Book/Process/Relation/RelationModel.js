@@ -58,42 +58,8 @@ function Wl_Book_Process_Relation_RelationModel()
   this.i_year = null;
 
   /**
-   * The source of a visit.
-   *
-   * Last used ID: 31.
-   *
-   * Values:
-   * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
-   * - 21 (`AZURE`): Registered through `Azure`.
-   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
-   * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
-   * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
-   * - 22 (`COLLECTIONS`): Debt paid via collections.
-   * - 26 (`COLLECTIONS_FUTURE`): Debt paid via collections.
-   * - 27 (`CONCERTO`): Action from Concerto.
-   * - 18 (`EMAIL`): Action made via email.
-   * - 20 (`FACEBOOK`): Indicating that the source is Facebook.
-   * - 30 (`GO_HIGH_LEVEL`): Action from Go High Level.
-   * - 19 (`GOOGLE`): Indicating that the source is Google.
-   * - 7 (`GOOGLE_BOOKING`): Visit has been created by Google Booking Service.
-   * - 14 (`GYMPASS_BOOKING`): Visit has been created by `GymPass`.
-   * - 5 (`IMPORT`): Visit was created during import.
-   * - 12 (`MICROSITE`): Action made via microsite.
-   *
-   *   It is also names as directory listing.
-   * - 24 (`MICROSOFT`): Indicating that the source is Microsoft.
-   * - 13 (`MY_PRESENCE_SITE`): Client booked session on My Presence Site.
-   * - 17 (`SMS`): Action made via SMS.
-   * - 4 (`SPA_BACKEND`): Staff booked session from spa backend.
-   * - 3 (`SPA_FRONTEND`): Client booked session from spa frontend.
-   * - 10 (`SYSTEM`): Created by system.
-   * - 6 (`UNDEFINED`): Means that we did not define mode.
-   * - 16 (`WEB_APP_ATTENDANCE`): Client booked session from Attendance Web App.
-   * - 15 (`WEB_APP_CHECK_IN`): Client checked-in for the session through Check-In Web App.
-   * - 2 (`WEB_BACKEND`): Staff booked session for client from website backend.
-   * - 1 (`WEB_FRONTEND`): Client booked session from website frontend.
-   * - 11 (`WIDGET`): Action made via widget (purchase, book etc).
-   * - 25 (`ZAPIER`): Action from Zapier.
+   * The mode type.
+   * One of the {@link Wl_Mode_ModeSid} constants.
    *
    * @post post
    * @see Wl_Mode_ModeSid
@@ -102,27 +68,8 @@ function Wl_Book_Process_Relation_RelationModel()
   this.id_mode = 0;
 
   /**
-   * Relation type between two relatives.
-   *
-   * Last used ID: 16.
-   *
-   * Values:
-   * - 12 (`CARE_PARTICIPANT`): Care participant.
-   * - 9 (`CARE_RECEIVER`): Care recipient.
-   * - 8 (`CAREGIVER`): Care provider.
-   * - 16 (`CASE_LOAD`): Case load.
-   * - 15 (`CASE_MANAGER`): Case Manager.
-   * - 5 (`CHILD`): Child of the parent.
-   * - 10 (`DEPENDENT`): Dependent.
-   * - 2 (`FRIEND`): Friend.
-   * - 7 (`GUARDIAN`): Guardian.
-   * - 6 (`OTHER`): Not specified custom relationship.
-   * - 3 (`PARENT`): Parent of the child.
-   * - 4 (`SIBLING`): Sibling. A brother or sister.
-   * - 1 (`SPOUSE`): Spouse. A husband or wife.
-   * - 14 (`STUDENT`): Student.
-   * - 13 (`TEACHER`): Teacher.
-   * - 11 (`THERAPIST`): Therapist.
+   * The relation type.
+   * One of the {@link RsFamilyRelationSid} constants.
    *
    * @post post
    * @see RsFamilyRelationSid

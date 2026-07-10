@@ -75,33 +75,20 @@ function Wl_Reception_Roster_Design_ReceptionRosterDesignModel()
   this.i_confirm_delay = undefined;
 
   /**
-   * List of places to redirect user from attendance list after inactivity.
-   *
-   * Values:
-   * - 1 (`RECENT`): Redirect user to recently viewed class.
-   * - 2 (`SCHEDULE`): Redirect user to upcoming schedule.
+   * ID of the action to take when automatically redirecting.
+   * One of {@link Wl_Reception_Roster_DirectSid} constants.
    *
    * @get result
+   * @see Wl_Reception_Roster_DirectSid
    * @type {number}
    */
   this.id_attendance_direct = 1;
 
   /**
-   * A class for managing time intervals.
-   * Last ID: 9.
-   *
-   * Values:
-   * - 4 (`DAY`): Days.
-   * - 3 (`HOUR`): Hours.
-   * - 2 (`MINUTE`): Minutes.
-   * - 5 (`MONTH`): Months.
-   * - 1 (`SECOND`): Seconds.
-   * - 7 (`WEEK`): Weeks (7 days).
-   * - 9 (`WEEK2`): Two weeks (14 days).
-   * - 8 (`WEEK4`): Foursome of weeks (28 days).
-   * - 6 (`YEAR`): Years.
+   * Unit of time for the look ahead window for attendance app.
    *
    * @get result
+   * @see ADurationSid
    * @type {number}
    */
   this.id_book_quick_app = undefined;

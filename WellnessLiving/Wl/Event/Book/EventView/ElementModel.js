@@ -505,47 +505,34 @@ function Wl_Event_Book_EventView_ElementModel()
   this.i_staff_image_width = 0;
 
   /**
-   * List of possible modes to require amount while booking a class.
-   *
-   * Values:
-   * - 3 (`ADVANCE`): Clients can pay online or pay when they visit.
-   *   If set "pay when visit" then it has additional options. See {@link Wl_Classes_RequirePayVisitOptionSid}.
-   * - 4 (`DEPOSIT`): Client should leave a deposit before booking an event.
-   * - 1 (`ONLINE`): Client must purchase online.
-   * - 2 (`VISIT`): Clients can only pay when they visit. Online payment is not available.
-   *   It has additional options {@link Wl_Classes_RequirePayVisitOptionSid}.
+   * The purchase rule ID.
+   * One of the {@link Wl_Classes_RequirePaySid} constants.
    *
    * @get result
+   * @see Wl_Classes_RequirePaySid
    * @type {number}
    */
   this.id_pay_require = undefined;
 
   /**
-   * List of possible modes to require amount while booking a class.
+   * Default required value for {@link Wl_Classes_RequirePaySid} payment mode,
+   *  one of {@link Wl_Classes_RequirePaySid} or {@link Wl_Classes_RequirePaySid}.
    *
-   * Values:
-   * - 3 (`ADVANCE`): Clients can pay online or pay when they visit.
-   *   If set "pay when visit" then it has additional options. See {@link Wl_Classes_RequirePayVisitOptionSid}.
-   * - 4 (`DEPOSIT`): Client should leave a deposit before booking an event.
-   * - 1 (`ONLINE`): Client must purchase online.
-   * - 2 (`VISIT`): Clients can only pay when they visit. Online payment is not available.
-   *   It has additional options {@link Wl_Classes_RequirePayVisitOptionSid}.
+   * `null` means default value not selected.
    *
    * @get result
+   * @see Wl_Classes_RequirePaySid
    * @type {number}
    */
   this.id_pay_require_option = undefined;
 
   /**
-   * List of possible value of virtual integrations.
+   * The virtual provider ID. One of the {@link Wl_Virtual_VirtualProviderSid} constants.
    *
-   * Last used ID: 2.
-   *
-   * Values:
-   * - 2 (`NON_INTEGRATED`): Virtual integration non implemented.
-   * - 1 (`ZOOM`): Virtual Zoom service integration.
+   * `null` if an in-person event.
    *
    * @get result
+   * @see Wl_Virtual_VirtualProviderSid
    * @type {?number}
    */
   this.id_virtual_provider = null;

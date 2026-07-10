@@ -33,35 +33,10 @@ function Wl_Skin_SkinModel()
   this.a_skin = undefined;
 
   /**
-   * A list of skin types.
-   *
-   *
-   *
-   * Last used ID: 21.
-   *
-   * Values:
-   * - 19 (`AI_AGENT`): Ai Agent web-chat.
-   * - 13 (`APPLICATION`): Application skin.
-   * - 7 (`APPOINTMENT`): Appointment booking wizard.
-   * - 21 (`CATALOG_FOREIGN`): Online store widget.
-   * - 8 (`ENROLLMENT`): Event enrollment wizard widget.
-   * - 17 (`FITBUILDER`): Fitbuilder widget.
-   * - 9 (`LEAD`): Skin for lead tracking form.
-   * - 20 (`LEAD_FOREIGN`): Skin for lead tracking form from microservice.
-   * - 10 (`MOBILE_SCHEDULE`): Mobile schedule version.
-   * - 16 (`RESOURCE`): Asset booking wizard.
-   * - 4 (`REVIEW_LIST`): Review list widget.
-   * - 15 (`SCHEDULE_DESIGN`): General schedule design appearance.
-   * - 18 (`SCHEDULE_FOREIGN`): Foreign schedule widget on react language.
-   * - 1 (`SCHEDULE_LIST`): Schedule list widget.
-   * - 14 (`SCHEDULE_STANDARD`): Standard version of schedule.
-   *
-   *   This skin is the same as {@link RsSkinSid} except that design can not be changed, only standard
-   *   settings can be used.
-   * - 12 (`STAFF`): Staff widget.
-   * - 11 (`STORE`): Online store widget.
+   * Skin type, one of {@link RsSkinSid} constants.
    *
    * @get result
+   * @see RsSkinSid
    * @type {number}
    */
   this.id_skin = undefined;

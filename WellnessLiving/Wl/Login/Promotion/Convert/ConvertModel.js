@@ -72,14 +72,7 @@ function Wl_Login_Promotion_Convert_ConvertModel()
   this.dl_hold_start = undefined;
 
   /**
-   * List of options to convert promotion.
-   *
-   * Last used ID: 3.
-   *
-   * Values:
-   * - 1 (`DOWNGRADE`): Promotion conversion downgraded.
-   * - 2 (`EQUAL_VALUE`): Type of the promotion conversion.
-   * - 3 (`UPGRADE`): Promotion conversion upgraded.
+   * The conversion ID. One of the {@link Wl_Promotion_Convert_PromotionConvertSid} constants.
    *
    * @get result
    * @post get
@@ -89,13 +82,9 @@ function Wl_Login_Promotion_Convert_ConvertModel()
   this.id_convert = 0;
 
   /**
-   * Different types of conversion behavior: when and how it should be converted.
+   * When conversion should be done. One of the {@link Wl_Login_Promotion_Convert_ConvertWhenSid} constants.
    *
-   * Values:
-   * - 1 (`EXPIRATION_PAID`): Purchase Option converts one day after the scheduled expiration date and the client is charged for the new purchase option.
-   * - 2 (`NOW_FREE`): Purchase Option converts now and the client is not charged for the new Purchase Option.
-   * - 3 (`NOW_PAID`): Purchase Option converts now and the client is changed for the new Purchase Option.
-   * - 4 (`SCHEDULE_PAID`): Purchase Option converts on the specified date and the client is charged for the new Purchase Option.
+   * `null` if it's not set yet.
    *
    * @get result
    * @post get

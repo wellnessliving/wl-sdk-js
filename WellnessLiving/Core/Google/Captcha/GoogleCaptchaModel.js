@@ -9,11 +9,7 @@ function Core_Google_Captcha_GoogleCaptchaModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of Google reCaptcha versions.
-   *
-   * Values:
-   * - 1 (`V2`): Version 2 (invisible).
-   * - 2 (`V3`): Version 3.
+   * Captcha version ID.
    *
    * @put post
    * @see Core_Google_Captcha_CaptchaVersionSid

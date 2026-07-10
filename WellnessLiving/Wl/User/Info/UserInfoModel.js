@@ -143,14 +143,12 @@ function Wl_User_Info_UserInfoModel()
   this.has_discount = null;
 
   /**
-   * String identifiers for gender.
+   * The ID of the user's gender. One of the {@link AGenderSid} constants.
    *
-   * Values:
-   * - 2 (`FEMALE`): Female gender.
-   * - 1 (`MALE`): Male gender.
-   * - 3 (`UNDEFINED`): Gender is undefined in cases where the user preferred not to identify their gender.
+   * This will be `null` if the gender isn't set yet.
    *
    * @get result
+   * @see AGenderSid
    * @type {number}
    */
   this.id_gender = undefined;

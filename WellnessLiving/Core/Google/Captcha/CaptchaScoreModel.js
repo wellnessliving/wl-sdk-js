@@ -20,24 +20,10 @@ function Core_Google_Captcha_CaptchaScoreModel()
   this.f_score = null;
 
   /**
-   * List of responses for Google Captcha token.
-   *
-   * Values:
-   * - 5 (`ERROR`): Token can be verified due to error from Google Captcha.
-   * - 1 (`INVALID`): Token is invalid or expired.
-   *
-   *   Used by: {@link Core_Google_Captcha_CaptchaVersionSid} and {@link Core_Google_Captcha_CaptchaVersionSid}.
-   * - 2 (`REQUIRE_V2`): Token is valid, but v2 captcha require.
-   *
-   *   Used by {@link Core_Google_Captcha_CaptchaVersionSid} only.
-   * - 3 (`VALID`): Token is valid.
-   *
-   *   Used by: {@link Core_Google_Captcha_CaptchaVersionSid} and {@link Core_Google_Captcha_CaptchaVersionSid}.
-   * - 4 (`VALID_BLOCK`): Token is valid but score is risky.
-   *
-   *   Used by {@link Core_Google_Captcha_CaptchaVersionSid} only.
+   * Captcha response ID.
    *
    * @post result
+   * @see Core_Google_Captcha_CaptchaResponseSid
    * @type {number}
    */
   this.id_response = undefined;

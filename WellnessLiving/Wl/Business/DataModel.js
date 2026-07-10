@@ -48,17 +48,10 @@ function Wl_Business_DataModel()
   this.i_logo_width = 220;
 
   /**
-   * A list of client booking flow types.
-   *
-   * Last ID: 6.
-   *
-   * Values:
-   * - 6 (`EDUCATION`): Musician schools.
-   * - 3 (`HEALTH`): Traditional medicine
-   * - 2 (`RECREATION`): Spa saloons.
-   * - 1 (`SPORT`): Yoga and Fitness studios and gyms.
+   * The business category ID of the business.
    *
    * @get result
+   * @see RsBusinessCategorySid
    * @type {number}
    */
   this.id_category = undefined;
@@ -66,116 +59,56 @@ function Wl_Business_DataModel()
   /**
    * Business status for managing claim request behavior.
    *
-   * Last used ID: 4
-   *
-   * Values:
-   * - 4 (`CHURN`): Business HAD a contract with WL, but decided not to continue it, i.e. it is a churned business, or a business
-   *   with the trial expired.
-   * - 3 (`CUSTOMER`): Business has a contract with WL, be it a trial (with all fields updated and actual), or a subscription.
-   * - 1 (`PROSPECT`): Business is not a WL client and never was, i.e. it is a true prospect business.
-   * - 2 (`UNVERIFY`): Business claiming process started, the contact information was verified, the trial has started, but company
-   *   information wasn’t yet updated.
+   * Constant from {@link Wl_Business_Claim_BusinessClaimStatusSid}.
    *
    * @get result
+   * @see Wl_Business_Claim_BusinessClaimStatusSid
    * @type {number}
    */
   this.id_claim_status = undefined;
 
   /**
-   * A list of currencies.
-   *
-   * Currency constant names must comply with the standard `ISO 4217` for correct integration with other services.
-   *
-   * Values:
-   * - 11 (`AED`): United Arab Emirates dirham.
-   * - 6 (`AUD`): Australian dollar.
-   * - 18 (`BMD`): Bermudian Dollar.
-   * - 19 (`BSD`): Bahamian dollar.
-   * - 4 (`CAD`): Canadian dollar.
-   * - 8 (`EGP`): Egypt Pound.
-   * - 13 (`EUR`): Euro.
-   * - 3 (`GBP`): British pound.
-   * - 14 (`KWD`): Kuwaiti dinar.
-   * - 5 (`KYD`): Cayman Islands dollar.
-   * - 16 (`MUR`): Mauritian Rupee.
-   * - 10 (`NZD`): New Zealand Dollar.
-   * - 12 (`PHP`): Philippines Pesco.
-   * - 15 (`SAR`): Saudi Riyal.
-   * - 20 (`SGD`): Singapore dollar.
-   * - 2 (`UNKNOWN`): Unknown code.
-   *
-   *   Used when currency is not specified or is not known.
-   * - 1 (`USD`): US dollars.
-   * - 17 (`XOF`): West African CFA franc.
-   *
-   *   Is used in Senegal.
-   * - 7 (`ZAR`): South African rand.
+   * The currency ID of the given business (or the system currency ID if the business didn't pass).
    *
    * @get result
+   * @see Core_Locale_CurrencySid
    * @type {number}
    */
   this.id_currency = undefined;
 
   /**
-   * A list of locales.
-   *
-   * Last used ID: 21
-   *
-   * Values:
-   * - 4 (`AUSTRALIA`): Australia.
-   * - 20 (`BAHAMAS`): Bahamas.
-   * - 19 (`BERMUDA`): Bermuda.
-   * - 2 (`CANADA`): Canada.
-   * - 5 (`CAYMAN`): Cayman Islands.
-   * - 13 (`CYPRUS`): Cyprus.
-   * - 8 (`EGYPT`): Egypt.
-   * - 18 (`IRELAND`): Republic of Ireland.
-   * - 14 (`KUWAIT`): Kuwait
-   * - 16 (`MAURITIUS`): Republic of Mauritius.
-   * - 9 (`NEVERLAND`): A special locale that can be used for testing or a business situated in an unknown region.
-   * - 10 (`NEW_ZEALAND`): New Zealand.
-   * - 12 (`PHILIPPINES`): Philippines.
-   * - 15 (`SAUDI_ARABIA`): Saudi Arabia.
-   * - 17 (`SENEGAL`): Senegal
-   * - 21 (`SINGAPORE`): Singapore.
-   * - 6 (`SOUTH_AFRICA`): South Africa.
-   * - 11 (`UAE`): United Arab Emirates.
-   * - 3 (`UK`): United Kingdom.
-   * - 1 (`USA`): United States of America.
+   * The Locale ID, used to search geo items.
    *
    * @get result
+   * @see Core_Locale_LocaleSid
    * @type {number}
    */
   this.id_locale = undefined;
 
   /**
-   * Types of the possible ranks in different business.
-   * For example, there are belts (white, yellow, black, etc.) in Martial Arts.
+   * The rank type ID of the business.
    *
-   * Values:
-   * - 1 (`BELT`): Belts for Martial Arts.
+   * One of the {@link RsRankTypeSid} constants.
+   *
+   * This will be `null` if the business doesn't have a rank type.
    *
    * @get result
+   * @see RsRankTypeSid
    * @type {?number}
    */
   this.id_rank_type = null;
 
   /**
-   * List of available data center regions.
+   * The region ID. This indicates the data center where the information about the business is stored.
+   * One of the {@link Core_Amazon_Region_AmazonRegionSid} constants.
    *
-   * The business independently chooses the data center region in which it will be registered.
-   * The choice of the data center region does not depend on the actual location of the business.
-   * The region determines the data center in which the Wellnessliving system operates.
-   * The region should be chosen based on the access speed to the data center from business clients.
-   * Business from any region can be registered in any data center, but only in one.
-   *
-   * Last ID: 2.
-   *
-   * Values:
-   * - 2 (`AP_SOUTHEAST_2`): Sydney, Australia.
-   * - 1 (`US_EAST_1`): North Virginia, USA.
+   * Requests made to different regions can lead to known issues such as responses indicating that the
+   * business (or its elements) doesn't exist. This is because databases on different data centers are
+   * independent. For example, performing a request to the US cluster for a list of classes for an AU
+   * cluster business will return an empty list.
    *
    * @get result
+   * @see Core_Amazon_Region_AmazonRegionSid
    * @type {number}
    */
   this.id_region = undefined;

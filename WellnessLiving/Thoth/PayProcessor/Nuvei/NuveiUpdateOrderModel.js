@@ -9,34 +9,11 @@ function Thoth_PayProcessor_Nuvei_NuveiUpdateOrderModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * A list of currencies.
+   * ID of the currency.
    *
-   * Currency constant names must comply with the standard `ISO 4217` for correct integration with other services.
+   * One of {@link Core_Locale_CurrencySid} constants.
    *
-   * Values:
-   * - 11 (`AED`): United Arab Emirates dirham.
-   * - 6 (`AUD`): Australian dollar.
-   * - 18 (`BMD`): Bermudian Dollar.
-   * - 19 (`BSD`): Bahamian dollar.
-   * - 4 (`CAD`): Canadian dollar.
-   * - 8 (`EGP`): Egypt Pound.
-   * - 13 (`EUR`): Euro.
-   * - 3 (`GBP`): British pound.
-   * - 14 (`KWD`): Kuwaiti dinar.
-   * - 5 (`KYD`): Cayman Islands dollar.
-   * - 16 (`MUR`): Mauritian Rupee.
-   * - 10 (`NZD`): New Zealand Dollar.
-   * - 12 (`PHP`): Philippines Pesco.
-   * - 15 (`SAR`): Saudi Riyal.
-   * - 20 (`SGD`): Singapore dollar.
-   * - 2 (`UNKNOWN`): Unknown code.
-   *
-   *   Used when currency is not specified or is not known.
-   * - 1 (`USD`): US dollars.
-   * - 17 (`XOF`): West African CFA franc.
-   *
-   *   Is used in Senegal.
-   * - 7 (`ZAR`): South African rand.
+   * `null` in case when not initialized yet.
    *
    * @post post
    * @see Core_Locale_CurrencySid
@@ -45,20 +22,11 @@ function Thoth_PayProcessor_Nuvei_NuveiUpdateOrderModel()
   this.id_currency = null;
 
   /**
-   * Payment actors (staff member, user or business owner).
+   * ID of the actor.
    *
-   * Values:
-   * - 3 (`BUSINESS`): Business owner.
+   * One of {@link RsPayActorSid} constants.
    *
-   *   Business owner is a sort of ordinary user. It is used when business acts as a user - for example, pays for business
-   *   account to system business.
-   * - 1 (`STAFF`): Staff member.
-   *
-   *   The payment is performed by staff (business owner, or administrator within a business backend) on
-   *   behalf of a user.
-   * - 2 (`USER`): User.
-   *
-   *   The payment is performed by the user.
+   * `null` in case when not initialized yet.
    *
    * @post post
    * @see RsPayActorSid
@@ -67,29 +35,11 @@ function Thoth_PayProcessor_Nuvei_NuveiUpdateOrderModel()
   this.id_pay_actor = null;
 
   /**
-   * A list of payment methods.
+   * ID of pay method.
    *
+   * One of {@link RsPayMethodSid} constants.
    *
-   *
-   * Last used ID: 13.
-   *
-   * Values:
-   * - 7 (`ACCOUNT`): Payment with personal user account (rs.pay.account).
-   * - 9 (`ACH`): ACH system (USA-specific direct banking transactions).
-   * - 4 (`CASH`): Payment with cash.
-   * - 5 (`CHEQUE`): Payment with a cheque.
-   * - 8 (`COUPON`): Payment with a coupon.
-   * - 10 (`DIRECT_ENTRY`): Direct Entry system (australian-specific direct banking transactions).
-   * - 2 (`ECOMMERCE`): Online payment. Card not present.
-   * - 6 (`EXTERNAL`): Payment with an external terminal.
-   * - 11 (`IMPORT_ACCRUAL`): Special method to be used for migration process.
-   *
-   *   There are sales in Mindbody that were not bought using account balance or reward points.
-   *   This is not real revenue and cannot be imported as real sales. So, they can be imported as this special method
-   *   to be in the system and to allow business owner to hide on sales report.
-   *
-   *   In online store this method should not be available.
-   * - 1 (`POS`): Payment method at a Points of sale.
+   * `null` in case when not initialized yet.
    *
    * @post post
    * @see RsPayMethodSid

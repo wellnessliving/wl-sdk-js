@@ -178,30 +178,19 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
   this.i_duration = undefined;
 
   /**
-   * A list of types of visit note.
-   *
-   * Values:
-   * - 2 (`QUICK`): The usual quick accompanying note for the customer visit.
-   * - 1 (`SOAP`): Accompanying medical note for the customer visit.
+   * Type of note. One of {@link Wl_Visit_Note_Sid_NoteSid} constants. `false` if notes not allowed.
    *
    * @get result
+   * @see Wl_Visit_Note_Sid_NoteSid
    * @type {number}
    */
   this.id_note = undefined;
 
   /**
-   * Identifiers for services types.
-   *
-   * Last used ID: 5.
-   *
-   * Values:
-   * - 1 (`APPOINTMENT`): Appointments.
-   * - 2 (`CLASSES`): Classes.
-   * - 3 (`ENROLLMENT`): Enrolments.
-   * - 5 (`RESOURCE`): Resources.
-   * - 4 (`VISIT`): Visits.
+   * Service type, one of {@link RsServiceSid}.
    *
    * @get result
+   * @see RsServiceSid
    * @type {number}
    */
   this.id_service = undefined;

@@ -17,21 +17,9 @@ function Wl_Skin_Application_Resource_ApplicationResourceMaterialModel()
   this.i_version = 1;
 
   /**
-   * Mobile applications categories which will be displayed in select tag.
-   *
-   * Values:
-   * - 1 (`BEAUTY`): Mobile applications with content related to the sphere of cosmetology and appearance.
-   * - 2 (`BUSINESS`): Mobile applications with content related to the sphere of Business and finance.
-   * - 3 (`EDUCATION`): Mobile applications with content related to the sphere education.
-   * - 4 (`ENTERTAINMENT`): Mobile applications with content related to the sphere entertainment.
-   * - 5 (`EVENTS`): Mobile applications with content related with various events.
-   * - 6 (`HEALTH_AND_FITNESS`): Mobile applications with content related to the sphere health, sport and fitness.
-   * - 7 (`LIFESTYLE`): Mobile applications with content related to the life style.
-   * - 8 (`MEDICAL`): Mobile applications with content related to the sphere health, and medical services.
-   * - 9 (`SOCIAL`): Mobile applications with content related with various social events.
-   * - 10 (`SPORTS`): Mobile applications with content related with various sports events.
-   * - 11 (`TOOLS`): Mobile applications with content for performing certain tasks.
-   * - 12 (`TRAVEL_AND_LOCAL`): Mobile applications with content related to the sphere of travel and geography.
+   * Application category in the store.
+   * One of {@link Wl_Skin_Application_Resource_ApplicationCategorySid} constants.
+   * `0` if no category is selected.
    *
    * @post post
    * @see Wl_Skin_Application_Resource_ApplicationCategorySid
@@ -40,12 +28,8 @@ function Wl_Skin_Application_Resource_ApplicationResourceMaterialModel()
   this.id_category = 0;
 
   /**
-   * Enum for application update types used in Google Play and Apple Store releases.
-   *
-   * Values:
-   * - 1 (`PATCH`): Patch update (1) - for small bug fixes or improvements.
-   * - 2 (`MINOR`): Minor update (2) - for backward-compatible feature additions.
-   * - 3 (`MAJOR`): Major update (3) - for incompatible API changes or major new features.
+   * Type of application update.
+   * One of {@link Wl_Skin_Application_Upgrade_AppUpdateTypeEnum} constants.
    *
    * @post post
    * @type {number}

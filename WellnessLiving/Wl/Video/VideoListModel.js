@@ -197,18 +197,14 @@ function Wl_Video_VideoListModel()
   this.i_page = null;
 
   /**
-   * List of embed video sources.
+   * Embedded video source.
+   * One of {@link Wl_Video_VideoEmbedSourceSid} constants.
    *
-   * Last used ID: 4
-   *
-   * Values:
-   * - 4 (`LES_MILLS`): Les Mills.
-   * - 2 (`VIMEO`): Vimeo.
-   * - 3 (`WISTIA`): Wistia.
-   * - 1 (`YOUTUBE`): YouTube.
+   * `null` if video is uploaded.
    *
    * @get result
    * @put result
+   * @see Wl_Video_VideoEmbedSourceSid
    * @type {?number}
    */
   this.id_embed_source = null;

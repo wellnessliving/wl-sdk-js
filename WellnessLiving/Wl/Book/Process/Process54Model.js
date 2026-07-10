@@ -57,17 +57,11 @@ function Wl_Book_Process_Process54Model()
   this.id_mode = 0;
 
   /**
-   * List of possible modes to require amount while booking a class.
-   *
-   * Values:
-   * - 3 (`ADVANCE`): Clients can pay online or pay when they visit.
-   *   If set "pay when visit" then it has additional options. See {@link Wl_Classes_RequirePayVisitOptionSid}.
-   * - 4 (`DEPOSIT`): Client should leave a deposit before booking an event.
-   * - 1 (`ONLINE`): Client must purchase online.
-   * - 2 (`VISIT`): Clients can only pay when they visit. Online payment is not available.
-   *   It has additional options {@link Wl_Classes_RequirePayVisitOptionSid}.
+   * The purchase rule ID.
+   * One of the {@link Wl_Classes_RequirePaySid} constants.
    *
    * @get result
+   * @see Wl_Classes_RequirePaySid
    * @type {number}
    */
   this.id_pay_require = undefined;

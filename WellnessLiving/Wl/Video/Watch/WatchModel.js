@@ -26,17 +26,7 @@ function Wl_Video_Watch_WatchModel()
   this.i_watched = 0;
 
   /**
-   * List sources of the view video.
-   *
-   * Last used ID: 4
-   *
-   * Values:
-   * - 1 (`APP`): Video watched from application.
-   * - 2 (`DIRECT_URL`): Video watched from direct URL.
-   * - 3 (`FRONTEND`): Video watched from frontend.
-   * - 4 (`UNDEFINED`): Source of watched is undefined.
-   *
-   *   Used for old videos.
+   * The source ID.
    *
    * @post post
    * @see Wl_Video_Watch_WatchSourceSid

@@ -311,181 +311,61 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.i_use_duration = undefined;
 
   /**
-   * Promotion or package date start rule.
-   *
-   * sale - date start is a date of the sale.
-   * redeem - date start is a date of the first client visit by this promotion or package.
-   * fixed - date start is fixed by promotion or package settings and saved in DB.
-   *
-   * Values:
-   * - 7 (`DAY`): Number of a day of the month or of the week.
-   * - 3 (`FIXED`): Custom date.
-   * - 4 (`MONTH_FIRST`): The first day of month.
-   * - 6 (`MONTH_HALF`): The 15th day of the month.
-   * - 5 (`MONTH_LAST`): The last day of the month.
-   * - 1 (`SALE`): Date of the sale.
-   * - 2 (`VISIT`): Date of the first visit.
+   * The activation mode. One of the {@link RsActivationSid} constants. This field is only added for promotions.
    *
    * @get result
+   * @see RsActivationSid
    * @type {number}
    */
   this.id_activation = undefined;
 
   /**
-   * String identifiers for tax type.
-   *
-   * Values:
-   * - 1 (`FLAT`): Fixed type.
-   * - 2 (`PERCENT`): Percent type.
+   * The type of discount given via a reward prize. One of the {@link RsCommissionTypeSid} constants. This will be empty
+   * if this discount wasn't applied.
    *
    * @get result
+   * @see RsCommissionTypeSid
    * @type {number}
    */
   this.id_discount_commission_type = undefined;
 
   /**
-   * Class to process string identifiers for duration types
-   *
-   * Last ID: 3.
-   *
-   * Values:
-   * - 2 (`DATE`): Specific date. Example, 2013-12-24.
-   * - 3 (`ETERNAL`): No ending date.
-   * - 1 (`PERIOD`): Examples: 12 days, 2 months, 2 hours etc.
+   * The type of duration for the promotion. This is used only for membership-type promotions. This determines
+   * whether the promotion lasts indefinitely, has a fixed duration, or ends on a specific date. The measurement unit
+   * for key `i_payment_period`. One of the {@link RsDurationTypeSid} constants.
    *
    * @get result
+   * @see RsDurationTypeSid
    * @type {number}
    */
   this.id_duration = undefined;
 
   /**
-   * Program types.
-   *
-   * See {@link RsProgramSid} for a list of promotions.
-   *
-   * Last used ID: 8.
-   *
-   * Values:
-   * - 7 (`DURATION`): Duration Pass.
-   *
-   *   Differs from {@link RsProgramTypeSid} in that this type of promotion is limited by time.
-   * - 8 (`GUEST`): Guest passes.
-   * - 1 (`LIMIT`): Class pass.
-   *
-   *   Differs from {@link RsProgramTypeSid} in that this type of promotion allows access to only a limited number
-   *   of classes.
-   * - 3 (`MEMBERSHIP`): This promotion is a membership.
-   *
-   *   Payment schedule can be set up for memberships.
-   * - 6 (`OTHER`): Type for programs that are not presented in {@link RsProgramSid}.
-   * - 4 (`PACKAGE`): Packages and Daily deals.
-   * - 2 (`PASS`): Unlimited pass. Day/week/month pass.
-   *
-   *   Allows access to unlimited number of classes.
-   *
-   *   Differs from {@link RsProgramTypeSid} in that this type of promotion can only be paid once.
-   * - 5 (`PROSPECT`): Special WellnessLiving promote passes that allow to visit specific classes to get acquainted with the business.
-   *
-   *   Such passes cannot be bought, they can be only components of the special system packages,
-   *   packages with `k_business` = `null`.
+   * The ID of the promotion program. This is used only for promotions.
+   * The measurement unit for key `i_payment_period`. The ID of promotion program type.
+   * One of the {@link RsProgramTypeSid} constants.
    *
    * @get result
+   * @see RsProgramTypeSid
    * @type {number}
    */
   this.id_program_type = undefined;
 
   /**
-   * A list of purchase types.
-   *
-   * Last used ID: 25.
-   *
-   * Values:
-   * - 7 (`ACCOUNT`): Personal user's account refill.
-   * - 11 (`ACCOUNT_BUSINESS`): Business account payment.
-   * - 8 (`APPOINTMENT`): Single appointment reservation.
-   *
-   *   This purchase is created when a worker has charged a client for an appointment.
-   *
-   *   This purchase can only be created in POS.
-   *
-   *   Key of appointment.
-   *
-   *
-   *
-   *   A purchased item that is created during the online booking process {@link RsPurchaseItemSid}.
-   * - 18 (`APPOINTMENT_DEPOSIT`): Single appointment reservation with deposit.
-   *
-   *   This purchase created when client books a single appointment reservation with deposit amount,
-   *   to do so appointment should be managed with deposit.
-   * - 22 (`APPOINTMENT_TIP`): Tips for the appointment.
-   *
-   *
-   *
-   *   A purchased item that is created during the online booking process {@link RsPurchaseItemSid}.
-   * - 16 (`BUSINESS_EXPENSE`): Expense that comes along with the payment business. It contains information about additional services which are
-   *   included in the package. For example, payment for SMS.
-   * - 17 (`BUSINESS_SKIP`): A skipped purchase for the business account.
-   * - 23 (`BUSINESS_SUBSCRIPTION`): Business subscription payment.
-   * - 2 (`CLASS_PERIOD`): Single classes.
-   * - 24 (`COLLECTOR_DEBT`): Collectors payments
-   * - 13 (`COMMENT`): Arbitrary money withdrawal with comment.
-   * - 10 (`COUPON`): Gift Cards.
-   * - 4 (`ENROLLMENT`): Events and enrollments. Client can not book only one class, he needs to book the whole enrollment.
-   * - 19 (`ENROLLMENT_DEPOSIT`): Enrollment reservation with a deposit.
-   *
-   *   This purchase created when client books an enrollment reservation with deposit amount,
-   *   to do so enrollment should be managed with deposit.
-   * - 21 (`ENROLLMENT_DISCOUNT`): Enrollment reservation with a discount.
-   *
-   *   This purchase created when client books an enrollment reservation with early bird price.
-   * - 14 (`INSTALLMENT`): Payment by an installment plan.
-   * - 3 (`MEMBERSHIP`): Recurrent payments.
-   * - 9 (`PRODUCT`): Products.
-   * - 1 (`PROMOTION`): Promotions.
-   * - 25 (`PROMOTION_CANCEL_FEE`): Early cancellation fee for a memberships.
-   * - 12 (`PROMOTION_RENEW`): A purchase to renew a promotion.
-   * - 15 (`RESOURCE`): A purchase to book an asset.
-   * - 20 (`RESOURCE_DEPOSIT`): A purchase to book a deposit asset.
-   * - 6 (`SERVICE`): Purchase item for appointments.
-   *
-   *   This purchase item is created during the online booking process.
-   *
-   *
-   *
-   *   Purchase that is created when a staff adds payment for an appointment at POS {@link RsPurchaseItemSid}.
-   * - 26 (`TUITION`): Tuition purchase item.
-   *   Used when client purchases tuition for an event list.
-   * - 27 (`TUITION_FEE`): Tuition fee purchase item.
-   *   Used when client purchases tuition for an event list.
+   * The ID of the purchase item type. The measurement unit for key `i_payment_period`.
+   * The ID of purchase item type. One of the {@link RsPurchaseItemSid} constants.
    *
    * @get result
+   * @see RsPurchaseItemSid
    * @type {number}
    */
   this.id_purchase_item = undefined;
 
   /**
-   * List of sale categories on the store page.
-   *
-   * Last ID: 13.
-   *
-   * Values:
-   * - 8 (`APPOINTMENT`): Single appointment reservation.
-   * - 11 (`APPOINTMENT_DEPOSIT`): Single appointment deposit reservation.
-   * - 12 (`APPOINTMENT_TIP`): Tips for the appointment.
-   * - 6 (`CLASS_PERIOD`): Single class visit.
-   * - 7 (`COUPON`): Gift card.
-   * - 3 (`ENROLLMENT`): Enrollments. Classes where flag event is `true`.
-   * - 5 (`PACKAGE`): Promotions with program {@link RsProgramSid}.
-   * - 4 (`PRODUCT`): Products: water, t-shirts, etc.
-   * - 1 (`PROMOTION_CLASS`): Promotions with program category {@link RsProgramCategorySid} and {@link RsProgramCategorySid}.
-   * - 9 (`PROMOTION_RESOURCE`): Promotions with program category {@link RsProgramCategorySid}.
-   * - 2 (`PROMOTION_SERVICE`): Promotions with program category {@link RsProgramCategorySid} and {@link RsProgramCategorySid}.
-   * - 13 (`PROMOTION_VIDEO`): Promotions with program category {@link RsProgramCategorySid}.
-   * - 10 (`QUICK_BUY`): Products: water, t-shirts, etc. That is available for quick buy.
-   * - 14 (`TUITION`): Tuition.
-   * - 15 (`TUITION_FEE`): Tuition fees.
+   * The ID of the sale category. One of the constants {@link RsSaleSid}.
    *
    * @get result
+   * @see RsSaleSid
    * @type {?number}
    */
   this.id_sale = null;

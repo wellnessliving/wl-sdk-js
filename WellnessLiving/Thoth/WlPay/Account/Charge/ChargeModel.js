@@ -57,42 +57,7 @@ function Thoth_WlPay_Account_Charge_ChargeModel()
   this.a_pay_form = undefined;
 
   /**
-   * The source of a visit.
-   *
-   * Last used ID: 31.
-   *
-   * Values:
-   * - 28 (`API`): Action made via Api Endpoint. Default for leads created via API, unless overridden.
-   * - 21 (`AZURE`): Registered through `Azure`.
-   * - 31 (`BRIVO_DOOR_ACCESS`): Visit has been checked-in by Brivo Door Access.
-   * - 23 (`CENTRED`): Visit has been created by `CENTRED`.
-   * - 8 (`CLASSPASS_BOOKING`): Visit has been created by `ClassPass`.
-   * - 22 (`COLLECTIONS`): Debt paid via collections.
-   * - 26 (`COLLECTIONS_FUTURE`): Debt paid via collections.
-   * - 27 (`CONCERTO`): Action from Concerto.
-   * - 18 (`EMAIL`): Action made via email.
-   * - 20 (`FACEBOOK`): Indicating that the source is Facebook.
-   * - 30 (`GO_HIGH_LEVEL`): Action from Go High Level.
-   * - 19 (`GOOGLE`): Indicating that the source is Google.
-   * - 7 (`GOOGLE_BOOKING`): Visit has been created by Google Booking Service.
-   * - 14 (`GYMPASS_BOOKING`): Visit has been created by `GymPass`.
-   * - 5 (`IMPORT`): Visit was created during import.
-   * - 12 (`MICROSITE`): Action made via microsite.
-   *
-   *   It is also names as directory listing.
-   * - 24 (`MICROSOFT`): Indicating that the source is Microsoft.
-   * - 13 (`MY_PRESENCE_SITE`): Client booked session on My Presence Site.
-   * - 17 (`SMS`): Action made via SMS.
-   * - 4 (`SPA_BACKEND`): Staff booked session from spa backend.
-   * - 3 (`SPA_FRONTEND`): Client booked session from spa frontend.
-   * - 10 (`SYSTEM`): Created by system.
-   * - 6 (`UNDEFINED`): Means that we did not define mode.
-   * - 16 (`WEB_APP_ATTENDANCE`): Client booked session from Attendance Web App.
-   * - 15 (`WEB_APP_CHECK_IN`): Client checked-in for the session through Check-In Web App.
-   * - 2 (`WEB_BACKEND`): Staff booked session for client from website backend.
-   * - 1 (`WEB_FRONTEND`): Client booked session from website frontend.
-   * - 11 (`WIDGET`): Action made via widget (purchase, book etc).
-   * - 25 (`ZAPIER`): Action from Zapier.
+   * The source mode key. One of the {@link Wl_Mode_ModeSid} constants.
    *
    * @post post
    * @see Wl_Mode_ModeSid

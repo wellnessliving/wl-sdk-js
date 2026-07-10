@@ -132,159 +132,68 @@ function Wl_Session_EnvironmentModel()
   this.has_merchant = undefined;
 
   /**
-   * A list of currency codes.
-   *
-   * When you add a currency, add also the following:<ul>
-   *   <li>Image in `rs.pay/html/img/pay-amount-input-*.png`</li>
-   *   <li>Currency in `rs.pay.amount.input.less`</li>
-   * </ul>
-   *
-   * Values:
-   * - 11 (`AED`): United Arab Emirates dirham.
-   * - 6 (`AUD`): Australian dollar.
-   * - 18 (`BMD`): Bermudian Dollar.
-   * - 19 (`BSD`): Bahamian dollar.
-   * - 4 (`CAD`): Canadian dollar.
-   * - 8 (`EGP`): Egypt Pound.
-   * - 13 (`EUR`): Euro.
-   * - 3 (`GBP`): British pound.
-   * - 14 (`KWD`): Kuwaiti dinar.
-   * - 5 (`KYD`): Cayman Islands dollar.
-   * - 16 (`MUR`): Mauritian Rupee.
-   * - 10 (`NZD`): New Zealand Dollar.
-   * - 12 (`PHP`): Philippines Pesco.
-   * - 15 (`SAR`): Saudi Riyal.
-   * - 20 (`SGD`): Singapore dollar.
-   * - 2 (`UNKNOWN`): Unknown code.
-   *
-   *   Used when currency is not specified or is not known.
-   * - 1 (`USD`): US dollars.
-   * - 17 (`XOF`): West African CFA franc.
-   *
-   *   Is used in Senegal.
-   * - 7 (`ZAR`): South African rand.
+   * Currency ID. One of {@link RsCurrencySid} constants.
    *
    * @get result
+   * @see RsCurrencySid
    * @type {number}
    */
   this.id_currency = undefined;
 
   /**
-   * A list of locales.
-   *
-   * Last used ID: 21
-   *
-   * Values:
-   * - 4 (`AUSTRALIA`): Australia.
-   * - 20 (`BAHAMAS`): Bahamas.
-   * - 19 (`BERMUDA`): Bermuda.
-   * - 2 (`CANADA`): Canada.
-   * - 5 (`CAYMAN`): Cayman Islands.
-   * - 13 (`CYPRUS`): Cyprus.
-   * - 8 (`EGYPT`): Egypt.
-   * - 18 (`IRELAND`): Republic of Ireland.
-   * - 14 (`KUWAIT`): Kuwait
-   * - 16 (`MAURITIUS`): Republic of Mauritius.
-   * - 9 (`NEVERLAND`): A special locale that can be used for testing or a business situated in an unknown region.
-   * - 10 (`NEW_ZEALAND`): New Zealand.
-   * - 12 (`PHILIPPINES`): Philippines.
-   * - 15 (`SAUDI_ARABIA`): Saudi Arabia.
-   * - 17 (`SENEGAL`): Senegal
-   * - 21 (`SINGAPORE`): Singapore.
-   * - 6 (`SOUTH_AFRICA`): South Africa.
-   * - 11 (`UAE`): United Arab Emirates.
-   * - 3 (`UK`): United Kingdom.
-   * - 1 (`USA`): United States of America.
+   * Business locale. One of {@link Core_Locale_LocaleSid} constants.
    *
    * @get result
+   * @see Core_Locale_LocaleSid
    * @type {number}
    */
   this.id_locale = undefined;
 
   /**
-   * The list of available modes.
-   *
-   * Values:
-   * - 2 (`BACKEND`): Backend mode.
-   * - 5 (`BACKGROUND`): The script is executed in the background (like an asynchronous task, regular task or a cron method).
-   * - 3 (`DIRECTORY`): Directory pages.
-   * - 1 (`FRONTEND`): Default frontend mode. All pages not in backend mode except microsite and directory pages.
-   * - 4 (`MICROSITE`): Microsite pages.
+   * Current place ID. One of {@link RsPlaceSid} constants. For the Application is determined by the template. For the Web version of the site is determined by the current session.
    *
    * @get result
+   * @see RsPlaceSid
    * @type {number}
    */
   this.id_place = undefined;
 
   /**
-   * List of possible plans for {@link Wl_Business_Account_Subscription_SubscriptionAbstract} subscription.
+   * Achieve subscription plan ID.
    *
-   * Values:
-   * - 1 (`FREE`): Basic
-   * - 2 (`PREMIUM`): Premium
-   * - 3 (`WHITE`): White Label (Legacy)
-   * - 7 (`WHITE0125`): White Label
-   * - 4 (`WHITE_MAX`): White Label (Business Max)
-   * - 6 (`WHITE_PLUS`): White Label (Legacy)
-   * - 5 (`WHITE_PRO`): White Label (Business Pro)
+   * One of {@link Wl_Business_Account_Subscription_Achieve_AchieveSubscriptionSid} constants.
    *
    * @get result
+   * @see Wl_Business_Account_Subscription_Achieve_AchieveSubscriptionSid
    * @type {number}
    */
   this.id_plan_achieve = undefined;
 
   /**
-   * List of possible plans for {@link Wl_Business_Account_Subscription_SubscriptionAbstract} subscription.
-   *
-   *
-   *
-   * Last used ID: 15.
-   *
-   * Values:
-   * - 4 (`ADVANCED`): Advanced
-   * - 3 (`BASIC`): Basic
-   * - 7 (`BUSINESS`): Business(Legacy)
-   * - 11 (`BUSINESS_2405`): Business
-   * - 8 (`BUSINESS_LIGHT`): Business(Legacy)
-   * - 9 (`BUSINESS_MAX`): Business Max
-   * - 10 (`BUSINESS_PRO`): Business Pro
-   * - 6 (`ENTERPRISE`): Enterprise
-   * - 1 (`FREE`): None
-   * - 2 (`PARTNER`): Business Partner
-   * - 15 (`PLATFORM_ACCESS`): Platform Access
-   * - 5 (`PROFESSIONAL`): Professional
-   * - 12 (`STARTER`): Starter
-   * - 13 (`STARTER_2502`): Starter
-   * - 14 (`TRIAL`): Trial
+   * Base subscription plan ID.
    *
    * @get result
+   * @see Wl_Business_Account_Subscription_Base_BaseSubscriptionSid
    * @type {number}
    */
   this.id_plan_base = undefined;
 
   /**
-   * List of possible plans for {@link Wl_Business_Account_Subscription_SubscriptionAbstract} subscription.
-   *
-   * Values:
-   * - 2 (`BASIC`): Pro
-   * - 4 (`BASIC_BUSINESS`): Standard (Business)
-   * - 3 (`BASIC_OLD`): Standard (Legacy)
-   * - 1 (`FREE`): Base
-   * - 5 (`PRO`): Ultimate
+   * Marketing subscription plan ID.
    *
    * @get result
+   * @see Wl_Business_Account_Subscription_MarketingSuite_MarketingSuiteSubscriptionSid
    * @type {number}
    */
   this.id_plan_marketing = undefined;
 
   /**
-   * Contains travel modes.
+   * Current travel mode ID in business.
    *
-   * Values:
-   * - 1 (`CURVES`): Curves travel mode.
-   * - 2 (`FLEXIBLE`): Flexible travel mode.
+   * `null` if travel mode is disabled.
    *
    * @get result
+   * @see Wl_Business_Franchise_Travel_TravelModeSid
    * @type {?number}
    */
   this.id_travel_mode = null;

@@ -174,28 +174,21 @@ function Wl_Video_VideoElementModel()
   this.i_watch = undefined;
 
   /**
-   * List of embed video sources.
+   * Embedded video source.
+   * One of {@link Wl_Video_VideoEmbedSourceSid} constants.
    *
-   * Last used ID: 4
-   *
-   * Values:
-   * - 4 (`LES_MILLS`): Les Mills.
-   * - 2 (`VIMEO`): Vimeo.
-   * - 3 (`WISTIA`): Wistia.
-   * - 1 (`YOUTUBE`): YouTube.
+   * `null` if video is uploaded.
    *
    * @get result
    * @put result
+   * @see Wl_Video_VideoEmbedSourceSid
    * @type {?number}
    */
   this.id_embed_source = null;
 
   /**
-   * A list of two answers for any question: Yes or No.
-   *
-   * Values:
-   * - 2 (`NO`): The answer is "no".
-   * - 1 (`YES`): The answer is "yes".
+   * {@link Core_Sid_YesNoSid} if the video is available in all locations.
+   * {@link Core_Sid_YesNoSid} if the video is available only in certain locations.
    *
    * @get result
    * @post post
@@ -205,13 +198,9 @@ function Wl_Video_VideoElementModel()
   this.id_location_select = 0;
 
   /**
-   * List of video types.
+   * Source of the video.
    *
-   * Last used ID: 2
-   *
-   * Values:
-   * - 2 (`EMBED`): Embedded video.
-   * - 1 (`UPLOAD`): Uploaded video.
+   * One of {@link Wl_Video_VideoSourceSid} constants.
    *
    * @get result
    * @post post

@@ -88,19 +88,7 @@ function Wl_Discount_Code_Edit_DiscountCodeEditModel()
   this.i_limit = 0;
 
   /**
-   * A class for managing time intervals.
-   * Last ID: 9.
-   *
-   * Values:
-   * - 4 (`DAY`): Days.
-   * - 3 (`HOUR`): Hours.
-   * - 2 (`MINUTE`): Minutes.
-   * - 5 (`MONTH`): Months.
-   * - 1 (`SECOND`): Seconds.
-   * - 7 (`WEEK`): Weeks (7 days).
-   * - 9 (`WEEK2`): Two weeks (14 days).
-   * - 8 (`WEEK4`): Foursome of weeks (28 days).
-   * - 6 (`YEAR`): Years.
+   * Calendar periods for discount code duration from {@link ADurationSid}. Zero if discount code is never expires.
    *
    * @get result
    * @post post
@@ -110,14 +98,7 @@ function Wl_Discount_Code_Edit_DiscountCodeEditModel()
   this.id_duration = 0;
 
   /**
-   * Class to process string identifiers for duration types
-   *
-   * Last ID: 3.
-   *
-   * Values:
-   * - 2 (`DATE`): Specific date. Example, 2013-12-24.
-   * - 3 (`ETERNAL`): No ending date.
-   * - 1 (`PERIOD`): Examples: 12 days, 2 months, 2 hours etc.
+   * Type of the discount code duration from {@link RsDurationTypeSid}.
    *
    * @get result
    * @post post

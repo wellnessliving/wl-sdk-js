@@ -101,19 +101,10 @@ function Thoth_WlPay_Bank_Ach_Add_AddModel()
   this.id_locale = null;
 
   /**
-   * A list of payment gateways or processors.
-   *
-   * Values:
-   * - 11 (`CYBER_SOURCE`): Payment gateway for `cybersource.com`.
-   * - 9 (`DIRECT_CONNECT`): Payment gateway for Direct Connect.
-   * - 2 (`LUCY`): Payment gateway for Lucy.
-   * - 1 (`NETBANX`): Payment gateway for Netbanx.
-   * - 6 (`NMI`): Payment gateway for NMI.
-   * - 12 (`NUVEI`): Payment gateway for Nuvei.
-   * - 7 (`PAYCHOICE`): Payment gateway for Paychoice.
-   * - 10 (`STRIPE_COM`): Payment gateway for `stripe.com`.
+   * Transaction processor ID.
    *
    * @get result
+   * @see Thoth_PayProcessor_PayProcessorSid
    * @type {number}
    */
   this.id_pay_processor = undefined;

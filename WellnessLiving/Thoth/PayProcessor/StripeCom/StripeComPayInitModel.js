@@ -52,34 +52,11 @@ function Thoth_PayProcessor_StripeCom_StripeComPayInitModel()
   this.a_card = null;
 
   /**
-   * A list of currencies.
+   * ID of the currency.
    *
-   * Currency constant names must comply with the standard `ISO 4217` for correct integration with other services.
+   * One of {@link Core_Locale_CurrencySid} constants.
    *
-   * Values:
-   * - 11 (`AED`): United Arab Emirates dirham.
-   * - 6 (`AUD`): Australian dollar.
-   * - 18 (`BMD`): Bermudian Dollar.
-   * - 19 (`BSD`): Bahamian dollar.
-   * - 4 (`CAD`): Canadian dollar.
-   * - 8 (`EGP`): Egypt Pound.
-   * - 13 (`EUR`): Euro.
-   * - 3 (`GBP`): British pound.
-   * - 14 (`KWD`): Kuwaiti dinar.
-   * - 5 (`KYD`): Cayman Islands dollar.
-   * - 16 (`MUR`): Mauritian Rupee.
-   * - 10 (`NZD`): New Zealand Dollar.
-   * - 12 (`PHP`): Philippines Pesco.
-   * - 15 (`SAR`): Saudi Riyal.
-   * - 20 (`SGD`): Singapore dollar.
-   * - 2 (`UNKNOWN`): Unknown code.
-   *
-   *   Used when currency is not specified or is not known.
-   * - 1 (`USD`): US dollars.
-   * - 17 (`XOF`): West African CFA franc.
-   *
-   *   Is used in Senegal.
-   * - 7 (`ZAR`): South African rand.
+   * `null` in case when not initialized yet.
    *
    * @post post
    * @see Core_Locale_CurrencySid
@@ -88,20 +65,11 @@ function Thoth_PayProcessor_StripeCom_StripeComPayInitModel()
   this.id_currency = null;
 
   /**
-   * Payment actors (staff member, user or business owner).
+   * ID of the actor.
    *
-   * Values:
-   * - 3 (`BUSINESS`): Business owner.
+   * One of {@link RsPayActorSid} constants.
    *
-   *   Business owner is a sort of ordinary user. It is used when business acts as a user - for example, pays for business
-   *   account to system business.
-   * - 1 (`STAFF`): Staff member.
-   *
-   *   The payment is performed by staff (business owner, or administrator within a business backend) on
-   *   behalf of a user.
-   * - 2 (`USER`): User.
-   *
-   *   The payment is performed by the user.
+   * `null` in case when not initialized yet.
    *
    * @post post
    * @see RsPayActorSid
@@ -110,29 +78,11 @@ function Thoth_PayProcessor_StripeCom_StripeComPayInitModel()
   this.id_pay_actor = null;
 
   /**
-   * A list of payment methods.
+   * ID of pay method.
    *
+   * One of {@link RsPayMethodSid} constants.
    *
-   *
-   * Last used ID: 13.
-   *
-   * Values:
-   * - 7 (`ACCOUNT`): Payment with personal user account (rs.pay.account).
-   * - 9 (`ACH`): ACH system (USA-specific direct banking transactions).
-   * - 4 (`CASH`): Payment with cash.
-   * - 5 (`CHEQUE`): Payment with a cheque.
-   * - 8 (`COUPON`): Payment with a coupon.
-   * - 10 (`DIRECT_ENTRY`): Direct Entry system (australian-specific direct banking transactions).
-   * - 2 (`ECOMMERCE`): Online payment. Card not present.
-   * - 6 (`EXTERNAL`): Payment with an external terminal.
-   * - 11 (`IMPORT_ACCRUAL`): Special method to be used for migration process.
-   *
-   *   There are sales in Mindbody that were not bought using account balance or reward points.
-   *   This is not real revenue and cannot be imported as real sales. So, they can be imported as this special method
-   *   to be in the system and to allow business owner to hide on sales report.
-   *
-   *   In online store this method should not be available.
-   * - 1 (`POS`): Payment method at a Points of sale.
+   * `null` in case when not initialized yet.
    *
    * @post post
    * @see RsPayMethodSid
@@ -141,35 +91,10 @@ function Thoth_PayProcessor_StripeCom_StripeComPayInitModel()
   this.id_pay_method = null;
 
   /**
-   * Statuses of payment intents.
-   *
-   * Values:
-   * - 7 (`CANCELED`): You may cancel a Payment Intent at any point before it is processing or succeeded. This invalidates the
-   *   Payment Intent for future payment attempts, and cannot be undone. If any funds have been held, cancellation returns
-   *   those funds.
-   * - 4 (`PROCESSING`): Once required actions are handled, the Payment Intent moves to processing. While for some payment methods
-   *   (e.g., cards) processing can be quick, other types of payment methods can take up to a few days to process.
-   * - 3 (`REQUIRES_ACTION`): If the payment requires additional actions, such as authenticating with 3D Secure , the Payment Intent has a status
-   *   of `requires_action`.
-   * - 6 (`REQUIRES_CAPTURE`): Requires capture.
-   * - 2 (`REQUIRES_CONFIRMATION`): After the customer provides their payment information, the Payment Intent is ready to be confirmed.
-   *
-   *   This status is optional and in most integrations, this state is skipped because payment method information is
-   *   submitted at the same time that the payment is confirmed.
-   * - 1 (`REQUIRES_PAYMENT_METHOD`): When the Payment Intent is created, it has a status of `requires_payment_method` until a payment method is
-   *   attached.
-   *
-   *   We recommend creating the Payment Intent as soon as you know how much you want to charge, so that Stripe can record
-   *   all the attempted payments.
-   *
-   *   If the payment attempt fails (for example due to a decline), the Payment Intent’s status returns to
-   *   `requires_payment_method`.
-   * - 5 (`SUCCEEDED`): A Payment Intent with a status of succeeded means that the payment flow it is driving is complete.
-   *
-   *   The funds are now in your account and you can confidently fulfill the order. If you need to refund the customer,
-   *   you can use the Refunds API.
+   * Status of this Payment Intent.
    *
    * @post result
+   * @see Thoth_PayProcessor_StripeCom_PaymentIntentStatusSid
    * @type {number}
    */
   this.id_status = undefined;

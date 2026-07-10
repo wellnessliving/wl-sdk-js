@@ -44,12 +44,9 @@ function Wl_Staff_StaffElementModel()
   this.dl_start = null;
 
   /**
-   * String identifiers for gender.
+   * Gender of staff member. One of {@link AGenderSid} constants.
    *
-   * Values:
-   * - 2 (`FEMALE`): Female gender.
-   * - 1 (`MALE`): Male gender.
-   * - 3 (`UNDEFINED`): Gender is undefined in cases where the user preferred not to identify their gender.
+   * `null` means to not change the current value of the field or set gender by default for new staff.
    *
    * @post post
    * @see AGenderSid
@@ -58,15 +55,9 @@ function Wl_Staff_StaffElementModel()
   this.id_gender = null;
 
   /**
-   * String identifiers for rs.privilege.role.
+   * ID of the default system role. One of {@link RsPrivilegeRoleSid}.
    *
-   * Do not reorder class constants. It is important during selecting all system roles and custom roles from database.
-   *
-   * Values:
-   * - 1 (`BUSINESS_OWNER`): Staff role business owner.
-   * - 4 (`FRONT_DESK`): Staff role front desk.
-   * - 3 (`INSTRUCTOR`): Staff role instructor.
-   * - 2 (`LOCATION_OWNER`): Staff role location owner.
+   * `null` means to not change the current value of the field.
    *
    * @post post
    * @see RsPrivilegeRoleSid

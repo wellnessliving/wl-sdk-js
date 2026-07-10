@@ -151,18 +151,7 @@ function Wl_Quiz_Response_ResponseModel()
   this.id_mode = 0;
 
   /**
-   * List of sources where quiz response can be generated.
-   *
-   * Last used ID: 6
-   *
-   * Values:
-   * - 2 (`BOOKING`): Quiz response received during booking process.
-   * - 6 (`IMPORT`): Quiz response was imported.
-   * - 7 (`KIOSK`): Quiz response received by kiosk mode link.
-   * - 1 (`LINK`): Quiz response received by direct link.
-   * - 5 (`MANUAL`): Quiz response received by direct link.
-   * - 4 (`PURCHASE`): Quiz response received during purchase process.
-   * - 3 (`REGISTRATION`): Quiz response received during registration process.
+   * Response source. One of {@link Wl_Quiz_Response_SourceSid} constants.
    *
    * @get result
    * @post post
@@ -172,24 +161,10 @@ function Wl_Quiz_Response_ResponseModel()
   this.id_source = 0;
 
   /**
-   * List of response statuses.
-   *
-   * Last used ID: 6
-   *
-   * Values:
-   * - 1 (`ACTIVE`): Response is active.
-   * - 5 (`ACTIVE_AMEND`): Response is active and has amendments.
-   * - 2 (`DRAFT`): Response in draft mode.
-   * - 3 (`INACTIVE`): Response in inactive.
-   *
-   *   It's temporary status which used when response is saved during registration/booking/purchase process,
-   *   after this process is ended response status changed to {@link Core_Quiz_Response_ResponseStatusSid}.
-   * - 4 (`INACTIVE_DRAFT`): Response in inactive and in draft mode.
-   *
-   *   It's temporary status which used when response is saved in draft mode during registration/booking/purchase process,
-   *   after this process is ended response status changed to {@link Core_Quiz_Response_ResponseStatusSid}.
+   * Response status ID.
    *
    * @get result
+   * @see Core_Quiz_Response_ResponseStatusSid
    * @type {number}
    */
   this.id_status = undefined;

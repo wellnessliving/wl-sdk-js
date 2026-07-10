@@ -9,12 +9,9 @@ function Wl_Review_ReviewReplyModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Review status identifiers.
+   * Status of the Review. One of {@link RsReviewStatusSid} constants.
    *
-   * Values:
-   * - 1 (`ADMIN`): Admin.
-   * - 4 (`HIDDEN`): Hidden.
-   * - 3 (`PUBLISH`): Publish.
+   * `null` until passed to the api when admin replies to the review.
    *
    * @post post
    * @see RsReviewStatusSid

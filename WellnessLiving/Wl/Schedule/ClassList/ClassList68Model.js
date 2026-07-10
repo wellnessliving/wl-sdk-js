@@ -184,15 +184,10 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.dt_end = "";
 
   /**
-   * List of class tab objects.
+   * ID of tab. One of {@link Wl_Classes_Tab_TabSid} constants.
+   * This will be ignored if {@link Wl_Schedule_ClassList_ClassList68Model.is_tab_all} is `true`.
    *
-   * Last ID: 6.
-   *
-   * Values:
-   * - 2 (`ENROLLMENT`): Enrolments.
-   * - 4 (`RESOURCE`): Bookable Assets.
-   * - 3 (`SERVICE`): Appointments.
-   * - 1 (`TRAINING`): Classes.
+   * `null` if no filtering by tab is required.
    *
    * @post post
    * @see Wl_Classes_Tab_TabSid

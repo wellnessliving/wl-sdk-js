@@ -156,35 +156,19 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
   this.i_index = 0;
 
   /**
-   * A class for the days of the week.
-   *
-   * Values:
-   * - 5 (`FRIDAY`): Friday.
-   * - 1 (`MONDAY`): Monday.
-   * - 6 (`SATURDAY`): Saturday.
-   * - 7 (`SUNDAY`): Sunday.
-   * - 4 (`THURSDAY`): Thursday.
-   * - 2 (`TUESDAY`): Tuesday.
-   * - 3 (`WEDNESDAY`): Wednesday.
+   * Last day of the week. One of {@link ADateWeekSid} constants.
    *
    * @get result
+   * @see ADateWeekSid
    * @type {number}
    */
   this.i_week_end = undefined;
 
   /**
-   * A class for the days of the week.
-   *
-   * Values:
-   * - 5 (`FRIDAY`): Friday.
-   * - 1 (`MONDAY`): Monday.
-   * - 6 (`SATURDAY`): Saturday.
-   * - 7 (`SUNDAY`): Sunday.
-   * - 4 (`THURSDAY`): Thursday.
-   * - 2 (`TUESDAY`): Tuesday.
-   * - 3 (`WEDNESDAY`): Wednesday.
+   * First day of the week. One of {@link ADateWeekSid} constants.
    *
    * @get result
+   * @see ADateWeekSid
    * @type {number}
    */
   this.i_week_start = undefined;

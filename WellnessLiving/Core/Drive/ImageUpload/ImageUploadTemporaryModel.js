@@ -65,15 +65,10 @@ function Core_Drive_ImageUpload_ImageUploadTemporaryModel()
   this.i_width_src = undefined;
 
   /**
-   * List of image types.
-   *
-   * Values:
-   * - 4 (`BMP`): Bmp image.
-   * - 1 (`GIF`): Gif image.
-   * - 2 (`JPEG`): Jpeg image.
-   * - 3 (`PNG`): Png image.
+   * The image type ID. One of the {@link Core_Drive_DriveTypeSid} constants.
    *
    * @post result
+   * @see Core_Drive_DriveTypeSid
    * @type {number}
    */
   this.id_type_src = undefined;

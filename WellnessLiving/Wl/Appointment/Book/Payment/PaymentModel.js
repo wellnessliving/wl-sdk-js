@@ -176,15 +176,10 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   this.id_mode = 0;
 
   /**
-   * The possible payment types an appointment can have.
-   *
-   * Values:
-   * - 2 (`DEPOSIT`): A deposit was paid.
-   * - 4 (`FREE`): Appointment is free and does not require payment.
-   * - 3 (`FULL`): The full price was paid.
-   * - 1 (`NONE`): Nothing was paid.
+   * The payment type for the appointment. A constant of {@link RsAppointmentPaySid}.
    *
    * @post result
+   * @see RsAppointmentPaySid
    * @type {number}
    */
   this.id_pay = undefined;

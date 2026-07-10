@@ -189,52 +189,35 @@ function Wl_Schedule_Page_PageElementModel()
   this.i_wait_spot = undefined;
 
   /**
-   * A list of types of visit note.
+   * The note type ID. This will be set to `null` if notes aren't allowed.
+   * This is one of the {@link Wl_Visit_Note_Sid_NoteSid} constants.
    *
-   * Values:
-   * - 2 (`QUICK`): The usual quick accompanying note for the customer visit.
-   * - 1 (`SOAP`): Accompanying medical note for the customer visit.
+   * This will be `null` if notes aren't allowed.
    *
    * @get result
+   * @see Wl_Visit_Note_Sid_NoteSid
    * @type {number}
    */
   this.id_note = undefined;
 
   /**
-   * List of possible value of virtual integrations.
+   * The virtual provider ID. One of the {@link Wl_Virtual_VirtualProviderSid} constants.
    *
-   * Last used ID: 2.
-   *
-   * Values:
-   * - 2 (`NON_INTEGRATED`): Virtual integration non implemented.
-   * - 1 (`ZOOM`): Virtual Zoom service integration.
+   * This will be `null` for non-virtual services.
    *
    * @get result
+   * @see Wl_Virtual_VirtualProviderSid
    * @type {?number}
    */
   this.id_virtual_provider = null;
 
   /**
-   * Possible states of the visit: book, attended, cancelled, etc.
+   * The visit type ID. One of the {@link Wl_Visit_VisitSid} constants.
    *
-   * Last used ID: 8.
-   *
-   * Values:
-   * - 3 (`ATTEND`): Client has attended the session.
-   * - 1 (`BOOK`): Active reservation means that user is going to attend the session.
-   * - 6 (`CANCEL`): Client has cancelled the reservation in time and without penalty.
-   * - 4 (`PENALTY`): Client has cancelled his reservation too late.
-   * - 7 (`PENDING`): This state means that visit is registered, but it is unknown is it {@link Wl_Visit_VisitSid}
-   *   or {@link Wl_Visit_VisitSid} or {@link Wl_Visit_VisitSid} but definitely one of these states.
-   *
-   *   The real type of this visit must be set manually by staff.
-   *   Status can be changed automatically to {@link Wl_Visit_VisitSid}.
-   * - 8 (`REMOVE`): Visit was removed.
-   *   Visits with this status are not shown anywhere in system, but still are saved in database.
-   * - 5 (`TRUANCY`): Client has missed the session without cancellation.
-   * - 2 (`WAIT`): Reservation in a wait list means that user is going to attend the session if someone will cancel his reservation.
+   * This will be `null` if not loaded yet.
    *
    * @get result
+   * @see Wl_Visit_VisitSid
    * @type {number}
    */
   this.id_visit = undefined;

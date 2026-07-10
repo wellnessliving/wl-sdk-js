@@ -25,47 +25,18 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
   this.a_type = undefined;
 
   /**
-   * List of progress log fields.
-   *
-   * Last used ID: 14.
-   *
-   * Values:
-   * - 6 (`ABDOMEN`): Abdomen field.
-   * - 3 (`ARMS`): Arms field.
-   * - 2 (`BLOOD_PRESSURE`): Blood pressure field.
-   * - 11 (`BODY_FAT`): Body fat field.
-   * - 4 (`BUST`): Bust field.
-   * - 9 (`HEIGHT`): Height of the client.
-   * - 7 (`HIPS`): Client hips size.
-   * - 14 (`LONG_TERM_GOALS`): Long term goals.
-   * - 1 (`PRE_WORKOUT_HEART_RATE`): Pre workout heart rate.
-   * - 12 (`PROGRESS_PICTURE`): Progress picture.
-   * - 13 (`SHORT_TERM_GOALS`): Short term goals.
-   * - 8 (`THIGHS`): THIGHS
-   * - 5 (`WAIST`): Waist
-   * - 10 (`WEIGHT`): Client weight.
+   * Field ID. One of the {@link Wl_Member_Progress_Field_ProgressFieldSid} constant.
    *
    * @get result
+   * @see Wl_Member_Progress_Field_ProgressFieldSid
    * @type {number}
    */
   this.id_field = undefined;
 
   /**
-   * Possible measurement units of the progress fields values.
+   * Field measurement unit ID.
    *
-   * Values:
-   * - 7 (`BEATS_PER_MINUTE`): Value in beats per minutes.
-   * - 1 (`CENTIMETRES`): Value in centimeters.
-   * - 3 (`FEET`): Value in feet.
-   * - 11 (`FEET_AND_INCHES`): Value in feet and inches.
-   * - 9 (`GRAMS`): Value in grams.
-   * - 4 (`INCHES`): Value in inches.
-   * - 5 (`KILOGRAMS`): Value in kilograms.
-   * - 2 (`METRES`): Value in metres.
-   * - 12 (`METRES_AND_CENTIMETRES`): Value in metres and centimetres.
-   * - 8 (`MMHG`): Value in mmHG.
-   * - 10 (`PERCENTAGES`): Value in percentages.
-   * - 6 (`POUNDS`): Value in pounds.
+   * One of the {@link Wl_Member_Progress_Field_MeasurementSid} constants.
    *
    * @get result
    * @post post
@@ -75,16 +46,9 @@ function Wl_Member_Progress_Field_Edit_FieldModel()
   this.id_measurement_unit = 0;
 
   /**
-   * Possible types of the progress fields values.
+   * Field type ID.
    *
-   * Lase used id: 5.
-   *
-   * Values:
-   * - 2 (`DECIMAL`): Value is decimal.
-   * - 5 (`IMAGE`): Value is image.
-   * - 3 (`PERCENTAGE`): Value is percentage.
-   * - 4 (`STRING`): Value is string.
-   * - 1 (`WHOLE_NUMBER`): Value is whole number.
+   * One of the {@link Wl_Member_Progress_Field_TypeSid} constants.
    *
    * @get result
    * @post post

@@ -56,12 +56,7 @@ function Wl_Profile_Alert_AlertEditModel()
   this.a_login_note_data = undefined;
 
   /**
-   * Class for access type to login note.
-   *
-   * Values:
-   * - 1 (`CLIENT`): Login note can view all staff and client.
-   * - 2 (`ME`): Login note can view only staff which create this note.
-   * - 3 (`STAFF`): Login note can view only all staff.
+   * Login note access type ID.
    *
    * @post post
    * @see RsLoginNoteAccessSid

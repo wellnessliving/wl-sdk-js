@@ -117,33 +117,10 @@ function Wl_Pay_Form_EnvironmentModel()
   this.f_surcharge_ach = null;
 
   /**
-   * A list of locales.
-   *
-   * Last used ID: 21
-   *
-   * Values:
-   * - 4 (`AUSTRALIA`): Australia.
-   * - 20 (`BAHAMAS`): Bahamas.
-   * - 19 (`BERMUDA`): Bermuda.
-   * - 2 (`CANADA`): Canada.
-   * - 5 (`CAYMAN`): Cayman Islands.
-   * - 13 (`CYPRUS`): Cyprus.
-   * - 8 (`EGYPT`): Egypt.
-   * - 18 (`IRELAND`): Republic of Ireland.
-   * - 14 (`KUWAIT`): Kuwait
-   * - 16 (`MAURITIUS`): Republic of Mauritius.
-   * - 9 (`NEVERLAND`): A special locale that can be used for testing or a business situated in an unknown region.
-   * - 10 (`NEW_ZEALAND`): New Zealand.
-   * - 12 (`PHILIPPINES`): Philippines.
-   * - 15 (`SAUDI_ARABIA`): Saudi Arabia.
-   * - 17 (`SENEGAL`): Senegal
-   * - 21 (`SINGAPORE`): Singapore.
-   * - 6 (`SOUTH_AFRICA`): South Africa.
-   * - 11 (`UAE`): United Arab Emirates.
-   * - 3 (`UK`): United Kingdom.
-   * - 1 (`USA`): United States of America.
+   * The locale ID of the business.
    *
    * @get result
+   * @see Core_Locale_LocaleSid
    * @type {number}
    */
   this.id_locale = undefined;

@@ -22,14 +22,7 @@ function Wl_Social_Share_SocialShareModel()
   this.a_key = undefined;
 
   /**
-   * A list of supported social networks.
-   *
-   * Last used ID: 3.
-   *
-   * Values:
-   * - 1 (`FACEBOOK`): Facebook social network.
-   * - 2 (`GOOGLE`): Google Plus social network.
-   * - 3 (`TWITTER`): Twitter social network.
+   * The id of the social network.
    *
    * @post post
    * @see ASocialSid
@@ -38,15 +31,7 @@ function Wl_Social_Share_SocialShareModel()
   this.id_share_destination = 0;
 
   /**
-   * A list of types object for share post to social network.
-   *
-   * Last used ID: 4.
-   *
-   * Values:
-   * - 4 (`BOOK`): Book.
-   * - 3 (`LOCATION`): Location.
-   * - 1 (`PURCHASE`): Purchase.
-   * - 2 (`REVIEW`): Review.
+   * The id of type object for share post to social network.
    *
    * @post post
    * @see Wl_Social_Share_ShareObjectSid

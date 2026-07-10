@@ -49,19 +49,9 @@ function Wl_Reward_Action_ActionWriteModel()
   this.i_score = null;
 
   /**
-   * A class for managing time intervals.
-   * Last ID: 9.
+   * Period to apply maximum count of score.
    *
-   * Values:
-   * - 4 (`DAY`): Days.
-   * - 3 (`HOUR`): Hours.
-   * - 2 (`MINUTE`): Minutes.
-   * - 5 (`MONTH`): Months.
-   * - 1 (`SECOND`): Seconds.
-   * - 7 (`WEEK`): Weeks (7 days).
-   * - 9 (`WEEK2`): Two weeks (14 days).
-   * - 8 (`WEEK4`): Foursome of weeks (28 days).
-   * - 6 (`YEAR`): Years.
+   * `null` if not set yet.
    *
    * @post post
    * @see ADurationSid
@@ -70,19 +60,9 @@ function Wl_Reward_Action_ActionWriteModel()
   this.id_cap = null;
 
   /**
-   * A class for managing time intervals.
-   * Last ID: 9.
+   * Type of a period.
    *
-   * Values:
-   * - 4 (`DAY`): Days.
-   * - 3 (`HOUR`): Hours.
-   * - 2 (`MINUTE`): Minutes.
-   * - 5 (`MONTH`): Months.
-   * - 1 (`SECOND`): Seconds.
-   * - 7 (`WEEK`): Weeks (7 days).
-   * - 9 (`WEEK2`): Two weeks (14 days).
-   * - 8 (`WEEK4`): Foursome of weeks (28 days).
-   * - 6 (`YEAR`): Years.
+   * `null` if not set yet.
    *
    * @post post
    * @see ADurationSid

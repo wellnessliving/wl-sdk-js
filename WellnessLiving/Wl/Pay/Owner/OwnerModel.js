@@ -14,14 +14,12 @@ function Wl_Pay_Owner_OwnerModel()
   this._s_key = "uid,k_business";
 
   /**
-   * A list of money owners from which account money can be transferred.
+   * The type of user for which transactions can be made (this property is optional).
    *
-   * Values:
-   * - 3 (`ANONYMOUS`): Anonymous user (Walk-In).
-   * - 2 (`BUSINESS`): Business.
-   * - 1 (`USER`): System user.
+   * This is one of the {@link RsPayOwnerSid} constants.
    *
    * @get result
+   * @see RsPayOwnerSid
    * @type {number}
    */
   this.id_pay_owner = undefined;

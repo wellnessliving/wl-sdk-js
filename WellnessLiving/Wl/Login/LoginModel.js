@@ -72,14 +72,10 @@ function Wl_Login_LoginModel()
   this.i_photo_width = 0;
 
   /**
-   * String identifiers for gender.
-   *
-   * Values:
-   * - 2 (`FEMALE`): Female gender.
-   * - 1 (`MALE`): Male gender.
-   * - 3 (`UNDEFINED`): Gender is undefined in cases where the user preferred not to identify their gender.
+   * The gender ID. It will be one of the {@link AGenderSid} constants.
    *
    * @get result
+   * @see AGenderSid
    * @type {number}
    */
   this.id_gender = undefined;

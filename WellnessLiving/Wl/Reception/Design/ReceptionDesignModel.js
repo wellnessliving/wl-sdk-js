@@ -68,37 +68,19 @@ function Wl_Reception_Design_ReceptionDesignModel()
   this.i_schedule_delay = undefined;
 
   /**
-   * List of sounds used for check ins.
-   *
-   * Last used ID: 6.
-   *
-   * Values:
-   * - 1 (`ERROR_SOUND_1`): Error sound 1 to be played when self check in fails.
-   * - 2 (`ERROR_SOUND_2`): Error sound 2 to be played when self check in fails.
-   * - 3 (`ERROR_SOUND_3`): Error sound 3 to be played when self check in fails.
-   * - 4 (`SUCCESS_SOUND_1`): Success sound 1 to be played when self check in succeeds.
-   * - 5 (`SUCCESS_SOUND_2`): Success sound 2 to be played when self check in succeeds.
-   * - 6 (`SUCCESS_SOUND_3`): Success sound 3 to be played when self check in succeeds.
+   * ID of the sound for failed check in.
    *
    * @get result
+   * @see Wl_Reception_Design_CheckInSoundSid
    * @type {number}
    */
   this.id_failed_sound = undefined;
 
   /**
-   * List of sounds used for check ins.
-   *
-   * Last used ID: 6.
-   *
-   * Values:
-   * - 1 (`ERROR_SOUND_1`): Error sound 1 to be played when self check in fails.
-   * - 2 (`ERROR_SOUND_2`): Error sound 2 to be played when self check in fails.
-   * - 3 (`ERROR_SOUND_3`): Error sound 3 to be played when self check in fails.
-   * - 4 (`SUCCESS_SOUND_1`): Success sound 1 to be played when self check in succeeds.
-   * - 5 (`SUCCESS_SOUND_2`): Success sound 2 to be played when self check in succeeds.
-   * - 6 (`SUCCESS_SOUND_3`): Success sound 3 to be played when self check in succeeds.
+   * ID of the sound for successful check in.
    *
    * @get result
+   * @see Wl_Reception_Design_CheckInSoundSid
    * @type {number}
    */
   this.id_success_sound = undefined;

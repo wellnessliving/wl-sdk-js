@@ -86,92 +86,21 @@ function Wl_Profile_Activity_ElementModel()
   this.i_spend = undefined;
 
   /**
-   * List of available design icons.
-   * Name of the class with this icon will be wl-icon-[sid]
+   * The ID of the icon that should be shown for this activity. One of {@link Wl_Design_IconSid} constants.
    *
-   * Last used ID 11.
-   *
-   * Values:
-   * - 4 (`APPOINTMENT`): Signs that session or pass is an appointment connected.
-   * - 7 (`ASSET`): Signs that session or pass is an asset connected.
-   * - 5 (`CLASSES`): Signs that session or pass is a class or event connected.
-   * - 3 (`CYCLE`): Cycle icon. Used, for example, to show transferred status of the promotion.
-   * - 8 (`EARLY_CANCELED`): Early cancel activity list icon.
-   * - 6 (`GYM_VISIT`): Signs that session or pass is a gym visit connected.
-   * - 9 (`LATE_CANCELED`): Late cancel activity list icon.
-   * - 2 (`NOTE`): Piece of paper with the curved end for different text notes.
-   * - 10 (`NO_SHOW`): No show at visit activity list icon.
-   * - 1 (`SOAP`): Paper with medical symbolic for medical notes.
-   * - 11 (`SPA_CLOCK`): Clock activity list icon in SPA application.
+   * This will be `null` is no special icon for this activity.
    *
    * @get result
+   * @see Wl_Design_IconSid
    * @type {?number}
    */
   this.id_icon = null;
 
   /**
-   * Manages identifiers of user activity.
-   *
-   * Last ID: 56.
-   *
-   * Values:
-   * - 27 (`APPOINTMENT_BOOK`): Client books an appointment.
-   * - 47 (`APPOINTMENT_BOOK_FACEBOOK`): Client booked an appointment and shared on Facebook.
-   * - 48 (`APPOINTMENT_BOOK_TWITTER`): Client booked an appointment and shared on Twitter.
-   * - 28 (`APPOINTMENT_CANCEL`): Client cancels an appointment.
-   * - 23 (`APPOINTMENT_VISIT`): Client attends an appointment.
-   * - 52 (`APPOINTMENT_WAIT`): Client books an appointment to wait list.
-   * - 49 (`ASSET_BOOK_FACEBOOK`): Client booked an asset and shared on Facebook.
-   * - 50 (`ASSET_BOOK_TWITTER`): Client booked an asset and shared on Twitter.
-   * - 1 (`BIRTHDAY`): Client's birthday.
-   * - 2 (`CLASS_BOOK`): Client booked a class.
-   * - 43 (`CLASS_BOOK_FACEBOOK`): Client booked a class and shared on Facebook.
-   * - 44 (`CLASS_BOOK_TWITTER`): Client booked a class and shared on Twitter.
-   * - 3 (`CLASS_CANCEL`): Client cancelled a class.
-   * - 15 (`CLASS_VISIT`): Client attends a class.
-   * - 54 (`CLASS_WAIT`): Client booked a class.
-   * - 51 (`COUPON_TRANSFER`): Gift card transferred.
-   * - 31 (`CUSTOM_REWARD`): Staff approved a custom reward for a client.
-   * - 17 (`ENROLLMENT_BOOK`): Client booked an enrollment.
-   * - 45 (`ENROLLMENT_BOOK_FACEBOOK`): Client booked an enrollment and shared on Facebook.
-   * - 46 (`ENROLLMENT_BOOK_TWITTER`): Client booked an enrollment and shared on Twitter.
-   * - 18 (`ENROLLMENT_CANCEL`): Client cancels an enrollment.
-   * - 16 (`ENROLLMENT_VISIT`): Client attends an enrollment.
-   * - 53 (`ENROLLMENT_WAIT`): Client booked an enrollment.
-   * - 12 (`FACEBOOK_CONNECT`): Client connected his Facebook account.
-   * - 19 (`FACEBOOK_DISCONNECT`): Client disconnected his Facebook account.
-   * - 4 (`FAVORITE_ADD_CLASS`): Client added a class to favorites.
-   * - 5 (`FAVORITE_ADD_LOCATION`): Client added a location to favorites.
-   * - 6 (`FAVORITE_ADD_STAFF`): Client added a staff member to favorites.
-   * - 7 (`FAVORITE_REMOVE_CLASS`): Client removed a class from favorites.
-   * - 8 (`FAVORITE_REMOVE_LOCATION`): Client removed a location from favorites.
-   * - 9 (`FAVORITE_REMOVE_STAFF`): Client removed a staff member from favorites.
-   * - 10 (`FRIEND_ADD`): Client added a friend.
-   * - 32 (`GYM_VISIT`): Client made a gym visit.
-   * - 14 (`INVITE_SEND`): Client sent an invite.
-   * - 39 (`LOCATION_SHARE_FACEBOOK`): The user shared location item into Facebook
-   * - 40 (`LOCATION_SHARE_TWITTER`): The user shared location item into Twitter
-   * - 22 (`PAY`): The user spend money.
-   * - 24 (`PRIZE`): Client has bought prize.
-   * - 34 (`PROMOTION_TRANSFER`): Promotion transferred.
-   * - 30 (`PURCHASE_PRODUCT`): Customer bought the product.
-   * - 29 (`PURCHASE_PROMOTION`): Customer bought the promotion.
-   * - 25 (`PURCHASE_SHARE_FACEBOOK`): The user shared purchase item into Facebook
-   * - 26 (`PURCHASE_SHARE_TWITTER`): The user shared purchase item into Twitter
-   * - 38 (`REFER_PURCHASE`): Referral made a purchase.
-   * - 37 (`REFER_REGISTER`): A referrer is set for the user.
-   * - 21 (`REGISTRATION`): The user has logged in.
-   * - 11 (`REVIEW`): Client wrote a review.
-   * - 41 (`REVIEW_SHARE_FACEBOOK`): The user shared purchase item into Facebook
-   * - 42 (`REVIEW_SHARE_TWITTER`): The user shared purchase item into Twitter
-   * - 55 (`REWARD_MANUAL`): Reward points were changed manually.
-   * - 36 (`REWARD_RESET`): All-time earned reward points have been reset.
-   * - 56 (`REWARD_RESET_AVAILABLE`): Current available reward points have been reset.
-   * - 35 (`SUMMARY_VISIT`): Client attended several visits.
-   * - 13 (`TWITTER_CONNECT`): Client connected his Twitter account.
-   * - 20 (`TWITTER_DISCONNECT`): Client disconnected his Twitter account.
+   * The ID of the activity item returned by this endpoint. One of {@link RsLoginActivityTypeSid} constants.
    *
    * @get result
+   * @see RsLoginActivityTypeSid
    * @type {number}
    */
   this.id_type = undefined;

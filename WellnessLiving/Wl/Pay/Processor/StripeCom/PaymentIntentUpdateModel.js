@@ -9,34 +9,8 @@ function Wl_Pay_Processor_StripeCom_PaymentIntentUpdateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * A list of currencies.
-   *
-   * Currency constant names must comply with the standard `ISO 4217` for correct integration with other services.
-   *
-   * Values:
-   * - 11 (`AED`): United Arab Emirates dirham.
-   * - 6 (`AUD`): Australian dollar.
-   * - 18 (`BMD`): Bermudian Dollar.
-   * - 19 (`BSD`): Bahamian dollar.
-   * - 4 (`CAD`): Canadian dollar.
-   * - 8 (`EGP`): Egypt Pound.
-   * - 13 (`EUR`): Euro.
-   * - 3 (`GBP`): British pound.
-   * - 14 (`KWD`): Kuwaiti dinar.
-   * - 5 (`KYD`): Cayman Islands dollar.
-   * - 16 (`MUR`): Mauritian Rupee.
-   * - 10 (`NZD`): New Zealand Dollar.
-   * - 12 (`PHP`): Philippines Pesco.
-   * - 15 (`SAR`): Saudi Riyal.
-   * - 20 (`SGD`): Singapore dollar.
-   * - 2 (`UNKNOWN`): Unknown code.
-   *
-   *   Used when currency is not specified or is not known.
-   * - 1 (`USD`): US dollars.
-   * - 17 (`XOF`): West African CFA franc.
-   *
-   *   Is used in Senegal.
-   * - 7 (`ZAR`): South African rand.
+   * ID of the currency.
+   * Required.
    *
    * @post post
    * @see Core_Locale_CurrencySid

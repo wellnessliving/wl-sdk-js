@@ -9,14 +9,7 @@ function Wl_Purchase_Share_PurchaseShareModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * A list of supported social networks.
-   *
-   * Last used ID: 3.
-   *
-   * Values:
-   * - 1 (`FACEBOOK`): Facebook social network.
-   * - 2 (`GOOGLE`): Google Plus social network.
-   * - 3 (`TWITTER`): Twitter social network.
+   * The social network. One of the {@link ASocialSid} constants.
    *
    * @post post
    * @see ASocialSid

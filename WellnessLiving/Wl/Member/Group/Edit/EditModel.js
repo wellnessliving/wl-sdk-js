@@ -62,12 +62,7 @@ function Wl_Member_Group_Edit_EditModel()
 
   /**
    * Lead conversion type.
-   *
-   * Last used ID: 3.
-   *
-   * Values:
-   * - 1 (`LOST`): Consider leads as 'Lost' or no longer interested.
-   * - 2 (`WON`): Consider leads as successfully 'Won'.
+   * `null` if this group is not used for to track lead conversion.
    *
    * @get result
    * @post post
@@ -77,18 +72,7 @@ function Wl_Member_Group_Edit_EditModel()
   this.id_conversion_type = null;
 
   /**
-   * Shapes of client group icons.
-   *
-   * Last used ID: 7.
-   *
-   * Values:
-   * - 1 (`CIRCLE`): Circle.
-   * - 2 (`HEXAGON`): Hexagon.
-   * - 3 (`OVAL`): Oval.
-   * - 4 (`PENTAGON`): Pentagon.
-   * - 5 (`RECTANGLE`): Rectangle.
-   * - 6 (`SQUARE`): Square.
-   * - 7 (`STAR`): Star.
+   * Shape of icon. One of {@link Wl_Member_Group_ShapeSid} constants.
    *
    * @get result
    * @post post
@@ -99,12 +83,8 @@ function Wl_Member_Group_Edit_EditModel()
   this.id_member_group_shape = 0;
 
   /**
-   * A list of share options.
-   *
-   * Values:
-   * - 2 (`EVERYONE`): Item is available for all staffs in a business.
-   * - 1 (`ONLY_ME`): Item is available for current user.
-   * - 3 (`SELECTED_STAFF_ROLE`): Item is available for selected staff roles.
+   * Type of share option.
+   * One of {@link Wl_Share_ShareSid} constants.
    *
    * @post post
    * @put post

@@ -9,21 +9,20 @@ function Core_Passport_Login_Enter_NotepadModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * List of available data center regions.
+   * ID of the datacenter which is a preferred datacenter for the user specified in
+   * {@link Core_Passport_Login_Enter_NotepadModel.s_login}.
    *
-   * The business independently chooses the data center region in which it will be registered.
-   * The choice of the data center region does not depend on the actual location of the business.
-   * The region determines the data center in which the Wellnessliving system operates.
-   * The region should be chosen based on the access speed to the data center from business clients.
-   * Business from any region can be registered in any data center, but only in one.
+   * One of {@link Core_Amazon_Region_AmazonRegionSid} constants.
    *
-   * Last ID: 2.
+   * If ID of the datacenter returned in this property differs from the current datacenter, this means that this
+   * API request was forwarded to the datacenter returned here, and the notepad was created there.
+   * So that {@link Core_Passport_Login_Enter_EnterModel} must always go to the datacenter specified in this property.
    *
-   * Values:
-   * - 2 (`AP_SOUTHEAST_2`): Sydney, Australia.
-   * - 1 (`US_EAST_1`): North Virginia, USA.
+   * `null` if datacenter preference was not evaluated, or it is not known.
+   * In this case, the notepad is created in datacenter where the API request was initially sent.
    *
    * @get result
+   * @see Core_Amazon_Region_AmazonRegionSid
    * @type {number}
    */
   this.id_region = undefined;
