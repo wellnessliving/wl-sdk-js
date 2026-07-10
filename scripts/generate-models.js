@@ -455,6 +455,26 @@ function pathToModelFile(apiPath)
 }
 
 /**
+ * Returns the raw description text to use for a field.
+ *
+ * A description declared directly on the field (sibling to a `$ref`, or the field's own
+ * description) always wins. Without one, if the field's schema `$ref`s a `*Sid` enum, only the
+ * class-level summary is used - the "Values:" enumeration is generated once into the Sid file
+ * and must not be duplicated into every field that references it.
+ *
+ * @param {?string} ownDescription Description declared directly on the field or param.
+ * @param {?object} resolved Field schema after following `$ref`.
+ * @param {?string} sidRef JS class name if the field's schema `$ref`s a `*Sid` component, `null` otherwise.
+ * @returns {string} Raw (not yet escaped or link-converted) description text.
+ */
+function getFieldRawDescription(ownDescription, resolved, sidRef)
+{
+  if (ownDescription) return ownDescription;
+  const resolvedDesc = (resolved && resolved.description) || '';
+  return sidRef ? extractSidClassDescription(resolvedDesc) : resolvedDesc;
+}
+
+/**
  * Collects all fields from all HTTP operations of a path item.
  *
  * Each field entry: { a_method, type, description, sidRef, hasInput, typedefs }
@@ -490,8 +510,8 @@ function collectFields(pathItem, spec, className)
       const jsType = schemaToJsType(resolvedParamSchema, spec, 0, localTypedefs, className + '_' + name);
       // Optional params are treated as nullable
       const effectiveType = (!isRequired && !jsType.startsWith('?')) ? '?' + jsType : jsType;
-      const desc = convertLinks(escDoc(param.description || ''));
       const sidRef = getSidRefClass(paramSchema);
+      const desc = convertLinks(escDoc(getFieldRawDescription(param.description, resolvedParamSchema, sidRef)));
       const { hasDefault, defaultValue } = getSchemaDefault(resolvedParamSchema);
 
       if (!fields[name])
@@ -537,8 +557,8 @@ function collectFields(pathItem, spec, className)
           const jsType = schemaToJsType(resolved, spec, 0, localTypedefs, className + '_' + name);
           const isRequired = required.includes(name);
           const effectiveType = (!isRequired && !jsType.startsWith('?')) ? '?' + jsType : jsType;
-          const desc = convertLinks(escDoc((resolved && resolved.description) || ''));
           const sidRef = getSidRefClass(propSchema);
+          const desc = convertLinks(escDoc(getFieldRawDescription(propSchema.description, resolved, sidRef)));
           const { hasDefault, defaultValue } = getSchemaDefault(resolved);
 
           if (!fields[name])
@@ -579,13 +599,14 @@ function collectFields(pathItem, spec, className)
             const resolved = resolveSchema(propSchema, spec);
             const localTypedefs = [];
             const jsType = schemaToJsType(resolved, spec, 0, localTypedefs, className + '_' + name);
-            const desc = convertLinks(escDoc((resolved && resolved.description) || ''));
+            const sidRef = getSidRefClass(propSchema);
+            const desc = convertLinks(escDoc(getFieldRawDescription(propSchema.description, resolved, sidRef)));
             const { hasDefault, defaultValue } = getSchemaDefault(resolved);
 
             if (!fields[name])
             {
               fields[name] = {
-                a_method: {}, type: jsType, description: desc, sidRef: null, hasInput: false,
+                a_method: {}, type: jsType, description: desc, sidRef, hasInput: false,
                 typedefs: localTypedefs, hasDefault: false, defaultValue: undefined,
               };
             }
@@ -593,6 +614,7 @@ function collectFields(pathItem, spec, className)
             fields[name].a_method[httpMethod].result = true;
             if (fields[name].type === '*' && jsType !== '*') fields[name].type = jsType;
             if (!fields[name].description && desc) fields[name].description = desc;
+            if (!fields[name].sidRef && sidRef) fields[name].sidRef = sidRef;
             if (!fields[name].hasDefault && hasDefault)
             {
               fields[name].hasDefault = true;
