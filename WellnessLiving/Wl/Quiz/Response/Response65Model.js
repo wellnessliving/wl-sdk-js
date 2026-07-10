@@ -199,7 +199,7 @@ function Wl_Quiz_Response_Response65Model()
    * @get get
    * @type {boolean}
    */
-  this.is_answer = false;
+  this.is_answer = true;
 
   /**
    * @get get
@@ -321,7 +321,7 @@ function Wl_Quiz_Response_Response65Model()
    * @get result
    * @type {boolean}
    */
-  this.show_numbering = undefined;
+  this.show_numbering = true;
 
   /**
    * Date when response added.

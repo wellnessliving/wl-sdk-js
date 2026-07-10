@@ -14,7 +14,7 @@ function Wl_Review_ReviewFeatureModel()
    * @post post
    * @type {boolean}
    */
-  this.is_featured = false;
+  this.is_featured = true;
 
   /**
    * The business key.

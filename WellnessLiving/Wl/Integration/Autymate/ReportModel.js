@@ -25,7 +25,7 @@ function Wl_Integration_Autymate_ReportModel()
    * @get get
    * @type {number[]}
    */
-  this.a_pay_method_remove = undefined;
+  this.a_pay_method_remove = [7];
 
   /**
    * The report data.

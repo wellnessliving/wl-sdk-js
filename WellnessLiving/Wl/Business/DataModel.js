@@ -37,7 +37,7 @@ function Wl_Business_DataModel()
    * @get get
    * @type {number}
    */
-  this.i_logo_height = 0;
+  this.i_logo_height = 100;
 
   /**
    * The maximum width of the business image (in pixels).
@@ -45,7 +45,7 @@ function Wl_Business_DataModel()
    * @get get
    * @type {number}
    */
-  this.i_logo_width = 0;
+  this.i_logo_width = 220;
 
   /**
    * A list of client booking flow types.

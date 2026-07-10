@@ -85,7 +85,7 @@ function Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel()
    * @post post
    * @type {string}
    */
-  this.m_amount = "";
+  this.m_amount = "0.00";
 
   /**
    * Surcharge amount to set.
@@ -94,7 +94,7 @@ function Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel()
    * @post post
    * @type {string}
    */
-  this.m_surcharge = "";
+  this.m_surcharge = "0.00";
 
   /**
    * Payment intent ID to update.

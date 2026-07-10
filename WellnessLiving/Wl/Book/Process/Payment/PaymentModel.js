@@ -208,7 +208,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    * @post post
    * @type {boolean}
    */
-  this.can_book = false;
+  this.can_book = true;
 
   /**
    * Date/time to which session is booked.
@@ -267,7 +267,7 @@ function Wl_Book_Process_Payment_PaymentModel()
    * @post get
    * @type {boolean}
    */
-  this.is_credit_card_check = false;
+  this.is_credit_card_check = true;
 
   /**
    * `true` if user pressed 'Pay later'.

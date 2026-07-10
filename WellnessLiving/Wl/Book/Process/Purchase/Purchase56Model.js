@@ -297,7 +297,7 @@ function Wl_Book_Process_Purchase_Purchase56Model()
    * @get get
    * @type {boolean}
    */
-  this.is_credit_card_check = false;
+  this.is_credit_card_check = true;
 
   /**
    * Indicates if the drop-in rate should be the default promotion.

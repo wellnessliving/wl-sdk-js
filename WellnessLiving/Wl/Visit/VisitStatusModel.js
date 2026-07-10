@@ -228,7 +228,7 @@ function Wl_Visit_VisitStatusModel()
    * @post get
    * @type {boolean}
    */
-  this.is_charge_fee = false;
+  this.is_charge_fee = true;
 
   /**
    * Determines whether the visit is from an event.

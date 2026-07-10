@@ -14,7 +14,7 @@ function Wl_Skin_Application_Resource_ApplicationResourceMaterialModel()
    * @post post
    * @type {number}
    */
-  this.i_version = 0;
+  this.i_version = 1;
 
   /**
    * Mobile applications categories which will be displayed in select tag.
@@ -50,7 +50,7 @@ function Wl_Skin_Application_Resource_ApplicationResourceMaterialModel()
    * @post post
    * @type {number}
    */
-  this.id_version_change = 0;
+  this.id_version_change = 1;
 
   /**
    * Business key.
@@ -74,7 +74,7 @@ function Wl_Skin_Application_Resource_ApplicationResourceMaterialModel()
    * @post post
    * @type {string}
    */
-  this.s_version_name = "";
+  this.s_version_name = "2.0.1";
 
   /**
    * Short application description in the store (up to 80 characters).

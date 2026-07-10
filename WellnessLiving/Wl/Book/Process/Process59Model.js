@@ -107,7 +107,7 @@ function Wl_Book_Process_Process59Model()
    * @get get
    * @type {boolean}
    */
-  this.is_credit_card_check = false;
+  this.is_credit_card_check = true;
 
   /**
    * If `true`, the session being booked is an event. Otherwise, this will be `false`.

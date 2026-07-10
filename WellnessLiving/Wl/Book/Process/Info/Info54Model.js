@@ -200,7 +200,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @post post
    * @type {boolean}
    */
-  this.can_book = false;
+  this.can_book = true;
 
   /**
    * Date when this class session occurrences stop.
@@ -402,7 +402,7 @@ function Wl_Book_Process_Info_Info54Model()
    * @post get
    * @type {boolean}
    */
-  this.is_credit_card_check = false;
+  this.is_credit_card_check = true;
 
   /**
    * Can client chooses several session per booking.

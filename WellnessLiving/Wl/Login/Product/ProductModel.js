@@ -54,7 +54,7 @@ function Wl_Login_Product_ProductModel()
    * @get get
    * @type {number}
    */
-  this.i_page = 0;
+  this.i_page = 1;
 
   /**
    * Page size.
@@ -62,7 +62,7 @@ function Wl_Login_Product_ProductModel()
    * @get get
    * @type {number}
    */
-  this.i_page_size = 0;
+  this.i_page_size = 50;
 
   /**
    * ID of the payment method. One of the {@link RsPayMethodSid} constants. Zero means no filter by payment method.
@@ -103,7 +103,7 @@ function Wl_Login_Product_ProductModel()
    * @get get
    * @type {string}
    */
-  this.m_price_max = "";
+  this.m_price_max = "0.00";
 
   /**
    * Minimum price of the product.
@@ -111,7 +111,7 @@ function Wl_Login_Product_ProductModel()
    * @get get
    * @type {string}
    */
-  this.m_price_min = "";
+  this.m_price_min = "0.00";
 
   /**
    * User key. Empty string means return products purchased by walk-in.

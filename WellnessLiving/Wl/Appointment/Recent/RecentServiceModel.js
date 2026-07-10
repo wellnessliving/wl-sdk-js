@@ -22,7 +22,7 @@ function Wl_Appointment_Recent_RecentServiceModel()
    * @get get
    * @type {number}
    */
-  this.i_visit = 0;
+  this.i_visit = 5;
 
   /**
    * Type of service to return. One of {@link Wl_Service_ServiceSid} constants.

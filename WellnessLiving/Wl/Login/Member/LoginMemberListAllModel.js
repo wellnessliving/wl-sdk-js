@@ -29,7 +29,7 @@ function Wl_Login_Member_LoginMemberListAllModel()
    * @get get
    * @type {number}
    */
-  this.i_page_size = 0;
+  this.i_page_size = 150;
 
   /**
    * The key of the business to get a list of members for.

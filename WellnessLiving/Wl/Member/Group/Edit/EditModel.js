@@ -169,7 +169,7 @@ function Wl_Member_Group_Edit_EditModel()
    * @put post
    * @type {string}
    */
-  this.json_criteria = "";
+  this.json_criteria = "[]";
 
   /**
    * The business key.

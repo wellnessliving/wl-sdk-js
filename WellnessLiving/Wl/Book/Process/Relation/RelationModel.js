@@ -139,7 +139,7 @@ function Wl_Book_Process_Relation_RelationModel()
    * @get get
    * @type {boolean}
    */
-  this.is_credit_card_check = false;
+  this.is_credit_card_check = true;
 
   /**
    * `true` - the new relative uses the email from `uid_from`.

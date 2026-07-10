@@ -109,7 +109,7 @@ function Wl_Staff_StaffElementModel()
    * @post post
    * @type {boolean}
    */
-  this.is_uid = false;
+  this.is_uid = true;
 
   /**
    * The key of the business in which the staff member is being created or edited.

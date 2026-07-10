@@ -14,7 +14,7 @@ function Wl_Profile_Edit_EditPasswordModel()
    * @post post
    * @type {boolean}
    */
-  this.is_old_password_required = false;
+  this.is_old_password_required = true;
 
   /**
    * The key ID of business where actions take place.

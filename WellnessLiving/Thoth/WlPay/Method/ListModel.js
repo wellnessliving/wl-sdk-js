@@ -34,7 +34,7 @@ function Thoth_WlPay_Method_ListModel()
    * @get get
    * @type {boolean}
    */
-  this.is_active = false;
+  this.is_active = true;
 
   /**
    * The business key.

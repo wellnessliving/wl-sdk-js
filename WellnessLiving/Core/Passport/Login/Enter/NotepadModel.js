@@ -34,7 +34,7 @@ function Core_Passport_Login_Enter_NotepadModel()
    * @get result
    * @type {string}
    */
-  this.s_hash = undefined;
+  this.s_hash = "sha3";
 
   /**
    * User login.

@@ -124,7 +124,7 @@ function Wl_Quiz_QuizElementModel()
    * @put post
    * @type {boolean}
    */
-  this.is_active = false;
+  this.is_active = true;
 
   /**
    * `true` for request quiz from form builder page, `false` otherwise.
@@ -245,7 +245,7 @@ function Wl_Quiz_QuizElementModel()
    * @post post
    * @type {boolean}
    */
-  this.show_numbering = false;
+  this.show_numbering = true;
 
   /**
    * Quiz form title.

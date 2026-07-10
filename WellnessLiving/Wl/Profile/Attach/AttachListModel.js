@@ -51,7 +51,7 @@ function Wl_Profile_Attach_AttachListModel()
    * @get get
    * @type {boolean}
    */
-  this.is_backend = false;
+  this.is_backend = true;
 
   /**
    * Business key.

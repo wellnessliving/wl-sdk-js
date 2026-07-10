@@ -200,7 +200,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @get get
    * @type {boolean}
    */
-  this.is_answer = false;
+  this.is_answer = true;
 
   /**
    * `true` if API is being used from backend, `false` otherwise.
@@ -323,7 +323,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @get result
    * @type {boolean}
    */
-  this.show_numbering = undefined;
+  this.show_numbering = true;
 
   /**
    * Date when response added.

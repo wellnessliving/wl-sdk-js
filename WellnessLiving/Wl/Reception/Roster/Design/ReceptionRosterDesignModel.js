@@ -48,7 +48,7 @@ function Wl_Reception_Roster_Design_ReceptionRosterDesignModel()
    * @get result
    * @type {number}
    */
-  this.i_attendance_direct_delay = undefined;
+  this.i_attendance_direct_delay = 15;
 
   /**
    * Number of minutes for the client check-in window after session has started.
@@ -84,7 +84,7 @@ function Wl_Reception_Roster_Design_ReceptionRosterDesignModel()
    * @get result
    * @type {number}
    */
-  this.id_attendance_direct = undefined;
+  this.id_attendance_direct = 1;
 
   /**
    * A class for managing time intervals.

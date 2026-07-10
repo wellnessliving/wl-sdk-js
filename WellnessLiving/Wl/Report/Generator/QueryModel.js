@@ -380,7 +380,7 @@ function Wl_Report_Generator_QueryModel()
    * @post post
    * @type {string}
    */
-  this.json_filter = "";
+  this.json_filter = "[]";
 
   /**
    * Key of the business which report should be shown.

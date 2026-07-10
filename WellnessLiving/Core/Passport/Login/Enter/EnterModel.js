@@ -14,7 +14,7 @@ function Core_Passport_Login_Enter_EnterModel()
    * @post post
    * @type {string}
    */
-  this.json_data = "";
+  this.json_data = "[]";
 
   /**
    * The answer to the captcha, if needed.

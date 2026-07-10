@@ -108,7 +108,7 @@ function Wl_Classes_ClassList_ListModel()
    * @get get
    * @type {boolean}
    */
-  this.is_event_include = false;
+  this.is_event_include = true;
 
   /**
    * Whether to return franchisee-created classes (if business is franchisor).

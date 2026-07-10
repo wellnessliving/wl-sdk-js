@@ -122,7 +122,7 @@ function Wl_Location_View_ViewModel()
    * @get get
    * @type {number}
    */
-  this.i_logo_height = 0;
+  this.i_logo_height = 100;
 
   /**
    * Maximum location image width.
@@ -130,7 +130,7 @@ function Wl_Location_View_ViewModel()
    * @get get
    * @type {number}
    */
-  this.i_logo_width = 0;
+  this.i_logo_width = 220;
 
   /**
    * List of different types for landing pages based on business types.

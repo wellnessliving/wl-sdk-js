@@ -133,7 +133,7 @@ function Wl_Catalog_Cart_CartModel()
    * @get get
    * @type {boolean}
    */
-  this.is_auto_apply_prize = false;
+  this.is_auto_apply_prize = true;
 
   /**
    * The location key.

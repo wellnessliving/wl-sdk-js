@@ -40,7 +40,7 @@ function Wl_Business_BusinessAccessModel()
    * @get get
    * @type {boolean}
    */
-  this.is_backend = false;
+  this.is_backend = true;
 
   /**
    * The staff member's Facebook ID. This won't be empty if the staff member is logging in with Facebook.

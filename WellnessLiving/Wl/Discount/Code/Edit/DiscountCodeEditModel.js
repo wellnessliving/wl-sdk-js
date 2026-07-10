@@ -67,7 +67,7 @@ function Wl_Discount_Code_Edit_DiscountCodeEditModel()
    * @post post
    * @type {string}
    */
-  this.f_value = "";
+  this.f_value = "0.00";
 
   /**
    * Count of calendar periods from `id_duration` before expiration.

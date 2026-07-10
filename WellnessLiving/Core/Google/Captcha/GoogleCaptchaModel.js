@@ -19,7 +19,7 @@ function Core_Google_Captcha_GoogleCaptchaModel()
    * @see Core_Google_Captcha_CaptchaVersionSid
    * @type {number}
    */
-  this.id_version = 0;
+  this.id_version = 1;
 
   /**
    * The action name.

@@ -214,7 +214,7 @@ function Wl_Appointment_Book_Schedule_CalendarModel()
    * @get get
    * @type {boolean}
    */
-  this.is_month_view = false;
+  this.is_month_view = true;
 
   /**
    * `true` if the request is made by staff member; in this case booking policy restrictions are ignored.

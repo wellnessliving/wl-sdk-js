@@ -50,7 +50,7 @@ function Wl_Event_Book_EventList_ListModel()
    * @see AFlagSid
    * @type {number}
    */
-  this.id_status = 0;
+  this.id_status = 3;
 
   /**
    * `true` if exist at least one virtual event

@@ -218,7 +218,7 @@ function Wl_Video_VideoElementModel()
    * @see Wl_Video_VideoSourceSid
    * @type {number}
    */
-  this.id_source = 0;
+  this.id_source = 1;
 
   /**
    * If `true`, the API is being used from backend. Otherwise, this will be `false`.

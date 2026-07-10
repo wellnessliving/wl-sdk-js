@@ -91,7 +91,7 @@ function Core_Spa_Application_SpaApplicationModel()
    * @get result
    * @type {string}
    */
-  this.text_tjx_button_name = undefined;
+  this.text_tjx_button_name = "TJX Single Sign on";
 
   /**
    * Facebook authorization link.

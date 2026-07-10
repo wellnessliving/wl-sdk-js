@@ -22,7 +22,7 @@ function Wl_Business_Search_BusinessSearchModel()
    * @get get
    * @type {boolean}
    */
-  this.is_customer = false;
+  this.is_customer = true;
 
   /**
    * If `true`, returns only active customer businesses, if `false`, returns all businesses.

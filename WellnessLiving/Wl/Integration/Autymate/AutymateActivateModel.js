@@ -18,7 +18,7 @@ function Wl_Integration_Autymate_AutymateActivateModel()
    * @see Wl_Integration_Autymate_AutymateAccessModeSid
    * @type {number}
    */
-  this.id_mode = 0;
+  this.id_mode = 1;
 
   /**
    * The new status of the enrollment. If `0`, the current status is returned.

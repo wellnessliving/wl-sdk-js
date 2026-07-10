@@ -33,7 +33,7 @@ function Thoth_WlPay_Owner_OwnerModel()
    * @get result
    * @type {boolean}
    */
-  this.is_pay_self_only = undefined;
+  this.is_pay_self_only = true;
 
   /**
    * Business key.

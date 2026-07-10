@@ -273,7 +273,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_coupon = undefined;
+  this.m_coupon = "0.00";
 
   /**
    * Discount amount.
@@ -281,7 +281,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_discount = undefined;
+  this.m_discount = "0.00";
 
   /**
    * Surcharge amount calculated for credit cards (Virtual Terminal and Card Swiper).
@@ -289,7 +289,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_surcharge = undefined;
+  this.m_surcharge = "0.00";
 
   /**
    * Surcharge amount calculated for money transfers from account: ACH, Direct Entry.
@@ -297,7 +297,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_surcharge_ach = undefined;
+  this.m_surcharge_ach = "0.00";
 
   /**
    * The tax of service.
@@ -305,7 +305,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get result
    * @type {string}
    */
-  this.m_tax = undefined;
+  this.m_tax = "0.00";
 
   /**
    * The total cost of the purchase.

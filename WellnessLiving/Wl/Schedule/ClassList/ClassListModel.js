@@ -247,7 +247,7 @@ function Wl_Schedule_ClassList_ClassListModel()
    * @get get
    * @type {boolean}
    */
-  this.show_class = false;
+  this.show_class = true;
 
   /**
    * If `true`, events are also returned. If `false`, only classes are returned.

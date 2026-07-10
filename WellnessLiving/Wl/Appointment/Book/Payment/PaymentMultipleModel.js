@@ -275,7 +275,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @get result
    * @type {string}
    */
-  this.m_coupon = undefined;
+  this.m_coupon = "0.00";
 
   /**
    * The discount amount.
@@ -283,7 +283,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @get result
    * @type {string}
    */
-  this.m_discount = undefined;
+  this.m_discount = "0.00";
 
   /**
    * Surcharge amount calculated for credit cards (Virtual Terminal and Card Swiper).
@@ -291,7 +291,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @get result
    * @type {string}
    */
-  this.m_surcharge = undefined;
+  this.m_surcharge = "0.00";
 
   /**
    * Surcharge amount calculated for money transfers from account: ACH, Direct Entry.
@@ -299,7 +299,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @get result
    * @type {string}
    */
-  this.m_surcharge_ach = undefined;
+  this.m_surcharge_ach = "0.00";
 
   /**
    * The amount of tax to pay.
@@ -307,7 +307,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @get result
    * @type {string}
    */
-  this.m_tax = undefined;
+  this.m_tax = "0.00";
 
   /**
    * The price of the service, with taxes and without surcharges.
@@ -315,7 +315,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @get result
    * @type {string}
    */
-  this.m_total = undefined;
+  this.m_total = "0.00";
 
   /**
    * The gift card code.

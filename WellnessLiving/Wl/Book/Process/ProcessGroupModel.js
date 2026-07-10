@@ -178,7 +178,7 @@ function Wl_Book_Process_ProcessGroupModel()
    * @post get
    * @type {boolean}
    */
-  this.is_credit_card_check = false;
+  this.is_credit_card_check = true;
 
   /**
    * `true` if user pressed 'Pay later'.

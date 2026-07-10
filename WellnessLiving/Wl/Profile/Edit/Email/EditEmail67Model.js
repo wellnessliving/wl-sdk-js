@@ -55,7 +55,7 @@ function Wl_Profile_Edit_Email_EditEmail67Model()
    * @get get
    * @type {boolean}
    */
-  this.is_backend = false;
+  this.is_backend = true;
 
   /**
    * If `true`, user is already a member of current business, `false` - otherwise.

@@ -11,7 +11,7 @@ function Wl_Service_ServiceList_List75Model()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business";
+  this._s_key = "k_business,is_franchise";
 
   /**
    * @typedef {{}} Wl_Service_ServiceList_List75Model_a_service
@@ -65,6 +65,7 @@ Wl_Service_ServiceList_List75Model.prototype.config=function()
  * @function
  * @name Wl_Service_ServiceList_List75Model.instanceGet
  * @param {string} k_business Business key, primary key.
+ * @param {boolean} is_franchise Whether to return franchisee-created appointment types (if business is franchisor). `true` to include franchisee-created appointment types.
  * @returns {Wl_Service_ServiceList_List75Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

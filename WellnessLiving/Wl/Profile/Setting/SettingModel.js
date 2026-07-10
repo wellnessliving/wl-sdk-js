@@ -20,7 +20,7 @@ function Wl_Profile_Setting_SettingModel()
    * @post post
    * @type {boolean}
    */
-  this.is_account_management_email = false;
+  this.is_account_management_email = true;
 
   /**
    * Determines whether SMS notifications related to purchases, contracts, and other activity in a client's account are enabled.
@@ -29,7 +29,7 @@ function Wl_Profile_Setting_SettingModel()
    * @post post
    * @type {boolean}
    */
-  this.is_account_management_sms = false;
+  this.is_account_management_sms = true;
 
   /**
    * Determines whether email notifications related to news and updates from the business regarding their services, availability, and promotions are enabled.
@@ -38,7 +38,7 @@ function Wl_Profile_Setting_SettingModel()
    * @post post
    * @type {boolean}
    */
-  this.is_news_and_updates_email = false;
+  this.is_news_and_updates_email = true;
 
   /**
    * Whether sms notifications related to news and updates from the business regarding their services, availability and promotions are enabled.
@@ -47,7 +47,7 @@ function Wl_Profile_Setting_SettingModel()
    * @post post
    * @type {boolean}
    */
-  this.is_news_and_updates_sms = false;
+  this.is_news_and_updates_sms = true;
 
   /**
    * Determines whether email notifications related to the services a client has booked are enabled.
@@ -56,7 +56,7 @@ function Wl_Profile_Setting_SettingModel()
    * @post post
    * @type {boolean}
    */
-  this.is_schedule_and_reminders_email = false;
+  this.is_schedule_and_reminders_email = true;
 
   /**
    * Determines whether SMS notifications related to the services a client has booked are enabled.
@@ -65,7 +65,7 @@ function Wl_Profile_Setting_SettingModel()
    * @post post
    * @type {boolean}
    */
-  this.is_schedule_and_reminders_sms = false;
+  this.is_schedule_and_reminders_sms = true;
 
   /**
    * The key of the business to show information for.

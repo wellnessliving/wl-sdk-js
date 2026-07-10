@@ -90,7 +90,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @get get
    * @type {boolean}
    */
-  this.is_credit_card_check = false;
+  this.is_credit_card_check = true;
 
   /**
    * The business key.

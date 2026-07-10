@@ -25,7 +25,7 @@ function Core_Request_Api_Application_Credential_CredentialModel()
    * @put post
    * @type {string}
    */
-  this.json_credential = "";
+  this.json_credential = "[]";
 
   this.changeInit();
 }

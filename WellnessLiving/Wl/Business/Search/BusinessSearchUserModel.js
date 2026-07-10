@@ -22,7 +22,7 @@ function Wl_Business_Search_BusinessSearchUserModel()
    * @get get
    * @type {boolean}
    */
-  this.is_customer = false;
+  this.is_customer = true;
 
   /**
    * User email to search business keys.

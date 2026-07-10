@@ -161,7 +161,7 @@ function Wl_Pay_Account_Charge_ChargeModel()
    * @post post
    * @type {string}
    */
-  this.m_amount = "";
+  this.m_amount = "0.00";
 
   /**
    * The transaction comment.

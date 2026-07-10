@@ -84,7 +84,7 @@ function Wl_Appointment_Book_Staff_ListModel()
    * @see Wl_Login_LoginRoleSid
    * @type {number}
    */
-  this.id_role = 0;
+  this.id_role = 2;
 
   /**
    * Determines if the staff list has male and female members.
