@@ -182,6 +182,20 @@ function Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel()
   this.k_mail_pattern = "";
 
   /**
+   * Key of the service being booked.
+   *
+   * Used to prefer a service-specific custom notification template, when one is configured,
+   * over the business-level template.
+   *
+   * `null` when no single service is in context (e.g. several services are selected at once),
+   * in which case the business-level template is returned.
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_service = null;
+
+  /**
    * SID of the mail form. String representation of one from {@link RsMailFormSid} class constants.
    *
    * @get get
@@ -207,7 +221,7 @@ WlSdk_ModelAbstract.extend(Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_Pat
  */
 Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel.prototype.config=function()
 {
-  return {"a_field":{"a_business_data":{"get":{"result":true}},"a_help_data":{"get":{"result":true}},"a_pattern_load":{"get":{"result":true}},"a_pattern_load_default":{"get":{"result":true}},"a_pattern_save":{"post":{"post":true}},"id_mail":{"get":{"get":true},"post":{"get":true}},"is_custom_list":{"get":{"get":true}},"json_pattern_list_load":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_mail_pattern":{"get":{"get":true},"post":{"get":true,"result":true}},"sid_mail_form":{"get":{"get":true}},"text_phone_formatted":{"get":{"result":true}}}};
+  return {"a_field":{"a_business_data":{"get":{"result":true}},"a_help_data":{"get":{"result":true}},"a_pattern_load":{"get":{"result":true}},"a_pattern_load_default":{"get":{"result":true}},"a_pattern_save":{"post":{"post":true}},"id_mail":{"get":{"get":true},"post":{"get":true}},"is_custom_list":{"get":{"get":true}},"json_pattern_list_load":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_mail_pattern":{"get":{"get":true},"post":{"get":true,"result":true}},"k_service":{"get":{"get":true}},"sid_mail_form":{"get":{"get":true}},"text_phone_formatted":{"get":{"result":true}}}};
 };
 
 /**

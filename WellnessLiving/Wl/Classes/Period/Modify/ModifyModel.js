@@ -23,8 +23,8 @@ function Wl_Classes_Period_Modify_ModifyModel()
 
   /**
    * @typedef {{}} Wl_Classes_Period_Modify_ModifyModel_a_set_a_staff
-   * @property {string} k_staff @deprecated Staff key.
-   * @property {string} k_staff_pay Staff pay rate ID.
+   * @property {boolean} is_quick_substitute Whether this staff member is a quick substitute. Optional.
+   * @property {string} k_staff <b>Deprecated.</b> Staff key.
    * @property {string} uid_staff Staff user key.  Optional.
    */
 
