@@ -18,6 +18,7 @@ function Wl_Pay_Bank_Card_ListModel()
    * @property {number} i_month The month when the payment card expires, represented by a number (1=January and 12=December).
    * @property {number} i_year The last two digits of the year when the payment card expires.
    * @property {?number} id_card_system A class for a list of card systems.
+   * @property {boolean} is_autopay If `true`, this card backs at least one active autopay membership or package. If `false`, no active autopay membership or package is pinned to this card.
    * @property {boolean} is_default If `true`, then this card is the user default card. If `false`, then this isn't the user default card.
    * @property {string} k_pay_address The payment address ID. This refers to a physical address associated with a payment card.
    * @property {string} k_pay_bank The payment method ID. Each payment card for each user will have its own ID.
@@ -41,6 +42,7 @@ function Wl_Pay_Bank_Card_ListModel()
    * @property {number} i_month The month when the payment card expires, represented by a number (1=January and 12=December).
    * @property {number} i_year The last two digits of the year when the payment card expires.
    * @property {?number} id_card_system A class for a list of card systems.
+   * @property {boolean} is_autopay If `true`, this card backs at least one active autopay membership or package. If `false`, no active autopay membership or package is pinned to this card.
    * @property {boolean} is_default If `true`, then this card is the user default card. If `false`, then this isn't the user default card.
    * @property {string} k_pay_address The payment address ID. This refers to a physical address associated with a payment card.
    * @property {string} k_pay_bank The payment method ID. Each payment card for each user will have its own ID.
@@ -68,6 +70,17 @@ function Wl_Pay_Bank_Card_ListModel()
    * @type {boolean}
    */
   this.can_add = undefined;
+
+  /**
+   * Whether the client is allowed to remove their own saved credit cards.
+   *
+   * `true` if the client can remove their own saved credit cards.
+   * `false` if the client must contact the business to remove a saved credit card.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_remove_self = undefined;
 
   /**
    * ID of current business.
@@ -105,7 +118,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Bank_Card_ListModel);
  */
 Wl_Pay_Bank_Card_ListModel.prototype.config=function()
 {
-  return {"a_field":{"a_bank_card":{"get":{"result":true}},"a_list":{"get":{"result":true}},"can_add":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_bank_card":{"get":{"result":true}},"a_list":{"get":{"result":true}},"can_add":{"get":{"result":true}},"can_remove_self":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**

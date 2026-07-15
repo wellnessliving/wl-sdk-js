@@ -25,7 +25,7 @@ function Wl_Tuition_Enrollment_TuitionEnrollmentListModel()
    * @property {string} dtl_enrollment Date and time of the enrollment in local business timezone.
    * @property {number} i_payments_left Number of payments left.
    * @property {number} i_payments_total Number of payments total at the moment of enrollment.
-   * @property {number} id_installment_status Installment plan status.
+   * @property {?number} id_installment_status Installment plan status.
    * @property {string} k_purchase_item_tuition Key of the tuition purchase item. This is enrollment key, which can be used to modify and cancel the enrollment.
    * @property {string} m_payment One payment amount.
    * @property {string} m_rest Rest amount to be paid.
