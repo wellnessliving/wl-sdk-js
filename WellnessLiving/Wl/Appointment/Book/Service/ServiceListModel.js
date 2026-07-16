@@ -85,6 +85,7 @@ function Wl_Appointment_Book_Service_ServiceListModel()
    * @property {boolean} is_staff_confirm `true` if the appointment must be confirmed by a staff member after booking. Otherwise, `false`.
    * @property {boolean} is_staff_skip `true` if clients can select a staff member for the appointment. Otherwise, `false`.
    * @property {boolean} is_virtual `true` if the service is virtual. Otherwise, this will be `false`.
+   * @property {string} k_resource_location Off-site location if service requires such type of asset.
    * @property {string} k_service The appointment primary key.
    * @property {string} k_service_category The service category primary key.
    * @property {string} s_duration The appointment duration in a human-readable format.
