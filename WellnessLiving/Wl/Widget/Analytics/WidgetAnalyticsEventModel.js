@@ -10,7 +10,7 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
 
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item
-   * @property {number} id_item Item type. The valid value depends on `id_checkout_type`: store purchase for store checkout or service for booking.
+   * @property {number} id_item A list of purchase types.
    * @property {string} k_item Selected item key.
    * @property {string} k_item_extra Event enrollment block key, or an empty string.
    */
