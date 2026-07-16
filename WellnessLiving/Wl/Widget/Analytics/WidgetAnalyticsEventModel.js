@@ -10,25 +10,26 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
 
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item
-   * @property {number} id_item A list of purchase types.
-   * @property {string} k_item Selected item key.
-   * @property {string} k_item_extra Event enrollment block key, or an empty string.
+   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_service A list of services.
+   * @property {string} k_item Selected item key. The referenced table depends on checkout type and item type.
+   * @property {string} k_item_extra Additional item key used by an event enrollment block. Empty for all other item types.
    */
 
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload
-   * @property {Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item} a_item Selected checkout items. Each entry has the following structure:
+   * @property {Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item} a_item Selected checkout items.
    * @property {number} id_checkout_type Widget analytics checkout types.
    * @property {string} k_location Location key.
-   * @property {?string} k_skin Widget skin key, or `null` if the Widget does not use a registered skin.
-   * @property {string} m_total Checkout total.
-   * @property {string} s_funnel_step Last funnel step reached.
-   * @property {string} s_session_id Widget checkout session identifier.
-   * @property {string} s_utm_campaign UTM campaign value.
-   * @property {string} s_utm_medium UTM medium value.
-   * @property {string} s_utm_source UTM source value.
-   * @property {string} uid User key.
-   * @property {string} url_continue Continuation URL.
+   * @property {?string} k_skin Widget skin key. `null` if the Widget does not use a registered skin.
+   * @property {string} m_total Checkout total in the location currency.
+   * @property {string} s_funnel_step Last funnel step reached by the client. Empty if it is unavailable.
+   * @property {string} s_session_id Widget checkout session identifier. Empty if it is unavailable. It is used only for diagnostics and continuation context, not for idempotency.
+   * @property {string} s_utm_campaign UTM campaign value. Empty if it is unavailable.
+   * @property {string} s_utm_medium UTM medium value. Empty if it is unavailable.
+   * @property {string} s_utm_source UTM source value. Empty if it is unavailable.
+   * @property {string} uid User key for whom checkout was abandoned.
+   * @property {string} url_continue URL that restores the booking or purchase flow with the selected items.
    */
 
   /**
