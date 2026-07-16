@@ -9,26 +9,35 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item
+   * @property {number} id_item A list of purchase types.
+   * @property {string} k_item Selected item key.
+   * @property {string} k_item_extra Event enrollment block key, or an empty string.
+   */
+
+  /**
+   * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload
+   * @property {Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item} a_item Selected checkout items. Each entry has the following structure:
+   * @property {number} id_checkout_type Widget analytics checkout types.
+   * @property {string} k_location Location key.
+   * @property {?string} k_skin Widget skin key, or `null` if the Widget does not use a registered skin.
+   * @property {string} m_total Checkout total.
+   * @property {string} s_funnel_step Last funnel step reached.
+   * @property {string} s_session_id Widget checkout session identifier.
+   * @property {string} s_utm_campaign UTM campaign value.
+   * @property {string} s_utm_medium UTM medium value.
+   * @property {string} s_utm_source UTM source value.
+   * @property {string} uid User key.
+   * @property {string} url_continue Continuation URL.
+   */
+
+  /**
    * Event-specific payload.
    *
-   * Structure:
-   * - `a_item`: Selected checkout items.
-   * - `id_checkout_type`: Checkout type.
-   * - `k_location`: Location key.
-   * - `k_skin`: Widget skin key, or `null`.
-   * - `m_total`: Checkout total.
-   * - `s_funnel_step`: Last funnel step reached.
-   * - `s_session_id`: Widget checkout session identifier.
-   * - `s_utm_campaign`: UTM campaign value.
-   * - `s_utm_medium`: UTM medium value.
-   * - `s_utm_source`: UTM source value.
-   * - `uid`: User key.
-   * - `url_continue`: Continuation URL.
-   *
    * @post post
-   * @type {{}}
+   * @type {Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload}
    */
-  this.a_payload = null;
+  this.a_payload = undefined;
 
   /**
    * Event schema version.

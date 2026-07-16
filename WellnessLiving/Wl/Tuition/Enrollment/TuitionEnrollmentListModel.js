@@ -44,6 +44,7 @@ function Wl_Tuition_Enrollment_TuitionEnrollmentListModel()
   /**
    * @typedef {{}} Wl_Tuition_Enrollment_TuitionEnrollmentListModel_a_filter
    * @property {string[]} a_event Leave only enrollments with the given events enrolled.
+   * @property {string[]} a_purchase_item_tuition List of tuition enrollments ids to leave only.
    * @property {number[]} a_statuses List of tuition statuses.
    * @property {string[]} a_uid_any Leave only enrollments with the given payers or enrolled clients.
    * @property {string[]} a_uid_enrolled Leave only enrollments with the given enrolled clients.

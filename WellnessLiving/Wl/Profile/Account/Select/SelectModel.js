@@ -15,17 +15,22 @@ function Wl_Profile_Account_Select_SelectModel()
   this._s_key = "uid,k_business";
 
   /**
+   * @typedef {{}} Wl_Profile_Account_Select_SelectModel_a_user
+   * @property {string} id_family_relation ID of relationship between current user and sub account.
+   * @property {string} s_name Name of sub account.
+   * @property {string} uid UID of sub account.
+   */
+
+  /**
    * Array with information about current user and his relationship with sub accounts.
    *
    * @get result
-   * @type {*[]}
+   * @type {Wl_Profile_Account_Select_SelectModel_a_user}
    */
   this.a_user = undefined;
 
   /**
    * Business to retrieve relationship information.
-   *
-   * Primary key in RsBusinessSql.
    *
    * @get get
    * @post get
@@ -36,8 +41,6 @@ function Wl_Profile_Account_Select_SelectModel()
   /**
    * UID to retrieve relationship information.
    *
-   * Primary key in PassportLoginSql.
-   *
    * @get get
    * @post get
    * @type {string}
@@ -46,8 +49,6 @@ function Wl_Profile_Account_Select_SelectModel()
 
   /**
    * ID of relative to sign in.
-   *
-   * Primary key in PassportLoginSql.
    *
    * @post post
    * @type {string}
@@ -70,8 +71,8 @@ Wl_Profile_Account_Select_SelectModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Profile_Account_Select_SelectModel.instanceGet
- * @param {string} uid UID to retrieve relationship information. Primary key in PassportLoginSql.
- * @param {string} k_business Business to retrieve relationship information. Primary key in RsBusinessSql.
+ * @param {string} uid UID to retrieve relationship information.
+ * @param {string} k_business Business to retrieve relationship information.
  * @returns {Wl_Profile_Account_Select_SelectModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
