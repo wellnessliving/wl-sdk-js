@@ -12,12 +12,31 @@ function Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizat
   this._s_key = "cid_page,cid_report,k_business,k_report_query,k_report_save,s_report,uid_actor";
 
   /**
-   * Customization form data.
-   * See CustomizationFormAbstract::toArray() for details.
+   * @typedef {{}} Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel_a_customization_form_a_element_a_field
+   * @property {string} text_title Localized field title.
+   * @property {string} x_value Current field value.
+   */
+
+  /**
+   * @typedef {{}} Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel_a_customization_form_a_element
+   * @property {Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel_a_customization_form_a_element_a_field} a_field Element fields keyed by field alias. Each field has the following structure:
+   * @property {number[]} a_report Report CID list the element applies to.
+   * @property {string} html_title Localized element title.
+   * @property {string} html_title_tooltip Localized element tooltip.
+   */
+
+  /**
+   * @typedef {{}} Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel_a_customization_form
+   * @property {Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel_a_customization_form_a_element} a_element Form elements keyed by element name. Each element has the following structure:
+   * @property {string} s_form Form class identifier.
+   */
+
+  /**
+   * Customization form data keyed by report or page CID. Each value has the following structure:
    *
    * @get result
    * @post post
-   * @type {*[]}
+   * @type {Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel_a_customization_form}
    */
   this.a_customization_form = undefined;
 
@@ -31,7 +50,7 @@ function Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizat
   this.cid_page = 0;
 
   /**
-   * Page CID.
+   * Report CID.
    *
    * @get get
    * @post get
@@ -40,7 +59,7 @@ function Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizat
   this.cid_report = 0;
 
   /**
-   * Business primary key in RsBusinessSql table.
+   * Business primary key.
    *
    * @get get
    * @post get
@@ -61,7 +80,7 @@ function Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizat
   this.k_report_query = null;
 
   /**
-   * Primary key of a saved report in RsReportSaveSql table.
+   * Primary key of a saved report.
    *
    * `null` means that report is not saved.
    *
@@ -82,7 +101,7 @@ function Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizat
   this.s_report = "";
 
   /**
-   * Current user's primary key in PassportLoginAr table.
+   * Current user's primary key.
    *
    * @get get
    * @post get
@@ -107,12 +126,12 @@ Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormMo
  * @function
  * @name Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel.instanceGet
  * @param {number} cid_page Report page CID.
- * @param {number} cid_report Page CID.
- * @param {string} k_business Business primary key in RsBusinessSql table.
+ * @param {number} cid_report Report CID.
+ * @param {string} k_business Business primary key.
  * @param {?string} k_report_query SQL query primary key. Primary key in ReportQuerySql. Scopes the customization record to a specific SQL query. `null` loads the generic shared row as a backward-compatible fallback.
- * @param {?string} k_report_save Primary key of a saved report in RsReportSaveSql table. `null` means that report is not saved.
+ * @param {?string} k_report_save Primary key of a saved report. `null` means that report is not saved.
  * @param {string} s_report Report CID list to that page customization form must be converted. String separated with `,`. May be specified only if {@link Wl_Report_Customization_CustomizationFormModel.cid_page} in not empty.
- * @param {string} uid_actor Current user's primary key in PassportLoginAr table.
+ * @param {string} uid_actor Current user's primary key.
  * @returns {Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
