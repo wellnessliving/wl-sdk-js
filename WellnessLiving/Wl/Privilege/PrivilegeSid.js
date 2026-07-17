@@ -1,7 +1,7 @@
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 246.
+ * Last Used ID: 247.
  */
 function Wl_Privilege_PrivilegeSid()
 {
@@ -427,6 +427,13 @@ Wl_Privilege_PrivilegeSid.ENROLLMENT_FOREIGN = 53;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.ENROLLMENT_LOCK_SEARCH = 153;
+
+/**
+ * Allows a staff member to see other staff members' event sessions on the schedule in read-only mode while the Events scope is set to only their own schedules.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.ENROLLMENT_SCHEDULE_VIEW = 247;
 
 /**
  * Manage Enterprise Cloud Fees.
