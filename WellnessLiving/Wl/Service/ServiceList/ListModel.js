@@ -16,7 +16,6 @@ function Wl_Service_ServiceList_ListModel()
   /**
    * @typedef {{}} Wl_Service_ServiceList_ListModel_a_service
    * @property {boolean} hide_application Whether service will be hidden in the White Label mobile application.  `true` means that service will not be displayed, `false` otherwise.
-   * @property {boolean} is_active Whether appointment type is active.
    * @property {string} k_service Appointment type identifier, primary key.
    * @property {string} k_service_category Appointment type category identifier, primary key.
    * @property {string} text_category Appointment type category name.
