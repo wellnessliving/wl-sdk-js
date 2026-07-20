@@ -18,6 +18,7 @@ function Wl_Discount_Code_DiscountCodeModel()
    * @property {boolean} is_active `true` if the discount code is active, `false` otherwise.
    * @property {boolean} is_remove `true` if the discount code is removed, `false` otherwise.
    * @property {string} k_discount_code Discount code key.
+   * @property {string} s_code Actual discount code string.
    * @property {string} text_discount_code Discount code title.
    */
 
