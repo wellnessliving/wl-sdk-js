@@ -12,8 +12,8 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item
    * @property {number} id_purchase_item A list of purchase types.
    * @property {number} id_service A list of services.
+   * @property {string} k_enrollment_block Enrollment block key for an event item. Empty for all other item types.
    * @property {string} k_item Selected item key. The referenced table depends on checkout type and item type.
-   * @property {string} k_item_extra Additional item key used by an event enrollment block. Empty for all other item types.
    */
 
   /**
