@@ -53,6 +53,14 @@ function Wl_Skin_Application_Resource_ApplicationResourceMaterialModel()
   this.s_firebase_ios = "";
 
   /**
+   * Android splash screen background color in hex format.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.s_splash_color_android = "";
+
+  /**
    * Version name for the App Store and Google Play builds.
    *
    * @post post
@@ -167,7 +175,7 @@ WlSdk_ModelAbstract.extend(Wl_Skin_Application_Resource_ApplicationResourceMater
  */
 Wl_Skin_Application_Resource_ApplicationResourceMaterialModel.prototype.config=function()
 {
-  return {"a_field":{"i_version":{"post":{"post":true}},"id_category":{"post":{"post":true}},"id_version_change":{"post":{"post":true}},"k_business":{"post":{"post":true}},"s_firebase_ios":{"post":{"post":true}},"s_version_name":{"post":{"post":true}},"text_annotation":{"post":{"post":true}},"text_country":{"post":{"post":true}},"text_description":{"post":{"post":true}},"text_description_google":{"post":{"post":true}},"text_domain":{"post":{"post":true}},"text_email":{"post":{"post":true}},"text_information":{"post":{"post":true}},"text_keyword":{"post":{"post":true}},"text_name":{"post":{"post":true}},"text_phone":{"post":{"post":true}},"text_title":{"post":{"post":true}},"text_website":{"post":{"post":true}}}};
+  return {"a_field":{"i_version":{"post":{"post":true}},"id_category":{"post":{"post":true}},"id_version_change":{"post":{"post":true}},"k_business":{"post":{"post":true}},"s_firebase_ios":{"post":{"post":true}},"s_splash_color_android":{"post":{"post":true}},"s_version_name":{"post":{"post":true}},"text_annotation":{"post":{"post":true}},"text_country":{"post":{"post":true}},"text_description":{"post":{"post":true}},"text_description_google":{"post":{"post":true}},"text_domain":{"post":{"post":true}},"text_email":{"post":{"post":true}},"text_information":{"post":{"post":true}},"text_keyword":{"post":{"post":true}},"text_name":{"post":{"post":true}},"text_phone":{"post":{"post":true}},"text_title":{"post":{"post":true}},"text_website":{"post":{"post":true}}}};
 };
 
 /**
