@@ -1,7 +1,7 @@
 /**
  * The source of a visit.
  *
- * Last used ID: 31.
+ * Last used ID: 32.
  */
 function Wl_Mode_ModeSid()
 {
@@ -133,6 +133,13 @@ Wl_Mode_ModeSid.MICROSOFT = 24;
  * @type {number}
  */
 Wl_Mode_ModeSid.MY_PRESENCE_SITE = 13;
+
+/**
+ * Visit has been created by `Passport Door Access`.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.PASSPORT_DOOR_ACCESS = 32;
 
 /**
  * Action made via SMS.
