@@ -126,14 +126,6 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
   this.a_purchase_item = undefined;
 
   /**
-   * The list of client user keys to bill.
-   *
-   * @post post
-   * @type {string[]}
-   */
-  this.a_uid = undefined;
-
-  /**
    * Whether to charge the client default payment method (`true`) or bill the client account (`false`).
    *
    * @post post
@@ -208,6 +200,31 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
    */
   this.m_total = undefined;
 
+  /**
+   * The review id that identifies this prepared bulk billing. Pass it to {@link Wl_Billing_Bulk_BulkBillingModel} to schedule the
+   *  billing without sending the clients and items again.
+   *
+   * @post result
+   * @type {string}
+   */
+  this.s_id = undefined;
+
+  /**
+   * List of client user keys to bill joined with comma.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.s_uid = "";
+
+  /**
+   * A note to store with each client purchase and to show on the receipt. Empty string for no note.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.text_note = "";
+
   this.changeInit();
 }
 
@@ -218,7 +235,7 @@ WlSdk_ModelAbstract.extend(Wl_Billing_Bulk_PurchaseItemListModel);
  */
 Wl_Billing_Bulk_PurchaseItemListModel.prototype.config=function()
 {
-  return {"a_field":{"a_client_bill":{"post":{"result":true}},"a_client_restrict":{"post":{"result":true}},"a_product":{"get":{"result":true}},"a_promotion":{"get":{"result":true}},"a_purchase_item":{"post":{"post":true}},"a_uid":{"post":{"post":true}},"is_payment_method_default":{"post":{"post":true}},"is_receipt_send":{"post":{"post":true}},"is_tax":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"get":true},"post":{"get":true}},"m_batch":{"post":{"result":true}},"m_subtotal":{"post":{"result":true}},"m_tax":{"post":{"result":true}},"m_total":{"post":{"result":true}}}};
+  return {"a_field":{"a_client_bill":{"post":{"result":true}},"a_client_restrict":{"post":{"result":true}},"a_product":{"get":{"result":true}},"a_promotion":{"get":{"result":true}},"a_purchase_item":{"post":{"post":true}},"is_payment_method_default":{"post":{"post":true}},"is_receipt_send":{"post":{"post":true}},"is_tax":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"get":true},"post":{"get":true}},"m_batch":{"post":{"result":true}},"m_subtotal":{"post":{"result":true}},"m_tax":{"post":{"result":true}},"m_total":{"post":{"result":true}},"s_id":{"post":{"result":true}},"s_uid":{"post":{"post":true}},"text_note":{"post":{"post":true}}}};
 };
 
 /**
