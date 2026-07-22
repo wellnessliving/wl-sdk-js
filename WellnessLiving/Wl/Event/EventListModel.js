@@ -135,6 +135,7 @@ function Wl_Event_EventListModel()
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.
    * @property {boolean} is_bookable Whether event is bookable.
    * @property {boolean} is_booked Whether event is already booked.
+   * @property {boolean} is_cancellation_enabled `true` if clients can cancel this event. Otherwise, this will be `false`.
    * @property {boolean} is_closed Whether booking of the event is closed already. Means that in general it is bookable but currently booking is closed.
    * @property {boolean} is_full Whether event is full already.
    * @property {boolean} is_online `true` if this class can be booked by any client; `false` otherwise.

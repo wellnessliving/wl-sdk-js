@@ -125,6 +125,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @property {number} i_wait Number of clients in wait list.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.  `true` if clients can book on behalf of a guest.  `false` otherwise.
    * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
+   * @property {boolean} is_cancellation_enabled `true` if clients can cancel this session. Otherwise, this will be `false`.
    * @property {boolean} is_event If `true`, this is an event. Otherwise, this will be `false`.
    * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
    * @property {boolean} is_wait_list_enabled This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.

@@ -74,6 +74,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {boolean} is_book Whether current class was booked by current client.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise.
    * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.
+   * @property {boolean} is_cancellation_enabled `true` if clients can cancel this session. Otherwise, this will be `false`.
    * @property {boolean} is_event `true` if it is event; `false` if it is class.
    * @property {boolean} is_promotion_only `true` if this class can be paid with promotion only; `false` otherwise.
    * @property {boolean} is_virtual `true` if class is virtual, `false` otherwise.
@@ -191,6 +192,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {boolean} is_book Whether current class was booked by current client.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise.
    * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.
+   * @property {boolean} is_cancellation_enabled `true` if clients can cancel this session. Otherwise, this will be `false`.
    * @property {boolean} is_event `true` if it is event; `false` if it is class.
    * @property {boolean} is_promotion_only `true` if this class can be paid with promotion only; `false` otherwise.
    * @property {boolean} is_virtual `true` if class is virtual, `false` otherwise.

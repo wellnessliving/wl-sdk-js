@@ -39,6 +39,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list
    * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_discount} a_discount Discount applied to the event price:
    * @property {string} k_class Key of the event class within the tuition which should be granted to the client.
+   * @property {string} m_checkout The amount that will be charged for this event when the tuition is purchased.      Calculated based on the payment schedule (full amount or the prorated part due now).      Can be overridden manually. If not specified or `null`, the amount will be calculated      automatically.
    * @property {string} m_price Price of the event for the tuition participant.      If not specified or `null`, price will be calculated based on the class setup.
    * @property {string} uid Key of the tuition participant.
    */
