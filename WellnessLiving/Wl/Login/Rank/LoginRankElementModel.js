@@ -25,7 +25,7 @@ function Wl_Login_Rank_LoginRankElementModel()
   this.k_business = "";
 
   /**
-   * Login rank key. Primary key in RsLoginRankSql table.
+   * Login rank key.
    *
    * @delete get
    * @type {string}
@@ -47,6 +47,8 @@ Wl_Login_Rank_LoginRankElementModel.prototype.config=function()
 
 /**
  * Deletes a rank record for a user.
+ *
+ * Removes the rank record from the database and logs the action in the belt history.
  *
  * @function
  * @name Wl_Login_Rank_LoginRankElementModel.delete
