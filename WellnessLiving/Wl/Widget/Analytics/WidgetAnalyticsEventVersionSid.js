@@ -1,5 +1,7 @@
 /**
  * Widget analytics event schema versions.
+ *
+ *  Last ID: 1
  */
 function Wl_Widget_Analytics_WidgetAnalyticsEventVersionSid()
 {

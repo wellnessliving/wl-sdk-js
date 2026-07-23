@@ -1,7 +1,7 @@
 /**
  * Widget analytics event types.
  *
- * Last ID: 33
+ * Last ID: 1
  */
 function Wl_Widget_Analytics_WidgetAnalyticsEventSid()
 {
