@@ -10,8 +10,8 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
 
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item
-   * @property {?number} id_purchase_item Purchase item ID.
-   * @property {?number} id_service Service ID.
+   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_service A list of services.
    * @property {?string} k_enrollment_block Enrollment block key for an event item. Empty for all other item types.
    * @property {string} k_item Selected item key.
    */
@@ -19,7 +19,7 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload
    * @property {Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item} a_item Selected checkout items.
-   * @property {number} id_checkout_type Checkout type.
+   * @property {number} id_checkout_type Widget analytics checkout types.
    * @property {string} k_location Location key.
    * @property {?string} k_skin Widget skin key. `null` if the Widget does not use a registered skin.
    * @property {string} m_total Checkout total in the location currency.
@@ -41,15 +41,6 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
   this.a_payload = undefined;
 
   /**
-   * Event schema version. Currently only {@link Wl_Widget_Analytics_WidgetAnalyticsEventVersionSid} is supported.
-   *
-   * @post post
-   * @see Wl_Widget_Analytics_WidgetAnalyticsEventVersionSid
-   * @type {number}
-   */
-  this.i_event_version = 1;
-
-  /**
    * Event name. Initially only {@link Wl_Widget_Analytics_WidgetAnalyticsEventSid} is supported.
    *
    * @post post
@@ -57,6 +48,15 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
    * @type {number}
    */
   this.id_event_name = 0;
+
+  /**
+   * Event schema version. Currently only {@link Wl_Widget_Analytics_WidgetAnalyticsEventVersionSid} is supported.
+   *
+   * @post post
+   * @see Wl_Widget_Analytics_WidgetAnalyticsEventVersionSid
+   * @type {number}
+   */
+  this.id_event_version = 1;
 
   /**
    * Business key used for shard and datacenter routing.
@@ -85,5 +85,16 @@ WlSdk_ModelAbstract.extend(Wl_Widget_Analytics_WidgetAnalyticsEventModel);
  */
 Wl_Widget_Analytics_WidgetAnalyticsEventModel.prototype.config=function()
 {
-  return {"a_field":{"a_payload":{"post":{"post":true}},"i_event_version":{"post":{"post":true}},"id_event_name":{"post":{"post":true}},"k_business":{"post":{"post":true}},"s_event_id":{"post":{"post":true}}}};
+  return {"a_field":{"a_payload":{"post":{"post":true}},"id_event_name":{"post":{"post":true}},"id_event_version":{"post":{"post":true}},"k_business":{"post":{"post":true}},"s_event_id":{"post":{"post":true}}}};
 };
+
+/**
+ * Accepts a Widget analytics event.
+ *
+ * Validates the event envelope and payload, stores the event, and schedules asynchronous processing.
+ *
+ * @function
+ * @name Wl_Widget_Analytics_WidgetAnalyticsEventModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */
