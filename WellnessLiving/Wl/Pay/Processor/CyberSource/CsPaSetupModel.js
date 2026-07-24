@@ -29,7 +29,7 @@ function Wl_Pay_Processor_CyberSource_CsPaSetupModel()
    * @property {number} i_csc Card CSC code. Used only if `is_new` is `true`.
    * @property {number} i_month Card expiration month. Used only if `is_new` is `true`.
    * @property {number} i_year Card expiration year. Used only if `is_new` is `true`.
-   * @property {number} id_card_type An enum of credit card types.
+   * @property {?number} id_card_type An enum of credit card types.
    * @property {boolean} is_default If the card should be made the default payment method. Used only if `is_new` is `true`.
    * @property {boolean} is_new Whether a new card is being added instead of an existing one being selected.
    * @property {boolean} is_save If the card information should be saved for future transactions. Used only if `is_new` is `true`.
