@@ -15,9 +15,14 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_age_restriction
-   * @property {?number} i_age_from The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.
-   * @property {?number} i_age_to The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.
-   * @property {boolean} is_age_public If `true`, age restrictions are public and available. Otherwise, this will be `false` if they're hidden. When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
+   * @property {number} i_age_from Minimum age for service (years part).
+   * @property {number} i_age_from_month Minimum age for service (months part).
+   * @property {number} i_age_from_year Minimum age for service (years part).
+   * @property {number} i_age_to Maximum age for service (years part).
+   * @property {number} i_age_to_month Maximum age for service (months part).
+   * @property {number} i_age_to_year Maximum age for service (years part).
+   * @property {boolean} is_age_public Is service public even if user does not meet age requirements or not?
+   * @property {boolean} is_month_enabled Whether months are enabled for age restrictions.
    */
 
   /**

@@ -15,8 +15,10 @@ function Wl_Appointment_Book_Asset_AssetListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_age_restrictions
-   * @property {?number} i_age_from The minimum age permitted for the event. This will be `null` if a minimum age isn't set or available.
-   * @property {?number} i_age_to The maximum age permitted for the event. This will be `null` if a maximum age isn't set or available.
+   * @property {?number} i_age_from The minimum age permitted for the event (years part). This will be `null` if a minimum age isn't set or available.
+   * @property {?number} i_age_from_month The minimum age permitted for the event (month part). This will be `null` if a minimum age isn't set or available.
+   * @property {?number} i_age_to The maximum age permitted for the event (years part). This will be `null` if a maximum age isn't set or available.
+   * @property {?number} i_age_to_month The maximum age permitted for the event (month part). This will be `null` if a maximum age isn't set or available.
    * @property {boolean} is_age_public This will be `true` if age restrictions are public and available. Otherwise, this will be `false` if they're hidden. When restrictions are hidden and current user isn't a staff member, the age range will be empty.
    */
 
