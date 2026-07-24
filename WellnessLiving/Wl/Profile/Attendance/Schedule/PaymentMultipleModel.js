@@ -27,7 +27,7 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
 
   /**
    * @typedef {{}} Wl_Profile_Attendance_Schedule_PaymentMultipleModel_a_client_a_relation
-   * @property {number} id_family_relation Relation type between two relatives.
+   * @property {number} id_family_relation Family relation ID. One of {@link RsFamilyRelationSid} constants.
    * @property {string} uid_payer Payer UID.
    */
 

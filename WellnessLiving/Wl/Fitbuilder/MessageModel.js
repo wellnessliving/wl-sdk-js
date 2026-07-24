@@ -17,7 +17,7 @@ function Wl_Fitbuilder_MessageModel()
 
   /**
    * @typedef {{}} Wl_Fitbuilder_MessageModel_a_data_user_profile
-   * @property {number} id_gender Class to work with gender string identifiers.
+   * @property {number} id_gender User gender. One of {@link Wl_Gender_GenderSid} constants.
    * @property {string} s_first_name User first name.
    * @property {string} s_last_name User last name.
    * @property {string} uid User key.

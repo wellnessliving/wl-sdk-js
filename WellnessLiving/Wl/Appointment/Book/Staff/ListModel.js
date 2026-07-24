@@ -15,7 +15,7 @@ function Wl_Appointment_Book_Staff_ListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Staff_ListModel_a_staff
-   * @property {number} id_gender String identifiers for gender.
+   * @property {number} id_gender Staff member's gender. One of {@link AGenderSid} constants.
    * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached daily limits, this field will be different for client and staff booking flows. If client books, such staff member is not available and this field is `false`. If staff member books, such staff member is available.
    * @property {boolean} is_daily_limit Whether staff member reached daily limits on number or total duration of the appointments for one day.
    * @property {boolean} is_wait_list Whether staff member available only for wait list booking.

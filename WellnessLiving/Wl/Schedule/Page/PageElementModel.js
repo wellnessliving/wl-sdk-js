@@ -15,7 +15,7 @@ function Wl_Schedule_Page_PageElementModel()
 
   /**
    * @typedef {{}} Wl_Schedule_Page_PageElementModel_a_appointment_visit_info
-   * @property {number} id_visit Possible states of the visit: book, attended, cancelled, etc.
+   * @property {number} id_visit Visit status. One of {@link Wl_Visit_VisitSid} constants.
    * @property {boolean} is_confirmed `true` means that appointment was requested and confirmed by the staff.
    * @property {boolean} is_deny `true` means that appointment was requested and denied by the staff.
    * @property {boolean} is_notify_request_accept `true` means that the client will receive a notification, if appointment will be confirmed by the staff.

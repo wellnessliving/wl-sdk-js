@@ -15,7 +15,7 @@ function Wl_Catalog_CatalogList_ListModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ListModel_a_direct_link
-   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {?number} id_sale Type of the item from {@link RsSaleSid}.
    * @property {boolean} is_product `true` if `k_id` value is product key, `false` if `k_id` value is product option key.      Optional. Default value is `false`.      Used for `id_sale` === {@link RsSaleSid} only.
    * @property {string} k_id Key of item.
    */
@@ -36,7 +36,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @property {string} dtu_create UTC creation date of the item in MySQL format.
    * @property {string} f_price The item price.
    * @property {boolean} hide_application `true` if the item should be hidden from the application, `false` otherwise.
-   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {?number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
    * @property {boolean} is_direct `true` if the item was accessed via a direct purchase link, `false` otherwise.
    * @property {boolean} is_introductory `true` if the item is an introductory offer, `false` otherwise.
    * @property {string} k_id The item key.
@@ -61,7 +61,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @property {string} dtu_create UTC creation date of the item in MySQL format.
    * @property {string} f_price The item price.
    * @property {boolean} hide_application `true` if the item should be hidden from the application, `false` otherwise.
-   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {?number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
    * @property {boolean} is_direct `true` if the item was accessed via a direct purchase link, `false` otherwise.
    * @property {boolean} is_introductory `true` if the item is an introductory offer, `false` otherwise.
    * @property {string} k_id The item key.

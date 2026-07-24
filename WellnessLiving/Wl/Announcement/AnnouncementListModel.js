@@ -22,7 +22,7 @@ function Wl_Announcement_AnnouncementListModel()
    * @property {string} html_description Announcement description as HTML.
    * @property {string} html_description_clear Announcement description text stripped of HTML tags.
    * @property {?number} i_order Sort order. `null` if the announcement is not pinned.
-   * @property {number} id_status List of announcement statuses.
+   * @property {number} id_status Announcement status ID. One of {@link Wl_Announcement_AnnouncementStatusEnum} constants.
    * @property {boolean} is_pin `true` if the announcement is pinned, `false` otherwise.
    * @property {string} k_announcement Announcement key.
    * @property {string} k_business Business key.

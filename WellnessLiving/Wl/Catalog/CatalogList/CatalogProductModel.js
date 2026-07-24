@@ -11,8 +11,8 @@ function Wl_Catalog_CatalogList_CatalogProductModel()
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_CatalogProductModel_a_category_sort
    * @property {number[]} a_order The order of the products by category if {@link Wl_Shop_Category_ShopCategorySortSid} is selected. Each element is a product key string, ordered as desired.
-   * @property {?number} id_order List of possible sort order.
-   * @property {number} id_sort List of Setup -> Store configuration -> Categories and Layout sort options.
+   * @property {?number} id_order The sort order. One of the {@link Core_Sid_SortOrderSid} constants.
+   * @property {number} id_sort The sort field ID. One of the {@link Wl_Shop_Category_ShopCategorySortSid} constants.
    */
 
   /**
@@ -34,8 +34,8 @@ function Wl_Catalog_CatalogList_CatalogProductModel()
    * @property {number[]} a_sale_id The list of special categories for the catalogue. Each value is a constant of {@link RsSaleSid}.
    * @property {string[]} a_shop_category Shop category keys to filter by.
    * @property {number} i_last The last shown product index for pagination.
-   * @property {?number} id_order List of possible sort order.
-   * @property {number} id_sort List of Setup -> Store configuration -> Categories and Layout sort options.
+   * @property {?number} id_order The sort order ID. One of the {@link Core_Sid_SortOrderSid} constants.
+   * @property {number} id_sort The sort field ID. One of the {@link Wl_Shop_Category_ShopCategorySortSid} constants.
    * @property {string} k_business The business key.
    * @property {string} k_location The location key.
    * @property {string} s_title A title fragment to filter products by name.
@@ -54,7 +54,7 @@ function Wl_Catalog_CatalogList_CatalogProductModel()
    * @typedef {{}} Wl_Catalog_CatalogList_CatalogProductModel_a_product
    * @property {string} html_price HTML-escaped formatted price of the product.
    * @property {string} html_price_early HTML-escaped formatted early-bird price of the product. Present only when an early price applies.
-   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {?number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The product key.
    * @property {string} k_shop_category The shop category key.
    * @property {string} s_title The product title.

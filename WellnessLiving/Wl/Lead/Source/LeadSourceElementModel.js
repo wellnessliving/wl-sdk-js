@@ -12,7 +12,7 @@ function Wl_Lead_Source_LeadSourceElementModel()
   /**
    * @typedef {{}} Wl_Lead_Source_LeadSourceElementModel_a_lead_source
    * @property {number} i_sort Sorting order.
-   * @property {number} id_lead_source The source of a visit.
+   * @property {number} id_lead_source System-defined Lead Source ID. One of {@link Wl_Mode_ModeSid} constants. `null` if it is a custom Lead Source.
    * @property {string} k_lead_source Key of the lead source.
    * @property {string} k_skin Key of the lead skin.  Will be set only in case if `id_lead_source` is {@link Wl_Mode_ModeSid} and widget can't be used for "Add Lead" form. `false` - otherwise.
    * @property {string} text_title Name of the Lead Source.

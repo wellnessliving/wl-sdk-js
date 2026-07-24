@@ -16,7 +16,7 @@ function Wl_Classes_ClassView_ElementModel()
   /**
    * @typedef {{}} Wl_Classes_ClassView_ElementModel_a_class_list_a_schedule_a_repeat
    * @property {number} i_repeat A count of the periods specified in `id_repeat`.
-   * @property {number} id_repeat A class for managing time intervals. Last ID: 9.
+   * @property {number} id_repeat The measuring unit of `i_repeat`. One of {@link ADurationSid} constants.
    */
 
   /**

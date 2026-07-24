@@ -42,9 +42,9 @@ function Wl_Book_Process_Info_Info54Model()
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
    * @property {number} i_occurrence Deprecated, use `i_count` instead!
    * @property {number} i_period Deprecated, use `i_duration` instead!
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
-   * @property {number} id_period A class for managing time intervals. Last ID: 9.
-   * @property {number} id_repeat_end Possible ways to stop repeatable events.
+   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants. Available duration units are: {@link ADurationSid}, {@link ADurationSid}, {@link ADurationSid}.
+   * @property {number} id_period Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.
+   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**

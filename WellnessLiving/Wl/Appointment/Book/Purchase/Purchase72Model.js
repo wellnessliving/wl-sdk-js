@@ -62,7 +62,7 @@ function Wl_Appointment_Book_Purchase_Purchase72Model()
    * @property {number} i_limit The count of visits that the Purchase Option allows the client to make.
    * @property {?number} i_limit_duration The maximum number of minutes that current Purchase Option can be used for.
    * @property {number} i_promotion_priority Priority of this promotion. Result of {@link Wl_Promotion_Priority_PromotionPrioritySid} method.
-   * @property {number} id_program Program types.
+   * @property {number} id_program The program ID for promotions. One of the {@link RsProgramSid} constants.
    * @property {boolean} is_share `true` if this purchase option is shared from another user. `false` if this purchase option belongs to the user for whom the request is made.
    * @property {string} k_login_promotion The Purchase Option login key.
    * @property {string} s_class_include The list of services provided by this Purchase Option.
@@ -111,11 +111,11 @@ function Wl_Appointment_Book_Purchase_Purchase72Model()
    * @property {number} i_limit Count of visits that purchase option allows to make.
    * @property {?number} i_limit_duration Maximum number of minutes that current promotion can be used.
    * @property {number} i_payment_period Count of calendar periods (weeks, months, years) between payment for membership.
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
-   * @property {number} id_program Program types.
-   * @property {number} id_program_type Program types.
-   * @property {number} id_promotion_price Program types.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_duration Duration ID. Constant from {@link ADurationSid}.
+   * @property {number} id_program Program ID for promotions from {@link RsProgramSid}.
+   * @property {number} id_program_type Program type ID. Constant from {@link RsProgramTypeSid}.
+   * @property {number} id_promotion_price How the Purchase Item price is specified. One of the {@link RsProgramTypeSid} constants.
+   * @property {number} id_purchase_item ID of the purchase item from {@link RsPurchaseItemSid}
    * @property {boolean} is_contract This will be `true` if the Purchase Option is a contract. It will `false` otherwise.
    * @property {boolean} is_description `true` if purchase option has description.
    * @property {boolean} is_introductory `true` if promotion is introductory offer, `false` otherwise.
@@ -161,7 +161,7 @@ function Wl_Appointment_Book_Purchase_Purchase72Model()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_service_a_purchase
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item Purchase item ID. Constant from {@link RsPurchaseItemSid}.
    * @property {boolean} is_purchase_previous Should be `true` if this promotion is selected again, i.e. one that has already been applied to another appointment.  This is needed to correctly calculate the remaining quantity of promotions with limited uses.
    * @property {string} k_id Purchase item key.
    */
@@ -195,7 +195,7 @@ function Wl_Appointment_Book_Purchase_Purchase72Model()
   /**
    * @typedef {{}} Wl_Appointment_Book_Purchase_Purchase72Model_a_session_pass
    * @property {number} i_remain Number of remaining visits on session pass.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item Type of the session pass purchase. One of {@link RsPurchaseItemSid} constants.
    * @property {string} k_session_pass Session pass key.
    * @property {string} s_title Session pass title.
    */

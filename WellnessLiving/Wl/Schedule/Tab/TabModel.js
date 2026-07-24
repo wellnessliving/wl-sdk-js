@@ -15,8 +15,8 @@ function Wl_Schedule_Tab_TabModel()
 
   /**
    * @typedef {{}} Wl_Schedule_Tab_TabModel_a_tab
-   * @property {number} id_class_tab_object List of class tab objects.
-   * @property {number} id_class_tab_system List of class tab objects.
+   * @property {number} id_class_tab_object The tab type ID which is one of the {@link Wl_Classes_Tab_TabSid} constants.
+   * @property {number} id_class_tab_system If this tab has redefined a default system Class Tab then it references a constant defined in {@link Wl_Classes_Tab_TabSid}.
    * @property {?string} k_class_tab The class tab key. This will be `null` if it's a system tab.
    * @property {string} k_id A unique identifier in the list.
    * @property {string} s_title The tab title.

@@ -66,9 +66,9 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    * @property {number} i_age_to The required maximum client age to book an appointment.
    * @property {number} i_duration The appointment duration in minutes.
    * @property {number} i_price The price type ID. One of {@link RsServicePriceSid} constants.
-   * @property {number} id_book_flow A list of client booking flow types.
-   * @property {number} id_deny_reason Reasons why the client can't book this class.
-   * @property {number} id_service_require A list of client booking flow types.
+   * @property {number} id_book_flow The type of client booking flow. One of {@link Wl_Service_ServiceBookFlowSid} constants.
+   * @property {number} id_deny_reason The ID of the reason why the client cannot book this service. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. `null` if there is no deny reason.
+   * @property {number} id_service_require The required payment type ID. One of {@link RsServiceRequireSid} constants.
    * @property {boolean} is_age_public `true` if age restrictions are public. Otherwise, `false` if they should be hidden from clients.
    * @property {boolean} is_age_restricted Determines whether this service can't be booked due to age restrictions.
    * @property {boolean} is_back_to_back Determines whether this service supports back-to-back booking.

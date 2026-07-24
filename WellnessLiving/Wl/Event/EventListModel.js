@@ -63,7 +63,7 @@ function Wl_Event_EventListModel()
    * @property {number} i_height_src Original image height in pixels.
    * @property {number} i_rotate Rotation angle applied relative to the original.
    * @property {number} i_width_src Original image width in pixels.
-   * @property {number} id_type_src List of image types.
+   * @property {number} id_type_src Image type identifier. One of {@link Core_Drive_DriveTypeSid} constants.
    * @property {boolean} is-resize `true` if the image was resized; `false` if `url-thumbnail` equals `url-view`.
    * @property {string} url-thumbnail URL of the resized thumbnail image.
    * @property {string} url-view URL of the original image in file storage.

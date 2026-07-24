@@ -15,8 +15,8 @@ function Thoth_WlPay_Bank_Ach_ListModel()
 
   /**
    * @typedef {{}} Thoth_WlPay_Bank_Ach_ListModel_a_list
-   * @property {number} id_pay_bank_ach_holder A list of account holder types which can be chosen.
-   * @property {number} id_pay_bank_ach_type A list of account types which can be chosen.
+   * @property {number} id_pay_bank_ach_holder Type of account holder. One of {@link RsPayBankAchHolderSid} constants.
+   * @property {number} id_pay_bank_ach_type Type of account. One of {@link RsPayBankAchTypeSid} constants.
    * @property {boolean} is_default `true` - this account is default payment method; `false` - otherwise.
    * @property {string} k_pay_bank ID of bank account.
    * @property {string} text_name_account Account name.

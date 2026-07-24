@@ -17,7 +17,7 @@ function Wl_Profile_Form_Response_ResponseListModel()
    * @typedef {{}} Wl_Profile_Form_Response_ResponseListModel_a_quiz_login
    * @property {string[]} a_visit List of visit keys associated with uncompleted response.    Key is visit key.     Value is date of visit.
    * @property {string} dtl_date The date of the request to fill out a quiz form.
-   * @property {number} id_source List of sources where quiz response can be generated.
+   * @property {number} id_source The place where the request to fill out a quiz form occurred. One of the {@link Wl_Quiz_Response_SourceSid} constants.
    * @property {boolean} is_private Determines whether the form can be viewed by staff member only after confirmation.    `true` - the form can be viewed only after confirmation.    `false` - the form can always be viewed.
    * @property {string} k_quiz The quiz key.
    * @property {string} k_quiz_login The key of the request.
@@ -37,8 +37,8 @@ function Wl_Profile_Form_Response_ResponseListModel()
    * @typedef {{}} Wl_Profile_Form_Response_ResponseListModel_a_quiz_response
    * @property {string[]} a_visit List of visit keys associated with uncompleted response.    Key is visit key.     Value is date of visit.
    * @property {string} dtl_date The date of the request to fill out a quiz form.
-   * @property {number} id_source List of sources where quiz response can be generated.
-   * @property {number} id_status List of response statuses.
+   * @property {number} id_source The place where the request to fill out the quiz form occurred. One of the {@link Wl_Quiz_Response_SourceSid} constants.
+   * @property {number} id_status Status of the response. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.
    * @property {boolean} is_private Determines whether the form can be viewed by staff member only after confirmation.    `true` - the form can be viewed only after confirmation.    `false` - the form can always be viewed.
    * @property {string} k_quiz The quiz key.
    * @property {string} k_quiz_login The quiz response key.

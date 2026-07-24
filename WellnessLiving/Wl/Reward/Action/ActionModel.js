@@ -15,7 +15,7 @@ function Wl_Reward_Action_ActionModel()
 
   /**
    * @typedef {{}} Wl_Reward_Action_ActionModel_a_reward_action
-   * @property {number} id_reward_action_category List of default categories of the rewards.
+   * @property {number} id_reward_action_category ID of reward actions category type. One of {@link RsRewardActionCategorySid} constants. `false` for custom reward actions categories.
    * @property {string} k_reward_action ID of reward action.
    * @property {string} k_reward_action_category ID of reward action category in database.
    */

@@ -15,7 +15,7 @@ function Wl_Login_Member_MemberValidate63Model()
 
   /**
    * @typedef {{}} Wl_Login_Member_MemberValidate63Model_a_empty_fields_booking
-   * @property {number} id_field_general List of general fields in user's profile.
+   * @property {number} id_field_general The general field ID. One of {@link RsFieldGeneralSid} constants.
    * @property {string} k_field Profile field key.
    * @property {string} text_field_title Human-readable field title describing what value is missing.
    */
@@ -30,7 +30,7 @@ function Wl_Login_Member_MemberValidate63Model()
 
   /**
    * @typedef {{}} Wl_Login_Member_MemberValidate63Model_a_empty_fields_registration
-   * @property {number} id_field_general List of general fields in user's profile.
+   * @property {number} id_field_general The general field ID. One of {@link RsFieldGeneralSid} constants.
    * @property {string} k_field Profile field key.
    * @property {string} text_field_title Human-readable field title describing what value is missing.
    */
@@ -45,7 +45,7 @@ function Wl_Login_Member_MemberValidate63Model()
 
   /**
    * @typedef {{}} Wl_Login_Member_MemberValidate63Model_a_empty_fields_required
-   * @property {number} id_field_general List of general fields in user's profile.
+   * @property {number} id_field_general The general field ID. One of {@link RsFieldGeneralSid} constants.
    * @property {string} k_field Profile field key.
    * @property {string} text_field_title Human-readable field title describing what value is missing.
    */

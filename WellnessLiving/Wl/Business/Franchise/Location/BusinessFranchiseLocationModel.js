@@ -45,7 +45,7 @@ function Wl_Business_Franchise_Location_BusinessFranchiseLocationModel()
 
   /**
    * @typedef {{}} Wl_Business_Franchise_Location_BusinessFranchiseLocationModel_a_location_list
-   * @property {number} id_currency A list of currencies.
+   * @property {number} id_currency Currency ID. One of {@link Core_Locale_CurrencySid} constants.
    * @property {string} k_city City key.
    * @property {string} k_country Country key.
    * @property {string} k_location Location key.

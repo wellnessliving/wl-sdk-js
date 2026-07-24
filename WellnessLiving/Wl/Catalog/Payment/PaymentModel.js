@@ -41,7 +41,7 @@ function Wl_Catalog_Payment_PaymentModel()
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_quick_gift
    * @property {number} i_count The quantity of elements.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The purchase type of the element. One of the {@link RsPurchaseItemSid} constants.
    * @property {string} k_id The primary key of the element, depending on the element type. Pay attention that if you add a product into gift card, there must be specified not product key but product option key. Do not specify separate field `k_shop_product_option`.
    */
 
@@ -116,7 +116,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config} a_config Additional configuration information. This may contain the next keys:
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_tax_custom} a_tax_custom Customer taxes (optional). Every element must contain the following keys:
    * @property {number} i_quantity The item quantity.
-   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {?number} id_sale The item type ID. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The item key.
    * @property {string} k_login_prize The key of the login prize to apply a login prize discount.
    * @property {string} k_shop_product_option The product option key, required only for products.

@@ -80,8 +80,8 @@ function Wl_Book_Process_Store_StoreGroupModel()
    * @property {string} dt_to Date to complete recurring booking. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
    * @property {number} i_count The number of occurrences after which the appointment's repeat cycle stops. Should be empty if the repeat cycle doesn't stop after a certain number of occurrences. Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
-   * @property {number} id_repeat_end Possible ways to stop repeatable events.
+   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants. Available duration units are: {@link ADurationSid}, {@link ADurationSid}, {@link ADurationSid}.
+   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**

@@ -28,9 +28,9 @@ function Wl_Profile_Alert_AlertEditModel()
    * @typedef {{}} Wl_Profile_Alert_AlertEditModel_a_login_note_data
    * @property {Wl_Profile_Alert_AlertEditModel_a_login_note_data_a_location} a_location List of locations the note applies to. Each element:
    * @property {boolean} can_flag `true` if the current user can flag the client; `false` otherwise.
-   * @property {number} id_login_note_access Class for access type to login note.
-   * @property {number} id_login_note_flag List of modes to change user's "flag" status within a location
-   * @property {?number} id_source Different sources of flags, which are not set manually by the staff member. Such flags have own logic.
+   * @property {number} id_login_note_access Login note access type. One of {@link RsLoginNoteAccessSid} constants.
+   * @property {number} id_login_note_flag Login note flag type. One of {@link RsLoginNoteFlagSid} constants.
+   * @property {?number} id_source Flag source identifier. One of {@link Wl_Location_Flag_FlagSourceEnum} constant. `null` if the flag was created manually.
    * @property {boolean} is_automated `true` if the note was created by an automated process; `false` if created manually.
    * @property {boolean} is_book `true` if the flagged client is allowed to book; `false` otherwise.
    * @property {boolean} is_flag `true` if the client is currently flagged; `false` otherwise.

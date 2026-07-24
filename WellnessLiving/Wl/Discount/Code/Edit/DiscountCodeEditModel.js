@@ -10,7 +10,7 @@ function Wl_Discount_Code_Edit_DiscountCodeEditModel()
 
   /**
    * @typedef {{}} Wl_Discount_Code_Edit_DiscountCodeEditModel_a_component
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item Type ID of the purchase item. One of {@link RsPurchaseItemSid} constants.
    * @property {string} k_id Primary key of the component. <p>Special Notes:</p> <ul>   <li>Zero means that all elements of this type are available.</li>   <li>For `id_purchase_item`={@link RsPurchaseItemSid} we store .`k_class` in the `k_id` field.</li> </ul>
    * @property {string} text_title Title of the component.
    */

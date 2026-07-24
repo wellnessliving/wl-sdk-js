@@ -83,7 +83,7 @@ function Wl_Video_VideoListModel()
    * @property {number} i_current_time Current watch position in seconds for the current user.
    * @property {number} i_duration Video duration in seconds.
    * @property {number} i_watch Total number of views.
-   * @property {number} id_source List of video types.
+   * @property {number} id_source Video source. One of {@link Wl_Video_VideoSourceSid} constants.
    * @property {boolean} is_calorie `true` if calorie information is enabled for this video; `false` otherwise.
    * @property {boolean} is_converted `true` if the video has been converted to HLS format; `false` otherwise.
    * @property {boolean} is_published `true` if the video is currently published; `false` otherwise.

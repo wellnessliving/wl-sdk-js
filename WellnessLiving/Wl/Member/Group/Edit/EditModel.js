@@ -10,8 +10,8 @@ function Wl_Member_Group_Edit_EditModel()
 
   /**
    * @typedef {{}} Wl_Member_Group_Edit_EditModel_a_criteria
-   * @property {number} cid_search_criteria Base class for search criteria.
-   * @property {number} id_operation Search operation constants.
+   * @property {number} cid_search_criteria Search criteria CID. Constant from {@link Wl_Search_Criteria_SearchCriteriaAbstract} subclasses.
+   * @property {number} id_operation ID of selected operation. Constant from {@link Wl_Search_SearchOperationSid}.
    * @property {string} s_id Unique criteria key.
    * @property {string} x_value Operation data value.
    */
@@ -49,7 +49,7 @@ function Wl_Member_Group_Edit_EditModel()
 
   /**
    * @typedef {{}} Wl_Member_Group_Edit_EditModel_a_staff_role_selected
-   * @property {?number} id_privilege_role String identifiers for rs.privilege.role.
+   * @property {?number} id_privilege_role ID of privilege role. Constant from {@link RsPrivilegeRoleSid}.
    * @property {string} k_business_role Key of the business role.
    */
 

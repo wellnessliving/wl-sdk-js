@@ -37,7 +37,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * @property {string} dt_date_local New appointment date/time in MySQL in locale timezone.
    * @property {number} i_duration New asset booking duration.
    * @property {number} i_index New asset index.
-   * @property {number} id_conflict List of possible ways to solve a conflict.
+   * @property {number} id_conflict Solution type. One of {@link RsAppointmentEditConflictSid} constants.
    * @property {string} k_resource New asset.
    * @property {?string} k_staff New staff member.  `null` in a case of asset booking.
    * @property {?string} uid_staff New staff member.  `null` in a case of asset booking.
@@ -56,7 +56,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * @property {string} dl_end The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
    * @property {number} i_occurrence The number of occurrences after which the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop after a certain number of occurrences.
    * @property {number} i_period The frequency at which the appointment repeats.
-   * @property {number} id_period A class for managing time intervals. Last ID: 9.
+   * @property {number} id_period The measurement unit of `i_period`. One of the {@link ADurationSid} constants.
    * @property {boolean} is_month `true` if the appointment repeats monthly on the same date. `false` if the appointment repeats monthly on the same day of the week. `null` if the appointment doesn't repeat monthly.
    */
 
@@ -75,8 +75,8 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * @property {string} dt_date The date/time for the booking in MySQL format in the location's time zone.
    * @property {number} i_duration The duration for the asset booking in minutes. Specify this for separate asset bookings only.
    * @property {number} i_index The asset index on the layout. Specify this for separate asset bookings only and for cases when the asset category only has the layout.
-   * @property {number} id_gender_staff String identifiers for gender.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_gender_staff The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants. Specify this for appointment bookings only.
+   * @property {number} id_purchase_item Type of the purchase item. One of the {@link RsPurchaseItemSid} constants.
    * @property {boolean} is_unpaid_force If `true`, the appointment is booked as unpaid. Otherwise, this will be `false` to select an available Purchase Option.
    * @property {boolean} is_wait_list_unpaid If `true`, appointment waits unpaid.
    * @property {string} k_login_prize The user's prize.
@@ -95,7 +95,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishMultipleModel_a_book_data
    * @property {Wl_Appointment_Book_Finish_FinishMultipleModel_a_book_data_a_provider} a_provider A list of providers and their booking details. Every element has next keys:
-   * @property {number} id_class_tab List of class tab objects.
+   * @property {number} id_class_tab The booking service type. One of the {@link Wl_Classes_Tab_TabSid} constants.
    */
 
   /**
@@ -175,7 +175,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishMultipleModel_a_pay_form
    * @property {number} f_amount Amount of money to withdraw with this payment source.
-   * @property {?number} id_pay_method A list of payment methods.
+   * @property {?number} id_pay_method Payment method. One of {@link RsPayMethodSid} constants.
    * @property {boolean} is_hide Whether this payment method is hidden.
    * @property {boolean} is_success Whether this source was successfully charged.
    * @property {string} m_fee Fee amount for this payment source.

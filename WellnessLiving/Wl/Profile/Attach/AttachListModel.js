@@ -20,7 +20,7 @@ function Wl_Profile_Attach_AttachListModel()
    * @property {?number} i_height Image height in pixels. `null` if not an image or dimensions are unavailable.
    * @property {number} i_show_delete Flag indicating whether to show the delete button. `'1'` to show, `'0'` to hide. Only present in backend mode.
    * @property {?number} i_width Image width in pixels. `null` if not an image or dimensions are unavailable.
-   * @property {number} id_preview List of file extensions.
+   * @property {number} id_preview Preview type identifier. One of {@link Wl_Profile_Attach_AttachPreviewSid} constants.
    * @property {boolean} is_private `true` if the attachment is private (not visible to the client); `false` otherwise. Only present in backend mode.
    * @property {string} k_attach Attachment key.
    * @property {string} k_business Business key.

@@ -20,7 +20,7 @@ function Wl_Pay_Transaction_Report_TransactionAllPaymentModel()
 
   /**
    * @typedef {{}} Wl_Pay_Transaction_Report_TransactionAllPaymentModel_a_row_a_pay_transaction
-   * @property {?number} id_pay_method A list of payment methods.
+   * @property {?number} id_pay_method Payment method ID. One of {@link RsPayMethodSid} constants.
    * @property {string} k_pay_transaction Pay transaction key.
    * @property {string} m_amount Amount paid.
    * @property {string} m_surcharge Surcharge amount from store settings.

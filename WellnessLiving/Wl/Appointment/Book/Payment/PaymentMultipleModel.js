@@ -19,7 +19,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_a_provider_a_product} a_product The add-on list. Keys are add-on option keys.  Values are quantities:
    * @property {string} dl_client_prorate Client prorate date. Used when the purchased promotion is prorated.
    * @property {number} i_duration The asset duration in minutes. This won't be empty for asset bookings.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants. This won't be empty for new options purchased.
    * @property {boolean} is_pay_later This will be `true` if the customer wants to pay upon their visit. Otherwise, this will be `false` if the user wants to pay now.
    * @property {boolean} is_purchase_previous This will be `true` if the Purchase Option that was selected for another appointment from the batch must be used for this appointment. Otherwise, this will be `false`.
    * @property {boolean} is_wait_list_unpaid This will be `true` if the customer is booked into the wait list and doesn't have to pay. Otherwise, this will be `false` if the customer is booking to an active list (or if the wait list booking should be paid now).
@@ -35,7 +35,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data
    * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_a_provider} a_provider The batch of appointments to be booked. Each element has the next values:
-   * @property {number} id_class_tab List of class tab objects.
+   * @property {number} id_class_tab The "Book now" tab. One of the {@link Wl_Classes_Tab_TabSid} constants.
    * @property {string} m_tip_appointment The tips amount.
    */
 
@@ -61,7 +61,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_post_a_provider_a_product} a_product The add-on list. Keys are add-on option keys.  Values are quantities:
    * @property {string} dl_client_prorate Client prorate date. Used when the purchased promotion is prorated.
    * @property {number} i_duration The asset duration in minutes. This won't be empty for asset bookings.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants. This won't be empty for new options purchased.
    * @property {boolean} is_pay_later This will be `true` if the customer wants to pay upon their visit. Otherwise, this will be `false` if the user wants to pay now.
    * @property {boolean} is_purchase_previous This will be `true` if the Purchase Option that was selected for another appointment from the batch must be used for this appointment. Otherwise, this will be `false`.
    * @property {boolean} is_wait_list_unpaid This will be `true` if the customer is booked into the wait list and doesn't have to pay. Otherwise, this will be `false` if the customer is booking to an active list (or if the wait list booking should be paid now).
@@ -77,7 +77,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_post
    * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_post_a_provider} a_provider The batch of appointments to be booked. Each element has the next values:
-   * @property {number} id_class_tab List of class tab objects.
+   * @property {number} id_class_tab The "Book now" tab. One of the {@link Wl_Classes_Tab_TabSid} constants.
    * @property {string} m_tip_appointment The tips amount.
    */
 
@@ -179,7 +179,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase
    * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_a_tax} a_tax A list of taxes to apply containing information about taxes. The array keys are `k_tax` keys. Each element contains the following fields:
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The purchase item ID. One of the {@link RsPurchaseItemSid} constants.
    * @property {string} k_id The value of the discount used for the purchase.
    * @property {string} m_discount The value of the discount used for the purchase.
    * @property {string} m_pay The payment for the promotion (or single visit) without taxes.

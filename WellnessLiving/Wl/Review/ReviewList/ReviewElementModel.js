@@ -17,7 +17,7 @@ function Wl_Review_ReviewList_ReviewElementModel()
    * @typedef {{}} Wl_Review_ReviewList_ReviewElementModel_a_review
    * @property {string} dt_add Date when review was added by user.
    * @property {number} f_rate Review rate.
-   * @property {?number} id_review_status Review status identifiers.
+   * @property {?number} id_review_status Status of the Review. One of {@link RsReviewStatusSid} constants.
    * @property {boolean} is_featured If `true`, the review is featured. Otherwise, this will be `false`.
    * @property {boolean} is_verify `true` if review is verified, `false` otherwise.
    * @property {string} text_business_name Business name

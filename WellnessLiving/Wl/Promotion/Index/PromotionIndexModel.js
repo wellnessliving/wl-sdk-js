@@ -41,7 +41,7 @@ function Wl_Promotion_Index_PromotionIndexModel()
   /**
    * @typedef {{}} Wl_Promotion_Index_PromotionIndexModel_a_promotion_a_component
    * @property {number} i_quantity The quantity. If empty, it means the quantity is 1.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The type of the component.  One of {@link RsPurchaseItemSid} constants.  This can only be: <ul>      <li>{@link RsPurchaseItemSid}</li>      <li>{@link RsPurchaseItemSid}</li>      <li>{@link RsPurchaseItemSid}</li>  </ul>
    * @property {string} k_id The primary key of the component in the related table. This depends on the type of the component. The key of the event for {@link RsPurchaseItemSid}, the key of the Purchase Option for the {@link RsPurchaseItemSid}, the key of the product option for the {@link RsPurchaseItemSid}. Full information about events can be taken from the {@link Wl_Event_EventListModel}. Purchase Options from the {@link Wl_Promotion_Index_PromotionIndexModel}. Full information about products are not available at this moment though API.
    * @property {string} text_title The name of the component.
    */
@@ -59,8 +59,8 @@ function Wl_Promotion_Index_PromotionIndexModel()
    * @property {number} i_period The duration of the time period. This depends on a key of `a_visit_limit` array.
    * @property {number} i_roll_over_cap The limit number of rollover sessions.
    * @property {number} i_roll_over_expire The duration of the time period after which rolled over session will expire.
-   * @property {number} id_limit_cycle Attendance Restriction cycle type.
-   * @property {number} id_roll_over_expire A class for managing time intervals. Last ID: 9.
+   * @property {number} id_limit_cycle The type of the limit cycle {@link Wl_Promotion_Edit_Limit_Cycle_Sid}.
+   * @property {number} id_roll_over_expire The type of `i_roll_over_expire`. One of {@link ADurationSid} contantant. This can only be: <ul>     <li>{@link ADurationSid}</li>     <li>{@link ADurationSid}</li>     <li>{@link ADurationSid}</li>     <li>{@link ADurationSid}</li> </ul>
    * @property {boolean} is_reconcile_visit Determines whether to reconcile unpaid sessions on restrictions reset.
    * @property {boolean} is_roll_over_expire Determines if the rolled over session is expired.
    * @property {boolean} is_roll_over_renew Determines whether to rollover sessions upon auto-renew.
@@ -78,12 +78,12 @@ function Wl_Promotion_Index_PromotionIndexModel()
    * @property {number} i_duration The number of periods for the "Period" duration type. For example, if the duration of the Purchase Option is 12 months, this field will be 12.
    * @property {number} i_limit The number of visits that the owner of the Purchase Option can use. This will be `0` if the Purchase Option has unlimited visits.
    * @property {number} i_limit_duration The maximum number of minutes or hours depending on `id_limit_duration` that the current promotion can be used in.
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
-   * @property {number} id_duration_type Class to process string identifiers for duration types
-   * @property {number} id_limit_duration A class for managing time intervals. Last ID: 9.
-   * @property {number} id_program Program types.
-   * @property {number} id_program_category Program type categories.
-   * @property {number} id_program_type Program types.
+   * @property {number} id_duration The type of periods for the duration type "Period". For example, if the duration of the Purchase Option is 12 months, this field will be the ID of the month. See all the possible options here: {@link ADurationSid}.
+   * @property {number} id_duration_type The type of the duration. This can be "Without End", "Expires on a certain date", "Period". See more information here: {@link RsDurationTypeSid}.
+   * @property {number} id_limit_duration The type of `i_limit_duration`. One of {@link ADurationSid} contantant. This can only be: <ul>     <li>{@link ADurationSid}</li>     <li>{@link ADurationSid}</li>     <li>{@link ADurationSid}</li>     <li>{@link ADurationSid}</li> </ul>
+   * @property {number} id_program The type of the Purchase Option. The `id_program` relates to only one `id_program_type` and one `id_program_category`. See more information here: {@link RsProgramSid}.
+   * @property {number} id_program_category The category of the program for promotions. The `id_program_category` relates to more than one `id_program`. See more information here: {@link RsProgramCategorySid}.
+   * @property {number} id_program_type The ID of the promotion program type. The `id_program_type` relates to more than one `id_program`. See more information here: {@link RsProgramTypeSid}.
    * @property {boolean} is_direct_buy_only If `true`, the pricing option can be sold only by direct link. This means it shouldn't be shown in the store or explorer. Otherwise, this will be `false`.
    * @property {boolean} is_introductory If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.
    * @property {boolean} is_online If `true` this promotion is available for online purchase. Otherwise, this will be `false`.

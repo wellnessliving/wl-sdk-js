@@ -82,8 +82,8 @@ function Wl_Reception_Application_MemberInfoModel()
   /**
    * @typedef {{}} Wl_Reception_Application_MemberInfoModel_a_items
    * @property {string} html_message Message for info box.
-   * @property {number} id_color Define colors of notice messages.
-   * @property {number} id_icon Define types of icons for notice messages.
+   * @property {number} id_color ID of color the notice is displayed in. One of {@link Wl_Reception_Application_MemberInfoColorSid} constants.
+   * @property {number} id_icon ID of icon that accompanies the message. One of {@link Wl_Reception_Application_MemberInfoIconSid} constants.
    * @property {string} text_class Name of the class for styles.
    * @property {string} text_message Plain message for info box.
    */

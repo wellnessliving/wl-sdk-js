@@ -54,7 +54,7 @@ function Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel()
 
   /**
    * @typedef {{}} Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel_a_pattern_load
-   * @property {number} id_mail Mail types.
+   * @property {number} id_mail ID of the notification. One of {@link RsMailSid} constants.
    * @property {boolean} is_mail Is email enabled.
    * @property {boolean} is_push Is push notification enabled.
    * @property {boolean} is_sms Is SMS enabled.
@@ -82,7 +82,7 @@ function Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel()
 
   /**
    * @typedef {{}} Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel_a_pattern_load_default
-   * @property {number} id_mail Mail types.
+   * @property {number} id_mail ID of the notification. One of {@link RsMailSid} constants.
    * @property {boolean} is_mail Is email enabled.
    * @property {boolean} is_push Is push notification enabled.
    * @property {boolean} is_sms Is SMS enabled.
@@ -110,7 +110,7 @@ function Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel()
 
   /**
    * @typedef {{}} Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel_a_pattern_save
-   * @property {number} id_mail Mail types.
+   * @property {number} id_mail ID of the notification. One of {@link RsMailSid} constants.
    * @property {boolean} is_mail Is email enabled.
    * @property {boolean} is_push Is push notification enabled.
    * @property {boolean} is_sms Is SMS enabled.

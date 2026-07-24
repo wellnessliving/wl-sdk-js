@@ -16,7 +16,7 @@ function Wl_Classes_ClassList_BookListModel()
    * @property {string[]} a_url_book The list of URL to book this class.
    * @property {string} dtu_book_date The book date of an event in UTC date/time format. Can be empty string if user cannot book the event.
    * @property {number} i_capacity Class capacity.
-   * @property {number} id_bookable A list of bookable types.
+   * @property {number} id_bookable Bookable type ID. One of {@link Wl_Service_BookableSid} constants.
    * @property {boolean} is_active This will be `true` if the class is active. Otherwise, this will be `false`.
    * @property {boolean} is_event This will be `true` for events. Otherwise, this will be `false` for classes.
    * @property {boolean} is_online_private `true` means to show class only for clients who can book online, `false` means to show class for all clients.

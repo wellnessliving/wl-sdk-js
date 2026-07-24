@@ -26,12 +26,12 @@ function Wl_Business_Config_BusinessConfigModel()
    * @property {number} i_promote_fastest_response Minimum hours|days|months the notifications which are sent for client confirmation required should be sent to all clients on the wait list at the same time up to the cut off time.
    * @property {number} i_promote_require_confirm Minimum hours|days|months the notifications which are sent for client confirmation must confirm their a promote from the waiting list to the active list.
    * @property {number} i_reattempt_count Number of failed auto-payments reattempts.
-   * @property {number} id_book_before A class for managing time intervals. Last ID: 9.
-   * @property {number} id_book_future A class for managing time intervals. Last ID: 9.
-   * @property {number} id_cancel A class for managing time intervals. Last ID: 9.
-   * @property {number} id_promote A class for managing time intervals. Last ID: 9.
-   * @property {number} id_promote_fastest_response A class for managing time intervals. Last ID: 9.
-   * @property {number} id_promote_require_confirm A class for managing time intervals. Last ID: 9.
+   * @property {number} id_book_before Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_book_future Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_cancel Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_promote Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_promote_fastest_response Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_promote_require_confirm Hours|days|months from {@link ADurationSid}.
    * @property {boolean} is_book_inside_active_pay_period if `true` - clients with purchase options are only allowed to book sessions within their current paid period, `false` - during purchase option's duration.
    * @property {boolean} is_disable_promotion 1 if a client's automatic payment fails, their account should not be debited and their purchase option becomes inactive, 0 - otherwise. Default 0.
    * @property {boolean} is_enable_payment_penalty Whether to charge penalty after final auto-payment attempt.
@@ -63,9 +63,9 @@ function Wl_Business_Config_BusinessConfigModel()
    * @property {number} i_blame Number of blamed visits.
    * @property {number} i_cancel_period Count of days/weeks/months.
    * @property {number} i_charge_measure Count of applied penalty.
-   * @property {number} id_blame Defines if client has "Late cancel" or "No shows" sessions.
-   * @property {number} id_cancel_period A class for managing time intervals. Last ID: 9.
-   * @property {number} id_charge Client's charge if he has "Late cancel" or "No shows" sessions.
+   * @property {number} id_blame One of {@link Wl_Business_Policy_BlameSid} constants.
+   * @property {number} id_cancel_period Duration ID. One of {@link ADurationSid} constants.
+   * @property {number} id_charge One of {@link Wl_Business_Policy_ChargeSid} constants.
    * @property {number} id_charge_measure Charge measure type. `0` for percent, `1` for money amount.
    * @property {boolean} is_appointment_all `1` if all classes are selected, `0` - otherwise.
    * @property {boolean} is_class_all `1` if all classes are selected, `0` - otherwise.

@@ -19,7 +19,7 @@ function Wl_Reception_Roster_Design_ReceptionRosterDesignModel()
    * @property {number} i_height_src Original image height.
    * @property {number} i_width Requested image width.
    * @property {number} i_width_src Original image width.
-   * @property {number} id_type_src List of image types.
+   * @property {number} id_type_src Image type ID. One of {@link Core_Drive_DriveTypeSid} constants.  Will be present only for \Core\Drive\Drive images.
    * @property {boolean} is-resize Whether image was resized to satisfy specified  `i_width` and `i_height`.
    * @property {string} url-thumbnail Url to requested image.
    * @property {string} url-view Url to original image.

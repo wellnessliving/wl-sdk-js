@@ -15,7 +15,7 @@ function Wl_Collector_DebtListModel()
    * @property {string} dtu_cease The date and time in UTC when the debt was fully ceased.
    * @property {string} dtu_client_since The date and time in UTC from which the debtor client is a member of the business.
    * @property {string} dtu_due The date and time in UTC of the last payment on the debtor client's account.
-   * @property {number} id_currency A list of currencies.
+   * @property {number} id_currency The debt currency ID. One of {@link Core_Locale_CurrencySid} constants.
    * @property {string} k_business The business key where the debt occurred.
    * @property {string} k_collector_debt The debt key, which should be used for debt payment.
    * @property {string} k_pay_transaction_debt The transaction key after which the debt occurred.

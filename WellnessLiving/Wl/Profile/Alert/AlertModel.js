@@ -16,7 +16,7 @@ function Wl_Profile_Alert_AlertModel()
   /**
    * @typedef {{}} Wl_Profile_Alert_AlertModel_a_alert
    * @property {?string} dt_date The date and time in MySQL format in local time when the alert was last modified. This will be `null` if the date isn't available for this alert.
-   * @property {number} id_profile_note Sources of system notes.
+   * @property {number} id_profile_note ID of alert type. One of {@link RsProfileNoteSid} constants.
    * @property {boolean} is_today This will be `true` if the alert was added today. Otherwise, this will be `false`.
    * @property {string} k_pay_account The key of the client's account.
    * @property {string} k_purchase_item The key of the purchase item.

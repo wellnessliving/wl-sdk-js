@@ -19,7 +19,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @property {number[]} a_product Add-on list. Keys are add-on option keys, values are quantities.
    * @property {string} dl_client_prorate Client prorate date. Used when the purchased promotion is prorated.
    * @property {number} i_duration Asset booking duration in minutes. Used only for asset bookings.
-   * @property {number} id_class_tab List of class tab objects.
+   * @property {number} id_class_tab The "Book now" tab. One of {@link Wl_Classes_Tab_TabSid} constants.
    * @property {boolean} is_pay_later `true` if the client wants to pay upon their visit, `false` if paying now.
    * @property {boolean} is_purchase_previous `true` if a previously purchased option is used for this booking.
    * @property {boolean} is_wait_list_unpaid `true` if the client is placed on a wait list without paying.
@@ -115,7 +115,7 @@ function Wl_Appointment_Book_Payment_PaymentModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Payment_PaymentModel_a_purchase
    * @property {Wl_Appointment_Book_Payment_PaymentModel_a_purchase_a_tax} a_tax Contains information about taxes in the following format. A list of taxes to apply. The array keys are `k_tax` keys. Each element contains the following fields:
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The purchase item ID. A constant of {@link RsPurchaseItemSid}.
    * @property {string} k_id The value of the discount used for the purchase.
    * @property {string} m_discount The value of the discount used for the purchase.
    * @property {string} m_discount_login The discount amount for the client type of one purchase item.

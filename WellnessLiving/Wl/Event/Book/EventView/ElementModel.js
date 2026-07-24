@@ -58,12 +58,12 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {number} i_promote_fastest_response Minimum hours|days|months the notifications which are sent for client confirmation required should be sent to all clients on the wait list at the same time up to the cut off time.
    * @property {number} i_promote_require_confirm Minimum hours|days|months the notifications which are sent for client confirmation must confirm their a promote from the waiting list to the active list.
    * @property {number} i_reattempt_count Number of failed auto-payments reattempts.
-   * @property {number} id_book_before A class for managing time intervals. Last ID: 9.
-   * @property {number} id_book_future A class for managing time intervals. Last ID: 9.
-   * @property {number} id_cancel A class for managing time intervals. Last ID: 9.
-   * @property {number} id_promote A class for managing time intervals. Last ID: 9.
-   * @property {number} id_promote_fastest_response A class for managing time intervals. Last ID: 9.
-   * @property {number} id_promote_require_confirm A class for managing time intervals. Last ID: 9.
+   * @property {number} id_book_before Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_book_future Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_cancel Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_promote Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_promote_fastest_response Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_promote_require_confirm Hours|days|months from {@link ADurationSid}.
    * @property {boolean} is_book_inside_active_pay_period if `true` - clients with purchase options are only allowed to book sessions within their current paid period, `false` - during purchase option's duration.
    * @property {boolean} is_disable_promotion 1 if a client's automatic payment fails, their account should not be debited and their purchase option becomes inactive, 0 - otherwise. Default 0.
    * @property {boolean} is_enable_payment_penalty Whether to charge penalty after final auto-payment attempt.
@@ -95,7 +95,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_class_logo
    * @property {number} i_height Is returned only if staff has a photo. Image height.
    * @property {number} i_width Is returned only if staff has a photo. Image width.
-   * @property {number} id_gender String identifiers for gender.
+   * @property {number} id_gender Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.
    * @property {string} url_logo Is returned only if staff has a photo. URL to image.
    */
 
@@ -125,7 +125,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_class_logo
    * @property {number} i_height Is returned only if staff has a photo. Image height.
    * @property {number} i_width Is returned only if staff has a photo. Image width.
-   * @property {number} id_gender String identifiers for gender.
+   * @property {number} id_gender Is returned only if staff does not have a photo. ID of staff gender. One of {@link AGenderSid} constants.
    * @property {string} url_logo Is returned only if staff has a photo. URL to image.
    */
 
@@ -133,7 +133,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_installment_template
    * @property {number} i_count The number of payments.
    * @property {number} i_period The number of periods specified by `id_period` between individual payments.
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
+   * @property {number} id_duration The duration of a single period. One of the {@link ADurationSid} constants.
    * @property {string} k_currency The payment currency Key.
    * @property {string} k_pay_installment_template The key of the installment plan template.
    * @property {string} m_amount The amount of the installment plan.
@@ -143,7 +143,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_schedule_a_repeat
    * @property {number} i_repeat Count of the periods which specified in `id_repeat`.
-   * @property {number} id_repeat A class for managing time intervals. Last ID: 9.
+   * @property {number} id_repeat Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.
    */
 
   /**
@@ -235,7 +235,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_installment_template
    * @property {number} i_count The number of payments.
    * @property {number} i_period The number of periods specified by `id_period` between individual payments.
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
+   * @property {number} id_duration The duration of a single period. One of the {@link ADurationSid} constants.
    * @property {string} k_currency The payment currency Key.
    * @property {string} k_pay_installment_template The key of the installment plan template.
    * @property {string} m_amount The amount of the installment plan.
@@ -253,7 +253,7 @@ function Wl_Event_Book_EventView_ElementModel()
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_repeat
    * @property {number} i_repeat Count of the periods which specified in `id_repeat`.
-   * @property {number} id_repeat A class for managing time intervals. Last ID: 9.
+   * @property {number} id_repeat Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.
    */
 
   /**

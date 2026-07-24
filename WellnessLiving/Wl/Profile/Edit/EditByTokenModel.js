@@ -42,7 +42,7 @@ function Wl_Profile_Edit_EditByTokenModel()
 
   /**
    * @typedef {{}} Wl_Profile_Edit_EditByTokenModel_a_family_relation
-   * @property {number} id_family_relation Relation type between two relatives.
+   * @property {number} id_family_relation Relation type. One of {@link RsFamilyRelationSid} constants.
    * @property {boolean} is_relative_pay `true` if the relative will pay for this user; `false` or absent otherwise.
    * @property {string} uid_from User key of the relative (must be the currently logged-in user).
    */
@@ -108,8 +108,8 @@ function Wl_Profile_Edit_EditByTokenModel()
 
   /**
    * @typedef {{}} Wl_Profile_Edit_EditByTokenModel_a_structure
-   * @property {number} id_field_general List of general fields in user's profile.
-   * @property {number} id_field_type Possible types of the custom fields: text, checkbox, radio buttons, etc.
+   * @property {number} id_field_general The ID of a system field. One of the {@link RsFieldGeneralSid} constants. This value is only defined if `id_field_type`={@link RsFieldTypeSid}.
+   * @property {number} id_field_type The type of field. One of the {@link RsFieldTypeSid} constants.
    * @property {boolean} is_require Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.
    * @property {string} k_field The field ID (`k_field`). A copy of the key of this array element.
    * @property {string} s_title The title of the field.

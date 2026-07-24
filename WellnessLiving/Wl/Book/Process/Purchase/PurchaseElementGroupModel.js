@@ -23,7 +23,7 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item
    * @property {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config} a_config Additional item configurations.
    * @property {number} i_session Number of sessions which are booked simultaneously.      Make sense only when `id_purchase_item` = {@link RsPurchaseItemSid}.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
    * @property {string} k_id The key of the purchase item in the database.
    * @property {string} k_login_prize The key of the user's prize.  Not empty only if the user wants to make a free visit from the prize.
    * @property {?string} k_pay_installment_template Installment template key.   This property is optional.  * can only be set for the purchase option which supports installment plan.   * `null` if installment plan doesn't exist for bought item;  * `0` if installment plan doesn't selected for bought item from the list of installment plans.  NOTE:  * Calculations of discounts and taxes for installment plans are for demonstration purposes only!  * Installment is not an independent purchase item and has no discounts or taxes.  * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.

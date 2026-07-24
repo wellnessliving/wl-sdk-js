@@ -40,7 +40,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    * @property {string} html_duration The HTML code used to display the asset duration.
    * @property {string} html_price The HTML code used to display the formatted price.
    * @property {number} i_duration The asset duration in minutes.
-   * @property {number} id_price A list of service price types.
+   * @property {number} id_price The asset period price type. One of {@link RsServicePriceSid} constants.
    * @property {string} m_price The asset period price.
    */
 
@@ -56,8 +56,8 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    * @property {string} html_age_restriction The resource age restriction
    * @property {string} html_deny_reason Human-readable reason why the client cannot book this asset. Empty string if there is no deny reason.
    * @property {string} html_title The resource name.
-   * @property {number} id_deny_reason Reasons why the client can't book this class.
-   * @property {number} id_service_require A list of client booking flow types.
+   * @property {number} id_deny_reason The ID of the reason why the client cannot book this asset. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. `null` if there is no deny reason.
+   * @property {number} id_service_require The purchase rule. One of the {@link RsServiceRequireSid} constants.
    * @property {boolean} is_age_restricted Determines whether this service can't be booked due to age restrictions.
    * @property {string} k_class_tab Quick book tab key.
    * @property {string} k_resource The resource key.

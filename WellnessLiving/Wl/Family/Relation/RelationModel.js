@@ -15,7 +15,7 @@ function Wl_Family_Relation_RelationModel()
 
   /**
    * @typedef {{}} Wl_Family_Relation_RelationModel_a_new
-   * @property {number} id_family_relation Relation type between two relatives.
+   * @property {number} id_family_relation The relationship type. One of the {@link RsFamilyRelationSid} constants.
    * @property {string} uid The related user's key.
    */
 
@@ -29,8 +29,8 @@ function Wl_Family_Relation_RelationModel()
 
   /**
    * @typedef {{}} Wl_Family_Relation_RelationModel_a_relation
-   * @property {number} id_family_relation Relation type between two relatives.
-   * @property {number} id_family_relation_reverse Relation type between two relatives.
+   * @property {number} id_family_relation The relationship type. One of the {@link RsFamilyRelationSid} constants.
+   * @property {number} id_family_relation_reverse The type of reciprocated relationship. One of the {@link RsFamilyRelationSid} constants.
    * @property {string} text_name The name of the relation.
    * @property {string} text_name_first The first name of the relation.
    * @property {string} uid The key of the related user.

@@ -69,7 +69,7 @@ function Wl_Resource_Layout_LayoutModel()
    * @property {number} i_left The position of the shape by horizontal axis.
    * @property {number} i_radius The radius for shapes {@link Wl_Resource_Layout_Shape_LayoutShapeSid} and {@link Wl_Resource_Layout_Shape_LayoutShapeSid}. Empty for other shapes.
    * @property {number} i_top The position of the shape by vertical axis.
-   * @property {number} id_resource_layout_shape Types of the shapes.
+   * @property {number} id_resource_layout_shape The shape type ID. One of the {@link Wl_Resource_Layout_Shape_LayoutShapeSid} constants.
    * @property {string} k_resource_layout_shape The shape key.
    * @property {string} s_color_background The shape's background color.
    * @property {string} s_color_foreground The shape's foreground color.
@@ -90,7 +90,7 @@ function Wl_Resource_Layout_LayoutModel()
    * @property {number} i_cell_y The cell number, positioned by the vertical axis. Empty if grid is turned off.
    * @property {number} i_left The horizontal position in pixels. Empty if grid is turned on.
    * @property {number} i_top The vertical position in pixels. Empty if grid is turned on.
-   * @property {number} id_shape_icon Predefined icons for assets.
+   * @property {number} id_shape_icon The icon ID. One of the {@link Wl_Resource_Image_ImageIconSid} constants.
    */
 
   /**

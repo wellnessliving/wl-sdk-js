@@ -15,7 +15,7 @@ function Wl_Coupon_CouponList_ListModel()
 
   /**
    * @typedef {{}} Wl_Coupon_CouponList_ListModel_a_coupon
-   * @property {number} id_type List of possible types of Gift Cards.
+   * @property {number} id_type The type of coupon. One of {@link Wl_Coupon_TypeSid} constants.
    * @property {string} k_coupon The gift card key.
    * @property {string} text_title The title of the gift card.
    */

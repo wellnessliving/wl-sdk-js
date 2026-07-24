@@ -16,7 +16,7 @@ function Wl_Schedule_Page_PageListModel()
   /**
    * @typedef {{}} Wl_Schedule_Page_PageListModel_a_visit
    * @property {string} dtu_date Date and time of the visit in UTC.
-   * @property {number} id_visit Possible states of the visit: book, attended, cancelled, etc.
+   * @property {number} id_visit Visit status ID. One of {@link Wl_Visit_VisitSid} constants.
    * @property {string} k_business Key of the business in which this visit was made.
    * @property {string} k_visit Key of a book/visit.
    */

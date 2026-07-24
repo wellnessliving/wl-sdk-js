@@ -10,7 +10,7 @@ function Wl_Classes_Promotion_ClassPromotionModel()
 
   /**
    * @typedef {{}} Wl_Classes_Promotion_ClassPromotionModel_a_promotion
-   * @property {number} id_program Program types.
+   * @property {number} id_program One of the {@link RsProgramSid} constants.
    * @property {boolean} is_select `true` if the promotion is related to the class or event, `false` otherwise.
    * @property {string} k_promotion The promotion key.
    * @property {string} text_title The title of the promotion.

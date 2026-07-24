@@ -34,9 +34,9 @@ function Wl_Book_Process_Resource_ResourceModel()
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
    * @property {number} i_occurrence Deprecated, use `i_count` instead!
    * @property {number} i_period Deprecated, use `i_duration` instead!
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
-   * @property {number} id_period A class for managing time intervals. Last ID: 9.
-   * @property {number} id_repeat_end Possible ways to stop repeatable events.
+   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants. Available duration units are: {@link ADurationSid}, {@link ADurationSid}, {@link ADurationSid}.
+   * @property {number} id_period Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.
+   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**
@@ -83,7 +83,7 @@ function Wl_Book_Process_Resource_ResourceModel()
    * @property {boolean[][]} a_client A list of clients who have already occupied assets for this session. 1st level keys are asset keys.  2nd level keys are asset index numbers (starting from 1). Values are `true` if the asset spot is occupied. For example, to check if asset spot 10 with key '125' is occupied, check `a_client['125']['10']`.
    * @property {Wl_Book_Process_Resource_ResourceModel_a_resource_all_a_resource_list} a_resource_list A list of available assets. Every element has next keys:
    * @property {boolean} has_current `true` - has current resource in the list of available assets; `false` - otherwise.
-   * @property {number} id_category List of resource categories.
+   * @property {number} id_category Type of the asset category. One of {@link Wl_Resource_ResourceCategoryEnum} constants.
    * @property {boolean} is_client_select `true` - the client selected the resource from the current group; `false` otherwise.
    * @property {boolean} is_select `true` - has selected resources; `false` - otherwise.
    * @property {boolean} is_share `true` resources in this category don't belong to certain users, but to the entire session. `false` belong to specific users.

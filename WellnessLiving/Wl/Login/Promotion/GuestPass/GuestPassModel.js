@@ -26,7 +26,7 @@ function Wl_Login_Promotion_GuestPass_GuestPassModel()
    * @property {number} i_claim_day Count of days for accept guest invite.
    * @property {number} i_limit Times that member can invite the same guest.
    * @property {number} i_limit_duration The time during which a member can invite a guest `i_limit` times.
-   * @property {number} id_limit_duration A class for managing time intervals. Last ID: 9.
+   * @property {number} id_limit_duration Type of the duration of `i_limit_duration`. One of {@link ADurationSid} constants.
    * @property {boolean} is_checkin Whether guests can only enter the gym when the inviting member is checked in.
    * @property {boolean} is_limit Whether there are limits for a guest promotion.
    */
@@ -46,9 +46,9 @@ function Wl_Login_Promotion_GuestPass_GuestPassModel()
    * @property {?number} i_remain Number of guest passes remaining in the current period. `null` if the supply is unlimited.
    * @property {?number} i_remain_day Number of guest passes remaining today per the daily cap. `null` if there is no daily cap.
    * @property {number} i_use Number of accepted invitations for this guest pass.
-   * @property {number} id_period A class for managing time intervals. Last ID: 9.
-   * @property {number} id_program_guest Program types.
-   * @property {number} id_reset_type_guest Guest Pass reset type.
+   * @property {number} id_period Unit of the reset period. One of {@link ADurationSid} constants. `null` if the promotion has no reset period.
+   * @property {number} id_program_guest Guest pass program ID. One of {@link RsProgramSid} constants.
+   * @property {number} id_reset_type_guest Reset type of the host promotion. One of {@link Wl_Promotion_Guest_Pass_GuestPassResetTypeSid} constants.
    * @property {boolean} is_expire_note `true` if the pass is close enough to its reset or expiry date that the UI should display a warning.
    * @property {boolean} is_reset `true` if the remaining count resets on `dl_reset`; `false` if the pass expires on that date.
    * @property {string} k_business Business key.

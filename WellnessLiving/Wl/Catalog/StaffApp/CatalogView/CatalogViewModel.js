@@ -49,7 +49,7 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
    * @property {string} f_tax_discount The tax amount after applying all discounts.
    * @property {string} f_tax_discount_login The tax amount after applying the client type discount only.
    * @property {number} f_value The tax rate. Its meaning depends on `id_tax`.
-   * @property {number} id_tax Types of taxes.
+   * @property {number} id_tax The tax type. One of {@link RsTaxSid} constants.
    * @property {string} k_tax The tax key.
    * @property {string} s_tax The tax name.
    */

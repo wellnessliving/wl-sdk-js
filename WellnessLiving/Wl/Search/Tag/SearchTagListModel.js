@@ -11,7 +11,7 @@ function Wl_Search_Tag_SearchTagListModel()
 
   /**
    * @typedef {{}} Wl_Search_Tag_SearchTagListModel_a_search_tag
-   * @property {number} id_business_category A list of client booking flow types.
+   * @property {number} id_business_category The business category that can use this search tag. One of the {@link RsBusinessCategorySid} constants. This can be found in the business information found in {@link Wl_Business_DataModel.id_category}.
    * @property {string} k_search_tag The key of the tag. The primary key in the table of tags.
    * @property {string} text_title The name of the tag.
    */

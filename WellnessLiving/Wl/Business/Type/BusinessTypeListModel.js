@@ -23,8 +23,8 @@ function Wl_Business_Type_BusinessTypeListModel()
   /**
    * @typedef {{}} Wl_Business_Type_BusinessTypeListModel_a_business_type
    * @property {Wl_Business_Type_BusinessTypeListModel_a_business_type_a_image_list} a_image_list Images list for business types. Each element has the next structure:
-   * @property {number} id_business_category A list of client booking flow types.
-   * @property {?number} id_tour List of different types for landing pages based on business types.
+   * @property {number} id_business_category The business category. One of the {@link RsBusinessCategorySid} constants.
+   * @property {?number} id_tour Type of the demo tour on the sales site connected to the business type. More about tours: {@link RsHomeTourSid}.
    * @property {string} k_business_type The key of business type.
    * @property {string} text_category The title of the business category.
    * @property {string} text_category_description The description of the business category.

@@ -26,7 +26,7 @@ function Wl_Reception_Application_ReceptionScheduleModel()
    * @property {string} dtu_date The session date.
    * @property {string} html_class_js The name of the HTML class that JavaScript uses to display the icon, depending on the service type.
    * @property {number} i_duration The session duration in minutes.
-   * @property {number} id_service A list of services.
+   * @property {number} id_service Service ID. One of the {@link Wl_Service_ServiceSid} constants.
    * @property {boolean} is_auto If `true`, the session can be checked in automatically. Otherwise, this will be `false`.
    * @property {boolean} is_book If `true`, the client should be notified that the visit is booked. Otherwise, this will be `false`.
    * @property {boolean} is_wait If `true`, the client should be notified that they're on the wait list. Otherwise, this will be `false`.
@@ -66,7 +66,7 @@ function Wl_Reception_Application_ReceptionScheduleModel()
    * @property {number} i_use Count of held uses in the pass.
    * @property {number} i_use_duration Number of minutes used for past visits by this promotion.   Has sense only for promotions of program type {@link RsProgramTypeSid}.
    * @property {number} i_visit_past The count of attended sessions before the last renewal.   If `0`, there were no sessions before last renewal or the promotion doesn't auto-renew.
-   * @property {number} id_program_type Program types.
+   * @property {number} id_program_type The promotion's program type ID. One of {@link RsProgramTypeSid} constants.
    * @property {boolean} is_last_use If `true`, the promotion has a usage limit and no remaining visits. Otherwise, this will be `false`.
    * @property {boolean} is_package If `true`, the promotion is a package. Otherwise, this will be `false`.
    * @property {boolean} is_restrict_multiply If `true`, there's more than one calendar restriction on the pass. Otherwise, this will be `false`.

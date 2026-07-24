@@ -28,7 +28,7 @@ function Wl_Book_Process_Process54Model()
 
   /**
    * @typedef {{}} Wl_Book_Process_Process54Model_a_path
-   * @property {number} id_book_process Class/Event booking process sid class.
+   * @property {number} id_book_process The step ID. One of the {@link Wl_Book_Process_ProcessSpaSid} constants.
    * @property {boolean} is_current `true` - this item is current. `false` - this item isn't current or not set yet.
    */
 

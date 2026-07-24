@@ -11,7 +11,7 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_A
-   * @property {number} id_visit Possible states of the visit: book, attended, cancelled, etc.
+   * @property {number} id_visit Visit status ID. One of {@link Wl_Visit_VisitSid} constants.
    * @property {string} k_business Key of a business.
    * @property {string} uid Key of the user.
    */
@@ -67,7 +67,7 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_J
-   * @property {number} id_report A list of reports.
+   * @property {number} id_report ID of the report.
    * @property {string} k_business Business key in which the report was monitoring.
    */
 
@@ -115,7 +115,7 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_S
-   * @property {number} id_import_custom List of all custom imports that are supported by system. Each constant defines specific import. Note that if you are adding new constant you should also add new class which should extend {@link Wl_Import_Custom_CustomPerformAbstract} with appropriate name according to constant name, see {@link Wl_Import_Custom_Contact_CustomContact}.
+   * @property {number} id_import_custom ID of custom import process. One of {@link Wl_Import_Custom_CustomSid} constants.
    * @property {string} k_business Business key within which import is progressing.
    */
 

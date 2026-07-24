@@ -15,12 +15,12 @@ function Wl_Pay_Bank_Card_Widget_WidgetSelectModel()
 
   /**
    * @typedef {{}} Wl_Pay_Bank_Card_Widget_WidgetSelectModel_a_pay_card
-   * @property {?number} eid_card_type An enum of credit card types.
+   * @property {?number} eid_card_type Payment card type enum case. `null` if card type is not set.
    * @property {number} i_month Card expiration month.
    * @property {number} i_year Card expiration year.
-   * @property {number} id_card_system A list of card types.
-   * @property {?number} id_card_type An enum of credit card types.
-   * @property {number} id_pay_processor A list of payment gateways or processors.
+   * @property {number} id_card_system Card system ID. One of {@link Wl_Card_CardSystemSid} constants.
+   * @property {?number} id_card_type Payment card type ID. One of {@link Thoth_WlPay_Bank_Card_CardTypeEnum} constants as int.
+   * @property {number} id_pay_processor Payment processor ID. One of {@link Thoth_PayProcessor_PayProcessorSid} constants.
    * @property {boolean} is_default `true` if this card is the default payment method; `false` otherwise.
    * @property {string} k_pay_address Billing address key.
    * @property {string} k_pay_bank Payment card key.

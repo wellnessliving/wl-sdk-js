@@ -16,7 +16,7 @@ function Wl_Quiz_Response_Response65Model()
   /**
    * @typedef {{}} Wl_Quiz_Response_Response65Model_a_access_log
    * @property {string} dtu_activity Date and time of the quiz changes.
-   * @property {number} id_activity The status of form actions.
+   * @property {number} id_activity One of {@link Wl_Quiz_Activity_ActivitySid} constants.
    * @property {string} text_activity Title of the activity
    * @property {string} text_actor Full name of the user who made an activity.
    * @property {string} text_date Date and time of the quiz changes in appropriate format string for further render.
@@ -51,7 +51,7 @@ function Wl_Quiz_Response_Response65Model()
 
   /**
    * @typedef {{}} Wl_Quiz_Response_Response65Model_a_purchase_item
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants.
    * @property {string} k_id The item key. This depends on `id_purchase_item` of this array.
    */
 
@@ -70,7 +70,7 @@ function Wl_Quiz_Response_Response65Model()
 
   /**
    * @typedef {{}} Wl_Quiz_Response_Response65Model_a_quick_config
-   * @property {number} id_table List of quick purchase item types.
+   * @property {number} id_table Quick purchase type. One of {@link Wl_Catalog_QuickPurchaseTypeSid} constant.
    * @property {boolean} is_quick_buy Whether quick buy mode should be used. It means that specific template will be loaded and specific cart will be used.
    * @property {string} k_appointment Appointment key to pay for.
    * @property {string} k_id Item key within `id_table` table that Quick Buy performed for.

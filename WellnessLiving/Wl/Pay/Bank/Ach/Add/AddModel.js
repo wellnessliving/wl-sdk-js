@@ -30,10 +30,10 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
   /**
    * @typedef {{}} Wl_Pay_Bank_Ach_Add_AddModel_a_card_detail
    * @property {Wl_Pay_Bank_Ach_Add_AddModel_a_card_detail_a_pay_address} a_pay_address Payment address:
-   * @property {?number} id_pay_actor Payment actors (staff member, user or business owner).
-   * @property {number} id_pay_bank_ach_holder A list of account holder types which can be chosen.
-   * @property {number} id_pay_bank_ach_sec A list of SEC codes which can be chosen.
-   * @property {number} id_pay_bank_ach_type A list of account types which can be chosen.
+   * @property {?number} id_pay_actor Pay actor id. One of {@link RsPayActorSid} constants.
+   * @property {number} id_pay_bank_ach_holder Account holder type. One of {@link RsPayBankAchHolderSid} constants.
+   * @property {number} id_pay_bank_ach_sec SEC code. One of {@link RsPayBankAchSecSid} constants.
+   * @property {number} id_pay_bank_ach_type Account type. One of {@link RsPayBankAchTypeSid} constants.
    * @property {boolean} is_default `true` - if a payment method is set as default, `false` - otherwise.
    * @property {string} k_pay_bank Key of existing payment source in case of editing.  Empty if new pay source is being added.
    * @property {string} s_aban ABA number.
@@ -54,9 +54,9 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
   /**
    * @typedef {{}} Wl_Pay_Bank_Ach_Add_AddModel_a_pay_bank
    * @property {boolean} can_remove Whether current user can remove payment method. `true` if user can remove payment methods. `false` if user cannot remove payment methods.
-   * @property {number} id_pay_bank A list of bank account types.
-   * @property {number} id_pay_bank_ach_holder A list of account holder types which can be chosen.
-   * @property {number} id_pay_bank_ach_type A list of account types which can be chosen.
+   * @property {number} id_pay_bank Type of recurrent payment token. One of {@link RsPayBankSid} constants.
+   * @property {number} id_pay_bank_ach_holder Type of account holder. One of {@link RsPayBankAchHolderSid} constants.
+   * @property {number} id_pay_bank_ach_type Type of account. One of {@link RsPayBankAchTypeSid} constants.
    * @property {boolean} is_default `true` - this account is default payment method; `false` - otherwise.
    * @property {string} k_pay_address Billing address.
    * @property {string} k_pay_bank ID of bank account.

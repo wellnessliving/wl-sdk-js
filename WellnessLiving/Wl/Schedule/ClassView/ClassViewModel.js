@@ -17,7 +17,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_asset
    * @property {number} i_count Number of sessions.
    * @property {number} i_index Asset index.
-   * @property {number} id_category List of resource categories.
+   * @property {number} id_category Type of the asset: Asset or Off-Site Location. One of {@link Wl_Resource_ResourceCategoryEnum} constant.
    * @property {string} k_city City of the asset, if this is Off-Site Location.
    * @property {string} k_resource Resource key.
    * @property {string} text_address Address of the asset, if this is Off-Site Location.
@@ -70,7 +70,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_duration Class duration. In number of minutes.
    * @property {number} i_visit Number of usages of promotion required to pay for a single class session.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
-   * @property {number} id_deny_reason Reasons why the client can't book this class.
+   * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
    * @property {boolean} is_book Whether current class was booked by current client.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise.
    * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.
@@ -144,7 +144,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_asset
    * @property {number} i_count Number of sessions.
    * @property {number} i_index Asset index.
-   * @property {number} id_category List of resource categories.
+   * @property {number} id_category Type of the asset: Asset or Off-Site Location. One of {@link Wl_Resource_ResourceCategoryEnum} constant.
    * @property {string} k_city City of the asset, if this is Off-Site Location.
    * @property {string} k_resource Resource key.
    * @property {string} text_address Address of the asset, if this is Off-Site Location.
@@ -188,7 +188,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_duration Class duration. In number of minutes.
    * @property {number} i_visit Number of usages of promotion required to pay for a single class session.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
-   * @property {number} id_deny_reason Reasons why the client can't book this class.
+   * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
    * @property {boolean} is_book Whether current class was booked by current client.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise.
    * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.
@@ -220,7 +220,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
 
   /**
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_staff_a_logo
-   * @property {number} id_gender Class to work with gender string identifiers.
+   * @property {number} id_gender ID of gender. One of {@link Wl_Gender_GenderSid} constants.
    * @property {boolean} is_empty `true` - staff has photo; `false` - has no photo.
    * @property {string} s_url URL to staff photo.
    */
@@ -265,7 +265,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
 
   /**
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_staff_a_logo
-   * @property {number} id_gender Class to work with gender string identifiers.
+   * @property {number} id_gender ID of gender. One of {@link Wl_Gender_GenderSid} constants.
    * @property {boolean} is_empty `true` - staff has photo; `false` - has no photo.
    * @property {string} s_url URL to staff photo.
    */

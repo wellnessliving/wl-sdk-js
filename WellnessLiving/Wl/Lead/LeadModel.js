@@ -37,8 +37,8 @@ function Wl_Lead_LeadModel()
   /**
    * @typedef {{}} Wl_Lead_LeadModel_a_field_list
    * @property {Wl_Lead_LeadModel_a_field_list_a_item} a_item A list of possible options for an HTML select field. This value is only used if this field is an HTML select. Every element has the following keys:
-   * @property {number} id_field_general List of general fields in user's profile.
-   * @property {number} id_field_type Possible types of the custom fields: text, checkbox, radio buttons, etc.
+   * @property {number} id_field_general The type of the general field. This is one of the {@link RsFieldGeneralSid}. This value is only set if the field is one of the general fields.
+   * @property {number} id_field_type The field type. This is one of the {@link RsFieldTypeSid} constants.
    * @property {boolean} is_require If `true`, then the field is mandatory. If `false`, then the field isn't mandatory.
    * @property {string} k_field The field key.
    * @property {string} text_field The field title.

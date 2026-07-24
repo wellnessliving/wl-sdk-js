@@ -98,8 +98,8 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
 
   /**
    * @typedef {{}} Wl_Billing_Bulk_PurchaseItemListModel_a_promotion
-   * @property {number} id_program Program types.
-   * @property {number} id_program_type Program types.
+   * @property {number} id_program The promotion program. One of the {@link RsProgramSid} constants.
+   * @property {number} id_program_type The promotion program type. One of the {@link RsProgramTypeSid} constants.
    * @property {boolean} is_tax_free `true` if no taxes should be applied to the promotion, `false` otherwise.
    * @property {string} k_promotion The promotion key.
    * @property {string} m_price The promotion price, excluding taxes.

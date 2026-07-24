@@ -23,7 +23,7 @@ function Wl_Book_Process_Quiz_QuizModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Quiz_QuizModel_a_purchase_item
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants.
    * @property {string} k_id The item key. This depends on `id_purchase_item` of this array.
    */
 
@@ -74,9 +74,9 @@ function Wl_Book_Process_Quiz_QuizModel()
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
    * @property {number} i_occurrence Deprecated, use `i_count` instead!
    * @property {number} i_period Deprecated, use `i_duration` instead!
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
-   * @property {number} id_period A class for managing time intervals. Last ID: 9.
-   * @property {number} id_repeat_end Possible ways to stop repeatable events.
+   * @property {number} id_duration The measurement unit of `i_period`. One of the {@link ADurationSid} constants. Available duration units are: {@link ADurationSid}, {@link ADurationSid}, {@link ADurationSid}.
+   * @property {number} id_period Deprecated, use `id_duration` instead! One of {@link ADurationSid} constants.
+   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**

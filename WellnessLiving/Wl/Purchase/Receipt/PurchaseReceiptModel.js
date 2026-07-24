@@ -127,9 +127,9 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo} a_logo The purchase item logo.
    * @property {string[]} a_visit List of visit keys. Only available if the purchase item is a class period, enrollment, enrollment deposit, or enrollment discount. Each element is a string visit key.
    * @property {number} i_count The number of items in the purchase.
-   * @property {number} id_program Program types.
-   * @property {number} id_purchase_item A list of purchase types.
-   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {number} id_program Program ID. One of {@link RsProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion.
+   * @property {number} id_purchase_item Purchase item ID. One of {@link RsPurchaseItemSid} constants.
+   * @property {?number} id_sale Sale ID. One of {@link RsSaleSid} constants.
    * @property {string} k_id The identifier of the item.
    * @property {string} k_purchase_item The key of the purchase item.
    * @property {string} k_shop_product Product key. Set only if `id_purchase_item`is {@link RsPurchaseItemSid}.

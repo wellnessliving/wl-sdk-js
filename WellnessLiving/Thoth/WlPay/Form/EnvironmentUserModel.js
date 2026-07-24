@@ -35,7 +35,7 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
 
   /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_method_support
-   * @property {?number} id_pay_method A list of payment methods.
+   * @property {?number} id_pay_method The ID of type of payment method. One of {@link RsPayMethodSid} constants.
    * @property {boolean} is_client Determines whether this method is available for clients. This field is only returned for custom payment methods.
    * @property {?string} k_pay_method The key of the custom payment method. This will be `null` if this payment method isn't customized.
    * @property {string} s_method The name of payment method. This field is only returned for custom payment methods.
@@ -54,9 +54,9 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
   /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal_a_terminal_elevate
    * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
-   * @property {number} id_model List of {@link Thoth_PayProcessor_PayProcessorSid} supported terminal types.
-   * @property {number} id_status List of possible status of readers.
-   * @property {number} id_type List of {@link Thoth_PayProcessor_PayProcessorSid} supported terminal types.
+   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants.
+   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
+   * @property {number} id_type Terminal type. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants.
    * @property {string} k_terminal Terminal key.
    * @property {string} text_id Terminal ID assigned by the gateway.
    * @property {string} text_name Human-readable terminal label.
@@ -65,9 +65,9 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
   /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal_a_terminal_web
    * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
-   * @property {number} id_model List of {@link Thoth_PayProcessor_PayProcessorSid} supported terminal types.
-   * @property {number} id_status List of possible status of readers.
-   * @property {number} id_type List of {@link Thoth_PayProcessor_PayProcessorSid} supported terminal types.
+   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants. `null` for the synthetic `MagTek` USB entry.
+   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
+   * @property {number} id_type Terminal type. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants, or {@link Thoth_PayProcessor_Terminal_TerminalTypeSid} for the synthetic `MagTek` USB entry.
    * @property {?string} k_terminal Terminal key.  `null` for the synthetic `MagTek` USB entry.
    * @property {?string} s_serial_number Always `null`. Present only in the synthetic `MagTek` USB entry.
    * @property {string} text_id Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.
@@ -98,8 +98,8 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
   /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location_a_terminal_a_terminal_elevate
    * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
-   * @property {number} id_model Stripe device type of reader.
-   * @property {number} id_status List of possible status of readers.
+   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_StripeCom_Terminal_StripeReaderModelSid} constants.
+   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
    * @property {string} k_terminal Terminal key.
    * @property {string} s_serial_number Terminal serial number.
    * @property {string} text_id Terminal ID assigned by the gateway.
@@ -109,9 +109,9 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
   /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location_a_terminal_a_terminal_web
    * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
-   * @property {number} id_model Stripe device type of reader.
-   * @property {number} id_status List of possible status of readers.
-   * @property {number} id_type List of {@link Thoth_PayProcessor_PayProcessorSid} supported terminal types.
+   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_StripeCom_Terminal_StripeReaderModelSid} constants.
+   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
+   * @property {number} id_type Terminal type. One of {@link Thoth_PayProcessor_StripeCom_Terminal_StripeTerminalTypeSid} constants.
    * @property {string} k_terminal Terminal key.
    * @property {string} s_serial_number Terminal serial number.
    * @property {string} text_id Terminal ID assigned by the gateway.
@@ -142,8 +142,8 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
   /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_C_a_terminal_location_a_terminal_a_terminal_elevate
    * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
-   * @property {number} id_model Paragon device type of reader.
-   * @property {number} id_status List of possible status of readers.
+   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_DirectConnect_Terminal_DirectConnectReaderModelSid} constants.
+   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
    * @property {string} k_terminal Terminal key.
    * @property {string} s_serial_number Terminal serial number.
    * @property {string} text_id Terminal ID assigned by the gateway.
@@ -153,9 +153,9 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
   /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_C_a_terminal_location_a_terminal_a_terminal_web
    * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
-   * @property {number} id_model Paragon device type of reader.
-   * @property {number} id_status List of possible status of readers.
-   * @property {number} id_type List of supported terminal interaction types. Note: this list is rather internal Wellnessliving application list rather than common-known list. Each of types determines the way how we interact with terminal on application level.
+   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_DirectConnect_Terminal_DirectConnectReaderModelSid} constants. `null` for the synthetic `MagTek` USB entry.
+   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
+   * @property {number} id_type Terminal type. One of {@link Thoth_PayProcessor_Terminal_TerminalTypeSid} constants.
    * @property {?string} k_terminal Terminal key.  `null` for the synthetic `MagTek` USB entry.
    * @property {?string} s_serial_number Terminal serial number. `null` for the synthetic `MagTek` USB entry.
    * @property {string} text_id Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.
@@ -180,13 +180,13 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
    * @property {boolean} can_cancel_swipe_from_pos Whether card swipe can be cancelled from the POS terminal.
    * @property {boolean} has_expire_date Whether the card expiry date entry is required.
    * @property {boolean} has_readers_selection Whether the card reader selection UI is shown.
-   * @property {number} id_device A list of devices supported by credit card reader plugin.
+   * @property {number} id_device Device type identifier. One of {@link Thoth_WlPay_Cordova_CordovaCcrDeviceSid} constants.
    * @property {boolean} is_support_magtek Whether `MagTek` USB reader is supported.
    */
 
   /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D
-   * @property {number} id_device A list of devices supported by credit card reader plugin.
+   * @property {number} id_device Device type identifier. One of {@link Thoth_WlPay_Cordova_CordovaCcrDeviceSid} constants.
    * @property {string} s_key NMI SDK key for the card reader plugin.
    */
 
@@ -216,7 +216,7 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
    * @property {?Thoth_WlPay_Form_EnvironmentUserModel_a_pay_processor_a_public_info} a_public_info Public info configured for this payment processor.
    * @property {?Thoth_WlPay_Form_EnvironmentUserModel_a_pay_processor_a_public_keys} a_public_keys Public keys configured for this payment processor.
    * @property {boolean} hide_save_source Whether `save payment method` option should be hidden. `true` if hidden, `false` - otherwise.
-   * @property {number} id_pay_processor A list of payment gateways or processors.
+   * @property {number} id_pay_processor ID of the payment processor. One of {@link Thoth_PayProcessor_PayProcessorSid} constants.
    * @property {?boolean} is_enabled_3ds `true` if 3DS should be performed, `false` if 3DS should not be performed. `null` if this is not defined for payment processor. Only for {@link Thoth_PayProcessor_PayProcessorSid}
    * @property {?boolean} is_test `true` if the merchant is in a test mode, `false` otherwise. `null` if this is not defined for payment processor.
    * @property {string} k_business_merchant Key of the business merchant.

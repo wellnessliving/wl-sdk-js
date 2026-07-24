@@ -22,7 +22,7 @@ function Core_Geo_Region_RegionModel()
   /**
    * @typedef {{}} Core_Geo_Region_RegionModel_a_region
    * @property {Core_Geo_Region_RegionModel_a_region_a_region} a_region A list of regions in the country. Every element has the next keys:
-   * @property {number} id_locale A list of locales.
+   * @property {number} id_locale The locale ID of the country. One of the {@link Core_Locale_LocaleSid} constants.
    * @property {string} k_geo_country The country key.
    * @property {string} s_abbr The country abbreviation.
    * @property {string} s_title The name of the country.

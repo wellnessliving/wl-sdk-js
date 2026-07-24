@@ -49,7 +49,7 @@ function Wl_Login_Promotion_GuestPass_Invite_InviteListModel()
    * @property {string} dtu_invite Date and time the invitation was sent, in UTC in MySQL datetime format.
    * @property {?string} dtu_redeem Redemption date and time in UTC in MySQL datetime format.    `null` if the invitation  has not been redeemed.
    * @property {?string} dtu_reject Rejection date and time in UTC in MySQL datetime format. `null` if the invitation has not been rejected.
-   * @property {number} id_status Lifecycle state of a guest pass invitation.
+   * @property {number} id_status Invitation lifecycle status. One of {@link Wl_Login_Promotion_GuestPass_Invite_InviteStatusEnum} values.
    * @property {?boolean} is_checkin `true` if the guest may only enter when the inviting member is checked in. `null` if no guest pass settings are configured for the promotion.
    * @property {boolean} is_visit_future `true` if associated visit in future, `false` otherwise.
    * @property {?string} k_login_promotion_guest Login promotion key granted to the guest upon acceptance.

@@ -47,7 +47,7 @@ function Wl_Integration_Curves_CurvesFranchiseLocationModel()
 
   /**
    * @typedef {{}} Wl_Integration_Curves_CurvesFranchiseLocationModel_a_location_list
-   * @property {number} id_currency A list of currencies.
+   * @property {number} id_currency Currency ID. One of {@link Core_Locale_CurrencySid} constants.
    * @property {string} k_city City key.
    * @property {string} k_country Country key.
    * @property {string} k_location Location key.

@@ -34,7 +34,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule_a_quiz
-   * @property {number} id_status List of response statuses.
+   * @property {number} id_status Response status ID. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.
    * @property {boolean} is_hide Whether it's hidden. `true` quiz is hidden, `false` otherwise.
    * @property {boolean} is_require Whether it's required. `true` quiz is required, `false` otherwise.
    * @property {string} k_quiz Quiz key,
@@ -45,7 +45,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule_a_appointment_visit_info
-   * @property {number} id_visit Possible states of the visit: book, attended, cancelled, etc.
+   * @property {number} id_visit Visit id. One of {@link Wl_Visit_VisitSid} constants.
    * @property {boolean} is_confirmed `true` means that appointment was requested and confirmed by the staff.
    * @property {boolean} is_deny `true` means that appointment was requested and denied by the staff.
    * @property {boolean} is_notify_request_accept `true` means that the client will receive a notification, if appointment will be confirmed by the staff.
@@ -86,8 +86,8 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    * @property {number} i_padding_before The padding time before the session in minutes. Only used for appointments.
    * @property {number} i_start The start time in minutes after midnight. For example, a class starting at 10:30 in the morning local time will have an `i_start` value of 630.
    * @property {number} i_wait Count clients on waitlist.
-   * @property {number} id_option Appointment display option.
-   * @property {number} id_service Identifiers for services types.
+   * @property {number} id_option Appointment title display style.  Set only for appointments, for others it will be equal to 0.  Constants from {@link Wl_Schedule_Design_OptionSid}.
+   * @property {number} id_service The ID of the service type. One of {@link RsServiceSid} constants.
    * @property {boolean} is_arrive For appointments: `true` if user has checked-in; `false` otherwise. For classes always `null`.
    * @property {boolean} is_class_view `true` if this class or event session is visible only through the "View other staff schedules" permission and must be shown read-only (no attendance roster, no booked client identities, and no edit, cancel, reschedule, or booking actions); `false` otherwise.
    * @property {boolean} is_pay For appointments: `true` if appointment is paid; `false` otherwise. For classes always `null`.

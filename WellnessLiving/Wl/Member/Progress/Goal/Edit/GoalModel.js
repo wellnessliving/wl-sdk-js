@@ -27,9 +27,9 @@ function Wl_Member_Progress_Goal_Edit_GoalModel()
 
   /**
    * @typedef {{}} Wl_Member_Progress_Goal_Edit_GoalModel_a_field_list
-   * @property {number} id_field List of progress log fields.
-   * @property {number} id_measurement_unit Possible measurement units of the progress fields values.
-   * @property {number} id_type Possible types of the progress fields values.
+   * @property {number} id_field Field ID. One of the {@link Wl_Member_Progress_Field_ProgressFieldSid}.
+   * @property {number} id_measurement_unit Field measurement unit ID. One of the {@link Wl_Member_Progress_Field_MeasurementSid} constants.
+   * @property {number} id_type Field type ID. One of the {@link Wl_Member_Progress_Field_TypeSid} constants.
    * @property {string} k_field Field key.
    * @property {string} text_name Translated field name.
    * @property {string} x_value Progress field log value.

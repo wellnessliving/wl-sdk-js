@@ -16,9 +16,9 @@ function Wl_Business_Design_BusinessDesignModel()
   /**
    * @typedef {{}} Wl_Business_Design_BusinessDesignModel_a_data
    * @property {boolean} hide_past_days Clients only see today's and upcoming sessions.
-   * @property {number} id_layout List of layouts for client's header.
-   * @property {number} id_logo_position A position of logo.
-   * @property {number} id_logo_style A style of logo.
+   * @property {number} id_layout Layout ID. For more details, see {@link RsPageFrontendHeaderLayoutSid}.
+   * @property {number} id_logo_position Logo position ID. For more details, see {@link RsBusinessDesignLogoPositionSid}.
+   * @property {number} id_logo_style Logo style ID. For more details, see {@link RsBusinessDesignLogoStyleSid}.
    * @property {boolean} is_appointment_capacity If `true` the capacity and number of clients signed up to the appointment will be shown.
    * @property {boolean} is_attend_self If `true` clients can check-in using the Client Web App and Achieve Web App.
    * @property {boolean} is_class_capacity If `true` the capacity and number of clients signed up to the class will be shown.

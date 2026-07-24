@@ -15,7 +15,7 @@ function Wl_Catalog_Quiz_QuizModel()
 
   /**
    * @typedef {{}} Wl_Catalog_Quiz_QuizModel_a_purchase_item
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item ID of the purchase item. One of {@link RsPurchaseItemSid}.
    * @property {string} k_id Key of the item. Depends on `id_purchase_item` of this array.
    */
 

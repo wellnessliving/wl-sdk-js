@@ -29,7 +29,7 @@ function Wl_Book_Process_ProcessGroupModel()
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_purchase_item
    * @property {Wl_Book_Process_ProcessGroupModel_a_client_a_purchase_item_a_config} a_config Additional configuration data. Required when `id_purchase_item` is          {@link RsPurchaseItemSid}. Has the following keys:
    * @property {number} i_count Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item Kind of option to purchase. One of {@link RsPurchaseItemSid} constants.          Specify only if you want to purchase a new option.
    * @property {boolean} is_owner `true` if client is owner of this purchase option.          This means that this purchase option will be purchased for this client, even if another client          can share a similar purchase option.
    * @property {boolean} is_renew `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.          Specify only if you want to purchase a new option.
    * @property {string} k_id Specify only if you want to purchase a new option.
@@ -45,8 +45,8 @@ function Wl_Book_Process_ProcessGroupModel()
    * @property {string} dt_to Date to complete recurring booking.     Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
    * @property {number} i_count The number of occurrences after which the appointment's repeat cycle stops.      Should be empty if the repeat cycle doesn't stop after a certain number of occurrences.      Expected for `id_repeat_end` = {@link RsRepeatEndSid}.
    * @property {number} i_duration Count of days\weeks\months between recurring bookings.
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
-   * @property {number} id_repeat_end Possible ways to stop repeatable events.
+   * @property {number} id_duration The measurement unit of `i_duration`. One of the {@link ADurationSid} constants.     Available duration units are: {@link ADurationSid}, {@link ADurationSid}, {@link ADurationSid}.
+   * @property {number} id_repeat_end Possible ways to stop repeatable events. One of the {@link RsRepeatEndSid} constants.
    */
 
   /**

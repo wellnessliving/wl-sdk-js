@@ -80,9 +80,9 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListByTokenModel_a_list_active_a_progress
-   * @property {number} id_field List of progress log fields.
-   * @property {number} id_measurement_unit Possible measurement units of the progress fields values.
-   * @property {number} id_type Possible types of the progress fields values.
+   * @property {number} id_field Field ID. One of the {@link Wl_Member_Progress_Field_ProgressFieldSid}.
+   * @property {number} id_measurement_unit Field measurement unit ID. One of the {@link Wl_Member_Progress_Field_MeasurementSid} constants.
+   * @property {number} id_type Field type ID. One of the {@link Wl_Member_Progress_Field_TypeSid} constants.
    * @property {string} k_field Field key.
    * @property {string} text_name Translated field name.
    * @property {string} x_value Progress field log value.
@@ -90,7 +90,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListByTokenModel_a_list_active_a_quiz
-   * @property {number} id_status List of response statuses.
+   * @property {number} id_status Response status ID. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.
    * @property {boolean} is_hide Whether it's hidden. `true` quiz is hidden, `false` otherwise.
    * @property {boolean} is_require Whether it's required. `true` quiz is required, `false` otherwise.
    * @property {string} k_quiz Quiz key.
@@ -115,7 +115,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListByTokenModel_a_list_active_a_wearable
-   * @property {number} id_type List of sensor types.
+   * @property {number} id_type Device type ID. One of {@link Wl_Profile_Sensor_SensorTypesSid} constants.
    * @property {boolean} is_remove `true` if the device has been removed.
    * @property {string} s_sensor Sensor identifier. Also used as the array key.
    * @property {string} text_name Device name.
@@ -146,10 +146,10 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {number} i_order The default place in the list to show this client.
    * @property {number} i_total The total visits available from this Purchase Option.
    * @property {number} i_visit_return Number of purchase option usages that was returned to user.
-   * @property {number} id_gender String identifiers for gender.
-   * @property {number} id_pass_prospect List foreign sites that can pay for visits.
-   * @property {number} id_program Program types.
-   * @property {number} id_visit Possible states of the visit: book, attended, cancelled, etc.
+   * @property {number} id_gender The gender ID of the client. One of the {@link AGenderSid} constants.
+   * @property {number} id_pass_prospect If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`. One of {@link Wl_Visit_PassProspectSid} constants.
+   * @property {number} id_program The program ID of the Purchase Option. One of the {@link RsProgramSid} constants.
+   * @property {number} id_visit The status of the visit. One of the {@link Wl_Visit_VisitSid} constants.
    * @property {boolean} is_attend This will be `true` if the client has attended the visit.
    * @property {boolean} is_deposit This will be `true` if the client has paid a deposit for the visit.
    * @property {boolean} is_duration_pass This will be `true` if the Purchase Option used is a duration pass.
@@ -268,9 +268,9 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListByTokenModel_a_list_confirm_a_progress
-   * @property {number} id_field List of progress log fields.
-   * @property {number} id_measurement_unit Possible measurement units of the progress fields values.
-   * @property {number} id_type Possible types of the progress fields values.
+   * @property {number} id_field Field ID. One of the {@link Wl_Member_Progress_Field_ProgressFieldSid}.
+   * @property {number} id_measurement_unit Field measurement unit ID. One of the {@link Wl_Member_Progress_Field_MeasurementSid} constants.
+   * @property {number} id_type Field type ID. One of the {@link Wl_Member_Progress_Field_TypeSid} constants.
    * @property {string} k_field Field key.
    * @property {string} text_name Translated field name.
    * @property {string} x_value Progress field log value.
@@ -278,7 +278,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListByTokenModel_a_list_confirm_a_quiz
-   * @property {number} id_status List of response statuses.
+   * @property {number} id_status Response status ID. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.
    * @property {boolean} is_hide Whether it's hidden. `true` quiz is hidden, `false` otherwise.
    * @property {boolean} is_require Whether it's required. `true` quiz is required, `false` otherwise.
    * @property {string} k_quiz Quiz key.
@@ -303,7 +303,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListByTokenModel_a_list_confirm_a_wearable
-   * @property {number} id_type List of sensor types.
+   * @property {number} id_type Device type ID. One of {@link Wl_Profile_Sensor_SensorTypesSid} constants.
    * @property {boolean} is_remove `true` if the device has been removed.
    * @property {string} s_sensor Sensor identifier. Also used as the array key.
    * @property {string} text_name Device name.
@@ -334,10 +334,10 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {number} i_order The default place in the list to show this client.
    * @property {number} i_total The total visits available from this Purchase Option.
    * @property {number} i_visit_return Number of purchase option usages that was returned to user.
-   * @property {number} id_gender String identifiers for gender.
-   * @property {number} id_pass_prospect List foreign sites that can pay for visits.
-   * @property {number} id_program Program types.
-   * @property {number} id_visit Possible states of the visit: book, attended, cancelled, etc.
+   * @property {number} id_gender The gender ID of the client. One of the {@link AGenderSid} constants.
+   * @property {number} id_pass_prospect If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`. One of {@link Wl_Visit_PassProspectSid} constants.
+   * @property {number} id_program The program ID of the Purchase Option. One of the {@link RsProgramSid} constants.
+   * @property {number} id_visit The status of the visit. One of the {@link Wl_Visit_VisitSid} constants.
    * @property {boolean} is_attend This will be `true` if the client has attended the visit.
    * @property {boolean} is_deposit This will be `true` if the client has paid a deposit for the visit.
    * @property {boolean} is_duration_pass This will be `true` if the Purchase Option used is a duration pass.
@@ -455,9 +455,9 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListByTokenModel_a_list_wait_a_progress
-   * @property {number} id_field List of progress log fields.
-   * @property {number} id_measurement_unit Possible measurement units of the progress fields values.
-   * @property {number} id_type Possible types of the progress fields values.
+   * @property {number} id_field Field ID. One of the {@link Wl_Member_Progress_Field_ProgressFieldSid}.
+   * @property {number} id_measurement_unit Field measurement unit ID. One of the {@link Wl_Member_Progress_Field_MeasurementSid} constants.
+   * @property {number} id_type Field type ID. One of the {@link Wl_Member_Progress_Field_TypeSid} constants.
    * @property {string} k_field Field key.
    * @property {string} text_name Translated field name.
    * @property {string} x_value Progress field log value.
@@ -465,7 +465,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListByTokenModel_a_list_wait_a_quiz
-   * @property {number} id_status List of response statuses.
+   * @property {number} id_status Response status ID. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.
    * @property {boolean} is_hide Whether it's hidden. `true` quiz is hidden, `false` otherwise.
    * @property {boolean} is_require Whether it's required. `true` quiz is required, `false` otherwise.
    * @property {string} k_quiz Quiz key.
@@ -490,7 +490,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListByTokenModel_a_list_wait_a_wearable
-   * @property {number} id_type List of sensor types.
+   * @property {number} id_type Device type ID. One of {@link Wl_Profile_Sensor_SensorTypesSid} constants.
    * @property {boolean} is_remove `true` if the device has been removed.
    * @property {string} s_sensor Sensor identifier. Also used as the array key.
    * @property {string} text_name Device name.
@@ -521,10 +521,10 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {number} i_order The default place in the list to show this client.
    * @property {number} i_total The total visits available from this Purchase Option.
    * @property {number} i_visit_return Number of purchase option usages that was returned to user.
-   * @property {number} id_gender String identifiers for gender.
-   * @property {number} id_pass_prospect List foreign sites that can pay for visits.
-   * @property {number} id_program Program types.
-   * @property {number} id_visit Possible states of the visit: book, attended, cancelled, etc.
+   * @property {number} id_gender The gender ID of the client. One of the {@link AGenderSid} constants.
+   * @property {number} id_pass_prospect If this visit was paid for by an external system, this ID will be set. Otherwise, it will be `0`. One of {@link Wl_Visit_PassProspectSid} constants.
+   * @property {number} id_program The program ID of the Purchase Option. One of the {@link RsProgramSid} constants.
+   * @property {number} id_visit The status of the visit. One of the {@link Wl_Visit_VisitSid} constants.
    * @property {boolean} is_attend This will be `true` if the client has attended the visit.
    * @property {boolean} is_deposit This will be `true` if the client has paid a deposit for the visit.
    * @property {boolean} is_duration_pass This will be `true` if the Purchase Option used is a duration pass.

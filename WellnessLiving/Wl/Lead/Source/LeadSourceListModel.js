@@ -16,7 +16,7 @@ function Wl_Lead_Source_LeadSourceListModel()
   /**
    * @typedef {{}} Wl_Lead_Source_LeadSourceListModel_a_lead_source
    * @property {?number} i_sort Sorting order. Only used in the Lead Source widget option. `null` is a temporary value that exists for a short time during the process of inserting of a new row.
-   * @property {number} id_lead_source The source of a visit.
+   * @property {number} id_lead_source System-defined Lead Source ID. One of the {@link Wl_Mode_ModeSid} constants. `null` if it is a custom Lead Source.
    * @property {boolean} is_add_lead `true` if this skin will be used for "Add Lead" form or `false` otherwise. Only one skin in the business can be used for "Add Lead" form.  Not available if current user is not a staff member or admin.
    * @property {boolean} is_use Determines whether Lead Source is being used. `true` if Lead Source is being used. `false` - otherwise.  Not available if current user is not a staff member or admin.
    * @property {string} k_lead_source Key of the lead source.

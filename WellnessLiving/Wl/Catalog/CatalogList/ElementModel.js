@@ -33,9 +33,9 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data_a_component
-   * @property {number} id_program Program types.
-   * @property {number} id_purchase_item A list of purchase types.
-   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {number} id_program Program ID. One of {@link RsProgramSid} ID's. Only applies to promotions.
+   * @property {number} id_purchase_item Purchase item ID. One of {@link RsPurchaseItemSid} ID's.
+   * @property {?number} id_sale Sale ID. One of {@link RsSaleSid} ID's.
    * @property {string} k_id The identifier of the item.
    * @property {string} text_title The title of the item.
    */
@@ -57,9 +57,9 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {string} dl_now Current date, local date in MySQL format.
    * @property {string} dl_start Date to activate the coupon on, local date in MySQL format.   When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.
    * @property {number} i_duration Number of periods the coupon is active. Type of a period is specified by `id_duration`.
-   * @property {number} id_activation Coupon date start rule. sale - date start is a date of the sale fixed - date start is fixed by coupon settings
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
-   * @property {number} id_duration_type Class to process string identifiers for duration types
+   * @property {number} id_activation Type of a coupon activation date specification. One of {@link Wl_Coupon_Edit_ActivationSid} constants.
+   * @property {number} id_duration Duration of a period. A constant from {@link ADurationSid}.
+   * @property {number} id_duration_type A way to specify a duration. One of {@link Wl_Coupon_Edit_DurationTypeSid} constants.
    * @property {boolean} is_renew_public This applies only for promotions. `true` - clients can set promotion auto-renew. `false` - clients can't set promotion auto-renew.
    */
 
@@ -135,7 +135,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_installment_template
    * @property {number} i_count The number of payments.
    * @property {number} i_period The number of periods specified by `id_period` between individual payments.
-   * @property {number} id_duration A class for managing time intervals. Last ID: 9.
+   * @property {number} id_duration The duration of a single period. One of the {@link ADurationSid} constants.
    * @property {string} k_currency The payment currency Key.
    * @property {string} k_pay_installment_template The key of the installment plan template.
    * @property {string} m_amount The amount of the installment plan.
@@ -162,7 +162,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {number} i_rotate Rotate.
    * @property {number} i_width Width of the variant image.
    * @property {number} i_width_src Width of the original image.
-   * @property {number} id_type_src List of image types.
+   * @property {number} id_type_src Type ID of the image. Constant from {@link Core_Drive_DriveTypeSid}.
    * @property {boolean} is-resize `true` if the variant differs from the original, `false` - otherwise.
    * @property {string} url-thumbnail URL to download variant (thumbnail) file.
    * @property {string} url-view URL to download original file.
@@ -183,7 +183,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {string} f_tax_discount The tax amount after applying all discounts.
    * @property {string} f_tax_discount_login The tax amount after applying the client type discount only.
    * @property {number} f_value The tax rate. Its meaning depends on `id_tax`.
-   * @property {number} id_tax Types of taxes.
+   * @property {number} id_tax The tax type. One of {@link RsTaxSid} constants.
    * @property {string} k_tax The tax key.
    * @property {string} s_tax The tax name.
    */
@@ -193,7 +193,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data} a_data Contains additional data for the sale item. For Package, it contains also the following key:
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_image} a_image Contains information about one image connected to a sale item.
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_tax} a_tax Contains information about taxes.
-   * @property {number} id_purchase_option_view A list of Purchase Option view types.
+   * @property {number} id_purchase_option_view The Purchase Option view type. One of the {@link Wl_Catalog_PurchaseOptionViewSid} constants.
    * @property {string} m_discount_code The discount code amount.
    * @property {string} m_discount_login The discount amount for the client type.
    * @property {string} s_comment Additional information about the sale item. For example, information about 'introductory offer'.
@@ -212,7 +212,7 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_sale_id_group
-   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {?number} id_sale The item category ID. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The primary key of item.
    * @property {string} k_shop_product_option The product option or `0` for any other cases.
    */
@@ -232,7 +232,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {string} f_tax_discount The tax amount after applying all discounts.
    * @property {string} f_tax_discount_login The tax amount after applying the client type discount only.
    * @property {number} f_value The tax rate. Its meaning depends on `id_tax`.
-   * @property {number} id_tax Types of taxes.
+   * @property {number} id_tax The tax type. One of {@link RsTaxSid} constants.
    * @property {string} k_tax The tax key.
    * @property {string} s_tax The tax name.
    */

@@ -19,7 +19,7 @@ function Wl_Business_BusinessAccessModel()
 
   /**
    * @typedef {{}} Wl_Business_BusinessAccessModel_a_business_data
-   * @property {number} id_region List of available data center regions.
+   * @property {number} id_region The business region. One of the {@link Core_Amazon_Region_AmazonRegionSid} constants. This will be `null` if no regions are currently set.
    * @property {string} k_business The business key.
    * @property {string} text_office_address The business address.
    * @property {string} text_title The business title.

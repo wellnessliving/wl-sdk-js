@@ -15,7 +15,7 @@ function Wl_Login_LoginModel()
 
   /**
    * @typedef {{}} Wl_Login_LoginModel_a_login
-   * @property {number} id_gender String identifiers for gender.
+   * @property {number} id_gender User's gender. One of {@link AGenderSid} constants.
    * @property {string} k_staff User's key as staff member.
    * @property {string} s_first_name User first name.
    * @property {string} s_last_name First letter of user last name.

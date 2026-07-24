@@ -15,7 +15,7 @@ function Wl_Login_Promotion_Convert_ConvertModel()
 
   /**
    * @typedef {{}} Wl_Login_Promotion_Convert_ConvertModel_a_promotion
-   * @property {number} id_program Program types.
+   * @property {number} id_program One of {@link RsProgramSid} constants.
    * @property {boolean} is_select If `true`, the promotion is related to the service. Otherwise, this will be `false`.
    * @property {string} k_promotion The promotion key.
    * @property {string} text_title The title of the promotion.

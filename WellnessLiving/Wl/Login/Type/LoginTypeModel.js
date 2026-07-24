@@ -15,7 +15,7 @@ function Wl_Login_Type_LoginTypeModel()
 
   /**
    * @typedef {{}} Wl_Login_Type_LoginTypeModel_a_login_type_list
-   * @property {number} id_client_type A list of client type IDs.
+   * @property {number} id_client_type Client Type ID. One of {@link Wl_Login_Type_ClientTypeSid} constants.
    * @property {boolean} is_member Deprecated Use `id_client_type` instead. It will be `1` if the record contains a type of member. It will be `0` if record contains some other type of client. It will be `null` if the record contains some type of prospect.
    * @property {string} k_login_type The login type key.
    * @property {string} s_title The name of the login type.

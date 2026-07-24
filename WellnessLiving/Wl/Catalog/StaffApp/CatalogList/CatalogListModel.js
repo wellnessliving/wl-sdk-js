@@ -19,9 +19,9 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    * @property {string[]} a_login_type The list of login types available to purchase the sale item. Empty list means that the sale item is available to all login types.
    * @property {string[]} a_member_group The list of member groups available to purchase the sale item.
    * @property {string[]} a_shop_category A list of online store category keys.
-   * @property {number} id_program Program types.
-   * @property {number} id_restriction Purchase restrictions.
-   * @property {?number} id_sale List of sale categories on the store page.
+   * @property {number} id_program The program ID, set for promotions. One of the {@link RsProgramSid} constants.  <p>If `id_program` is {@link RsProgramSid}, then use:</p>  <ul>    <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain a list of active programs.</li>    <li>{@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} to get and validate fields for a given program.</li>    <li>{@link Wl_Catalog_Payment_PaymentModel} for a program purchase.</li>  </ul>
+   * @property {number} id_restriction The restriction ID. One of the {@link Wl_Shop_Product_PurchaseRestrictionSid} constants.
+   * @property {?number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
    * @property {boolean} is_online_sell Determines whether the sale item can be purchased by the client.
    * @property {boolean} is_visit This will be `true` if this Purchase Option is suitable to pay for the visit {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit}. Otherwise, this will be `false`. If {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit} is empty, this will always be `false`.
    * @property {string} k_id The sale item ID.

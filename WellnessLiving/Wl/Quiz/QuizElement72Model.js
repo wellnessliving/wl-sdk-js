@@ -16,7 +16,7 @@ function Wl_Quiz_QuizElement72Model()
   /**
    * @typedef {{}} Wl_Quiz_QuizElement72Model_a_access_log
    * @property {string} dtu_activity Date and time of the quiz changes.
-   * @property {number} id_activity The status of form actions.
+   * @property {number} id_activity One of {@link Wl_Quiz_Activity_ActivitySid} constants.
    * @property {string} text_activity Title of the activity
    * @property {string} text_actor Full name of the user who made an activity.
    * @property {string} text_date Date and time of the quiz changes in appropriate format string for further render.
@@ -52,9 +52,9 @@ function Wl_Quiz_QuizElement72Model()
    * @property {string[][]} a_service List of services grouped by service ID.
    * @property {boolean} hide_frontend Whether completed forms should be hidden for client in frontend.
    * @property {number|string} i_notify_automated Number of periods email reminders should be sent for incomplete forms after. Type of a period is specified by   `id_notify_automated`.
-   * @property {number} id_book_request_type List of quiz frequency types.
-   * @property {number} id_notify_automated A class for managing time intervals. Last ID: 9.
-   * @property {number} id_purchase_request_type List of quiz frequency types.
+   * @property {number} id_book_request_type Whether response is required every time they book service.
+   * @property {number} id_notify_automated Time interval ID. One of {@link ADurationSid} constants.
+   * @property {number} id_purchase_request_type Whether response is required every time they purchase service.
    * @property {boolean} is_amend_support Whether form support amending responses.
    * @property {boolean} is_book Whether quiz is required during/after book service selected in `a_service` list. * Related to options: * * `is_service_all` * * `is_book_before` * * `id_book_request_type`
    * @property {boolean} is_book_before Whether quiz is required during booking process.

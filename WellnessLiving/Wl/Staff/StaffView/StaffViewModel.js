@@ -68,7 +68,7 @@ function Wl_Staff_StaffView_StaffViewModel()
    * @property {Wl_Staff_StaffView_StaffViewModel_a_result_list_a_staff_a_photo_a_image} a_image Image data.
    * @property {number} i_height Height of image.
    * @property {number} i_width Width of image.
-   * @property {number} id_gender Class to work with gender string identifiers.
+   * @property {number} id_gender One of {@link Wl_Gender_GenderSid}.
    * @property {boolean} is_empty Whether is empty.
    * @property {string} k_staff Staff key.
    * @property {string} s_url Path to image.
@@ -84,7 +84,7 @@ function Wl_Staff_StaffView_StaffViewModel()
    * @property {string} html_first The first name of the staff.
    * @property {string} html_last The last name of the staff.
    * @property {string} html_location_title Name of the current staff location.
-   * @property {number} id_gender String identifiers for gender.
+   * @property {number} id_gender The staff member's gender. One of the {@link AGenderSid} constants.
    * @property {boolean} is_classes_events `true` in case when staff provides classes/events in home location, `false` otherwise.
    * @property {boolean} is_publish_business_page Whether staff member should be published on business pages.
    * @property {boolean} is_schedule_enabled `true` in case when for schedule exists for staff, `false` otherwise.
@@ -132,7 +132,7 @@ function Wl_Staff_StaffView_StaffViewModel()
    * @property {Wl_Staff_StaffView_StaffViewModel_a_staff_a_photo_a_image} a_image Image data.
    * @property {number} i_height Height of image.
    * @property {number} i_width Width of image.
-   * @property {number} id_gender Class to work with gender string identifiers.
+   * @property {number} id_gender One of {@link Wl_Gender_GenderSid}.
    * @property {boolean} is_empty Whether is empty.
    * @property {string} k_staff Staff key.
    * @property {string} s_url Path to image.
@@ -148,7 +148,7 @@ function Wl_Staff_StaffView_StaffViewModel()
    * @property {string} html_first The first name of the staff.
    * @property {string} html_last The last name of the staff.
    * @property {string} html_location_title Name of the current staff location.
-   * @property {number} id_gender String identifiers for gender.
+   * @property {number} id_gender The staff member's gender. One of the {@link AGenderSid} constants.
    * @property {boolean} is_classes_events `true` in case when staff provides classes/events in home location, `false` otherwise.
    * @property {boolean} is_publish_business_page Whether staff member should be published on business pages.
    * @property {boolean} is_schedule_enabled `true` in case when for schedule exists for staff, `false` otherwise.

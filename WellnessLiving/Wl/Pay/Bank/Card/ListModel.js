@@ -17,7 +17,7 @@ function Wl_Pay_Bank_Card_ListModel()
    * @typedef {{}} Wl_Pay_Bank_Card_ListModel_a_bank_card
    * @property {number} i_month The month when the payment card expires, represented by a number (1=January and 12=December).
    * @property {number} i_year The last two digits of the year when the payment card expires.
-   * @property {?number} id_card_system A class for a list of card systems.
+   * @property {?number} id_card_system The card system ID. This is one of the {@link ACardSystemSid} constants.
    * @property {boolean} is_autopay If `true`, this card backs at least one active autopay membership or package. If `false`, no active autopay membership or package is pinned to this card.
    * @property {boolean} is_default If `true`, then this card is the user default card. If `false`, then this isn't the user default card.
    * @property {string} k_pay_address The payment address ID. This refers to a physical address associated with a payment card.
@@ -41,7 +41,7 @@ function Wl_Pay_Bank_Card_ListModel()
    * @typedef {{}} Wl_Pay_Bank_Card_ListModel_a_list
    * @property {number} i_month The month when the payment card expires, represented by a number (1=January and 12=December).
    * @property {number} i_year The last two digits of the year when the payment card expires.
-   * @property {?number} id_card_system A class for a list of card systems.
+   * @property {?number} id_card_system The card system ID. This is one of the {@link ACardSystemSid} constants.
    * @property {boolean} is_autopay If `true`, this card backs at least one active autopay membership or package. If `false`, no active autopay membership or package is pinned to this card.
    * @property {boolean} is_default If `true`, then this card is the user default card. If `false`, then this isn't the user default card.
    * @property {string} k_pay_address The payment address ID. This refers to a physical address associated with a payment card.

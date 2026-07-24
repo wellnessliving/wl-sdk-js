@@ -15,7 +15,7 @@ function Thoth_WlPay_Account_AccountModel()
 
   /**
    * @typedef {{}} Thoth_WlPay_Account_AccountModel_a_account
-   * @property {number} id_currency A list of currencies.
+   * @property {number} id_currency Currency ID. One of {@link Core_Locale_CurrencySid} constant.
    * @property {string} k_currency Key of account currency.
    * @property {?string} k_pay_account ID of payment account.  `null` if this is a user account based on system payment method.
    * @property {?string} k_pay_method ID of custom payment method. `null` if this is a user account based on system payment method.
@@ -37,7 +37,7 @@ function Thoth_WlPay_Account_AccountModel()
   /**
    * @typedef {{}} Thoth_WlPay_Account_AccountModel_a_account_nx
    * @property {boolean} can_negative `true` if the account is allowed to have a negative balance, `false` otherwise.
-   * @property {number} id_currency A list of currencies.
+   * @property {number} id_currency Currency ID. One of {@link Core_Locale_CurrencySid} constants.
    * @property {string} k_currency Currency key.
    * @property {?string} k_pay_account Payment account key. `null` for accounts not yet created.
    * @property {?string} k_pay_method Custom payment method key. `null` for accounts based on the system payment method.

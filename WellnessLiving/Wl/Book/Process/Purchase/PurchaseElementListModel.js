@@ -23,7 +23,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_request
    * @property {Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_request_a_config} a_config Additional configuration.
    * @property {number} i_session The number of sessions booked simultaneously.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The ID of the purchase item type. One of the {@link RsPurchaseItemSid} constants.
    * @property {string} k_id The key of the purchase item in the database. The name of the table in the database depends on `id_purchase_item`
    * @property {string} k_login_prize The key of the user's prize.
    */
@@ -39,7 +39,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result
    * @property {string[]} a_tax Information about taxes. The key refers to the tax key, and the value refers to the tax amount.
-   * @property {number} id_purchase_item A list of purchase types.
+   * @property {number} id_purchase_item The ID of purchase item type. One of {@link RsPurchaseItemSid} constants.
    * @property {string} k_id The key of the purchase item in the database.
    * @property {string} m_cost The cost of the purchase item (with taxes).
    * @property {string} m_discount The amount of the whole discount.
