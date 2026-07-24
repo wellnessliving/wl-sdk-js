@@ -208,8 +208,9 @@ function buildObjectTypedef(schema, spec, depth, typedefs, typedefName)
     const resolved = resolveSchema(pSchema, spec);
     const subName = typedefName + '_' + pName;
     const pType = schemaToJsType(resolved, spec, depth + 1, typedefs, subName);
+    const sidRef = getSidRefClass(pSchema);
     // Use only the first paragraph - @property is a single-line annotation.
-    const rawDesc = (resolved && resolved.description) || '';
+    const rawDesc = getFieldRawDescription(pSchema.description, resolved, sidRef);
     const firstPara = rawDesc.split(/\n\s*\n/)[0].replace(/\n/g, ' ').trim();
     const pDesc = convertLinks(escDoc(firstPara));
     props.push({ name: pName, type: pType, desc: pDesc });
