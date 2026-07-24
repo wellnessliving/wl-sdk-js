@@ -41,15 +41,6 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
   this.a_payload = undefined;
 
   /**
-   * Event schema version. Currently only {@link Wl_Widget_Analytics_WidgetAnalyticsEventVersionSid} is supported.
-   *
-   * @post post
-   * @see Wl_Widget_Analytics_WidgetAnalyticsEventVersionSid
-   * @type {number}
-   */
-  this.i_event_version = 1;
-
-  /**
    * Event name. Initially only {@link Wl_Widget_Analytics_WidgetAnalyticsEventSid} is supported.
    *
    * @post post
@@ -57,6 +48,15 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
    * @type {number}
    */
   this.id_event_name = 0;
+
+  /**
+   * Event schema version. Currently only {@link Wl_Widget_Analytics_WidgetAnalyticsEventVersionSid} is supported.
+   *
+   * @post post
+   * @see Wl_Widget_Analytics_WidgetAnalyticsEventVersionSid
+   * @type {number}
+   */
+  this.id_event_version = 1;
 
   /**
    * Business key used for shard and datacenter routing.
@@ -85,7 +85,7 @@ WlSdk_ModelAbstract.extend(Wl_Widget_Analytics_WidgetAnalyticsEventModel);
  */
 Wl_Widget_Analytics_WidgetAnalyticsEventModel.prototype.config=function()
 {
-  return {"a_field":{"a_payload":{"post":{"post":true}},"i_event_version":{"post":{"post":true}},"id_event_name":{"post":{"post":true}},"k_business":{"post":{"post":true}},"s_event_id":{"post":{"post":true}}}};
+  return {"a_field":{"a_payload":{"post":{"post":true}},"id_event_name":{"post":{"post":true}},"id_event_version":{"post":{"post":true}},"k_business":{"post":{"post":true}},"s_event_id":{"post":{"post":true}}}};
 };
 
 /**
