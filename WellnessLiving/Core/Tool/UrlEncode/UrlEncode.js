@@ -5,12 +5,12 @@
  *
  * Should be included in all templates because it is a part of the core and this functionality may be necessary in any place.
  *
- * <b>Attention.</b> You will, must change the template of the {@link WlSdk_Core_Tool_UrlEncode_UrlEncodeException} if you change template of this class.
+ * <b>Attention.</b> You will, must change the template of the {@link Core_Tool_UrlEncode_UrlEncodeException} if you change template of this class.
  *
- * @type {WlSdk_Core_Tool_UrlEncode_UrlEncode}
+ * @type {Core_Tool_UrlEncode_UrlEncode}
  * @see \Core\Tool\UrlEncode\UrlEncode in PHP
  */
-function WlSdk_Core_Tool_UrlEncode_UrlEncode ()
+function Core_Tool_UrlEncode_UrlEncode ()
 {
   /**
    * A list of all values in all variables of the query.
@@ -53,14 +53,14 @@ function WlSdk_Core_Tool_UrlEncode_UrlEncode ()
  *
  * @type {number}
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.ARRAY_COUNT_MAX = 1023;
+Core_Tool_UrlEncode_UrlEncode.ARRAY_COUNT_MAX = 1023;
 
 /**
  * Alphabet for the resulting URL-safe string.
  *
  * @type {string}
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.STRING_RESULT = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+Core_Tool_UrlEncode_UrlEncode.STRING_RESULT = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 /**
  * Predefined alphabet for simple strings (this alphabet covers SIDs, variable names and sorting orders in table
@@ -68,7 +68,7 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.STRING_RESULT = '0123456789abcdefghijklmnopq
  *
  * @type {string}
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.STRING_SIMPLE = 'abcdefghijklmnopqrstuvwxyz_+-,';
+Core_Tool_UrlEncode_UrlEncode.STRING_SIMPLE = 'abcdefghijklmnopqrstuvwxyz_+-,';
 
 /**
  * Adds binary information to binary storage.
@@ -80,14 +80,14 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.STRING_SIMPLE = 'abcdefghijklmnopqrstuvwxyz_
  *
  * @protected
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._binary = function (i_volume, i_value)
+Core_Tool_UrlEncode_UrlEncode.prototype._binary = function (i_volume, i_value)
 {
   if (i_volume && i_value >= i_volume)
-    throw new WlSdk_Core_Tool_UrlEncode_UrlEncodeException('value-volume','Value ('+i_value+') is larger then allowed number of different values ('+i_volume+').');
+    throw new Core_Tool_UrlEncode_UrlEncodeException('value-volume','Value ('+i_value+') is larger then allowed number of different values ('+i_volume+').');
   if (i_volume > 2147483647 || i_volume < 0)
-    throw new WlSdk_Core_Tool_UrlEncode_UrlEncodeException('volume-large', 'Volume (' + i_volume + ') is too large.');
+    throw new Core_Tool_UrlEncode_UrlEncodeException('volume-large', 'Volume (' + i_volume + ') is too large.');
   if (i_value >= 2147483647 || i_value < 0)
-    throw new WlSdk_Core_Tool_UrlEncode_UrlEncodeException('value-large','Value ('+i_value+') is too large (volume='+i_volume+').');
+    throw new Core_Tool_UrlEncode_UrlEncodeException('value-large','Value ('+i_value+') is too large (volume='+i_volume+').');
 
   this.a_value = a_apn_add(this.a_value, a_apn_mul(this.a_volume, a_apn_decimal_apn(i_value.toString())));
   this.a_volume = a_apn_mul(this.a_volume, a_apn_decimal_apn(i_volume.toString()));
@@ -99,7 +99,7 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._binary = function (i_volume, i_va
  * @param {string|boolean} x_value a value to add
  * @private
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_add = function (x_value)
+Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_add = function (x_value)
 {
   WlSdk_AssertException.assertTrue(x_value !== undefined && x_value !== true && x_value !== false && x_value !== null, {
     's_message': '[WlSdk_Core_Tool_UrlEncode_UrlEncode] undefined, true, false and null are not allowed as value.',
@@ -116,7 +116,7 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_add = function (x_valu
  * Encodes dictionary
  * @private
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_encode = function ()
+Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_encode = function ()
 {
   var i;
   var i_number;
@@ -124,7 +124,7 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_encode = function ()
   var s_value;
 
   if (this.i_dictionary > 65535)
-    throw new WlSdk_Core_Tool_UrlEncode_UrlEncodeException('dictionary-length','Dictionary is too long ('+this.i_dictionary+')');
+    throw new Core_Tool_UrlEncode_UrlEncodeException('dictionary-length','Dictionary is too long ('+this.i_dictionary+')');
 
   // Store size of the dictionary
   this._binary(65536, this.i_dictionary);
@@ -196,7 +196,7 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_encode = function ()
       continue;
     }
 
-    throw new WlSdk_Core_Tool_UrlEncode_UrlEncodeException(
+    throw new Core_Tool_UrlEncode_UrlEncodeException(
       'string', 'Dictionary has a value that is too long (' + s_value + ')');
   }
 
@@ -295,10 +295,10 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_encode = function ()
 
   // Store simple strings
   var a_character = {}; // character -> index
-  var s = WlSdk_Core_Tool_UrlEncode_UrlEncode.STRING_SIMPLE;
+  var s = Core_Tool_UrlEncode_UrlEncode.STRING_SIMPLE;
   for (i = 0; i < s.length; i++)
     a_character[s[i]] = i;
-  var i_mod = WlSdk_Core_Tool_UrlEncode_UrlEncode.STRING_SIMPLE.length;
+  var i_mod = Core_Tool_UrlEncode_UrlEncode.STRING_SIMPLE.length;
 
   this._binary(this.i_dictionary + 1, a_string_simple.length);
   for (s_key in a_string_simple)
@@ -350,7 +350,7 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_encode = function ()
  * @throws RsReportUrlException
  * @protected
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_gather = function (a_query)
+Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_gather = function (a_query)
 {
   var is_index = a_query instanceof Array;
 
@@ -402,7 +402,7 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._dictionary_gather = function (a_q
  * @return {{}} Modified values.
  * @protected
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._modify = function (a_value)
+Core_Tool_UrlEncode_UrlEncode.prototype._modify = function (a_value)
 {
   let is_index = a_value instanceof Array;
 
@@ -448,7 +448,7 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._modify = function (a_value)
  * @param {{}} a_value Values to encode.
  * @protected
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._value = function (a_value)
+Core_Tool_UrlEncode_UrlEncode.prototype._value = function (a_value)
 {
   var is_index = a_value instanceof Array; // whether array is indexed
   var has_scalar = false; // whether array has values
@@ -468,8 +468,8 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._value = function (a_value)
       has_scalar = true;
   }
 
-  if (i_length > WlSdk_Core_Tool_UrlEncode_UrlEncode.ARRAY_COUNT_MAX)
-    throw new WlSdk_Core_Tool_UrlEncode_UrlEncodeException('array-long','Array has too many elements: '+debug(a_value));
+  if (i_length > Core_Tool_UrlEncode_UrlEncode.ARRAY_COUNT_MAX)
+    throw new Core_Tool_UrlEncode_UrlEncodeException('array-long','Array has too many elements: '+debug(a_value));
 
   if (i_length <= 31)
   {
@@ -544,9 +544,9 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype._value = function (a_value)
  * @param {{}} a_query An array to encode.
  * @return string Encoded data.
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.encode = function (a_query)
+Core_Tool_UrlEncode_UrlEncode.encode = function (a_query)
 {
-  return (new WlSdk_Core_Tool_UrlEncode_UrlEncode()).encode(a_query);
+  return (new Core_Tool_UrlEncode_UrlEncode()).encode(a_query);
 };
 
 /**
@@ -555,7 +555,7 @@ WlSdk_Core_Tool_UrlEncode_UrlEncode.encode = function (a_query)
  * @param {{}} a_query An array to encode.
  * @return string Encoded data.
  */
-WlSdk_Core_Tool_UrlEncode_UrlEncode.prototype.encode = function (a_query)
+Core_Tool_UrlEncode_UrlEncode.prototype.encode = function (a_query)
 {
   this.a_dictionary = {};
   this.i_dictionary = 0;
