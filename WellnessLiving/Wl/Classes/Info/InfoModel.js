@@ -52,6 +52,16 @@ function Wl_Classes_Info_InfoModel()
   this.k_class = "";
 
   /**
+   * Key of the group of events, which are different instances of the same event.
+   *
+   * Is always `0` for classes.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.k_enrollment_block = undefined;
+
+  /**
    * Title of the class.
    *
    * @get result
@@ -69,7 +79,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Info_InfoModel);
  */
 Wl_Classes_Info_InfoModel.prototype.config=function()
 {
-  return {"a_field":{"a_logo":{"get":{"result":true}},"is_event":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"get":true}},"text_title":{"get":{"result":true}}}};
+  return {"a_field":{"a_logo":{"get":{"result":true}},"is_event":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"get":true}},"k_enrollment_block":{"get":{"result":true}},"text_title":{"get":{"result":true}}}};
 };
 
 /**
