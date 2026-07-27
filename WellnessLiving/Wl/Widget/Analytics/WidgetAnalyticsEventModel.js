@@ -10,8 +10,8 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
 
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item
-   * @property {number} id_purchase_item A list of purchase types.
-   * @property {number} id_service A list of services.
+   * @property {number} id_purchase_item Purchase item ID. See {@link RsPurchaseItemSid}.
+   * @property {number} id_service Service ID. See {@link Wl_Service_ServiceSid}.
    * @property {?string} k_enrollment_block Enrollment block key for an event item. Empty for all other item types.
    * @property {string} k_item Selected item key.
    */
@@ -19,7 +19,7 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload
    * @property {Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item} a_item Selected checkout items.
-   * @property {number} id_checkout_type Widget analytics checkout types.
+   * @property {number} id_checkout_type Checkout type. See {@link Wl_Widget_Analytics_WidgetAnalyticsCheckoutTypeSid}.
    * @property {string} k_location Location key.
    * @property {?string} k_skin Widget skin key. `null` if the Widget does not use a registered skin.
    * @property {string} m_total Checkout total in the location currency.

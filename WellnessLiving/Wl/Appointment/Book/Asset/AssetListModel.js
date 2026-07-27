@@ -104,7 +104,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    * @property {string} html_title The resource name.
    * @property {?number} id_deny_reason The ID of the reason why the client cannot book this asset.
    *   One of the {@link Wl_Schedule_ClassView_DenyReasonSid} constants. `null` if there is no deny reason.
-   * @property {number} id_service_require The purchase rule. One of the {@link RsServiceRequireSid} constants.
+   * @property {number} id_service_require The purchase rule. One of the {@link Wl_Service_ServiceRequireSid} constants.
    * @property {boolean} is_age_restricted Determines whether this service can't be booked due to age restrictions.
    * @property {string} k_class_tab Quick book tab key.
    * @property {string} k_resource The resource key.
@@ -198,7 +198,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *     One of DenyReasonSid constants. `null` if there is no deny reason.
    *   </dd>
    *   <dt>int <var>id_service_require</var></dt>
-   *   <dd>The purchase rule. One of the {@link RsServiceRequireSid} constants.</dd>
+   *   <dd>The purchase rule. One of the {@link Wl_Service_ServiceRequireSid} constants.</dd>
    *   <dt>bool <var>is_age_restricted</var></dt>
    *   <dd>Determines whether this service can't be booked due to age restrictions.</dd>
    *   <dt>string <var>k_class_tab</var></dt>
