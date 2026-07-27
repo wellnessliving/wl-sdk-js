@@ -59,10 +59,10 @@ Core_Google_GoogleCaptchaModel.prototype.config=function()
  * Site keys for initialize Google reCAPTCHA:
  * * Version 2 (invisible):
  * * Demo/Staging - `6Ldqwe0gAAAAANve1TEPFb_Yxgb9wsoIfrNL6-2Z`
- * * Production - `6LeOGp4hAAAAACDoQeLUxnu2TAXXZWhdSm118auy`
+ * * Production - `6LeyHWMtAAAAAHvGsUJgYmNlnVIoj82Z4rg4yHmv`
  * * Version 3:
  * * Demo/Staging - `6Lc7bukqAAAAAHzXhG6WytHsGbz6rYYyklg_0kMb`
- * * Production - `6LcGn18rAAAAAPJNY1pGuoaTCM1MOBxz5HgE_4Vy`
+ * * Production - `6LfMH2MtAAAAABzJMxRl6JQ6NQ2W-__HYD9uajPs`
  *
  * @function
  * @name Core_Google_GoogleCaptchaModel.put
