@@ -18,8 +18,6 @@ function Wl_Appointment_Book_Schedule_ServiceAvailabilityModel()
   /**
    * An array with a schedule of available appointment booking times.
    *
-   * Each record contains availability data of one staff and have next structure:
-   *
    * @get result
    * @type {Wl_Appointment_Book_Schedule_ServiceAvailabilityModel_a_time}
    */
@@ -77,3 +75,15 @@ Wl_Appointment_Book_Schedule_ServiceAvailabilityModel.prototype.config=function(
 {
   return {"a_field":{"a_time":{"get":{"result":true}},"dl_end":{"get":{"get":true}},"dl_start":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_service":{"get":{"get":true}}}};
 };
+
+/**
+ * Retrieves a list of available appointment booking schedule.
+ *
+ * Returns list of staff that can provide selected appointment. Each staff data contains list of dates from
+ * selected period when appointment can be booked. Each date contains list of available appointment start times.
+ *
+ * @function
+ * @name Wl_Appointment_Book_Schedule_ServiceAvailabilityModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
