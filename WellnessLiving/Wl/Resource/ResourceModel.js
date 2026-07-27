@@ -17,7 +17,7 @@ function Wl_Resource_ResourceModel()
 
   /**
    * Mode to require amount while booking a resource.
-   * * One of the {@link RsServiceRequireSid} constants.
+   * * One of the {@link Wl_Service_ServiceRequireSid} constants.
    * * Copy of the {@link \RsResourceSql}.`id_service_require`.
    *
    * @get result
