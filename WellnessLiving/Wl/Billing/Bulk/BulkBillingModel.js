@@ -1,5 +1,5 @@
 /**
- * Schedules the bulk billing.
+ * Cancels a scheduled bulk billing so that it is never billed.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -19,6 +19,7 @@ function Wl_Billing_Bulk_BulkBillingModel()
    * The scheduled billing time:
    *
    * @post post
+   * @put post
    * @type {?Wl_Billing_Bulk_BulkBillingModel_a_schedule_time}
    */
   this.a_schedule_time = null;
@@ -28,6 +29,7 @@ function Wl_Billing_Bulk_BulkBillingModel()
    * When empty, the billing runs immediately.
    *
    * @post post
+   * @put post
    * @type {?string}
    */
   this.dl_schedule = null;
@@ -35,18 +37,22 @@ function Wl_Billing_Bulk_BulkBillingModel()
   /**
    * The business key.
    *
+   * @delete post
    * @post post
+   * @put post
    * @type {string}
    */
   this.k_business = "";
 
   /**
-   * The key of the created purchase batch.
+   * The purchase batch key.
    *
+   * @delete post
    * @post result
+   * @put post
    * @type {string}
    */
-  this.k_purchase_batch = undefined;
+  this.k_purchase_batch = "";
 
   /**
    * The unique review id returned by {@link Wl_Billing_Bulk_PurchaseItemListModel} that identifies the prepared bulk billing
@@ -67,8 +73,19 @@ WlSdk_ModelAbstract.extend(Wl_Billing_Bulk_BulkBillingModel);
  */
 Wl_Billing_Bulk_BulkBillingModel.prototype.config=function()
 {
-  return {"a_field":{"a_schedule_time":{"post":{"post":true}},"dl_schedule":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_purchase_batch":{"post":{"result":true}},"s_id":{"post":{"post":true}}}};
+  return {"a_field":{"a_schedule_time":{"post":{"post":true},"put":{"post":true}},"dl_schedule":{"post":{"post":true},"put":{"post":true}},"k_business":{"delete":{"post":true},"post":{"post":true},"put":{"post":true}},"k_purchase_batch":{"delete":{"post":true},"post":{"result":true},"put":{"post":true}},"s_id":{"post":{"post":true}}}};
 };
+
+/**
+ * Cancels a scheduled bulk billing so that it is never billed.
+ *
+ * Only a batch that has not started billing yet can be cancelled.
+ *
+ * @function
+ * @name Wl_Billing_Bulk_BulkBillingModel.delete
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.delete()
+ */
 
 /**
  * Schedules the bulk billing.
@@ -80,4 +97,16 @@ Wl_Billing_Bulk_BulkBillingModel.prototype.config=function()
  * @name Wl_Billing_Bulk_BulkBillingModel.post
  * @returns {WlSdk_Deferred_Promise}
  * @see WlSdk_ModelAbstract.post()
+ */
+
+/**
+ * Reschedules a previously scheduled bulk billing to a new date and time.
+ *
+ * A reschedule always targets an explicit date and time.
+ * Only a batch that has not started billing yet can be rescheduled.
+ *
+ * @function
+ * @name Wl_Billing_Bulk_BulkBillingModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
  */
