@@ -10,7 +10,7 @@ function Wl_Appointment_Book_Schedule_ServiceAvailabilityModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Schedule_ServiceAvailabilityModel_a_time
-   * @property {*[][]} a_availability Availability data of the staff. Keys are dates and values are lists of available appointment start times.
+   * @property {string[][]} a_availability Availability data of the staff. Keys are dates and values are lists of available appointment start times.
    * @property {string} text_name Staff name.
    * @property {string} uid_staff Staff user key.
    */
@@ -80,6 +80,9 @@ Wl_Appointment_Book_Schedule_ServiceAvailabilityModel.prototype.config=function(
 
 /**
  * Retrieves a list of available appointment booking schedule.
+ *
+ * Returns list of staff that can provide selected appointment. Each staff data contains list of dates from
+ * selected period when appointment can be booked. Each date contains list of available appointment start times.
  *
  * @function
  * @name Wl_Appointment_Book_Schedule_ServiceAvailabilityModel.get

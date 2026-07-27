@@ -71,6 +71,7 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    * @property {number} id_book_flow The type of client booking flow. One of {@link Wl_Service_ServiceBookFlowSid} constants.
    * @property {number} id_deny_reason The ID of the reason why the client cannot book this service. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. `null` if there is no deny reason.
    * @property {number} id_service_require The required payment type ID. One of {@link RsServiceRequireSid} constants.
+   * @property {?number} id_virtual_provider Virtual provider ID. One of {@link Wl_Virtual_VirtualProviderSid} constants. `null` for non-virtual services.
    * @property {boolean} is_age_public `true` if age restrictions are public. Otherwise, `false` if they should be hidden from clients.
    * @property {boolean} is_age_restricted Determines whether this service can't be booked due to age restrictions.
    * @property {boolean} is_back_to_back Determines whether this service supports back-to-back booking.
