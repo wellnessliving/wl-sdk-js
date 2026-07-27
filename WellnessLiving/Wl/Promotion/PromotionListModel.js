@@ -18,6 +18,7 @@ function Wl_Promotion_PromotionListModel()
    * @property {number} id_program The promotion program. One of the {@link RsProgramSid} constants.
    * @property {number} id_program_type The type of the promotion program. One of the {@link RsProgramTypeSid} constants.
    * @property {boolean} is_active Whether the promotion is active.
+   * @property {boolean} is_component Whether the promotion is a component.
    * @property {string} k_promotion The key of the promotion.
    * @property {string} text_title The title of the promotion.
    */

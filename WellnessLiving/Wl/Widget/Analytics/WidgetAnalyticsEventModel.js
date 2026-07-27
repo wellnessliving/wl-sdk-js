@@ -10,10 +10,14 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
 
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item
+   * @property {?string} dtu_session Selected booking session datetime. `null` if not available.
+   * @property {number} i_order Zero-based item order in the checkout list.
    * @property {number} id_purchase_item Purchase item ID. See {@link RsPurchaseItemSid}.
    * @property {number} id_service Service ID. See {@link Wl_Service_ServiceSid}.
    * @property {?string} k_enrollment_block Enrollment block key for an event item. Empty for all other item types.
    * @property {string} k_item Selected item key.
+   * @property {?string} m_price Checkout item price in the location currency. `null` if not available.
+   * @property {string} text_service_name Item name snapshot from checkout.
    */
 
   /**
@@ -41,7 +45,7 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
   this.a_payload = undefined;
 
   /**
-   * Event name. Initially only {@link Wl_Widget_Analytics_WidgetAnalyticsEventSid} is supported.
+   * Event name.
    *
    * @post post
    * @see Wl_Widget_Analytics_WidgetAnalyticsEventSid

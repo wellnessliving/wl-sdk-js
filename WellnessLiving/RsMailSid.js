@@ -9,12 +9,19 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 219.
+ * Last used ID: 220.
  */
 function RsMailSid()
 {
   // Empty constructor.
 }
+
+/**
+ * Sent when a client abandons a checkout (used in automations).
+ *
+ * @type {number}
+ */
+RsMailSid.ABANDONED_CHECKOUT = 220;
 
 /**
  * Sent by CASSI phone agent, when client requests a booking url.
