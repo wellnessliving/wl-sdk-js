@@ -16,7 +16,7 @@ function Wl_Profile_Account_Select_SelectModel()
 
   /**
    * @typedef {{}} Wl_Profile_Account_Select_SelectModel_a_user
-   * @property {number} id_family_relation ID of relationship between current user and sub account.
+   * @property {number} id_family_relation ID of relationship between current user and sub account from {@link RsFamilyRelationSid}.
    * @property {string} s_name Name of sub account.
    * @property {string} uid UID of sub account.
    */
