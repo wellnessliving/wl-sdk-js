@@ -1,15 +1,15 @@
 /**
- * Class which processed exceptions to the {@link WlSdk_Core_Tool_UrlEncode_UrlEncode}.
+ * Class which processed exceptions to the {@link Core_Tool_UrlEncode_UrlEncode}.
  *
  * Should be included in all templates because it is a part of the core and this functionality may be necessary in any place.
  *
- * <b>Attention.</b> You will, must change the template of the {@link WlSdk_Core_Tool_UrlEncode_UrlEncodeException} if you change template of this class.
+ * <b>Attention.</b> You will, must change the template of the {@link Core_Tool_UrlEncode_UrlEncodeException} if you change template of this class.
  *
  * @param {string} s_code Exception code.
  * @param {string} text_message Exception message.
  * @constructor
  */
-function WlSdk_Core_Tool_UrlEncode_UrlEncodeException (s_code, text_message)
+function Core_Tool_UrlEncode_UrlEncodeException (s_code, text_message)
 {
   /**
    * Exception message.
@@ -26,4 +26,4 @@ function WlSdk_Core_Tool_UrlEncode_UrlEncodeException (s_code, text_message)
   this.name = s_code;
 }
 
-WlSdk_Core_Tool_UrlEncode_UrlEncodeException.prototype = Object.create(WlSdk_AException.prototype);
+Core_Tool_UrlEncode_UrlEncodeException.prototype = Object.create(WlSdk_AException.prototype);
