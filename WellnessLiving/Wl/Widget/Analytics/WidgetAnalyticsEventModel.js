@@ -32,7 +32,6 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
    * @property {string} s_utm_medium UTM medium value. Empty if it is unavailable.
    * @property {string} s_utm_source UTM source value. Empty if it is unavailable.
    * @property {string} uid User key for whom checkout was abandoned.
-   * @property {string} url_continue URL that restores the booking or purchase flow with the selected items.
    */
 
   /**
