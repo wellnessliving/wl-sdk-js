@@ -53,6 +53,14 @@ function Wl_AiAgent_Link_SendMailModel()
   this.text_action = "";
 
   /**
+   * URL suffix for the link. Optional.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.text_url_suffix = "";
+
+  /**
    * User ID. Required.
    *
    * @post get
@@ -70,7 +78,7 @@ WlSdk_ModelAbstract.extend(Wl_AiAgent_Link_SendMailModel);
  */
 Wl_AiAgent_Link_SendMailModel.prototype.config=function()
 {
-  return {"a_field":{"id_purchase_item":{"post":{"get":true}},"id_service":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_id":{"post":{"get":true}},"text_action":{"post":{"get":true}},"uid":{"post":{"get":true}}}};
+  return {"a_field":{"id_purchase_item":{"post":{"get":true}},"id_service":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_id":{"post":{"get":true}},"text_action":{"post":{"get":true}},"text_url_suffix":{"post":{"get":true}},"uid":{"post":{"get":true}}}};
 };
 
 /**
