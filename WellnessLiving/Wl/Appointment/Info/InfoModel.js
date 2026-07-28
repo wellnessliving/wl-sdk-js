@@ -71,6 +71,27 @@ function Wl_Appointment_Info_InfoModel()
   this.a_question = undefined;
 
   /**
+   * @typedef {{}} Wl_Appointment_Info_InfoModel_a_repeat
+   * @property {number[]} a_day Days of week to repeat appointment. Constants from {@link ADateWeekSid}.
+   * @property {string} dl_date Current appointment date in location timezone in MySQL date format.
+   * @property {string} dl_edit_from Start date for range edit in location timezone in MySQL date format.
+   * @property {string} dl_edit_to End date for range edit in location timezone in MySQL date format.
+   * @property {string} tl_time Current appointment local start time in MySQL time format.
+   */
+
+  /**
+   * Repeat settings for appointment reschedule.
+   *
+   * Empty array for non-recurring appointment.
+   *
+   * Has next keys:
+   *
+   * @get result
+   * @type {Wl_Appointment_Info_InfoModel_a_repeat}
+   */
+  this.a_repeat = undefined;
+
+  /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_resource
    * @property {number} i_color_background Background color of the asset as an integer (RGB).
    * @property {number} i_color_border Border color of the asset as an integer (RGB).
@@ -147,7 +168,7 @@ function Wl_Appointment_Info_InfoModel()
   this.id_appointment_pay = undefined;
 
   /**
-   * Class identifier to get information for.
+   * Appointment key to get information for.
    *
    * @get get
    * @type {string}
@@ -255,13 +276,13 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Info_InfoModel);
  */
 Wl_Appointment_Info_InfoModel.prototype.config=function()
 {
-  return {"a_field":{"a_next":{"get":{"result":true}},"a_previous":{"get":{"result":true}},"a_question":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_shop_product_option":{"get":{"result":true}},"dt_date_local":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_index":{"get":{"result":true}},"id_appointment_pay":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_login_promotion":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_resource_type":{"get":{"result":true}},"k_service":{"get":{"result":true}},"k_service_category":{"get":{"result":true}},"k_session_pass":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid_appointment":{"get":{"result":true}},"uid_staff":{"get":{"result":true}}}};
+  return {"a_field":{"a_next":{"get":{"result":true}},"a_previous":{"get":{"result":true}},"a_question":{"get":{"result":true}},"a_repeat":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_shop_product_option":{"get":{"result":true}},"dt_date_local":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_index":{"get":{"result":true}},"id_appointment_pay":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_login_promotion":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_resource_type":{"get":{"result":true}},"k_service":{"get":{"result":true}},"k_service_category":{"get":{"result":true}},"k_session_pass":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid_appointment":{"get":{"result":true}},"uid_staff":{"get":{"result":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Appointment_Info_InfoModel.instanceGet
- * @param {string} k_appointment Class identifier to get information for.
+ * @param {string} k_appointment Appointment key to get information for.
  * @returns {Wl_Appointment_Info_InfoModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
