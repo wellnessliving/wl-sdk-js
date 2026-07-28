@@ -87,14 +87,3 @@ Wl_Widget_Analytics_WidgetAnalyticsEventModel.prototype.config=function()
 {
   return {"a_field":{"a_payload":{"post":{"post":true}},"id_event_name":{"post":{"post":true}},"id_event_version":{"post":{"post":true}},"k_business":{"post":{"post":true}},"s_event_id":{"post":{"post":true}}}};
 };
-
-/**
- * Accepts a Widget analytics event.
- *
- * Validates the event envelope and payload, stores the event, and schedules asynchronous processing.
- *
- * @function
- * @name Wl_Widget_Analytics_WidgetAnalyticsEventModel.post
- * @returns {WlSdk_Deferred_Promise}
- * @see WlSdk_ModelAbstract.post()
- */
