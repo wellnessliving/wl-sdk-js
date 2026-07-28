@@ -25,7 +25,6 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
    * @property {Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item} a_item Selected checkout items.
    * @property {number} id_checkout_type Checkout type. See {@link Wl_Widget_Analytics_WidgetAnalyticsCheckoutTypeSid}.
    * @property {string} k_location Location key.
-   * @property {?string} k_skin Widget skin key. `null` if the Widget does not use a registered skin.
    * @property {string} m_total Checkout total in the location currency.
    * @property {string} s_funnel_step Last funnel step reached by the client. Empty if it is unavailable.
    * @property {string} s_session_id Widget checkout session identifier. Used for diagnostics and continuation context, not for idempotency.

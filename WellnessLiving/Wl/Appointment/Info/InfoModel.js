@@ -76,7 +76,7 @@ function Wl_Appointment_Info_InfoModel()
    * @property {string} dl_date Current appointment date in location timezone in MySQL date format.
    * @property {string} dl_edit_from Start date for range edit in location timezone in MySQL date format.
    * @property {string} dl_edit_to End date for range edit in location timezone in MySQL date format.
-   * @property {string} tl_time Current appointment local start time in MySQL time format.
+   * @property {string} s_time Current appointment local start time in MySQL time format.
    */
 
   /**
