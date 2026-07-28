@@ -14,7 +14,7 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
    * @property {number} i_order Zero-based item order in the checkout list.
    * @property {number} id_purchase_item Purchase item ID. See {@link RsPurchaseItemSid}.
    * @property {number} id_service Service ID. See {@link Wl_Service_ServiceSid}.
-   * @property {?string} k_enrollment_block Enrollment block key for an event item. Empty for all other item types.
+   * @property {?string} k_enrollment_block Optional enrollment block key for an event item. `''` when an enrollment block is not available.
    * @property {string} k_item Selected item key.
    * @property {?string} m_price Checkout item price in the location currency. `null` if not available.
    * @property {string} text_service_name Item name snapshot from checkout.
@@ -28,7 +28,7 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
    * @property {?string} k_skin Widget skin key. `null` if the Widget does not use a registered skin.
    * @property {string} m_total Checkout total in the location currency.
    * @property {string} s_funnel_step Last funnel step reached by the client. Empty if it is unavailable.
-   * @property {string} s_session_id Widget checkout session identifier. Empty if it is unavailable. It is used only for diagnostics and continuation context, not for idempotency.
+   * @property {string} s_session_id Widget checkout session identifier. Used for diagnostics and continuation context, not for idempotency.
    * @property {string} s_utm_campaign UTM campaign value. Empty if it is unavailable.
    * @property {string} s_utm_medium UTM medium value. Empty if it is unavailable.
    * @property {string} s_utm_source UTM source value. Empty if it is unavailable.

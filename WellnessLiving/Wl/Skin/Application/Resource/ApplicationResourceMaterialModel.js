@@ -112,10 +112,12 @@ function Wl_Skin_Application_Resource_ApplicationResourceMaterialModel()
   /**
    * Support email address shown in the store listing.
    *
+   * `null` to not change exists email.
+   *
    * @post post
-   * @type {string}
+   * @type {?string}
    */
-  this.text_email = "";
+  this.text_email = null;
 
   /**
    * Additional information about the application build.
