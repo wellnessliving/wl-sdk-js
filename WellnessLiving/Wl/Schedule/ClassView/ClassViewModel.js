@@ -62,8 +62,12 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {string} html_deny_reason Reason why client can not book class. Not empty only if `can_book` is `false`.
    * @property {string} html_description Class description.
    * @property {string} html_special Special instructions.
-   * @property {?number} i_age_from Age from that class is allowed. `null` if information is not available.
-   * @property {?number} i_age_to Age to that class is allowed. `null` if information is not available.
+   * @property {number} i_age_from The minimum age restriction. Deprecated and is left only for back compatibility.
+   * @property {number} i_age_from_month The minimum age restriction (months).
+   * @property {number} i_age_from_year The minimum age restriction (years).
+   * @property {number} i_age_to The maximum age restriction. Deprecated and is left only for back compatibility.
+   * @property {number} i_age_to_month The maximum age restriction (months).
+   * @property {number} i_age_to_year The maximum age restriction (years).
    * @property {number} i_book A total number of booked visits in the class, including all lists: active and waitlist.
    * @property {number} i_book_active A total number of booked active visits in the class.
    * @property {number} i_capacity Class capacity.
@@ -180,8 +184,12 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {string} html_deny_reason Reason why client can not book class. Not empty only if `can_book` is `false`.
    * @property {string} html_description Class description.
    * @property {string} html_special Special instructions.
-   * @property {?number} i_age_from Age from that class is allowed. `null` if information is not available.
-   * @property {?number} i_age_to Age to that class is allowed. `null` if information is not available.
+   * @property {number} i_age_from The minimum age restriction. Deprecated and is left only for back compatibility.
+   * @property {number} i_age_from_month The minimum age restriction (months).
+   * @property {number} i_age_from_year The minimum age restriction (years).
+   * @property {number} i_age_to The maximum age restriction. Deprecated and is left only for back compatibility.
+   * @property {number} i_age_to_month The maximum age restriction (months).
+   * @property {number} i_age_to_year The maximum age restriction (years).
    * @property {number} i_book A total number of booked visits in the class, including all lists: active and waitlist.
    * @property {number} i_book_active A total number of booked active visits in the class.
    * @property {number} i_capacity Class capacity.

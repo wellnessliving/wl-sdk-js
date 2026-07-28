@@ -64,8 +64,12 @@ function Wl_Classes_ClassView_ElementModel()
    * @property {?boolean} has_own_image This field will be `true` if the image used for the class is an image uploaded in the class setup. If an image isn't uploaded in the class setup, but there's at least one image in Setup->Locations image slider, this field will be `false`. This field will be `null` if the class image isn't uploaded, and there are no images in location slider. In such cases, an empty image is used.
    * @property {string} html_description The browser-safe description.
    * @property {string} html_special_instruction Special instructions safe to be inserted to a browser.
-   * @property {number} i_age_from The minimum age restriction.
-   * @property {number} i_age_to The maximum age restriction.
+   * @property {number} i_age_from The minimum age restriction. Deprecated and is left only for back compatibility.
+   * @property {number} i_age_from_month The minimum age restriction (months).
+   * @property {number} i_age_from_year The minimum age restriction (years).
+   * @property {number} i_age_to The maximum age restriction. Deprecated and is left only for back compatibility.
+   * @property {number} i_age_to_month The maximum age restriction (months).
+   * @property {number} i_age_to_year The maximum age restriction (years).
    * @property {boolean} is_age_public Determines whether age restriction exist and should be taken into account prior to booking this class/event.
    * @property {boolean} is_bookable Determines whether clients can book the class or event online.
    * @property {boolean} is_event Determines whether the item is an event or class instance. If `true`, the item is an event instance. Otherwise, this will be `false`.
