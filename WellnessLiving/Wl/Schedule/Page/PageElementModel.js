@@ -341,7 +341,8 @@ function Wl_Schedule_Page_PageElementModel()
   this.s_title = undefined;
 
   /**
-   * Location title.
+   * Location title. If the visit is assigned a resource whose category is {@link Wl_Resource_ResourceCategoryEnum},
+   * this is that resource's title instead of the actual location's title.
    *
    * @get result
    * @type {string}

@@ -136,6 +136,8 @@ function Wl_Promotion_Index_PromotionIndexModel()
   /**
    * The business key.
    *
+   * `null` to get a business from location.
+   *
    * @get get
    * @type {?string}
    */
