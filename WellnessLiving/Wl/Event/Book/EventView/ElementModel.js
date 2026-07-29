@@ -146,6 +146,12 @@ function Wl_Event_Book_EventView_ElementModel()
    */
 
   /**
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_makeup_class
+   * @property {string} k_class Class key.
+   * @property {?string} s_title Class title. `null` if title is unavailable for the selected language.
+   */
+
+  /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_schedule_a_repeat
    * @property {number} i_repeat Count of the periods which specified in `id_repeat`.
    * @property {number} id_repeat Measuring unit of `i_repeat` (week, month, year). One of {@link ADurationSid} constants.
@@ -195,7 +201,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_class_logo} a_class_logo Image of event. See {@link Wl_Event_Book_EventView_ElementModel.a_class_logo}.
    * @property {string[]} a_class_tab Class tab keys. See {@link Wl_Event_Book_EventView_ElementModel.a_class_tab}.
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_installment_template} a_installment_template List of installment plans. See {@link Wl_Event_Book_EventView_ElementModel.a_installment_template}.
-   * @property {*[][]} a_makeup_class Classes selected for make-up sessions. See {@link Wl_Event_Book_EventView_ElementModel.a_makeup_class}.
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_makeup_class} a_makeup_class Classes selected for make-up sessions. Every element has the following keys:
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_schedule} a_schedule Schedule of event sessions. See {@link Wl_Event_Book_EventView_ElementModel.a_schedule}.
    * @property {string[]} a_shop_category IDs of online store category.
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_staff_logo} a_staff_logo Photos of staff. See {@link Wl_Event_Book_EventView_ElementModel.a_staff_logo}.
@@ -259,7 +265,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_makeup_class
-   * @property {string} k_class Class key. Primary key in table RsClassSql.
+   * @property {string} k_class Class key.
    * @property {?string} s_title Class title. `null` if title is unavailable for the selected language.
    */
 
