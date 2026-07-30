@@ -38,6 +38,7 @@ function Wl_Catalog_Cart_CartModel()
    * @typedef {{}} Wl_Catalog_Cart_CartModel_a_item_a_config
    * @property {Wl_Catalog_Cart_CartModel_a_item_a_config_a_event_list} a_event_list List of tuition events. Each entry has the next structure:
    * @property {Wl_Catalog_Cart_CartModel_a_item_a_config_a_registration_fee_list} a_registration_fee_list Registration fees for tuition participants. Keys are participant keys.  Each value has the next structure:
+   * @property {string} m_checkout The total amount that will be charged for the tuition item when during purchase.
    */
 
   /**

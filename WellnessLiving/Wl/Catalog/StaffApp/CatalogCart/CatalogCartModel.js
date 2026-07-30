@@ -70,6 +70,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @property {boolean} is_prorate_only Determines whether the selected option 'pay prorate amount only' should only include the prorate amount.
    * @property {string} k_coupon The coupon key.
    * @property {string} k_coupon_amount The coupon amount key.
+   * @property {string} m_checkout The total amount that will be charged for the tuition item during purchase.
    * @property {string} m_custom The custom price of the gift card.
    * @property {string} m_prorate_custom The amount of money for the prorate period. This should only be passed in the case of manual entry.
    * @property {string} s_mail The recipient's email.

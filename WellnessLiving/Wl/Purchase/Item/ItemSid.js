@@ -189,3 +189,10 @@ Wl_Purchase_Item_ItemSid.TUITION = 26;
  * @type {number}
  */
 Wl_Purchase_Item_ItemSid.TUITION_FEE = 27;
+
+/**
+ * Tuition prorate purchase item.
+ *
+ * @type {number}
+ */
+Wl_Purchase_Item_ItemSid.TUITION_PRORATE = 28;

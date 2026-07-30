@@ -73,10 +73,15 @@ function Wl_Appointment_Info_InfoModel()
   /**
    * @typedef {{}} Wl_Appointment_Info_InfoModel_a_repeat
    * @property {number[]} a_day Days of week to repeat appointment. Constants from {@link ADateWeekSid}.
-   * @property {string} dl_date Current appointment date in location timezone in MySQL date format.
-   * @property {string} dl_edit_from Start date for range edit in location timezone in MySQL date format.
-   * @property {string} dl_edit_to End date for range edit in location timezone in MySQL date format.
-   * @property {string} s_time Current appointment local start time in MySQL time format.
+   * @property {string} dl_edit_from Start date for range edit in location timezone.   This is a current appointment date.
+   * @property {string} dl_edit_to End date for range edit in location timezone.   This is a date of last created appointment in repeatable group.
+   * @property {string} dl_repeat_end Date when the repeat cycle stops, in location timezone. Empty if the repeat cycle does not stop at a certain date.
+   * @property {number} i_repeat_count Number of occurrences after that the repeat cycle stops. `0` if the repeat cycle does not stop after a certain number of occurrences.
+   * @property {number} i_repeat_period Frequency of the repeats. For example, `2` for every second week.
+   * @property {number} id_repeat_duration Measurement unit of `i_repeat_period`. One of {@link ADurationSid} constants.
+   * @property {number} id_repeat_end Type of repeat cycle end. One of {@link RsRepeatEndSid} constants.
+   * @property {boolean} is_month `true` if the appointment repeats monthly at the same date. `false` if the appointment repeats monthly at the same week day or does not repeat monthly.
+   * @property {string} s_time Current appointment local start time in MySQL time format.  This time is intended to be used to fill in empty fields on the form.  <p><b>WARNING!</b></p>  <p>If the session you are starting the reschedule with was previously changed, its time may NOT match  the time of the remaining sessions.</p>
    */
 
   /**

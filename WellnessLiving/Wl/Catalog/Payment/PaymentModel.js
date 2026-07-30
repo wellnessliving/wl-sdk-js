@@ -34,6 +34,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_event_list_a_discount} a_discount Discount applied to the event price. Staff-only: ignored when sent by a client.
    * @property {*[]} a_tax List of taxes to be applied to the event price. Keys are tax keys.  Values are tax amounts. If not specified, taxes are calculated based on class setup. Staff-only: ignored when sent by a client.
    * @property {string} k_class Key of the event class.
+   * @property {string} m_checkout The amount charged for this event at checkout. Staff-only: ignored when sent by a client. When provided for all events in the list, per-event amounts are used as-is without aggregate redistribution, allowing a non-uniform distribution across events (Mode 2). If omitted for any event, falls back to item-level `m_checkout` redistribution.
    * @property {string} m_price Price of the event for the tuition participant. If not specified, price is calculated based on class setup. Staff-only: ignored when sent by a client.
    * @property {string} uid Key of the tuition participant.
    */
@@ -95,6 +96,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {string} k_coupon_amount The key of the gift card amount, used only for gift cards.
    * @property {string} k_staff <b>Deprecated!</b>  The staff member key, used only for appointment tips.
    * @property {string} k_wellness_program The "Wellness Program" key. Set this for the insurance membership promotion. `a_wellness_program` array must be passed along with the key. See the array description above. <p>Use the following models to work with this type of promotion:</p> <ul>   <li>{@link Wl_Insurance_Catalog_ProgramListModel} to obtain list of active programs.</li>   <li>{@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} to get and validate fields for a given program.</li> </ul>
+   * @property {string} m_checkout Staff-only: ignored when sent by a client. Total amount to charge for the tuition item at checkout (Mode 1). Distributed proportionally across `a_event_list` entries based on their own final cost. Ignored when all entries in `a_event_list` already contain `m_checkout` values (Mode 2).
    * @property {string} m_prorate_custom The custom prorate price, used only for memberships. This is only used if `is_prorate_fix` is `true`.
    * @property {string} s_code The gift card code. This is required for gift cards.
    * @property {string} s_image The key of the image for the gift card. If empty, the business's first gift card image will be used. Specify this only for gift cards.

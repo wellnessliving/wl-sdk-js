@@ -20,6 +20,7 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
 
   /**
    * @typedef {{}} Wl_Billing_Bulk_PurchaseItemListModel_a_client_bill_a_client
+   * @property {?number} id_pay_method The payment method this client is charged with, which decides whether the client is surcharged and which surcharge applies. One of the {@link RsPayMethodSid} constants: {@link RsPayMethodSid} for a stored card, {@link RsPayMethodSid} for a stored bank account, and {@link RsPayMethodSid} when the client account is billed, which is never surcharged.
    * @property {boolean} is_warning `true` if the client has no default payment method on file, has no email on file while a receipt is to be sent, or is not eligible for at least one of the selected introductory items; `false` otherwise.
    * @property {string} text_mail The client email address. Empty string if the client has no email.
    * @property {string} text_name The client full name.
@@ -126,6 +127,35 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
   this.a_purchase_item = undefined;
 
   /**
+   * @typedef {{}} Wl_Billing_Bulk_PurchaseItemListModel_a_total_a_discount_list
+   * @property {number} i_user The number of clients that get this discount.
+   * @property {string} k_login_type The client type that gives the discount.
+   * @property {string} m_discount The discount this client type gives, summed over all its clients and all the selected items.
+   * @property {string} text_title The client type title.
+   */
+
+  /**
+   * @typedef {{}} Wl_Billing_Bulk_PurchaseItemListModel_a_total
+   * @property {Wl_Billing_Bulk_PurchaseItemListModel_a_total_a_discount_list} a_discount_list One entry per client type that discounts at least one of the selected items for at least one of the clients. Empty when no client type discount applies. Each element has the following structure:
+   * @property {string} m_subtotal_after_discount The price of the selected items for all the clients, with the client type discounts applied.
+   * @property {string} m_subtotal_before_discount The price of the selected items for all the clients, before any discount.
+   * @property {string} m_subtotal_per_client The price of the selected items for one client, before any discount. It is the same for every client, because a discount depends on the client type.
+   * @property {string} m_total_batch The amount the whole batch charges, with the client type discounts applied, the taxes accounted and surcharges added.
+   * @property {string} m_total_surcharge The surcharges of all the clients, each derived from the amount that single client is charged. Only the clients whose payment method the business surcharges are counted in. Zero when the client accounts are billed, or when neither `is_surcharge_ach` nor `is_surcharge_ecommerce` is requested.
+   * @property {string} m_total_tax The taxes of the selected items for all the clients. Zero when `is_tax` is `false`.
+   */
+
+  /**
+   * The totals of the bulk billing: the price of the selected items for a single client, and what the whole batch
+   *  adds up to once the client type discount of every client is applied. All amounts are money strings in the
+   *  currency of the business. Has the following structure:
+   *
+   * @post result
+   * @type {Wl_Billing_Bulk_PurchaseItemListModel_a_total}
+   */
+  this.a_total = undefined;
+
+  /**
    * Whether to charge the client default payment method (`true`) or bill the client account (`false`).
    *
    * @post post
@@ -140,6 +170,24 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
    * @type {boolean}
    */
   this.is_receipt_send = false;
+
+  /**
+   * Whether to apply the ACH surcharge.
+   *
+   * @get result
+   * @post post
+   * @type {boolean}
+   */
+  this.is_surcharge_ach = false;
+
+  /**
+   * Whether to apply the e-commerce surcharge.
+   *
+   * @get result
+   * @post post
+   * @type {boolean}
+   */
+  this.is_surcharge_ecommerce = false;
 
   /**
    * Whether to include the pre-configured taxes into the totals.
@@ -166,39 +214,6 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
    * @type {string}
    */
   this.k_location = "";
-
-  /**
-   * The total amount charged across every client that will be billed (per-client total multiplied by the number
-   *  of billed clients). Excludes taxes when {@link Wl_Billing_Bulk_PurchaseItemListModel.is_tax} is `false`.
-   *
-   * @post result
-   * @type {string}
-   */
-  this.m_batch = undefined;
-
-  /**
-   * The subtotal per client (sum of the selected purchase item prices, excluding taxes).
-   *
-   * @post result
-   * @type {string}
-   */
-  this.m_subtotal = undefined;
-
-  /**
-   * The tax amount per client. Always `0` when {@link Wl_Billing_Bulk_PurchaseItemListModel.is_tax} is `false`.
-   *
-   * @post result
-   * @type {string}
-   */
-  this.m_tax = undefined;
-
-  /**
-   * The total per client (subtotal plus tax).
-   *
-   * @post result
-   * @type {string}
-   */
-  this.m_total = undefined;
 
   /**
    * The review id that identifies this prepared bulk billing. Pass it to {@link Wl_Billing_Bulk_BulkBillingModel} to schedule the
@@ -235,7 +250,7 @@ WlSdk_ModelAbstract.extend(Wl_Billing_Bulk_PurchaseItemListModel);
  */
 Wl_Billing_Bulk_PurchaseItemListModel.prototype.config=function()
 {
-  return {"a_field":{"a_client_bill":{"post":{"result":true}},"a_client_restrict":{"post":{"result":true}},"a_product":{"get":{"result":true}},"a_promotion":{"get":{"result":true}},"a_purchase_item":{"post":{"post":true}},"is_payment_method_default":{"post":{"post":true}},"is_receipt_send":{"post":{"post":true}},"is_tax":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"get":true},"post":{"get":true}},"m_batch":{"post":{"result":true}},"m_subtotal":{"post":{"result":true}},"m_tax":{"post":{"result":true}},"m_total":{"post":{"result":true}},"s_id":{"post":{"result":true}},"s_uid":{"post":{"post":true}},"text_note":{"post":{"post":true}}}};
+  return {"a_field":{"a_client_bill":{"post":{"result":true}},"a_client_restrict":{"post":{"result":true}},"a_product":{"get":{"result":true}},"a_promotion":{"get":{"result":true}},"a_purchase_item":{"post":{"post":true}},"a_total":{"post":{"result":true}},"is_payment_method_default":{"post":{"post":true}},"is_receipt_send":{"post":{"post":true}},"is_surcharge_ach":{"get":{"result":true},"post":{"post":true}},"is_surcharge_ecommerce":{"get":{"result":true},"post":{"post":true}},"is_tax":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"get":true},"post":{"get":true}},"s_id":{"post":{"result":true}},"s_uid":{"post":{"post":true}},"text_note":{"post":{"post":true}}}};
 };
 
 /**
