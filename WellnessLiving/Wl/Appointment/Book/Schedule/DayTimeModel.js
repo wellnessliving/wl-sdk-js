@@ -17,6 +17,7 @@ function Wl_Appointment_Book_Schedule_DayTimeModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Schedule_DayTimeModel_a_time
    * @property {string} dt_date Date of the calendar.
+   * @property {string} dtu_date Same moment as `dt_date`, converted to real UTC date and time, in MySQL format.
    * @property {number} i_count The count of clients that have already booked this appointment.
    * @property {number} i_time Integer representation of appointment schedule time.
    * @property {number} i_wait The count of clients on the waiting list for this appointment.
