@@ -43,6 +43,9 @@ Core_Testing_Automation_CacheFlushModel.prototype.config=function()
 /**
  * Flushes all application caches.
  *
+ * Clears every cache layer used by the application via `CoreCache::flush_all()`. Intended for use by
+ * automation tests that need a clean cache state before or between test runs.
+ *
  * @function
  * @name Core_Testing_Automation_CacheFlushModel.get
  * @returns {WlSdk_Deferred_Promise}
