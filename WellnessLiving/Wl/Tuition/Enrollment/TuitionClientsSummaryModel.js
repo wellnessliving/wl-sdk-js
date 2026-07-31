@@ -18,7 +18,7 @@ function Wl_Tuition_Enrollment_TuitionClientsSummaryModel()
   /**
    * Summary of clients and events enrolled, per tuition.
    *
-   * Keys - tuition IDs from $a_tuition_id. Values - summary information:
+   * Keys - tuition IDs from {@link Wl_Tuition_Enrollment_TuitionClientsSummaryModel.a_tuition_id}. Values - summary information:
    *
    * @get result
    * @type {Wl_Tuition_Enrollment_TuitionClientsSummaryModel_a_summary[]}
