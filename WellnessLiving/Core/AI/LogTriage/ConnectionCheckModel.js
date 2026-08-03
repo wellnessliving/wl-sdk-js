@@ -1,5 +1,5 @@
 /**
- * Returns a fixed connection value and, when requested, selected log findings.
+ * Returns a fixed connection value and, when requested, selected findings.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -9,23 +9,34 @@ function Core_AI_LogTriage_ConnectionCheckModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @typedef {{}} Core_AI_LogTriage_ConnectionCheckModel_a_log
+   * @typedef {{}} Core_AI_LogTriage_ConnectionCheckModel_a_finding
+   * @property {string} dl_first_seen Local date of the first WatchUsageStat record.
+   * @property {string} dl_last_seen Local date of the last WatchUsageStat record.
+   * @property {string} dtu_first_seen UTC date/time of the first matching log record.
+   * @property {string} dtu_last_seen UTC date/time of the last matching log record.
    * @property {number} i_occurrence_count Number of matching records.
-   * @property {string} s_first_seen Date of the first matching record.
-   * @property {string} s_last_seen Date of the last matching record.
-   * @property {string} s_message Log message.
-   * @property {string} s_source Log source: `error` or `slow`.
+   * @property {number} id_source Finding source from {@link Core_AI_LogTriage_TriageSourceSid}.
+   * @property {string} s_object WatchUsageStat object. Present for this source.
+   * @property {string} text_message Log message. Present for log sources.
    */
 
   /**
-   * Grouped log findings.
+   * Grouped findings.
    *
    * One element contains:
    *
    * @get result
-   * @type {Core_AI_LogTriage_ConnectionCheckModel_a_log[]}
+   * @type {Core_AI_LogTriage_ConnectionCheckModel_a_finding[]}
    */
-  this.a_log = undefined;
+  this.a_finding = undefined;
+
+  /**
+   * IDs of finding sources from {@link Core_AI_LogTriage_TriageSourceSid}.
+   *
+   * @get get
+   * @type {number[]}
+   */
+  this.a_id_source = undefined;
 
   /**
    * Connection check value.
@@ -36,12 +47,12 @@ function Core_AI_LogTriage_ConnectionCheckModel()
   this.i_result = undefined;
 
   /**
-   * Whether log findings must be returned.
+   * Whether findings must be returned.
    *
    * @get get
    * @type {boolean}
    */
-  this.is_log = false;
+  this.is_finding = false;
 
   /**
    * Date/time mask accepted by LogSearchQuery.
@@ -59,15 +70,7 @@ function Core_AI_LogTriage_ConnectionCheckModel()
    * @get get
    * @type {string}
    */
-  this.s_search = "";
-
-  /**
-   * Log source: `all`, `error`, or `slow`.
-   *
-   * @get get
-   * @type {string}
-   */
-  this.s_source = "all";
+  this.text_search = "";
 
   this.changeInit();
 }
@@ -79,11 +82,11 @@ WlSdk_ModelAbstract.extend(Core_AI_LogTriage_ConnectionCheckModel);
  */
 Core_AI_LogTriage_ConnectionCheckModel.prototype.config=function()
 {
-  return {"a_field":{"a_log":{"get":{"result":true}},"i_result":{"get":{"result":true}},"is_log":{"get":{"get":true}},"s_date_mask":{"get":{"get":true}},"s_search":{"get":{"get":true}},"s_source":{"get":{"get":true}}}};
+  return {"a_field":{"a_finding":{"get":{"result":true}},"a_id_source":{"get":{"get":true}},"i_result":{"get":{"result":true}},"is_finding":{"get":{"get":true}},"s_date_mask":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
 };
 
 /**
- * Returns a fixed connection value and, when requested, selected log findings.
+ * Returns a fixed connection value and, when requested, selected findings.
  *
  * @function
  * @name Core_AI_LogTriage_ConnectionCheckModel.get
