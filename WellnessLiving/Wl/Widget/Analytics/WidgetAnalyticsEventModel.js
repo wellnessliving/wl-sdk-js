@@ -93,7 +93,9 @@ Wl_Widget_Analytics_WidgetAnalyticsEventModel.prototype.config=function()
 /**
  * Accepts a Widget analytics event.
  *
- * Validates the event envelope and payload, stores the event, and schedules asynchronous processing.
+ * Validates the event envelope and payload. An `abandoned_checkout` event is stored and scheduled for
+ * asynchronous processing. A `purchase` event marks any pending abandoned checkout event for the same client
+ * and checkout type as checkout-complete, so the "Abandoned checkout" trigger stops enrolling the client for it.
  *
  * @function
  * @name Wl_Widget_Analytics_WidgetAnalyticsEventModel.post

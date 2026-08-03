@@ -51,6 +51,22 @@ function Wl_Video_VideoListModel()
   this.a_level = undefined;
 
   /**
+   * @typedef {{}} Wl_Video_VideoListModel_a_level_filter
+   * @property {string} k_video_level Level key.
+   * @property {string} text_title Level name.
+   */
+
+  /**
+   * All levels to offer in the level filter of the video catalog.
+   *
+   * Empty array if levels are not shown in this business. Each element:
+   *
+   * @get result
+   * @type {Wl_Video_VideoListModel_a_level_filter[]}
+   */
+  this.a_level_filter = undefined;
+
+  /**
    * @typedef {{}} Wl_Video_VideoListModel_a_list_a_staff
    * @property {string} k_staff Staff key. Only for legacy apps.
    * @property {string} text_name Full name of the staff.
@@ -163,6 +179,23 @@ function Wl_Video_VideoListModel()
   this.a_staff = undefined;
 
   /**
+   * @typedef {{}} Wl_Video_VideoListModel_a_staff_filter
+   * @property {string} k_staff Staff member key. Only for legacy applications.
+   * @property {string} text_name Full name of the staff member.
+   * @property {string} uid_staff User key of the staff member.
+   */
+
+  /**
+   * All staff members to offer in the staff filter of the video catalog.
+   *
+   * Each element:
+   *
+   * @get result
+   * @type {Wl_Video_VideoListModel_a_staff_filter[]}
+   */
+  this.a_staff_filter = undefined;
+
+  /**
    * A list of staff members who appear in videos.
    *
    * @get get
@@ -185,6 +218,22 @@ function Wl_Video_VideoListModel()
    * @type {string[]}
    */
   this.a_video_tag = undefined;
+
+  /**
+   * @typedef {{}} Wl_Video_VideoListModel_a_video_tag_filter
+   * @property {string} k_video_tag Tag key.
+   * @property {string} text_title Tag name.
+   */
+
+  /**
+   * All tags to offer in the tag filter of the video catalog.
+   *
+   * Each element:
+   *
+   * @get result
+   * @type {Wl_Video_VideoListModel_a_video_tag_filter[]}
+   */
+  this.a_video_tag_filter = undefined;
 
   /**
    * Page to return.
@@ -296,7 +345,7 @@ WlSdk_ModelAbstract.extend(Wl_Video_VideoListModel);
  */
 Wl_Video_VideoListModel.prototype.config=function()
 {
-  return {"a_field":{"a_calorie":{"get":{"get":true}},"a_duration":{"get":{"get":true}},"a_level":{"get":{"get":true}},"a_list":{"get":{"result":true}},"a_location":{"get":{"get":true}},"a_order":{"put":{"post":true}},"a_page":{"get":{"result":true}},"a_source":{"get":{"get":true}},"a_staff":{"get":{"get":true}},"a_staff_uid":{"get":{"get":true}},"a_video_category":{"get":{"get":true}},"a_video_tag":{"get":{"get":true}},"i_page":{"get":{"get":true}},"id_embed_source":{"get":{"result":true},"put":{"result":true}},"id_order":{"get":{"get":true,"result":true}},"id_sort":{"get":{"get":true,"result":true}},"is_backend":{"get":{"get":true},"put":{"get":true}},"json_setup":{"get":{"result":true},"put":{"result":true}},"k_business":{"get":{"get":true},"put":{"get":true}},"text_search":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_calorie":{"get":{"get":true}},"a_duration":{"get":{"get":true}},"a_level":{"get":{"get":true}},"a_level_filter":{"get":{"result":true}},"a_list":{"get":{"result":true}},"a_location":{"get":{"get":true}},"a_order":{"put":{"post":true}},"a_page":{"get":{"result":true}},"a_source":{"get":{"get":true}},"a_staff":{"get":{"get":true}},"a_staff_filter":{"get":{"result":true}},"a_staff_uid":{"get":{"get":true}},"a_video_category":{"get":{"get":true}},"a_video_tag":{"get":{"get":true}},"a_video_tag_filter":{"get":{"result":true}},"i_page":{"get":{"get":true}},"id_embed_source":{"get":{"result":true},"put":{"result":true}},"id_order":{"get":{"get":true,"result":true}},"id_sort":{"get":{"get":true,"result":true}},"is_backend":{"get":{"get":true},"put":{"get":true}},"json_setup":{"get":{"result":true},"put":{"result":true}},"k_business":{"get":{"get":true},"put":{"get":true}},"text_search":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
