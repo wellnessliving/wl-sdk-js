@@ -27,7 +27,7 @@ function Wl_Pay_Form_EnvironmentUserModel()
   this.a_card_system = undefined;
 
   /**
-   * A list of payment methods enabled for staff members. The ID is one of {@link RsPayMethodSid} constants.
+   * A list of payment methods enabled for staff members. The ID is one of {@link WlPayMethodSid} constants.
    * The value is always `true`.
    *
    * @get result
@@ -37,7 +37,7 @@ function Wl_Pay_Form_EnvironmentUserModel()
 
   /**
    * @typedef {{}} Wl_Pay_Form_EnvironmentUserModel_a_method_support
-   * @property {number} id_pay_method The ID of type of payment method. One of {@link RsPayMethodSid} constants.
+   * @property {number} id_pay_method The ID of type of payment method. One of {@link WlPayMethodSid} constants.
    * @property {*} is_client Determines whether this method is available for clients. This field is only returned for custom payment methods.
    * @property {?string} k_pay_method The key of the custom payment method.
    * This will be `null` if this payment method isn't customized.
@@ -50,7 +50,7 @@ function Wl_Pay_Form_EnvironmentUserModel()
    * Each element of the array has the following structure:
    * <dl>
    *   <dt>int <var>id_pay_method</var></dt>
-   *   <dd>The ID of type of payment method. One of {@link RsPayMethodSid} constants.</dd>
+   *   <dd>The ID of type of payment method. One of {@link WlPayMethodSid} constants.</dd>
    *   <dt>bool [<var>is_client</var>]</dt>
    *   <dd>Determines whether this method is available for clients. This field is only returned for custom payment methods.</dd>
    *   <dt>string|null <var>k_pay_method</var></dt>
@@ -90,7 +90,7 @@ function Wl_Pay_Form_EnvironmentUserModel()
   /**
    * Represents information about payment processors.
    *
-   * Keys are payment methods IDs, one of {@link RsPayMethodSid} constants.
+   * Keys are payment methods IDs, one of {@link WlPayMethodSid} constants.
    *
    * Value is the following array: <dl>
    *   <dt>array|null <var>a_public_keys</var></dt>

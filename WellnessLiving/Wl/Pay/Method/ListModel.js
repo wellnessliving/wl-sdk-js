@@ -12,7 +12,7 @@ function Wl_Pay_Method_ListModel()
 
   /**
    * @typedef {{}} Wl_Pay_Method_ListModel_a_pay_method
-   * @property {number} id_pay_method The payment method type ID. One of {@link RsPayMethodSid} constants.
+   * @property {number} id_pay_method The payment method type ID. One of {@link WlPayMethodSid} constants.
    * @property {?string} k_pay_method Payment method key. May be <tt>null</tt> if it is a system payment method.
    * @property {string} s_title The payment method name.
    */
@@ -24,7 +24,7 @@ function Wl_Pay_Method_ListModel()
    *     int <var>id_pay_method</var>
    *   </dt>
    *   <dd>
-   *     The payment method type ID. One of {@link RsPayMethodSid} constants.
+   *     The payment method type ID. One of {@link WlPayMethodSid} constants.
    *   </dd>
    *   <dt>
    *     string|null <var>k_pay_method</var>

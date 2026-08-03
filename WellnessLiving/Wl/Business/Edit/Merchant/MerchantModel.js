@@ -14,7 +14,7 @@ function Wl_Business_Edit_Merchant_MerchantModel()
 
   /**
    * @typedef {{}} Wl_Business_Edit_Merchant_MerchantModel_a_business_merchant_list_a_pay_method
-   * @property {number} id_pay_method The payment method ID. One of the {@link RsPayMethodSid} constants.
+   * @property {number} id_pay_method The payment method ID. One of the {@link WlPayMethodSid} constants.
    * @property {string} text_title The payment method title.
    */
   /**
@@ -23,7 +23,7 @@ function Wl_Business_Edit_Merchant_MerchantModel()
    * @property {Wl_Business_Edit_Merchant_MerchantModel_a_business_merchant_list_a_pay_method} a_pay_method A list of
    * supported payment methods:<dl>
    * <dt>int <tt>id_pay_method</tt></dt>
-   * <dd>The payment method ID. One of the {@link RsPayMethodSid} constants.</dd>
+   * <dd>The payment method ID. One of the {@link WlPayMethodSid} constants.</dd>
    * <dt>string <tt>text_title</tt></dt>
    * <dd>Title of the payment method.</dd>
    *   </dl>
@@ -42,7 +42,7 @@ function Wl_Business_Edit_Merchant_MerchantModel()
    *   <dt>array <var>a_pay_method</var></dt>
    *   <dd>A list of supported payment methods:<dl>
    *     <dt>int <var>id_pay_method</var></dt>
-   *     <dd>The payment method ID. One of the {@link RsPayMethodSid} constants.</dd>
+   *     <dd>The payment method ID. One of the {@link WlPayMethodSid} constants.</dd>
    *     <dt>string <var>text_title</var></dt>
    *     <dd>The payment method title.</dd>
    *   </dl></dd>

@@ -52,7 +52,7 @@ function Wl_Pay_Processor_StripeCom_StripeComPayInitModel()
   /**
    * ID of pay method.
    *
-   * One of {@link RsPayMethodSid} constants.
+   * One of {@link WlPayMethodSid} constants.
    *
    * `null` in case when not initialized yet.
    *

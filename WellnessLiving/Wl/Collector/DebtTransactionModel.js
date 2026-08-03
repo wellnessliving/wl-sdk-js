@@ -14,7 +14,7 @@ function Wl_Collector_DebtTransactionModel()
    * @typedef {{}} Wl_Collector_DebtTransactionModel_a_transaction
    * @property {string} dtu_pay The date and time in UTC of the payment transaction.
    * @property {string} m_pay_amount The amount of the payment's transaction.
-   * @property {number} id_pay_method The payment method ID that was used for the payment. One of {@link RsPayMethodSid} constants.
+   * @property {number} id_pay_method The payment method ID that was used for the payment. One of {@link WlPayMethodSid} constants.
    * @property {boolean} is_pay_collections Defines whether the payment was performed via a third party service.
    * `true` if the payment was performed via a third party service and this transaction is
    * responsible for an account credit transaction for that payment. See {@link Wl_Collector_DebtPayModel}.
@@ -36,7 +36,7 @@ function Wl_Collector_DebtTransactionModel()
    *   <dt>string <var>m_pay_amount</var></dt>
    *   <dd>The amount of the payment's transaction.</dd>
    *   <dt>int <var>id_pay_method</var></dt>
-   *   <dd>The payment method ID that was used for the payment. One of {@link RsPayMethodSid} constants.</dd>
+   *   <dd>The payment method ID that was used for the payment. One of {@link WlPayMethodSid} constants.</dd>
    *   <dt>bool <var>is_pay_collections</var></dt>
    *   <dd>Defines whether the payment was performed via a third party service.
    *     `true` if the payment was performed via a third party service and this transaction is

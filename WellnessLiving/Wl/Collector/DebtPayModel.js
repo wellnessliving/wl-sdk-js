@@ -23,9 +23,9 @@ function Wl_Collector_DebtPayModel()
 
   /**
    * The payment method ID.
-   * One of {@link RsPayMethodSid} constants.
+   * One of {@link WlPayMethodSid} constants.
    *
-   * `null` if the payment method is unknown. In such cases, {@link RsPayMethodSid.CASH} would be used.
+   * `null` if the payment method is unknown. In such cases, {@link WlPayMethodSid.CASH} would be used.
    *
    * @post post
    * @type {?number}

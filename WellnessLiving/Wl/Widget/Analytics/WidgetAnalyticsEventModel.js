@@ -10,7 +10,7 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
 
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item
-   * @property {number} id_purchase_item Purchase item ID. See {@link RsPurchaseItemSid}.
+   * @property {number} id_purchase_item Purchase item ID. See {@link Wl_Purchase_Item_ItemSid}.
    * @property {number} id_service Service ID. See {@link Wl_Service_ServiceSid}.
    * @property {?string} k_enrollment_block Enrollment block key for an event item. Empty for all other item types.
    * @property {string} k_item Selected item key.

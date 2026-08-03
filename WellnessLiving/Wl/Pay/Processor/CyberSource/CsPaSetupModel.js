@@ -64,7 +64,7 @@ function Wl_Pay_Processor_CyberSource_CsPaSetupModel()
    *
    * `null` or an empty string if payment is performed with a standard payment method.
    *
-   * Only payment methods based on {@link RsPayMethodSid.ECOMMERCE} are accepted.
+   * Only payment methods based on {@link WlPayMethodSid.ECOMMERCE} are accepted.
    *
    * @post post
    * @type {?string}
