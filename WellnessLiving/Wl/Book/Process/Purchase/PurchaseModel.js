@@ -22,7 +22,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    * @property {string} f_price The price, always '0'.
    * @property {number} i_count Login prize remaining quantity.
    * @property {number} i_limit The limit of sessions that can be booked with reward prize.
-   * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} k_id The key of the Purchase Option in the database. The table depends on <tt>id_purchase_item</tt>.
    * @property {string} k_login_prize Key of login prize.
    * @property {string} s_value The unique identifier.
@@ -151,7 +151,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    * @property {number} [i_session] This is only set for purchases of single sessions. The number of sessions booked simultaneously.
    * @property {number} [id_program_category] This is only set for promotions. The ID of the promotion program category. One of the {@link RsProgramCategorySid} constants.
    * @property {number} [id_program_type] This is only set for promotions. The ID of the promotion program type. One of the {@link RsProgramTypeSid} constants.
-   * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {boolean} [is_contract] If `true`, the Purchase Option requires a contract assignment. Otherwise, this will be `false`.
    * @property {boolean} [is_convert] If `true`, the Purchase Option converts to another instance upon expiration. Otherwise, this will be `false`.
    * @property {boolean} [is_renew] If `true`, the Purchase Option is renewable. Otherwise, this will be `false`.
@@ -214,7 +214,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    * @property {string} f_price The price, always '0'.
    * @property {number} i_limit The limit of sessions that can be booked with reward prize.
    * @property {number} i_score Prize price in points.
-   * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item The ID of Purchase Option type. One of the {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} k_id The key of the Purchase Option in the database. The table depends on <tt>id_purchase_item</tt>.
    * @property {string} k_reward_prize Key of redeemable prize.
    * @property {string} s_value The unique identifier.
@@ -245,7 +245,7 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseModel_a_session_pass
    * @property {number} i_remain Number of remaining visits on session pass.
    * @property {string} k_session_pass Session pass key.
-   * @property {number} id_purchase_item Type of the session pass purchase. One of {@link RsPurchaseItemSid} constants.
+   * @property {number} id_purchase_item Type of the session pass purchase. One of {@link Wl_Purchase_Item_ItemSid} constants.
    * @property {string} s_title Session pass title.
    */
 

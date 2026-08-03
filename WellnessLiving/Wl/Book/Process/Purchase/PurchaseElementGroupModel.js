@@ -11,8 +11,8 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item
    * @property {number} [i_session] Number of sessions which are booked simultaneously.
-   *      Make sense only when `id_purchase_item` = {@link RsPurchaseItemSid.CLASS_PERIOD}.
-   * @property {number} id_purchase_item The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
+   *      Make sense only when `id_purchase_item` = {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
+   * @property {number} id_purchase_item The ID of the purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.
    * @property {string} k_id The key of the purchase item in the database.
    * @property {string} [k_login_prize] The key of the user's prize.
    *  Not empty only if the user wants to make a free visit from the prize.

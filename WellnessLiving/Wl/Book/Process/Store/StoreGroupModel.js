@@ -36,7 +36,7 @@ function Wl_Book_Process_Store_StoreGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_Store_StoreGroupModel_a_purchase_item_check
    * @property {number} i_session The number of sessions that this item can cover.
-   *   This only applies to items of type {@link RsPurchaseItemSid.CLASS_PERIOD}.
+   *   This only applies to items of type {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
    * @property {string} s_value The unique identifier of the item being checked.
    * This corresponds to one of the following values:
    * <ul>
