@@ -196,6 +196,8 @@ function Wl_Event_EventListModel()
   /**
    * List of staff UIDs applied by filter.
    *
+   * `null` if the filter by staff is not applied.
+   *
    * Cannot be specified together with {@link Wl_Event_EventListModel.a_staff}.
    *
    * @get get

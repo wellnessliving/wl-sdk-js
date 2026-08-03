@@ -39,7 +39,8 @@ function Wl_Promotion_PromotionModel()
    * @property {Wl_Promotion_PromotionModel_a_promotion_a_access_a_event} a_event A list of available events.
    * @property {Wl_Promotion_PromotionModel_a_promotion_a_access_a_resource} a_resource A list of available assets.
    * @property {Wl_Promotion_PromotionModel_a_promotion_a_access_a_service} a_service A list of available appointment types.
-   * @property {boolean} is_class_all This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found in the list of available classes and events.
+   * @property {number} id_class_access Class access flag, one of {@link AFlagSid} constants. {@link AFlagSid} if any class in the business can be visited with this Purchase Option, including classes created later. {@link AFlagSid} if only selected classes can be visited with this Purchase Option. Selected classes can be found in the list of available classes and events.
+   * @property {boolean} is_class_all This will be `true` if any class in the business can be visited with this Purchase Option. Otherwise, this will be `false` if only selected classes can be visited with this Purchase Option. Selected classes can be found in the list of available classes and events. Equivalent to `id_class_access` being {@link AFlagSid}.
    * @property {boolean} is_event_all This will be `true` if any event in the business can be visited with this Purchase Option. Otherwise, this will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found in the list of available classes and events.
    */
 

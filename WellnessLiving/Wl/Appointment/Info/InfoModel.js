@@ -81,7 +81,7 @@ function Wl_Appointment_Info_InfoModel()
    * @property {number} id_end Type of repeat cycle end. One of {@link RsRepeatEndSid} constants.
    * @property {number} id_period Measurement unit of `i_period`. One of {@link ADurationSid} constants.
    * @property {boolean} is_month `true` if the appointment repeats monthly at the same date. `false` if the appointment repeats monthly at the same week day or does not repeat monthly.
-   * @property {string} s_time Current appointment local start time in MySQL time format.  This time is intended to be used to fill in empty fields on the form.  <p><b>WARNING!</b></p>  <p>If the session you are starting the reschedule with was previously changed, its time may NOT match  the time of the remaining sessions.</p>
+   * @property {string} s_time Current appointment local start time in MySQL time format (`HH:MM:SS`).  <p><b>WARNING!</b></p>  <p>If the session you are starting the reschedule with was previously changed, its time may NOT match  the time of the remaining sessions.</p>
    */
 
   /**

@@ -103,9 +103,18 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_notification
+   * @property {boolean} is_attach `true` to attach calendar file, `false` to not attach calendar file.
+   * @property {boolean} is_campaign Whether mail should track as a part of campaign. `true` if yes, `false` if no.
    * @property {boolean} is_mail `true` to send mail; `false` to not send.
    * @property {boolean} is_push `true` to send push notification; `false` to not send.
    * @property {boolean} is_sms `true` to send SMS; `false` to not send.
+   * @property {string} text_business_name Business name.
+   * @property {string} text_business_reply Reply email address.
+   * @property {string} text_campaign Campaign name.
+   * @property {string} text_content_mail Email content.
+   * @property {string} text_push Push notification content.
+   * @property {string} text_sms SMS content.
+   * @property {string} text_subject Email subject.
    */
 
   /**
