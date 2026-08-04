@@ -67,6 +67,8 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
    * @property {number} i_age_to The required maximum client age to book an appointment (years part).
    * @property {number} i_age_to_month The required maximum client age to book an appointment (months part).
    * @property {number} i_duration The appointment duration in minutes.
+   * @property {number} i_padding_after Padding time after the end of the appointment, in minutes. Used to detect when a staff member is   busy after this appointment when booking back-to-back appointments.
+   * @property {number} i_padding_before Padding time before the beginning of the appointment, in minutes. Used to detect when a staff member is   busy before this appointment when booking back-to-back appointments.
    * @property {number} i_price The price type ID. One of {@link RsServicePriceSid} constants.
    * @property {number} id_book_flow The type of client booking flow. One of {@link Wl_Service_ServiceBookFlowSid} constants.
    * @property {number} id_deny_reason The ID of the reason why the client cannot book this service. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. `null` if there is no deny reason.

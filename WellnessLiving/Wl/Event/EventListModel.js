@@ -78,6 +78,12 @@ function Wl_Event_EventListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_schedule_a_repeat
+   * @property {number} i_repeat Count of the periods which are specified in `id_repeat`.
+   * @property {number} id_repeat Measuring unit of `i_repeat` (week, month, year) from {@link ADurationSid}.
+   */
+
+  /**
    * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_schedule_a_staff_member
    * @property {string} k_staff_member Staff member key.
    * @property {string} text_business_role Staff member role title.
@@ -91,6 +97,7 @@ function Wl_Event_EventListModel()
   /**
    * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_schedule
    * @property {number[]} a_day List of weekday numbers when event occur.
+   * @property {Wl_Event_EventListModel_a_event_list_a_schedule_a_repeat} a_repeat Information about event repeating.
    * @property {Wl_Event_EventListModel_a_event_list_a_schedule_a_staff_member} a_staff_member List of staff members providing event session.
    * @property {string} dl_end End date of the schedule in `MySql` format.
    * @property {string} dl_start Start date of the schedule in `MySql` format.
