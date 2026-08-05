@@ -117,7 +117,7 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
    * @typedef {{}} Wl_Profile_Attendance_Schedule_PaymentMultipleModel_a_visit_pay
    * @property {string[]} a_shop_product_option Selected for payment products options keys.
    * @property {string} k_visit The visit key.
-   * @property {string} text_key Selected pay option to apply. The key has structure {@link Wl_Visit_Pay_PayChangeModel.text_key}, plus an  extra `k_promotion:0` (Drop-in) and `k_appointment_deposit:[k_appointment]` (deposit-only) formats  returned by `_getPromotionApplicable()`.
+   * @property {string} text_key Selected pay option to apply. The key has structure {@link Wl_Visit_Pay_PayChangeModel.text_key}, plus an  extra `k_promotion:0` (Drop-in) and `k_appointment_deposit:[k_appointment]` (deposit-only).
    * @property {string} uid The user key.
    */
 
