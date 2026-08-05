@@ -16,7 +16,6 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
    * @property {number} id_purchase_item Purchase item ID. See {@link RsPurchaseItemSid}.
    * @property {number} id_service Service ID. See {@link Wl_Service_ServiceSid}.
    * @property {?string} k_class_period Selected class period key for classes/events booking items. `null` if class period is not specified or not applicable.
-   * @property {?string} k_enrollment_block Optional enrollment block key for an event item. `''` when an enrollment block is not available.
    * @property {string} k_item Selected item key.
    * @property {?string} m_price Checkout item price in the location currency. `null` if not available.
    * @property {string} text_service_name Item name snapshot from checkout.

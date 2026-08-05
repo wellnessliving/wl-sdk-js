@@ -100,9 +100,11 @@ function Wl_Schedule_Page_PageElementModel()
 
   /**
    * @typedef {{}} Wl_Schedule_Page_PageElementModel_a_staff
-   * @property {string} k_staff The staff member key.
+   * @property {string} k_staff Deprecated staff key. Returned only to applications in `APPS_USE_OLD_K_STAFF`.
    * @property {string} s_family The surname of the staff member.
    * @property {string} s_name The first name of the staff member.
+   * @property {string} s_name_full The full name of the staff member.
+   * @property {string} uid_staff The staff user key.
    */
 
   /**
