@@ -117,7 +117,7 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
    * @typedef {{}} Wl_Profile_Attendance_Schedule_PaymentMultipleModel_a_visit_pay
    * @property {string[]} a_shop_product_option Selected for payment products options keys.
    * @property {string} k_visit The visit key.
-   * @property {string} text_key Selected pay option to apply. The key has structure {@link Wl_Visit_Pay_PayChangeModel.text_key}.
+   * @property {string} text_key Selected pay option to apply. The key has structure {@link Wl_Visit_Pay_PayChangeModel.text_key}, plus an  extra `k_promotion:0` (Drop-in) and `k_appointment_deposit:[k_appointment]` (deposit-only) formats  returned by `_getPromotionApplicable()`.
    * @property {string} uid The user key.
    */
 
@@ -208,6 +208,9 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
   /**
    * The user's key.
    *
+   * Can be empty when the payment is for one or more walk-in visits, in which case
+   *    {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.a_appointment} must be passed instead.
+   *
    * @get get
    * @post get
    * @type {string}
@@ -242,7 +245,7 @@ Wl_Profile_Attendance_Schedule_PaymentMultipleModel.prototype.config=function()
  * @param {string} k_business The business key.
  * @param {?string} k_location The location key. Can be `null` in case when {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.a_appointment} passed.
  * @param {string} k_visit Last booked visit key.
- * @param {string} uid The user's key.
+ * @param {string} uid The user's key. Can be empty when the payment is for one or more walk-in visits, in which case {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.a_appointment} must be passed instead.
  * @param {boolean} is_simple When set to `true` it's mean that need load full information about unpaid visits: * List of available/existing POs. * List of unpaid addons. When set to `false` loaded only general information about visits on passed day.
  * @param {string[]} a_appointment List of appointment keys for which to load unpaid data. When specified, appointments are looked up directly by these keys, instead of by all unpaid appointments booked for {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.uid} on the day specified in {@link Wl_Profile_Attendance_Schedule_PaymentMultipleModel.dtl_date}.
  * @returns {Wl_Profile_Attendance_Schedule_PaymentMultipleModel}
