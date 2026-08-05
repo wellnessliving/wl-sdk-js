@@ -34,12 +34,12 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.a_appointment = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product_a_repeat_a_resource
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_resource
    * @property {number} [i_index] The asset index on the layout. Specify this only if the asset category has a layout.
    * @property {string} k_resource The asset.
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product_a_repeat
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_repeat
    * @property {number[]} [a_week] The days of week when appointment repeats. One of the {@link ADateWeekSid} constants.
    * This will be empty if the appointment doesn't repeat weekly.
    * @property {string} [dl_end] The date when the appointment's repeat cycle stops. This will be empty if the repeat cycle doesn't stop at a certain date.
@@ -52,7 +52,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    * <tt>null</tt> if the appointment doesn't repeat monthly.
    */
   /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product
+   * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_product
    * @property {number} i_count The add-on count
    * @property {number} [i_count_use] The add-on use count.
    * @property {string} k_shop_product_option The key of add-on.
@@ -69,13 +69,13 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_book_data
    * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict} [a_conflict] Information about booking conflicts. Keys are bookings dates/times in MySQL format in UTC. Values are arrays with next keys:
-   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product} [a_product] Add-ons to the appointment. Specify this for appointment bookings only.
+   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_product} [a_product] Add-ons to the appointment. Specify this for appointment bookings only.
    * Old format: array keys refer to primary keys.
    * New format: each element is an array:
-   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product_a_repeat} [a_repeat] Recurring booking information:
+   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_repeat} [a_repeat] Recurring booking information:
    *
    * This will be empty if the appointment isn't recurring.
-   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_conflict_a_product_a_repeat_a_resource} [a_resource] A list of assets for the appointment booking.
+   * @property {Wl_Appointment_Book_Finish_Finish47Model_a_book_data_a_resource} [a_resource] A list of assets for the appointment booking.
    * Keys refer to asset categories.  Values refer to arrays with the next keys:
    *
    * Specify this only for the appointment booking.
@@ -104,8 +104,6 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    * The difference between this an <tt>k_staff</tt> is that this value must be set only in cases
    * when you want to add a customer to an appointment that already exists.
    * Specify this for appointment bookings only.
-   *
-   * @property {string} [m_tip_appointment] The amount of selected tips.
    */
 
   /**
@@ -114,7 +112,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    * @post post
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_book_data}
    */
-  this.a_book_data = [];
+  this.a_book_data = {};
 
   /**
    * The activity keys of the bookings that were made.
@@ -126,9 +124,18 @@ function Wl_Appointment_Book_Finish_Finish47Model()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_notification
+   * @property {boolean} [is_attach] `true` to attach calendar file, `false` to not attach calendar file.
+   * @property {boolean} [is_campaign] Whether mail should track as a part of campaign. `true` if yes, `false` if no.
    * @property {boolean} [is_mail] `true` to send mail; `false` to not send.
-   * @property {boolean} [is_sms] `true` to send SMS; `false` to not send.
    * @property {boolean} [is_push] `true` to send push notification; `false` to not send.
+   * @property {boolean} [is_sms] `true` to send SMS; `false` to not send.
+   * @property {string} [text_business_name] Business name.
+   * @property {string} [text_business_reply] Reply email address.
+   * @property {string} [text_campaign] Campaign name.
+   * @property {string} [text_content_mail] Email content.
+   * @property {string} [text_push] Push notification content.
+   * @property {string} [text_sms] SMS content.
+   * @property {string} [text_subject] Email subject.
    */
 
   /**
@@ -138,7 +145,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    * @post post
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_notification}
    */
-  this.a_notification = [];
+  this.a_notification = {};
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_pay_form_pa
@@ -193,10 +200,6 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_Finish47Model_a_payment_data
    * @property {number} id_purchase_item Type of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.
-   * @property {string} k_id Promotion key or appointment key. Depends on <tt>id_purchase_item</tt> of this array.
-   * @property {string} k_login_promotion Login promotion key.
-   * @property {string} k_session_pass Session pass key.
-   * @property {string} text_discount_code Discount code.
    */
 
   /**
@@ -205,7 +208,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    * @post post
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_payment_data}
    */
-  this.a_payment_data = [];
+  this.a_payment_data = {};
 
   /**
    * The purchase item keys.
@@ -253,7 +256,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    * @post get
    * @type {Wl_Appointment_Book_Finish_Finish47Model_a_user}
    */
-  this.a_user = [];
+  this.a_user = {};
 
   /**
    * The keys of visits.
@@ -290,8 +293,12 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.id_mode = 0;
 
   /**
-   * The payment type ID for the appointment. One of the {@link Wl_Appointment_PaySid} constants.
+   * The payment type ID for the service.
    *
+   * One of the {@link Wl_Appointment_PaySid} constants.
+   *
+   * @deprecated Payment type is calculated and verified automatically from booking data.
+   The field is left for compatibility with old code and to control the new algorithm.
    * @post get
    * @type {number}
    */
@@ -362,8 +369,16 @@ function Wl_Appointment_Book_Finish_Finish47Model()
   this.k_timezone = null;
 
   /**
-   * The sum paid for a deposit.
+   * The sum paid without tax.
    *
+   * Only used for the following types of purchases:
+   * * {@link Wl_Purchase_Item_ItemSid.SERVICE}
+   * * {@link Wl_Purchase_Item_ItemSid.RESOURCE}
+   * * {@link Wl_Purchase_Item_ItemSid.RESOURCE_DEPOSIT}
+   * * {@link Wl_Purchase_Item_ItemSid.APPOINTMENT_DEPOSIT}
+   *
+   * @deprecated Paid amount is calculated and verified automatically from booking data.
+   The field is left for compatibility with old code and to control the new algorithm.
    * @post post
    * @type {string}
    */

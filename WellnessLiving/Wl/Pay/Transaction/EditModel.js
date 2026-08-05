@@ -62,7 +62,7 @@ function Wl_Pay_Transaction_EditModel()
   this.html_date = undefined;
 
   /**
-   * New base payment method of payment transaction. One of {@link RsPayMethodSid} constants.
+   * New base payment method of payment transaction. One of {@link WlPayMethodSid} constants.
    *
    * Not specified if should not be changed.
    *

@@ -35,7 +35,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   /**
    * The number of sessions which are booked simultaneously.
    *
-   * Required when {@link Wl_Book_Process_Purchase_PurchaseElementModel.id_purchase_item} = {@link RsPurchaseItemSid.CLASS_PERIOD}.
+   * Required when {@link Wl_Book_Process_Purchase_PurchaseElementModel.id_purchase_item} = {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
    *
    * @get get
    * @type {number}
@@ -43,7 +43,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.i_session = 0;
 
   /**
-   * The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
+   * The ID of the purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.
    *
    * @get get
    * @type {number}
@@ -201,11 +201,11 @@ Wl_Book_Process_Purchase_PurchaseElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Book_Process_Purchase_PurchaseElementModel.instanceGet
- * @param {number} id_purchase_item The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
+ * @param {number} id_purchase_item The ID of the purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.
  * @param {string} k_id The key of the purchase item in the database.
  * @param {string} k_location The key of the location in which the purchase is made. This is also the booking process location.
  * @param {string} uid The key of the current user.
- * @param {number} i_session The number of sessions which are booked simultaneously. Required when {@link Wl_Book_Process_Purchase_PurchaseElementModel.id_purchase_item} = {@link RsPurchaseItemSid.CLASS_PERIOD}.
+ * @param {number} i_session The number of sessions which are booked simultaneously. Required when {@link Wl_Book_Process_Purchase_PurchaseElementModel.id_purchase_item} = {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
  * @param {string} k_login_prize The key of the user's prize. Not empty only if the user wants to make a free visit from the prize.
  * @param {string} text_discount_code The discount code.
  * @param {?string} k_pay_installment_template Installment template key. This property is optional. * can only be set for the purchase option which supports installment plan.  * `null` if installment plan doesn't exist for bought item; * `0` if installment plan doesn't selected for bought item from the list of installment plans. NOTE: * Calculations of discounts and taxes for installment plans are for demonstration purposes only! * Installment is not an independent purchase item and has no discounts or taxes. * Installment is a division of the final amount (with taxes and discounts), of some purchase option, into N parts.

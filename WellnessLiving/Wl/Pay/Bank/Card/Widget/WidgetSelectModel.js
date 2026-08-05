@@ -24,7 +24,7 @@ function Wl_Pay_Bank_Card_Widget_WidgetSelectModel()
   this.a_pay_card = undefined;
 
   /**
-   * Payment method. One of {@link RsPayMethodSid} constants.
+   * Payment method. One of {@link WlPayMethodSid} constants.
    *
    * @get get
    * @type {number}
@@ -100,7 +100,7 @@ Wl_Pay_Bank_Card_Widget_WidgetSelectModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Pay_Bank_Card_Widget_WidgetSelectModel.instanceGet
- * @param {number} id_pay_method Payment method. One of {@link RsPayMethodSid} constants.
+ * @param {number} id_pay_method Payment method. One of {@link WlPayMethodSid} constants.
  * @param {number} id_pay_owner Payment owner kind. Must be {@link RsPayOwnerSid.BUSINESS} or {@link RsPayOwnerSid.USER}.
  * @param {string} k_id Payment owner. Must be primary key of a business or a user.
  * @param {string} k_business Business key. `null` if use system business.
