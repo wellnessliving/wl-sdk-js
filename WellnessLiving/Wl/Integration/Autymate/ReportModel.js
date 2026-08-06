@@ -97,10 +97,10 @@ function Wl_Integration_Autymate_ReportModel()
   /**
    * The status of the report.
    *
-   * One of the {@link Wl_Report_Generator_ReportGeneratorStatusSid} constants.
+   * One of the {@link Thoth_ReportCore_Generator_ReportGeneratorStatusSid} constants.
    *
    * @get result
-   * @see Wl_Report_Generator_ReportGeneratorStatusSid
+   * @see Thoth_ReportCore_Generator_ReportGeneratorStatusSid
    * @type {number}
    */
   this.id_report_status = undefined;

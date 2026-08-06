@@ -124,7 +124,7 @@ function Wl_Pay_Transaction_Report_TransactionAllPaymentModel()
    * The report status.
    *
    * @get result
-   * @see Wl_Report_Generator_ReportGeneratorStatusSid
+   * @see Thoth_ReportCore_Generator_ReportGeneratorStatusSid
    * @type {number}
    */
   this.id_report_status = undefined;
