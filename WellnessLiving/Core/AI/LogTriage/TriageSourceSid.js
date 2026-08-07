@@ -7,6 +7,20 @@ function Core_AI_LogTriage_TriageSourceSid()
 }
 
 /**
+ * Erroneous asynchronous tasks stored by AsyncErrorSql.
+ *
+ * @type {number}
+ */
+Core_AI_LogTriage_TriageSourceSid.ASYNC_TASK = 5;
+
+/**
+ * Erroneous background tasks stored by CmsTaskQueueSql.
+ *
+ * @type {number}
+ */
+Core_AI_LogTriage_TriageSourceSid.BACKGROUND_TASK = 4;
+
+/**
  * PHP error log represented by {@link Core_Log_CoreLog}.
  *
  * @type {number}
