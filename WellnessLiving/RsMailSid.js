@@ -9,7 +9,7 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 220.
+ * Last used ID: 221.
  */
 function RsMailSid()
 {
@@ -722,6 +722,13 @@ RsMailSid.CLASS_PERIOD_CHANGE_CLASS = 17;
  * @type {number}
  */
 RsMailSid.CLASS_PERIOD_CHANGE_ENROLLMENT = 65;
+
+/**
+ * Automated marketing email sent on the client's birthday.
+ *
+ * @type {number}
+ */
+RsMailSid.CLIENT_BIRTHDAY = 221;
 
 /**
  * Send a copy of contract.
