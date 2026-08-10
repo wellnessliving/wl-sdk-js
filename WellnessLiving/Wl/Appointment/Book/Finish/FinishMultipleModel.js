@@ -218,11 +218,12 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   this.a_payment_data = undefined;
 
   /**
-   * The purchase items keys.
-   * This will be empty if no purchases have been made for the appointment booking.
+   * The keys of purchased items.
    *
-   * Keys refer to provider indexes.
-   * Value is array of item keys.
+   * The first level of the array is the list of providers from the batch.
+   * The second level of the array is the list of purchased items for this booking.
+   *
+   * If a purchased item was transferred, the transferred purchase item key is returned instead of the original one.
    *
    * @post post
    * @type {string[][]}

@@ -200,6 +200,9 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * The first level of the array is the list of appointments from the batch.
    * The second level of the array is the list of items purchased for this appointment.
    *
+   * If a purchased item was transferred, the key of the transferred purchase item will be returned instead of the
+   * key of the purchased one. Otherwise the original purchase item is kept.
+   *
    * @post result
    * @type {?string[][]}
    */
