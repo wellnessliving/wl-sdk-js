@@ -128,29 +128,16 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.a_notification = undefined;
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_pay_form_pa
-   * @property {string} json_data Additional payer authentication data.
-   * @property {string} k_pay_transaction Key of the payment transaction that was created during payer authentication.  In this case, payment transaction should be attached to this transaction.
-   * @property {string} m_amount Authenticated payment amount.
-   */
-
-  /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_pay_form
-   * @property {number} f_amount Amount of money to withdraw with this payment source.
-   * @property {?number} id_pay_method Payment method. One of {@link RsPayMethodSid} constants.
-   * @property {boolean} is_hide Whether this payment method is hidden.
-   * @property {boolean} is_success Whether this source was successfully charged.
-   * @property {string} m_fee Fee amount for this payment source.
-   * @property {string} m_surcharge Surcharge amount for this payment source.
-   * @property {Wl_Appointment_Book_Finish_FinishModel_a_pay_form_pa} pa Payer authentication data. Element may not present for payment sources that do not support payer authentication,  or payer authentication is not implemented by this payment processor.
-   * @property {string} s_index Index of this form. This corresponds the key this item is written in this array with.
-   */
-
-  /**
-   * A list of payment sources to pay with.
+   * Payment is not processed by this API.
    *
+   * Use the following APIs for payment:
+   * * {@link Wl_Appointment_Book_Payment_PaymentModel}
+   * * {@link Wl_Appointment_Book_Payment_PaymentPostModel}
+   * * {@link Wl_Appointment_Book_Payment_PaymentMultipleModel}
+   *
+   * @deprecated Not used. See documentation.
    * @post post
-   * @type {Wl_Appointment_Book_Finish_FinishModel_a_pay_form[]}
+   * @type {*[][]}
    */
   this.a_pay_form = undefined;
 
