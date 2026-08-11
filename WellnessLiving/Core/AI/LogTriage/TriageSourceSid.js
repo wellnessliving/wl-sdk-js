@@ -7,14 +7,14 @@ function Core_AI_LogTriage_TriageSourceSid()
 }
 
 /**
- * Erroneous asynchronous tasks stored by AsyncErrorSql.
+ * Erroneous asynchronous tasks.
  *
  * @type {number}
  */
 Core_AI_LogTriage_TriageSourceSid.ASYNC_TASK = 5;
 
 /**
- * Erroneous background tasks stored by CmsTaskQueueSql.
+ * Erroneous background tasks.
  *
  * @type {number}
  */
@@ -35,7 +35,7 @@ Core_AI_LogTriage_TriageSourceSid.ERROR_LOG = 1;
 Core_AI_LogTriage_TriageSourceSid.SLOW_LOG = 2;
 
 /**
- * Aggregated usage statistics stored by WatchUsageStat.
+ * Aggregated usage statistics.
  *
  * @type {number}
  */
