@@ -187,8 +187,21 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    */
 
   /**
-   * Fields refer to strings in the format `id_purchase_item-k_id`. Values refer to an array with the next stricture:
+   * List of purchase options to be purchased.
    *
+   * <b>Warning:</b>
+   * * This field contains incorrect data for multiple bookings. Use {@link Wl_Appointment_Book_Payment_PaymentMultipleModel.a_purchase_provider} instead.
+   * * This field can be safely used for a single booking.
+   * * This field can contain valid data for the {@link RsPurchaseItemSid} purchase that does not belong to any provider.
+   *
+   * Array structure:
+   * * Keys refer to strings in the format `id_purchase_item-k_id`.
+   * * Values refer to an array with the next stricture:
+   *
+   * @deprecated This field contains incorrect data for multiple bookings.
+ Use {@link Wl_Appointment_Book_Payment_PaymentMultipleModel.a_purchase_provider} instead.
+ However, this field can still return valid data for an Appointment Tip purchase that does not belong
+ to any provider, and the field can still be used for a single booking.
    * @get result
    * @type {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase}
    */
@@ -209,6 +222,34 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
   this.a_purchase_item = null;
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_provider_a_tax
+   * @property {string} m_tax The tax rate.
+   * @property {string} text_title The name of the tax.
+   */
+
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_provider
+   * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_provider_a_tax} a_tax A list of taxes to apply containing information about taxes. The array keys are `k_tax` keys. Each element contains the following fields:
+   * @property {number} id_purchase_item The purchase item ID. One of the {@link RsPurchaseItemSid} constants.
+   * @property {string} k_id The value of the discount used for the purchase.
+   * @property {string} m_discount The value of the discount used for the purchase.
+   * @property {string} m_pay The payment for the promotion (or single visit) without taxes.
+   * @property {string} m_price The price of the promotion (or single visit).
+   */
+
+  /**
+   * A list of purchase options grouped by provider.
+   *
+   * * The first level keys are provider indexes from {@link Wl_Appointment_Book_Payment_PaymentMultipleModel.a_book_data} field.
+   * * The second level keys are strings in the format `id_purchase_item-k_id`.
+   * * Each value has the same structure as {@link Wl_Appointment_Book_Payment_PaymentMultipleModel.a_purchase}.
+   *
+   * @get result
+   * @type {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_purchase_provider[]}
+   */
+  this.a_purchase_provider = undefined;
+
+  /**
    * List of quiz response keys.
    * Keys are quiz keys. 
    * Values are quiz response keys.
@@ -220,6 +261,9 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
 
   /**
    * The list of amounts to pay for appointments from the batch, with taxes and without surcharges.
+   *
+   * * Keys are provider indexes from {@link Wl_Appointment_Book_Payment_PaymentMultipleModel.a_book_data}.
+   * * Values are the total amount for the corresponding provider, or `0.00` if the provider has nothing to pay.
    *
    * @get result
    * @type {string[]}
@@ -363,7 +407,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Payment_PaymentMultipleModel);
  */
 Wl_Appointment_Book_Payment_PaymentMultipleModel.prototype.config=function()
 {
-  return {"a_field":{"a_book_data":{"get":{"get":true}},"a_book_data_post":{"post":{"post":true}},"a_login_prize":{"post":{"result":true}},"a_pay":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_promotion_data":{"get":{"result":true}},"a_purchase":{"get":{"result":true}},"a_purchase_item":{"post":{"result":true}},"a_quiz_response":{"post":{"post":true}},"a_total":{"get":{"result":true}},"a_uid":{"get":{"get":true},"post":{"get":true}},"id_mode":{"get":{"get":true},"post":{"get":true}},"is_walk_in":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"get":true,"result":true},"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"m_coupon":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_surcharge":{"get":{"result":true}},"m_surcharge_ach":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_coupon_code":{"get":{"get":true},"post":{"get":true}},"text_discount_code":{"get":{"get":true},"post":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
+  return {"a_field":{"a_book_data":{"get":{"get":true}},"a_book_data_post":{"post":{"post":true}},"a_login_prize":{"post":{"result":true}},"a_pay":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_promotion_data":{"get":{"result":true}},"a_purchase":{"get":{"result":true}},"a_purchase_item":{"post":{"result":true}},"a_purchase_provider":{"get":{"result":true}},"a_quiz_response":{"post":{"post":true}},"a_total":{"get":{"result":true}},"a_uid":{"get":{"get":true},"post":{"get":true}},"id_mode":{"get":{"get":true},"post":{"get":true}},"is_walk_in":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"get":true,"result":true},"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"m_coupon":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_surcharge":{"get":{"result":true}},"m_surcharge_ach":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_coupon_code":{"get":{"get":true},"post":{"get":true}},"text_discount_code":{"get":{"get":true},"post":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**
