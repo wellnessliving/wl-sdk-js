@@ -212,8 +212,16 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    */
 
   /**
-   * Keys refer to strings in the format `id_purchase_item-k_id`.
-   * Values refer to an array with the next stricture:
+   * List of purchase options to be purchased.
+   *
+   * <b>Warning:</b>
+   * * This field contains incorrect data for multiple bookings. Use {@link Wl_Appointment_Book_Payment_PaymentMultipleModel.a_purchase_provider} instead.
+   * * This field can be safely used for a single booking.
+   * * This field can contain valid data for the {@link Wl_Purchase_Item_ItemSid.APPOINTMENT_TIP} purchase that does not belong to any provider.
+   *
+   * Array structure:
+   * * Keys refer to strings in the format `id_purchase_item-k_id`.
+   * * Values refer to an array with the next stricture:
    *
    * @deprecated This field contains incorrect data for multiple bookings.
    Use {@link Wl_Appointment_Book_Payment_PaymentMultipleModel.a_purchase_provider} instead.
