@@ -38,10 +38,14 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result
+   * @property {*[][]} a_event_list Tuition events with calculated amounts.
+   * @property {*[][]} a_registration_fee_list Registration fees with calculated amounts, keyed by participant key.
    * @property {string[]} a_tax Information about taxes. The key refers to the tax key, and the value refers to the tax amount.
    * @property {number} id_purchase_item The ID of purchase item type. One of {@link RsPurchaseItemSid} constants.
    * @property {string} k_id The key of the purchase item in the database.
+   * @property {string} m_checkout The amount that has to be charged for the tuition right now, including tax. The other amounts of this row cover the full cost, including whatever is deferred to an installment plan or to a membership schedule.
    * @property {string} m_cost The cost of the purchase item (with taxes).
+   * @property {string} m_deferred The part of the tuition cost that is not charged right now, including tax. Equals `m_cost` minus `m_checkout`. Rows for everything else are always paid for in full at once, so the amount to charge for the whole list is the sum of `m_cost` minus the sum of `m_deferred`.
    * @property {string} m_discount The amount of the whole discount.
    * @property {string} m_discount_login The amount of the discount for the client type.
    * @property {string} m_price The price of the purchase item (with or without taxes, depending on regional standards).
@@ -110,7 +114,9 @@ Wl_Book_Process_Purchase_PurchaseElementListModel.prototype.config=function()
  *
  * Validates the business, location, and user, then for each item in `a_purchase_item_request` computes the price,
  * applicable discount code reduction, login-type discount, and taxes, and returns per-item cost, discount,
- * price, tax, and subtotal amounts in `a_purchase_item_result`.
+ * price, tax, and subtotal amounts in `a_purchase_item_result`. For a tuition the amounts cover the
+ * full cost, and the split between what is charged right now and what is deferred is added to the
+ * same row.
  *
  * @function
  * @name Wl_Book_Process_Purchase_PurchaseElementListModel.get

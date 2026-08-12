@@ -72,6 +72,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @property {string} k_coupon_amount The coupon amount key.
    * @property {string} m_checkout The total amount that will be charged for the tuition item during purchase.
    * @property {string} m_custom The custom price of the gift card.
+   * @property {string} m_deferred The part of the tuition cost that is not charged during purchase.
    * @property {string} m_prorate_custom The amount of money for the prorate period. This should only be passed in the case of manual entry.
    * @property {string} s_mail The recipient's email.
    * @property {string} s_message The message.
@@ -164,6 +165,20 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @type {string}
    */
   this.k_location = "";
+
+  /**
+   * The amount that has to be charged right now for the cart.
+   *
+   * Equals {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.m_total} for everything that is paid for in full at once. A
+   * tuition defers a part of its cost to an installment plan or to a membership schedule, and
+   * `m_total` covers the full cost regardless, so this is the amount to put into the payment form.
+   * It is `m_total` minus `a_config.m_deferred` of every tuition item in
+   * {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.a_item}.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_checkout = "0.00";
 
   /**
    * The discount amount in dollars, excluding tax.
@@ -294,7 +309,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel);
  */
 Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.prototype.config=function()
 {
-  return {"a_field":{"a_discount_code":{"get":{"result":true}},"a_item":{"get":{"get":true,"result":true}},"f_discount_percent":{"get":{"get":true}},"is_check_cart_item":{"get":{"get":true}},"is_commission":{"get":{"result":true}},"is_discount_code_mode_select":{"get":{"result":true}},"is_receipt_note":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_discount":{"get":{"result":true}},"m_discount_flat":{"get":{"get":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip":{"get":{"get":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"text_error_code":{"get":{"result":true}},"text_error_message":{"get":{"result":true}},"text_receipt_note":{"get":{"result":true}},"uid_current":{"get":{"get":true}},"uid_customer":{"get":{"get":true}}}};
+  return {"a_field":{"a_discount_code":{"get":{"result":true}},"a_item":{"get":{"get":true,"result":true}},"f_discount_percent":{"get":{"get":true}},"is_check_cart_item":{"get":{"get":true}},"is_commission":{"get":{"result":true}},"is_discount_code_mode_select":{"get":{"result":true}},"is_receipt_note":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_flat":{"get":{"get":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip":{"get":{"get":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"text_error_code":{"get":{"result":true}},"text_error_message":{"get":{"result":true}},"text_receipt_note":{"get":{"result":true}},"uid_current":{"get":{"get":true}},"uid_customer":{"get":{"get":true}}}};
 };
 
 /**

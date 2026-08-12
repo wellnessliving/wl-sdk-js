@@ -39,6 +39,7 @@ function Wl_Catalog_Cart_CartModel()
    * @property {Wl_Catalog_Cart_CartModel_a_item_a_config_a_event_list} a_event_list List of tuition events. Each entry has the next structure:
    * @property {Wl_Catalog_Cart_CartModel_a_item_a_config_a_registration_fee_list} a_registration_fee_list Registration fees for tuition participants. Keys are participant keys.  Each value has the next structure:
    * @property {string} m_checkout The total amount that will be charged for the tuition item when during purchase.
+   * @property {string} m_deferred The part of the tuition cost that is not charged during purchase.
    */
 
   /**
@@ -153,6 +154,19 @@ function Wl_Catalog_Cart_CartModel()
   this.k_login_prize = "";
 
   /**
+   * The amount that has to be charged right now for the cart.
+   *
+   * Equals {@link Wl_Catalog_Cart_CartModel.m_total} for everything that is paid for in full at once. A tuition
+   * defers a part of its cost to an installment plan or to a membership schedule, and `m_total`
+   * covers the full cost regardless, so this is the amount to put into the payment form. It is
+   * `m_total` minus `a_config.m_deferred` of every tuition item in {@link Wl_Catalog_Cart_CartModel.a_item}.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_checkout = "0.00";
+
+  /**
    * The full discount of the cart.
    *
    * If `null`, the discount isn't calculated yet.
@@ -238,7 +252,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Cart_CartModel);
  */
 Wl_Catalog_Cart_CartModel.prototype.config=function()
 {
-  return {"a_field":{"a_discount_item":{"get":{"result":true}},"a_item":{"get":{"get":true,"result":true}},"a_prize_propose":{"get":{"result":true}},"a_reward_item":{"get":{"result":true}},"a_reward_propose":{"get":{"result":true}},"a_tax_list":{"get":{"result":true}},"i_score":{"get":{"result":true}},"is_auto_apply_prize":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_login_prize":{"get":{"get":true}},"m_discount":{"get":{"result":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_discount_item":{"get":{"result":true}},"a_item":{"get":{"get":true,"result":true}},"a_prize_propose":{"get":{"result":true}},"a_reward_item":{"get":{"result":true}},"a_reward_propose":{"get":{"result":true}},"a_tax_list":{"get":{"result":true}},"i_score":{"get":{"result":true}},"is_auto_apply_prize":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_login_prize":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**

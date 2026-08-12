@@ -9,19 +9,44 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list_a_discount
+   * @property {number} id_discount_rule Discount rule type. One of {@link Wl_Discount_DiscountRuleSid} constants.
+   * @property {string} m_discount Discount amount of this rule.
+   * @property {string} text_discount Discount title. Only for {@link Wl_Discount_DiscountRuleSid}.
+   */
+
+  /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list
+   * @property {?Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list_a_discount} a_discount Discounts applied to the event, `null` if there are none. Every row has the      next keys:
+   * @property {?string[]} a_tax Taxes of the event. Keys are tax keys, values are tax amounts.
    * @property {string} k_class Key of the event class.
+   * @property {?string} m_checkout The amount charged for this event right now, including tax. `0.00` when every      installment payment is still ahead. `null` when it is not calculated yet.
+   * @property {string} m_deferred The part of the event cost that is not charged right now, including tax. Goes      to the installment plan or to the membership schedule, depending on the      tuition billing mode.
+   * @property {string} m_discount Total discount amount applied to the event, `0.00` if there is none.
+   * @property {?string} m_price Price of the event within the tuition, before discount and tax.
    * @property {string} uid Key of the tuition participant.
    */
 
   /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_registration_fee_list
+   * @property {?*[][]} a_discount Discounts applied to the fee, `null` if there are none. Rows have the same      keys as in `a_event_list`.
+   * @property {string[]} a_tax Taxes of the fee. Keys are tax keys, values are tax amounts.
+   * @property {string} m_amount Registration fee amount for the participant, before discount and tax.
+   * @property {?string} m_checkout The amount charged for this fee right now, including tax. A fee is either      charged in full or deferred entirely, so `null` means it is fully deferred.
+   * @property {string} m_deferred The whole fee amount if the fee is deferred, `0.00` if it is charged now.
+   */
+
+  /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config
-   * @property {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list} a_event_list List of tuition events.       Each entry has the next structure:
+   * @property {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list} a_event_list List of tuition events, one entry per participant and event class.      Each entry has the next structure:
+   * @property {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_registration_fee_list} a_registration_fee_list Registration fees, keyed by participant key.
+   * @property {string} m_checkout The amount charged for this tuition right now, including tax. The sum of      `m_checkout` of every its event and registration fee.
+   * @property {string} m_deferred The amount that is not charged right now, including tax. Together with      `m_checkout` it adds up to the full cost of this tuition.
    */
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item
-   * @property {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config} a_config Additional item configurations.
+   * @property {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config} a_config Additional item configurations.       Only `a_event_list` is      expected in the request, and only `k_class` and `uid` are accepted in every its entry.      Prices, discounts, and taxes can not be overridden here: this booking flow is never      authenticated as a staff member, so Tuition::verifyObjectFromSource() strips      such fields. In the response `a_event_list` comes back recomputed, and      `a_registration_fee_list`, `m_checkout`, and `m_deferred` are added.
    * @property {number} i_session Number of sessions which are booked simultaneously.      Make sense only when `id_purchase_item` = {@link RsPurchaseItemSid}.
    * @property {number} id_purchase_item The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
    * @property {string} k_id The key of the purchase item in the database.
@@ -34,7 +59,7 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
   /**
    * A list of purchase items. Each item is an associative array with the following keys:
    *
-   * @get get
+   * @get get,result
    * @type {Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item[]}
    */
   this.a_purchase_item = undefined;
@@ -76,7 +101,24 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
   this.k_location = "";
 
   /**
+   * The amount that has to be charged right now for the given purchase options.
+   *
+   * Equals {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_cost} for everything that is paid for in full at
+   * once. A tuition defers a part of its cost to an installment plan or to a membership schedule,
+   * and `m_cost` covers the full cost regardless, so this is the amount to put into the payment
+   * form. It is `m_cost` minus `a_config.m_deferred` of every tuition item in
+   * {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.a_purchase_item}.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_checkout = undefined;
+
+  /**
    * The total cost of the given purchase options.
+   *
+   * For a tuition this is the full cost, including whatever is deferred to an installment plan or
+   * to a membership schedule.
    *
    * @get result
    * @type {string}
@@ -157,7 +199,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementGroupModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementGroupModel.prototype.config=function()
 {
-  return {"a_field":{"a_purchase_item":{"get":{"get":true}},"a_tax":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_cost":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_code":{"get":{"result":true}},"m_discount_login":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_purchase_item":{"get":{"get":true,"result":true}},"a_tax":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_cost":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_code":{"get":{"result":true}},"m_discount_login":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -165,7 +207,10 @@ Wl_Book_Process_Purchase_PurchaseElementGroupModel.prototype.config=function()
  *
  * Validates each item in `a_purchase_item` (type, key, installment eligibility, and prize applicability),
  * applies discount codes, login-type discounts, and installment adjustments, then accumulates price, subtotal,
- * discount, tax, and cost totals across all items and returns them as result fields.
+ * discount, tax, and cost totals across all items and returns them as result fields. For tuition
+ * items the totals cover the full cost, so the amount that has to be charged right now is
+ * reported separately in {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_checkout}, and its per-component
+ * split is written back into `a_config` of the item it belongs to.
  *
  * @function
  * @name Wl_Book_Process_Purchase_PurchaseElementGroupModel.get
