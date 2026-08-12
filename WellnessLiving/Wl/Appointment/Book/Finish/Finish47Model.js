@@ -136,7 +136,7 @@ function Wl_Appointment_Book_Finish_Finish47Model()
    *
    * @deprecated Not used. See documentation.
    * @post post
-   * @type {*[][]}
+   * @type {*[]}
    */
   this.a_pay_form = undefined;
 
