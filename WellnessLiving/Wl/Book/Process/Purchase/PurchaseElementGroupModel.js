@@ -21,9 +21,9 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
    */
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list_a_discount
-   * @property {number} id_discount_rule Discount rule type. One of {@link Wl_Discount_DiscountRuleSid} constants.
+   * @property {number} id_discount_rule Discount rule type.
    * @property {string} m_discount Discount amount of this rule.
-   * @property {string} [text_discount] Discount title. Only for {@link Wl_Discount_DiscountRuleSid.MANUAL}.
+   * @property {string} [text_discount] Discount title.
    */
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list
@@ -65,8 +65,8 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
    *      such fields. In the response `a_event_list` comes back recomputed, and
    *      `a_registration_fee_list`, `m_checkout`, and `m_deferred` are added.
    * @property {number} [i_session] Number of sessions which are booked simultaneously.
-   *      Make sense only when `id_purchase_item` = {@link RsPurchaseItemSid.CLASS_PERIOD}.
-   * @property {number} id_purchase_item The ID of the purchase item type. One of {@link RsPurchaseItemSid}.
+   *      Make sense only when `id_purchase_item` = {@link Wl_Purchase_Item_ItemSid.CLASS_PERIOD}.
+   * @property {number} id_purchase_item The ID of the purchase item type. One of {@link Wl_Purchase_Item_ItemSid}.
    * @property {string} k_id The key of the purchase item in the database.
    * @property {string} [k_login_prize] The key of the user's prize.
    *  Not empty only if the user wants to make a free visit from the prize.
