@@ -10,6 +10,8 @@ function Wl_Tuition_Enrollment_TuitionEnrollmentListModel()
 
   /**
    * @typedef {{}} Wl_Tuition_Enrollment_TuitionEnrollmentListModel_a_enrollment_a_events
+   * @property {?number} id_enrollment_status Enrollment status. Active user is enrolled into the event, and there are upcoming sessions. Canceled, if enrollment is canceled. Completed, if all event sessions are in the past and enrollment is not canceled.
+   * @property {?number} id_membership_status Membership status.
    * @property {boolean} is_cancelled Whether this enrollment is cancelled or not.
    * @property {string} k_class Event ID.
    * @property {string} m_event_discount Login type and shopping cart discounts.
