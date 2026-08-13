@@ -66,8 +66,8 @@ function Wl_Business_Config_BusinessConfigModel()
    * @property {number} id_blame One of {@link Wl_Business_Policy_BlameSid} constants.
    * @property {number} id_cancel_period Duration ID. One of {@link ADurationSid} constants.
    * @property {number} id_charge One of {@link Wl_Business_Policy_ChargeSid} constants.
-   * @property {number} id_charge_measure Charge measure type. `0` for percent, `1` for money amount.
    * @property {boolean} is_appointment_all `1` if all classes are selected, `0` - otherwise.
+   * @property {boolean} is_charge_measure_money `true` for a fixed money amount, `false` for a percentage.
    * @property {boolean} is_class_all `1` if all classes are selected, `0` - otherwise.
    * @property {boolean} is_enable_cancel_charge `true` if promotion penalties is enable, `false` otherwise.
    * @property {boolean} is_event_all `1` if all events are selected, `0` - otherwise.
