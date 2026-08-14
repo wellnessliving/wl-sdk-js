@@ -26,9 +26,7 @@ function Wl_Video_VideoElementModel()
    * The legacy staff keys associated with the video.
    *
    * For GET requests, this field is populated only for applications listed in
-   * `APPS_USE_OLD_K_STAFF`; otherwise it is empty.
-   * An empty value outside the allow-list does not indicate that no staff members are assigned; use
-   * {@link Wl_Video_VideoElementModel.a_staff_uid} as the authoritative list.
+   * `APPS_USE_OLD_K_STAFF`; otherwise it is not returned.
    * For POST requests, applications outside the allow-list must use {@link Wl_Video_VideoElementModel.a_staff_uid}.
    *
    * @deprecated This property will be removed in the future. Use {@link Wl_Video_VideoElementModel.a_staff_uid} instead.
