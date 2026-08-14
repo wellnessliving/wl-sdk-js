@@ -57,6 +57,16 @@ function Wl_Business_Waiver_WaiverModel()
    */
   this.uid = "";
 
+  /**
+   * URL to the waiver page.
+   *
+   * This page is only available to logged-in clients.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_waiver = undefined;
+
   this.changeInit();
 }
 
@@ -67,7 +77,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Waiver_WaiverModel);
  */
 Wl_Business_Waiver_WaiverModel.prototype.config=function()
 {
-  return {"a_field":{"has_waiver":{"get":{"result":true}},"html_waiver":{"get":{"result":true}},"k_business":{"get":{"get":true}},"text_fullname":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"has_waiver":{"get":{"result":true}},"html_waiver":{"get":{"result":true}},"k_business":{"get":{"get":true}},"text_fullname":{"get":{"get":true}},"uid":{"get":{"get":true}},"url_waiver":{"get":{"result":true}}}};
 };
 
 /**
