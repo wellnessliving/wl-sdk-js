@@ -1,7 +1,7 @@
 /**
  * The source of a visit.
  *
- * Last used ID: 32.
+ * Last used ID: 33.
  */
 function Wl_Mode_ModeSid()
 {
@@ -28,6 +28,13 @@ Wl_Mode_ModeSid.AZURE = 21;
  * @type {number}
  */
 Wl_Mode_ModeSid.BRIVO_DOOR_ACCESS = 31;
+
+/**
+ * Purchase created by a bulk billing batch charge.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.BULK_BILLING = 33;
 
 /**
  * Visit has been created by `CENTRED`.
