@@ -133,6 +133,8 @@ Wl_Login_Promotion_GuestPass_GuestPassListModel.prototype.config=function()
  *
  * Returns all guest passes assigned to the given user, optionally filtered by class and location.
  *
+ * Guest passes are not applicable to events, so an empty list is returned when the specified class is an event.
+ *
  * @function
  * @name Wl_Login_Promotion_GuestPass_GuestPassListModel.get
  * @returns {WlSdk_Deferred_Promise}
