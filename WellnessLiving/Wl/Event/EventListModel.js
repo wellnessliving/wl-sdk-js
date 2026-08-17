@@ -269,7 +269,8 @@ function Wl_Event_EventListModel()
   /**
    * Model cache reset flag.
    *
-   * @put post
+   * @get get
+   * @put get
    * @type {boolean}
    */
   this.is_cache_reset = false;
@@ -375,7 +376,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_EventListModel);
  */
 Wl_Event_EventListModel.prototype.config=function()
 {
-  return {"a_field":{"a_class_filter":{"get":{"get":true}},"a_day":{"get":{"get":true}},"a_enrollment_block_filter":{"get":{"get":true}},"a_enrollment_block_list":{"get":{"result":true}},"a_event_list":{"get":{"result":true}},"a_location":{"get":{"get":true}},"a_staff":{"get":{"get":true}},"a_time":{"get":{"get":true}},"a_uid_staff":{"get":{"get":true}},"a_virtual":{"get":{"get":true}},"dl_end":{"get":{"get":true}},"dl_start":{"get":{"get":true}},"id_flag":{"get":{"get":true}},"is_backend":{"get":{"get":true}},"is_cache_reset":{"put":{"post":true}},"is_ignore_requirement":{"get":{"get":true}},"is_tab_all":{"get":{"get":true}},"k_business":{"get":{"get":true},"put":{"get":true}},"k_class":{"get":{"get":true}},"k_class_tab":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_skin":{"get":{"get":true}},"text_search":{"get":{"get":true}},"uid":{"get":{"get":true},"put":{"get":true}}}};
+  return {"a_field":{"a_class_filter":{"get":{"get":true}},"a_day":{"get":{"get":true}},"a_enrollment_block_filter":{"get":{"get":true}},"a_enrollment_block_list":{"get":{"result":true}},"a_event_list":{"get":{"result":true}},"a_location":{"get":{"get":true}},"a_staff":{"get":{"get":true}},"a_time":{"get":{"get":true}},"a_uid_staff":{"get":{"get":true}},"a_virtual":{"get":{"get":true}},"dl_end":{"get":{"get":true}},"dl_start":{"get":{"get":true}},"id_flag":{"get":{"get":true}},"is_backend":{"get":{"get":true}},"is_cache_reset":{"get":{"get":true},"put":{"get":true}},"is_ignore_requirement":{"get":{"get":true}},"is_tab_all":{"get":{"get":true}},"k_business":{"get":{"get":true},"put":{"get":true}},"k_class":{"get":{"get":true}},"k_class_tab":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_skin":{"get":{"get":true}},"text_search":{"get":{"get":true}},"uid":{"get":{"get":true},"put":{"get":true}}}};
 };
 
 /**
