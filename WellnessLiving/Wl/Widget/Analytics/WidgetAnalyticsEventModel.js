@@ -25,7 +25,7 @@ function Wl_Widget_Analytics_WidgetAnalyticsEventModel()
   /**
    * @typedef {{}} Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload
    * @property {Wl_Widget_Analytics_WidgetAnalyticsEventModel_a_payload_a_item} a_item Selected checkout items.
-   * @property {number} id_checkout_type Checkout type. See {@link Wl_Widget_Analytics_WidgetAnalyticsCheckoutTypeSid}.
+   * @property {number} id_checkout_type Checkout type.
    * @property {string} k_location Location key.
    * @property {string} m_total Checkout total in the location currency.
    * @property {string} s_funnel_step Last funnel step reached by the client. Empty if it is unavailable.

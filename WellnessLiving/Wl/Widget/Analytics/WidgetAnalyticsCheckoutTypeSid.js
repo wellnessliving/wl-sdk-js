@@ -7,13 +7,6 @@ function Wl_Widget_Analytics_WidgetAnalyticsCheckoutTypeSid()
 }
 
 /**
- * Any checkout type.
- *
- * @type {number}
- */
-Wl_Widget_Analytics_WidgetAnalyticsCheckoutTypeSid.ANY = 1;
-
-/**
  * Booking checkout type.
  *
  * @type {number}
