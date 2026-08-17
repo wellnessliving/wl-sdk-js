@@ -19,13 +19,13 @@ function Wl_Event_EventEnrollmentModel()
   /**
    * @typedef {{}} Wl_Event_EventEnrollmentModel_a_enrollments
    * @property {boolean} is_enrolled_full `true` if the client has a block event enrollment record set for this class   (booked the whole event); `false` otherwise.
-   * @property {string} uid Key of the client who attended or will attend the event. Primary key in PassportLoginSql table.
+   * @property {string} uid Key of the client who attended or will attend the event.
    */
 
   /**
    * A list of clients enrolled in the specified event classes.
    *
-   * Key is the class key. Primary key in RsClassSql table.
+   * Key is the class key. 
    *
    * Value is a list of clients enrolled in that class. Each element contains:
    *

@@ -46,6 +46,21 @@ function Wl_Tuition_Enrollment_TuitionEnrollmentListModel()
   this.a_enrollment = undefined;
 
   /**
+   * @typedef {{}} Wl_Tuition_Enrollment_TuitionEnrollmentListModel_a_enrollment_fee
+   * @property {string} is_paid If `true`, user has paid tuition fee. If `false`, user is scheduled to pay tuition fee.     If a user did not pay and does not have a scheduled payment, the key is not present.
+   */
+
+  /**
+   * List of users who has paid or are scheduled to pay tuition fee.
+   *
+   * Keys are user ids. Values are payment information.
+   *
+   * @get result
+   * @type {Wl_Tuition_Enrollment_TuitionEnrollmentListModel_a_enrollment_fee}
+   */
+  this.a_enrollment_fee = undefined;
+
+  /**
    * @typedef {{}} Wl_Tuition_Enrollment_TuitionEnrollmentListModel_a_filter
    * @property {string[]} a_event Leave only enrollments with the given events enrolled.
    * @property {string[]} a_purchase_item_tuition List of tuition enrollments ids to leave only.
@@ -101,7 +116,7 @@ WlSdk_ModelAbstract.extend(Wl_Tuition_Enrollment_TuitionEnrollmentListModel);
  */
 Wl_Tuition_Enrollment_TuitionEnrollmentListModel.prototype.config=function()
 {
-  return {"a_field":{"a_enrollment":{"get":{"result":true}},"a_filter":{"get":{"get":true}},"k_business":{"get":{"get":true}},"s_tuition_id":{"get":{"get":true}}}};
+  return {"a_field":{"a_enrollment":{"get":{"result":true}},"a_enrollment_fee":{"get":{"result":true}},"a_filter":{"get":{"get":true}},"k_business":{"get":{"get":true}},"s_tuition_id":{"get":{"get":true}}}};
 };
 
 /**
