@@ -47,7 +47,7 @@ function Wl_Tuition_Enrollment_TuitionEnrollmentListModel()
 
   /**
    * @typedef {{}} Wl_Tuition_Enrollment_TuitionEnrollmentListModel_a_enrollment_fee
-   * @property {string} is_paid If `true`, user has paid tuition fee. If `false`, user is scheduled to pay tuition fee.     If a user did not pay and does not have a scheduled payment, the key is not present.
+   * @property {boolean} is_paid If `true`, user has paid tuition fee. If `false`, user is scheduled to pay tuition fee.     If a user did not pay and does not have a scheduled payment, the key is not present.
    */
 
   /**

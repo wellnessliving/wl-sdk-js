@@ -1,7 +1,7 @@
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 247.
+ * Last Used ID: 248.
  */
 function Wl_Privilege_PrivilegeSid()
 {
@@ -896,6 +896,13 @@ Wl_Privilege_PrivilegeSid.NOTIFICATION_MEMBERSHIP_CANCEL = 214;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.NOTIFICATION_MEMBERSHIP_QUERY = 223;
+
+/**
+ * Receive CAASI Phone Call Received (AI Agent) notification.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.NOTIFICATION_PHONE_AGENT_CALL_RECEIVED = 248;
 
 /**
  * Staff with this role will receive emails about reward prizes.
