@@ -74,7 +74,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_duration Class duration. In number of minutes.
    * @property {number} i_visit Number of usages of promotion required to pay for a single class session.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
-   * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
+   * @property {?number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
    * @property {boolean} is_book Whether current class was booked by current client.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise.
    * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.
@@ -196,7 +196,7 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_duration Class duration. In number of minutes.
    * @property {number} i_visit Number of usages of promotion required to pay for a single class session.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
-   * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
+   * @property {?number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
    * @property {boolean} is_book Whether current class was booked by current client.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise.
    * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.

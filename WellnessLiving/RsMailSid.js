@@ -9,7 +9,7 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 221.
+ * Last used ID: 222.
  */
 function RsMailSid()
 {
@@ -1044,6 +1044,13 @@ RsMailSid.PAY_AUTOMATIC_SUCCESS = 116;
  * @type {number}
  */
 RsMailSid.PAY_TRANSACTION_FAIL = 181;
+
+/**
+ * Sent to staff when CAASI's Phone Agent concludes a call, regardless of outcome (resolved by CAASI, transferred live, or callback requested).
+ *
+ * @type {number}
+ */
+RsMailSid.PHONE_AGENT_CALL_RECEIVED = 222;
 
 /**
  * Request a custom website subscription.

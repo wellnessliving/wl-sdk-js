@@ -111,30 +111,48 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @property {string[]} a_image The class image. Empty array if there is no image.
    * @property {string[]} a_search_tag Tags associated with an individual class.
    * @property {string[]} a_staff The list of staff keys for the staff member conducting the session. For legacy third-party apps listed in `APPS_USE_OLD_K_STAFF`, contains  `k_staff` for backward compatibility. Empty for all other applications. Use `a_staff_uid` instead.
+   * @property {boolean[]} a_staff_quick_substitute Whether staff or pay rate changed due quick substitution, for each staff member. Aligned by index with `a_staff_uid`.
    * @property {string[]} a_staff_uid The list of staff user keys for the staff member conducting the session.
    * @property {string[]} a_virtual_location The list of virtual locations keys. Each value is a location key.
+   * @property {?boolean} can_book Whether current client can book class. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
    * @property {string} dt_date The date/time of the session start in UTC.
    * @property {string} dt_time The time of the session start in the local time zone.
    * @property {string} dtl_date The date/time of session start in the location's time zone.
    * @property {boolean} hide_application Specifies whether the class will be hidden in the White Label Achieve Client App. If `true`, it means that the  class won't be displayed. Otherwise, this will be `false` to indicate that the class will be displayed.
    * @property {string} html_description The class description.
+   * @property {?number} i_age_from The minimum age restriction. Deprecated and is left only for back compatibility. `null` if {@link Wl_Schedule_ClassList_ClassList68Model.a_session}'s `is_age_public` is `false` or age is not restricted.
+   * @property {?number} i_age_from_month The minimum age restriction (months). `null` if `is_age_public` is `false` or age is not restricted.
+   * @property {?number} i_age_from_year The minimum age restriction (years). `null` if `is_age_public` is `false` or age is not restricted.
+   * @property {?number} i_age_to The maximum age restriction. Deprecated and is left only for back compatibility. `null` if `is_age_public` is `false` or age is not restricted.
+   * @property {?number} i_age_to_month The maximum age restriction (months). `null` if `is_age_public` is `false` or age is not restricted.
+   * @property {?number} i_age_to_year The maximum age restriction (years). `null` if `is_age_public` is `false` or age is not restricted.
    * @property {number} i_book Count of visits on this class.
    * @property {?number} i_capacity The capacity of the service. 'null' indicates that the capacity is not set.
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
    * @property {number} i_wait Number of clients in wait list.
+   * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
+   * @property {number} i_wait_spot Position of the current client (`uid`) in the wait list for this session. `0` if the client is not on the wait list, or if the business hides wait list position (fastest-response wait list promotion).
+   * @property {?number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
+   * @property {boolean} is_age_public Whether the age restriction of the class is shown to clients.
+   * @property {?boolean} is_book Whether current class was booked by current client. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.  `true` if clients can book on behalf of a guest.  `false` otherwise.
    * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
    * @property {boolean} is_cancellation_enabled `true` if clients can cancel this session. Otherwise, this will be `false`.
    * @property {boolean} is_event If `true`, this is an event. Otherwise, this will be `false`.
+   * @property {boolean} is_special_instructions Whether special instructions are configured for this session and are visible to the current client. The content itself (`html_special` in {@link Wl_Schedule_ClassView_ClassViewModel}) is not returned here.
    * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
+   * @property {boolean} is_wait `true` if the current client (`uid`) is on the wait list for this session; `false` otherwise.
+   * @property {?boolean} is_wait_list `true` if the current client can only take a place on the wait list; `false` otherwise. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
    * @property {boolean} is_wait_list_enabled This will be `true` if user is only on the wait-list. Otherwise, this will be `false`.
    * @property {string} k_class The class key.
    * @property {string} k_class_period The class period key.
    * @property {string} k_location The key of the session's location.
    * @property {string} k_resource_location Off-site location asset key. Empty if off-site location is not assigned to this class.
    * @property {string} s_title The title of the session.
+   * @property {string} text_room Class room. Empty string if not set.
    * @property {string} url_book The direct link to start booking on the WellnessLiving website.
+   * @property {string} url_virtual_join Link to virtual service. Empty string if the class isn't virtual, or if the current client (`uid`) has not booked/waitlisted this session, or joining isn't available yet.
    */
 
   /**
@@ -292,6 +310,21 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.s_staff_uid = "";
 
   /**
+   * Whether to compute and add the per-session booking status fields to each element of
+   * {@link Wl_Schedule_ClassList_ClassList68Model.a_session}: `can_book`, `is_book`, `is_wait_list`,
+   * `id_deny_reason`.
+   *
+   *  It requires evaluating the full
+   * booking policy (promotions, family accounts, resource availability, etc.) for every returned session, which
+   * is significantly more expensive than the rest of this API. Defaults to `false` so that regular schedule
+   * listing calls are not slowed down; enable it only when the caller actually needs these fields.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.show_book_status = false;
+
+  /**
    * If `true`, canceled sessions will be returned. If `false`, canceled sessions won't be returned.
    *
    * @post post
@@ -342,7 +375,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassList68Model);
  */
 Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
 {
-  return {"a_field":{"a_calendar":{"post":{"result":true}},"a_class":{"post":{"post":true}},"a_class_tab":{"post":{"post":true}},"a_day":{"post":{"post":true}},"a_event":{"post":{"post":true}},"a_location":{"post":{"post":true}},"a_quick":{"post":{"result":true}},"a_session":{"post":{"result":true}},"a_time":{"post":{"post":true}},"dt_date":{"post":{"post":true}},"dt_end":{"post":{"post":true}},"id_class_tab":{"post":{"post":true}},"is_response_short":{"post":{"post":true}},"is_tab_all":{"post":{"post":true}},"is_timezone_different":{"post":{"result":true}},"is_virtual":{"post":{"post":true}},"is_virtual_service":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_class_tab":{"post":{"post":true}},"k_timezone":{"post":{"post":true}},"s_staff":{"post":{"post":true}},"s_staff_uid":{"post":{"post":true}},"show_cancel":{"post":{"post":true}},"show_class":{"post":{"post":true}},"show_event":{"post":{"post":true}},"show_quick_filter":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
+  return {"a_field":{"a_calendar":{"post":{"result":true}},"a_class":{"post":{"post":true}},"a_class_tab":{"post":{"post":true}},"a_day":{"post":{"post":true}},"a_event":{"post":{"post":true}},"a_location":{"post":{"post":true}},"a_quick":{"post":{"result":true}},"a_session":{"post":{"result":true}},"a_time":{"post":{"post":true}},"dt_date":{"post":{"post":true}},"dt_end":{"post":{"post":true}},"id_class_tab":{"post":{"post":true}},"is_response_short":{"post":{"post":true}},"is_tab_all":{"post":{"post":true}},"is_timezone_different":{"post":{"result":true}},"is_virtual":{"post":{"post":true}},"is_virtual_service":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_class_tab":{"post":{"post":true}},"k_timezone":{"post":{"post":true}},"s_staff":{"post":{"post":true}},"s_staff_uid":{"post":{"post":true}},"show_book_status":{"post":{"post":true}},"show_cancel":{"post":{"post":true}},"show_class":{"post":{"post":true}},"show_event":{"post":{"post":true}},"show_quick_filter":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
 };
 
 /**
