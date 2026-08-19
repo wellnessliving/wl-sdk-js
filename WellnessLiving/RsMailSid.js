@@ -983,6 +983,13 @@ RsMailSid.LOGIN_STATEMENT_NEW = 213;
 RsMailSid.LOGIN_WELCOME = 9;
 
 /**
+ * Sent to selected staff or staff roles when a marketing automation flow reaches a Notify Staff step.
+ *
+ * @type {number}
+ */
+RsMailSid.MARKETING_AUTOMATION_NOTIFY_STAFF = 223;
+
+/**
  * Sent to staff when the AI Agent logs a membership or purchase query.
  *
  * @type {number}
