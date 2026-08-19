@@ -83,6 +83,17 @@ function Wl_Pay_Bank_Card_ListModel()
   this.can_remove_self = undefined;
 
   /**
+   * Whether the feature "client is allowed to remove their own saved credit cards" has been released.
+   *
+   * `true` if the feature has been released.
+   * `false` if the feature has not been released.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.has_remove_self = undefined;
+
+  /**
    * ID of current business.
    *
    * @get get
@@ -118,7 +129,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Bank_Card_ListModel);
  */
 Wl_Pay_Bank_Card_ListModel.prototype.config=function()
 {
-  return {"a_field":{"a_bank_card":{"get":{"result":true}},"a_list":{"get":{"result":true}},"can_add":{"get":{"result":true}},"can_remove_self":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_bank_card":{"get":{"result":true}},"a_list":{"get":{"result":true}},"can_add":{"get":{"result":true}},"can_remove_self":{"get":{"result":true}},"has_remove_self":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
