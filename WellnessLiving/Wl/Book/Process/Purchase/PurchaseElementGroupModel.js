@@ -115,6 +115,18 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
   this.m_checkout = undefined;
 
   /**
+   * The tax portion of {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_checkout}.
+   *
+   * Equals {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_tax} for everything that is paid for in full at
+   * once. A tuition defers a part of its tax to an installment plan along with the rest of its
+   * cost, so this is the tax on the amount actually charged right now, not on the full cost.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_checkout_tax = undefined;
+
+  /**
    * The total cost of the given purchase options.
    *
    * For a tuition this is the full cost, including whatever is deferred to an installment plan or
@@ -199,7 +211,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementGroupModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementGroupModel.prototype.config=function()
 {
-  return {"a_field":{"a_purchase_item":{"get":{"get":true,"result":true}},"a_tax":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_cost":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_code":{"get":{"result":true}},"m_discount_login":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_purchase_item":{"get":{"get":true,"result":true}},"a_tax":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_checkout_tax":{"get":{"result":true}},"m_cost":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_code":{"get":{"result":true}},"m_discount_login":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -208,9 +220,10 @@ Wl_Book_Process_Purchase_PurchaseElementGroupModel.prototype.config=function()
  * Validates each item in `a_purchase_item` (type, key, installment eligibility, and prize applicability),
  * applies discount codes, login-type discounts, and installment adjustments, then accumulates price, subtotal,
  * discount, tax, and cost totals across all items and returns them as result fields. For tuition
- * items the totals cover the full cost, so the amount that has to be charged right now is
- * reported separately in {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_checkout}, and its per-component
- * split is written back into `a_config` of the item it belongs to.
+ * items the totals cover the full cost, so the amount that has to be charged right now, and the
+ * tax portion of it, are reported separately in {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_checkout} and
+ * {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_checkout_tax}, and the per-component split is written back
+ * into `a_config` of the item it belongs to.
  *
  * @function
  * @name Wl_Book_Process_Purchase_PurchaseElementGroupModel.get

@@ -183,6 +183,18 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
   this.m_checkout = undefined;
 
   /**
+   * The tax portion of {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_checkout}.
+   *
+   * Equals {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_tax} for everything that is paid for in full at
+   * once. A tuition defers a part of its tax to an installment plan along with the rest of its
+   * cost, so this is the tax on the amount actually charged right now, not on the full cost.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_checkout_tax = undefined;
+
+  /**
    * The total cost of the given purchase options.
    *
    * For a tuition this is the full cost, including whatever is deferred to an installment plan or
@@ -267,7 +279,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_Purchase_PurchaseElementModel);
  */
 Wl_Book_Process_Purchase_PurchaseElementModel.prototype.config=function()
 {
-  return {"a_field":{"a_config":{"get":{"get":true,"result":true}},"a_tax":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"i_session":{"get":{"get":true}},"id_purchase_item":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_id":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_login_prize":{"get":{"get":true}},"k_pay_installment_template":{"get":{"get":true}},"k_reward_prize":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_cost":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_code":{"get":{"result":true}},"m_discount_login":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_config":{"get":{"get":true,"result":true}},"a_tax":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"i_session":{"get":{"get":true}},"id_purchase_item":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_id":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_login_prize":{"get":{"get":true}},"k_pay_installment_template":{"get":{"get":true}},"k_reward_prize":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_checkout_tax":{"get":{"result":true}},"m_cost":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_code":{"get":{"result":true}},"m_discount_login":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
