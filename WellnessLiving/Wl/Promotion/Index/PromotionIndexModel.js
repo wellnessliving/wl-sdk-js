@@ -134,6 +134,15 @@ function Wl_Promotion_Index_PromotionIndexModel()
   this.id_program_type = 0;
 
   /**
+   * If `true`, purchase options are loaded for backend mode. Otherwise, this will be `false` if purchase options
+   * are loaded for frontend mode.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_backend = false;
+
+  /**
    * The business key.
    *
    * `null` to get a business from location.
@@ -161,7 +170,7 @@ WlSdk_ModelAbstract.extend(Wl_Promotion_Index_PromotionIndexModel);
  */
 Wl_Promotion_Index_PromotionIndexModel.prototype.config=function()
 {
-  return {"a_field":{"a_promotion":{"get":{"result":true}},"i_image_height":{"get":{"get":true}},"i_image_width":{"get":{"get":true}},"id_program_type":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}}}};
+  return {"a_field":{"a_promotion":{"get":{"result":true}},"i_image_height":{"get":{"get":true}},"i_image_width":{"get":{"get":true}},"id_program_type":{"get":{"get":true}},"is_backend":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}}}};
 };
 
 /**

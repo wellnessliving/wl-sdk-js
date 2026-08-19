@@ -18,6 +18,26 @@ function Wl_Login_Member_DynamicId_DynamicIdModel()
   this.i_expire = undefined;
 
   /**
+   * Unix time in seconds at which {@link Wl_Login_Member_DynamicId_DynamicIdModel.text_barcode} was issued.
+   *
+   * Only meaningful when {@link Wl_Login_Member_DynamicId_DynamicIdModel.is_qr} is `true`. The Achieve app combines this value with
+   * {@link Wl_Login_Member_DynamicId_DynamicIdModel.text_barcode} and a hardcoded 30-second validity window to build the QR code payload,
+   * and increments it locally every 30 seconds to refresh the QR code without an additional request to the server.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_qr_issued = undefined;
+
+  /**
+   * `true` if the business uses QR code as the client check-in scan format, `false` if it uses the classic barcode.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_qr = undefined;
+
+  /**
    * `true` if a new dynamic ID should be generated.
    * `false` if the existing dynamic ID can be used, if it has not expired.
    *   If expired, a new dynamic ID will be generated anyway.
@@ -72,7 +92,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Member_DynamicId_DynamicIdModel);
  */
 Wl_Login_Member_DynamicId_DynamicIdModel.prototype.config=function()
 {
-  return {"a_field":{"i_expire":{"get":{"result":true}},"is_refresh":{"get":{"get":true}},"k_business":{"get":{"get":true}},"text_barcode":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_barcode":{"get":{"result":true}}}};
+  return {"a_field":{"i_expire":{"get":{"result":true}},"i_qr_issued":{"get":{"result":true}},"is_qr":{"get":{"result":true}},"is_refresh":{"get":{"get":true}},"k_business":{"get":{"get":true}},"text_barcode":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_barcode":{"get":{"result":true}}}};
 };
 
 /**
@@ -81,6 +101,10 @@ Wl_Login_Member_DynamicId_DynamicIdModel.prototype.config=function()
  * If the business uses dynamic barcodes, generates or refreshes a time-limited barcode and returns its value,
  * expiry countdown, and an image URL. If the business uses static barcodes, returns the member's static ID
  * with a zero expiry.
+ *
+ * If the business uses QR code as the scan format ({@link Wl_Login_Member_DynamicId_DynamicIdModel.is_qr}), also returns the issue
+ * timestamp ({@link Wl_Login_Member_DynamicId_DynamicIdModel.i_qr_issued}) that the Achieve app uses to build and locally refresh the QR
+ * code payload, and does not generate a barcode image URL.
  *
  * @function
  * @name Wl_Login_Member_DynamicId_DynamicIdModel.get
