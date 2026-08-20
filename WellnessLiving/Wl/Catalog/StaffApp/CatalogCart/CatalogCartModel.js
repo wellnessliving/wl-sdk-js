@@ -54,6 +54,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_registration_fee_list
    * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_registration_fee_list_a_discount} a_discount Manual discount applied to the registration fee:
    * @property {string} m_amount Registration fee amount for the tuition participant.
+   * @property {string} m_discount Total discount amount actually applied to the registration fee.
    */
 
   /**

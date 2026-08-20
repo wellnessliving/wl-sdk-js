@@ -11,8 +11,10 @@ function Wl_Passport_Login_Register_RegisterOtpJwtPublicKeyModel()
   /**
    * Public key in JWK format.
    *
+   * Each array item is one JWK with the following structure:
+   *
    * @get result
-   * @type {*[][]}
+   * @type {{}[]}
    */
   this.a_keys = undefined;
 
