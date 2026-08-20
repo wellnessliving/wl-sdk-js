@@ -23,7 +23,7 @@ function Wl_Tuition_Enrollment_TuitionEnrollmentListModel()
   /**
    * @typedef {{}} Wl_Tuition_Enrollment_TuitionEnrollmentListModel_a_enrollment
    * @property {Wl_Tuition_Enrollment_TuitionEnrollmentListModel_a_enrollment_a_events[]} a_events Events for this enrollment.
-   * @property {?string} dl_next Next payment date in local business timezone and MySQL format.
+   * @property {?string} dl_next Next payment date in local business timezone and MySQL format. It will be the closest date to the current date for membership tuition.
    * @property {string} dtl_enrollment Date and time of the enrollment in local business timezone.
    * @property {number} i_payments_done Number of payments done.
    * @property {?number} i_payments_left Number of payments left.
