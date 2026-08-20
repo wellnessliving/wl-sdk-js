@@ -15,6 +15,7 @@ function Wl_Appointment_Book_Staff_StaffListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Staff_StaffListModel_a_staff
+   * @property {?number} i_free_spot How many clients can still be booked with the staff member at the requested time. If `dt_date` is not passed, this value is `null`. If `dt_date` is passed, this is calculated for the specific staff member at that time.
    * @property {number} id_gender Staff member's gender. One of {@link AGenderSid} constants.
    * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached daily limits, this field will be different for client and staff booking flows. If client books, such staff member is not available and this field is `false`. If staff member books, such staff member is available.
    * @property {boolean} is_daily_limit Whether staff member reached daily limits on number or total duration of the appointments for one day.
