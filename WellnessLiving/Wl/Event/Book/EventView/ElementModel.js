@@ -17,18 +17,26 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_age_restrictions
-   * @property {?number} i_age_from The minimum age for participation in the event.
-   * `null` if there's no minimum age set or information isn't available.
-   * @property {?number} i_age_to The age limit for participation in the event.
-   *    `null` if there's no age limit set or information isn't available.
-   * @property {boolean} is_age_public `true` if age restrictions are public and available, `false` if they're hidden.
-   * When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
+   * @property {number} i_age_from Minimum age for service (years part).
+   * @property {number} i_age_from_month Minimum age for service (months part).
+   * @property {number} i_age_from_year Minimum age for service (years part).
+   * @property {number} i_age_to Maximum age for service (years part).
+   * @property {number} i_age_to_month Maximum age for service (months part).
+   * @property {number} i_age_to_year Maximum age for service (years part).
+   * @property {boolean} is_age_public Is service public even if user does not meet age requirements or not?
+   *
+   * `true` - to show service to everyone.
+   * `false` - to show service only to users who meet age requirements.
+   * @property {boolean} is_month_enabled Whether months are enabled for age restrictions.
+   *
+   * `true` - age restrictions can include number of months.
+   * `false` - age restrictions can include only years.
    */
 
   /**
    * Displays information about age restrictions for this event.
    *
-   * An empty array if there are no age restrictions.
+   * Will be empty array if there are no age restrictions.
    *
    * @get result
    * @type {Wl_Event_Book_EventView_ElementModel_a_age_restrictions}
@@ -169,6 +177,11 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} text_room The room of the event.
    */
   /**
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_makeup_class
+   * @property {string} k_class Class key.
+   * @property {?string} s_title Class title. `null` if title is unavailable for the selected language.
+   */
+  /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_installment_template
    * @property {number} i_count The number of payments.
    * @property {number} id_duration The duration of a single period. One of the {@link ADurationSid} constants.
@@ -197,7 +210,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_class_logo} a_class_logo Image of event. See {@link Wl_Event_Book_EventView_ElementModel.a_class_logo}.
    * @property {string[]} a_class_tab Class tab keys. See {@link Wl_Event_Book_EventView_ElementModel.a_class_tab}.
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_installment_template[]} a_installment_template List of installment plans. See {@link Wl_Event_Book_EventView_ElementModel.a_installment_template}.
-   * @property {{}[]} a_makeup_class Classes selected for make-up sessions. See {@link Wl_Event_Book_EventView_ElementModel.a_makeup_class}.
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_makeup_class[]} a_makeup_class Classes selected for make-up sessions. Every element has the following keys:
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_schedule[]} a_schedule Schedule of event sessions. See {@link Wl_Event_Book_EventView_ElementModel.a_schedule}.
    * @property {string[]} a_shop_category IDs of online store category.
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_staff_logo} a_staff_logo Photos of staff. See {@link Wl_Event_Book_EventView_ElementModel.a_staff_logo}.
@@ -212,6 +225,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {number} i_makeup_cap Number of allowed make-up sessions for event.
    * `0` if make-up sessions are disabled for event or all missed sessions are available for make-up.
    * @property {number} i_session Session count in event.
+   * @property {number} i_session_all Total number of sessions including both past and future sessions.
    * @property {number} i_session_remain Remaining session count in event.
    * @property {boolean} is_availability_checked Whether event availability was checked.
    * @property {boolean} is_book Whether event is booked already
@@ -518,6 +532,14 @@ function Wl_Event_Book_EventView_ElementModel()
    * @type {number}
    */
   this.i_session = undefined;
+
+  /**
+   * Total number of sessions including both past and future sessions.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_session_all = undefined;
 
   /**
    * The remaining session count.
@@ -846,7 +868,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventView_ElementModel);
  */
 Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_makeup_class": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_shop_category": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_timezone_info": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"dtu_session": {"get": {"get": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_capacity": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_makeup_cap": {"get": {"result": true}},"i_session": {"get": {"result": true}},"i_session_remain": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_pay_require": {"get": {"result": true}},"id_pay_require_option": {"get": {"result": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_makeup": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_policy_custom": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"show_special_instructions": {"get": {"result": true}},"show_unpublished": {"get": {"get": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
+  return {"a_field": {"a_age_restrictions": {"get": {"result": true}},"a_book_available": {"get": {"result": true}},"a_business_policy": {"get": {"result": true}},"a_class_logo": {"get": {"result": true}},"a_class_tab": {"get": {"result": true}},"a_event": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_makeup_class": {"get": {"result": true}},"a_schedule": {"get": {"result": true}},"a_shop_category": {"get": {"result": true}},"a_staff_logo": {"get": {"result": true}},"a_timezone_info": {"get": {"result": true}},"a_visits_required": {"get": {"result": true}},"dl_book_available_end": {"get": {"get": true}},"dl_book_available_start": {"get": {"get": true}},"dt_book_date": {"get": {"result": true}},"dt_early": {"get": {"result": true}},"dt_end": {"get": {"result": true}},"dt_start": {"get": {"result": true}},"dtu_session": {"get": {"get": true}},"hide_application": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_capacity": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_makeup_cap": {"get": {"result": true}},"i_session": {"get": {"result": true}},"i_session_all": {"get": {"result": true}},"i_session_remain": {"get": {"result": true}},"i_staff_image_height": {"get": {"get": true}},"i_staff_image_width": {"get": {"get": true}},"id_pay_require": {"get": {"result": true}},"id_pay_require_option": {"get": {"result": true}},"id_virtual_provider": {"get": {"result": true}},"is_age_restrict": {"get": {"result": true}},"is_availability_checked": {"get": {"result": true}},"is_book": {"get": {"result": true}},"is_bookable": {"get": {"result": true}},"is_full": {"get": {"result": true}},"is_makeup": {"get": {"result": true}},"is_past": {"get": {"result": true}},"is_policy_custom": {"get": {"result": true}},"is_promotion_only": {"get": {"result": true}},"is_prorate": {"get": {"result": true}},"is_schedule_group": {"get": {"get": true}},"is_single_session_buy": {"get": {"result": true}},"is_virtual": {"get": {"result": true}},"k_book_class_period": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_period": {"get": {"get": true}},"k_event": {"get": {"get": true}},"m_price": {"get": {"result": true}},"m_price_total": {"get": {"result": true}},"m_price_total_early": {"get": {"result": true}},"s_deny_reason": {"get": {"result": true}},"s_event": {"get": {"get": true}},"s_title": {"get": {"result": true}},"show_special_instructions": {"get": {"result": true}},"show_unpublished": {"get": {"get": true}},"text_end": {"get": {"result": true}},"text_start": {"get": {"result": true}},"uid": {"get": {"get": true}},"url_book": {"get": {"result": true}},"xml_description": {"get": {"result": true}}}};
 };
 
 /**
