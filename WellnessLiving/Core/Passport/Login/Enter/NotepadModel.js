@@ -1,12 +1,12 @@
 /**
  * Generates notepad for user sign in form.
  *
- * @augments WlSdk_ModelAbstract
+ * @augments Core_Passport_Login_Enter_NotepadModelAbstract
  * @constructor
  */
 function Core_Passport_Login_Enter_NotepadModel()
 {
-  WlSdk_ModelAbstract.apply(this);
+  Core_Passport_Login_Enter_NotepadModelAbstract.apply(this);
 
   /**
    * ID of the datacenter which is a preferred datacenter for the user specified in
@@ -73,7 +73,7 @@ function Core_Passport_Login_Enter_NotepadModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Core_Passport_Login_Enter_NotepadModel);
+Core_Passport_Login_Enter_NotepadModelAbstract.extend(Core_Passport_Login_Enter_NotepadModel);
 
 /**
  * @inheritDoc

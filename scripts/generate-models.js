@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { getModelBaseClass } = require('./model-base');
 
 // -----------------------------------------------------------------------
 // Configuration
@@ -742,7 +743,7 @@ function collectFields(pathItem, spec, className)
   return fields;
 }
 
-function buildModelContent(className, fields, description, isDeprecated, deprecatedMsg, instanceGetKey, httpMethods)
+function buildModelContent(className, fields, description, isDeprecated, deprecatedMsg, instanceGetKey, httpMethods, baseClassName)
 {
   const sortedNames = Object.keys(fields).sort();
   const lines = [];
@@ -761,7 +762,7 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
 
   // Class-level tags (sorted alphabetically)
   const classTags = [
-    { tag: 'augments', value: 'WlSdk_ModelAbstract' },
+    { tag: 'augments', value: baseClassName },
     { tag: 'constructor', value: '' },
   ];
   if (isDeprecated)
@@ -779,7 +780,7 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
   // --- Constructor function ---
   lines.push('function ' + className + '()');
   lines.push('{');
-  lines.push('  WlSdk_ModelAbstract.apply(this);');
+  lines.push('  ' + baseClassName + '.apply(this);');
 
   // --- _s_key for instanceGet ---
   if (instanceGetKey)
@@ -854,7 +855,7 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
   lines.push('');
 
   // --- Prototype extension ---
-  lines.push('WlSdk_ModelAbstract.extend(' + className + ');');
+  lines.push(baseClassName + '.extend(' + className + ');');
   lines.push('');
 
   // --- Config method ---
@@ -993,8 +994,11 @@ function generateModels(spec)
     }
 
     const instanceGetKey = getInstanceGetKey(pathItem);
-    const content = buildModelContent(className, fields, description, isDeprecated, deprecatedMsg, instanceGetKey, httpMethods);
     const fullPath = path.join(OUTPUT_DIR, pathToModelFile(apiPath));
+    const baseClassName = getModelBaseClass(className, fullPath);
+    const content = buildModelContent(
+      className, fields, description, isDeprecated, deprecatedMsg, instanceGetKey, httpMethods, baseClassName
+    );
 
     fs.mkdirSync(path.dirname(fullPath), { recursive: true });
     fs.writeFileSync(fullPath, content, 'utf8');

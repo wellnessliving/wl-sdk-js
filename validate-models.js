@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { getModelBaseClass } = require('./scripts/model-base');
 
 const rootDir = process.argv[2] || '.';
 
@@ -61,15 +62,17 @@ function checkModel(filePath) {
     errors.push('❌ Core_Spa_Model is not allowed in SDK.');
   }
 
-  if (!content.includes('WlSdk_ModelAbstract.apply(this);')) {
-    errors.push('❌ WlSdk_ModelAbstract.apply(this); not found');
+  const baseClassName = getModelBaseClass(className, filePath);
+
+  if (!content.includes(`${baseClassName}.apply(this);`)) {
+    errors.push(`❌ ${baseClassName}.apply(this); not found`);
   }
 
   if (
-    !content.includes('WlSdk_ModelAbstract.extend(') &&
-    !content.includes('WlSdk_ModelAbstract.extends(')
+    !content.includes(`${baseClassName}.extend(`) &&
+    !content.includes(`${baseClassName}.extends(`)
   ) {
-    errors.push('❌ WlSdk_ModelAbstract.extend(); not found');
+    errors.push(`❌ ${baseClassName}.extend(); not found`);
   }
 
   const expectedConfig = `${className}.prototype.config=function()`;
