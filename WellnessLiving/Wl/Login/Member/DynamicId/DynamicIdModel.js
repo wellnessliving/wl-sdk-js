@@ -23,18 +23,6 @@ function Wl_Login_Member_DynamicId_DynamicIdModel()
   this.i_expire = undefined;
 
   /**
-   * Unix time in seconds at which {@link Wl_Login_Member_DynamicId_DynamicIdModel.text_barcode} was issued.
-   *
-   * Only meaningful when {@link Wl_Login_Member_DynamicId_DynamicIdModel.is_qr} is `true`. The Achieve app combines this value with
-   * {@link Wl_Login_Member_DynamicId_DynamicIdModel.text_barcode} and a hardcoded 30-second validity window to build the QR code payload,
-   * and increments it locally every 30 seconds to refresh the QR code without an additional request to the server.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.i_qr_issued = undefined;
-
-  /**
    * `true` if the business uses QR code as the client check-in scan format, `false` if it uses the classic barcode.
    *
    * @get result
@@ -72,6 +60,18 @@ function Wl_Login_Member_DynamicId_DynamicIdModel()
   this.text_barcode = undefined;
 
   /**
+   * Unix time in seconds at which {@link Wl_Login_Member_DynamicId_DynamicIdModel.text_barcode} was issued.
+   *
+   * Only meaningful when {@link Wl_Login_Member_DynamicId_DynamicIdModel.is_qr} is `true`. The Achieve app combines this value with
+   * {@link Wl_Login_Member_DynamicId_DynamicIdModel.text_barcode} and a hardcoded 30-second validity window to build the QR code payload,
+   * and increments it locally every 30 seconds to refresh the QR code without an additional request to the server.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.tu_qr_issued = undefined;
+
+  /**
    * User unique identifier.
    *
    * @get get
@@ -97,7 +97,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Member_DynamicId_DynamicIdModel);
  */
 Wl_Login_Member_DynamicId_DynamicIdModel.prototype.config=function()
 {
-  return {"a_field":{"i_expire":{"get":{"result":true}},"i_qr_issued":{"get":{"result":true}},"is_qr":{"get":{"result":true}},"is_refresh":{"get":{"get":true}},"k_business":{"get":{"get":true}},"text_barcode":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_barcode":{"get":{"result":true}}}};
+  return {"a_field":{"i_expire":{"get":{"result":true}},"is_qr":{"get":{"result":true}},"is_refresh":{"get":{"get":true}},"k_business":{"get":{"get":true}},"text_barcode":{"get":{"result":true}},"tu_qr_issued":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_barcode":{"get":{"result":true}}}};
 };
 
 /**
@@ -117,7 +117,7 @@ Wl_Login_Member_DynamicId_DynamicIdModel.prototype.config=function()
  * with a zero expiry.
  *
  * If the business uses QR code as the scan format ({@link Wl_Login_Member_DynamicId_DynamicIdModel.is_qr}), also returns the issue
- * timestamp ({@link Wl_Login_Member_DynamicId_DynamicIdModel.i_qr_issued}) that the Achieve app uses to build and locally refresh the QR
+ * timestamp ({@link Wl_Login_Member_DynamicId_DynamicIdModel.tu_qr_issued}) that the Achieve app uses to build and locally refresh the QR
  * code payload, and does not generate a barcode image URL.
  *
  * @function
