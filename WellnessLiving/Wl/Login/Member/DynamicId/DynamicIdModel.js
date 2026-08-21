@@ -9,6 +9,11 @@ function Wl_Login_Member_DynamicId_DynamicIdModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @inheritDoc
+   */
+  this._s_key = "k_business,uid";
+
+  /**
    * Number of seconds left until the dynamic ID expires.
    * Zero means that business uses static barcode.
    *
@@ -94,6 +99,15 @@ Wl_Login_Member_DynamicId_DynamicIdModel.prototype.config=function()
 {
   return {"a_field":{"i_expire":{"get":{"result":true}},"i_qr_issued":{"get":{"result":true}},"is_qr":{"get":{"result":true}},"is_refresh":{"get":{"get":true}},"k_business":{"get":{"get":true}},"text_barcode":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_barcode":{"get":{"result":true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Login_Member_DynamicId_DynamicIdModel.instanceGet
+ * @param {string} k_business Business key.
+ * @param {string} uid User unique identifier.
+ * @returns {Wl_Login_Member_DynamicId_DynamicIdModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */
 
 /**
  * Returns the member's barcode and its expiry time for the specified business and user.

@@ -1,5 +1,5 @@
 /**
- * Returns public key material for OTP registration JWT verification.
+ * Gets the public key material for OTP registration JWT verification.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -9,12 +9,22 @@ function Wl_Passport_Login_Register_RegisterOtpJwtPublicKeyModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Passport_Login_Register_RegisterOtpJwtPublicKeyModel_a_keys
+   * @property {string} alg Signing algorithm. Always 'RS256'.
+   * @property {string} e RSA public exponent in base64url format.
+   * @property {string} kid Key identifier for JWT header matching.
+   * @property {string} kty Key type. Always 'RSA'.
+   * @property {string} n RSA modulus in base64url format.
+   * @property {string} use Public key usage. Always 'sig'.
+   */
+
+  /**
    * Public key in JWK format.
    *
    * Each array item is one JWK with the following structure:
    *
    * @get result
-   * @type {{}[]}
+   * @type {Wl_Passport_Login_Register_RegisterOtpJwtPublicKeyModel_a_keys[]}
    */
   this.a_keys = undefined;
 
@@ -40,7 +50,9 @@ Wl_Passport_Login_Register_RegisterOtpJwtPublicKeyModel.prototype.config=functio
 };
 
 /**
- * Returns public key material for OTP registration JWT verification.
+ * Gets the public key material for OTP registration JWT verification.
+ *
+ * The public key is used to verify a JWT token.
  *
  * @function
  * @name Wl_Passport_Login_Register_RegisterOtpJwtPublicKeyModel.get
