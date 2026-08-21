@@ -968,7 +968,7 @@ Wl_Privilege_PrivilegeSid.PARTNER_PROGRAM_MANAGE = 94;
 Wl_Privilege_PrivilegeSid.PAYMENT_PROCESSING = 166;
 
 /**
- * Allows the staff member to initiate bulk billing of multiple clients in one batch.
+ * Allows staff to select multiple clients and post a single bulk transaction for a store item.
  *
  * @type {number}
  */
