@@ -16,15 +16,18 @@ function Wl_Appointment_Book_Staff_StaffListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Staff_StaffListModel_a_staff
-   * @property {number} id_gender Staff member's gender.
-   * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached
-   *   daily limits, this field will be different for client and staff booking flows. If client books, such staff member
-   *   is not available and this field is `false`. If staff member books, such staff member is available.
+   * @property {number} id_gender Staff member's gender. One of {@link AGenderSid} constants.
+   * @property {?number} i_free_spot How many clients can still be booked with the staff member at the requested time.
+   * <p>If {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is not passed, this value is `null`.</p>
+   * <p>If {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is passed, this is calculated for the specific staff member at that time.</p>
+   * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached daily limits, this field
+   * will be different for client and staff booking flows. If client books, such staff member is not available and
+   * this field is `false`. If staff member books, such staff member is available.
    * @property {boolean} is_daily_limit Whether staff member reached daily limits on number or total duration of the appointments for one day.
    * @property {boolean} is_wait_list Whether staff member available only for wait list booking.
-   * @property {string} k_staff Primary key of the staff member.
+   * @property {string} k_staff @deprecated Legacy staff key.  Returned only for allow-listed apps.
    * @property {string} s_position Position of the staff member in the business.
-   * @property {number} s_staff Name of the staff member.
+   * @property {string} s_staff Name of the staff member.
    * @property {string} uid UID of the staff member.
    * @property {string} xml_biography Biography of the staff member.
    */
@@ -94,6 +97,7 @@ function Wl_Appointment_Book_Staff_StaffListModel()
    * For different roles different results might be generated.
    *
    * @get get
+   * @see Wl_Login_LoginRoleSid
    * @type {number}
    */
   this.id_role = 2;
@@ -189,14 +193,17 @@ Wl_Appointment_Book_Staff_StaffListModel.prototype.config=function()
  */
 
 /**
- * Retrieves an information about staff members for the current service.
- *
- * Returns the list of staff members who can perform the specified service at the given location
- * on the specified date and time. Each entry includes the staff member's name, image, gender,
- * and availability. An 'any staff' option is included when the service allows random staff assignment.
- *
+ * @typedef Wl_Appointment_Book_Staff_StaffListModel_GetResponse
+ * @type {object}
+ * @property {Wl_Appointment_Book_Staff_StaffListModel_a_staff[]} a_staff A list of staff members with information about them.
+ * @property {boolean} can_book_unavailable_staff Can staff booked unavailable staff.
+ * @property {boolean} has_gender Determines whether to select the staff member's gender for the appointment.
+ * @property {boolean} has_staff Determines whether to select staff member(s) for the appointment.
+ * @property {boolean} is_gender_different Determines if the staff list has male and female members.
+ */
+
+/**
  * @function
  * @name Wl_Appointment_Book_Staff_StaffListModel.get
- * @returns {WlSdk_Deferred_Promise}
- * @see WlSdk_ModelAbstract.get()
+ * @returns {Promise<Wl_Appointment_Book_Staff_StaffListModel_GetResponse>} Response from this request
  */

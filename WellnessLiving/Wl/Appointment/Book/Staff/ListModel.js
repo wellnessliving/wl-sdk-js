@@ -16,44 +16,24 @@ function Wl_Appointment_Book_Staff_ListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Staff_ListModel_a_staff
-   * @property {number} id_gender Staff member's gender.
+   * @property {number} id_gender Staff member's gender. One of {@link AGenderSid} constants.
+   * @property {?number} i_free_spot How many clients can still be booked with the staff member at the requested time.
+   * <p>If {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is not passed, this value is `null`.</p>
+   * <p>If {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is passed, this is calculated for the specific staff member at that time.</p>
    * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached daily limits, this field
    * will be different for client and staff booking flows. If client books, such staff member is not available and
    * this field is `false`. If staff member books, such staff member is available.
    * @property {boolean} is_daily_limit Whether staff member reached daily limits on number or total duration of the appointments for one day.
    * @property {boolean} is_wait_list Whether staff member available only for wait list booking.
-   * @property {string} k_staff Primary key of the staff member.
+   * @property {string} k_staff @deprecated Legacy staff key.  Returned only for allow-listed apps.
    * @property {string} s_position Position of the staff member in the business.
-   * @property {number} s_staff Name of the staff member.
+   * @property {string} s_staff Name of the staff member.
    * @property {string} uid UID of the staff member.
    * @property {string} xml_biography Biography of the staff member.
    */
 
   /**
    * A list of staff members with information about them.
-   *
-   * <dl>
-   *   <dt>int <var>id_gender</var></dt>
-   *   <dd>Staff member's gender.</dd>
-   *   <dt>bool <var>is_available</var></dt>
-   *   <dd>Whether staff member is available for booking. Note, if staff member reached daily limits, this field
-   *     will be different for client and staff booking flows. If client books, such staff member is not available and
-   *     this field is `false`. If staff member books, such staff member is available.</dd>
-   *   <dt>bool <var>is_daily_limit</var></dt>
-   *   <dd>Whether staff member reached daily limits on number or total duration of the appointments for one day.</dd>
-   *   <dt>bool <var>is_wait_list</var></dt>
-   *   <dd>Whether staff member available only for wait list booking.</dd>
-   *   <dt>string <var>k_staff</var></dt>
-   *   <dd>Primary key of the staff member.</dd>
-   *   <dt>string <var>s_position</var></dt>
-   *   <dd>Position of the staff member in the business.</dd>
-   *   <dt>int <var>s_staff</var></dt>
-   *   <dd>Name of the staff member.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>UID of the staff member.</dd>
-   *   <dt>string <var>xml_biography</var></dt>
-   *   <dd>Biography of the staff member.</dd>
-   * </dl>
    *
    * @get result
    * @type {Wl_Appointment_Book_Staff_ListModel_a_staff[]}
@@ -107,6 +87,7 @@ function Wl_Appointment_Book_Staff_ListModel()
    * For different roles different results might be generated.
    *
    * @get get
+   * @see Wl_Login_LoginRoleSid
    * @type {number}
    */
   this.id_role = 2;
