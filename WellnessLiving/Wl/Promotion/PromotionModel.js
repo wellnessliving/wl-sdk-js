@@ -54,6 +54,7 @@ function Wl_Promotion_PromotionModel()
   /**
    * @typedef {{}} Wl_Promotion_PromotionModel_a_promotion
    * @property {Wl_Promotion_PromotionModel_a_promotion_a_access} a_access Information about services that can be attended with this pass or membership.
+   * @property {string[]} a_franchise_region A list of franchise regions where a guest may redeem this Guest Pass, in addition to the location that sold it. Only meaningful when `is_regional_access` is `true` and `is_regional` is `true`.
    * @property {Wl_Promotion_PromotionModel_a_promotion_a_image} a_image Information about Purchase Option image. This will be an empty array if the Purchase Option doesn't have an image.
    * @property {string[]} a_location A list of locations where this promotion is available.
    * @property {string[]} a_login_type A list of login types linked with this promotion.
@@ -73,6 +74,9 @@ function Wl_Promotion_PromotionModel()
    * @property {boolean} is_introductory If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.
    * @property {boolean} is_online If `true`, this promotion is available for online purchase. Otherwise, this will be `false`.
    * @property {boolean} is_payroll Whether clients who purchase this item excluded from payroll calculations.
+   * @property {boolean} is_regional Whether a guest may redeem this Guest Pass at other locations within the regions listed in `a_franchise_region`, in addition to the location that sold it. `false` means the pass can only be redeemed at the location that sold it. Only meaningful when `is_regional_access` is `true`.
+   * @property {boolean} is_regional_access Whether the regional access setting can be configured for this promotion and business at all. `false` if the business does not take part in a franchise region, in which case `is_regional` and `a_franchise_region` should be ignored.
+   * @property {boolean} is_regional_access_readonly Whether the regional access setting is read-only for this business. `true` for a franchisee location, which can only view the regions selected by the franchisor.
    * @property {boolean} is_revenue_single If `true` need to add approximate revenue per session value.
    * @property {boolean} is_use Whether promotion can be used for booking. `null` if there is no termination.
    * @property {string} k_promotion The key of the promotion.
