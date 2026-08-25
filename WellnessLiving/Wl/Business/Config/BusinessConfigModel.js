@@ -91,10 +91,12 @@ function Wl_Business_Config_BusinessConfigModel()
    * @property {number} id_blame One of {@link Wl_Business_Policy_BlameSid} constants.
    * @property {number} id_cancel_period Duration ID. One of {@link ADurationSid} constants.
    * @property {number} id_charge One of {@link Wl_Business_Policy_ChargeSid} constants.
-   * @property {number} id_charge_measure Percent or money sign.
+   * @property {number} id_charge_measure <b>Deprecated.</b> Percent or money sign.
+   *   Use Wl_Business_Config_BusinessConfigModel_a_penalty.is_charge_measure_money instead.
    * @property {number} is_appointment_all `1` if all classes are selected, `0` - otherwise.
+   * @property {boolean} is_charge_measure_money `true` for a fixed money amount, `false` for a percentage.
    * @property {number} is_class_all `1` if all classes are selected, `0` - otherwise.
-   * @property {number} is_enable_cancel_charge <tt>true</tt> if promotion penalties is enable, <tt>false</tt> otherwise.
+   * @property {number} is_enable_cancel_charge `true` if promotion penalties is enable, `false` otherwise.
    * @property {number} is_event_all `1` if all events are selected, `0` - otherwise.
    * @property {number} is_login_type_all `1` if all login types are selected, `0` - otherwise.
    * @property {number} is_resource_all `1` if all resources are selected, `0` - otherwise.

@@ -58,7 +58,7 @@ function Thoth_PayProcessor_Nuvei_NuveiTransactionStartModel()
   /**
    * ID of pay method.
    *
-   * One of {@link RsPayMethodSid} constants.
+   * One of {@link WlPayMethodSid} constants.
    *
    * `null` in case when not initialized yet.
    *

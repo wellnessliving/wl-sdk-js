@@ -58,7 +58,7 @@ List of payments that equal the total order amount.
 
 | Field | Type | Description |
 |---|---|---|
-| `id_pay_method` | int | The payment method ID (e.g., External, Cash). See `RsPayMethodSid`. |
+| `id_pay_method` | int | The payment method ID (e.g., External, Cash). See `WlPayMethodSid`. |
 | `k_pay_method` | string | (Optional) The specific card on file key, if applicable. |
 | `m_amount` | string | The amount paid using this method. |
 | `m_surcharge` | string | (Optional) Surcharge amount applied to this payment. |

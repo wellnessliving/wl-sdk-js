@@ -51,7 +51,7 @@ function Wl_Book_Process_ProcessGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_event_session_a_purchase_item
    * @property {number} [i_count] Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
-   * @property {number} [id_purchase_item] Kind of option to purchase. One of {@link RsPurchaseItemSid} constants.
+   * @property {number} [id_purchase_item] Kind of option to purchase. One of {@link Wl_Purchase_Item_ItemSid} constants.
    *          Specify only if you want to purchase a new option.
    * @property {boolean} [is_renew] `true` if you want to enable auto-renewal for new purchase option. `false` otherwise.
    *          Specify only if you want to purchase a new option.

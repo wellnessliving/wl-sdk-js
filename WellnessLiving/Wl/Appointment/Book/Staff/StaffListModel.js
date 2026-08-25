@@ -5,17 +5,17 @@
  * @constructor
  * @deprecated Use {@link Wl_Appointment_Book_Staff_StaffListModel} instead.
  */
-function Wl_Appointment_Book_Staff_ListModel()
+function Wl_Appointment_Book_Staff_StaffListModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
   /**
    * @inheritDoc
    */
-  this._s_key = "k_location,k_service,dt_date,is_unavailable,id_role,k_appointment_ignore,k_timezone,uid";
+  this._s_key = "k_location,k_service,dt_date,is_unavailable,id_role,k_appointment_ignore,k_timezone,uid,i_client";
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Staff_ListModel_a_staff
+   * @typedef {{}} Wl_Appointment_Book_Staff_StaffListModel_a_staff
    * @property {number} id_gender Staff member's gender. One of {@link AGenderSid} constants.
    * @property {?number} i_free_spot How many clients can still be booked with the staff member at the requested time.
    * <p>If {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is not passed, this value is `null`.</p>
@@ -36,7 +36,7 @@ function Wl_Appointment_Book_Staff_ListModel()
    * A list of staff members with information about them.
    *
    * @get result
-   * @type {Wl_Appointment_Book_Staff_ListModel_a_staff[]}
+   * @type {Wl_Appointment_Book_Staff_StaffListModel_a_staff[]}
    */
   this.a_staff = undefined;
 
@@ -71,6 +71,16 @@ function Wl_Appointment_Book_Staff_ListModel()
    * @type {boolean}
    */
   this.has_staff = undefined;
+
+  /**
+   * Count of clients on the appointment.
+   *
+   * Default value is 1.
+   *
+   * @get get
+   * @type {number}
+   */
+  this.i_client = 1;
 
   /**
    * Custom appointment duration in minutes.
@@ -156,19 +166,19 @@ function Wl_Appointment_Book_Staff_ListModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Staff_ListModel);
+WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Staff_StaffListModel);
 
 /**
  * @inheritDoc
  */
-Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
+Wl_Appointment_Book_Staff_StaffListModel.prototype.config=function()
 {
-  return {"a_field": {"a_staff": {"get": {"result": true}},"can_book_unavailable_staff": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"has_gender": {"get": {"result": true}},"has_staff": {"get": {"result": true}},"i_duration_custom": {"get": {"get": true}},"id_role": {"get": {"get": true}},"is_gender_different": {"get": {"result": true}},"is_unavailable": {"get": {"get": true}},"k_appointment_ignore": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_staff": {"get": {"result": true}},"can_book_unavailable_staff": {"get": {"result": true}},"dt_date": {"get": {"get": true}},"has_gender": {"get": {"result": true}},"has_staff": {"get": {"result": true}},"i_client": {"get": {"get": true}},"i_duration_custom": {"get": {"get": true}},"id_role": {"get": {"get": true}},"is_gender_different": {"get": {"result": true}},"is_unavailable": {"get": {"get": true}},"k_appointment_ignore": {"get": {"get": true}},"k_location": {"get": {"get": true}},"k_service": {"get": {"get": true}},"k_timezone": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
  * @function
- * @name Wl_Appointment_Book_Staff_ListModel.instanceGet
+ * @name Wl_Appointment_Book_Staff_StaffListModel.instanceGet
  * @param {string} k_location The key of the location.
  * @param {string} k_service The key of a service for which to show information.
  * @param {string} dt_date The date/time of the appointment selected by user, in the location's time zone.
@@ -177,6 +187,23 @@ Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
  * @param {string} k_appointment_ignore Key of appointment which must be ignored when searches available staff.
  * @param {?string} k_timezone User's timezone. `null` until initialized or to use location timezone.
  * @param {?string} uid The user key for whom the service is booking. `null` when not set.
- * @returns {Wl_Appointment_Book_Staff_ListModel}
+ * @param {number} i_client Count of clients on the appointment. Default value is 1.
+ * @returns {Wl_Appointment_Book_Staff_StaffListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
+ */
+
+/**
+ * @typedef Wl_Appointment_Book_Staff_StaffListModel_GetResponse
+ * @type {object}
+ * @property {Wl_Appointment_Book_Staff_StaffListModel_a_staff[]} a_staff A list of staff members with information about them.
+ * @property {boolean} can_book_unavailable_staff Can staff booked unavailable staff.
+ * @property {boolean} has_gender Determines whether to select the staff member's gender for the appointment.
+ * @property {boolean} has_staff Determines whether to select staff member(s) for the appointment.
+ * @property {boolean} is_gender_different Determines if the staff list has male and female members.
+ */
+
+/**
+ * @function
+ * @name Wl_Appointment_Book_Staff_StaffListModel.get
+ * @returns {Promise<Wl_Appointment_Book_Staff_StaffListModel_GetResponse>} Response from this request
  */

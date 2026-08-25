@@ -24,7 +24,7 @@ function Wl_Integration_Autymate_ReportModel()
   this.a_field = [];
 
   /**
-   * List of payment methods to filter out in the report. Each element is one of the {@line RsPayMethodSid} constants.
+   * List of payment methods to filter out in the report. Each element is one of the {@line WlPayMethodSid} constants.
    *
    * @get get
    * @type {number[]}
