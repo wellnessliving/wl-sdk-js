@@ -65,6 +65,7 @@ function Wl_Promotion_PromotionModel()
    * @property {string} f_revenue_single Approximate revenue per session value.
    * @property {number} i_duration The number of periods for the 'Period' duration type. For example, if the duration of the Purchase Option is 12 months, this field will be 12.
    * @property {number} i_limit The number of visits that the owner can use for the Purchase Option. This will be `0` if the Purchase Option allows for unlimited visits.
+   * @property {number} i_payment_period The number of `id_duration` periods between payments for memberships.
    * @property {number} id_duration The type of period for the 'Period' duration type. For example, if the duration of the Purchase Option is 12 months, this field will display the ID of the month. For all possible options, see {@link ADurationSid}.
    * @property {number} id_duration_type The duration type. Possible duration types can be 'Without End', 'Expires on a certain date', 'Period'. For more information, see {@link RsDurationTypeSid}.
    * @property {number} id_program The Purchase Option type. For more information, see {@link RsProgramSid}.

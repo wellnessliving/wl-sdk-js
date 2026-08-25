@@ -78,6 +78,7 @@ function Wl_Promotion_Index_PromotionIndexModel()
    * @property {number} i_duration The number of periods for the "Period" duration type. For example, if the duration of the Purchase Option is 12 months, this field will be 12.
    * @property {number} i_limit The number of visits that the owner of the Purchase Option can use. This will be `0` if the Purchase Option has unlimited visits.
    * @property {number} i_limit_duration The maximum number of minutes or hours depending on `id_limit_duration` that the current promotion can be used in.
+   * @property {number} i_payment_period The number of `id_duration` periods between payments for memberships.
    * @property {number} id_duration The type of periods for the duration type "Period". For example, if the duration of the Purchase Option is 12 months, this field will be the ID of the month. See all the possible options here: {@link ADurationSid}.
    * @property {number} id_duration_type The type of the duration. This can be "Without End", "Expires on a certain date", "Period". See more information here: {@link RsDurationTypeSid}.
    * @property {number} id_limit_duration The type of `i_limit_duration`. One of {@link ADurationSid} contantant. This can only be: <ul>     <li>{@link ADurationSid}</li>     <li>{@link ADurationSid}</li>     <li>{@link ADurationSid}</li>     <li>{@link ADurationSid}</li> </ul>
