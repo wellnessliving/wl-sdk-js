@@ -1,7 +1,7 @@
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 248.
+ * Last Used ID: 249.
  */
 function Wl_Privilege_PrivilegeSid()
 {
@@ -1141,6 +1141,13 @@ Wl_Privilege_PrivilegeSid.PURCHASE_EDIT = 93;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.PURCHASE_VIEW = 92;
+
+/**
+ * Access to set up and change quickbooks integration.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.QUICKBOOKS = 249;
 
 /**
  * Allow to see alerts.
