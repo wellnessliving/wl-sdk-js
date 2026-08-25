@@ -33,6 +33,10 @@ Core_Locale_Language_LanguageSwitchModel.prototype.config=function()
 /**
  * Switches the language.
  *
+ * Remembers the requested language for the user who makes this request, within the context this user is currently
+ * in, and stores it in the session and in the cookie so that the very next request is served in this language too.
+ * The language must be active in this installation, otherwise the request is rejected and nothing is stored.
+ *
  * @function
  * @name Core_Locale_Language_LanguageSwitchModel.post
  * @returns {WlSdk_Deferred_Promise}
