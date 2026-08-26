@@ -37,9 +37,44 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
   this.a_purchase_item_request = undefined;
 
   /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result_a_event_list_a_discount
+   * @property {number} id_discount_rule Discount rule type. One of {@link Wl_Discount_DiscountRuleSid} constants.
+   * @property {string} m_discount Discount amount of this rule.
+   * @property {string} text_discount Discount title. Only for {@link Wl_Discount_DiscountRuleSid}.
+   */
+
+  /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result_a_event_list
+   * @property {?Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result_a_event_list_a_discount} a_discount Discounts applied to the event, `null` if there are none. Every row has the next keys:
+   * @property {?string[]} a_tax Taxes of the event. Keys are tax keys, values are tax amounts.
+   * @property {string} k_class Key of the event class.
+   * @property {?string} m_checkout The amount charged for this event right now, including tax. `0.00` when every installment payment is still ahead. `null` when the amount is not calculated yet.
+   * @property {string} m_deferred The part of the event cost that is not charged right now, including tax. Goes to the installment plan or to the membership schedule, depending on the tuition billing mode.
+   * @property {string} m_discount Total discount amount applied to the event, `0.00` if there is none.
+   * @property {?string} m_price Price of the event within the tuition, before discount and tax.
+   * @property {string} uid Key of the tuition participant.
+   */
+
+  /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result_a_registration_fee_list_a_discount
+   * @property {number} id_discount_rule Discount rule type. One of {@link Wl_Discount_DiscountRuleSid} constants.
+   * @property {string} m_discount Discount amount of this rule.
+   * @property {string} text_discount Discount title. Only for {@link Wl_Discount_DiscountRuleSid}.
+   */
+
+  /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result_a_registration_fee_list
+   * @property {?Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result_a_registration_fee_list_a_discount} a_discount Discounts applied to the fee, `null` if there are none. Every row has the next keys:
+   * @property {string[]} a_tax Taxes of the fee. Keys are tax keys, values are tax amounts.
+   * @property {string} m_amount Registration fee amount for the participant, before discount and tax.
+   * @property {?string} m_checkout The amount charged for this fee right now, including tax. A fee is either charged in full or deferred entirely, so `null` means the whole fee is deferred.
+   * @property {string} m_deferred The whole fee amount if the fee is deferred, `0.00` if it is charged right now.
+   */
+
+  /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result
-   * @property {*[][]} a_event_list Tuition events with calculated amounts.
-   * @property {*[][]} a_registration_fee_list Registration fees with calculated amounts, keyed by participant key.
+   * @property {Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result_a_event_list} a_event_list Tuition events with calculated amounts.
+   * @property {Wl_Book_Process_Purchase_PurchaseElementListModel_a_purchase_item_result_a_registration_fee_list} a_registration_fee_list Registration fees with calculated amounts, keyed by participant key.
    * @property {string[]} a_tax Information about taxes. The key refers to the tax key, and the value refers to the tax amount.
    * @property {number} id_purchase_item The ID of purchase item type. One of {@link RsPurchaseItemSid} constants.
    * @property {string} k_id The key of the purchase item in the database.

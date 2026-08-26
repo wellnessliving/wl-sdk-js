@@ -33,8 +33,15 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
    */
 
   /**
+   * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementModel_a_config_a_registration_fee_list_a_discount
+   * @property {number} id_discount_rule Discount rule type. One of {@link Wl_Discount_DiscountRuleSid} constants.
+   * @property {string} m_discount Discount amount of this rule.
+   * @property {string} text_discount Discount title. Only for {@link Wl_Discount_DiscountRuleSid}.
+   */
+
+  /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementModel_a_config_a_registration_fee_list
-   * @property {?*[][]} a_discount Discounts applied to the fee, `null` if there are none. Rows have the same keys as in `a_event_list`.
+   * @property {?Wl_Book_Process_Purchase_PurchaseElementModel_a_config_a_registration_fee_list_a_discount} a_discount Discounts applied to the fee, `null` if there are none. Every row has the next keys:
    * @property {string[]} a_tax Taxes of the fee. Keys are tax keys, values are tax amounts.
    * @property {string} m_amount Registration fee amount for the participant, before discount and tax.
    * @property {?string} m_checkout The amount charged for this fee right now, including tax. A fee is either charged in full or deferred entirely, so `null` means the whole fee is deferred.
@@ -56,7 +63,7 @@ function Wl_Book_Process_Purchase_PurchaseElementModel()
    * For purchase items with {@link RsPurchaseItemSid} type only `a_event_list` is
    * expected in the request, and only `k_class` and `uid` are accepted in every its entry. Prices,
    * discounts, and taxes can not be overridden here: this booking flow is never authenticated as a
-   * staff member, so Tuition::verifyObjectFromSource() strips such fields.
+   * staff member, so such fields are stripped from the input.
    *
    * In the response this is not an echo: `a_event_list` comes back recomputed, and
    * `a_registration_fee_list`, `m_checkout`, and `m_deferred` are added.

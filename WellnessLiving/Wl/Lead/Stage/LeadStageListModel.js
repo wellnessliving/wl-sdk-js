@@ -19,6 +19,7 @@ function Wl_Lead_Stage_LeadStageListModel()
    * @property {number} i_user Number of clients who are in this stage. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
    * @property {number} id_lead_stage_shape Shape of the stage icon. One of {@link Wl_Lead_Stage_LeadStageShapeSid} constants.
    * @property {?number} id_lead_stage_system System-defined lead stage. One of {@link Wl_Lead_Stage_LeadStageSystemSid} constants. `null` for a custom stage created by the business.
+   * @property {number} id_lead_stage_type Type of the stage. One of {@link Wl_Lead_Stage_LeadStageTypeSid} constants. The type is set when the stage is created and can not be changed afterwards.
    * @property {string} k_lead_stage Key of the stage.
    * @property {string} s_color_background Background color of the icon. Hexadecimal color.
    * @property {string} s_color_foreground Color of characters on the icon. Hexadecimal color.

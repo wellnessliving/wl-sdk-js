@@ -1,7 +1,10 @@
 /**
  * System-defined lead stages.
  *
- * Every business has one stage of each type by default. 
+ * Every business has one stage of each of them by default. 
+ *
+ * Type of every system stage is defined by the system and can not be changed,
+ * see {@link Wl_Lead_Stage_LeadStageSystemSid} and {@link Wl_Lead_Stage_LeadStageTypeSid}.
  *
  * Custom stages created by a business have no system ID.
  *
