@@ -18,7 +18,7 @@ function Core_AI_LogTriage_ConnectionCheckModel()
    * @property {number} i_occurrence_count Number of matching records.
    * @property {number} i_variant_count Number of original usage-statistics objects merged into a normalized finding.
    * @property {number} id_source Finding source from {@link Core_AI_LogTriage_TriageSourceSid}.
-   * @property {boolean} is_identity_incomplete Whether the object reached the WatchUsageStat storage limit and was therefore kept exact.
+   * @property {boolean} is_identity_incomplete Whether the stored object reached its length limit and was therefore kept exact.
    * @property {string} s_object Usage-statistics object. Present for the usage-statistics source.
    * @property {string} text_message Log message or task description. Present for log and task sources.
    */
