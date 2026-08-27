@@ -72,15 +72,6 @@ function Wl_Mail_SendMailModel()
    */
   this.s_subject = "";
 
-  /**
-   * The message content.
-   *
-   * @deprecated Planned to delete.
-   * @post post
-   * @type {string}
-   */
-  this.z_html = "";
-
   this.changeInit();
 }
 
@@ -91,7 +82,7 @@ WlSdk_ModelAbstract.extend(Wl_Mail_SendMailModel);
  */
 Wl_Mail_SendMailModel.prototype.config=function()
 {
-  return {"a_field":{"k_business":{"post":{"get":true}},"s_business_mail":{"post":{"post":true}},"s_business_name":{"post":{"post":true}},"s_business_reply":{"post":{"post":true}},"s_campaign":{"post":{"post":true}},"s_html":{"post":{"post":true}},"s_mail":{"post":{"post":true}},"s_subject":{"post":{"post":true}},"z_html":{"post":{"post":true}}}};
+  return {"a_field":{"k_business":{"post":{"get":true}},"s_business_mail":{"post":{"post":true}},"s_business_name":{"post":{"post":true}},"s_business_reply":{"post":{"post":true}},"s_campaign":{"post":{"post":true}},"s_html":{"post":{"post":true}},"s_mail":{"post":{"post":true}},"s_subject":{"post":{"post":true}}}};
 };
 
 /**

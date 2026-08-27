@@ -11,6 +11,7 @@ function Wl_Lead_Stage_LeadStageElementModel()
   /**
    * Shape of the stage icon. One of {@link Wl_Lead_Stage_LeadStageShapeSid} constants.
    *
+   * @get result
    * @post post
    * @put post
    * @see Wl_Lead_Stage_LeadStageShapeSid
@@ -23,6 +24,7 @@ function Wl_Lead_Stage_LeadStageElementModel()
    *
    * Only used to create a stage. Type of an existing stage can not be changed.
    *
+   * @get result
    * @put post
    * @see Wl_Lead_Stage_LeadStageTypeSid
    * @type {number}
@@ -32,9 +34,10 @@ function Wl_Lead_Stage_LeadStageElementModel()
   /**
    * Business key.
    *
-   * @delete post
-   * @post post
-   * @put post
+   * @delete get
+   * @get get
+   * @post get
+   * @put get
    * @type {string}
    */
   this.k_business = "";
@@ -42,8 +45,9 @@ function Wl_Lead_Stage_LeadStageElementModel()
   /**
    * Key of the lead stage.
    *
-   * @delete post
-   * @post post
+   * @delete get
+   * @get get
+   * @post get
    * @put result
    * @type {string}
    */
@@ -63,6 +67,7 @@ function Wl_Lead_Stage_LeadStageElementModel()
   /**
    * Background color of the icon. Hexadecimal color.
    *
+   * @get result
    * @post post
    * @put post
    * @type {string}
@@ -72,6 +77,7 @@ function Wl_Lead_Stage_LeadStageElementModel()
   /**
    * Color of characters on the icon. Hexadecimal color.
    *
+   * @get result
    * @post post
    * @put post
    * @type {string}
@@ -84,6 +90,7 @@ function Wl_Lead_Stage_LeadStageElementModel()
    * Allowed length depends on {@link Wl_Lead_Stage_LeadStageElementModel.id_lead_stage_shape},
    * see {@link Wl_Lead_Stage_LeadStageShapeSid}.
    *
+   * @get result
    * @post post
    * @put post
    * @type {string}
@@ -93,6 +100,7 @@ function Wl_Lead_Stage_LeadStageElementModel()
   /**
    * Name of the stage.
    *
+   * @get result
    * @post post
    * @put post
    * @type {string}
@@ -109,7 +117,7 @@ WlSdk_ModelAbstract.extend(Wl_Lead_Stage_LeadStageElementModel);
  */
 Wl_Lead_Stage_LeadStageElementModel.prototype.config=function()
 {
-  return {"a_field":{"id_lead_stage_shape":{"post":{"post":true},"put":{"post":true}},"id_lead_stage_type":{"put":{"post":true}},"k_business":{"delete":{"post":true},"post":{"post":true},"put":{"post":true}},"k_lead_stage":{"delete":{"post":true},"post":{"post":true},"put":{"result":true}},"k_lead_stage_replace":{"delete":{"get":true}},"s_color_background":{"post":{"post":true},"put":{"post":true}},"s_color_foreground":{"post":{"post":true},"put":{"post":true}},"s_icon":{"post":{"post":true},"put":{"post":true}},"text_title":{"post":{"post":true},"put":{"post":true}}}};
+  return {"a_field":{"id_lead_stage_shape":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"id_lead_stage_type":{"get":{"result":true},"put":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_lead_stage":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"result":true}},"k_lead_stage_replace":{"delete":{"get":true}},"s_color_background":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_color_foreground":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"s_icon":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"text_title":{"get":{"result":true},"post":{"post":true},"put":{"post":true}}}};
 };
 
 /**
@@ -124,6 +132,17 @@ Wl_Lead_Stage_LeadStageElementModel.prototype.config=function()
  * @name Wl_Lead_Stage_LeadStageElementModel.delete
  * @returns {WlSdk_Deferred_Promise}
  * @see WlSdk_ModelAbstract.delete()
+ */
+
+/**
+ * Returns information about a lead stage.
+ *
+ * The information includes the name, icon and type of the lead stage.
+ *
+ * @function
+ * @name Wl_Lead_Stage_LeadStageElementModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
  */
 
 /**
