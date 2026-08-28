@@ -9,7 +9,7 @@ function Wl_Schedule_ScheduleAvailableDateModel()
     WlSdk_ModelAbstract.apply(this);
 
     /**
-     * Keys of classes.
+     * Class keys to filter.
      *
      * Empty to search for all classes.
      *
@@ -29,7 +29,7 @@ function Wl_Schedule_ScheduleAvailableDateModel()
     this.a_day = [];
 
     /**
-     * Keys of events.
+     * Event keys to filter.
      *
      * Empty to search for all events.
      *
@@ -39,7 +39,7 @@ function Wl_Schedule_ScheduleAvailableDateModel()
     this.a_event = [];
 
     /**
-     * Keys of locations.
+     * Location keys to filter.
      *
      * Empty to search in all locations.
      *
@@ -49,7 +49,7 @@ function Wl_Schedule_ScheduleAvailableDateModel()
     this.a_location = [];
 
     /**
-     * Keys of staff members.
+     * Staff member keys to filter.
      *
      * Empty to search for all staff members.
      *
@@ -60,19 +60,18 @@ function Wl_Schedule_ScheduleAvailableDateModel()
 
     /**
      * @typedef {{}} Wl_Schedule_ScheduleAvailableDateModel_a_time
-     * @property {string} tl_end End time.
-     * @property {string} tl_start Start time.
+     * @property {number} tl_end End time.
+     * @property {number} tl_start Start time.
      */
 
     /**
      * Time interval:
-     * <dl><dt>string `tl_end`</dt><dd>End time.</dd>
-     * <dt>string `tl_start`</dt><dd>Start time.</dd></dl>
+     *
      *
      * Empty to search for all time.
      *
      * @get get
-     * @type {Wl_Schedule_ScheduleAvailableDateModel_a_time|{}}
+     * @type {Wl_Schedule_ScheduleAvailableDateModel_a_time}
      */
     this.a_time = {};
 
@@ -95,7 +94,11 @@ function Wl_Schedule_ScheduleAvailableDateModel()
     this.dtu_start = "";
 
     /**
-     * "Book now" tab ID. One of {@link Wl_Classes_Tab_TabSid} constants.
+     * Optional "Book now" tab ID filter. One of {@link Wl_Classes_Tab_TabSid} constants.
+     *
+     * `0` means this filter is not set.
+     * If both {@link Wl_Schedule_ScheduleAvailableDateModel.id_class_tab} and
+     * {@link Wl_Schedule_ScheduleAvailableDateModel.k_class_tab} are not set, all tabs are used.
      *
      * @get get
      * @type {number}
@@ -137,6 +140,18 @@ function Wl_Schedule_ScheduleAvailableDateModel()
     this.k_business = "";
 
     /**
+     * Optional book now tab key filter.
+     *
+     * Empty string means this filter is not set.
+     * If both {@link Wl_Schedule_ScheduleAvailableDateModel.k_class_tab} and
+     * {@link Wl_Schedule_ScheduleAvailableDateModel.id_class_tab} are not set, all tabs are used.
+     *
+     * @get get
+     * @type {string}
+     */
+    this.k_class_tab = "";
+
+    /**
      * Timezone key.
      *
      * @get get
@@ -154,5 +169,5 @@ WlSdk_ModelAbstract.extends(Wl_Schedule_ScheduleAvailableDateModel);
  */
 Wl_Schedule_ScheduleAvailableDateModel.prototype.config=function()
 {
-    return {"a_field": {"a_class": {"get": {"get": true}},"a_day": {"get": {"get": true}},"a_event": {"get": {"get": true}},"a_location": {"get": {"get": true}},"a_staff": {"get": {"get": true}},"a_time": {"get": {"get": true}},"dl_next_available": {"get": {"result": true}},"dtu_start": {"get": {"get": true}},"id_class_tab": {"get": {"get": true}},"is_class": {"get": {"get": true}},"is_event": {"get": {"get": true}},"is_virtual": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_timezone": {"get": {"get": true}}}};
+    return {"a_field": {"a_class": {"get": {"get": true}},"a_day": {"get": {"get": true}},"a_event": {"get": {"get": true}},"a_location": {"get": {"get": true}},"a_staff": {"get": {"get": true}},"a_time": {"get": {"get": true}},"dl_next_available": {"get": {"result": true}},"dtu_start": {"get": {"get": true}},"id_class_tab": {"get": {"get": true}},"is_class": {"get": {"get": true}},"is_event": {"get": {"get": true}},"is_virtual": {"get": {"get": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"k_timezone": {"get": {"get": true}}}};
 };
