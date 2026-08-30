@@ -93,7 +93,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_tax_custom} a_tax_custom Information about taxes. If not passed, no custom taxes have been applied to the sale item. If a record is present, the tax is custom using the next structure:
    * @property {number} f_discount_percent The discount percentage, applied to the current item.
    * @property {number} i_quantity The quantity of sale items.
-   * @property {?number} id_sale The sale item type. One of the {@link RsSaleSid} constants.
+   * @property {number} id_sale The sale item type. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The sale item key.
    * @property {string} k_shop_product_option The store product option key. This will be `null` if the sale item has no options.
    * @property {string} m_discount_fix The fixed price discount, applied to the current item.

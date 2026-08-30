@@ -40,7 +40,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data_a_component
    * @property {number} id_program Program ID. One of {@link RsProgramSid} ID's. Only applies to promotions.
    * @property {number} id_purchase_item Purchase item ID. One of {@link RsPurchaseItemSid} ID's.
-   * @property {?number} id_sale Sale ID. One of {@link RsSaleSid} ID's.
+   * @property {number} id_sale Sale ID. One of {@link RsSaleSid} ID's.
    * @property {string} k_id The identifier of the item.
    * @property {string} text_title The title of the item.
    */
@@ -217,7 +217,7 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_sale_id_group
-   * @property {?number} id_sale The item category ID. One of the {@link RsSaleSid} constants.
+   * @property {number} id_sale The item category ID. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The primary key of item.
    * @property {string} k_shop_product_option The product option or `0` for any other cases.
    */
@@ -378,9 +378,9 @@ function Wl_Catalog_CatalogList_ElementModel()
    *
    * @get get,result
    * @see RsSaleSid
-   * @type {?number}
+   * @type {number}
    */
-  this.id_sale = null;
+  this.id_sale = 0;
 
   /**
    * Determines whether the API is called in the backend mode.
@@ -588,7 +588,7 @@ Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Catalog_CatalogList_ElementModel.instanceGet
- * @param {?number} id_sale The ID of item category. One of the {@link RsSaleSid} constants.
+ * @param {number} id_sale The ID of item category. One of the {@link RsSaleSid} constants.
  * @param {string} k_id The item key.
  * @param {?string} k_shop_product_option The product option key. This will be `null` if not set yet.
  * @param {string} k_location The location key.

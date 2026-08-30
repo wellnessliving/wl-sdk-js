@@ -19,7 +19,7 @@ function Wl_Profile_PurchaseList_PurchaseListModel()
    * @property {number[]} a_sale The value of `a_purchase['id_sale']`. For packages, this also contains the values of `a_purchase['id_sale']` of every component.
    * @property {string} dt_add The date that the purchase was added.
    * @property {number} id_purchase_item The ID of the purchase type. One of the constants {@link RsPurchaseItemSid}.
-   * @property {?number} id_sale The ID of the sale category in the store. One of the constants {@link RsSaleSid}.
+   * @property {number} id_sale The ID of the sale category in the store. One of the constants {@link RsSaleSid}.
    * @property {boolean} is_active If `true`, then the purchase item is active. Otherwise, this will be `false`.
    * @property {boolean} is_component If `true`, then the purchase item is a package component. Otherwise, this will be `false`.
    * @property {boolean} is_package If `true`, then the purchase item is a package, `false` otherwise.

@@ -47,7 +47,7 @@ function Wl_Catalog_Cart_CartModel()
    * @property {Wl_Catalog_Cart_CartModel_a_item_a_config} a_config Additional configuration. Used only for `id_sale` = {@link RsSaleSid}.
    * @property {string} dl_client_prorate The client prorate date. This will be `null` in cases where the client prorate date hasn't passed.
    * @property {number} i_quantity The quantity of sale items.
-   * @property {?number} id_sale The sale item type, one of the {@link RsSaleSid} constants.
+   * @property {number} id_sale The sale item type, one of the {@link RsSaleSid} constants.
    * @property {string} k_id The sale item key.   Note:
    * @property {string} k_login_prize Key of login prize used on item.
    * @property {string} k_shop_product_option Note:      Used for products only `id_sale` = {@link RsSaleSid}.      If empty the first available option will be used automatically.
@@ -80,7 +80,7 @@ function Wl_Catalog_Cart_CartModel()
   /**
    * @typedef {{}} Wl_Catalog_Cart_CartModel_a_reward_item
    * @property {number} i_quantity The quantity of sale items.
-   * @property {?number} id_sale The sale item type, one of the {@link RsSaleSid} constants.
+   * @property {number} id_sale The sale item type, one of the {@link RsSaleSid} constants.
    * @property {boolean} is_login_prize_used Whether selected login prize discount applied to item.
    * @property {string} k_id The sale item key.
    * @property {string} k_shop_product_option The shop product option. If `null`, the sale item has no options.

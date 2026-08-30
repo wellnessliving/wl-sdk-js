@@ -53,9 +53,9 @@ function Thoth_PayProcessor_CyberSource_CsPaSetupModel()
    *
    * @post post
    * @see RsPayActorSid
-   * @type {?number}
+   * @type {number}
    */
-  this.id_pay_actor = null;
+  this.id_pay_actor = 0;
 
   /**
    * Whether authorization or capture should be performed.

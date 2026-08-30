@@ -26,9 +26,9 @@ function Wl_Reward_Action_ElementModel()
    *
    * @get result
    * @see RsRewardScoreSid
-   * @type {?number}
+   * @type {number}
    */
-  this.id_reward_score = null;
+  this.id_reward_score = undefined;
 
   /**
    * `true` if user has requested points for action accomplishment, `false` otherwise.

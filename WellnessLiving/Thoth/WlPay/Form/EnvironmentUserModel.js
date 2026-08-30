@@ -54,50 +54,6 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
   /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal_a_terminal_elevate
    * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
-   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants.
-   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
-   * @property {number} id_type Terminal type. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants.
-   * @property {string} k_terminal Terminal key.
-   * @property {string} text_id Terminal ID assigned by the gateway.
-   * @property {string} text_name Human-readable terminal label.
-   */
-
-  /**
-   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal_a_terminal_web
-   * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
-   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants. `null` for the synthetic `MagTek` USB entry.
-   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
-   * @property {number} id_type Terminal type. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants, or {@link Thoth_PayProcessor_Terminal_TerminalTypeSid} for the synthetic `MagTek` USB entry.
-   * @property {?string} k_terminal Terminal key.  `null` for the synthetic `MagTek` USB entry.
-   * @property {?string} s_serial_number Always `null`. Present only in the synthetic `MagTek` USB entry.
-   * @property {string} text_id Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.
-   * @property {string} text_name Human-readable terminal label.
-   */
-
-  /**
-   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal
-   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal_a_terminal_elevate} a_terminal_elevate Elevate-model terminals. Each element:
-   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal_a_terminal_web} a_terminal_web Ethernet terminals, plus one synthetic `MagTek` USB entry appended last when {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} returns `true`. Each element:
-   */
-
-  /**
-   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location
-   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal} a_terminal Terminal lists grouped by connection type. Both lists contain identical entries - the same terminal appears in both.
-   * @property {string} text_location_name Display name of the location.
-   */
-
-  /**
-   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A
-   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location} a_terminal_location Terminal configuration keyed by location key.
-   * @property {boolean} can_cancel_swipe_from_pos Whether card swipe can be cancelled from the POS terminal.
-   * @property {boolean} has_expire_date Whether the card expiry date entry is required.
-   * @property {boolean} has_readers_selection Whether the card reader selection UI is shown.
-   * @property {boolean} is_support_magtek Whether `MagTek` USB reader is supported.
-   */
-
-  /**
-   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location_a_terminal_a_terminal_elevate
-   * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
    * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_StripeCom_Terminal_StripeReaderModelSid} constants.
    * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
    * @property {string} k_terminal Terminal key.
@@ -107,7 +63,7 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
    */
 
   /**
-   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location_a_terminal_a_terminal_web
+   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal_a_terminal_web
    * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
    * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_StripeCom_Terminal_StripeReaderModelSid} constants.
    * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
@@ -119,24 +75,30 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
    */
 
   /**
-   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location_a_terminal
-   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location_a_terminal_a_terminal_elevate} a_terminal_elevate Elevate-model terminals. Each element:
-   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location_a_terminal_a_terminal_web} a_terminal_web Ethernet terminals. Each element:
+   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal
+   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal_a_terminal_elevate} a_terminal_elevate Elevate-model terminals. Each element:
+   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal_a_terminal_web} a_terminal_web Ethernet terminals. Each element:
    */
 
   /**
-   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location
-   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location_a_terminal} a_terminal Terminal lists grouped by connection type:
+   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location
+   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location_a_terminal} a_terminal Terminal lists grouped by connection type:
    * @property {string} s_location_id Stripe location ID assigned by the gateway.
    * @property {string} text_location_name Display name of the location.
    */
 
   /**
-   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B
-   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B_a_terminal_location} a_terminal_location Terminal configuration keyed by location key.
+   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A
+   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_A_a_terminal_location} a_terminal_location Terminal configuration keyed by location key.
    * @property {boolean} has_expire_date Whether the card expiry date entry is required.
    * @property {boolean} has_readers_selection Whether the card reader selection UI is shown.
    * @property {boolean} is_support_magtek Whether `MagTek` USB reader is supported.
+   */
+
+  /**
+   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_B
+   * @property {number} id_device Device type identifier. One of {@link Thoth_WlPay_Cordova_CordovaCcrDeviceSid} constants.
+   * @property {string} s_key NMI SDK key for the card reader plugin.
    */
 
   /**
@@ -185,9 +147,47 @@ function Thoth_WlPay_Form_EnvironmentUserModel()
    */
 
   /**
+   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D_a_terminal_location_a_terminal_a_terminal_elevate
+   * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
+   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants.
+   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
+   * @property {number} id_type Terminal type. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants.
+   * @property {string} k_terminal Terminal key.
+   * @property {string} text_id Terminal ID assigned by the gateway.
+   * @property {string} text_name Human-readable terminal label.
+   */
+
+  /**
+   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D_a_terminal_location_a_terminal_a_terminal_web
+   * @property {boolean} can_cancel_swipe_from_pos Whether swipe can be cancelled from the POS terminal.
+   * @property {number} id_model Terminal model. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants. `null` for the synthetic `MagTek` USB entry.
+   * @property {number} id_status Terminal status. One of {@link Thoth_PayProcessor_Terminal_TerminalStatusSid} constants.
+   * @property {number} id_type Terminal type. One of {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} constants, or {@link Thoth_PayProcessor_Terminal_TerminalTypeSid} for the synthetic `MagTek` USB entry.
+   * @property {?string} k_terminal Terminal key.  `null` for the synthetic `MagTek` USB entry.
+   * @property {?string} s_serial_number Always `null`. Present only in the synthetic `MagTek` USB entry.
+   * @property {string} text_id Terminal ID assigned by the gateway, or `id_type_N` for the synthetic `MagTek` USB entry.
+   * @property {string} text_name Human-readable terminal label.
+   */
+
+  /**
+   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D_a_terminal_location_a_terminal
+   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D_a_terminal_location_a_terminal_a_terminal_elevate} a_terminal_elevate Elevate-model terminals. Each element:
+   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D_a_terminal_location_a_terminal_a_terminal_web} a_terminal_web Ethernet terminals, plus one synthetic `MagTek` USB entry appended last when {@link Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid} returns `true`. Each element:
+   */
+
+  /**
+   * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D_a_terminal_location
+   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D_a_terminal_location_a_terminal} a_terminal Terminal lists grouped by connection type. Both lists contain identical entries - the same terminal appears in both.
+   * @property {string} text_location_name Display name of the location.
+   */
+
+  /**
    * @typedef {{}} Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D
-   * @property {number} id_device Device type identifier. One of {@link Thoth_WlPay_Cordova_CordovaCcrDeviceSid} constants.
-   * @property {string} s_key NMI SDK key for the card reader plugin.
+   * @property {Thoth_WlPay_Form_EnvironmentUserModel_a_mobile_config_D_a_terminal_location} a_terminal_location Terminal configuration keyed by location key.
+   * @property {boolean} can_cancel_swipe_from_pos Whether card swipe can be cancelled from the POS terminal.
+   * @property {boolean} has_expire_date Whether the card expiry date entry is required.
+   * @property {boolean} has_readers_selection Whether the card reader selection UI is shown.
+   * @property {boolean} is_support_magtek Whether `MagTek` USB reader is supported.
    */
 
   /**

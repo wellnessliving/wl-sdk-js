@@ -18,8 +18,8 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_B
-   * @property {string} k_business Business key.
-   * @property {string} uid_receiver User key who will receive message.
+   * @property {string} k_business Key of a business.
+   * @property {string} uid_receiver Key of the user.
    */
 
   /**
@@ -29,18 +29,18 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_D
-   * @property {string} k_business Key of a business.
-   * @property {string} uid_receiver Key of the user.
-   */
-
-  /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_E
    * @property {string} dtu_class_period Class schedule session date.
    * @property {string} k_appointment Appointment key.
    * @property {string} k_business Business key.
    * @property {string} k_class_period Class schedule key.
    * @property {string} k_visit Visit key.
    * @property {string} s_secret Visit secret key.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_E
+   * @property {string} k_business Business key.
+   * @property {string} uid_receiver User key who will receive message.
    */
 
   /**
@@ -56,45 +56,49 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_H
-   * @property {string} k_business Key of a business.
+   * @property {string} k_business Key of the business.
+   * @property {string} uid_actor Key of the actor.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_I
+   * @property {string} k_business Business key.
+   * @property {string} uid User key.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_J
+   * @property {string} k_business Business key.
+   * @property {string} uid User key.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_K
+   * @property {number} id_import_custom ID of custom import process. One of {@link Wl_Import_Custom_CustomSid} constants.
+   * @property {string} k_business Business key within which import is progressing.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_L
    * @property {string} k_business Business in which the report was generated.
    * @property {string} uid User who requested the report generation.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_J
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_M
    * @property {number} id_report ID of the report.
    * @property {string} k_business Business key in which the report was monitoring.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_K
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_N
    * @property {string} k_business Key of the business.
    * @property {string} uid UID of the client for which failed to send SMS.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_L
-   * @property {string} k_business Business key.
-   */
-
-  /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_M
-   * @property {string} k_business Business key.
-   */
-
-  /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_N
-   * @property {string} k_business Business key.
-   */
-
-  /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_O
-   * @property {string} k_business Key of the business.
+   * @property {string} k_business Business key.
    */
 
   /**
@@ -104,31 +108,27 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_Q
-   * @property {string} k_location Location where session booked or cancelled.
+   * @property {string} k_business Business key.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_R
-   * @property {string} k_business Key of the business.
-   * @property {string} uid_actor Key of the actor.
+   * @property {string} k_location Location where session booked or cancelled.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_S
-   * @property {number} id_import_custom ID of custom import process. One of {@link Wl_Import_Custom_CustomSid} constants.
-   * @property {string} k_business Business key within which import is progressing.
+   * @property {string} k_business Business key.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_T
-   * @property {string} k_business Business key.
-   * @property {string} uid User key.
+   * @property {string} k_business Key of a business.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_U
-   * @property {string} k_business Business key.
-   * @property {string} uid User key.
+   * @property {string} k_business Key of the business.
    */
 
   /**
@@ -184,19 +184,19 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_29
-   * @property {string} k_business Key of the business.
-   * @property {string} uid_receiver Key of the user.
+   * @property {string} k_business Business key.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_30
    * @property {string} k_business Key of the business.
-   * @property {string} uid UID of the client.
+   * @property {string} uid_receiver Key of the user.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_31
-   * @property {string} k_business Business key.
+   * @property {string} k_business Key of the business.
+   * @property {string} uid UID of the client.
    */
 
   /**
@@ -208,7 +208,7 @@ function Core_WebSocket_SubscribeModel()
    * Subscriber will only receive notifications about events in which all these values equal values specified here.
    *
    * @post post
-   * @type {Core_WebSocket_SubscribeModel_a_key_A|Core_WebSocket_SubscribeModel_a_key_B|Core_WebSocket_SubscribeModel_a_key_C|Core_WebSocket_SubscribeModel_a_key_D|{}|Core_WebSocket_SubscribeModel_a_key_E|Core_WebSocket_SubscribeModel_a_key_F|Core_WebSocket_SubscribeModel_a_key_G|Core_WebSocket_SubscribeModel_a_key_H|Core_WebSocket_SubscribeModel_a_key_I|Core_WebSocket_SubscribeModel_a_key_J|Core_WebSocket_SubscribeModel_a_key_K|Core_WebSocket_SubscribeModel_a_key_L|Core_WebSocket_SubscribeModel_a_key_M|Core_WebSocket_SubscribeModel_a_key_N|Core_WebSocket_SubscribeModel_a_key_O|Core_WebSocket_SubscribeModel_a_key_P|Core_WebSocket_SubscribeModel_a_key_Q|Core_WebSocket_SubscribeModel_a_key_R|Core_WebSocket_SubscribeModel_a_key_S|Core_WebSocket_SubscribeModel_a_key_T|Core_WebSocket_SubscribeModel_a_key_U|Core_WebSocket_SubscribeModel_a_key_V|Core_WebSocket_SubscribeModel_a_key_W|Core_WebSocket_SubscribeModel_a_key_X|Core_WebSocket_SubscribeModel_a_key_Y|Core_WebSocket_SubscribeModel_a_key_Z|Core_WebSocket_SubscribeModel_a_key_26|Core_WebSocket_SubscribeModel_a_key_27|Core_WebSocket_SubscribeModel_a_key_28|Core_WebSocket_SubscribeModel_a_key_29|Core_WebSocket_SubscribeModel_a_key_30|Core_WebSocket_SubscribeModel_a_key_31}
+   * @type {Core_WebSocket_SubscribeModel_a_key_A|Core_WebSocket_SubscribeModel_a_key_B|Core_WebSocket_SubscribeModel_a_key_C|{}|Core_WebSocket_SubscribeModel_a_key_D|Core_WebSocket_SubscribeModel_a_key_E|Core_WebSocket_SubscribeModel_a_key_F|Core_WebSocket_SubscribeModel_a_key_G|Core_WebSocket_SubscribeModel_a_key_H|Core_WebSocket_SubscribeModel_a_key_I|Core_WebSocket_SubscribeModel_a_key_J|Core_WebSocket_SubscribeModel_a_key_K|Core_WebSocket_SubscribeModel_a_key_L|Core_WebSocket_SubscribeModel_a_key_M|Core_WebSocket_SubscribeModel_a_key_N|Core_WebSocket_SubscribeModel_a_key_O|Core_WebSocket_SubscribeModel_a_key_P|Core_WebSocket_SubscribeModel_a_key_Q|Core_WebSocket_SubscribeModel_a_key_R|Core_WebSocket_SubscribeModel_a_key_S|Core_WebSocket_SubscribeModel_a_key_T|Core_WebSocket_SubscribeModel_a_key_U|Core_WebSocket_SubscribeModel_a_key_V|Core_WebSocket_SubscribeModel_a_key_W|Core_WebSocket_SubscribeModel_a_key_X|Core_WebSocket_SubscribeModel_a_key_Y|Core_WebSocket_SubscribeModel_a_key_Z|Core_WebSocket_SubscribeModel_a_key_26|Core_WebSocket_SubscribeModel_a_key_27|Core_WebSocket_SubscribeModel_a_key_28|Core_WebSocket_SubscribeModel_a_key_29|Core_WebSocket_SubscribeModel_a_key_30|Core_WebSocket_SubscribeModel_a_key_31}
    */
   this.a_key = undefined;
 

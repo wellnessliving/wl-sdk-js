@@ -31,9 +31,9 @@ function Wl_Reward_Action_ActionTypeModel()
    *
    * @get get
    * @see RsRewardScoreSid
-   * @type {?number}
+   * @type {number}
    */
-  this.id_reward_score = null;
+  this.id_reward_score = 0;
 
   /**
    * Key of a business to show information for.
@@ -59,7 +59,7 @@ Wl_Reward_Action_ActionTypeModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Reward_Action_ActionTypeModel.instanceGet
- * @param {?number} id_reward_score ID of type of reward action. One of {@link RsRewardScoreSid} constants.
+ * @param {number} id_reward_score ID of type of reward action. One of {@link RsRewardScoreSid} constants.
  * @param {string} k_business Key of a business to show information for.
  * @returns {Wl_Reward_Action_ActionTypeModel}
  * @see WlSdk_ModelAbstract.instanceGet()

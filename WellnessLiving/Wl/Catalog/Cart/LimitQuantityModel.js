@@ -16,7 +16,7 @@ function Wl_Catalog_Cart_LimitQuantityModel()
   /**
    * @typedef {{}} Wl_Catalog_Cart_LimitQuantityModel_a_item
    * @property {number} i_quantity The quantity of sale items.
-   * @property {?number} id_sale The sale item type. One of the {@link RsSaleSid} constants.
+   * @property {number} id_sale The sale item type. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The sale item ID.
    * @property {string} k_shop_product_option The shop product option. `null` if the sale item has no options.
    */

@@ -308,9 +308,9 @@ function Wl_Profile_Purchase_PurchaseElementModel()
    *
    * @get result
    * @see RsSaleSid
-   * @type {?number}
+   * @type {number}
    */
-  this.id_sale = null;
+  this.id_sale = undefined;
 
   /**
    * If `true`, then the purchase item is active. If `false`, then the purchase item isn't active.

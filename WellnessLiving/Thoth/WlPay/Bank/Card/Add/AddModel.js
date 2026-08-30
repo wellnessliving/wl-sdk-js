@@ -34,7 +34,7 @@ function Thoth_WlPay_Bank_Card_Add_AddModel()
    * @property {number} i_csc The payment card security code, also known as the CVC or CVV.
    * @property {number} i_month The number of the month when the payment card expires. 1=January and 12=December.
    * @property {number} i_year The last two digits of the year when the payment card expires.
-   * @property {?number} id_pay_actor Pay actor id. One of {@link RsPayActorSid} constants.
+   * @property {number} id_pay_actor Pay actor id. One of {@link RsPayActorSid} constants.
    * @property {string} k_pay_bank Key of existing payment source in case of editing.  Empty if new pay source is being added.
    * @property {string} s_name The name as it appears on the payment card.
    * @property {string} s_number The payment card number with no spaces or dashes.

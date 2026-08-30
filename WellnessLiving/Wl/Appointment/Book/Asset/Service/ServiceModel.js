@@ -52,7 +52,7 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    * @property {boolean} is_empty Whether is empty.
    * @property {string} k_resource Resource key.
    * @property {string} sid_image Image kind. String representation of one of {@link Wl_Resource_Image_ImageSid} constants.
-   * @property {string} sid_image_icon Icon name.String representation of one of {@link Wl_Resource_Image_ImageIconSid} constants. Is set only if `sid_image` equals to `image`.
+   * @property {string} sid_image_icon Icon name. String representation of one of {@link Wl_Resource_Image_ImageIconSid} constants. Is set only if `sid_image` equals to `image`.
    * @property {string} sid_image_shape Shape name. String representation of one of {@link Wl_Resource_Image_ImageShapeSid} constants. Is set only if `sid_image` equals to `shape`.
    * @property {string} url Path to image.
    */

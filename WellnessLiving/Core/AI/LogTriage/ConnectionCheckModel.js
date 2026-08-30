@@ -10,15 +10,12 @@ function Core_AI_LogTriage_ConnectionCheckModel()
 
   /**
    * @typedef {{}} Core_AI_LogTriage_ConnectionCheckModel_a_finding
-   * @property {string[]} a_object_example Bounded original usage-statistics object examples.
    * @property {string} dl_first_seen Local date of the first usage-statistics record.
    * @property {string} dl_last_seen Local date of the last usage-statistics record.
    * @property {string} dtu_first_seen UTC date/time of the first matching log or async-task record. Empty for background tasks.
    * @property {string} dtu_last_seen UTC date/time of the last matching log or async-task record. Empty for background tasks.
    * @property {number} i_occurrence_count Number of matching records.
-   * @property {number} i_variant_count Number of original usage-statistics objects merged into a normalized finding.
    * @property {number} id_source Finding source from {@link Core_AI_LogTriage_TriageSourceSid}.
-   * @property {boolean} is_identity_incomplete Whether the stored object reached its length limit and was therefore kept exact.
    * @property {string} s_object Usage-statistics object. Present for the usage-statistics source.
    * @property {string} text_message Log message or task description. Present for log and task sources.
    */
@@ -50,7 +47,7 @@ function Core_AI_LogTriage_ConnectionCheckModel()
   this.i_result = undefined;
 
   /**
-   * Whether findings must be returned.
+   * `true` returns findings; otherwise `false` performs only the connection check.
    *
    * @get get
    * @type {boolean}

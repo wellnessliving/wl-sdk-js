@@ -23,9 +23,9 @@ function Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel()
    *
    * @post get
    * @see RsPayActorSid
-   * @type {?number}
+   * @type {number}
    */
-  this.id_pay_actor = null;
+  this.id_pay_actor = 0;
 
   /**
    * Key of the business to update Payment Intent for.

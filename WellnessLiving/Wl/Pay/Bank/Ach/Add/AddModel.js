@@ -30,7 +30,7 @@ function Wl_Pay_Bank_Ach_Add_AddModel()
   /**
    * @typedef {{}} Wl_Pay_Bank_Ach_Add_AddModel_a_card_detail
    * @property {Wl_Pay_Bank_Ach_Add_AddModel_a_card_detail_a_pay_address} a_pay_address Payment address:
-   * @property {?number} id_pay_actor Pay actor id. One of {@link RsPayActorSid} constants.
+   * @property {number} id_pay_actor Pay actor id. One of {@link RsPayActorSid} constants.
    * @property {number} id_pay_bank_ach_holder Account holder type. One of {@link RsPayBankAchHolderSid} constants.
    * @property {number} id_pay_bank_ach_sec SEC code. One of {@link RsPayBankAchSecSid} constants.
    * @property {number} id_pay_bank_ach_type Account type. One of {@link RsPayBankAchTypeSid} constants.

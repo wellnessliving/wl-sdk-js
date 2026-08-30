@@ -10,12 +10,12 @@ function Core_Captcha_CaptchaRequireModel()
 
   /**
    * @typedef {{}} Core_Captcha_CaptchaRequireModel_a_arguments_A
-   * @property {?string} k_business Business key. `null` if is system business.
+   * @property {?string} k_business Business key. `null` if system business.
    */
 
   /**
    * @typedef {{}} Core_Captcha_CaptchaRequireModel_a_arguments_B
-   * @property {?string} k_business Business key. `null` if system business.
+   * @property {?string} k_business Business key. `null` if is system business.
    */
 
   /**
@@ -25,19 +25,19 @@ function Core_Captcha_CaptchaRequireModel()
 
   /**
    * @typedef {{}} Core_Captcha_CaptchaRequireModel_a_arguments_D
-   * @property {boolean} is_search Flag to determine is it a search action or no. If search action is `true` it increments {@link Core_Captcha_CaptchaAbstract}. Otherwise {@link Core_Captcha_CaptchaAbstract}.
+   * @property {?string} k_business Business key. `null` if is system business.
    */
 
   /**
    * @typedef {{}} Core_Captcha_CaptchaRequireModel_a_arguments_E
-   * @property {?string} k_business Business key. `null` if is system business.
+   * @property {boolean} is_search Flag to determine is it a search action or no. If search action is `true` it increments {@link Core_Captcha_CaptchaAbstract}. Otherwise {@link Core_Captcha_CaptchaAbstract}.
    */
 
   /**
    * Arguments for creating CAPTCHA object.
    *
    * @get get
-   * @type {Core_Captcha_CaptchaRequireModel_a_arguments_A|Core_Captcha_CaptchaRequireModel_a_arguments_B|Core_Captcha_CaptchaRequireModel_a_arguments_C|Core_Captcha_CaptchaRequireModel_a_arguments_D|Core_Captcha_CaptchaRequireModel_a_arguments_E|{}}
+   * @type {Core_Captcha_CaptchaRequireModel_a_arguments_A|Core_Captcha_CaptchaRequireModel_a_arguments_B|Core_Captcha_CaptchaRequireModel_a_arguments_C|Core_Captcha_CaptchaRequireModel_a_arguments_D|{}|Core_Captcha_CaptchaRequireModel_a_arguments_E}
    */
   this.a_arguments = undefined;
 

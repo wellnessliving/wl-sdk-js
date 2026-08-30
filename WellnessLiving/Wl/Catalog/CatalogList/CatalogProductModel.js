@@ -54,7 +54,7 @@ function Wl_Catalog_CatalogList_CatalogProductModel()
    * @typedef {{}} Wl_Catalog_CatalogList_CatalogProductModel_a_product
    * @property {string} html_price HTML-escaped formatted price of the product.
    * @property {string} html_price_early HTML-escaped formatted early-bird price of the product. Present only when an early price applies.
-   * @property {?number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
+   * @property {number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The product key.
    * @property {string} k_shop_category The shop category key.
    * @property {string} s_title The product title.

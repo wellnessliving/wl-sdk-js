@@ -133,7 +133,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @property {number} i_wait Number of clients in wait list.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
    * @property {number} i_wait_spot Position of the current client (`uid`) in the wait list for this session. `0` if the client is not on the wait list, or if the business hides wait list position (fastest-response wait list promotion).
-   * @property {?number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
+   * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
    * @property {boolean} is_age_public Whether the age restriction of the class is shown to clients.
    * @property {?boolean} is_book Whether current class was booked by current client. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.  `true` if clients can book on behalf of a guest.  `false` otherwise.

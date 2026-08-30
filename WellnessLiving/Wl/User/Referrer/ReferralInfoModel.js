@@ -18,9 +18,9 @@ function Wl_User_Referrer_ReferralInfoModel()
    *
    * @get result
    * @see RsRewardScoreSid
-   * @type {?number}
+   * @type {number}
    */
-  this.i_point = null;
+  this.i_point = undefined;
 
   /**
    * Number of invited referrals.

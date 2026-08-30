@@ -45,7 +45,7 @@ function Wl_Login_Attendance_AttendanceInfoByTokenModel()
 
   /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceInfoByTokenModel_a_purchase_option_default
-   * @property {?number} id_sale The sale item type, one of the {@link RsSaleSid} constants. This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
+   * @property {number} id_sale The sale item type, one of the {@link RsSaleSid} constants. This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
    * @property {boolean} is_single_default If the default Purchase Option is set to "Drop-in rate" then the value will be `true`, `false` otherwise.
    * @property {?string} k_id The default Purchase Option key.  This will be `null` if the class has no default Purchase Option, or it sets to "Drop-in rate".
    */
