@@ -32,6 +32,14 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   this.a_pay_pause_list = null;
 
   /**
+   * List of all upcoming payments for the give pricing option. Just dates in local timezone.
+   *
+   * @get result
+   * @type {string[]}
+   */
+  this.a_payment_schedule = undefined;
+
+  /**
    * The end date of the current hold, in the local time zone.
    * This can be set to a special value `0000-00-00` to make the period indefinite until further action.
    *
@@ -187,7 +195,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_PromotionPayPauseModel);
  */
 Wl_Login_Promotion_PromotionPayPauseModel.prototype.config=function()
 {
-  return {"a_field":{"a_pay_pause_list":{"get":{"result":true}},"dt_end":{"get":{"get":true,"result":true},"post":{"get":true},"put":{"get":true}},"dt_start":{"get":{"get":true,"result":true},"post":{"get":true},"put":{"get":true}},"dtu_date_notification":{"get":{"result":true}},"is_list":{"get":{"get":true}},"is_mail":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_push":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_sms":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_login_promotion":{"delete":{"get":true},"get":{"get":true,"result":true},"post":{"get":true}},"k_mail_pattern":{"get":{"result":true}},"k_promotion_pay_pause":{"delete":{"get":true},"get":{"get":true,"result":true},"post":{"get":true,"result":true},"put":{"get":true,"result":true}},"text_note":{"get":{"result":true},"post":{"post":true},"put":{"post":true}}}};
+  return {"a_field":{"a_pay_pause_list":{"get":{"result":true}},"a_payment_schedule":{"get":{"result":true}},"dt_end":{"get":{"get":true,"result":true},"post":{"get":true},"put":{"get":true}},"dt_start":{"get":{"get":true,"result":true},"post":{"get":true},"put":{"get":true}},"dtu_date_notification":{"get":{"result":true}},"is_list":{"get":{"get":true}},"is_mail":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_push":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_sms":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_login_promotion":{"delete":{"get":true},"get":{"get":true,"result":true},"post":{"get":true}},"k_mail_pattern":{"get":{"result":true}},"k_promotion_pay_pause":{"delete":{"get":true},"get":{"get":true,"result":true},"post":{"get":true,"result":true},"put":{"get":true,"result":true}},"text_note":{"get":{"result":true},"post":{"post":true},"put":{"post":true}}}};
 };
 
 /**
