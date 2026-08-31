@@ -50,6 +50,7 @@ function Wl_Login_Promotion_GuestPass_GuestPassListModel()
    * @property {number} id_program_guest Guest pass program ID. One of {@link RsProgramSid} constants.
    * @property {number} id_reset_type_guest Reset type of the host promotion. One of {@link Wl_Promotion_Guest_Pass_GuestPassResetTypeSid} constants.
    * @property {boolean} is_expire_note `true` if the pass is close enough to its reset or expiry date that the UI should display a warning.
+   * @property {boolean} is_regional `true` if regional access is enabled for the guest pass, i.e. it may be redeemed at other businesses within the franchise region, not only the business that granted it.
    * @property {boolean} is_reset `true` if the remaining count resets on `dl_reset`; `false` if the pass expires on that date.
    * @property {string} k_business Business key.
    * @property {string} k_login_promotion Login promotion key of the host membership.

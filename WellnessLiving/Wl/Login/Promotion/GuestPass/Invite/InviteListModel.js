@@ -51,6 +51,7 @@ function Wl_Login_Promotion_GuestPass_Invite_InviteListModel()
    * @property {?string} dtu_reject Rejection date and time in UTC in MySQL datetime format. `null` if the invitation has not been rejected.
    * @property {number} id_status Invitation lifecycle status. One of {@link Wl_Login_Promotion_GuestPass_Invite_InviteStatusEnum} values.
    * @property {?boolean} is_checkin `true` if the guest may only enter when the inviting member is checked in. `null` if no guest pass settings are configured for the promotion.
+   * @property {boolean} is_visit_business_other `true` if the visit was redeemed at a sibling franchisee business rather than the business that issued the guest pass (regional redemption). `false` if no visit is associated or it was redeemed at the issuing business.
    * @property {boolean} is_visit_future `true` if associated visit in future, `false` otherwise.
    * @property {?string} k_login_promotion_guest Login promotion key granted to the guest upon acceptance.
    * @property {string} k_login_promotion_host Login promotion key of the host membership.
@@ -58,6 +59,7 @@ function Wl_Login_Promotion_GuestPass_Invite_InviteListModel()
    * @property {?string} k_visit Visit key redeemed with this guest pass.
    * @property {string} s_secret Secret token used to accept or reject the invitation via a direct link.
    * @property {?string} text_host_name Full name of the host user who sent the invitation.    `null` if the host could not be resolved.
+   * @property {?string} text_location Title of the location the visit was redeemed at - may be a sibling franchisee's location when the guest pass has regional access. `null` if no visit is associated.
    * @property {string} text_promotion_guest Title of the guest promotion.
    * @property {string} text_promotion_host Title of the host promotion.
    * @property {?string} text_service_title Title of the service booked with the guest pass. `null` if no visit is associated.
