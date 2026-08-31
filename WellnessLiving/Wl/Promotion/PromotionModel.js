@@ -76,7 +76,7 @@ function Wl_Promotion_PromotionModel()
    * @property {boolean} is_online If `true`, this promotion is available for online purchase. Otherwise, this will be `false`.
    * @property {boolean} is_payroll Whether clients who purchase this item excluded from payroll calculations.
    * @property {boolean} is_regional Whether a guest may redeem this Guest Pass at other locations within the regions listed in `a_franchise_region`, in addition to the location that sold it. `false` means the pass can only be redeemed at the location that sold it. Only meaningful when `is_regional_access` is `true`.
-   * @property {boolean} is_regional_access Whether the regional access setting can be configured for this promotion and business at all. `false` if the business does not take part in a franchise region, in which case `is_regional` and `a_franchise_region` should be ignored.
+   * @property {boolean} is_regional_access Whether the regional access setting can be configured for this Guest Pass promotion and business at all. `false` if the business does not take part in a franchise region, in which case `is_regional` and `a_franchise_region` should be ignored.
    * @property {boolean} is_regional_access_readonly Whether the regional access setting is read-only for this business. `true` for a franchisee location, which can only view the regions selected by the franchisor.
    * @property {boolean} is_revenue_single If `true` need to add approximate revenue per session value.
    * @property {boolean} is_use Whether promotion can be used for booking. `null` if there is no termination.
