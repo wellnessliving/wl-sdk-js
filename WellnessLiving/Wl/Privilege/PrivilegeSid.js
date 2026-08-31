@@ -583,6 +583,13 @@ Wl_Privilege_PrivilegeSid.INTEGRATION_AUTYMATE = 163;
 Wl_Privilege_PrivilegeSid.INTEGRATION_BRIVO = 179;
 
 /**
+ * Access to set up and change quickbooks integration.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.INTEGRATION_QUICKBOOKS = 249;
+
+/**
  * Enroll into and manage the WellnessLiving Achieve App. These settings are located under Setup > Achieve Client App.
  *
  * @type {number}
@@ -1141,13 +1148,6 @@ Wl_Privilege_PrivilegeSid.PURCHASE_EDIT = 93;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.PURCHASE_VIEW = 92;
-
-/**
- * Access to set up and change quickbooks integration.
- *
- * @type {number}
- */
-Wl_Privilege_PrivilegeSid.QUICKBOOKS = 249;
 
 /**
  * Allow to see alerts.
