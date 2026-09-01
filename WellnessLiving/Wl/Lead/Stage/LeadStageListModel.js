@@ -11,7 +11,7 @@ function Wl_Lead_Stage_LeadStageListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business";
+  this._s_key = "k_business,is_statistic";
 
   /**
    * @typedef {{}} Wl_Lead_Stage_LeadStageListModel_a_lead_stage
@@ -26,6 +26,7 @@ function Wl_Lead_Stage_LeadStageListModel()
    * @property {string} s_color_foreground Color of characters on the icon. Hexadecimal color.
    * @property {string} s_icon Characters on the icon.
    * @property {string} text_title Name of the stage.
+   * @property {string} url_member_report URL of the report of clients who are in this stage.  Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true` and the stage contains clients.
    */
 
   /**
@@ -72,6 +73,7 @@ Wl_Lead_Stage_LeadStageListModel.prototype.config=function()
  * @function
  * @name Wl_Lead_Stage_LeadStageListModel.instanceGet
  * @param {string} k_business Business key.
+ * @param {boolean} is_statistic Determines whether statistics of the stages must be returned. `true` to return the number of clients of every stage in `i_user`, `false` to not return the statistics.
  * @returns {Wl_Lead_Stage_LeadStageListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
