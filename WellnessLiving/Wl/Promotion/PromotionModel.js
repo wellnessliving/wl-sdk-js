@@ -50,6 +50,9 @@ function Wl_Promotion_PromotionModel()
    *     will be `false` if only selected events can be visited with this Purchase Option. Selected events can be found
    *     in the list of available classes and events.</dd>
    * </dl>
+   * @property {string[]} a_franchise_region A list of franchise regions where a guest may redeem this Guest Pass,
+   *   in addition to the location that sold it. Only meaningful when `is_regional_access` is `true` and `is_regional`
+   *   is `true`.
    * @property {Wl_Promotion_PromotionModel_a_promotion_a_access_a_image} a_image Information about Purchase Option image. This will be an empty array if the Purchase Option doesn't have an image.
    * <dl>
    *   <dt>string <tt>i_height</tt></dt>
@@ -74,6 +77,14 @@ function Wl_Promotion_PromotionModel()
    * For more information, see {@link Wl_WlProgramSid}.
    * @property {boolean} is_introductory If `true`, this promotion is for introductory clients. Otherwise, this will be `false`.
    * @property {boolean} is_online If `true`, this promotion is available for online purchase. Otherwise, this will be `false`.
+   * @property {boolean} is_regional Whether a guest may redeem this Guest Pass at other locations within the regions listed in
+   *   `a_franchise_region`, in addition to the location that sold it. `false` means the pass can only be
+   *   redeemed at the location that sold it. Only meaningful when `is_regional_access` is `true`.
+   * @property {boolean} is_regional_access Whether the regional access setting can be configured for this Guest Pass
+   *   promotion and business at all. `false` if the business does not take part in a franchise region, in which case
+   *   `is_regional` and `a_franchise_region` should be ignored.
+   * @property {boolean} is_regional_access_readonly Whether the regional access setting is read-only for this business.
+   *   `true` for a franchisee location, which can only view the regions selected by the franchisor.
    * @property {string} k_promotion The key of the promotion.
    * @property {string} m_price The price.
    * @property {string} text_description The description of the Purchase Option.
