@@ -15,7 +15,7 @@ function Core_AI_LogTriage_ConnectionCheckModel()
    * @property {string} dtu_first_seen UTC date/time of the first matching log or async-task record. Empty for background tasks.
    * @property {string} dtu_last_seen UTC date/time of the last matching log or async-task record. Empty for background tasks.
    * @property {number} i_occurrence_count Number of matching records.
-   * @property {number} i_priority_multiplier WatchUsageStat priority multiplier. Present for the usage-statistics source.
+   * @property {number} i_priority_multiplier Usage-statistics priority multiplier. Present for the usage-statistics source.
    * @property {number} id_source Finding source from {@link Core_AI_LogTriage_TriageSourceSid}.
    * @property {string} s_object Usage-statistics object. Present for the usage-statistics source.
    * @property {string} s_period Usage-statistics aggregation period. Present for the usage-statistics source.
