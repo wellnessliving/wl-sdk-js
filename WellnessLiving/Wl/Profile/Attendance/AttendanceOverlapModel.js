@@ -65,6 +65,14 @@ function Wl_Profile_Attendance_AttendanceOverlapModel()
   this.is_appointment = false;
 
   /**
+   * Whether at least one overlap exists.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_overlap = undefined;
+
+  /**
    * Primary key of the business to add the user into.
    *
    * @get get
@@ -132,7 +140,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Attendance_AttendanceOverlapModel);
  */
 Wl_Profile_Attendance_AttendanceOverlapModel.prototype.config=function()
 {
-  return {"a_field":{"a_visit_list":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"i_duration":{"get":{"get":true}},"is_appointment":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_resource":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_timezone":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_visit_list":{"get":{"result":true}},"dtu_date":{"get":{"get":true}},"i_duration":{"get":{"get":true}},"is_appointment":{"get":{"get":true}},"is_overlap":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_resource":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_timezone":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
