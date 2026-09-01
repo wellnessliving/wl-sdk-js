@@ -54,6 +54,9 @@ Thoth_LayoutBe_Footer_FooterModel.prototype.config=function()
 /**
  * Returns the data required to render the site footer for the given business.
  *
+ * Loads the business's white-label status and derives whether the "Powered by WellnessLiving"
+ * branding and the Terms and Conditions link should be shown in the footer.
+ *
  * @function
  * @name Thoth_LayoutBe_Footer_FooterModel.get
  * @returns {WlSdk_Deferred_Promise}
