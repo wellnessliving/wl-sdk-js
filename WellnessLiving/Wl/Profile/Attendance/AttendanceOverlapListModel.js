@@ -11,10 +11,29 @@ function Wl_Profile_Attendance_AttendanceOverlapListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Profile_Attendance_AttendanceOverlapListModel_a_date_overlap_a_visit_list
+   * @property {string} dtu_date Date and time of the visit.
+   * @property {number} [i_duration] Duration of a service.
+   * @property {number} i_end End datetime of the visit in unix format.
+   * @property {number} [i_end_local] Local end datetime of the visit in unix format.
+   * @property {number} i_start Start datetime of the visit in unix format.
+   * @property {number} [i_start_local] Local start datetime of the visit in unix format.
+   * @property {string} k_appointment Appointment key.
+   * @property {string} k_business Business key.
+   * @property {string} k_class_period Class period key.
+   * @property {string} k_enrollment_book Enrollment book key.
+   * @property {string} k_location Location key.
+   * @property {string} [text_time_end] Local end time of the visit, formatted according to the business locale.
+   * @property {string} [text_time_start] Local start time of the visit, formatted according to the business locale.
+   * @property {string} text_title Title of a service
+   */
+  /**
    * @typedef {{}} Wl_Profile_Attendance_AttendanceOverlapListModel_a_date_overlap
-   * @property {{}[]} a_visit_list List of visits that overlap with the checked session. Same structure as
+   * @property {Wl_Profile_Attendance_AttendanceOverlapListModel_a_date_overlap_a_visit_list[]} a_visit_list List of visits that overlap with the checked session. Same structure as
    * {@link Wl_Profile_Attendance_AttendanceOverlapModel.a_visit_list}. Present only if the current user has full access to the
-   * target user's visits (the target user itself or a family relative).
+   * target user's visits (the target user itself or a family relative). Each element has the following
+   * keys: List of overlapped booked visits. Each element has the following keys:
+   *
    * Empty for guest-level access, to avoid exposing another member's visit details.
    * @property {boolean} is_overlap `true` if the checked session overlaps with an already booked visit, `false` otherwise.
    */
