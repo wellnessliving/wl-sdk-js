@@ -12,36 +12,42 @@ function Wl_Tag_TagModel()
    * @typedef {{}} Wl_Tag_TagModel_a_tag_a_asset
    * @property {boolean} is_primary Whether the tag is the primary revenue category for the resource.
    * @property {string} k_id The resource key.
+   * @property {string} text_title The resource title.
    */
 
   /**
    * @typedef {{}} Wl_Tag_TagModel_a_tag_a_class
    * @property {boolean} is_primary Whether the tag is the primary revenue category for the class.
    * @property {string} k_id The class key.
+   * @property {string} text_title The class title.
    */
 
   /**
    * @typedef {{}} Wl_Tag_TagModel_a_tag_a_coupon
    * @property {boolean} is_primary Whether the tag is the primary revenue category for the coupon.
    * @property {string} k_id The coupon key.
+   * @property {string} text_title The coupon title.
    */
 
   /**
    * @typedef {{}} Wl_Tag_TagModel_a_tag_a_promotion
    * @property {boolean} is_primary Whether the tag is the primary revenue category for the promotion.
    * @property {string} k_id The promotion key.
+   * @property {string} text_title The promotion title.
    */
 
   /**
    * @typedef {{}} Wl_Tag_TagModel_a_tag_a_service
    * @property {boolean} is_primary Whether the tag is the primary revenue category for the service.
    * @property {string} k_id The service key.
+   * @property {string} text_title The service title.
    */
 
   /**
    * @typedef {{}} Wl_Tag_TagModel_a_tag_a_product
    * @property {boolean} is_primary Whether the tag is the primary revenue category for the product.
    * @property {string} k_id The product key.
+   * @property {string} text_title The product title.
    */
 
   /**
