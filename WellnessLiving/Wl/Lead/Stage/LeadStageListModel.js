@@ -26,6 +26,7 @@ function Wl_Lead_Stage_LeadStageListModel()
    * @property {string} s_color_foreground Color of characters on the icon. Hexadecimal color.
    * @property {string} s_icon Characters on the icon.
    * @property {string} text_title Name of the stage.
+   * @property {string} url_automation_list URL of the list of automations which use this stage.  Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true` and the stage is used in automations.
    * @property {string} url_member_report URL of the report of clients who are in this stage.  Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true` and the stage contains clients.
    */
 
