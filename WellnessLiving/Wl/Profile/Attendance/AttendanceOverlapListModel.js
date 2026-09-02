@@ -1,5 +1,5 @@
 /**
- * Checks a batch of candidate visits for booking overlaps.
+ * Checks whether the specified user has any existing bookings that overlap with a given time range or service.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -9,8 +9,26 @@ function Wl_Profile_Attendance_AttendanceOverlapListModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Wl_Profile_Attendance_AttendanceOverlapListModel_a_date_overlap_a_visit_list
+   * @property {string} dtu_date Date and time of the visit.
+   * @property {number} i_duration Duration of a service.
+   * @property {number} i_end End datetime of the visit in unix format.
+   * @property {number} i_end_local Local end datetime of the visit in unix format.
+   * @property {number} i_start Start datetime of the visit in unix format.
+   * @property {number} i_start_local Local start datetime of the visit in unix format.
+   * @property {string} k_appointment Appointment key.
+   * @property {string} k_business Business key.
+   * @property {string} k_class_period Class period key.
+   * @property {string} k_enrollment_book Enrollment book key.
+   * @property {string} k_location Location key.
+   * @property {string} text_time_end Local end time of the visit, formatted according to the business locale.
+   * @property {string} text_time_start Local start time of the visit, formatted according to the business locale.
+   * @property {string} text_title Title of a service
+   */
+
+  /**
    * @typedef {{}} Wl_Profile_Attendance_AttendanceOverlapListModel_a_date_overlap
-   * @property {*[][]} a_visit_list List of visits that overlap with the checked session. Same structure as {@link Wl_Profile_Attendance_AttendanceOverlapModel.a_visit_list}. Present only if the current user has full access to the target user's visits (the target user itself or a family relative). Empty for guest-level access, to avoid exposing another member's visit details.
+   * @property {Wl_Profile_Attendance_AttendanceOverlapListModel_a_date_overlap_a_visit_list} a_visit_list List of visits that overlap with the checked session. Same structure as {@link Wl_Profile_Attendance_AttendanceOverlapModel.a_visit_list}. Present only if the current user has full access to the target user's visits (the target user itself or a family relative). Each element has the following keys: List of overlapped booked visits. Each element has the following keys:
    * @property {boolean} is_overlap `true` if the checked session overlaps with an already booked visit, `false` otherwise.
    */
 
@@ -28,11 +46,11 @@ function Wl_Profile_Attendance_AttendanceOverlapListModel()
    * @property {string} dtu_date Date and time of the service.
    * @property {number} i_duration Duration of the service in minutes. Required if `k_resource` is not empty.
    * @property {boolean} is_appointment Whether an appointment (asset) is booking. Needed in case when a client is allowed to select a date and  time, then the available asset.
-   * @property {string} k_class_period Class period key. Primary key in RsClassPeriodSql table.
-   * @property {string} k_location Location key. Primary key in RsLocationSql table.
-   * @property {string} k_resource Resource key. Primary key in RsResourceSql table.
-   * @property {string} k_service Service key. Primary key in RsServiceSql table.
-   * @property {string} k_timezone Timezone key. Primary key in AGeoTimezoneSql table.
+   * @property {string} k_class_period Class period key.
+   * @property {string} k_location Location key.
+   * @property {string} k_resource Resource key.
+   * @property {string} k_service Service key.
+   * @property {string} k_timezone Timezone key.
    */
 
   /**
@@ -73,7 +91,9 @@ Wl_Profile_Attendance_AttendanceOverlapListModel.prototype.config=function()
 };
 
 /**
- * Checks a batch of candidate visits for booking overlaps.
+ * Checks whether the specified user has any existing bookings that overlap with a given time range or service.
+ *
+ * Used before scheduling to detect conflicts and prompt staff or the client with a warning.
  *
  * @function
  * @name Wl_Profile_Attendance_AttendanceOverlapListModel.post
