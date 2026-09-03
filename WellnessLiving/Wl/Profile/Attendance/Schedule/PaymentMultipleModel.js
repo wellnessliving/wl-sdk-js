@@ -160,6 +160,14 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
   this.is_checkout = false;
 
   /**
+   * `true` to all appointments are related to the same user, `false` if appointments can be related to different users.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_relationship = true;
+
+  /**
    * When set to `true` it's mean that need load full information about unpaid visits:
    *  * List of available/existing POs.
    *  * List of unpaid addons.
@@ -177,6 +185,14 @@ function Wl_Profile_Attendance_Schedule_PaymentMultipleModel()
    * @type {boolean}
    */
   this.is_tip = undefined;
+
+  /**
+   * `true` to get only unpaid appointments, `false` to get all appointments.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_unpaid = true;
 
   /**
    * The business key.
@@ -235,7 +251,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Attendance_Schedule_PaymentMultipleModel);
  */
 Wl_Profile_Attendance_Schedule_PaymentMultipleModel.prototype.config=function()
 {
-  return {"a_field":{"a_appointment":{"get":{"get":true}},"a_client":{"get":{"result":true}},"a_staff_list":{"get":{"result":true}},"a_visit_pay":{"post":{"get":true}},"dtl_date":{"get":{"get":true}},"i_unpaid_number":{"get":{"result":true}},"is_checkout":{"post":{"get":true}},"is_simple":{"get":{"get":true}},"is_tip":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"get":true}},"k_visit":{"get":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true}},"url_redirect":{"post":{"result":true}}}};
+  return {"a_field":{"a_appointment":{"get":{"get":true}},"a_client":{"get":{"result":true}},"a_staff_list":{"get":{"result":true}},"a_visit_pay":{"post":{"get":true}},"dtl_date":{"get":{"get":true}},"i_unpaid_number":{"get":{"result":true}},"is_checkout":{"post":{"get":true}},"is_relationship":{"get":{"get":true}},"is_simple":{"get":{"get":true}},"is_tip":{"get":{"result":true}},"is_unpaid":{"get":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"get":true}},"k_visit":{"get":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true}},"url_redirect":{"post":{"result":true}}}};
 };
 
 /**
