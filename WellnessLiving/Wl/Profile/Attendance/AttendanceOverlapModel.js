@@ -26,8 +26,10 @@ function Wl_Profile_Attendance_AttendanceOverlapModel()
    * @property {string} k_class_period Class period key.
    * @property {string} k_enrollment_book Enrollment book key.
    * @property {string} k_location Location key.
+   * @property {string} text_date Local date of the visit, formatted according to the business locale.
    * @property {string} text_time_end Local end time of the visit, formatted according to the business locale.
    * @property {string} text_time_start Local start time of the visit, formatted according to the business locale.
+   * @property {string} text_timezone Name of the timezone used to format `text_date`, `text_time_end` and `text_time_start`.
    * @property {string} text_title Title of a service
    */
 
