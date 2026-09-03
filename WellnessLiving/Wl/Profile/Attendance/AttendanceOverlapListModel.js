@@ -28,7 +28,7 @@ function Wl_Profile_Attendance_AttendanceOverlapListModel()
 
   /**
    * @typedef {{}} Wl_Profile_Attendance_AttendanceOverlapListModel_a_date_overlap
-   * @property {Wl_Profile_Attendance_AttendanceOverlapListModel_a_date_overlap_a_visit_list} a_visit_list List of visits that overlap with the checked session. Same structure as {@link Wl_Profile_Attendance_AttendanceOverlapModel.a_visit_list}. Present only if the current user has full access to the target user's visits (the target user itself or a family relative). Each element has the following keys: List of overlapped booked visits. Each element has the following keys:
+   * @property {Wl_Profile_Attendance_AttendanceOverlapListModel_a_date_overlap_a_visit_list} a_visit_list List of visits that overlap with the checked session. Same structure as {@link Wl_Profile_Attendance_AttendanceOverlapModel.a_visit_list}. Present only if the current user has full access to the target user's visits (the target user itself or a family relative). Each element has the following keys:
    * @property {boolean} is_overlap `true` if the checked session overlaps with an already booked visit, `false` otherwise.
    */
 
