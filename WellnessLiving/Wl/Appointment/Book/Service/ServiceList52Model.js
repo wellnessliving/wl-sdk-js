@@ -115,7 +115,7 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
   /**
    * List of services to filter a result.
    *
-   * Each element is a service key, a primary key in RsServiceSql.
+   * Each element is a service key.
    * Empty if the filtering is not necessary.
    *
    * @get get
