@@ -113,6 +113,17 @@ function Wl_Appointment_Book_Service_ServiceList52Model()
   this.a_service = undefined;
 
   /**
+   * List of services to filter a result.
+   *
+   * Each element is a service key, a primary key in RsServiceSql.
+   * Empty if the filtering is not necessary.
+   *
+   * @get get
+   * @type {string[]}
+   */
+  this.a_service_filter = undefined;
+
+  /**
    * List of staff members to filter a result.
    *
    * Empty if the filtering is not necessary.
@@ -223,7 +234,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Service_ServiceList52Model);
  */
 Wl_Appointment_Book_Service_ServiceList52Model.prototype.config=function()
 {
-  return {"a_field":{"a_class_tab":{"get":{"get":true}},"a_service":{"get":{"result":true}},"a_staff":{"get":{"get":true}},"a_uid":{"get":{"get":true}},"i_height":{"get":{"get":true}},"i_width":{"get":{"get":true}},"is_backend":{"get":{"get":true}},"is_multiple_booking":{"get":{"result":true}},"is_tab_all":{"get":{"get":true}},"is_walk_in":{"get":{"get":true}},"k_location":{"get":{"get":true,"result":true}},"k_service_category":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_class_tab":{"get":{"get":true}},"a_service":{"get":{"result":true}},"a_service_filter":{"get":{"get":true}},"a_staff":{"get":{"get":true}},"a_uid":{"get":{"get":true}},"i_height":{"get":{"get":true}},"i_width":{"get":{"get":true}},"is_backend":{"get":{"get":true}},"is_multiple_booking":{"get":{"result":true}},"is_tab_all":{"get":{"get":true}},"is_walk_in":{"get":{"get":true}},"k_location":{"get":{"get":true,"result":true}},"k_service_category":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
