@@ -182,6 +182,50 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.m_checkout = "0.00";
 
   /**
+   * The subtotal amount that has to be charged right now for the cart, before discount.
+   *
+   * Equals {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.m_subtotal} for everything that is paid for in full at once. See
+   * {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.m_checkout} for how a tuition's deferred cost is excluded.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_checkout_before_discount = "0.00";
+
+  /**
+   * The amount that has to be charged right now for the cart, after discount but before tax.
+   *
+   * Equals {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.m_checkout_before_discount} minus
+   * {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.m_checkout_discount}.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_checkout_before_tax = "0.00";
+
+  /**
+   * The discount amount that applies to the part of the cart charged right now, excluding tax.
+   *
+   * Equals {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.m_discount_total} for everything that is paid for in full at once. See
+   * {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.m_checkout} for how a tuition's deferred cost is excluded.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_checkout_discount = "0.00";
+
+  /**
+   * The amount of tax that applies to the part of the cart charged right now.
+   *
+   * Equals {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.m_tax} for everything that is paid for in full at once. See
+   * {@link Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.m_checkout} for how a tuition's deferred cost is excluded.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.m_checkout_tax = "0.00";
+
+  /**
    * The discount amount in dollars, excluding tax.
    *
    * @get result
@@ -310,7 +354,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel);
  */
 Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel.prototype.config=function()
 {
-  return {"a_field":{"a_discount_code":{"get":{"result":true}},"a_item":{"get":{"get":true,"result":true}},"f_discount_percent":{"get":{"get":true}},"is_check_cart_item":{"get":{"get":true}},"is_commission":{"get":{"result":true}},"is_discount_code_mode_select":{"get":{"result":true}},"is_receipt_note":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_flat":{"get":{"get":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip":{"get":{"get":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"text_error_code":{"get":{"result":true}},"text_error_message":{"get":{"result":true}},"text_receipt_note":{"get":{"result":true}},"uid_current":{"get":{"get":true}},"uid_customer":{"get":{"get":true}}}};
+  return {"a_field":{"a_discount_code":{"get":{"result":true}},"a_item":{"get":{"get":true,"result":true}},"f_discount_percent":{"get":{"get":true}},"is_check_cart_item":{"get":{"get":true}},"is_commission":{"get":{"result":true}},"is_discount_code_mode_select":{"get":{"result":true}},"is_receipt_note":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_checkout_before_discount":{"get":{"result":true}},"m_checkout_before_tax":{"get":{"result":true}},"m_checkout_discount":{"get":{"result":true}},"m_checkout_tax":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_flat":{"get":{"get":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip":{"get":{"get":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"text_error_code":{"get":{"result":true}},"text_error_message":{"get":{"result":true}},"text_receipt_note":{"get":{"result":true}},"uid_current":{"get":{"get":true}},"uid_customer":{"get":{"get":true}}}};
 };
 
 /**
