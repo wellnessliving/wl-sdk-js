@@ -116,6 +116,7 @@ function Wl_Catalog_Payment_PaymentModel()
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config} a_config Additional configuration information. This may contain the next keys:
+   * @property {*[]} a_signature Signatures for an item that requires agreement to several distinct contracts at once.
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_tax_custom} a_tax_custom Customer taxes (optional). Every element must contain the following keys:
    * @property {number} i_quantity The item quantity.
    * @property {number} id_sale The item type ID. One of the {@link RsSaleSid} constants.
@@ -123,7 +124,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {string} k_login_prize The key of the login prize to apply a login prize discount.
    * @property {string} k_shop_product_option The product option key, required only for products.
    * @property {string} m_price_custom The custom price (optional).
-   * @property {string} s_signature The client signature, used for items that require a signed contract.
+   * @property {string} s_signature The client signature, used for an item that requires agreement to a single contract.
    */
 
   /**

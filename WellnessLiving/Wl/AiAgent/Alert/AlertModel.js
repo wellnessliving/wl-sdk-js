@@ -9,12 +9,12 @@ function Wl_AiAgent_Alert_AlertModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Business key.
+   * CID of the alert to be fired.
    *
    * @post post
-   * @type {string}
+   * @type {number}
    */
-  this.cid_alert = "";
+  this.cid_alert = 0;
 
   /**
    * Business key.

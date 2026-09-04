@@ -131,9 +131,13 @@ function Wl_Event_EventListModel()
    * @property {string} dl_start Start date of the scheduled sessions in `MySql` format.
    * @property {string} dtu_session Date of the closest session of the event.
    * @property {string} html_reason Reason why session can not be booked. Not empty only if `is_bookable` is `false`.
+   * @property {number} i_book_active Number of clients in the active list.
+   * @property {number} i_capacity Capacity of the active list.
    * @property {number} i_session_all Number of all sessions in the event.
    * @property {number} i_session_future Number of future sessions in the event.
    * @property {number} i_session_past Number of past sessions in the event.
+   * @property {number} i_wait Number of clients in the wait list.
+   * @property {?number} i_wait_limit Wait list limit of the event.
    * @property {number} id_reason ID of deny reason.
    * @property {boolean} is_age_restrict Whether booking of this event restricted because of age rules for {@link Wl_Event_EventListModel}.
    * @property {boolean} is_age_restrict_only `true` if this event booking is restricted and restricted because of client's age only. `false` otherwise.
@@ -151,7 +155,9 @@ function Wl_Event_EventListModel()
    * @property {boolean} is_promotion_only Whether clients of the business can pay for the event with purchase option only.
    * @property {boolean} is_prorate Whether event sessions can be booked partially.
    * @property {boolean} is_single_buy Whether class/event can be paid with single session.
+   * @property {boolean} is_user_booked Whether current user is booked or on the wait list.
    * @property {boolean} is_virtual Whether event is virtual.
+   * @property {boolean} is_wait_list_enabled Whether wait list is enabled for this event.
    * @property {string} k_class Class key.
    * @property {string} k_class_period Class period key of the closest session of the event.
    * @property {string} k_enrollment_block Key of enrollment block that corresponds to current row.

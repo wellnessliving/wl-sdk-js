@@ -650,13 +650,6 @@ RsReportSid.LOGIN_RANK = 40;
 RsReportSid.LOGIN_RISK = 261;
 
 /**
- * Report with client's attendance history.
- *
- * @type {number}
- */
-RsReportSid.LOGIN_VISIT = 52;
-
-/**
  * Count of sent mail and sms per business.
  *
  * @type {number}
