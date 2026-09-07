@@ -16,6 +16,7 @@ function Wl_Lead_Stage_LeadStageListModel()
   /**
    * @typedef {{}} Wl_Lead_Stage_LeadStageListModel_a_lead_stage
    * @property {number} i_automation Number of automations used this stage. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
+   * @property {number} i_member_group Number of client groups which convert their clients into this stage. Such a group depends on the stage: the stage may only be deleted with a replacement stage for the groups. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
    * @property {number} i_order Sequence number of the stage in the list.
    * @property {number} i_user Number of clients who are in this stage. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
    * @property {number} id_lead_stage_shape Shape of the stage icon. One of {@link Wl_Lead_Stage_LeadStageShapeSid} constants.

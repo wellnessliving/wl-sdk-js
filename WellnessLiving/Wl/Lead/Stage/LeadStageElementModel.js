@@ -128,6 +128,10 @@ Wl_Lead_Stage_LeadStageElementModel.prototype.config=function()
  * {@link Wl_Lead_Stage_LeadStageElementModel.k_lead_stage_replace} must be given - they are moved to the replacement stage,
  * which must be of the same type.
  *
+ * A system stage of a conversion type can also be used by the `Won` / `Lost` client groups of the business.
+ * Such a stage requires a replacement stage too, even if it has no clients: the system ID of the stage moves
+ * to the replacement one, and the groups convert their clients into it from now on.
+ *
  * @function
  * @name Wl_Lead_Stage_LeadStageElementModel.delete
  * @returns {WlSdk_Deferred_Promise}
