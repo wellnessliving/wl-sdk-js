@@ -12,7 +12,7 @@ function Wl_Tuition_Enrollment_TuitionClientsSummaryModel()
    * @typedef {{}} Wl_Tuition_Enrollment_TuitionClientsSummaryModel_a_summary
    * @property {number} i_clients_enrolled Number of unique clients having at least one not cancelled enrolled event.
    * @property {number} i_enrolled_total Total number of not cancelled event enrollments.
-   * @property {number} i_enrollments_active Total number of group enrollments with at least one not cancelled enrolled client in the group.
+   * @property {number} i_enrollments_active Total number of group enrollments with at least one not cancelled enrolled client in the group and     an active payment plan - `id_installment_status` equal to {@link Wl_Pay_Installment_InstallmentStatusSid} for     installment-based tuition plans, or at least one `id_promotion_status` equal to     {@link Wl_Login_Promotion_LoginPromotionStatusSid} among the group's memberships for membership-based tuitions.
    * @property {number} i_enrollments_total Total number of group enrollments.
    * @property {number} i_events_unique Number of unique events having at least one not cancelled enrollment.
    */
