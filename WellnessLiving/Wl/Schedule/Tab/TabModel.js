@@ -33,6 +33,14 @@ function Wl_Schedule_Tab_TabModel()
   this.a_tab = undefined;
 
   /**
+   * Whether to return all tabs or only the tabs for which sessions are available.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_full_list = false;
+
+  /**
    * Whether we are inside the widget or not.
    *
    * @get get
@@ -80,7 +88,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_Tab_TabModel);
  */
 Wl_Schedule_Tab_TabModel.prototype.config=function()
 {
-  return {"a_field":{"a_tab":{"get":{"result":true}},"is_widget":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_tab":{"get":{"result":true}},"is_full_list":{"get":{"get":true}},"is_widget":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
