@@ -100,7 +100,10 @@ function convertLinks(text)
     /\{@link\s+([\w\\]+?)(Sid|Api)((?:::[^}]*)?)\}/g,
     (match, prefix, suffix, member) =>
     {
-      const jsClass = prefix.replace(/\\/g, '_') + (suffix === 'Api' ? 'Model' : suffix);
+      // Strip a leading backslash (PHP root-namespace prefix, e.g. `\RsProgramSid`) before
+      // converting remaining backslashes to underscores - otherwise it becomes a stray leading
+      // underscore (`_RsProgramSid`) instead of the actual class name (`RsProgramSid`).
+      const jsClass = prefix.replace(/^\\+/, '').replace(/\\/g, '_') + (suffix === 'Api' ? 'Model' : suffix);
       if (member)
       {
         const jsMember = member.replace('::', '.').replace('$', '');
@@ -111,6 +114,46 @@ function convertLinks(text)
   );
 
   return text;
+}
+
+/**
+ * Builds JSDoc comment lines from a (possibly multi-line) description and a flat tag list.
+ *
+ * Splits `description` on `\n` and emits each physical line with a correct ` * ` margin (a blank
+ * line becomes a bare ` *`). A naive `' * ' + description` concatenation silently corrupts any
+ * description containing an embedded newline - only the first physical line gets the `*` margin,
+ * the rest fall outside the comment's left edge (see `CSResponseSid.PARSING_ERROR` before this
+ * helper existed). A blank ` *` separator line is inserted between the description and the tags
+ * only when both are present, matching the convention used throughout this file.
+ *
+ * @param {string} description Doc body text, already link/escape-converted. Empty string omits the body.
+ * @param {string[]} tags Complete tag lines (e.g. `'@type {number}'`), rendered in the given order, no leading `*`.
+ * @param {string} [indent] Leading indentation applied to every emitted line (default: none).
+ * @returns {string[]} Comment lines, including the opening `/**` and closing `* /`.
+ */
+function buildJsDoc(description, tags, indent)
+{
+  indent = indent || '';
+  const lines = [indent + '/**'];
+
+  const descLines = description ? description.split('\n') : [];
+  for (const line of descLines)
+  {
+    lines.push(line.trim() ? indent + ' * ' + line : indent + ' *');
+  }
+
+  if (descLines.length > 0 && tags.length > 0)
+  {
+    lines.push(indent + ' *');
+  }
+
+  for (const tag of tags)
+  {
+    lines.push(indent + ' * ' + tag);
+  }
+
+  lines.push(indent + ' */');
+  return lines;
 }
 
 // -----------------------------------------------------------------------
@@ -209,7 +252,7 @@ function buildObjectTypedef(schema, spec, depth, typedefs, typedefName)
     const resolved = resolveSchema(pSchema, spec);
     const subName = typedefName + '_' + pName;
     const pType = schemaToJsType(resolved, spec, depth + 1, typedefs, subName);
-    const sidRef = getSidRefClass(pSchema);
+    const sidRef = getSidRefClass(pSchema, spec);
     // Use only the first paragraph - @property is a single-line annotation.
     const rawDesc = getFieldRawDescription(pSchema.description, resolved, sidRef);
     const firstPara = rawDesc.split(/\n\s*\n/)[0].replace(/\n/g, ' ').trim();
@@ -278,13 +321,23 @@ function oneOfToJsType(variants, spec, depth, typedefs, typedefName)
 }
 
 /**
- * Returns JS class name if schema.$ref points to a *Sid component schema, null otherwise.
+ * Returns the JS constant-class name if `schema.$ref` points to a generated enum-constant
+ * component schema (one with `enum` and `x-enum-varnames`), `null` otherwise.
+ *
+ * Resolves the `$ref` and inspects the target schema's shape rather than checking a naming
+ * suffix, so it recognizes enum schemas regardless of their final name segment (`Sid`,
+ * `Abstract`, `Enum`, `Exception`, ...).
+ *
+ * @param {?object} schema Field or parameter schema, possibly a `$ref`.
+ * @param {object} spec Full parsed OpenAPI spec.
+ * @returns {?string} JS class name (dots replaced with `_`), or `null` if not an enum `$ref`.
  */
-function getSidRefClass(schema)
+function getSidRefClass(schema, spec)
 {
   if (!schema || !schema.$ref) return null;
-  const m = schema.$ref.match(/#\/components\/schemas\/(.+Sid)$/);
-  return m ? m[1].replace(/\./g, '_') : null;
+  const resolved = resolveRef(spec, schema.$ref);
+  if (!resolved || !Array.isArray(resolved.enum) || !Array.isArray(resolved['x-enum-varnames'])) return null;
+  return schema.$ref.replace(/^#\/components\/schemas\//, '').replace(/\./g, '_');
 }
 
 /**
@@ -328,6 +381,13 @@ function getDefaultValue(jsType, isResultOnly, hasDefault, defaultValue)
 // Cleanup: delete all *Model.js and *Sid.js
 // -----------------------------------------------------------------------
 
+// generateSIDs() below no longer requires the schema name to end with `Sid` - it now generates
+// a file for any schema shaped like an enum (`enum` + `x-enum-varnames`), regardless of its final
+// name segment (`Abstract`, `Enum`, `Exception`, ...). Those other suffixes are NOT added here:
+// they collide with hand-written base classes already using them (e.g. `ModelAbstract.js`,
+// `EdgeAbstract.js`, `AssertException.js`), so widening this filter would delete real source
+// files. This means a schema renamed or removed while using a non-`Sid` suffix leaves its old
+// generated file behind as an orphan - clean it up manually if that happens.
 function cleanGeneratedFiles(dir)
 {
   if (!fs.existsSync(dir)) return;
@@ -381,12 +441,66 @@ function extractSidClassDescription(description)
 }
 
 /**
- * Parses constant entries from a schema description.
+ * Resolves unique, JS-identifier-safe constant names from raw `x-enum-varnames` values.
+ *
+ * A plain varname (e.g. `ACTIVE`) is used as-is. A namespaced varname (e.g. `Wl\Foo\BarAlert`,
+ * used by CID-based "abstract class" enums such as `Wl.AiAgent.Alert.AiAgentAlertAbstract`) is
+ * shortened to the fewest trailing path segments, joined by `_`, that keep all names within the
+ * schema unique - mirroring the constant-naming rule in the PHP SDK generator
+ * (`wlGenerateEnumClass()` in `wl-openapi/php/scripts/generate.php`).
+ *
+ * @param {string[]} varnames Raw `x-enum-varnames` values, same order as `enum`.
+ * @returns {string[]} Resolved constant names, same order as `varnames`.
+ */
+function resolveConstantNames(varnames)
+{
+  const n = varnames.length;
+  const resolved = new Array(n).fill(null);
+
+  for (let depth = 1; depth <= 10 && resolved.includes(null); depth++)
+  {
+    const candidates = new Array(n);
+    for (let j = 0; j < n; j++)
+    {
+      if (resolved[j] === null)
+      {
+        const segments = String(varnames[j]).split('\\');
+        candidates[j] = segments.slice(-Math.min(depth, segments.length)).join('_');
+      }
+    }
+
+    const counts = {};
+    for (const candidate of candidates)
+    {
+      if (candidate !== undefined) counts[candidate] = (counts[candidate] || 0) + 1;
+    }
+    for (let j = 0; j < n; j++)
+    {
+      if (resolved[j] === null && counts[candidates[j]] === 1) resolved[j] = candidates[j];
+    }
+  }
+
+  // Fallback for any still-duplicate entries (identical full paths - should never happen).
+  for (let j = 0; j < n; j++)
+  {
+    if (resolved[j] === null) resolved[j] = String(varnames[j]).split('\\').join('_') + '_' + j;
+  }
+
+  return resolved;
+}
+
+/**
+ * Parses constant entries from a schema description, used only as a fallback when a schema
+ * lacks `x-enum-varnames`.
  *
  * Expected format per line: "- VALUE (`CONSTANT_NAME`): Description text."
  * Multi-line descriptions (indented continuation lines) are joined.
+ *
+ * @param {string} description Schema `description` text.
+ * @param {(number|string)[]} enumValues Schema `enum` values, used as a last-resort fallback.
+ * @returns {{value: (number|string), name: string, desc: string}[]} Constant entries.
  */
-function parseConstants(description, enumValues)
+function parseConstantsFromDescription(description, enumValues)
 {
   const constants = [];
   if (!description) return constants;
@@ -434,6 +548,37 @@ function parseConstants(description, enumValues)
   return constants;
 }
 
+/**
+ * Parses constant entries from an enum schema.
+ *
+ * Prefers the structured `x-enum-varnames`/`x-enum-descriptions` fields, which support both
+ * plain names (e.g. `ACTIVE`) and namespaced ones (e.g. `Wl\Foo\BarAlert`). Falls back to
+ * {@link parseConstantsFromDescription} when `x-enum-varnames` is absent or its length does not
+ * match `enum`.
+ *
+ * @param {object} schema Resolved enum schema (has `enum`, optionally
+ *  `x-enum-varnames`/`x-enum-descriptions`).
+ * @returns {{value: (number|string), name: string, desc: string}[]} Constant entries.
+ */
+function parseConstants(schema)
+{
+  const enumValues = schema.enum || [];
+  const varnames = schema['x-enum-varnames'];
+
+  if (Array.isArray(varnames) && varnames.length === enumValues.length)
+  {
+    const names = resolveConstantNames(varnames);
+    const descriptions = schema['x-enum-descriptions'] || [];
+    return enumValues.map((value, i) => ({
+      value,
+      name: names[i],
+      desc: String(descriptions[i] || '').trim(),
+    }));
+  }
+
+  return parseConstantsFromDescription(schema.description || '', enumValues);
+}
+
 function generateSidContent(schemaName, schema)
 {
   const override = sidPathConfig[schemaName] || {};
@@ -441,7 +586,7 @@ function generateSidContent(schemaName, schema)
 
   const rawDesc = schema.description || '';
   const classDesc = convertLinks(escDoc(extractSidClassDescription(rawDesc)));
-  const constants = parseConstants(rawDesc, schema.enum);
+  const constants = parseConstants(schema);
 
   // Sort constants alphabetically by name
   constants.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
@@ -449,19 +594,7 @@ function generateSidContent(schemaName, schema)
   const lines = [];
 
   // Class JSDoc
-  lines.push('/**');
-  if (classDesc)
-  {
-    for (const l of classDesc.split('\n'))
-    {
-      lines.push(l.trim() ? ' * ' + l : ' *');
-    }
-  }
-  else
-  {
-    lines.push(' * ' + schemaName + ' identifiers.');
-  }
-  lines.push(' */');
+  lines.push(...buildJsDoc(classDesc || (schemaName + ' identifiers.'), []));
 
   // Constructor
   lines.push('function ' + className + '()');
@@ -474,11 +607,7 @@ function generateSidContent(schemaName, schema)
   {
     const constDesc = convertLinks(escDoc(c.desc));
     lines.push('');
-    lines.push('/**');
-    lines.push(' * ' + constDesc);
-    lines.push(' *');
-    lines.push(' * @type {number}');
-    lines.push(' */');
+    lines.push(...buildJsDoc(constDesc, ['@type {number}']));
     lines.push(className + '.' + c.name + ' = ' + c.value + ';');
   }
 
@@ -492,8 +621,8 @@ function generateSIDs(spec)
 
   for (const [schemaName, schema] of Object.entries(schemas))
   {
-    if (!schemaName.endsWith('Sid')) continue;
     if (!schema.enum || schema.enum.length === 0) continue;
+    if (!Array.isArray(schema['x-enum-varnames'])) continue;
 
     const override = sidPathConfig[schemaName] || {};
     const filePath = override.filePath
@@ -600,7 +729,7 @@ function collectFields(pathItem, spec, className)
       const jsType = schemaToJsType(resolvedParamSchema, spec, 0, localTypedefs, className + '_' + name);
       // Optional params are treated as nullable
       const effectiveType = (!isRequired && !jsType.startsWith('?')) ? '?' + jsType : jsType;
-      const sidRef = getSidRefClass(paramSchema);
+      const sidRef = getSidRefClass(paramSchema, spec);
       const desc = convertLinks(escDoc(getFieldRawDescription(param.description, resolvedParamSchema, sidRef)));
       const { hasDefault, defaultValue } = getSchemaDefault(resolvedParamSchema);
       const dep = getDeprecatedInfo(param, paramSchema, resolvedParamSchema);
@@ -655,7 +784,7 @@ function collectFields(pathItem, spec, className)
           const jsType = schemaToJsType(resolved, spec, 0, localTypedefs, className + '_' + name);
           const isRequired = required.includes(name);
           const effectiveType = (!isRequired && !jsType.startsWith('?')) ? '?' + jsType : jsType;
-          const sidRef = getSidRefClass(propSchema);
+          const sidRef = getSidRefClass(propSchema, spec);
           const desc = convertLinks(escDoc(getFieldRawDescription(propSchema.description, resolved, sidRef)));
           const { hasDefault, defaultValue } = getSchemaDefault(resolved);
           const dep = getDeprecatedInfo(propSchema, resolved);
@@ -705,7 +834,7 @@ function collectFields(pathItem, spec, className)
             const resolved = resolveSchema(propSchema, spec);
             const localTypedefs = [];
             const jsType = schemaToJsType(resolved, spec, 0, localTypedefs, className + '_' + name);
-            const sidRef = getSidRefClass(propSchema);
+            const sidRef = getSidRefClass(propSchema, spec);
             const desc = convertLinks(escDoc(getFieldRawDescription(propSchema.description, resolved, sidRef)));
             const { hasDefault, defaultValue } = getSchemaDefault(resolved);
             const dep = getDeprecatedInfo(propSchema, resolved);
@@ -750,15 +879,6 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
 
   // --- @typedef blocks for inline object fields (before class JSDoc) ---
   // --- Class JSDoc ---
-  lines.push('/**');
-  if (description)
-  {
-    for (const l of description.split('\n'))
-    {
-      lines.push(l.trim() ? ' * ' + l : ' *');
-    }
-    lines.push(' *');
-  }
 
   // Class-level tags (sorted alphabetically)
   const classTags = [
@@ -771,11 +891,7 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
   }
   classTags.sort((a, b) => (a.tag < b.tag ? -1 : a.tag > b.tag ? 1 : 0));
 
-  for (const { tag, value } of classTags)
-  {
-    lines.push(' * @' + tag + (value ? ' ' + value : ''));
-  }
-  lines.push(' */');
+  lines.push(...buildJsDoc(description, classTags.map(({ tag, value }) => '@' + tag + (value ? ' ' + value : ''))));
 
   // --- Constructor function ---
   lines.push('function ' + className + '()');
@@ -786,9 +902,7 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
   if (instanceGetKey)
   {
     lines.push('');
-    lines.push('  /**');
-    lines.push('   * @inheritDoc');
-    lines.push('   */');
+    lines.push(...buildJsDoc('', ['@inheritDoc'], '  '));
     lines.push('  this._s_key = "' + instanceGetKey.join(',') + '";');
   }
 
@@ -803,26 +917,13 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
     for (const td of (f.typedefs || []))
     {
       lines.push('');
-      lines.push('  /**');
-      lines.push('   * @typedef {{}} ' + td.name);
-      for (const prop of td.properties)
-      {
-        lines.push('   * @property {' + prop.type + '} ' + prop.name + (prop.desc ? ' ' + prop.desc : ''));
-      }
-      lines.push('   */');
+      const propertyTags = td.properties.map(
+        prop => '@property {' + prop.type + '} ' + prop.name + (prop.desc ? ' ' + prop.desc : '')
+      );
+      lines.push(...buildJsDoc('', ['@typedef {{}} ' + td.name, ...propertyTags], '  '));
     }
 
     lines.push('');
-    lines.push('  /**');
-
-    if (f.description)
-    {
-      for (const l of f.description.split('\n'))
-      {
-        lines.push(l.trim() ? '   * ' + l : '   *');
-      }
-      lines.push('   *');
-    }
 
     // Field tags sorted alphabetically
     const fieldTags = [];
@@ -841,11 +942,7 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
     fieldTags.push({ tag: 'type', value: '{' + jsType + '}' });
     fieldTags.sort((a, b) => (a.tag < b.tag ? -1 : a.tag > b.tag ? 1 : 0));
 
-    for (const { tag, value } of fieldTags)
-    {
-      lines.push('   * @' + tag + ' ' + value);
-    }
-    lines.push('   */');
+    lines.push(...buildJsDoc(f.description, fieldTags.map(({ tag, value }) => '@' + tag + ' ' + value), '  '));
     lines.push('  this.' + name + ' = ' + defaultVal + ';');
   }
 
@@ -859,9 +956,7 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
   lines.push('');
 
   // --- Config method ---
-  lines.push('/**');
-  lines.push(' * @inheritDoc');
-  lines.push(' */');
+  lines.push(...buildJsDoc('', ['@inheritDoc']));
   lines.push(className + '.prototype.config=function()');
   lines.push('{');
 
@@ -882,50 +977,41 @@ function buildModelContent(className, fields, description, isDeprecated, depreca
   // --- instanceGet JSDoc ---
   if (instanceGetKey)
   {
-    lines.push('');
-    lines.push('/**');
-    lines.push(' * @function');
-    lines.push(' * @name ' + className + '.instanceGet');
-    for (const name of instanceGetKey)
+    const paramTags = instanceGetKey.map(name =>
     {
       const f = fields[name];
       const jsType = f ? (f.type || '*') : '*';
       const desc = f ? (f.description || '').replace(/\s*\n\s*/g, ' ').trim() : '';
-      lines.push(' * @param {' + jsType + '} ' + name + (desc ? ' ' + desc : ''));
-    }
-    lines.push(' * @returns {' + className + '}');
-    lines.push(' * @see WlSdk_ModelAbstract.instanceGet()');
-    lines.push(' */');
+      return '@param {' + jsType + '} ' + name + (desc ? ' ' + desc : '');
+    });
+    lines.push('');
+    lines.push(...buildJsDoc('', [
+      '@function',
+      '@name ' + className + '.instanceGet',
+      ...paramTags,
+      '@returns {' + className + '}',
+      '@see WlSdk_ModelAbstract.instanceGet()',
+    ]));
   }
 
   // --- Virtual HTTP method JSDoc blocks (sorted alphabetically) ---
   for (const method of Object.keys(httpMethods || {}).sort())
   {
     const { summary, description: opDesc } = httpMethods[method];
+    // Each already-trimmed opDesc line preserves the original single-full-trim behavior;
+    // buildJsDoc() itself never trims non-blank lines, to keep deliberate indentation intact
+    // elsewhere (e.g. Sid enum descriptions with nested `<ul><li>` markup).
+    const bodyParts = [];
+    if (summary) bodyParts.push(summary);
+    if (opDesc) bodyParts.push(opDesc.split('\n').map(l => l.trim()).join('\n'));
+
     lines.push('');
-    lines.push('/**');
-    if (summary)
-    {
-      lines.push(' * ' + summary);
-      if (opDesc) lines.push(' *');
-    }
-    if (opDesc)
-    {
-      for (const l of opDesc.split('\n'))
-      {
-        lines.push(l.trim() ? ' * ' + l.trim() : ' *');
-      }
-      lines.push(' *');
-    }
-    else if (summary)
-    {
-      lines.push(' *');
-    }
-    lines.push(' * @function');
-    lines.push(' * @name ' + className + '.' + method);
-    lines.push(' * @returns {WlSdk_Deferred_Promise}');
-    lines.push(' * @see WlSdk_ModelAbstract.' + method + '()');
-    lines.push(' */');
+    lines.push(...buildJsDoc(bodyParts.join('\n\n'), [
+      '@function',
+      '@name ' + className + '.' + method,
+      '@returns {WlSdk_Deferred_Promise}',
+      '@see WlSdk_ModelAbstract.' + method + '()',
+    ]));
   }
 
   return lines.join('\n') + '\n';
