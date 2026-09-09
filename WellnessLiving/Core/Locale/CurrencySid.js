@@ -2,6 +2,8 @@
  * A list of currencies.
  *
  * Currency constant names must comply with the standard `ISO 4217` for correct integration with other services.
+ *
+ * Last used ID: 20
  */
 function Core_Locale_CurrencySid()
 {
