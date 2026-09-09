@@ -27,6 +27,7 @@ function Wl_Book_Process_Payment_PaymentModel()
   /**
    * @typedef {{}} Wl_Book_Process_Payment_PaymentModel_a_item
    * @property {Wl_Book_Process_Payment_PaymentModel_a_item_a_config} a_config Additional configuration. Used only for `id_purchase_item` = {@link RsPurchaseItemSid}.
+   * @property {*[]} a_signature Signatures for an item that requires agreement to several distinct contracts at once.
    * @property {number} id_purchase_item The ID of purchase item type. One of {@link RsPurchaseItemSid} constants.
    * @property {boolean} is_renew `true` if the item should be set to auto-renew; `false` otherwise. If not set yet, use the default option for this item.
    * @property {string} k_id The key of the purchase item in the database.
