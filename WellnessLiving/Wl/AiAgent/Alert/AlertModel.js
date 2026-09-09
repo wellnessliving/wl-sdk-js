@@ -12,6 +12,7 @@ function Wl_AiAgent_Alert_AlertModel()
    * CID of the alert to be fired.
    *
    * @post post
+   * @see Wl_AiAgent_Alert_AiAgentAlertAbstract
    * @type {number}
    */
   this.cid_alert = 0;

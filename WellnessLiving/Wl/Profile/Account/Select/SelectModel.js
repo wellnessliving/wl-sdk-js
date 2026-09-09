@@ -79,7 +79,7 @@ Wl_Profile_Account_Select_SelectModel.prototype.config=function()
 
 /**
  * Retrieves information about user specified in {@link Wl_Profile_Account_Select_SelectModel.uid}
-and his relationship with sub accounts.
+ * and his relationship with sub accounts.
  *
  * Returns all user's relatives and type of relationship, which are allowed to sign in with.
  * So, you can use this list to sign in user as hist relative, but this is not the best way to get full family.

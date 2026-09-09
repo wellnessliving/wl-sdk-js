@@ -73,7 +73,8 @@ Thoth_PayProcessor_Nuvei_Code_CSResponseSid.MESSAGE_TYPE = 8;
 Thoth_PayProcessor_Nuvei_Code_CSResponseSid.NO_TICKET = 9;
 
 /**
- * Invalid message: At least one of the data element or data structure is not present, the format, or the content of one data element or one data structure is not correct.
+ * Invalid message: At least one of the data element or data structure is not present,
+ * the format, or the content of one data element or one data structure is not correct.
  *
  * @type {number}
  */
@@ -129,7 +130,8 @@ Thoth_PayProcessor_Nuvei_Code_CSResponseSid.TRANSACTION_IN_PROCESS = 15;
 Thoth_PayProcessor_Nuvei_Code_CSResponseSid.TRANSACTION_NOT_FOUND = 17;
 
 /**
- * Not possible to process the message, for instance the security module is unavailable, the hardware is unavailable, or there is a problem of resource.
+ * Not possible to process the message, for instance the security module is unavailable,
+ * the hardware is unavailable, or there is a problem of resource.
  *
  * @type {number}
  */

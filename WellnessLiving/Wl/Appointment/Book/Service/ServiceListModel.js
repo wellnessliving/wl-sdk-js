@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated New version {@link _Wl_Appointment_Book_Service_ServiceList52Model} should be used instead.
+ * @deprecated New version {@link Wl_Appointment_Book_Service_ServiceList52Model} should be used instead.
  */
 function Wl_Appointment_Book_Service_ServiceListModel()
 {

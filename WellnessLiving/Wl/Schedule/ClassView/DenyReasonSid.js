@@ -16,14 +16,16 @@ function Wl_Schedule_ClassView_DenyReasonSid()
 Wl_Schedule_ClassView_DenyReasonSid.ACCESS_DENIED = 1;
 
 /**
- * Manual restriction to book business, location or a certain class. Right now is not available in UI.
+ * Manual restriction to book business, location or a certain class.
+ * Right now is not available in UI.
  *
  * @type {number}
  */
 Wl_Schedule_ClassView_DenyReasonSid.ACCESS_LIMITED = 2;
 
 /**
- * The business can not take one more client because of business subscription limitations. Right now there is no such subscriptions, but it can appear in the future.
+ * The business can not take one more client because of business subscription limitations.
+ * Right now there is no such subscriptions, but it can appear in the future.
  *
  * @type {number}
  */

@@ -127,7 +127,7 @@ Wl_Location_Flag_FlagModel.prototype.config=function()
 
 /**
  * Checks if user {@link Wl_Location_Flag_FlagModel.uid} is flagged in location {@link Wl_Location_Flag_FlagModel.k_location} or
-each of users {@link Wl_Location_Flag_FlagModel.a_uid} is flagged in location {@link Wl_Location_Flag_FlagModel.k_location}.
+ * each of users {@link Wl_Location_Flag_FlagModel.a_uid} is flagged in location {@link Wl_Location_Flag_FlagModel.k_location}.
  *
  * Accepts either a single user key (`uid`) or an array of user keys (`a_uid`) and returns the flag status
  * for each, including whether the flagged user is restricted from booking or purchasing at the location.

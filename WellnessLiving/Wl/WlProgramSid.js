@@ -11,14 +11,16 @@ function Wl_WlProgramSid()
 }
 
 /**
- * Special Membership that does not allow client to visit anything but fill client's account after purchase and after renew.
+ * Special Membership that does not allow client to visit anything but fill client's account after purchase
+ * and after renew.
  *
  * @type {number}
  */
 Wl_WlProgramSid.ACCOUNT_MEMBERSHIP = 21;
 
 /**
- * Special Time-Based pass that does not allow client to visit anything but fill client's account after purchase and after renew.
+ * Special Time-Based pass that does not allow client to visit anything but fill client's account after purchase
+ * and after renew.
  *
  * @type {number}
  */

@@ -111,6 +111,9 @@ RsSkinSid.SCHEDULE_LIST = 1;
 /**
  * Standard version of schedule.
  *
+ * This skin is the same as {@link RsSkinSid.SCHEDULE_LIST} except that design can not be changed, only standard
+ * settings can be used.
+ *
  * @type {number}
  */
 RsSkinSid.SCHEDULE_STANDARD = 14;

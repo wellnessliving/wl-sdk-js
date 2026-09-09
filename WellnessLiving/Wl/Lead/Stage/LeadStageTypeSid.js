@@ -16,6 +16,8 @@ function Wl_Lead_Stage_LeadStageTypeSid()
 /**
  * A lead is lost - the client will not make a purchase.
  *
+ * Replaces {@link Wl_Lead_Conversion_LeadConversionTypeSid.LOST}.
+ *
  * @type {number}
  */
 Wl_Lead_Stage_LeadStageTypeSid.LOST = 3;
@@ -29,6 +31,8 @@ Wl_Lead_Stage_LeadStageTypeSid.OPEN = 1;
 
 /**
  * A lead is won - the client is converted into a member.
+ *
+ * Replaces {@link Wl_Lead_Conversion_LeadConversionTypeSid.WON}.
  *
  * @type {number}
  */

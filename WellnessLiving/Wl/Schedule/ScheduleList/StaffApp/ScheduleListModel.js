@@ -201,7 +201,7 @@ Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel.prototype.config=function()
 
 /**
  * Gets schedule of business {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel.k_business} for day
-{@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel.dt_date}.
+ * {@link Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel.dt_date}.
  *
  * Returns all classes and appointments scheduled for the given business on the specified date,
  * sorted chronologically. Supports both single-day and date-range modes, and includes full

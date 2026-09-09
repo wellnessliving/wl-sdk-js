@@ -45,6 +45,7 @@ function Core_Captcha_CaptchaRequireModel()
    * The CID of the CAPTCHA.
    *
    * @get get
+   * @see Core_Captcha_CaptchaAbstract
    * @type {number}
    */
   this.cid_captcha = 0;

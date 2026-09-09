@@ -11,7 +11,9 @@ function Wl_Service_ServiceRequireSid()
 }
 
 /**
- * Some part of the price is required. Type of the deposit can be flat or percentage. Type of the deposit depends on `is_deposit_percent`. Size of the deposit is specified in `f_deposit`
+ * Some part of the price is required. Type of the deposit can be flat or percentage.
+ * Type of the deposit depends on `is_deposit_percent`.
+ * Size of the deposit is specified in `f_deposit`
  *
  * @type {number}
  */
@@ -25,14 +27,16 @@ Wl_Service_ServiceRequireSid.ADVANCE = 4;
 Wl_Service_ServiceRequireSid.FULL = 2;
 
 /**
- * Nothing is required. Online Payment is optional.
+ * Nothing is required.
+ * Online Payment is optional.
  *
  * @type {number}
  */
 Wl_Service_ServiceRequireSid.NOTHING = 1;
 
 /**
- * Clients can book, but online purchase is not available. Clients can pay only when they visit.
+ * Clients can book, but online purchase is not available.
+ * Clients can pay only when they visit.
  *
  * @type {number}
  */

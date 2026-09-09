@@ -70,7 +70,7 @@ Wl_Integration_Autymate_AutymateActivateModel.prototype.config=function()
 
 /**
  * Returns or changes the Autymate enrollment status for the specified business.
-Autymate specifically requested this method be a get.
+ * Autymate specifically requested this method be a get.
  *
  * Authenticates the request using the business GUID, then either reads or updates the enrollment status
  * depending on the mode and the supplied `id_status` value. When activating enrollment, also provisions a

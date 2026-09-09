@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Appointment_Book_Finish_Finish47Model} instead.
+ * @deprecated Use {@link Wl_Appointment_Book_Finish_Finish47Model} instead.
  */
 function Wl_Appointment_Book_Finish_FinishModel()
 {

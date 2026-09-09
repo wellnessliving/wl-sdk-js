@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Quiz_Response_Response65Model} instead.
+ * @deprecated Use {@link Wl_Quiz_Response_Response65Model} instead.
  */
 function Wl_Quiz_Response_ResponseModel()
 {

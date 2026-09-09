@@ -32,6 +32,7 @@ function Wl_Skin_Application_Resource_ApplicationResourceMaterialModel()
    * One of {@link Wl_Skin_Application_Upgrade_AppUpdateTypeEnum} constants.
    *
    * @post post
+   * @see Wl_Skin_Application_Upgrade_AppUpdateTypeEnum
    * @type {number}
    */
   this.id_version_change = 1;

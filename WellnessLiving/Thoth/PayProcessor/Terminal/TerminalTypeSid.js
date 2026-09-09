@@ -9,7 +9,8 @@ function Thoth_PayProcessor_Terminal_TerminalTypeSid()
 }
 
 /**
- * Magtek USB. This type of terminal does not require registration on Hardware page.
+ * Magtek USB.
+ * This type of terminal does not require registration on Hardware page.
  *
  * @type {number}
  */

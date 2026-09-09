@@ -17,6 +17,7 @@ function Wl_Business_Account_Subscription_SubscriptionInfoModel()
    * CID of the subscription information of which is requested.
    *
    * @get get
+   * @see Wl_Business_Account_Subscription_SubscriptionAbstract
    * @type {number}
    */
   this.cid_subscription = 0;

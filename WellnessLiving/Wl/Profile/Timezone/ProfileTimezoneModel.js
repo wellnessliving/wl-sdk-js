@@ -89,7 +89,7 @@ Wl_Profile_Timezone_ProfileTimezoneModel.prototype.config=function()
 
 /**
  * Gets a list of timezones with currently selected user's timezone and the business policy adjustment whether
- clients are allowed to adjust timezone.
+ *  clients are allowed to adjust timezone.
  *
  * Includes the timezone abbreviation, UTC shift, and display order for each entry, and falls back to
  * the business-configured guest timezone when no member is signed in.

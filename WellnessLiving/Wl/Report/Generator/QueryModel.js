@@ -94,6 +94,7 @@ function Wl_Report_Generator_QueryModel()
    * One of {@link Thoth_ReportCore_Generator_ReportGeneratorReportAbstract} subclasses.
    *
    * @post post
+   * @see Thoth_ReportCore_Generator_ReportGeneratorReportAbstract
    * @type {number}
    */
   this.cid_report = 0;

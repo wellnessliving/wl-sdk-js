@@ -30,7 +30,7 @@ Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid.FREE = 1;
 Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid.PROFESSIONAL = 2;
 
 /**
- * Professional subscription, which will be automatically converted to {@link Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid} after the 5th lead.
+ * Professional subscription, which will be automatically converted to {@link Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid.PROFESSIONAL} after the 5th lead.
  *
  * @type {number}
  */
@@ -44,7 +44,7 @@ Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid.PROFESSIONAL_TRI
 Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid.STANDARD = 3;
 
 /**
- * Standard subscription, which will be automatically converted to {@link Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid} after the 5th lead.
+ * Standard subscription, which will be automatically converted to {@link Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid.STANDARD} after the 5th lead.
  *
  * @type {number}
  */

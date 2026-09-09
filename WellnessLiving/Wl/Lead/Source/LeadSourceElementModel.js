@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Lead_LeadPageModel.post()} instead. Will be removed after WL-89292 done.
+ * @deprecated Use {@link Wl_Lead_LeadPageModel.post()} instead. Will be removed after WL-89292 done.
  */
 function Wl_Lead_Source_LeadSourceElementModel()
 {

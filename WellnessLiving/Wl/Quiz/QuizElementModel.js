@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Quiz_QuizElement72Model} instead.
+ * @deprecated Use {@link Wl_Quiz_QuizElement72Model} instead.
  */
 function Wl_Quiz_QuizElementModel()
 {

@@ -18,7 +18,9 @@ function Wl_Login_Type_ClientTypeSid()
 Wl_Login_Type_ClientTypeSid.MEMBER = 3;
 
 /**
- * Record is {@link Wl_Login_Type_SystemSid}.
+ * Record is {@link Wl_Login_Type_SystemSid.PROSPECT}.
+ *
+ * See {@link Wl_Login_Type_SystemSid} for details.
  *
  * @type {number}
  */

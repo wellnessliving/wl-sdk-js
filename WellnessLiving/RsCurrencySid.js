@@ -119,6 +119,8 @@ RsCurrencySid.SGD = 20;
 /**
  * Unknown code.
  *
+ * Used when currency is not specified or is not known.
+ *
  * @type {number}
  */
 RsCurrencySid.UNKNOWN = 2;
@@ -132,6 +134,8 @@ RsCurrencySid.USD = 1;
 
 /**
  * West African CFA franc.
+ *
+ * Is used in Senegal.
  *
  * @type {number}
  */

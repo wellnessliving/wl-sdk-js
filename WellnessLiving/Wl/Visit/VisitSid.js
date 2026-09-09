@@ -37,14 +37,19 @@ Wl_Visit_VisitSid.CANCEL = 6;
 Wl_Visit_VisitSid.PENALTY = 4;
 
 /**
- * This state means that visit is registered, but it is unknown is it {@link Wl_Visit_VisitSid} or {@link Wl_Visit_VisitSid} or {@link Wl_Visit_VisitSid} but definitely one of these states.
+ * This state means that visit is registered, but it is unknown is it {@link Wl_Visit_VisitSid.ATTEND}
+ * or {@link Wl_Visit_VisitSid.TRUANCY} or {@link Wl_Visit_VisitSid.PENALTY} but definitely one of these states.
+ *
+ * The real type of this visit must be set manually by staff.
+ * Status can be changed automatically to {@link Wl_Visit_VisitSid.ATTEND}.
  *
  * @type {number}
  */
 Wl_Visit_VisitSid.PENDING = 7;
 
 /**
- * Visit was removed. Visits with this status are not shown anywhere in system, but still are saved in database.
+ * Visit was removed.
+ * Visits with this status are not shown anywhere in system, but still are saved in database.
  *
  * @type {number}
  */

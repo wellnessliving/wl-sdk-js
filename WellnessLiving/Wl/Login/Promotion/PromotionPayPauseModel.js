@@ -212,8 +212,8 @@ Wl_Login_Promotion_PromotionPayPauseModel.prototype.config=function()
 
 /**
  * Returns promotion payment pause data: all hold periods when {@link Wl_Login_Promotion_PromotionPayPauseModel.is_list} is `true`,
- the specified hold period when {@link Wl_Login_Promotion_PromotionPayPauseModel.k_promotion_pay_pause} is provided, or the currently
- active hold period otherwise.
+ *  the specified hold period when {@link Wl_Login_Promotion_PromotionPayPauseModel.k_promotion_pay_pause} is provided, or the currently
+ *  active hold period otherwise.
  *
  * Also returns notification settings (email, push, SMS flags and email pattern key) and the date the last
  * notification was sent for the hold period, if a hold notification template is configured for the business.

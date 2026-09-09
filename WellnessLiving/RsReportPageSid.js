@@ -16,7 +16,8 @@ function RsReportPageSid()
 RsReportPageSid.APPOINTMENT_REQUEST = 4;
 
 /**
- * Collection with following reports: * {@link RsReportSid},
+ * Collection with following reports:
+ * * {@link RsReportSid.BUSINESS_CUSTOMER_STATUS_HISTORY},
  *
  * @type {number}
  */
@@ -44,14 +45,23 @@ RsReportPageSid.MEMBER_PROGRESS_LOG_CHART = 8;
 RsReportPageSid.MEMBER_PROGRESS_LOG_TABLE = 9;
 
 /**
- * Collection with {@link RsReportSid} and {@link RsReportSid} reports.
+ * Collection with {@link RsReportSid.PROFILE_ATTENDANCE_SCHEDULE_FRONTEND_UPCOMING}
+ * and {@link RsReportSid.PROFILE_ATTENDANCE_SCHEDULE_FRONTEND_HISTORY} reports.
  *
  * @type {number}
  */
 RsReportPageSid.PROFILE_ATTENDANCE_SCHEDULE = 10;
 
 /**
- * Collection with following reports: * {@link RsReportSid}, * {@link RsReportSid}, * {@link RsReportSid}, * {@link RsReportSid}, * {@link RsReportSid}, * {@link RsReportSid}, * {@link RsReportSid}, * {@link RsReportSid},
+ * Collection with following reports:
+ * * {@link RsReportSid.PROFILE_PURCHASE_REPORT_MEMBERSHIP},
+ * * {@link RsReportSid.PROFILE_PURCHASE_REPORT_PACKAGE},
+ * * {@link RsReportSid.PROFILE_PURCHASE_REPORT_SESSION_PASS},
+ * * {@link RsReportSid.PROFILE_PURCHASE_REPORT_SESSION_DURATION},
+ * * {@link RsReportSid.PROFILE_PURCHASE_REPORT_SESSION_SINGLE},
+ * * {@link RsReportSid.PROFILE_PURCHASE_REPORT_EVENT},
+ * * {@link RsReportSid.PROFILE_PURCHASE_REPORT_COUPON},
+ * * {@link RsReportSid.PROFILE_PURCHASE_REPORT_GROUPON},
  *
  * @type {number}
  */

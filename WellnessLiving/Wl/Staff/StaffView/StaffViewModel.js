@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Staff_StaffView_StaffView74Model}
+ * @deprecated Use {@link Wl_Staff_StaffView_StaffView74Model}
  */
 function Wl_Staff_StaffView_StaffViewModel()
 {

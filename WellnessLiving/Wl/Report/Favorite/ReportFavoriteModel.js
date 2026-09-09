@@ -19,6 +19,7 @@ function Wl_Report_Favorite_ReportFavoriteModel()
    * @delete get
    * @get get
    * @post get
+   * @see Wl_Report_View_ReportViewControllerAbstract
    * @type {number}
    */
   this.cid_controller = 0;
@@ -97,7 +98,7 @@ Wl_Report_Favorite_ReportFavoriteModel.prototype.config=function()
 
 /**
  * Returns information whether passed report controller (saved report controller) is favorite for the specified user
-  within specified business.
+ *   within specified business.
  *
  * Populates {@link Wl_Report_Favorite_ReportFavoriteModel.is_favorite} with the current favorite state for the specified saved
  * report or report controller.

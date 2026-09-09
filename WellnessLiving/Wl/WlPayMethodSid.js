@@ -69,6 +69,12 @@ WlPayMethodSid.EXTERNAL = 6;
 /**
  * Special method to be used for migration process.
  *
+ * There are sales in Mindbody that were not bought using account balance or reward points.
+ * This is not real revenue and cannot be imported as real sales. So, they can be imported as this special method
+ * to be in the system and to allow business owner to hide on sales report.
+ *
+ * In online store this method should not be available.
+ *
  * @type {number}
  */
 WlPayMethodSid.IMPORT_ACCRUAL = 11;

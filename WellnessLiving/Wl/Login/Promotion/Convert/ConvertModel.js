@@ -236,7 +236,7 @@ Wl_Login_Promotion_Convert_ConvertModel.prototype.config=function()
 
 /**
  * Creates or updates conversion form data for the login promotion.
-Performs all necessary checks and apply changes.
+ * Performs all necessary checks and apply changes.
  *
  * Validates access, the target promotion key, conversion type, conversion timing, and the optional scheduled date,
  * then saves the conversion settings. Returns an error if the user is a debtor.

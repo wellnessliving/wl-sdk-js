@@ -102,9 +102,9 @@ Wl_Shop_Product_Option_Inventory_Count_InventoryCountModel.prototype.config=func
 
 /**
  * Returns information about product options.
-Works in two modes: review and search.
-In review mode, the method returns products with changed inventory quantities and notes.
-In search mode, the method returns one product and its options (the result of searching by product barcode).
+ * Works in two modes: review and search.
+ * In review mode, the method returns products with changed inventory quantities and notes.
+ * In search mode, the method returns one product and its options (the result of searching by product barcode).
  *
  * Returns product option details including the current inventory quantity, last change date,
  * and notes. In barcode search mode, returns matching products; in review mode, returns only

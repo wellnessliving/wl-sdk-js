@@ -310,7 +310,8 @@ Wl_Privilege_PrivilegeSid.CLASS_LOCK_SEARCH = 152;
 Wl_Privilege_PrivilegeSid.CLASS_PERIOD = 5;
 
 /**
- * Allows a staff member to see other staff members' class sessions on the schedule in read-only mode while the Classes scope is set to only their own schedules.
+ * Allows a staff member to see other staff members' class sessions on the schedule in read-only mode
+ *  while the Classes scope is set to only their own schedules.
  *
  * @type {number}
  */
@@ -429,7 +430,8 @@ Wl_Privilege_PrivilegeSid.ENROLLMENT_FOREIGN = 53;
 Wl_Privilege_PrivilegeSid.ENROLLMENT_LOCK_SEARCH = 153;
 
 /**
- * Allows a staff member to see other staff members' event sessions on the schedule in read-only mode while the Events scope is set to only their own schedules.
+ * Allows a staff member to see other staff members' event sessions on the schedule in read-only mode
+ *  while the Events scope is set to only their own schedules.
  *
  * @type {number}
  */
@@ -1159,6 +1161,8 @@ Wl_Privilege_PrivilegeSid.RECEIVE_ALERT = 193;
 /**
  * Access to view reports for all staff.
  *
+ * If staff has no this privilege then he can view only reports for them self.
+ *
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.REPORT_ALL = 71;
@@ -1591,7 +1595,8 @@ Wl_Privilege_PrivilegeSid.VIDEO_CATEGORY = 146;
 Wl_Privilege_PrivilegeSid.VIDEO_SETUP = 147;
 
 /**
- * View the Balance History & Statements tab and generate or email account statements on the client profile or the Balance Due Report.
+ * View the Balance History & Statements tab and generate or email account statements on
+ * the client profile or the Balance Due Report.
  *
  * @type {number}
  */

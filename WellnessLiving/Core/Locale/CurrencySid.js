@@ -116,6 +116,8 @@ Core_Locale_CurrencySid.SGD = 20;
 /**
  * Unknown code.
  *
+ * Used when currency is not specified or is not known.
+ *
  * @type {number}
  */
 Core_Locale_CurrencySid.UNKNOWN = 2;
@@ -129,6 +131,8 @@ Core_Locale_CurrencySid.USD = 1;
 
 /**
  * West African CFA franc.
+ *
+ * Is used in Senegal.
  *
  * @type {number}
  */

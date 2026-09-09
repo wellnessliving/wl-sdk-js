@@ -20,7 +20,8 @@ function Wl_Import_Custom_CustomSid()
 Wl_Import_Custom_CustomSid.APPOINTMENT_RECURRING = 8;
 
 /**
- * Custom import which allows to import contact block information. See {@link Wl_Import_Custom_Clients_CustomClients}.
+ * Custom import which allows to import contact block information.
+ * See {@link \Wl\Import\Custom\Clients\CustomClients}.
  *
  * @type {number}
  */
@@ -34,7 +35,8 @@ Wl_Import_Custom_CustomSid.CLIENTS = 20;
 Wl_Import_Custom_CustomSid.CLIENT_ACCOUNT_BALANCE = 10;
 
 /**
- * Custom import which allows to import client note. See {@link Wl_Import_Custom_ClientNote_CustomClientNote}.
+ * Custom import which allows to import client note.
+ * See {@link \Wl\Import\Custom\ClientNote\CustomClientNote}.
  *
  * @type {number}
  */
@@ -48,63 +50,72 @@ Wl_Import_Custom_CustomSid.CLIENT_NOTE = 5;
 Wl_Import_Custom_CustomSid.CLIENT_PURCHASE_REFUND = 11;
 
 /**
- * Custom import which allows to import client relationship. See {@link Wl_Import_Custom_ClientRelationship_CustomClientRelationship}.
+ * Custom import which allows to import client relationship.
+ * See {@link \Wl\Import\Custom\ClientRelationship\CustomClientRelationship}.
  *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.CLIENT_RELATIONSHIP = 12;
 
 /**
- * Custom import which allows to import contact log information. See {@link Wl_Import_Custom_Contact_CustomContact}.
+ * Custom import which allows to import contact log information.
+ * See {@link \Wl\Import\Custom\Contact\CustomContact}.
  *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.CONTACT = 1;
 
 /**
- * Custom import which allows to import curves staff-manager custom fields. See {@link Wl_Import_Custom_CurveExtManager_CustomCurveExtManager}.
+ * Custom import which allows to import curves staff-manager custom fields.
+ * See {@link \Wl\Import\Custom\CurveExtManager\CustomCurveExtManager}.
  *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.CURVE_EXT_MANAGER = 15;
 
 /**
- * Custom import which allows to import curves franchisee custom fields. See {@link Wl_Import_Custom_CurveExtOrganization_CustomCurveExtOrganization}.
+ * Custom import which allows to import curves franchisee custom fields.
+ * See {@link \Wl\Import\Custom\CurveExtOrganization\CustomCurveExtOrganization}.
  *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.CURVE_EXT_ORGANIZATION = 13;
 
 /**
- * Custom import which allows to import curves staff-owner custom fields. See {@link Wl_Import_Custom_CurveExtOwner_CustomCurveExtOwner}.
+ * Custom import which allows to import curves staff-owner custom fields.
+ * See {@link \Wl\Import\Custom\CurveExtOwner\CustomCurveExtOwner}.
  *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.CURVE_EXT_OWNER = 14;
 
 /**
- * Custom import which allows to import curves franchisee. See {@link Wl_Import_Custom_CurveMember_CustomCurveMember}.
+ * Custom import which allows to import curves franchisee.
+ * See {@link \Wl\Import\Custom\CurveMember\CustomCurveMember}.
  *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.CURVE_FRANCHISE = 7;
 
 /**
- * Custom import which allows to import curves client historical visits. See {@link Wl_Import_Custom_CurveHistoricalVisit_CustomCurveHistoricalVisit}.
+ * Custom import which allows to import curves client historical visits.
+ * See {@link \Wl\Import\Custom\CurveHistoricalVisit\CustomCurveHistoricalVisit}.
  *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.CURVE_HISTORICAL_VISIT = 16;
 
 /**
- * Custom import which allows to import curves members. See {@link Wl_Import_Custom_CurveMember_CustomCurveMember}.
+ * Custom import which allows to import curves members.
+ * See {@link \Wl\Import\Custom\CurveMember\CustomCurveMember}.
  *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.CURVE_MEMBER = 4;
 
 /**
- * Custom import which allows to start import for the list of franchisees. See {@link Wl_Import_Custom_CurveStart_CustomCurveStart}.
+ * Custom import which allows to start import for the list of franchisees.
+ * See {@link \Wl\Import\Custom\CurveStart\CustomCurveStart}.
  *
  * @type {number}
  */
@@ -118,7 +129,8 @@ Wl_Import_Custom_CustomSid.CURVE_START = 9;
 Wl_Import_Custom_CustomSid.LOGIN_COUPON = 17;
 
 /**
- * Custom import which allows to import purchase members. See {@link Wl_Import_Custom_PurchaseMember_CustomPurchaseMember}.
+ * Custom import which allows to import purchase members.
+ * See {@link \Wl\Import\Custom\PurchaseMember\CustomPurchaseMember}.
  *
  * @type {number}
  */
@@ -134,19 +146,23 @@ Wl_Import_Custom_CustomSid.PURCHASE_REMOVE = 18;
 /**
  * Custom import which allows to import forms.
  *
+ * See {@link \Wl\Import\Custom\Quiz\CustomQuiz}.
+ *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.QUIZ = 19;
 
 /**
- * Custom import which allows to import refund dates to update transactions. See {@link Wl_Import_Custom_Refund_CustomRefund}.
+ * Custom import which allows to import refund dates to update transactions.
+ * See {@link \Wl\Import\Custom\Refund\CustomRefund}.
  *
  * @type {number}
  */
 Wl_Import_Custom_CustomSid.REFUND = 2;
 
 /**
- * Custom import which allows to import client reward balance. See {@link Wl_Import_Custom_Reward_CustomReward}.
+ * Custom import which allows to import client reward balance.
+ * See {@link \Wl\Import\Custom\Reward\CustomReward}.
  *
  * @type {number}
  */

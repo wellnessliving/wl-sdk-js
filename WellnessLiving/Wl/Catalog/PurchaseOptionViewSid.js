@@ -37,14 +37,19 @@ Wl_Catalog_PurchaseOptionViewSid.COUPON = 3;
 Wl_Catalog_PurchaseOptionViewSid.ENROLLMENT = 4;
 
 /**
- * Promotions with programs: * {@link RsProgramSid}; * {@link RsProgramSid}; * {@link RsProgramSid}; * {@link RsProgramSid}; * {@link RsProgramSid}.
+ * Promotions with programs:
+ * * {@link RsProgramSid.ACCOUNT_MEMBERSHIP};
+ * * {@link RsProgramSid.CLASS_MEMBERSHIP};
+ * * {@link RsProgramSid.RESOURCE_MEMBERSHIP};
+ * * {@link RsProgramSid.SERVICE_MEMBERSHIP};
+ * * {@link RsProgramSid.VISIT_MEMBERSHIP}.
  *
  * @type {number}
  */
 Wl_Catalog_PurchaseOptionViewSid.MEMBERSHIP = 8;
 
 /**
- * Promotions with program {@link RsProgramSid}.
+ * Promotions with program {@link RsProgramSid.PACKAGE}.
  *
  * @type {number}
  */

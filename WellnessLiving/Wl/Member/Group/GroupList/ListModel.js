@@ -113,7 +113,7 @@ Wl_Member_Group_GroupList_ListModel.prototype.config=function()
 
 /**
  * Returns all member groups list in the business if `$a_member_group_select` is empty,
-otherwise filters result according to `$a_member_group_select`.
+ * otherwise filters result according to `$a_member_group_select`.
  *
  * If `is_return_members` is `true` includes in the result list of members of each groups.
  *

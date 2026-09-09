@@ -123,7 +123,7 @@ Wl_Schedule_CancelModel.prototype.config=function()
 
 /**
  * Cancels session for the client.
-This method is an alias for partners using the API or SDK.
+ * This method is an alias for partners using the API or SDK.
  *
  * Identical in behavior to `get()`; exists as a POST alias for partner
  * integrations that cannot issue GET requests.

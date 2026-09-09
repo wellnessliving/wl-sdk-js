@@ -20,6 +20,7 @@ function Wl_Passport_Login_Enter_PassportOtpModel()
    * Type of delivery strategy from {@link Wl_Passport_Login_Enter_OtpDeliveryStrategyEnum}.
    *
    * @get get
+   * @see Wl_Passport_Login_Enter_OtpDeliveryStrategyEnum
    * @type {?number}
    */
   this.id_delivery_strategy = null;

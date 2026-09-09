@@ -14,6 +14,7 @@ function Core_Request_Api_Application_Credential_CredentialModel()
    * @delete get
    * @get get
    * @put get
+   * @see Core_Request_Api_Application_Credential_CredentialAbstract
    * @type {number}
    */
   this.cid_credential = 0;

@@ -9,7 +9,8 @@ function Wl_Business_Claim_BusinessClaimStatusSid()
 }
 
 /**
- * Business HAD a contract with WL, but decided not to continue it, i.e. it is a churned business, or a business with the trial expired.
+ * Business HAD a contract with WL, but decided not to continue it, i.e. it is a churned business, or a business
+ * with the trial expired.
  *
  * @type {number}
  */
@@ -30,7 +31,8 @@ Wl_Business_Claim_BusinessClaimStatusSid.CUSTOMER = 3;
 Wl_Business_Claim_BusinessClaimStatusSid.PROSPECT = 1;
 
 /**
- * Business claiming process started, the contact information was verified, the trial has started, but company information wasn’t yet updated.
+ * Business claiming process started, the contact information was verified, the trial has started, but company
+ * information wasn’t yet updated.
  *
  * @type {number}
  */

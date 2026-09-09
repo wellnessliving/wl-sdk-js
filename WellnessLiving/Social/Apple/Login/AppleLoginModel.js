@@ -57,7 +57,7 @@ Social_Apple_Login_AppleLoginModel.prototype.config=function()
 
 /**
  * Removes the association between a website client and the Apple account.
-Invalidates the tokens and associated client authorizations.
+ * Invalidates the tokens and associated client authorizations.
  *
  * Requires the user to be signed in. Accepts the application ID, retrieves the Apple sign-in certificate
  * for that application, and unlinks the Apple account from the current user.

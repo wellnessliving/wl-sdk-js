@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Thoth_WlPay_Form_EnvironmentUserModel} instead.
+ * @deprecated Use {@link Thoth_WlPay_Form_EnvironmentUserModel} instead.
  */
 function Wl_Pay_Form_EnvironmentModel()
 {

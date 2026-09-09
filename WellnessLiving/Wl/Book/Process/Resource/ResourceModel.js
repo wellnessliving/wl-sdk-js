@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Book_Process_Resource_Resource54Model} instead.
+ * @deprecated Use {@link Wl_Book_Process_Resource_Resource54Model} instead.
  */
 function Wl_Book_Process_Resource_ResourceModel()
 {

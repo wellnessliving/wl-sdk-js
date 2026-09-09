@@ -32,6 +32,8 @@ Wl_Video_Watch_WatchSourceSid.FRONTEND = 3;
 /**
  * Source of watched is undefined.
  *
+ * Used for old videos.
+ *
  * @type {number}
  */
 Wl_Video_Watch_WatchSourceSid.UNDEFINED = 4;

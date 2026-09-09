@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Profile_PurchaseList_PurchaseListElementModel} instead. It provides the same functionality and more.
+ * @deprecated Use {@link Wl_Profile_PurchaseList_PurchaseListElementModel} instead. It provides the same functionality and more.
  */
 function Wl_Profile_Purchase_PurchaseElementModel()
 {

@@ -47,6 +47,7 @@ function Wl_Report_Customization_CustomizationFormModel()
    *
    * @get get
    * @post get
+   * @see Thoth_ReportCore_Generator_ReportPageAbstract
    * @type {number}
    */
   this.cid_page = 0;
@@ -56,6 +57,7 @@ function Wl_Report_Customization_CustomizationFormModel()
    *
    * @get get
    * @post get
+   * @see Thoth_ReportCore_Generator_ReportGeneratorReportAbstract
    * @type {number}
    */
   this.cid_report = 0;

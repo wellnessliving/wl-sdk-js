@@ -7,7 +7,8 @@ function Wl_Classes_RequirePaySid()
 }
 
 /**
- * Clients can pay online or pay when they visit. If set "pay when visit" then it has additional options. See {@link Wl_Classes_RequirePayVisitOptionSid}.
+ * Clients can pay online or pay when they visit.
+ * If set "pay when visit" then it has additional options. See {@link Wl_Classes_RequirePayVisitOptionSid}.
  *
  * @type {number}
  */
@@ -28,7 +29,8 @@ Wl_Classes_RequirePaySid.DEPOSIT = 4;
 Wl_Classes_RequirePaySid.ONLINE = 1;
 
 /**
- * Clients can only pay when they visit. Online payment is not available. It has additional options {@link Wl_Classes_RequirePayVisitOptionSid}.
+ * Clients can only pay when they visit. Online payment is not available.
+ * It has additional options {@link Wl_Classes_RequirePayVisitOptionSid}.
  *
  * @type {number}
  */

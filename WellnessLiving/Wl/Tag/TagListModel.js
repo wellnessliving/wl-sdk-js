@@ -102,7 +102,7 @@ Wl_Tag_TagListModel.prototype.config=function()
 
 /**
  * Saves the list of tags.
-Can be used to create new tags or update existing ones.
+ * Can be used to create new tags or update existing ones.
  *
  * Persists the given set of client tags for the business. Tags without a key are created;
  * tags with an existing key are updated with the new title. Requires backend access.

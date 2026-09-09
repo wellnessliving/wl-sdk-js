@@ -32,6 +32,10 @@ RsReportCategorySid.DASHBOARD = 9;
 /**
  * Corporate reports.
  *
+ * The one business gets summary information from the all business which are related to it.
+ *
+ * For example, the franchisor gets information from the all franchisees.
+ *
  * @type {number}
  */
 RsReportCategorySid.FRANCHISE = 6;

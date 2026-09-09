@@ -123,6 +123,8 @@ Wl_Mode_ModeSid.IMPORT = 5;
 /**
  * Action made via microsite.
  *
+ * It is also names as directory listing.
+ *
  * @type {number}
  */
 Wl_Mode_ModeSid.MICROSITE = 12;

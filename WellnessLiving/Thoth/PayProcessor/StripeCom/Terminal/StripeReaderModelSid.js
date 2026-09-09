@@ -14,7 +14,8 @@ function Thoth_PayProcessor_StripeCom_Terminal_StripeReaderModelSid()
 Thoth_PayProcessor_StripeCom_Terminal_StripeReaderModelSid.BBPOS_WISEPAD3 = 1;
 
 /**
- * The BBPOS Wise POS E is a countertop reader for Stripe Terminal apps. It connects to the Stripe Terminal SDK over the internet.
+ * The BBPOS Wise POS E is a countertop reader for Stripe Terminal apps.
+ * It connects to the Stripe Terminal SDK over the internet.
  *
  * @type {number}
  */

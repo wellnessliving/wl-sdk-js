@@ -380,7 +380,7 @@ Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
 
 /**
  * This method is a modified Get method `get()`.
-The difference is as follows:
+ * The difference is as follows:
  *
  * - Some data for filtering is now transmitted by the post method.
  * Because the addition of the filters creates a scenario where we can easily reach the maximum URL length of GET

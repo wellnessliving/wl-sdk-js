@@ -7,14 +7,18 @@ function Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid()
 }
 
 /**
- * Magtek USB. This type of terminal does not require registration on Hardware page.
+ * Magtek USB.
+ * This type of terminal does not require registration on Hardware page.
  *
  * @type {number}
  */
 Thoth_PayProcessor_Nuvei_Terminal_NuveiTerminalTypeSid.MAGTEK_USB = 1;
 
 /**
- * Card terminals that work via OMNI Channel API. Requires registration on Hardware page.
+ * Card terminals that work via OMNI Channel API.
+ * Requires registration on Hardware page.
+ *
+ * See Nuvei/doc/OMNI_Channel_ISO20022_V2.38.pdf
  *
  * @type {number}
  */

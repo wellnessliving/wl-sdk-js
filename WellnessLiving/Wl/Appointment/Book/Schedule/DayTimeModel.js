@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Appointment_Book_Schedule_DayTime73Model}
+ * @deprecated Use {@link Wl_Appointment_Book_Schedule_DayTime73Model}
  */
 function Wl_Appointment_Book_Schedule_DayTimeModel()
 {

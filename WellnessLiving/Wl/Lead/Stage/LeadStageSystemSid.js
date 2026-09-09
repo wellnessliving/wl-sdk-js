@@ -18,12 +18,17 @@ function Wl_Lead_Stage_LeadStageSystemSid()
 /**
  * A lead which was contacted by a staff member.
  *
+ * Type of the stage is {@link Wl_Lead_Stage_LeadStageTypeSid.OPEN}.
+ *
  * @type {number}
  */
 Wl_Lead_Stage_LeadStageSystemSid.CONTACTED = 6;
 
 /**
  * A lead which is being actively worked with and is close to a purchase.
+ *
+ * Replaces {@link RsLeadStatusSid.ACTIVE}.
+ * Type of the stage is {@link Wl_Lead_Stage_LeadStageTypeSid.OPEN}.
  *
  * @type {number}
  */
@@ -32,12 +37,18 @@ Wl_Lead_Stage_LeadStageSystemSid.HOT = 2;
 /**
  * A lead which was lost.
  *
+ * Replaces {@link Wl_Lead_Conversion_LeadConversionTypeSid.LOST}.
+ * Type of the stage is {@link Wl_Lead_Stage_LeadStageTypeSid.LOST}.
+ *
  * @type {number}
  */
 Wl_Lead_Stage_LeadStageSystemSid.LOST = 5;
 
 /**
  * A newly captured lead. This stage is set to a client when they are added as a lead.
+ *
+ * Replaces {@link RsLeadStatusSid.NEWCOMER}.
+ * Type of the stage is {@link Wl_Lead_Stage_LeadStageTypeSid.OPEN}.
  *
  * @type {number}
  */
@@ -46,12 +57,18 @@ Wl_Lead_Stage_LeadStageSystemSid.NEW = 1;
 /**
  * A lead which has shown some interest, but is not ready to purchase yet.
  *
+ * Replaces {@link RsLeadStatusSid.LEAVE}.
+ * Type of the stage is {@link Wl_Lead_Stage_LeadStageTypeSid.OPEN}.
+ *
  * @type {number}
  */
 Wl_Lead_Stage_LeadStageSystemSid.WARM = 3;
 
 /**
  * A lead which was successfully converted into a client.
+ *
+ * Replaces {@link Wl_Lead_Conversion_LeadConversionTypeSid.WON}.
+ * Type of the stage is {@link Wl_Lead_Stage_LeadStageTypeSid.WON}.
  *
  * @type {number}
  */

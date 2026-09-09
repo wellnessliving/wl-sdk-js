@@ -146,7 +146,7 @@ Wl_Family_Relation_Relation72Model.prototype.config=function()
 
 /**
  * Adds to user {@link Wl_Family_Relation_RelationModel.uid}
-relative {@link Wl_Family_Relation_RelationModel.a_new}.
+ * relative {@link Wl_Family_Relation_RelationModel.a_new}.
  *
  * Creates a bidirectional family relationship between the user identified by `uid` and the user specified in
  * `a_new`, then returns the updated list of relationships for `uid`.

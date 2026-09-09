@@ -13,6 +13,7 @@ function Wl_AiAgent_Phone_CallReceivedModel()
    * How the call ended. Required.
    *
    * @post get
+   * @see Wl_AiAgent_Phone_CallOutcomeEnum
    * @type {number}
    */
   this.id_call_outcome = 0;
@@ -80,7 +81,7 @@ Wl_AiAgent_Phone_CallReceivedModel.prototype.config=function()
 
 /**
  * Sends the "Phone Agent Call Received" staff notification to every active staff member of the business who
-has the {@link Wl_Privilege_PrivilegeSid} permission.
+ * has the {@link Wl_Privilege_PrivilegeSid} permission.
  *
  * Requires the business to have an active Phone Agent subscription tier.
  *

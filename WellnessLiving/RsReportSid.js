@@ -27,7 +27,8 @@ RsReportSid.APPOINTMENT_CANCEL = 163;
 RsReportSid.APPOINTMENT_REQUEST = 54;
 
 /**
- * Report with list of requested appointments. Short version for the dashboard.
+ * Report with list of requested appointments.
+ * Short version for the dashboard.
  *
  * @type {number}
  */
@@ -90,7 +91,8 @@ RsReportSid.BUSINESS_ACCOUNT_CUSTOMER = 84;
 RsReportSid.BUSINESS_ACCOUNT_CUSTOMER_BEGIN = 85;
 
 /**
- * The list of all locations from WellnessLiving customers during the selected period including locations, which are not customers and businesses, which are in a migration process.
+ * The list of all locations from WellnessLiving customers during the selected period including
+ * locations, which are not customers and businesses, which are in a migration process.
  *
  * @type {number}
  */
@@ -316,6 +318,8 @@ RsReportSid.BUSINESS_FRANCHISE_REPORT_CURVES_SABA = 219;
 /**
  * Report with list of customer leads.
  *
+ * Referral and referrer businesses can be specified in this report.
+ *
  * @type {number}
  */
 RsReportSid.BUSINESS_LEAD = 125;
@@ -357,6 +361,9 @@ RsReportSid.BUSINESS_PARTNER_PAY = 126;
 
 /**
  * Report with list of all referrals of the given business.
+ *
+ * Includes information about all business that became our customers with special link of one of our existing
+ * customer.
  *
  * @type {number}
  */
@@ -580,7 +587,8 @@ RsReportSid.LOGIN_ACCOUNT = 43;
 RsReportSid.LOGIN_BIRTHDAY = 75;
 
 /**
- * For the past 4 years, shows the number of clients whose status changed from "Prospect" to any other in each year
+ * For the past 4 years, shows the number of clients whose
+ * status changed from "Prospect" to any other in each year
  *
  * @type {number}
  */
@@ -769,35 +777,50 @@ RsReportSid.PAY_TRANSACTION_BATCH = 77;
 RsReportSid.PAY_TRANSACTION_CASH = 113;
 
 /**
- * If the report is opened in backend it shows a list of transactions for the current business. If the report is opened outside backend it shows a list of all system transactions.
+ * If the report is opened in backend it shows a list of transactions for the current business.
+ * If the report is opened outside backend it shows a list of all system transactions.
+ *
+ * This report is available for the staff and all administrators.
  *
  * @type {number}
  */
 RsReportSid.PAY_TRANSACTION_LIST = 34;
 
 /**
- * If the report is opened in backend it shows a list of transactions for the current business. If the report is opened outside backend it shows a list of all system transactions.
+ * If the report is opened in backend it shows a list of transactions for the current business.
+ * If the report is opened outside backend it shows a list of all system transactions.
+ *
+ * This report is available for the staff and all administrators.
  *
  * @type {number}
  */
 RsReportSid.PAY_TRANSACTION_SUM = 119;
 
 /**
- * Revenue Report for WellnessLiving Accounting. Shows a list of all system transactions. Contains a list of special totals.
+ * Revenue Report for WellnessLiving Accounting.
+ * Shows a list of all system transactions. Contains a list of special totals.
+ *
+ * This report is available only for administrators with special privilege.
  *
  * @type {number}
  */
 RsReportSid.PAY_TRANSACTION_SYSTEM_ALL = 79;
 
 /**
- * If the report is opened in backend it shows a list of system transactions for the current business. If the report is opened outside backend it shows a list of all system transactions.
+ * If the report is opened in backend it shows a list of system transactions for the current business.
+ * If the report is opened outside backend it shows a list of all system transactions.
+ *
+ * This report is available for all administrators.
  *
  * @type {number}
  */
 RsReportSid.PAY_TRANSACTION_SYSTEM_LIST = 62;
 
 /**
- * Revenue Report for WellnessLiving Accounting. Shows a list of refund and void system transactions.
+ * Revenue Report for WellnessLiving Accounting.
+ * Shows a list of refund and void system transactions.
+ *
+ * This report is available only for administrators with special privilege.
  *
  * @type {number}
  */
@@ -806,12 +829,17 @@ RsReportSid.PAY_TRANSACTION_SYSTEM_REFUND = 106;
 /**
  * Sum of all transactions from businesses to system merchants.
  *
+ * This report is available only for administrators with special privilege.
+ *
  * @type {number}
  */
 RsReportSid.PAY_TRANSACTION_SYSTEM_SUMMARY = 143;
 
 /**
- * If the report is opened in backend it shows a list of transactions for the one given user in the current business. If the report is opened outside backend it shows a list of all system transactions for the given user.
+ * If the report is opened in backend it shows a list of transactions for the one given user in the current business.
+ * If the report is opened outside backend it shows a list of all system transactions for the given user.
+ *
+ * This report is available for the staff and all administrators.
  *
  * @type {number}
  */
@@ -826,6 +854,9 @@ RsReportSid.PAY_TRANSACTION_USER_CLIENT = 253;
 
 /**
  * Postcard history list report.
+ *
+ * This report contains all sent postcards in the business with information
+ * about price of postcard, content and status.
  *
  * @type {number}
  */
@@ -960,12 +991,16 @@ RsReportSid.PROMOTION_MEMBERSHIP_NEGATIVE = 130;
 /**
  * Shows list of pricing options from that were imported mindbody and converted into memberships.
  *
+ * Such pricing options are created as passes but they are marked as removed. During migration process all their names
+ * are used to create connected memberships.
+ *
  * @type {number}
  */
 RsReportSid.PROMOTION_PASS_MEMBERSHIP = 108;
 
 /**
- * A list of payment transactions including scheduled transaction (recurrent payments for memberships and renewals of promotions).
+ * A list of payment transactions including scheduled transaction (recurrent payments for memberships and renewals of
+ * promotions).
  *
  * @type {number}
  */
@@ -1280,7 +1315,7 @@ RsReportSid.SOCIAL_SHARE_METRIC_CHART = 197;
 RsReportSid.SOCIAL_SHARE_SUMMARY_LIST = 214;
 
 /**
- * Chart version of {@link RsReportSid} report.
+ * Chart version of {@link RsReportSid.STAFF_PAY_LIST} report.
  *
  * @type {number}
  */
@@ -1329,14 +1364,16 @@ RsReportSid.STAFF_RETENTION_CLIENT_REPEAT = 139;
 RsReportSid.STAFF_RETENTION_CLIENT_SUMMARY = 140;
 
 /**
- * Report that contains detailed information about staff clock-in and clock-out, total load, hourly pay rates, average hourly and additional payments and others for a day.
+ * Report that contains detailed information about staff clock-in and clock-out, total load, hourly pay rates, average
+ * hourly and additional payments and others for a day.
  *
  * @type {number}
  */
 RsReportSid.STAFF_TIME_DETAIL = 111;
 
 /**
- * Report that contains summary information about staff clock-in and clock-out, total load, hourly pay rates, average hourly and additional payments and others for a specified period.
+ * Report that contains summary information about staff clock-in and clock-out, total load, hourly pay rates, average
+ * hourly and additional payments and others for a specified period.
  *
  * @type {number}
  */
@@ -1371,7 +1408,8 @@ RsReportSid.USER_DUPLICATE = 185;
 RsReportSid.VIDEO_BUSINESS_ALL = 239;
 
 /**
- * Report with all businesses, which has videos and count of videos and total size of the videos filtered with upload date.
+ * Report with all businesses, which has videos and count of videos and total size of the videos
+ * filtered with upload date.
  *
  * @type {number}
  */
@@ -1497,7 +1535,7 @@ RsReportSid.VISIT_CLASS_COUNT = 16;
 RsReportSid.VISIT_CLASS_DETAIL = 59;
 
 /**
- * Simplified variation of report {@link RsReportSid}.
+ * Simplified variation of report {@link RsReportSid.VISIT_CLASS_DETAIL}.
  *
  * @type {number}
  */
@@ -1546,14 +1584,16 @@ RsReportSid.VISIT_FIRST_COUNT = 3;
 RsReportSid.VISIT_FIRST_LIST = 2;
 
 /**
- * Filterable first visit list report, allowing to see first visits to certain criteria (locations/events/etc.) rather than first visits ever. Chart version.
+ * Filterable first visit list report, allowing to see first visits to certain criteria (locations/events/etc.)
+ * rather than first visits ever. Chart version.
  *
  * @type {number}
  */
 RsReportSid.VISIT_FIRST_SCOPED_COUNT = 224;
 
 /**
- * Filterable first visit list report, allowing to see first visits to certain criteria (locations/events/etc.) rather than first visits ever. Table version.
+ * Filterable first visit list report, allowing to see first visits to certain criteria (locations/events/etc.)
+ * rather than first visits ever. Table version.
  *
  * @type {number}
  */
@@ -1644,7 +1684,8 @@ RsReportSid.VISIT_LOGIN_LIST = 12;
 RsReportSid.VISIT_REMAIN_LIST = 63;
 
 /**
- * Visits Remaining. Temporary copy of the report {@link RsReportSid} should be removed after Sprint 33 release.
+ * Visits Remaining.
+ * Temporary copy of the report {@link RsReportSid.VISIT_REMAIN_LIST} should be removed after Sprint 33 release.
  *
  * @type {number}
  */

@@ -143,21 +143,24 @@ RsMailSid.APPOINTMENT_PAY_CANCEL = 189;
 RsMailSid.APPOINTMENT_PAY_PAY = 188;
 
 /**
- * Sends one email to a client when several sessions of one or several appointments or single session of recurring appointment were canceled by staff.
+ * Sends one email to a client when several sessions of one or several appointments or single session of recurring
+ * appointment were canceled by staff.
  *
  * @type {number}
  */
 RsMailSid.APPOINTMENT_REPEAT_CANCEL_CLIENT = 103;
 
 /**
- * Sends one email to staff when several sessions of one or several appointments or single session of recurring appointment were canceled.
+ * Sends one email to staff when several sessions of one or several appointments or single session of recurring
+ * appointment were canceled.
  *
  * @type {number}
  */
 RsMailSid.APPOINTMENT_REPEAT_CANCEL_STAFF = 105;
 
 /**
- * Sends one email to a client when several sessions of one or several appointments or single session of recurring appointment were canceled by a client.
+ * Sends one email to a client when several sessions of one or several appointments or single session of recurring
+ * appointment were canceled by a client.
  *
  * @type {number}
  */
@@ -173,12 +176,16 @@ RsMailSid.APPOINTMENT_REQUEST_AI = 200;
 /**
  * Requested appointment has been denied.
  *
+ * Sends to the client, after staff denied requested appointment.
+ *
  * @type {number}
  */
 RsMailSid.APPOINTMENT_REQUEST_DENY = 88;
 
 /**
  * Appointment has been requested.
+ *
+ * Sends to the staff after client creates an appointment, that should be approved by staff.
  *
  * @type {number}
  */
@@ -187,12 +194,16 @@ RsMailSid.APPOINTMENT_REQUEST_STAFF = 89;
 /**
  * Appointment has been requested.
  *
+ * Sends to the client after client creates an appointment, that should be approved by staff.
+ *
  * @type {number}
  */
 RsMailSid.APPOINTMENT_REQUEST_USER = 90;
 
 /**
  * Appointment Wait List Cancellation
+ *
+ * Sent after a client has been removed from the waiting list for an appointment.
  *
  * @type {number}
  */
@@ -208,12 +219,30 @@ RsMailSid.BILLING_RELATED_QUERY = 204;
 /**
  * Class Booking Confirmation.
  *
+ * Sent after a client successfully books a class.
+ *
+ * <h2>Acceptance test</h2>
+ * <ol>
+ *   <li>Enter a business backend.</li>
+ *   <li>Go to calendar ("Schedule" button in the main toolbar).</li>
+ *   <li>Find a class in the future.<br />
+ *     Click a number in the "Clients" column in the calendar.<br />
+ *     Attendance list form will appear.</li>
+ *   <li>Click "Add client into class" button in the toolbar of the form.</li>
+ *   <li>Type in a login name of a client you want to send this e-mail to. Click "Search", then click "Add".</li>
+ *   <li>Process tasks.</li>
+ *   <li>Process cron.</li>
+ *   <li>The test message should now be sent.</li>
+ * </ol>
+ *
  * @type {number}
  */
 RsMailSid.BOOK_ADD_CLASS = 1;
 
 /**
  * Class Booking Notification - Staff.
+ *
+ * Sent to the staff member informing them that a client has booked their class.
  *
  * @type {number}
  */
@@ -229,12 +258,16 @@ RsMailSid.BOOK_CANCEL = 210;
 /**
  * Class Booking (Reservation) Cancelled by Staff.
  *
+ * Sent after a staff member cancels a client reservation for a class.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_CANCEL_ADMIN_CLASS = 23;
 
 /**
  * Enrollment Booking Cancelled by Staff.
+ *
+ * Sent after a staff member cancels a client reservation for a class.
  *
  * @type {number}
  */
@@ -243,12 +276,28 @@ RsMailSid.BOOK_CANCEL_ADMIN_ENROLLMENT = 57;
 /**
  * Enrollment Session Cancellation Notification
  *
+ * Sent to a client when an event session(s) are canceled.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_CANCEL_ENROLLMENT_SESSION = 128;
 
 /**
  * Class Cancelled by Client - Early.
+ *
+ * Sent after a class reservation is cancelled by a client early. Cancellations are considered to be early if they are
+ * made before the late cancel window that you’ve set in your Business Policy settings.
+ *
+ * <h2>Acceptance test</h2>
+ * <ol>
+ *   <li>Select a user (not a staff, not an administrator). The e-mail you seek to send will be sent to that user.
+ *     And you will need to log in under that user.</li>
+ *   <li>Add a book to the user you selected. See `RsMailSid::BOOK_ADD` for details.</li>
+ *   <li>Login as that user. Go to Profile - My Schedule. Find the class there, click "Cancel" button.</li>
+ *   <li>Process tasks.</li>
+ *   <li>Process cron.</li>
+ *   <li>The message should now be sent to the user you selected.</li>
+ * </ol>
  *
  * @type {number}
  */
@@ -264,6 +313,9 @@ RsMailSid.BOOK_CANCEL_FREE_ENROLLMENT = 58;
 /**
  * Class Cancelled By Client - Late.
  *
+ * Sent after a class reservation is cancelled by a client late. Cancellations are considered to be late if they are
+ * made after the late cancel window that you’ve set in your Business Policy settings.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_CANCEL_PENALTY_CLASS = 4;
@@ -277,6 +329,8 @@ RsMailSid.BOOK_CANCEL_PENALTY_ENROLLMENT = 59;
 
 /**
  * Class Booking Cancellation Notification - Staff.
+ *
+ * Sent to the staff member informing them that a client has cancelled their class reservation.
  *
  * @type {number}
  */
@@ -292,12 +346,16 @@ RsMailSid.BOOK_ENROLLMENT = 69;
 /**
  * Enrollment Booking Cancellation Notification - Staff
  *
+ * Sent to a staff member informing them that a client has cancelled their enrollment.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_ENROLLMENT_CANCEL_STAFF = 92;
 
 /**
  * Enrollment Booking Notification - Staff.
+ *
+ * Sent to a staff member informing them that a client has booked their enrollment.
  *
  * @type {number}
  */
@@ -306,12 +364,16 @@ RsMailSid.BOOK_ENROLLMENT_STAFF = 91;
 /**
  * Thanks for your interest.
  *
+ * Sent to prospective clients after they sign up online.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_FIRST = 73;
 
 /**
  * Appointment Wait List Promotion (Client Confirmation Required)
+ *
+ * Sent to a client to confirm they promote from wait list to active list.
  *
  * @type {number}
  */
@@ -320,12 +382,16 @@ RsMailSid.BOOK_PROMOTE_CONFIRM_APPOINTMENT = 169;
 /**
  * Waitlist Promotion (Client Confirmation Required)
  *
+ * Sent after the client is promoted from the waiting list for a class.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_PROMOTE_CONFIRM_CLASS = 53;
 
 /**
  * Waitlist Promotion (Client Confirmation Required)
+ *
+ * Sent after the client is promoted from the waiting list for an enrollment.
  *
  * @type {number}
  */
@@ -334,12 +400,16 @@ RsMailSid.BOOK_PROMOTE_CONFIRM_ENROLLMENT = 60;
 /**
  * Appointment Wait List Promotion (Confirmation not Required).
  *
+ * Sent after the client is promoted from the waiting list for an appointment.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_PROMOTE_DIRECT_APPOINTMENT = 168;
 
 /**
  * Waitlist Promotion (Client Confirmation Not Required)
+ *
+ * Sent after the client is promoted from the waiting list for a class.
  *
  * @type {number}
  */
@@ -348,12 +418,16 @@ RsMailSid.BOOK_PROMOTE_DIRECT_CLASS = 8;
 /**
  * Waitlist Promotion (Client Confirmation Not Required)
  *
+ * Sent after the client is promoted from the waiting list for an enrollment.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_PROMOTE_DIRECT_ENROLLMENT = 61;
 
 /**
  * Class Reminder.
+ *
+ * Sent to the client reminding about an upcoming class reservation.
  *
  * @type {number}
  */
@@ -362,12 +436,16 @@ RsMailSid.BOOK_REMIND_CLASS = 25;
 /**
  * Enrollment Reminder.
  *
+ * Sent to the client reminding about an upcoming enrollment.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_REMIND_ENROLLMENT = 62;
 
 /**
  * Appointment Reminder - Staff.
+ *
+ * Sent to the staff member reminding them about an upcoming appointment.
  *
  * @type {number}
  */
@@ -376,12 +454,16 @@ RsMailSid.BOOK_REMIND_SERVICE_STAFF = 27;
 /**
  * Appointment Reminder.
  *
+ * Sent to the client reminding about an upcoming reservation.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_REMIND_SERVICE_USER = 26;
 
 /**
  * Class Booking Confirmation.
+ *
+ * Sent after a client books the recurring sessions.
  *
  * @type {number}
  */
@@ -390,12 +472,16 @@ RsMailSid.BOOK_REPEAT_ADD = 101;
 /**
  * Class Booking Cancelled.
  *
+ * Sent after a client cancels the recurring sessions.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_REPEAT_CANCEL = 102;
 
 /**
  * Recurrent Class Reservation Wait List.
+ *
+ * Sent when a client books a recurring class and is placed on more than one wait list.
  *
  * @type {number}
  */
@@ -404,12 +490,15 @@ RsMailSid.BOOK_REPEAT_WAIT = 166;
 /**
  * Class Review Request.
  *
+ * Sent after the client visits a new class requesting that he/she write a review about their experience.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_VISIT = 39;
 
 /**
- * Appointment Reservation Wait List. Sent when an appointment is full and the client is placed on the waiting list.
+ * Appointment Reservation Wait List.
+ * Sent when an appointment is full and the client is placed on the waiting list.
  *
  * @type {number}
  */
@@ -418,12 +507,15 @@ RsMailSid.BOOK_WAIT_APPOINTMENT = 165;
 /**
  * Class Reservation Wait List.
  *
+ * Sent when a class is full and the client is placed on the waiting list.
+ *
  * @type {number}
  */
 RsMailSid.BOOK_WAIT_CLASS = 2;
 
 /**
- * Enrollment Reservation Wait List. Sent when an enrollment is full and the client is placed on the waiting list.
+ * Enrollment Reservation Wait List.
+ * Sent when an enrollment is full and the client is placed on the waiting list.
  *
  * @type {number}
  */
@@ -514,7 +606,8 @@ RsMailSid.BUSINESS_ACCOUNT_VIRTUAL_SIGNUP = 157;
 RsMailSid.BUSINESS_ACCOUNT_VIRTUAL_UPGRADE = 175;
 
 /**
- * Sends to client after the first-level onboarding, providing them with login information and next steps for using their trial account.
+ * Sends to client after the first-level onboarding, providing them with login information
+ * and next steps for using their trial account.
  *
  * @type {number}
  */
@@ -543,6 +636,9 @@ RsMailSid.BUSINESS_PARTNER_BANNER_CUSTOMER = 180;
 
 /**
  * Email to the admins that business staff member wants to take a part in the partner program.
+ *
+ * Note! This email is not sent anymore because there is no need to enroll in the partner program (enrollment occurs
+ * automatically). For details see:
  *
  * @type {number}
  */
@@ -614,12 +710,15 @@ RsMailSid.CANCELLATION_REQUEST_AI = 202;
 /**
  * Class Cancellation Notification - Staff.
  *
+ * Sent to a staff after class cancelled by staff.
+ *
  * @type {number}
  */
 RsMailSid.CLASSES_CANCEL_STAFF = 135;
 
 /**
- * Class Schedule Details Changed. Sent after a staff member modifies a scheduled class.
+ * Class Schedule Details Changed.
+ * Sent after a staff member modifies a scheduled class.
  *
  * @type {number}
  */
@@ -628,12 +727,23 @@ RsMailSid.CLASSES_PERIOD_CHANGE_CLASSES_STAFF = 100;
 /**
  * Email to the business members with information about newly added class schedule.
  *
+ * Sent after a clients, when new schedule is added.
+ *
+ * <h2>Acceptance test</h2>
+ * <ol>
+ *   <li>Enter a business backend.</li>
+ *   <li>Config email.</li>
+ *   <li>Adds schedule to the selected in email settings class.</li>
+ *   <li>Check that selected clients got an email.</li>
+ * </ol>
+ *
  * @type {number}
  */
 RsMailSid.CLASSES_PROMOTE = 109;
 
 /**
- * A reminder for the staff about an upcoming recurrent class. Sent after a new recurrent class booking occurs.
+ * A reminder for the staff about an upcoming recurrent class.
+ * Sent after a new recurrent class booking occurs.
  *
  * @type {number}
  */
@@ -647,14 +757,16 @@ RsMailSid.CLASSES_STAFF_RECURRENT = 124;
 RsMailSid.CLASSES_STAFF_RECURRENT_CANCEL = 125;
 
 /**
- * Staff member that conducts the class is changed (a new staff member is added, or an existing staff member is substituted). Sent after a staff member modifies a scheduled class.
+ * Staff member that conducts the class is changed (a new staff member is added, or an existing staff member is substituted).
+ * Sent after a staff member modifies a scheduled class.
  *
  * @type {number}
  */
 RsMailSid.CLASSES_STAFF_SUBSTITUTION = 110;
 
 /**
- * Send to the staff a remind about an upcoming class session. It is sent only when this staff is a substitution.
+ * Send to the staff a remind about an upcoming class session.
+ * It is sent only when this staff is a substitution.
  *
  * @type {number}
  */
@@ -684,12 +796,16 @@ RsMailSid.CLASS_BOOK_AI = 201;
 /**
  * Class Type Modified Has Changed.
  *
+ * Sent after the class title or class category have changed. Sent to all clients who have the class booked.
+ *
  * @type {number}
  */
 RsMailSid.CLASS_EDIT_CLASS = 24;
 
 /**
  * Enrollment Type Modified Has Changed.
+ *
+ * Sent after the enrollment title have changed. Sent to all clients who have the enrollment booked.
  *
  * @type {number}
  */
@@ -698,12 +814,16 @@ RsMailSid.CLASS_EDIT_ENROLLMENT = 64;
 /**
  * Class cancelled by staff.
  *
+ * Sent after a staff member cancels a class.
+ *
  * @type {number}
  */
 RsMailSid.CLASS_PERIOD_CANCEL_CLASS = 16;
 
 /**
  * Enrollment cancelled by staff.
+ *
+ * Sent after a staff member cancels an enrollment.
  *
  * @type {number}
  */
@@ -712,12 +832,16 @@ RsMailSid.CLASS_PERIOD_CANCEL_ENROLLMENT = 66;
 /**
  * Class Schedule Details Changed Modified.
  *
+ * Sent after a staff member modifies a scheduled class.
+ *
  * @type {number}
  */
 RsMailSid.CLASS_PERIOD_CHANGE_CLASS = 17;
 
 /**
  * Enrollment Schedule Details Changed Modified.
+ *
+ * Sent after a staff member modifies a scheduled of enrollment.
  *
  * @type {number}
  */
@@ -761,6 +885,8 @@ RsMailSid.EVENT_BOOK_SESSION_STAFF = 130;
 /**
  * Email to the business members with information about newly added event schedule.
  *
+ * Sent after a clients, when new schedule is added.
+ *
  * @type {number}
  */
 RsMailSid.EVENT_PROMOTE = 160;
@@ -774,6 +900,8 @@ RsMailSid.EVENT_VIDEO_PUBLISH = 162;
 
 /**
  * Staff sent feedback with some comment.
+ *
+ * All functionality related to this feature has been removed from the codebase.
  *
  * @type {number}
  */
@@ -852,6 +980,8 @@ RsMailSid.INTEGRATION_COLLECTION_ALDOUS = 178;
 /**
  * Email, which is sent when a customer has connected a paid Zoom account.
  *
+ * Is sent to administrators or to a special address if set {@link Wl_Integration_Zoom_ConfirmationModel.MAIL_RECIPIENT}.
+ *
  * @type {number}
  */
 RsMailSid.INTEGRATION_ZOOM_CONFIRMATION = 138;
@@ -878,7 +1008,8 @@ RsMailSid.LEAD_ADDED_STAFF = 163;
 RsMailSid.LEAD_CAPTURE = 87;
 
 /**
- * Sent to staff when CAASI captures a new lead from a conversation, including contact details and any provided inquiry notes.
+ * Sent to staff when CAASI captures a new lead from a conversation,
+ * including contact details and any provided inquiry notes.
  *
  * @type {number}
  */
@@ -901,12 +1032,15 @@ RsMailSid.LOGIN_ANNIVERSARY = 96;
 /**
  * Attendance List.
  *
+ * Sent to the staff member with their attendance list for the day.
+ *
  * @type {number}
  */
 RsMailSid.LOGIN_ATTENDANCE = 42;
 
 /**
- * Sent when user long time did not visit location, and it not has active promotion. Client Win-Back send only for inactive members {@link Wl_Login_Type_SystemSid}.
+ * Sent when user long time did not visit location, and it not has active promotion.
+ * Client Win-Back send only for inactive members {@link Wl_Login_Type_SystemSid.INACTIVE}.
  *
  * @type {number}
  */
@@ -927,7 +1061,8 @@ RsMailSid.LOGIN_BIRTHDAY = 49;
 RsMailSid.LOGIN_CARD_EXPIRE = 51;
 
 /**
- * Email address confirmation. Sends after client registration to confirm the email address.
+ * Email address confirmation.
+ * Sends after client registration to confirm the email address.
  *
  * @type {number}
  */
@@ -936,12 +1071,16 @@ RsMailSid.LOGIN_MAIL_CONFIRM = 123;
 /**
  * Custom Client Email #1.
  *
+ * Should not have high priority as this is often a big sending from the reports to all clients of the business.
+ *
  * @type {number}
  */
 RsMailSid.LOGIN_MESSAGE = 22;
 
 /**
  * Client no show.
+ *
+ * Sent if the client does not show up to an appointment that they have reserved.
  *
  * @type {number}
  */
@@ -950,12 +1089,16 @@ RsMailSid.LOGIN_PENALTY_APPOINTMENT = 72;
 /**
  * Client no show.
  *
+ * Sent if the client does not show up to a class that they have reserved.
+ *
  * @type {number}
  */
 RsMailSid.LOGIN_PENALTY_CLASS = 15;
 
 /**
  * Client no show.
+ *
+ * Sent if the client does not show up to an enrollment that they have reserved.
  *
  * @type {number}
  */
@@ -969,14 +1112,17 @@ RsMailSid.LOGIN_PENALTY_ENROLLMENT = 67;
 RsMailSid.LOGIN_PURCHASE_ACCOUNT = 159;
 
 /**
- * Sent to a client when they haven't visited in a set number of days, but still have an active pass or membership. Client Retention send only for active members {@link Wl_Login_Type_SystemSid} and custom client types.
+ * Sent to a client when they haven't visited in a set number of days,
+ * but still have an active pass or membership.
+ * Client Retention send only for active members {@link Wl_Login_Type_SystemSid.ACTIVE} and custom client types.
  *
  * @type {number}
  */
 RsMailSid.LOGIN_RETENTION = 50;
 
 /**
- * Sent to the client when a new account statement becomes available. Email includes the statement as a PDF attachment.
+ * Sent to the client when a new account statement becomes available.
+ * Email includes the statement as a PDF attachment.
  *
  * @type {number}
  */
@@ -1039,7 +1185,19 @@ RsMailSid.PASSPORT_LOGIN_ENTER = 187;
 RsMailSid.PASSPORT_LOGIN_MERGE = 205;
 
 /**
- * E-mail with a list of user's payment account transactions for last `62` days.
+ * E-mail with a list of user's payment account transactions for last {@link \RsPayAccountMail::DAY} days.
+ *
+ * <h2>Acceptance test</h2>
+ *
+ * <ul><li>Initial conditions: you'll need a user with an e-mail that you can receive e-mail to.</li>
+ *
+ * <li>Go to business backend - store. Purchase anything. Pay with user's account.</li>
+ *
+ * <li>Go to Reports - Client - Account Balance. Click 'Send invoice' in the row of that user.</li>
+ *
+ * <li>Execute cron. Check e-mail box. There should be an invoice e-mail.
+ *
+ * Check that there is information about purchase you've just made.</li>
  *
  * @type {number}
  */
@@ -1048,6 +1206,14 @@ RsMailSid.PAY_ACCOUNT_INVOICE = 85;
 /**
  * Automatic payment success.
  *
+ * Sent to the customer in the following cases:
+ * * An automatic renewal of a purchase option is successful.
+ * * Recurrent payment of installment plan is successful.
+ * * Suspended payment completed successfully {@link \Wl\Catalog\Payment\Task}.
+ * * When status of a recurrently paid transaction is changed to {@link RsPayTransactionStatusSid.PURCHASE_OK}.
+ *
+ * Should be disabled by default according to the task (see link below).
+ *
  * @type {number}
  */
 RsMailSid.PAY_AUTOMATIC_SUCCESS = 116;
@@ -1055,12 +1221,15 @@ RsMailSid.PAY_AUTOMATIC_SUCCESS = 116;
 /**
  * Transaction failed.
  *
+ * Sent to support whenever transaction fails.
+ *
  * @type {number}
  */
 RsMailSid.PAY_TRANSACTION_FAIL = 181;
 
 /**
- * Sent to staff when CAASI's Phone Agent concludes a call, regardless of outcome (resolved by CAASI, transferred live, or callback requested).
+ * Sent to staff when CAASI's Phone Agent concludes a call, regardless of outcome
+ * (resolved by CAASI, transferred live, or callback requested).
  *
  * @type {number}
  */
@@ -1111,6 +1280,8 @@ RsMailSid.PROFILE_PASSWORD_RESET = 142;
 /**
  * Few Pass Visits Remaining.
  *
+ * Sent when the client only has a few visits remaining on their pass.
+ *
  * @type {number}
  */
 RsMailSid.PROMOTION_LOW = 43;
@@ -1139,6 +1310,12 @@ RsMailSid.PROMOTION_MEMBERSHIP_EXPIRE = 77;
 /**
  * Membership Payment - Billed to Account.
  *
+ * Sent to the customer to inform them that their account after purchase became negative.
+ * Sent in the following cases:
+ * * Automatic renewal of a purchase option.
+ * * Account payment for installment plan.
+ * * Suspended payment {@link \Wl\Catalog\Payment\Task}.
+ *
  * @type {number}
  */
 RsMailSid.PROMOTION_MEMBERSHIP_PAY_ACCOUNT = 106;
@@ -1146,12 +1323,26 @@ RsMailSid.PROMOTION_MEMBERSHIP_PAY_ACCOUNT = 106;
 /**
  * Automatic Payment Failed.
  *
+ * In case of unsuccessful Credit Card transaction.
+ *
+ * Sent to the customer in the following cases:
+ * * An automatic renewal of a purchase option is failed.
+ * * Recurrent payment of installment plan is failed.
+ * * Suspended payment failed {@link \Wl\Catalog\Payment\Task}.
+ *
  * @type {number}
  */
 RsMailSid.PROMOTION_MEMBERSHIP_PAY_FAIL = 55;
 
 /**
  * Membership Payment Confirmation.
+ *
+ * In case of a successful Credit Card transaction.
+ *
+ * Sent to the customer when a payment has been made toward their membership.
+ * Sent to the customer in the following cases:
+ * * An automatic renewal of a purchase option is failed.
+ * * Recurrent payment of installment plan is failed.
  *
  * @type {number}
  */
@@ -1209,12 +1400,30 @@ RsMailSid.PURCHASE_HOLD_EXPIRING = 186;
 /**
  * Purchase Receipt.
  *
+ * Sent to the customer when he makes a purchase in online store.
+ *
+ * Is not sent, when staff made a purchase for the client.
+ *
+ * <h2>Acceptance test #1</h2>
+ * <ol>
+ *   <li>Go to store. Buy something.</li>
+ *   <li>At confirmation order page, click "Email Receipt" button.</li>
+ * </ol>
+ * <h2>Acceptance test #2</h2>
+ * <ol>
+ *   <li>Go to user profile - Purchases.</li>
+ *   <li>Near a purchase, select Actions - Email receipt.</li>
+ * </ol>
+ *
  * @type {number}
  */
 RsMailSid.PURCHASE_PAYMENT = 52;
 
 /**
- * Purchase Receipt. Sent to the customer when staff made a purchase for the client.
+ * Purchase Receipt.
+ * Sent to the customer when staff made a purchase for the client.
+ *
+ * Is not sent, when client purchased anything in online store.
  *
  * @type {number}
  */
@@ -1222,6 +1431,19 @@ RsMailSid.PURCHASE_PAYMENT_ACCOUNT = 107;
 
 /**
  * Purchase Receipt.
+ *
+ * Sent to the customer when he makes a purchase.
+ *
+ * <h2>Acceptance test #1</h2>
+ * <ol>
+ *   <li>Go to store. Buy something.</li>
+ *   <li>At confirmation order page, click "Email Receipt" button.</li>
+ * </ol>
+ * <h2>Acceptance test #2</h2>
+ * <ol>
+ *   <li>Go to user profile - Purchases.</li>
+ *   <li>Near a purchase, select Actions - Email receipt.</li>
+ * </ol>
  *
  * @type {number}
  */
@@ -1237,6 +1459,11 @@ RsMailSid.PURCHASE_PRODUCT_INVENTORY = 95;
 /**
  * Thanks for purchasing an introductory offer.
  *
+ * Sent to the client after they purchase an introductory offer.
+ *
+ * Whether delay sending email after purchasing is set to 0 the introductory email will be delayed 5 - 10 minutes
+ *  to allow for client group recalculation to occur .
+ *
  * @type {number}
  */
 RsMailSid.PURCHASE_PROMOTION_INTRODUCTORY = 74;
@@ -1250,6 +1477,8 @@ RsMailSid.PURCHASE_REFUND = 108;
 
 /**
  * Quiz form submission - Client.
+ *
+ * Send to a client informing them that a form has been submitted.
  *
  * @type {number}
  */
@@ -1265,6 +1494,8 @@ RsMailSid.QUIZ_INDEX = 174;
 /**
  * Quiz submitted - Staff.
  *
+ * Send to a staff member informing them that a form has been submitted.
+ *
  * @type {number}
  */
 RsMailSid.QUIZ_NOTIFICATION = 171;
@@ -1272,12 +1503,15 @@ RsMailSid.QUIZ_NOTIFICATION = 171;
 /**
  * Quiz submitted - Staff.
  *
+ * Send to a staff member informing them of a reminder.
+ *
  * @type {number}
  */
 RsMailSid.QUIZ_NOTIFICATION_REMIND = 173;
 
 /**
- * Email to wellnessliving team when businesses perform actions which is exporting data that indicate that they are making steps to cancel their WL account.
+ * Email to wellnessliving team when businesses perform actions which is exporting data
+ * that indicate that they are making steps to cancel their WL account.
  *
  * @type {number}
  */
@@ -1286,12 +1520,16 @@ RsMailSid.REPORT_EXPORT = 177;
 /**
  * New Customer Review - Staff.
  *
+ * Sent to the business to inform them that they have a new customer review.
+ *
  * @type {number}
  */
 RsMailSid.REVIEW_ADD = 38;
 
 /**
  * Owner Replied to Review.
+ *
+ * Sent to the reviewer when the business owner replied to their customer review.
  *
  * @type {number}
  */
@@ -1321,6 +1559,8 @@ RsMailSid.REWARD_PRIZE_STAFF = 121;
 /**
  * Sale Has Been Made.
  *
+ * Sent after staff/client makes a purchase at the point of sale or in the online store.
+ *
  * @type {number}
  */
 RsMailSid.SALE_STAFF = 126;
@@ -1340,7 +1580,8 @@ RsMailSid.SERVICE_BOOK = 208;
 RsMailSid.SKIN_APPLICATION_CONNECT = 122;
 
 /**
- * Notifies staff when CAASI captures a client request for a staff connect, including their contact details and any relevant notes from the conversation.
+ * Notifies staff when CAASI captures a client request for a staff connect,
+ * including their contact details and any relevant notes from the conversation.
  *
  * @type {number}
  */
@@ -1369,6 +1610,10 @@ RsMailSid.USER_CAMPAIGN = 112;
 
 /**
  * Request a video subscription.
+ *
+ * Triggers by staff member via {@link Wl_Video_Subscription_UpgradeModel.put()}.
+ *
+ * Is sent to administrators or to a special address if set {@link Wl_Video_Subscription_UpgradeModel.MAIL_RECIPIENT}.
  *
  * @type {number}
  */

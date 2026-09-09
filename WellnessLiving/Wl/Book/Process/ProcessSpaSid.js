@@ -11,6 +11,16 @@ function Wl_Book_Process_ProcessSpaSid()
 /**
  * Step "Class details".
  *
+ * Special step - a container for combining other steps.
+ *
+ * This constant has been added to the SID class to match the steps interface in JS.
+ *
+ * Adding a step to the queue is done on the client side (in JS).
+ *
+ * The list of steps that can be displayed on {@link Wl_Book_Process_ProcessSpaSid.DETAIL_COLLECTION}.
+ *
+ * Designed for Client Web View.
+ *
  * @type {number}
  */
 Wl_Book_Process_ProcessSpaSid.DETAIL = 10;
@@ -18,12 +28,27 @@ Wl_Book_Process_ProcessSpaSid.DETAIL = 10;
 /**
  * Step "Documents".
  *
+ * Special step - a container for combining other steps.
+ *
+ * This constant has been added to the SID class to match the steps interface in JS
+ *
+ * Adding a step to the queue is done on the client side (in JS).
+ *
+ * The list of steps that can be displayed on:
+ *  * {@link Wl_Book_Process_ProcessSpaSid.QUIZ}
+ *  * Purchase options contract
+ *
+ * Designed for Client Web View.
+ *
  * @type {number}
  */
 Wl_Book_Process_ProcessSpaSid.DOCUMENT = 8;
 
 /**
- * Step "Frequency". It is necessary to select booking frequency.
+ * Step "Frequency".
+ * It is necessary to select booking frequency.
+ *
+ * Designed for Client Web View.
  *
  * @type {number}
  */
@@ -31,6 +56,10 @@ Wl_Book_Process_ProcessSpaSid.FREQUENCY = 9;
 
 /**
  * Information about the class.
+ *
+ * In the SPA app, this step combines the following steps:
+ * * {@link Wl_Book_Process_ProcessSpaSid.FREQUENCY}
+ * * {@link Wl_Book_Process_ProcessSpaSid.SESSION}
  *
  * @type {number}
  */
@@ -80,6 +109,8 @@ Wl_Book_Process_ProcessSpaSid.RESOURCE = 6;
 
 /**
  * Session selection step for a session event.
+ *
+ * Designed for Client Web View.
  *
  * @type {number}
  */

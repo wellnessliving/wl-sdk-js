@@ -21,7 +21,8 @@ Wl_Shop_Category_ShopCategorySortSid.CUSTOM = 2;
 Wl_Shop_Category_ShopCategorySortSid.DATE = 3;
 
 /**
- * Sort by name/title. Each entity can be sorted by name/title.
+ * Sort by name/title.
+ * Each entity can be sorted by name/title.
  *
  * @type {number}
  */

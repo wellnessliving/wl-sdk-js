@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Schedule_ClassList_ClassList68Model} instead.
+ * @deprecated Use {@link Wl_Schedule_ClassList_ClassList68Model} instead.
  */
 function Wl_Schedule_ClassList_ClassListModel()
 {

@@ -25,12 +25,25 @@ Wl_Purchase_Item_ItemSid.ACCOUNT_BUSINESS = 11;
 /**
  * Single appointment reservation.
  *
+ * This purchase is created when a worker has charged a client for an appointment.
+ *
+ * This purchase can only be created in POS.
+ *
+ * Key of appointment.
+ *
+ *
+ *
+ * A purchased item that is created during the online booking process {@link RsPurchaseItemSid.SERVICE}.
+ *
  * @type {number}
  */
 Wl_Purchase_Item_ItemSid.APPOINTMENT = 8;
 
 /**
  * Single appointment reservation with deposit.
+ *
+ * This purchase created when client books a single appointment reservation with deposit amount,
+ * to do so appointment should be managed with deposit.
  *
  * @type {number}
  */
@@ -39,12 +52,17 @@ Wl_Purchase_Item_ItemSid.APPOINTMENT_DEPOSIT = 18;
 /**
  * Tips for the appointment.
  *
+ *
+ *
+ * A purchased item that is created during the online booking process {@link RsPurchaseItemSid.SERVICE}.
+ *
  * @type {number}
  */
 Wl_Purchase_Item_ItemSid.APPOINTMENT_TIP = 22;
 
 /**
- * Expense that comes along with the payment business. It contains information about additional services which are included in the package. For example, payment for SMS.
+ * Expense that comes along with the payment business. It contains information about additional services which are
+ * included in the package. For example, payment for SMS.
  *
  * @type {number}
  */
@@ -102,12 +120,17 @@ Wl_Purchase_Item_ItemSid.ENROLLMENT = 4;
 /**
  * Enrollment reservation with a deposit.
  *
+ * This purchase created when client books an enrollment reservation with deposit amount,
+ * to do so enrollment should be managed with deposit.
+ *
  * @type {number}
  */
 Wl_Purchase_Item_ItemSid.ENROLLMENT_DEPOSIT = 19;
 
 /**
  * Enrollment reservation with a discount.
+ *
+ * This purchase created when client books an enrollment reservation with early bird price.
  *
  * @type {number}
  */
@@ -172,19 +195,27 @@ Wl_Purchase_Item_ItemSid.RESOURCE_DEPOSIT = 20;
 /**
  * Purchase item for appointments.
  *
+ * This purchase item is created during the online booking process.
+ *
+ *
+ *
+ * Purchase that is created when a staff adds payment for an appointment at POS {@link RsPurchaseItemSid.APPOINTMENT}.
+ *
  * @type {number}
  */
 Wl_Purchase_Item_ItemSid.SERVICE = 6;
 
 /**
- * Tuition purchase item. Used when client purchases tuition for an event list.
+ * Tuition purchase item.
+ * Used when client purchases tuition for an event list.
  *
  * @type {number}
  */
 Wl_Purchase_Item_ItemSid.TUITION = 26;
 
 /**
- * Tuition fee purchase item. Used when client purchases tuition for an event list.
+ * Tuition fee purchase item.
+ * Used when client purchases tuition for an event list.
  *
  * @type {number}
  */
@@ -192,6 +223,9 @@ Wl_Purchase_Item_ItemSid.TUITION_FEE = 27;
 
 /**
  * Tuition prorate purchase item.
+ *
+ * Represents the amount due right now for a tuition purchase (the part not deferred to the
+ * installment plan).
  *
  * @type {number}
  */

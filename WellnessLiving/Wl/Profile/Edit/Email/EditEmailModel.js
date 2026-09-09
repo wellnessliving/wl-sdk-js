@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Profile_Edit_Email_EditEmail67Model} instead.
+ * @deprecated Use {@link Wl_Profile_Edit_Email_EditEmail67Model} instead.
  */
 function Wl_Profile_Edit_Email_EditEmailModel()
 {

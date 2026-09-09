@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use instead {@link _Wl_Login_Member_MemberValidate63Model}.
+ * @deprecated Use instead {@link Wl_Login_Member_MemberValidate63Model}.
  */
 function Wl_Login_Member_MemberValidateModel()
 {

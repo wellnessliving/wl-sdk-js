@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Core_Google_Captcha_GoogleCaptchaModel} instead of this.
+ * @deprecated Use {@link Core_Google_Captcha_GoogleCaptchaModel} instead of this.
  */
 function Core_Google_GoogleCaptchaModel()
 {

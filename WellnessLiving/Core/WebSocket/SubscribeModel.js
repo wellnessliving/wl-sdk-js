@@ -227,6 +227,7 @@ function Core_WebSocket_SubscribeModel()
    * Channel controller CID.
    *
    * @post post
+   * @see Core_WebSocket_ChannelAbstract
    * @type {number}
    */
   this.cid_channel = 0;
@@ -264,7 +265,7 @@ Core_WebSocket_SubscribeModel.prototype.config=function()
 
 /**
  * Checks whether a listener can subscribe to specified channel.
-Subscribes in a case of positive result.
+ * Subscribes in a case of positive result.
  *
  * Called by the WebSocket client immediately after a connection is established, to register interest in
  * a specific channel (identified by CID and key fields). If the current user is not permitted to receive

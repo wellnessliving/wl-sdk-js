@@ -45,6 +45,7 @@ function Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizat
    *
    * @get get
    * @post get
+   * @see Thoth_ReportCore_Generator_ReportPageAbstract
    * @type {number}
    */
   this.cid_page = 0;
@@ -54,6 +55,7 @@ function Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizat
    *
    * @get get
    * @post get
+   * @see Thoth_ReportCore_Generator_ReportGeneratorReportAbstract
    * @type {number}
    */
   this.cid_report = 0;

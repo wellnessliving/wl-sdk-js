@@ -43,6 +43,7 @@ This variable do not get empty values of filters from HTML forms.
    *
    * @post post
    * @put post
+   * @see Wl_Report_View_ReportViewControllerAbstract
    * @type {number}
    */
   this.cid_controller = 0;

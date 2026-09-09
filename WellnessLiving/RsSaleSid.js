@@ -51,7 +51,7 @@ RsSaleSid.COUPON = 7;
 RsSaleSid.ENROLLMENT = 3;
 
 /**
- * Promotions with program {@link RsProgramSid}.
+ * Promotions with program {@link RsProgramSid.PACKAGE}.
  *
  * @type {number}
  */
@@ -65,28 +65,28 @@ RsSaleSid.PACKAGE = 5;
 RsSaleSid.PRODUCT = 4;
 
 /**
- * Promotions with program category {@link RsProgramCategorySid} and {@link RsProgramCategorySid}.
+ * Promotions with program category {@link RsProgramCategorySid.CLASSES} and {@link RsProgramCategorySid.VISIT}.
  *
  * @type {number}
  */
 RsSaleSid.PROMOTION_CLASS = 1;
 
 /**
- * Promotions with program category {@link RsProgramCategorySid}.
+ * Promotions with program category {@link RsProgramCategorySid.RESOURCE}.
  *
  * @type {number}
  */
 RsSaleSid.PROMOTION_RESOURCE = 9;
 
 /**
- * Promotions with program category {@link RsProgramCategorySid} and {@link RsProgramCategorySid}.
+ * Promotions with program category {@link RsProgramCategorySid.SERVICE} and {@link RsProgramCategorySid.INSURANCE}.
  *
  * @type {number}
  */
 RsSaleSid.PROMOTION_SERVICE = 2;
 
 /**
- * Promotions with program category {@link RsProgramCategorySid}.
+ * Promotions with program category {@link RsProgramCategorySid.VIDEO}.
  *
  * @type {number}
  */

@@ -3,7 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
- * @deprecated Use {@link _Wl_Book_Process_Purchase_Purchase56Model} instead.
+ * @deprecated Use {@link Wl_Book_Process_Purchase_Purchase56Model} instead.
  */
 function Wl_Book_Process_Purchase_PurchaseModel()
 {

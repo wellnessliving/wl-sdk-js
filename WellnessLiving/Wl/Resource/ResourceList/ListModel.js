@@ -44,6 +44,7 @@ function Wl_Resource_ResourceList_ListModel()
    * 2 - if this is an off-site location with its own address.
    *
    * @get get
+   * @see Wl_Resource_ResourceCategoryEnum
    * @type {number}
    */
   this.id_category = 0;

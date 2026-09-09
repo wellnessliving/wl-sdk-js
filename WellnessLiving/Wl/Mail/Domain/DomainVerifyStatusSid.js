@@ -17,7 +17,9 @@ function Wl_Mail_Domain_DomainVerifyStatusSid()
 Wl_Mail_Domain_DomainVerifyStatusSid.FAIL = 2;
 
 /**
- * Domain verification is pending. This is the initial state of the domain verification. After state should be changed to {@link Wl_Mail_Domain_DomainVerifyStatusSid} or {@link Wl_Mail_Domain_DomainVerifyStatusSid}.
+ * Domain verification is pending.
+ * This is the initial state of the domain verification.
+ * After state should be changed to {@link Wl_Mail_Domain_DomainVerifyStatusSid.FAIL} or {@link Wl_Mail_Domain_DomainVerifyStatusSid.SUCCESS}.
  *
  * @type {number}
  */

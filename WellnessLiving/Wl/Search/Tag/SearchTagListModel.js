@@ -41,7 +41,7 @@ Wl_Search_Tag_SearchTagListModel.prototype.config=function()
 
 /**
  * Returns list of search tags.
-This is public information and method does not require any level of privileges.
+ * This is public information and method does not require any level of privileges.
  *
  * Returns the complete list of system-wide search tags used for filtering businesses and
  * services in directory searches. No authentication or input parameters are required.

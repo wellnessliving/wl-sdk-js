@@ -158,8 +158,8 @@ Wl_Integration_Curves_CurvesFranchiseLocationModel.prototype.config=function()
 
 /**
  * Returns country, region, state, city and location lists of the franchisor.
-This method returns all the information from the parent
-`get()` and the Curves territory ID.
+ * This method returns all the information from the parent
+ * `get()` and the Curves territory ID.
  *
  * Extends the parent location list with the Curves-specific territory ID (`k_territory_id`) for each
  * franchisee location by joining against the Curves franchisee integration table.

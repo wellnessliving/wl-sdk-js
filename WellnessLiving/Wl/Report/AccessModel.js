@@ -22,6 +22,7 @@ function Wl_Report_AccessModel()
    * Only one of these two fields should be sent, but not both.
    *
    * @get get
+   * @see Thoth_ReportCore_Generator_ReportGeneratorReportAbstract
    * @type {number}
    */
   this.cid_report = 0;

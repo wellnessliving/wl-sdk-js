@@ -295,7 +295,7 @@ Wl_Drive_ProductImageUploadModel.prototype.config=function()
 
 /**
  * Loads image information for a list of IDs.
-The POST method is used instead of the GET method because the maximum permitted URI length is restricted.
+ * The POST method is used instead of the GET method because the maximum permitted URI length is restricted.
  *
  * Bulk variant of the GET method for pages that must display many images at once. Accepts a JSON-encoded
  * list of entity IDs and returns the same metadata as the single-item GET, loading all images in one
