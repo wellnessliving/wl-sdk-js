@@ -209,6 +209,12 @@ function schemaToJsType(schema, spec, depth, typedefs, typedefName)
       if (typedefs && typedefName && schema.items && !schema.items.$ref)
       {
         const resolvedItems = resolveSchema(schema.items, spec);
+        if (resolvedItems && (resolvedItems.oneOf || resolvedItems.anyOf))
+        {
+          // Typedef name is the field name - each variant becomes TypedefName_A, TypedefName_B, ...
+          const inner = oneOfToJsType(resolvedItems.oneOf || resolvedItems.anyOf, spec, depth + 1, typedefs, typedefName);
+          return prefix + (inner.includes('|') ? '(' + inner + ')' : inner) + '[]';
+        }
         if (resolvedItems && resolvedItems.type === 'object' && resolvedItems.properties)
         {
           // Typedef name equals the field name - type will be TypedefName[].
