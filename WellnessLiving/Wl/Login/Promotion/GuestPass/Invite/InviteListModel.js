@@ -43,7 +43,7 @@ function Wl_Login_Promotion_GuestPass_Invite_InviteListModel()
    * @property {string} dtl_invite Date and time the invitation was sent, in business timezone in MySQL datetime format.
    * @property {?string} dtl_redeem Redemption date and time in business timezone in MySQL datetime format.    `null` if the invitation has not been redeemed.
    * @property {?string} dtl_reject Rejection date and time in business timezone in MySQL datetime format. `null` if the invitation has not been rejected.
-   * @property {?string} dtl_visit Visit date and time in MySQL datetime format. `null` if no visit is associated.
+   * @property {?string} dtl_visit Visit date and time in MySQL datetime format, in the timezone of the location the visit took place at - not necessarily the same as `text_timezone` below, when the guest pass was redeemed at a sibling franchisee business via regional access. `null` if no visit is associated.
    * @property {?string} dtu_accept Acceptance date and time in UTC in MySQL datetime format. `null` if the invitation has not been accepted.
    * @property {?string} dtu_expire Expiry date and time in UTC in MySQL datetime format.    `null` if the invitation has  no expiry date.
    * @property {string} dtu_invite Date and time the invitation was sent, in UTC in MySQL datetime format.
