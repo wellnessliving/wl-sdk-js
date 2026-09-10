@@ -1,0 +1,66 @@
+/**
+ * Adds new device ID for push notifications.
+ *
+ * @augments WlSdk_ModelAbstract
+ * @constructor
+ */
+function Core_Push_PushModel()
+{
+  WlSdk_ModelAbstract.apply(this);
+
+  /**
+   * Application ID. For example 'com.wellnessliving.com'.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.s_application_id = "";
+
+  /**
+   * Device ID.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.s_id = "";
+
+  /**
+   * OS name.
+   * String version of {@link APushOsSid} constants.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.sid_system = "";
+
+  /**
+   * User key.
+   *
+   * @post get
+   * @type {string}
+   */
+  this.uid = "";
+
+  this.changeInit();
+}
+
+WlSdk_ModelAbstract.extend(Core_Push_PushModel);
+
+/**
+ * @inheritDoc
+ */
+Core_Push_PushModel.prototype.config=function()
+{
+  return {"a_field":{"s_application_id":{"post":{"get":true}},"s_id":{"post":{"get":true}},"sid_system":{"post":{"get":true}},"uid":{"post":{"get":true}}}};
+};
+
+/**
+ * Adds new device ID for push notifications.
+ *
+ * Does nothing if user {@link Core_Push_PushModel.uid} already has devise ID {@link Core_Push_PushModel.s_id}.
+ *
+ * @function
+ * @name Core_Push_PushModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
+ */
