@@ -14,8 +14,15 @@ function Wl_Visit_Pay_PayChangeModel()
   this._s_key = "k_business,k_visit,uid";
 
   /**
+   * @typedef {{}} Wl_Visit_Pay_PayChangeModel_a_list_a_logo
+   * @property {number} i_height Image height.
+   * @property {number} i_width Image width.
+   * @property {string} url-thumbnail Thumbnail url.
+   */
+
+  /**
    * @typedef {{}} Wl_Visit_Pay_PayChangeModel_a_list
-   * @property {*[]} a_logo Promotion logo, see result of RsPromotionImageLogo::data(). Empty array for not paid option.
+   * @property {Wl_Visit_Pay_PayChangeModel_a_list_a_logo} a_logo Promotion logo. Empty array for not paid option.
    * @property {boolean} is_select Whether current element selected in the list.
    * @property {string} s_key `0` means 'Single buy', `-1` means 'Not paid'. Otherwise key with next structure: `k_login_promotion:[k_login_promotion]` or `k_session_pass:[k_session_pass]`.
    * @property {string} text_title Title of select option.
@@ -114,6 +121,9 @@ Wl_Visit_Pay_PayChangeModel.prototype.config=function()
 /**
  * Returns data to change visit pay option.
  *
+ * Loads the visit and returns the list of purchase options available for it, marking the
+ * option that is currently applied. Guest visits without a client have no purchase options.
+ *
  * @function
  * @name Wl_Visit_Pay_PayChangeModel.get
  * @returns {WlSdk_Deferred_Promise}
@@ -122,6 +132,10 @@ Wl_Visit_Pay_PayChangeModel.prototype.config=function()
 
 /**
  * Saves user's promotion for certain attendance.
+ *
+ * Applies the selected promotion or session pass to the visit. Does nothing if the selected
+ * option is already applied to the visit. Verifies that the caller has access to the visit
+ * and that the selected promotion belongs to the visit's client before saving the change.
  *
  * @function
  * @name Wl_Visit_Pay_PayChangeModel.post
