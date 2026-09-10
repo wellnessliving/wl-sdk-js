@@ -32,6 +32,13 @@ RsSkinSid.APPLICATION = 13;
 RsSkinSid.APPOINTMENT = 7;
 
 /**
+ * Appointment booking wizard built by microservice widget team.
+ *
+ * @type {number}
+ */
+RsSkinSid.APPOINTMENT_FOREIGN = 22;
+
+/**
  * Online store widget.
  *
  * @type {number}
