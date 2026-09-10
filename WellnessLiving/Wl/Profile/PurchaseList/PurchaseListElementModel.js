@@ -14,11 +14,26 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this._s_key = "k_purchase_item,k_login_promotion,k_code,k_login_product,k_enrollment_book,k_session_pass";
 
   /**
+   * @typedef {{}} Wl_Profile_PurchaseList_PurchaseListElementModel_a_component_A
+   * @property {string} k_enrollment_book The booking enrollment key.
+   * @property {string} k_login_product The key referencing the product a user purchased.
+   * @property {string} k_login_promotion The key of a user's Purchase Option.
+   * @property {string} k_session_pass The key of a user's session pass.
+   */
+
+  /**
+   * @typedef {{}} Wl_Profile_PurchaseList_PurchaseListElementModel_a_component_B
+   * @property {number} id_purchase_item Purchase item type. One of {@link RsPurchaseItemSid} constants.
+   * @property {string} k_id ID of the item. Will be different for different {@link RsPurchaseItemSid} constants.
+   * @property {string} text_title Title of the coupon component.
+   */
+
+  /**
    * A list of components. This won't be empty if this purchase element is a package or a coupon.
    * In the case of a package, every element has keys:
    *
    * @get result
-   * @type {*[]}
+   * @type {(Wl_Profile_PurchaseList_PurchaseListElementModel_a_component_A|Wl_Profile_PurchaseList_PurchaseListElementModel_a_component_B)[]}
    */
   this.a_component = undefined;
 

@@ -34,6 +34,455 @@ function Wl_Quiz_QuizElementModel()
   this.a_access_log = undefined;
 
   /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_A_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_A_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_A_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_A
+   * @property {Wl_Quiz_QuizElementModel_a_element_A_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {number[]} a_answer Answer array for selected question options.
+   * @property {string[]} a_list Array for a dropdown question's options.
+   * @property {string} html_description Additional string for detail description of the question.
+   * @property {string} html_question Main html of the input question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_multiple Answer can have multiple options selected.
+   * @property {boolean} is_require
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} text_description Additional string for detail description of the question.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_question Main text of the input question.
+   * @property {string} xml_description Additional XML for detail description of the question.
+   * @property {string} xml_question Main XML of the input question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_B_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_B_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_B_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_B
+   * @property {Wl_Quiz_QuizElementModel_a_element_B_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {string} html_heading Additional HTML for detail description of the question.
+   * @property {string} html_subheading Main HTML of the input question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require Whether element is required or not.
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} text_heading Additional string for detail description of the question.
+   * @property {string} text_subheading Main text of the input question.
+   * @property {string} xml_heading Additional XML for detail description of the question.
+   * @property {string} xml_subheading Main XML of the input question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_C_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_C_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_C_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_C
+   * @property {Wl_Quiz_QuizElementModel_a_element_C_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {number[]} a_answer Answer array for selected question options.
+   * @property {string[]} a_list Array for a dropdown question's options.
+   * @property {string} html_description Additional string for detail description of the question.
+   * @property {string} html_question Main html of the input question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_multiple Answer can have multiple options selected.
+   * @property {boolean} is_require
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} text_description Additional string for detail description of the question.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_question Main text of the input question.
+   * @property {string} xml_description Additional XML for detail description of the question.
+   * @property {string} xml_question Main XML of the input question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_D_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_D_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_D_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_D
+   * @property {Wl_Quiz_QuizElementModel_a_element_D_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {boolean} has_duplicate Whether this element has a duplicate.
+   * @property {string} html_caption HTML of the image caption.
+   * @property {string} html_heading Main HTML of the image heading.
+   * @property {string} html_subheading Additional HTML for detail description of the image (optional).
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require Whether element is required or not.
+   * @property {string} k_id_source Image source key for duplicate.
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} s_command Command for image save prepare.
+   * @property {string} text_caption Image caption.
+   * @property {string} xml_heading Main XML of the input question.
+   * @property {string} xml_subheading Additional XML for detail description of the question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_E_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_E_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_E_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_E
+   * @property {Wl_Quiz_QuizElementModel_a_element_E_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {*[]} a_markup_image Markup images files.
+   * @property {boolean} can_upload Can user upload custom image.
+   * @property {string} html_heading Main HTML of the input question.
+   * @property {string} html_subheading Additional HTML for detail description of the question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_delete_custom_markup_image ` true ` if custom markup image is to be deleted `false` otherwise.
+   * @property {boolean} is_require
+   * @property {string} k_id Fake id used for image upload.
+   * @property {string} k_id_custom_markup_image Image ID of the temporary uploaded custom markup image to be copied as permanent drive link.
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} s_link_default_markup_image Link of the source default markup image to copy to the element.
+   * @property {string} s_markup_image Post-Markup image binary text.
+   * @property {string} text_heading Main text of the input question.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_subheading Additional string for detail description of the question.
+   * @property {string} url_custom_default_image Custom default image path.
+   * @property {string} xml_heading Main XML of the input question.
+   * @property {string} xml_subheading Additional XML for detail description of the question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_F_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_F_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_F_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_F
+   * @property {Wl_Quiz_QuizElementModel_a_element_F_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {string} html_heading Additional html for detail description of the question.
+   * @property {string} html_signature_footer Footer text of signature pad.
+   * @property {string} html_signature_header Header text of signature pad.
+   * @property {string} html_subheading Main html of the input question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} s_signature Signature binary text.
+   * @property {string} text_heading Additional string for detail description of the question.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_subheading Main text of the input question.
+   * @property {string} xml_heading Additional XML for detail description of the question.
+   * @property {string} xml_subheading Main XML of the input question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_G_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_G_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_G_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_G
+   * @property {Wl_Quiz_QuizElementModel_a_element_G_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {string} html_description Additional HTML for detail description of the question.
+   * @property {string} html_question Main HTML of the input question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} text_answer Answer text for a question.
+   * @property {string} text_description Additional string for detail description of the question.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_question Main text of the input question.
+   * @property {string} xml_description Additional XML for detail description of the question.
+   * @property {string} xml_question Main XML of the input question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_H_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_H_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_H_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_H
+   * @property {Wl_Quiz_QuizElementModel_a_element_H_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require Whether element is required or not.
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_I_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_I_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_I_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_I
+   * @property {Wl_Quiz_QuizElementModel_a_element_I_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {number[]} a_answer Answer array for selected question options.
+   * @property {string[]} a_list Array for a dropdown question's options.
+   * @property {string} html_description Additional string for detail description of the question.
+   * @property {string} html_question Main html of the input question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_multiple Answer can have multiple options selected.
+   * @property {boolean} is_require
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} text_description Additional string for detail description of the question.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_question Main text of the input question.
+   * @property {string} xml_description Additional XML for detail description of the question.
+   * @property {string} xml_question Main XML of the input question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_J_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_J_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_J_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_J
+   * @property {Wl_Quiz_QuizElementModel_a_element_J_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {string} html_description Sub-question html.
+   * @property {string} html_question Question html.
+   * @property {number} i_rate Selected rate.
+   * @property {number} i_scale Rate scale.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} text_description Sub-question text.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_question Question text.
+   * @property {string} xml_description Sub-question XML.
+   * @property {string} xml_question Question XML.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_K_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_K_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_K_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_K
+   * @property {Wl_Quiz_QuizElementModel_a_element_K_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {*[]} a_markup_image Markup images files.
+   * @property {boolean} has_duplicate Whether this element has a duplicate.
+   * @property {string} html_heading Main HTML of the input question.
+   * @property {string} html_subheading Additional HTML for detail description of the question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require
+   * @property {string} k_id_image_left Left response image key.
+   * @property {string} k_id_image_right Right response image key.
+   * @property {string} k_id_source_left Left image source key for duplicate.
+   * @property {string} k_id_source_right Right image source key for duplicate.
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} s_command_left Command for left image save prepare.
+   * @property {string} s_command_right Command for right image save prepare.
+   * @property {string} s_markup_image Post-Markup image binary text.
+   * @property {string} text_left_image Title for left image.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_right_image Title for right image.
+   * @property {string} xml_heading Main XML of the input question.
+   * @property {string} xml_subheading Additional XML for detail description of the question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_L_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_L_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_L_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_L
+   * @property {Wl_Quiz_QuizElementModel_a_element_L_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {string} html_heading Additional html for detail description of the question.
+   * @property {string} html_signature_footer Footer text of signature pad.
+   * @property {string} html_signature_header Header text of signature pad.
+   * @property {string} html_subheading Main html of the input question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} s_signature Signature binary text.
+   * @property {string} text_heading Additional string for detail description of the question.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_subheading Main text of the input question.
+   * @property {string} xml_heading Additional XML for detail description of the question.
+   * @property {string} xml_subheading Main XML of the input question.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_M_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_M_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_M_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_M
+   * @property {Wl_Quiz_QuizElementModel_a_element_M_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {string} html_content Main content HTML.
+   * @property {string} html_heading Heading HTML.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require Whether element is required or not.
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} text_content Main content text.
+   * @property {string} text_heading Heading text.
+   * @property {string} xml_content Main content XML.
+   * @property {string} xml_heading Heading XML.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_N_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_N_a_amendment
+   * @property {Wl_Quiz_QuizElementModel_a_element_N_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElementModel_a_element_N
+   * @property {Wl_Quiz_QuizElementModel_a_element_N_a_amendment} a_amendment List of amendments. Each element has next structure:
+   * @property {string} html_description Additional HTML for detail description of the question.
+   * @property {string} html_question Main HTML of the input question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   * @property {boolean} is_require
+   * @property {?string} k_quiz_element Quiz element key.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   * @property {string} text_answer Answer text for a question.
+   * @property {string} text_description Additional string for detail description of the question.
+   * @property {?string} text_note Additional note for response.
+   * @property {string} text_question Main text of the input question.
+   * @property {string} xml_description Additional XML for detail description of the question.
+   * @property {string} xml_question Main XML of the input question.
+   */
+
+  /**
    * List of quiz elements.
    *
    * Each element responsible for one quiz element and structure of each value depend
@@ -43,7 +492,7 @@ function Wl_Quiz_QuizElementModel()
    *
    * @get result
    * @post post
-   * @type {*[]}
+   * @type {(Wl_Quiz_QuizElementModel_a_element_A|Wl_Quiz_QuizElementModel_a_element_B|Wl_Quiz_QuizElementModel_a_element_C|Wl_Quiz_QuizElementModel_a_element_D|Wl_Quiz_QuizElementModel_a_element_E|Wl_Quiz_QuizElementModel_a_element_F|Wl_Quiz_QuizElementModel_a_element_G|Wl_Quiz_QuizElementModel_a_element_H|Wl_Quiz_QuizElementModel_a_element_I|Wl_Quiz_QuizElementModel_a_element_J|Wl_Quiz_QuizElementModel_a_element_K|Wl_Quiz_QuizElementModel_a_element_L|Wl_Quiz_QuizElementModel_a_element_M|Wl_Quiz_QuizElementModel_a_element_N)[]}
    */
   this.a_element = undefined;
 
