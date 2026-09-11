@@ -15,7 +15,6 @@ function Wl_User_Info_UserListInfoModel()
 
   /**
    * @typedef {{}} Wl_User_Info_UserListInfoModel_a_user_data
-   * @property {*[]} a_relation Relation between the user and family members. Keys are UIDs of relatives, values - relation type from {@link RsFamilyRelationSid}.
    * @property {number} id_gender Gender type, One of {@link Wl_Gender_GenderSid} constants. Empty means that client is not selected gender type.
    * @property {boolean} is_address_inherited Whether an address of a user is inherited from a relative `true` - inherited, `false` - otherwise.
    * @property {boolean} is_inherited Whether an email of a user is inherited from a relative. `true` - inherited, `false` - otherwise.
