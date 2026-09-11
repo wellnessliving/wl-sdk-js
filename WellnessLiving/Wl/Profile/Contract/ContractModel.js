@@ -14,9 +14,20 @@ function Wl_Profile_Contract_ContractModel()
   this._s_key = "uid,k_business,k_location,id_purchase_item,k_id,k_purchase_item,m_price_custom,s_discount_code";
 
   /**
+   * @typedef {{}} Wl_Profile_Contract_ContractModel_a_config_a_event_list
+   * @property {string} k_class Key of the event class.
+   * @property {string} uid Key of the tuition participant.
+   */
+
+  /**
+   * @typedef {{}} Wl_Profile_Contract_ContractModel_a_config_a_registration_fee_list
+   * @property {string} m_amount Registration fee amount for the tuition participant.
+   */
+
+  /**
    * @typedef {{}} Wl_Profile_Contract_ContractModel_a_config
-   * @property {*[]} a_event_list The tuition class schedule selected for the participant.
-   * @property {*[]} a_registration_fee_list Registration fees to charge together with the tuition, keyed by participant key.
+   * @property {Wl_Profile_Contract_ContractModel_a_config_a_event_list} a_event_list The tuition class schedule selected for the participant. Each element has the next keys:
+   * @property {Wl_Profile_Contract_ContractModel_a_config_a_registration_fee_list} a_registration_fee_list Registration fees to charge together with the tuition, keyed by participant key.  Each value has the next keys:
    */
 
   /**
@@ -33,7 +44,7 @@ function Wl_Profile_Contract_ContractModel()
   /**
    * @typedef {{}} Wl_Profile_Contract_ContractModel_a_contract_list
    * @property {string} html_contract The text of this specific contract.
-   * @property {string} uid Key of the visitor this contract applies to. Primary key in PassportLoginSql.
+   * @property {string} uid Key of the visitor this contract applies to.
    */
 
   /**
