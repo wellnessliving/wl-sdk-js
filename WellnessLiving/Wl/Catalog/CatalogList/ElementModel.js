@@ -29,12 +29,12 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The age restriction configuration.
    *
    * Age restrictions for an item apply when they're configured for a specific item and the API is requested from the backend
-   * or when age restriction are public.
+   * or when age restriction are public. `null` if age restrictions are not set for the item.
    *
    * @get result
-   * @type {Wl_Catalog_CatalogList_ElementModel_a_age_restriction}
+   * @type {?Wl_Catalog_CatalogList_ElementModel_a_age_restriction}
    */
-  this.a_age_restriction = undefined;
+  this.a_age_restriction = null;
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data_a_component
@@ -65,6 +65,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {number} id_activation Type of a coupon activation date specification. One of {@link Wl_Coupon_Edit_ActivationSid} constants.
    * @property {number} id_duration Duration of a period. A constant from {@link ADurationSid}.
    * @property {number} id_duration_type A way to specify a duration. One of {@link Wl_Coupon_Edit_DurationTypeSid} constants.
+   * @property {boolean} is_price_breakdown Whether to display individual prices for each item in the package.
    * @property {boolean} is_renew_public This applies only for promotions. `true` - clients can set promotion auto-renew. `false` - clients can't set promotion auto-renew.
    */
 
@@ -87,7 +88,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_discount_code
    * @property {string} f_amount The fixed amount of the discount.
-   * @property {number} f_percent The percentage amount of the discount.
+   * @property {string} f_percent The percentage amount of the discount.
    * @property {number} i_limit Limitation.
    * @property {string} k_discount_code The discount code key.
    * @property {string} s_discount_code The discount code value.
@@ -108,14 +109,14 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {?number} i_period Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.
    * @property {?number} id_period Period type by which guest pass limits are reset. `null` for unlimited guest pass.
    * @property {?number} id_reset_type Type by which guest pass limits are reset. One of {@link Wl_Promotion_Guest_Pass_GuestPassResetTypeSid} constants.     `null` for unlimited guest pass.
-   * @property {string} k_promotion_guest Guest pass promotion key.
+   * @property {string} k_promotion_guest Guest pass promotion key. Primary key from RsPromotionSql table.
    * @property {string} text_limit Formatted guest pass limits.
    * @property {string} text_title Guest pass promotion title.
    */
 
   /**
    * Information about promotion guest pass. Empty array if promotion does not have guest pass or
-   * guest pass is not enabled. Has follow structure:
+   * guest pass is not enabled.
    *
    * @get result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_guest_pass}
@@ -144,13 +145,14 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_image_list
    * @property {number} i_height The height in pixels.
    * @property {number} i_width The width in pixels.
-   * @property {boolean} is_empty `true` - item has no image (in this case ignore other keys of this array). `false` - item has an image.
+   * @property {boolean} is_empty `true` - the item has no image (in this case, ignore the other keys of this array). `false` - the item has an image.
    * @property {string} s_url The image URL.
    */
 
   /**
    * List of images.
-   * Keys are index and value is below information:
+   *
+   * Keys are index and each element hase same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_image} field.
    *
    * @get result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_image_list[]}
@@ -177,8 +179,48 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.a_installment_template = undefined;
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_component
+   * @property {number} id_program Program ID. One of {@link RsProgramSid} ID's. Only applies to promotions.
+   * @property {number} id_purchase_item Purchase item ID. One of {@link RsPurchaseItemSid} ID's.
+   * @property {number} id_sale Sale ID. One of {@link RsSaleSid} ID's.
+   * @property {string} k_id The identifier of the item.
+   * @property {string} text_title The title of the item.
+   */
+
+  /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_staff
+   * @property {string} k_staff @deprecated Legacy staff key.  Deprecated, use `uid_staff`.
+   * @property {string} text_family Staff last name.
+   * @property {string} text_staff Staff display name.
+   * @property {string} uid_staff Staff user key.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_data
-   * @property {boolean} is_price_breakdown Whether to display individual prices for each item in the package. `true` display individual prices for each item in the package, `false` display a single total price for the package.
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_component} a_component This applies only for coupons. Coupon components information. Each element will contain the following keys:
+   * @property {number[]} a_service_access Access to services for a purchase option. Keys are one of the {@link Wl_Service_ServiceSid} constants, values are one of the {@link AFlagSid} constants. Set only for relevant purchase option service category. {@link AFlagSid} access to some services. {@link AFlagSid} no access to services. It can be set only for classes and events. {@link AFlagSid} access to all services. It can be set only for classes and events. For purchase options with appointments and assets service category status is always {@link AFlagSid}.
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_staff} a_staff This applies to enrollment/event items. Staff list for class periods. Each element contains:
+   * @property {string} dl_expire Date of expiration of coupon, local date in MySQL format.
+   * @property {string} dl_now Current date, local date in MySQL format.
+   * @property {string} dl_start Date to activate the coupon on, local date in MySQL format.   When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.
+   * @property {number} i_duration Number of periods the coupon is active. Type of a period is specified by `id_duration`.
+   * @property {number} id_activation Type of a coupon activation date specification. One of {@link Wl_Coupon_Edit_ActivationSid} constants.
+   * @property {number} id_duration Duration of a period. A constant from {@link ADurationSid}.
+   * @property {number} id_duration_type A way to specify a duration. One of {@link Wl_Coupon_Edit_DurationTypeSid} constants.
+   * @property {boolean} is_price_breakdown Whether to display individual prices for each item in the package.
+   * @property {boolean} is_renew_public This applies only for promotions. `true` - clients can set promotion auto-renew. `false` - clients can't set promotion auto-renew.
+   */
+
+  /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_guest_pass
+   * @property {?number} i_limit Number of times guest pass can be used per period. `null` for unlimited guest pass.
+   * @property {?number} i_limit_daily Number of times guest pass can be used per day. `null` for limited guest pass.
+   * @property {?number} i_period Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.
+   * @property {?number} id_period Period type by which guest pass limits are reset. `null` for unlimited guest pass.
+   * @property {?number} id_reset_type Type by which guest pass limits are reset. One of {@link Wl_Promotion_Guest_Pass_GuestPassResetTypeSid} constants.     `null` for unlimited guest pass.
+   * @property {string} k_promotion_guest Guest pass promotion key. Primary key from RsPromotionSql table.
+   * @property {string} text_limit Formatted guest pass limits.
+   * @property {string} text_title Guest pass promotion title.
    */
 
   /**
@@ -204,21 +246,11 @@ function Wl_Catalog_CatalogList_ElementModel()
    */
 
   /**
-   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_tax
-   * @property {number} f_tax The calculated tax amount applied by this rule.
-   * @property {string} f_tax_discount The tax amount after applying all discounts.
-   * @property {string} f_tax_discount_login The tax amount after applying the client type discount only.
-   * @property {number} f_value The tax rate. Its meaning depends on `id_tax`.
-   * @property {number} id_tax The tax type. One of {@link RsTaxSid} constants.
-   * @property {string} k_tax The tax key.
-   * @property {string} s_tax The tax name.
-   */
-
-  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item
-   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data} a_data Contains additional data for the sale item. For Package, it contains also the following key:
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data} a_data Contains additional data for the sale item. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_data} has.
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_guest_pass} a_guest_pass Information about promotion guest pass. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_guest_pass} has.
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_image} a_image Contains information about one image connected to a sale item.
-   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_tax} a_tax Contains information about taxes.
+   * @property {string[]} a_tax Tax amounts keyed by tax key. Keys are primary keys in the RsTaxSql table.
    * @property {number} id_purchase_option_view The Purchase Option view type. One of the {@link Wl_Catalog_PurchaseOptionViewSid} constants.
    * @property {string} m_discount_code The discount code amount.
    * @property {string} m_discount_login The discount amount for the client type.
@@ -240,7 +272,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_sale_id_group
    * @property {number} id_sale The item category ID. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The primary key of item.
-   * @property {string} k_shop_product_option The product option or `0` for any other cases.
+   * @property {string} k_shop_product_option The product option key or `0` for any other cases.
    */
 
   /**
@@ -253,22 +285,11 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.a_sale_id_group = undefined;
 
   /**
-   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_tax
-   * @property {number} f_tax The calculated tax amount applied by this rule.
-   * @property {string} f_tax_discount The tax amount after applying all discounts.
-   * @property {string} f_tax_discount_login The tax amount after applying the client type discount only.
-   * @property {number} f_value The tax rate. Its meaning depends on `id_tax`.
-   * @property {number} id_tax The tax type. One of {@link RsTaxSid} constants.
-   * @property {string} k_tax The tax key.
-   * @property {string} s_tax The tax name.
-   */
-
-  /**
    * A list of the item's taxes.
-   * Keys refer tax keys, and values refer to the amount of tax.
+   * Keys are tax keys, and values are tax amounts.
    *
    * @get result
-   * @type {Wl_Catalog_CatalogList_ElementModel_a_tax[]}
+   * @type {string[]}
    */
   this.a_tax = undefined;
 
