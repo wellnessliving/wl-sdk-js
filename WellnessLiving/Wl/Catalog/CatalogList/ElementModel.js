@@ -107,9 +107,9 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {?number} i_limit Number of times guest pass can be used per period. `null` for unlimited guest pass.
    * @property {?number} i_limit_daily Number of times guest pass can be used per day. `null` for limited guest pass.
    * @property {?number} i_period Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.
-   * @property {?number} id_period Period type by which guest pass limits are reset. `null` for unlimited guest pass.
+   * @property {number} id_period Period type by which guest pass limits are reset. One of the {@link ADurationSid} constants. `null` for unlimited guest pass.
    * @property {?number} id_reset_type Type by which guest pass limits are reset. One of {@link Wl_Promotion_Guest_Pass_GuestPassResetTypeSid} constants.     `null` for unlimited guest pass.
-   * @property {string} k_promotion_guest Guest pass promotion key. Primary key from RsPromotionSql table.
+   * @property {string} k_promotion_guest Guest pass promotion key.
    * @property {string} text_limit Formatted guest pass limits.
    * @property {string} text_title Guest pass promotion title.
    */
@@ -216,9 +216,9 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {?number} i_limit Number of times guest pass can be used per period. `null` for unlimited guest pass.
    * @property {?number} i_limit_daily Number of times guest pass can be used per day. `null` for limited guest pass.
    * @property {?number} i_period Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.
-   * @property {?number} id_period Period type by which guest pass limits are reset. `null` for unlimited guest pass.
+   * @property {number} id_period Period type by which guest pass limits are reset. One of the {@link ADurationSid} constants. `null` for unlimited guest pass.
    * @property {?number} id_reset_type Type by which guest pass limits are reset. One of {@link Wl_Promotion_Guest_Pass_GuestPassResetTypeSid} constants.     `null` for unlimited guest pass.
-   * @property {string} k_promotion_guest Guest pass promotion key. Primary key from RsPromotionSql table.
+   * @property {string} k_promotion_guest Guest pass promotion key.
    * @property {string} text_limit Formatted guest pass limits.
    * @property {string} text_title Guest pass promotion title.
    */
@@ -250,7 +250,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data} a_data Contains additional data for the sale item. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_data} has.
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_guest_pass} a_guest_pass Information about promotion guest pass. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_guest_pass} has.
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_image} a_image Contains information about one image connected to a sale item.
-   * @property {string[]} a_tax Tax amounts keyed by tax key. Keys are primary keys in the RsTaxSql table.
+   * @property {string[]} a_tax Tax amounts keyed by tax key. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_tax} has.
    * @property {number} id_purchase_option_view The Purchase Option view type. One of the {@link Wl_Catalog_PurchaseOptionViewSid} constants.
    * @property {string} m_discount_code The discount code amount.
    * @property {string} m_discount_login The discount amount for the client type.
