@@ -28,7 +28,7 @@ function Wl_Book_Process_ProcessGroupModel()
   /**
    * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_client_a_purchase_item
    * @property {Wl_Book_Process_ProcessGroupModel_a_client_a_purchase_item_a_config} a_config Additional configuration data. Required when `id_purchase_item` is          {@link RsPurchaseItemSid}. Has the following keys:
-   * @property {{}} a_signature Signatures for a purchase option that requires agreement to several distinct          contracts at once (for example, one per Tuition visitor). Keyed by string `{uid}-{id_purchase_item}-{k_id}`.
+   * @property {*[]} a_signature Signatures for a purchase option that requires agreement to several distinct          contracts at once (for example, one per Tuition visitor). Keyed by string `{uid}-{id_purchase_item}-{k_id}`.
    * @property {number} i_count Number of options to purchase. Specify only if you want to pay a class booking by Drop-In.
    * @property {number} id_purchase_item Kind of option to purchase. One of {@link RsPurchaseItemSid} constants.          Specify only if you want to purchase a new option.
    * @property {boolean} is_owner `true` if client is owner of this purchase option.          This means that this purchase option will be purchased for this client, even if another client          can share a similar purchase option.

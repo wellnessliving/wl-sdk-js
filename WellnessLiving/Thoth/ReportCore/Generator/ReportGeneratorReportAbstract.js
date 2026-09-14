@@ -314,6 +314,14 @@ Thoth_ReportCore_Generator_ReportGeneratorReportAbstract.MemberReport = 1287;
 Thoth_ReportCore_Generator_ReportGeneratorReportAbstract.MembershipDetailReport = 1448;
 
 /**
+ * External membership report.
+ * Is developed as microservice. This class only provides access validation and URL generation.
+ *
+ * @type {number}
+ */
+Thoth_ReportCore_Generator_ReportGeneratorReportAbstract.MembershipReport = 2352;
+
+/**
  * Franchise "Memberships Summary by Location" report.
  *
  * @type {number}

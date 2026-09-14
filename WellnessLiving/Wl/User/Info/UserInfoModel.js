@@ -74,6 +74,7 @@ function Wl_User_Info_UserInfoModel()
    * @property {string} dt_add The date the user was added, given in UTC time.
    * @property {string} dt_birth The user's birthday. This will be `null` if the birthday isn't set yet.
    * @property {number} id_gender The ID of the user's gender. One of the {@link AGenderSid} constants.
+   * @property {number} id_language The ID of the language that is effective for the user.
    * @property {boolean} is_customer_new This will be `true` if the user has never made purchases or reservations in this business. Otherwise, this will be `false`.
    * @property {boolean} is_traveller This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location in the Enterprise business.
    * @property {string} k_business The key of the business. This may be empty if system-wide information is needed.
@@ -152,6 +153,15 @@ function Wl_User_Info_UserInfoModel()
    * @type {number}
    */
   this.id_gender = undefined;
+
+  /**
+   * The ID of the language that is currently effective for the user.
+   *
+   * @get result
+   * @see Core_Locale_Language_LocaleLanguageSid
+   * @type {number}
+   */
+  this.id_language = undefined;
 
   /**
    * This will be `true` if the user has Google Calendar linked to their account; otherwise, `false`.
@@ -345,7 +355,7 @@ WlSdk_ModelAbstract.extend(Wl_User_Info_UserInfoModel);
  */
 Wl_User_Info_UserInfoModel.prototype.config=function()
 {
-  return {"a_field":{"a_custom_field":{"get":{"result":true}},"a_member_group":{"get":{"result":true}},"a_photo":{"get":{"result":true}},"a_result_list":{"get":{"result":true}},"a_user_list":{"get":{"get":true}},"can_introductory":{"get":{"result":true}},"dt_add":{"get":{"result":true}},"dt_birth":{"get":{"result":true}},"has_discount":{"get":{"result":true}},"id_gender":{"get":{"result":true}},"is_calendar_google":{"get":{"result":true}},"is_calendar_microsoft":{"get":{"result":true}},"is_customer_new":{"get":{"result":true}},"is_traveller":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_city":{"get":{"result":true}},"k_login_type":{"get":{"result":true}},"not_cached":{"get":{"get":true}},"s_first_name":{"get":{"result":true}},"s_last_name":{"get":{"result":true}},"s_mail":{"get":{"result":true}},"s_member":{"get":{"result":true}},"s_phone":{"get":{"result":true}},"s_phone_home":{"get":{"result":true}},"s_phone_work":{"get":{"result":true}},"text_address":{"get":{"result":true}},"text_city":{"get":{"result":true}},"text_login_type":{"get":{"result":true}},"text_postal":{"get":{"result":true}},"uid":{"get":{"get":true,"result":true}},"url_photo":{"get":{"result":true}}}};
+  return {"a_field":{"a_custom_field":{"get":{"result":true}},"a_member_group":{"get":{"result":true}},"a_photo":{"get":{"result":true}},"a_result_list":{"get":{"result":true}},"a_user_list":{"get":{"get":true}},"can_introductory":{"get":{"result":true}},"dt_add":{"get":{"result":true}},"dt_birth":{"get":{"result":true}},"has_discount":{"get":{"result":true}},"id_gender":{"get":{"result":true}},"id_language":{"get":{"result":true}},"is_calendar_google":{"get":{"result":true}},"is_calendar_microsoft":{"get":{"result":true}},"is_customer_new":{"get":{"result":true}},"is_traveller":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_city":{"get":{"result":true}},"k_login_type":{"get":{"result":true}},"not_cached":{"get":{"get":true}},"s_first_name":{"get":{"result":true}},"s_last_name":{"get":{"result":true}},"s_mail":{"get":{"result":true}},"s_member":{"get":{"result":true}},"s_phone":{"get":{"result":true}},"s_phone_home":{"get":{"result":true}},"s_phone_work":{"get":{"result":true}},"text_address":{"get":{"result":true}},"text_city":{"get":{"result":true}},"text_login_type":{"get":{"result":true}},"text_postal":{"get":{"result":true}},"uid":{"get":{"get":true,"result":true}},"url_photo":{"get":{"result":true}}}};
 };
 
 /**

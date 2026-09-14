@@ -384,6 +384,14 @@ Wl_Report_View_ReportViewControllerAbstract.MembershipDetailReportController = 1
 Wl_Report_View_ReportViewControllerAbstract.MembershipDetailReportYoyController = 1496;
 
 /**
+ * External membership report.
+ * Is developed as microservice. This class only provides access validation and URL generation.
+ *
+ * @type {number}
+ */
+Wl_Report_View_ReportViewControllerAbstract.MembershipReportController = 2355;
+
+/**
  * Franchise "Memberships Summary by Location" report controller. Table representation.
  *
  * @type {number}
