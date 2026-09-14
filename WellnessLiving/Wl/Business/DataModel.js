@@ -78,6 +78,15 @@ function Wl_Business_DataModel()
   this.id_currency = undefined;
 
   /**
+   * Default language of the business.
+   *
+   * @get result
+   * @see Core_Locale_Language_LocaleLanguageSid
+   * @type {number}
+   */
+  this.id_language = undefined;
+
+  /**
    * The Locale ID, used to search geo items.
    *
    * @get result
@@ -288,6 +297,22 @@ function Wl_Business_DataModel()
   this.text_token = "";
 
   /**
+   * The URL for the online store.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_catalog = "";
+
+  /**
+   * The URL for client sign in.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_enter = "";
+
+  /**
    * The Facebook page.
    *
    * @get result
@@ -344,6 +369,38 @@ function Wl_Business_DataModel()
   this.url_logo_empty = undefined;
 
   /**
+   * The URL to redeem gift card.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_redeem = "";
+
+  /**
+   * The URL for the client review page.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_review = "";
+
+  /**
+   * The URL for the client web app (schedule).
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_schedule = "";
+
+  /**
+   * The URL for client sign up.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_signup = "";
+
+  /**
    * The Twitter page.
    *
    * @get result
@@ -377,7 +434,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_DataModel);
  */
 Wl_Business_DataModel.prototype.config=function()
 {
-  return {"a_field": {"a_service_list": {"get": {"result": true}},"a_tip_predefine": {"get": {"result": true}},"i_logo_height": {"get": {"get": true}},"i_logo_width": {"get": {"get": true}},"id_category": {"get": {"result": true}},"id_claim_status": {"get": {"result": true}},"id_currency": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"id_rank_type": {"get": {"result": true}},"id_region": {"get": {"result": true}},"is_apply_surcharge": {"get": {"result": true}},"is_franchise": {"get": {"result": true}},"is_location_multiple": {"get": {"result": true}},"is_profile_timezone": {"get": {"result": true}},"is_progress_client": {"get": {"result": true}},"is_progress_verify": {"get": {"result": true}},"is_quiz_available": {"get": {"result": true}},"is_test": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"is_tip_deny": {"get": {"result": true}},"is_tip_sign": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_business_franchisor": {"get": {"result": true}},"k_business_token": {"get": {"result": true}},"k_business_type": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"s_reply_mail": {"get": {"result": true}},"s_reply_name": {"get": {"result": true}},"text_office_address": {"get": {"result": true}},"text_title": {"get": {"result": true}},"text_token": {"get": {"get": true}},"url_facebook": {"get": {"result": true}},"url_google": {"get": {"result": true}},"url_home_tour": {"get": {"result": true}},"url_instagram": {"get": {"result": true}},"url_linkedin": {"get": {"result": true}},"url_logo": {"get": {"result": true}},"url_logo_empty": {"get": {"result": true}},"url_twitter": {"get": {"result": true}},"url_website": {"get": {"result": true}},"url_youtube": {"get": {"result": true}}}};
+  return {"a_field": {"a_service_list": {"get": {"result": true}},"a_tip_predefine": {"get": {"result": true}},"i_logo_height": {"get": {"get": true}},"i_logo_width": {"get": {"get": true}},"id_category": {"get": {"result": true}},"id_claim_status": {"get": {"result": true}},"id_currency": {"get": {"result": true}},"id_language": {"get": {"result": true}},"id_locale": {"get": {"result": true}},"id_rank_type": {"get": {"result": true}},"id_region": {"get": {"result": true}},"is_apply_surcharge": {"get": {"result": true}},"is_franchise": {"get": {"result": true}},"is_location_multiple": {"get": {"result": true}},"is_profile_timezone": {"get": {"result": true}},"is_progress_client": {"get": {"result": true}},"is_progress_verify": {"get": {"result": true}},"is_quiz_available": {"get": {"result": true}},"is_test": {"get": {"result": true}},"is_tip": {"get": {"result": true}},"is_tip_deny": {"get": {"result": true}},"is_tip_sign": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_business_franchisor": {"get": {"result": true}},"k_business_token": {"get": {"result": true}},"k_business_type": {"get": {"result": true}},"k_currency": {"get": {"result": true}},"s_reply_mail": {"get": {"result": true}},"s_reply_name": {"get": {"result": true}},"text_office_address": {"get": {"result": true}},"text_title": {"get": {"result": true}},"text_token": {"get": {"get": true}},"url_catalog": {"get": {"result": true}},"url_enter": {"get": {"result": true}},"url_facebook": {"get": {"result": true}},"url_google": {"get": {"result": true}},"url_home_tour": {"get": {"result": true}},"url_instagram": {"get": {"result": true}},"url_linkedin": {"get": {"result": true}},"url_logo": {"get": {"result": true}},"url_logo_empty": {"get": {"result": true}},"url_redeem": {"get": {"result": true}},"url_review": {"get": {"result": true}},"url_schedule": {"get": {"result": true}},"url_signup": {"get": {"result": true}},"url_twitter": {"get": {"result": true}},"url_website": {"get": {"result": true}},"url_youtube": {"get": {"result": true}}}};
 };
 
 /**
