@@ -19,21 +19,15 @@ function Wl_User_Info_UserInfoModel()
    * @typedef {{}} Wl_User_Info_UserInfoModel_a_custom_field
    * @property {string} k_field Field key.
    * @property {string} text_title Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.
-   * @property {string} text_value Value of the field.
+   * @property {string} text_value Value of the field. This is the key of the selected item for `select` and `radio` elements.
+   * @property {string} text_value_title Title of the selected option for `select` and `radio` elements. Unused for other elements.
    */
 
   /**
-   * List of the custom user fields:<dl>
-   *    <dt>string <var>k_field</var></dt>
-   *    <dd>Field key.</dd>
-   *    <dt>string <var>text_title</var></dt>
-   *    <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
-   *    <dt>string <var>text_value</var></dt>
-   *    <dd>Value of the field.</dd>
-   * </dl>
+   * List of the custom user fields. Each value is:
    *
    * @get result
-   * @type {Wl_User_Info_UserInfoModel_a_custom_field}
+   * @type {Wl_User_Info_UserInfoModel_a_custom_field[]}
    */
   this.a_custom_field = [];
 
@@ -53,16 +47,7 @@ function Wl_User_Info_UserInfoModel()
    */
 
   /**
-   * Information about the user's photo. The information returned has the following structure:<dl>
-   *   <dt>int <var>i_height</var></dt>
-   *   <dd>The height of the photo.</dd>
-   *
-   *   <dt>int <var>i_width</var></dt>
-   *   <dd>The width of the photo.</dd>
-   *
-   *   <dt>string <var>url_photo</var></dt>
-   *   <dd>The URL of the photo.</dd>
-   * </dl>
+   * Information about the user's photo. The information returned has the following structure:
    *
    * @get result
    * @type {Wl_User_Info_UserInfoModel_a_photo}
@@ -70,12 +55,28 @@ function Wl_User_Info_UserInfoModel()
   this.a_photo = undefined;
 
   /**
+   * @typedef {{}} Wl_User_Info_UserInfoModel_a_result_list_a_photo
+   * @property {number} i_height The height of the photo.
+   * @property {number} i_width The width of the photo.
+   * @property {string} url_photo The URL of the photo.
+   */
+  /**
+   * @typedef {{}} Wl_User_Info_UserInfoModel_a_result_list_a_custom_field
+   * @property {string} k_field Field key.
+   * @property {string} text_title Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.
+   * @property {string} text_value Value of the field.
+   */
+  /**
    * @typedef {{}} Wl_User_Info_UserInfoModel_a_result_list
-   * @property {{}} a_member_group List of member groups that the user belongs to.
-   * @property {{}} a_photo Information about the user's photo.
+   * @property {Wl_User_Info_UserInfoModel_a_result_list_a_custom_field} a_custom_field List of the custom user fields. Each value is:
+   * @property {string[]} a_member_group List of member groups that the user belongs to.
+   *
+   * @property {Wl_User_Info_UserInfoModel_a_result_list_a_photo} a_photo Information about the user's photo.
    * @property {string} dt_add The date the user was added, given in UTC time.
    * @property {string} dt_birth The user's birthday. This will be `null` if the birthday isn't set yet.
-   * @property {number} id_gender The ID of the user's gender. One of the {@link Wl_Gender_GenderSid} constants.
+   * @property {number} id_gender The ID of the user's gender. One of the {@link AGenderSid} constants.
+   * @property {number} id_language The ID of the language that is effective for the user.
+   *
    * @property {boolean} is_customer_new This will be `true` if the user has never made purchases or reservations in this business.
    * Otherwise, this will be `false`.
    * @property {boolean} is_traveller This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
@@ -98,70 +99,6 @@ function Wl_User_Info_UserInfoModel()
   /**
    * List of user's data.
    *
-   * <dl>
-   *   <dt>array <var>a_custom_field</var></dt>
-   *      <dd>List of the custom user fields:<dl>
-   *      <dt>string <var>k_field</var></dt>
-   *      <dd>Field key. Primary key in {@link \RsFieldSql} table.</dd>
-   *      <dt>string <var>text_title</var></dt>
-   *      <dd>Name of the field. Will be <tt>null</tt> for general fields. Their titles are static.</dd>
-   *      <dt>string <var>text_value</var></dt>
-   *      <dd>Value of the field.</dd>
-   *   </dl></dd>
-   *   <dt>array <var>a_member_group</var></dt>
-   *   <dd>List of member groups that the user belongs to.</dd>
-   *   <dt>array <var>a_photo</var></dt>
-   *   <dd>Information about the user's photo.</dd>
-   *   <dt>string <var>dt_add</var></dt>
-   *   <dd>The date the user was added, given in UTC time.</dd>
-   *   <dt>string <var>dt_birth</var></dt>
-   *   <dd>
-   *     The user's birthday. This will be `null` if the birthday isn't set yet.
-   *   </dd>
-   *   <dt>int <var>id_gender</var></dt>
-   *   <dd>The ID of the user's gender. One of the {@link Wl_Gender_GenderSid} constants.</dd>
-   *   <dt>bool <var>is_customer_new</var></dt>
-   *   <dd>
-   *     This will be `true` if the user has never made purchases or reservations in this business.
-   *     Otherwise, this will be `false`.
-   *   </dd>
-   *   <dt>bool <var>is_traveller</var></dt>
-   *   <dd>
-   *     This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location
-   *     in the Enterprise business.
-   *   </dd>
-   *   <dt>string <var>k_business</var></dt>
-   *   <dd>
-   *     The key of the business.
-   *     This may be empty if system-wide information is needed.
-   *   </dd>
-   *   <dt>string <var>k_login_type</var></dt>
-   *   <dd>The key of the login type. The login type describes the user's client type in this business.</dd>
-   *   <dt>string <var>s_first_name</var></dt>
-   *   <dd>The user's first name.</dd>
-   *   <dt>string <var>s_last_name</var></dt>
-   *   <dd>The user's last name.</dd>
-   *   <dt>string <var>s_mail</var></dt>
-   *   <dd>The user's email address.</dd>
-   *   <dt>string <var>s_member</var></dt>
-   *   <dd>
-   *     The user's member ID in the business. Also referred to as the client ID in the client's profile. This value
-   *     is set by the business and separate from the <var>uid</var> value.
-   *   </dd>
-   *   <dt>string <var>s_phone</var></dt>
-   *   <dd>
-   *     The user's phone number.
-   *   </dd>
-   *   <dt>string <var>s_phone_home</var></dt>
-   *   <dd>The user's home phone number.</dd>
-   *   <dt>string <var>s_phone_work</var></dt>
-   *   <dd>The user's work phone number.</dd>
-   *   <dt>string <var>uid</var></dt>
-   *   <dd>The key of the user.</dd>
-   *   <dt>string <var>url_photo</var></dt>
-   *   <dd>The URL for the user's photo.</dd>
-   * </dl>
-   *
    * @get result
    * @type {Wl_User_Info_UserInfoModel_a_result_list[]}
    */
@@ -174,6 +111,16 @@ function Wl_User_Info_UserInfoModel()
    * @type {string[]}
    */
   this.a_user_list = undefined;
+
+  /**
+   * Whether the user can purchase introductory offers.
+   *
+   * `true` if user can purchase introductory offers, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_introductory = false;
 
   /**
    * The date the user was added, given in UTC time.
@@ -198,12 +145,12 @@ function Wl_User_Info_UserInfoModel()
    * This will be `null` if a client has no assigned login type.
    *
    * @get result
-   * @type {*}
+   * @type {?boolean}
    */
-  this.has_discount = undefined;
+  this.has_discount = null;
 
   /**
-   * The ID of the user's gender. One of the {@link Wl_Gender_GenderSid} constants.
+   * The ID of the user's gender. One of the {@link AGenderSid} constants.
    *
    * This will be `null` if the gender isn't set yet.
    *
@@ -211,6 +158,15 @@ function Wl_User_Info_UserInfoModel()
    * @type {number}
    */
   this.id_gender = undefined;
+
+  /**
+   * The ID of the language that is currently effective for the user.
+   *
+   * @get result
+   * @see Core_Locale_Language_LocaleLanguageSid
+   * @type {number}
+   */
+  this.id_language = undefined;
 
   /**
    * This will be `true` if the user has Google Calendar linked to their account; otherwise, `false`.
@@ -256,14 +212,14 @@ function Wl_User_Info_UserInfoModel()
   this.k_business = "0";
 
   /**
-   * City.
+   * City key.
    *
    * `null` if "address" field is disabled in the business.
    *
    * @get result
-   * @type {*}
+   * @type {?string}
    */
-  this.k_city = undefined;
+  this.k_city = null;
 
   /**
    * The key of the login type. The login type describes the user's client type in this business.
@@ -272,6 +228,15 @@ function Wl_User_Info_UserInfoModel()
    * @type {string}
    */
   this.k_login_type = undefined;
+
+  /**
+   * `true` to ignore cache and load information from the database directly.
+   * `false` - otherwise.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.not_cached = false;
 
   /**
    * The user's first name.
@@ -336,9 +301,9 @@ function Wl_User_Info_UserInfoModel()
    * `null` if "address" field is disabled in the business.
    *
    * @get result
-   * @type {*}
+   * @type {?string}
    */
-  this.text_address = undefined;
+  this.text_address = null;
 
   /**
    * City name.
@@ -346,9 +311,9 @@ function Wl_User_Info_UserInfoModel()
    * `null` if "address" field is disabled in the business.
    *
    * @get result
-   * @type {*}
+   * @type {?string}
    */
-  this.text_city = undefined;
+  this.text_city = null;
 
   /**
    * Login type title.
@@ -365,9 +330,9 @@ function Wl_User_Info_UserInfoModel()
    * `null` if "address" field is disabled in the business.
    *
    * @get result
-   * @type {*}
+   * @type {?string}
    */
-  this.text_postal = undefined;
+  this.text_postal = null;
 
   /**
    * The key of the user.
@@ -395,7 +360,7 @@ WlSdk_ModelAbstract.extend(Wl_User_Info_UserInfoModel);
  */
 Wl_User_Info_UserInfoModel.prototype.config=function()
 {
-  return {"a_field": {"a_custom_field": {"get": {"result": true}},"a_member_group": {"get": {"result": true}},"a_photo": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_user_list": {"get": {"get": true}},"dt_add": {"get": {"result": true}},"dt_birth": {"get": {"result": true}},"has_discount": {"get": {"result": true}},"id_gender": {"get": {"result": true}},"is_calendar_google": {"get": {"result": true}},"is_calendar_microsoft": {"get": {"result": true}},"is_customer_new": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_city": {"get": {"result": true}},"k_login_type": {"get": {"result": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_phone_home": {"get": {"result": true}},"s_phone_work": {"get": {"result": true}},"text_address": {"get": {"result": true}},"text_city": {"get": {"result": true}},"text_login_type": {"get": {"result": true}},"text_postal": {"get": {"result": true}},"uid": {"get": {"get": true,"result": true}},"url_photo": {"get": {"result": true}}}};
+  return {"a_field": {"a_custom_field": {"get": {"result": true}},"a_member_group": {"get": {"result": true}},"a_photo": {"get": {"result": true}},"a_result_list": {"get": {"result": true}},"a_user_list": {"get": {"get": true}},"can_introductory": {"get": {"result": true}},"dt_add": {"get": {"result": true}},"dt_birth": {"get": {"result": true}},"has_discount": {"get": {"result": true}},"id_gender": {"get": {"result": true}},"id_language": {"get": {"result": true}},"is_calendar_google": {"get": {"result": true}},"is_calendar_microsoft": {"get": {"result": true}},"is_customer_new": {"get": {"result": true}},"is_traveller": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_city": {"get": {"result": true}},"k_login_type": {"get": {"result": true}},"not_cached": {"get": {"get": true}},"s_first_name": {"get": {"result": true}},"s_last_name": {"get": {"result": true}},"s_mail": {"get": {"result": true}},"s_member": {"get": {"result": true}},"s_phone": {"get": {"result": true}},"s_phone_home": {"get": {"result": true}},"s_phone_work": {"get": {"result": true}},"text_address": {"get": {"result": true}},"text_city": {"get": {"result": true}},"text_login_type": {"get": {"result": true}},"text_postal": {"get": {"result": true}},"uid": {"get": {"get": true,"result": true}},"url_photo": {"get": {"result": true}}}};
 };
 
 /**
