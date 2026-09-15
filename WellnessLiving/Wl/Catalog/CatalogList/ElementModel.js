@@ -152,7 +152,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * List of images.
    *
-   * Keys are index and each element hase same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_image} field.
+   * Keys are index and each element has the same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_image} field.
    *
    * @get result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_image_list[]}

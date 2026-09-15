@@ -74,7 +74,7 @@ function Wl_User_Info_UserInfoModel()
    * @property {string} dt_add The date the user was added, given in UTC time.
    * @property {string} dt_birth The user's birthday. This will be `null` if the birthday isn't set yet.
    * @property {number} id_gender The ID of the user's gender. One of the {@link AGenderSid} constants.
-   * @property {number} id_language The ID of the language that is effective for the user.
+   * @property {number} id_language The ID of the language that is effective for the user.   One of the {@link Core_Locale_Language_LocaleLanguageSid} constants.
    * @property {boolean} is_customer_new This will be `true` if the user has never made purchases or reservations in this business. Otherwise, this will be `false`.
    * @property {boolean} is_traveller This will be `true` if the user is a traveler. A traveler is someone whose home location isn't the current location in the Enterprise business.
    * @property {string} k_business The key of the business. This may be empty if system-wide information is needed.
