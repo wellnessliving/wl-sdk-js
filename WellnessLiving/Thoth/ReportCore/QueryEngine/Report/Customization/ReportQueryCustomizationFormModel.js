@@ -1,4 +1,6 @@
 /**
+ * Loads customization data of the customization form that corresponds to specified report / report page.
+ *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
@@ -139,6 +141,11 @@ Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormMo
  */
 
 /**
+ * Loads customization data of the customization form that corresponds to specified report / report page.
+ *
+ * Populates {@link Wl_Report_Customization_CustomizationFormModel.a_customization_form} with the customization data of the requested
+ * report or report page, optionally converted to the reports listed in {@link Wl_Report_Customization_CustomizationFormModel.s_report}.
+ *
  * @function
  * @name Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel.get
  * @returns {WlSdk_Deferred_Promise}
@@ -146,6 +153,11 @@ Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormMo
  */
 
 /**
+ * Saves given data of a customization form into database.
+ *
+ * Stores the customization data supplied in {@link Wl_Report_Customization_CustomizationFormModel.a_customization_form} for the
+ * requested report or report page and resets the related report configuration cache.
+ *
  * @function
  * @name Thoth_ReportCore_QueryEngine_Report_Customization_ReportQueryCustomizationFormModel.post
  * @returns {WlSdk_Deferred_Promise}

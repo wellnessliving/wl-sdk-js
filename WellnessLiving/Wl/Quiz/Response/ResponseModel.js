@@ -56,7 +56,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {string} html_question Main html of the input question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
    * @property {boolean} is_multiple Answer can have multiple options selected.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {?string} k_quiz_element Quiz element key.
    * @property {?string} k_quiz_element_old Old quiz element key.
    * @property {string} text_description Additional string for detail description of the question.
@@ -118,7 +118,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {string} html_question Main html of the input question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
    * @property {boolean} is_multiple Answer can have multiple options selected.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {?string} k_quiz_element Quiz element key.
    * @property {?string} k_quiz_element_old Old quiz element key.
    * @property {string} text_description Additional string for detail description of the question.
@@ -183,7 +183,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {string} html_subheading Additional HTML for detail description of the question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
    * @property {boolean} is_delete_custom_markup_image ` true ` if custom markup image is to be deleted `false` otherwise.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {string} k_id Fake id used for image upload.
    * @property {string} k_id_custom_markup_image Image ID of the temporary uploaded custom markup image to be copied as permanent drive link.
    * @property {?string} k_quiz_element Quiz element key.
@@ -220,7 +220,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {string} html_signature_header Header text of signature pad.
    * @property {string} html_subheading Main html of the input question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {?string} k_quiz_element Quiz element key.
    * @property {?string} k_quiz_element_old Old quiz element key.
    * @property {string} s_signature Signature binary text.
@@ -251,7 +251,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {string} html_description Additional HTML for detail description of the question.
    * @property {string} html_question Main HTML of the input question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {?string} k_quiz_element Quiz element key.
    * @property {?string} k_quiz_element_old Old quiz element key.
    * @property {string} text_answer Answer text for a question.
@@ -308,7 +308,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {string} html_question Main html of the input question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
    * @property {boolean} is_multiple Answer can have multiple options selected.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {?string} k_quiz_element Quiz element key.
    * @property {?string} k_quiz_element_old Old quiz element key.
    * @property {string} text_description Additional string for detail description of the question.
@@ -340,7 +340,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {number} i_rate Selected rate.
    * @property {number} i_scale Rate scale.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {?string} k_quiz_element Quiz element key.
    * @property {?string} k_quiz_element_old Old quiz element key.
    * @property {string} text_description Sub-question text.
@@ -372,7 +372,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {string} html_heading Main HTML of the input question.
    * @property {string} html_subheading Additional HTML for detail description of the question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {string} k_id_image_left Left response image key.
    * @property {string} k_id_image_right Right response image key.
    * @property {string} k_id_source_left Left image source key for duplicate.
@@ -411,7 +411,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {string} html_signature_header Header text of signature pad.
    * @property {string} html_subheading Main html of the input question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {?string} k_quiz_element Quiz element key.
    * @property {?string} k_quiz_element_old Old quiz element key.
    * @property {string} s_signature Signature binary text.
@@ -471,7 +471,7 @@ function Wl_Quiz_Response_ResponseModel()
    * @property {string} html_description Additional HTML for detail description of the question.
    * @property {string} html_question Main HTML of the input question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
-   * @property {boolean} is_require
+   * @property {boolean} is_require Whether element is required or not.
    * @property {?string} k_quiz_element Quiz element key.
    * @property {?string} k_quiz_element_old Old quiz element key.
    * @property {string} text_answer Answer text for a question.
