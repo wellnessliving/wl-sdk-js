@@ -25,13 +25,13 @@ function Wl_Staff_Load_LoadModel()
    * @typedef {{}} Wl_Staff_Load_LoadModel_a_pay_rate
    * @property {Wl_Staff_Load_LoadModel_a_pay_rate_a_data} a_data Custom data that depends on `id_staff_pay`.
    * @property {number} id_staff_pay Pay rate type, one of {@link RsStaffPaySid} constants.
-   * @property {string} k_location Location key. Primary key from . This is a location where pay rate can be used for a staff load. If empty then pay rate can be used in any location. Used only for pay rates with `id_staff_pay` {@link RsStaffPaySid} and `is_report`.
-   * @property {string} k_staff_pay Pay rate identifier, primary key in
+   * @property {string} k_location Location key.  This is a location where pay rate can be used for a staff load. If empty then pay rate can be used in any location. Used only for pay rates with `id_staff_pay` {@link RsStaffPaySid} and `is_report`.
+   * @property {string} k_staff_pay Pay rate key.
    * @property {string} s_title Name of the rate.
    */
 
   /**
-   * Staff pay rates info. See .
+   * Staff pay rates info.
    *
    * @get result
    * @type {Wl_Staff_Load_LoadModel_a_pay_rate}
@@ -48,8 +48,8 @@ function Wl_Staff_Load_LoadModel()
    */
 
   /**
-   * Staff work information. See `rs_staff_load_check_work_trx()`. Empty array if the staff
-   *  member is currently clocked out. Structure:
+   * Staff work information.
+   * Empty array if the staff member is currently clocked out.
    *
    * @get result
    * @put result

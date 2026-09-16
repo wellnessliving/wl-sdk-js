@@ -14,7 +14,8 @@ function Wl_Schedule_ScheduleList_StaffApp_Service_ScheduleListServiceModel()
   this._s_key = "k_business,uid";
 
   /**
-   * List of appointment services. Keys - service IDs; primary key in the `rs_service` table. Values - service title.
+   * List of appointment services.
+   * Keys - service keys. Values - service title.
    *
    * @get result
    * @type {{}}

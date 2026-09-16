@@ -17,8 +17,7 @@ function Wl_Resource_Schedule_Add_AddModel()
   this.a_day = undefined;
 
   /**
-   * Resource period key.
-   * Primary key from the `rs_resource_period` table.
+   * Resource period keys.
    *
    * @post result
    * @type {string[]}
@@ -117,7 +116,7 @@ function Wl_Resource_Schedule_Add_AddModel()
   this.k_location = "";
 
   /**
-   * Resource key. Primary key in the `rs_resource` table.
+   * Resource key.
    *
    * @post post
    * @type {string}

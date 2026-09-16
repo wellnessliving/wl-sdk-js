@@ -16,9 +16,9 @@ function Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel()
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_commission_default
-   * @property {string} k_staff @deprecated Staff key. Primary key of  table.
-   * @property {string} k_staff_pay Staff pay key. Primary key of  table.
-   * @property {string} uid_staff User key of staff. Primary key of  table.
+   * @property {string} k_staff <b>Deprecated.</b> Staff key.
+   * @property {string} k_staff_pay Staff pay key.
+   * @property {string} uid_staff User key of staff.
    */
 
   /**
@@ -35,15 +35,15 @@ function Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel()
    * @property {string} html_commission Title of the commission.
    * @property {number} id_commission_type One of {@link RsCommissionTypeSid} constants.
    * @property {boolean} is_default `true` - if it is default commission for the staff,`false` - otherwise.
-   * @property {string} k_staff_pay Staff pay key. Primary key of  table.
+   * @property {string} k_staff_pay Staff pay key.  table.
    */
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_staff
    * @property {Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_staff_a_commission} a_commission List of staff commissions:
    * @property {string} html_name Name of staff.
-   * @property {string} k_staff @deprecated Staff key. Primary key of  table. It's use `uid` instead of this field.
-   * @property {string} uid User key. Primary key of  table.
+   * @property {string} k_staff [Deprecated]Staff key.     table. It's use `uid` instead of this field.
+   * @property {string} uid User key.  table.
    */
 
   /**

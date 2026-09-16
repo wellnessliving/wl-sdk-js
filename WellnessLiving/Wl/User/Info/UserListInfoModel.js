@@ -20,10 +20,10 @@ function Wl_User_Info_UserListInfoModel()
    * @property {boolean} is_address_inherited Whether an address of a user is inherited from a relative `true` - inherited, `false` - otherwise.
    * @property {boolean} is_inherited Whether an email of a user is inherited from a relative. `true` - inherited, `false` - otherwise.
    * @property {boolean} is_phone_inherited Whether phones of a user are inherited from a relative `true` - inherited, `false` - otherwise.
-   * @property {string} k_city City key. Primary key in the  table.
+   * @property {string} k_city City key.
    * @property {string} text_address User's address.
    * @property {string} text_birth User's birth date.
-   * @property {string} text_business_uid_key Compound key delimited wit a colon. First part is business key. Primary key in  table. Second part - uid of a user. Primary key in  table.
+   * @property {string} text_business_uid_key Compound key delimited wit a colon. First part is business key.
    * @property {string} text_cell_phone User's phone.
    * @property {string} text_city User's city.
    * @property {string} text_home_phone User's home phone.

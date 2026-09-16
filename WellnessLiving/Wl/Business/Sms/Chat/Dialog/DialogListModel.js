@@ -14,7 +14,7 @@ function Wl_Business_Sms_Chat_Dialog_DialogListModel()
    * @property {string} text_client The name of the client.
    * @property {string} text_date_last_sms Date when was received the last SMS from the client.
    * @property {string} text_last_sms The text of the last SMS from the client.
-   * @property {string} uid UID of the client. Primary key in  table.
+   * @property {string} uid UID of the client.  table.
    * @property {string} url_profile The link to profile the client.
    * @property {string} url_profile_logo The link to logo the client.
    */

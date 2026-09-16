@@ -26,9 +26,6 @@ function Wl_Appointment_Book_Conflict_Conflict56Model()
   /**
    * List of appointment booking conflicts.
    *
-   * Based on the result of , with
-   *  additional entries for client age restriction conflicts. Each element:
-   *
    * @get result
    * @type {Wl_Appointment_Book_Conflict_Conflict56Model_a_conflict[]}
    */
@@ -66,11 +63,11 @@ function Wl_Appointment_Book_Conflict_Conflict56Model()
   /**
    * @typedef {{}} Wl_Appointment_Book_Conflict_Conflict56Model_a_resource
    * @property {number} i_index Asset index in layout.
-   * @property {string} k_resource Asset primary key in  table.
+   * @property {string} k_resource Asset key.
    */
 
   /**
-   * List of assets. Every element has next keys:
+   * List of assets.
    *
    *
    * May be specified for service booking only.

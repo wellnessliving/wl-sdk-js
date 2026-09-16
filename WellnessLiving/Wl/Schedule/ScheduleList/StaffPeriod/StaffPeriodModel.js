@@ -34,8 +34,7 @@ function Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel()
   this.dt_date = "";
 
   /**
-   * ID of business for which working hours are required.
-   * Primary key in the `rs_business` table.
+   * Key of business for which working hours are required.
    *
    * @get get
    * @type {string}
@@ -59,7 +58,7 @@ Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel.prototype.config=function(
  * @function
  * @name Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel.instanceGet
  * @param {string} dt_date Date for which working hours are required. In business timezone.
- * @param {string} k_business ID of business for which working hours are required. Primary key in the `rs_business` table.
+ * @param {string} k_business Key of business for which working hours are required.
  * @returns {Wl_Schedule_ScheduleList_StaffPeriod_StaffPeriodModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

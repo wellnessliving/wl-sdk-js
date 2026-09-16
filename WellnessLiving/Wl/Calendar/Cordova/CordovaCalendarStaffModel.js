@@ -47,7 +47,7 @@ function Wl_Calendar_Cordova_CordovaCalendarStaffModel()
 
   /**
    * Books/visits that are already synchronized in client's calendar.
-   * Serialized list of pairs [[visit key () => visit hash], ...].
+   * Serialized list of pairs [[visit key  => visit hash], ...].
    *
    * @post post
    * @type {string}

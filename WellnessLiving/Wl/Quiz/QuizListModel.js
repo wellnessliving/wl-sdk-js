@@ -51,7 +51,6 @@ function Wl_Quiz_QuizListModel()
 
   /**
    * List of quiz keys, needed for registration.
-   * Each element is a primary key in the `wl_quiz` table.
    *
    * @get result
    * @type {string[]}

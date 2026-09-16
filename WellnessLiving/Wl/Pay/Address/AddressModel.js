@@ -17,7 +17,7 @@ function Wl_Pay_Address_AddressModel()
    * @typedef {{}} Wl_Pay_Address_AddressModel_a_pay_address
    * @property {boolean} is_selected `true` if this address is currently selected, `false` otherwise.
    * @property {?string} k_country Country geo key. `null` if the country cannot be determined.
-   * @property {string} k_pay_address Payment address key. Primary key in the `rs_pay_address` table.
+   * @property {string} k_pay_address Payment address key.
    * @property {string} k_region Region geo key.
    * @property {string} s_city City name.
    * @property {?string} s_country Country name. `null` if the country cannot be determined.

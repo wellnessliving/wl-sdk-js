@@ -14,13 +14,13 @@ function Wl_Alert_AlertListModel()
    * @property {string} dtl_create Date and time in MySQL format, when an alert has been added.
    * @property {number} i_difference Quantity of seconds passed from an alert sending.
    * @property {boolean} is_read Determines whether the alert was read by the user.
-   * @property {string} k_alert Alert key. Primary key in  table.
-   * @property {string} k_business Business key. Primary key in  table.
+   * @property {string} k_alert Alert key.  table.
+   * @property {string} k_business Business key.  table.
    * @property {string} s_icon_class Icon class. See {@link Wl_Alert_AlertAbstract}.
    * @property {string} text_message Alert message.
    * @property {string} text_title Alert title.
-   * @property {?string} uid_client User key associated with this alert. Primary key in .`null` if user is walk-in.
-   * @property {string} url_detail A link to detail page related to the alert. Can be empty if the user had    no access to this page at the time the alert was created.
+   * @property {?string} uid_client User key associated with this alert.    .    `null` if user is walk-in.
+   * @property {string} url_detail A link to detail page related to the alert.    Can be empty if the user had no access to this page at the time the alert was created.
    * @property {string} url_logo Url to user's logo.
    */
 

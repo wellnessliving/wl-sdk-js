@@ -11,7 +11,7 @@ function Wl_Catalog_Payment_PaymentModel()
   /**
    * The list of answers for questions.
    *
-   * * Key is a question hash from QuestionApi::$a_question.
+   * * Key is a question hash from {@link Wl_Appointment_Book_Question_QuestionModel.a_question}.
    * * Value is the answer text for that question.
    *
    * @post post

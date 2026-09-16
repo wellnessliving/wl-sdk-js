@@ -14,20 +14,19 @@ function Wl_Profile_Rank_AddonModel()
    * @property {string} dt_add Date, when rank has been added.
    * @property {number} i_days_left The number of days that have passed since the start date of the set time period for class attendance.
    * @property {number} i_duration The number of days/months/years that were set for attending the classes.
-   * @property {string} k_rank Rank key. Primary key in the  table.
-   * @property {string} k_rank_category Category rank key. Primary key in the  table.
+   * @property {string} k_rank Rank key.
+   * @property {string} k_rank_category Category rank key.
    * @property {string} s_date Date, when rank has been added.
    * @property {string} s_duration Tha name of the duration (day/month/year).
    * @property {string} s_rank Rank name.
    * @property {string} s_rank_category Rank category name.
-   * @property {string} uid User's key. Primary key in  table.
+   * @property {string} uid User's key.
    * @property {string} z_addon Compressed and serialised list of addons, that client has.
    */
 
   /**
    * Full list of ranks owned by the client.
    * The key of the array is a category rank key.
-   * Primary key in the  table.
    *
    * @get result
    * @type {Wl_Profile_Rank_AddonModel_a_addon[]}

@@ -10,12 +10,12 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_Edit_ScheduleListFilterEditMod
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_Filter_Edit_ScheduleListFilterEditModel_a_config
-   * @property {string[]} a_class List of classes which must be selected in filter. Primary keys in  table.
-   * @property {string[]} a_event List of events which must be selected in filter. Primary keys in  table.
-   * @property {string[]} a_location List of locations which must be selected in filter. Primary keys in  table.
-   * @property {string[]} a_resource List of assets which must be selected in filter. Primary keys in  table.
-   * @property {string[]} a_service List of appointment services which must be selected in filter. Primary keys in  table.
-   * @property {string[]} a_staff List of staff members which must be selected in filter. Primary keys in  table.
+   * @property {string[]} a_class List of classes which must be selected in filter.
+   * @property {string[]} a_event List of events which must be selected in filter.
+   * @property {string[]} a_location List of locations which must be selected in filter.
+   * @property {string[]} a_resource List of assets which must be selected in filter.
+   * @property {string[]} a_service List of appointment services which must be selected in filter.
+   * @property {string[]} a_staff List of staff members which must be selected in filter.
    * @property {number[]} a_type List of service types which must be selected in filter. Constants of {@link RsServiceSid} class.
    * @property {boolean} is_staff_all `true` to show all staff members. `false` to show only staff members from `a_staff` field.
    * @property {boolean} is_staff_available `true` to show only available staff members; `false` otherwise.

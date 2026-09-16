@@ -36,8 +36,7 @@ function Wl_Catalog_View_Image_ImageModel()
    */
 
   /**
-   * Contains a list of images for the current product. Each element has the structure
-   *  described in .
+   * Contains a list of images for the current product.
    *
    * @get result
    * @type {Wl_Catalog_View_Image_ImageModel_a_image[]}

@@ -15,7 +15,7 @@ function Wl_Login_Add_ProfilePurchaseOptionModel()
 
   /**
    * User's active purchase options data.
-   * For more details see .
+   *
    *
    * Serialized with JSON.
    *

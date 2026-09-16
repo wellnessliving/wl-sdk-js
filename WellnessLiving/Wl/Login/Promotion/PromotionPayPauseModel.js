@@ -32,6 +32,21 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   this.a_pay_pause_list = null;
 
   /**
+   * @typedef {{}} Wl_Login_Promotion_PromotionPayPauseModel_a_payment_periods
+   * @property {string} dl_payment Date, when this period should be paid.
+   * @property {string} dt_end End date of the period in local timezone.
+   * @property {string} dt_start Start date of the period in local timezone.
+   */
+
+  /**
+   * List of all payment periods for the give pricing option. Just dates in local timezone.
+   *
+   * @get result
+   * @type {Wl_Login_Promotion_PromotionPayPauseModel_a_payment_periods[]}
+   */
+  this.a_payment_periods = undefined;
+
+  /**
    * List of all upcoming payments for the give pricing option. Just dates in local timezone.
    *
    * @get result
@@ -73,6 +88,15 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
    * @type {?string}
    */
   this.dtu_date_notification = null;
+
+  /**
+   * Type of the hold from {@link Wl_Promotion_Pay_PromotionPayHoldSid}.
+   *
+   * @get result
+   * @see Wl_Promotion_Pay_PromotionPayHoldSid
+   * @type {number}
+   */
+  this.id_hold = undefined;
 
   /**
    * Whether need to get all pause periods for the login promotion.
@@ -195,7 +219,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_PromotionPayPauseModel);
  */
 Wl_Login_Promotion_PromotionPayPauseModel.prototype.config=function()
 {
-  return {"a_field":{"a_pay_pause_list":{"get":{"result":true}},"a_payment_schedule":{"get":{"result":true}},"dt_end":{"get":{"get":true,"result":true},"post":{"get":true},"put":{"get":true}},"dt_start":{"get":{"get":true,"result":true},"post":{"get":true},"put":{"get":true}},"dtu_date_notification":{"get":{"result":true}},"is_list":{"get":{"get":true}},"is_mail":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_push":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_sms":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_login_promotion":{"delete":{"get":true},"get":{"get":true,"result":true},"post":{"get":true}},"k_mail_pattern":{"get":{"result":true}},"k_promotion_pay_pause":{"delete":{"get":true},"get":{"get":true,"result":true},"post":{"get":true,"result":true},"put":{"get":true,"result":true}},"text_note":{"get":{"result":true},"post":{"post":true},"put":{"post":true}}}};
+  return {"a_field":{"a_pay_pause_list":{"get":{"result":true}},"a_payment_periods":{"get":{"result":true}},"a_payment_schedule":{"get":{"result":true}},"dt_end":{"get":{"get":true,"result":true},"post":{"get":true},"put":{"get":true}},"dt_start":{"get":{"get":true,"result":true},"post":{"get":true},"put":{"get":true}},"dtu_date_notification":{"get":{"result":true}},"id_hold":{"get":{"result":true}},"is_list":{"get":{"get":true}},"is_mail":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_push":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_sms":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_login_promotion":{"delete":{"get":true},"get":{"get":true,"result":true},"post":{"get":true}},"k_mail_pattern":{"get":{"result":true}},"k_promotion_pay_pause":{"delete":{"get":true},"get":{"get":true,"result":true},"post":{"get":true,"result":true},"put":{"get":true,"result":true}},"text_note":{"get":{"result":true},"post":{"post":true},"put":{"post":true}}}};
 };
 
 /**

@@ -47,7 +47,7 @@ function Wl_Visit_Note_Edit_EditModel()
    * @typedef {{}} Wl_Visit_Note_Edit_EditModel_a_info
    * @property {string} dtl_create Local date and time the note was created. Empty string if the note was never created.
    * @property {string} dtl_edit Local date and time the note was last edited. Empty string if the note was never edited.
-   * @property {string} k_visit_note Visit note key, primary key in . `0` if the note does not exist yet.
+   * @property {string} k_visit_note Visit note key.  `0` if the note does not exist yet.
    * @property {string} k_visit_previous Key of the visit that has a previous note. `0` if a previous note does not exist.
    * @property {string} text_client_name Full name of the client the visit belongs to.
    * @property {string} text_create Name of the staff member who created the note.

@@ -14,7 +14,7 @@ function Wl_Schedule_ScheduleList_StaffApp_Staff_ScheduleListStaffModel()
   this._s_key = "k_business,uid";
 
   /**
-   * IDs of staff members which must be represented of business schedule. Primary keys in the `rs_staff` table.
+   * IDs of staff members which must be represented of business schedule.
    *
    * Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list.
    *

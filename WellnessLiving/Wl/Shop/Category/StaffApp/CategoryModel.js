@@ -16,7 +16,7 @@ function Wl_Shop_Category_StaffApp_CategoryModel()
   /**
    * @typedef {{}} Wl_Shop_Category_StaffApp_CategoryModel_a_shop_category
    * @property {number} i_order Shop category order.
-   * @property {string} k_shop_category ID in  table.
+   * @property {string} k_shop_category Shop category key.
    * @property {string} text_description Category description.
    * @property {string} text_title Category title.
    */

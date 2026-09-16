@@ -17,7 +17,7 @@ function Wl_Staff_Schedule_Add_AddModel()
   this.a_day = undefined;
 
   /**
-   * Services list, each element is a primary key in .
+   * Services list key.
    *
    * Empty list means all services.
    * `null` means not set.
@@ -29,7 +29,6 @@ function Wl_Staff_Schedule_Add_AddModel()
 
   /**
    * Staff period key.
-   * Primary key from .
    *
    * @post result
    * @type {string[]}

@@ -19,12 +19,12 @@ function Wl_Staff_PayRate_ListModel()
    * @property {boolean} is_commission_default Whether commission pay rate used as default for staff with `k_staff`.
    * @property {boolean} is_default Whether pay rate used as default for staff with `k_staff`.
    * @property {boolean} is_hour_default Whether hourly pay rate used as default for staff with `k_staff`.
-   * @property {string} k_location Location key. Primary key from . This is a location where pay rate can be used for a staff staff load. If empty then pay rate can be used in any location. Used only for pay rates with `id_staff_pay`={@link RsStaffPaySid} and `is_report`=1.
-   * @property {string} k_staff Staff key, primary key in . deprecated Returned only for applications from legacy allow-list. Use `uid_staff`.
-   * @property {string} k_staff_pay Pay rate identifier, primary key in .
+   * @property {string} k_location Location key.
+   * @property {string} k_staff Staff key.  <b>Deprecated</b> Returned only for applications from legacy allow-list. Use `uid_staff`.
+   * @property {string} k_staff_pay Pay rate key.
    * @property {string} text_staff Name of staff member.
    * @property {string} text_title Pay rate title.
-   * @property {string} uid_staff Staff user ID. Primary key in .
+   * @property {string} uid_staff Staff user key.
    */
 
   /**

@@ -31,7 +31,7 @@ function Wl_Classes_Period_Modify_ModifyModel()
   /**
    * @typedef {{}} Wl_Classes_Period_Modify_ModifyModel_a_set
    * @property {string[]} a_edit Edited fields flags. Used in {@link RsClassModifyStepSid}. Keys are field names (e.g. `a_staff`, `dt_time`); each value is `'1'` to indicate the field was changed.
-   * @property {string[]} a_period Selected session keys (). Used in {@link RsClassModifyStepSid}.
+   * @property {string[]} a_period Selected session keys. . Used in {@link RsClassModifyStepSid}.
    * @property {Wl_Classes_Period_Modify_ModifyModel_a_set_a_staff} a_staff Selected instructors. Used in {@link RsClassModifyStepSid}:
    * @property {boolean} is_cancel_resource Cancel resources for modified classes. Used in {@link RsClassModifyStepSid}.
    * @property {boolean} is_forward Modify all future sessions. Used in {@link RsClassModifyStepSid}.

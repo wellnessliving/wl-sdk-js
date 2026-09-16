@@ -15,12 +15,12 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel()
 
   /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel_a_filter_a_config
-   * @property {string[]} a_class Classes. Primary keys in  table.
-   * @property {string[]} a_event Events. Primary keys in  table.
-   * @property {string[]} a_location Locations. Primary keys in  table.
-   * @property {string[]} a_resource Assets. Primary keys in  table.
-   * @property {string[]} a_service Appointment services. Primary keys in  table.
-   * @property {string[]} a_staff Staff members. Primary keys in  table.
+   * @property {string[]} a_class Classes.
+   * @property {string[]} a_event Events.
+   * @property {string[]} a_location Locations.
+   * @property {string[]} a_resource Assets.
+   * @property {string[]} a_service Appointment services.
+   * @property {string[]} a_staff Staff members.
    * @property {number[]} a_type Service types. Constants of {@link RsServiceSid} class (excluding {@link RsServiceSid}).
    * @property {boolean} is_staff_all `true` to show all staff members. `false` to show only staff members from `a_staff` field.
    * @property {boolean} is_staff_available `true` to show only available staff members; `false` to show any staff member.
@@ -36,7 +36,9 @@ function Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel()
    */
 
   /**
-   * List of schedule filters. Keys - filters IDs; primary key in the `rs_schedule_config` table. Values - sub arrays with next keys:
+   * List of schedule filters.
+   * Keys - filters IDs; 
+   * Values - sub arrays with next keys:
    *
    * @get result
    * @type {Wl_Schedule_ScheduleList_StaffApp_Filter_ScheduleListFilterModel_a_filter}

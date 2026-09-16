@@ -17,7 +17,7 @@ function Wl_Resource_Type_ResourceTypeListModel()
    * @typedef {{}} Wl_Resource_Type_ResourceTypeListModel_a_resource_type
    * @property {number} id_category Type of the resource. One of {@link Wl_Resource_ResourceCategoryEnum} cases.
    * @property {boolean} is_active Whether resource type is active.
-   * @property {string} k_resource_type Resource type key, primary key in the  table.
+   * @property {string} k_resource_type Resource type key.
    * @property {string} text_title Resource type title.
    */
 

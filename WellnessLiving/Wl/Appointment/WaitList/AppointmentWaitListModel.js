@@ -30,7 +30,7 @@ function Wl_Appointment_WaitList_AppointmentWaitListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_WaitList_AppointmentWaitListModel_a_wait_a_addon
-   * @property {string} k_shop_product_options Key of the shop product option. Primary key from  table.
+   * @property {string} k_shop_product_options Key of the shop product option.
    * @property {string} text_title Title of the product.
    */
 
@@ -57,7 +57,7 @@ function Wl_Appointment_WaitList_AppointmentWaitListModel()
    * @property {string} text_mail User email. Empty string if current user has no access to this information.
    * @property {string} text_name User name.
    * @property {string} text_phone User phone. Empty string if the user has no phone or current user has not access to this information.
-   * @property {string} uid User key. Primary key in the  table.
+   * @property {string} uid User key.
    * @property {string} url_logo Link to user logo.
    * @property {string} url_notify_mail Link to get form for send mail to user.
    * @property {string} url_notify_sms Link to get form for send sms to user.
@@ -75,11 +75,11 @@ function Wl_Appointment_WaitList_AppointmentWaitListModel()
    * @property {boolean} is_free Whether the visit is free. Does not need a pay.
    * @property {boolean} is_paid Whether the visit is paid.
    * @property {boolean} is_wait_confirm Whether is awaiting for user confirmation.
-   * @property {string} k_visit Visit key. Primary key in the  table.
+   * @property {string} k_visit Visit key.  table.
    */
 
   /**
-   * List of visits in wait list. Each element has next structure:
+   * List of visits in wait list.
    *
    * @get result
    * @type {Wl_Appointment_WaitList_AppointmentWaitListModel_a_wait[]}

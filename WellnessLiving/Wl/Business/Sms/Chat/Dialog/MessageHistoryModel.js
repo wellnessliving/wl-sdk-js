@@ -13,7 +13,7 @@ function Wl_Business_Sms_Chat_Dialog_MessageHistoryModel()
    * @property {string} dtl_message Date and time, when SMS messages were sent, in MySQL format.
    * @property {boolean} is_automated `true` if SMS was sent from task, `false` - if the staff member sent SMS.
    * @property {boolean} is_outbound `true` if staff member sent SMS, `false` - if the client sent the SMS.
-   * @property {string} k_sms_history The key of SMS history. Primary key in  table.
+   * @property {string} k_sms_history The key of SMS history.  table.
    * @property {string} text_date The day when SMS messages were sent.
    * @property {string} text_sender_name The sender's name.
    * @property {string} text_sms_body The body of the SMS.

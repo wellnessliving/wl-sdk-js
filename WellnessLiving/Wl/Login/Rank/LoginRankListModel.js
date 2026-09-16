@@ -14,7 +14,7 @@ function Wl_Login_Rank_LoginRankListModel()
    * @property {boolean} is_next Whether this is the next rank for the user.
    * @property {boolean} is_ready Whether the user is ready for promotion to this rank.
    * @property {string} json_condition Time and class belt conditions in JSON format.
-   * @property {string} k_rank Rank key. Primary key from  table.
+   * @property {string} k_rank Rank key.
    * @property {string} text_rank Rank title.
    */
 
@@ -28,9 +28,9 @@ function Wl_Login_Rank_LoginRankListModel()
 
   /**
    * @typedef {{}} Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category_a_current
-   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category_a_current_a_logo} a_logo Rank logo thumbnail data:
-   * @property {string} k_login_rank Login rank key. Primary key from  table.
-   * @property {string} k_rank Rank key. Primary key from  table.
+   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category_a_current_a_logo} a_logo Rank logo thumbnail data.
+   * @property {string} k_login_rank Login rank key.
+   * @property {string} k_rank Rank key.
    * @property {string} text_attendance_at_rank Class attendance in the current rank.
    * @property {string} text_promote_date Belt promotion date.
    * @property {string} text_rank Rank title.
@@ -39,27 +39,27 @@ function Wl_Login_Rank_LoginRankListModel()
 
   /**
    * @typedef {{}} Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category
-   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category_a_available} a_available List of ranks available for the category. Each element:
-   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category_a_current} a_current Data of the user's current rank in the category, merged with promotion condition data. Contains   only `html_condition` (the belt condition of the first available rank) when the user does not   have a current rank yet. When the user has a current rank, also contains:
-   * @property {string} k_rank_category Rank category key. Primary key from  table.
+   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category_a_available} a_available List of ranks available for the category.
+   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category_a_current} a_current Data of the user's current rank in the category, merged with promotion condition data. Contains only `html_condition` (the belt condition of the first available rank) when the user does not have a current rank yet. When the user has a current rank, also contains additional information.
+   * @property {string} k_rank_category Rank category key.
    * @property {string} text_rank_category Rank category title.
    */
 
   /**
    * @typedef {{}} Wl_Login_Rank_LoginRankListModel_a_user_list_a_user_info
-   * @property {string} html_info Result of  function.
+   * @property {string} html_info HTML information about user.
    * @property {string} text_name Full user name.
-   * @property {string} uid User key. Primary key in the  table.
+   * @property {string} uid User key.
    */
 
   /**
    * @typedef {{}} Wl_Login_Rank_LoginRankListModel_a_user_list
-   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category} a_rank_category List of rank categories with rank details for the user. Each element:
-   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_user_info} a_user_info User info:
+   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_rank_category} a_rank_category List of rank categories with rank details for the user.
+   * @property {Wl_Login_Rank_LoginRankListModel_a_user_list_a_user_info} a_user_info User information.
    */
 
   /**
-   * List of users with information about their ranks in the business. Each element:
+   * List of users with information about their ranks in the business.
    *
    * @get result
    * @type {Wl_Login_Rank_LoginRankListModel_a_user_list[]}
@@ -87,8 +87,7 @@ function Wl_Login_Rank_LoginRankListModel()
   this.k_class = null;
 
   /**
-   * UIDs of users encoded by Javascript analogue of the 
-   * method.
+   * Encoded list of UIDs.
    *
    * @get get
    * @type {string}
@@ -96,10 +95,8 @@ function Wl_Login_Rank_LoginRankListModel()
   this.s_user_key = "";
 
   /**
-   * Users with rank categories encoded by Javascript analogue of the
-   *  method. This logic was selected, because there is
-   * a possibility to promote belts of too many users. In this case
-   * URI is too long.
+   * Encoded users with rank categories.
+   *
    *
    * `null` if not initialized.
    *
@@ -109,8 +106,8 @@ function Wl_Login_Rank_LoginRankListModel()
   this.s_user_rank_category = "";
 
   /**
-   * Users with rank categories and ranks that need to be saved encoded by Javascript analogue of the
-   *  method.
+   * Users with rank categories and ranks that need to be saved.
+   *
    *
    * `null` if not initialized.
    *
