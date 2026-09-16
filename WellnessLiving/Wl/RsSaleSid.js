@@ -14,7 +14,7 @@ function RsSaleSid()
  * @name RsSaleSid.APPOINTMENT
  * @type {number}
  */
-RsSaleSid.APPOINTMENT = 8;
+RsSaleSid.APPOINTMENT=8;
 
 /**
  * Single appointment deposit reservation.
@@ -24,7 +24,7 @@ RsSaleSid.APPOINTMENT = 8;
  * @name RsSaleSid.APPOINTMENT_DEPOSIT
  * @type {number}
  */
-RsSaleSid.APPOINTMENT_DEPOSIT = 11;
+RsSaleSid.APPOINTMENT_DEPOSIT=11;
 
 /**
  * Tips for the appointment.
@@ -34,7 +34,7 @@ RsSaleSid.APPOINTMENT_DEPOSIT = 11;
  * @name RsSaleSid.APPOINTMENT_TIP
  * @type {number}
  */
-RsSaleSid.APPOINTMENT_TIP = 12;
+RsSaleSid.APPOINTMENT_TIP=12;
 
 /**
  * Single class visit.
@@ -44,7 +44,7 @@ RsSaleSid.APPOINTMENT_TIP = 12;
  * @name RsSaleSid.CLASS_PERIOD
  * @type {number}
  */
-RsSaleSid.CLASS_PERIOD = 6;
+RsSaleSid.CLASS_PERIOD=6;
 
 /**
  * Gift card.
@@ -54,7 +54,7 @@ RsSaleSid.CLASS_PERIOD = 6;
  * @name RsSaleSid.COUPON
  * @type {number}
  */
-RsSaleSid.COUPON = 7;
+RsSaleSid.COUPON=7;
 
 /**
  * Enrollments. Classes where flag event is <tt>true</tt>.
@@ -64,7 +64,7 @@ RsSaleSid.COUPON = 7;
  * @name RsSaleSid.ENROLLMENT
  * @type {number}
  */
-RsSaleSid.ENROLLMENT = 3;
+RsSaleSid.ENROLLMENT=3;
 
 /**
  * Promotions with program {@link Wl_WlProgramSid.PACKAGE}.
@@ -74,7 +74,7 @@ RsSaleSid.ENROLLMENT = 3;
  * @name RsSaleSid.PACKAGE
  * @type {number}
  */
-RsSaleSid.PACKAGE = 5;
+RsSaleSid.PACKAGE=5;
 
 /**
  * Products: water, t-shirts, etc.
@@ -84,7 +84,7 @@ RsSaleSid.PACKAGE = 5;
  * @name RsSaleSid.PRODUCT
  * @type {number}
  */
-RsSaleSid.PRODUCT = 4;
+RsSaleSid.PRODUCT=4;
 
 /**
  * Promotions with program category {@link Wl_WlProgramCategorySid.CLASSES} and {@link Wl_WlProgramCategorySid.VISIT}.
@@ -94,7 +94,7 @@ RsSaleSid.PRODUCT = 4;
  * @name RsSaleSid.PROMOTION_CLASS
  * @type {number}
  */
-RsSaleSid.PROMOTION_CLASS = 1;
+RsSaleSid.PROMOTION_CLASS=1;
 
 /**
  * Promotions with program category {@link Wl_WlProgramCategorySid.RESOURCE}.
@@ -104,7 +104,7 @@ RsSaleSid.PROMOTION_CLASS = 1;
  * @name RsSaleSid.PROMOTION_RESOURCE
  * @type {number}
  */
-RsSaleSid.PROMOTION_RESOURCE = 9;
+RsSaleSid.PROMOTION_RESOURCE=9;
 
 /**
  * Promotions with program category {@link Wl_WlProgramCategorySid.SERVICE} and {@link Wl_WlProgramCategorySid.INSURANCE}.
@@ -114,7 +114,7 @@ RsSaleSid.PROMOTION_RESOURCE = 9;
  * @name RsSaleSid.PROMOTION_SERVICE
  * @type {number}
  */
-RsSaleSid.PROMOTION_SERVICE = 2;
+RsSaleSid.PROMOTION_SERVICE=2;
 
 /**
  * Promotions with program category {@link Wl_WlProgramCategorySid.VIDEO}.
@@ -124,7 +124,7 @@ RsSaleSid.PROMOTION_SERVICE = 2;
  * @name RsSaleSid.PROMOTION_VIDEO
  * @type {number}
  */
-RsSaleSid.PROMOTION_VIDEO = 13;
+RsSaleSid.PROMOTION_VIDEO=13;
 
 /**
  * Products: water, t-shirts, etc. That is available for quick buy.
@@ -134,4 +134,24 @@ RsSaleSid.PROMOTION_VIDEO = 13;
  * @name RsSaleSid.QUICK_BUY
  * @type {number}
  */
-RsSaleSid.QUICK_BUY = 10;
+RsSaleSid.QUICK_BUY=10;
+
+/**
+ * Tuition.
+ *
+ * @constant
+ * @default 14
+ * @name RsSaleSid.TUITION
+ * @type {number}
+ */
+RsSaleSid.TUITION=14;
+
+/**
+ * Tuition fees.
+ *
+ * @constant
+ * @default 15
+ * @name RsSaleSid.TUITION_FEE
+ * @type {number}
+ */
+RsSaleSid.TUITION_FEE=15;

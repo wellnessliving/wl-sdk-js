@@ -40,7 +40,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data_a_component
    * @property {number} id_program Program ID. One of {@link RsProgramSid} ID's. Only applies to promotions.
-   * @property {number} id_purchase_item Purchase item ID. One of {@link RsPurchaseItemSid} ID's.
+   * @property {number} id_purchase_item Purchase item ID. One of {@link Wl_Purchase_Item_ItemSid} ID's.
    * @property {number} id_sale Sale ID. One of {@link RsSaleSid} ID's.
    * @property {string} k_id The identifier of the item.
    * @property {string} text_title The title of the item.
