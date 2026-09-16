@@ -9,6 +9,17 @@ function Wl_Catalog_Payment_PaymentModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * The list of answers for questions.
+   *
+   * * Key is a question hash from QuestionApi::$a_question.
+   * * Value is the answer text for that question.
+   *
+   * @post post
+   * @type {string[]}
+   */
+  this.a_answer = undefined;
+
+  /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_commission
    * @property {string} k_staff <b>Deprecated!</b>   Staff key.
    * @property {string} k_staff_pay The payment schema key.
@@ -342,7 +353,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Payment_PaymentModel);
  */
 Wl_Catalog_Payment_PaymentModel.prototype.config=function()
 {
-  return {"a_field":{"a_commission":{"post":{"get":true}},"a_item":{"post":{"post":true}},"a_pay_form":{"post":{"post":true}},"a_quiz_response":{"post":{"post":true}},"f_discount_percent":{"post":{"post":true}},"id_mode":{"post":{"get":true}},"is_guest":{"post":{"get":true}},"is_staff":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_location":{"post":{"get":true}},"k_login_activity":{"post":{"result":true}},"k_pay_installment_template":{"post":{"post":true}},"k_purchase":{"post":{"result":true}},"k_visit":{"post":{"post":true}},"m_discount_flat":{"post":{"post":true}},"m_surcharge":{"post":{"post":true}},"m_tip":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}},"text_receipt_note":{"post":{"post":true}},"uid":{"post":{"get":true}}}};
+  return {"a_field":{"a_answer":{"post":{"post":true}},"a_commission":{"post":{"get":true}},"a_item":{"post":{"post":true}},"a_pay_form":{"post":{"post":true}},"a_quiz_response":{"post":{"post":true}},"f_discount_percent":{"post":{"post":true}},"id_mode":{"post":{"get":true}},"is_guest":{"post":{"get":true}},"is_staff":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_location":{"post":{"get":true}},"k_login_activity":{"post":{"result":true}},"k_pay_installment_template":{"post":{"post":true}},"k_purchase":{"post":{"result":true}},"k_visit":{"post":{"post":true}},"m_discount_flat":{"post":{"post":true}},"m_surcharge":{"post":{"post":true}},"m_tip":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}},"text_receipt_note":{"post":{"post":true}},"uid":{"post":{"get":true}}}};
 };
 
 /**
