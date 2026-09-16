@@ -238,7 +238,7 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_image
-   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_image_a_image} a_image
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_image_a_image} a_image Information about the image.
    * @property {number} i_height Height of the variant image.
    * @property {number} i_width Width of the variant image.
    * @property {boolean} is_empty `true` if the image file does not exist, `false` - otherwise.

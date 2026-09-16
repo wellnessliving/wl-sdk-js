@@ -22,6 +22,8 @@ function Wl_Reward_Action_CategoryList_CategoryListModel()
    */
 
   /**
+   * List of reward categories.
+   *
    * @get result
    * @type {Wl_Reward_Action_CategoryList_CategoryListModel_a_category}
    */
