@@ -13,9 +13,9 @@ function Thoth_PayProcessor_StripeCom_StripeComKeyModel()
    *
    * @post post
    * @see RsPayActorSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_pay_actor = 0;
+  this.id_pay_actor = null;
 
   /**
    * Key of the business.

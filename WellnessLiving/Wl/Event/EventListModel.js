@@ -262,7 +262,7 @@ function Wl_Event_EventListModel()
    * @see AFlagSid
    * @type {number}
    */
-  this.id_flag = 3;
+  this.id_flag = 0;
 
   /**
    * Determines whether the endpoint is used for backend mode.

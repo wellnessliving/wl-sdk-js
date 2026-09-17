@@ -10,12 +10,12 @@ function Core_Captcha_CaptchaRequireModel()
 
   /**
    * @typedef {{}} Core_Captcha_CaptchaRequireModel_a_arguments_A
-   * @property {?string} k_business Business key. `null` if system business.
+   * @property {?string} k_business Business key. `null` if is system business.
    */
 
   /**
    * @typedef {{}} Core_Captcha_CaptchaRequireModel_a_arguments_B
-   * @property {?string} k_business Business key. `null` if is system business.
+   * @property {?string} k_business Business key. `null` if system business.
    */
 
   /**

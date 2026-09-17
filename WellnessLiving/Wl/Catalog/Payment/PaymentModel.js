@@ -130,7 +130,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {*[]} a_signature Signatures for an item that requires agreement to several distinct contracts at once.
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_tax_custom} a_tax_custom Customer taxes (optional). Every element must contain the following keys:
    * @property {number} i_quantity The item quantity.
-   * @property {number} id_sale The item type ID. One of the {@link RsSaleSid} constants.
+   * @property {?number} id_sale The item type ID. One of the {@link RsSaleSid} constants.
    * @property {string} k_id The item key.
    * @property {string} k_login_prize The key of the login prize to apply a login prize discount.
    * @property {string} k_shop_product_option The product option key, required only for products.

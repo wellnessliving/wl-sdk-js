@@ -64,9 +64,9 @@ function Wl_Catalog_StaffApp_CatalogCartEdit_EditViewModel()
    *
    * @get get
    * @see RsSaleSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_sale = 0;
+  this.id_sale = null;
 
   /**
    * ID of the sale item.

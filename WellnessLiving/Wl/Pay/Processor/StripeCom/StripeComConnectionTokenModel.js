@@ -26,9 +26,9 @@ function Wl_Pay_Processor_StripeCom_StripeComConnectionTokenModel()
    *
    * @post post
    * @see RsPayActorSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_pay_actor = 0;
+  this.id_pay_actor = null;
 
   /**
    * Key of the business.
