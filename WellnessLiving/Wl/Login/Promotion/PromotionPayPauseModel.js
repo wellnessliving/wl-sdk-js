@@ -90,7 +90,7 @@ function Wl_Login_Promotion_PromotionPayPauseModel()
   this.dtu_date_notification = null;
 
   /**
-   * Type of the hold from {@link Wl_Promotion_Pay_PromotionPayHoldSid}.
+   * Type of the hold.
    *
    * @get result
    * @see Wl_Promotion_Pay_PromotionPayHoldSid
