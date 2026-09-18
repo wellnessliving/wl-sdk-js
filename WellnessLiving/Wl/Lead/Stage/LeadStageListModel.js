@@ -32,7 +32,7 @@ function Wl_Lead_Stage_LeadStageListModel()
    */
 
   /**
-   * List of lead stages of the business. Ordered by `i_order`.
+   * List of lead stages of the business.
    *
    * @get result
    * @type {Wl_Lead_Stage_LeadStageListModel_a_lead_stage[]}
