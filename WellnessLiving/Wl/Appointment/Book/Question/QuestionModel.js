@@ -26,6 +26,7 @@ function Wl_Appointment_Book_Question_QuestionModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Question_QuestionModel_a_question
+   * @property {boolean} has_answer `true` if the current appointment already has a non-empty answer for this question, `false` otherwise.
    * @property {number} i_size Number of text rows for the answer input. Values greater than 1 indicate a multi-line answer.
    * @property {boolean} is_multiple `true` if `i_size` is greater than 1, `false` otherwise.
    * @property {string} s_key SHA1 hash of the question text, used as a unique identifier for the question.
@@ -41,7 +42,13 @@ function Wl_Appointment_Book_Question_QuestionModel()
   this.a_question = undefined;
 
   /**
-   * Appointment key to save answers for.
+   * Appointment key used to load or save question answers.
+   *
+   * Optional for question loading.
+   * When provided, access is validated and `has_answer` is calculated from stored appointment answers.
+   *
+   * Required for answer saving.
+   * Identifies the appointment where answers are saved after access validation.
    *
    * @get get
    * @post get
