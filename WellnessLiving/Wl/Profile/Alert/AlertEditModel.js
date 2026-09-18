@@ -81,6 +81,16 @@ function Wl_Profile_Alert_AlertEditModel()
   this.is_flag = false;
 
   /**
+   * Whether note icon should be shown on appointment in Schedule.
+   *
+   * `null` means default value (`true`) on note adding and not changing on note editing.
+   *
+   * @post post
+   * @type {?boolean}
+   */
+  this.is_icon = null;
+
+  /**
    * Whether flagged user can make purchases. Does not matter if {@link Wl_Profile_Alert_AlertEditModel.is_flag} is `false`.
    *
    * @post post
@@ -136,7 +146,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Alert_AlertEditModel);
  */
 Wl_Profile_Alert_AlertEditModel.prototype.config=function()
 {
-  return {"a_field":{"a_location":{"post":{"post":true}},"a_login_note_data":{"get":{"result":true}},"id_login_note_access":{"post":{"post":true}},"is_book":{"post":{"post":true}},"is_flag":{"post":{"post":true}},"is_purchase":{"post":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"k_login_note":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true}},"text_note":{"post":{"post":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
+  return {"a_field":{"a_location":{"post":{"post":true}},"a_login_note_data":{"get":{"result":true}},"id_login_note_access":{"post":{"post":true}},"is_book":{"post":{"post":true}},"is_flag":{"post":{"post":true}},"is_icon":{"post":{"post":true}},"is_purchase":{"post":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true}},"k_login_note":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true}},"text_note":{"post":{"post":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**
