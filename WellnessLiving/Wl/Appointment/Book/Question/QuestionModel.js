@@ -43,7 +43,8 @@ function Wl_Appointment_Book_Question_QuestionModel()
   /**
    * Appointment key to save answers for.
    *
-   * @post post
+   * @get get
+   * @post get
    * @type {string}
    */
   this.k_appointment = "0";
@@ -66,7 +67,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Question_QuestionModel);
  */
 Wl_Appointment_Book_Question_QuestionModel.prototype.config=function()
 {
-  return {"a_field": {"a_answer": {"post": {"post": true}},"a_question": {"get": {"result": true}},"k_appointment": {"post": {"post": true}},"k_service": {"get": {"get": true}}}};
+  return {"a_field": {"a_answer": {"post": {"post": true}},"a_question": {"get": {"result": true}},"k_appointment": {"get": {"get": true},"post": {"get": true}},"k_service": {"get": {"get": true}}}};
 };
 
 /**
