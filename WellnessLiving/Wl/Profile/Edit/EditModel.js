@@ -140,6 +140,11 @@ function Wl_Profile_Edit_EditModel()
    * This value is only defined if <tt>id_field_type</tt>={@link RsFieldTypeSid.GENERAL}.
    * @property {boolean} is_require Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.
    * @property {number} id_field_type The type of field. One of the {@link RsFieldTypeSid} constants.
+   * @property {number} id_level_booking Requirement for a case when a client books a service. One of {@link Wl_Field_FieldLevelEnum} members.
+   * @property {number} id_level_guest Requirement for a case when a client is a guest. One of {@link Wl_Field_FieldLevelEnum} members.
+   * @property {number} id_level_purchase Requirement for a case when a client makes a purchase. One of {@link Wl_Field_FieldLevelEnum} members.
+   * @property {number} id_level_relationship Requirement for a case when a client adds a relationship. One of {@link Wl_Field_FieldLevelEnum} members.
+   * @property {number} id_level_signup Requirement for a case when a client signs up. One of {@link Wl_Field_FieldLevelEnum} members.
    * @property {string} k_field The field ID (<tt>k_field</tt>). A copy of the key of this array element.
    * @property {string} s_title The title of the field.
    * @property {*} x_value The value of the field. This value is defined by individual fields.
