@@ -42,6 +42,13 @@ Wl_Business_Account_Subscription_SubscriptionAbstract.AssetSubscription = 882;
 Wl_Business_Account_Subscription_SubscriptionAbstract.BaseSubscription = 861;
 
 /**
+ * Wl\Business\Account\Subscription\BridgeAthletic\BridgeAthleticSubscription
+ *
+ * @type {number}
+ */
+Wl_Business_Account_Subscription_SubscriptionAbstract.BridgeAthleticSubscription = 2366;
+
+/**
  * Business Success Coaching.
  *
  * Does not change or open any functional. Just financial subscription.

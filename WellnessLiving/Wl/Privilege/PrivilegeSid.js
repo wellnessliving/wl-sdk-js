@@ -1,7 +1,7 @@
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 249.
+ * Last Used ID: 251.
  */
 function Wl_Privilege_PrivilegeSid()
 {
@@ -576,6 +576,20 @@ Wl_Privilege_PrivilegeSid.IMPORT_CLIENT = 215;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.INTEGRATION_AUTYMATE = 163;
+
+/**
+ * Access to view Bridge Athletic integration.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.INTEGRATION_BRIDGE_ATHLETIC_ACCESS = 251;
+
+/**
+ * Access to set up and change Bridge Athletic integration.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.INTEGRATION_BRIDGE_ATHLETIC_MANAGE = 250;
 
 /**
  * Set up and modify Brivo integration.
