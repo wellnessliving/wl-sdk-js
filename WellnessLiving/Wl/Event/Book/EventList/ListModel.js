@@ -1,5 +1,5 @@
 /**
- * An endpoint that retrieves a list of events for a given class tab.
+ * Retrieves a list of events for a given class tab.
  *
  * This model is generated automatically based on API.
  *
@@ -13,7 +13,7 @@ function Wl_Event_Book_EventList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,k_class_tab,uid";
+  this._s_key = "k_business,k_class_tab,uid,id_status";
 
   /**
    * A list of event identifiers.
@@ -26,31 +26,41 @@ function Wl_Event_Book_EventList_ListModel()
   this.a_event = undefined;
 
   /**
-   * Event availability value.
+   * Event availability map.
    *
    * Unavailable events are those that cannot be booked,
    *  but they can be shown to the client (for example, under the "not available" filter).
    *
-   * The array contains:
-   * * Key - Class (event) key.
-   * * Value - Event availability value: `true` - available, `false` - not available.
+   * Key is the event class key.
+   * Value is `true` if the event is available for booking, `false` if it is unavailable.
    *
    * @get result
-   * @var array
+   * @type {boolean[]}
    */
   this.a_event_available = [];
+
+  /**
+   * Ticketed event map.
+   *
+   * Key is the event class key.
+   * Value is `true` if the event is a ticketed event, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean[]}
+   */
+  this.a_event_ticket = [];
 
   /**
    * Defines how the event availability flag filter should be applied.
    *
    * One of {@link AFlagSid} constants.
    *
-   * * {@link AFlagSid::ON} to show only available events.
-   * * {@link AFlagSid::OFF} to show only unavailable events.
-   * * {@link AFlagSid::ALL} to show all events (available and unavailable).
+   * * {@link AFlagSid.ON} to show only available events.
+   * * {@link AFlagSid.OFF} to show only unavailable events.
+   * * {@link AFlagSid.ALL} to show all events (available and unavailable).
    *
    * @get get
-   * @var int
+   * @type {number}
    */
   this.id_status = 3;
 
@@ -100,7 +110,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventList_ListModel);
  */
 Wl_Event_Book_EventList_ListModel.prototype.config=function()
 {
-  return {"a_field": {"a_event": {"get": {"result": true}},"a_event_available": {"get": {"result": true}},"id_status": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
+  return {"a_field": {"a_event": {"get": {"result": true}},"a_event_available": {"get": {"result": true}},"a_event_ticket": {"get": {"result": true}},"id_status": {"get": {"get": true}},"is_virtual_service": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_class_tab": {"get": {"get": true}},"uid": {"get": {"get": true}}}};
 };
 
 /**
@@ -109,6 +119,7 @@ Wl_Event_Book_EventList_ListModel.prototype.config=function()
  * @param {string} k_business The key of the business to show information for.
  * @param {string} k_class_tab The key of the category tab. If empty, select only elements with not specified book tab.
  * @param {string} uid The user's key.
+ * @param {number} id_status Defines how the event availability flag filter should be applied. One of {@link AFlagSid} constants. * {@link AFlagSid.ON} to show only available events. * {@link AFlagSid.OFF} to show only unavailable events. * {@link AFlagSid.ALL} to show all events (available and unavailable).
  * @returns {Wl_Event_Book_EventList_ListModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
