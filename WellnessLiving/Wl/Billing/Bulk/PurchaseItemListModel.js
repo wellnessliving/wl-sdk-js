@@ -137,6 +137,7 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
   /**
    * @typedef {{}} Wl_Billing_Bulk_PurchaseItemListModel_a_total
    * @property {Wl_Billing_Bulk_PurchaseItemListModel_a_total_a_discount_list} a_discount_list One entry per client type that discounts at least one of the selected items for at least one of the clients. Empty when no client type discount applies. Each element has the following structure:
+   * @property {string[]} a_tax_by_name The same total as `m_total_tax` below, split by `k_tax` instead of collapsed into one aggregate.
    * @property {number} i_pay_account The number of clients that paid by account.
    * @property {number} i_pay_card The number of clients that paid by card or ACH.
    * @property {string} m_pay_account The total amount paid by account.
