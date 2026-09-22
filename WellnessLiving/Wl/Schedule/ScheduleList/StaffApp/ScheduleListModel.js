@@ -92,6 +92,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    * @property {boolean} is_class_view `true` if this class or event session is visible only through the "View other staff schedules" permission and must be shown read-only (no attendance roster, no booked client identities, and no edit, cancel, reschedule, or booking actions); `false` otherwise.
    * @property {boolean} is_pay For appointments: `true` if appointment is paid; `false` otherwise. For classes always `null`.
    * @property {boolean} is_repeat For appointments: `true` if appointment is recurring; `false` otherwise. For classes always `null`.
+   * @property {boolean} is_ticket `true` if the session belongs to a ticketed event, `false` otherwise. Always `false` for classes, appointments, assets and events that are not ticketed.
    * @property {boolean} is_virtual_service `true` - If the business has at least one virtual service, `false` - otherwise.
    * @property {string} k_appointment The appointment key.  If the session isn't an appointment, this will be `0`.
    * @property {string} k_class The class key.  If the session isn't a class, this will be `0`.

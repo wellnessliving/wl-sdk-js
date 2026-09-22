@@ -155,6 +155,7 @@ function Wl_Event_EventListModel()
    * @property {boolean} is_promotion_only Whether clients of the business can pay for the event with purchase option only.
    * @property {boolean} is_prorate Whether event sessions can be booked partially.
    * @property {boolean} is_single_buy Whether class/event can be paid with single session.
+   * @property {boolean} is_ticket `true` if the event is a ticketed event, `false` otherwise.
    * @property {boolean} is_user_booked Whether current user is booked or on the wait list.
    * @property {boolean} is_virtual Whether event is virtual.
    * @property {boolean} is_wait_list_enabled Whether wait list is enabled for this event.

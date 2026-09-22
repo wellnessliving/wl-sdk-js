@@ -23,6 +23,7 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    * @property {number} id_restriction The restriction ID. One of the {@link Wl_Shop_Product_PurchaseRestrictionSid} constants.
    * @property {?number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
    * @property {boolean} is_online_sell Determines whether the sale item can be purchased by the client.
+   * @property {boolean} is_ticket `true` if the sale item is a ticketed event, `false` otherwise. Returned for items with `id_sale` equal to {@link RsSaleSid} only.
    * @property {boolean} is_visit This will be `true` if this Purchase Option is suitable to pay for the visit {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit}. Otherwise, this will be `false`. If {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit} is empty, this will always be `false`.
    * @property {string} k_id The sale item ID.
    * @property {string} text_title The category title.

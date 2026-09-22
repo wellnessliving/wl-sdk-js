@@ -39,6 +39,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @property {?number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
    * @property {boolean} is_direct `true` if the item was accessed via a direct purchase link, `false` otherwise.
    * @property {boolean} is_introductory `true` if the item is an introductory offer, `false` otherwise.
+   * @property {boolean} is_ticket `true` if the item is a ticketed event, `false` otherwise. Returned for items with `id_sale` equal to {@link RsSaleSid} only.
    * @property {string} k_id The item key.
    * @property {string} k_shop_category The primary shop category key for this item entry.
    * @property {string} s_key The unique string key identifying the item (product key combined with its DB SID).
@@ -64,6 +65,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @property {?number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
    * @property {boolean} is_direct `true` if the item was accessed via a direct purchase link, `false` otherwise.
    * @property {boolean} is_introductory `true` if the item is an introductory offer, `false` otherwise.
+   * @property {boolean} is_ticket `true` if the item is a ticketed event, `false` otherwise. Returned for items with `id_sale` equal to {@link RsSaleSid} only.
    * @property {string} k_id The item key.
    * @property {string} k_shop_category The primary shop category key for this item entry.
    * @property {string} s_key The unique string key identifying the item (product key combined with its DB SID).

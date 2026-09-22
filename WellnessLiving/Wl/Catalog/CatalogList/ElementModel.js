@@ -67,6 +67,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {number} id_duration_type A way to specify a duration. One of {@link Wl_Coupon_Edit_DurationTypeSid} constants.
    * @property {boolean} is_price_breakdown Whether to display individual prices for each item in the package.
    * @property {boolean} is_renew_public This applies only for promotions. `true` - clients can set promotion auto-renew. `false` - clients can't set promotion auto-renew.
+   * @property {boolean} is_ticket This applies to enrollment/event items. `true` if the item is a ticketed event, `false` otherwise.
    */
 
   /**
@@ -209,6 +210,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @property {number} id_duration_type A way to specify a duration. One of {@link Wl_Coupon_Edit_DurationTypeSid} constants.
    * @property {boolean} is_price_breakdown Whether to display individual prices for each item in the package.
    * @property {boolean} is_renew_public This applies only for promotions. `true` - clients can set promotion auto-renew. `false` - clients can't set promotion auto-renew.
+   * @property {boolean} is_ticket This applies to enrollment/event items. `true` if the item is a ticketed event, `false` otherwise.
    */
 
   /**
