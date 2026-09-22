@@ -20,11 +20,13 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
 
   /**
    * @typedef {{}} Wl_Billing_Bulk_PurchaseItemListModel_a_client_bill_a_client
+   * @property {?number} id_card_system The card system ({@link ACardSystemSid}) of the client's default payment method when it is a card, `null` for a stored bank account or when `text_pay_method` is `Account`.
    * @property {?number} id_pay_method The payment method this client is charged with, which decides whether the client is surcharged and which surcharge applies. One of the {@link RsPayMethodSid} constants: {@link RsPayMethodSid} for a stored card, {@link RsPayMethodSid} for a stored bank account, and {@link RsPayMethodSid} when the client account is billed, which is never surcharged.
    * @property {boolean} is_warning `true` if the client has no default payment method on file, has no email on file while a receipt is to be sent, or is not eligible for at least one of the selected introductory items; `false` otherwise.
+   * @property {?string} s_number The masked card or account number of the client's default payment method, or `null` when `text_pay_method` is `Account`.
    * @property {string} text_mail The client email address. Empty string if the client has no email.
    * @property {string} text_name The client full name.
-   * @property {string} text_pay_method The payment method label for this client. `Account` when billing to the client account; otherwise the default stored card label (for example, `Visa ****1234`), the default ACH account label when no card is on file, or an account fallback when neither is on file.
+   * @property {string} text_pay_method The payment method label for this client. `Account` when billing to the client account; otherwise the default stored card label (for example, `Visa-1234`), the default ACH account label when no card is on file, or an account fallback when neither is on file.
    * @property {string} text_phone The client cell phone number. Empty string if the client has no cell phone.
    * @property {string} uid The client user key.
    */
