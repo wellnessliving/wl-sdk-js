@@ -101,6 +101,8 @@ Wl_Appointment_Book_Question_QuestionModel.prototype.config=function()
 /**
  * Saves answers for an existing appointment.
  *
+ * Matches submitted answers to the service's questions by hash key, and saves them to the specified appointment.
+ *
  * @function
  * @name Wl_Appointment_Book_Question_QuestionModel.post
  * @returns {WlSdk_Deferred_Promise}

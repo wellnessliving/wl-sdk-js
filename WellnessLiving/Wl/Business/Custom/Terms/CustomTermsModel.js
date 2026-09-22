@@ -9,13 +9,16 @@ function Wl_Business_Custom_Terms_CustomTermsModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * Current value of every term slot to save.
-   *
-   * Each value is one of {@link Wl_Business_Custom_Terms_CustomTermOptionAbstractSid} child class constants
-   *   keyed by {@link Wl_Business_Custom_Terms_CustomTermSid} constants.
+   * @typedef {{}} Wl_Business_Custom_Terms_CustomTermsModel_a_term_option
+   * @property {number} id_term Term ID. One of {@link Wl_Business_Custom_Terms_CustomTermSid} constants.
+   * @property {number} id_term_option Selected custom term. Depends on `id_term`.
+   */
+
+  /**
+   * Current value of every term slot to save. Has the following structure:
    *
    * @post post
-   * @type {number[]}
+   * @type {Wl_Business_Custom_Terms_CustomTermsModel_a_term_option[]}
    */
   this.a_term_option = undefined;
 
@@ -42,13 +45,6 @@ Wl_Business_Custom_Terms_CustomTermsModel.prototype.config=function()
 
 /**
  * Saves {@link Wl_Business_Custom_Terms_CustomTermsModel.a_term_option} as the custom terms of {@link Wl_Business_Custom_Terms_CustomTermsModel.k_business}.
- *
- * Validates every posted term slot and its selected option, then delegates the write itself to
- * CustomTermsSettings::saveTerms() - a slot whose new value equals the business's resolved default
- * (the business-type default, or the system default if there is none) is reset instead of written, see
- * CustomTermsSettings::saveTerms(). A term slot missing from {@link Wl_Business_Custom_Terms_CustomTermsModel.a_term_option}
- * is left untouched; the client is expected to submit the current value of every slot on every save, not
- * only the slots that changed.
  *
  * @function
  * @name Wl_Business_Custom_Terms_CustomTermsModel.post
