@@ -55,9 +55,9 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel()
    * @property {string[]} a_note List of notes.
    * @property {string[]} a_resource A list of assets involved in the session.
    * @property {string[]} a_staff A list of staff members who will conduct the session.
-   * @property {Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel_a_schedule_a_staff_info} a_staff_info Information about staff members who conduct this session. The keys are . Values are array with data:
+   * @property {Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel_a_schedule_a_staff_info} a_staff_info Information about staff members who conduct this session. The keys are staff keys.
    * @property {string[]} a_user For appointments, this is a list of the names of users who are scheduled to attend the session.
-   * @property {string[]} a_virtual_location List of virtual locations. Each value is .
+   * @property {string[]} a_virtual_location List of virtual locations.
    * @property {string} dt_confirm Confirmation date for appointment in MySQL format. Will be zero date + time in case appointment is not yet confirmed by client.
    * @property {string} dt_date The date/time of the session in UTC.
    * @property {string} dt_date_cancel The date/time when the session was canceled in UTC. Only used for appointments.

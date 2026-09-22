@@ -33,7 +33,7 @@ function Wl_Event_Book_EventList_ListModel()
    * Value is `true` if the event is available for booking, `false` if it is unavailable.
    *
    * @get result
-   * @type {boolean[]}
+   * @type {{}}
    */
   this.a_event_available = undefined;
 
@@ -44,7 +44,7 @@ function Wl_Event_Book_EventList_ListModel()
    * Value is `true` if the event is a ticketed event, `false` otherwise.
    *
    * @get result
-   * @type {boolean[]}
+   * @type {{}}
    */
   this.a_event_ticket = undefined;
 
