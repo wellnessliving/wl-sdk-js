@@ -13,7 +13,7 @@ function Wl_Event_Book_EventList_ListModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "k_business,k_class_tab,uid,id_status";
+  this._s_key = "k_business,k_class_tab,uid";
 
   /**
    * A list of event identifiers.

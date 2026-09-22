@@ -55,9 +55,9 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    * @property {number} id_status Response status ID. One of {@link Core_Quiz_Response_ResponseStatusSid} constants.
    * @property {boolean} is_hide Whether it's hidden. `true` quiz is hidden, `false` otherwise.
    * @property {boolean} is_require Whether it's required. `true` quiz is required, `false` otherwise.
-   * @property {string} k_quiz Quiz key,
-   * @property {string} k_quiz_login Quiz login key,
-   * @property {string} k_quiz_response Quiz response key,
+   * @property {string} k_quiz Quiz key.
+   * @property {string} k_quiz_login Quiz login key.
+   * @property {string} k_quiz_response Quiz response key.
    * @property {string} text_title Quiz title.
    */
   /**
@@ -80,11 +80,10 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    * @property {string[]} a_uid_staff A list of staff members who will conduct the session.
    *
    * @property {Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule_a_staff_info} a_staff_info Information about staff members who conduct this session.
-   * For applications in the `APPS_USE_OLD_K_STAFF` allow-list, keys are .
-   * For other applications, keys are .
-   * Values are array with data:
+   * For applications in the `APPS_USE_OLD_K_STAFF` allow-list, keys are staff keys.
+   * For other applications, keys are staff user keys.
    * @property {string[]} a_user For appointments, this is a list of the names of users who are scheduled to attend the session.
-   * @property {string[]} a_virtual_location List of virtual locations. Each value is .
+   * @property {string[]} a_virtual_location List of virtual locations.
    * @property {string} dt_date The date/time of the session in UTC.
    * @property {string} dt_date_cancel The date/time when the session was canceled in UTC. Only used for appointments.
    * @property {string} dt_date_local The date/time of the session in local time.

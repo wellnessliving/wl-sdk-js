@@ -34,11 +34,19 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
    *    <li>{@link Wl_Insurance_Enrollment_Field_EnrollmentFieldListModel} to get and validate fields for a given program.</li>
    *    <li>{@link Wl_Catalog_Payment_PaymentModel} for a program purchase.</li>
    *  </ul>
+   * @property {number} [i_ticket_left] The number of tickets that can still be sold for the event instance.
+   * Never negative, even when the capacity was lowered below the number of tickets already sold.
+   * Returned for ticket items only, that is when `is_ticket` is `true`.
    * @property {number} id_restriction The restriction ID. One of the {@link Wl_Shop_Product_PurchaseRestrictionSid} constants.
    * @property {number} id_sale The sale category ID. One of the {@link RsSaleSid} constants.
    * @property {boolean} is_online_sell Determines whether the sale item can be purchased by the client.
-   * @property {boolean} is_ticket `true` if the sale item is a ticketed event, `false` otherwise.
+   * @property {boolean} [is_sold_out] `true` if all tickets of the event instance are sold and no more can be sold, `false` otherwise.
+   * Returned for ticket items only, that is when `is_ticket` is `true`.
+   * @property {boolean} is_ticket `true` if the sale item is one instance of a ticketed event, `false` otherwise.
    * Returned for items with `id_sale` equal to {@link RsSaleSid.ENROLLMENT} only.
+   * A ticket item is never accompanied by an ordinary event item for the same instance, and the start
+   * and the end of the instance are returned in `a_data` so that two shows of one event can be told
+   * apart. Staff who may not sell from the store receive no ticket items at all.
    * @property {boolean} is_visit This will be <tt>true</tt> if this Purchase Option is suitable to pay for the visit {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit}.
    * Otherwise, this will be <tt>false</tt>.
    * If {@link Wl_Catalog_StaffApp_CatalogList_CatalogListModel.k_visit} is empty, this will always be `false`.
@@ -49,8 +57,6 @@ function Wl_Catalog_StaffApp_CatalogList_CatalogListModel()
 
   /**
    * Products in the online store category.
-   *
-   * Every element has the following fields:
    *
    * @get result
    * @type {Wl_Catalog_StaffApp_CatalogList_CatalogListModel_a_shop_product[]}

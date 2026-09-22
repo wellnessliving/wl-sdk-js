@@ -56,7 +56,7 @@ function Wl_Catalog_CatalogList_ListModel()
    */
 
   /**
-   * The list of all sale items (de-duplicated). Each element has the following keys:
+   * The list of all sale items (de-duplicated).
    *
    * @get result
    * @type {Wl_Catalog_CatalogList_ListModel_a_product[]}

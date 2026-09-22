@@ -114,7 +114,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    */
 
   /**
-   * Information about the discount code:
+   * Information about the discount code.
    *
    * @get get
    * @type {Wl_Catalog_CatalogList_ElementModel_a_discount_code}
@@ -153,7 +153,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    */
 
   /**
-   * Image information:
+   * Image information.
    *
    * @deprecated This property is deprecated as it does not support multiple images.
    Use {@link Wl_Catalog_CatalogList_ElementModel.a_image_list} instead.

@@ -20,7 +20,7 @@ function Wl_Event_EventListModel()
    * List of day the week applied by filter {@link ADateWeekSid}.
    *
    * @get get
-   * @type {?string[]}
+   * @type {?number[]}
    */
   this.a_day = null;
 
@@ -44,10 +44,174 @@ function Wl_Event_EventListModel()
   this.a_enrollment_block_list = [];
 
   /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_search_tag
+   * @property {string} k_search_tag Search tag key.
+   * @property {string} text_title Name of the tag.
+   */
+  /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_schedule_a_staff_member
+   * @property {string} k_staff_member Staff member key.
+   * @property {string} text_business_role Staff member role title.
+   * @property {string} text_mail Staff member email address.
+   * @property {string} text_name_first Staff member first name.
+   * @property {string} text_name_full Staff member full name.
+   * @property {string} text_name_last Staff member last name.
+   * @property {string} uid Staff member uid.
+   */
+  /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_schedule_a_repeat
+   * @property {number} i_repeat Count of the periods which are specified in <tt>id_repeat</tt>.
+   * @property {number} id_repeat Measuring unit of <tt>i_repeat</tt> (week, month, year) from {@link ADurationSid}.
+   */
+  /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_schedule
+   * @property {number[]} a_day List of weekday numbers when event occur.
+   * @property {Wl_Event_EventListModel_a_event_list_a_schedule_a_repeat} a_repeat Information about event repeating.
+   * @property {Wl_Event_EventListModel_a_event_list_a_schedule_a_staff_member[]} a_staff_member List of staff members providing event session.
+   * @property {string} dl_end End date of the schedule in <tt>MySql</tt> format.
+   * @property {string} dl_start Start date of the schedule in <tt>MySql</tt> format.
+   * @property {boolean} is_day Whether this is a single day schedule (start and end dates of the schedule are the same).
+   * @property {string} k_class_period Class period key.
+   * @property {string} k_location Location key.
+   * @property {string} k_resource_location Resource key.
+   * Only one such resource can be selected for a schedule.
+   *
+   * Empty string, if no off-site location is used.
+   * `null` if field is not loaded.
+   * @property {string} text_location Location title.
+   * @property {string} text_room Room where the session takes place.
+   * @property {string} text_time Start and end time of the scheduled sessions in human readable format.
+   */
+  /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_logo
+   * @property {number} i_height Thumbnail height in pixels.
+   * @property {number} i_width Thumbnail width in pixels.
+   * @property {boolean} is_old `false` for the new wide-rectangle format; `true` for the legacy square format.
+   * @property {string} s_url Thumbnail URL.
+   */
+  /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_age_restriction
+   * @property {?number} i_age_from The minimum age for participation in the event.
+   *  `null` if there's no minimum age set or information isn't available.
+   * @property {?number} i_age_to The age limit for participation in the event.
+   * `null` if there's no age limit set or information isn't available.
+   * @property {boolean} is_age_public `true` if age restrictions are public and available, `false` if they're hidden.
+   * When restrictions are hidden and the current user isn't a staff member, the age range will be empty.
+   */
+  /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list
+   * @property {Wl_Event_EventListModel_a_event_list_a_age_restriction} a_age_restriction Information about age restrictions for this event, has the following structure:
+   * @property {string[]} a_class_tab List of book now tags connected to this event.
+   * @property {Wl_Event_EventListModel_a_event_list_a_logo} a_logo Data about logo of the event.
+   * @property {Wl_Event_EventListModel_a_event_list_a_schedule[]} a_schedule List of scheduled sessions of the event.
+   * @property {Wl_Event_EventListModel_a_event_list_a_search_tag[]} a_search_tag List of search tags connected to this event.
+   * @property {boolean} can_book Whether event can be booked or not.
+   * * `true` - there are no restrictions to book this event in general.
+   * * `false` - for some reason event cannot be booked.
+   *
+   * @property {boolean} can_cancel Whether current user can cancel already booked event.
+   * @property {string} dl_early End date, when early bird price ends in <tt>MySql</tt> format.
+   * @property {string} dl_end End date of the scheduled session in <tt>MySql</tt> format.
+   * @property {string} dl_session Local date of the closest session of the event.
+   * @property {string} dl_start Start date of the scheduled sessions in <tt>MySql</tt> format.
+   * @property {string} dtu_session Date of the closest session of the event.
+   * @property {string} html_reason Reason why session can not be booked.
+   * @property {number} i_book_active Number of clients in the active list.
+   *
+   * For non-block events, this is the sum across all future sessions of the event.
+   * For block events, this is the count for the whole block.
+   * @property {number} i_capacity Capacity of the active list.
+   *
+   * For non-block events, this is `i_session_future` multiplied by the capacity of
+   *  a single session. For block events, this is the capacity of the whole block.
+   * @property {number} i_session_all Number of all sessions in the event.
+   * @property {number} i_session_future Number of future sessions in the event.
+   * @property {number} i_session_past Number of past sessions in the event.
+   * @property {number} i_wait Number of clients in the wait list.
+   *
+   * For non-block events, this is the sum across all future sessions of the event. For block events, this is
+   *  the count for the whole block.
+   * @property {?number} [i_wait_limit] Wait list limit of the event.
+   *
+   * `null` if wait list is not enabled for this event, or if it is enabled without a limit.
+   * @property {number} id_reason ID of deny reason.
+   * @property {boolean} is_age_restrict Whether booking of this event restricted because of age rules for {@link Wl_Event_EventListModel}.
+   * @property {boolean} is_age_restrict_only `true` if this event booking is restricted and restricted because of client's age only.
+   * `false` otherwise.
+   * @property {?boolean} [is_available] Whether the event is available for booking or not.
+   * The flag refers to the Available/Unavailable filter.
+   *
+   * `null` if the field is not initialized.
+   * @property {boolean} is_block Whether single sessions of the event can be booked.
+   *
+   * Depending on current backend/fronted status.
+   *
+   *
+   * <tt>true</tt> - booking single sessions are not allowed.
+   * <tt>false</tt> - booking single sessions are allowed.
+   * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.
+   *
+   * `true` if clients can book on behalf of a guest.
+   * `false` otherwise.
+   * @property {boolean} is_bookable Whether event is bookable.
+   *
+   * * `true` - there are no restrictions to book this event in general.
+   * * `false` - for some reason event cannot be booked.
+   *
+   * <b>Attention!!!</b>
+   *
+   * Historically, the value of this field may not cover all expected checks,
+   *  and may be confusing to someone.
+   *
+   * It is properly used in combination with a number of other flags.
+   *
+   * If you need a flag that covers most of the checks please
+   *  use {@link Wl_Event_EventListModel_a_event_list.can_book} field.
+   * @property {boolean} is_booked Whether event is already booked.
+   * @property {boolean} is_cancellation_enabled `true` if clients can cancel this event. Otherwise, this will be `false`.
+   * @property {boolean} is_closed Whether booking of the event is closed already.
+   * Means that in general it is bookable but currently booking is closed.
+   * @property {boolean} is_full Whether event is full already.
+   * @property {boolean} is_online `true` if this class can be booked by any client; `false` otherwise.
+   * @property {boolean} is_online_private `true` means to show class only for clients who can book online,
+   * `false` means to show class for all clients.
+   * @property {boolean} is_open Whether event sessions can be booked after event has started.
+   * @property {boolean} is_promotion_only Whether clients of the business can pay for the event with purchase option only.
+   *
+   * `true` if event can be paid with purchase option only.
+   * `false` if full event purchase or single session purchase are allowed.
+   * @property {boolean} is_prorate Whether event sessions can be booked partially.
+   * @property {boolean} is_single_buy Whether class/event can be paid with single session.
+   * @property {boolean} is_ticket `true` if the event is a ticketed event, `false` otherwise.
+   * @property {boolean} is_user_booked Whether current user is booked or on the wait list.
+   *
+   * Unlike {@link Wl_Event_EventListModel_a_event_list.is_booked}, this field is also `true` when the user is on the wait
+   *  list, not only when actually booked into the active list.
+   * @property {boolean} is_virtual Whether event is virtual.
+   * @property {boolean} is_wait_list_enabled Whether wait list is enabled for this event.
+   * @property {string} k_class Class key.
+   * @property {string} k_class_period Class period key of the closest session of the event.
+   * @property {string} k_enrollment_block Key of enrollment block that corresponds to current row.
+   * @property {string} k_location Location key of the closest session of the event.
+   * @property {string} m_price_max Maximum price per session in the event.
+   * @property {string} m_price_min Minimum price per session in the event.
+   * @property {string} m_price_total Price of the entire event.
+   * @property {string} m_price_total_early Early bird price of the entire event.
+   * @property {string} sid_reason Code of {@link Wl_Event_EventListModel_a_event_list.html_reason}. Is used for testing purposes.
+   * Not empty only if {@link Wl_Event_EventListModel_a_event_list.is_bookable} is `false`.
+   * @property {boolean} text_age_restrict Text message of the restriction based on age rules.
+   * @property {string} text_title Title of the event.
+   * @property {?string} [url_book] Link to the start of the booking wizard to book the closed session from this event or the entire event.
+   *
+   * Can be `null` if there is no available for booking sessions.
+   * @property {string} xml_description Description of the event.
+   */
+
+  /**
    * A list of events corresponding to requested parameters.
    *
    * @get result
-   * @type {*}
+   * @type {Wl_Event_EventListModel_a_event_list[]}
    */
   this.a_event_list = [];
 
@@ -72,7 +236,7 @@ function Wl_Event_EventListModel()
    * List of time day applied by filter {@link RsScheduleTimeSid}.
    *
    * @get get
-   * @type {?string[]}
+   * @type {?number[]}
    */
   this.a_time = null;
 
@@ -95,7 +259,7 @@ function Wl_Event_EventListModel()
    * Otherwise, no filtering is done.
    *
    * @get get
-   * @type {?string[]}
+   * @type {?number[]}
    */
   this.a_virtual = null;
 
