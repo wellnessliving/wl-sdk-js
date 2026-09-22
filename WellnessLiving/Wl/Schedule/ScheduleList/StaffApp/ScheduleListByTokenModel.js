@@ -27,8 +27,6 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel()
    * Configuration options for schedule.
    * Key is option name, value is boolean.
    *
-   * May contain the following keys:
-   *
    * @get get
    * @type {Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel_a_config}
    */
@@ -58,8 +56,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel()
    * @property {string[]} a_staff A list of staff members who will conduct the session.
    *
    * Deprecated, use <tt>a_staff_list</tt> instead.
-   * @property {Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel_a_schedule_a_staff_info} a_staff_info Information about staff members who conduct this session. The keys are .
-   * Values are array with data:
+   * @property {Wl_Schedule_ScheduleList_StaffApp_ScheduleListByTokenModel_a_schedule_a_staff_info} a_staff_info Information about staff members who conduct this session. The keys are staff keys.
    * @property {string[]} a_user For appointments, this is a list of the names of users who are scheduled to attend the session.
    * @property {string[]} a_virtual_location List of virtual locations.
    * @property {string} dt_date The date/time of the session in UTC.

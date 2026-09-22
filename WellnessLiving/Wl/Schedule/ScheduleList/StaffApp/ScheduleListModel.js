@@ -26,8 +26,6 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    * Configuration options for schedule.
    * Key is option name, value is boolean.
    *
-   * May contain the following keys:
-   *
    * @get get
    * @type {Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_config}
    */
