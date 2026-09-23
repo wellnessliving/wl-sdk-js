@@ -110,7 +110,12 @@ function Wl_Profile_Edit_EditByTokenModel()
    * @typedef {{}} Wl_Profile_Edit_EditByTokenModel_a_structure
    * @property {number} id_field_general The ID of a system field. One of the {@link RsFieldGeneralSid} constants. This value is only defined if `id_field_type`={@link RsFieldTypeSid}.
    * @property {number} id_field_type The type of field. One of the {@link RsFieldTypeSid} constants.
-   * @property {boolean} is_require Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.
+   * @property {number} id_level_booking Requirement for a case when a client books a service. One of FieldLevelEnum members.
+   * @property {number} id_level_guest Requirement for a case when a guest books or buys. One of FieldLevelEnum members.
+   * @property {number} id_level_purchase Requirement for a case when a client makes a purchase. One of FieldLevelEnum members.
+   * @property {number} id_level_relationship Requirement for a case when a client adds a relationship. One of FieldLevelEnum members.
+   * @property {number} id_level_signup Requirement for a case when a client signs up. One of FieldLevelEnum members.
+   * @property {boolean} is_require Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.   **Deprecated. Use `id_level_booking`, `id_level_guest`, `id_level_purchase`, `id_level_relationship` or       `id_level_signup` instead.**
    * @property {string} k_field The field ID (`k_field`). A copy of the key of this array element.
    * @property {string} s_title The title of the field.
    * @property {string} x_value The value of the field. This value is defined by individual fields.

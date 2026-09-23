@@ -1,7 +1,7 @@
 /**
  * Contains a list of schemes of processing of on-hold periods.
  *
- * Scheme is stored in MembershipSql.`id_hold`.
+ *
  *
  * Last used ID: 4
  */
