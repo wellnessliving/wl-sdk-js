@@ -15,7 +15,8 @@ function Wl_Lead_Stage_LeadStageListModel()
 
   /**
    * @typedef {{}} Wl_Lead_Stage_LeadStageListModel_a_lead_stage
-   * @property {number} i_automation Number of automations used this stage. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
+   * @property {number} i_automation_active Number of active automations which use this stage. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
+   * @property {number} i_automation_inactive Number of inactive automations which use this stage. Such an automation still refers the stage, so it still makes a replacement stage mandatory when the stage is deleted. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
    * @property {number} i_member_group Number of client groups which convert their clients into this stage. Such a group depends on the stage: the stage may only be deleted with a replacement stage for the groups. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
    * @property {number} i_order Sequence number of the stage in the list.
    * @property {number} i_user Number of clients who are in this stage. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
@@ -27,7 +28,7 @@ function Wl_Lead_Stage_LeadStageListModel()
    * @property {string} s_color_foreground Color of characters on the icon. Hexadecimal color.
    * @property {string} s_icon Characters on the icon.
    * @property {string} text_title Name of the stage.
-   * @property {string} url_automation_list URL of the list of automations which use this stage.  Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true` and the stage is used in automations.
+   * @property {string} url_automation_list URL of the list of the active automations which use this stage.  Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true` and the stage is used by at least  one active automation.
    * @property {string} url_member_report URL of the report of clients who are in this stage.  Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true` and the stage contains clients.
    */
 
