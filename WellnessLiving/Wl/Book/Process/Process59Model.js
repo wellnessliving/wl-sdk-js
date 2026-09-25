@@ -229,8 +229,9 @@ Wl_Book_Process_Process59Model.prototype.config=function()
 /**
  * Returns the booking wizard steps, adjusting the path when the service is already booked for a family member.
  *
- * Delegates to the parent implementation and then, when family-relation booking is enabled and the service is
- * already booked for the selected relative, trims the wizard path down to only the relation and detail steps.
+ * Delegates to the parent implementation and then, when family-relation or guest booking is enabled and the
+ * service is already booked for the selected client, trims the wizard path down to only the relation and detail
+ * steps.
  *
  * @function
  * @name Wl_Book_Process_Process59Model.get

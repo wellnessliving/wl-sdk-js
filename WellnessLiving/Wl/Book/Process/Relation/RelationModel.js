@@ -73,9 +73,9 @@ function Wl_Book_Process_Relation_RelationModel()
    *
    * @post post
    * @see RsFamilyRelationSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_relation = 0;
+  this.id_relation = null;
 
   /**
    * Checking whether the client has a credit card (if configured in the business) will be skipped if this flag is set to `false`.

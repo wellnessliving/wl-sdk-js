@@ -42,7 +42,7 @@ function Wl_Profile_Edit_EditByTokenModel()
 
   /**
    * @typedef {{}} Wl_Profile_Edit_EditByTokenModel_a_family_relation
-   * @property {number} id_family_relation Relation type. One of {@link RsFamilyRelationSid} constants.
+   * @property {?number} id_family_relation Relation type. One of {@link RsFamilyRelationSid} constants.
    * @property {boolean} is_relative_pay `true` if the relative will pay for this user; `false` or absent otherwise.
    * @property {string} uid_from User key of the relative (must be the currently logged-in user).
    */
@@ -139,6 +139,16 @@ function Wl_Profile_Edit_EditByTokenModel()
    * @type {boolean}
    */
   this.can_password_change = undefined;
+
+  /**
+   * Family role for a new user. One of {@link RsFamilyRelationSid} constants.
+   * Not `null` only for a case of relative registration.
+   *
+   * @get get
+   * @see RsFamilyRelationSid
+   * @type {?number}
+   */
+  this.id_family_relation = null;
 
   /**
    * ID of source mode. One of {@link Wl_Mode_ModeSid} constants.
@@ -396,7 +406,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_EditByTokenModel);
  */
 Wl_Profile_Edit_EditByTokenModel.prototype.config=function()
 {
-  return {"a_field":{"a_change":{"put":{"post":true}},"a_error_list":{"get":{"result":true},"post":{"result":true}},"a_family_relation":{"post":{"post":true}},"a_image_upload":{"post":{"post":true}},"a_intents":{"post":{"post":true},"put":{"post":true}},"a_new":{"post":{"post":true}},"a_phone_inherit":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"a_structure":{"get":{"result":true}},"can_password_change":{"get":{"result":true}},"id_mode":{"post":{"get":true}},"id_register_source":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"is_a2p":{"get":{"result":true}},"is_address_inherit":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"is_exception_throw":{"post":{"post":true}},"is_short":{"get":{"result":true},"post":{"get":true}},"is_sing_in":{"post":{"post":true}},"is_sms_subscription_marketing":{"post":{"post":true}},"is_sms_subscription_presented":{"post":{"post":true}},"is_sms_subscription_transactional":{"post":{"post":true}},"is_staff":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_lead_source":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"s_class":{"get":{"result":true},"post":{"result":true}},"s_code":{"get":{"result":true},"post":{"result":true}},"s_status":{"post":{"result":true}},"text_business_uid_key":{"post":{"get":true}},"text_message":{"get":{"result":true},"post":{"result":true}},"text_password":{"post":{"post":true}},"text_token":{"get":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"uid_existed":{"post":{"get":true}},"uid_inherit_address":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"uid_relative_key":{"post":{"get":true}}}};
+  return {"a_field":{"a_change":{"put":{"post":true}},"a_error_list":{"get":{"result":true},"post":{"result":true}},"a_family_relation":{"post":{"post":true}},"a_image_upload":{"post":{"post":true}},"a_intents":{"post":{"post":true},"put":{"post":true}},"a_new":{"post":{"post":true}},"a_phone_inherit":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"a_structure":{"get":{"result":true}},"can_password_change":{"get":{"result":true}},"id_family_relation":{"get":{"get":true}},"id_mode":{"post":{"get":true}},"id_register_source":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"is_a2p":{"get":{"result":true}},"is_address_inherit":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"is_exception_throw":{"post":{"post":true}},"is_short":{"get":{"result":true},"post":{"get":true}},"is_sing_in":{"post":{"post":true}},"is_sms_subscription_marketing":{"post":{"post":true}},"is_sms_subscription_presented":{"post":{"post":true}},"is_sms_subscription_transactional":{"post":{"post":true}},"is_staff":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_lead_source":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"s_class":{"get":{"result":true},"post":{"result":true}},"s_code":{"get":{"result":true},"post":{"result":true}},"s_status":{"post":{"result":true}},"text_business_uid_key":{"post":{"get":true}},"text_message":{"get":{"result":true},"post":{"result":true}},"text_password":{"post":{"post":true}},"text_token":{"get":{"get":true}},"uid":{"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"uid_existed":{"post":{"get":true}},"uid_inherit_address":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"uid_relative_key":{"post":{"get":true}}}};
 };
 
 /**
