@@ -29,21 +29,30 @@ function Wl_Event_Editor_SetupModel()
   this.a_class_tab = undefined;
 
   /**
-   * Business policies the form starts with.
-   *
-   * Policies of the event for a saved event, policies of the business for a new one, so that the fields of the
-   * Business policies section are filled in either case.
-   *
-   * @get result
-   * @type {*[]}
+   * @typedef {{}} Wl_Event_Editor_SetupModel_a_reminder_info_a_config
+   * @property {number} i_before Number of the units of time the reminder is sent before the session.
+   * @property {number} id_duration_delay Unit of time the reminder is sent before the session. One of {@link ADurationSid} constants.
+   * @property {string} text_time Title of the unit of time.
    */
-  this.a_config = undefined;
 
   /**
-   * Send rules of the client reminder.
+   * @typedef {{}} Wl_Event_Editor_SetupModel_a_reminder_info
+   * @property {Wl_Event_Editor_SetupModel_a_reminder_info_a_config} a_config Times the reminder is sent at, the earliest one first. Every element is an array:
+   * @property {number} i_login_type Number of the client types the reminder is sent to.
+   * @property {number} i_login_type_all Number of the client types of the business.
+   * @property {number} i_member_group Number of the client groups the reminder is sent to.
+   * @property {number} i_member_group_all Number of the client groups of the business.
+   * @property {boolean} is_login_type `true` if the reminder is sent to certain client types only, `false` otherwise.
+   * @property {boolean} is_login_type_all `true` if every client type of the business is selected, `false` otherwise.
+   * @property {boolean} is_member_group `true` if the reminder is sent to certain client groups only, `false` otherwise.
+   * @property {boolean} is_member_group_all `true` if every client group of the business is selected, `false` otherwise.
+   */
+
+  /**
+   * Send rules of the client reminder. Keys are:
    *
    * @get result
-   * @type {*[]}
+   * @type {Wl_Event_Editor_SetupModel_a_reminder_info}
    */
   this.a_reminder_info = undefined;
 
@@ -100,9 +109,8 @@ function Wl_Event_Editor_SetupModel()
   /**
    * Markup of the Business policies block of the form.
    *
-   * The block is a form of the legacy page, which is built by RsBusinessConfigFormView from the policy
-   * rules of the business. There is no template of this form on the client, so the block is rendered here and the
-   * client only moves the markup into the section it belongs to.
+   * The block is the form of the policy rules of the business. There is no template of this form on the client, so
+   * the block is rendered here and the client only moves the markup into the section it belongs to.
    *
    * @get result
    * @type {string}
@@ -112,9 +120,8 @@ function Wl_Event_Editor_SetupModel()
   /**
    * Markup of the Prerequisites block of the form.
    *
-   * The block is a picker of services built by ComponentView from the services of the business. There is no
-   * template of this picker on the client, so the block is rendered here and the client only moves the markup into
-   * the section it belongs to.
+   * The block is a picker of the services of the business. There is no template of this picker on the client, so
+   * the block is rendered here and the client only moves the markup into the section it belongs to.
    *
    * @get result
    * @type {string}
@@ -124,9 +131,9 @@ function Wl_Event_Editor_SetupModel()
   /**
    * Markup of the Purchase Options block of the form.
    *
-   * The block is a picker of Purchase Options built by ComponentView, followed by the list of the picked
-   * ones built by ListView. There is no template of either of them on the client, so the block is rendered
-   * here and the client only moves the markup into the section it belongs to.
+   * The block is a picker of the Purchase Options of the business, followed by the list of the picked ones. There
+   * is no template of either of them on the client, so the block is rendered here and the client only moves the
+   * markup into the section it belongs to.
    *
    * @get result
    * @type {string}
@@ -136,9 +143,8 @@ function Wl_Event_Editor_SetupModel()
   /**
    * Markup of the Quick Buy block of the form.
    *
-   * The block is a picker of products built by ComponentView from the products of the business. There is no
-   * template of this picker on the client, so the block is rendered here and the client only moves the markup into
-   * the section it belongs to.
+   * The block is a picker of the products of the business. There is no template of this picker on the client, so
+   * the block is rendered here and the client only moves the markup into the section it belongs to.
    *
    * @get result
    * @type {string}
@@ -148,9 +154,8 @@ function Wl_Event_Editor_SetupModel()
   /**
    * Markup of the Taxes block of the form.
    *
-   * The block is a select built by RsTaxSelectView from the taxes of the business. There is no template of
-   * this select on the client, so the block is rendered here and the client only moves the markup into the section
-   * it belongs to.
+   * The block is a selector of the taxes of the business. There is no template of this select on the client, so the
+   * block is rendered here and the client only moves the markup into the section it belongs to.
    *
    * @get result
    * @type {string}
@@ -202,7 +207,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Editor_SetupModel);
  */
 Wl_Event_Editor_SetupModel.prototype.config=function()
 {
-  return {"a_field":{"a_class_tab":{"get":{"result":true}},"a_config":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_search_tag":{"get":{"result":true}},"a_shop_category":{"get":{"result":true}},"a_url":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"get":true}},"text_currency":{"get":{"result":true}}}};
+  return {"a_field":{"a_class_tab":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_search_tag":{"get":{"result":true}},"a_shop_category":{"get":{"result":true}},"a_url":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"get":true}},"text_currency":{"get":{"result":true}}}};
 };
 
 /**

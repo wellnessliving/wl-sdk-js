@@ -1,5 +1,5 @@
 /**
- * Returns a fixed connection value and, when requested, selected findings.
+ * Collects findings for the requested calendar date.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -10,13 +10,13 @@ function Core_AI_LogTriage_ConnectionCheckModel()
 
   /**
    * @typedef {{}} Core_AI_LogTriage_ConnectionCheckModel_a_finding
-   * @property {string} dl_first_seen Local date of the first usage-statistics record.
-   * @property {string} dl_last_seen Local date of the last usage-statistics record.
+   * @property {number} cid_source CID of a {@link Core_AI_LogTriage_TriageProblemAbstract} subclass.
+   * @property {string} dl_first_seen Date of the first usage-statistics record.
+   * @property {string} dl_last_seen Date of the last usage-statistics record.
    * @property {string} dtu_first_seen UTC date/time of the first matching log or async-task record. Empty for background tasks.
    * @property {string} dtu_last_seen UTC date/time of the last matching log or async-task record. Empty for background tasks.
    * @property {number} i_occurrence_count Number of matching records.
    * @property {number} i_priority_multiplier Usage-statistics priority multiplier. Present for the usage-statistics source.
-   * @property {number} id_source Finding source from {@link Core_AI_LogTriage_TriageSourceSid}.
    * @property {string} s_object Usage-statistics object. Present for the usage-statistics source.
    * @property {string} s_period Usage-statistics aggregation period. Present for the usage-statistics source.
    * @property {string} s_priority Usage-statistics priority. Present for the usage-statistics source.
@@ -34,38 +34,12 @@ function Core_AI_LogTriage_ConnectionCheckModel()
   this.a_finding = undefined;
 
   /**
-   * IDs of finding sources from {@link Core_AI_LogTriage_TriageSourceSid}.
-   *
-   * @get get
-   * @type {number[]}
-   */
-  this.a_id_source = undefined;
-
-  /**
-   * Connection check value.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.i_result = undefined;
-
-  /**
-   * `true` returns findings; otherwise `false` performs only the connection check.
-   *
-   * @get get
-   * @type {boolean}
-   */
-  this.is_finding = false;
-
-  /**
-   * Date/time mask accepted by LogSearchQuery.
-   *
-   * Empty string selects the current UTC date.
+   * Calendar date to collect findings for. Empty string selects the current UTC date.
    *
    * @get get
    * @type {string}
    */
-  this.s_date_mask = "";
+  this.dl_date = "";
 
   /**
    * Optional case-insensitive message substring.
@@ -85,11 +59,13 @@ WlSdk_ModelAbstract.extend(Core_AI_LogTriage_ConnectionCheckModel);
  */
 Core_AI_LogTriage_ConnectionCheckModel.prototype.config=function()
 {
-  return {"a_field":{"a_finding":{"get":{"result":true}},"a_id_source":{"get":{"get":true}},"i_result":{"get":{"result":true}},"is_finding":{"get":{"get":true}},"s_date_mask":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
+  return {"a_field":{"a_finding":{"get":{"result":true}},"dl_date":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
 };
 
 /**
- * Returns a fixed connection value and, when requested, selected findings.
+ * Collects findings for the requested calendar date.
+ *
+ * Searches every registered problem source using the requested date and optional text filter.
  *
  * @function
  * @name Core_AI_LogTriage_ConnectionCheckModel.get
