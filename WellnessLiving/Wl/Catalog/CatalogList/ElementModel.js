@@ -32,6 +32,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * or when age restriction are public. `null` if age restrictions are not set for the item.
    *
    * @get result
+   * @post result
    * @type {?Wl_Catalog_CatalogList_ElementModel_a_age_restriction}
    */
   this.a_age_restriction = null;
@@ -82,6 +83,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * * For a session pass/membership/package, this contains information about start and stop dates.
    *
    * @get result
+   * @post result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_data}
    */
   this.a_data = undefined;
@@ -99,6 +101,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Information about the discount code:
    *
    * @get get
+   * @post get
    * @type {Wl_Catalog_CatalogList_ElementModel_a_discount_code}
    */
   this.a_discount_code = undefined;
@@ -120,6 +123,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * guest pass is not enabled.
    *
    * @get result
+   * @post result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_guest_pass}
    */
   this.a_guest_pass = undefined;
@@ -138,6 +142,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @deprecated This property is deprecated as it does not support multiple images.
  Use {@link Wl_Catalog_CatalogList_ElementModel.a_image_list} instead.
    * @get result
+   * @post result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_image}
    */
   this.a_image = undefined;
@@ -156,6 +161,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Keys are index and each element has the same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_image} field.
    *
    * @get result
+   * @post result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_image_list[]}
    */
   this.a_image_list = undefined;
@@ -175,6 +181,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * A list of installment plans. Each element has the following next keys:
    *
    * @get result
+   * @post result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_installment_template[]}
    */
   this.a_installment_template = undefined;
@@ -266,6 +273,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The list of information pertaining to the specified item.
    *
    * @get result
+   * @post result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_item[]}
    */
   this.a_item = undefined;
@@ -282,6 +290,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Keys refer to sale IDs from {@link RsSaleSid}, and values refer to data to identify an item:
    *
    * @get get
+   * @post get
    * @type {Wl_Catalog_CatalogList_ElementModel_a_sale_id_group[]}
    */
   this.a_sale_id_group = undefined;
@@ -291,6 +300,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Keys are tax keys, and values are tax amounts.
    *
    * @get result
+   * @post result
    * @type {string[]}
    */
   this.a_tax = undefined;
@@ -301,6 +311,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * This will be `null` in cases where the client prorate date hasn't passed.
    *
    * @get get
+   * @post get
    * @type {?string}
    */
   this.dl_client_prorate = null;
@@ -309,6 +320,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The price of the sale item.
    *
    * @get result
+   * @post result
    * @type {?string}
    */
   this.f_price = null;
@@ -317,6 +329,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The price of the sale item, including tax.
    *
    * @get result
+   * @post result
    * @type {?string}
    */
   this.f_price_include = null;
@@ -325,6 +338,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The retail price of the product. This will be empty if this isn't a product.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.f_price_retail_product = undefined;
@@ -333,6 +347,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Full price of event. This will be empty if this isn't an event.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.f_price_total_enrollment = undefined;
@@ -341,6 +356,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The tax amount.
    *
    * @get result
+   * @post result
    * @type {?string}
    */
   this.f_tax = null;
@@ -349,6 +365,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The sale item description.
    *
    * @get result
+   * @post result
    * @type {?string}
    */
   this.html_description = null;
@@ -357,6 +374,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Special instructions for the sale item.
    *
    * @get result
+   * @post result
    * @type {?string}
    */
   this.html_special = null;
@@ -366,6 +384,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The returned image will have default thumbnail size if this value isn't specified.
    *
    * @get get
+   * @post get
    * @type {number}
    */
   this.i_image_height = 0;
@@ -375,6 +394,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The returned image will have default thumbnail size if this value isn't specified.
    *
    * @get get
+   * @post get
    * @type {number}
    */
   this.i_image_width = 0;
@@ -384,6 +404,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The returned image will have default thumbnail size if this value isn't specified.
    *
    * @get get
+   * @post get
    * @type {number}
    */
   this.i_promotion_image_height = 0;
@@ -393,6 +414,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The returned image will have default thumbnail size if this value isn't specified.
    *
    * @get get
+   * @post get
    * @type {number}
    */
   this.i_promotion_image_width = 0;
@@ -402,6 +424,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * One of the {@link RsPurchaseItemSid} constants.
    *
    * @get result
+   * @post result
    * @see RsPurchaseItemSid
    * @type {number}
    */
@@ -411,6 +434,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The ID of the item view category. One of the {@link Wl_Catalog_PurchaseOptionViewSid} constants.
    *
    * @get result
+   * @post result
    * @see Wl_Catalog_PurchaseOptionViewSid
    * @type {number}
    */
@@ -421,6 +445,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * One of the {@link RsSaleSid} constants.
    *
    * @get get,result
+   * @post get,result
    * @see RsSaleSid
    * @type {?number}
    */
@@ -430,6 +455,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * Determines whether the API is called in the backend mode.
    *
    * @get get
+   * @post get
    * @type {boolean}
    */
   this.is_backend = false;
@@ -438,6 +464,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * If `true`, the item requires a contract. Otherwise, this will be `false`.
    *
    * @get result
+   * @post result
    * @type {boolean}
    */
   this.is_contract = undefined;
@@ -446,6 +473,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The business key.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_business = "";
@@ -454,6 +482,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The item key.
    *
    * @get get,result
+   * @post get,result
    * @type {string}
    */
   this.k_id = "";
@@ -462,6 +491,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The location key.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_location = "";
@@ -472,6 +502,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * This will be `null` if not set yet.
    *
    * @get get,result
+   * @post get,result
    * @type {?string}
    */
   this.k_shop_product_option = null;
@@ -480,6 +511,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The discount amount for a discount code.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.m_discount_code = undefined;
@@ -488,6 +520,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The discount amount for a user's type.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.m_discount_login = undefined;
@@ -496,6 +529,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The price on the price tag.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.m_price = undefined;
@@ -504,6 +538,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The price, including taxes.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.m_price_include = undefined;
@@ -512,6 +547,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The tax amount.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.m_tax = undefined;
@@ -521,6 +557,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * For example, information about 'introductory offer'.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.s_comment = undefined;
@@ -529,6 +566,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The price of the sale item in a human-readable format.
    *
    * @get result
+   * @post result
    * @type {?string}
    */
   this.s_price = null;
@@ -537,6 +575,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The category title of the sale item.
    *
    * @get result
+   * @post result
    * @type {?string}
    */
   this.s_sale = null;
@@ -545,6 +584,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The sale item title.
    *
    * @get result
+   * @post result
    * @type {?string}
    */
   this.s_title = null;
@@ -567,9 +607,21 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.text_item = null;
 
   /**
+   * A list of goods to get information for.
+   * Same as {@link Wl_Catalog_CatalogList_ElementModel.text_item}, but for POST requests. Note that this must be serialized via JSON.
+   *
+   * This will be `null` to get information for only one item.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.text_item_post = null;
+
+  /**
    * The price on the price tag, with the currency sign.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.text_price = undefined;
@@ -578,6 +630,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The title of the item category.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.text_sale = undefined;
@@ -586,6 +639,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The item title.
    *
    * @get result
+   * @post result
    * @type {string}
    */
   this.text_title = undefined;
@@ -594,6 +648,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    * The UID of a customer (user) for whom the purchase is made. This is used in the backend to calculate discounts.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.uid_customer = "";
@@ -603,6 +658,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    *
    * @deprecated Use `html_description`.
    * @get result
+   * @post result
    * @type {?string}
    */
   this.xml_description = null;
@@ -612,6 +668,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    *
    * @deprecated Use `html_special`.
    * @get result
+   * @post result
    * @type {?string}
    */
   this.xml_special = null;
@@ -626,7 +683,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_CatalogList_ElementModel);
  */
 Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
 {
-  return {"a_field":{"a_age_restriction":{"get":{"result":true}},"a_data":{"get":{"result":true}},"a_discount_code":{"get":{"get":true}},"a_guest_pass":{"get":{"result":true}},"a_image":{"get":{"result":true}},"a_image_list":{"get":{"result":true}},"a_installment_template":{"get":{"result":true}},"a_item":{"get":{"result":true}},"a_sale_id_group":{"get":{"get":true}},"a_tax":{"get":{"result":true}},"dl_client_prorate":{"get":{"get":true}},"f_price":{"get":{"result":true}},"f_price_include":{"get":{"result":true}},"f_price_retail_product":{"get":{"result":true}},"f_price_total_enrollment":{"get":{"result":true}},"f_tax":{"get":{"result":true}},"html_description":{"get":{"result":true}},"html_special":{"get":{"result":true}},"i_image_height":{"get":{"get":true}},"i_image_width":{"get":{"get":true}},"i_promotion_image_height":{"get":{"get":true}},"i_promotion_image_width":{"get":{"get":true}},"id_purchase_item":{"get":{"result":true}},"id_purchase_option_view":{"get":{"result":true}},"id_sale":{"get":{"get":true,"result":true}},"is_backend":{"get":{"get":true}},"is_contract":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_id":{"get":{"get":true,"result":true}},"k_location":{"get":{"get":true}},"k_shop_product_option":{"get":{"get":true,"result":true}},"m_discount_code":{"get":{"result":true}},"m_discount_login":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_price_include":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"s_comment":{"get":{"result":true}},"s_price":{"get":{"result":true}},"s_sale":{"get":{"result":true}},"s_title":{"get":{"result":true}},"text_item":{"get":{"get":true}},"text_price":{"get":{"result":true}},"text_sale":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid_customer":{"get":{"get":true}},"xml_description":{"get":{"result":true}},"xml_special":{"get":{"result":true}}}};
+  return {"a_field":{"a_age_restriction":{"get":{"result":true},"post":{"result":true}},"a_data":{"get":{"result":true},"post":{"result":true}},"a_discount_code":{"get":{"get":true},"post":{"get":true}},"a_guest_pass":{"get":{"result":true},"post":{"result":true}},"a_image":{"get":{"result":true},"post":{"result":true}},"a_image_list":{"get":{"result":true},"post":{"result":true}},"a_installment_template":{"get":{"result":true},"post":{"result":true}},"a_item":{"get":{"result":true},"post":{"result":true}},"a_sale_id_group":{"get":{"get":true},"post":{"get":true}},"a_tax":{"get":{"result":true},"post":{"result":true}},"dl_client_prorate":{"get":{"get":true},"post":{"get":true}},"f_price":{"get":{"result":true},"post":{"result":true}},"f_price_include":{"get":{"result":true},"post":{"result":true}},"f_price_retail_product":{"get":{"result":true},"post":{"result":true}},"f_price_total_enrollment":{"get":{"result":true},"post":{"result":true}},"f_tax":{"get":{"result":true},"post":{"result":true}},"html_description":{"get":{"result":true},"post":{"result":true}},"html_special":{"get":{"result":true},"post":{"result":true}},"i_image_height":{"get":{"get":true},"post":{"get":true}},"i_image_width":{"get":{"get":true},"post":{"get":true}},"i_promotion_image_height":{"get":{"get":true},"post":{"get":true}},"i_promotion_image_width":{"get":{"get":true},"post":{"get":true}},"id_purchase_item":{"get":{"result":true},"post":{"result":true}},"id_purchase_option_view":{"get":{"result":true},"post":{"result":true}},"id_sale":{"get":{"get":true,"result":true},"post":{"get":true,"result":true}},"is_backend":{"get":{"get":true},"post":{"get":true}},"is_contract":{"get":{"result":true},"post":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_id":{"get":{"get":true,"result":true},"post":{"get":true,"result":true}},"k_location":{"get":{"get":true},"post":{"get":true}},"k_shop_product_option":{"get":{"get":true,"result":true},"post":{"get":true,"result":true}},"m_discount_code":{"get":{"result":true},"post":{"result":true}},"m_discount_login":{"get":{"result":true},"post":{"result":true}},"m_price":{"get":{"result":true},"post":{"result":true}},"m_price_include":{"get":{"result":true},"post":{"result":true}},"m_tax":{"get":{"result":true},"post":{"result":true}},"s_comment":{"get":{"result":true},"post":{"result":true}},"s_price":{"get":{"result":true},"post":{"result":true}},"s_sale":{"get":{"result":true},"post":{"result":true}},"s_title":{"get":{"result":true},"post":{"result":true}},"text_item":{"get":{"get":true}},"text_item_post":{"post":{"post":true}},"text_price":{"get":{"result":true},"post":{"result":true}},"text_sale":{"get":{"result":true},"post":{"result":true}},"text_title":{"get":{"result":true},"post":{"result":true}},"uid_customer":{"get":{"get":true},"post":{"get":true}},"xml_description":{"get":{"result":true},"post":{"result":true}},"xml_special":{"get":{"result":true},"post":{"result":true}}}};
 };
 
 /**
@@ -655,4 +712,17 @@ Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
  * @name Wl_Catalog_CatalogList_ElementModel.get
  * @returns {WlSdk_Deferred_Promise}
  * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Displays information about a certain item in the store.
+ *
+ * Works exactly as `get()` method.
+ * This method is added so that batched item identifiers can be sent in the request body
+ * rather than as URL query parameters, avoiding URL length limits.
+ *
+ * @function
+ * @name Wl_Catalog_CatalogList_ElementModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

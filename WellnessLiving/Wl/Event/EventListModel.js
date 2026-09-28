@@ -80,6 +80,7 @@ function Wl_Event_EventListModel()
    * @property {number[]} a_day List of weekday numbers when event occur.
    * @property {Wl_Event_EventListModel_a_event_list_a_schedule_a_repeat} a_repeat Information about event repeating.
    * @property {Wl_Event_EventListModel_a_event_list_a_schedule_a_staff_member} a_staff_member List of staff members providing event session.
+   * @property {string[]} a_virtual_location List of location keys where the virtual service can be booked from other locations.
    * @property {string} dl_end End date of the schedule in `MySql` format.
    * @property {string} dl_start Start date of the schedule in `MySql` format.
    * @property {boolean} is_day Whether this is a single day schedule (start and end dates of the schedule are the same).

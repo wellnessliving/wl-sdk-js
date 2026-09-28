@@ -33,6 +33,29 @@ function Wl_Appointment_Cancel_ConfirmModel()
   this.a_appointment_list = null;
 
   /**
+   * @typedef {{}} Wl_Appointment_Cancel_ConfirmModel_a_notification
+   * @property {boolean} is_attach `true` to attach calendar file, `false` to not attach calendar file.
+   * @property {boolean} is_campaign Whether mail should track as a part of campaign. `true` if yes, `false` if no.
+   * @property {string} text_business_name Business name.
+   * @property {string} text_business_reply Reply email address.
+   * @property {string} text_campaign Campaign name.
+   * @property {string} text_content_mail Email content.
+   * @property {string} text_push Push notification content.
+   * @property {string} text_sms SMS content.
+   * @property {string} text_subject Email subject.
+   */
+
+  /**
+   * Information for sending an appointment cancellation notification.
+   *
+   * All keys are optional. A key that is not provided keeps the template's value.
+   *
+   * @post post
+   * @type {Wl_Appointment_Cancel_ConfirmModel_a_notification}
+   */
+  this.a_notification = undefined;
+
+  /**
    * End date of period for appointments cancellation.
    *
    * `null` in case of cancellation of single appointment.
@@ -290,7 +313,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Cancel_ConfirmModel);
  */
 Wl_Appointment_Cancel_ConfirmModel.prototype.config=function()
 {
-  return {"a_field":{"a_appointment_list":{"get":{"result":true},"post":{"get":true}},"dl_end":{"get":{"get":true,"result":true},"post":{"get":true}},"dl_start":{"get":{"get":true,"result":true},"post":{"get":true}},"dtl_max":{"get":{"result":true},"post":{"get":true}},"dtl_min":{"get":{"result":true},"post":{"get":true}},"html_fee_amount":{"get":{"result":true}},"i_appointment_selected":{"get":{"result":true}},"id_charge":{"get":{"result":true}},"id_visit":{"get":{"get":true},"post":{"get":true}},"is_appointment_specific":{"get":{"get":true},"post":{"get":true}},"is_charge_fee":{"post":{"get":true}},"is_inform_mail":{"get":{"result":true},"post":{"get":true}},"is_inform_push":{"get":{"result":true},"post":{"get":true}},"is_inform_sms":{"get":{"result":true},"post":{"get":true}},"is_recurring":{"get":{"get":true},"post":{"get":true}},"k_appointment":{"get":{"get":true},"post":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"result":true}},"k_mail_pattern_live":{"post":{"get":true}},"k_service":{"get":{"result":true}},"k_visit":{"get":{"get":true,"result":true},"post":{"get":true}},"m_fee_amount":{"get":{"result":true},"post":{"get":true}},"sid_mail":{"get":{"result":true}},"text_client_name":{"get":{"result":true}},"text_reason":{"post":{"get":true}},"text_status":{"get":{"result":true}},"text_title":{"get":{"result":true}}}};
+  return {"a_field":{"a_appointment_list":{"get":{"result":true},"post":{"get":true}},"a_notification":{"post":{"post":true}},"dl_end":{"get":{"get":true,"result":true},"post":{"get":true}},"dl_start":{"get":{"get":true,"result":true},"post":{"get":true}},"dtl_max":{"get":{"result":true},"post":{"get":true}},"dtl_min":{"get":{"result":true},"post":{"get":true}},"html_fee_amount":{"get":{"result":true}},"i_appointment_selected":{"get":{"result":true}},"id_charge":{"get":{"result":true}},"id_visit":{"get":{"get":true},"post":{"get":true}},"is_appointment_specific":{"get":{"get":true},"post":{"get":true}},"is_charge_fee":{"post":{"get":true}},"is_inform_mail":{"get":{"result":true},"post":{"get":true}},"is_inform_push":{"get":{"result":true},"post":{"get":true}},"is_inform_sms":{"get":{"result":true},"post":{"get":true}},"is_recurring":{"get":{"get":true},"post":{"get":true}},"k_appointment":{"get":{"get":true},"post":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"result":true}},"k_mail_pattern_live":{"post":{"get":true}},"k_service":{"get":{"result":true}},"k_visit":{"get":{"get":true,"result":true},"post":{"get":true}},"m_fee_amount":{"get":{"result":true},"post":{"get":true}},"sid_mail":{"get":{"result":true}},"text_client_name":{"get":{"result":true}},"text_reason":{"post":{"get":true}},"text_status":{"get":{"result":true}},"text_title":{"get":{"result":true}}}};
 };
 
 /**

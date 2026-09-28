@@ -148,6 +148,26 @@ function Wl_Appointment_Info_InfoModel()
   this.dt_date_local = undefined;
 
   /**
+   * Background color of the appointment on the schedule (RGB).
+   *
+   * Uses the service color, or the asset color for a booking with no service.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_color_background = undefined;
+
+  /**
+   * Border color of the appointment on the schedule (RGB).
+   *
+   * Uses the service color, or the asset color for a booking with no service.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_color_border = undefined;
+
+  /**
    * Appointment duration (in minutes).
    *
    * @get result
@@ -171,6 +191,27 @@ function Wl_Appointment_Info_InfoModel()
    * @type {number}
    */
   this.id_appointment_pay = undefined;
+
+  /**
+   * Virtual provider ID.
+   *
+   * `null` for non-virtual services.
+   *
+   * @get result
+   * @see Wl_Virtual_VirtualProviderSid
+   * @type {?number}
+   */
+  this.id_virtual_provider = null;
+
+  /**
+   * Whether the service is virtual.
+   *
+   * `null` for non-virtual services.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_virtual = undefined;
 
   /**
    * Appointment key to get information for.
@@ -281,7 +322,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Info_InfoModel);
  */
 Wl_Appointment_Info_InfoModel.prototype.config=function()
 {
-  return {"a_field":{"a_next":{"get":{"result":true}},"a_previous":{"get":{"result":true}},"a_question":{"get":{"result":true}},"a_repeat":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_shop_product_option":{"get":{"result":true}},"dt_date_local":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_index":{"get":{"result":true}},"id_appointment_pay":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_login_promotion":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_resource_type":{"get":{"result":true}},"k_service":{"get":{"result":true}},"k_service_category":{"get":{"result":true}},"k_session_pass":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid_appointment":{"get":{"result":true}},"uid_staff":{"get":{"result":true}}}};
+  return {"a_field":{"a_next":{"get":{"result":true}},"a_previous":{"get":{"result":true}},"a_question":{"get":{"result":true}},"a_repeat":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_shop_product_option":{"get":{"result":true}},"dt_date_local":{"get":{"result":true}},"i_color_background":{"get":{"result":true}},"i_color_border":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_index":{"get":{"result":true}},"id_appointment_pay":{"get":{"result":true}},"id_virtual_provider":{"get":{"result":true}},"is_virtual":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_login_promotion":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_resource_type":{"get":{"result":true}},"k_service":{"get":{"result":true}},"k_service_category":{"get":{"result":true}},"k_session_pass":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid_appointment":{"get":{"result":true}},"uid_staff":{"get":{"result":true}}}};
 };
 
 /**
