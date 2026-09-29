@@ -10,7 +10,7 @@ function Core_AI_LogTriage_ConnectionCheckModel()
 
   /**
    * @typedef {{}} Core_AI_LogTriage_ConnectionCheckModel_a_finding
-   * @property {number} cid_source CID of a {@link Core_AI_LogTriage_TriageProblemAbstract} subclass.
+   * @property {number} cid_problem CID of a {@link Core_AI_LogTriage_TriageProblemAbstract} subclass.
    * @property {string} dl_first_seen Date of the first usage-statistics record.
    * @property {string} dl_last_seen Date of the last usage-statistics record.
    * @property {string} dtu_first_seen UTC date/time of the first matching log or async-task record. Empty for background tasks.
