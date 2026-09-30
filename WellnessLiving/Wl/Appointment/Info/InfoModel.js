@@ -284,9 +284,9 @@ function Wl_Appointment_Info_InfoModel()
    * Use `uid_staff` instead.
    *
    * @get result
-   * @type {string}
+   * @type {?string}
    */
-  this.k_staff = undefined;
+  this.k_staff = null;
 
   /**
    * Title of the appointment.
