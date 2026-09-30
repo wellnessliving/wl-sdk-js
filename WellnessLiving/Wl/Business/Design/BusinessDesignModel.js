@@ -36,6 +36,8 @@ function Wl_Business_Design_BusinessDesignModel()
    * @property {string} s_color_submenu_element Submenu element color of front end menu.
    * @property {string} s_color_submenu_hover Hover color of submenu of front end menu
    * @property {string} s_color_submenu_press Press color of submenu in front end menu.
+   * @property {string} s_fb_capi_access_token Meta Conversion API Access Token. Empty string if CAPI not used or application that made request does not have access to it.
+   * @property {string} s_fb_capi_test_event_code Meta Conversion API Test Event Code. Optional, used for QA in Meta Events Manager. Empty string if not used or application that made request does not have access to it.
    * @property {string} s_fb_pixel_id Facebook Pixel ID. Used for Facebook analytics tracking. Empty string if tracking is disabled.
    * @property {string} s_ga_tracking_id Google Analytics Tracking ID. Used for Google Analytics tracking. Empty string if tracking is disabled.
    * @property {string} s_gtm_container_id Google Tag Manager Container ID. Used for Google Analytics tracking. Empty string if tracking is disabled.
