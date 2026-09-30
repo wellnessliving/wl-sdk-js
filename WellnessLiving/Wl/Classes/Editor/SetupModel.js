@@ -1,10 +1,10 @@
 /**
- * Returns everything the event setup form needs besides the event itself.
+ * Returns everything the class setup form needs besides the class itself.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
  */
-function Wl_Event_Editor_SetupModel()
+function Wl_Classes_Editor_SetupModel()
 {
   WlSdk_ModelAbstract.apply(this);
 
@@ -14,30 +14,30 @@ function Wl_Event_Editor_SetupModel()
   this._s_key = "k_business,k_class";
 
   /**
-   * @typedef {{}} Wl_Event_Editor_SetupModel_a_class_tab
-   * @property {boolean} is_selected `true` if the event is shown in this tab, `false` otherwise.
+   * @typedef {{}} Wl_Classes_Editor_SetupModel_a_class_tab
+   * @property {boolean} is_selected `true` if the class is shown in this tab, `false` otherwise.
    * @property {string} s_key Key of the tab: the ID of the tab object and the key of the tab joined with a hyphen. The key of a system tab is `0`.
    * @property {string} text_title Title of the tab.
    */
 
   /**
-   * Book Now Tabs the event may be shown in. Every element is an array:
+   * Book Now Tabs the class may be shown in. Every element is an array:
    *
    * @get result
-   * @type {Wl_Event_Editor_SetupModel_a_class_tab[]}
+   * @type {Wl_Classes_Editor_SetupModel_a_class_tab[]}
    */
   this.a_class_tab = undefined;
 
   /**
-   * @typedef {{}} Wl_Event_Editor_SetupModel_a_reminder_info_a_config
+   * @typedef {{}} Wl_Classes_Editor_SetupModel_a_reminder_info_a_config
    * @property {number} i_before Number of the units of time the reminder is sent before the session.
    * @property {number} id_duration_delay Unit of time the reminder is sent before the session. One of {@link ADurationSid} constants.
    * @property {string} text_time Title of the unit of time.
    */
 
   /**
-   * @typedef {{}} Wl_Event_Editor_SetupModel_a_reminder_info
-   * @property {Wl_Event_Editor_SetupModel_a_reminder_info_a_config} a_config Times the reminder is sent at, the earliest one first. Every element is an array:
+   * @typedef {{}} Wl_Classes_Editor_SetupModel_a_reminder_info
+   * @property {Wl_Classes_Editor_SetupModel_a_reminder_info_a_config} a_config Times the reminder is sent at, the earliest one first. Every element is an array:
    * @property {number} i_login_type Number of the client types the reminder is sent to.
    * @property {number} i_login_type_all Number of the client types of the business.
    * @property {number} i_member_group Number of the client groups the reminder is sent to.
@@ -52,12 +52,12 @@ function Wl_Event_Editor_SetupModel()
    * Send rules of the client reminder. Keys are:
    *
    * @get result
-   * @type {Wl_Event_Editor_SetupModel_a_reminder_info}
+   * @type {Wl_Classes_Editor_SetupModel_a_reminder_info}
    */
   this.a_reminder_info = undefined;
 
   /**
-   * @typedef {{}} Wl_Event_Editor_SetupModel_a_search_tag
+   * @typedef {{}} Wl_Classes_Editor_SetupModel_a_search_tag
    * @property {string} k_search_tag Key of the tag.
    * @property {string} text_title Title of the tag.
    */
@@ -66,12 +66,12 @@ function Wl_Event_Editor_SetupModel()
    * Quick search tags of the category of the business. Every element is an array:
    *
    * @get result
-   * @type {Wl_Event_Editor_SetupModel_a_search_tag[]}
+   * @type {Wl_Classes_Editor_SetupModel_a_search_tag[]}
    */
   this.a_search_tag = undefined;
 
   /**
-   * @typedef {{}} Wl_Event_Editor_SetupModel_a_shop_category
+   * @typedef {{}} Wl_Classes_Editor_SetupModel_a_shop_category
    * @property {string} k_shop_category Key of the category.
    * @property {string} text_title Title of the category.
    */
@@ -80,16 +80,16 @@ function Wl_Event_Editor_SetupModel()
    * Store categories of the business. Every element is an array:
    *
    * @get result
-   * @type {Wl_Event_Editor_SetupModel_a_shop_category[]}
+   * @type {Wl_Classes_Editor_SetupModel_a_shop_category[]}
    */
   this.a_shop_category = undefined;
 
   /**
-   * @typedef {{}} Wl_Event_Editor_SetupModel_a_url
+   * @typedef {{}} Wl_Classes_Editor_SetupModel_a_url
    * @property {string} url_category_manage List of store categories.
    * @property {string} url_notification_client Client notifications.
-   * @property {string} url_notification_confirmation Client confirmation notification of an event.
-   * @property {string} url_notification_reminder Client reminder notification of an event.
+   * @property {string} url_notification_confirmation Client confirmation notification of a class.
+   * @property {string} url_notification_reminder Client reminder notification of a class.
    * @property {string} url_notification_staff Staff notifications.
    * @property {string} url_policy_manage Default business policies.
    * @property {string} url_product_manage List of products.
@@ -102,7 +102,7 @@ function Wl_Event_Editor_SetupModel()
    * Addresses of the pages the form links to:
    *
    * @get result
-   * @type {Wl_Event_Editor_SetupModel_a_url[]}
+   * @type {Wl_Classes_Editor_SetupModel_a_url[]}
    */
   this.a_url = undefined;
 
@@ -179,10 +179,10 @@ function Wl_Event_Editor_SetupModel()
   this.k_business = "";
 
   /**
-   * Event key.
+   * Class key.
    *
-   * `0` while a new event is created, so the key of the model of the client has a value. The key is only checked
-   * when it points at an event.
+   * `0` while a new class is created, so the key of the model of the client has a value. The key is only checked
+   * when it points at a class.
    *
    * @get get
    * @type {string}
@@ -200,27 +200,27 @@ function Wl_Event_Editor_SetupModel()
   this.changeInit();
 }
 
-WlSdk_ModelAbstract.extend(Wl_Event_Editor_SetupModel);
+WlSdk_ModelAbstract.extend(Wl_Classes_Editor_SetupModel);
 
 /**
  * @inheritDoc
  */
-Wl_Event_Editor_SetupModel.prototype.config=function()
+Wl_Classes_Editor_SetupModel.prototype.config=function()
 {
   return {"a_field":{"a_class_tab":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_search_tag":{"get":{"result":true}},"a_shop_category":{"get":{"result":true}},"a_url":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"get":true}},"text_currency":{"get":{"result":true}}}};
 };
 
 /**
  * @function
- * @name Wl_Event_Editor_SetupModel.instanceGet
+ * @name Wl_Classes_Editor_SetupModel.instanceGet
  * @param {string} k_business Business key.
- * @param {string} k_class Event key. `0` while a new event is created, so the key of the model of the client has a value. The key is only checked when it points at an event.
- * @returns {Wl_Event_Editor_SetupModel}
+ * @param {string} k_class Class key. `0` while a new class is created, so the key of the model of the client has a value. The key is only checked when it points at a class.
+ * @returns {Wl_Classes_Editor_SetupModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
 
 /**
- * Returns everything the event setup form needs besides the event itself.
+ * Returns everything the class setup form needs besides the class itself.
  *
  * The form is rendered by the client, so this endpoint answers with data: the lists the Book Now Tab, the quick
  * search tag and the store category pickers are filled from, the business policies the Business policies section
@@ -229,7 +229,7 @@ Wl_Event_Editor_SetupModel.prototype.config=function()
  * the client.
  *
  * @function
- * @name Wl_Event_Editor_SetupModel.get
+ * @name Wl_Classes_Editor_SetupModel.get
  * @returns {WlSdk_Deferred_Promise}
  * @see WlSdk_ModelAbstract.get()
  */
