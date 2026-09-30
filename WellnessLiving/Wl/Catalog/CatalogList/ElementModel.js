@@ -1,5 +1,7 @@
 /**
- * Information about a certain item in the store.
+ * Displays information about a certain item in the store.
+ *
+ * When using this endpoint, note that the terms "promotion" and "Purchase Option" refer to the same thing.
  *
  * This model is generated automatically based on API.
  *
@@ -17,74 +19,85 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_age_restriction
-   * @property {number} i_age_from Lower age limit (years).
-   * @property {number} i_age_from_month Lower age limit (months).
-   * @property {number} i_age_from_year Lower age limit (years).
-   * @property {number} i_age_to Upper age limit (years).
-   * @property {number} i_age_to_month Upper age limit (months).
-   * @property {number} i_age_to_year Upper age limit (years).
-   * @property {boolean} is_age_public Whether age restriction should be displayed to the client.
+   * @property {number} i_age_from Minimum age for service (years part).
+   * @property {number} i_age_from_month Minimum age for service (months part).
+   * @property {number} i_age_from_year Minimum age for service (years part).
+   * @property {number} i_age_to Maximum age for service (years part).
+   * @property {number} i_age_to_month Maximum age for service (months part).
+   * @property {number} i_age_to_year Maximum age for service (years part).
+   * @property {boolean} is_age_public Is service public even if user does not meet age requirements or not?
+   *
+   * `true` - to show service to everyone.
+   * `false` - to show service only to users who meet age requirements.
+   * @property {boolean} is_month_enabled Whether months are enabled for age restrictions.
+   *
+   * `true` - age restrictions can include number of months.
+   * `false` - age restrictions can include only years.
    */
 
   /**
-   * Age restriction config.
+   * The age restriction configuration.
    *
-   * Age restrictions for item fills when they are configured for specific item and API requested from back side,
+   * Age restrictions for an item apply when they're configured for a specific item and the API is requested from the backend
    * or when age restriction are public. `null` if age restrictions are not set for the item.
    *
    * @get result
-   * @var {Wl_Catalog_CatalogList_ElementModel_a_age_restriction|null}
+   * @type {?Wl_Catalog_CatalogList_ElementModel_a_age_restriction}
    */
   this.a_age_restriction = null;
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data_a_staff
+   * @property {string} k_staff @deprecated Legacy staff key.  Deprecated, use `uid_staff`.
+   * @property {string} uid_staff Staff user key.
+   * @property {string} text_family Staff last name.
+   * @property {string} text_staff Staff display name.
+   */
+  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data_a_component
-   * @property {number} id_program Program ID. One of {@link RsProgramSid} ID's. Only applies to promotions.
+   * @property {number} id_program Program ID. One of {@link Wl_WlProgramSid} ID's. Only applies to promotions.
    * @property {number} id_purchase_item Purchase item ID. One of {@link Wl_Purchase_Item_ItemSid} ID's.
    * @property {number} id_sale Sale ID. One of {@link RsSaleSid} ID's.
    * @property {string} k_id The identifier of the item.
    * @property {string} text_title The title of the item.
    */
-
-  /**
-   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data_a_staff
-   * @property {string} k_staff @deprecated Legacy staff key. Deprecated, use {@link uid_staff} instead.
-   * @property {string} uid_staff Staff user key.
-   * @property {string} text_family Staff last name.
-   * @property {string} text_staff Staff display name.
-   */
-
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data
-   * @property {int[]} a_service_access Access to services for a purchase option.
-   *   Keys are one of the {@link ServiceSid} constants, values are one of the {@link AFlagSid}
-   *   constants. Set only for relevant purchase option service category.
-   *   {@link AFlagSid::ON} access to some services.
-   *   {@link AFlagSid::OFF} no access to services. It can be set only for classes and events.
-   *   {@link AFlagSid::ALL} access to all services. It can be set only for classes and events.
-   *   For purchase options with appointments and assets service category status is always {@link AFlagSid::ON}.
+   * @property {number[]} a_service_access Access to services for a purchase option.
+   * Keys are one of the {@link Wl_Service_ServiceSid} constants, values are one of the {@link AFlagSid}
+   * constants. Set only for relevant purchase option service category.
+   * {@link AFlagSid.ON} access to some services.
+   * {@link AFlagSid.OFF} no access to services. It can be set only for classes and events.
+   * {@link AFlagSid.ALL} access to all services. It can be set only for classes and events.
+   * For purchase options with appointments and assets service category status is always {@link AFlagSid.ON}.
    * @property {boolean} is_renew_public This applies only for promotions.
-   *   `true` - clients can set promotion auto-renew.
-   *   `false` - clients can't set promotion auto-renew.
-   * @property {Wl_Catalog_CatalogList_ElementModel_a_data_a_component} a_component This applies only for coupons. Coupon components information.
-   * @property {Wl_Catalog_CatalogList_ElementModel_a_data_a_staff} a_staff This applies to enrollment/event items. Staff list for class periods.
+   * `true` - clients can set promotion auto-renew.
+   * `false` - clients can't set promotion auto-renew.
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_data_a_component[]} a_component This applies only for coupons. Coupon components information. Each element will contain the following keys:
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_data_a_staff[]} a_staff This applies to enrollment/event items. Staff list for class periods. Each element contains:
    * @property {string} dl_expire Date of expiration of coupon, local date in MySQL format.
    * @property {string} dl_now Current date, local date in MySQL format.
    * @property {string} dl_start Date to activate the coupon on, local date in MySQL format.
    *   When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.
-   * @property {number} i_duration Number of periods the coupon is active. Type of period is specified by `id_duration`.
-   * @property {number} id_activation Type of a coupon activation date specification. One of {@link ActivationSid} constants.
-   * @property {number} id_duration Duration of a period. A constant from {@link ADurationSid}.</dd>
-   * @property {number} id_duration_type A way to specify a duration. One of {@link DurationTypeSid} constants.
+   * @property {number} i_duration Number of periods the coupon is active. Type of a period is specified by `id_duration`.
+   * @property {number} id_activation Type of a coupon activation date specification. One of {@link Wl_Coupon_Edit_ActivationSid} constants.
+   * @property {number} id_duration Duration of a period. A constant from {@link ADurationSid}.
+   * @property {number} id_duration_type A way to specify a duration. One of {@link Wl_Coupon_Edit_DurationTypeSid} constants.
    * @property {boolean} is_price_breakdown Whether to display individual prices for each item in the package.
+   * @property {boolean} is_ticket This applies to enrollment/event items.
+   * `true` if the item is a ticketed event, `false` otherwise.
    */
 
   /**
    * Additional information specific for the item.
    *
    * The structure may be different depending on the item category.
-   * For example, for a product it contains inventory information. For a gift card, it contains possible amounts.
-   * For a pass/membership/package, it contains information about starting and stopping.
+   *
+   *
+   * Consider the following examples:
+   * * For a product, this contains inventory information.
+   * * For a gift card, this contains possible amounts.
+   * * For a session pass/membership/package, this contains information about start and stop dates.
    *
    * @get result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_data}
@@ -93,28 +106,29 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_discount_code
-   * @property {string} f_amount Fixed amount of the discount.
-   * @property {string} f_percent Percentage amount of the discount.
-   * @property {number} i_limit Maximum count of usage. Zero means unlimited usage.
-   * @property {string} k_discount_code Discount code key.
-   * @property {string} s_discount_code Discount code value.
+   * @property {string} f_amount The fixed amount of the discount.
+   * @property {string} f_percent The percentage amount of the discount.
+   * @property {number} i_limit Limitation.
+   * @property {string} k_discount_code The discount code key.
+   * @property {string} s_discount_code The discount code value.
    */
 
   /**
-   * Information about discount code.
+   * Information about the discount code.
    *
    * @get get
    * @type {Wl_Catalog_CatalogList_ElementModel_a_discount_code}
    */
-  this.a_discount_code = [];
+  this.a_discount_code = {};
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_guest_pass
    * @property {?number} i_limit Number of times guest pass can be used per period. `null` for unlimited guest pass.
    * @property {?number} i_limit_daily Number of times guest pass can be used per day. `null` for limited guest pass.
    * @property {?number} i_period Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.
-   * @property {?number} id_period Period type by which guest pass limits are reset. `null` for unlimited guest pass.
-   * @property {?number} id_reset_type Type by which guest pass limits are reset. `null` for unlimited guest pass.
+   * @property {?number} id_period Period type by which guest pass limits are reset. One of the {@link ADurationSid} constants. `null` for unlimited guest pass.
+   * @property {?number} id_reset_type Type by which guest pass limits are reset. One of {@link Wl_Promotion_Guest_Pass_GuestPassResetTypeSid} constants.
+   *     `null` for unlimited guest pass.
    * @property {string} k_promotion_guest Guest pass promotion key.
    * @property {string} text_limit Formatted guest pass limits.
    * @property {string} text_title Guest pass promotion title.
@@ -133,32 +147,44 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_image
    * @property {number} i_height The height in pixels.
    * @property {number} i_width The width in pixels.
-   * @property {boolean} is_empty `true` - item has no image (in this case ignore other keys of this array).
-   * `false` - item has an image.
+   * @property {boolean} is_empty `true` - the item has no image (in this case, ignore the other keys of this array).
+   * `false` - the item has an image.
    * @property {string} s_url The image URL.
    */
 
   /**
    * Image information.
    *
+   * @deprecated This property is deprecated as it does not support multiple images.
+   Use {@link Wl_Catalog_CatalogList_ElementModel.a_image_list} instead.
    * @get result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_image}
-   * @deprecated This property is deprecated as it does not support multiple images. Use {@link a_image_list} instead.
    */
   this.a_image = undefined;
 
   /**
-   * List of images
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_image_list
+   * @property {number} i_height The height in pixels.
+   * @property {number} i_width The width in pixels.
+   * @property {boolean} is_empty `true` - the item has no image (in this case, ignore the other keys of this array).
+   * `false` - the item has an image.
+   * @property {string} s_url The image URL.
+   */
+
+  /**
+   * List of images.
+   *
+   * Keys are index and each element has the same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_image} field.
    *
    * @get result
-   * @type {Wl_Catalog_CatalogList_ElementModel_a_image[]|null}
+   * @type {Wl_Catalog_CatalogList_ElementModel_a_image_list[]}
    */
-  this.a_image_list = null;
+  this.a_image_list = [];
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_installment_template
    * @property {number} i_count The number of payments.
-   * @property {number} id_duration The duration of a single period. One of {@link ADurationSid} constants.
+   * @property {number} id_duration The duration of a single period. One of the {@link ADurationSid} constants.
    * @property {number} i_period The number of periods specified by `id_period` between individual payments.
    * @property {string} k_currency The payment currency Key.
    * @property {string} k_pay_installment_template The key of the installment plan template.
@@ -167,7 +193,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    */
 
   /**
-   * A list of installment plans.
+   * A list of installment plans. Each element has the following next keys:
    *
    * @get result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_installment_template[]}
@@ -175,11 +201,85 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.a_installment_template = undefined;
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_image_a_image
+   * @property {number} i_height Height of the variant image.
+   * @property {number} i_height_src Height of the original image.
+   * @property {number} i_rotate Rotate.
+   * @property {number} i_width Width of the variant image.
+   * @property {number} i_width_src Width of the original image.
+   * @property {number} id_type_src Type ID of the image. Constant from {@link Core_Drive_DriveTypeSid}.
+   * @property {boolean} is-resize `true` if the variant differs from the original, `false` - otherwise.
+   * @property {string} url-thumbnail URL to download variant (thumbnail) file.
+   * @property {string} url-view URL to download original file.
+   */
+  /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_image
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_image_a_image} a_image Information about the image.
+   * @property {number} i_height Height of the variant image.
+   * @property {number} i_width Width of the variant image.
+   * @property {boolean} is_empty `true` if the image file does not exist, `false` - otherwise.
+   * @property {string} s_url Link to the variant file.
+   */
+  /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_guest_pass
+   * @property {?number} i_limit Number of times guest pass can be used per period. `null` for unlimited guest pass.
+   * @property {?number} i_limit_daily Number of times guest pass can be used per day. `null` for limited guest pass.
+   * @property {?number} i_period Number of periods after which guest pass limits are reset. `null` for unlimited guest pass.
+   * @property {?number} id_period Period type by which guest pass limits are reset. One of the {@link ADurationSid} constants. `null` for unlimited guest pass.
+   * @property {?number} id_reset_type Type by which guest pass limits are reset. One of {@link Wl_Promotion_Guest_Pass_GuestPassResetTypeSid} constants.
+   *     `null` for unlimited guest pass.
+   * @property {string} k_promotion_guest Guest pass promotion key.
+   * @property {string} text_limit Formatted guest pass limits.
+   * @property {string} text_title Guest pass promotion title.
+   */
+  /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_staff
+   * @property {string} k_staff @deprecated Legacy staff key.  Deprecated, use `uid_staff`.
+   * @property {string} uid_staff Staff user key.
+   * @property {string} text_family Staff last name.
+   * @property {string} text_staff Staff display name.
+   */
+  /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_component
+   * @property {number} id_program Program ID. One of {@link Wl_WlProgramSid} ID's. Only applies to promotions.
+   * @property {number} id_purchase_item Purchase item ID. One of {@link Wl_Purchase_Item_ItemSid} ID's.
+   * @property {number} id_sale Sale ID. One of {@link RsSaleSid} ID's.
+   * @property {string} k_id The identifier of the item.
+   * @property {string} text_title The title of the item.
+   */
+  /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_data
+   * @property {number[]} a_service_access Access to services for a purchase option.
+   * Keys are one of the {@link Wl_Service_ServiceSid} constants, values are one of the {@link AFlagSid}
+   * constants. Set only for relevant purchase option service category.
+   * {@link AFlagSid.ON} access to some services.
+   * {@link AFlagSid.OFF} no access to services. It can be set only for classes and events.
+   * {@link AFlagSid.ALL} access to all services. It can be set only for classes and events.
+   * For purchase options with appointments and assets service category status is always {@link AFlagSid.ON}.
+   * @property {boolean} is_renew_public This applies only for promotions.
+   * `true` - clients can set promotion auto-renew.
+   * `false` - clients can't set promotion auto-renew.
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_component[]} a_component This applies only for coupons. Coupon components information. Each element will contain the following keys:
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_staff[]} a_staff This applies to enrollment/event items. Staff list for class periods. Each element contains:
+   * @property {string} dl_expire Date of expiration of coupon, local date in MySQL format.
+   * @property {string} dl_now Current date, local date in MySQL format.
+   * @property {string} dl_start Date to activate the coupon on, local date in MySQL format.
+   *   When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.
+   * @property {number} i_duration Number of periods the coupon is active. Type of a period is specified by `id_duration`.
+   * @property {number} id_activation Type of a coupon activation date specification. One of {@link Wl_Coupon_Edit_ActivationSid} constants.
+   * @property {number} id_duration Duration of a period. A constant from {@link ADurationSid}.
+   * @property {number} id_duration_type A way to specify a duration. One of {@link Wl_Coupon_Edit_DurationTypeSid} constants.
+   * @property {boolean} is_price_breakdown Whether to display individual prices for each item in the package.
+   * @property {boolean} is_ticket This applies to enrollment/event items.
+   * `true` if the item is a ticketed event, `false` otherwise.
+   */
+  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item
-   * @property {Wl_Catalog_CatalogList_ElementModel_a_data} a_data Contains additional data for the sale item.
-   * @property {Wl_Catalog_CatalogList_ElementModel_a_image} a_image Contains information about one image connected to a sale item.
-   * @property {{}} a_tax Contains information about taxes. Fields - tax keys; values - tax amounts.
-   * @property {number} id_purchase_option_view The Purchase Option view type. One of the {@link PurchaseOptionViewSid} constants.
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data} a_data Contains additional data for the sale item. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_data} has.
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_guest_pass} a_guest_pass Information about promotion guest pass. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_guest_pass} has.
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_image} a_image Contains information about one image connected to a sale item.
+   * @property {string[]} a_tax Tax amounts keyed by tax key. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_tax} has.
+   * @property {number} id_purchase_option_view The Purchase Option view type. One of the {@link Wl_Catalog_PurchaseOptionViewSid} constants.
    * @property {string} m_discount_code The discount code amount.
    * @property {string} m_discount_login The discount amount for the client type.
    * @property {string} s_comment Additional information about the sale item. For example, information about 'introductory offer'.
@@ -189,7 +289,7 @@ function Wl_Catalog_CatalogList_ElementModel()
    */
 
   /**
-   * A list of requested goods information.
+   * The list of information pertaining to the specified item.
    *
    * @get result
    * @type {Wl_Catalog_CatalogList_ElementModel_a_item[]}
@@ -198,15 +298,14 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_sale_id_group
-   * @property {number} id_sale ID of item category. One of {@link RsSaleSid} constants.
-   * @property {string} k_id Primary key of item.
-   * @property {string} k_shop_product_option Product option. `0` for any other cases.
+   * @property {number} id_sale The item category ID. One of the {@link RsSaleSid} constants.
+   * @property {string} k_id The primary key of item.
+   * @property {string} k_shop_product_option The product option key or `0` for any other cases.
    */
 
   /**
-   * List of items groped by sale categories on the store page.
-   *
-   * Keys refer to sale IDs from {@link RsSaleSid}, and values refer to data to identify an item.
+   * The list of items grouped by sale categories on the store page.
+   * Keys refer to sale IDs from {@link RsSaleSid}, and values refer to data to identify an item:
    *
    * @get get
    * @type {Wl_Catalog_CatalogList_ElementModel_a_sale_id_group[]}
@@ -214,17 +313,18 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.a_sale_id_group = [];
 
   /**
-   * A list of the item's taxes. Keys - tax keys, values - the amount of tax
+   * A list of the item's taxes.
+   * Keys are tax keys, and values are tax amounts.
    *
    * @get result
-   * @type {{}}
+   * @type {string[]}
    */
   this.a_tax = undefined;
 
   /**
-   * Client prorate date.
+   * The client prorate date.
    *
-   * `null` in case when client prorate date is not passed.
+   * This will be `null` in cases where the client prorate date hasn't passed.
    *
    * @get get
    * @type {?string}
@@ -232,7 +332,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.dl_client_prorate = null;
 
   /**
-   * Price of the sale item.
+   * The price of the sale item.
    *
    * @get result
    * @type {?string}
@@ -240,7 +340,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.f_price = null;
 
   /**
-   * Price of the sale item including the tax.
+   * The price of the sale item, including tax.
    *
    * @get result
    * @type {?string}
@@ -248,23 +348,23 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.f_price_include = null;
 
   /**
-   * Retail price of product. Empty if not a product.
+   * The retail price of the product. This will be empty if this isn't a product.
    *
    * @get result
    * @type {string}
    */
-  this.f_price_retail_product = '';
+  this.f_price_retail_product = "";
 
   /**
-   * Full price of event. Empty if not an event.
+   * Full price of event. This will be empty if this isn't an event.
    *
    * @get result
    * @type {string}
    */
-  this.f_price_total_enrollment = '';
+  this.f_price_total_enrollment = "";
 
   /**
-   * Amount of tax.
+   * The tax amount.
    *
    * @get result
    * @type {?string}
@@ -272,7 +372,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.f_tax = null;
 
   /**
-   * Description about the sale item.
+   * The sale item description.
    *
    * @get result
    * @type {?string}
@@ -280,7 +380,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.html_description = null;
 
   /**
-   * Special instructions of the sale item.
+   * Special instructions for the sale item.
    *
    * @get result
    * @type {?string}
@@ -288,8 +388,8 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.html_special = null;
 
   /**
-   * Image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The image height in pixels. Specify this value if you need the image to be returned in a specific size.
+   * The returned image will have default thumbnail size if this value isn't specified.
    *
    * @get get
    * @type {number}
@@ -297,8 +397,8 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.i_image_height = 0;
 
   /**
-   * Image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The image width in pixels. Specify this value if you need the image to be returned in a specific size.
+   * The returned image will have default thumbnail size if this value isn't specified.
    *
    * @get get
    * @type {number}
@@ -306,8 +406,8 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.i_image_width = 0;
 
   /**
-   * Promotion image height in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The promotion image height in pixels. Specify this value if you need the image to be returned in a specific size.
+   * The returned image will have default thumbnail size if this value isn't specified.
    *
    * @get get
    * @type {number}
@@ -315,8 +415,8 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.i_promotion_image_height = 0;
 
   /**
-   * Promotion image width in pixels. Please specify this value if you need image to be returned in specific size.
-   * In case this value is not specified returned image will have default thumbnail size.
+   * The promotion image width in pixels. Specify this value if you need the image to be returned in a specific size.
+   * The returned image will have default thumbnail size if this value isn't specified.
    *
    * @get get
    * @type {number}
@@ -324,8 +424,8 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.i_promotion_image_width = 0;
 
   /**
-   * The ID of the purchase item category.
-   * One of {@link Wl_Purchase_Item_ItemSid} constants.
+   * The purchase item category ID.
+   * One of the {@link Wl_Purchase_Item_ItemSid} constants.
    *
    * @get result
    * @type {number}
@@ -333,7 +433,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.id_purchase_item = undefined;
 
   /**
-   * The ID of the item view category. One of {@link Wl_Catalog_PurchaseOptionViewSid} constants.
+   * The ID of the item view category. One of the {@link Wl_Catalog_PurchaseOptionViewSid} constants.
    *
    * @get result
    * @type {number}
@@ -342,7 +442,7 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * The ID of item category.
-   * One of {@link RsSaleSid} constants.
+   * One of the {@link RsSaleSid} constants.
    *
    * @get get,result
    * @type {number}
@@ -350,15 +450,15 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.id_sale = 0;
 
   /**
-   * `true` if API is called in the backend mode, `false` otherwise.
+   * Determines whether the API is called in the backend mode.
    *
    * @get get
    * @type {boolean}
    */
-  this.is_backend = undefined;
+  this.is_backend = false;
 
   /**
-   * `true` if the item requires a contract, `false` otherwise.
+   * If `true`, the item requires a contract. Otherwise, this will be `false`.
    *
    * @get result
    * @type {boolean}
@@ -392,7 +492,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   /**
    * The product option key.
    *
-   * `null` if not initialized yet.
+   * This will be `null` if not set yet.
    *
    * @get get,result
    * @type {?string}
@@ -424,7 +524,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.m_price = undefined;
 
   /**
-   * The price including taxes.
+   * The price, including taxes.
    *
    * @get result
    * @type {string}
@@ -432,7 +532,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.m_price_include = undefined;
 
   /**
-   * The amount of taxes.
+   * The tax amount.
    *
    * @get result
    * @type {string}
@@ -441,7 +541,7 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * Additional comment(s).
-   * For example: information about 'introductory offer'.
+   * For example, information about 'introductory offer'.
    *
    * @get result
    * @type {string}
@@ -449,7 +549,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.s_comment = undefined;
 
   /**
-   * Price of the sale item in human readable format.
+   * The price of the sale item in a human-readable format.
    *
    * @get result
    * @type {?string}
@@ -457,7 +557,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.s_price = null;
 
   /**
-   * Category title of the sale item.
+   * The category title of the sale item.
    *
    * @get result
    * @type {?string}
@@ -465,7 +565,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.s_sale = null;
 
   /**
-   * Title of sale item.
+   * The sale item title.
    *
    * @get result
    * @type {?string}
@@ -474,20 +574,15 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * A list of goods to get information for. Every element must contain the next keys:
-   * <dl>
-   *   <dt>int `id_sale`</dt>
-   *   <dd>The ID of the item category. One of {@link RsSaleSid} constants.</dd>
-   *   <dt>string `k_id`</dt>
-   *   <dd>The key of the item.</dd>
-   *   <dt>string `k_shop_product_option`</dt>
-   *   <dd>The key of the product option. `0` if the item is not a product.</dd>
-   * </dl>
-   * Must be serialized via JSON.
    *
-   * If you specify this field, you must NOT specify fields {@link Wl_Catalog_CatalogList_ElementModel.id_sale}, {@link Wl_Catalog_CatalogList_ElementModel.k_id},
-   * {@link Wl_Catalog_CatalogList_ElementModel.k_shop_product_option}.
+   * Note that this must be serialized via JSON.
    *
-   * `null` to get information of only one item.
+   * If this field is specified, don't specify any of the following fields:
+   * * {@link Wl_Catalog_CatalogList_ElementModel.id_sale}
+   * * {@link Wl_Catalog_CatalogList_ElementModel.k_id}
+   * * {@link Wl_Catalog_CatalogList_ElementModel.k_shop_product_option}
+   *
+   * This will be `null` to get information for only one item.
    *
    * @get get
    * @type {?string}
@@ -495,7 +590,7 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.text_item = null;
 
   /**
-   * The price on the price tag with currency sign.
+   * The price on the price tag, with the currency sign.
    *
    * @get result
    * @type {string}
@@ -519,12 +614,12 @@ function Wl_Catalog_CatalogList_ElementModel()
   this.text_title = undefined;
 
   /**
-   * UID of a customer user for whom purchase is performed. Is used in backend to calculate discounts.
+   * The UID of a customer (user) for whom the purchase is made. This is used in the backend to calculate discounts.
    *
    * @get get
    * @type {string}
    */
-  this.uid_customer = "0";
+  this.uid_customer = "";
 
   /**
    * A detailed description.
@@ -554,20 +649,20 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_CatalogList_ElementModel);
  */
 Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
 {
-  return {"a_field": {"a_age_restriction": {"get": {"result": true}},"a_data": {"get": {"result": true}},"a_discount_code": {"get": {"get": true}},"a_guest_pass": {"get": {"result": true}},"a_image": {"get": {"result": true}},"a_image_list": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_item": {"get": {"result": true}},"a_sale_id_group": {"get": {"get": true}},"a_tax": {"get": {"result": true}},"dl_client_prorate": {"get": {"get": true}},"f_price": {"get": {"result": true}},"f_price_include": {"get": {"result": true}},"f_price_retail_product": {"get": {"result": true}},"f_price_total_enrollment":{"get":{"result": true}},"f_tax": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_promotion_image_height": {"get": {"get": true}},"i_promotion_image_width": {"get": {"get": true}},"id_purchase_item": {"get": {"result": true}},"id_purchase_option_view": {"get": {"result": true}},"id_sale": {"get": {"get": true,"result": true}},"is_backend": {"get": {"get": true}},"is_contract": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_id": {"get": {"get": true,"result": true}},"k_location": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true,"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_include": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"s_comment": {"get": {"result": true}},"s_price": {"get": {"result": true}},"s_sale": {"get": {"result": true}},"s_title": {"get": {"result": true}},"text_item": {"get": {"get": true}},"text_price": {"get": {"result": true}},"text_sale": {"get": {"result": true}},"text_title": {"get": {"result": true}},"uid_customer": {"get": {"get": true}},"xml_description": {"get": {"result": true}},"xml_special": {"get": {"result": true}}}};
+  return {"a_field": {"a_age_restriction": {"get": {"result": true}},"a_data": {"get": {"result": true}},"a_discount_code": {"get": {"get": true}},"a_guest_pass": {"get": {"result": true}},"a_image": {"get": {"result": true}},"a_image_list": {"get": {"result": true}},"a_installment_template": {"get": {"result": true}},"a_item": {"get": {"result": true}},"a_sale_id_group": {"get": {"get": true}},"a_tax": {"get": {"result": true}},"dl_client_prorate": {"get": {"get": true}},"f_price": {"get": {"result": true}},"f_price_include": {"get": {"result": true}},"f_price_retail_product": {"get": {"result": true}},"f_price_total_enrollment": {"get": {"result": true}},"f_tax": {"get": {"result": true}},"html_description": {"get": {"result": true}},"html_special": {"get": {"result": true}},"i_image_height": {"get": {"get": true}},"i_image_width": {"get": {"get": true}},"i_promotion_image_height": {"get": {"get": true}},"i_promotion_image_width": {"get": {"get": true}},"id_purchase_item": {"get": {"result": true}},"id_purchase_option_view": {"get": {"result": true}},"id_sale": {"get": {"get": true,"result": true}},"is_backend": {"get": {"get": true}},"is_contract": {"get": {"result": true}},"k_business": {"get": {"get": true}},"k_id": {"get": {"get": true,"result": true}},"k_location": {"get": {"get": true}},"k_shop_product_option": {"get": {"get": true,"result": true}},"m_discount_code": {"get": {"result": true}},"m_discount_login": {"get": {"result": true}},"m_price": {"get": {"result": true}},"m_price_include": {"get": {"result": true}},"m_tax": {"get": {"result": true}},"s_comment": {"get": {"result": true}},"s_price": {"get": {"result": true}},"s_sale": {"get": {"result": true}},"s_title": {"get": {"result": true}},"text_item": {"get": {"get": true}},"text_price": {"get": {"result": true}},"text_sale": {"get": {"result": true}},"text_title": {"get": {"result": true}},"uid_customer": {"get": {"get": true}},"xml_description": {"get": {"result": true}},"xml_special": {"get": {"result": true}}}};
 };
 
 /**
  * @function
  * @name Wl_Catalog_CatalogList_ElementModel.instanceGet
- * @param {number} id_sale The ID of item category. One of {@link RsSaleSid} constants.
+ * @param {number} id_sale The ID of item category. One of the {@link RsSaleSid} constants.
  * @param {string} k_id The item key.
- * @param {?string} k_shop_product_option The product option key. `null` if not initialized yet.
+ * @param {?string} k_shop_product_option The product option key. This will be `null` if not set yet.
  * @param {string} k_location The location key.
- * @param {?string} dl_client_prorate Client prorate date. `null` in case when client prorate date is not passed.
- * @param {string} k_business Business key.
- * @param {string} is_backend Whether API is called in the backend mode.
- * @param {string} uid_customer UID of a customer user for whom purchase is performed. Is used in backend to calculate discounts.
+ * @param {?string} dl_client_prorate The client prorate date. This will be `null` in cases where the client prorate date hasn't passed.
+ * @param {string} k_business The business key.
+ * @param {boolean} is_backend Determines whether the API is called in the backend mode.
+ * @param {string} uid_customer The UID of a customer (user) for whom the purchase is made. This is used in the backend to calculate discounts.
  * @returns {Wl_Catalog_CatalogList_ElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
