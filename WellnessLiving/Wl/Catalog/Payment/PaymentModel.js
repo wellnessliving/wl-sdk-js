@@ -36,6 +36,7 @@ function Wl_Catalog_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_event_list_a_discount
+   * @property {boolean} is_recurrent Whether the discount should also apply to the recurring membership payments.
    * @property {string} m_discount Discount amount.
    * @property {string} text_discount Discount title.
    */
