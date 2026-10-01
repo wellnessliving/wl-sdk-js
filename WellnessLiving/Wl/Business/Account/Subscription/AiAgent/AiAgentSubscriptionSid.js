@@ -1,12 +1,26 @@
 /**
  * List of possible plans for {@link Wl_Business_Account_Subscription_SubscriptionAbstract} subscription.
  *
- * Last used ID: 5.
+ * Last used ID: 9.
  */
 function Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid()
 {
   // Empty constructor.
 }
+
+/**
+ * Chat Agent (Bundle)
+ *
+ * @type {number}
+ */
+Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid.CHAT_AGENT_BUNDLE = 8;
+
+/**
+ * Chat Agent (Bundle) Trial
+ *
+ * @type {number}
+ */
+Wl_Business_Account_Subscription_AiAgent_AiAgentSubscriptionSid.CHAT_AGENT_BUNDLE_TRIAL = 9;
 
 /**
  * Dental Phone Agent

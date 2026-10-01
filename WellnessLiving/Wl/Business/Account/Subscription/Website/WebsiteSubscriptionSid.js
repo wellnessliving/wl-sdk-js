@@ -1,5 +1,7 @@
 /**
  * List of possible plans for {@link Wl_Business_Account_Subscription_SubscriptionAbstract} subscription.
+ *
+ * Last used ID: 8.
  */
 function Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid()
 {
@@ -19,6 +21,34 @@ Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid.BASIC = 2;
  * @type {number}
  */
 Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid.BASIC_LARGE = 6;
+
+/**
+ * Presence (Bundle add-on)
+ *
+ * @type {number}
+ */
+Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid.BUNDLE_ADDON = 9;
+
+/**
+ * Presence (Bundle add-on) Trial
+ *
+ * @type {number}
+ */
+Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid.BUNDLE_ADDON_TRIAL = 10;
+
+/**
+ * Presence (Bundle)
+ *
+ * @type {number}
+ */
+Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid.BUNDLE_FULL = 8;
+
+/**
+ * Presence (Bundle) Trial
+ *
+ * @type {number}
+ */
+Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid.BUNDLE_FULL_TRIAL = 11;
 
 /**
  * Enterprise
