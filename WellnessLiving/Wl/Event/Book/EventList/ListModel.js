@@ -49,6 +49,18 @@ function Wl_Event_Book_EventList_ListModel()
   this.a_event_ticket = undefined;
 
   /**
+   * Ticket option map.
+   *
+   * Key is the event class key. 
+   * Value is the list of ticket options available for booking the event. Empty if the event is not
+   * a ticketed event.
+   *
+   * @get result
+   * @type {{}}
+   */
+  this.a_event_ticket_option = undefined;
+
+  /**
    * Defines how the event availability flag filter should be applied.
    *
    * One of {@link AFlagSid} constants.
@@ -109,7 +121,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventList_ListModel);
  */
 Wl_Event_Book_EventList_ListModel.prototype.config=function()
 {
-  return {"a_field":{"a_event":{"get":{"result":true}},"a_event_available":{"get":{"result":true}},"a_event_ticket":{"get":{"result":true}},"id_status":{"get":{"get":true}},"is_virtual_service":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_tab":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_event":{"get":{"result":true}},"a_event_available":{"get":{"result":true}},"a_event_ticket":{"get":{"result":true}},"a_event_ticket_option":{"get":{"result":true}},"id_status":{"get":{"get":true}},"is_virtual_service":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_tab":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**

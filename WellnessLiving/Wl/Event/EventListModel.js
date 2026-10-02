@@ -105,6 +105,7 @@ function Wl_Event_EventListModel()
    * @property {Wl_Event_EventListModel_a_event_list_a_logo} a_logo Data about logo of the event.
    * @property {Wl_Event_EventListModel_a_event_list_a_schedule} a_schedule List of scheduled sessions of the event.
    * @property {Wl_Event_EventListModel_a_event_list_a_search_tag} a_search_tag List of search tags connected to this event.
+   * @property {*[][]} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event.
    * @property {boolean} can_book Whether event can be booked or not. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked.
    * @property {boolean} can_cancel Whether current user can cancel already booked event.
    * @property {string} dl_early End date, when early bird price ends in `MySql` format.
