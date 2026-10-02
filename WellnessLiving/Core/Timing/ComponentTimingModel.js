@@ -9,8 +9,18 @@ function Core_Timing_ComponentTimingModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @typedef {{}} Core_Timing_ComponentTimingModel_a_timing_list_a_request
+   * @property {number} i_duration_network Approximate network duration in milliseconds. `null` if `i_duration_server` is unavailable.
+   * @property {number} i_duration_server Server-side processing duration in milliseconds. `null` if the header was not present.
+   * @property {number} i_duration_total Total client-perceived duration of the request in milliseconds.
+   * @property {boolean} is_success `true` if the request succeeded, `false` otherwise.
+   * @property {?string} s_correlation Correlation ID of the timed request, taken from the `X-Correlation-Id` response header.
+   * @property {string} s_url URL of the timed request.
+   */
+
+  /**
    * @typedef {{}} Core_Timing_ComponentTimingModel_a_timing_list
-   * @property {*[][]} a_request Only for view entries. Timings of the requests made while the view was loading. Each item has the keys `i_duration_network`, `i_duration_server`, `i_duration_total`, `is_success`, `s_correlation` and `s_url` described below. Absent for request entries.
+   * @property {Core_Timing_ComponentTimingModel_a_timing_list_a_request} a_request Only for view entries. Timings of the requests made while the view was loading. Absent for request entries. Each item has next keys:
    * @property {number} i_duration_network Approximate network duration in milliseconds (`i_duration_total` minus `i_duration_server`). `null` if `i_duration_server` is unavailable.
    * @property {number} i_duration_render Only for view entries. Browser-side duration in milliseconds: from the moment view data is ready until the rendered content is painted. Absent for request entries.
    * @property {number} i_duration_server Server-side processing duration in milliseconds, taken from the `X-Response-Time` response header. `null` if the header was not present, for example on a network failure.
