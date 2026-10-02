@@ -206,6 +206,13 @@ Wl_Purchase_Item_ItemSid.RESOURCE_DEPOSIT = 20;
 Wl_Purchase_Item_ItemSid.SERVICE = 6;
 
 /**
+ * Ticket purchase item.
+ *
+ * @type {number}
+ */
+Wl_Purchase_Item_ItemSid.TICKET = 29;
+
+/**
  * Tuition purchase item.
  * Used when client purchases tuition for an event list.
  *

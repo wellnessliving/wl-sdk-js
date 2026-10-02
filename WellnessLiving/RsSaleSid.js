@@ -100,6 +100,13 @@ RsSaleSid.PROMOTION_VIDEO = 13;
 RsSaleSid.QUICK_BUY = 10;
 
 /**
+ * Ticket for a ticketed event.
+ *
+ * @type {number}
+ */
+RsSaleSid.TICKET = 16;
+
+/**
  * Tuition.
  *
  * @type {number}
