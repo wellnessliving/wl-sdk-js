@@ -14,6 +14,14 @@ function Wl_Billing_Code_BillingCodeListModel()
   this._s_key = "k_business";
 
   /**
+   * @typedef {{}} Wl_Billing_Code_BillingCodeListModel_a_code
+   * @property {string[]} a_service List of services the code is applied to by default.
+   * @property {string} k_code Key of the code.
+   * @property {string} text_code Code value, as it is printed on receipts and invoices.
+   * @property {string} text_description Description of the code the business typed in.
+   */
+
+  /**
    * Billing codes of the business.
    *
    * Contains the custom codes of the business for now. The system codes of the ICD-10-CM reference library are to
@@ -24,22 +32,8 @@ function Wl_Billing_Code_BillingCodeListModel()
    *
    * The list is not sorted - sorting and filtering of the list is a matter of the page that shows it.
    *
-   * <dl>
-   *   <dt>array `a_service`</dt>
-   *   <dd>List of services the code is applied to by default. 
-   *
-   *   <dt>string `k_code`</dt>
-   *   <dd>Key of the code. </dd>
-   *
-   *   <dt>string `text_code`</dt>
-   *   <dd>Code value, as it is printed on receipts and invoices.</dd>
-   *
-   *   <dt>string `text_description`</dt>
-   *   <dd>Description of the code the business typed in.</dd>
-   * </dl>
-   *
    * @get result
-   * @type {*[][]}
+   * @type {Wl_Billing_Code_BillingCodeListModel_a_code[]}
    */
   this.a_code = undefined;
 

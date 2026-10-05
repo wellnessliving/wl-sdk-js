@@ -61,6 +61,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    * @property {number} id_deny_reason The ID of the reason why the client cannot book this asset. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. `null` if there is no deny reason.
    * @property {number} id_service_require The purchase rule. One of the {@link RsServiceRequireSid} constants.
    * @property {boolean} is_age_restricted Determines whether this service can't be booked due to age restrictions.
+   * @property {boolean} is_book_for_guest Whether clients can book this asset on behalf of a guest. If the asset has a service-specific booking policy, that value is used. Otherwise, the business-level booking policy applies.
    * @property {string} k_class_tab Quick book tab key.
    * @property {string} k_resource The resource key.
    * @property {string} k_resource_category The resource category key.
