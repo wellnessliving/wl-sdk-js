@@ -16,7 +16,7 @@ function Wl_Login_Attendance_Add_AddModel()
   /**
    * @typedef {{}} Wl_Login_Attendance_Add_AddModel_a_book_background
    * @property {string} dt_date The date and time of the session in UTC.
-   * @property {string} k_class_period The class period key. Primary key in RsClassPeriodSql table.
+   * @property {string} k_class_period The class period key.
    */
 
   /**
