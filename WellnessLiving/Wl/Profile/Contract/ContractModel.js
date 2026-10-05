@@ -11,7 +11,7 @@ function Wl_Profile_Contract_ContractModel()
   /**
    * @inheritDoc
    */
-  this._s_key = "uid,k_business,k_location,id_purchase_item,k_id,k_purchase_item,m_price_custom,s_discount_code";
+  this._s_key = "uid,k_business,k_location,id_purchase_item,k_id,k_purchase_item,m_price_custom";
 
   /**
    * @typedef {{}} Wl_Profile_Contract_ContractModel_a_config_a_event_list
