@@ -1,7 +1,7 @@
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 251.
+ * Last Used ID: 252.
  */
 function Wl_Privilege_PrivilegeSid()
 {
@@ -91,6 +91,16 @@ Wl_Privilege_PrivilegeSid.APPOINTMENT_PERIOD = 51;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.APPOINTMENT_VIEW = 52;
+
+/**
+ * Ability to assign billing and diagnostic codes to appointments.
+ *
+ * Allows to select codes of the central billing code list and to search and apply ICD diagnostic codes. Adding a
+ * new code to the central list is configuring it, so it requires {@link Wl_Privilege_PrivilegeSid.BUSINESS_POLICY} instead.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.BILLING_CODE_ASSIGN = 252;
 
 /**
  * Ability to book clients outside their current paid period.
