@@ -30,11 +30,18 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_D
-   * @property {string} k_channel Messenger channel key.
+   * @property {string} dtu_start Start of the session, in UTC and MySQL format.
+   * @property {string} k_business Business key.
+   * @property {string} k_class_period Key of the class period the session belongs to.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_E
+   * @property {string} k_channel Messenger channel key.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_F
    * @property {string} dtu_class_period Class schedule session date.
    * @property {string} k_appointment Appointment key.
    * @property {string} k_business Business key.
@@ -44,20 +51,14 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_F
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_G
    * @property {?string} k_business Key of a business to which report to subscribe.
    * @property {string} s_report Key of a report to subscribe to.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_G
-   * @property {string} k_business Business key.
-   */
-
-  /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_H
    * @property {string} k_business Business key.
-   * @property {string} uid User key.
    */
 
   /**
@@ -69,6 +70,7 @@ function Core_WebSocket_SubscribeModel()
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_J
    * @property {string} k_business Business key.
+   * @property {string} uid User key.
    */
 
   /**
@@ -78,61 +80,66 @@ function Core_WebSocket_SubscribeModel()
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_L
+   * @property {string} k_business Business key.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_M
    * @property {string} k_business Key of the business.
    * @property {string} uid UID of the client for which failed to send SMS.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_M
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_N
    * @property {string} k_business Business key.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_N
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_O
    * @property {string} k_business Key of the business.
    * @property {string} uid_actor Key of the actor.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_O
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_P
    * @property {string} k_location Location where session booked or cancelled.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_P
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_Q
    * @property {string} k_business Business key.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_Q
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_R
    * @property {string} k_business Key of a business.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_R
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_S
    * @property {string} k_business Business in which the report was generated.
    * @property {string} uid User who requested the report generation.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_S
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_T
    * @property {number} id_report ID of the report.
    * @property {string} k_business Business key in which the report was monitoring.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_T
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_U
    * @property {string} k_business Key of the business.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_U
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_V
    * @property {number} id_import_custom ID of custom import process. One of {@link Wl_Import_Custom_CustomSid} constants.
    * @property {string} k_business Business key within which import is progressing.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_V
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_W
    * @property {string} k_business Key of the business.
    * @property {string} k_business_merchant Key of the business merchant.
    * @property {string} k_pay_transaction Pay transaction key, which was used to create ticket.
@@ -140,42 +147,42 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_W
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_X
    * @property {string} k_business Key of the business.
    * @property {string} uid_actor Key of the actor.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_X
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_Y
    * @property {string} uid_response Key of user who can grant access to location.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_Y
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_Z
    * @property {string} k_location Location key.
    * @property {string} uid User-receiver of response.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_Z
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_26
    * @property {string} k_location Key of location access to which was requested.
    * @property {string} uid_request Key of user who requested access to location.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_26
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_27
    * @property {string} k_business Business key.
    * @property {string} uid User key.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_27
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_28
    * @property {string} k_business Business key.
    * @property {string} s_id Key of the task where addresses should be verified.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_28
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_29
    * @property {string} k_business Key of the business.
    * @property {string} k_business_merchant Key of the business merchant.
    * @property {string} k_pay_transaction Pay transaction key, which was used to create ticket.
@@ -183,19 +190,19 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_29
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_30
    * @property {string} k_business Key of the business.
    * @property {string} uid_receiver Key of the user.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_30
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_31
    * @property {string} k_business Key of the business.
    * @property {string} uid UID of the client.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_31
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_key_32
    * @property {string} k_business Business key.
    */
 
@@ -208,7 +215,7 @@ function Core_WebSocket_SubscribeModel()
    * Subscriber will only receive notifications about events in which all these values equal values specified here.
    *
    * @post post
-   * @type {Core_WebSocket_SubscribeModel_a_key_A|Core_WebSocket_SubscribeModel_a_key_B|Core_WebSocket_SubscribeModel_a_key_C|Core_WebSocket_SubscribeModel_a_key_D|{}|Core_WebSocket_SubscribeModel_a_key_E|Core_WebSocket_SubscribeModel_a_key_F|Core_WebSocket_SubscribeModel_a_key_G|Core_WebSocket_SubscribeModel_a_key_H|Core_WebSocket_SubscribeModel_a_key_I|Core_WebSocket_SubscribeModel_a_key_J|Core_WebSocket_SubscribeModel_a_key_K|Core_WebSocket_SubscribeModel_a_key_L|Core_WebSocket_SubscribeModel_a_key_M|Core_WebSocket_SubscribeModel_a_key_N|Core_WebSocket_SubscribeModel_a_key_O|Core_WebSocket_SubscribeModel_a_key_P|Core_WebSocket_SubscribeModel_a_key_Q|Core_WebSocket_SubscribeModel_a_key_R|Core_WebSocket_SubscribeModel_a_key_S|Core_WebSocket_SubscribeModel_a_key_T|Core_WebSocket_SubscribeModel_a_key_U|Core_WebSocket_SubscribeModel_a_key_V|Core_WebSocket_SubscribeModel_a_key_W|Core_WebSocket_SubscribeModel_a_key_X|Core_WebSocket_SubscribeModel_a_key_Y|Core_WebSocket_SubscribeModel_a_key_Z|Core_WebSocket_SubscribeModel_a_key_26|Core_WebSocket_SubscribeModel_a_key_27|Core_WebSocket_SubscribeModel_a_key_28|Core_WebSocket_SubscribeModel_a_key_29|Core_WebSocket_SubscribeModel_a_key_30|Core_WebSocket_SubscribeModel_a_key_31}
+   * @type {Core_WebSocket_SubscribeModel_a_key_A|Core_WebSocket_SubscribeModel_a_key_B|Core_WebSocket_SubscribeModel_a_key_C|Core_WebSocket_SubscribeModel_a_key_D|Core_WebSocket_SubscribeModel_a_key_E|{}|Core_WebSocket_SubscribeModel_a_key_F|Core_WebSocket_SubscribeModel_a_key_G|Core_WebSocket_SubscribeModel_a_key_H|Core_WebSocket_SubscribeModel_a_key_I|Core_WebSocket_SubscribeModel_a_key_J|Core_WebSocket_SubscribeModel_a_key_K|Core_WebSocket_SubscribeModel_a_key_L|Core_WebSocket_SubscribeModel_a_key_M|Core_WebSocket_SubscribeModel_a_key_N|Core_WebSocket_SubscribeModel_a_key_O|Core_WebSocket_SubscribeModel_a_key_P|Core_WebSocket_SubscribeModel_a_key_Q|Core_WebSocket_SubscribeModel_a_key_R|Core_WebSocket_SubscribeModel_a_key_S|Core_WebSocket_SubscribeModel_a_key_T|Core_WebSocket_SubscribeModel_a_key_U|Core_WebSocket_SubscribeModel_a_key_V|Core_WebSocket_SubscribeModel_a_key_W|Core_WebSocket_SubscribeModel_a_key_X|Core_WebSocket_SubscribeModel_a_key_Y|Core_WebSocket_SubscribeModel_a_key_Z|Core_WebSocket_SubscribeModel_a_key_26|Core_WebSocket_SubscribeModel_a_key_27|Core_WebSocket_SubscribeModel_a_key_28|Core_WebSocket_SubscribeModel_a_key_29|Core_WebSocket_SubscribeModel_a_key_30|Core_WebSocket_SubscribeModel_a_key_31|Core_WebSocket_SubscribeModel_a_key_32}
    */
   this.a_key = undefined;
 
@@ -234,14 +241,23 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_D_a_data_message
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_D
+   * @property {?string} dtu_attend Time when the ticket has been checked in, in UTC and MySQL format.
+   * @property {number} i_attend Number of the tickets checked in for the session, including this one.
+   * @property {number} i_sold Number of the tickets sold for the session.
+   * @property {number} id_visit Status of the visit of the ticket after the check-in. One of {@link Wl_Visit_VisitSid}.
+   * @property {string} k_ticket_item Key of the ticket that has been checked in.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_E_a_data_message
    * @property {number} id Message key.
    * @property {string} message Message text.
    * @property {string} updated_at Date/time when the message has been posted.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_D_a_data_user_profile
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_E_a_data_user_profile
    * @property {number} id_gender User gender. One of {@link Wl_Gender_GenderSid} constants.
    * @property {string} s_first_name User first name.
    * @property {string} s_last_name User last name.
@@ -250,39 +266,39 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_D_a_data
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_D_a_data_message} message Message information:
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_D_a_data_user_profile} user_profile User's information:
-   */
-
-  /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_D
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_D_a_data} a_data New information for messenger.
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_E_a_data
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_E_a_data_message} message Message information:
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_E_a_data_user_profile} user_profile User's information:
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_E
-   * @property {?string} k_business Business key.
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_E_a_data} a_data New information for messenger.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_F
-   * @property {string} url_redirect Url link to redirect to join virtual meeting.
+   * @property {?string} k_business Business key.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_G
+   * @property {string} url_redirect Url link to redirect to join virtual meeting.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_H
    * @property {number} i_cas_change A CAS (compare-and-swap) number that allows to track changes in the report storage.
    * @property {number} id_report_status Status of this report.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_H
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_I
    * @property {string} text_title New title of the business.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_I_a_visit
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_J_a_visit
    * @property {string} dtl_end Date/time of end.
    * @property {string} dtl_start Date/time of start.
    * @property {boolean} is_cancel `true` if book was canceled; `false` otherwise.
@@ -295,12 +311,12 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_I
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_I_a_visit} a_visit New data of changes schedule item:
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_J
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_J_a_visit} a_visit New data of changes schedule item:
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_J_a_domain_token
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_K_a_domain_token
    * @property {number} id_status Status of the token. One of {@link Wl_Mail_Domain_DomainVerifyStatusSid} constants.
    * @property {string} text_host Host part of the token, which should be added to the DNS records.
    * @property {string} text_icon_class CSS class for the icon representing the token status.
@@ -310,38 +326,38 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_J
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_J_a_domain_token} a_domain_token List of email domain tokens:
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_K
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_K_a_domain_token} a_domain_token List of email domain tokens:
    * @property {number} id_domain_status Email domain status.
    * @property {string} text_domain_status_icon CSS class for the icon representing the email domain status.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_K
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_L
    * @property {number} id_mail_verify_status Status of mail verification. One of the {@link Wl_Mail_Verify_MailVerifyStatusSid} constants. Or {@link Wl_Business_Config_Option_OptionSidAbstract} if option "Enable Custom Reply To Emails" in Business -> Feature is disabled.
    * @property {string} text_email Email address to check.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_L
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_M
    * @property {string} html_error_message The text of the error.
    * @property {string} s_key The unique key of the sent SMS.
    * @property {number} tl_send The time in UNIX format when socket message was sent.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_M
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_N
    * @property {string} text_title New title of the business.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_N
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_O
    * @property {boolean} is_active Whether message is active. This is needed to avoid showing previous messages on page reload.
    * @property {?boolean} is_booking_in_progress Whether booking is in progress.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_O
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_P
    * @property {string} dtl_end Session end date/time.
    * @property {string} dtl_start Session start date/time.
    * @property {?string} k_appointment Key of the changed appointment. Is set only if changed session is appointment.
@@ -349,7 +365,7 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_P
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Q
    * @property {string} dt_end_local End of change interval.
    * @property {string} dt_start_local Start of change interval.
    * @property {?string} k_class_tab_new New "Book now" tab primary key in {@link Wl_Classes_Tab_TabSid} table.
@@ -357,13 +373,13 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Q
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_R
    * @property {?string} k_login_type Key of the client type.
    * @property {string} uid Key of the user.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_R
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_S
    * @property {number} i_generation Duration of the generation of the report in seconds.
    * @property {number} id_report ID of the report that was generated. One of the {@link RsReportSid} constants.
    * @property {boolean} is_need_show Whether need to display a message about report generation, regardless of the generation time.
@@ -372,7 +388,7 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_S
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_T
    * @property {number} i_complete Number of successfully processed items.
    * @property {number} i_fail Number of failed items.
    * @property {number} i_left Number of items left to process.
@@ -381,7 +397,7 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_T
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_U
    * @property {?number} id_card_system Card type ID.
    * @property {?number} id_pay_exception Transaction exception ID.
    * @property {?number} id_ticket_status Ticket status.
@@ -393,12 +409,12 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_U
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_V
    * @property {number} i_unread_sms The count with unread SMS in the business.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_V
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_W
    * @property {boolean} is_close `true` if the request has been already processed (question window must not be shown); `false` otherwise (question window must be shown).
    * @property {string} k_location Location key.
    * @property {string} text_full_name Name of the user requesting access.
@@ -407,19 +423,19 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_W
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_X
    * @property {boolean} is_grant `true` - access is granted; `false` - denied.
    * @property {string} text_full_name Full name of user-receiver of response.
    * @property {number} tu_send The time in seconds with fractional part in UNIX format when socket message was sent.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_X
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Y
    * @property {boolean} is_inactive `true` if a new assess request has been sent (question window must be not closed); `false` otherwise (question window must be closed).
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Y_a_visit
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_visit
    * @property {string} dtl_end Date/time of end.
    * @property {string} dtl_start Date/time of start.
    * @property {boolean} is_cancel `true` if book was canceled; `false` otherwise.
@@ -431,64 +447,64 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Y
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_Y_a_visit} a_visit New data of changes schedule item:
-   */
-
-  /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_invalid_a_address
-   * @property {string} text_address Address string.
-   * @property {string} text_city City title.
-   * @property {string} text_country Country title.
-   * @property {string} text_postal Postal address.
-   * @property {string} text_state State.
-   */
-
-  /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_invalid
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_invalid_a_address} a_address Address information.
-   * @property {boolean} is_address Whether address string is specified.
-   * @property {boolean} is_checked `true` if address check, `false` otherwise.
-   * @property {string} text_email User email address.
-   * @property {string} text_name User name.
-   * @property {string} text_note Note.
-   * @property {string} text_phone User phone number.
-   * @property {string} uid User key.
-   * @property {string} url Link to user profile.
-   * @property {string} url_image Link to user image.
-   */
-
-  /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_valid_a_address
-   * @property {string} text_address Address string.
-   * @property {string} text_city City title.
-   * @property {string} text_country Country title.
-   * @property {string} text_postal Postal address.
-   * @property {string} text_state State.
-   */
-
-  /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_valid
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_valid_a_address} a_address Address information.
-   * @property {boolean} is_address Whether address string is specified.
-   * @property {boolean} is_checked `true` if address check, `false` otherwise.
-   * @property {string} text_email User email address.
-   * @property {string} text_name User name.
-   * @property {string} text_note Note.
-   * @property {string} text_phone User phone number.
-   * @property {string} uid User key.
-   * @property {string} url Link to user profile.
-   * @property {string} url_image Link to user image.
-   */
-
-  /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_Z
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_invalid} a_invalid List of users for which address verification failed.
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_valid} a_valid List of users for which address verification succeed.
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_Z_a_visit} a_visit New data of changes schedule item:
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_26_a_invalid_a_address
+   * @property {string} text_address Address string.
+   * @property {string} text_city City title.
+   * @property {string} text_country Country title.
+   * @property {string} text_postal Postal address.
+   * @property {string} text_state State.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_26_a_invalid
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_26_a_invalid_a_address} a_address Address information.
+   * @property {boolean} is_address Whether address string is specified.
+   * @property {boolean} is_checked `true` if address check, `false` otherwise.
+   * @property {string} text_email User email address.
+   * @property {string} text_name User name.
+   * @property {string} text_note Note.
+   * @property {string} text_phone User phone number.
+   * @property {string} uid User key.
+   * @property {string} url Link to user profile.
+   * @property {string} url_image Link to user image.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_26_a_valid_a_address
+   * @property {string} text_address Address string.
+   * @property {string} text_city City title.
+   * @property {string} text_country Country title.
+   * @property {string} text_postal Postal address.
+   * @property {string} text_state State.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_26_a_valid
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_26_a_valid_a_address} a_address Address information.
+   * @property {boolean} is_address Whether address string is specified.
+   * @property {boolean} is_checked `true` if address check, `false` otherwise.
+   * @property {string} text_email User email address.
+   * @property {string} text_name User name.
+   * @property {string} text_note Note.
+   * @property {string} text_phone User phone number.
+   * @property {string} uid User key.
+   * @property {string} url Link to user profile.
+   * @property {string} url_image Link to user image.
    */
 
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_26
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_26_a_invalid} a_invalid List of users for which address verification failed.
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_26_a_valid} a_valid List of users for which address verification succeed.
+   */
+
+  /**
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_27
    * @property {?number} id_card_system Card type ID.
    * @property {?number} id_card_type Card type ID.
    * @property {?number} id_pay_exception Transaction exception ID.
@@ -500,7 +516,7 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_27_a_info
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_28_a_info
    * @property {string} dtl_last_activity The date and time of the last SMS in the dialog.
    * @property {number} i_unread_sms A count of unread messages.
    * @property {boolean} is_inbound Whether the last SMS is inbound or not.
@@ -509,13 +525,13 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_27
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_27_a_info} a_info An array with information about dialog:
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_28
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_28_a_info} a_info An array with information about dialog:
    * @property {number} tl_send The time in UNIX format when socket message was sent.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_28_a_info
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_29_a_info
    * @property {string} dtl_message Date and time, when SMS messages were sent, in MySQL format.
    * @property {boolean} is_automated `true` if SMS was sent from task, `false` - if the staff member sent SMS.
    * @property {boolean} is_outbound `true` if staff member sent SMS, `false` - if the client sent the SMS.
@@ -531,13 +547,13 @@ function Core_WebSocket_SubscribeModel()
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_28
-   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_28_a_info} a_info An array with information about SMS:
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_29
+   * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_29_a_info} a_info An array with information about SMS:
    * @property {string} s_key The unique key of sent SMS from 2-way SMS chat. The key need to update SMS information in the chat after sent SMS to client.
    */
 
   /**
-   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_29
+   * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_30
    * @property {number} f_progress Accumulation process progress.
    */
 
@@ -548,7 +564,7 @@ function Core_WebSocket_SubscribeModel()
    * This is needed to send message that were generated before a client has subscribed.
    *
    * @post result
-   * @type {(Core_WebSocket_SubscribeModel_a_message_broadcast_A|Core_WebSocket_SubscribeModel_a_message_broadcast_B|Core_WebSocket_SubscribeModel_a_message_broadcast_C|Core_WebSocket_SubscribeModel_a_message_broadcast_D|Core_WebSocket_SubscribeModel_a_message_broadcast_E|Core_WebSocket_SubscribeModel_a_message_broadcast_F|Core_WebSocket_SubscribeModel_a_message_broadcast_G|Core_WebSocket_SubscribeModel_a_message_broadcast_H|{}|Core_WebSocket_SubscribeModel_a_message_broadcast_I|Core_WebSocket_SubscribeModel_a_message_broadcast_J|Core_WebSocket_SubscribeModel_a_message_broadcast_K|Core_WebSocket_SubscribeModel_a_message_broadcast_L|Core_WebSocket_SubscribeModel_a_message_broadcast_M|Core_WebSocket_SubscribeModel_a_message_broadcast_N|Core_WebSocket_SubscribeModel_a_message_broadcast_O|Core_WebSocket_SubscribeModel_a_message_broadcast_P|Core_WebSocket_SubscribeModel_a_message_broadcast_Q|Core_WebSocket_SubscribeModel_a_message_broadcast_R|Core_WebSocket_SubscribeModel_a_message_broadcast_S|Core_WebSocket_SubscribeModel_a_message_broadcast_T|Core_WebSocket_SubscribeModel_a_message_broadcast_U|Core_WebSocket_SubscribeModel_a_message_broadcast_V|Core_WebSocket_SubscribeModel_a_message_broadcast_W|Core_WebSocket_SubscribeModel_a_message_broadcast_X|Core_WebSocket_SubscribeModel_a_message_broadcast_Y|Core_WebSocket_SubscribeModel_a_message_broadcast_Z|Core_WebSocket_SubscribeModel_a_message_broadcast_26|Core_WebSocket_SubscribeModel_a_message_broadcast_27|Core_WebSocket_SubscribeModel_a_message_broadcast_28|Core_WebSocket_SubscribeModel_a_message_broadcast_29)[]}
+   * @type {(Core_WebSocket_SubscribeModel_a_message_broadcast_A|Core_WebSocket_SubscribeModel_a_message_broadcast_B|Core_WebSocket_SubscribeModel_a_message_broadcast_C|Core_WebSocket_SubscribeModel_a_message_broadcast_D|Core_WebSocket_SubscribeModel_a_message_broadcast_E|Core_WebSocket_SubscribeModel_a_message_broadcast_F|Core_WebSocket_SubscribeModel_a_message_broadcast_G|Core_WebSocket_SubscribeModel_a_message_broadcast_H|Core_WebSocket_SubscribeModel_a_message_broadcast_I|{}|Core_WebSocket_SubscribeModel_a_message_broadcast_J|Core_WebSocket_SubscribeModel_a_message_broadcast_K|Core_WebSocket_SubscribeModel_a_message_broadcast_L|Core_WebSocket_SubscribeModel_a_message_broadcast_M|Core_WebSocket_SubscribeModel_a_message_broadcast_N|Core_WebSocket_SubscribeModel_a_message_broadcast_O|Core_WebSocket_SubscribeModel_a_message_broadcast_P|Core_WebSocket_SubscribeModel_a_message_broadcast_Q|Core_WebSocket_SubscribeModel_a_message_broadcast_R|Core_WebSocket_SubscribeModel_a_message_broadcast_S|Core_WebSocket_SubscribeModel_a_message_broadcast_T|Core_WebSocket_SubscribeModel_a_message_broadcast_U|Core_WebSocket_SubscribeModel_a_message_broadcast_V|Core_WebSocket_SubscribeModel_a_message_broadcast_W|Core_WebSocket_SubscribeModel_a_message_broadcast_X|Core_WebSocket_SubscribeModel_a_message_broadcast_Y|Core_WebSocket_SubscribeModel_a_message_broadcast_Z|Core_WebSocket_SubscribeModel_a_message_broadcast_26|Core_WebSocket_SubscribeModel_a_message_broadcast_27|Core_WebSocket_SubscribeModel_a_message_broadcast_28|Core_WebSocket_SubscribeModel_a_message_broadcast_29|Core_WebSocket_SubscribeModel_a_message_broadcast_30)[]}
    */
   this.a_message_broadcast = undefined;
 

@@ -41,7 +41,7 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * Keys of the client types that may book the class.
    *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.is_bookable} is
+   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.id_bookable} is
    * {@link Wl_Service_BookableSid}. Empty for a class every client type may book.
    *
    * @get result
@@ -63,7 +63,7 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * Keys of the client groups that may book the class.
    *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.is_bookable} is
+   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.id_bookable} is
    * {@link Wl_Service_BookableSid}. Empty for a class every client group may book.
    *
    * @get result
@@ -216,11 +216,9 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.a_url = undefined;
 
   /**
-   * Last day of the early bird discount in MySQL format.
+   * Last day of the early bird discount.
    *
    * Empty string if the event has no early bird discount.
-   *
-   * Copy of RsClassEarlySql.`dt_early`.
    *
    * @get result
    * @type {string}
@@ -235,8 +233,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    * {@link Wl_Classes_RequirePaySid}. The field keeps the name the legacy form posts, which carries
    * both an amount of money and a percent.
    *
-   * Copy of RsClassSql.`f_deposit`.
-   *
    * @get result
    * @type {string}
    */
@@ -247,8 +243,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    *
    * `0.00` if the event has no early bird discount. The field keeps the name the legacy form posts.
    *
-   * Copy of RsClassEarlySql.`f_early`.
-   *
    * @get result
    * @type {string}
    */
@@ -257,10 +251,8 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * Price of one session of the event.
    *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.not_single_buy} is `0`. The field keeps the name the
+   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.is_buy_single} is `true`. The field keeps the name the
    * legacy form posts.
-   *
-   * Copy of RsClassSql.`f_price`.
    *
    * @get result
    * @type {string}
@@ -270,10 +262,8 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * Price of the whole event.
    *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.not_single_buy} is `1`. The field keeps the name the
+   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.is_buy_total} is `true`. The field keeps the name the
    * legacy form posts.
-   *
-   * Copy of RsClassSql.`f_price_total`.
    *
    * @get result
    * @type {string}
@@ -291,8 +281,6 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * `true` if the price of a single session is hidden from a client who has an applicable Purchase Option,
    * `false` if it is shown to them.
-   *
-   * Copy of RsClassSql.`hide_price`.
    *
    * @get result
    * @type {boolean}
@@ -360,8 +348,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    *
    * `null` if the class has no minimum age.
    *
-   * Copy of RsClassSql.`i_age_from_month`.
-   *
    * @get result
    * @type {?number}
    */
@@ -371,8 +357,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    * Whole years of the minimum age of a client of the class.
    *
    * `null` if the class has no minimum age.
-   *
-   * Copy of RsClassSql.`i_age_from`.
    *
    * @get result
    * @type {?number}
@@ -384,8 +368,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    *
    * `null` if the class has no maximum age.
    *
-   * Copy of RsClassSql.`i_age_to_month`.
-   *
    * @get result
    * @type {?number}
    */
@@ -396,8 +378,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    *
    * `null` if the class has no maximum age.
    *
-   * Copy of RsClassSql.`i_age_to`.
-   *
    * @get result
    * @type {?number}
    */
@@ -405,8 +385,6 @@ function Wl_Classes_Editor_ClassEditorModel()
 
   /**
    * Number of clients that may enroll into each instance of the event.
-   *
-   * Copy of RsClassSql.`i_capacity`.
    *
    * @get result
    * @type {number}
@@ -425,7 +403,7 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.i_capacity_ticket = 10;
 
   /**
-   * Maximum length of `s_description`.
+   * Maximum length of description.
    *
    * @get result
    * @type {number}
@@ -437,8 +415,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    *
    * `0` stands for as many as the number of the sessions the client missed.
    *
-   * Copy of RsClassSql.`i_makeup_cap`.
-   *
    * @get result
    * @type {number}
    */
@@ -447,33 +423,34 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * Number of tickets that may be bought in one order of a ticketed event.
    *
-   * Copy of TicketSettingsSql.`i_order_limit`.
-   *
    * @get result
    * @type {number}
    */
   this.i_order_limit = 1;
 
   /**
-   * Maximum length of `xml_terms`.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.i_terms_limit = 512;
-
-  /**
    * Kind of the age restriction of the class.
    *
    * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.is_age_restrict} is `true`.
-   *
-   * Copy of RsClassSql.`id_age_restrict`.
    *
    * @get result
    * @see Wl_Service_AgeRestrictionStatusSid
    * @type {number}
    */
   this.id_age_restrict = 2;
+
+  /**
+   * Who may book the class online.
+   *
+   * The class keeps the client types and the groups whether online booking is open or not, so the form works this
+   * out from them: a class that is closed to everyone is only told apart from a restricted one by them being
+   * empty.
+   *
+   * @get result
+   * @see Wl_Service_BookableSid
+   * @type {number}
+   */
+  this.id_bookable = undefined;
 
   /**
    * Type of the event.
@@ -487,8 +464,6 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * Kind of note staff may take for a client visit.
    *
-   * Copy of RsClassSql.`id_note`.
-   *
    * @get result
    * @see Wl_Visit_Note_Sid_NoteSid
    * @type {number}
@@ -498,8 +473,6 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * Way a client pays for the event.
    *
-   * Copy of RsClassSql.`id_pay_require`.
-   *
    * @get result
    * @see Wl_Classes_RequirePaySid
    * @type {number}
@@ -508,8 +481,6 @@ function Wl_Classes_Editor_ClassEditorModel()
 
   /**
    * Virtual meeting provider of the event. `null` for an in-person event.
-   *
-   * Copy of RsClassSql.`id_virtual_provider`.
    *
    * @get result
    * @see Wl_Virtual_VirtualProviderSid
@@ -539,8 +510,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    * `true` if the class is shown to a client who does not meet its age requirement, `false` if it is hidden from
    * them.
    *
-   * Copy of RsClassSql.`is_age_public`.
-   *
    * @get result
    * @type {boolean}
    */
@@ -558,9 +527,9 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.is_age_restrict = undefined;
 
   /**
-   * `true` if the birth date is a required field of the client profile of the business, `false` otherwise.
+   * `true` if the birthdate is a required field of the client profile of the business, `false` otherwise.
    *
-   * An age restriction can only be kept to when the birth date is known, so the form asks staff to make the field
+   * An age restriction can only be kept to when the birthdate is known, so the form asks staff to make the field
    * required while the restriction is switched on for a business that does not require it yet.
    *
    * @get result
@@ -569,18 +538,8 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.is_birthday_require = undefined;
 
   /**
-   * Who may book the class online.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.is_bookable = 1;
-
-  /**
    * `true` if staff may book any client type into the class, `false` if only the client types of
    * {@link Wl_Classes_Editor_ClassEditorModel.a_login_type_staff}.
-   *
-   * Copy of RsClassSql.`is_bookable_staff`.
    *
    * @get result
    * @type {boolean}
@@ -588,9 +547,43 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.is_bookable_staff = true;
 
   /**
-   * `true` if the clients of the class receive the default client notifications, `false` otherwise.
+   * `true` if a client pays for the event with a Purchase Option only, `false` otherwise.
    *
-   * Copy of RsClassSql.`is_client_notification`.
+   * One of the three ways a client pays for the event, which are mutually exclusive:
+   * {@link Wl_Classes_Editor_ClassEditorModel.is_buy_promotion}, {@link Wl_Classes_Editor_ClassEditorModel.is_buy_single} and
+   * {@link Wl_Classes_Editor_ClassEditorModel.is_buy_total}.
+   * expects.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_buy_promotion = undefined;
+
+  /**
+   * `true` if a client buys one session of the event at a time, `false` otherwise.
+   *
+   * {@link Wl_Classes_Editor_ClassEditorModel.f_price} is the price of a session. See
+   * {@link Wl_Classes_Editor_ClassEditorModel.is_buy_promotion} for the other ways a client pays for the event.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_buy_single = undefined;
+
+  /**
+   * `true` if a client buys the whole event at once, `false` otherwise.
+   *
+   * {@link Wl_Classes_Editor_ClassEditorModel.f_price_total} is the price of the event. Defaults to `true`, the same as the legacy
+   * form offers for a new event. See {@link Wl_Classes_Editor_ClassEditorModel.is_buy_promotion} for the other ways a client pays
+   * for the event.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_buy_total = true;
+
+  /**
+   * `true` if the clients of the class receive the default client notifications, `false` otherwise.
    *
    * @get result
    * @type {boolean}
@@ -687,7 +680,7 @@ function Wl_Classes_Editor_ClassEditorModel()
    * `true` if {@link Wl_Classes_Editor_ClassEditorModel.f_deposit} is a percent of the price of the event, `false` if it is an
    * amount of money.
    *
-   * Copy of RsClassSql.`is_deposit_percent`.
+   * Copy of the `is_deposit_percent` column of the class.
    *
    * @get result
    * @type {boolean}
@@ -755,8 +748,6 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * `true` if the class is hidden from a client who may not book it, `false` if it is shown to them.
    *
-   * Copy of RsClassSql.`is_online_private`.
-   *
    * @get result
    * @type {boolean}
    */
@@ -796,8 +787,6 @@ function Wl_Classes_Editor_ClassEditorModel()
 
   /**
    * `true` if staff receive the default staff notifications of the class, `false` otherwise.
-   *
-   * Copy of RsClassSql.`is_staff_notification`.
    *
    * @get result
    * @type {boolean}
@@ -888,29 +877,13 @@ function Wl_Classes_Editor_ClassEditorModel()
    *
    * Ignored while {@link Wl_Classes_Editor_ClassEditorModel.is_gym_pass} is `false`.
    *
-   * Copy of RsClassSql.`m_revenue_gym_pass`.
-   *
    * @get result
    * @type {string}
    */
   this.m_revenue_gym_pass = "0.00";
 
   /**
-   * How a client pays for the event: `0` for a single session, `1` for the whole event, `2` for a Purchase Option
-   * only.
-   *
-   * The field keeps the name the legacy form posts, which stores the opposite of the first choice. Defaults to the
-   * whole event, the same as the legacy form offers for a new event.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.not_single_buy = 1;
-
-  /**
-   * Color of the event on the schedule in hex format, with a leading `#`.
-   *
-   * Copy of RsClassSql.`s_color_background`.
+   * Color of the event on the schedule in hex format.
    *
    * @get result
    * @type {string}
@@ -920,8 +893,6 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * Description of the event.
    *
-   * Copy of RsClassCmsSql.`s_description` in the current language.
-   *
    * @get result
    * @type {string}
    */
@@ -929,8 +900,6 @@ function Wl_Classes_Editor_ClassEditorModel()
 
   /**
    * Special instructions of the event.
-   *
-   * Copy of RsClassCmsSql.`xml_special`.
    *
    * @get result
    * @type {string}
@@ -940,8 +909,6 @@ function Wl_Classes_Editor_ClassEditorModel()
   /**
    * Title of the event.
    *
-   * Copy of RsClassCmsSql.`s_title` in the current language.
-   *
    * @get result
    * @type {string}
    */
@@ -949,8 +916,6 @@ function Wl_Classes_Editor_ClassEditorModel()
 
   /**
    * `true` if the special instructions may be shown publicly, `false` if only to a client who booked the event.
-   *
-   * Copy of RsClassSql.`show_special_instructions`.
    *
    * @get result
    * @type {boolean}
@@ -981,8 +946,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    *
    * Empty string for an event that is not ticketed, and for a ticketed event with no terms.
    *
-   * Copy of TicketSettingsCmsSql.`xml_terms`.
-   *
    * @get result
    * @type {string}
    */
@@ -998,7 +961,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Editor_ClassEditorModel);
  */
 Wl_Classes_Editor_ClassEditorModel.prototype.config=function()
 {
-  return {"a_field":{"a_class_tab":{"get":{"result":true}},"a_class_tab_list":{"get":{"result":true}},"a_login_type":{"get":{"result":true}},"a_login_type_staff":{"get":{"result":true}},"a_member_group":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_resource_type":{"get":{"result":true}},"a_search_tag":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_tag":{"get":{"result":true}},"a_ticket_option":{"get":{"result":true}},"a_url":{"get":{"result":true}},"dl_early":{"get":{"result":true}},"f_deposit":{"get":{"result":true}},"f_early":{"get":{"result":true}},"f_price":{"get":{"result":true}},"f_price_total":{"get":{"result":true}},"hide_application":{"get":{"result":true}},"hide_price":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_age_from_month":{"get":{"result":true}},"i_age_from_year":{"get":{"result":true}},"i_age_to_month":{"get":{"result":true}},"i_age_to_year":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_capacity_ticket":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"i_makeup_cap":{"get":{"result":true}},"i_order_limit":{"get":{"result":true}},"i_terms_limit":{"get":{"result":true}},"id_age_restrict":{"get":{"result":true}},"id_event_type":{"get":{"result":true}},"id_note":{"get":{"result":true}},"id_pay_require":{"get":{"result":true}},"id_virtual_provider":{"get":{"result":true}},"is_account_require":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_age_public":{"get":{"result":true}},"is_age_restrict":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_bookable":{"get":{"result":true}},"is_bookable_staff":{"get":{"result":true}},"is_client_notification":{"get":{"result":true}},"is_config_business":{"get":{"result":true}},"is_custom_confirmation":{"get":{"result":true}},"is_custom_confirmation_mail":{"get":{"result":true}},"is_custom_confirmation_push":{"get":{"result":true}},"is_custom_confirmation_sms":{"get":{"result":true}},"is_custom_reminder":{"get":{"result":true}},"is_custom_reminder_mail":{"get":{"result":true}},"is_custom_reminder_push":{"get":{"result":true}},"is_custom_reminder_sms":{"get":{"result":true}},"is_deposit_percent":{"get":{"result":true}},"is_door_pay":{"get":{"result":true}},"is_early":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_online_private":{"get":{"result":true}},"is_prerequisite":{"get":{"result":true}},"is_quick_buy":{"get":{"result":true}},"is_replace":{"get":{"result":true}},"is_resource_type":{"get":{"result":true}},"is_staff_notification":{"get":{"result":true}},"is_staff_session":{"get":{"result":true}},"is_tax_enable":{"get":{"result":true}},"is_terms":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"get":true}},"k_tag_primary":{"get":{"result":true}},"m_revenue_gym_pass":{"get":{"result":true}},"not_single_buy":{"get":{"result":true}},"s_color_background":{"get":{"result":true}},"s_description":{"get":{"result":true}},"s_special":{"get":{"result":true}},"s_title":{"get":{"result":true}},"show_special_instructions":{"get":{"result":true}},"text_currency":{"get":{"result":true}},"text_early":{"get":{"result":true}},"xml_terms":{"get":{"result":true}}}};
+  return {"a_field":{"a_class_tab":{"get":{"result":true}},"a_class_tab_list":{"get":{"result":true}},"a_login_type":{"get":{"result":true}},"a_login_type_staff":{"get":{"result":true}},"a_member_group":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_resource_type":{"get":{"result":true}},"a_search_tag":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_tag":{"get":{"result":true}},"a_ticket_option":{"get":{"result":true}},"a_url":{"get":{"result":true}},"dl_early":{"get":{"result":true}},"f_deposit":{"get":{"result":true}},"f_early":{"get":{"result":true}},"f_price":{"get":{"result":true}},"f_price_total":{"get":{"result":true}},"hide_application":{"get":{"result":true}},"hide_price":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_age_from_month":{"get":{"result":true}},"i_age_from_year":{"get":{"result":true}},"i_age_to_month":{"get":{"result":true}},"i_age_to_year":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_capacity_ticket":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"i_makeup_cap":{"get":{"result":true}},"i_order_limit":{"get":{"result":true}},"id_age_restrict":{"get":{"result":true}},"id_bookable":{"get":{"result":true}},"id_event_type":{"get":{"result":true}},"id_note":{"get":{"result":true}},"id_pay_require":{"get":{"result":true}},"id_virtual_provider":{"get":{"result":true}},"is_account_require":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_age_public":{"get":{"result":true}},"is_age_restrict":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_bookable_staff":{"get":{"result":true}},"is_buy_promotion":{"get":{"result":true}},"is_buy_single":{"get":{"result":true}},"is_buy_total":{"get":{"result":true}},"is_client_notification":{"get":{"result":true}},"is_config_business":{"get":{"result":true}},"is_custom_confirmation":{"get":{"result":true}},"is_custom_confirmation_mail":{"get":{"result":true}},"is_custom_confirmation_push":{"get":{"result":true}},"is_custom_confirmation_sms":{"get":{"result":true}},"is_custom_reminder":{"get":{"result":true}},"is_custom_reminder_mail":{"get":{"result":true}},"is_custom_reminder_push":{"get":{"result":true}},"is_custom_reminder_sms":{"get":{"result":true}},"is_deposit_percent":{"get":{"result":true}},"is_door_pay":{"get":{"result":true}},"is_early":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_online_private":{"get":{"result":true}},"is_prerequisite":{"get":{"result":true}},"is_quick_buy":{"get":{"result":true}},"is_replace":{"get":{"result":true}},"is_resource_type":{"get":{"result":true}},"is_staff_notification":{"get":{"result":true}},"is_staff_session":{"get":{"result":true}},"is_tax_enable":{"get":{"result":true}},"is_terms":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"get":true}},"k_tag_primary":{"get":{"result":true}},"m_revenue_gym_pass":{"get":{"result":true}},"s_color_background":{"get":{"result":true}},"s_description":{"get":{"result":true}},"s_special":{"get":{"result":true}},"s_title":{"get":{"result":true}},"show_special_instructions":{"get":{"result":true}},"text_currency":{"get":{"result":true}},"text_early":{"get":{"result":true}},"xml_terms":{"get":{"result":true}}}};
 };
 
 /**

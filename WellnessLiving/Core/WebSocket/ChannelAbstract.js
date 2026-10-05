@@ -244,6 +244,16 @@ Core_WebSocket_ChannelAbstract.StaffApp_ScheduleListChannel = 523;
 Core_WebSocket_ChannelAbstract.TaskChangeChannel = 1869;
 
 /**
+ * Channel to notify staff that a ticket of a session has been checked in.
+ *
+ * Staff members who watch the check-in list of the same session subscribe to the channel to keep the list and the
+ * counters up to date. The message carries no personal data of the ticket holder: clients load them with the list.
+ *
+ * @type {number}
+ */
+Core_WebSocket_ChannelAbstract.TicketScanChannel = 2382;
+
+/**
  * When title of a business is changed, new title is sent over this channel.
  *
  * @type {number}
