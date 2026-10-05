@@ -14,6 +14,27 @@ function Wl_Login_Attendance_Add_AddModel()
   this._s_key = "k_business,dt_date_global,k_class_period,uid_client";
 
   /**
+   * @typedef {{}} Wl_Login_Attendance_Add_AddModel_a_book_background
+   * @property {string} dt_date The date and time of the session in UTC.
+   * @property {string} k_class_period The class period key. Primary key in RsClassPeriodSql table.
+   */
+
+  /**
+   * A list of sessions that are being booked asynchronously in the background.
+   *
+   * When a multi-session block event booking is processed, the first session is booked synchronously
+   * and the remaining sessions are queued for background processing.
+   *
+   * `null` if there are no background sessions (single session booking or all sessions were booked synchronously).
+   *
+   * Each element is an array with the following keys:
+   *
+   * @post result
+   * @type {?Wl_Login_Attendance_Add_AddModel_a_book_background[]}
+   */
+  this.a_book_background = null;
+
+  /**
    * @typedef {{}} Wl_Login_Attendance_Add_AddModel_a_login_promotion
    * @property {string} k_login_promotion The login promotion key, available to pay for the session.
    * @property {string} text_title The title of the login promotion.
@@ -215,7 +236,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_Add_AddModel);
  */
 Wl_Login_Attendance_Add_AddModel.prototype.config=function()
 {
-  return {"a_field":{"a_login_promotion":{"get":{"result":true}},"a_session_pass":{"get":{"result":true}},"dt_date_global":{"get":{"get":true},"post":{"get":true}},"id_add_option":{"post":{"post":true}},"id_mode":{"post":{"post":true}},"id_visit":{"post":{"result":true}},"is_event_single":{"post":{"get":true}},"is_free":{"get":{"result":true}},"is_paid":{"post":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class_period":{"get":{"get":true},"post":{"get":true}},"k_login_promotion":{"get":{"result":true},"post":{"post":true}},"k_session_pass":{"get":{"result":true},"post":{"post":true}},"k_visit":{"post":{"result":true}},"m_account":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_rest":{"get":{"result":true}},"uid_client":{"get":{"get":true},"post":{"get":true}},"url_store":{"post":{"result":true}}}};
+  return {"a_field":{"a_book_background":{"post":{"result":true}},"a_login_promotion":{"get":{"result":true}},"a_session_pass":{"get":{"result":true}},"dt_date_global":{"get":{"get":true},"post":{"get":true}},"id_add_option":{"post":{"post":true}},"id_mode":{"post":{"post":true}},"id_visit":{"post":{"result":true}},"is_event_single":{"post":{"get":true}},"is_free":{"get":{"result":true}},"is_paid":{"post":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class_period":{"get":{"get":true},"post":{"get":true}},"k_login_promotion":{"get":{"result":true},"post":{"post":true}},"k_session_pass":{"get":{"result":true},"post":{"post":true}},"k_visit":{"post":{"result":true}},"m_account":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_rest":{"get":{"result":true}},"uid_client":{"get":{"get":true},"post":{"get":true}},"url_store":{"post":{"result":true}}}};
 };
 
 /**
