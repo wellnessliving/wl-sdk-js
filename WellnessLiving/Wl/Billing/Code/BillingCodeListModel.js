@@ -15,17 +15,18 @@ function Wl_Billing_Code_BillingCodeListModel()
 
   /**
    * @typedef {{}} Wl_Billing_Code_BillingCodeListModel_a_code
-   * @property {string[]} a_service List of services the code is applied to by default.
-   * @property {string} k_code Key of the code.
+   * @property {string[]} a_service List of services the code is applied to by default. Always empty for a system code: system codes are not applied to services by default.
+   * @property {boolean} is_custom `true` for a custom code of the business, `false` for a system code of the ICD-10-CM reference library.
+   * @property {string} k_code Key of the code. Keys of the custom and of the system codes never clash.
    * @property {string} text_code Code value, as it is printed on receipts and invoices.
-   * @property {string} text_description Description of the code the business typed in.
+   * @property {string} text_description Description of the code. The business typed it in for a custom code. For a system code it comes from the reference library, in the language of the request.
    */
 
   /**
    * Billing codes of the business.
    *
-   * Contains the custom codes of the business for now. The system codes of the ICD-10-CM reference library are to
-   * be returned here too, and a row is then to tell the two types apart.
+   * Contains the custom codes of the business and the system codes of the ICD-10-CM reference library, which are
+   * shared by all businesses.
    *
    * Removed codes are not returned - they are not offered for selection anymore, they only stay on the receipts
    * and invoices they have already been applied to.
@@ -46,7 +47,8 @@ function Wl_Billing_Code_BillingCodeListModel()
   this.k_business = "";
 
   /**
-   * Service key. If set, only the codes that are applied to this service by default are returned.
+   * Service key. If set, only the codes that are applied to this service by default are returned. System codes are
+   * not applied to services by default, so they are not returned then.
    *
    * @get get
    * @type {string}
@@ -77,9 +79,8 @@ Wl_Billing_Code_BillingCodeListModel.prototype.config=function()
 /**
  * Gets the billing code list of the business.
  *
- * The list contains the custom codes of the business for now, and is meant to become the single place a client
- * asks for codes, with the diagnostic codes of the read-only ICD-10-CM reference library to be returned
- * from here as well.
+ * The list contains the custom codes of the business and the diagnostic codes of the read-only ICD-10-CM
+ * reference library, the descriptions of the latter in the language of the request.
  *
  * @function
  * @name Wl_Billing_Code_BillingCodeListModel.get
