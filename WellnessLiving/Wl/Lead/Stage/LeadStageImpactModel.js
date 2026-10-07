@@ -105,6 +105,8 @@ Wl_Lead_Stage_LeadStageImpactModel.prototype.config=function()
 /**
  * Finds out what moving the client into the lead stage is going to do.
  *
+ * The client must not be in the stage yet. The caller is expected to ask only about a stage the client is not in yet.
+ *
  * @function
  * @name Wl_Lead_Stage_LeadStageImpactModel.get
  * @returns {WlSdk_Deferred_Promise}

@@ -26,7 +26,8 @@ function Wl_Billing_Code_BillingCodeListModel()
    * Billing codes of the business.
    *
    * Contains the custom codes of the business and the system codes of the ICD-10-CM reference library, which are
-   * shared by all businesses.
+   * shared by all businesses. The system codes are returned only if the business has turned on ICD diagnostic
+   * codes .
    *
    * Removed codes are not returned - they are not offered for selection anymore, they only stay on the receipts
    * and invoices they have already been applied to.
@@ -80,7 +81,8 @@ Wl_Billing_Code_BillingCodeListModel.prototype.config=function()
  * Gets the billing code list of the business.
  *
  * The list contains the custom codes of the business and the diagnostic codes of the read-only ICD-10-CM
- * reference library, the descriptions of the latter in the language of the request.
+ * reference library, the descriptions of the latter in the language of the request. The diagnostic codes are
+ * returned only if the business has turned on ICD diagnostic codes.
  *
  * @function
  * @name Wl_Billing_Code_BillingCodeListModel.get
