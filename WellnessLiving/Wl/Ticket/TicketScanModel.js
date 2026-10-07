@@ -68,7 +68,7 @@ function Wl_Ticket_TicketScanModel()
   this.i_attend = undefined;
 
   /**
-   * Number of the tickets sold for the session: not cancelled ones.
+   * Number of the tickets sold for the session: not cancelled ones, including those whose holders have not come.
    *
    * @post result
    * @type {number}
