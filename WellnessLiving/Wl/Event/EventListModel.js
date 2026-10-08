@@ -99,12 +99,20 @@ function Wl_Event_EventListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_ticket_inventory
+   * @property {number} i_capacity Total number of tickets that can be sold for the event.
+   * @property {number} i_order_limit Maximum number of tickets that can be ordered for the event in one purchase. `0` if there is no limit.
+   * @property {number} i_remain Number of tickets still available to sell.
+   */
+
+  /**
    * @typedef {{}} Wl_Event_EventListModel_a_event_list
    * @property {Wl_Event_EventListModel_a_event_list_a_age_restriction} a_age_restriction Information about age restrictions for this event, has the following structure:
    * @property {string[]} a_class_tab List of book now tags connected to this event.
    * @property {Wl_Event_EventListModel_a_event_list_a_logo} a_logo Data about logo of the event.
    * @property {Wl_Event_EventListModel_a_event_list_a_schedule} a_schedule List of scheduled sessions of the event.
    * @property {Wl_Event_EventListModel_a_event_list_a_search_tag} a_search_tag List of search tags connected to this event.
+   * @property {?Wl_Event_EventListModel_a_event_list_a_ticket_inventory} a_ticket_inventory Returns how many tickets can be sold for the ticketed event the class belongs to, and how  many of those are still available to sell.
    * @property {*[][]} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event.
    * @property {boolean} can_book Whether event can be booked or not. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked.
    * @property {boolean} can_cancel Whether current user can cancel already booked event.
