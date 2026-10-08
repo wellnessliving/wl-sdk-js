@@ -14,15 +14,134 @@ function Wl_Classes_Editor_ClassEditorModel()
   this._s_key = "k_business,k_class";
 
   /**
-   * Keys of the Book Now Tabs the class is shown in.
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_access
+   * @property {string[]} a_login_type Keys of the client types that may book the class.
+   * @property {string[]} a_login_type_staff Keys of the client types staff may book into the class.
+   * @property {string[]} a_member_group Keys of the client groups that may book the class.
+   * @property {?number} i_age_from_month Months above the whole years of the minimum age of a client of the class.
+   * @property {?number} i_age_from_year Whole years of the minimum age of a client of the class.
+   * @property {?number} i_age_to_month Months above the whole years of the maximum age of a client of the class.
+   * @property {?number} i_age_to_year Whole years of the maximum age of a client of the class.
+   * @property {number} id_age_restrict Kind of the age restriction of the class.
+   * @property {number} id_bookable Who may book the class online.
+   * @property {boolean} is_age_public `true` if the class is shown to a client who does not meet its age requirement, `false` if it is hidden from them.
+   * @property {boolean} is_age_restrict `true` if the class has an age restriction, `false` otherwise.
+   * @property {boolean} is_birthday_update_require `true` if staff agreed to make the birthdate a required field of the client profile, `false` otherwise.
+   * @property {boolean} is_bookable_staff `true` if staff may book any client type into the class, `false` if only the client types of `a_login_type_staff`.
+   * @property {boolean} is_online_private `true` if the class is hidden from a client who may not book it, `false` if it is shown to them.
+   */
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_attendance_a_resource_type
+   * @property {number} id_resource_control Whether a client picks the asset of this category while booking.
+   * @property {number} id_resource_use Whether one asset of this category is taken by the whole class or one by every client.
+   * @property {string} k_resource_type Key of the category.
+   */
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_attendance
+   * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_attendance_a_resource_type} a_resource_type Book-a-Spot asset categories the class requires.
+   * @property {number} i_makeup_cap Maximum number of make-up sessions a client may take.
+   * @property {boolean} is_prerequisite `true` if a client must attend other services before booking this one, `false` otherwise.
+   * @property {boolean} is_quick_buy `true` if staff may sell products from the attendance list of the class, `false` otherwise.
+   * @property {boolean} is_replace `true` if the number of the make-up sessions of the class is limited, `false` otherwise.
+   * @property {boolean} is_resource_type `true` if the class requires Book-a-Spot assets, `false` otherwise.
+   * @property {boolean} is_staff_session `true` if staff may book individual sessions of a block event, `false` otherwise.
+   */
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_discovery
+   * @property {string[]} a_class_tab Keys of the Book Now Tabs the class is shown in.
+   * @property {string[]} a_search_tag Keys of the quick search tags of the class.
+   * @property {string[]} a_shop_category Keys of the store categories the class is listed under.
+   * @property {string[]} a_tag Keys of the revenue categories the drop-in revenue of the class is tracked under.
+   * @property {boolean} hide_application `true` if the class is hidden in the White Label Achieve Client App, `false` if it is shown there.
+   * @property {boolean} is_gym_pass `true` if the class is offered on Wellhub, `false` otherwise.
+   * @property {string} k_tag_primary Key of the revenue category the drop-in revenue of the class is tracked under first of all.
+   * @property {string} m_revenue_gym_pass Revenue the business earns per client per session of a class offered on Wellhub.
+   */
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_notification
+   * @property {boolean} is_client_notification `true` if the clients of the class receive the default client notifications, `false` otherwise.
+   * @property {boolean} is_custom_confirmation `true` if the clients of the class receive a confirmation notification of its own, `false` if they receive the default one.
+   * @property {boolean} is_custom_confirmation_mail `true` if the confirmation notification of the class is sent by email, `false` otherwise.
+   * @property {boolean} is_custom_confirmation_push `true` if the confirmation notification of the class is sent as a push message, `false` otherwise.
+   * @property {boolean} is_custom_confirmation_sms `true` if the confirmation notification of the class is sent by SMS, `false` otherwise.
+   * @property {boolean} is_custom_reminder `true` if the clients of the class receive a reminder notification of its own, `false` if they receive the default one.
+   * @property {boolean} is_custom_reminder_mail `true` if the reminder notification of the class is sent by email, `false` otherwise.
+   * @property {boolean} is_custom_reminder_push `true` if the reminder notification of the class is sent as a push message, `false` otherwise.
+   * @property {boolean} is_custom_reminder_sms `true` if the reminder notification of the class is sent by SMS, `false` otherwise.
+   * @property {boolean} is_staff_notification `true` if staff receive the default staff notifications of the class, `false` otherwise.
+   */
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_price
+   * @property {string} dl_early Last day of the early bird discount.
+   * @property {string} f_deposit Deposit a client leaves while booking the class.
+   * @property {string} f_early Early bird price of the class.
+   * @property {string} f_price Price of one session of the class.
+   * @property {string} f_price_total Price of the whole class.
+   * @property {boolean} hide_price `true` if the price of a single session is hidden from a client who has an applicable Purchase Option, `false` if it is shown to them.
+   * @property {number} id_pay_require Way a client pays for the class.
+   * @property {boolean} is_buy_promotion `true` if a client pays for the class with a Purchase Option only, `false` otherwise.
+   * @property {boolean} is_buy_single `true` if a client buys one session of the class at a time, `false` otherwise.
+   * @property {boolean} is_buy_total `true` if a client buys the whole class at once, `false` otherwise.
+   * @property {boolean} is_deposit_percent `true` if `f_deposit` is a percent of the price of the class, `false` if it is an amount of money.
+   * @property {boolean} is_early `true` if the class has an early bird discount, `false` otherwise.
+   * @property {boolean} is_tax_enable `true` if taxes are applied to the sales of the class, `false` otherwise.
+   * @property {string} text_early Last day of the early bird discount as the calendar of the form shows it.
+   */
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_ticket_a_ticket_option
+   * @property {string} f_price Price of one ticket of this type.
+   * @property {boolean} is_sold `true` if at least one ticket of this type has been sold, `false` otherwise.
+   * @property {string} k_ticket_option Key of the type.
+   * @property {string} text_title Title of the type, for example `General admission`.
+   */
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_ticket
+   * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_ticket_a_ticket_option} a_ticket_option Ticket types of a ticketed event, in the order they are offered.
+   * @property {number} i_order_limit Number of tickets that may be bought in one order.
+   * @property {boolean} is_account_require `true` if a buyer of a ticket must have an account, `false` if a name and an email address are enough.
+   * @property {boolean} is_door_pay `true` if a buyer may reserve a ticket and pay for it at the door, `false` if a ticket is paid for at once.
+   * @property {boolean} is_terms `true` if a buyer of a ticket must agree to terms and conditions, `false` otherwise.
+   * @property {string} xml_terms Terms and conditions a buyer of a ticket must agree to.
+   */
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class
+   * @property {number} i_capacity Number of clients that may book each session of the class.
+   * @property {number} id_event_type Type of the event.
+   * @property {number} id_note Kind of note staff may take for a client visit.
+   * @property {?number} id_virtual_provider Virtual meeting provider of the class. `null` for an in-person class.
+   * @property {boolean} is_config_business `true` if the class has policies of its own, `false` if it follows the policies of the business.
+   * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_access} o_access Settings that tell who may book the class.
+   * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_attendance} o_attendance Settings of the way the class is attended.
+   * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_discovery} o_discovery Settings that tell where the class is listed.
+   * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_notification} o_notification Notification settings of the class.
+   * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_price} o_price Pricing settings of the class.
+   * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_ticket} o_ticket Settings a ticketed event adds to the pricing settings.
+   * @property {string} s_color_background Color of the class on the schedule in hex format.
+   * @property {string} s_description Description of the class.
+   * @property {string} s_special Special instructions of the class.
+   * @property {string} s_title Title of the class.
+   * @property {boolean} show_special_instructions `true` if the special instructions may be shown publicly, `false` if only to a client who booked the class.
+   */
+
+  /**
+   * Settings of the class the form edits.
    *
-   * Every element is a `text_key` of {@link Wl_Classes_Editor_ClassEditorModel.a_class_tab_list}. Empty for a class that is shown
-   * in no tab.
+   * Filled for a saved class, and with the values a new class starts with while a new class is created. The same
+   * settings are accepted back to save the class.
    *
    * @get result
-   * @type {string[]}
+   * @post post
+   * @type {Wl_Classes_Editor_ClassEditorModel_a_class}
    */
-  this.a_class_tab = undefined;
+  this.a_class = undefined;
 
   /**
    * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_tab_list
@@ -37,39 +156,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @type {Wl_Classes_Editor_ClassEditorModel_a_class_tab_list[]}
    */
   this.a_class_tab_list = undefined;
-
-  /**
-   * Keys of the client types that may book the class.
-   *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.id_bookable} is
-   * {@link Wl_Service_BookableSid}. Empty for a class every client type may book.
-   *
-   * @get result
-   * @type {string[]}
-   */
-  this.a_login_type = undefined;
-
-  /**
-   * Keys of the client types staff may book into the class.
-   *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.is_bookable_staff} is `false`. Empty for a class staff
-   * may book every client type into.
-   *
-   * @get result
-   * @type {string[]}
-   */
-  this.a_login_type_staff = undefined;
-
-  /**
-   * Keys of the client groups that may book the class.
-   *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.id_bookable} is
-   * {@link Wl_Service_BookableSid}. Empty for a class every client group may book.
-   *
-   * @get result
-   * @type {string[]}
-   */
-  this.a_member_group = undefined;
 
   /**
    * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_reminder_info_a_config
@@ -100,32 +186,6 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.a_reminder_info = undefined;
 
   /**
-   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_resource_type
-   * @property {number} id_resource_control Whether a client picks the asset of this category while booking. One of {@link Wl_Resource_ResourceClientControlSid} constants.
-   * @property {number} id_resource_use Whether one asset of this category is taken by the whole class or one by every client. One of {@link Wl_Resource_ResourceUseSid} constants.
-   * @property {string} k_resource_type Key of the category.
-   */
-
-  /**
-   * Book-a-Spot asset categories the class requires. Every element is an array:
-   *
-   * @get result
-   * @type {Wl_Classes_Editor_ClassEditorModel_a_resource_type[]}
-   */
-  this.a_resource_type = undefined;
-
-  /**
-   * Keys of the quick search tags of the class.
-   *
-   * Every element is a `k_search_tag` of {@link Wl_Classes_Editor_ClassEditorModel.a_search_tag_list}. Empty for a class with no
-   * tags.
-   *
-   * @get result
-   * @type {string[]}
-   */
-  this.a_search_tag = undefined;
-
-  /**
    * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_search_tag_list
    * @property {string} k_search_tag Key of the tag.
    * @property {string} text_title Title of the tag.
@@ -140,17 +200,6 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.a_search_tag_list = undefined;
 
   /**
-   * Keys of the store categories the event is listed under.
-   *
-   * Every element is a `k_shop_category` of {@link Wl_Classes_Editor_ClassEditorModel.a_shop_category_list}. Empty for an event
-   * that is listed under no category.
-   *
-   * @get result
-   * @type {string[]}
-   */
-  this.a_shop_category = undefined;
-
-  /**
    * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_shop_category_list
    * @property {string} k_shop_category Key of the category.
    * @property {string} text_title Title of the category.
@@ -163,35 +212,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @type {Wl_Classes_Editor_ClassEditorModel_a_shop_category_list[]}
    */
   this.a_shop_category_list = undefined;
-
-  /**
-   * Keys of the revenue categories the drop-in revenue of the class is tracked under.
-   *
-   * Empty for a class with no revenue category.
-   *
-   * @get result
-   * @type {string[]}
-   */
-  this.a_tag = undefined;
-
-  /**
-   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_ticket_option
-   * @property {string} f_price Price of one ticket of this type.
-   * @property {boolean} is_sold `true` if at least one ticket of this type has been sold, `false` otherwise.
-   * @property {string} k_ticket_option Key of the type.
-   * @property {string} text_title Title of the type, for example `General admission`.
-   */
-
-  /**
-   * Ticket types of a ticketed event, in the order they are offered. Every element is an array: 
-   *
-   * Empty for an event that is not ticketed, and for a ticketed event that has no types yet. The client offers an
-   * empty row in either case.
-   *
-   * @get result
-   * @type {Wl_Classes_Editor_ClassEditorModel_a_ticket_option[]}
-   */
-  this.a_ticket_option = undefined;
 
   /**
    * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_url
@@ -214,78 +234,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @type {Wl_Classes_Editor_ClassEditorModel_a_url[]}
    */
   this.a_url = undefined;
-
-  /**
-   * Last day of the early bird discount.
-   *
-   * Empty string if the event has no early bird discount.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.dl_early = undefined;
-
-  /**
-   * Deposit a client leaves while booking the event.
-   *
-   * A percent of the price of the event while {@link Wl_Classes_Editor_ClassEditorModel.is_deposit_percent} is `true`, an amount of
-   * money otherwise. `0.00` unless {@link Wl_Classes_Editor_ClassEditorModel.id_pay_require} is
-   * {@link Wl_Classes_RequirePaySid}. The field keeps the name the legacy form posts, which carries
-   * both an amount of money and a percent.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.f_deposit = "0.00";
-
-  /**
-   * Early bird discount of the event.
-   *
-   * `0.00` if the event has no early bird discount. The field keeps the name the legacy form posts.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.f_early = "0.00";
-
-  /**
-   * Price of one session of the event.
-   *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.is_buy_single} is `true`. The field keeps the name the
-   * legacy form posts.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.f_price = "0.00";
-
-  /**
-   * Price of the whole event.
-   *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.is_buy_total} is `true`. The field keeps the name the
-   * legacy form posts.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.f_price_total = "0.00";
-
-  /**
-   * `true` if the event is hidden in the White Label Achieve Client App, `false` if it is shown there.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.hide_application = undefined;
-
-  /**
-   * `true` if the price of a single session is hidden from a client who has an applicable Purchase Option,
-   * `false` if it is shown to them.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.hide_price = undefined;
 
   /**
    * Markup of the Business policies block of the form.
@@ -344,65 +292,6 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.html_tax = undefined;
 
   /**
-   * Months above the whole years of the minimum age of a client of the class.
-   *
-   * `null` if the class has no minimum age.
-   *
-   * @get result
-   * @type {?number}
-   */
-  this.i_age_from_month = null;
-
-  /**
-   * Whole years of the minimum age of a client of the class.
-   *
-   * `null` if the class has no minimum age.
-   *
-   * @get result
-   * @type {?number}
-   */
-  this.i_age_from_year = null;
-
-  /**
-   * Months above the whole years of the maximum age of a client of the class.
-   *
-   * `null` if the class has no maximum age.
-   *
-   * @get result
-   * @type {?number}
-   */
-  this.i_age_to_month = null;
-
-  /**
-   * Whole years of the maximum age of a client of the class.
-   *
-   * `null` if the class has no maximum age.
-   *
-   * @get result
-   * @type {?number}
-   */
-  this.i_age_to_year = null;
-
-  /**
-   * Number of clients that may enroll into each instance of the event.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.i_capacity = 10;
-
-  /**
-   * Number of tickets that may be sold for each instance of a ticketed event.
-   *
-   * The same number as {@link Wl_Classes_Editor_ClassEditorModel.i_capacity}, in a field of its own because a ticketed event asks
-   * for it in a field the legacy form posts under this name.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.i_capacity_ticket = 10;
-
-  /**
    * Maximum length of description.
    *
    * @get result
@@ -411,120 +300,12 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.i_description_limit = undefined;
 
   /**
-   * Maximum number of make-up sessions a client may take.
-   *
-   * `0` stands for as many as the number of the sessions the client missed.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.i_makeup_cap = undefined;
-
-  /**
-   * Number of tickets that may be bought in one order of a ticketed event.
-   *
-   * @get result
-   * @type {number}
-   */
-  this.i_order_limit = 1;
-
-  /**
-   * Kind of the age restriction of the class.
-   *
-   * Only taken into account while {@link Wl_Classes_Editor_ClassEditorModel.is_age_restrict} is `true`.
-   *
-   * @get result
-   * @see Wl_Service_AgeRestrictionStatusSid
-   * @type {number}
-   */
-  this.id_age_restrict = 2;
-
-  /**
-   * Who may book the class online.
-   *
-   * The class keeps the client types and the groups whether online booking is open or not, so the form works this
-   * out from them: a class that is closed to everyone is only told apart from a restricted one by them being
-   * empty.
-   *
-   * @get result
-   * @see Wl_Service_BookableSid
-   * @type {number}
-   */
-  this.id_bookable = undefined;
-
-  /**
-   * Type of the event.
-   *
-   * @get result
-   * @see Wl_Classes_Edit_EventTypeEnum
-   * @type {number}
-   */
-  this.id_event_type = undefined;
-
-  /**
-   * Kind of note staff may take for a client visit.
-   *
-   * @get result
-   * @see Wl_Visit_Note_Sid_NoteSid
-   * @type {number}
-   */
-  this.id_note = undefined;
-
-  /**
-   * Way a client pays for the event.
-   *
-   * @get result
-   * @see Wl_Classes_RequirePaySid
-   * @type {number}
-   */
-  this.id_pay_require = undefined;
-
-  /**
-   * Virtual meeting provider of the event. `null` for an in-person event.
-   *
-   * @get result
-   * @see Wl_Virtual_VirtualProviderSid
-   * @type {?number}
-   */
-  this.id_virtual_provider = null;
-
-  /**
-   * `true` if a buyer of a ticket must have an account, `false` if a name and an email address are enough.
-   *
-   * Ignored for an event that is not ticketed.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_account_require = undefined;
-
-  /**
    * `true` if the Administration section may be shown, `false` otherwise.
    *
    * @get result
    * @type {boolean}
    */
   this.is_admin = undefined;
-
-  /**
-   * `true` if the class is shown to a client who does not meet its age requirement, `false` if it is hidden from
-   * them.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_age_public = undefined;
-
-  /**
-   * `true` if the class has an age restriction, `false` otherwise.
-   *
-   * The legacy form keeps no flag of its own for this switch, so it is worked out from the age bounds, the same
-   * as in the legacy form.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_age_restrict = undefined;
 
   /**
    * `true` if the birthdate is a required field of the client profile of the business, `false` otherwise.
@@ -538,172 +319,16 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.is_birthday_require = undefined;
 
   /**
-   * `true` if staff may book any client type into the class, `false` if only the client types of
-   * {@link Wl_Classes_Editor_ClassEditorModel.a_login_type_staff}.
+   * `true` if the sign of the currency of the business is written before the amount, `false` if it is written after
+   * it.
+   *
+   * A setting of the currency, not of the business: the dollar sign leads the amount, while the Swedish krona
+   * follows it. Every money field of the form puts the sign on this side.
    *
    * @get result
    * @type {boolean}
    */
-  this.is_bookable_staff = true;
-
-  /**
-   * `true` if a client pays for the event with a Purchase Option only, `false` otherwise.
-   *
-   * One of the three ways a client pays for the event, which are mutually exclusive:
-   * {@link Wl_Classes_Editor_ClassEditorModel.is_buy_promotion}, {@link Wl_Classes_Editor_ClassEditorModel.is_buy_single} and
-   * {@link Wl_Classes_Editor_ClassEditorModel.is_buy_total}.
-   * expects.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_buy_promotion = undefined;
-
-  /**
-   * `true` if a client buys one session of the event at a time, `false` otherwise.
-   *
-   * {@link Wl_Classes_Editor_ClassEditorModel.f_price} is the price of a session. See
-   * {@link Wl_Classes_Editor_ClassEditorModel.is_buy_promotion} for the other ways a client pays for the event.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_buy_single = undefined;
-
-  /**
-   * `true` if a client buys the whole event at once, `false` otherwise.
-   *
-   * {@link Wl_Classes_Editor_ClassEditorModel.f_price_total} is the price of the event. Defaults to `true`, the same as the legacy
-   * form offers for a new event. See {@link Wl_Classes_Editor_ClassEditorModel.is_buy_promotion} for the other ways a client pays
-   * for the event.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_buy_total = true;
-
-  /**
-   * `true` if the clients of the class receive the default client notifications, `false` otherwise.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_client_notification = true;
-
-  /**
-   * `true` if the class has policies of its own, `false` if it follows the policies of the business.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_config_business = undefined;
-
-  /**
-   * `true` if the clients of the class receive a confirmation notification of its own, `false` if they receive the
-   * default one.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_custom_confirmation = undefined;
-
-  /**
-   * `true` if the confirmation notification of the class is sent by email, `false` otherwise.
-   *
-   * Ignored while {@link Wl_Classes_Editor_ClassEditorModel.is_custom_confirmation} is `false`.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_custom_confirmation_mail = undefined;
-
-  /**
-   * `true` if the confirmation notification of the class is sent as a push message, `false` otherwise.
-   *
-   * Ignored while {@link Wl_Classes_Editor_ClassEditorModel.is_custom_confirmation} is `false`.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_custom_confirmation_push = undefined;
-
-  /**
-   * `true` if the confirmation notification of the class is sent by SMS, `false` otherwise.
-   *
-   * Ignored while {@link Wl_Classes_Editor_ClassEditorModel.is_custom_confirmation} is `false`.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_custom_confirmation_sms = undefined;
-
-  /**
-   * `true` if the clients of the class receive a reminder notification of its own, `false` if they receive the
-   * default one.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_custom_reminder = undefined;
-
-  /**
-   * `true` if the reminder notification of the class is sent by email, `false` otherwise.
-   *
-   * Ignored while {@link Wl_Classes_Editor_ClassEditorModel.is_custom_reminder} is `false`.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_custom_reminder_mail = undefined;
-
-  /**
-   * `true` if the reminder notification of the class is sent as a push message, `false` otherwise.
-   *
-   * Ignored while {@link Wl_Classes_Editor_ClassEditorModel.is_custom_reminder} is `false`.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_custom_reminder_push = undefined;
-
-  /**
-   * `true` if the reminder notification of the class is sent by SMS, `false` otherwise.
-   *
-   * Ignored while {@link Wl_Classes_Editor_ClassEditorModel.is_custom_reminder} is `false`.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_custom_reminder_sms = undefined;
-
-  /**
-   * `true` if {@link Wl_Classes_Editor_ClassEditorModel.f_deposit} is a percent of the price of the event, `false` if it is an
-   * amount of money.
-   *
-   * Copy of the `is_deposit_percent` column of the class.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_deposit_percent = undefined;
-
-  /**
-   * `true` if a buyer may reserve a ticket and pay for it at the door, `false` if a ticket is paid for at once.
-   *
-   * Ignored for an event that is not ticketed.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_door_pay = undefined;
-
-  /**
-   * `true` if the event has an early bird discount, `false` otherwise.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_early = undefined;
+  this.is_currency_before = true;
 
   /**
    * `true` if the event may no longer be turned into a ticketed one, or back from it, `false` otherwise.
@@ -726,17 +351,7 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.is_fitlive = undefined;
 
   /**
-   * `true` if the event is offered on Wellhub, `false` otherwise.
-   *
-   * Ignored while {@link Wl_Classes_Editor_ClassEditorModel.is_gym_pass_support} is `false`.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_gym_pass = undefined;
-
-  /**
-   * `true` if the business may offer the event on Wellhub, `false` otherwise.
+   * `true` if the business may offer the class on Wellhub, `false` otherwise.
    *
    * The Wellhub block of the Online visibility section is only shown while this is `true`.
    *
@@ -746,86 +361,10 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.is_gym_pass_support = undefined;
 
   /**
-   * `true` if the class is hidden from a client who may not book it, `false` if it is shown to them.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_online_private = undefined;
-
-  /**
-   * `true` if a client must attend other services before booking this one, `false` otherwise.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_prerequisite = undefined;
-
-  /**
-   * `true` if staff may sell products from the attendance list of the class, `false` otherwise.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_quick_buy = undefined;
-
-  /**
-   * `true` if the number of the make-up sessions of the event is limited, `false` otherwise.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_replace = undefined;
-
-  /**
-   * `true` if the class requires Book-a-Spot assets, `false` otherwise.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_resource_type = undefined;
-
-  /**
-   * `true` if staff receive the default staff notifications of the class, `false` otherwise.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_staff_notification = true;
-
-  /**
-   * `true` if staff may book individual sessions of a block event, `false` otherwise.
-   *
-   * Ignored for a non-block or a ticketed event.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_staff_session = undefined;
-
-  /**
-   * `true` if taxes are applied to the sales of the class, `false` otherwise.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_tax_enable = undefined;
-
-  /**
-   * `true` if a buyer of a ticket must agree to terms and conditions, `false` otherwise.
-   *
-   * Ignored for an event that is not ticketed.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.is_terms = undefined;
-
-  /**
    * `true` if a new client of the business must add a card at sign-up, `false` otherwise.
    *
    * One of the sign-up rules the form lists for a buyer of a ticket who has no account yet. A setting of the
-   * business, not of the event.
+   * business, not of the class.
    *
    * @get result
    * @type {boolean}
@@ -836,7 +375,7 @@ function Wl_Classes_Editor_ClassEditorModel()
    * `true` if a new client of the business must sign a waiver, `false` otherwise.
    *
    * One of the sign-up rules the form lists for a buyer of a ticket who has no account yet. A setting of the
-   * business, not of the event.
+   * business, not of the class.
    *
    * @get result
    * @type {boolean}
@@ -847,6 +386,7 @@ function Wl_Classes_Editor_ClassEditorModel()
    * Business key.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_business = "";
@@ -858,69 +398,21 @@ function Wl_Classes_Editor_ClassEditorModel()
    * when it points at a class.
    *
    * @get get
+   * @post get
    * @type {string}
    */
   this.k_class = "";
 
   /**
-   * Key of the revenue category the drop-in revenue of the class is tracked under first of all.
+   * Key of the class the save wrote.
    *
-   * Empty string for a class with no revenue category. Always one of {@link Wl_Classes_Editor_ClassEditorModel.a_tag}.
+   * The key of {@link Wl_Classes_Editor_ClassEditorModel.k_class} while a saved class is changed, and the key of the class that has
+   * just been created otherwise. Empty string until the save has run.
    *
-   * @get result
+   * @post result
    * @type {string}
    */
-  this.k_tag_primary = undefined;
-
-  /**
-   * Revenue the business earns per client per session of an event offered on Wellhub.
-   *
-   * Ignored while {@link Wl_Classes_Editor_ClassEditorModel.is_gym_pass} is `false`.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.m_revenue_gym_pass = "0.00";
-
-  /**
-   * Color of the event on the schedule in hex format.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.s_color_background = undefined;
-
-  /**
-   * Description of the event.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.s_description = undefined;
-
-  /**
-   * Special instructions of the event.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.s_special = undefined;
-
-  /**
-   * Title of the event.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.s_title = undefined;
-
-  /**
-   * `true` if the special instructions may be shown publicly, `false` if only to a client who booked the event.
-   *
-   * @get result
-   * @type {boolean}
-   */
-  this.show_special_instructions = true;
+  this.k_class_save = undefined;
 
   /**
    * Currency sign of the business.
@@ -929,27 +421,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @type {string}
    */
   this.text_currency = undefined;
-
-  /**
-   * Last day of the early bird discount as the calendar of the form shows it.
-   *
-   * Empty string if the event has no early bird discount. {@link Wl_Classes_Editor_ClassEditorModel.dl_early} carries the same day
-   * in the format the form posts.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.text_early = undefined;
-
-  /**
-   * Terms and conditions a buyer of a ticket must agree to.
-   *
-   * Empty string for an event that is not ticketed, and for a ticketed event with no terms.
-   *
-   * @get result
-   * @type {string}
-   */
-  this.xml_terms = undefined;
 
   this.changeInit();
 }
@@ -961,7 +432,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Editor_ClassEditorModel);
  */
 Wl_Classes_Editor_ClassEditorModel.prototype.config=function()
 {
-  return {"a_field":{"a_class_tab":{"get":{"result":true}},"a_class_tab_list":{"get":{"result":true}},"a_login_type":{"get":{"result":true}},"a_login_type_staff":{"get":{"result":true}},"a_member_group":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_resource_type":{"get":{"result":true}},"a_search_tag":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_tag":{"get":{"result":true}},"a_ticket_option":{"get":{"result":true}},"a_url":{"get":{"result":true}},"dl_early":{"get":{"result":true}},"f_deposit":{"get":{"result":true}},"f_early":{"get":{"result":true}},"f_price":{"get":{"result":true}},"f_price_total":{"get":{"result":true}},"hide_application":{"get":{"result":true}},"hide_price":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_age_from_month":{"get":{"result":true}},"i_age_from_year":{"get":{"result":true}},"i_age_to_month":{"get":{"result":true}},"i_age_to_year":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_capacity_ticket":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"i_makeup_cap":{"get":{"result":true}},"i_order_limit":{"get":{"result":true}},"id_age_restrict":{"get":{"result":true}},"id_bookable":{"get":{"result":true}},"id_event_type":{"get":{"result":true}},"id_note":{"get":{"result":true}},"id_pay_require":{"get":{"result":true}},"id_virtual_provider":{"get":{"result":true}},"is_account_require":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_age_public":{"get":{"result":true}},"is_age_restrict":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_bookable_staff":{"get":{"result":true}},"is_buy_promotion":{"get":{"result":true}},"is_buy_single":{"get":{"result":true}},"is_buy_total":{"get":{"result":true}},"is_client_notification":{"get":{"result":true}},"is_config_business":{"get":{"result":true}},"is_custom_confirmation":{"get":{"result":true}},"is_custom_confirmation_mail":{"get":{"result":true}},"is_custom_confirmation_push":{"get":{"result":true}},"is_custom_confirmation_sms":{"get":{"result":true}},"is_custom_reminder":{"get":{"result":true}},"is_custom_reminder_mail":{"get":{"result":true}},"is_custom_reminder_push":{"get":{"result":true}},"is_custom_reminder_sms":{"get":{"result":true}},"is_deposit_percent":{"get":{"result":true}},"is_door_pay":{"get":{"result":true}},"is_early":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_online_private":{"get":{"result":true}},"is_prerequisite":{"get":{"result":true}},"is_quick_buy":{"get":{"result":true}},"is_replace":{"get":{"result":true}},"is_resource_type":{"get":{"result":true}},"is_staff_notification":{"get":{"result":true}},"is_staff_session":{"get":{"result":true}},"is_tax_enable":{"get":{"result":true}},"is_terms":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"get":true}},"k_tag_primary":{"get":{"result":true}},"m_revenue_gym_pass":{"get":{"result":true}},"s_color_background":{"get":{"result":true}},"s_description":{"get":{"result":true}},"s_special":{"get":{"result":true}},"s_title":{"get":{"result":true}},"show_special_instructions":{"get":{"result":true}},"text_currency":{"get":{"result":true}},"text_early":{"get":{"result":true}},"xml_terms":{"get":{"result":true}}}};
+  return {"a_field":{"a_class":{"get":{"result":true},"post":{"post":true}},"a_class_tab_list":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_url":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_currency_before":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"get":true},"post":{"get":true}},"k_class_save":{"post":{"result":true}},"text_currency":{"get":{"result":true}}}};
 };
 
 /**
@@ -976,8 +447,8 @@ Wl_Classes_Editor_ClassEditorModel.prototype.config=function()
 /**
  * Returns everything the class setup form needs.
  *
- * The form is rendered by the client, so this endpoint answers with data: the fields of the class section by
- * section, the lists the Book Now Tab, the quick search tag and the store category pickers are filled from, the
+ * The form is rendered by the client, so this endpoint answers with data: the settings of the class, the lists the
+ * Book Now Tab, the quick search tag and the store category pickers are filled from, the
  * send rules of the client reminder, the currency sign, whether the Administration section may be shown, the
  * addresses of the pages the form links to and the markup of the blocks that have no template on the client.
  *
@@ -985,4 +456,18 @@ Wl_Classes_Editor_ClassEditorModel.prototype.config=function()
  * @name Wl_Classes_Editor_ClassEditorModel.get
  * @returns {WlSdk_Deferred_Promise}
  * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Saves the class.
+ *
+ * Creates the class while {@link Wl_Classes_Editor_ClassEditorModel.k_class} is empty, and changes the class otherwise. The settings
+ * come in {@link Wl_Classes_Editor_ClassEditorModel.a_class}, which has the same fields the load answers with. The key of the class
+ * that has been written is answered with in {@link Wl_Classes_Editor_ClassEditorModel.k_class_save}. An error of a field is reported
+ * with the name of the field on the form, one error for every field that failed.
+ *
+ * @function
+ * @name Wl_Classes_Editor_ClassEditorModel.post
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.post()
  */

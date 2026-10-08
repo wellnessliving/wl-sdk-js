@@ -175,6 +175,14 @@ function Wl_Catalog_StaffApp_CatalogView_CatalogViewModel()
    */
   this.uid = "";
 
+  /**
+   * The text of the terms and conditions for the sale item.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.xml_terms = undefined;
+
   this.changeInit();
 }
 
@@ -185,7 +193,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_StaffApp_CatalogView_CatalogViewModel);
  */
 Wl_Catalog_StaffApp_CatalogView_CatalogViewModel.prototype.config=function()
 {
-  return {"a_field":{"a_config":{"get":{"get":true}},"a_tax":{"get":{"get":true}},"a_tax_data":{"get":{"result":true}},"a_tickets":{"get":{"result":true}},"i_quantity":{"get":{"get":true}},"id_sale":{"get":{"get":true}},"is_ticket":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_id":{"get":{"get":true}},"k_shop_product_option":{"get":{"get":true}},"m_price":{"get":{"get":true}},"m_prorate":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_total":{"get":{"result":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_config":{"get":{"get":true}},"a_tax":{"get":{"get":true}},"a_tax_data":{"get":{"result":true}},"a_tickets":{"get":{"result":true}},"i_quantity":{"get":{"get":true}},"id_sale":{"get":{"get":true}},"is_ticket":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_id":{"get":{"get":true}},"k_shop_product_option":{"get":{"get":true}},"m_price":{"get":{"get":true}},"m_prorate":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_total":{"get":{"result":true}},"uid":{"get":{"get":true}},"xml_terms":{"get":{"result":true}}}};
 };
 
 /**
