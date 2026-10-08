@@ -275,10 +275,12 @@ function Wl_Appointment_Book_Finish_FinishModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_visit_payment
    * @property {boolean} is_free `true` if the visit is free; `false` otherwise.
+   * @property {boolean} is_pay_required `true` if the booking triggered the payment flow and the client must pay by the link in `text_payment_link`, otherwise the visit is cancelled automatically; `false` otherwise.
    * @property {boolean} is_waitlist `true` whether the booked slot was waitlisted; `false` otherwise.
    * @property {string} k_login_promotion Applied user's purchase option.
    * @property {string} k_promotion Purchase option.
    * @property {string} k_session_pass Applied session pass.
+   * @property {?string} text_payment_link Link to complete the payment, the same one the client receives by email. `null` if `is_pay_required` is `false`.
    * @property {string} text_promotion Purchase option title.
    */
 
