@@ -143,6 +143,26 @@ function Wl_Book_Process_ProcessGroupModel()
   this.a_visit = undefined;
 
   /**
+   * @typedef {{}} Wl_Book_Process_ProcessGroupModel_a_visit_payment
+   * @property {boolean} is_free `true` if the visit is free; `false` otherwise.
+   * @property {boolean} is_pay_required `true` if the booking triggered the payment flow: the visit is booked, is not paid, and the client must   pay for it by the link in `text_payment_link`, otherwise the visit is cancelled automatically.   `false` otherwise: the visit is paid, free, waitlisted, cancelled, or the application is allowed to book   without paying at all.
+   * @property {boolean} is_waitlist `true` whether the booked slot was waitlisted; `false` otherwise.
+   * @property {string} k_login_promotion Applied user's purchase option.
+   * @property {string} k_promotion Purchase option.
+   * @property {string} k_session_pass Applied session pass.
+   * @property {?string} text_payment_link Link to complete the payment, the same one the client receives by email.   `null` if `is_pay_required` is `false`.
+   * @property {string} text_promotion Purchase option title.
+   */
+
+  /**
+   * Values are arrays with next keys:
+   *
+   * @post result
+   * @type {Wl_Book_Process_ProcessGroupModel_a_visit_payment[]}
+   */
+  this.a_visit_payment = undefined;
+
+  /**
    * Date/time to which session is booked.
    *
    * @post get
@@ -243,7 +263,7 @@ WlSdk_ModelAbstract.extend(Wl_Book_Process_ProcessGroupModel);
  */
 Wl_Book_Process_ProcessGroupModel.prototype.config=function()
 {
-  return {"a_field":{"a_client":{"post":{"post":true}},"a_login_activity_book":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"k_login_promotion_guest_pass":{"post":{"post":true}},"k_pay_installment_template":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}}}};
+  return {"a_field":{"a_client":{"post":{"post":true}},"a_login_activity_book":{"post":{"result":true}},"a_pay_form":{"post":{"post":true}},"a_visit":{"post":{"result":true}},"a_visit_payment":{"post":{"result":true}},"dt_date_gmt":{"post":{"get":true}},"id_mode":{"post":{"get":true}},"is_backend":{"post":{"get":true}},"is_credit_card_check":{"post":{"get":true}},"is_force_pay_later":{"post":{"post":true}},"k_class_period":{"post":{"get":true}},"k_login_activity_purchase":{"post":{"result":true}},"k_login_promotion_guest_pass":{"post":{"post":true}},"k_pay_installment_template":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}}}};
 };
 
 /**

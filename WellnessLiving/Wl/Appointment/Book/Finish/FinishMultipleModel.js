@@ -90,6 +90,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * @property {string} uid User key.  Specify only in a case of booking for a lof of different users.
    * @property {string} uid_staff The staff member conducting the appointment. Specify this for appointment bookings only.
    * @property {string} uid_staff_date The staff member conducting the appointment. The difference between this and `uid_staff` is that this value must be set only in cases when you want to add customer to an appointment that already exists. Specify this for appointment bookings only.
+   * @property {string} url_virtual The meeting link for a non-integrated virtual service. Specify this for appointment bookings only when the service uses a non-integrated virtual provider. When provided, saved as both join and host link for the appointment.
    */
 
   /**
