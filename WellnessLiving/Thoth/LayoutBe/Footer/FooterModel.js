@@ -1,5 +1,5 @@
 /**
- * Returns the data required to render the site footer for the given business.
+ * Loads the data required to render the site footer for the given business.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -22,8 +22,9 @@ function Thoth_LayoutBe_Footer_FooterModel()
   this.k_business = "";
 
   /**
-   * `true` to show the "Powered by WellnessLiving" branding and Terms & Conditions links in the footer;
-   * `false` for white-label businesses, which must not display WellnessLiving branding.
+   * Whether the "Powered by WellnessLiving" branding and Terms & Conditions links are shown in the footer.
+   *
+   * `true` to show them; `false` for white-label businesses, which must not display WellnessLiving branding.
    *
    * @get result
    * @type {boolean}
@@ -52,10 +53,11 @@ Thoth_LayoutBe_Footer_FooterModel.prototype.config=function()
  */
 
 /**
- * Returns the data required to render the site footer for the given business.
+ * Loads the data required to render the site footer for the given business.
  *
  * Loads the business's white-label status and derives whether the "Powered by WellnessLiving"
- * branding and the Terms and Conditions link should be shown in the footer.
+ * branding and the Terms and Conditions link should be shown in the footer. The result is stored in
+ * {@link Thoth_LayoutBe_Footer_FooterModel.show_term}.
  *
  * @function
  * @name Thoth_LayoutBe_Footer_FooterModel.get
