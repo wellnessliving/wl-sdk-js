@@ -106,6 +106,13 @@ function Wl_Event_EventListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_tickets
+   * @property {string} k_ticket_option Globally unique identifier of the ticket option. Primary key in TicketOptionsRouteSql.
+   * @property {string} m_price One ticket price.
+   * @property {string} text_title Ticket option name.
+   */
+
+  /**
    * @typedef {{}} Wl_Event_EventListModel_a_event_list
    * @property {Wl_Event_EventListModel_a_event_list_a_age_restriction} a_age_restriction Information about age restrictions for this event, has the following structure:
    * @property {string[]} a_class_tab List of book now tags connected to this event.
@@ -113,7 +120,7 @@ function Wl_Event_EventListModel()
    * @property {Wl_Event_EventListModel_a_event_list_a_schedule} a_schedule List of scheduled sessions of the event.
    * @property {Wl_Event_EventListModel_a_event_list_a_search_tag} a_search_tag List of search tags connected to this event.
    * @property {?Wl_Event_EventListModel_a_event_list_a_ticket_inventory} a_ticket_inventory Returns how many tickets can be sold for the ticketed event the class belongs to, and how  many of those are still available to sell.
-   * @property {*[][]} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event.
+   * @property {Wl_Event_EventListModel_a_event_list_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event.
    * @property {boolean} can_book Whether event can be booked or not. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked.
    * @property {boolean} can_cancel Whether current user can cancel already booked event.
    * @property {string} dl_early End date, when early bird price ends in `MySql` format.

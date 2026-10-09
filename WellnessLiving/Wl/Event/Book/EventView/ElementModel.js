@@ -196,6 +196,13 @@ function Wl_Event_Book_EventView_ElementModel()
    */
 
   /**
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_tickets
+   * @property {string} k_ticket_option Globally unique identifier of the ticket option.
+   * @property {string} m_price One ticket price.
+   * @property {string} text_title Ticket option name.
+   */
+
+  /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_book_available} a_book_available List of sessions available for booking. See {@link Wl_Event_Book_EventView_ElementModel.a_book_available}.
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_class_logo} a_class_logo Image of event. See {@link Wl_Event_Book_EventView_ElementModel.a_class_logo}.
@@ -205,7 +212,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_schedule} a_schedule Schedule of event sessions. See {@link Wl_Event_Book_EventView_ElementModel.a_schedule}.
    * @property {string[]} a_shop_category IDs of online store category.
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_staff_logo} a_staff_logo Photos of staff. See {@link Wl_Event_Book_EventView_ElementModel.a_staff_logo}.
-   * @property {*[][]} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event. .
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event. . Each element contains the following keys:
    * @property {string} dt_book_date Date/time of first event session.
    * @property {string} dt_early Early date of event purchase.
    * @property {string} dt_end End date of the event instance.
@@ -351,11 +358,18 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_staff_logo = undefined;
 
   /**
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_tickets
+   * @property {string} k_ticket_option Globally unique identifier of the ticket option. Primary key in TicketOptionsRouteSql.
+   * @property {string} m_price One ticket price.
+   * @property {string} text_title Ticket option name.
+   */
+
+  /**
    * List of ticket options available for booking the event. Empty if the event is not a ticketed
    * event.
    *
    * @get result
-   * @type {*[][]}
+   * @type {Wl_Event_Book_EventView_ElementModel_a_tickets[]}
    */
   this.a_tickets = undefined;
 

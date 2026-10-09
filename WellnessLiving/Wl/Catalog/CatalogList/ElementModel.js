@@ -55,11 +55,18 @@ function Wl_Catalog_CatalogList_ElementModel()
    */
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data_a_tickets
+   * @property {string} k_ticket_option Globally unique identifier of the ticket option.
+   * @property {string} m_price One ticket price.
+   * @property {string} text_title Ticket option name.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data
    * @property {Wl_Catalog_CatalogList_ElementModel_a_data_a_component} a_component This applies only for coupons. Coupon components information. Each element will contain the following keys:
    * @property {number[]} a_service_access Access to services for a purchase option. Keys are one of the {@link Wl_Service_ServiceSid} constants, values are one of the {@link AFlagSid} constants. Set only for relevant purchase option service category. {@link AFlagSid} access to some services. {@link AFlagSid} no access to services. It can be set only for classes and events. {@link AFlagSid} access to all services. It can be set only for classes and events. For purchase options with appointments and assets service category status is always {@link AFlagSid}.
    * @property {Wl_Catalog_CatalogList_ElementModel_a_data_a_staff} a_staff This applies to enrollment/event items. Staff list for class periods. Each element contains:
-   * @property {*[][]} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event. .
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_data_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event. . Each element contains the following keys:
    * @property {string} dl_expire Date of expiration of coupon, local date in MySQL format.
    * @property {string} dl_now Current date, local date in MySQL format.
    * @property {string} dl_start Date to activate the coupon on, local date in MySQL format.   When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.
@@ -205,11 +212,18 @@ function Wl_Catalog_CatalogList_ElementModel()
    */
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_tickets
+   * @property {string} k_ticket_option Globally unique identifier of the ticket option.
+   * @property {string} m_price One ticket price.
+   * @property {string} text_title Ticket option name.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_data
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_component} a_component This applies only for coupons. Coupon components information. Each element will contain the following keys:
    * @property {number[]} a_service_access Access to services for a purchase option. Keys are one of the {@link Wl_Service_ServiceSid} constants, values are one of the {@link AFlagSid} constants. Set only for relevant purchase option service category. {@link AFlagSid} access to some services. {@link AFlagSid} no access to services. It can be set only for classes and events. {@link AFlagSid} access to all services. It can be set only for classes and events. For purchase options with appointments and assets service category status is always {@link AFlagSid}.
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_staff} a_staff This applies to enrollment/event items. Staff list for class periods. Each element contains:
-   * @property {*[][]} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event. .
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event. . Each element contains the following keys:
    * @property {string} dl_expire Date of expiration of coupon, local date in MySQL format.
    * @property {string} dl_now Current date, local date in MySQL format.
    * @property {string} dl_start Date to activate the coupon on, local date in MySQL format.   When `id_activation`=FIXED, this field contains a custom date to activate the coupon on, local date in MySQL format.

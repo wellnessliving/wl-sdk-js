@@ -128,7 +128,7 @@ function Wl_Catalog_Payment_PaymentModel()
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config} a_config Additional configuration information. This may contain the next keys:
-   * @property {*[]} a_signature Signatures for an item that requires agreement to several distinct contracts at once.
+   * @property {{}} a_signature Signatures for an item that requires agreement to several distinct contracts at once. Keys are internal contract identifiers tied to this specific item and participant. Values are the signature of the matching contract.
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_tax_custom} a_tax_custom Customer taxes (optional). Every element must contain the following keys:
    * @property {number} i_quantity The item quantity.
    * @property {?number} id_sale The item type ID. One of the {@link RsSaleSid} constants.

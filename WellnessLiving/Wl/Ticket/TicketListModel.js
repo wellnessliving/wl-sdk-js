@@ -30,7 +30,7 @@ function Wl_Ticket_TicketListModel()
   /**
    * @typedef {{}} Wl_Ticket_TicketListModel_a_order_a_type
    * @property {number} i_count Number of not cancelled tickets of this type in the order.
-   * @property {string} k_ticket_option Key of the ticket type. Key of the ticket type.
+   * @property {string} k_ticket_option Key of the ticket type.
    * @property {string} text_title Name of the ticket type.
    */
 
@@ -64,7 +64,10 @@ function Wl_Ticket_TicketListModel()
    * @property {boolean} is_cancel Whether the ticket is cancelled: voided, or refunded with the seat returned.
    * @property {string} k_purchase Order of the ticket, see {@link Wl_Ticket_TicketListModel.a_order}.
    * @property {string} k_ticket_item Key of the ticket, the one {@link Wl_Ticket_TicketScanModel} takes.
-   * @property {string} k_ticket_option Key of the ticket type. Key of the ticket type.
+   * @property {string} k_ticket_option Key of the ticket type.
+   * @property {string} m_price Price of the ticket: how much was paid for it, not net of refunds. Decimal string, in the currency {@link Wl_Ticket_TicketListModel.k_currency}. The paid amount of the purchase item of the ticket divided by the number of tickets bought with it.
+   * @property {string} m_refund Amount refunded for this ticket. The refunds of the purchase item of the ticket. If several tickets share one purchase item, the refunds of the item are split equally between its cancelled tickets. `0` if nothing was refunded. Decimal string, in the currency {@link Wl_Ticket_TicketListModel.k_currency}.
+   * @property {string} text_holder Full name of the holder of the ticket: the person who has claimed it. Empty if nobody has claimed the ticket.
    * @property {string} text_ticket_code Number of the ticket: its short code in the format for displaying, for example `4829-1736`. Empty if the ticket has no short code.
    * @property {string} text_type Name of the ticket type.
    */
