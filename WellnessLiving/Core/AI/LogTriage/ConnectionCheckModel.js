@@ -18,7 +18,6 @@ function Core_AI_LogTriage_ConnectionCheckModel()
    * @property {number} eid_period Usage-statistics aggregation period. One of {@link Core_AI_LogTriage_TriageWatchUsagePeriodEnum}   cases. Present for the usage-statistics source.
    * @property {number} eid_urgency Usage-statistics urgency. One of {@link Core_AI_LogTriage_TriageUrgencyEnum} cases. Present for   the usage-statistics source.
    * @property {number} i_occurrence_count Number of matching records.
-   * @property {number} i_priority_multiplier Usage-statistics priority multiplier. Present for the usage-statistics source.
    * @property {string} s_object Usage-statistics object: a slash-delimited category and resource identifier, for example   `'memcache/get/10.0.0.5'` or `'sql/select core_business'`. Present for the usage-statistics source.
    * @property {string} text_message Log message or task description. Present for log and task sources.
    */

@@ -11,7 +11,7 @@ function Wl_Business_Custom_Terms_CustomTermsModel()
   /**
    * @typedef {{}} Wl_Business_Custom_Terms_CustomTermsModel_a_term_option
    * @property {number} id_term Term ID. One of {@link Wl_Business_Custom_Terms_CustomTermSid} constants.
-   * @property {number} id_term_option Selected custom term. Depends on `id_term`.
+   * @property {number} id_term_option Selected custom term. Depends on `id_term`.  One of {@link Wl_Business_Custom_Terms_ClassTermOptionSid} or other option class constants.
    */
 
   /**
@@ -45,6 +45,8 @@ Wl_Business_Custom_Terms_CustomTermsModel.prototype.config=function()
 
 /**
  * Saves {@link Wl_Business_Custom_Terms_CustomTermsModel.a_term_option} as the custom terms of {@link Wl_Business_Custom_Terms_CustomTermsModel.k_business}.
+ *
+ * Validates every posted term slot and its selected option, then writes.
  *
  * @function
  * @name Wl_Business_Custom_Terms_CustomTermsModel.post
