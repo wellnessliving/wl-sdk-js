@@ -47,15 +47,6 @@ function Wl_Billing_Code_BillingCodeListModel()
    */
   this.k_business = "";
 
-  /**
-   * Service key. If set, only the codes that are applied to this service by default are returned. System codes are
-   * not applied to services by default, so they are not returned then.
-   *
-   * @get get
-   * @type {string}
-   */
-  this.k_service = "";
-
   this.changeInit();
 }
 
@@ -66,7 +57,7 @@ WlSdk_ModelAbstract.extend(Wl_Billing_Code_BillingCodeListModel);
  */
 Wl_Billing_Code_BillingCodeListModel.prototype.config=function()
 {
-  return {"a_field":{"a_code":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_service":{"get":{"get":true}}}};
+  return {"a_field":{"a_code":{"get":{"result":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
