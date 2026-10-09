@@ -17,7 +17,6 @@ function Wl_Billing_Code_BillingCodeListModel()
    * @typedef {{}} Wl_Billing_Code_BillingCodeListModel_a_code
    * @property {string[]} a_service List of services the code is applied to by default. Always empty for a system code: system codes are not applied to services by default.
    * @property {boolean} is_custom `true` for a custom code of the business, `false` for a system code of the ICD-10-CM reference library.
-   * @property {string} k_code Key of the code. Keys of the custom and of the system codes never clash.
    * @property {string} text_code Code value, as it is printed on receipts and invoices.
    * @property {string} text_description Description of the code. The business typed it in for a custom code. For a system code it comes from the reference library, in the language of the request.
    */
@@ -32,7 +31,8 @@ function Wl_Billing_Code_BillingCodeListModel()
    * Removed codes are not returned - they are not offered for selection anymore, they only stay on the receipts
    * and invoices they have already been applied to.
    *
-   * The list is not sorted - sorting and filtering of the list is a matter of the page that shows it.
+   * The custom codes go first, then the system codes, each type sorted by the code value. Filtering of the list is a
+   * matter of the page that shows it.
    *
    * @get result
    * @type {Wl_Billing_Code_BillingCodeListModel_a_code[]}
