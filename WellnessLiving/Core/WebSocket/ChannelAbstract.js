@@ -62,6 +62,20 @@ Core_WebSocket_ChannelAbstract.AddressVerificationChannel = 828;
 Core_WebSocket_ChannelAbstract.AlertChannel = 1342;
 
 /**
+ * The channel "the access of a user has changed": the authorization page of the user loads the request again.
+ *
+ * A project sends a message when it changes what its {@link \Core\OAuth\OAuthAccessInterface::access()} checks for the user, for
+ * example when an administrator approves or rejects a request for access. The page `Core_OAuth_AuthorizeSpa`
+ * subscribes while it shows a refusal of the project to a signed-in user, and on a message asks
+ * {@link Core_OAuth_AuthorizeModel} again: the consent or the new refusal appears without a reload of the page. The message has
+ * no data: only the fact of the change matters, so only the last message is kept. To send it, create an object, set
+ * {@link \Core\OAuth\AuthorizeChangeChannel::$uid} and call {@link \Core\WebSocket\ChannelBroadcast::notify()}.
+ *
+ * @type {number}
+ */
+Core_WebSocket_ChannelAbstract.AuthorizeChangeChannel = 2389;
+
+/**
  * Channel to notify user that class schedule is changed.
  *
  * @type {number}
