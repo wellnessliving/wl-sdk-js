@@ -79,16 +79,21 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_price
    * @property {string} dl_early Last day of the early bird discount.
    * @property {string} f_deposit Deposit a client leaves while booking the class.
-   * @property {string} f_early Early bird price of the class.
+   * @property {string} f_early Early bird amount of the class.
    * @property {string} f_price Price of one session of the class.
    * @property {string} f_price_total Price of the whole class.
    * @property {boolean} hide_price `true` if the price of a single session is hidden from a client who has an applicable Purchase Option, `false` if it is shown to them.
+   * @property {number} i_early_duration How long before the class starts the early bird period ends.
+   * @property {number} id_early_amount Meaning of `f_early`.
+   * @property {number} id_early_duration Measurement unit of `i_early_duration`.
+   * @property {number} id_early_period Way the end of the early bird period is specified.
    * @property {number} id_pay_require Way a client pays for the class.
    * @property {boolean} is_buy_promotion `true` if a client pays for the class with a Purchase Option only, `false` otherwise.
    * @property {boolean} is_buy_single `true` if a client buys one session of the class at a time, `false` otherwise.
    * @property {boolean} is_buy_total `true` if a client buys the whole class at once, `false` otherwise.
    * @property {boolean} is_deposit_percent `true` if `f_deposit` is a percent of the price of the class, `false` if it is an amount of money.
    * @property {boolean} is_early `true` if the class has an early bird discount, `false` otherwise.
+   * @property {boolean} is_early_percent `true` if `f_early` is a percent of the price of the class, `false` if it is an amount of money.
    * @property {boolean} is_tax_enable `true` if taxes are applied to the sales of the class, `false` otherwise.
    * @property {string} text_early Last day of the early bird discount as the calendar of the form shows it.
    */
