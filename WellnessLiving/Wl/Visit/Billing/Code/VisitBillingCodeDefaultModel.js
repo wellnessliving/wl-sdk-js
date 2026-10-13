@@ -14,6 +14,25 @@ function Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel()
   this._s_key = "k_business,k_visit,k_service,uid_staff,uid_client";
 
   /**
+   * @typedef {{}} Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel_a_code_recent
+   * @property {boolean} is_custom `true` for a custom code of the business or a temporary code, `false` for an ICD-10-CM diagnostic code.
+   * @property {string} text_code Code value, as it is printed on receipts and invoices.
+   * @property {?string} text_description Description of the code. `null` for a temporary code.
+   */
+
+  /**
+   * Codes last applied for the visits of the client, the most recently applied first.
+   *
+   * Only the codes the current staff member can apply again are returned: a custom code that is still in the billing
+   * code list, a diagnostic code while the business has them turned on, and a temporary code only if the staff
+   * member can add temporary codes.
+   *
+   * @get result
+   * @type {Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel_a_code_recent[]}
+   */
+  this.a_code_recent = undefined;
+
+  /**
    * @typedef {{}} Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel_a_code_service
    * @property {boolean} is_custom Always `true`: only custom codes can be default codes of a service.
    * @property {string} text_code Code value, as it is printed on receipts and invoices.
@@ -44,25 +63,6 @@ function Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel()
    * @type {Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel_a_code_staff[]}
    */
   this.a_code_staff = undefined;
-
-  /**
-   * @typedef {{}} Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel_a_code_top
-   * @property {boolean} is_custom `true` for a custom code of the business or a temporary code, `false` for an ICD-10-CM diagnostic code.
-   * @property {string} text_code Code value, as it is printed on receipts and invoices.
-   * @property {?string} text_description Description of the code. `null` for a temporary code.
-   */
-
-  /**
-   * Codes last applied for the visits of the client, the most recently applied first.
-   *
-   * Only the codes the current staff member can apply again are returned: a custom code that is still in the billing
-   * code list, a diagnostic code while the business has them turned on, and a temporary code only if the staff
-   * member can add temporary codes.
-   *
-   * @get result
-   * @type {Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel_a_code_top[]}
-   */
-  this.a_code_top = undefined;
 
   /**
    * Business key.
@@ -119,7 +119,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel);
  */
 Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel.prototype.config=function()
 {
-  return {"a_field":{"a_code_service":{"get":{"result":true}},"a_code_staff":{"get":{"result":true}},"a_code_top":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_visit":{"get":{"get":true}},"uid_client":{"get":{"get":true}},"uid_staff":{"get":{"get":true}}}};
+  return {"a_field":{"a_code_recent":{"get":{"result":true}},"a_code_service":{"get":{"result":true}},"a_code_staff":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_visit":{"get":{"get":true}},"uid_client":{"get":{"get":true}},"uid_staff":{"get":{"get":true}}}};
 };
 
 /**
