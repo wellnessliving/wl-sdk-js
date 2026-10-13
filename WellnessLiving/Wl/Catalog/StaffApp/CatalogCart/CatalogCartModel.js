@@ -30,6 +30,14 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
   this.a_discount_code = undefined;
 
   /**
+   * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_checkout
+   * @property {?number} i_days_prorate Number of days the first payment is charged for. `null` if prorated by sessions.
+   * @property {?number} i_days_total Number of days in the billing cycle. `null` if prorated by sessions.
+   * @property {?number} i_sessions_prorate Number of sessions the first payment is charged for. `null` if prorated by days.
+   * @property {?number} i_sessions_total Number of sessions in the billing cycle. `null` if prorated by days.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_discount
    * @property {string} m_discount Discount amount.
    * @property {string} text_discount Discount title.
@@ -37,6 +45,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list
+   * @property {?Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_checkout} a_checkout Output only. Additional information about how `m_checkout` was calculated when      the first membership payment is prorated, `null` otherwise:
    * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_discount} a_discount Discount applied to the event price:
    * @property {{}} a_tax List of taxes applied to the event price:      Keys are internal system tax keys.       Values are amount of taxes applied to the event price.      If not specified or `null`, taxes will be calculated based on the class setup.
    * @property {string} k_class Key of the event class within the tuition which should be granted to the client.
