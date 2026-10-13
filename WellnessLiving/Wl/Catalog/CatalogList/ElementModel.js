@@ -271,10 +271,18 @@ function Wl_Catalog_CatalogList_ElementModel()
    */
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_purchase_error
+   * @property {string} text_code A machine-readable error code identifying the restriction type.
+   * @property {string} text_field The field associated with the error. Empty string if not applicable.
+   * @property {string} text_message A human-readable error message describing the restriction.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_data} a_data Contains additional data for the sale item. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_data} has.
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_guest_pass} a_guest_pass Information about promotion guest pass. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_guest_pass} has.
    * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_image} a_image Contains information about one image connected to a sale item.
+   * @property {Wl_Catalog_CatalogList_ElementModel_a_item_a_purchase_error} a_purchase_error Purchase errors for this item. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_purchase_error} has.
    * @property {string[]} a_tax Tax amounts keyed by tax key. The same structure as {@link Wl_Catalog_CatalogList_ElementModel.a_tax} has.
    * @property {number} id_purchase_option_view The Purchase Option view type. One of the {@link Wl_Catalog_PurchaseOptionViewSid} constants.
    * @property {string} m_discount_code The discount code amount.
@@ -293,6 +301,25 @@ function Wl_Catalog_CatalogList_ElementModel()
    * @type {Wl_Catalog_CatalogList_ElementModel_a_item[]}
    */
   this.a_item = undefined;
+
+  /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_purchase_error
+   * @property {string} text_code A machine-readable error code identifying the restriction type.
+   * @property {string} text_field The field associated with the error. Empty string if not applicable.
+   * @property {string} text_message A human-readable error message describing the restriction.
+   */
+
+  /**
+   * A list of purchase errors that would prevent this item from being purchased by the current user.
+   *
+   * Each element represents a server-side validation error. Empty if there are no purchase restrictions
+   * or if the request is unauthenticated. Each element has the following structure:
+   *
+   * @get result
+   * @post result
+   * @type {Wl_Catalog_CatalogList_ElementModel_a_purchase_error[]}
+   */
+  this.a_purchase_error = undefined;
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_sale_id_group
@@ -699,7 +726,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_CatalogList_ElementModel);
  */
 Wl_Catalog_CatalogList_ElementModel.prototype.config=function()
 {
-  return {"a_field":{"a_age_restriction":{"get":{"result":true},"post":{"result":true}},"a_data":{"get":{"result":true},"post":{"result":true}},"a_discount_code":{"get":{"get":true},"post":{"get":true}},"a_guest_pass":{"get":{"result":true},"post":{"result":true}},"a_image":{"get":{"result":true},"post":{"result":true}},"a_image_list":{"get":{"result":true},"post":{"result":true}},"a_installment_template":{"get":{"result":true},"post":{"result":true}},"a_item":{"get":{"result":true},"post":{"result":true}},"a_sale_id_group":{"get":{"get":true},"post":{"get":true}},"a_tax":{"get":{"result":true},"post":{"result":true}},"dl_client_prorate":{"get":{"get":true},"post":{"get":true}},"f_price":{"get":{"result":true},"post":{"result":true}},"f_price_include":{"get":{"result":true},"post":{"result":true}},"f_price_retail_product":{"get":{"result":true},"post":{"result":true}},"f_price_total_enrollment":{"get":{"result":true},"post":{"result":true}},"f_tax":{"get":{"result":true},"post":{"result":true}},"html_description":{"get":{"result":true},"post":{"result":true}},"html_special":{"get":{"result":true},"post":{"result":true}},"i_image_height":{"get":{"get":true},"post":{"get":true}},"i_image_width":{"get":{"get":true},"post":{"get":true}},"i_promotion_image_height":{"get":{"get":true},"post":{"get":true}},"i_promotion_image_width":{"get":{"get":true},"post":{"get":true}},"id_purchase_item":{"get":{"result":true},"post":{"result":true}},"id_purchase_option_view":{"get":{"result":true},"post":{"result":true}},"id_sale":{"get":{"get":true,"result":true},"post":{"get":true,"result":true}},"is_backend":{"get":{"get":true},"post":{"get":true}},"is_contract":{"get":{"result":true},"post":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_id":{"get":{"get":true,"result":true},"post":{"get":true,"result":true}},"k_location":{"get":{"get":true},"post":{"get":true}},"k_shop_product_option":{"get":{"get":true,"result":true},"post":{"get":true,"result":true}},"m_discount_code":{"get":{"result":true},"post":{"result":true}},"m_discount_login":{"get":{"result":true},"post":{"result":true}},"m_price":{"get":{"result":true},"post":{"result":true}},"m_price_include":{"get":{"result":true},"post":{"result":true}},"m_tax":{"get":{"result":true},"post":{"result":true}},"s_comment":{"get":{"result":true},"post":{"result":true}},"s_price":{"get":{"result":true},"post":{"result":true}},"s_sale":{"get":{"result":true},"post":{"result":true}},"s_title":{"get":{"result":true},"post":{"result":true}},"text_item":{"get":{"get":true}},"text_item_post":{"post":{"post":true}},"text_price":{"get":{"result":true},"post":{"result":true}},"text_sale":{"get":{"result":true},"post":{"result":true}},"text_title":{"get":{"result":true},"post":{"result":true}},"uid_customer":{"get":{"get":true},"post":{"get":true}},"xml_description":{"get":{"result":true},"post":{"result":true}},"xml_special":{"get":{"result":true},"post":{"result":true}}}};
+  return {"a_field":{"a_age_restriction":{"get":{"result":true},"post":{"result":true}},"a_data":{"get":{"result":true},"post":{"result":true}},"a_discount_code":{"get":{"get":true},"post":{"get":true}},"a_guest_pass":{"get":{"result":true},"post":{"result":true}},"a_image":{"get":{"result":true},"post":{"result":true}},"a_image_list":{"get":{"result":true},"post":{"result":true}},"a_installment_template":{"get":{"result":true},"post":{"result":true}},"a_item":{"get":{"result":true},"post":{"result":true}},"a_purchase_error":{"get":{"result":true},"post":{"result":true}},"a_sale_id_group":{"get":{"get":true},"post":{"get":true}},"a_tax":{"get":{"result":true},"post":{"result":true}},"dl_client_prorate":{"get":{"get":true},"post":{"get":true}},"f_price":{"get":{"result":true},"post":{"result":true}},"f_price_include":{"get":{"result":true},"post":{"result":true}},"f_price_retail_product":{"get":{"result":true},"post":{"result":true}},"f_price_total_enrollment":{"get":{"result":true},"post":{"result":true}},"f_tax":{"get":{"result":true},"post":{"result":true}},"html_description":{"get":{"result":true},"post":{"result":true}},"html_special":{"get":{"result":true},"post":{"result":true}},"i_image_height":{"get":{"get":true},"post":{"get":true}},"i_image_width":{"get":{"get":true},"post":{"get":true}},"i_promotion_image_height":{"get":{"get":true},"post":{"get":true}},"i_promotion_image_width":{"get":{"get":true},"post":{"get":true}},"id_purchase_item":{"get":{"result":true},"post":{"result":true}},"id_purchase_option_view":{"get":{"result":true},"post":{"result":true}},"id_sale":{"get":{"get":true,"result":true},"post":{"get":true,"result":true}},"is_backend":{"get":{"get":true},"post":{"get":true}},"is_contract":{"get":{"result":true},"post":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_id":{"get":{"get":true,"result":true},"post":{"get":true,"result":true}},"k_location":{"get":{"get":true},"post":{"get":true}},"k_shop_product_option":{"get":{"get":true,"result":true},"post":{"get":true,"result":true}},"m_discount_code":{"get":{"result":true},"post":{"result":true}},"m_discount_login":{"get":{"result":true},"post":{"result":true}},"m_price":{"get":{"result":true},"post":{"result":true}},"m_price_include":{"get":{"result":true},"post":{"result":true}},"m_tax":{"get":{"result":true},"post":{"result":true}},"s_comment":{"get":{"result":true},"post":{"result":true}},"s_price":{"get":{"result":true},"post":{"result":true}},"s_sale":{"get":{"result":true},"post":{"result":true}},"s_title":{"get":{"result":true},"post":{"result":true}},"text_item":{"get":{"get":true}},"text_item_post":{"post":{"post":true}},"text_price":{"get":{"result":true},"post":{"result":true}},"text_sale":{"get":{"result":true},"post":{"result":true}},"text_title":{"get":{"result":true},"post":{"result":true}},"uid_customer":{"get":{"get":true},"post":{"get":true}},"xml_description":{"get":{"result":true},"post":{"result":true}},"xml_special":{"get":{"result":true},"post":{"result":true}}}};
 };
 
 /**

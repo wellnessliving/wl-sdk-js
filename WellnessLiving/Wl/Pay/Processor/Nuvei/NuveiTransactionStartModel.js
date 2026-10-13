@@ -165,9 +165,12 @@ function Wl_Pay_Processor_Nuvei_NuveiTransactionStartModel()
   /**
    * Payment amount.
    *
-   * `null` in case when not initialized yet.
+   * `null` in case when not initialized yet. A subclass under the SAL-1314 rule
+   * (SurchargeCardTypeRule) may correct this to exclude a surcharge the
+   * caller was not allowed to post, so a stale client that still posts one gets the corrected total back (D7)
+   * instead of a rejected request.
    *
-   * @post post
+   * @post post,result
    * @type {?string}
    */
   this.m_amount = null;
@@ -175,9 +178,10 @@ function Wl_Pay_Processor_Nuvei_NuveiTransactionStartModel()
   /**
    * Surcharge amount.
    *
-   * `null` in case when not initialized yet, empty string or null for zero surcharge amount.
+   * `null` in case when not initialized yet, empty string or null for zero surcharge amount. See
+   * {@link Thoth_PayProcessor_AbstractTransactionStartupModel.m_amount} about a subclass correcting this value (SAL-1314).
    *
-   * @post post
+   * @post post,result
    * @type {?string}
    */
   this.m_surcharge = null;
@@ -212,7 +216,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Processor_Nuvei_NuveiTransactionStartModel);
  */
 Wl_Pay_Processor_Nuvei_NuveiTransactionStartModel.prototype.config=function()
 {
-  return {"a_field":{"a_card":{"post":{"post":true}},"id_card_type":{"post":{"result":true}},"id_currency":{"post":{"post":true}},"id_pay_actor":{"post":{"post":true}},"id_pay_method":{"post":{"post":true}},"is_authorize":{"post":{"post":true}},"is_save":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_business_merchant":{"post":{"post":true}},"k_pay_method":{"post":{"post":true}},"k_pay_transaction":{"post":{"result":true}},"m_amount":{"post":{"post":true}},"m_surcharge":{"post":{"post":true}},"text_message":{"post":{"result":true}},"uid_purchase":{"post":{"post":true}}}};
+  return {"a_field":{"a_card":{"post":{"post":true}},"id_card_type":{"post":{"result":true}},"id_currency":{"post":{"post":true}},"id_pay_actor":{"post":{"post":true}},"id_pay_method":{"post":{"post":true}},"is_authorize":{"post":{"post":true}},"is_save":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_business_merchant":{"post":{"post":true}},"k_pay_method":{"post":{"post":true}},"k_pay_transaction":{"post":{"result":true}},"m_amount":{"post":{"post":true,"result":true}},"m_surcharge":{"post":{"post":true,"result":true}},"text_message":{"post":{"result":true}},"uid_purchase":{"post":{"post":true}}}};
 };
 
 /**

@@ -24,6 +24,7 @@ function Wl_Appointment_Book_Schedule_DayTime73Model()
    * @property {string} k_staff @deprecated If this time is already occupied by any client and staff member (but service capacity is not exhausted),   this key contains key of staff member.  Otherwise - `0`.
    * @property {string} s_title String representation of appointment schedule time.
    * @property {string} uid_staff If this time is already occupied by any client and staff member (but service capacity is not exhausted),   this key contains user key of staff member.  Otherwise - `0`.
+   * @property {string} uid_staff_suggest User key of the staff member the system would assign for this time if the client booked with any staff member. Populated only when no specific staff member is requested and the booking is not back-to-back.
    */
 
   /**

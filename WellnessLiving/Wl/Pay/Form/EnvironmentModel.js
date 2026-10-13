@@ -294,6 +294,36 @@ function Wl_Pay_Form_EnvironmentModel()
   this.is_save_source = undefined;
 
   /**
+   * Whether a card-present (POS) source at this business can never carry a surcharge (SAL-1314, FR-007): the
+   * business's processor implements the card-type contract and card-present surcharge is out of the rule's
+   * scope for it. `false` on a build whose monolith part is not live yet, or whenever surcharges are not
+   * configured for POS at all - both read the same as "nothing to suppress".
+   *
+   * The browser uses this to hide the surcharge row for a POS source outright, without calling
+   * {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel}: a card-present decision never depends on the BIN or
+   * the saved card, only on the business and the pay method.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_surcharge_card_present_blocked = undefined;
+
+  /**
+   * Whether the business's ECOMMERCE processor implements the SAL-1314 card-type contract.
+   *
+   * `false` on a build whose monolith part is not live yet, same as a processor that never implements it.
+   *
+   * The browser uses this to decide whether it is worth calling
+   * {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel} at all for a typed card number or a saved-card
+   * switch - calling it when this is `false` would always get `is_allowed=true` back, so the hooks stay
+   * inactive instead.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_surcharge_tender_contract = undefined;
+
+  /**
    * Whether tips are accepted.
    *
    * @get result
@@ -370,7 +400,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Form_EnvironmentModel);
  */
 Wl_Pay_Form_EnvironmentModel.prototype.config=function()
 {
-  return {"a_field":{"a_card_system":{"get":{"result":true}},"a_method_staff":{"get":{"result":true}},"a_method_support":{"get":{"result":true}},"a_mobile_config":{"get":{"result":true}},"a_pay_processor":{"get":{"result":true}},"dl_now":{"get":{"result":true}},"f_surcharge":{"get":{"result":true}},"f_surcharge_ach":{"get":{"result":true}},"id_locale":{"get":{"result":true}},"is_save_optional":{"get":{"result":true}},"is_save_source":{"get":{"result":true}},"is_tip":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_currency":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_surcharge":{"get":{"result":true}},"m_surcharge_ach":{"get":{"result":true}},"uid_owner":{"get":{"get":true}}}};
+  return {"a_field":{"a_card_system":{"get":{"result":true}},"a_method_staff":{"get":{"result":true}},"a_method_support":{"get":{"result":true}},"a_mobile_config":{"get":{"result":true}},"a_pay_processor":{"get":{"result":true}},"dl_now":{"get":{"result":true}},"f_surcharge":{"get":{"result":true}},"f_surcharge_ach":{"get":{"result":true}},"id_locale":{"get":{"result":true}},"is_save_optional":{"get":{"result":true}},"is_save_source":{"get":{"result":true}},"is_surcharge_card_present_blocked":{"get":{"result":true}},"is_surcharge_tender_contract":{"get":{"result":true}},"is_tip":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_currency":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_surcharge":{"get":{"result":true}},"m_surcharge_ach":{"get":{"result":true}},"uid_owner":{"get":{"get":true}}}};
 };
 
 /**

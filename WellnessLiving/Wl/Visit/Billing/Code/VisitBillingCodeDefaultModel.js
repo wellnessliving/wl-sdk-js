@@ -53,7 +53,7 @@ function Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel()
    */
 
   /**
-   * Codes most used for the visits of the client, the most used first.
+   * Codes last applied for the visits of the client, the most recently applied first.
    *
    * Only the codes the current staff member can apply again are returned: a custom code that is still in the billing
    * code list, a diagnostic code while the business has them turned on, and a temporary code only if the staff
@@ -137,8 +137,8 @@ Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel.prototype.config=function()
 /**
  * Returns the codes suggested for a visit.
  *
- * The default codes of the service and of the staff member, and up to 5 codes most used for the client, each list
- * separately. The current staff member must be able to assign billing codes to appointments.
+ * The default codes of the service and of the staff member, and up to 5 codes last applied for the client, each
+ * list separately. The current staff member must be able to assign billing codes to appointments.
  *
  * @function
  * @name Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel.get

@@ -31,8 +31,8 @@ function Wl_Billing_Code_BillingCodeListModel()
    * Removed codes are not returned - they are not offered for selection anymore, they only stay on the receipts
    * and invoices they have already been applied to.
    *
-   * The custom codes go first, then the system codes, each type sorted by the code value. Filtering of the list is a
-   * matter of the page that shows it.
+   * The custom codes go first, then the system codes, each type sorted by the code value. Only the codes that match
+   * {@link Wl_Billing_Code_BillingCodeListModel.text_search} are returned, if it is given.
    *
    * @get result
    * @type {Wl_Billing_Code_BillingCodeListModel_a_code[]}
@@ -47,6 +47,18 @@ function Wl_Billing_Code_BillingCodeListModel()
    */
   this.k_business = "";
 
+  /**
+   * Part of a code value or of a description to search for, in any case. Empty string to get the whole list.
+   *
+   * A code is returned if its value or its description contains this text. The case does not matter, and a code
+   * value is matched by a part of it: `99` matches `99213`. A longer text than a description can not match
+   * anything, so it is not accepted.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.text_search = "";
+
   this.changeInit();
 }
 
@@ -57,7 +69,7 @@ WlSdk_ModelAbstract.extend(Wl_Billing_Code_BillingCodeListModel);
  */
 Wl_Billing_Code_BillingCodeListModel.prototype.config=function()
 {
-  return {"a_field":{"a_code":{"get":{"result":true}},"k_business":{"get":{"get":true}}}};
+  return {"a_field":{"a_code":{"get":{"result":true}},"k_business":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
 };
 
 /**

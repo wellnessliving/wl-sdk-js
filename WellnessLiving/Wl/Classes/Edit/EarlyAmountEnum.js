@@ -1,5 +1,5 @@
 /**
- * Meaning of the early bird amount that is stored in RsClassEarlySql.
+ * Meaning of the early bird amount.
  *
  * The event setup form offers a block or a non-block event the whole list, and a ticketed event
  * only the discounts - a ticketed event has no regular price to replace.
