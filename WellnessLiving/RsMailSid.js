@@ -9,7 +9,7 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 224.
+ * Last used ID: 225.
  */
 function RsMailSid()
 {
@@ -1600,6 +1600,15 @@ RsMailSid.TASK_ASSIGN = 104;
  * @type {number}
  */
 RsMailSid.TERM_COPY = 99;
+
+/**
+ * Sent after a ticketed event is purchased.
+ *
+ * Contains the order summary and QR codes of the tickets. Is sent to a buyer with or without an account.
+ *
+ * @type {number}
+ */
+RsMailSid.TICKET_PURCHASE = 225;
 
 /**
  * Global email campaigns allows to send email to all clients, business owners, admins, etc.
