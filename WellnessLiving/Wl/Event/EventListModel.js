@@ -87,6 +87,7 @@ function Wl_Event_EventListModel()
    * @property {string} k_class_period Class period key.
    * @property {string} k_location Location key.
    * @property {string} k_resource_location Resource key, which has category {@link Wl_Resource_ResourceCategoryEnum}. Only one such resource can be selected for a schedule.
+   * @property {string} s_timezone_location Identifier of the timezone of the location of the session (for example `America/New_York`).
    * @property {string} text_location Location title.
    * @property {string} text_room Room where the session takes place.
    * @property {string} text_time Start and end time of the scheduled sessions in human readable format.
@@ -107,9 +108,9 @@ function Wl_Event_EventListModel()
 
   /**
    * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_tickets
-   * @property {string} k_ticket_option Globally unique identifier of the ticket option. Primary key in TicketOptionsRouteSql.
+   * @property {string} k_ticket_option Globally unique identifier of the ticket option.
    * @property {string} m_price One ticket price.
-   * @property {?number} m_price_early One ticket price with the early bird applied. `null` if the event has no early bird.
+   * @property {?number} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. The end of the early bird period is not taken into account, so the client decides whether to apply this price. See `a_options`.
    * @property {string} text_title Ticket option name.
    */
 
@@ -124,7 +125,7 @@ function Wl_Event_EventListModel()
    * @property {Wl_Event_EventListModel_a_event_list_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event.
    * @property {boolean} can_book Whether event can be booked or not. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked.
    * @property {boolean} can_cancel Whether current user can cancel already booked event.
-   * @property {string} dl_early End date, when early bird price ends in `MySql` format.
+   * @property {?string} dl_early The last date when the early bird price is applied, in `MySql` date format. `null` if the event has no early bird.
    * @property {string} dl_end End date of the scheduled session in `MySql` format.
    * @property {string} dl_session Local date of the closest session of the event.
    * @property {string} dl_start Start date of the scheduled sessions in `MySql` format.

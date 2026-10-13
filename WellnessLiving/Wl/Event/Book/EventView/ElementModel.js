@@ -184,6 +184,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} s_location The location title.
    * @property {string} s_time The time when session occurred. A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
    * @property {string} s_timezone The name of the timezone in which the session is held.
+   * @property {string} s_timezone_location Identifier of the timezone of the location of the session (for example `America/New_York`). Unlike `s_timezone`, it never depends on the timezone of the client. Use it to find out whether the early bird price is still applied, see {@link Wl_Event_Book_EventView_ElementModel.dt_early}.
    * @property {string} text_room The room of the event.
    */
 
@@ -196,9 +197,17 @@ function Wl_Event_Book_EventView_ElementModel()
    */
 
   /**
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_ticket_inventory
+   * @property {number} i_capacity Total number of tickets that can be sold for the event.
+   * @property {number} i_order_limit Maximum number of tickets that can be ordered in one purchase. `0` if there is no limit.
+   * @property {number} i_remain Number of tickets still available to sell. `0` if the event is sold out.
+   */
+
+  /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_tickets
    * @property {string} k_ticket_option Globally unique identifier of the ticket option.
    * @property {string} m_price One ticket price.
+   * @property {?number} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. It is returned even when the early bird period is over: the client decides whether to apply it, see `dt_early` and `s_timezone_location` of the schedule.
    * @property {string} text_title Ticket option name.
    */
 
@@ -212,9 +221,10 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_schedule} a_schedule Schedule of event sessions. See {@link Wl_Event_Book_EventView_ElementModel.a_schedule}.
    * @property {string[]} a_shop_category IDs of online store category.
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_staff_logo} a_staff_logo Photos of staff. See {@link Wl_Event_Book_EventView_ElementModel.a_staff_logo}.
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_ticket_inventory} a_ticket_inventory How many tickets can be sold for the event and how many of those are still available. Empty if the event is not a ticketed event. .
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event. . Each element contains the following keys:
    * @property {string} dt_book_date Date/time of first event session.
-   * @property {string} dt_early Early date of event purchase.
+   * @property {?string} dt_early The last date when the early bird price is applied, the date itself included. `null` if the event has no early bird. See {@link Wl_Event_Book_EventView_ElementModel.dt_early}.
    * @property {string} dt_end End date of the event instance.
    * @property {string} dt_start Date of first event session.
    * @property {boolean} hide_application Whether event will be hidden in the White Label mobile application.
@@ -232,6 +242,9 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {boolean} is_past `true` if the event session has already started or ended and is not available to book.
    * @property {boolean} is_policy_custom `true` {@link Wl_Event_Book_EventView_ElementModel.a_business_policy} contains the custom policies from the event; `false` otherwise.
    * @property {boolean} is_ticket `true` if the event is a ticketed event; `false` otherwise.
+   * @property {boolean} is_ticket_guest_allowed `true` if a client can buy tickets without creating an account; `false` otherwise.
+   * @property {boolean} is_ticket_terms `true` if a client must accept the terms and conditions before buying a ticket; `false` otherwise.
+   * @property {boolean} is_ticket_unpaid_allowed `true` if a client can reserve tickets without payment and pay at the door; `false` otherwise.
    * @property {boolean} is_virtual `true` if event is virtual; `false` otherwise.
    * @property {string} k_book_class_period Key of first event session.
    * @property {string} m_price Price of the event session.
@@ -240,6 +253,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} s_deny_reason Reason of booking restriction. For example if exception has been thrown.
    * @property {string} s_title Event title.
    * @property {string} xml_description Description of event. Ready to put into browser.
+   * @property {string} xml_ticket_terms Terms and conditions of a ticketed event as HTML. Empty if there are none.
    */
 
   /**
@@ -322,6 +336,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} s_location The location title.
    * @property {string} s_time The time when session occurred. A textual representation of the start and end time of a session. Example: `10:00 am - 11:00 am`
    * @property {string} s_timezone The name of the timezone in which the session is held.
+   * @property {string} s_timezone_location Identifier of the timezone of the location of the session (for example `America/New_York`). Unlike `s_timezone`, it never depends on the timezone of the client. Use it to find out whether the early bird price is still applied, see {@link Wl_Event_Book_EventView_ElementModel.dt_early}.
    * @property {string} text_room The room of the event.
    */
 
@@ -358,10 +373,19 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_staff_logo = undefined;
 
   /**
+   * How many tickets can be sold for the ticketed event and how many of those are still available.
+   * Empty if the event is not a ticketed event.
+   *
+   * @get result
+   * @type {*[]}
+   */
+  this.a_ticket_inventory = undefined;
+
+  /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_tickets
-   * @property {string} k_ticket_option Globally unique identifier of the ticket option. Primary key in TicketOptionsRouteSql.
+   * @property {string} k_ticket_option Globally unique identifier of the ticket option.
    * @property {string} m_price One ticket price.
-   * @property {?number} m_price_early One ticket price with the early bird applied. `null` if the event has no early bird.
+   * @property {?number} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. The end of the early bird period is not taken into account, so the client decides whether to apply this price. See `a_options`.
    * @property {string} text_title Ticket option name.
    */
 
@@ -440,7 +464,12 @@ function Wl_Event_Book_EventView_ElementModel()
   this.dt_book_date = null;
 
   /**
-   * The early registration date of the event.
+   * The last date when the early bird price is applied, in MySQL date format. `null` if the event has no early bird.
+   *
+   * The early bird price applies while the current date in the timezone of the location of the session
+   * (`s_timezone_location` of the {@link Wl_Event_Book_EventView_ElementModel.a_schedule} item) is not later than this date,
+   * the date itself included. This is the same rule that is used when the event is purchased.
+   * Applies to {@link Wl_Event_Book_EventView_ElementModel.m_price_total_early} and to `m_price_early` of {@link Wl_Event_Book_EventView_ElementModel.a_tickets}.
    *
    * @get result
    * @type {?string}
@@ -726,6 +755,33 @@ function Wl_Event_Book_EventView_ElementModel()
   this.is_ticket = undefined;
 
   /**
+   * `true` if a client can buy tickets without creating an account. `false` if the event is not
+   * a ticketed event.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_ticket_guest_allowed = undefined;
+
+  /**
+   * `true` if a client must accept terms and conditions before buying a ticket, see
+   * {@link Wl_Event_Book_EventView_ElementModel.xml_ticket_terms}. `false` if the event is not a ticketed event.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_ticket_terms = undefined;
+
+  /**
+   * `true` if a client can reserve tickets without payment and pay at the door. `false` if the event
+   * is not a ticketed event.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_ticket_unpaid_allowed = undefined;
+
+  /**
    * `true` if event is virtual; `false` otherwise.
    *
    * @get result
@@ -879,6 +935,15 @@ function Wl_Event_Book_EventView_ElementModel()
    */
   this.xml_description = null;
 
+  /**
+   * Terms and conditions as HTML that a client must accept before buying a ticket. Empty if the event
+   * is not a ticketed event or does not require the client to accept anything.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.xml_ticket_terms = undefined;
+
   this.changeInit();
 }
 
@@ -889,7 +954,7 @@ WlSdk_ModelAbstract.extend(Wl_Event_Book_EventView_ElementModel);
  */
 Wl_Event_Book_EventView_ElementModel.prototype.config=function()
 {
-  return {"a_field":{"a_age_restrictions":{"get":{"result":true}},"a_book_available":{"get":{"result":true}},"a_business_policy":{"get":{"result":true}},"a_class_logo":{"get":{"result":true}},"a_class_tab":{"get":{"result":true}},"a_event":{"get":{"result":true}},"a_installment_template":{"get":{"result":true}},"a_makeup_class":{"get":{"result":true}},"a_schedule":{"get":{"result":true}},"a_shop_category":{"get":{"result":true}},"a_staff_logo":{"get":{"result":true}},"a_tickets":{"get":{"result":true}},"a_timezone_info":{"get":{"result":true}},"a_visits_required":{"get":{"result":true}},"dl_book_available_end":{"get":{"get":true}},"dl_book_available_start":{"get":{"get":true}},"dt_book_date":{"get":{"result":true}},"dt_early":{"get":{"result":true}},"dt_end":{"get":{"result":true}},"dt_start":{"get":{"result":true}},"dtu_session":{"get":{"get":true}},"hide_application":{"get":{"result":true}},"html_description":{"get":{"result":true}},"html_special":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_image_height":{"get":{"get":true}},"i_image_width":{"get":{"get":true}},"i_makeup_cap":{"get":{"result":true}},"i_session":{"get":{"result":true}},"i_session_all":{"get":{"result":true}},"i_session_remain":{"get":{"result":true}},"i_staff_image_height":{"get":{"get":true}},"i_staff_image_width":{"get":{"get":true}},"id_pay_require":{"get":{"result":true}},"id_pay_require_option":{"get":{"result":true}},"id_virtual_provider":{"get":{"result":true}},"is_age_restrict":{"get":{"result":true}},"is_availability_checked":{"get":{"result":true}},"is_book":{"get":{"result":true}},"is_bookable":{"get":{"result":true}},"is_full":{"get":{"result":true}},"is_makeup":{"get":{"result":true}},"is_past":{"get":{"result":true}},"is_policy_custom":{"get":{"result":true}},"is_promotion_only":{"get":{"result":true}},"is_prorate":{"get":{"result":true}},"is_schedule_group":{"get":{"get":true}},"is_single_session_buy":{"get":{"result":true}},"is_ticket":{"get":{"result":true}},"is_virtual":{"get":{"result":true}},"k_book_class_period":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_event":{"get":{"get":true}},"m_price":{"get":{"result":true}},"m_price_total":{"get":{"result":true}},"m_price_total_early":{"get":{"result":true}},"s_deny_reason":{"get":{"result":true}},"s_event":{"get":{"get":true}},"s_title":{"get":{"result":true}},"show_special_instructions":{"get":{"result":true}},"show_unpublished":{"get":{"get":true}},"text_end":{"get":{"result":true}},"text_start":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_book":{"get":{"result":true}},"xml_description":{"get":{"result":true}}}};
+  return {"a_field":{"a_age_restrictions":{"get":{"result":true}},"a_book_available":{"get":{"result":true}},"a_business_policy":{"get":{"result":true}},"a_class_logo":{"get":{"result":true}},"a_class_tab":{"get":{"result":true}},"a_event":{"get":{"result":true}},"a_installment_template":{"get":{"result":true}},"a_makeup_class":{"get":{"result":true}},"a_schedule":{"get":{"result":true}},"a_shop_category":{"get":{"result":true}},"a_staff_logo":{"get":{"result":true}},"a_ticket_inventory":{"get":{"result":true}},"a_tickets":{"get":{"result":true}},"a_timezone_info":{"get":{"result":true}},"a_visits_required":{"get":{"result":true}},"dl_book_available_end":{"get":{"get":true}},"dl_book_available_start":{"get":{"get":true}},"dt_book_date":{"get":{"result":true}},"dt_early":{"get":{"result":true}},"dt_end":{"get":{"result":true}},"dt_start":{"get":{"result":true}},"dtu_session":{"get":{"get":true}},"hide_application":{"get":{"result":true}},"html_description":{"get":{"result":true}},"html_special":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_image_height":{"get":{"get":true}},"i_image_width":{"get":{"get":true}},"i_makeup_cap":{"get":{"result":true}},"i_session":{"get":{"result":true}},"i_session_all":{"get":{"result":true}},"i_session_remain":{"get":{"result":true}},"i_staff_image_height":{"get":{"get":true}},"i_staff_image_width":{"get":{"get":true}},"id_pay_require":{"get":{"result":true}},"id_pay_require_option":{"get":{"result":true}},"id_virtual_provider":{"get":{"result":true}},"is_age_restrict":{"get":{"result":true}},"is_availability_checked":{"get":{"result":true}},"is_book":{"get":{"result":true}},"is_bookable":{"get":{"result":true}},"is_full":{"get":{"result":true}},"is_makeup":{"get":{"result":true}},"is_past":{"get":{"result":true}},"is_policy_custom":{"get":{"result":true}},"is_promotion_only":{"get":{"result":true}},"is_prorate":{"get":{"result":true}},"is_schedule_group":{"get":{"get":true}},"is_single_session_buy":{"get":{"result":true}},"is_ticket":{"get":{"result":true}},"is_ticket_guest_allowed":{"get":{"result":true}},"is_ticket_terms":{"get":{"result":true}},"is_ticket_unpaid_allowed":{"get":{"result":true}},"is_virtual":{"get":{"result":true}},"k_book_class_period":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_event":{"get":{"get":true}},"m_price":{"get":{"result":true}},"m_price_total":{"get":{"result":true}},"m_price_total_early":{"get":{"result":true}},"s_deny_reason":{"get":{"result":true}},"s_event":{"get":{"get":true}},"s_title":{"get":{"result":true}},"show_special_instructions":{"get":{"result":true}},"show_unpublished":{"get":{"get":true}},"text_end":{"get":{"result":true}},"text_start":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_book":{"get":{"result":true}},"xml_description":{"get":{"result":true}},"xml_ticket_terms":{"get":{"result":true}}}};
 };
 
 /**

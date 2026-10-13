@@ -56,9 +56,11 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {Wl_Schedule_ClassView_ClassViewModel_a_class_a_image} a_image Class image data:
    * @property {Wl_Schedule_ClassView_ClassViewModel_a_class_a_search_tag} a_search_tag List of search tags.
    * @property {number[]} a_tag List of tags.
+   * @property {*[][]} a_tickets Ticket options available for booking the event. Empty if the event is not a ticketed event.
    * @property {boolean} can_book Whether current client can book class.
    * @property {string} dt_date_global Session date/time in UTC.
    * @property {string} dt_date_local Start date in local time.
+   * @property {?string} dt_early The last date when the early bird price is applied, in MySQL date format, the date itself included. `null` if the event has no early bird. The early bird price applies while the current date in the timezone `s_timezone_location` is not later than this date.
    * @property {string} html_deny_reason Reason why client can not book class. Not empty only if `can_book` is `false`.
    * @property {string} html_description Class description.
    * @property {string} html_special Special instructions.
@@ -75,18 +77,21 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_visit Number of usages of promotion required to pay for a single class session.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
    * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
+   * @property {boolean} is_block `true` if the event is a block event: all its sessions are booked together. `false` for a non-block event and for a class. Makes sense only if `is_event` is `true`.
    * @property {boolean} is_book Whether current class was booked by current client.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise.
    * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.
    * @property {boolean} is_cancellation_enabled `true` if clients can cancel this session. Otherwise, this will be `false`.
    * @property {boolean} is_event `true` if it is event; `false` if it is class.
    * @property {boolean} is_promotion_only `true` if this class can be paid with promotion only; `false` otherwise.
+   * @property {boolean} is_ticket `true` if the event is a ticketed event; `false` otherwise.
    * @property {boolean} is_virtual `true` if class is virtual, `false` otherwise.
    * @property {boolean} is_wait_list `true` if user can take place in wait list only; `false` otherwise.
    * @property {boolean} is_wait_list_enabled `true` if wait list is enabled for class; `false` otherwise.
    * @property {string} k_resource_location Off-site location asset key. Empty if off-site location is not assigned to this class.
    * @property {string} m_price Session price.
    * @property {string} s_duration Class duration. In human readable format.
+   * @property {string} s_timezone_location Identifier of the timezone of the location of the session (for example `America/New_York`). Unlike `text_timezone`, it never depends on the timezone of the client. Use it to find out whether the early bird price is still applied, see `dt_early`.
    * @property {string} s_title Class name.
    * @property {string} text_room Class room.
    * @property {string} text_timezone Timezone title.
@@ -178,9 +183,11 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_class_a_image} a_image Class image data:
    * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_class_a_search_tag} a_search_tag List of search tags.
    * @property {number[]} a_tag List of tags.
+   * @property {*[][]} a_tickets Ticket options available for booking the event. Empty if the event is not a ticketed event.
    * @property {boolean} can_book Whether current client can book class.
    * @property {string} dt_date_global Session date/time in UTC.
    * @property {string} dt_date_local Start date in local time.
+   * @property {?string} dt_early The last date when the early bird price is applied, in MySQL date format, the date itself included. `null` if the event has no early bird. The early bird price applies while the current date in the timezone `s_timezone_location` is not later than this date.
    * @property {string} html_deny_reason Reason why client can not book class. Not empty only if `can_book` is `false`.
    * @property {string} html_description Class description.
    * @property {string} html_special Special instructions.
@@ -197,18 +204,21 @@ function Wl_Schedule_ClassView_ClassViewModel()
    * @property {number} i_visit Number of usages of promotion required to pay for a single class session.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
    * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants.
+   * @property {boolean} is_block `true` if the event is a block event: all its sessions are booked together. `false` for a non-block event and for a class. Makes sense only if `is_event` is `true`.
    * @property {boolean} is_book Whether current class was booked by current client.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest. `true` if clients can book on behalf of a guest. `false` otherwise.
    * @property {boolean} is_cancel `true` if class period was cancelled; `false` otherwise.
    * @property {boolean} is_cancellation_enabled `true` if clients can cancel this session. Otherwise, this will be `false`.
    * @property {boolean} is_event `true` if it is event; `false` if it is class.
    * @property {boolean} is_promotion_only `true` if this class can be paid with promotion only; `false` otherwise.
+   * @property {boolean} is_ticket `true` if the event is a ticketed event; `false` otherwise.
    * @property {boolean} is_virtual `true` if class is virtual, `false` otherwise.
    * @property {boolean} is_wait_list `true` if user can take place in wait list only; `false` otherwise.
    * @property {boolean} is_wait_list_enabled `true` if wait list is enabled for class; `false` otherwise.
    * @property {string} k_resource_location Off-site location asset key. Empty if off-site location is not assigned to this class.
    * @property {string} m_price Session price.
    * @property {string} s_duration Class duration. In human readable format.
+   * @property {string} s_timezone_location Identifier of the timezone of the location of the session (for example `America/New_York`). Unlike `text_timezone`, it never depends on the timezone of the client. Use it to find out whether the early bird price is still applied, see `dt_early`.
    * @property {string} s_title Class name.
    * @property {string} text_room Class room.
    * @property {string} text_timezone Timezone title.

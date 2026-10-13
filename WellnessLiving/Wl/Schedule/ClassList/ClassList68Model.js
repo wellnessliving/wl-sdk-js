@@ -135,12 +135,14 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @property {number} i_wait_spot Position of the current client (`uid`) in the wait list for this session. `0` if the client is not on the wait list, or if the business hides wait list position (fastest-response wait list promotion).
    * @property {number} id_deny_reason ID of deny reason. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
    * @property {boolean} is_age_public Whether the age restriction of the class is shown to clients.
+   * @property {boolean} is_block `true` if the event is a block event: all its sessions are booked together. `false` for a non-block event and for a class. Makes sense only if `is_event` is `true`.
    * @property {?boolean} is_book Whether current class was booked by current client. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
    * @property {boolean} is_book_for_guest Allow clients to book on behalf of a guest.  `true` if clients can book on behalf of a guest.  `false` otherwise.
    * @property {boolean} is_cancel If `true`, this class period was canceled. Otherwise, this will be `false`.
    * @property {boolean} is_cancellation_enabled `true` if clients can cancel this session. Otherwise, this will be `false`.
    * @property {boolean} is_event If `true`, this is an event. Otherwise, this will be `false`.
    * @property {boolean} is_special_instructions Whether special instructions are configured for this session and are visible to the current client. The content itself (`html_special` in {@link Wl_Schedule_ClassView_ClassViewModel}) is not returned here.
+   * @property {boolean} is_ticket `true` if the event is a ticketed event; `false` otherwise. Tickets are booked into the same capacity as regular bookings, so `i_capacity` and `i_book` show how many tickets are sold and whether the event is sold out.
    * @property {boolean} is_virtual If `true`, this class is virtual. Otherwise, this will be `false`.
    * @property {boolean} is_wait `true` if the current client (`uid`) is on the wait list for this session; `false` otherwise.
    * @property {?boolean} is_wait_list `true` if the current client can only take a place on the wait list; `false` otherwise. Only present if {@link Wl_Schedule_ClassList_ClassList68Model.show_book_status} is `true`. `null` if not requested.
