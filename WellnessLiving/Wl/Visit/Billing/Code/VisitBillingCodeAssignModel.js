@@ -84,6 +84,22 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
   this.k_visit = "";
 
   /**
+   * Version of the billing codes of the visit: a value that changes every time the codes of the visit change.
+   *
+   * The version comes with the codes and must be posted back together with them. A post that carries an outdated
+   * version is rejected with the error `code-version-outdated`, so that the codes another staff member has changed
+   * in the meantime are not overwritten without being seen. The answer of a successful post carries the new version,
+   * so the codes can be changed again without reading them anew.
+   *
+   * Empty string if the codes of the visit have never been changed.
+   *
+   * @get result
+   * @post post,result
+   * @type {string}
+   */
+  this.s_version = "";
+
+  /**
    * Reason of the change, for example when the codes are changed after the receipt has been sent to the client.
    *
    * Empty string if no reason is given.
@@ -114,7 +130,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Billing_Code_VisitBillingCodeAssignModel);
  */
 Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
 {
-  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}}}};
+  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}}}};
 };
 
 /**
@@ -130,7 +146,8 @@ Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
  * Returns the billing codes applied to a visit and the history of their changes.
  *
  * A staff member who can not assign billing codes gets the custom codes only, without the diagnostic codes and
- * without the history.
+ * without the history. The answer carries the version of the codes, which must be posted back to change them,
+ * see {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.s_version}.
  *
  * @function
  * @name Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.get
@@ -147,6 +164,10 @@ Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
  * code for this visit only: it requires the access to create temporary codes, and it is not added to the billing
  * code list. Every added and every removed code is logged with the reason and, if the business requires it, the
  * signature.
+ *
+ * The version of the codes the list is made from is posted together with the list: if another staff member has
+ * changed the codes in the meantime, the post is rejected with the error `code-version-outdated` instead of
+ * overwriting that change, see {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.s_version}.
  *
  * @function
  * @name Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.post
