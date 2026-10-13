@@ -110,10 +110,12 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
   this.text_reason = "";
 
   /**
-   * Signature of the staff member who applies the codes.
+   * Signature of the staff member who applies the codes: their full name, in any case.
    *
-   * Required and stored only if the business requires a signature when billing codes are saved. Empty string if no
-   * signature is given.
+   * Required and stored only if the business requires a signature when billing codes are saved and the post adds or
+   * removes a diagnostic code: a post that changes the custom codes only is saved without a signature. A signature
+   * that is not the full name of the staff member is rejected with the error `signature-name-other`. Empty string if
+   * no signature is given.
    *
    * @post post
    * @type {string}
@@ -162,7 +164,7 @@ Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
  * description it was applied with. A new code is looked up in the billing code list of the business first, then
  * among the ICD-10-CM diagnostic codes if the business has turned them on. A code found nowhere is a temporary
  * code for this visit only: it requires the access to create temporary codes, and it is not added to the billing
- * code list. Every added and every removed code is logged with the reason and, if the business requires it, the
+ * code list. Every added and every removed code is logged with the reason and, if a signature is required, the
  * signature.
  *
  * The version of the codes the list is made from is posted together with the list: if another staff member has
