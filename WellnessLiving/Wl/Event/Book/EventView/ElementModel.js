@@ -207,7 +207,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_tickets
    * @property {string} k_ticket_option Globally unique identifier of the ticket option.
    * @property {string} m_price One ticket price.
-   * @property {?number} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. It is returned even when the early bird period is over: the client decides whether to apply it, see `dt_early` and `s_timezone_location` of the schedule.
+   * @property {?string} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. It is returned even when the early bird period is over: the client decides whether to apply it, see `dt_early` and `s_timezone_location` of the schedule.
    * @property {string} text_title Ticket option name.
    */
 
@@ -373,11 +373,18 @@ function Wl_Event_Book_EventView_ElementModel()
   this.a_staff_logo = undefined;
 
   /**
+   * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_ticket_inventory
+   * @property {number} i_capacity Total number of tickets that can be sold for the event.
+   * @property {number} i_order_limit Maximum number of tickets that can be ordered for the event in one purchase. `0` if there is no limit.
+   * @property {number} i_remain Number of tickets still available to sell.
+   */
+
+  /**
    * How many tickets can be sold for the ticketed event and how many of those are still available.
    * Empty if the event is not a ticketed event.
    *
    * @get result
-   * @type {*[]}
+   * @type {Wl_Event_Book_EventView_ElementModel_a_ticket_inventory}
    */
   this.a_ticket_inventory = undefined;
 
@@ -385,7 +392,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_tickets
    * @property {string} k_ticket_option Globally unique identifier of the ticket option.
    * @property {string} m_price One ticket price.
-   * @property {?number} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. The end of the early bird period is not taken into account, so the client decides whether to apply this price. See `a_options`.
+   * @property {?string} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. The end of the early bird period is not taken into account, so the client decides whether to apply this price. See `a_options`.
    * @property {string} text_title Ticket option name.
    */
 

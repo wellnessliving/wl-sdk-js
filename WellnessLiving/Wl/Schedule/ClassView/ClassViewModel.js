@@ -51,12 +51,20 @@ function Wl_Schedule_ClassView_ClassViewModel()
    */
 
   /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_class_a_tickets
+   * @property {string} k_ticket_option Globally unique identifier of the ticket option.
+   * @property {string} m_price One ticket price.
+   * @property {?string} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. The end of the early bird period is not taken into account, so the client decides whether to apply this price. See `a_options`.
+   * @property {string} text_title Ticket option name.
+   */
+
+  /**
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_class
    * @property {string[]} a_class_tab Keys are class key.    Values are class tab key.
    * @property {Wl_Schedule_ClassView_ClassViewModel_a_class_a_image} a_image Class image data:
    * @property {Wl_Schedule_ClassView_ClassViewModel_a_class_a_search_tag} a_search_tag List of search tags.
    * @property {number[]} a_tag List of tags.
-   * @property {*[][]} a_tickets Ticket options available for booking the event. Empty if the event is not a ticketed event.
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_class_a_tickets} a_tickets Ticket options available for booking the event. Empty if the event is not a ticketed event.
    * @property {boolean} can_book Whether current client can book class.
    * @property {string} dt_date_global Session date/time in UTC.
    * @property {string} dt_date_local Start date in local time.
@@ -178,12 +186,20 @@ function Wl_Schedule_ClassView_ClassViewModel()
    */
 
   /**
+   * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_class_a_tickets
+   * @property {string} k_ticket_option Globally unique identifier of the ticket option.
+   * @property {string} m_price One ticket price.
+   * @property {?string} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. The end of the early bird period is not taken into account, so the client decides whether to apply this price. See `a_options`.
+   * @property {string} text_title Ticket option name.
+   */
+
+  /**
    * @typedef {{}} Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_class
    * @property {string[]} a_class_tab Keys are class key.    Values are class tab key.
    * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_class_a_image} a_image Class image data:
    * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_class_a_search_tag} a_search_tag List of search tags.
    * @property {number[]} a_tag List of tags.
-   * @property {*[][]} a_tickets Ticket options available for booking the event. Empty if the event is not a ticketed event.
+   * @property {Wl_Schedule_ClassView_ClassViewModel_a_session_result_a_class_a_tickets} a_tickets Ticket options available for booking the event. Empty if the event is not a ticketed event.
    * @property {boolean} can_book Whether current client can book class.
    * @property {string} dt_date_global Session date/time in UTC.
    * @property {string} dt_date_local Start date in local time.

@@ -110,7 +110,7 @@ function Wl_Event_EventListModel()
    * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_tickets
    * @property {string} k_ticket_option Globally unique identifier of the ticket option.
    * @property {string} m_price One ticket price.
-   * @property {?number} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. The end of the early bird period is not taken into account, so the client decides whether to apply this price. See `a_options`.
+   * @property {?string} m_price_early One ticket price with the early bird applied, taken from the settings of the event. `null` if the event has no early bird. The end of the early bird period is not taken into account, so the client decides whether to apply this price. See `a_options`.
    * @property {string} text_title Ticket option name.
    */
 
