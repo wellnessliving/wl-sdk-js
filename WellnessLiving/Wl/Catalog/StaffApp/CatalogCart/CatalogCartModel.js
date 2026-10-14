@@ -35,6 +35,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @property {?number} i_days_total Number of days in the billing cycle. `null` if prorated by sessions.
    * @property {?number} i_sessions_prorate Number of sessions the first payment is charged for. `null` if prorated by days.
    * @property {?number} i_sessions_total Number of sessions in the billing cycle. `null` if prorated by days.
+   * @property {string} m_calculated Prorated amount as calculated by the system, before any manual override of `m_checkout`.
    */
 
   /**
