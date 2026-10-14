@@ -1,5 +1,5 @@
 /**
- * Saves {@link Wl_Business_Custom_Terms_CustomTermsModel.a_term_option} as the custom terms of {@link Wl_Business_Custom_Terms_CustomTermsModel.k_business}.
+ * Returns the current value of every term slot of {@link Wl_Business_Custom_Terms_CustomTermsModel.k_business}.
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
@@ -10,13 +10,15 @@ function Wl_Business_Custom_Terms_CustomTermsModel()
 
   /**
    * @typedef {{}} Wl_Business_Custom_Terms_CustomTermsModel_a_term_option
-   * @property {number} id_term Term ID. One of {@link Wl_Business_Custom_Terms_CustomTermSid} constants.
-   * @property {number} id_term_option Selected custom term. Depends on `id_term`.  One of {@link Wl_Business_Custom_Terms_ClassTermOptionSid} or other option class constants.
+   * @property {number} id_term Term. One of {@link Wl_Business_Custom_Terms_CustomTermSid} constants.
+   * @property {?number} id_term_option Selected custom term option. Sid class depends on `id_term` (e.g. for {@link Wl_Business_Custom_Terms_CustomTermSid}, this is one of {@link Wl_Business_Custom_Terms_ClientTermOptionSid} constants).
    */
 
   /**
-   * Current value of every term slot to save. Has the following structure:
+   * Current value of every term slot. Returned by `get()`, posted to
+   * `post()` to save.
    *
+   * @get result
    * @post post
    * @type {Wl_Business_Custom_Terms_CustomTermsModel_a_term_option[]}
    */
@@ -25,7 +27,8 @@ function Wl_Business_Custom_Terms_CustomTermsModel()
   /**
    * Business key.
    *
-   * @post post
+   * @get get
+   * @post get
    * @type {string}
    */
   this.k_business = "";
@@ -40,8 +43,21 @@ WlSdk_ModelAbstract.extend(Wl_Business_Custom_Terms_CustomTermsModel);
  */
 Wl_Business_Custom_Terms_CustomTermsModel.prototype.config=function()
 {
-  return {"a_field":{"a_term_option":{"post":{"post":true}},"k_business":{"post":{"post":true}}}};
+  return {"a_field":{"a_term_option":{"get":{"result":true},"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}}}};
 };
+
+/**
+ * Returns the current value of every term slot of {@link Wl_Business_Custom_Terms_CustomTermsModel.k_business}.
+ *
+ * No access check - the terms a business picked (e.g. "Session" instead of "Class") are not sensitive, and
+ * public-facing pages (the booking widget, for example) need them to render their own wording for a client
+ * who is not signed in.
+ *
+ * @function
+ * @name Wl_Business_Custom_Terms_CustomTermsModel.get
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.get()
+ */
 
 /**
  * Saves {@link Wl_Business_Custom_Terms_CustomTermsModel.a_term_option} as the custom terms of {@link Wl_Business_Custom_Terms_CustomTermsModel.k_business}.
