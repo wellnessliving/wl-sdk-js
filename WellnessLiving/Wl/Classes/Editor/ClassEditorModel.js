@@ -87,6 +87,7 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @property {number} id_early_amount Meaning of `f_early`.
    * @property {number} id_early_duration Measurement unit of `i_early_duration`.
    * @property {number} id_early_period Way the end of the early bird period is specified.
+   * @property {number} id_enroll_time Whether a client may enroll into a block event that is already in progress, and how much they pay for it.
    * @property {number} id_pay_require Way a client pays for the class.
    * @property {boolean} is_buy_promotion `true` if a client pays for the class with a Purchase Option only, `false` otherwise.
    * @property {boolean} is_buy_single `true` if a client buys one session of the class at a time, `false` otherwise.

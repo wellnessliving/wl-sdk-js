@@ -31,7 +31,8 @@ function Wl_Billing_Code_BillingCodeListModel()
    * Removed codes are not returned - they are not offered for selection anymore, they only stay on the receipts
    * and invoices they have already been applied to.
    *
-   * The custom codes go first, then the system codes. Only the codes that match
+   * The custom codes go first, then the system codes: the library has about 75 000 codes, and the business must
+   * see its own codes on the first pages of the list. Only the codes that match
    * {@link Wl_Billing_Code_BillingCodeListModel.text_search} are returned, if it is given, and then each group is ranked by the
    * search, the best match first: the code value equal to the search, the code value beginning with it, the
    * description equal to it, the description beginning with it, the rest. Without a search each group is sorted by
