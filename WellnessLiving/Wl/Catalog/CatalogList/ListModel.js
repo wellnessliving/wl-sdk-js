@@ -40,7 +40,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ListModel_a_product
    * @property {string[]} a_location The list of location keys where the sale item is available.
    * @property {string[]} a_shop_category Shop category keys the item belongs to.
-   * @property {Wl_Catalog_CatalogList_ListModel_a_product_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event. . Each element contains the following keys:
+   * @property {Wl_Catalog_CatalogList_ListModel_a_product_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event.  Each element contains the following keys:
    * @property {string} dtu_create UTC creation date of the item in MySQL format.
    * @property {string} f_price The item price.
    * @property {boolean} hide_application `true` if the item should be hidden from the application, `false` otherwise.
@@ -74,7 +74,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ListModel_a_product_duplicate
    * @property {string[]} a_location The list of location keys where the sale item is available.
    * @property {string[]} a_shop_category Shop category keys the item belongs to.
-   * @property {Wl_Catalog_CatalogList_ListModel_a_product_duplicate_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event. . Each element contains the following keys:
+   * @property {Wl_Catalog_CatalogList_ListModel_a_product_duplicate_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event.  Each element contains the following keys:
    * @property {string} dtu_create UTC creation date of the item in MySQL format.
    * @property {string} f_price The item price.
    * @property {boolean} hide_application `true` if the item should be hidden from the application, `false` otherwise.

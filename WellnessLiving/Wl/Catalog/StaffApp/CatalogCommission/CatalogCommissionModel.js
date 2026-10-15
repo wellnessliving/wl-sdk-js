@@ -34,16 +34,16 @@ function Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel()
    * @property {string} f_rate Rate of staff commission.
    * @property {string} html_commission Title of the commission.
    * @property {number} id_commission_type One of {@link RsCommissionTypeSid} constants.
-   * @property {boolean} is_default `true` - if it is default commission for the staff,`false` - otherwise.
-   * @property {string} k_staff_pay Staff pay key.  table.
+   * @property {boolean} is_default `true` - if it is default commission for the staff, `false` - otherwise.
+   * @property {string} k_staff_pay Staff pay key.
    */
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_staff
    * @property {Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_staff_a_commission} a_commission List of staff commissions:
    * @property {string} html_name Name of staff.
-   * @property {string} k_staff [Deprecated]Staff key.     table. It's use `uid` instead of this field.
-   * @property {string} uid User key.  table.
+   * @property {string} k_staff <b style="color: red">Deprecated</b> Staff key.  Use `uid` instead of this field.
+   * @property {string} uid User key.
    */
 
   /**

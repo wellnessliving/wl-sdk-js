@@ -42,8 +42,8 @@ function Wl_Visit_VisitStatusModel()
    * An array of service resources.
    *
    * The key refers to the `k_resource_type`. 
-   * The value is an array with the following key: `k_resource`. .
-   * The array element contains a nested array with `i_index` and `i_quantity`. .
+   * The value is an array with the following key: `k_resource`. 
+   * The array element contains a nested array with `i_index` and `i_quantity`. 
    *
    * This will be empty if not set yet.
    *

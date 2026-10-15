@@ -15,8 +15,8 @@ function Wl_Classes_ClassList_ListModel()
 
   /**
    * @typedef {{}} Wl_Classes_ClassList_ListModel_a_class
-   * @property {string[]} a_class_tab List of class book now tabs, where this class is presented. Each element is   or `null` if class is presented in default system tab Classes. Events can also be added in class tabs.
-   * @property {string[]} a_event_tab List of event book now tabs, where this event is presented. Each element is    or `null` if event is presented in default system tab Enrollments. Classes cannot be added in event tabs.
+   * @property {string[]} a_class_tab List of class book now tabs, where this class is presented. Each element is class tab key   or `null` if class is presented in default system tab Classes. Events can also be added in class tabs.
+   * @property {string[]} a_event_tab List of event book now tabs, where this event is presented. Each element is class tab key    or `null` if event is presented in default system tab Enrollments. Classes cannot be added in event tabs.
    * @property {string} dl_end The ending date of the class/event. Maybe a zero date if the class is ongoing (has no end date).
    * @property {string} dl_start The starting date of the class/event.
    * @property {boolean} is_active Whether class/event is active.

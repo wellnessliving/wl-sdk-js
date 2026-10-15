@@ -75,7 +75,7 @@ function Wl_Appointment_WaitList_AppointmentWaitListModel()
    * @property {boolean} is_free Whether the visit is free. Does not need a pay.
    * @property {boolean} is_paid Whether the visit is paid.
    * @property {boolean} is_wait_confirm Whether is awaiting for user confirmation.
-   * @property {string} k_visit Visit key.  table.
+   * @property {string} k_visit Visit key.
    */
 
   /**

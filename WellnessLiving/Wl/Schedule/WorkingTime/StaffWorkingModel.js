@@ -26,7 +26,7 @@ function Wl_Schedule_WorkingTime_StaffWorkingModel()
 
   /**
    * @typedef {{}} Wl_Schedule_WorkingTime_StaffWorkingModel_a_staff_period_dl_day_a_work
-   * @property {?string[]} a_service Services that affect this hours. Primary keys in  table. `null` if affects all services.
+   * @property {?string[]} a_service Services that affect this hours.  `null` if affects all services.
    * @property {string} dtu_create Date when created period.
    * @property {string} html_break_note Info about when break time. Be present only in unavailable time.
    * @property {number} i_end End time. In seconds.

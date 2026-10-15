@@ -159,7 +159,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_schedule_a_staff
-   * @property {string} k_staff @deprecated Legacy staff key. Returned only for applications from allow-list.
+   * @property {string} k_staff <b style="color: red">Deprecated.</b> Legacy staff key. Returned only for applications from allow-list.
    * @property {string} s_name The staff member name.
    * @property {string} s_surname The first letter of staff member's surname.
    * @property {string} uid_staff The user key of the staff member.
@@ -221,8 +221,8 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_schedule} a_schedule Schedule of event sessions. See {@link Wl_Event_Book_EventView_ElementModel.a_schedule}.
    * @property {string[]} a_shop_category IDs of online store category.
    * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_staff_logo} a_staff_logo Photos of staff. See {@link Wl_Event_Book_EventView_ElementModel.a_staff_logo}.
-   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_ticket_inventory} a_ticket_inventory How many tickets can be sold for the event and how many of those are still available. Empty if the event is not a ticketed event. .
-   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event. . Each element contains the following keys:
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_ticket_inventory} a_ticket_inventory How many tickets can be sold for the event and how many of those are still available. Empty if the event is not a ticketed event.
+   * @property {Wl_Event_Book_EventView_ElementModel_a_event_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event.  Each element contains the following keys:
    * @property {string} dt_book_date Date/time of first event session.
    * @property {?string} dt_early The last date when the early bird price is applied, the date itself included. `null` if the event has no early bird. See {@link Wl_Event_Book_EventView_ElementModel.dt_early}.
    * @property {string} dt_end End date of the event instance.
@@ -311,7 +311,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_staff
-   * @property {string} k_staff @deprecated Legacy staff key. Returned only for applications from allow-list.
+   * @property {string} k_staff <b style="color: red">Deprecated.</b> Legacy staff key. Returned only for applications from allow-list.
    * @property {string} s_name The staff member name.
    * @property {string} s_surname The first letter of staff member's surname.
    * @property {string} uid_staff The user key of the staff member.
