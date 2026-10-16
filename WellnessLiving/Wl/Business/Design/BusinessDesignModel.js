@@ -21,11 +21,11 @@ function Wl_Business_Design_BusinessDesignModel()
    * @property {int} id_logo_style Logo style ID. See more: {@link Wl_Business_Design_RsBusinessDesignLogoStyleSid}.
    * @property {bool} is_appointment_capacity If `true` the capacity and number of clients signed up to the appointment will be shown.
    * @property {bool} is_attend_self If `true` clients can check-in using the Client Web App and Achieve Web App.
-   * @property {bool} is_class_capacity If `true` the capacity and number of clients signed up will be shown.
-   * @property {bool} is_class_quick If `true` quick class filter will be show.
+   * @property {bool} is_class_capacity If `true` the capacity and number of clients signed up to the class will be shown.
+   * @property {bool} is_class_quick If `true` quick class filter will be shown.
    * @property {bool} is_class_spot_only If `true` to display only available spots (e.g., "3 spots left"); if `false` to display both available spots and total capacity (e.g., "3 spots left of 10").
    * @property {bool} is_fb_capi_access_token Whether Meta Conversion API Access Token is set.
-   * @property {bool} is_show_name If `true` business name will be show.
+   * @property {bool} is_show_name If `true` business name will be shown.
    * @property {string} s_color_background Background color of frontend.
    * @property {string} s_color_header Header color of frontend menu.
    * @property {string} s_color_menu_border Border color of frontend menu.
