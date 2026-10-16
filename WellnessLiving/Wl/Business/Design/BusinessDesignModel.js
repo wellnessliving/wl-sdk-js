@@ -14,61 +14,42 @@ function Wl_Business_Design_BusinessDesignModel()
   this._s_key = "k_business";
 
   /**
+   * @typedef {{}} Wl_Business_Design_BusinessDesignModel_a_data
+   * @property {bool} hide_past_days Clients only see today’s and upcoming sessions.
+   * @property {int} id_layout Layout ID. See more: {@link Wl_Business_Design_RsPageFrontendHeaderLayoutSid}.
+   * @property {int} id_logo_position Logo position ID. See more: {@link Wl_Business_Design_RsBusinessDesignLogoPositionSid}.
+   * @property {int} id_logo_style Logo style ID. See more: {@link Wl_Business_Design_RsBusinessDesignLogoStyleSid}.
+   * @property {bool} is_appointment_capacity If `true` the capacity and number of clients signed up to the appointment will be shown.
+   * @property {bool} is_attend_self If `true` clients can check-in using the Client Web App and Achieve Web App.
+   * @property {bool} is_class_capacity If `true` the capacity and number of clients signed up will be shown.
+   * @property {bool} is_class_quick If `true` quick class filter will be show.
+   * @property {bool} is_class_spot_only If `true` to display only available spots (e.g., "3 spots left"); if `false` to display both available spots and total capacity (e.g., "3 spots left of 10").
+   * @property {bool} is_fb_capi_access_token Whether Meta Conversion API Access Token is set.
+   * @property {bool} is_show_name If `true` business name will be show.
+   * @property {string} s_color_background Background color of frontend.
+   * @property {string} s_color_header Header color of frontend menu.
+   * @property {string} s_color_menu_border Border color of frontend menu.
+   * @property {string} s_color_menu_element Menu element color.
+   * @property {string} s_color_menu_hover Hover colour of front end menu.
+   * @property {string} s_color_menu_hover_background Background hover color of front end menu.
+   * @property {string} s_color_menu_press Press colour of front end menu.
+   * @property {string} s_color_submenu Submenu colour of front end menu.
+   * @property {string} s_color_submenu_element Submenu element color of front end menu.
+   * @property {string} s_color_submenu_hover Hover color of submenu of front end menu
+   * @property {string} s_color_submenu_press Press color of submenu in front end menu.
+   * @property {string} s_fb_capi_access_token Meta Conversion API Access Token. Empty string if CAPI not used or application that made request does not have access to it.
+   * @property {string} s_fb_capi_test_event_code Meta Conversion API Test Event Code. Optional, used for QA in Meta Events Manager. Empty string if not used or application that made request does not have access to it.
+   * @property {string} s_fb_pixel_id Meta Pixel ID. Used for Meta analytics tracking. Empty string if tracking is disabled.
+   * @property {string} s_ga_tracking_id Google Analytics Tracking ID. Used for Google Analytics tracking. Empty string if tracking is disabled.
+   * @property {string} s_gtm_container_id Google Tag Manager Container ID. Used for Google Analytics tracking. Empty string if tracking is disabled.
+   * @property {string} s_url_background Path to the background image.
+   */
+
+  /**
    * The business design data.
    *
-   * Contains the following keys:
-   *
-   * <dl>
-   *   <dt>bool <var>hide_past_days</var></dt>
-   *   <dd>Clients only see today’s and upcoming sessions.</dd>
-   *   <dt>int <var>id_layout</var></dt>
-   *   <dd>Layout ID. See more: {@link Wl_Business_Design_RsPageFrontendHeaderLayoutSid}.</dd>
-   *   <dt>int <var>id_logo_position</var></dt>
-   *   <dd>Logo position ID. See more: {@link Wl_Business_Design_RsBusinessDesignLogoPositionSid}.</dd>
-   *   <dt>int <var>id_logo_style</var></dt>
-   *   <dd>Logo style ID. See more: {@link Wl_Business_Design_RsBusinessDesignLogoStyleSid}.</dd>
-   *   <dt>bool <var>is_attend_self</var></dt>
-   *   <dd>If <tt>true</tt> clients can check-in using the Client Web App and Achieve Web App.</dd>
-   *   <dt>bool <var>is_class_capacity</var></dt>
-   *   <dd>If <tt>true</tt> the capacity and number of clients signed up will be shown.</dd>
-   *   <dt>bool <var>is_class_quick</var></dt>
-   *   <dd>If <tt>true</tt> quick class filter will be show.</dd>
-   *   <dt>bool <var>is_show_name</var></dt>
-   *   <dd>If <tt>true</tt> business name will be show.</dd>
-   *   <dt>string <var>s_color_background</var></dt>
-   *   <dd>Background color of frontend.</dd>
-   *   <dt>string <var>s_color_header</var></dt>
-   *   <dd>Header color of frontend menu.</dd>
-   *   <dt>string <var>s_color_menu_border</var></dt>
-   *   <dd>Border color of frontend menu.</dd>
-   *   <dt>string <var>s_color_menu_element</var></dt>
-   *   <dd>Menu element color</dd>
-   *   <dt>string <var>s_color_menu_hover</var></dt>
-   *   <dd>Hover colour of front end menu.</dd>
-   *   <dt>string <var>s_color_menu_hover_background</var></dt>
-   *   <dd>Background hover color of front end menu.</dd>
-   *   <dt>string <var>s_color_menu_press</var></dt>
-   *   <dd>Press colour of front end menu.</dd>
-   *   <dt>string <var>s_color_submenu</var></dt>
-   *   <dd>Submenu colour of front end menu.</dd>
-   *   <dt>string <var>s_color_submenu_element</var></dt>
-   *   <dd>Submenu element color of front end menu.</dd>
-   *   <dt>string <var>s_color_submenu_hover</var></dt>
-   *   <dd>Hover color of submenu of front end menu</dd>
-   *   <dt>string <var>s_color_submenu_press</var></dt>
-   *   <dd>Press color of submenu in front end menu.</dd>
-   *   <dt>string <var>s_fb_pixel_id</var></dt>
-   *   <dd>Facebook Pixel ID. Used for Facebook analytics tracking. Empty string if tracking is disabled.</dd>
-   *   <dt>string <var>s_ga_tracking_id</var></dt>
-   *   <dd>Google Analytics Tracking ID. Used for Google Analytics tracking. Empty string if tracking is disabled.</dd>
-   *   <dt>string <var>s_gtm_container_id</var></dt>
-   *   <dd>Google Tag Manager Container ID. Used for Google Analytics tracking. Empty string if tracking is disabled.</dd>
-   *   <dt>string <var>s_url_background</var></dt>
-   *   <dd>Path to the background image.</dd>
-   * </dl>
-   *
    * @get result
-   * @type {{}}
+   * @type {Wl_Business_Design_BusinessDesignModel_a_data}
    */
   this.a_data = undefined;
 
