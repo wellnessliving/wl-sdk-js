@@ -24,6 +24,7 @@ function Wl_Business_Design_BusinessDesignModel()
    * @property {boolean} is_class_capacity If `true` the capacity and number of clients signed up to the class will be shown.
    * @property {boolean} is_class_quick If `true`, the quick class filter will be shown.
    * @property {boolean} is_class_spot_only `true` to display only available spots (e.g., "3 spots left");  `false` to display both available spots and total capacity (e.g., "3 spots left of 10").
+   * @property {boolean} is_fb_capi_access_token Whether Meta Conversion API Access Token is set.
    * @property {boolean} is_show_name If `true`, the business name will be shown.
    * @property {string} s_color_background Background color of frontend.
    * @property {string} s_color_header Header color of frontend menu.
@@ -38,7 +39,7 @@ function Wl_Business_Design_BusinessDesignModel()
    * @property {string} s_color_submenu_press Press color of submenu in front end menu.
    * @property {string} s_fb_capi_access_token Meta Conversion API Access Token. Empty string if CAPI not used or application that made request does not have access to it.
    * @property {string} s_fb_capi_test_event_code Meta Conversion API Test Event Code. Optional, used for QA in Meta Events Manager. Empty string if not used or application that made request does not have access to it.
-   * @property {string} s_fb_pixel_id Facebook Pixel ID. Used for Facebook analytics tracking. Empty string if tracking is disabled.
+   * @property {string} s_fb_pixel_id Meta Pixel ID. Used for Meta analytics tracking. Empty string if tracking is disabled.
    * @property {string} s_ga_tracking_id Google Analytics Tracking ID. Used for Google Analytics tracking. Empty string if tracking is disabled.
    * @property {string} s_gtm_container_id Google Tag Manager Container ID. Used for Google Analytics tracking. Empty string if tracking is disabled.
    * @property {string} s_url_background Path to the background image.
