@@ -40,11 +40,12 @@ function Wl_Classes_Editor_ClassEditorModel()
 
   /**
    * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_class_o_attendance
+   * @property {string[]} a_replace Classes and events a client may transfer a missed session of this one to as a make-up.
    * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_attendance_a_resource_type} a_resource_type Book-a-Spot asset categories the class requires.
    * @property {number} i_makeup_cap Maximum number of make-up sessions a client may take.
    * @property {boolean} is_prerequisite `true` if a client must attend other services before booking this one, `false` otherwise.
    * @property {boolean} is_quick_buy `true` if staff may sell products from the attendance list of the class, `false` otherwise.
-   * @property {boolean} is_replace `true` if the number of the make-up sessions of the class is limited, `false` otherwise.
+   * @property {boolean} is_replace `true` if a client may transfer a missed session of this class to an eligible make-up class or event, `false` otherwise.
    * @property {boolean} is_resource_type `true` if the class requires Book-a-Spot assets, `false` otherwise.
    * @property {boolean} is_staff_session `true` if staff may book individual sessions of a block event, `false` otherwise.
    */
@@ -190,6 +191,30 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @type {Wl_Classes_Editor_ClassEditorModel_a_reminder_info}
    */
   this.a_reminder_info = undefined;
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_replace_available_a_list
+   * @property {string} k_id Key of the class or event.
+   * @property {string} text_title Title of the class or event.
+   */
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_replace_available
+   * @property {Wl_Classes_Editor_ClassEditorModel_a_replace_available_a_list} a_list Classes or events of the group. Every element is an array:
+   * @property {number} i_level Level of the group. Always `1`, there is only one level of groups.
+   * @property {string} text_group_key Key of the group.
+   * @property {string} text_title Title of the group.
+   */
+
+  /**
+   * Classes and events of the business that a client may use a make-up session on, grouped by service.
+   *
+   * Every element is an array:
+   *
+   * @get result
+   * @type {Wl_Classes_Editor_ClassEditorModel_a_replace_available[]}
+   */
+  this.a_replace_available = undefined;
 
   /**
    * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_search_tag_list
@@ -438,7 +463,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Editor_ClassEditorModel);
  */
 Wl_Classes_Editor_ClassEditorModel.prototype.config=function()
 {
-  return {"a_field":{"a_class":{"get":{"result":true},"post":{"post":true}},"a_class_tab_list":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_url":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_currency_before":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"get":true},"post":{"get":true}},"k_class_save":{"post":{"result":true}},"text_currency":{"get":{"result":true}}}};
+  return {"a_field":{"a_class":{"get":{"result":true},"post":{"post":true}},"a_class_tab_list":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_replace_available":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_url":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_currency_before":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"get":true},"post":{"get":true}},"k_class_save":{"post":{"result":true}},"text_currency":{"get":{"result":true}}}};
 };
 
 /**
