@@ -87,6 +87,17 @@ function Wl_Ticket_TicketScanModel()
   this.id_mode = 0;
 
   /**
+   * Whether the ticket is paid.
+   *
+   * `false` if the ticket was reserved to be paid at the door: the session pass of the ticket is not tied to a
+   * purchase item. The client offers to collect the payment in this case.
+   *
+   * @post result
+   * @type {boolean}
+   */
+  this.is_paid = true;
+
+  /**
    * Whether it is allowed to check in a ticket after its session has ended.
    *
    * `false` to answer with an error in this case.
@@ -176,7 +187,7 @@ WlSdk_ModelAbstract.extend(Wl_Ticket_TicketScanModel);
  */
 Wl_Ticket_TicketScanModel.prototype.config=function()
 {
-  return {"a_field":{"dtu_attend":{"post":{"result":true}},"dtu_cancel":{"post":{"result":true}},"dtu_session_end":{"post":{"result":true}},"dtu_session_start":{"post":{"result":true}},"dtu_start":{"post":{"post":true}},"i_attend":{"post":{"result":true}},"i_sold":{"post":{"result":true}},"id_mode":{"post":{"post":true}},"is_past_allowed":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_class_period":{"post":{"post":true}},"k_class_period_ticket":{"post":{"result":true}},"k_ticket_item":{"post":{"result":true}},"k_visit":{"post":{"result":true}},"text_ticket":{"post":{"post":true}},"text_ticket_code":{"post":{"result":true}},"text_title":{"post":{"result":true}}}};
+  return {"a_field":{"dtu_attend":{"post":{"result":true}},"dtu_cancel":{"post":{"result":true}},"dtu_session_end":{"post":{"result":true}},"dtu_session_start":{"post":{"result":true}},"dtu_start":{"post":{"post":true}},"i_attend":{"post":{"result":true}},"i_sold":{"post":{"result":true}},"id_mode":{"post":{"post":true}},"is_paid":{"post":{"result":true}},"is_past_allowed":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_class_period":{"post":{"post":true}},"k_class_period_ticket":{"post":{"result":true}},"k_ticket_item":{"post":{"result":true}},"k_visit":{"post":{"result":true}},"text_ticket":{"post":{"post":true}},"text_ticket_code":{"post":{"result":true}},"text_title":{"post":{"result":true}}}};
 };
 
 /**

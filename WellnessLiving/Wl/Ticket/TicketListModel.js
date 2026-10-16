@@ -38,6 +38,7 @@ function Wl_Ticket_TicketListModel()
    * @typedef {{}} Wl_Ticket_TicketListModel_a_order
    * @property {Wl_Ticket_TicketListModel_a_order_a_type} a_type Ticket types of the order, not counting cancelled tickets. Every item has the next structure:
    * @property {string} dtl_purchase Time when the order was bought, in the local time of the location, MySQL format.
+   * @property {boolean} has_terms_agree `true` if the buyer agreed to the terms and conditions of the event. `false` if the terms were skipped, or if the event has no terms.
    * @property {number} i_attend Number of tickets of the order that are checked in.
    * @property {number} i_ticket Number of tickets in the order, cancelled ones included.
    * @property {boolean} is_guest `true` if the order was bought by a guest, who has no profile. In this case `text_name` is empty.
@@ -62,6 +63,7 @@ function Wl_Ticket_TicketListModel()
    * @property {number} i_order_size Number of tickets in the order, cancelled ones included.
    * @property {boolean} is_attend Whether the ticket is checked in. A cancelled ticket is never checked in.
    * @property {boolean} is_cancel Whether the ticket is cancelled: voided, or refunded with the seat returned.
+   * @property {boolean} is_paid Whether the ticket is paid. `false` if it was reserved to be paid at the door: its session pass is not tied to a purchase item. A cancelled ticket cannot be paid.
    * @property {string} k_purchase Order of the ticket, see {@link Wl_Ticket_TicketListModel.a_order}.
    * @property {string} k_ticket_item Key of the ticket, the one {@link Wl_Ticket_TicketScanModel} takes.
    * @property {string} k_ticket_option Key of the ticket type.
