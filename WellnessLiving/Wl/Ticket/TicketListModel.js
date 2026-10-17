@@ -41,10 +41,17 @@ function Wl_Ticket_TicketListModel()
    * @property {boolean} has_terms_agree `true` if the buyer agreed to the terms and conditions of the event. `false` if the terms were skipped, or if the event has no terms.
    * @property {number} i_attend Number of tickets of the order that are checked in.
    * @property {number} i_ticket Number of tickets in the order, cancelled ones included.
+   * @property {boolean} is_email `true` if the buyer has an email address on file. `false` for a guest.
    * @property {boolean} is_guest `true` if the order was bought by a guest, who has no profile. In this case `text_name` is empty.
    * @property {string} k_purchase Number of the order: key of the purchase the tickets were bought with. Key of the purchase.
+   * @property {string} m_refund Amount refunded for the tickets of the order, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
+   * @property {string} m_subtotal Amount of the tickets of the order after discounts and before taxes, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
+   * @property {string} m_surcharge Surcharge taken for the purchase of the order. `0` if there is none. Decimal string.
+   * @property {string} m_tax Taxes of the tickets of the order, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
    * @property {string} m_total Total paid for the tickets of the order, net of refunds, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
    * @property {string} text_name Full name of the buyer. Empty for a guest.
+   * @property {?string} uid Key of the buyer, for the link to the profile. `null` for a guest.
+   * @property {string} url_viewer Link to the page with all tickets of the order, to view and print them. See TicketViewController::urlTicket().
    */
 
   /**
@@ -56,6 +63,20 @@ function Wl_Ticket_TicketListModel()
   this.a_order = undefined;
 
   /**
+   * @typedef {{}} Wl_Ticket_TicketListModel_a_staff
+   * @property {string} text_name Full name of the staff member.
+   * @property {string} uid Key of the staff member.
+   */
+
+  /**
+   * Staff members of the session, who lead it. Every item has the next structure:
+   *
+   * @get result
+   * @type {Wl_Ticket_TicketListModel_a_staff[]}
+   */
+  this.a_staff = undefined;
+
+  /**
    * @typedef {{}} Wl_Ticket_TicketListModel_a_ticket
    * @property {?string} dtl_attend Time of the check-in, in the local time of the location, MySQL format. `null` if the ticket is not checked in.
    * @property {?string} dtl_cancel Time of the cancellation, in the local time of the location, MySQL format. `null` if the ticket is not cancelled.
@@ -64,6 +85,7 @@ function Wl_Ticket_TicketListModel()
    * @property {boolean} is_attend Whether the ticket is checked in. A cancelled ticket is never checked in.
    * @property {boolean} is_cancel Whether the ticket is cancelled: voided, or refunded with the seat returned.
    * @property {boolean} is_paid Whether the ticket is paid. `false` if it was reserved to be paid at the door: its session pass is not tied to a purchase item. A cancelled ticket cannot be paid.
+   * @property {boolean} is_refund Whether something was refunded for the ticket, see `m_refund`. Unlike `is_cancel`, a refunded ticket can stay active.
    * @property {string} k_purchase Order of the ticket, see {@link Wl_Ticket_TicketListModel.a_order}.
    * @property {string} k_ticket_item Key of the ticket, the one {@link Wl_Ticket_TicketScanModel} takes.
    * @property {string} k_ticket_option Key of the ticket type.
@@ -72,6 +94,7 @@ function Wl_Ticket_TicketListModel()
    * @property {string} text_holder Full name of the holder of the ticket: the person who has claimed it. Empty if nobody has claimed the ticket.
    * @property {string} text_ticket_code Number of the ticket: its short code in the format for displaying, for example `4829-1736`. Empty if the ticket has no short code.
    * @property {string} text_type Name of the ticket type.
+   * @property {string} url_viewer Link to the page with this ticket for view and print. See TicketViewController::urlTicket().
    */
 
   /**
@@ -81,6 +104,22 @@ function Wl_Ticket_TicketListModel()
    * @type {Wl_Ticket_TicketListModel_a_ticket[]}
    */
   this.a_ticket = undefined;
+
+  /**
+   * @typedef {{}} Wl_Ticket_TicketListModel_a_ticket_option
+   * @property {string} k_ticket_option Key of the ticket type.
+   * @property {string} m_price Price of one ticket of the type, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
+   * @property {string} text_title Name of the ticket type.
+   */
+
+  /**
+   * Ticket types of the event, including the ones with nothing sold. Hidden types are listed only if a ticket of
+   * the type is in the session. Every item has the next structure:
+   *
+   * @get result
+   * @type {Wl_Ticket_TicketListModel_a_ticket_option[]}
+   */
+  this.a_ticket_option = undefined;
 
   /**
    * End of the session, in the local time of the location, MySQL format.
@@ -133,6 +172,23 @@ function Wl_Ticket_TicketListModel()
   this.i_sold = undefined;
 
   /**
+   * Whether the session has ended.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_past = undefined;
+
+  /**
+   * Whether the current staff member can see the sales report. Money fields are always returned, the client hides
+   * them when this is `false`.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_sales_report = undefined;
+
+  /**
    * Whether tickets of the session can still be sold: there are free seats, and the session has not ended.
    *
    * @get result
@@ -181,6 +237,14 @@ function Wl_Ticket_TicketListModel()
    */
   this.text_title = undefined;
 
+  /**
+   * Link to book the session directly. Empty: the link is not provided yet.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_booking = undefined;
+
   this.changeInit();
 }
 
@@ -191,7 +255,7 @@ WlSdk_ModelAbstract.extend(Wl_Ticket_TicketListModel);
  */
 Wl_Ticket_TicketListModel.prototype.config=function()
 {
-  return {"a_field":{"a_location":{"get":{"result":true}},"a_order":{"get":{"result":true}},"a_ticket":{"get":{"result":true}},"dtl_end":{"get":{"result":true}},"dtl_start":{"get":{"result":true}},"dtu_start":{"get":{"get":true}},"i_attend":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_sold":{"get":{"result":true}},"is_sell":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_currency":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_title":{"get":{"result":true}}}};
+  return {"a_field":{"a_location":{"get":{"result":true}},"a_order":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_ticket":{"get":{"result":true}},"a_ticket_option":{"get":{"result":true}},"dtl_end":{"get":{"result":true}},"dtl_start":{"get":{"result":true}},"dtu_start":{"get":{"get":true}},"i_attend":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_sold":{"get":{"result":true}},"is_past":{"get":{"result":true}},"is_sales_report":{"get":{"result":true}},"is_sell":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_currency":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_title":{"get":{"result":true}},"url_booking":{"get":{"result":true}}}};
 };
 
 /**
