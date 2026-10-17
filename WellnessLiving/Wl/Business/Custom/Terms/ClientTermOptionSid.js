@@ -30,13 +30,6 @@ Wl_Business_Custom_Terms_ClientTermOptionSid.CADET = 2;
 Wl_Business_Custom_Terms_ClientTermOptionSid.CAMPER = 3;
 
 /**
- * Care Recipient.
- *
- * @type {number}
- */
-Wl_Business_Custom_Terms_ClientTermOptionSid.CARE_RECIPIENT = 4;
-
-/**
  * Child.
  *
  * @type {number}
@@ -126,3 +119,10 @@ Wl_Business_Custom_Terms_ClientTermOptionSid.RESIDENT = 16;
  * @type {number}
  */
 Wl_Business_Custom_Terms_ClientTermOptionSid.STUDENT = 17;
+
+/**
+ * Swimmer.
+ *
+ * @type {number}
+ */
+Wl_Business_Custom_Terms_ClientTermOptionSid.SWIMMER = 4;
