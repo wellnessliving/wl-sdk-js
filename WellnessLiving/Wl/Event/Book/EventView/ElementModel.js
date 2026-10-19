@@ -159,7 +159,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_event_a_schedule_a_staff
-   * @property {string} k_staff <b style="color: red">Deprecated.</b> Legacy staff key. Returned only for applications from allow-list.
+   * @property {string} k_staff **DEPRECATED** Legacy staff key. Returned only for applications from allow-list.
    * @property {string} s_name The staff member name.
    * @property {string} s_surname The first letter of staff member's surname.
    * @property {string} uid_staff The user key of the staff member.
@@ -311,7 +311,7 @@ function Wl_Event_Book_EventView_ElementModel()
 
   /**
    * @typedef {{}} Wl_Event_Book_EventView_ElementModel_a_schedule_a_staff
-   * @property {string} k_staff <b style="color: red">Deprecated.</b> Legacy staff key. Returned only for applications from allow-list.
+   * @property {string} k_staff **DEPRECATED** Legacy staff key. Returned only for applications from allow-list.
    * @property {string} s_name The staff member name.
    * @property {string} s_surname The first letter of staff member's surname.
    * @property {string} uid_staff The user key of the staff member.

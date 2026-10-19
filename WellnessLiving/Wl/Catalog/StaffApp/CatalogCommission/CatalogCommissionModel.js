@@ -16,7 +16,7 @@ function Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel()
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_commission_default
-   * @property {string} k_staff <b>Deprecated.</b> Staff key.
+   * @property {string} k_staff **DEPRECATED** Staff key.
    * @property {string} k_staff_pay Staff pay key.
    * @property {string} uid_staff User key of staff.
    */
@@ -42,7 +42,7 @@ function Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel()
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_staff
    * @property {Wl_Catalog_StaffApp_CatalogCommission_CatalogCommissionModel_a_staff_a_commission} a_commission List of staff commissions:
    * @property {string} html_name Name of staff.
-   * @property {string} k_staff <b style="color: red">Deprecated</b> Staff key.  Use `uid` instead of this field.
+   * @property {string} k_staff **DEPRECATED** Staff key.  Use `uid` instead of this field.
    * @property {string} uid User key.
    */
 

@@ -48,7 +48,7 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_data_a_staff
-   * @property {string} k_staff <b style="color: red">Deprecated.</b> Legacy staff key. Use `uid_staff` instead.
+   * @property {string} k_staff **DEPRECATED** Legacy staff key. Use `uid_staff` instead.
    * @property {string} text_family Staff last name.
    * @property {string} text_staff Staff display name.
    * @property {string} uid_staff Staff user key.
@@ -205,7 +205,7 @@ function Wl_Catalog_CatalogList_ElementModel()
 
   /**
    * @typedef {{}} Wl_Catalog_CatalogList_ElementModel_a_item_a_data_a_staff
-   * @property {string} k_staff <b style="color: red">Deprecated.</b> Legacy staff key. Use `uid_staff` instead.
+   * @property {string} k_staff **DEPRECATED** Legacy staff key. Use `uid_staff` instead.
    * @property {string} text_family Staff last name.
    * @property {string} text_staff Staff display name.
    * @property {string} uid_staff Staff user key.

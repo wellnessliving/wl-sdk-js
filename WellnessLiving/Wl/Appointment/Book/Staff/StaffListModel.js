@@ -20,7 +20,7 @@ function Wl_Appointment_Book_Staff_StaffListModel()
    * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached daily limits, this field will be different for client and staff booking flows. If client books, such staff member is not available and this field is `false`. If staff member books, such staff member is available.
    * @property {boolean} is_daily_limit Whether staff member reached daily limits on number or total duration of the appointments for one day.
    * @property {boolean} is_wait_list Whether staff member available only for wait list booking.
-   * @property {string} k_staff <b style="color: red">Deprecated.</b> Legacy staff key.  Returned only for allow-listed apps.
+   * @property {string} k_staff **DEPRECATED** Legacy staff key.  Returned only for allow-listed apps.
    * @property {string} s_position Position of the staff member in the business.
    * @property {string} s_staff Name of the staff member.
    * @property {string} uid UID of the staff member.
