@@ -51,7 +51,7 @@ function Wl_Ticket_TicketListModel()
    * @property {string} m_total Total paid for the tickets of the order, net of refunds, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
    * @property {string} text_name Full name of the buyer. Empty for a guest.
    * @property {?string} uid Key of the buyer, for the link to the profile. `null` for a guest.
-   * @property {string} url_viewer Link to the page with all tickets of the order, to view and print them. See TicketViewController::urlTicket().
+   * @property {string} url_viewer Link to the page with all tickets of the order, to view and print them. .
    */
 
   /**
@@ -94,7 +94,7 @@ function Wl_Ticket_TicketListModel()
    * @property {string} text_holder Full name of the holder of the ticket: the person who has claimed it. Empty if nobody has claimed the ticket.
    * @property {string} text_ticket_code Number of the ticket: its short code in the format for displaying, for example `4829-1736`. Empty if the ticket has no short code.
    * @property {string} text_type Name of the ticket type.
-   * @property {string} url_viewer Link to the page with this ticket for view and print. See TicketViewController::urlTicket().
+   * @property {string} url_viewer Link to the page with this ticket for view and print.
    */
 
   /**

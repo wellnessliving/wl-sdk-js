@@ -15,8 +15,8 @@ function Wl_Ticket_TicketScanListModel()
 
   /**
    * @typedef {{}} Wl_Ticket_TicketScanListModel_a_result
-   * @property {string} id_outcome Outcome of the ticket, see the description of the class.
    * @property {string} k_ticket_item Key of the ticket, as it was sent.
+   * @property {string} sid_outcome Outcome of the ticket, see the description of the class.
    */
 
   /**
