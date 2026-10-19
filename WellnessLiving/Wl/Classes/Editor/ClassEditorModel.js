@@ -323,12 +323,20 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.html_tax = undefined;
 
   /**
-   * Maximum length of description.
+   * Maximum length of the description of a class that is not virtual.
    *
    * @get result
    * @type {number}
    */
   this.i_description_limit = undefined;
+
+  /**
+   * Maximum length of the description of a virtual class.
+   *
+   * @get result
+   * @type {number}
+   */
+  this.i_description_limit_virtual = undefined;
 
   /**
    * `true` if the Administration section may be shown, `false` otherwise.
@@ -463,7 +471,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Editor_ClassEditorModel);
  */
 Wl_Classes_Editor_ClassEditorModel.prototype.config=function()
 {
-  return {"a_field":{"a_class":{"get":{"result":true},"post":{"post":true}},"a_class_tab_list":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_replace_available":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_url":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_currency_before":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"get":true},"post":{"get":true}},"k_class_save":{"post":{"result":true}},"text_currency":{"get":{"result":true}}}};
+  return {"a_field":{"a_class":{"get":{"result":true},"post":{"post":true}},"a_class_tab_list":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_replace_available":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_url":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"i_description_limit_virtual":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_currency_before":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"get":true},"post":{"get":true}},"k_class_save":{"post":{"result":true}},"text_currency":{"get":{"result":true}}}};
 };
 
 /**

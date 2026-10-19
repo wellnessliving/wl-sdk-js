@@ -24,12 +24,20 @@ function Wl_Catalog_Terms_TermsModel()
   this.a_item = undefined;
 
   /**
-   * Data for Quick Buy.
-   *
-   * Structure of this array is described in RsCatalogCart::__construct().
+   * @typedef {{}} Wl_Catalog_Terms_TermsModel_a_quick_config
+   * @property {number} id_table Quick purchase type. One of {@link Wl_Catalog_QuickPurchaseTypeSid}.
+   * @property {boolean} is_quick_buy Whether Quick Buy mode is used.
+   * @property {string} k_appointment Appointment key to pay for.
+   * @property {string} k_id Key of the item within the `id_table` table that Quick Buy is performed for.
+   * @property {string} k_visit Visit key to pay for.
+   * @property {string} uid User that Quick Buy is performed for.
+   */
+
+  /**
+   * Data for Quick Buy. Empty if the purchase is not in Quick Buy mode. Structure of the array:
    *
    * @post post
-   * @type {*[]}
+   * @type {Wl_Catalog_Terms_TermsModel_a_quick_config}
    */
   this.a_quick_config = undefined;
 
@@ -53,8 +61,6 @@ function Wl_Catalog_Terms_TermsModel()
 
   /**
    * Business the cart belongs to.
-   *
-   * Primary key in RsBusinessSql table.
    *
    * @post post
    * @type {string}
@@ -85,6 +91,10 @@ Wl_Catalog_Terms_TermsModel.prototype.config=function()
 
 /**
  * Performs {@link Wl_Catalog_Terms_TermsModel.id_terms_action} for every item of {@link Wl_Catalog_Terms_TermsModel.a_item}.
+ *
+ * Agreeing or skipping marks the cart items as resolved, so the client can proceed to checkout. Declining removes
+ * the items from the cart, and {@link Wl_Catalog_Terms_TermsModel.url_list} is returned if the cart became empty. Skipping is
+ * available only in the point of sale.
  *
  * @function
  * @name Wl_Catalog_Terms_TermsModel.post
