@@ -179,7 +179,7 @@ function Wl_Book_Process_Info_InfoModel()
   /**
    * @typedef {{}} Wl_Book_Process_Info_InfoModel_a_visit_payment
    * @property {boolean} is_free `true` if the visit is free; `false` otherwise.
-   * @property {boolean} is_pay_required `true` if the booking triggered the payment flow: the visit is booked, is not paid, and the client must   pay for it by the link in `text_payment_link`, otherwise the visit is cancelled automatically.   `false` otherwise: the visit is paid, free, waitlisted, cancelled, or the application is allowed to book   without paying at all.
+   * @property {boolean} is_pay_required `true` if the booking triggered the payment flow: the visit is booked, is not paid, and the client must   pay for it by the link in `text_payment_link`, otherwise the visit is cancelled automatically.   `false` otherwise: the visit is paid, free, waitlisted, cancelled, or the payment is optional   (pay later, or the application is allowed to book without paying).
    * @property {boolean} is_waitlist `true` whether the booked slot was waitlisted; `false` otherwise.
    * @property {string} k_login_promotion Applied user's purchase option.
    * @property {string} k_promotion Purchase option.
