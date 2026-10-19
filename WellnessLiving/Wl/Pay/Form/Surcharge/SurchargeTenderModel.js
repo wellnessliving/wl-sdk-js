@@ -20,8 +20,8 @@ function Wl_Pay_Form_Surcharge_SurchargeTenderModel()
   this.id_pay_method = null;
 
   /**
-   * Whether a surcharge is allowed for the card identified by {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel.s_bin} or
-   * {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel.k_pay_bank}.
+   * Whether a surcharge is allowed for the card identified by
+   * {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel.s_bin} or {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel.k_pay_bank}.
    *
    * `true` whenever the business's processor is not subject to the rule, or the rule does not apply to this
    * country/pay method - exactly the same meaning as "do not suppress", never a stand-in for "lookup failed".
