@@ -23,6 +23,21 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_config_a_member_group_book_window
+   * @property {number} i_book_future The advance booking window duration for this member group.
+   * @property {number} id_book_future The duration type for the advance booking window. One of {@link ADurationSid} constants.
+   */
+
+  /**
+   * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_config
+   * @property {Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_config_a_member_group_book_window} a_member_group_book_window Member group overrides for the advance booking window, keyed by member group key. Each value has the following structure:
+   * @property {number} i_book_before The minimum time before a session starts that a booking can be made.
+   * @property {number} i_book_future The maximum advance booking window duration.
+   * @property {number} id_book_before The duration type for the minimum booking time. One of {@link ADurationSid} constants.
+   * @property {number} id_book_future The duration type for the advance booking window. One of {@link ADurationSid} constants.
+   */
+
+  /**
    * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_direct_link
    * @property {string} k_class_tab The key of the book now tab.
    * @property {string} url_tab The direct booking URL. This will open the booking wizard under the related booking tab.
@@ -50,6 +65,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    * @typedef {{}} Wl_Appointment_Book_Asset_AssetListModel_a_asset
    * @property {Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_age_restrictions} a_age_restrictions Information about age restrictions for this event.
    * @property {string[]} a_class_tab The key of service.   Keys are service key.    Values are class tab key.
+   * @property {Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_config} a_config The asset's effective booking window policy. When the asset has its own booking policy, these values come from that policy. Otherwise, the business-level policy values are used.
    * @property {Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_direct_link} a_direct_link A list of links to create a booking from a direct link (direct booking URL). The system needs to know what tab is associated with the booking. Therefore, there needs to be one link per tab. Each element has two values:
    * @property {Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_image} a_image Information about the asset logo:
    * @property {Wl_Appointment_Book_Asset_AssetListModel_a_asset_a_period} a_period A list of asset periods with the following information:
