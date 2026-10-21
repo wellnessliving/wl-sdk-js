@@ -23,7 +23,7 @@ function Wl_Notification_Send_NotificationInfoModel()
    * @see RsMailSid
    * @type {number}
    */
-  this.id_notification = 0;
+  this.id_notification = 22;
 
   /**
    * Key of the business where information about notification should be retrieved.

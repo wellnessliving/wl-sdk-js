@@ -37,7 +37,7 @@ function Wl_Notification_Send_NotificationSendModel()
    * @see RsMailSid
    * @type {number}
    */
-  this.id_notification = 0;
+  this.id_notification = 22;
 
   /**
    * Key of the business where notification should be sent.

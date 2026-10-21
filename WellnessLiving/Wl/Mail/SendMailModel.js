@@ -9,6 +9,28 @@ function Wl_Mail_SendMailModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * Additional data for the notification.
+   *
+   * The structure depends on the notification type specified in {@link Wl_Mail_SendMailModel.id_mail}.
+   *
+   * @post post
+   * @type {*[]}
+   */
+  this.a_data = undefined;
+
+  /**
+   * The mail type ID.
+   *
+   * One of the {@link RsMailSid} constants.
+   * If not provided, {@link RsMailSid} is used.
+   *
+   * @post post
+   * @see RsMailSid
+   * @type {number}
+   */
+  this.id_mail = 22;
+
+  /**
    * The business key.
    *
    * @post get
@@ -91,7 +113,7 @@ WlSdk_ModelAbstract.extend(Wl_Mail_SendMailModel);
  */
 Wl_Mail_SendMailModel.prototype.config=function()
 {
-  return {"a_field":{"k_business":{"post":{"get":true}},"s_business_mail":{"post":{"post":true}},"s_business_name":{"post":{"post":true}},"s_business_reply":{"post":{"post":true}},"s_campaign":{"post":{"post":true}},"s_html":{"post":{"post":true}},"s_mail":{"post":{"post":true}},"s_subject":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
+  return {"a_field":{"a_data":{"post":{"post":true}},"id_mail":{"post":{"post":true}},"k_business":{"post":{"get":true}},"s_business_mail":{"post":{"post":true}},"s_business_name":{"post":{"post":true}},"s_business_reply":{"post":{"post":true}},"s_campaign":{"post":{"post":true}},"s_html":{"post":{"post":true}},"s_mail":{"post":{"post":true}},"s_subject":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
 };
 
 /**

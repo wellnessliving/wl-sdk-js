@@ -143,7 +143,7 @@ function Wl_Mail_Pattern_AutomatedMarketing_CustomTemplate_PatternModel()
    * @see RsMailSid
    * @type {number}
    */
-  this.id_mail = 0;
+  this.id_mail = 22;
 
   /**
    * Whether to get a list of custom template data. `true` - to get a list, `false` - otherwise.

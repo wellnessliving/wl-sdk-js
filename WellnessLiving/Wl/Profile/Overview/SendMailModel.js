@@ -20,7 +20,7 @@ function Wl_Profile_Overview_SendMailModel()
    * @see RsMailSid
    * @type {number}
    */
-  this.id_mail = 0;
+  this.id_mail = 22;
 
   /**
    * Business key.
