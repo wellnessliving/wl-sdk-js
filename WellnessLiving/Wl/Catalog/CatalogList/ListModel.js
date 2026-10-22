@@ -30,6 +30,13 @@ function Wl_Catalog_CatalogList_ListModel()
   this.a_direct_link = undefined;
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ListModel_a_product_a_ticket_inventory
+   * @property {number} i_capacity Total number of tickets that can be sold for the event.
+   * @property {number} i_order_limit Maximum number of tickets that can be ordered in one purchase. `0` if there is no limit.
+   * @property {number} i_remain Number of tickets still available to sell. `0` if the event is sold out.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ListModel_a_product_a_tickets
    * @property {string} k_ticket_option Globally unique identifier of the ticket option.
    * @property {string} m_price One ticket price.
@@ -40,6 +47,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ListModel_a_product
    * @property {string[]} a_location The list of location keys where the sale item is available.
    * @property {string[]} a_shop_category Shop category keys the item belongs to.
+   * @property {Wl_Catalog_CatalogList_ListModel_a_product_a_ticket_inventory} a_ticket_inventory How many tickets can be sold for the event and how many of those are still available. Empty if the item is not a ticketed event.  Returned for items with `id_sale` equal to {@link RsSaleSid} only.
    * @property {Wl_Catalog_CatalogList_ListModel_a_product_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event.  Each element contains the following keys:
    * @property {string} dtu_create UTC creation date of the item in MySQL format.
    * @property {string} f_price The item price.
@@ -48,6 +56,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @property {boolean} is_direct `true` if the item was accessed via a direct purchase link, `false` otherwise.
    * @property {boolean} is_introductory `true` if the item is an introductory offer, `false` otherwise.
    * @property {boolean} is_ticket `true` if the item is a ticketed event, `false` otherwise. Returned for items with `id_sale` equal to {@link RsSaleSid} only.
+   * @property {boolean} is_ticket_guest_allowed `true` if a client can buy tickets without creating an account. `false` if the item is not a ticketed event. Returned for items with `id_sale` equal to {@link RsSaleSid} only.
    * @property {string} k_id The item key.
    * @property {string} k_shop_category The primary shop category key for this item entry.
    * @property {string} s_key The unique string key identifying the item (product key combined with its DB SID).
@@ -64,6 +73,13 @@ function Wl_Catalog_CatalogList_ListModel()
   this.a_product = undefined;
 
   /**
+   * @typedef {{}} Wl_Catalog_CatalogList_ListModel_a_product_duplicate_a_ticket_inventory
+   * @property {number} i_capacity Total number of tickets that can be sold for the event.
+   * @property {number} i_order_limit Maximum number of tickets that can be ordered in one purchase. `0` if there is no limit.
+   * @property {number} i_remain Number of tickets still available to sell. `0` if the event is sold out.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_CatalogList_ListModel_a_product_duplicate_a_tickets
    * @property {string} k_ticket_option Globally unique identifier of the ticket option.
    * @property {string} m_price One ticket price.
@@ -74,6 +90,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @typedef {{}} Wl_Catalog_CatalogList_ListModel_a_product_duplicate
    * @property {string[]} a_location The list of location keys where the sale item is available.
    * @property {string[]} a_shop_category Shop category keys the item belongs to.
+   * @property {Wl_Catalog_CatalogList_ListModel_a_product_duplicate_a_ticket_inventory} a_ticket_inventory How many tickets can be sold for the event and how many of those are still available. Empty if the item is not a ticketed event.  Returned for items with `id_sale` equal to {@link RsSaleSid} only.
    * @property {Wl_Catalog_CatalogList_ListModel_a_product_duplicate_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the item is not a ticketed event.  Each element contains the following keys:
    * @property {string} dtu_create UTC creation date of the item in MySQL format.
    * @property {string} f_price The item price.
@@ -82,6 +99,7 @@ function Wl_Catalog_CatalogList_ListModel()
    * @property {boolean} is_direct `true` if the item was accessed via a direct purchase link, `false` otherwise.
    * @property {boolean} is_introductory `true` if the item is an introductory offer, `false` otherwise.
    * @property {boolean} is_ticket `true` if the item is a ticketed event, `false` otherwise. Returned for items with `id_sale` equal to {@link RsSaleSid} only.
+   * @property {boolean} is_ticket_guest_allowed `true` if a client can buy tickets without creating an account. `false` if the item is not a ticketed event. Returned for items with `id_sale` equal to {@link RsSaleSid} only.
    * @property {string} k_id The item key.
    * @property {string} k_shop_category The primary shop category key for this item entry.
    * @property {string} s_key The unique string key identifying the item (product key combined with its DB SID).

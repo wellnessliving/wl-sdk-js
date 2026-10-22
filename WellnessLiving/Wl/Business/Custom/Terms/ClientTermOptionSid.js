@@ -1,7 +1,7 @@
 /**
  * Preset options for the {@link Wl_Business_Custom_Terms_CustomTermSid} custom term.
  *
- * Last used ID: 17.
+ * Last used ID: 18.
  */
 function Wl_Business_Custom_Terms_ClientTermOptionSid()
 {
@@ -125,4 +125,4 @@ Wl_Business_Custom_Terms_ClientTermOptionSid.STUDENT = 17;
  *
  * @type {number}
  */
-Wl_Business_Custom_Terms_ClientTermOptionSid.SWIMMER = 4;
+Wl_Business_Custom_Terms_ClientTermOptionSid.SWIMMER = 18;
