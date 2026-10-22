@@ -95,6 +95,7 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @property {boolean} is_buy_total `true` if a client buys the whole class at once, `false` otherwise.
    * @property {boolean} is_deposit_percent `true` if `f_deposit` is a percent of the price of the class, `false` if it is an amount of money.
    * @property {boolean} is_early `true` if the class has an early bird discount, `false` otherwise.
+   * @property {boolean} is_early_ended `true` if `dl_early` is a date that has already passed, `false` otherwise.
    * @property {boolean} is_early_percent `true` if `f_early` is a percent of the price of the class, `false` if it is an amount of money.
    * @property {boolean} is_tax_enable `true` if taxes are applied to the sales of the class, `false` otherwise.
    * @property {string} text_early Last day of the early bird discount as the calendar of the form shows it.
@@ -113,7 +114,6 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @property {Wl_Classes_Editor_ClassEditorModel_a_class_o_ticket_a_ticket_option} a_ticket_option Ticket types of a ticketed event, in the order they are offered.
    * @property {number} i_order_limit Number of tickets that may be bought in one order.
    * @property {boolean} is_account_require `true` if a buyer of a ticket must have an account, `false` if a name and an email address are enough.
-   * @property {boolean} is_door_pay `true` if a buyer may reserve a ticket and pay for it at the door, `false` if a ticket is paid for at once.
    * @property {boolean} is_terms `true` if a buyer of a ticket must agree to terms and conditions, `false` otherwise.
    * @property {string} xml_terms Terms and conditions a buyer of a ticket must agree to.
    */
