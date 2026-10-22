@@ -86,7 +86,6 @@ Wl_Appointment_Book_Service_ServiceListBusinessModel.prototype.config=function()
  * Each service and category includes an array of location keys where it is available.
  * All active services are returned: unlike the location-scoped list, the result is not filtered by class tab
  * or by online bookability, and removed locations are skipped.
- * The caller must be a staff member or admin of the business.
  *
  * @function
  * @name Wl_Appointment_Book_Service_ServiceListBusinessModel.get

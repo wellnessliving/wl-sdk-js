@@ -66,6 +66,22 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
   this.a_text_code = undefined;
 
   /**
+   * `true` if the business requires a signature when diagnostic codes of a visit are saved, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_signature = undefined;
+
+  /**
+   * `true` if the business has the diagnostic codes turned on, `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_system = undefined;
+
+  /**
    * Business key.
    *
    * @get get
@@ -132,7 +148,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Billing_Code_VisitBillingCodeAssignModel);
  */
 Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
 {
-  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}}}};
+  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"is_signature":{"get":{"result":true}},"is_system":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}}}};
 };
 
 /**
