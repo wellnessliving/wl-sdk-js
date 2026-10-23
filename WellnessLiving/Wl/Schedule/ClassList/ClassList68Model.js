@@ -130,6 +130,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @property {?number} i_capacity The capacity of the service. 'null' indicates that the capacity is not set.
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
+   * @property {?number} i_ticket_attend Number of the tickets of the session that are checked in. `null` if the session is not a session of a ticketed event (see `is_ticket`). A visit checked in without a ticket is not counted. The same rule is used by the ticket check-in scanner, see {@link Core_WebSocket_ChannelBroadcast}.
    * @property {number} i_wait Number of clients in wait list.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
    * @property {number} i_wait_spot Position of the current client (`uid`) in the wait list for this session. `0` if the client is not on the wait list, or if the business hides wait list position (fastest-response wait list promotion).
@@ -360,6 +361,18 @@ function Wl_Schedule_ClassList_ClassList68Model()
   this.show_quick_filter = false;
 
   /**
+   * If `true`, ticketed events are also returned, even if {@link Wl_Schedule_ClassList_ClassList68Model.show_event} is `false`.
+   * If `false`, ticketed events are returned only as a part of all events, see {@link Wl_Schedule_ClassList_ClassList68Model.show_event}.
+   *
+   * To get only ticketed events, set {@link Wl_Schedule_ClassList_ClassList68Model.show_class} and {@link Wl_Schedule_ClassList_ClassList68Model.show_event}
+   * to `false`, and this flag to `true`.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.show_ticket = false;
+
+  /**
    * The user key.
    *
    * @post post
@@ -377,7 +390,7 @@ WlSdk_ModelAbstract.extend(Wl_Schedule_ClassList_ClassList68Model);
  */
 Wl_Schedule_ClassList_ClassList68Model.prototype.config=function()
 {
-  return {"a_field":{"a_calendar":{"post":{"result":true}},"a_class":{"post":{"post":true}},"a_class_tab":{"post":{"post":true}},"a_day":{"post":{"post":true}},"a_event":{"post":{"post":true}},"a_location":{"post":{"post":true}},"a_quick":{"post":{"result":true}},"a_session":{"post":{"result":true}},"a_time":{"post":{"post":true}},"dt_date":{"post":{"post":true}},"dt_end":{"post":{"post":true}},"id_class_tab":{"post":{"post":true}},"is_response_short":{"post":{"post":true}},"is_tab_all":{"post":{"post":true}},"is_timezone_different":{"post":{"result":true}},"is_virtual":{"post":{"post":true}},"is_virtual_service":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_class_tab":{"post":{"post":true}},"k_timezone":{"post":{"post":true}},"s_staff":{"post":{"post":true}},"s_staff_uid":{"post":{"post":true}},"show_book_status":{"post":{"post":true}},"show_cancel":{"post":{"post":true}},"show_class":{"post":{"post":true}},"show_event":{"post":{"post":true}},"show_quick_filter":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
+  return {"a_field":{"a_calendar":{"post":{"result":true}},"a_class":{"post":{"post":true}},"a_class_tab":{"post":{"post":true}},"a_day":{"post":{"post":true}},"a_event":{"post":{"post":true}},"a_location":{"post":{"post":true}},"a_quick":{"post":{"result":true}},"a_session":{"post":{"result":true}},"a_time":{"post":{"post":true}},"dt_date":{"post":{"post":true}},"dt_end":{"post":{"post":true}},"id_class_tab":{"post":{"post":true}},"is_response_short":{"post":{"post":true}},"is_tab_all":{"post":{"post":true}},"is_timezone_different":{"post":{"result":true}},"is_virtual":{"post":{"post":true}},"is_virtual_service":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_class_tab":{"post":{"post":true}},"k_timezone":{"post":{"post":true}},"s_staff":{"post":{"post":true}},"s_staff_uid":{"post":{"post":true}},"show_book_status":{"post":{"post":true}},"show_cancel":{"post":{"post":true}},"show_class":{"post":{"post":true}},"show_event":{"post":{"post":true}},"show_quick_filter":{"post":{"post":true}},"show_ticket":{"post":{"post":true}},"uid":{"post":{"post":true}}}};
 };
 
 /**

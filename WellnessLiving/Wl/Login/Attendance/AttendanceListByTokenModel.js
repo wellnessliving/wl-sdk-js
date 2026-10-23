@@ -155,6 +155,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {boolean} is_duration_pass This will be `true` if the Purchase Option used is a duration pass.
    * @property {boolean} is_early This will be `true` if the client has canceled the visit early, incurring no penalty. This will be `false` if canceled late or if not canceled at all.
    * @property {boolean} is_free This will be `true` if the visit is free.
+   * @property {boolean} is_guest `true` if this visit is paid with a guest pass. When `true`, `text_promotion` contains the formatted guest label instead of the Purchase Option title.
    * @property {boolean} is_hidden This will be `true` if details on this visit should be hidden from staff members.
    * @property {boolean} is_penalty This will be `true` if this visit was cancelled late and a penalty is applied.
    * @property {boolean} is_promotion_first This will be `true` if this was the first visit for the Purchase Option used.
@@ -177,7 +178,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_note Any notes tied to the client.
-   * @property {string} text_promotion The description of the type of Purchase Option.
+   * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
    * @property {string} text_promotion_return Title of purchase option usages of that was returned to user.
    * @property {string} text_restrict_title The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.
    * @property {string} text_visit_status_class The class visit status.
@@ -343,6 +344,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {boolean} is_duration_pass This will be `true` if the Purchase Option used is a duration pass.
    * @property {boolean} is_early This will be `true` if the client has canceled the visit early, incurring no penalty. This will be `false` if canceled late or if not canceled at all.
    * @property {boolean} is_free This will be `true` if the visit is free.
+   * @property {boolean} is_guest `true` if this visit is paid with a guest pass. When `true`, `text_promotion` contains the formatted guest label instead of the Purchase Option title.
    * @property {boolean} is_hidden This will be `true` if details on this visit should be hidden from staff members.
    * @property {boolean} is_penalty This will be `true` if this visit was cancelled late and a penalty is applied.
    * @property {boolean} is_promotion_first This will be `true` if this was the first visit for the Purchase Option used.
@@ -365,7 +367,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_note Any notes tied to the client.
-   * @property {string} text_promotion The description of the type of Purchase Option.
+   * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
    * @property {string} text_promotion_return Title of purchase option usages of that was returned to user.
    * @property {string} text_restrict_title The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.
    * @property {string} text_visit_status_class The class visit status.
@@ -530,6 +532,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {boolean} is_duration_pass This will be `true` if the Purchase Option used is a duration pass.
    * @property {boolean} is_early This will be `true` if the client has canceled the visit early, incurring no penalty. This will be `false` if canceled late or if not canceled at all.
    * @property {boolean} is_free This will be `true` if the visit is free.
+   * @property {boolean} is_guest `true` if this visit is paid with a guest pass. When `true`, `text_promotion` contains the formatted guest label instead of the Purchase Option title.
    * @property {boolean} is_hidden This will be `true` if details on this visit should be hidden from staff members.
    * @property {boolean} is_penalty This will be `true` if this visit was cancelled late and a penalty is applied.
    * @property {boolean} is_promotion_first This will be `true` if this was the first visit for the Purchase Option used.
@@ -552,7 +555,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_note Any notes tied to the client.
-   * @property {string} text_promotion The description of the type of Purchase Option.
+   * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
    * @property {string} text_promotion_return Title of purchase option usages of that was returned to user.
    * @property {string} text_restrict_title The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.
    * @property {string} text_visit_status_class The class visit status.
