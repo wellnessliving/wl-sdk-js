@@ -53,6 +53,24 @@ function Wl_Classes_ClassList_ListModel()
   this.a_class_tab = null;
 
   /**
+   * @typedef {{}} Wl_Classes_ClassList_ListModel_a_direct_link
+   * @property {string} k_class The class/event key.
+   */
+
+  /**
+   * Direct booking link parameters.
+   *
+   * When provided, the event identified by `k_class` is treated as accessed via a direct booking URL.
+   * This grants the caller the ability to view and book the event even when it is restricted to direct-link-only access.
+   *
+   * An empty array when no direct link is used.
+   *
+   * @get get
+   * @type {Wl_Classes_ClassList_ListModel_a_direct_link}
+   */
+  this.a_direct_link = undefined;
+
+  /**
    * ID of book now tab. One of {@link Wl_Classes_Tab_TabSid} constants.
    * Only {@link Wl_Classes_Tab_TabSid} and {@link Wl_Classes_Tab_TabSid} book now tab are supported.
    * Filtering by Book Now Tab is not supported if {@link Wl_Classes_ClassList_ListModel.is_franchise} is `true`.
@@ -137,7 +155,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_ClassList_ListModel);
  */
 Wl_Classes_ClassList_ListModel.prototype.config=function()
 {
-  return {"a_field":{"a_class":{"get":{"result":true}},"a_class_tab":{"get":{"get":true}},"id_class_tab":{"get":{"get":true}},"is_enrollment_block_all":{"get":{"get":true}},"is_enrollment_block_empty":{"get":{"get":true}},"is_event_include":{"get":{"get":true}},"is_franchise":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
+  return {"a_field":{"a_class":{"get":{"result":true}},"a_class_tab":{"get":{"get":true}},"a_direct_link":{"get":{"get":true}},"id_class_tab":{"get":{"get":true}},"is_enrollment_block_all":{"get":{"get":true}},"is_enrollment_block_empty":{"get":{"get":true}},"is_event_include":{"get":{"get":true}},"is_franchise":{"get":{"get":true}},"k_business":{"get":{"get":true}}}};
 };
 
 /**
