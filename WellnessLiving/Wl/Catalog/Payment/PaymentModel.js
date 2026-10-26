@@ -115,6 +115,8 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {string} s_mail The gift card receiver email. This is required for gift cards.
    * @property {string} s_recipient The gift card receiver name. This is required for gift cards.
    * @property {string} s_sender The gift card sender name. This is required for gift cards.
+   * @property {string} text_guest_mail The email of the guest who buys the ticket. Used only for tickets. Specify it when the payment owner is an anonymous user ({@link Wl_Catalog_Payment_PaymentModel.is_guest}). It is saved in the ticket order.
+   * @property {string} text_guest_name The name of the guest who buys the ticket. Used only for tickets. Specify it when the payment owner is an anonymous user ({@link Wl_Catalog_Payment_PaymentModel.is_guest}).
    * @property {string} uid_staff The staff member user ID, used only for appointment tips.
    * @property {string} uid_to Specifies the recipient of a transfer Purchase Option.
    */

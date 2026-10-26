@@ -76,6 +76,9 @@ Wl_Login_Code_CodeModel.prototype.config=function()
  * falls back to checking it as another type of redemption code, for example a gift card number,
  * and logs the change.
  *
+ * Failed attempts are limited per session, per IP address and per profile, so that codes can not be guessed.
+ * A successful redemption is not counted.
+ *
  * @function
  * @name Wl_Login_Code_CodeModel.post
  * @returns {WlSdk_Deferred_Promise}

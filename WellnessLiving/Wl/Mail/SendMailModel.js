@@ -1566,6 +1566,7 @@ function Wl_Mail_SendMailModel()
    * @property {string} k_pay_installment Installment that purchase belongs to.
    * @property {string} k_purchase Purchase key.
    * @property {string} m_amount An amount which was debit from a client account.
+   * @property {string} uid_money Money owner of the account debit. Used together with `k_login_promotion` or `k_pay_installment`: the email is sent to this user. If not set, the email is sent to the payer of the purchase option, see PayerMail.
    */
 
   /**
@@ -1777,6 +1778,7 @@ function Wl_Mail_SendMailModel()
    * @property {string} k_currency Currency ID.
    * @property {string} k_login_promotion ID of the purchased membership. If `k_pay_installment` not specified then this field is required otherwise is should not be specified.
    * @property {string} k_pay_installment ID of an installment plan to charge for. If `k_login_promotion` not specified then this field is required otherwise is should not be specified.
+   * @property {string} uid_money Money owner of the charge. The e-mail is sent to this user. If not set, the e-mail is sent to the payer of the purchase option, see PayerMail.
    */
 
   /**
@@ -1787,6 +1789,7 @@ function Wl_Mail_SendMailModel()
    * @property {?string} k_promotion Optional. ID of the purchase option to be converted in, if this is a conversion. `null`, if this is not a conversion. Used only together with `k_login_promotion`.
    * @property {{}} o_pay_amount Payment amount.
    * @property {string} s_message Error messages that occurred while payment.
+   * @property {string} uid_money Optional. Money owner of the charge. The e-mail is sent to this user. If not set, the e-mail is sent to the payer of the purchase option, see PayerMail.
    */
 
   /**
@@ -1794,6 +1797,7 @@ function Wl_Mail_SendMailModel()
    * @property {number} dt_date Due date.
    * @property {string} k_login_promotion ID of the purchased membership.
    * @property {{}} o_pay_amount Payment amount.
+   * @property {string} uid_money Optional. Money owner of the charge. The e-mail is sent to this user. If not set, the e-mail is sent to the payer of the purchase option, see PayerMail.
    */
 
   /**
@@ -1855,6 +1859,7 @@ function Wl_Mail_SendMailModel()
    * @property {string} k_business Optional. Key of the business the purchase belongs to.  Together with `uid` it is used to find out whether the recipient is a staff member of the business; if so, the name of the staff member is used as the name of the sender.
    * @property {string} k_purchase Key of the purchase.  If it is empty or the purchase does not exist, the e-mail is not sent.
    * @property {string} uid Optional. Key of the user the e-mail is sent to. Used only if the purchase was made by a business; otherwise the user is taken from the purchase.
+   * @property {string} uid_money Optional. Money owner of the charge. Used only if the purchase was made by a user: the e-mail is sent to this user. If not set, or the user does not exist, the e-mail is sent to the money owner of the user who made the purchase.
    */
 
   /**

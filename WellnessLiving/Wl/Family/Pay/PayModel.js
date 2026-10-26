@@ -83,8 +83,9 @@ Wl_Family_Pay_PayModel.prototype.config=function()
  *
  * Validates that the current user has access to the target user's profile and that the payer and
  * the target user are family relatives. Rejects the request if the payer already pays for another
- * user, if another user already pays for the target user, or if either user is restricted by
- * franchise rules. Persists the new payer relationship in a database transaction.
+ * user, if another user already pays for the target user, if the target user pays for a purchase option of
+ * another user, or if either user is restricted by franchise rules. Persists the new payer relationship in a
+ * database transaction.
  *
  * @function
  * @name Wl_Family_Pay_PayModel.post
