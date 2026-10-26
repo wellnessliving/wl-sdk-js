@@ -37,12 +37,13 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
    * @property {string} text_log What changed.
    * @property {?string} text_reason Reason of the change the staff member gave. `null` if no reason was given.
    * @property {?string} text_signature Signature of the staff member who made the change. `null` if no signature was given, or if the business did not require one.
-   * @property {?string} uid_staff Key of the staff member who made the change. `null` if the user is deleted.
+   * @property {?string} uid_staff Key of the staff member who made the change. `null` if the user is deleted, for the codes applied by default, and for a void made not by a user.
    */
 
   /**
    * History of the changes of the billing codes of the visit, the latest change first: a record per added or removed
-   * code.
+   * code, per "Codes applied by default" batch, per "Signed & locked billing codes" lock and per void of the codes
+   * on a cancel or a no-show.
    *
    * Empty for a staff member who can not assign billing codes.
    *
@@ -64,6 +65,57 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
    * @type {string[]}
    */
   this.a_text_code = undefined;
+
+  /**
+   * @typedef {{}} Wl_Visit_Billing_Code_VisitBillingCodeAssignModel_a_void
+   * @property {boolean} is_custom `true` for a custom code of the business or a temporary code for this visit only, `false` for an ICD-10-CM diagnostic code.
+   * @property {string} text_code Code value, as it was printed on receipts and invoices.
+   * @property {?string} text_description Description of the code as it was when the code was applied. `null` for a temporary code.
+   */
+
+  /**
+   * Voided billing codes of the visit.
+   *
+   * A visit gets voided codes when it is cancelled, late-cancelled or marked as a no-show: the codes are kept for
+   * the record but become read-only. The slide-out of the appointment shows them in a separate read-only section.
+   * A staff member who can not assign billing codes gets the voided custom codes only.
+   * Empty while the visit has no voided codes, and empty while the visit is live: if a cancelled visit is restored,
+   * its voided codes stay in the database but are not returned any more, the history has the record of the voiding.
+   *
+   * @get result
+   * @type {Wl_Visit_Billing_Code_VisitBillingCodeAssignModel_a_void[]}
+   */
+  this.a_void = undefined;
+
+  /**
+   * Date and time the diagnostic codes of the visit were locked, in UTC.
+   * `null` when the diagnostic codes are not locked.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.dtu_lock = null;
+
+  /**
+   * `true` when the diagnostic codes of the visit are locked by a staff member who signed, `false` otherwise.
+   *
+   * A locked save that adds or removes any code requires a short reason, and a save that adds or removes a
+   * diagnostic code requires a new signature, which re-locks the codes under the new signer.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_locked = undefined;
+
+  /**
+   * `true` when a receipt for this visit has been generated at least once.
+   *
+   * While it is `true`, a save that adds or removes any code requires a short reason.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_receipt_sent = undefined;
 
   /**
    * `true` if the business requires a signature when diagnostic codes of a visit are saved, `false` otherwise.
@@ -138,6 +190,28 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
    */
   this.text_signature = "";
 
+  /**
+   * Full name of the staff member who signed and locked the diagnostic codes of the visit, as it is at the moment
+   * of the request.
+   *
+   * `null` when the diagnostic codes are not locked or when the user is deleted; the lock itself stays, so the
+   * diagnostic codes are kept frozen.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.text_staff_name_lock = null;
+
+  /**
+   * Key of the staff member who signed and locked the diagnostic codes of the visit.
+   *
+   * `null` when the diagnostic codes are not locked or when the user is deleted.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.uid_staff_lock = null;
+
   this.changeInit();
 }
 
@@ -148,7 +222,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Billing_Code_VisitBillingCodeAssignModel);
  */
 Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
 {
-  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"is_signature":{"get":{"result":true}},"is_system":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}}}};
+  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"a_void":{"get":{"result":true}},"dtu_lock":{"get":{"result":true}},"is_locked":{"get":{"result":true}},"is_receipt_sent":{"get":{"result":true}},"is_signature":{"get":{"result":true}},"is_system":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}},"text_staff_name_lock":{"get":{"result":true}},"uid_staff_lock":{"get":{"result":true}}}};
 };
 
 /**

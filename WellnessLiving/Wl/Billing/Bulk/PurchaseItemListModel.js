@@ -232,7 +232,7 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
   this.s_id = undefined;
 
   /**
-   * List of client user keys to bill joined with comma.
+   * List of client user keys to bill joined with comma. Every key must be a client of the business.
    *
    * @post post
    * @type {string}

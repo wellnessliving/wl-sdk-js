@@ -52,6 +52,24 @@ function Thoth_PayProcessor_StripeCom_StripeComPayInitModel()
   this.a_card = null;
 
   /**
+   * @typedef {{}} Thoth_PayProcessor_StripeCom_StripeComPayInitModel_a_line_item
+   * @property {number|string} i_quantity Quantity, at least `1`. A string of digits is accepted: the values of an API request are strings.
+   * @property {string} m_amount Unit amount. Not negative: a discount is a smaller amount.
+   * @property {string} text_name Name of the item.
+   */
+
+  /**
+   * Items of the sale for the Checkout Session. Every element: 
+   *
+   * The total of the items must equal {@link Thoth_PayProcessor_StripeCom_StripeComPayInitModel.m_amount}.
+   * Empty to send one item for the whole amount. Used only if the payment runs on a Checkout Session.
+   *
+   * @post post
+   * @type {Thoth_PayProcessor_StripeCom_StripeComPayInitModel_a_line_item[]}
+   */
+  this.a_line_item = undefined;
+
+  /**
    * ID of the currency.
    *
    * One of {@link Core_Locale_CurrencySid} constants.
@@ -110,6 +128,20 @@ function Thoth_PayProcessor_StripeCom_StripeComPayInitModel()
    * @type {boolean}
    */
   this.is_authorize = false;
+
+  /**
+   * `true` if the client card form can run on a Checkout Session, `false` otherwise.
+   *
+   * Only the card form of the web sets it. API clients and the mobile apps do not: the mobile Payment Sheet takes
+   * the client secret of a Payment Intent only. A session is created only if this flag is set, the Stripe Payment
+   * Element is used ({@link Thoth_PayProcessor_StripeCom_StripeComPayInitModel.is_stripe_elements}) and the environment allows it. The answer
+   * tells which one was created:
+   * {@link Thoth_PayProcessor_StripeCom_StripeComPayInitModel.s_checkout_session}.
+   *
+   * @post post
+   * @type {boolean}
+   */
+  this.is_checkout_session = false;
 
   /**
    * `true` if card swiper is used, `false` otherwise.
@@ -189,6 +221,18 @@ function Thoth_PayProcessor_StripeCom_StripeComPayInitModel()
   this.m_surcharge = null;
 
   /**
+   * ID of the Checkout Session when the client card form runs on a Checkout Session.
+   *
+   * `null` if the form runs on a Payment Intent. In that case {@link Thoth_PayProcessor_StripeCom_StripeComPayInitModel.s_client_secret} is the
+   * client secret of the session, and {@link Thoth_PayProcessor_StripeCom_StripeComPayInitModel.s_payment_intent} is empty: Stripe creates the
+   * Payment Intent when the client confirms the session.
+   *
+   * @post result
+   * @type {?string}
+   */
+  this.s_checkout_session = null;
+
+  /**
    * Payment Intent client secret key.
    *
    * @post result
@@ -213,6 +257,19 @@ function Thoth_PayProcessor_StripeCom_StripeComPayInitModel()
    * @type {?string}
    */
   this.s_payment_method = null;
+
+  /**
+   * Email of the payer from the profile, for the client card form that runs on a Checkout Session.
+   *
+   * Stripe needs an email to complete a session. The client passes it to `confirm` of the session, because the
+   * Stripe customer of the payer is created without an email.
+   *
+   * `null` if the card form does not run on a Checkout Session, or the payer has no email in the profile.
+   *
+   * @post result
+   * @type {?string}
+   */
+  this.text_mail_payer = null;
 
   /**
    * Error message.
@@ -244,7 +301,7 @@ WlSdk_ModelAbstract.extend(Thoth_PayProcessor_StripeCom_StripeComPayInitModel);
  */
 Thoth_PayProcessor_StripeCom_StripeComPayInitModel.prototype.config=function()
 {
-  return {"a_field":{"a_card":{"post":{"post":true}},"id_currency":{"post":{"post":true}},"id_pay_actor":{"post":{"post":true}},"id_pay_method":{"post":{"post":true}},"id_status":{"post":{"result":true}},"is_authorize":{"post":{"post":true}},"is_pos":{"post":{"post":true}},"is_stripe_elements":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_business_merchant":{"post":{"post":true}},"k_pay_method":{"post":{"post":true}},"k_pay_transaction":{"post":{"result":true}},"m_amount":{"post":{"post":true,"result":true}},"m_surcharge":{"post":{"post":true,"result":true}},"s_client_secret":{"post":{"result":true}},"s_payment_intent":{"post":{"result":true}},"s_payment_method":{"post":{"post":true}},"text_message":{"post":{"result":true}},"uid_purchase":{"post":{"post":true}}}};
+  return {"a_field":{"a_card":{"post":{"post":true}},"a_line_item":{"post":{"post":true}},"id_currency":{"post":{"post":true}},"id_pay_actor":{"post":{"post":true}},"id_pay_method":{"post":{"post":true}},"id_status":{"post":{"result":true}},"is_authorize":{"post":{"post":true}},"is_checkout_session":{"post":{"post":true}},"is_pos":{"post":{"post":true}},"is_stripe_elements":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_business_merchant":{"post":{"post":true}},"k_pay_method":{"post":{"post":true}},"k_pay_transaction":{"post":{"result":true}},"m_amount":{"post":{"post":true,"result":true}},"m_surcharge":{"post":{"post":true,"result":true}},"s_checkout_session":{"post":{"result":true}},"s_client_secret":{"post":{"result":true}},"s_payment_intent":{"post":{"result":true}},"s_payment_method":{"post":{"post":true}},"text_mail_payer":{"post":{"result":true}},"text_message":{"post":{"result":true}},"uid_purchase":{"post":{"post":true}}}};
 };
 
 /**
