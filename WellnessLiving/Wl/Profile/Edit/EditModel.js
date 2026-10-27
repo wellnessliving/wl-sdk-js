@@ -140,6 +140,11 @@ function Wl_Profile_Edit_EditModel()
    * This value is only defined if <tt>id_field_type</tt>={@link RsFieldTypeSid.GENERAL}.
    * @property {boolean} is_require Indicates whether the value of this field is required. This will be `1` if required or `0` if the field is optional.
    * @property {number} id_field_type The type of field. One of the {@link RsFieldTypeSid} constants.
+   * @property {number} id_level_booking Requirement for a case when a client books a service. One of {@link Wl_Field_FieldLevelEnum} members.
+   * @property {number} id_level_guest Requirement for a case when a client is a guest. One of {@link Wl_Field_FieldLevelEnum} members.
+   * @property {number} id_level_purchase Requirement for a case when a client makes a purchase. One of {@link Wl_Field_FieldLevelEnum} members.
+   * @property {number} id_level_relationship Requirement for a case when a client adds a relationship. One of {@link Wl_Field_FieldLevelEnum} members.
+   * @property {number} id_level_signup Requirement for a case when a client signs up. One of {@link Wl_Field_FieldLevelEnum} members.
    * @property {string} k_field The field ID (<tt>k_field</tt>). A copy of the key of this array element.
    * @property {string} s_title The title of the field.
    * @property {*} x_value The value of the field. This value is defined by individual fields.
@@ -163,6 +168,15 @@ function Wl_Profile_Edit_EditModel()
    * @type {boolean}
    */
   this.can_password_change = false;
+
+  /**
+   * Family role for a new user. One of {@link Wl_Family_Relation_RelationSid} constants.
+   * Not `null` only for a case of relative registration.
+   *
+   * @get get
+   * @type {?number}
+   */
+  this.id_family_relation = null;
 
   /**
    * ID of source mode. One of {@link Wl_Mode_ModeSid} constants.
@@ -412,7 +426,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_EditModel);
  */
 Wl_Profile_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field": {"a_change": {"put": {"post": true}},"a_error_list": {"get": {"result": true,"error": true},"post": {"result": true,"error": true}},"a_family_relation": {"post": {"post": true}},"a_image_upload": {"post": {"post": true}},"a_intents": {"post": {"post": true},"put": {"post": true}},"a_new": {"post": {"post": true}},"a_phone_inherit": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"a_structure": {"get": {"result": true}},"can_password_change": {"get": {"result": true}},"id_mode": {"post": {"get": true}},"id_register_source": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"is_a2p": {"get": {"result": true}},"is_address_inherit": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"is_exception_throw": {"post": {"post": true}},"is_short": {"get": {"result": true},"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"is_sms_subscription_marketing": {"post": {"post": true}},"is_sms_subscription_presented": {"post": {"post": true}},"is_sms_subscription_transactional": {"post": {"post": true}},"is_staff": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_lead_source": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"class": {"get": {"result": true},"post": {"result": true}},"code": {"get": {"result": true},"post": {"result": true}},"status": {"post": {"result": true}},"text_business_uid_key": {"post": {"get": true}},"message": {"get": {"result": true},"post": {"result": true}},"text_password": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"uid_existed": {"post": {"get": true}},"uid_inherit_address": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"uid_relative_key": {"post": {"get": true}}}};
+  return {"a_field": {"a_change": {"put": {"post": true}},"a_error_list": {"get": {"result": true,"error": true},"post": {"result": true,"error": true}},"a_family_relation": {"post": {"post": true}},"a_image_upload": {"post": {"post": true}},"a_intents": {"post": {"post": true},"put": {"post": true}},"a_new": {"post": {"post": true}},"a_phone_inherit": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"a_structure": {"get": {"result": true}},"can_password_change": {"get": {"result": true}},"id_family_relation": {"get": {"get": true}},"id_mode": {"post": {"get": true}},"id_register_source": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"is_a2p": {"get": {"result": true}},"is_address_inherit": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"is_exception_throw": {"post": {"post": true}},"is_short": {"get": {"result": true},"post": {"get": true}},"is_sing_in": {"post": {"post": true}},"is_sms_subscription_marketing": {"post": {"post": true}},"is_sms_subscription_presented": {"post": {"post": true}},"is_sms_subscription_transactional": {"post": {"post": true}},"is_staff": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business": {"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_lead_source": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"class": {"get": {"result": true},"post": {"result": true}},"code": {"get": {"result": true},"post": {"result": true}},"status": {"post": {"result": true}},"text_business_uid_key": {"post": {"get": true}},"message": {"get": {"result": true},"post": {"result": true}},"text_password": {"post": {"post": true}},"uid": {"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"uid_existed": {"post": {"get": true}},"uid_inherit_address": {"get": {"result": true},"post": {"get": true},"put": {"get": true}},"uid_relative_key": {"post": {"get": true}}}};
 };
 
 /**
