@@ -1658,6 +1658,7 @@ function Wl_Mail_SendMailModel()
    * @property {string|number} k_business Optional. Key of the business the purchase belongs to.  Used together with `uid` to find the staff member who performed the purchase.
    * @property {string} k_purchase Key of the purchase.  If empty, the e-mail is not sent.
    * @property {string|number} uid Optional. Key of the user the purchase was performed for.  Used only when the purchase was made by a business. `0` or not set if there is no such user.
+   * @property {string} uid_money Optional. Money owner of the charge. Used only if the purchase was made by a user: the e-mail is sent to this user. If not set, or the user does not exist, the e-mail is sent to the money owner of the user who made the purchase.
    */
 
   /**

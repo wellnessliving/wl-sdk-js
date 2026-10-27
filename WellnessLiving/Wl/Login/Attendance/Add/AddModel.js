@@ -22,8 +22,10 @@ function Wl_Login_Attendance_Add_AddModel()
   /**
    * A list of sessions that are being booked asynchronously in the background.
    *
-   * When a multi-session block event booking is processed, the first session is booked synchronously
-   * and the remaining sessions are queued for background processing.
+   * When a multi-session block event booking is processed, the clicked session is booked synchronously
+   * and the remaining sessions are queued for background processing. The progress of
+   * the background booking can be tracked through the `sid_book_background` field in the
+   * attendance list response.
    *
    * `null` if there are no background sessions (single session booking or all sessions were booked synchronously).
    *
@@ -175,6 +177,9 @@ function Wl_Login_Attendance_Add_AddModel()
   /**
    * The key of the booked visit. This will be set on success.
    * This value will be needed if the session still needs to be paid for.
+   *
+   * For multi-session block events, this is the visit for the clicked session (the one
+   * matching {@link Wl_Login_Attendance_Add_AddModel.dt_date_global}). Remaining sessions are booked in the background.
    *
    * @post result
    * @type {string}

@@ -123,6 +123,13 @@ function Wl_Login_Attendance_AttendanceListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Login_Attendance_AttendanceListModel_a_list_active_sid_book_background
+   * @property {string} failed A background task exists but has no scheduled date, indicating a failure.
+   * @property {string} none No background task exists. Either all sessions were booked synchronously, or the background task has completed.
+   * @property {string} pending A background task is queued and waiting to be processed.
+   */
+
+  /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListModel_a_list_active
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_active_a_info} a_info Information about member.
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_active_a_photo} a_photo Information about the user's photo. The information returned has the following structure:
@@ -174,6 +181,7 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {string} s_lastname The client's last name. This field is deprecated, use the text_ version instead.
    * @property {string} s_note Any notes tied to the client. This field is deprecated, use the text_ version instead.
    * @property {string} s_promotion The description of the type of Purchase Option. This field is deprecated, use the text_ version instead.
+   * @property {Wl_Login_Attendance_AttendanceListModel_a_list_active_sid_book_background} sid_book_background The status of background booking for a multi-session block event. One of the following values:
    * @property {string} text_expire The expiry information for the Purchase Option.
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
@@ -312,6 +320,13 @@ function Wl_Login_Attendance_AttendanceListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Login_Attendance_AttendanceListModel_a_list_confirm_sid_book_background
+   * @property {string} failed A background task exists but has no scheduled date, indicating a failure.
+   * @property {string} none No background task exists. Either all sessions were booked synchronously, or the background task has completed.
+   * @property {string} pending A background task is queued and waiting to be processed.
+   */
+
+  /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListModel_a_list_confirm
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_confirm_a_info} a_info Information about member.
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_confirm_a_photo} a_photo Information about the user's photo. The information returned has the following structure:
@@ -363,6 +378,7 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {string} s_lastname The client's last name. This field is deprecated, use the text_ version instead.
    * @property {string} s_note Any notes tied to the client. This field is deprecated, use the text_ version instead.
    * @property {string} s_promotion The description of the type of Purchase Option. This field is deprecated, use the text_ version instead.
+   * @property {Wl_Login_Attendance_AttendanceListModel_a_list_confirm_sid_book_background} sid_book_background The status of background booking for a multi-session block event. One of the following values:
    * @property {string} text_expire The expiry information for the Purchase Option.
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
@@ -500,6 +516,13 @@ function Wl_Login_Attendance_AttendanceListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Login_Attendance_AttendanceListModel_a_list_wait_sid_book_background
+   * @property {string} failed A background task exists but has no scheduled date, indicating a failure.
+   * @property {string} none No background task exists. Either all sessions were booked synchronously, or the background task has completed.
+   * @property {string} pending A background task is queued and waiting to be processed.
+   */
+
+  /**
    * @typedef {{}} Wl_Login_Attendance_AttendanceListModel_a_list_wait
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_wait_a_info} a_info Information about member.
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_wait_a_photo} a_photo Information about the user's photo. The information returned has the following structure:
@@ -551,6 +574,7 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {string} s_lastname The client's last name. This field is deprecated, use the text_ version instead.
    * @property {string} s_note Any notes tied to the client. This field is deprecated, use the text_ version instead.
    * @property {string} s_promotion The description of the type of Purchase Option. This field is deprecated, use the text_ version instead.
+   * @property {Wl_Login_Attendance_AttendanceListModel_a_list_wait_sid_book_background} sid_book_background The status of background booking for a multi-session block event. One of the following values:
    * @property {string} text_expire The expiry information for the Purchase Option.
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.

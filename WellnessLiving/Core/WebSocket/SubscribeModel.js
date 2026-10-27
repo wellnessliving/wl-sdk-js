@@ -333,6 +333,7 @@ function Core_WebSocket_SubscribeModel()
   /**
    * @typedef {{}} Core_WebSocket_SubscribeModel_a_message_broadcast_K
    * @property {Core_WebSocket_SubscribeModel_a_message_broadcast_K_a_domain_token} a_domain_token List of email domain tokens:
+   * @property {number} i_reset_month Number of resets of the domain that the staff of the business made in its current calendar month.
    * @property {number} id_domain_status Email domain status.
    * @property {string} text_domain_status_icon CSS class for the icon representing the email domain status.
    */

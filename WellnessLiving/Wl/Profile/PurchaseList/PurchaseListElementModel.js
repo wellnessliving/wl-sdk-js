@@ -778,16 +778,6 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.s_promotion_convert = undefined;
 
   /**
-   * The full name of the user who pays for this purchase option instead of its holder.
-   * `null` if the item is not a purchase option, the purchase option is billed to the default payer,
-   * or the payer cannot be resolved.
-   *
-   * @get result
-   * @type {?string}
-   */
-  this.s_promotion_payer = null;
-
-  /**
    * The purchase ID number as it appears on the receipt. This value will also include the leading 0s for the ID number.
    *
    * @get result
@@ -844,6 +834,16 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.text_guest_pass = undefined;
 
   /**
+   * The full name of the user who pays for this purchase option instead of the default payer of its holder.
+   * `null` if the item is not a purchase option, the purchase option is billed to the default payer,
+   * or the payer cannot be resolved.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.text_promotion_payer = null;
+
+  /**
    * The key of the user who paid for this purchase.
    * `null` in a case when there was no money transaction.
    *
@@ -853,8 +853,8 @@ function Wl_Profile_PurchaseList_PurchaseListElementModel()
   this.uid_payer = null;
 
   /**
-   * The key of the user who pays for this purchase option instead of its holder.
-   * `null` under the same conditions as {@link Wl_Profile_PurchaseList_PurchaseListElementModel.s_promotion_payer}.
+   * The key of the user who pays for this purchase option instead of the default payer of its holder.
+   * `null` under the same conditions as {@link Wl_Profile_PurchaseList_PurchaseListElementModel.text_promotion_payer}.
    *
    * @get result
    * @type {?string}
@@ -879,7 +879,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_PurchaseList_PurchaseListElementModel);
  */
 Wl_Profile_PurchaseList_PurchaseListElementModel.prototype.config=function()
 {
-  return {"a_field":{"a_component":{"get":{"result":true}},"a_logo":{"get":{"result":true}},"a_restrict":{"get":{"result":true}},"a_tax":{"get":{"result":true}},"can_renew":{"get":{"result":true}},"dl_cancel":{"get":{"result":true}},"dl_end":{"get":{"result":true}},"dl_purchase":{"get":{"result":true}},"dl_send":{"get":{"result":true}},"dl_start":{"get":{"result":true}},"dt_cancel":{"get":{"result":true}},"dt_hold_end":{"get":{"result":true}},"dt_hold_start":{"get":{"result":true}},"dt_purchase":{"get":{"result":true}},"dt_redeem":{"get":{"result":true}},"f_discount_login_type_percent":{"get":{"result":true}},"html_description":{"get":{"result":true}},"i_book":{"get":{"result":true}},"i_book_duration":{"get":{"result":true}},"i_buy":{"get":{"result":true}},"i_client_cancel_notice_days":{"get":{"result":true}},"i_discount_count":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_image_height":{"get":{"get":true}},"i_image_width":{"get":{"get":true}},"i_left":{"get":{"result":true}},"i_limit":{"get":{"result":true}},"i_payment_period":{"get":{"result":true}},"i_remain":{"get":{"result":true}},"i_remain_duration":{"get":{"result":true}},"i_renew":{"get":{"result":true}},"i_use":{"get":{"result":true}},"i_use_duration":{"get":{"result":true}},"id_activation":{"get":{"result":true}},"id_discount_commission_type":{"get":{"result":true}},"id_duration":{"get":{"result":true}},"id_program_type":{"get":{"result":true}},"id_purchase_item":{"get":{"result":true}},"id_sale":{"get":{"result":true}},"is_active":{"get":{"result":true}},"is_asset":{"get":{"result":true}},"is_cancel_pending":{"get":{"result":true}},"is_client_cancel_allow":{"get":{"result":true}},"is_component":{"get":{"result":true}},"is_convert":{"get":{"result":true}},"is_event":{"get":{"result":true}},"is_expire":{"get":{"result":true}},"is_hold":{"get":{"result":true}},"is_limit":{"get":{"result":true}},"is_login_type_member":{"get":{"result":true}},"is_mail":{"get":{"result":true}},"is_past":{"get":{"result":true}},"is_redeem":{"get":{"result":true}},"is_renew":{"get":{"result":true}},"is_transfer":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_code":{"get":{"get":true}},"k_code_result":{"get":{"result":true}},"k_currency":{"get":{"result":true}},"k_enrollment_book":{"get":{"get":true}},"k_id":{"get":{"result":true}},"k_login_product":{"get":{"get":true}},"k_login_promotion":{"get":{"get":true}},"k_login_promotion_result":{"get":{"result":true}},"k_purchase_item":{"get":{"get":true}},"k_purchase_result":{"get":{"result":true}},"k_session_pass":{"get":{"get":true}},"m_cost_item":{"get":{"result":true}},"m_cost_total":{"get":{"result":true}},"m_discount_amount":{"get":{"result":true}},"m_discount_login_type_amount":{"get":{"result":true}},"m_discount_manual":{"get":{"result":true}},"m_period_price":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_refund":{"get":{"result":true}},"m_terminate_fee":{"get":{"result":true}},"s_code":{"get":{"result":true}},"s_gift_code":{"get":{"result":true}},"s_gift_recipient":{"get":{"result":true}},"s_limit_actor":{"get":{"result":true}},"s_mail":{"get":{"result":true}},"s_message":{"get":{"result":true}},"s_payer":{"get":{"result":true}},"s_promotion_convert":{"get":{"result":true}},"s_promotion_payer":{"get":{"result":true}},"s_purchase":{"get":{"result":true}},"s_recipient":{"get":{"result":true}},"s_sender":{"get":{"result":true}},"s_title":{"get":{"result":true}},"sid_value":{"get":{"result":true}},"text_expire":{"get":{"result":true}},"text_guest_pass":{"get":{"result":true}},"uid_payer":{"get":{"result":true}},"uid_promotion_payer":{"get":{"result":true}},"uid_recipient":{"get":{"result":true}}}};
+  return {"a_field":{"a_component":{"get":{"result":true}},"a_logo":{"get":{"result":true}},"a_restrict":{"get":{"result":true}},"a_tax":{"get":{"result":true}},"can_renew":{"get":{"result":true}},"dl_cancel":{"get":{"result":true}},"dl_end":{"get":{"result":true}},"dl_purchase":{"get":{"result":true}},"dl_send":{"get":{"result":true}},"dl_start":{"get":{"result":true}},"dt_cancel":{"get":{"result":true}},"dt_hold_end":{"get":{"result":true}},"dt_hold_start":{"get":{"result":true}},"dt_purchase":{"get":{"result":true}},"dt_redeem":{"get":{"result":true}},"f_discount_login_type_percent":{"get":{"result":true}},"html_description":{"get":{"result":true}},"i_book":{"get":{"result":true}},"i_book_duration":{"get":{"result":true}},"i_buy":{"get":{"result":true}},"i_client_cancel_notice_days":{"get":{"result":true}},"i_discount_count":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_image_height":{"get":{"get":true}},"i_image_width":{"get":{"get":true}},"i_left":{"get":{"result":true}},"i_limit":{"get":{"result":true}},"i_payment_period":{"get":{"result":true}},"i_remain":{"get":{"result":true}},"i_remain_duration":{"get":{"result":true}},"i_renew":{"get":{"result":true}},"i_use":{"get":{"result":true}},"i_use_duration":{"get":{"result":true}},"id_activation":{"get":{"result":true}},"id_discount_commission_type":{"get":{"result":true}},"id_duration":{"get":{"result":true}},"id_program_type":{"get":{"result":true}},"id_purchase_item":{"get":{"result":true}},"id_sale":{"get":{"result":true}},"is_active":{"get":{"result":true}},"is_asset":{"get":{"result":true}},"is_cancel_pending":{"get":{"result":true}},"is_client_cancel_allow":{"get":{"result":true}},"is_component":{"get":{"result":true}},"is_convert":{"get":{"result":true}},"is_event":{"get":{"result":true}},"is_expire":{"get":{"result":true}},"is_hold":{"get":{"result":true}},"is_limit":{"get":{"result":true}},"is_login_type_member":{"get":{"result":true}},"is_mail":{"get":{"result":true}},"is_past":{"get":{"result":true}},"is_redeem":{"get":{"result":true}},"is_renew":{"get":{"result":true}},"is_transfer":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_code":{"get":{"get":true}},"k_code_result":{"get":{"result":true}},"k_currency":{"get":{"result":true}},"k_enrollment_book":{"get":{"get":true}},"k_id":{"get":{"result":true}},"k_login_product":{"get":{"get":true}},"k_login_promotion":{"get":{"get":true}},"k_login_promotion_result":{"get":{"result":true}},"k_purchase_item":{"get":{"get":true}},"k_purchase_result":{"get":{"result":true}},"k_session_pass":{"get":{"get":true}},"m_cost_item":{"get":{"result":true}},"m_cost_total":{"get":{"result":true}},"m_discount_amount":{"get":{"result":true}},"m_discount_login_type_amount":{"get":{"result":true}},"m_discount_manual":{"get":{"result":true}},"m_period_price":{"get":{"result":true}},"m_price":{"get":{"result":true}},"m_refund":{"get":{"result":true}},"m_terminate_fee":{"get":{"result":true}},"s_code":{"get":{"result":true}},"s_gift_code":{"get":{"result":true}},"s_gift_recipient":{"get":{"result":true}},"s_limit_actor":{"get":{"result":true}},"s_mail":{"get":{"result":true}},"s_message":{"get":{"result":true}},"s_payer":{"get":{"result":true}},"s_promotion_convert":{"get":{"result":true}},"s_purchase":{"get":{"result":true}},"s_recipient":{"get":{"result":true}},"s_sender":{"get":{"result":true}},"s_title":{"get":{"result":true}},"sid_value":{"get":{"result":true}},"text_expire":{"get":{"result":true}},"text_guest_pass":{"get":{"result":true}},"text_promotion_payer":{"get":{"result":true}},"uid_payer":{"get":{"result":true}},"uid_promotion_payer":{"get":{"result":true}},"uid_recipient":{"get":{"result":true}}}};
 };
 
 /**
