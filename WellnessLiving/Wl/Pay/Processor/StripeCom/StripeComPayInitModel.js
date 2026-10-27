@@ -53,7 +53,7 @@ function Wl_Pay_Processor_StripeCom_StripeComPayInitModel()
 
   /**
    * @typedef {{}} Wl_Pay_Processor_StripeCom_StripeComPayInitModel_a_line_item
-   * @property {number|string} i_quantity Quantity, at least `1`. A string of digits is accepted: the values of an API request are strings.
+   * @property {number} i_quantity Quantity, at least `1`. An integer, or a string of digits: the values of an API request are strings.
    * @property {string} m_amount Unit amount. Not negative: a discount is a smaller amount.
    * @property {string} text_name Name of the item.
    */

@@ -9,6 +9,11 @@ function Wl_Pay_Form_Surcharge_SurchargeTenderModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @inheritDoc
+   */
+  this._s_key = "id_pay_method,k_business,k_currency,k_location,k_pay_bank,s_bin";
+
+  /**
    * Payment method the card would be charged with.
    *
    * Must be {@link RsPayMethodSid} or {@link RsPayMethodSid}.
@@ -89,6 +94,19 @@ Wl_Pay_Form_Surcharge_SurchargeTenderModel.prototype.config=function()
 {
   return {"a_field":{"id_pay_method":{"get":{"get":true}},"is_allowed":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_currency":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_pay_bank":{"get":{"get":true}},"s_bin":{"get":{"get":true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Pay_Form_Surcharge_SurchargeTenderModel.instanceGet
+ * @param {?number} id_pay_method Payment method the card would be charged with. Must be {@link RsPayMethodSid} or {@link RsPayMethodSid}.
+ * @param {string} k_business Business key.
+ * @param {string} k_currency Currency key.
+ * @param {string} k_location Location key. `null`/`'0'` to use the system-wide merchant.
+ * @param {?string} k_pay_bank Key of a saved card to preview. Exactly one of {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel.k_pay_bank} and {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel.s_bin} must be set.
+ * @param {?string} s_bin First digits of a newly-typed card number (at least 6). Exactly one of {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel.k_pay_bank} and {@link Thoth_WlPay_Form_Surcharge_SurchargeTenderModel.s_bin} must be set.
+ * @returns {Wl_Pay_Form_Surcharge_SurchargeTenderModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */
 
 /**
  * Previews whether a surcharge is allowed for a card.

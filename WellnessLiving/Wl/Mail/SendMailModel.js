@@ -1566,7 +1566,7 @@ function Wl_Mail_SendMailModel()
    * @property {string} k_pay_installment Installment that purchase belongs to.
    * @property {string} k_purchase Purchase key.
    * @property {string} m_amount An amount which was debit from a client account.
-   * @property {string} uid_money Money owner of the account debit. Used together with `k_login_promotion` or `k_pay_installment`: the email is sent to this user. If not set, the email is sent to the payer of the purchase option, see PayerMail.
+   * @property {string} uid_money Money owner of the account debit. Used together with `k_login_promotion` or `k_pay_installment`: the email is sent to this user. If not set, the email is sent to the payer of the purchase option.
    */
 
   /**
@@ -1753,13 +1753,8 @@ function Wl_Mail_SendMailModel()
    */
 
   /**
-   * @typedef {{}} Wl_Mail_SendMailModel_a_data_157_a_id
-   * @property {string} k_login_promotion Login promotion key.
-   */
-
-  /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_157
-   * @property {Wl_Mail_SendMailModel_a_data_157_a_id} a_id Optional. List of keys of login promotions (legacy automation). If not set, `i_id` is used instead.
+   * @property {string[]} a_id List of keys of login promotions (legacy automation). If not set, `i_id` is used instead.
    * @property {string} dl_end Optional. Local end date for new automation trigger. The new automation is used only when this key and `uid` are both not empty; otherwise the legacy automation is used.
    * @property {string} dt_end End date of the client login promotion. This key is not read by the method.
    * @property {number} i_delay Delay of mail pattern. For new automation it is replaced with the delay of the mail pattern `k_mail_pattern`, if that pattern is an automated one.
@@ -1778,7 +1773,7 @@ function Wl_Mail_SendMailModel()
    * @property {string} k_currency Currency ID.
    * @property {string} k_login_promotion ID of the purchased membership. If `k_pay_installment` not specified then this field is required otherwise is should not be specified.
    * @property {string} k_pay_installment ID of an installment plan to charge for. If `k_login_promotion` not specified then this field is required otherwise is should not be specified.
-   * @property {string} uid_money Money owner of the charge. The e-mail is sent to this user. If not set, the e-mail is sent to the payer of the purchase option, see PayerMail.
+   * @property {string} uid_money Money owner of the charge. The e-mail is sent to this user. If not set, the e-mail is sent to the payer of the purchase option.
    */
 
   /**
@@ -1789,15 +1784,15 @@ function Wl_Mail_SendMailModel()
    * @property {?string} k_promotion Optional. ID of the purchase option to be converted in, if this is a conversion. `null`, if this is not a conversion. Used only together with `k_login_promotion`.
    * @property {{}} o_pay_amount Payment amount.
    * @property {string} s_message Error messages that occurred while payment.
-   * @property {string} uid_money Optional. Money owner of the charge. The e-mail is sent to this user. If not set, the e-mail is sent to the payer of the purchase option, see PayerMail.
+   * @property {string} uid_money Optional. Money owner of the charge. The e-mail is sent to this user. If not set, the e-mail is sent to the payer of the purchase option.
    */
 
   /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_160
-   * @property {number} dt_date Due date.
+   * @property {string} dt_date Due date.
    * @property {string} k_login_promotion ID of the purchased membership.
    * @property {{}} o_pay_amount Payment amount.
-   * @property {string} uid_money Optional. Money owner of the charge. The e-mail is sent to this user. If not set, the e-mail is sent to the payer of the purchase option, see PayerMail.
+   * @property {string} uid_money Optional. Money owner of the charge. The e-mail is sent to this user. If not set, the e-mail is sent to the payer of the purchase option.
    */
 
   /**
@@ -2016,7 +2011,7 @@ function Wl_Mail_SendMailModel()
 
   /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_189
-   * @property {string} dt_agree Optional. Date and time when the user agreed to the contract, in MySQL format. If it is not set or empty, the current contract text of the business is used and the e-mail is built without an agreement date. If it is set and the user has no agreement at this date, nothing is sent.
+   * @property {string} dt_agree Date and time when the user agreed to the contract, in UTC, in MySQL format. It must exactly match the date of an agreement of the user. If it is not set or empty, the current contract text of the business is used and the e-mail is built without an agreement date. If the user has no agreement at exactly this date, nothing is sent.
    * @property {string} k_business Business ID.
    * @property {string} uid User ID.
    */

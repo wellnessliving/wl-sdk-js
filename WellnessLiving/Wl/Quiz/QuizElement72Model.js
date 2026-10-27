@@ -684,6 +684,16 @@ function Wl_Quiz_QuizElement72Model()
   this.k_quiz_login = "";
 
   /**
+   * Secret key of the quiz request given in {@link Wl_Quiz_QuizElement72Model.k_quiz_login}.
+   *
+   * Required when the quiz request is opened by a user who is not signed in, empty otherwise.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.s_secret = "";
+
+  /**
    * Whether to show numbering of the form elements that supports numbering.
    *
    * `true` to show numbering on the form for elements that supports numbering.
@@ -740,7 +750,7 @@ WlSdk_ModelAbstract.extend(Wl_Quiz_QuizElement72Model);
  */
 Wl_Quiz_QuizElement72Model.prototype.config=function()
 {
-  return {"a_field":{"a_access_log":{"get":{"result":true}},"a_element":{"get":{"result":true},"post":{"post":true}},"a_setting":{"get":{"result":true},"post":{"post":true},"put":{"result":true}},"can_amend":{"get":{"result":true}},"can_anonymous":{"get":{"get":true},"post":{"get":true}},"i_responses":{"get":{"result":true}},"is_active":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_builder":{"get":{"get":true}},"is_imported":{"get":{"result":true}},"is_prevent_franchisee":{"get":{"result":true}},"is_simple":{"get":{"get":true},"post":{"get":true}},"json_element":{"post":{"post":true}},"json_purchase_item":{"get":{"get":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_business_type":{"get":{"result":true},"post":{"post":true}},"k_quiz":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"k_quiz_login":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"show_numbering":{"get":{"result":true},"post":{"post":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"uid_client":{"get":{"get":true}},"url_quiz":{"get":{"result":true},"put":{"result":true}},"url_quiz_kiosk":{"get":{"result":true},"put":{"result":true}}}};
+  return {"a_field":{"a_access_log":{"get":{"result":true}},"a_element":{"get":{"result":true},"post":{"post":true}},"a_setting":{"get":{"result":true},"post":{"post":true},"put":{"result":true}},"can_amend":{"get":{"result":true}},"can_anonymous":{"get":{"get":true},"post":{"get":true}},"i_responses":{"get":{"result":true}},"is_active":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_builder":{"get":{"get":true}},"is_imported":{"get":{"result":true}},"is_prevent_franchisee":{"get":{"result":true}},"is_simple":{"get":{"get":true},"post":{"get":true}},"json_element":{"post":{"post":true}},"json_purchase_item":{"get":{"get":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_business_type":{"get":{"result":true},"post":{"post":true}},"k_quiz":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"k_quiz_login":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"s_secret":{"get":{"get":true}},"show_numbering":{"get":{"result":true},"post":{"post":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"uid_client":{"get":{"get":true}},"url_quiz":{"get":{"result":true},"put":{"result":true}},"url_quiz_kiosk":{"get":{"result":true},"put":{"result":true}}}};
 };
 
 /**
