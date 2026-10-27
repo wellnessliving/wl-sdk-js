@@ -16,36 +16,151 @@ function Wl_Quiz_QuizElement72Model()
   this._s_key = "k_business,k_quiz,k_quiz_login,uid_client,json_purchase_item";
 
   /**
+   * @typedef {{}} Wl_Quiz_QuizElement72Model_a_access_log
+   * @property {string} dtu_activity Date and time of the quiz changes.
+   * @property {string} uid_actor User's key.
+   * @property {number} id_activity One of {@link Wl_Quiz_Activity_ActivitySid} constants.
+   * @property {string} text_activity Title of the activity
+   * @property {string} text_date Date and time of the quiz changes in appropriate format string for further render.
+   * @property {string} text_actor Full name of the user who made an activity.
+   * @property {string} url_actor Url for view information about the user who made activity (admin, staff, client).
+   */
+
+  /**
    * Access log data.
    *
    * @get result
-   * @type {*}
+   * @type {Wl_Quiz_QuizElement72Model_a_access_log[]}
    */
   this.a_access_log = [];
 
   /**
+   * @typedef {{}} Wl_Quiz_QuizElement72Model_a_element_a_amendment_a_change
+   * @property {string} text_note Change note.
+   */
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElement72Model_a_element_a_amendment
+   * @property {Wl_Quiz_QuizElement72Model_a_element_a_amendment_a_change} a_change Information about amend.
+   * @property {string} dtu_action Date/time when amend made.
+   * @property {string} text_actor Name of the amend actor.
+   * @property {string} text_datetime Date/time when amend made in textual view.
+   * @property {string} uid_actor UID of the amend actor.
+   */
+  /**
+   * @typedef {{}} Wl_Quiz_QuizElement72Model_a_element
+   * @property {Wl_Quiz_QuizElement72Model_a_element_a_amendment[]} a_amendment List of amendments.
+   * Each element has next structure:
+   * @property {number[]} a_answer Answer array for selected question options.
+   * @property {string[]} a_list Array for a dropdown question's options.
+   * @property {string} html_description Additional string for detail description of the question.
+   * @property {string} html_question Main html of the input question.
+   * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
+   *
+   * Defined automatically according to the name of the class.
+   * @property {boolean} is_multiple Answer can have multiple options selected.
+   * @property {boolean} is_require
+   * @property {?string} [k_quiz_element] Quiz element key.
+   *
+   * `null` in a case if element is not saved in database.
+   * @property {?string} k_quiz_element_old Old quiz element key.
+   *
+   * `null` in a case if element is not has old version.
+   * @property {string} text_description Additional string for detail description of the question.
+   * @property {?string} text_note Additional note for response.
+   *
+   * `null` if no notes considered.
+   * @property {string} text_question Main text of the input question.
+   * @property {string} xml_description Additional XML for detail description of the question.
+   * @property {string} xml_question Main XML of the input question.
+   */
+
+  /**
    * List of quiz elements.
    *
-   * Each element responsible for one quiz question and contains array representation of individual question.
-   * Structure of each value depend on type of element and contains public arguments of responsible class element.
+   * Each element responsible for one quiz element and structure of each value depend
+   * on type of element and contains public arguments of responsible class element.
    *
    * Order of the elements in array corresponds to order of elements on the form.
    *
    * @get result
    * @post post
-   * @type {{}}
+   * @type {Wl_Quiz_QuizElement72Model_a_element[]}
    */
   this.a_element = [];
 
   /**
-   * Quiz settings. Array representation of {@link Wl_Quiz_QuizElementModel.o_setting}.
+   * @typedef {{}} Wl_Quiz_QuizElement72Model_a_setting
+   * @property {string[]} a_notify_additional List of additional email addresses which should receive email notification after quiz is submitted.
+   *
+   * Considered only if {@link \Wl\Quiz\QuizSetting::$is_notify_additional} is `true`.
+   * @property {string[][]} a_service List of services grouped by service ID.
+   *
+   * Key is service ID. One of {@link Wl_Quiz_Service_ServiceSid} constants.
+   * Values is list of services.
+   * @property {boolean} hide_frontend Whether completed forms should be hidden for client in frontend.
+   * @property {number|string} i_notify_automated Number of periods email reminders should be sent for incomplete forms after. Type of a period is specified by
+   *   {@link \Wl\Quiz\QuizSetting::$id_notify_automated}.
+   *
+   *
+   * @property {number} id_book_request_type Whether response is required every time they book service.
+   *
+   * Considered only if {@link \Wl\Quiz\QuizSetting::$is_book} is `true`.
+   * @property {number} id_notify_automated Time interval ID. One of {@link ADurationSid} constants.
+   * @property {number} id_purchase_request_type Whether response is required every time they purchase service.
+   *
+   * Considered only if {@link \Wl\Quiz\QuizSetting::$is_purchase} is `true`.
+   * @property {boolean} is_amend_support Whether form support amending responses.
+   * @property {boolean} is_book Whether quiz is required during/after book service selected in {@link \Wl\Quiz\QuizSetting::$a_service} list.
+   * * Related to options:
+   * * * {@link \Wl\Quiz\QuizSetting::$is_service_all}
+   * * * {@link \Wl\Quiz\QuizSetting::$is_book_before}
+   * * * {@link \Wl\Quiz\QuizSetting::$id_book_request_type}
+   * @property {boolean} is_book_before Whether quiz is required during booking process.
+   *
+   * Considered only if {@link \Wl\Quiz\QuizSetting::$is_book} is `true`.
+   * @property {boolean} is_internal Whether form can be required for clients.
+   * Internal forms can be only added to client profiles or filled by direct link,
+   *  but they don't prevent clients to perform any actions until form filled.
+   *  `true` if form can be visible to clients
+   *  `false` otherwise
+   * @property {boolean} is_notify_additional Whether email notification should be sent to specific email addresses after quiz is submitted.
+   *
+   * List of email addresses stored in {@link \Wl\Quiz\QuizSetting::$a_notify_additional}.
+   * @property {boolean} is_notify_automated Whether email reminders should be sent for incomplete forms.
+   * @property {boolean} is_notify_client Whether email notification should be sent to client after quiz submitted.
+   * @property {boolean} is_notify_staff Whether email notification should be sent to staff members after quiz is submitted.
+   * @property {boolean} is_prevent_franchisee Whether form can be edited by franchisee.
+   * `true` prevent franchisees from editing this form, `false` - otherwise.
+   * @property {boolean} is_private Whether form can be viewed by staff member only after confirmation.
+   * `true` if form can be viewed only after confirmation
+   * `false` if form can be viewed always
+   * @property {boolean} is_purchase Whether quiz is required during/after purchase service selected in {@link \Wl\Quiz\QuizSetting::$a_service} list.
+   * Related to options:
+   * * {@link \Wl\Quiz\QuizSetting::$is_purchase_all}
+   * * {@link \Wl\Quiz\QuizSetting::$is_purchase_before}
+   * * {@link \Wl\Quiz\QuizSetting::$id_purchase_request_type}
+   * @property {boolean} is_purchase_all Whether all services for purchase should be added in {@link \Wl\Quiz\QuizSetting::$a_service}.
+   * @property {boolean} is_purchase_before Whether quiz is required during purchase process.
+   *
+   * Considered only if {@link \Wl\Quiz\QuizSetting::$is_purchase} is `true`.
+   * @property {boolean} is_register_after Whether quiz is required after registration process.
+   * @property {boolean} is_register_before Whether quiz is required during registration process.
+   *
+   * Considered only if {@link \Wl\Quiz\QuizSetting::$is_register_after} is `true`.
+   * @property {boolean} is_require_user Whether client should be redirected to sign-in page before completing the form.
+   * @property {boolean} is_service_all Whether all services for booking should be added in {@link \Wl\Quiz\QuizSetting::$a_service}.
+   */
+
+  /**
+   * Quiz settings.
+   *
    *
    * @get result
    * @post post
    * @put result
-   * @type {{}}
+   * @type {Wl_Quiz_QuizElement72Model_a_setting}
    */
-  this.a_setting = [];
+  this.a_setting = {};
 
   /**
    * Whether user has privileges to amend form.
@@ -141,21 +256,7 @@ function Wl_Quiz_QuizElement72Model()
    * This variable supports two structures:
    *
    * New structure:
-   * Each element key has the format `[id_purchase_item]::[k_id]`, where: <dl>
-   *   <dt>int <var>id_purchase_item</var></dt>
-   *   <dd>The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>
-   *   <dt>string <var>k_id</var></dt>
-   *   <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd>
-   * </dl>
-   * Each element value has the format:
-   * <dl>
-   *   <dt>int <var>[i_duration]</var></dt>
-   *   <dd>Duration of the purchase option.</dd>
-   *   <dt>int <var>[i_payment_period]</var></dt>
-   *   <dd>Payment period for the purchase option.</dd>
-   *   <dt>int <var>[id_duration]</var></dt>
-   *   <dd>Duration type, one of {@link RsDurationTypeSid} constants.</dd>
-   * </dl>
+   * Each element key has the format `[id_purchase_item]::[k_id]`, where:
    *
    * Old structure:
    * Each element is a string in the format `[id_purchase_item]::[k_id]`.
@@ -210,6 +311,16 @@ function Wl_Quiz_QuizElement72Model()
    * @type {string}
    */
   this.k_quiz_login = "";
+
+  /**
+   * Secret key of the quiz request given in {@link Wl_Quiz_QuizElement72Model.k_quiz_login}.
+   *
+   * Required when the quiz request is opened by a user who is not signed in, empty otherwise.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.s_secret = "";
 
   /**
    * Whether to show numbering of the form elements that supports numbering.
@@ -268,7 +379,7 @@ WlSdk_ModelAbstract.extend(Wl_Quiz_QuizElement72Model);
  */
 Wl_Quiz_QuizElement72Model.prototype.config=function()
 {
-  return {"a_field": {"a_access_log": {"get": {"result": true}},"a_element": {"get": {"result": true},"post": {"post": true}},"a_setting": {"get": {"result": true},"post": {"post": true},"put": {"result": true}},"can_amend": {"get": {"result": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"i_responses": {"get": {"result": true}},"is_active": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"is_builder": {"get": {"get": true}},"is_imported": {"get": {"result": true}},"is_prevent_franchisee": {"get": {"result": true}},"is_simple": {"get": {"get": true},"post": {"get": true}},"json_element": {"post": {"post": true}},"json_purchase_item": {"get": {"get": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business_type": {"get": {"result": true},"post": {"post": true}},"k_quiz": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"k_quiz_login": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"show_numbering": {"get": {"result": true},"post": {"post": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"uid_client": {"get": {"get": true}},"url_quiz": {"get": {"result": true},"put": {"result": true}},"url_quiz_kiosk": {"get": {"result": true},"put": {"result": true}}}};
+  return {"a_field": {"a_access_log": {"get": {"result": true}},"a_element": {"get": {"result": true},"post": {"post": true}},"a_setting": {"get": {"result": true},"post": {"post": true},"put": {"result": true}},"can_amend": {"get": {"result": true}},"can_anonymous": {"get": {"get": true},"post": {"get": true}},"i_responses": {"get": {"result": true}},"is_active": {"get": {"result": true},"post": {"post": true},"put": {"post": true}},"is_builder": {"get": {"get": true}},"is_imported": {"get": {"result": true}},"is_prevent_franchisee": {"get": {"result": true}},"is_simple": {"get": {"get": true},"post": {"get": true}},"json_element": {"post": {"post": true}},"json_purchase_item": {"get": {"get": true}},"k_business": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"k_business_type": {"get": {"result": true},"post": {"post": true}},"k_quiz": {"delete": {"get": true},"get": {"get": true},"post": {"get": true,"result": true},"put": {"get": true}},"k_quiz_login": {"delete": {"get": true},"get": {"get": true},"post": {"get": true},"put": {"get": true}},"s_secret": {"get": {"get": true}},"show_numbering": {"get": {"result": true},"post": {"post": true}},"text_title": {"get": {"result": true},"post": {"post": true}},"uid_client": {"get": {"get": true}},"url_quiz": {"get": {"result": true},"put": {"result": true}},"url_quiz_kiosk": {"get": {"result": true},"put": {"result": true}}}};
 };
 
 /**
@@ -278,7 +389,7 @@ Wl_Quiz_QuizElement72Model.prototype.config=function()
  * @param {string} k_quiz Quiz key.
  * @param {string} k_quiz_login Quiz login key.
  * @param {string} uid_client UID of the client for which quiz requested.
- * @param {string} json_purchase_item List of purchase items for which this form is loaded in JSON format. This variable supports two structures: New structure: Each element key has the format `[id_purchase_item]::[k_id]`, where: <dl>  <dt>int <var>id_purchase_item</var></dt>  <dd>The ID of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.</dd>  <dt>string <var>k_id</var></dt>  <dd>The item key. This depends on <var>id_purchase_item</var> of this array.</dd> </dl> Each element value has the format: <dl>  <dt>int <var>[i_duration]</var></dt>  <dd>Duration of the purchase option.</dd>  <dt>int <var>[i_payment_period]</var></dt>  <dd>Payment period for the purchase option.</dd>  <dt>int <var>[id_duration]</var></dt>  <dd>Duration type, one of {@link RsDurationTypeSid} constants.</dd> </dl> Old structure: Each element is a string in the format `[id_purchase_item]::[k_id]`. Empty in case when purchase item not specified or form loaded from direct link.
+ * @param {string} json_purchase_item List of purchase items for which this form is loaded in JSON format. This variable supports two structures: New structure: Each element key has the format `[id_purchase_item]::[k_id]`, where:  Old structure: Each element is a string in the format `[id_purchase_item]::[k_id]`. Empty in case when purchase item not specified or form loaded from direct link.
  * @returns {Wl_Quiz_QuizElement72Model}
  * @see WlSdk_ModelAbstract.instanceGet()
  */
