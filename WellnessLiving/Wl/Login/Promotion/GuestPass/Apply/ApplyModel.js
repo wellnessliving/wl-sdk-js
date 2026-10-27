@@ -27,6 +27,17 @@ function Wl_Login_Promotion_GuestPass_Apply_ApplyModel()
   this.a_login_promotion = undefined;
 
   /**
+   * The source of the visit change.
+   * One of the {@link Wl_Mode_ModeSid} constants.
+   * If you're unsure about the value to use, keep the default value `null`: the source is detected automatically.
+   *
+   * @post post
+   * @see Wl_Mode_ModeSid
+   * @type {?number}
+   */
+  this.id_mode = null;
+
+  /**
    * Business key.
    *
    * @get get
@@ -80,7 +91,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Promotion_GuestPass_Apply_ApplyModel);
  */
 Wl_Login_Promotion_GuestPass_Apply_ApplyModel.prototype.config=function()
 {
-  return {"a_field":{"a_login_promotion":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_visit":{"post":{"post":true}},"k_visit_search":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
+  return {"a_field":{"a_login_promotion":{"get":{"result":true}},"id_mode":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_login_promotion":{"post":{"post":true}},"k_visit":{"post":{"post":true}},"k_visit_search":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
 };
 
 /**
