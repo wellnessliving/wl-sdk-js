@@ -165,7 +165,7 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
    * @post post,result
    * @type {string}
    */
-  this.s_version = "";
+  this.s_code_version = "";
 
   /**
    * Reason of the change, for example when the codes are changed after the receipt has been sent to the client.
@@ -222,7 +222,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Billing_Code_VisitBillingCodeAssignModel);
  */
 Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
 {
-  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"a_void":{"get":{"result":true}},"dtu_lock":{"get":{"result":true}},"is_locked":{"get":{"result":true}},"is_receipt_sent":{"get":{"result":true}},"is_signature":{"get":{"result":true}},"is_system":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}},"text_staff_name_lock":{"get":{"result":true}},"uid_staff_lock":{"get":{"result":true}}}};
+  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"a_void":{"get":{"result":true}},"dtu_lock":{"get":{"result":true}},"is_locked":{"get":{"result":true}},"is_receipt_sent":{"get":{"result":true}},"is_signature":{"get":{"result":true}},"is_system":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_code_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}},"text_staff_name_lock":{"get":{"result":true}},"uid_staff_lock":{"get":{"result":true}}}};
 };
 
 /**
@@ -239,7 +239,7 @@ Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
  *
  * A staff member who can not assign billing codes gets the custom codes only, without the diagnostic codes and
  * without the history. The answer carries the version of the codes, which must be posted back to change them,
- * see {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.s_version}.
+ * see {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.s_code_version}.
  *
  * @function
  * @name Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.get
@@ -259,7 +259,7 @@ Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
  *
  * The version of the codes the list is made from is posted together with the list: if another staff member has
  * changed the codes in the meantime, the post is rejected with the error `code-version-outdated` instead of
- * overwriting that change, see {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.s_version}.
+ * overwriting that change, see {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.s_code_version}.
  *
  * @function
  * @name Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.post

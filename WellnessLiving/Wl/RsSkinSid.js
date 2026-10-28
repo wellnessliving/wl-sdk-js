@@ -3,7 +3,7 @@
  *
  *
  *
- * Last used ID: 21.
+ * Last used ID: 23.
  */
 function RsSkinSid()
 {
@@ -51,6 +51,13 @@ RsSkinSid.CATALOG_FOREIGN = 21;
  * @type {number}
  */
 RsSkinSid.ENROLLMENT = 8;
+
+/**
+ * Event widget built by microservice widget team.
+ *
+ * @type {number}
+ */
+RsSkinSid.EVENT_FOREIGN = 23;
 
 /**
  * Fitbuilder widget.
