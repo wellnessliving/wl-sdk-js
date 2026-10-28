@@ -123,8 +123,16 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    */
 
   /**
+   * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_ticket_list
+   * @property {string} text_number The number of the ticket.
+   * @property {string} text_title The title of the event the ticket is for.
+   * @property {string} url_print The URL of the page to print the ticket. The page works without a login.
+   */
+
+  /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item
    * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo} a_logo The purchase item logo.
+   * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_ticket_list} a_ticket_list The tickets of the purchase item. Only available if the purchase item is a ticket. Every element has the following keys:
    * @property {string[]} a_visit List of visit keys. Only available if the purchase item is a class period, enrollment, enrollment deposit, or enrollment discount. Each element is a string visit key.
    * @property {number} i_count The number of items in the purchase.
    * @property {number} id_program Program ID. One of {@link RsProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion.
@@ -140,7 +148,8 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @property {string} text_description The description of the purchase item.
    * @property {string} text_info Additional information about the purchase item.
    * @property {string} text_title The name of the purchase item.
-   * @property {string} url_print The URL to print. Only available if the purchase item is a coupon (gift card).
+   * @property {string} url_print The URL to print. Only available if the purchase item is a coupon (gift card) or a ticket. For a ticket it is the page to print all the tickets of the purchase item, one ticket on a page. It is empty if the purchase item has no tickets.
+   * @property {string} url_ticket_view The URL of the page with the tickets of the order. The page works without a login. Only available if the purchase item is a ticket. Empty if the purchase item has no tickets.
    */
 
   /**
