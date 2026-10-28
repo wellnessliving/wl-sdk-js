@@ -1,7 +1,7 @@
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 253.
+ * Last Used ID: 254.
  */
 function Wl_Privilege_PrivilegeSid()
 {
@@ -994,6 +994,16 @@ Wl_Privilege_PrivilegeSid.NOTIFICATION_STAFF_CALLBACK_REQUEST = 216;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.OVERRIDE_FEE = 164;
+
+/**
+ * Override make-up passes.
+ *
+ * Allows a staff member to choose whether a make-up pass is issued when cancelling a visit for a client.
+ * Without this privilege the Make-up Passes policy of the business applies as it is set.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.OVERRIDE_MAKEUP_PASS = 254;
 
 /**
  * Manage partner program.
