@@ -51,7 +51,10 @@ function Wl_Login_Member_MemberValidate63Model()
    */
 
   /**
-   * List of profile fields that are required but empty for this user.
+   * List of profile fields that are required at any client entry point but empty for this user.
+   *
+   * A field appears here when it is required at any of: client edits profile, sign-up, booking, purchase,
+   * guest, or relationship.
    *
    * @get result
    * @type {Wl_Login_Member_MemberValidate63Model_a_empty_fields_required[]}
