@@ -19,6 +19,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_a_provider_a_product} a_product The add-on list. Keys are add-on option keys.  Values are quantities:
    * @property {string} dl_client_prorate Client prorate date. Used when the purchased promotion is prorated.
    * @property {number} i_duration The asset duration in minutes. This won't be empty for asset bookings.
+   * @property {number} i_provider_parent Set it if the entry is an appointment add-on of another appointment. It is the index of the entry of the appointment in this list, counted from `0`. The appointment must be before the add-on in the list and must not be an add-on itself. The price of the add-on is Extra cost of the add-on for the appointment, which is taken from the settings of the add-ons and is never read from the request. Specify this for appointment add-ons only.
    * @property {number} id_purchase_item The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants. This won't be empty for new options purchased.
    * @property {boolean} is_pay_later This will be `true` if the customer wants to pay upon their visit. Otherwise, this will be `false` if the user wants to pay now.
    * @property {boolean} is_purchase_previous This will be `true` if the Purchase Option that was selected for another appointment from the batch must be used for this appointment. Otherwise, this will be `false`.
@@ -61,6 +62,7 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @property {Wl_Appointment_Book_Payment_PaymentMultipleModel_a_book_data_post_a_provider_a_product} a_product The add-on list. Keys are add-on option keys.  Values are quantities:
    * @property {string} dl_client_prorate Client prorate date. Used when the purchased promotion is prorated.
    * @property {number} i_duration The asset duration in minutes. This won't be empty for asset bookings.
+   * @property {number} i_provider_parent Set it if the entry is an appointment add-on of another appointment. It is the index of the entry of the appointment in this list, counted from `0`. The appointment must be before the add-on in the list and must not be an add-on itself. The price of the add-on is Extra cost of the add-on for the appointment, which is taken from the settings of the add-ons and is never read from the request. Specify this for appointment add-ons only.
    * @property {number} id_purchase_item The ID of the purchase item. One of the {@link RsPurchaseItemSid} constants. This won't be empty for new options purchased.
    * @property {boolean} is_pay_later This will be `true` if the customer wants to pay upon their visit. Otherwise, this will be `false` if the user wants to pay now.
    * @property {boolean} is_purchase_previous This will be `true` if the Purchase Option that was selected for another appointment from the batch must be used for this appointment. Otherwise, this will be `false`.

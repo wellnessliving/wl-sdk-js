@@ -75,6 +75,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * @property {string} dt_date The date/time for the booking in MySQL format in the location's time zone.
    * @property {number} i_duration The duration for the asset booking in minutes. Specify this for separate asset bookings only.
    * @property {number} i_index The asset index on the layout. Specify this for separate asset bookings only and for cases when the asset category only has the layout.
+   * @property {number} i_provider_parent Set it if the entry is an appointment add-on of another appointment. It is the index of the entry of the appointment in this list, counted from `0`. The appointment must be before the add-on in the list and must not be an add-on itself. The add-ons of an appointment follow it in the list, in the order of the add-ons of the appointment, and have the same client and the same staff member, and the start time of every add-on is the end of the entry before it. The add-ons do not work for a recurring booking, an asset, the back-to-back booking and the wait list. Specify this for appointment add-ons only.
    * @property {number} id_gender_staff The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants. Specify this for appointment bookings only.
    * @property {number} id_purchase_item Type of the purchase item. One of the {@link RsPurchaseItemSid} constants.
    * @property {boolean} is_unpaid_force If `true`, the appointment is booked as unpaid. Otherwise, this will be `false` to select an available Purchase Option.
