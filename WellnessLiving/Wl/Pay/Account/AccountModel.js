@@ -19,6 +19,7 @@ function Wl_Pay_Account_AccountModel()
    * @property {string} k_currency Key of account currency.
    * @property {?string} k_pay_account ID of payment account.  `null` if this is a user account based on system payment method.
    * @property {?string} k_pay_method ID of custom payment method. `null` if this is a user account based on system payment method.
+   * @property {string} m_pending Total amount of pending ACH payments for this account. `'0.00'` when there are no pending payments.
    * @property {string} m_rest Account balance.
    * @property {?string} s_method Name of a custom payment method. `null` if this is a user account based on system payment method.
    */
