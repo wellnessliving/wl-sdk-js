@@ -1,7 +1,7 @@
 /**
  * Manages identifiers of user activity.
  *
- * Last ID: 63.
+ * Last ID: 64.
  */
 function RsLoginActivityTypeSid()
 {
@@ -35,6 +35,13 @@ RsLoginActivityTypeSid.APPOINTMENT_BOOK_TWITTER = 48;
  * @type {number}
  */
 RsLoginActivityTypeSid.APPOINTMENT_CANCEL = 28;
+
+/**
+ * The phone number of a Phone Call appointment was set or changed.
+ *
+ * @type {number}
+ */
+RsLoginActivityTypeSid.APPOINTMENT_PHONE_CHANGE = 64;
 
 /**
  * Client attends an appointment.
