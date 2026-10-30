@@ -269,6 +269,76 @@ function Wl_Classes_Editor_ClassEditorModel()
   this.a_url = undefined;
 
   /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_url_book
+   * @property {string} url_book URL to book the event.
+   */
+
+  /**
+   * Direct booking URLs of the event, one per Book Now Tab it is shown in.
+   *
+   * Empty for a new event and for a ticketed event, which has a booking URL per instance instead
+   * ({@link Wl_Classes_Editor_ClassEditorModel.a_url_ticket}). Every element:
+   *
+   * @get result
+   * @type {Wl_Classes_Editor_ClassEditorModel_a_url_book[]}
+   */
+  this.a_url_book = undefined;
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_url_catalog
+   * @property {string} html_end_local End date of the instance, ready to be shown.
+   * @property {string} html_start_local Start date of the instance, ready to be shown.
+   * @property {string} url_catalog URL of the page of the instance in the store.
+   * @property {string} url_checkout URL of the checkout of the instance.
+   */
+
+  /**
+   * Direct detail and checkout URLs of the event, one per instance of the event that has not ended.
+   *
+   * Empty for a new event, for an event outside a block, for an event sold only with purchase options and for an
+   * event with no such instances. Every element:
+   *
+   * @get result
+   * @type {Wl_Classes_Editor_ClassEditorModel_a_url_catalog[]}
+   */
+  this.a_url_catalog = undefined;
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_url_scan
+   * @property {string} html_end_local End date of the instance, ready to be shown.
+   * @property {string} html_start_local Start date of the instance, ready to be shown.
+   * @property {string} url_scan URL of the page of the ticket scanner for the instance.
+   */
+
+  /**
+   * Direct scanner URLs of a ticketed event, one per instance in {@link Wl_Classes_Editor_ClassEditorModel.a_url_catalog}.
+   *
+   * Empty for an event that is not ticketed. Every element:
+   *
+   * @get result
+   * @type {Wl_Classes_Editor_ClassEditorModel_a_url_scan[]}
+   */
+  this.a_url_scan = undefined;
+
+  /**
+   * @typedef {{}} Wl_Classes_Editor_ClassEditorModel_a_url_ticket
+   * @property {string} html_end_local End date of the instance, ready to be shown.
+   * @property {string} html_start_local Start date of the instance, ready to be shown.
+   * @property {string} url_book URL to buy tickets for the instance.
+   */
+
+  /**
+   * Direct booking URLs of a ticketed event, one per instance in {@link Wl_Classes_Editor_ClassEditorModel.a_url_catalog} and per
+   * Book Now Tab the event is shown in.
+   *
+   * Empty for an event that is not ticketed. Every element:
+   *
+   * @get result
+   * @type {Wl_Classes_Editor_ClassEditorModel_a_url_ticket[]}
+   */
+  this.a_url_ticket = undefined;
+
+  /**
    * `true` if the class has a schedule, so it may not be removed until the schedule is cancelled; `false` otherwise
    * and for a new class.
    *
@@ -482,7 +552,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Editor_ClassEditorModel);
  */
 Wl_Classes_Editor_ClassEditorModel.prototype.config=function()
 {
-  return {"a_field":{"a_class":{"get":{"result":true},"post":{"post":true}},"a_class_tab_list":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_replace_available":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_url":{"get":{"result":true}},"has_schedule":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"i_description_limit_virtual":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_currency_before":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"get":true},"post":{"get":true}},"k_class_save":{"post":{"result":true}},"text_currency":{"get":{"result":true}}}};
+  return {"a_field":{"a_class":{"get":{"result":true},"post":{"post":true}},"a_class_tab_list":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_replace_available":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_url":{"get":{"result":true}},"a_url_book":{"get":{"result":true}},"a_url_catalog":{"get":{"result":true}},"a_url_scan":{"get":{"result":true}},"a_url_ticket":{"get":{"result":true}},"has_schedule":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"i_description_limit_virtual":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_currency_before":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"get":true},"post":{"get":true}},"k_class_save":{"post":{"result":true}},"text_currency":{"get":{"result":true}}}};
 };
 
 /**
