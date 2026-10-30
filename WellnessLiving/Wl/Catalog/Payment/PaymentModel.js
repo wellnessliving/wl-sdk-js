@@ -347,6 +347,28 @@ function Wl_Catalog_Payment_PaymentModel()
    */
   this.uid = "";
 
+  /**
+   * The key of the payor (optional). Primary key in  table.
+   *
+   * When non-empty, the payor becomes the money owner of the sale and is charged instead of the client. The client
+   * ({@link Wl_Catalog_Payment_PaymentModel.uid}) stays the holder of the purchased items.
+   *
+   * Empty string (the default) means the client's default payer is charged, which is the normal behaviour.
+   *
+   * Only staff ({@link Wl_Catalog_Payment_PaymentModel.is_staff} `true`, {@link Wl_Catalog_Payment_PaymentModel.is_guest} `false`) may set this field.
+   * A non-staff caller receives `payor-staff`.
+   *
+   * Other error codes returned when the payor is not valid:
+   * - `payor-disabled` - the payor feature is not available;
+   * - `payor-invalid` - the payor is not a valid payer for the client;
+   * - `payor-installment` - the sale has a payment plan;
+   * - `payor-holder` - a scheduled-payment item is held by someone other than the client.
+   *
+   * @post post
+   * @type {string}
+   */
+  this.uid_payor = "";
+
   this.changeInit();
 }
 
@@ -357,7 +379,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Payment_PaymentModel);
  */
 Wl_Catalog_Payment_PaymentModel.prototype.config=function()
 {
-  return {"a_field":{"a_answer":{"post":{"post":true}},"a_commission":{"post":{"get":true}},"a_item":{"post":{"post":true}},"a_pay_form":{"post":{"post":true}},"a_quiz_response":{"post":{"post":true}},"f_discount_percent":{"post":{"post":true}},"id_mode":{"post":{"get":true}},"is_guest":{"post":{"get":true}},"is_staff":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_location":{"post":{"get":true}},"k_login_activity":{"post":{"result":true}},"k_pay_installment_template":{"post":{"post":true}},"k_purchase":{"post":{"result":true}},"k_visit":{"post":{"post":true}},"m_discount_flat":{"post":{"post":true}},"m_surcharge":{"post":{"post":true}},"m_tip":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}},"text_receipt_note":{"post":{"post":true}},"uid":{"post":{"get":true}}}};
+  return {"a_field":{"a_answer":{"post":{"post":true}},"a_commission":{"post":{"get":true}},"a_item":{"post":{"post":true}},"a_pay_form":{"post":{"post":true}},"a_quiz_response":{"post":{"post":true}},"f_discount_percent":{"post":{"post":true}},"id_mode":{"post":{"get":true}},"is_guest":{"post":{"get":true}},"is_staff":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_location":{"post":{"get":true}},"k_login_activity":{"post":{"result":true}},"k_pay_installment_template":{"post":{"post":true}},"k_purchase":{"post":{"result":true}},"k_visit":{"post":{"post":true}},"m_discount_flat":{"post":{"post":true}},"m_surcharge":{"post":{"post":true}},"m_tip":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}},"text_receipt_note":{"post":{"post":true}},"uid":{"post":{"get":true}},"uid_payor":{"post":{"post":true}}}};
 };
 
 /**

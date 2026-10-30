@@ -95,6 +95,22 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.a_pay_method = undefined;
 
   /**
+   * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_payor
+   * @property {string} text_address The payor's address.
+   * @property {string} text_mail The payor's email address.
+   * @property {string} text_name The payor's name.
+   * @property {string} text_phone The payor's phone number.
+   */
+
+  /**
+   * Information about the payor (money owner) of the purchase. Empty when the money owner is the client.
+   *
+   * @get result
+   * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_payor}
+   */
+  this.a_payor = undefined;
+
+  /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_price
    * @property {string} m_discount The discount amount.
    * @property {string} m_discount_code The discount amount for a discount code.
@@ -220,6 +236,16 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.text_receipt = undefined;
 
   /**
+   * The key of the payor (money owner) of the purchase. Primary key in  table.
+   *
+   * Empty when the money owner is the client (the normal case).
+   *
+   * @get result
+   * @type {string}
+   */
+  this.uid_payor = undefined;
+
+  /**
    * The URL for printing on a normal printer.
    *
    * @get result
@@ -245,7 +271,7 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Receipt_PurchaseReceiptModel);
  */
 Wl_Purchase_Receipt_PurchaseReceiptModel.prototype.config=function()
 {
-  return {"a_field":{"a_account_rest":{"get":{"result":true}},"a_business":{"get":{"result":true}},"a_card":{"get":{"result":true}},"a_customer":{"get":{"result":true}},"a_pay_method":{"get":{"result":true}},"a_price":{"get":{"result":true}},"a_purchase_item":{"get":{"result":true}},"dtl_purchase":{"get":{"result":true}},"has_signature":{"get":{"result":true}},"html_receipt":{"get":{"result":true}},"is_url_public":{"get":{"get":true}},"k_purchase":{"get":{"get":true}},"text_purchase_id":{"get":{"result":true}},"text_receipt":{"get":{"result":true}},"url_print":{"get":{"result":true}},"url_print_receipt":{"get":{"result":true}}}};
+  return {"a_field":{"a_account_rest":{"get":{"result":true}},"a_business":{"get":{"result":true}},"a_card":{"get":{"result":true}},"a_customer":{"get":{"result":true}},"a_pay_method":{"get":{"result":true}},"a_payor":{"get":{"result":true}},"a_price":{"get":{"result":true}},"a_purchase_item":{"get":{"result":true}},"dtl_purchase":{"get":{"result":true}},"has_signature":{"get":{"result":true}},"html_receipt":{"get":{"result":true}},"is_url_public":{"get":{"get":true}},"k_purchase":{"get":{"get":true}},"text_purchase_id":{"get":{"result":true}},"text_receipt":{"get":{"result":true}},"uid_payor":{"get":{"result":true}},"url_print":{"get":{"result":true}},"url_print_receipt":{"get":{"result":true}}}};
 };
 
 /**
