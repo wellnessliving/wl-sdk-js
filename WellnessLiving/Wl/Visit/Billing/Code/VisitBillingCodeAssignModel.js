@@ -9,11 +9,6 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
-   * @inheritDoc
-   */
-  this._s_key = "k_business,k_visit";
-
-  /**
    * @typedef {{}} Wl_Visit_Billing_Code_VisitBillingCodeAssignModel_a_code
    * @property {boolean} is_custom `true` for a custom code of the business or a temporary code for this visit only, `false` for an ICD-10-CM diagnostic code.
    * @property {string} text_code Code value, as it is printed on receipts and invoices.
@@ -224,15 +219,6 @@ Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
 {
   return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"a_void":{"get":{"result":true}},"dtu_lock":{"get":{"result":true}},"is_locked":{"get":{"result":true}},"is_receipt_sent":{"get":{"result":true}},"is_signature":{"get":{"result":true}},"is_system":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_code_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}},"text_staff_name_lock":{"get":{"result":true}},"uid_staff_lock":{"get":{"result":true}}}};
 };
-
-/**
- * @function
- * @name Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.instanceGet
- * @param {string} k_business Business key.
- * @param {string} k_visit Visit key.
- * @returns {Wl_Visit_Billing_Code_VisitBillingCodeAssignModel}
- * @see WlSdk_ModelAbstract.instanceGet()
- */
 
 /**
  * Returns the billing codes applied to a visit and the history of their changes.
