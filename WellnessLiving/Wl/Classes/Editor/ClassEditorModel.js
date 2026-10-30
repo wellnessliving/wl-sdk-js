@@ -253,7 +253,9 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @property {string} url_notification_staff Staff notifications.
    * @property {string} url_policy_manage Default business policies.
    * @property {string} url_product_manage List of products.
+   * @property {string} url_remove Removal of the class. Empty string for a new class, or when the class may not be removed.
    * @property {string} url_resource_manage List of Book-a-Spot assets.
+   * @property {string} url_schedule Schedule of the class, where its sessions are added. Empty string for a new class, or when the staff member may not schedule it.
    * @property {string} url_ticket_card Store settings that require a card at sign-up.
    * @property {string} url_ticket_waiver Online waiver settings.
    */
@@ -265,6 +267,15 @@ function Wl_Classes_Editor_ClassEditorModel()
    * @type {Wl_Classes_Editor_ClassEditorModel_a_url[]}
    */
   this.a_url = undefined;
+
+  /**
+   * `true` if the class has a schedule, so it may not be removed until the schedule is cancelled; `false` otherwise
+   * and for a new class.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.has_schedule = undefined;
 
   /**
    * Markup of the Business policies block of the form.
@@ -471,7 +482,7 @@ WlSdk_ModelAbstract.extend(Wl_Classes_Editor_ClassEditorModel);
  */
 Wl_Classes_Editor_ClassEditorModel.prototype.config=function()
 {
-  return {"a_field":{"a_class":{"get":{"result":true},"post":{"post":true}},"a_class_tab_list":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_replace_available":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_url":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"i_description_limit_virtual":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_currency_before":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"get":true},"post":{"get":true}},"k_class_save":{"post":{"result":true}},"text_currency":{"get":{"result":true}}}};
+  return {"a_field":{"a_class":{"get":{"result":true},"post":{"post":true}},"a_class_tab_list":{"get":{"result":true}},"a_reminder_info":{"get":{"result":true}},"a_replace_available":{"get":{"result":true}},"a_search_tag_list":{"get":{"result":true}},"a_shop_category_list":{"get":{"result":true}},"a_url":{"get":{"result":true}},"has_schedule":{"get":{"result":true}},"html_policy":{"get":{"result":true}},"html_prerequisite":{"get":{"result":true}},"html_promotion":{"get":{"result":true}},"html_quick_buy":{"get":{"result":true}},"html_tax":{"get":{"result":true}},"i_description_limit":{"get":{"result":true}},"i_description_limit_virtual":{"get":{"result":true}},"is_admin":{"get":{"result":true}},"is_birthday_require":{"get":{"result":true}},"is_currency_before":{"get":{"result":true}},"is_event_type_lock":{"get":{"result":true}},"is_fitlive":{"get":{"result":true}},"is_gym_pass_support":{"get":{"result":true}},"is_ticket_card_require":{"get":{"result":true}},"is_ticket_waiver_require":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"get":true},"post":{"get":true}},"k_class_save":{"post":{"result":true}},"text_currency":{"get":{"result":true}}}};
 };
 
 /**
