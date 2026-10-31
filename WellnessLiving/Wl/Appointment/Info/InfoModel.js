@@ -204,6 +204,17 @@ function Wl_Appointment_Info_InfoModel()
   this.id_virtual_provider = null;
 
   /**
+   * Whether the booking was made as a Phone Call.
+   *
+   * This is the type of the service at the time of booking. It stays `true` after the service is switched to another type,
+   * so it can differ from `id_virtual_provider`. `false` otherwise (in-person, virtual, class visits).
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_phone_call = undefined;
+
+  /**
    * Whether the service is virtual.
    *
    * `null` for non-virtual services.
@@ -289,6 +300,17 @@ function Wl_Appointment_Info_InfoModel()
   this.k_staff = null;
 
   /**
+   * Phone number the staff calls for this Phone Call booking.
+   *
+   * The number in the international E.164 format, for example `+15550101001`.
+   * `null` if the booking is not a Phone Call or has no number.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.text_phone = null;
+
+  /**
    * Title of the appointment.
    *
    * @get result
@@ -322,7 +344,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Info_InfoModel);
  */
 Wl_Appointment_Info_InfoModel.prototype.config=function()
 {
-  return {"a_field":{"a_next":{"get":{"result":true}},"a_previous":{"get":{"result":true}},"a_question":{"get":{"result":true}},"a_repeat":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_shop_product_option":{"get":{"result":true}},"dt_date_local":{"get":{"result":true}},"i_color_background":{"get":{"result":true}},"i_color_border":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_index":{"get":{"result":true}},"id_appointment_pay":{"get":{"result":true}},"id_virtual_provider":{"get":{"result":true}},"is_virtual":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_login_promotion":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_resource_type":{"get":{"result":true}},"k_service":{"get":{"result":true}},"k_service_category":{"get":{"result":true}},"k_session_pass":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid_appointment":{"get":{"result":true}},"uid_staff":{"get":{"result":true}}}};
+  return {"a_field":{"a_next":{"get":{"result":true}},"a_previous":{"get":{"result":true}},"a_question":{"get":{"result":true}},"a_repeat":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_shop_product_option":{"get":{"result":true}},"dt_date_local":{"get":{"result":true}},"i_color_background":{"get":{"result":true}},"i_color_border":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_index":{"get":{"result":true}},"id_appointment_pay":{"get":{"result":true}},"id_virtual_provider":{"get":{"result":true}},"is_phone_call":{"get":{"result":true}},"is_virtual":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_login_promotion":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_resource_type":{"get":{"result":true}},"k_service":{"get":{"result":true}},"k_service_category":{"get":{"result":true}},"k_session_pass":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"text_phone":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid_appointment":{"get":{"result":true}},"uid_staff":{"get":{"result":true}}}};
 };
 
 /**

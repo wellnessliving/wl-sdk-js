@@ -88,6 +88,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * @property {string} k_staff The staff member conducting the appointment. Specify this for appointment bookings only. deprecated Use `uid_staff`. Available for legacy allow-list only.
    * @property {string} k_staff_date The staff member conducting the appointment. The difference between this and `k_staff` is that this value must be set only in cases when you want to add customer to an appointment that already exists. Specify this for appointment bookings only.
    * @property {string} k_timezone The time zone key. This will be 'null' if the time zone used matches the time zone of the location.
+   * @property {string} text_phone The number to call the client at, for a Phone Call appointment. Any format is accepted. Ignored if the service is not a Phone Call. Required if the user who books is not staff and neither this user nor the client has a valid cell phone in the profile. Staff members may leave it empty. Empty string if not provided.
    * @property {string} uid User key.  Specify only in a case of booking for a lof of different users.
    * @property {string} uid_staff The staff member conducting the appointment. Specify this for appointment bookings only.
    * @property {string} uid_staff_date The staff member conducting the appointment. The difference between this and `uid_staff` is that this value must be set only in cases when you want to add customer to an appointment that already exists. Specify this for appointment bookings only.

@@ -17,8 +17,10 @@ function Wl_Schedule_Page_PageListModel()
    * @typedef {{}} Wl_Schedule_Page_PageListModel_a_visit
    * @property {string} dtu_date Date and time of the visit in UTC.
    * @property {number} id_visit Visit status ID. One of {@link Wl_Visit_VisitSid} constants.
+   * @property {boolean} is_phone_call `true` if the visit was booked as a Phone Call. This is the type of the service at the time of booking, so it stays `true` after the service is switched to another type. `false` otherwise (in-person, virtual, class visits).
    * @property {string} k_business Key of the business in which this visit was made.
    * @property {string} k_visit Key of a book/visit.
+   * @property {?string} text_phone Phone number the staff calls for a Phone Call visit, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number.
    */
 
   /**

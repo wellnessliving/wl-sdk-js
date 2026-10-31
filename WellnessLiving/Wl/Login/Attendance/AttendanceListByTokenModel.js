@@ -186,6 +186,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_note Any notes tied to the client.
+   * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. Returned without the {@link Wl_Privilege_PrivilegeSid} privilege too: this is the data of the appointment, staff need it to call the client.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
    * @property {string} text_promotion_return Title of purchase option usages of that was returned to user.
    * @property {string} text_restrict_title The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.
@@ -383,6 +384,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_note Any notes tied to the client.
+   * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. Returned without the {@link Wl_Privilege_PrivilegeSid} privilege too: this is the data of the appointment, staff need it to call the client.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
    * @property {string} text_promotion_return Title of purchase option usages of that was returned to user.
    * @property {string} text_restrict_title The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.
@@ -579,6 +581,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_note Any notes tied to the client.
+   * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. Returned without the {@link Wl_Privilege_PrivilegeSid} privilege too: this is the data of the appointment, staff need it to call the client.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
    * @property {string} text_promotion_return Title of purchase option usages of that was returned to user.
    * @property {string} text_restrict_title The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.

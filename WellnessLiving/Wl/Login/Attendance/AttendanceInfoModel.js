@@ -196,6 +196,17 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.id_service = undefined;
 
   /**
+   * Whether the booking was made as a Phone Call.
+   *
+   * This is the type of the service at the time of booking. It stays `true` after the service is switched to another type,
+   * so it can differ from `id_virtual_provider` of the service. `false` otherwise (in-person, virtual, class visits).
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_phone_call = undefined;
+
+  /**
    * Whether this service be carried out in Zoom.
    * `true` - If the service can be carried out in Zoom.
    * `false` - otherwise.
@@ -280,6 +291,17 @@ function Wl_Login_Attendance_AttendanceInfoModel()
   this.text_location = undefined;
 
   /**
+   * Phone number the staff calls for this Phone Call booking.
+   *
+   * The number in the international E.164 format, for example `+15550101001`.
+   * `null` if the booking is not a Phone Call or has no number.
+   *
+   * @get result
+   * @type {?string}
+   */
+  this.text_phone = null;
+
+  /**
    * Time when service starts in format `8:00AM`.
    *
    * @get result
@@ -322,7 +344,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Attendance_AttendanceInfoModel);
  */
 Wl_Login_Attendance_AttendanceInfoModel.prototype.config=function()
 {
-  return {"a_field":{"a_appointment_visit_info":{"get":{"result":true}},"a_logo":{"get":{"result":true}},"a_purchase_option_default":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_resource_layout":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"dt_confirm":{"get":{"result":true}},"dt_date_global":{"get":{"result":true}},"dt_date_local":{"get":{"get":true}},"dtl_end":{"get":{"result":true}},"dtu_end":{"get":{"result":true}},"dtu_wait_promote":{"get":{"result":true}},"has_note":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"id_note":{"get":{"result":true}},"id_service":{"get":{"result":true}},"is_start_virtual_service":{"get":{"result":true}},"is_ticket":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"result":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_service":{"get":{"result":true}},"text_location":{"get":{"result":true}},"text_time_end":{"get":{"result":true}},"text_time_start":{"get":{"result":true}},"text_title":{"get":{"result":true}},"url_booking":{"get":{"result":true}}}};
+  return {"a_field":{"a_appointment_visit_info":{"get":{"result":true}},"a_logo":{"get":{"result":true}},"a_purchase_option_default":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_resource_layout":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"dt_confirm":{"get":{"result":true}},"dt_date_global":{"get":{"result":true}},"dt_date_local":{"get":{"get":true}},"dtl_end":{"get":{"result":true}},"dtu_end":{"get":{"result":true}},"dtu_wait_promote":{"get":{"result":true}},"has_note":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"id_note":{"get":{"result":true}},"id_service":{"get":{"result":true}},"is_phone_call":{"get":{"result":true}},"is_start_virtual_service":{"get":{"result":true}},"is_ticket":{"get":{"result":true}},"k_appointment":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_class":{"get":{"result":true}},"k_class_period":{"get":{"get":true}},"k_location":{"get":{"result":true}},"k_resource":{"get":{"result":true}},"k_service":{"get":{"result":true}},"text_location":{"get":{"result":true}},"text_phone":{"get":{"result":true}},"text_time_end":{"get":{"result":true}},"text_time_start":{"get":{"result":true}},"text_title":{"get":{"result":true}},"url_booking":{"get":{"result":true}}}};
 };
 
 /**
