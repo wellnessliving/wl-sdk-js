@@ -303,7 +303,9 @@ function Wl_Appointment_Info_InfoModel()
    * Phone number the staff calls for this Phone Call booking.
    *
    * The number in the international E.164 format, for example `+15550101001`.
-   * `null` if the booking is not a Phone Call or has no number.
+   * `null` if the booking is not a Phone Call or has no number, or if the current user may not see the number.
+   * The number is shown like the phone of the client: to the client, to the user who booked and to staff with
+   * the privilege to see contact details of clients.
    *
    * @get result
    * @type {?string}

@@ -84,6 +84,7 @@ function Wl_Appointment_Book_Finish_FinishModel()
    * @property {string} k_session_pass The user's pass.
    * @property {string} k_staff The staff member conducting the appointment. Specify this for appointment bookings only.
    * @property {string} k_staff_date The staff member conducting the appointment. The difference between this an `k_staff` is that this value must be set only in cases when you want to add a customer to an appointment that already exists. Specify this for appointment bookings only.
+   * @property {string} text_phone The number to call the client at, for a Phone Call appointment. Any format is accepted. Ignored if the service is not a Phone Call. Required if the user who books is not staff and neither this user nor the client has a valid cell phone in the profile. Staff members may leave it empty. Empty string if not provided.
    */
 
   /**

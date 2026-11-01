@@ -20,7 +20,7 @@ function Wl_Schedule_Page_PageListModel()
    * @property {boolean} is_phone_call `true` if the visit was booked as a Phone Call. This is the type of the service at the time of booking, so it stays `true` after the service is switched to another type. `false` otherwise (in-person, virtual, class visits).
    * @property {string} k_business Key of the business in which this visit was made.
    * @property {string} k_visit Key of a book/visit.
-   * @property {?string} text_phone Phone number the staff calls for a Phone Call visit, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number.
+   * @property {?string} text_phone Phone number the staff calls for a Phone Call visit, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number, or if the current user may not see the number. The number is shown like the phone of the client: to the client, to the user who booked and to staff with the privilege to see contact details of clients.
    */
 
   /**
