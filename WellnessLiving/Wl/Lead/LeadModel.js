@@ -29,6 +29,11 @@ function Wl_Lead_LeadModel()
   this.a_field_data = undefined;
 
   /**
+   * @typedef {{}} Wl_Lead_LeadModel_a_field_list_a_data
+   * @property {number} i_size The number of rows of the input of a text field. Always set for text fields: `1` when the text field has no number of rows set.
+   */
+
+  /**
    * @typedef {{}} Wl_Lead_LeadModel_a_field_list_a_item
    * @property {string} s_id The option ID.
    * @property {string} text_title The option title.
@@ -36,6 +41,7 @@ function Wl_Lead_LeadModel()
 
   /**
    * @typedef {{}} Wl_Lead_LeadModel_a_field_list
+   * @property {Wl_Lead_LeadModel_a_field_list_a_data} a_data The additional data of the field. Its keys depend on the field type.
    * @property {Wl_Lead_LeadModel_a_field_list_a_item} a_item A list of possible options for an HTML select field. This value is only used if this field is an HTML select. Every element has the following keys:
    * @property {number} id_field_general The type of the general field. This is one of the {@link RsFieldGeneralSid}. This value is only set if the field is one of the general fields.
    * @property {number} id_field_type The field type. This is one of the {@link RsFieldTypeSid} constants.

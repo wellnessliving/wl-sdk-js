@@ -1,7 +1,7 @@
 /**
  * List of possible plans for {@link Wl_Business_Account_Subscription_SubscriptionAbstract} subscription.
  *
- * Last used ID: 11.
+ * Last used ID: 12.
  */
 function Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid()
 {
@@ -77,6 +77,13 @@ Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid.PREMIUM = 3;
  * @type {number}
  */
 Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid.PREMIUM_MAX = 7;
+
+/**
+ * Presence Trial
+ *
+ * @type {number}
+ */
+Wl_Business_Account_Subscription_Website_WebsiteSubscriptionSid.PRESENCE_TRIAL = 12;
 
 /**
  * Professional
