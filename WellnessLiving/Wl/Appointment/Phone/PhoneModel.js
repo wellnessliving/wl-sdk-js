@@ -9,6 +9,11 @@ function Wl_Appointment_Phone_PhoneModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * @inheritDoc
+   */
+  this._s_key = "k_business,k_visit,uid";
+
+  /**
    * Business key.
    *
    * @get get
@@ -60,6 +65,16 @@ Wl_Appointment_Phone_PhoneModel.prototype.config=function()
 {
   return {"a_field":{"k_business":{"get":{"get":true},"put":{"get":true}},"k_visit":{"get":{"get":true},"put":{"get":true}},"text_phone":{"get":{"result":true},"put":{"post":true,"result":true}},"uid":{"get":{"get":true}}}};
 };
+
+/**
+ * @function
+ * @name Wl_Appointment_Phone_PhoneModel.instanceGet
+ * @param {string} k_business Business key.
+ * @param {string} k_visit Visit key. Empty in a GET request means the default number for a future booking.
+ * @param {string} uid Key of the client of a future booking. Used only when `k_visit` is empty.
+ * @returns {Wl_Appointment_Phone_PhoneModel}
+ * @see WlSdk_ModelAbstract.instanceGet()
+ */
 
 /**
  * Returns the number of the visit or the default number for a future booking.
