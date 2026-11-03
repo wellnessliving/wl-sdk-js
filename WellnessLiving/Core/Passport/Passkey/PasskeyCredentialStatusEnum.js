@@ -14,10 +14,10 @@ function Core_Passport_Passkey_PasskeyCredentialStatusEnum()
 Core_Passport_Passkey_PasskeyCredentialStatusEnum.ACTIVE = 1;
 
 /**
- * The credential was revoked by its owner and may no longer be used to sign in.
+ * The credential was revoked and may no longer be used to sign in.
  *
- * The row is kept (never hard-deleted) so its immutable `s_credential_id`/`s_public_key` remain
- * available for audit purposes.
+ * No longer set: revoking a credential deletes its row, and the audit is the sign-in log. Rows revoked
+ * earlier keep this status.
  *
  * @type {number}
  */

@@ -42,9 +42,12 @@ function Core_Passport_Passkey_PasskeyRegisterModel()
   this.json_options = undefined;
 
   /**
-   * User-supplied friendly label of the passkey being registered, for example `"MacBook Touch ID"`.
+   * Friendly label of the passkey being registered, for example `"MacBook Touch ID"`.
    *
-   * Only used to finish the ceremony.
+   * Optional and only used to finish the ceremony. When empty, the backend names the passkey itself: after
+   * the browser and the operating system of the request (`Chrome on Windows`), or `Passkey` if they are unknown, with
+   * the lowest unused number added if the user has a passkey with that name already. A label that is sent is saved
+   * as it is, after trimming; it is kept for the clients that still ask the user for a name.
    *
    * @post post
    * @type {string}

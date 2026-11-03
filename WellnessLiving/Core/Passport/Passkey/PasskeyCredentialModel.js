@@ -16,7 +16,7 @@ function Core_Passport_Passkey_PasskeyCredentialModel()
    * @property {number} id_status One of {@link Core_Passport_Passkey_PasskeyCredentialStatusEnum} values.
    * @property {boolean} is_backed_up `true` if the credential is currently backed up.
    * @property {string} k_passkey_credential Credential key.
-   * @property {string} text_device User-supplied friendly label of this credential.
+   * @property {string} text_device Name of this credential, assigned at registration and changed by `put()`.
    */
 
   /**
@@ -28,14 +28,39 @@ function Core_Passport_Passkey_PasskeyCredentialModel()
   this.a_credential = undefined;
 
   /**
-   * Key of the credential to revoke.
+   * JSON-encoded structure with any additional information required by the project-specific
+   * passkey configuration class, for example `k_business` in `Wl`.
    *
-   * Only used to revoke a credential.
+   * Needed only to manage passkeys of a user other than the signed-in one; empty if no additional
+   * information is required.
    *
    * @delete get
+   * @get get
+   * @type {string}
+   */
+  this.json_context = "";
+
+  /**
+   * Key of the credential to revoke or to rename.
+   *
+   * Only used to revoke or to rename a credential.
+   *
+   * @delete get
+   * @put get
    * @type {string}
    */
   this.k_passkey_credential = "";
+
+  /**
+   * New name of the credential, 1 to 50 characters, without the spaces at the beginning and at the end.
+   *
+   * Only used to rename a credential. It is saved as it is entered, even if another passkey of the user has the
+   * same name.
+   *
+   * @put post
+   * @type {string}
+   */
+  this.text_device = "";
 
   /**
    * Key of the user whose passkey credentials to manage. `'0'` or empty string to use the
@@ -57,14 +82,15 @@ WlSdk_ModelAbstract.extend(Core_Passport_Passkey_PasskeyCredentialModel);
  */
 Core_Passport_Passkey_PasskeyCredentialModel.prototype.config=function()
 {
-  return {"a_field":{"a_credential":{"get":{"result":true}},"k_passkey_credential":{"delete":{"get":true}},"uid":{"delete":{"get":true},"get":{"get":true}}}};
+  return {"a_field":{"a_credential":{"get":{"result":true}},"json_context":{"delete":{"get":true},"get":{"get":true}},"k_passkey_credential":{"delete":{"get":true},"put":{"get":true}},"text_device":{"put":{"post":true}},"uid":{"delete":{"get":true},"get":{"get":true}}}};
 };
 
 /**
  * Revokes one of the signed-in user's passkey credentials.
  *
- * Marks the credential as revoked rather than deleting the row.  A credential owned by another user can not be
- * revoked.
+ * Deletes the row of the credential. The audit of the removal is the entry of the sign-in log written by
+ * `PassportPasskey::logWrite()`, not the row. A credential of another user can be revoked only
+ * if {@link Core_Passport_Passkey_PasskeyConfigAbstract} allows it.
  *
  * @function
  * @name Core_Passport_Passkey_PasskeyCredentialModel.delete
@@ -75,10 +101,23 @@ Core_Passport_Passkey_PasskeyCredentialModel.prototype.config=function()
 /**
  * Lists the user's registered passkey credentials.
  *
- * Includes revoked credentials.
+ * Includes credentials revoked before revoking started to delete the row.
  *
  * @function
  * @name Core_Passport_Passkey_PasskeyCredentialModel.get
  * @returns {WlSdk_Deferred_Promise}
  * @see WlSdk_ModelAbstract.get()
+ */
+
+/**
+ * Renames one of the signed-in user's own passkey credentials.
+ *
+ * Saves the new name as it is entered, even if another passkey of the user has the same name, so no number is
+ * added. A passkey of another user cannot be renamed, whatever the project configuration allows to manage. The
+ * rename is not written to the sign-in log: the log has only the entries of adding and removing a passkey.
+ *
+ * @function
+ * @name Core_Passport_Passkey_PasskeyCredentialModel.put
+ * @returns {WlSdk_Deferred_Promise}
+ * @see WlSdk_ModelAbstract.put()
  */

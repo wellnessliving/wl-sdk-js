@@ -1,7 +1,7 @@
 /**
  * List of available features in the system that can be shown in owner's header.
  *
- * Last used ID: 37.
+ * Last used ID: 38.
  */
 function Wl_Page_Backend_Feature_FeatureSid()
 {
@@ -149,6 +149,13 @@ Wl_Page_Backend_Feature_FeatureSid.MARKETING = 12;
  * @type {number}
  */
 Wl_Page_Backend_Feature_FeatureSid.PARTNER = 19;
+
+/**
+ * Passkeys of the signed-in staff member.
+ *
+ * @type {number}
+ */
+Wl_Page_Backend_Feature_FeatureSid.PASSKEY = 38;
 
 /**
  * Presence landing page, where staff can get their custom website.

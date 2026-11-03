@@ -9,7 +9,7 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 225.
+ * Last used ID: 227.
  */
 function RsMailSid()
 {
@@ -1183,6 +1183,20 @@ RsMailSid.PASSPORT_LOGIN_ENTER = 187;
  * @type {number}
  */
 RsMailSid.PASSPORT_LOGIN_MERGE = 205;
+
+/**
+ * Notification to a staff member that a passkey was added to their account.
+ *
+ * @type {number}
+ */
+RsMailSid.PASSPORT_PASSKEY_ADD = 226;
+
+/**
+ * Notification to a staff member that a passkey was removed from their account.
+ *
+ * @type {number}
+ */
+RsMailSid.PASSPORT_PASSKEY_REMOVE = 227;
 
 /**
  * E-mail with a list of user's payment account transactions for last {@link \RsPayAccountMail::DAY} days.
