@@ -131,6 +131,7 @@ function Wl_Schedule_ClassList_ClassList68Model()
    * @property {number} i_day The day of the week when session is occurred. Constant from {@link ADateWeekSid}.
    * @property {number} i_duration The duration of the session in minutes.
    * @property {?number} i_ticket_attend Number of the tickets of the session that are checked in. `null` if the session is not a session of a ticketed event (see `is_ticket`). A visit checked in without a ticket is not counted. The same rule is used by the ticket check-in scanner, see {@link Core_WebSocket_ChannelBroadcast}.
+   * @property {?number} i_ticket_sold Number of the tickets of the session that are sold. `null` if the session is not a session of a ticketed event (see `is_ticket`). Every ticket that is not cancelled is sold, including a ticket whose holder has not come. A visit without a ticket is not counted, so unlike `i_book` this number does not include regular bookings and the wait list. The same rule is used by {@link Core_WebSocket_ChannelBroadcast}.
    * @property {number} i_wait Number of clients in wait list.
    * @property {?number} i_wait_limit Limit of wait list. `null` if limit is not set.
    * @property {number} i_wait_spot Position of the current client (`uid`) in the wait list for this session. `0` if the client is not on the wait list, or if the business hides wait list position (fastest-response wait list promotion).

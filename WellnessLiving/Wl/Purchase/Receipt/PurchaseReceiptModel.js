@@ -139,7 +139,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    */
 
   /**
-   * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_ticket_list
+   * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_ticket_info
    * @property {string} text_event_title The title of the event the ticket is for.
    * @property {string} text_number The number of the ticket.
    * @property {string} text_ticket_title The title of the ticket type.
@@ -150,7 +150,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item
    * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo} a_logo The purchase item logo.
-   * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_ticket_list} a_ticket_list The tickets of the purchase item. Only available if the purchase item is a ticket. Every element has the following keys:
+   * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_ticket_info} a_ticket_info The ticket of the purchase item. Only available if the purchase item is a ticket: one purchase item is one ticket. Empty if the purchase item has no ticket. Has the following keys:
    * @property {string[]} a_visit List of visit keys. Only available if the purchase item is a class period, enrollment, enrollment deposit, or enrollment discount. Each element is a string visit key.
    * @property {number} i_count The number of items in the purchase.
    * @property {number} id_program Program ID. One of {@link RsProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion.
