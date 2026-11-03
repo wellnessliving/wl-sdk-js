@@ -193,6 +193,10 @@ function Wl_Schedule_ClassList_ClassList68Model()
   /**
    * The list start date in MySQL format.
    *
+   * May be empty when {@link Wl_Schedule_ClassList_ClassList68Model.a_event} is not empty: then the day before the earliest start date of
+   * these events is used, or today if none of them has a start date.
+   * Otherwise, it is required.
+   *
    * @post post
    * @type {string}
    */
@@ -200,6 +204,9 @@ function Wl_Schedule_ClassList_ClassList68Model()
 
   /**
    * The list end date in MySQL format.
+   *
+   * If left empty and {@link Wl_Schedule_ClassList_ClassList68Model.a_event} is not empty, the day after the latest end date of these
+   * events is used.
    *
    * @post post
    * @type {string}
