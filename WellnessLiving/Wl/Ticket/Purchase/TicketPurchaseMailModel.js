@@ -45,7 +45,9 @@ Wl_Ticket_Purchase_TicketPurchaseMailModel.prototype.config=function()
  * Checks the access to the purchase, finds the order of tickets of the purchase, and sends the email with the
  * tickets and their QR codes to the buyer, or to `text_mail` if it is given. The email is not sent if the pattern
  * is turned off in the business, or if the buyer has turned it off in the notification settings and no address is
- * given. The codes of the errors are listed in the description of the class.
+ * given. A guest, who is not signed in, gets the email at the address of the order.
+ * The codes of the errors are listed in the description of
+ * the class.
  *
  * @function
  * @name Wl_Ticket_Purchase_TicketPurchaseMailModel.post
