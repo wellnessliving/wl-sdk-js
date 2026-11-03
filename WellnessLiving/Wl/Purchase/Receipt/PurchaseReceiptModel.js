@@ -140,8 +140,10 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_ticket_list
+   * @property {string} text_event_title The title of the event the ticket is for.
    * @property {string} text_number The number of the ticket.
-   * @property {string} text_title The title of the event the ticket is for.
+   * @property {string} text_ticket_title The title of the ticket type.
+   * @property {string} url_download The URL to download the PDF file with this ticket. The file works without a login. It does not expire with {@link Wl_Purchase_Receipt_PurchaseReceiptModel.text_token}.
    * @property {string} url_print The URL of the page to print the ticket. The page works without a login.
    */
 
@@ -206,6 +208,9 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * If `true`, the URL contains a token that allows temporary access to the page without logging in. If 'false', the
    * page requires authentication.
    *
+   * It makes no difference when the access to the purchase is granted by {@link Wl_Purchase_Receipt_PurchaseReceiptModel.text_token}:
+   * the URLs then always contain that token.
+   *
    * @get get
    * @type {boolean}
    */
@@ -234,6 +239,23 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @type {string}
    */
   this.text_receipt = undefined;
+
+  /**
+   * The temporary token that gives access to the receipt without a login.
+   *
+   * Optional. Pass it when the user has no access to the purchase, for example a guest: the token is returned by
+   * {@link Wl_Catalog_Payment_PaymentModel.text_receipt_token} after the payment and is valid for one hour. An empty string
+   * means no token. If the user has access to the purchase, the token is not checked. If the token is not valid for
+   * the purchase and the user has no access, the API returns the `access` error.
+   *
+   * When the access is granted by the token, {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print} and
+   * {@link Wl_Purchase_Receipt_PurchaseReceiptModel.url_print_receipt} contain the same token, so they stop working when the token
+   * expires.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.text_token = "";
 
   /**
    * The key of the payor (money owner) of the purchase. Primary key in  table.
@@ -271,14 +293,15 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Receipt_PurchaseReceiptModel);
  */
 Wl_Purchase_Receipt_PurchaseReceiptModel.prototype.config=function()
 {
-  return {"a_field":{"a_account_rest":{"get":{"result":true}},"a_business":{"get":{"result":true}},"a_card":{"get":{"result":true}},"a_customer":{"get":{"result":true}},"a_pay_method":{"get":{"result":true}},"a_payor":{"get":{"result":true}},"a_price":{"get":{"result":true}},"a_purchase_item":{"get":{"result":true}},"dtl_purchase":{"get":{"result":true}},"has_signature":{"get":{"result":true}},"html_receipt":{"get":{"result":true}},"is_url_public":{"get":{"get":true}},"k_purchase":{"get":{"get":true}},"text_purchase_id":{"get":{"result":true}},"text_receipt":{"get":{"result":true}},"uid_payor":{"get":{"result":true}},"url_print":{"get":{"result":true}},"url_print_receipt":{"get":{"result":true}}}};
+  return {"a_field":{"a_account_rest":{"get":{"result":true}},"a_business":{"get":{"result":true}},"a_card":{"get":{"result":true}},"a_customer":{"get":{"result":true}},"a_pay_method":{"get":{"result":true}},"a_payor":{"get":{"result":true}},"a_price":{"get":{"result":true}},"a_purchase_item":{"get":{"result":true}},"dtl_purchase":{"get":{"result":true}},"has_signature":{"get":{"result":true}},"html_receipt":{"get":{"result":true}},"is_url_public":{"get":{"get":true}},"k_purchase":{"get":{"get":true}},"text_purchase_id":{"get":{"result":true}},"text_receipt":{"get":{"result":true}},"text_token":{"get":{"get":true}},"uid_payor":{"get":{"result":true}},"url_print":{"get":{"result":true}},"url_print_receipt":{"get":{"result":true}}}};
 };
 
 /**
  * Gets purchase information.
  *
  * Returns full receipt data for the specified purchase, including business details, customer information,
- * itemized purchase items, payment methods, pricing summary, and print URLs.
+ * itemized purchase items, payment methods, pricing summary, and print URLs. The access is granted to a user who
+ * has the rights to the purchase, or to anyone who passes a valid {@link Wl_Purchase_Receipt_PurchaseReceiptModel.text_token}.
  *
  * @function
  * @name Wl_Purchase_Receipt_PurchaseReceiptModel.get

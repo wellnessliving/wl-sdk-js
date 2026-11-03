@@ -81,6 +81,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @property {boolean} is_prorate Determines whether to prorate the first payment.
    * @property {boolean} is_prorate_fix Determines if the client should pay for the first period now.
    * @property {boolean} is_prorate_only Determines whether the selected option 'pay prorate amount only' should only include the prorate amount.
+   * @property {string} k_class Key of the class the ticket is purchased for. Required for a ticket of an event with several instances.
    * @property {string} k_coupon The coupon key.
    * @property {string} k_coupon_amount The coupon amount key.
    * @property {string} m_checkout The total amount that will be charged for the tuition item during purchase.

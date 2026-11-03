@@ -340,6 +340,19 @@ function Wl_Catalog_Payment_PaymentModel()
   this.text_receipt_note = "";
 
   /**
+   * The temporary token that gives access to the receipt of the purchase without a login.
+   *
+   * It is returned together with {@link Wl_Catalog_Payment_PaymentModel.k_purchase}. Pass it as {@link Wl_Purchase_Receipt_PurchaseReceiptModel.text_token}
+   * to `get()`: this lets a guest, who has no access to the purchase, view the receipt. The
+   * token is valid for one hour. An empty string if no purchase was created, or if the token could not be made: the
+   * payment does not fail then.
+   *
+   * @post result
+   * @type {string}
+   */
+  this.text_receipt_token = undefined;
+
+  /**
    * The user's key (required).
    *
    * @post get
@@ -379,7 +392,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Payment_PaymentModel);
  */
 Wl_Catalog_Payment_PaymentModel.prototype.config=function()
 {
-  return {"a_field":{"a_answer":{"post":{"post":true}},"a_commission":{"post":{"get":true}},"a_item":{"post":{"post":true}},"a_pay_form":{"post":{"post":true}},"a_quiz_response":{"post":{"post":true}},"f_discount_percent":{"post":{"post":true}},"id_mode":{"post":{"get":true}},"is_guest":{"post":{"get":true}},"is_staff":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_location":{"post":{"get":true}},"k_login_activity":{"post":{"result":true}},"k_pay_installment_template":{"post":{"post":true}},"k_purchase":{"post":{"result":true}},"k_visit":{"post":{"post":true}},"m_discount_flat":{"post":{"post":true}},"m_surcharge":{"post":{"post":true}},"m_tip":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}},"text_receipt_note":{"post":{"post":true}},"uid":{"post":{"get":true}},"uid_payor":{"post":{"post":true}}}};
+  return {"a_field":{"a_answer":{"post":{"post":true}},"a_commission":{"post":{"get":true}},"a_item":{"post":{"post":true}},"a_pay_form":{"post":{"post":true}},"a_quiz_response":{"post":{"post":true}},"f_discount_percent":{"post":{"post":true}},"id_mode":{"post":{"get":true}},"is_guest":{"post":{"get":true}},"is_staff":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_location":{"post":{"get":true}},"k_login_activity":{"post":{"result":true}},"k_pay_installment_template":{"post":{"post":true}},"k_purchase":{"post":{"result":true}},"k_visit":{"post":{"post":true}},"m_discount_flat":{"post":{"post":true}},"m_surcharge":{"post":{"post":true}},"m_tip":{"post":{"post":true}},"text_discount_code":{"post":{"post":true}},"text_receipt_note":{"post":{"post":true}},"text_receipt_token":{"post":{"result":true}},"uid":{"post":{"get":true}},"uid_payor":{"post":{"post":true}}}};
 };
 
 /**
@@ -387,7 +400,8 @@ Wl_Catalog_Payment_PaymentModel.prototype.config=function()
  *
  * The checkout endpoint that finalizes a purchase in the client-facing store. Charges the client's
  * selected payment method, applies any discounts and tips, and creates the purchase record. Returns
- * the resulting purchase key so the frontend can redirect to the confirmation page.
+ * the resulting purchase key so the frontend can redirect to the confirmation page, and the temporary token of the
+ * receipt, which lets an anonymous user, who has no access to the purchase, view the receipt.
  *
  * @function
  * @name Wl_Catalog_Payment_PaymentModel.post
