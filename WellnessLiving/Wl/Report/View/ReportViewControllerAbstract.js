@@ -199,6 +199,14 @@ Wl_Report_View_ReportViewControllerAbstract.ExampleReportController = 920;
 Wl_Report_View_ReportViewControllerAbstract.FeeLocationReportController = 1704;
 
 /**
+ * External attendance report of a franchisor.
+ * Is developed as microservice. This class only provides access validation and URL generation.
+ *
+ * @type {number}
+ */
+Wl_Report_View_ReportViewControllerAbstract.FranchisorAttendanceReportController = 2496;
+
+/**
  * Controller for the "Guest Pass History" report shown on the client profile under Account.
  *
  * @type {number}

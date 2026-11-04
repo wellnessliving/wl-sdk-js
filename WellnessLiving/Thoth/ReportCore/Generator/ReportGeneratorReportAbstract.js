@@ -202,6 +202,14 @@ Thoth_ReportCore_Generator_ReportGeneratorReportAbstract.FeeLocationReport = 170
 Thoth_ReportCore_Generator_ReportGeneratorReportAbstract.FilterLimiterClient_FilterLimiterReport = 1261;
 
 /**
+ * External attendance report of a franchisor.
+ * Is developed as microservice. This class only provides access validation and URL generation.
+ *
+ * @type {number}
+ */
+Thoth_ReportCore_Generator_ReportGeneratorReportAbstract.FranchisorAttendanceReport = 2495;
+
+/**
  * "Guest Pass History" report shown on the client profile under Account.
  *
  * Each row represents a single guest pass invite: either sent by the profile owner (host)

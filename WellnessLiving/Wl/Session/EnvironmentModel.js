@@ -125,6 +125,7 @@ function Wl_Session_EnvironmentModel()
 
   /**
    * `true` if the "home" page is turned on for the current business; `false` otherwise.
+   * The home page is turned on by default; it is off only if a paid Achieve plan explicitly turned it off.
    *
    * @get result
    * @type {boolean}
