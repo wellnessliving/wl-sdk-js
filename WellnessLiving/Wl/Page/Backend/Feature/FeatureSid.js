@@ -151,7 +151,7 @@ Wl_Page_Backend_Feature_FeatureSid.MARKETING = 12;
 Wl_Page_Backend_Feature_FeatureSid.PARTNER = 19;
 
 /**
- * Passkeys of the signed-in staff member.
+ * Passkeys of the staff members.
  *
  * @type {number}
  */
