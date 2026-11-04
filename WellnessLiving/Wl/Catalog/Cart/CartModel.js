@@ -38,13 +38,14 @@ function Wl_Catalog_Cart_CartModel()
    * @typedef {{}} Wl_Catalog_Cart_CartModel_a_item_a_config
    * @property {Wl_Catalog_Cart_CartModel_a_item_a_config_a_event_list} a_event_list List of tuition events. Each entry has the next structure:
    * @property {Wl_Catalog_Cart_CartModel_a_item_a_config_a_registration_fee_list} a_registration_fee_list Registration fees for tuition participants. Keys are participant keys.  Each value has the next structure:
+   * @property {string} k_class Used only for `id_sale` = {@link RsSaleSid}. Key of the event instance the ticket is purchased for.  Required for a ticket of an event with several instances. The class must belong to the event of the ticket, otherwise the user error `ticket-nx` or `ticket-class-settings-mismatch` is returned.
    * @property {string} m_checkout The total amount that will be charged for the tuition item when during purchase.
    * @property {string} m_deferred The part of the tuition cost that is not charged during purchase.
    */
 
   /**
    * @typedef {{}} Wl_Catalog_Cart_CartModel_a_item
-   * @property {Wl_Catalog_Cart_CartModel_a_item_a_config} a_config Additional configuration. Used only for `id_sale` = {@link RsSaleSid}.
+   * @property {Wl_Catalog_Cart_CartModel_a_item_a_config} a_config Additional configuration. Used only for `id_sale` = {@link RsSaleSid} and `id_sale` = {@link RsSaleSid}.
    * @property {string} dl_client_prorate The client prorate date. This will be `null` in cases where the client prorate date hasn't passed.
    * @property {number} i_quantity The quantity of sale items.
    * @property {?number} id_sale The sale item type, one of the {@link RsSaleSid} constants.
