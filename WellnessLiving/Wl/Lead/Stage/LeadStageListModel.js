@@ -16,7 +16,9 @@ function Wl_Lead_Stage_LeadStageListModel()
   /**
    * @typedef {{}} Wl_Lead_Stage_LeadStageListModel_a_lead_stage
    * @property {number} i_automation_active Number of active automations which use this stage. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
-   * @property {number} i_automation_inactive Number of inactive automations which use this stage. Such an automation still refers the stage, so it still makes a replacement stage mandatory when the stage is deleted. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
+   * @property {number} i_automation_inactive Number of inactive automations associated with this stage, including any-stage triggers. Explicit references are counted separately for deletion. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
+   * @property {number} i_automation_replace_active Number of distinct active automations whose explicit stage references need updating when this stage is deleted. Any-stage triggers alone are excluded. Only set when {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
+   * @property {number} i_automation_replace_inactive Number of distinct inactive automations whose explicit stage references need updating when this stage is deleted. Any-stage triggers alone are excluded. Only set when {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
    * @property {number} i_member_group Number of client groups which convert their clients into this stage. Such a group depends on the stage: the stage may only be deleted with a replacement stage for the groups. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
    * @property {number} i_order Sequence number of the stage in the list.
    * @property {number} i_user Number of clients who are in this stage. Only set in a case {@link Wl_Lead_Stage_LeadStageListModel.is_statistic} is `true`.
