@@ -9,7 +9,7 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 227.
+ * Last used ID: 229.
  */
 function RsMailSid()
 {
@@ -1231,6 +1231,25 @@ RsMailSid.PAY_ACCOUNT_INVOICE = 85;
  * @type {number}
  */
 RsMailSid.PAY_AUTOMATIC_SUCCESS = 116;
+
+/**
+ * Funds of a Stripe dispute must be moved by hand.
+ *
+ * Sent to Finance when the recovery of the amount from the studio (the transfer reversal) or the repayment to the
+ * studio after a won dispute failed.
+ *
+ * @type {number}
+ */
+RsMailSid.PAY_DISPUTE_FUNDS_FAIL = 228;
+
+/**
+ * A client disputed a payment to the studio.
+ *
+ * Sent to the owners of the studio when a client's bank takes back a payment (a chargeback).
+ *
+ * @type {number}
+ */
+RsMailSid.PAY_DISPUTE_STUDIO = 229;
 
 /**
  * Transaction failed.

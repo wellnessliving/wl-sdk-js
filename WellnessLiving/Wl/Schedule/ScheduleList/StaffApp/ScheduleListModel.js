@@ -54,6 +54,12 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule_a_resource_padding
+   * @property {number} i_padding_after Padding after each booking of the asset, in minutes. `0` if the asset has no padding after.
+   * @property {number} i_padding_before Padding before each booking of the asset, in minutes. `0` if the asset has no padding before.
+   */
+
+  /**
    * @typedef {{}} Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule_a_staff_info
    * @property {boolean} is_staff_change `true` means staff is substituted, `false` simple staff member.
    * @property {string} k_staff Staff key.  Returned only for applications in the `APPS_USE_OLD_K_STAFF` allow-list.
@@ -67,6 +73,7 @@ function Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel()
    * @property {string[]} a_note List of notes.
    * @property {?Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule_a_quiz} a_quiz List of quizzes. Has next structure:
    * @property {string[]} a_resource A list of assets involved in the session.
+   * @property {Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule_a_resource_padding} a_resource_padding Padding of the assets of `a_resource`. Keys are asset keys, values are: Classes are not padded. Whether to show the padding is up to the application.
    * @property {string[]} a_resource_removed List of removed assets involved in the session.
    * @property {string[]} a_staff A list of staff members who will conduct the session.
    * @property {Wl_Schedule_ScheduleList_StaffApp_ScheduleListModel_a_schedule_a_staff_info} a_staff_info Information about staff members who conduct this session. For applications in the `APPS_USE_OLD_K_STAFF` allow-list, keys are staff keys.

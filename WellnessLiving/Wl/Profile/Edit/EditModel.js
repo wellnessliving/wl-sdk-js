@@ -128,6 +128,8 @@ function Wl_Profile_Edit_EditModel()
    * By default, only fields matching the current entry point (register source) are returned.
    * Set {@link Wl_Profile_Edit_EditModel.is_field_all} to `true` to return every active, non-removed field
    * regardless of entry-point filtering, with the `id_level_*` values included.
+   * Set {@link Wl_Profile_Edit_EditModel.is_level_all} to `true` to also return the fields hidden for the entry point while keeping
+   * the audience filter.
    *
    * The array has the following structure:
    *
@@ -220,6 +222,25 @@ function Wl_Profile_Edit_EditModel()
    * @type {boolean}
    */
   this.is_field_all = false;
+
+  /**
+   * `true` to also return the profile fields that are hidden for the entry point given by
+   * {@link Wl_Profile_Edit_EditModel.id_register_source}: the fields with the level `DONT_ASK` for this entry point, and, for the
+   * booking-and-purchase entry point, the fields without the booking-and-purchase flag. Their `id_level_*` values
+   * are returned in each field element of {@link Wl_Profile_Edit_EditModel.a_structure}.
+   *
+   * The audience (applies-to) filter still applies: it is based on the relations of the profile, or on
+   * {@link Wl_Profile_Edit_EditModel.id_family_relation} for a new profile. The active, removed, visibility, SPA, vaccination and
+   * removed-login filters still apply too. `is_require` is still resolved from the level of the entry point.
+   *
+   * Has no effect when {@link Wl_Profile_Edit_EditModel.is_field_all} is `true`.
+   *
+   * `false` (default) to apply the normal entry-point filtering.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_level_all = false;
 
   /**
    * Indicates whether to display the full profile edit form or the short version.
@@ -416,7 +437,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_EditModel);
  */
 Wl_Profile_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field":{"a_change":{"put":{"post":true}},"a_error_list":{"get":{"result":true},"post":{"result":true}},"a_family_relation":{"post":{"post":true}},"a_image_upload":{"post":{"post":true}},"a_intents":{"post":{"post":true},"put":{"post":true}},"a_new":{"post":{"post":true}},"a_phone_inherit":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"a_structure":{"get":{"result":true}},"can_password_change":{"get":{"result":true}},"id_family_relation":{"get":{"get":true}},"id_mode":{"post":{"get":true}},"id_register_source":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"is_a2p":{"get":{"result":true}},"is_address_inherit":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"is_exception_throw":{"post":{"post":true}},"is_field_all":{"get":{"get":true}},"is_short":{"get":{"result":true},"post":{"get":true}},"is_sing_in":{"post":{"post":true}},"is_sms_subscription_marketing":{"post":{"post":true}},"is_sms_subscription_presented":{"post":{"post":true}},"is_sms_subscription_transactional":{"post":{"post":true}},"is_staff":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_lead_source":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"s_class":{"get":{"result":true},"post":{"result":true}},"s_code":{"get":{"result":true},"post":{"result":true}},"s_status":{"post":{"result":true}},"text_business_uid_key":{"post":{"get":true}},"text_message":{"get":{"result":true},"post":{"result":true}},"text_password":{"post":{"post":true}},"uid":{"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"uid_existed":{"post":{"get":true}},"uid_inherit_address":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"uid_relative_key":{"post":{"get":true}}}};
+  return {"a_field":{"a_change":{"put":{"post":true}},"a_error_list":{"get":{"result":true},"post":{"result":true}},"a_family_relation":{"post":{"post":true}},"a_image_upload":{"post":{"post":true}},"a_intents":{"post":{"post":true},"put":{"post":true}},"a_new":{"post":{"post":true}},"a_phone_inherit":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"a_structure":{"get":{"result":true}},"can_password_change":{"get":{"result":true}},"id_family_relation":{"get":{"get":true}},"id_mode":{"post":{"get":true}},"id_register_source":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"is_a2p":{"get":{"result":true}},"is_address_inherit":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"is_exception_throw":{"post":{"post":true}},"is_field_all":{"get":{"get":true}},"is_level_all":{"get":{"get":true}},"is_short":{"get":{"result":true},"post":{"get":true}},"is_sing_in":{"post":{"post":true}},"is_sms_subscription_marketing":{"post":{"post":true}},"is_sms_subscription_presented":{"post":{"post":true}},"is_sms_subscription_transactional":{"post":{"post":true}},"is_staff":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_lead_source":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"s_class":{"get":{"result":true},"post":{"result":true}},"s_code":{"get":{"result":true},"post":{"result":true}},"s_status":{"post":{"result":true}},"text_business_uid_key":{"post":{"get":true}},"text_message":{"get":{"result":true},"post":{"result":true}},"text_password":{"post":{"post":true}},"uid":{"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"uid_existed":{"post":{"get":true}},"uid_inherit_address":{"get":{"result":true},"post":{"get":true},"put":{"get":true}},"uid_relative_key":{"post":{"get":true}}}};
 };
 
 /**

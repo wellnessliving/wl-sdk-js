@@ -67,6 +67,8 @@ function Wl_Book_Process_Resource_ResourceModel()
    * @property {number[][][]} a_class_period List of resources available for booking sessions.   The field structure is `[k_class_period][dtu_session]['a_available']`.   Contains indexes of resource available for each session.
    * @property {Wl_Book_Process_Resource_ResourceModel_a_resource_all_a_resource_list_a_image} a_image Asset image data.
    * @property {number} i_index The asset number. Actual for assets with a quantity more than `1`.
+   * @property {number} i_padding_after Padding after each booking of the asset, in minutes. `0` if the asset has no padding after. Classes are not padded; the value only tells the client about the asset setting.
+   * @property {number} i_padding_before Padding before each booking of the asset, in minutes. `0` if the asset has no padding before. Classes are not padded; the value only tells the client about the asset setting.
    * @property {number} i_quantity Total number of the asset spots.
    * @property {number} i_use Number of already used asset units.
    * @property {boolean} is_current City for the off-site location.
