@@ -53,6 +53,9 @@ Wl_Business_Custom_Terms_CustomTermsModel.prototype.config=function()
  * public-facing pages (the booking widget, for example) need them to render their own wording for a client
  * who is not signed in.
  *
+ * Also returns {@link Wl_Business_Custom_Terms_CustomTermsModel.a_rule}, the ready rules that apply the terms to the English texts of a
+ * client of the API. The rules are as public as the terms they are built from.
+ *
  * @function
  * @name Wl_Business_Custom_Terms_CustomTermsModel.get
  * @returns {WlSdk_Deferred_Promise}
