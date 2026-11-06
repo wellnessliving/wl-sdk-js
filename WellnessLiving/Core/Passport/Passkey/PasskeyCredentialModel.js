@@ -31,11 +31,12 @@ function Core_Passport_Passkey_PasskeyCredentialModel()
    * JSON-encoded structure with any additional information required by the project-specific
    * passkey configuration class, for example `k_business` in `Wl`.
    *
-   * Needed only to manage passkeys of a user other than the signed-in one; empty if no additional
-   * information is required.
+   * Needed to list, to rename and to revoke passkeys, the own ones included, because the project configuration decides who may
+   * manage them; empty only if the project configuration requires no additional information.
    *
    * @delete get
    * @get get
+   * @put get
    * @type {string}
    */
   this.json_context = "";
@@ -82,7 +83,7 @@ WlSdk_ModelAbstract.extend(Core_Passport_Passkey_PasskeyCredentialModel);
  */
 Core_Passport_Passkey_PasskeyCredentialModel.prototype.config=function()
 {
-  return {"a_field":{"a_credential":{"get":{"result":true}},"json_context":{"delete":{"get":true},"get":{"get":true}},"k_passkey_credential":{"delete":{"get":true},"put":{"get":true}},"text_device":{"put":{"post":true}},"uid":{"delete":{"get":true},"get":{"get":true}}}};
+  return {"a_field":{"a_credential":{"get":{"result":true}},"json_context":{"delete":{"get":true},"get":{"get":true},"put":{"get":true}},"k_passkey_credential":{"delete":{"get":true},"put":{"get":true}},"text_device":{"put":{"post":true}},"uid":{"delete":{"get":true},"get":{"get":true}}}};
 };
 
 /**
