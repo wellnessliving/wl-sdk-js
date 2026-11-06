@@ -26,6 +26,7 @@ function Wl_Staff_Passkey_PasskeyListModel()
    * @property {Wl_Staff_Passkey_PasskeyListModel_a_staff_a_passkey} a_passkey Active passkeys of the staff member, in the order of creation:
    * @property {boolean} can_remove Whether the signed-in user may remove the passkeys of this staff member. The same rule is applied by the removal itself.
    * @property {string} text_name Full name of the staff member.
+   * @property {string} text_role Business role of the staff member, or an empty string if no role is assigned.
    * @property {string} uid Staff member key.
    */
 

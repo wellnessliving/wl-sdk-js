@@ -1,7 +1,7 @@
 /**
  * The source of a visit.
  *
- * Last used ID: 33.
+ * Last used ID: 34.
  */
 function Wl_Mode_ModeSid()
 {
@@ -184,6 +184,13 @@ Wl_Mode_ModeSid.SYSTEM = 10;
  * @type {number}
  */
 Wl_Mode_ModeSid.UNDEFINED = 6;
+
+/**
+ * Sale made automatically on wait list promotion.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.WAIT_LIST_PROMOTION = 34;
 
 /**
  * Client booked session from Attendance Web App.
