@@ -16,6 +16,8 @@ function Core_Passport_Passkey_PasskeyCredentialModel()
    * @property {number} id_status One of {@link Core_Passport_Passkey_PasskeyCredentialStatusEnum} values.
    * @property {boolean} is_backed_up `true` if the credential is currently backed up.
    * @property {string} k_passkey_credential Credential key.
+   * @property {string} s_credential_id `WebAuthn` credential ID, base64url encoded without padding. Clients pass it to the signal methods of  `WebAuthn` (for example `PublicKeyCredential.signalUnknownCredential()`) after the credential is revoked,  so the device deletes its copy of the passkey.
+   * @property {string} s_user_handle `WebAuthn` user handle (`user.id`) stored with the passkey on the device, base64url encoded without padding.  The same for every credential of the user.
    * @property {string} text_device Name of this credential, assigned at registration and changed by `put()`.
    */
 
@@ -53,6 +55,16 @@ function Core_Passport_Passkey_PasskeyCredentialModel()
   this.k_passkey_credential = "";
 
   /**
+   * Relying Party ID of the passkeys, the `rpId` the `WebAuthn` signal methods need.
+   *
+   * Filled when listing the credentials. The same for every credential and for every client of the environment.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.s_rp_id = undefined;
+
+  /**
    * New name of the credential, 1 to 50 characters, without the spaces at the beginning and at the end.
    *
    * Only used to rename a credential. It is saved as it is entered, even if another passkey of the user has the
@@ -83,7 +95,7 @@ WlSdk_ModelAbstract.extend(Core_Passport_Passkey_PasskeyCredentialModel);
  */
 Core_Passport_Passkey_PasskeyCredentialModel.prototype.config=function()
 {
-  return {"a_field":{"a_credential":{"get":{"result":true}},"json_context":{"delete":{"get":true},"get":{"get":true},"put":{"get":true}},"k_passkey_credential":{"delete":{"get":true},"put":{"get":true}},"text_device":{"put":{"post":true}},"uid":{"delete":{"get":true},"get":{"get":true}}}};
+  return {"a_field":{"a_credential":{"get":{"result":true}},"json_context":{"delete":{"get":true},"get":{"get":true},"put":{"get":true}},"k_passkey_credential":{"delete":{"get":true},"put":{"get":true}},"s_rp_id":{"get":{"result":true}},"text_device":{"put":{"post":true}},"uid":{"delete":{"get":true},"get":{"get":true}}}};
 };
 
 /**

@@ -10,12 +10,18 @@ function Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel()
 
   /**
    * @typedef {{}} Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel_a_device_info
+   * @property {number} i_browser_color_depth Color depth of the screen in bits per pixel.
    * @property {number} i_browser_screen_height User browser screen height.
    * @property {number} i_browser_screen_width User browser screen width.
+   * @property {number} i_browser_time_difference Time difference between UTC and the local time of the browser in minutes, as `getTimezoneOffset()` gives.
+   * @property {string} s_browser_language Language of the browser, an IETF BCP47 tag.
    */
 
   /**
-   * User device info:
+   * User device info: 
+   *
+   * The optional fields go to Cybersource only when the device data collection did not complete. A value that does not
+   * suit them is not sent to Cybersource, and does not fail the request.
    *
    * @post post
    * @type {Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel_a_device_info}
@@ -29,6 +35,20 @@ function Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel()
    * @type {string}
    */
   this.k_pay_transaction = "";
+
+  /**
+   * How the device data collection ended: the message of its frame as it was received, or `timeout` if the frame did
+   * not answer in the time that the page waits for it.
+   *
+   * The check of the enrollment goes on in any case. It has no validators: a value of this field can not stop a
+   * payment.
+   *
+   * `null` if the client does not report it: a widget, or a page opened before this field appeared.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.s_collection = null;
 
   /**
    * JSON Web Token to include into the request to the second frame.
@@ -63,7 +83,7 @@ WlSdk_ModelAbstract.extend(Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel);
  */
 Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel.prototype.config=function()
 {
-  return {"a_field":{"a_device_info":{"post":{"post":true}},"k_pay_transaction":{"post":{"post":true}},"s_jwt":{"post":{"result":true}},"url_interact":{"post":{"result":true}}}};
+  return {"a_field":{"a_device_info":{"post":{"post":true}},"k_pay_transaction":{"post":{"post":true}},"s_collection":{"post":{"post":true}},"s_jwt":{"post":{"result":true}},"url_interact":{"post":{"result":true}}}};
 };
 
 /**
