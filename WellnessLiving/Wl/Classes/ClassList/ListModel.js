@@ -23,7 +23,9 @@ function Wl_Classes_ClassList_ListModel()
    * @property {boolean} is_event Define if current element is event.`true` - event, `false` - class.
    * @property {boolean} is_remove Whether class/event is removed.
    * @property {string} k_class Class/event identifier.
+   * @property {?string} k_classes_category Key of the category of the class or event. Classes and events have separate lists of categories, see {@link Wl_Classes_Category_CategoryListModel}. A class or event that has no category yet is given in the category "Uncategorized" of its business and kind. `null` only for such a class or event while its business has no category "Uncategorized" of that kind yet.
    * @property {string} k_enrollment_block Event Block ID.
+   * @property {?string} text_category Name of the category of the class or event, in the language of the request, or in the nearest language that has a name. The translated name "Uncategorized" when `k_classes_category` is `null`. `null` if the category has no name in any language: a category always gets a name when it is created, so this is broken data.
    * @property {string} text_title Class/event name.
    */
 

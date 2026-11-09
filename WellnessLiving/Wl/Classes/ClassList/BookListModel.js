@@ -21,8 +21,10 @@ function Wl_Classes_ClassList_BookListModel()
    * @property {boolean} is_event This will be `true` for events. Otherwise, this will be `false` for classes.
    * @property {boolean} is_online_private `true` means to show class only for clients who can book online, `false` means to show class for all clients.
    * @property {string} k_class The class key.
+   * @property {?string} k_classes_category The key of the category of the class or event, as {@link Wl_Classes_ClassList_ListModel.a_class} gives it: a class or event that has no category yet is given in the category "Uncategorized" of its business and kind, and `null` only while the business has no such category. A removed class or event that still has a session at the location is given as a class without a category, like its `is_event`.
    * @property {string} k_enrollment_block The enrollment block key.
    * @property {string} m_price_total The total price for an event.
+   * @property {?string} text_category The name of the category of the class or event in the language of the request, or in the nearest language that has a name. The translated name "Uncategorized" when `k_classes_category` is `null`. `null` if the category has no name in any language: a category always gets a name when it is created, so this is broken data.
    * @property {string} text_description The class description.
    * @property {string} text_title The class name.
    */

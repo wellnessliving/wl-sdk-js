@@ -1689,7 +1689,7 @@ function Wl_Mail_SendMailModel()
    * @property {string} text_error Text of the error. Empty if there is none.
    * @property {string} text_status Status of the dispute as `stripe.com` gives it.
    * @property {string} text_title What was not done and why.
-   * @property {string} url_transaction Address of the page of the disputed transaction, see Mail::transactionUrl(). Empty if none.
+   * @property {string} url_transaction Address of the page of the disputed transaction for the staff. Empty if the transaction is not found.
    */
 
   /**
