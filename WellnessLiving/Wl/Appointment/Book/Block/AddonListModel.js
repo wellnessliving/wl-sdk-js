@@ -15,11 +15,11 @@ function Wl_Appointment_Book_Block_AddonListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Block_AddonListModel_a_addon
+   * @property {string} html_description Description of the add-on service, as HTML that is ready to be shown, in the language of the current user. An empty string if the add-on has no description.
    * @property {number} i_extra_time Extra time that the add-on adds to the appointment, in minutes. `0` if the add-on takes no time of its own.
    * @property {string} k_service_addon Key of the add-on service.
    * @property {string} m_extra_cost Extra cost that the add-on adds to the price of the appointment.
    * @property {?string} m_price_regular The regular price of the add-on, shown struck through next to Extra cost. `null` if nothing is struck through.
-   * @property {?string} text_tagline Short line that tells why to add the add-on. `null` if the add-on has none.
    * @property {string} text_title Title of the add-on.
    */
 

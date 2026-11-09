@@ -1679,12 +1679,17 @@ function Wl_Mail_SendMailModel()
 
   /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_148
+   * @property {boolean} is_cross_border `true` if the merchant account of the studio is outside the country of the platform.
    * @property {string} k_business Business key.
    * @property {string} s_dispute Identifier of the dispute at `stripe.com`.
+   * @property {string} s_fail Step that failed, one of the `Mail::FAIL_*` constants.
    * @property {string} s_mail Email address to send the mail to.
+   * @property {string} text_amount The disputed amount with the currency.
+   * @property {string} text_business_name Name of the studio.
    * @property {string} text_error Text of the error. Empty if there is none.
    * @property {string} text_status Status of the dispute as `stripe.com` gives it.
    * @property {string} text_title What was not done and why.
+   * @property {string} url_transaction Address of the page of the disputed transaction, see Mail::transactionUrl(). Empty if none.
    */
 
   /**
@@ -1693,6 +1698,7 @@ function Wl_Mail_SendMailModel()
    * @property {?string} s_submission_method Who submits the evidence, `intended_submission_method` of the dispute. `null` if `stripe.com` has not reported it.
    * @property {string} text_amount The disputed amount with the currency.
    * @property {string} text_client Name of the client who disputed the payment. Empty if it is not known.
+   * @property {string} text_date_evidence The day by which the studio sends the evidence to Support, in the time zone of the business. Empty if the dispute has no deadline.
    * @property {string} text_date_payment Date of the disputed payment in the time zone of the business. Empty if it is not known.
    * @property {string} text_date_withdrawn Date when the amount was withdrawn from the Stripe balance, in the time zone of the business.
    * @property {string} uid Key of the user who receives the mail.
