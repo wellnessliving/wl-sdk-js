@@ -40,8 +40,7 @@ function Thoth_PayProcessor_CyberSource_CsPaEnrollmentModel()
    * How the device data collection ended: the message of its frame as it was received, or `timeout` if the frame did
    * not answer in the time that the page waits for it.
    *
-   * The check of the enrollment goes on in any case. It has no validators: a value of this field can not stop a
-   * payment.
+   * The check of the enrollment goes on in any case. It has no validators: no message of the frame can stop a payment.
    *
    * `null` if the client does not report it: a widget, or a page opened before this field appeared.
    *
