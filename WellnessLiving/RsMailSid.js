@@ -1252,6 +1252,16 @@ RsMailSid.PAY_DISPUTE_FUNDS_FAIL = 228;
 RsMailSid.PAY_DISPUTE_STUDIO = 229;
 
 /**
+ * A chargeback that Smart Disputes does not take must be contested by Support.
+ *
+ * Sent to the group mailbox of Support when a client's bank takes back a payment and Stripe does not submit the
+ * evidence itself, with the response deadline. The mail to the studio says that Support contests such a dispute.
+ *
+ * @type {number}
+ */
+RsMailSid.PAY_DISPUTE_SUPPORT = 230;
+
+/**
  * Transaction failed.
  *
  * Sent to support whenever transaction fails.

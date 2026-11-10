@@ -1,7 +1,7 @@
 /**
  * The source of a visit.
  *
- * Last used ID: 34.
+ * Last used ID: 35.
  */
 function Wl_Mode_ModeSid()
 {
@@ -170,6 +170,13 @@ Wl_Mode_ModeSid.SPA_BACKEND = 4;
  * @type {number}
  */
 Wl_Mode_ModeSid.SPA_FRONTEND = 3;
+
+/**
+ * Staff member checked the client in at the staff check-in kiosk.
+ *
+ * @type {number}
+ */
+Wl_Mode_ModeSid.STAFF_KIOSK = 35;
 
 /**
  * Created by system.
