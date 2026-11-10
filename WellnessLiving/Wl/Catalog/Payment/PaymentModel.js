@@ -136,7 +136,7 @@ function Wl_Catalog_Payment_PaymentModel()
    * @property {?number} id_sale The item type ID. One of the {@link RsSaleSid} constants.
    * @property {number} id_terms_action The decision on the terms and conditions of the ticket, used only for tickets. One of {@link Wl_Catalog_Terms_TermsActionSid} constants. {@link Wl_Catalog_Terms_TermsActionSid} if the client agreed to them, {@link Wl_Catalog_Terms_TermsActionSid} if staff skipped them to let the client agree later. Not set if there is no decision.
    * @property {string} k_id The item key.
-   * @property {string} k_login_prize The key of the login prize to apply a login prize discount.
+   * @property {string} k_login_prize The key of the login prize to apply a login prize discount. When `i_quantity` is more than 1, the discount of the prize applies to one unit of the item only, as in   the cart (`get()`). A prize of a free item is the exception: it applies to   every unit.
    * @property {string} k_shop_product_option The product option key, required only for products.
    * @property {string} m_price_custom The custom price (optional).
    * @property {string} s_signature The client signature, used for an item that requires agreement to a single contract.
