@@ -100,6 +100,13 @@ function Wl_Event_EventListModel()
    */
 
   /**
+   * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_session_user
+   * @property {string} dtu_date Date and time of the session in UTC, in `MySQL` format (for example `2026-11-05 13:00:00`).
+   * @property {boolean} is_user_wait `true` if the user is on the wait list of the session ({@link Wl_Visit_VisitSid}). `false` if the user holds an active visit of the session ({@link Wl_Visit_VisitSid}, {@link Wl_Visit_VisitSid} or  {@link Wl_Visit_VisitSid}).
+   * @property {string} k_class_period Key of the class period of the session.
+   */
+
+  /**
    * @typedef {{}} Wl_Event_EventListModel_a_event_list_a_ticket_inventory
    * @property {number} i_capacity Total number of tickets that can be sold for the event.
    * @property {number} i_order_limit Maximum number of tickets that can be ordered for the event in one purchase. `0` if there is no limit.
@@ -121,6 +128,7 @@ function Wl_Event_EventListModel()
    * @property {Wl_Event_EventListModel_a_event_list_a_logo} a_logo Data about logo of the event.
    * @property {Wl_Event_EventListModel_a_event_list_a_schedule} a_schedule List of scheduled sessions of the event.
    * @property {Wl_Event_EventListModel_a_event_list_a_search_tag} a_search_tag List of search tags connected to this event.
+   * @property {Wl_Event_EventListModel_a_event_list_a_session_user} a_session_user Future sessions of this event that {@link Wl_Event_EventListModel.uid} holds, booked or on the wait list, ordered by  date.
    * @property {?Wl_Event_EventListModel_a_event_list_a_ticket_inventory} a_ticket_inventory Returns how many tickets can be sold for the ticketed event the class belongs to, and how  many of those are still available to sell.
    * @property {Wl_Event_EventListModel_a_event_list_a_tickets} a_tickets List of ticket options available for booking the event. Empty if the event is not a ticketed event.
    * @property {boolean} can_book Whether event can be booked or not. * `true` - there are no restrictions to book this event in general. * `false` - for some reason event cannot be booked.
