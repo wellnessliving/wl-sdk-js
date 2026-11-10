@@ -79,9 +79,9 @@ Wl_Appointment_Phone_PhoneModel.prototype.config=function()
 /**
  * Returns the number of the visit or the default number for a future booking.
  *
- * The number of a visit is shown like the phone of the client:
- * to the client of the visit, to the user who booked it, to a WellnessLiving admin with the privilege
- * `rs.appointment.edit` and to staff of the business with the {@link Wl_Privilege_PrivilegeSid} privilege.
+ * The number of a visit is returned wherever the appointment is returned, like the meeting link of a virtual
+ * appointment: to the client of the visit, to the user who booked it, to a WellnessLiving admin with the privilege
+ * `rs.appointment.edit` and to active staff of the business.
  * The default number for a future booking is available to a user with the {@link Wl_Privilege_PrivilegeSid}
  * privilege for the client. The number is returned in the international E.164 format.
  *

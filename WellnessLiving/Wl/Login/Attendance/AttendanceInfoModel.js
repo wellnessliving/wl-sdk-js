@@ -294,11 +294,9 @@ function Wl_Login_Attendance_AttendanceInfoModel()
    * Phone number the staff calls for this Phone Call booking.
    *
    * The number in the international E.164 format, for example `+15550101001`.
-   * `null` if the booking is not a Phone Call or has no number, or if the current user may not see the number.
-   * The number is shown like the phone of the client: to the client, to the user who booked and to staff with
-   * the privilege to see contact details of clients.
-   * A caller with a token and no user allowed by this rule gets `null`; {@link Wl_Login_Attendance_AttendanceInfoModel.is_phone_call}
-   * is returned anyway.
+   * `null` if the booking is not a Phone Call or has no number.
+   * The number is returned wherever the appointment is returned, like the meeting link of a virtual appointment,
+   * also to a caller with a token.
    *
    * @get result
    * @type {?string}

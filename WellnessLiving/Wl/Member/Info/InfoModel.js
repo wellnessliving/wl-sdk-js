@@ -39,6 +39,7 @@ function Wl_Member_Info_InfoModel()
    * @typedef {{}} Wl_Member_Info_InfoModel_a_info
    * @property {Wl_Member_Info_InfoModel_a_info_a_icon} a_icon List of icons with additional information about business member.
    * @property {Wl_Member_Info_InfoModel_a_info_a_note} a_note List of client's notes. Every element has keys:
+   * @property {{}} a_task_list The client's tasks in the business, ordered by due date, keyed by task key   . Filled only when {@link Wl_Member_Info_InfoModel.is_backend} is `true` and {@link Wl_Member_Info_InfoModel.k_business} is set. Empty when the business's account is below Standard and the current user is not an admin. Which tasks it holds depends on the privileges of the current staff member. Each task has the following structure:
    * @property {Wl_Member_Info_InfoModel_a_info_a_vaccination_status} a_vaccination_status Information about users vaccination status.
    * @property {string} html_credit Amount the client owns to the business.
    * @property {string} html_note User`s login notes.
@@ -73,6 +74,7 @@ function Wl_Member_Info_InfoModel()
   /**
    * Additional member data or `null` if any data can be shown.
    * Will be filled if {@link Wl_Member_Info_InfoModel.is_full} flag is set.
+   * Besides the keys below, it has the keys of the member information:
    *
    * @get result
    * @type {?Wl_Member_Info_InfoModel_a_info}
@@ -105,6 +107,7 @@ function Wl_Member_Info_InfoModel()
    * @typedef {{}} Wl_Member_Info_InfoModel_a_result_list_a_info
    * @property {Wl_Member_Info_InfoModel_a_result_list_a_info_a_icon} a_icon List of icons with additional information about business member.
    * @property {Wl_Member_Info_InfoModel_a_result_list_a_info_a_note} a_note List of client's notes. Every element has keys:
+   * @property {{}} a_task_list The client's tasks in the business, ordered by due date, keyed by task key   . Filled only when {@link Wl_Member_Info_InfoModel.is_backend} is `true` and {@link Wl_Member_Info_InfoModel.k_business} is set. Empty when the business's account is below Standard and the current user is not an admin. Which tasks it holds depends on the privileges of the current staff member. Each task has the following structure:
    * @property {Wl_Member_Info_InfoModel_a_result_list_a_info_a_vaccination_status} a_vaccination_status Information about users vaccination status.
    * @property {string} html_credit Amount the client owns to the business.
    * @property {string} html_note User`s login notes.
@@ -138,7 +141,7 @@ function Wl_Member_Info_InfoModel()
 
   /**
    * @typedef {{}} Wl_Member_Info_InfoModel_a_result_list
-   * @property {Wl_Member_Info_InfoModel_a_result_list_a_info} a_info Additional user's information.
+   * @property {Wl_Member_Info_InfoModel_a_result_list_a_info} a_info Additional user's information. Besides the keys below, it has the keys of the member information:
    * @property {boolean} is_traveller `true` - user is traveller; `false` - not traveller.
    * @property {string} s_member User's member number.
    * @property {string} text_first_name User's first name.

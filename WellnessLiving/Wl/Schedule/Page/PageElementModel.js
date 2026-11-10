@@ -375,9 +375,8 @@ function Wl_Schedule_Page_PageElementModel()
    * Phone number the staff calls for this Phone Call booking.
    *
    * The number in the international E.164 format, for example `+15550101001`.
-   * `null` if the booking is not a Phone Call or has no number, or if the current user may not see the number.
-   * The number is shown like the phone of the client: to the client, to the user who booked and to staff with
-   * the privilege to see contact details of clients.
+   * `null` if the booking is not a Phone Call or has no number.
+   * The number is returned wherever the appointment is returned, like the meeting link of a virtual appointment.
    *
    * @get result
    * @type {?string}

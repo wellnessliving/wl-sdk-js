@@ -42,14 +42,15 @@ function Wl_Ticket_TicketListModel()
    * @property {number} i_attend Number of tickets of the order that are checked in.
    * @property {number} i_ticket Number of tickets in the order, cancelled ones included.
    * @property {boolean} is_email `true` if the buyer has an email address on file. `false` for a guest.
-   * @property {boolean} is_guest `true` if the order was bought by a guest, who has no profile. In this case `text_name` is empty.
+   * @property {boolean} is_guest `true` if the order was bought by a guest, who has no profile. In this case `text_name` is the name the guest gave with the order.
    * @property {string} k_purchase Number of the order: key of the purchase the tickets were bought with. Key of the purchase.
+   * @property {string} m_discount Discounts applied to the tickets of the order, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. `0` if there are none. Decimal string.
    * @property {string} m_refund Amount refunded for the tickets of the order, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
-   * @property {string} m_subtotal Amount of the tickets of the order after discounts and before taxes, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
+   * @property {string} m_subtotal Amount of the tickets of the order before discounts, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. It is counted the same way as the subtotal of the cart ({@link Wl_Catalog_Cart_CartModel.m_subtotal}): it does not include the taxes in a locale where taxes are added to the prices, and includes them in a locale where taxes are included in the prices. Not net of refunds. Decimal string. Always `m_subtotal - m_discount + m_tax = m_total + m_refund` where taxes are added to the prices, and `m_subtotal - m_discount = m_total + m_refund` where taxes are included in the prices.
    * @property {string} m_surcharge Surcharge taken for the purchase of the order. `0` if there is none. Decimal string.
    * @property {string} m_tax Taxes of the tickets of the order, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
-   * @property {string} m_total Total paid for the tickets of the order, net of refunds, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
-   * @property {string} text_name Full name of the buyer. Empty for a guest.
+   * @property {string} m_total Total paid for the tickets of the order after discounts and with taxes, net of refunds, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
+   * @property {string} text_name Full name of the buyer. For a guest, the name given at the time of the order. Empty if a guest gave none.
    * @property {?string} uid Key of the buyer, for the link to the profile. `null` for a guest.
    * @property {string} url_viewer Link to the page with all tickets of the order, to view and print them. .
    */

@@ -186,7 +186,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_note Any notes tied to the client.
-   * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number, or if the current user may not see the number. The number is shown like the phone of the client: to the client, to the user who booked, to a WellnessLiving admin and to staff with the {@link Wl_Privilege_PrivilegeSid} privilege. A caller with a token or a guest application and no such user gets `null`.
+   * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. The number is returned wherever the visit is returned, like the meeting link of a virtual appointment, also to a caller with a token or a guest application and without the {@link Wl_Privilege_PrivilegeSid} privilege.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
    * @property {string} text_promotion_return Title of purchase option usages of that was returned to user.
    * @property {string} text_restrict_title The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.
@@ -384,7 +384,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_note Any notes tied to the client.
-   * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number, or if the current user may not see the number. The number is shown like the phone of the client: to the client, to the user who booked, to a WellnessLiving admin and to staff with the {@link Wl_Privilege_PrivilegeSid} privilege. A caller with a token or a guest application and no such user gets `null`.
+   * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. The number is returned wherever the visit is returned, like the meeting link of a virtual appointment, also to a caller with a token or a guest application and without the {@link Wl_Privilege_PrivilegeSid} privilege.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
    * @property {string} text_promotion_return Title of purchase option usages of that was returned to user.
    * @property {string} text_restrict_title The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.
@@ -581,7 +581,7 @@ function Wl_Login_Attendance_AttendanceListByTokenModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_note Any notes tied to the client.
-   * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number, or if the current user may not see the number. The number is shown like the phone of the client: to the client, to the user who booked, to a WellnessLiving admin and to staff with the {@link Wl_Privilege_PrivilegeSid} privilege. A caller with a token or a guest application and no such user gets `null`.
+   * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. The number is returned wherever the visit is returned, like the meeting link of a virtual appointment, also to a caller with a token or a guest application and without the {@link Wl_Privilege_PrivilegeSid} privilege.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
    * @property {string} text_promotion_return Title of purchase option usages of that was returned to user.
    * @property {string} text_restrict_title The Purchase Option restriction description. It can be empty string when the Purchase Option has no restrictions.
