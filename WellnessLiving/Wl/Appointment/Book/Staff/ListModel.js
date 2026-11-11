@@ -16,11 +16,12 @@ function Wl_Appointment_Book_Staff_ListModel()
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Staff_ListModel_a_staff
+   * @property {?string} dt_next The first time from {@link Wl_Appointment_Book_Staff_ListModel.dt_date} to the end of the booking window when the staff member can be   booked without the wait list. Local date and time in the time zone of {@link Wl_Appointment_Book_Staff_ListModel.dt_date}, in MySQL   format, for example `2026-11-12 13:00:00`. `null` when the staff member is available at {@link Wl_Appointment_Book_Staff_ListModel.dt_date}, or has no such time in the booking   window. <p>Returned only when {@link Wl_Appointment_Book_Staff_ListModel.is_dt_next} is `true` and {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is passed.</p>
    * @property {?number} i_free_spot How many clients can still be booked with the staff member at the requested time. <p>If {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is not passed, this value is `null`.</p> <p>If {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is passed, this is calculated for the specific staff member at that time.</p>
    * @property {number} id_gender Staff member's gender. One of {@link AGenderSid} constants.
-   * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached daily limits, this field will be different for client and staff booking flows. If client books, such staff member is not available and this field is `false`. If staff member books, such staff member is available.
-   * @property {boolean} is_daily_limit Whether staff member reached daily limits on number or total duration of the appointments for one day.
-   * @property {boolean} is_wait_list Whether staff member available only for wait list booking.
+   * @property {boolean} is_available Whether staff member is available for booking. Note, if staff member reached daily limits, this field will be different for client and staff booking flows. If client books, such staff member is not available and this field is `false`. If staff member books, such staff member is available. <p>When {@link Wl_Appointment_Book_Staff_ListModel.is_dt_next} is `true`, this field is `true` exactly when the first time found for   `dt_next` is {@link Wl_Appointment_Book_Staff_ListModel.dt_date} itself, whoever books.</p>
+   * @property {boolean} is_daily_limit Whether staff member reached daily limits on number or total duration of the appointments for one day. <p>When {@link Wl_Appointment_Book_Staff_ListModel.is_dt_next} is `true`, the add-ons of {@link Wl_Appointment_Book_Staff_ListModel.s_product} count in the   duration.</p>
+   * @property {boolean} is_wait_list Whether staff member available only for wait list booking. <p>When {@link Wl_Appointment_Book_Staff_ListModel.is_dt_next} is `true`, the add-ons of {@link Wl_Appointment_Book_Staff_ListModel.s_product} count in the   duration.</p>
    * @property {string} k_staff **DEPRECATED** Legacy staff key.  Returned only for allow-listed apps.
    * @property {string} s_position Position of the staff member in the business.
    * @property {string} s_staff Name of the staff member.
@@ -89,6 +90,19 @@ function Wl_Appointment_Book_Staff_ListModel()
   this.id_role = 2;
 
   /**
+   * Whether to find the next time when every staff member can be booked.
+   *
+   * `true` together with a non-empty {@link Wl_Appointment_Book_Staff_ListModel.dt_date} turns the search on. Then the list holds every staff
+   *   member who can conduct the service at the location, whatever {@link Wl_Appointment_Book_Staff_ListModel.is_unavailable} says, no staff
+   *   member is left out for being unavailable, and every element of {@link Wl_Appointment_Book_Staff_ListModel.a_staff} gets `dt_next`.
+   * `false` to return the list without this search. Without {@link Wl_Appointment_Book_Staff_ListModel.dt_date} this field changes nothing.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_dt_next = false;
+
+  /**
    * Determines if the staff list has male and female members.
    *
    * @get result
@@ -140,6 +154,18 @@ function Wl_Appointment_Book_Staff_ListModel()
   this.k_timezone = null;
 
   /**
+   * Add-ons of the service, as a JSON array of the keys of the add-on options, for example `["15","27"]`.
+   *
+   * Read only when {@link Wl_Appointment_Book_Staff_ListModel.is_dt_next} is `true` and {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is passed: then the duration
+   *   of these add-ons counts in `dt_next`, `is_available`, `is_daily_limit` and `is_wait_list` of
+   *   {@link Wl_Appointment_Book_Staff_ListModel.a_staff}. An empty string means no add-ons. At most 1000 characters.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.s_product = "";
+
+  /**
    * The user key for whom the service is booking.
    *
    * `null` when not set.
@@ -159,7 +185,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Staff_ListModel);
  */
 Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
 {
-  return {"a_field":{"a_staff":{"get":{"result":true}},"can_book_unavailable_staff":{"get":{"result":true}},"dt_date":{"get":{"get":true}},"has_gender":{"get":{"result":true}},"has_staff":{"get":{"result":true}},"i_duration_custom":{"get":{"get":true}},"id_role":{"get":{"get":true}},"is_gender_different":{"get":{"result":true}},"is_unavailable":{"get":{"get":true}},"k_appointment_ignore":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_timezone":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_staff":{"get":{"result":true}},"can_book_unavailable_staff":{"get":{"result":true}},"dt_date":{"get":{"get":true}},"has_gender":{"get":{"result":true}},"has_staff":{"get":{"result":true}},"i_duration_custom":{"get":{"get":true}},"id_role":{"get":{"get":true}},"is_dt_next":{"get":{"get":true}},"is_gender_different":{"get":{"result":true}},"is_unavailable":{"get":{"get":true}},"k_appointment_ignore":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_timezone":{"get":{"get":true}},"s_product":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
@@ -183,6 +209,12 @@ Wl_Appointment_Book_Staff_ListModel.prototype.config=function()
  * Returns the list of staff members who can perform the specified service at the given location
  * on the specified date and time. Each entry includes the staff member's name, image, gender,
  * and availability. An 'any staff' option is included when the service allows random staff assignment.
+ *
+ * When {@link Wl_Appointment_Book_Staff_ListModel.is_dt_next} is `true` and {@link Wl_Appointment_Book_Staff_ListModel.dt_date} is passed, the list holds the staff
+ * members who can perform the service at the location, whatever {@link Wl_Appointment_Book_Staff_ListModel.is_unavailable} says, and no
+ * staff member is left out for being unavailable. Each entry then gets `dt_next`, the next time when the staff
+ * member can be booked, found with the add-ons of {@link Wl_Appointment_Book_Staff_ListModel.s_product}. That search ignores
+ * {@link Wl_Appointment_Book_Staff_ListModel.i_duration_custom} and {@link Wl_Appointment_Book_Staff_ListModel.k_appointment_ignore}.
  *
  * @function
  * @name Wl_Appointment_Book_Staff_ListModel.get
