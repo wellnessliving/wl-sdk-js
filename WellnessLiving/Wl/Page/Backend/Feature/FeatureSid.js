@@ -1,7 +1,7 @@
 /**
  * List of available features in the system that can be shown in owner's header.
  *
- * Last used ID: 38.
+ * Last used ID: 39.
  */
 function Wl_Page_Backend_Feature_FeatureSid()
 {
@@ -226,6 +226,13 @@ Wl_Page_Backend_Feature_FeatureSid.SELF_SIGNUP = 15;
  * @type {number}
  */
 Wl_Page_Backend_Feature_FeatureSid.SKIN_APP = 13;
+
+/**
+ * Staff check-in kiosk of gym visits: the staff member stays signed in.
+ *
+ * @type {number}
+ */
+Wl_Page_Backend_Feature_FeatureSid.STAFF_RECEPTION = 39;
 
 /**
  * Link to the page of the support page.
