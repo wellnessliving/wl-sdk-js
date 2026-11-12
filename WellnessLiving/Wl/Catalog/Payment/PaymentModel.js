@@ -44,9 +44,9 @@ function Wl_Catalog_Payment_PaymentModel()
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_event_list
    * @property {Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_event_list_a_discount} a_discount Discount applied to the event price. Staff-only: ignored when sent by a client.
-   * @property {*[]} a_tax List of taxes to be applied to the event price. Keys are tax keys.  Values are tax amounts. If not specified, taxes are calculated based on class setup. Staff-only: ignored when sent by a client.
+   * @property {{}} a_tax List of taxes to be applied to the event price. Keys are tax keys.  Values are tax amounts. If not specified, taxes are calculated based on class setup. Staff-only: ignored when sent by a client.
    * @property {string} k_class Key of the event class.
-   * @property {string} m_checkout The amount charged for this event at checkout. Staff-only: ignored when sent by a client. When provided for all events in the list, per-event amounts are used as-is without aggregate redistribution, allowing a non-uniform distribution across events (Mode 2). If omitted for any event, falls back to item-level `m_checkout` redistribution.
+   * @property {string} m_checkout_subtotal The price of the event charged at checkout, before discount and before tax. Staff-only: ignored when sent by a client. The discounts and the tax are taken from it, and the amount charged for the event is calculated. It can not exceed the price of the event. When provided for all events in the list, per-event amounts are used as-is without aggregate redistribution, allowing a non-uniform distribution across events (Mode 2). If omitted for any event, falls back to item-level `m_checkout` redistribution. A value of `m_checkout` of an event is ignored: the amount of the event is changed through this field only.
    * @property {string} m_price Price of the event for the tuition participant. If not specified, price is calculated based on class setup. Staff-only: ignored when sent by a client.
    * @property {string} uid Key of the tuition participant.
    */

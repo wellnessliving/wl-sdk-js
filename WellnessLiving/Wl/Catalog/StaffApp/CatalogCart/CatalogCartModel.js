@@ -35,22 +35,27 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
    * @property {?number} i_days_total Number of days in the billing cycle. `null` if prorated by sessions.
    * @property {?number} i_sessions_prorate Number of sessions the first payment is charged for. `null` if prorated by days.
    * @property {?number} i_sessions_total Number of sessions in the billing cycle. `null` if prorated by days.
-   * @property {string} m_calculated Prorated amount as calculated by the system, before any manual override of `m_checkout`.
+   * @property {string} m_calculated Prorated price as calculated by the system, before discount and tax and before any manual      override of `m_checkout_subtotal`.
    */
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_discount
-   * @property {string} m_discount Discount amount.
+   * @property {string} m_discount Discount amount of the full event price.
+   * @property {string} m_discount_checkout Output only. The part of this discount that is taken from `m_checkout_subtotal`. A      percentage discount takes its percent of `m_checkout_subtotal` (it is not stacked with the      other discounts), a flat discount is taken in full.
    * @property {string} text_discount Discount title.
    */
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list
    * @property {?Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_checkout} a_checkout Output only. Additional information about how `m_checkout` was calculated when      the first membership payment is prorated, `null` otherwise:
+   * @property {string[]} a_checkout_tax Output only. The taxes charged right now for this event, calculated from `m_checkout_subtotal`      after the discounts. Keys are internal system tax keys.       `a_tax` is the tax of the full event price.
    * @property {Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_discount} a_discount Discount applied to the event price:
    * @property {{}} a_tax List of taxes applied to the event price:      Keys are internal system tax keys.       Values are amount of taxes applied to the event price.      If not specified or `null`, taxes will be calculated based on the class setup.
    * @property {string} k_class Key of the event class within the tuition which should be granted to the client.
-   * @property {string} m_checkout The amount that will be charged for this event when the tuition is purchased.      Calculated based on the payment schedule (full amount or the prorated part due now).      Can be overridden manually. If not specified or `null`, the amount will be calculated      automatically.
+   * @property {string} m_checkout Output only. The amount that will be charged for this event when the tuition is purchased,      including tax: `m_checkout_subtotal` minus `m_discount_checkout` plus `m_checkout_tax`.      A value in the request is ignored, use `m_checkout_subtotal` to change the amount.
+   * @property {string} m_checkout_subtotal The price of the event that is charged when the tuition is purchased, before discount and      before tax: the prorated price when the first payment is prorated, the full price when it      is not. This is the only amount that can be changed manually: the discounts and the tax are      taken from it and `m_checkout` is calculated. It can not exceed the price of the event.      If not specified or `null`, the amount will be calculated automatically.
+   * @property {string} m_checkout_tax Output only. The sum of `a_checkout_tax`.
+   * @property {string} m_discount_checkout Output only. The sum of `m_discount_checkout` of `a_discount`: the discount taken from      `m_checkout_subtotal`. `m_discount` is the discount of the full event price.
    * @property {string} m_price Price of the event for the tuition participant.      If not specified or `null`, price will be calculated based on the class setup.
    * @property {string} uid Key of the tuition participant.
    */

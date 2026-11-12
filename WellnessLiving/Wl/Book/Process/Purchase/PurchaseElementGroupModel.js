@@ -17,12 +17,16 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
 
   /**
    * @typedef {{}} Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list
+   * @property {string[]} a_checkout_tax The taxes charged for this event right now, keyed by tax key. `a_tax` is the tax of the      full price.
    * @property {?Wl_Book_Process_Purchase_PurchaseElementGroupModel_a_purchase_item_a_config_a_event_list_a_discount} a_discount Discounts applied to the event, `null` if there are none. Every row has the      next keys:
    * @property {?string[]} a_tax Taxes of the event. Keys are tax keys, values are tax amounts.
    * @property {string} k_class Key of the event class.
    * @property {?string} m_checkout The amount charged for this event right now, including tax. `0.00` when every      installment payment is still ahead. `null` when it is not calculated yet.
+   * @property {string} m_checkout_subtotal The price charged for this event right now, before discount and tax.
+   * @property {string} m_checkout_tax The tax charged for this event right now: the sum of `a_checkout_tax`.
    * @property {string} m_deferred The part of the event cost that is not charged right now, including tax. Goes      to the installment plan or to the membership schedule, depending on the      tuition billing mode.
    * @property {string} m_discount Total discount amount applied to the event, `0.00` if there is none.
+   * @property {string} m_discount_checkout The discount taken from `m_checkout_subtotal`, `m_discount` is the discount of the full      price. Every row of `a_discount` has its part of it in `m_discount_checkout`.
    * @property {?string} m_price Price of the event within the tuition, before discount and tax.
    * @property {string} uid Key of the tuition participant.
    */

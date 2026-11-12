@@ -24,8 +24,22 @@ function Wl_Catalog_Cart_CartModel()
   this.a_discount_item = undefined;
 
   /**
+   * @typedef {{}} Wl_Catalog_Cart_CartModel_a_item_a_config_a_event_list_a_discount
+   * @property {string} m_discount Discount amount of the full event price.
+   * @property {string} m_discount_checkout The part of this discount that is taken from `m_checkout_subtotal`. A percentage discount takes its percent of `m_checkout_subtotal` (it is not stacked with the other discounts), a flat discount is taken in full.
+   */
+
+  /**
    * @typedef {{}} Wl_Catalog_Cart_CartModel_a_item_a_config_a_event_list
+   * @property {string[]} a_checkout_tax Output only. The taxes charged right now for this event, keyed by tax key.  `a_tax` is the tax of the full event price.
+   * @property {Wl_Catalog_Cart_CartModel_a_item_a_config_a_event_list_a_discount} a_discount Output only. Discounts applied to the event price:
+   * @property {{}} a_tax Output only. The taxes of the full event price. Keys are tax keys.
    * @property {string} k_class Key of the event class.
+   * @property {string} m_checkout Output only. The amount that will be charged for this event when the tuition is purchased, including tax: `m_checkout_subtotal` minus `m_discount_checkout` plus `m_checkout_tax`. It is the prorated part of the event when the first payment is prorated.
+   * @property {string} m_checkout_subtotal Output only. The price of the event that is charged when the tuition is purchased, before discount and before tax: the prorated price when the first payment is prorated, the full price when it is not.
+   * @property {string} m_checkout_tax Output only. The sum of `a_checkout_tax`.
+   * @property {string} m_discount Output only. The discount of the full event price.
+   * @property {string} m_discount_checkout Output only. The sum of `m_discount_checkout` of `a_discount`: the discount taken from `m_checkout_subtotal`.
    * @property {string} uid Key of the tuition participant.
    */
 
