@@ -1134,6 +1134,7 @@ function Wl_Mail_SendMailModel()
   /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_92
    * @property {string[]} a_class_period A list of canceled class period keys. Each value is class period key.
+   * @property {?*[]} a_reason The reason of a cancel that the system made by itself, the result of CancelReason::toArray(); it gives the variable `[CancelReason]`. Not given or `null` for a cancel by staff, which has no reason: then the variable is empty.
    * @property {?string} dl_end End date of range to cancel sessions. `null` when cancelation is ongoing.
    * @property {string} dl_start Start date of range to cancel sessions.
    * @property {string} uid Recipient user key.

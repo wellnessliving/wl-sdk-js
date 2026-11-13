@@ -59,6 +59,8 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {number} i_book_before Minimum hours|days|months before class should be booked.
    * @property {number} i_book_future Maximum hours|days|months after class can be booked.
    * @property {number} i_cancel Minimum hours|days|months before class should be canceled without penalty.
+   * @property {number} i_cancel_attendance The low attendance cancellation: a session is cancelled if fewer clients than this are booked.
+   * @property {number} i_cancel_attendance_check The low attendance cancellation: how long before the session starts the bookings are counted, in the unit of   `id_cancel_attendance_check`.
    * @property {number} i_promote Minimum hours|days|months before class should be promoted from wait list.
    * @property {number} i_promote_fastest_response Minimum hours|days|months the notifications which are sent for client confirmation required should be sent to all clients on the wait list at the same time up to the cut off time.
    * @property {number} i_promote_require_confirm Minimum hours|days|months the notifications which are sent for client confirmation must confirm their a promote from the waiting list to the active list.
@@ -66,10 +68,12 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {number} id_book_before Hours|days|months from {@link ADurationSid}.
    * @property {number} id_book_future Hours|days|months from {@link ADurationSid}.
    * @property {number} id_cancel Hours|days|months from {@link ADurationSid}.
+   * @property {number} id_cancel_attendance_check The unit of `i_cancel_attendance_check`: {@link ADurationSid} or {@link ADurationSid}.
    * @property {number} id_promote Hours|days|months from {@link ADurationSid}.
    * @property {number} id_promote_fastest_response Hours|days|months from {@link ADurationSid}.
    * @property {number} id_promote_require_confirm Hours|days|months from {@link ADurationSid}.
    * @property {boolean} is_book_inside_active_pay_period if `true` - clients with purchase options are only allowed to book sessions within their current paid period, `false` - during purchase option's duration.
+   * @property {boolean} is_cancel_attendance `true` if class sessions are cancelled automatically when too few clients are booked, `false` otherwise.
    * @property {boolean} is_disable_promotion 1 if a client's automatic payment fails, their account should not be debited and their purchase option becomes inactive, 0 - otherwise. Default 0.
    * @property {boolean} is_enable_payment_penalty Whether to charge penalty after final auto-payment attempt.
    * @property {boolean} is_enable_payment_reattempt Whether to reattempt failed auto-payments.
@@ -80,6 +84,7 @@ function Wl_Event_Book_EventView_ElementModel()
    * @property {string} k_currency Currency from rs.currency table.
    * @property {string} k_timezone Timezone from get.timezone table.
    * @property {string} m_payment_penalty Penalty amount to charge after final auto-payment attempt.
+   * @property {boolean} show_cancel_attendance Only for `business`. `true` if a session cancelled for low attendance shows as Cancelled on the client schedule,   `false` if clients no longer see it.
    * @property {string} url_custom Custom Url of a business
    */
 
