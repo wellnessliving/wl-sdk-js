@@ -9,7 +9,7 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 229.
+ * Last used ID: 231.
  */
 function RsMailSid()
 {
@@ -1014,6 +1014,14 @@ RsMailSid.LEAD_CAPTURE = 87;
  * @type {number}
  */
 RsMailSid.LEAD_CAPTURE_AI = 197;
+
+/**
+ * Sent to a client when they have stayed in a lead stage for a set time without any activity of their own
+ * (used in automations).
+ *
+ * @type {number}
+ */
+RsMailSid.LEAD_STAGE_NO_ACTIVITY = 231;
 
 /**
  * Sent to staff when a lead's stage is updated in the Lead Capture Form.

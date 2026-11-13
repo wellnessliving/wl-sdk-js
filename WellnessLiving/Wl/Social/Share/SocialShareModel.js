@@ -58,6 +58,10 @@ function Wl_Social_Share_SocialShareModel()
   /**
    * User key.
    *
+   * Deprecated, the share is always recorded for the current user.
+   * Optional, but if passed, it must match the current user, otherwise the request is rejected.
+   *
+   * @deprecated Do not pass, the current user is used.
    * @post post
    * @type {string}
    */
