@@ -52,7 +52,7 @@ function Wl_Ticket_TicketListModel()
    * @property {string} m_total Total paid for the tickets of the order after discounts and with taxes, net of refunds, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
    * @property {string} text_name Full name of the buyer. For a guest, the name given at the time of the order. Empty if a guest gave none.
    * @property {?string} uid Key of the buyer, for the link to the profile. `null` for a guest.
-   * @property {string} url_pdf Link to the PDF file with all tickets of the order. .
+   * @property {string} url_pdf Link to the PDF file with all tickets of the order. The browser opens the file, it does not save it. .
    * @property {string} url_viewer Link to the page with all tickets of the order, to view and print them. .
    */
 

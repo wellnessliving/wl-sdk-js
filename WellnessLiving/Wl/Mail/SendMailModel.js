@@ -2081,6 +2081,7 @@ function Wl_Mail_SendMailModel()
   /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_196
    * @property {string} k_business Business key.
+   * @property {string} k_class Key of the instance of the event the email is for.  The email has the tickets of this instance only. If it is not given, the email has all the tickets of the order.
    * @property {string} k_ticket_order Key of the order.
    * @property {string} s_mail Email to send the message to instead of the email of the buyer. For example, when the tickets are sent once again to another address.
    */
