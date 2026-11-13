@@ -14,7 +14,7 @@ function Wl_Catalog_StaffApp_CatalogCartEdit_EditViewModel()
    * @property {boolean} is_pay_when_start `true` if the client should be charged only once the promotion actually starts.
    * @property {boolean} is_prorate `true` to calculate a prorated tax amount for the item.
    * @property {boolean} is_prorate_only `true` to use only the prorated amount as the taxable amount.
-   * @property {string} k_class Class the ticket is bought for. Used for a ticket only. Primary key in RsClassSql.
+   * @property {string} k_class Class the ticket is bought for. Used for a ticket only.
    * @property {string} m_prorate_custom Custom prorated amount that overrides the automatically calculated one.
    */
 
