@@ -1679,9 +1679,9 @@ function Wl_Mail_SendMailModel()
 
   /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_148
+   * @property {number} id_fail Step that failed, the value of one of {@link Thoth_WlPay_Dispute_Finance_MailFailEnum} cases.
    * @property {boolean} is_cross_border `true` if the merchant account of the studio is outside the country of the platform.
    * @property {string} s_dispute Identifier of the dispute at `stripe.com`.
-   * @property {string} s_fail Step that failed, one of the `Mail::FAIL_*` constants.
    * @property {string} s_mail Email address to send the mail to.
    * @property {string} text_amount The disputed amount with the currency.
    * @property {string} text_business_id Key of the business of the studio. It is text only: the mail is not tied to the business.

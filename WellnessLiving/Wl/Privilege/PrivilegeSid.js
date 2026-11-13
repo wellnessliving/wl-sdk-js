@@ -1,7 +1,7 @@
 /**
  * Wellnessliving-wide privileges.
  *
- * Last Used ID: 254.
+ * Last Used ID: 259.
  */
 function Wl_Privilege_PrivilegeSid()
 {
@@ -651,6 +651,56 @@ Wl_Privilege_PrivilegeSid.INTERFACE_WIDGET_VIEW = 110;
  * @type {number}
  */
 Wl_Privilege_PrivilegeSid.INVENTORY_UPDATE = 157;
+
+/**
+ * Add leads.
+ *
+ * Allows a staff member to add a lead from the App Drawer. Without this privilege the Add Lead button is hidden.
+ * Leads that come from lead capture widgets, the API and integrations are not affected.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.LEAD_ADD = 255;
+
+/**
+ * Manage lead creation settings.
+ *
+ * Allows a staff member to change what happens when a staff member adds a lead, in Setup > Leads > Lead Creation.
+ * Without this privilege the page is view only.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.LEAD_CREATION_SETTINGS_MANAGE = 257;
+
+/**
+ * Manage lead sources and fields.
+ *
+ * Allows a staff member to edit the list of lead sources and the fields shown when adding a lead, in
+ * Setup > Leads > Lead Sources and Lead Fields. Without this privilege these pages are view only.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.LEAD_SOURCE_MANAGE = 258;
+
+/**
+ * Change lead stage.
+ *
+ * Allows a staff member to move leads and clients between lead stages. Without this privilege the stage is shown
+ * as read-only text. Automations still move leads on their own.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.LEAD_STAGE_CHANGE = 256;
+
+/**
+ * Manage lead stages.
+ *
+ * Allows a staff member to add, edit, reorder and delete lead stages, in Setup > Leads > Lead Stages. Without this
+ * privilege the page is view only.
+ *
+ * @type {number}
+ */
+Wl_Privilege_PrivilegeSid.LEAD_STAGE_MANAGE = 259;
 
 /**
  * Manage my locations except General information.

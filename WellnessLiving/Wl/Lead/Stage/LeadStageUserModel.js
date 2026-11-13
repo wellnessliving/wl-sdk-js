@@ -50,6 +50,9 @@ Wl_Lead_Stage_LeadStageUserModel.prototype.config=function()
  *
  * If the client is already in this stage, nothing is changed.
  *
+ * The staff member needs the privilege to change the lead stage ({@link Wl_Privilege_PrivilegeSid}). The
+ * privilege to manage client profiles does not give it.
+ *
  * @function
  * @name Wl_Lead_Stage_LeadStageUserModel.post
  * @returns {WlSdk_Deferred_Promise}

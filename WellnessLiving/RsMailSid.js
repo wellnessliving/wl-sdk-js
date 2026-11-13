@@ -1238,6 +1238,11 @@ RsMailSid.PAY_AUTOMATIC_SUCCESS = 116;
  * Sent to Finance when the recovery of the amount from the studio (the transfer reversal) or the repayment to the
  * studio after a won dispute failed.
  *
+ * The class of the email is `Thoth\WlPay\Dispute\Finance\Mail` of SAL, see {@link RsMailSid.SAL_CLASS}. It is a
+ * text here and not a `@see` link: SAL is released after the monolith, and a link to a class that does not exist yet
+ * fails the documentation check of this class. TODO WL-96921: replace the text with the links to this class and to
+ * its methods that load the data and the information of the email when SAL is on every production.
+ *
  * @type {number}
  */
 RsMailSid.PAY_DISPUTE_FUNDS_FAIL = 228;
@@ -1246,6 +1251,9 @@ RsMailSid.PAY_DISPUTE_FUNDS_FAIL = 228;
  * A client disputed a payment to the studio.
  *
  * Sent to the owners of the studio when a client's bank takes back a payment (a chargeback).
+ *
+ * The class of the email is `Thoth\WlPay\Dispute\Studio\Mail` of SAL, see {@link RsMailSid.SAL_CLASS}. TODO WL-96921:
+ * replace the text with the links when SAL is on every production, as in {@link RsMailSid.PAY_DISPUTE_FUNDS_FAIL}.
  *
  * @type {number}
  */
@@ -1256,6 +1264,9 @@ RsMailSid.PAY_DISPUTE_STUDIO = 229;
  *
  * Sent to the group mailbox of Support when a client's bank takes back a payment and Stripe does not submit the
  * evidence itself, with the response deadline. The mail to the studio says that Support contests such a dispute.
+ *
+ * The class of the email is `Thoth\WlPay\Dispute\Support\Mail` of SAL, see {@link RsMailSid.SAL_CLASS}. TODO WL-96921:
+ * replace the text with the links when SAL is on every production, as in {@link RsMailSid.PAY_DISPUTE_FUNDS_FAIL}.
  *
  * @type {number}
  */

@@ -293,6 +293,9 @@ Wl_Lead_LeadModel.prototype.config=function()
  * and associates the lead with a lead source. Returns an error code in `text_sign_in_error` if sign-in was
  * requested but could not be completed.
  *
+ * When the lead is added from the backend ({@link Wl_Lead_LeadModel.is_backend}), the staff member needs the privilege to
+ * add leads ({@link Wl_Privilege_PrivilegeSid}).
+ *
  * @function
  * @name Wl_Lead_LeadModel.post
  * @returns {WlSdk_Deferred_Promise}
