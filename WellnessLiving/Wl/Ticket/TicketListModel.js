@@ -52,8 +52,8 @@ function Wl_Ticket_TicketListModel()
    * @property {string} m_total Total paid for the tickets of the order after discounts and with taxes, net of refunds, with the currency {@link Wl_Ticket_TicketListModel.k_currency}. Decimal string.
    * @property {string} text_name Full name of the buyer. For a guest, the name given at the time of the order. Empty if a guest gave none.
    * @property {?string} uid Key of the buyer, for the link to the profile. `null` for a guest.
-   * @property {string} url_pdf Link to the PDF file with all tickets of the order. The browser opens the file, it does not save it. .
-   * @property {string} url_viewer Link to the page with all tickets of the order, to view and print them. .
+   * @property {string} url_pdf Link to the PDF file with the tickets of the order for the event of the list, not for its other instances. The browser opens the file, it does not save it. .
+   * @property {string} url_viewer Link to the page with the tickets of the order for the event of the list, not for its other instances, to view and print them. .
    */
 
   /**
@@ -96,6 +96,7 @@ function Wl_Ticket_TicketListModel()
    * @property {string} text_holder Full name of the holder of the ticket: the person who has claimed it. Empty if nobody has claimed the ticket.
    * @property {string} text_ticket_code Number of the ticket: its short code in the format for displaying, for example `4829-1736`. Empty if the ticket has no short code.
    * @property {string} text_type Name of the ticket type.
+   * @property {string} url_pdf Link to the PDF file with this ticket only. The browser opens the file, it does not save it.
    * @property {string} url_viewer Link to the page with this ticket for view and print.
    */
 
