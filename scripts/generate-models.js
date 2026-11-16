@@ -873,6 +873,19 @@ function collectFields(pathItem, spec, className)
         }
       }
     }
+
+    // x-error-fields: result fields that the API also returns with an error
+    // (`@{method} result,error` in the monolith). ModelAbstract copies only fields with `error` on a failed response.
+    const errorFields = op['x-error-fields'];
+    if (Array.isArray(errorFields))
+    {
+      for (const name of errorFields)
+      {
+        const methodObj = fields[name] && fields[name].a_method[httpMethod];
+        // `error` is meaningful only for response fields.
+        if (methodObj && methodObj.result) methodObj.error = true;
+      }
+    }
   }
 
   return fields;
