@@ -403,7 +403,7 @@ Wl_Catalog_Payment_PaymentModel.prototype.config=function()
  * the resulting purchase key so the frontend can redirect to the confirmation page, and the temporary token of the
  * receipt, which lets an anonymous user, who has no access to the purchase, view the receipt. For an anonymous
  * user ({@link Wl_Catalog_Payment_PaymentModel.is_guest}) the session also remembers the purchase, so that user can ask for the
- * emails of the purchase afterwards.
+ * emails of the purchase afterwards, and the receipt goes to the email of the order.
  *
  * @function
  * @name Wl_Catalog_Payment_PaymentModel.post

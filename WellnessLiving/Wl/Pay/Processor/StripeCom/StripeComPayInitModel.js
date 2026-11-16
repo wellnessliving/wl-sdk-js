@@ -180,6 +180,17 @@ function Wl_Pay_Processor_StripeCom_StripeComPayInitModel()
   this.k_business_merchant = null;
 
   /**
+   * Key of the saved bank account of the payer to pay with a pre-authorized debit.
+   *
+   * `null` if the payer enters a new bank account in the modal of Stripe. Used only if the payment method is
+   * {@link RsPayMethodSid}. The payer confirms the mandate in the modal of Stripe for every payment.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.k_pay_bank = null;
+
+  /**
    * Key of a custom payment method.
    *
    * `null` in case when not initialized yet or empty if payment is performed with a standard payment method.
@@ -301,7 +312,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Processor_StripeCom_StripeComPayInitModel);
  */
 Wl_Pay_Processor_StripeCom_StripeComPayInitModel.prototype.config=function()
 {
-  return {"a_field":{"a_card":{"post":{"post":true}},"a_line_item":{"post":{"post":true}},"id_currency":{"post":{"post":true}},"id_pay_actor":{"post":{"post":true}},"id_pay_method":{"post":{"post":true}},"id_status":{"post":{"result":true}},"is_authorize":{"post":{"post":true}},"is_checkout_session":{"post":{"post":true}},"is_pos":{"post":{"post":true}},"is_stripe_elements":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_business_merchant":{"post":{"post":true}},"k_pay_method":{"post":{"post":true}},"k_pay_transaction":{"post":{"result":true}},"m_amount":{"post":{"post":true,"result":true}},"m_surcharge":{"post":{"post":true,"result":true}},"s_checkout_session":{"post":{"result":true}},"s_client_secret":{"post":{"result":true}},"s_payment_intent":{"post":{"result":true}},"s_payment_method":{"post":{"post":true}},"text_mail_payer":{"post":{"result":true}},"text_message":{"post":{"result":true}},"uid_purchase":{"post":{"post":true}}}};
+  return {"a_field":{"a_card":{"post":{"post":true}},"a_line_item":{"post":{"post":true}},"id_currency":{"post":{"post":true}},"id_pay_actor":{"post":{"post":true}},"id_pay_method":{"post":{"post":true}},"id_status":{"post":{"result":true}},"is_authorize":{"post":{"post":true}},"is_checkout_session":{"post":{"post":true}},"is_pos":{"post":{"post":true}},"is_stripe_elements":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_business_merchant":{"post":{"post":true}},"k_pay_bank":{"post":{"post":true}},"k_pay_method":{"post":{"post":true}},"k_pay_transaction":{"post":{"result":true}},"m_amount":{"post":{"post":true,"result":true}},"m_surcharge":{"post":{"post":true,"result":true}},"s_checkout_session":{"post":{"result":true}},"s_client_secret":{"post":{"result":true}},"s_payment_intent":{"post":{"result":true}},"s_payment_method":{"post":{"post":true}},"text_mail_payer":{"post":{"result":true}},"text_message":{"post":{"result":true}},"uid_purchase":{"post":{"post":true}}}};
 };
 
 /**

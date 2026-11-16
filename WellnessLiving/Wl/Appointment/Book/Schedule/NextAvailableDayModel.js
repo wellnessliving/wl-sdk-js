@@ -14,6 +14,22 @@ function Wl_Appointment_Book_Schedule_NextAvailableDayModel()
   this._s_key = "id_gender_staff,dt_date,k_location,k_service,k_resource,i_index,i_duration,uid,s_product,s_appointment,is_staff,is_back_to_back,k_timezone,k_class_tab,is_tab_all,uid_staff";
 
   /**
+   * The list of staff members to limit the availability to. Empty means no limit.
+   * Each element is the user key of a staff member. 
+   *
+   * When the list is set, only the times that a listed staff member can take are returned, and the suggested staff
+   * member of each time is taken from this list.
+   * The list is ignored when {@link Wl_Appointment_Book_Schedule_DayTimeModel.uid_staff} (or the legacy {@link Wl_Appointment_Book_Schedule_DayTimeModel.k_staff}) is set,
+   * and for asset bookings.
+   * Listed staff members who cannot take the booking (not configured for the service, without a work period at the
+   * location, inactive) are skipped. When none of the listed staff members remains, no availability is returned.
+   *
+   * @get get
+   * @type {string[]}
+   */
+  this.a_staff = undefined;
+
+  /**
    * List of user keys to book appointments.
    * There may be empty values in this list, which means that this is a walk-in.
    *
@@ -229,7 +245,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Schedule_NextAvailableDayModel);
  */
 Wl_Appointment_Book_Schedule_NextAvailableDayModel.prototype.config=function()
 {
-  return {"a_field":{"a_uid":{"get":{"get":true}},"dt_date":{"get":{"get":true,"result":true}},"dt_next":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_capacity_waitlist":{"get":{"result":true}},"i_duration":{"get":{"get":true}},"i_index":{"get":{"get":true}},"id_gender_staff":{"get":{"get":true}},"is_back_to_back":{"get":{"get":true}},"is_staff":{"get":{"get":true}},"is_tab_all":{"get":{"get":true}},"is_waitlist":{"get":{"result":true}},"is_walk_in":{"get":{"get":true}},"k_class_tab":{"get":{"get":true}},"k_location":{"get":{"get":true,"result":true}},"k_resource":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_timezone":{"get":{"get":true}},"s_appointment":{"get":{"get":true}},"s_product":{"get":{"get":true}},"uid":{"get":{"get":true}},"uid_staff":{"get":{"get":true}}}};
+  return {"a_field":{"a_staff":{"get":{"get":true}},"a_uid":{"get":{"get":true}},"dt_date":{"get":{"get":true,"result":true}},"dt_next":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_capacity_waitlist":{"get":{"result":true}},"i_duration":{"get":{"get":true}},"i_index":{"get":{"get":true}},"id_gender_staff":{"get":{"get":true}},"is_back_to_back":{"get":{"get":true}},"is_staff":{"get":{"get":true}},"is_tab_all":{"get":{"get":true}},"is_waitlist":{"get":{"result":true}},"is_walk_in":{"get":{"get":true}},"k_class_tab":{"get":{"get":true}},"k_location":{"get":{"get":true,"result":true}},"k_resource":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_timezone":{"get":{"get":true}},"s_appointment":{"get":{"get":true}},"s_product":{"get":{"get":true}},"uid":{"get":{"get":true}},"uid_staff":{"get":{"get":true}}}};
 };
 
 /**

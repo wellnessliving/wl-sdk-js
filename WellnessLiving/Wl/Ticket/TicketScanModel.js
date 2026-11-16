@@ -18,7 +18,7 @@ function Wl_Ticket_TicketScanModel()
    *
    * `null` if the ticket was not checked in.
    *
-   * @post result
+   * @post result,error
    * @type {?string}
    */
   this.dtu_attend = null;
@@ -28,7 +28,7 @@ function Wl_Ticket_TicketScanModel()
    *
    * `null` if the ticket was not cancelled.
    *
-   * @post result
+   * @post result,error
    * @type {?string}
    */
   this.dtu_cancel = null;
@@ -46,7 +46,7 @@ function Wl_Ticket_TicketScanModel()
    *
    * Equals {@link Wl_Ticket_TicketScanModel.dtu_start} when the ticket is for the session the client has sent.
    *
-   * @post result
+   * @post result,error
    * @type {string}
    */
   this.dtu_session_start = undefined;
@@ -128,7 +128,7 @@ function Wl_Ticket_TicketScanModel()
    *
    * Differs from {@link Wl_Ticket_TicketScanModel.k_class_period} only when the ticket is for another session.
    *
-   * @post result
+   * @post result,error
    * @type {string}
    */
   this.k_class_period_ticket = undefined;
@@ -172,7 +172,7 @@ function Wl_Ticket_TicketScanModel()
   /**
    * Name of the event the ticket is for.
    *
-   * @post result
+   * @post result,error
    * @type {string}
    */
   this.text_title = undefined;
@@ -187,7 +187,7 @@ WlSdk_ModelAbstract.extend(Wl_Ticket_TicketScanModel);
  */
 Wl_Ticket_TicketScanModel.prototype.config=function()
 {
-  return {"a_field":{"dtu_attend":{"post":{"result":true}},"dtu_cancel":{"post":{"result":true}},"dtu_session_end":{"post":{"result":true}},"dtu_session_start":{"post":{"result":true}},"dtu_start":{"post":{"post":true}},"i_attend":{"post":{"result":true}},"i_sold":{"post":{"result":true}},"id_mode":{"post":{"post":true}},"is_paid":{"post":{"result":true}},"is_past_allowed":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_class_period":{"post":{"post":true}},"k_class_period_ticket":{"post":{"result":true}},"k_ticket_item":{"post":{"result":true}},"k_visit":{"post":{"result":true}},"text_ticket":{"post":{"post":true}},"text_ticket_code":{"post":{"result":true}},"text_title":{"post":{"result":true}}}};
+  return {"a_field":{"dtu_attend":{"post":{"result":true,"error":true}},"dtu_cancel":{"post":{"result":true,"error":true}},"dtu_session_end":{"post":{"result":true}},"dtu_session_start":{"post":{"result":true,"error":true}},"dtu_start":{"post":{"post":true}},"i_attend":{"post":{"result":true}},"i_sold":{"post":{"result":true}},"id_mode":{"post":{"post":true}},"is_paid":{"post":{"result":true}},"is_past_allowed":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_class_period":{"post":{"post":true}},"k_class_period_ticket":{"post":{"result":true,"error":true}},"k_ticket_item":{"post":{"result":true}},"k_visit":{"post":{"result":true}},"text_ticket":{"post":{"post":true}},"text_ticket_code":{"post":{"result":true}},"text_title":{"post":{"result":true,"error":true}}}};
 };
 
 /**

@@ -14,7 +14,7 @@ function Wl_Visit_Kiosk_AttendModel()
    *
    * `null` unless the check-in is refused because the client is already checked in on the day.
    *
-   * @post result
+   * @post result,error
    * @type {?string}
    */
   this.dtu_attend = null;
@@ -34,7 +34,7 @@ function Wl_Visit_Kiosk_AttendModel()
    *
    * `0` if the business does not close this message automatically. A setting of the business.
    *
-   * @post result
+   * @post result,error
    * @type {number}
    */
   this.i_attend_quick_close_fail = undefined;
@@ -44,7 +44,7 @@ function Wl_Visit_Kiosk_AttendModel()
    *
    * `0` if the business does not close this message automatically. A setting of the business.
    *
-   * @post result
+   * @post result,error
    * @type {number}
    */
   this.i_attend_quick_close_success = undefined;
@@ -54,7 +54,7 @@ function Wl_Visit_Kiosk_AttendModel()
    *
    * One of {@link Wl_Visit_VisitDenyReasonSid} constants. `0` if the check-in has been made.
    *
-   * @post result
+   * @post result,error
    * @see Wl_Visit_VisitDenyReasonSid
    * @type {number}
    */
@@ -87,7 +87,7 @@ function Wl_Visit_Kiosk_AttendModel()
   /**
    * Whether the kiosk opens the profile of the client after a successful check-in. A setting of the business.
    *
-   * @post result
+   * @post result,error
    * @type {boolean}
    */
   this.is_attend_quick_navigate = undefined;
@@ -125,7 +125,7 @@ function Wl_Visit_Kiosk_AttendModel()
    *
    * `null` in all other cases.
    *
-   * @post result
+   * @post result,error
    * @type {?string}
    */
   this.k_location_visit = null;
@@ -147,7 +147,7 @@ function Wl_Visit_Kiosk_AttendModel()
    *
    * `null` if the check-in has been refused for another reason.
    *
-   * @post result
+   * @post result,error
    * @type {?string}
    */
   this.k_visit = null;
@@ -159,7 +159,7 @@ function Wl_Visit_Kiosk_AttendModel()
    * `null` if the check-in has been made, or has been refused without a record of a failed attempt (the client is
    * already checked in on the day).
    *
-   * @post result
+   * @post result,error
    * @type {?string}
    */
   this.s_attempt = null;
@@ -169,7 +169,7 @@ function Wl_Visit_Kiosk_AttendModel()
    *
    * Empty string if the check-in has been made.
    *
-   * @post result
+   * @post result,error
    * @type {string}
    */
   this.text_message = undefined;
@@ -213,7 +213,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Kiosk_AttendModel);
  */
 Wl_Visit_Kiosk_AttendModel.prototype.config=function()
 {
-  return {"a_field":{"dtu_attend":{"post":{"result":true}},"dtu_register":{"post":{"result":true}},"i_attend_quick_close_fail":{"post":{"result":true}},"i_attend_quick_close_success":{"post":{"result":true}},"id_deny_reason":{"post":{"result":true}},"id_unpaid_reason":{"post":{"result":true}},"id_visit":{"post":{"result":true}},"is_attend_quick_navigate":{"post":{"result":true}},"is_paid":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_location":{"post":{"post":true}},"k_location_visit":{"post":{"result":true}},"k_login_promotion":{"post":{"result":true}},"k_visit":{"post":{"result":true}},"s_attempt":{"post":{"result":true}},"text_message":{"post":{"result":true}},"text_pass":{"post":{"result":true}},"uid":{"post":{"post":true}},"url_store":{"post":{"result":true}}}};
+  return {"a_field":{"dtu_attend":{"post":{"result":true,"error":true}},"dtu_register":{"post":{"result":true}},"i_attend_quick_close_fail":{"post":{"result":true,"error":true}},"i_attend_quick_close_success":{"post":{"result":true,"error":true}},"id_deny_reason":{"post":{"result":true,"error":true}},"id_unpaid_reason":{"post":{"result":true}},"id_visit":{"post":{"result":true}},"is_attend_quick_navigate":{"post":{"result":true,"error":true}},"is_paid":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_location":{"post":{"post":true}},"k_location_visit":{"post":{"result":true,"error":true}},"k_login_promotion":{"post":{"result":true}},"k_visit":{"post":{"result":true,"error":true}},"s_attempt":{"post":{"result":true,"error":true}},"text_message":{"post":{"result":true,"error":true}},"text_pass":{"post":{"result":true}},"uid":{"post":{"post":true}},"url_store":{"post":{"result":true}}}};
 };
 
 /**

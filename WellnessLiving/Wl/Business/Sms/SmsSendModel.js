@@ -13,7 +13,7 @@ function Wl_Business_Sms_SmsSendModel()
    *
    * If business is not specified, will not be returned.
    *
-   * @post result
+   * @post result,error
    * @type {string}
    */
   this.dtl_send = undefined;
@@ -74,7 +74,7 @@ WlSdk_ModelAbstract.extend(Wl_Business_Sms_SmsSendModel);
  */
 Wl_Business_Sms_SmsSendModel.prototype.config=function()
 {
-  return {"a_field":{"dtl_send":{"post":{"result":true}},"k_business":{"post":{"post":true}},"s_key":{"post":{"post":true}},"text_sms_body":{"post":{"post":true}},"text_sms_body_short":{"post":{"result":true}},"uid":{"post":{"post":true}}}};
+  return {"a_field":{"dtl_send":{"post":{"result":true,"error":true}},"k_business":{"post":{"post":true}},"s_key":{"post":{"post":true}},"text_sms_body":{"post":{"post":true}},"text_sms_body_short":{"post":{"result":true}},"uid":{"post":{"post":true}}}};
 };
 
 /**
