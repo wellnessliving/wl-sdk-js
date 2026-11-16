@@ -80,10 +80,25 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * Keys refer to asset categories. Values are arrays with the next keys:
    *
    * Specify this only for an appointment booking.
+   * @property {number[]} [a_week] New days of the week for a weekly `FORWARD` reschedule, constants of {@link ADateWeekSid}.
+   * Omitted or empty to keep the current weekdays. Ignored for other scopes.
+   * @property {string} [dl_edit_from] The start of the date range of a recurring reschedule, in MySQL format in the location's time zone.
+   * Specify this only when `id_edit_range` is {@link Wl_Appointment_Edit_EditRangeSid.RANGE}:
+   * only the visits of the recurring series on or after this date are rescheduled.
+   * @property {string} [dl_edit_to] The end of the date range of a recurring reschedule, in MySQL format in the location's time zone.
+   * Specify this only when `id_edit_range` is {@link Wl_Appointment_Edit_EditRangeSid.RANGE}:
+   * only the visits of the recurring series on or before this date are rescheduled.
    * @property {string} dt_date The date/time for the booking in MySQL format in the location's time zone.
    * @property {number} [i_duration] The duration for the asset booking in minutes. Specify this for separate asset bookings only.
    * @property {number} [i_index] The asset index on the layout.
    * Specify this for separate asset bookings only and for cases when the asset category only has the layout.
+   * @property {number} [id_edit_range] The scope of a recurring reschedule. One of the {@link Wl_Appointment_Edit_EditRangeSid} constants:
+   * `ONCE` (default) reschedules this visit only; `FORWARD` reschedules this visit and all the following
+   * visits of the recurring series (new weekly days are supplied in `a_week`); `RANGE`
+   * reschedules only the visits inside the `dl_edit_from` / `dl_edit_to` range.
+   * Applied in backend mode only, while rescheduling (the top-level `k_appointment` is set).
+   * A wider-than-`ONCE` scope requires exactly one provider. Its `dt_date` keeps the opened session's
+   * original local date; only the time changes. The repeat frequency and end remain unchanged.
    * @property {number} [id_gender_staff] The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
    * Specify this for appointment bookings only.
    * @property {number} [id_purchase_item] Type of the purchase item. One of the {@link Wl_Purchase_Item_ItemSid} constants.
@@ -121,6 +136,9 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * @property {string} [k_timezone] The time zone key. This will be 'null' if the time zone used matches the time zone of the location.
    * @property {string} [uid] User key.
    * Specify only in a case of booking for a lof of different users.
+   * @property {string} [url_virtual] The meeting link for a non-integrated virtual service.
+   * Specify this for appointment bookings only when the service uses a non-integrated virtual provider.
+   * When provided, saved as both join and host link for the appointment.
    */
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishMultipleModel_a_book_data
@@ -205,56 +223,18 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   this.a_pay = [];
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_FinishMultipleModel_a_pay_form_pa
-   * @property {string} [json_data] Additional payer authentication data.
+   * Payment is not processed by this API.
    *
-   *  Copy of value set with
-   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paDataSet()</tt>.
+   * Use the following APIs for payment:
+   * * {@link Wl_Appointment_Book_Payment_PaymentModel}
+   * * {@link Wl_Appointment_Book_Payment_PaymentPostModel}
+   * * {@link Wl_Appointment_Book_Payment_PaymentMultipleModel}
    *
-   *  An empty string (or element not passed) if this payment processor does not provide additional payer
-   *  authentication data, or payer authentication was not performed.
-   * @property {string} [m_amount] Authenticated payment amount.
-   *
-   *  Copy of value set with
-   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paAmountSet()</tt>.
-   *
-   *  An empty string (or element not passed) if payer authentication was not performed.
-   * @property {string} [k_pay_transaction] Key of the payment transaction that was created during payer authentication.
-   *  In this case, payment transaction should be attached to this transaction.
-   *
-   *  An empty string (or element not passed) if transaction was not created during payer authentication, or payer
-   *  authentication was not executed.
-   */
-  /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_FinishMultipleModel_a_pay_form
-   * @property {number} f_amount Amount of money to withdraw with this payment source.
-   * @property {number} id_pay_method Payment method. One of {@link WlPayMethodSid} constants.
-   * @property {boolean} is_hide Whether this payment method is hidden.
-   *
-   * @property {boolean} [is_success] Whether this source was successfully charged.
-   * @property {string} [m_fee] Fee amount for this payment source.
-   *
-   * @property {string} [m_surcharge] Surcharge amount for this payment source.
-   * @property {Wl_Appointment_Book_Finish_FinishMultipleModel_a_pay_form_pa} [pa] Payer authentication data. Element may not present for payment sources that do not support payer authentication,
-   *  or payer authentication is not implemented by this payment processor.
-   *
-   *  This array is represented by
-   *  <tt>namespace.Wl/Pay/Processor/ProcessorInterface/PayerAuthenticationForm.xml</tt>
-   *  at browser side.
-   *
-   *  Structure of the array:
-   * @property {string} s_index Index of this form. This corresponds the key this item is written in this array with.
-   */
-
-  /**
-   * A list of payment sources to pay with.
-   *
-   * Each source contains:
-   *
+   * @deprecated Not used. See documentation.
    * @post post
-   * @type {Wl_Appointment_Book_Finish_FinishMultipleModel_a_pay_form[]}
+   * @type {{}}
    */
-  this.a_pay_form = [];
+  this.a_pay_form = {};
 
   /**
    * Payment is not processed by this API.
@@ -271,11 +251,12 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
   this.a_payment_data = {};
 
   /**
-   * The purchase items keys.
-   * This will be empty if no purchases have been made for the appointment booking.
+   * The keys of purchased items.
    *
-   * Keys refer to provider indexes.
-   * Value is array of item keys.
+   * The first level of the array is the list of providers from the batch.
+   * The second level of the array is the list of purchased items for this booking.
+   *
+   * If a purchased item was transferred, the transferred purchase item key is returned instead of the original one.
    *
    * @post post
    * @type {string[][]}
