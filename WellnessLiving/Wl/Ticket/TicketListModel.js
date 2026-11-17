@@ -241,7 +241,7 @@ function Wl_Ticket_TicketListModel()
   this.text_title = undefined;
 
   /**
-   * Link to book the session directly. Empty: the link is not provided yet.
+   * Link to book the event of the session directly. Empty: the event is not shown on any tab.
    *
    * @get result
    * @type {string}
