@@ -171,9 +171,9 @@ function Wl_Appointment_Book_Payment_PaymentModel()
    * @get get
    * @post get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * The payment type for the appointment. A constant of {@link RsAppointmentPaySid}.
@@ -377,7 +377,7 @@ Wl_Appointment_Book_Payment_PaymentModel.prototype.config=function()
 /**
  * @function
  * @name Wl_Appointment_Book_Payment_PaymentModel.instanceGet
- * @param {number} id_mode The key of source mode. A constant of {@link Wl_Mode_ModeSid}.
+ * @param {?number} id_mode The key of source mode. A constant of {@link Wl_Mode_ModeSid}.
  * @param {string} k_location Location to show available appointment booking schedule.
  * @param {string} uid The user key. This field is used if the client books for himself or for the relative. This field is incorrect to use for guest booking since in this case the client will be checked as a relative. In case of a group booking or a guest booking, the key of the client who is making the booking is set here.
  * @param {number} id_purchase_item The purchase item ID. A constant of {@link RsPurchaseItemSid}.

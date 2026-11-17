@@ -82,9 +82,9 @@ function Wl_Ticket_TicketScanModel()
    *
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * Whether the ticket is paid.

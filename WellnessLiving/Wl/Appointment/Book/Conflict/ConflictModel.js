@@ -88,6 +88,33 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.a_uid = undefined;
 
   /**
+   * New weekdays for a weekly forward reschedule, constants of {@link ADateWeekSid}.
+   * Empty to keep the current weekdays.
+   *
+   * @get get
+   * @type {number[]}
+   */
+  this.a_week = undefined;
+
+  /**
+   * First local date of the bounded reschedule range, in MySQL format.
+   * Required for {@link Wl_Appointment_Edit_EditRangeSid}; empty otherwise.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.dl_edit_from = "";
+
+  /**
+   * Last local date of the bounded reschedule range, in MySQL format.
+   * Required for {@link Wl_Appointment_Edit_EditRangeSid}; empty otherwise.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.dl_edit_to = "";
+
+  /**
    * Date/time of appointment. In location timezone.
    *
    * @get get
@@ -103,6 +130,19 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
    * @type {number}
    */
   this.i_duration = 0;
+
+  /**
+   * Scope of a staff reschedule of a recurring appointment.
+   *
+   * Omitted or {@link Wl_Appointment_Edit_EditRangeSid} keeps the existing single-session behavior.
+   * A wider scope keeps each session's calendar date and checks its new time in the destination location.
+   * Each returned `dt_date_global` is the key of that session's conflict solution on the write.
+   *
+   * @get get
+   * @see Wl_Appointment_Edit_EditRangeSid
+   * @type {number}
+   */
+  this.id_edit_range = 1;
 
   /**
    * If `true`, the client is a walk-in. Otherwise, this will be `false`.
@@ -168,7 +208,7 @@ function Wl_Appointment_Book_Conflict_ConflictModel()
   this.uid = "";
 
   /**
-   * Staff member user ID.
+   * Staff member user key.
    *
    * @get get
    * @type {string}
@@ -185,7 +225,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Book_Conflict_ConflictModel);
  */
 Wl_Appointment_Book_Conflict_ConflictModel.prototype.config=function()
 {
-  return {"a_field":{"a_conflict":{"get":{"result":true}},"a_product":{"get":{"get":true}},"a_repeat":{"get":{"get":true}},"a_resource":{"get":{"get":true}},"a_uid":{"get":{"get":true}},"dt_date":{"get":{"get":true}},"i_duration":{"get":{"get":true}},"is_walk_in":{"get":{"get":true}},"k_appointment":{"get":{"get":true}},"k_location":{"get":{"get":true,"result":true}},"k_resource":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_staff":{"get":{"get":true}},"uid":{"get":{"get":true}},"uid_staff":{"get":{"get":true}}}};
+  return {"a_field":{"a_conflict":{"get":{"result":true}},"a_product":{"get":{"get":true}},"a_repeat":{"get":{"get":true}},"a_resource":{"get":{"get":true}},"a_uid":{"get":{"get":true}},"a_week":{"get":{"get":true}},"dl_edit_from":{"get":{"get":true}},"dl_edit_to":{"get":{"get":true}},"dt_date":{"get":{"get":true}},"i_duration":{"get":{"get":true}},"id_edit_range":{"get":{"get":true}},"is_walk_in":{"get":{"get":true}},"k_appointment":{"get":{"get":true}},"k_location":{"get":{"get":true,"result":true}},"k_resource":{"get":{"get":true}},"k_service":{"get":{"get":true}},"k_staff":{"get":{"get":true}},"uid":{"get":{"get":true}},"uid_staff":{"get":{"get":true}}}};
 };
 
 /**

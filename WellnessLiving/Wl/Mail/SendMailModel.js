@@ -1724,7 +1724,7 @@ function Wl_Mail_SendMailModel()
 
   /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_152
-   * @property {number} id_mode Mode ID. One of {@link Wl_Mode_ModeSid} constants.
+   * @property {?number} id_mode Mode ID. One of {@link Wl_Mode_ModeSid} constants.
    * @property {number} id_pay_exception Transaction exception ID. One of {@link Thoth_WlPay_PayExceptionSid} constants.
    * @property {string} k_business Business key.
    * @property {string} k_pay_transaction Transaction ID.

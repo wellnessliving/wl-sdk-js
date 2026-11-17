@@ -104,9 +104,9 @@ function Wl_Appointment_Book_Asset_Service_ServiceModel()
    *
    * @get get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * If `true`, back-end mode is selected.
@@ -205,7 +205,7 @@ Wl_Appointment_Book_Asset_Service_ServiceModel.prototype.config=function()
  * @param {boolean} is_backend If `true`, back-end mode is selected. In this mode, the list of asset categories must be returned even if asset selection is disabled for clients. If `false` for a case of front-end mode. In this mode, the list of asset categories won't be returned if asset selection is disabled for clients.
  * @param {boolean} is_grid_any Whether to show both grid layouts and custom layouts. `true` if custom layout should be included in the result. `false` if only grid layout can be used.
  * @param {string} k_timezone Timezone of date and time of service start. Empty if client can't change in which timezone dates should be shown.
- * @param {number} id_mode Mode type, one of {@link Wl_Mode_ModeSid} constants.
+ * @param {?number} id_mode Mode type, one of {@link Wl_Mode_ModeSid} constants.
  * @param {string} uid User to get information for.
  * @returns {Wl_Appointment_Book_Asset_Service_ServiceModel}
  * @see WlSdk_ModelAbstract.instanceGet()

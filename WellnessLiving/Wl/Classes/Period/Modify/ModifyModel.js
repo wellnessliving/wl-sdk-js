@@ -95,9 +95,9 @@ function Wl_Classes_Period_Modify_ModifyModel()
    *
    * @post get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * The class modify action type. One of the {@link RsClassModifyModeSid} constants.

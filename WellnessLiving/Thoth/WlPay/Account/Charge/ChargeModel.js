@@ -61,9 +61,9 @@ function Thoth_WlPay_Account_Charge_ChargeModel()
    *
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * The account charge mode.

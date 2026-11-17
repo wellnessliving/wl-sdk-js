@@ -144,9 +144,9 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    *
    * @get get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * This is `true` if asset categories are loaded for back-end mode. Otherwise, this will be `false` for front-end mode.
@@ -261,7 +261,7 @@ Wl_Appointment_Book_Asset_AssetListModel.prototype.config=function()
  * @param {boolean} is_backend This is `true` if asset categories are loaded for back-end mode. Otherwise, this will be `false` for front-end mode.
  * @param {string} dtl_date The selected date and time of the asset booking. It is used in cases when the business booking policy allows clients to select a date and time, and then the available asset.
  * @param {string} k_timezone Timezone of date and time of asset booking. Empty if {@link Wl_Appointment_Book_Asset_AssetListModel.dtl_date} not set or client can't change in which timezone dates should be shown.
- * @param {number} id_mode Mode type, one of {@link Wl_Mode_ModeSid} constants.
+ * @param {?number} id_mode Mode type, one of {@link Wl_Mode_ModeSid} constants.
  * @param {?string} uid Client to get information for. If client not set, returns full asset list without client restrictions.
  * @param {boolean} is_tab_all `true` - search in all tabs. `false` - search only for the selected book tab.
  * @returns {Wl_Appointment_Book_Asset_AssetListModel}

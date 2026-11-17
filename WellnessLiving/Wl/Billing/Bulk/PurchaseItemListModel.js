@@ -79,7 +79,7 @@ function Wl_Billing_Bulk_PurchaseItemListModel()
   /**
    * @typedef {{}} Wl_Billing_Bulk_PurchaseItemListModel_a_product_a_option
    * @property {string} k_shop_product_option The product option key.
-   * @property {string} m_price The regular price of the option.
+   * @property {string} m_price The price of the option: the discount price when the discount of the option is enabled, the regular price otherwise.
    * @property {string} text_title The product option title.
    */
 

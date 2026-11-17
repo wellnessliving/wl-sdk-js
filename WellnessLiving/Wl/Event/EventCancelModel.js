@@ -13,9 +13,9 @@ function Wl_Event_EventCancelModel()
    *
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * `true` is late cancel, `false` reservation is not late cancel.

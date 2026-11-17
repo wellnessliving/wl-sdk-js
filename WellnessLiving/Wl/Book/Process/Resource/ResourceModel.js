@@ -174,9 +174,9 @@ function Wl_Book_Process_Resource_ResourceModel()
    * @get get
    * @post get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * `true` if action is performed as a staff member; `false` otherwise.
@@ -304,7 +304,7 @@ Wl_Book_Process_Resource_ResourceModel.prototype.config=function()
  * @param {string} dt_date_gmt Date/time to which session is booked.
  * @param {string} uid The client key for which the booking is being made.
  * @param {string[]} a_session The selected sessions. Only makes sense for session events. Optional parameter for GET request: if not passed, all available sessions will be used. Keys are class period keys. Values are index arrays of date/time strings when the session occurred, in MySQL format and in GMT.
- * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
+ * @param {?number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Resource_ResourceModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

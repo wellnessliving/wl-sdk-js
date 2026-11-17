@@ -23,9 +23,9 @@ function Wl_Quiz_Login_QuizLoginModel()
    *
    * @delete get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * Whether filling out a form is obligatory and should be passed urgently.

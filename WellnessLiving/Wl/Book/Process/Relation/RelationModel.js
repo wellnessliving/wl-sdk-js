@@ -63,9 +63,9 @@ function Wl_Book_Process_Relation_RelationModel()
    *
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * The relation type.

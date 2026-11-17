@@ -9,6 +9,18 @@ function Wl_Visit_Kiosk_EvaluateModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * Every reason why the check-in would be refused, in the order of the check-in.
+   *
+   * Each is one of {@link Wl_Visit_VisitDenyReasonSid} constants. The first one equals {@link Wl_Visit_Kiosk_EvaluateModel.id_deny_reason}.
+   * Empty if no reason is found; the check-in still may be refused by the rules of the booking. A client already
+   * checked in on the day gets only {@link Wl_Visit_VisitDenyReasonSid}.
+   *
+   * @get result
+   * @type {number[]}
+   */
+  this.a_deny_reason = undefined;
+
+  /**
    * @typedef {{}} Wl_Visit_Kiosk_EvaluateModel_a_login_promotion
    * @property {?string} dl_expire Last day of the pass, local date in MySQL format. `null` if the pass does not expire.
    * @property {?number} i_limit Number of the visits that the pass gives, `null` if the pass does not limit them.
@@ -52,7 +64,7 @@ function Wl_Visit_Kiosk_EvaluateModel()
   this.dtu_attend = null;
 
   /**
-   * The first reason why the check-in would be refused.
+   * The first reason why the check-in would be refused, the first element of {@link Wl_Visit_Kiosk_EvaluateModel.a_deny_reason}.
    *
    * One of {@link Wl_Visit_VisitDenyReasonSid} constants. `0` if no reason is found; the check-in still may be refused by
    * the rules of the booking.
@@ -238,18 +250,18 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Kiosk_EvaluateModel);
  */
 Wl_Visit_Kiosk_EvaluateModel.prototype.config=function()
 {
-  return {"a_field":{"a_login_promotion":{"get":{"result":true}},"dtl_date":{"get":{"get":true}},"dtu_attend":{"get":{"result":true}},"id_deny_reason":{"get":{"result":true}},"id_unpaid_reason":{"get":{"result":true}},"is_attend":{"get":{"result":true}},"is_balance_owing":{"get":{"result":true}},"is_card_expired":{"get":{"result":true}},"is_card_expiring":{"get":{"result":true}},"is_contract":{"get":{"result":true}},"is_flag":{"get":{"result":true}},"is_form_mandatory":{"get":{"result":true}},"is_pass_last_visit":{"get":{"result":true}},"is_promotion_expired":{"get":{"result":true}},"is_promotion_hold":{"get":{"result":true}},"is_unpaid_visit":{"get":{"result":true}},"is_waiver":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_location_visit":{"get":{"result":true}},"k_visit":{"get":{"result":true}},"m_balance":{"get":{"result":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_deny_reason":{"get":{"result":true}},"a_login_promotion":{"get":{"result":true}},"dtl_date":{"get":{"get":true}},"dtu_attend":{"get":{"result":true}},"id_deny_reason":{"get":{"result":true}},"id_unpaid_reason":{"get":{"result":true}},"is_attend":{"get":{"result":true}},"is_balance_owing":{"get":{"result":true}},"is_card_expired":{"get":{"result":true}},"is_card_expiring":{"get":{"result":true}},"is_contract":{"get":{"result":true}},"is_flag":{"get":{"result":true}},"is_form_mandatory":{"get":{"result":true}},"is_pass_last_visit":{"get":{"result":true}},"is_promotion_expired":{"get":{"result":true}},"is_promotion_hold":{"get":{"result":true}},"is_unpaid_visit":{"get":{"result":true}},"is_waiver":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_location_visit":{"get":{"result":true}},"k_visit":{"get":{"result":true}},"m_balance":{"get":{"result":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**
  * Evaluates a gym check-in of the client.
  *
- * Finds the gym visit of the client on the local day of the location (at any location of the business), the
- * first reason why the check-in would be refused, in the order of the check-in, and the reason why the pass of
- * the client would not pay for the visit. Fills the state of the profile: the balance, the unpaid visits, the
- * waiver, the contract, the required forms, the credit cards, the flag, the passes on hold and expired, and the
- * passes that may pay for the visit. Only the first reason is given. Nothing is written: no visit and no failed
- * attempt.
+ * Finds the gym visit of the client on the local day of the location (at any location of the business), every
+ * reason why the check-in would be refused, in the order of the check-in, and the reason why the pass of the
+ * client would not pay for the visit. Fills the state of the profile: the balance, the unpaid visits, the waiver,
+ * the contract, the required forms, the credit cards, the flag, the passes on hold and expired, and the passes that
+ * may pay for the visit. Every reason is given in `a_deny_reason`, and the first one in `id_deny_reason`. Nothing
+ * is written: no visit and no failed attempt.
  *
  * @function
  * @name Wl_Visit_Kiosk_EvaluateModel.get

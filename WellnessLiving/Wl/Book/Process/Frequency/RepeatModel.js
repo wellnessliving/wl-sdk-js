@@ -106,9 +106,9 @@ function Wl_Book_Process_Frequency_RepeatModel()
    *
    * @get get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * Type of repeating, one of {@link RsRepeatEndSid} constants.

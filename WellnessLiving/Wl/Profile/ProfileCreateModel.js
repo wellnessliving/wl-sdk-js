@@ -46,9 +46,9 @@ function Wl_Profile_ProfileCreateModel()
    *
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_lead_source = 0;
+  this.id_lead_source = null;
 
   /**
    * Vaccination status ID.

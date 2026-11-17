@@ -70,9 +70,9 @@ function Wl_Ticket_TicketScanListModel()
    *
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * Business key.

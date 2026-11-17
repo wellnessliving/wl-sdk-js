@@ -288,9 +288,9 @@ function Wl_Appointment_Book_Payment_PaymentMultipleModel()
    * @get get
    * @post get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * If `true`, the client is a walk-in. Otherwise, this will be `false`.

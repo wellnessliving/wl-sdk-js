@@ -12,7 +12,7 @@ function Wl_Visit_Kiosk_AttemptListModel()
    * @typedef {{}} Wl_Visit_Kiosk_AttemptListModel_a_attempt
    * @property {string} dtu_attempt Time of the attempt (of the check-in for a visit), in UTC and MySQL format, for example `2026-11-05 14:30:00`.
    * @property {number} id_deny_reason Reason of the failure. One of {@link Wl_Visit_VisitDenyReasonSid} constants. `0` for a visit.
-   * @property {number} id_mode Source of the attempt. One of {@link Wl_Mode_ModeSid} constants. `null` if a visit was checked in before the source was recorded.
+   * @property {?number} id_mode Source of the attempt. One of {@link Wl_Mode_ModeSid} constants. `null` if a visit was checked in before the source was recorded.
    * @property {boolean} is_fail `true` for a failed attempt, `false` for a checked-in visit.
    * @property {string} k_location Location of the attempt.
    * @property {?string} k_login_promotion Pass that pays for the visit. `null` for a failed attempt or a visit that no pass pays for.

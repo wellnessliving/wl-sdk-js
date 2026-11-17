@@ -62,6 +62,22 @@ Core_WebSocket_ChannelAbstract.AddressVerificationChannel = 828;
 Core_WebSocket_ChannelAbstract.AlertChannel = 1342;
 
 /**
+ * Channel to notify the staff at the check-in kiosk of a location about every gym check-in and every failed gym
+ * check-in attempt at that location, from any source.
+ *
+ * A check-in to a class, an event or an appointment and a failed attempt of it send nothing, and neither does an undo
+ * of a check-in.
+ *
+ * The message carries no data of the client, of the user who made the attempt or of the pass: a broadcast reaches
+ * every subscriber of the keys, so it cannot be limited to the clients that one staff member may see. On each message
+ * the kiosk reads {@link Wl_Visit_Kiosk_AttemptListModel} with {@link Wl_Visit_Kiosk_AttemptListModel.dtu_since} equal to
+ * {@link \Wl\Visit\Kiosk\AttemptChannel::$dtu_attempt} to get the full row of the attempt with its `s_attempt`.
+ *
+ * @type {number}
+ */
+Core_WebSocket_ChannelAbstract.AttemptChannel = 2461;
+
+/**
  * The channel "the access of a user has changed": the authorization page of the user loads the request again.
  *
  * A project sends a message when it changes what its {@link \Core\OAuth\OAuthAccessInterface::access()} checks for the user, for

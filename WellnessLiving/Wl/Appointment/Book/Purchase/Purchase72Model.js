@@ -256,9 +256,9 @@ function Wl_Appointment_Book_Purchase_Purchase72Model()
    *
    * @get get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * `true` - get all Purchase Options suitable for appointment.

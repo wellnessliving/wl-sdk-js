@@ -226,9 +226,9 @@ function Wl_Book_Process_Payment_PaymentModel()
    *
    * @post get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * `true` if action is performed as a staff member; `false` otherwise.

@@ -594,9 +594,9 @@ function Wl_Quiz_Response_Response65Model()
    *
    * @delete get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * Response source. One of {@link Wl_Quiz_Response_SourceSid} constants.

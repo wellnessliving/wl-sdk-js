@@ -131,9 +131,9 @@ function Wl_Visit_VisitStatusModel()
    * @get result
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * The status of the visit.

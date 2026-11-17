@@ -65,9 +65,9 @@ function Wl_Family_Relation_RelationModel()
    * @delete post
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * The business key.

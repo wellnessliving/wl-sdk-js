@@ -160,9 +160,9 @@ function Wl_Book_Process_Quiz_QuizModel()
    * @get get
    * @post get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * `true` if action is performed as a staff member; `false` otherwise.
@@ -289,7 +289,7 @@ Wl_Book_Process_Quiz_QuizModel.prototype.config=function()
  * @param {string} uid The client key for which the booking is being made.
  * @param {Wl_Book_Process_Quiz_QuizModel_a_purchase_item[]} a_purchase_item The list of purchase items. Each element has the format `[id_purchase_item]::[k_id]`, where: This will be empty if no purchases are made for the booking.
  * @param {string} dt_date_gmt Date/time to which session is booked.
- * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
+ * @param {?number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Quiz_QuizModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

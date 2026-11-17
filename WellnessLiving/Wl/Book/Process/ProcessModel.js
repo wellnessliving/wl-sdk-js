@@ -53,9 +53,9 @@ function Wl_Book_Process_ProcessModel()
    *
    * @get get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * The purchase rule ID.
@@ -222,7 +222,7 @@ Wl_Book_Process_ProcessModel.prototype.config=function()
  * @param {string} k_class_period Key of session which is booked.
  * @param {string} dt_date_gmt Date/time to which session is booked.
  * @param {string} uid The client key for which the booking is being made.
- * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
+ * @param {?number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_ProcessModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

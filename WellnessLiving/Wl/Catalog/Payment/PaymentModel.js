@@ -226,9 +226,9 @@ function Wl_Catalog_Payment_PaymentModel()
    *
    * @post get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * Determines if the payment owner is an anonymous user (optional).

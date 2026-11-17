@@ -266,9 +266,9 @@ function Wl_Book_Process_Purchase_PurchaseModel()
    *
    * @get get
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * `true` if action is performed as a staff member; `false` otherwise.
@@ -371,7 +371,7 @@ Wl_Book_Process_Purchase_PurchaseModel.prototype.config=function()
  * @param {string} dt_date_gmt Date/time to which session is booked.
  * @param {?string} k_business The business key. `null` if business key was not passed.
  * @param {string} uid The client key for which the booking is being made.
- * @param {number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
+ * @param {?number} id_mode The mode type. One of the {@link Wl_Mode_ModeSid} constants.
  * @returns {Wl_Book_Process_Purchase_PurchaseModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

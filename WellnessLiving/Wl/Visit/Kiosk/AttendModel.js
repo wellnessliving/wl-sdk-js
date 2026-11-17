@@ -9,6 +9,18 @@ function Wl_Visit_Kiosk_AttendModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * Every reason why the check-in has been refused.
+   *
+   * Each is one of {@link Wl_Visit_VisitDenyReasonSid} constants. The first one is the reason given by the check-in and equals
+   * {@link Wl_Visit_Kiosk_AttendModel.id_deny_reason}; the others are the reasons found by the evaluation of the check-in, in the
+   * order of the check-in, without duplicates. Empty if the check-in has been made.
+   *
+   * @post result,error
+   * @type {number[]}
+   */
+  this.a_deny_reason = undefined;
+
+  /**
    * Time of the check-in of the gym visit that the client already has on the day, in UTC and MySQL format, for
    * example `2026-11-05 14:30:00`.
    *
@@ -50,7 +62,7 @@ function Wl_Visit_Kiosk_AttendModel()
   this.i_attend_quick_close_success = undefined;
 
   /**
-   * Reason why the check-in has been refused.
+   * Reason why the check-in has been refused, the first element of {@link Wl_Visit_Kiosk_AttendModel.a_deny_reason}.
    *
    * One of {@link Wl_Visit_VisitDenyReasonSid} constants. `0` if the check-in has been made.
    *
@@ -213,7 +225,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Kiosk_AttendModel);
  */
 Wl_Visit_Kiosk_AttendModel.prototype.config=function()
 {
-  return {"a_field":{"dtu_attend":{"post":{"result":true,"error":true}},"dtu_register":{"post":{"result":true}},"i_attend_quick_close_fail":{"post":{"result":true,"error":true}},"i_attend_quick_close_success":{"post":{"result":true,"error":true}},"id_deny_reason":{"post":{"result":true,"error":true}},"id_unpaid_reason":{"post":{"result":true}},"id_visit":{"post":{"result":true}},"is_attend_quick_navigate":{"post":{"result":true,"error":true}},"is_paid":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_location":{"post":{"post":true}},"k_location_visit":{"post":{"result":true,"error":true}},"k_login_promotion":{"post":{"result":true}},"k_visit":{"post":{"result":true,"error":true}},"s_attempt":{"post":{"result":true,"error":true}},"text_message":{"post":{"result":true,"error":true}},"text_pass":{"post":{"result":true}},"uid":{"post":{"post":true}},"url_store":{"post":{"result":true}}}};
+  return {"a_field":{"a_deny_reason":{"post":{"result":true,"error":true}},"dtu_attend":{"post":{"result":true,"error":true}},"dtu_register":{"post":{"result":true}},"i_attend_quick_close_fail":{"post":{"result":true,"error":true}},"i_attend_quick_close_success":{"post":{"result":true,"error":true}},"id_deny_reason":{"post":{"result":true,"error":true}},"id_unpaid_reason":{"post":{"result":true}},"id_visit":{"post":{"result":true}},"is_attend_quick_navigate":{"post":{"result":true,"error":true}},"is_paid":{"post":{"result":true}},"k_business":{"post":{"post":true}},"k_location":{"post":{"post":true}},"k_location_visit":{"post":{"result":true,"error":true}},"k_login_promotion":{"post":{"result":true}},"k_visit":{"post":{"result":true,"error":true}},"s_attempt":{"post":{"result":true,"error":true}},"text_message":{"post":{"result":true,"error":true}},"text_pass":{"post":{"result":true}},"uid":{"post":{"post":true}},"url_store":{"post":{"result":true}}}};
 };
 
 /**
@@ -223,8 +235,8 @@ Wl_Visit_Kiosk_AttendModel.prototype.config=function()
  * client; no key of a kiosk is needed. The visit is checked in from the source "Kiosk". A client is checked in for
  * a gym visit once a day: a second check-in on the same local day, at any location of the business, is refused
  * and nothing is written. A booked gym visit of the day at the location of the kiosk is checked in. A refusal
- * gives its reason, its message and the key of the failed attempt; a refusal for a negative balance does not
- * show the amount to a staff member who may not see the balances of the clients.
+ * gives its reason, every reason of the refusal, its message and the key of the failed attempt; a refusal for a
+ * negative balance does not show the amount to a staff member who may not see the balances of the clients.
  *
  * @function
  * @name Wl_Visit_Kiosk_AttendModel.post

@@ -174,9 +174,9 @@ function Wl_Appointment_Book_Finish_ClientChangeModel()
    *
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * The status of the original visit that the staff member saw. One of the {@link Wl_Visit_VisitSid} constants.

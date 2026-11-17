@@ -71,10 +71,14 @@ function Wl_Appointment_Book_Finish_FinishModel()
    * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_product} a_product Add-ons to the appointment. Specify this for appointment bookings only. Old format: array keys refer to primary keys.  New format: each element is an array:
    * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_repeat} a_repeat Recurring booking information:
    * @property {Wl_Appointment_Book_Finish_FinishModel_a_book_data_a_resource} a_resource A list of assets for the appointment booking. Keys refer to asset categories.  Values refer to arrays with the next keys:
+   * @property {number[]} a_week New weekdays for a weekly `FORWARD` reschedule, constants of {@link ADateWeekSid}. Omitted or empty to keep the current weekdays. Ignored for other scopes.
+   * @property {string} dl_edit_from The start of the date range of a recurring reschedule, in MySQL format in the location's time zone. Specify this only when `id_edit_range` is {@link Wl_Appointment_Edit_EditRangeSid}: only the visits of the recurring series on or after this date are rescheduled.
+   * @property {string} dl_edit_to The end of the date range of a recurring reschedule, in MySQL format in the location's time zone. Specify this only when `id_edit_range` is {@link Wl_Appointment_Edit_EditRangeSid}: only the visits of the recurring series on or before this date are rescheduled.
    * @property {string} dt_date The date/time for the booking in MySQL format in the location's time zone.
    * @property {number} i_duration The duration of asset booking in minutes. Specify this for separate asset bookings only.
    * @property {number} i_index The asset index on the layout. Specify this for separate asset bookings only and for cases when the asset category only has a layout.
    * @property {number} id_class_tab The booking service type. One of the {@link Wl_Classes_Tab_TabSid} constants.
+   * @property {number} id_edit_range The scope of a recurring reschedule. One of the {@link Wl_Appointment_Edit_EditRangeSid} constants: `ONCE` (default) reschedules this visit only; `FORWARD` reschedules this visit and all the following visits of the recurring series (new weekly days are supplied in `a_week`); `RANGE` reschedules only the visits inside the `dl_edit_from` / `dl_edit_to` range. Applied in backend mode only, while rescheduling (`k_appointment` is set). For a wider-than-`ONCE` scope, `dt_date` keeps the opened session's original local date; only the time changes. The repeat frequency and end remain unchanged.
    * @property {number} id_gender_staff The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants. Specify this for appointment bookings only.
    * @property {boolean} is_wait_list_unpaid If `true`, appointment waits unpaid.
    * @property {string} k_login_prize The user's prize.
@@ -236,9 +240,9 @@ function Wl_Appointment_Book_Finish_FinishModel()
    *
    * @post post
    * @see Wl_Mode_ModeSid
-   * @type {number}
+   * @type {?number}
    */
-  this.id_mode = 0;
+  this.id_mode = null;
 
   /**
    * The payment type ID for the service.
