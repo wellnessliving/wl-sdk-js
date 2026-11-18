@@ -95,6 +95,7 @@ function Wl_Appointment_Book_Payment_PaymentPostModel()
    * @property {number} i_remain The number of remaining visits.
    * @property {string} s_expire The expiration date.
    * @property {string} s_title The title of the Purchase Option.
+   * @property {string} text_remain_duration The time left on the Purchase Option in hours and minutes, for example `2 h 25 min`. An empty string if the program of the Purchase Option is not of the type {@link RsProgramTypeSid}, or if the Purchase Option has no limit of time.
    */
 
   /**

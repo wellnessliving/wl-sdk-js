@@ -39,6 +39,7 @@ function Wl_Login_Attendance_Add_AddModel()
   /**
    * @typedef {{}} Wl_Login_Attendance_Add_AddModel_a_login_promotion
    * @property {string} k_login_promotion The login promotion key, available to pay for the session.
+   * @property {string} text_remain_duration The time left on the login promotion in hours and minutes, for example `2 h 25 min`. An empty string if the program of the promotion is not of the type {@link RsProgramTypeSid}, or if the promotion has no limit of time.
    * @property {string} text_title The title of the login promotion.
    */
 

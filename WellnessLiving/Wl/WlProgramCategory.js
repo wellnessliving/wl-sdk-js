@@ -21,6 +21,7 @@ Wl_WlProgramCategorySid.ACCOUNT = 7;
 /**
  * Purchase options to pay for classes, events and enrollments:
  * <ul>
+ *   <li>{@link RsProgramSid.CLASS_DURATION}</li>
  *   <li>{@link RsProgramSid.CLASS_LIMIT}</li>
  *   <li>{@link RsProgramSid.CLASS_MEMBERSHIP}</li>
  *   <li>{@link RsProgramSid.CLASS_PASS}</li>

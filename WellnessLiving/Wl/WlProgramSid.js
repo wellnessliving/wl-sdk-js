@@ -3,7 +3,7 @@
  *
  * Usually type includes type and category.
  *
- * Last used ID: 25.
+ * Last used ID: 26.
  */
 function Wl_WlProgramSid()
 {
@@ -25,6 +25,13 @@ Wl_WlProgramSid.ACCOUNT_MEMBERSHIP = 21;
  * @type {number}
  */
 Wl_WlProgramSid.ACCOUNT_PASS = 20;
+
+/**
+ * Class Duration Pass.
+ *
+ * @type {number}
+ */
+Wl_WlProgramSid.CLASS_DURATION = 26;
 
 /**
  * Class Guest pass.

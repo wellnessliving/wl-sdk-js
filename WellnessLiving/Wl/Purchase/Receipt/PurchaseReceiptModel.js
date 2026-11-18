@@ -131,6 +131,32 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
   this.a_price = undefined;
 
   /**
+   * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_detail_a_ticket_event
+   * @property {string} k_class The key of the instance of the event.
+   * @property {string} text_event_title The title of the event.
+   * @property {string} url_download The URL to download the PDF file with all the tickets of the event. The file works without a login.
+   * @property {string} url_phone The image of a QR code, as a `data:` URI of a PNG file. A phone that scans the code adds all the tickets of the event to its own wallet: Apple Wallet on an `iPhone`, Google Wallet on any other device. It is empty while one of the wallets is not set up, because a phone of the wallet that is off would get an error.
+   * @property {string} url_print The URL of the page to print all the tickets of the event. The page works without a login.
+   * @property {string} url_wallet_apple The link that adds all the tickets of the event to Apple Wallet at once. It is empty if Apple Wallet is not set up.
+   * @property {string} url_wallet_google The link that adds all the tickets of the event to Google Wallet at once. It is empty if Google Wallet is not set up.
+   */
+
+  /**
+   * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_detail
+   * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_detail_a_ticket_event} a_ticket_event The tickets of the purchase grouped by the event: one element for every instance of an event that has a valid ticket in the purchase, in the order of its first ticket. A ticket that is voided or refunded is not in the links of the wallets and not in the PDF file, the page for print shows it as void, and an event whose tickets are all void is not given. Empty if the purchase has no valid tickets. Every element has the following keys:
+   */
+
+  /**
+   * The details of the purchase that belong to the whole purchase and not to one purchase item. The links work
+   * without a login and do not expire, but the receipt is given to a guest only while
+   * {@link Wl_Purchase_Receipt_PurchaseReceiptModel.text_token} is valid, so a client keeps the links it got. Has the following keys:
+   *
+   * @get result
+   * @type {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_detail}
+   */
+  this.a_purchase_detail = undefined;
+
+  /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo
    * @property {number} i_height The image height.
    * @property {number} i_width The image width.
@@ -140,6 +166,7 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
 
   /**
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_ticket_info
+   * @property {string} k_class The key of the instance of the event the ticket is for. It is the same as `k_class` of `a_ticket_event` in {@link Wl_Purchase_Receipt_PurchaseReceiptModel.a_purchase_detail}, so the ticket matches the links of its event. The instances of one event have the same ticket types, so this key tells the tickets of two instances apart.
    * @property {string} text_event_title The title of the event the ticket is for.
    * @property {string} text_number The number of the ticket.
    * @property {string} text_ticket_title The title of the ticket type.
@@ -293,7 +320,7 @@ WlSdk_ModelAbstract.extend(Wl_Purchase_Receipt_PurchaseReceiptModel);
  */
 Wl_Purchase_Receipt_PurchaseReceiptModel.prototype.config=function()
 {
-  return {"a_field":{"a_account_rest":{"get":{"result":true}},"a_business":{"get":{"result":true}},"a_card":{"get":{"result":true}},"a_customer":{"get":{"result":true}},"a_pay_method":{"get":{"result":true}},"a_payor":{"get":{"result":true}},"a_price":{"get":{"result":true}},"a_purchase_item":{"get":{"result":true}},"dtl_purchase":{"get":{"result":true}},"has_signature":{"get":{"result":true}},"html_receipt":{"get":{"result":true}},"is_url_public":{"get":{"get":true}},"k_purchase":{"get":{"get":true}},"text_purchase_id":{"get":{"result":true}},"text_receipt":{"get":{"result":true}},"text_token":{"get":{"get":true}},"uid_payor":{"get":{"result":true}},"url_print":{"get":{"result":true}},"url_print_receipt":{"get":{"result":true}}}};
+  return {"a_field":{"a_account_rest":{"get":{"result":true}},"a_business":{"get":{"result":true}},"a_card":{"get":{"result":true}},"a_customer":{"get":{"result":true}},"a_pay_method":{"get":{"result":true}},"a_payor":{"get":{"result":true}},"a_price":{"get":{"result":true}},"a_purchase_detail":{"get":{"result":true}},"a_purchase_item":{"get":{"result":true}},"dtl_purchase":{"get":{"result":true}},"has_signature":{"get":{"result":true}},"html_receipt":{"get":{"result":true}},"is_url_public":{"get":{"get":true}},"k_purchase":{"get":{"get":true}},"text_purchase_id":{"get":{"result":true}},"text_receipt":{"get":{"result":true}},"text_token":{"get":{"get":true}},"uid_payor":{"get":{"result":true}},"url_print":{"get":{"result":true}},"url_print_receipt":{"get":{"result":true}}}};
 };
 
 /**

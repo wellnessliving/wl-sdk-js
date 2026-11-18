@@ -303,3 +303,18 @@ Core_WebSocket_ChannelAbstract.UpdateChannel = 735;
  * @type {number}
  */
 Core_WebSocket_ChannelAbstract.VisitStatusChannel = 1921;
+
+/**
+ * Channel to tell the page that adds a pass to Apple Wallet that the pass is in the wallet.
+ *
+ * The phone tells it itself: when a pass is put into Wallet, the phone registers itself in the web service of Apple Wallet,
+ * see {@link Wl_Wallet_Apple_AppleRegistrationModel}, and the web service notifies this channel. The page of
+ * {@link \Wl\Wallet\WalletAddController} is subscribed to the channel of every ticket of the link, and shows that the pass is added when it
+ * has heard of all of them. A page that did not hear anything stays as it is: the user is told what to do anyway.
+ *
+ * The page is opened without a login, so the access is given by a signature of the ticket, which only the page that
+ * checked the link of the wallet gets, see {@link \Wl\Wallet\WalletAddChannel::signGet()}.
+ *
+ * @type {number}
+ */
+Core_WebSocket_ChannelAbstract.WalletAddChannel = 2528;

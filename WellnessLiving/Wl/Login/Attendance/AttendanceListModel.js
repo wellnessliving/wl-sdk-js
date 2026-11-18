@@ -185,6 +185,7 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {string} text_expire The expiry information for the Purchase Option.
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
+   * @property {string} text_left The time left on the Purchase Option, in hours and minutes, for example `2 h 25 min`. An empty string if the Purchase Option is not of type {@link RsProgramTypeSid}, or if it has no time limit.
    * @property {string} text_note Any notes tied to the client.
    * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. The number is returned wherever the visit is returned, like the meeting link of a virtual appointment, also to a caller with a token or a guest application and without the {@link Wl_Privilege_PrivilegeSid} privilege.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
@@ -383,6 +384,7 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {string} text_expire The expiry information for the Purchase Option.
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
+   * @property {string} text_left The time left on the Purchase Option, in hours and minutes, for example `2 h 25 min`. An empty string if the Purchase Option is not of type {@link RsProgramTypeSid}, or if it has no time limit.
    * @property {string} text_note Any notes tied to the client.
    * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. The number is returned wherever the visit is returned, like the meeting link of a virtual appointment, also to a caller with a token or a guest application and without the {@link Wl_Privilege_PrivilegeSid} privilege.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
@@ -580,6 +582,7 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {string} text_expire The expiry information for the Purchase Option.
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
+   * @property {string} text_left The time left on the Purchase Option, in hours and minutes, for example `2 h 25 min`. An empty string if the Purchase Option is not of type {@link RsProgramTypeSid}, or if it has no time limit.
    * @property {string} text_note Any notes tied to the client.
    * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. The number is returned wherever the visit is returned, like the meeting link of a virtual appointment, also to a caller with a token or a guest application and without the {@link Wl_Privilege_PrivilegeSid} privilege.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
