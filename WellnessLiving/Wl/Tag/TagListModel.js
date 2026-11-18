@@ -15,7 +15,7 @@ function Wl_Tag_TagListModel()
 
   /**
    * @typedef {{}} Wl_Tag_TagListModel_a_list
-   * @property {number} i_sort The sort order of the tag.
+   * @property {number} i_sort The sort order of the tag, starts from zero. A tag sent without it (or with `null`) keeps the sort order   it has now, and a new tag sent without it goes to the end of the list.
    * @property {string} k_tag The tag key.
    * @property {string} text_title The tag title.
    */
