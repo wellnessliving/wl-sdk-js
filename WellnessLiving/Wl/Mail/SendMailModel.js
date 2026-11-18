@@ -1796,6 +1796,7 @@ function Wl_Mail_SendMailModel()
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_160
    * @property {Wl_Mail_SendMailModel_a_data_160_a_low} a_low Location, promotion IDs. If not set, it is built from `k_login_promotion`:
    * @property {string} k_login_promotion Login promotion key. Required if `a_low` is not set.
+   * @property {string} k_visit Key of the visit that caused the notice. Set by the automation only if its trigger has a visit. For a time    pass (a class duration pass) it is added to the ID of the email, so one visit sends one email.
    * @property {string} uid User key.
    */
 
