@@ -9,9 +9,23 @@ function Wl_Task_Edit_EditModel()
   WlSdk_ModelAbstract.apply(this);
 
   /**
+   * Keys of the tasks saved by the request.
+   *
+   * When a task is added, the task of every staff member of {@link Wl_Task_Edit_EditModel.a_uid_staff}, in that order; the
+   * first of them is also returned in {@link Wl_Task_Edit_EditModel.k_task}. When a task is edited, the edited task alone.
+   *
+   * @post result
+   * @type {string[]}
+   */
+  this.a_k_task = undefined;
+
+  /**
    * List of staff keys assigned to task.
    *
    * Empty array means not set.
+   *
+   * When a task is added, every staff member gets a task of their own. When a task is edited, exactly one staff
+   * member is given.
    *
    * @deprecated Use {@link Wl_Task_Edit_EditModel.a_uid_staff} instead.
    * @get result
@@ -24,6 +38,9 @@ function Wl_Task_Edit_EditModel()
    * List of staff user IDs assigned to task.
    *
    * Empty array means not set.
+   *
+   * When a task is added, every staff member gets a task of their own. When a task is edited, exactly one staff
+   * member is given.
    *
    * @get result
    * @post post
@@ -138,7 +155,7 @@ WlSdk_ModelAbstract.extend(Wl_Task_Edit_EditModel);
  */
 Wl_Task_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field":{"a_staff":{"get":{"result":true},"post":{"post":true}},"a_uid_staff":{"get":{"result":true},"post":{"post":true}},"dl_due":{"get":{"result":true},"post":{"post":true}},"id_task_status":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_location":{"get":{"result":true},"post":{"post":true}},"k_task":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"tl_due":{"get":{"result":true},"post":{"post":true}},"uid":{"get":{"result":true},"post":{"post":true}},"xml_description":{"get":{"result":true},"post":{"post":true}}}};
+  return {"a_field":{"a_k_task":{"post":{"result":true}},"a_staff":{"get":{"result":true},"post":{"post":true}},"a_uid_staff":{"get":{"result":true},"post":{"post":true}},"dl_due":{"get":{"result":true},"post":{"post":true}},"id_task_status":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_location":{"get":{"result":true},"post":{"post":true}},"k_task":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"tl_due":{"get":{"result":true},"post":{"post":true}},"uid":{"get":{"result":true},"post":{"post":true}},"xml_description":{"get":{"result":true},"post":{"post":true}}}};
 };
 
 /**
@@ -172,6 +189,11 @@ Wl_Task_Edit_EditModel.prototype.config=function()
  * Validates the submitted task data, saves it in a transaction, reindexes search data for the
  * previously and newly assigned clients, logs the change, sends an assignment notification
  * email to newly assigned staff, and notifies the task channel.
+ *
+ * When a task is added, every staff member gets a task of their own, all of them saved in one transaction: either
+ * all the tasks are created, or none. When a task is edited, exactly one staff member is given. Inactive staff
+ * members, and staff members the current user may not assign a task to, are refused; a staff member who is
+ * already assigned to the edited task may stay there. The keys of the saved tasks are returned in `a_k_task`.
  *
  * @function
  * @name Wl_Task_Edit_EditModel.post

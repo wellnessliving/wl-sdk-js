@@ -3,6 +3,7 @@
  *
  * @augments WlSdk_ModelAbstract
  * @constructor
+ * @deprecated Use {@link Wl_Quiz_QuizList79Model} instead.
  */
 function Wl_Quiz_QuizListModel()
 {
@@ -58,16 +59,6 @@ function Wl_Quiz_QuizListModel()
   this.a_quiz_register = undefined;
 
   /**
-   * Whether the requested filter of activity is stored as the default view of the list of the forms of the user.
-   * `true` for the list of the forms itself; `false` for a list of the forms in another place (a picker of the forms),
-   * which must not change that view.
-   *
-   * @get get
-   * @type {boolean}
-   */
-  this.is_filter_save = true;
-
-  /**
    * Shows which register quizzes must be returned.
    * `true` if return quizzes before registration, `false` otherwise.
    * `null` if return all quizzes for registration.
@@ -111,7 +102,7 @@ WlSdk_ModelAbstract.extend(Wl_Quiz_QuizListModel);
  */
 Wl_Quiz_QuizListModel.prototype.config=function()
 {
-  return {"a_field":{"a_active_id":{"get":{"get":true}},"a_list":{"get":{"result":true}},"a_quiz_register":{"get":{"result":true}},"is_filter_save":{"get":{"get":true}},"is_register_before":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_quiz_login":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
+  return {"a_field":{"a_active_id":{"get":{"get":true}},"a_list":{"get":{"result":true}},"a_quiz_register":{"get":{"result":true}},"is_register_before":{"get":{"get":true}},"k_business":{"get":{"get":true}},"k_quiz_login":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
 };
 
 /**
@@ -128,7 +119,7 @@ Wl_Quiz_QuizListModel.prototype.config=function()
  * Loads the quiz list for the business filtered by active state and search phrase, then
  * marks which quizzes still require registration for the current login and which quizzes
  * were imported from an external system. Also stores the requested active-state filter as
- * the user's default quiz view, unless the filter is asked not to be stored.
+ * the user's default quiz view.
  *
  * @function
  * @name Wl_Quiz_QuizListModel.get
