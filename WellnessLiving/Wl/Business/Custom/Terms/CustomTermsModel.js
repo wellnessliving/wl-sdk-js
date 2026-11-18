@@ -13,6 +13,8 @@ function Wl_Business_Custom_Terms_CustomTermsModel()
    * @property {boolean} has_article Whether the rule matches the indefinite article ("a" or "an") before the word and replaces it too.
    * @property {boolean} has_end Whether the rule matches only if the word is the last in the text or is followed by a punctuation mark or a tag, not by another word.
    * @property {boolean} has_vowel_sound Whether `text_title` starts with a vowel sound, so the article before it is "an", not "a". Makes sense only if `has_article` is `true`.
+   * @property {number} id_term The term the rule belongs to. One of {@link Wl_Business_Custom_Terms_CustomTermSid} constants. The rules of different terms are mixed in one list, so this is how a client tells them apart.
+   * @property {boolean} is_plural `true` if the rule replaces the word with the plural form of the term ("patients"), `false` if with the singular ("patient").
    * @property {string} text_lower Replacement for the word found in lowercase ("patient").
    * @property {string} text_search The word to search for, in lowercase. The letter case of the text is ignored when searching. It may consist of several words separated by spaces ("med spa").
    * @property {string} text_title Replacement for the word found with a capital letter ("Patient"). For a word found in capitals use this text in capitals.
