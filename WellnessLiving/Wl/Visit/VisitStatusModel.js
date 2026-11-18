@@ -33,6 +33,9 @@ function Wl_Visit_VisitStatusModel()
    * Information about whether the given user can cancel an online booking and what
    * consequences the cancellation would have:
    *
+   * A client that has come only by {@link Wl_Visit_VisitStatusModel.s_status_secret}, with no login or with no access of its
+   * own to the visit, cannot cancel the visit: it gets `can_cancel` as `false` and the other values as empty.
+   *
    * @get result
    * @type {Wl_Visit_VisitStatusModel_a_cancel}
    */
@@ -311,6 +314,22 @@ function Wl_Visit_VisitStatusModel()
   this.s_calendar_file_content = undefined;
 
   /**
+   * The temporary secret of the visit, which gives its status to a client that has no login or has no access of its
+   * own to the visit. It is given with the visit by the receipt of the purchase, see
+   * {@link Wl_Purchase_Receipt_PurchaseReceiptModel.a_purchase_item}, and expires in one hour. An empty value, a
+   * secret that has expired or a secret of another visit gives nothing: the access is checked as without it. Only
+   * the status is given by it, the visit cannot be changed, and the link to join a virtual visit is never given.
+   * It is not the permanent secret of the visit, `rs_visit.s_secret`.
+   *
+   * Example: `1767225600-0f3a...`, where the number is the time of the expiration in UTC, and the rest is the
+   * signature in 64 hexadecimal digits.
+   *
+   * @get get
+   * @type {string}
+   */
+  this.s_status_secret = "";
+
+  /**
    * The text abbreviation of the time zone.
    *
    * @get result
@@ -405,7 +424,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_VisitStatusModel);
  */
 Wl_Visit_VisitStatusModel.prototype.config=function()
 {
-  return {"a_field":{"a_cancel":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_resource_alias":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_uid_staff":{"get":{"result":true}},"dt_date":{"get":{"result":true}},"dtl_date":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_wait_spot":{"get":{"result":true}},"id_mode":{"get":{"result":true},"post":{"post":true}},"id_visit":{"get":{"result":true},"post":{"post":true}},"id_visit_from":{"post":{"post":true}},"is_charge_fee":{"post":{"get":true}},"is_event":{"get":{"result":true}},"is_mail":{"post":{"post":true}},"is_push":{"post":{"post":true}},"is_request":{"get":{"result":true}},"is_sms":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"result":true}},"k_class_period":{"get":{"result":true}},"k_location":{"get":{"result":true}},"k_mail_pattern_live":{"post":{"get":true}},"k_service":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"k_timezone":{"get":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_calendar_file_content":{"get":{"result":true}},"text_abbr_timezone":{"get":{"result":true}},"text_location":{"get":{"result":true}},"text_reason":{"post":{"get":true}},"text_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid":{"get":{"result":true}},"uid_staff":{"get":{"result":true}},"url_book_referral":{"get":{"result":true}},"url_book_referral_short":{"get":{"result":true}},"url_virtual_service":{"get":{"result":true}}}};
+  return {"a_field":{"a_cancel":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_resource_alias":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_uid_staff":{"get":{"result":true}},"dt_date":{"get":{"result":true}},"dtl_date":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_wait_spot":{"get":{"result":true}},"id_mode":{"get":{"result":true},"post":{"post":true}},"id_visit":{"get":{"result":true},"post":{"post":true}},"id_visit_from":{"post":{"post":true}},"is_charge_fee":{"post":{"get":true}},"is_event":{"get":{"result":true}},"is_mail":{"post":{"post":true}},"is_push":{"post":{"post":true}},"is_request":{"get":{"result":true}},"is_sms":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"result":true}},"k_class_period":{"get":{"result":true}},"k_location":{"get":{"result":true}},"k_mail_pattern_live":{"post":{"get":true}},"k_service":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"k_timezone":{"get":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_calendar_file_content":{"get":{"result":true}},"s_status_secret":{"get":{"get":true}},"text_abbr_timezone":{"get":{"result":true}},"text_location":{"get":{"result":true}},"text_reason":{"post":{"get":true}},"text_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid":{"get":{"result":true}},"uid_staff":{"get":{"result":true}},"url_book_referral":{"get":{"result":true}},"url_book_referral_short":{"get":{"result":true}},"url_virtual_service":{"get":{"result":true}}}};
 };
 
 /**
@@ -423,7 +442,9 @@ Wl_Visit_VisitStatusModel.prototype.config=function()
  * Returns full details for the specified visit, including date, duration, staff, location,
  * virtual service join URL, assigned resources, downloadable calendar data, and whether
  * the visit can still be cancelled. Handles class, appointment, and gym visit types. Used
- * to render the visit detail view and action buttons in the client portal.
+ * to render the visit detail view and action buttons in the client portal. A visit of a class can also be read
+ * without a login and without the access of the user by its temporary secret,
+ * {@link Wl_Visit_VisitStatusModel.s_status_secret}. Such a visit cannot be virtual.
  *
  * @function
  * @name Wl_Visit_VisitStatusModel.get

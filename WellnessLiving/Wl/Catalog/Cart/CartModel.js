@@ -54,7 +54,7 @@ function Wl_Catalog_Cart_CartModel()
    * @property {Wl_Catalog_Cart_CartModel_a_item_a_config_a_registration_fee_list} a_registration_fee_list Registration fees for tuition participants. Keys are participant keys.  Each value has the next structure:
    * @property {string} k_class Used only for `id_sale` = {@link RsSaleSid}. Key of the event instance the ticket is purchased for.  Required for a ticket of an event with several instances. The class must belong to the event of the ticket, otherwise the user error `ticket-nx` or `ticket-class-settings-mismatch` is returned.
    * @property {string} m_checkout The total amount that will be charged for the tuition item when during purchase.
-   * @property {string} m_deferred The part of the tuition cost that is not charged during purchase.
+   * @property {string} m_deferred The part of the tuition cost that is not charged during purchase. Always `0.00` for a tuition   billed as memberships: the days of the period that are gone are not billed at all.
    */
 
   /**
@@ -172,9 +172,10 @@ function Wl_Catalog_Cart_CartModel()
    * The amount that has to be charged right now for the cart.
    *
    * Equals {@link Wl_Catalog_Cart_CartModel.m_total} for everything that is paid for in full at once. A tuition
-   * defers a part of its cost to an installment plan or to a membership schedule, and `m_total`
-   * covers the full cost regardless, so this is the amount to put into the payment form. It is
-   * `m_total` minus `a_config.m_deferred` of every tuition item in {@link Wl_Catalog_Cart_CartModel.a_item}.
+   * defers a part of its cost to an installment plan, and `m_total` covers the full cost
+   * regardless, so this is the amount to put into the payment form. A tuition billed as memberships
+   * defers nothing: its part of `m_total` is the prorated first payment. It is `m_total` minus
+   * `a_config.m_deferred` of every tuition item in {@link Wl_Catalog_Cart_CartModel.a_item}.
    *
    * @get result
    * @type {string}

@@ -52,7 +52,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
    * @property {?string} m_checkout The amount charged for this event right now, including tax. `0.00` when every installment payment is still ahead. `null` when the amount is not calculated yet.
    * @property {string} m_checkout_subtotal The price charged for this event right now, before discount and tax.
    * @property {string} m_checkout_tax The tax charged for this event right now: the sum of `a_checkout_tax`.
-   * @property {string} m_deferred The part of the event cost that is not charged right now, including tax. Goes to the installment plan or to the membership schedule, depending on the tuition billing mode.
+   * @property {string} m_deferred The part of the event cost that is not charged right now, including tax. Goes to the installment plan. Always `0.00` for a tuition billed as memberships: the days of the period that are gone are not billed at all, and the amounts of the row are the prorated first payment.
    * @property {string} m_discount Total discount amount applied to the event, `0.00` if there is none.
    * @property {string} m_discount_checkout The discount taken from `m_checkout_subtotal`, `m_discount` is the discount of the full price. Every row of `a_discount` has its part of it in `m_discount_checkout`.
    * @property {?string} m_price Price of the event within the tuition, before discount and tax.
@@ -82,7 +82,7 @@ function Wl_Book_Process_Purchase_PurchaseElementListModel()
    * @property {string[]} a_tax Information about taxes. The key refers to the tax key, and the value refers to the tax amount.
    * @property {number} id_purchase_item The ID of purchase item type. One of {@link RsPurchaseItemSid} constants.
    * @property {string} k_id The key of the purchase item in the database.
-   * @property {string} m_checkout The amount that has to be charged for the tuition right now, including tax. The other amounts of this row cover the full cost, including whatever is deferred to an installment plan or to a membership schedule.
+   * @property {string} m_checkout The amount that has to be charged for the tuition right now, including tax. The other amounts of this row cover the full cost, including whatever is deferred to an installment plan. For a tuition billed as memberships they are the prorated first payment, as this one.
    * @property {string} m_cost The cost of the purchase item (with taxes).
    * @property {string} m_deferred The part of the tuition cost that is not charged right now, including tax. Equals `m_cost` minus `m_checkout`. Rows for everything else are always paid for in full at once, so the amount to charge for the whole list is the sum of `m_cost` minus the sum of `m_deferred`.
    * @property {string} m_discount The amount of the whole discount.
@@ -154,8 +154,8 @@ Wl_Book_Process_Purchase_PurchaseElementListModel.prototype.config=function()
  * Validates the business, location, and user, then for each item in `a_purchase_item_request` computes the price,
  * applicable discount code reduction, login-type discount, and taxes, and returns per-item cost, discount,
  * price, tax, and subtotal amounts in `a_purchase_item_result`. For a tuition the amounts cover the
- * full cost, and the split between what is charged right now and what is deferred is added to the
- * same row.
+ * full cost (the prorated first payment for a tuition billed as memberships), and the split between what is
+ * charged right now and what is deferred is added to the same row.
  *
  * @function
  * @name Wl_Book_Process_Purchase_PurchaseElementListModel.get

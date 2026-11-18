@@ -71,11 +71,12 @@ function Wl_Reception_Application_ReceptionScheduleModel()
    * @property {boolean} is_package If `true`, the promotion is a package. Otherwise, this will be `false`.
    * @property {boolean} is_restrict_multiply If `true`, there's more than one calendar restriction on the pass. Otherwise, this will be `false`.
    * @property {string} k_login_promotion The login promotion key.
-   * @property {string} s_remain_measure The time left on a time-based pass, in hours and minutes, for example `2 h 25 min`.   An empty string for other passes.
+   * @property {string} s_remain_measure The formatted remaining duration on the promotion.
    * @property {boolean} show_remain If `true`, there's a rollover on the pass with calendar restrictions. Otherwise, this will be `false`.
    * @property {string} sid_program_type The promotion's program type SID.
    * @property {string} text_book_duration Minutes of the upcoming visits, as a text: `2 h 25 min`.   Empty for promotions of other program types than {@link RsProgramTypeSid}.
    * @property {string} text_book_duration_aria Minutes of the upcoming visits, as a text for screen readers: `2 hours 25 minutes`.   Empty for promotions of other program types than {@link RsProgramTypeSid}.
+   * @property {string} text_remain_duration Minutes left in this promotion, as a text: `2 h 25 min`.   Empty for promotions of other program types than {@link RsProgramTypeSid}, and for a promotion   without a limit of time.
    * @property {string} text_remain_duration_aria Minutes left in this promotion, as a text for screen readers: `2 hours 25 minutes`.   Empty for promotions of other program types than {@link RsProgramTypeSid}.
    * @property {string} text_unused_duration Minutes left and minutes of the upcoming visits together, as a text: `2 h 25 min`.   Empty for promotions of other program types than {@link RsProgramTypeSid}.
    * @property {string} text_unused_duration_aria Minutes left and minutes of the upcoming visits together, as a text for screen readers:   `2 hours 25 minutes`.   Empty for promotions of other program types than {@link RsProgramTypeSid}.

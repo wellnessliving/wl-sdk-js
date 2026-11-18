@@ -24,7 +24,7 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
    * @property {?string} m_checkout The amount charged for this event right now, including tax. `0.00` when every      installment payment is still ahead. `null` when it is not calculated yet.
    * @property {string} m_checkout_subtotal The price charged for this event right now, before discount and tax.
    * @property {string} m_checkout_tax The tax charged for this event right now: the sum of `a_checkout_tax`.
-   * @property {string} m_deferred The part of the event cost that is not charged right now, including tax. Goes      to the installment plan or to the membership schedule, depending on the      tuition billing mode.
+   * @property {string} m_deferred The part of the event cost that is not charged right now, including tax. Goes      to the installment plan. Always `0.00` for a tuition billed as memberships: the      days of the period that are gone are not billed at all.
    * @property {string} m_discount Total discount amount applied to the event, `0.00` if there is none.
    * @property {string} m_discount_checkout The discount taken from `m_checkout_subtotal`, `m_discount` is the discount of the full      price. Every row of `a_discount` has its part of it in `m_discount_checkout`.
    * @property {?string} m_price Price of the event within the tuition, before discount and tax.
@@ -115,9 +115,10 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
    * The amount that has to be charged right now for the given purchase options.
    *
    * Equals {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_cost} for everything that is paid for in full at
-   * once. A tuition defers a part of its cost to an installment plan or to a membership schedule,
-   * and `m_cost` covers the full cost regardless, so this is the amount to put into the payment
-   * form. It is `m_cost` minus `a_config.m_deferred` of every tuition item in
+   * once. A tuition defers a part of its cost to an installment plan, and `m_cost` covers the full
+   * cost regardless, so this is the amount to put into the payment form (a tuition billed as
+   * memberships defers nothing, its `m_cost` is the prorated first payment). It is `m_cost` minus
+   * `a_config.m_deferred` of every tuition item in
    * {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.a_purchase_item}.
    *
    * @get result
@@ -140,8 +141,8 @@ function Wl_Book_Process_Purchase_PurchaseElementGroupModel()
   /**
    * The total cost of the given purchase options.
    *
-   * For a tuition this is the full cost, including whatever is deferred to an installment plan or
-   * to a membership schedule.
+   * For a tuition this is the full cost, including whatever is deferred to an installment plan; for
+   * a tuition billed as memberships it is the prorated first payment.
    *
    * @get result
    * @type {string}
@@ -231,8 +232,9 @@ Wl_Book_Process_Purchase_PurchaseElementGroupModel.prototype.config=function()
  * Validates each item in `a_purchase_item` (type, key, installment eligibility, and prize applicability),
  * applies discount codes, login-type discounts, and installment adjustments, then accumulates price, subtotal,
  * discount, tax, and cost totals across all items and returns them as result fields. For tuition
- * items the totals cover the full cost, so the amount that has to be charged right now, and the
- * tax portion of it, are reported separately in {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_checkout} and
+ * items the totals cover the full cost (the prorated first payment for a tuition billed as memberships),
+ * so the amount that has to be charged right now, and the tax portion of it, are reported separately in
+ * {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_checkout} and
  * {@link Wl_Book_Process_Purchase_PurchaseElementGroupModel.m_checkout_tax}, and the per-component split is written back
  * into `a_config` of the item it belongs to.
  *

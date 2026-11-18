@@ -178,7 +178,8 @@ function Wl_Purchase_Receipt_PurchaseReceiptModel()
    * @typedef {{}} Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item
    * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_logo} a_logo The purchase item logo.
    * @property {Wl_Purchase_Receipt_PurchaseReceiptModel_a_purchase_item_a_ticket_info} a_ticket_info The ticket of the purchase item. Only available if the purchase item is a ticket: one purchase item is one ticket. Empty if the purchase item has no ticket. Has the following keys:
-   * @property {string[]} a_visit List of visit keys. Only available if the purchase item is a class period, enrollment, enrollment deposit, or enrollment discount. Each element is a string visit key.
+   * @property {string[]} a_visit List of visit keys. Only available if the purchase item is a class period, enrollment, enrollment deposit, enrollment discount, or a ticket (a visit for every session of the event that the ticket is for). Each element is a string visit key.
+   * @property {{}} a_visit_secret The temporary secrets of the visits of `a_visit`, by the key of the visit. Only available if the purchase item is a ticket. A client passes the secret of a visit as {@link Wl_Visit_VisitStatusModel.s_status_secret}, and gets the status of that visit without a login: the buyer of a ticket may be a guest who has only the token of the receipt. The secret expires in one hour after the receipt is read.
    * @property {number} i_count The number of items in the purchase.
    * @property {number} id_program Program ID. One of {@link RsProgramSid} constants. Only applies to promotions. `null` if the purchase item is not a promotion.
    * @property {number} id_purchase_item Purchase item ID. One of {@link RsPurchaseItemSid} constants.

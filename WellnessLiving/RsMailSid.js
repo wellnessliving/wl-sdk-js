@@ -9,7 +9,7 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 231.
+ * Last used ID: 232.
  */
 function RsMailSid()
 {
@@ -1570,6 +1570,13 @@ RsMailSid.QUIZ_NOTIFICATION = 171;
  * @type {number}
  */
 RsMailSid.QUIZ_NOTIFICATION_REMIND = 173;
+
+/**
+ * Sent to a client after they submitted a form (used in automations: the trigger "Form submitted").
+ *
+ * @type {number}
+ */
+RsMailSid.QUIZ_RESPONSE_SUBMIT = 232;
 
 /**
  * Email to wellnessliving team when businesses perform actions which is exporting data

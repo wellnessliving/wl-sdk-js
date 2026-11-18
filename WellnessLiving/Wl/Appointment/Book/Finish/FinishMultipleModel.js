@@ -84,6 +84,7 @@ function Wl_Appointment_Book_Finish_FinishMultipleModel()
    * @property {number} id_purchase_item Type of the purchase item. One of the {@link RsPurchaseItemSid} constants.
    * @property {boolean} is_unpaid_force If `true`, the appointment is booked as unpaid. Otherwise, this will be `false` to select an available Purchase Option.
    * @property {boolean} is_wait_list_unpaid If `true`, appointment waits unpaid.
+   * @property {string} json_conflict The same information about booking conflicts as `a_conflict`, encoded as one JSON object: keys are booking dates/times in MySQL format in UTC, values are the objects with the keys described in `a_conflict`. When it is not empty, it replaces `a_conflict` of this provider. An empty string, an empty JSON object and an empty JSON array leave `a_conflict` in effect. A value that is not a JSON object or array is refused with the `json-invalid` error. The errors in the entries are reported for `a_conflict`, as for the entries of `a_conflict` itself. Use it for a long recurring series: every entry of `a_conflict` costs several POST variables, and the number of the POST variables of one request is limited.
    * @property {string} k_login_prize The user's prize.
    * @property {string} k_login_promotion The user's Purchase Option. Specify this if you want to use a specific Purchase Option to pay for the booking.
    * @property {string} k_resource The asset booking. Specify this for separate asset bookings only.
