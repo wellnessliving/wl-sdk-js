@@ -24,7 +24,7 @@ function Wl_Task_Manager_TaskManagerListModel()
   /**
    * How many tasks each tab of the page has: 
    *
-   * A count follows the staff filter and not the search or the other filters.
+   * A count follows the view and not the staff filter, the search or the other filters.
    *
    * @get result
    * @type {Wl_Task_Manager_TaskManagerListModel_a_count}
@@ -71,7 +71,8 @@ function Wl_Task_Manager_TaskManagerListModel()
    */
 
   /**
-   * The staff members that the staff filter offers, sorted by the name:
+   * The staff members that the staff filter offers, sorted by the name: those of the picked view whom the user may
+   * see, the staff members of the role in a role view. The staff filter does not narrow them.
    *
    * @get result
    * @type {Wl_Task_Manager_TaskManagerListModel_a_staff[]}
@@ -108,6 +109,32 @@ function Wl_Task_Manager_TaskManagerListModel()
   this.a_uid_staff = null;
 
   /**
+   * @typedef {{}} Wl_Task_Manager_TaskManagerListModel_a_view_a_role
+   * @property {number} i_task The tasks that are not completed, of the staff members who have the role now.
+   * @property {?number} id_privilege_role The system role. One of {@link RsPrivilegeRoleSid} constants. `null` for a role of the business that is based on no system role.
+   * @property {?string} k_business_role Key of the role of the business.  `null` for a system role that the business has not changed.
+   * @property {string} text_title Title of the role.
+   */
+
+  /**
+   * @typedef {{}} Wl_Task_Manager_TaskManagerListModel_a_view
+   * @property {Wl_Task_Manager_TaskManagerListModel_a_view_a_role} a_role The staff roles of the business that have a staff member whose tasks the user may see, in the order of the setup of the business. Each element has the following structure:
+   * @property {number} i_all The tasks that are not completed, of every staff member whose tasks the user may see.
+   * @property {number} i_mine The tasks that are not completed, of the signed-in staff member.
+   */
+
+  /**
+   * How many open tasks each view of the views panel has: 
+   *
+   * The counts follow neither the picked view nor the filters. An empty array when the user may not see the views
+   * panel ({@link Wl_Task_Manager_TaskManagerListModel.can_view}).
+   *
+   * @get result
+   * @type {Wl_Task_Manager_TaskManagerListModel_a_view}
+   */
+  this.a_view = undefined;
+
+  /**
    * Whether the signed-in user may add tasks.
    *
    * @get result
@@ -122,6 +149,15 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @type {boolean}
    */
   this.can_edit = undefined;
+
+  /**
+   * Whether the page offers the views panel: the user may see the tasks of every staff member, which is the privilege
+   * "All tasks". Without it the user sees their own tasks only, and every view would show the same ones.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.can_view = undefined;
 
   /**
    * The last day of the due dates of the shown tasks, in the time zone of the business, MySQL format.
@@ -184,6 +220,17 @@ function Wl_Task_Manager_TaskManagerListModel()
   this.id_column_sort = null;
 
   /**
+   * The system role of the view of a role, a system role that the business has not changed. One of
+   * {@link RsPrivilegeRoleSid} constants. Given for the view {@link Wl_Task_Manager_TaskManagerViewEnum} and for a system role
+   * only. `null` for every other view and for a role of the business ({@link Wl_Task_Manager_TaskManagerListModel.k_business_role}).
+   *
+   * @get get
+   * @see RsPrivilegeRoleSid
+   * @type {?number}
+   */
+  this.id_privilege_role = null;
+
+  /**
    * The tab of the page that the filters of the status and of the date make. One of {@link Wl_Task_Manager_ManagerTabSid} constants.
    *
    * @get result
@@ -191,6 +238,16 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @type {number}
    */
   this.id_tab = undefined;
+
+  /**
+   * The view of the list: whose tasks it shows. One of {@link Wl_Task_Manager_TaskManagerViewEnum} cases.
+   * `null` for the view of every staff member the user may see.
+   *
+   * @get get
+   * @see Wl_Task_Manager_TaskManagerViewEnum
+   * @type {?number}
+   */
+  this.id_view = null;
 
   /**
    * Whether the list is sorted in the reverse order: Z to A, newest first.
@@ -216,6 +273,16 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @type {string}
    */
   this.k_business = "";
+
+  /**
+   * Key of the role of the business of the view of a role. 
+   * Given for the view {@link Wl_Task_Manager_TaskManagerViewEnum} and for a role of the business only. `null` for every other
+   * view and for a system role ({@link Wl_Task_Manager_TaskManagerListModel.id_privilege_role}).
+   *
+   * @get get
+   * @type {?string}
+   */
+  this.k_business_role = null;
 
   /**
    * The text to search in the names of the tasks and in the names, the emails and the keys of their clients.
@@ -244,7 +311,7 @@ WlSdk_ModelAbstract.extend(Wl_Task_Manager_TaskManagerListModel);
  */
 Wl_Task_Manager_TaskManagerListModel.prototype.config=function()
 {
-  return {"a_field":{"a_count":{"get":{"result":true}},"a_row":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_task_location":{"get":{"get":true}},"a_task_status":{"get":{"get":true}},"a_uid_staff":{"get":{"get":true}},"can_add":{"get":{"result":true}},"can_edit":{"get":{"result":true}},"dl_due_end":{"get":{"get":true}},"dl_due_start":{"get":{"get":true}},"dl_today":{"get":{"result":true}},"i_page":{"get":{"get":true}},"i_page_size":{"get":{"get":true}},"i_total":{"get":{"result":true}},"id_column_sort":{"get":{"get":true}},"id_tab":{"get":{"result":true}},"is_sort_desc":{"get":{"get":true}},"is_task_location":{"get":{"result":true}},"k_business":{"get":{"get":true}},"text_search":{"get":{"get":true}},"url_add":{"get":{"result":true}}}};
+  return {"a_field":{"a_count":{"get":{"result":true}},"a_row":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_task_location":{"get":{"get":true}},"a_task_status":{"get":{"get":true}},"a_uid_staff":{"get":{"get":true}},"a_view":{"get":{"result":true}},"can_add":{"get":{"result":true}},"can_edit":{"get":{"result":true}},"can_view":{"get":{"result":true}},"dl_due_end":{"get":{"get":true}},"dl_due_start":{"get":{"get":true}},"dl_today":{"get":{"result":true}},"i_page":{"get":{"get":true}},"i_page_size":{"get":{"get":true}},"i_total":{"get":{"result":true}},"id_column_sort":{"get":{"get":true}},"id_privilege_role":{"get":{"get":true}},"id_tab":{"get":{"result":true}},"id_view":{"get":{"get":true}},"is_sort_desc":{"get":{"get":true}},"is_task_location":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_business_role":{"get":{"get":true}},"text_search":{"get":{"get":true}},"url_add":{"get":{"result":true}}}};
 };
 
 /**
@@ -262,7 +329,8 @@ Wl_Task_Manager_TaskManagerListModel.prototype.config=function()
  * pages, with the counts of the tabs and the staff members the staff filter offers. A staff member without the
  * privilege "All tasks" sees only the tasks assigned to them. In a franchise in the flexible travel mode the tasks of
  * every location are listed, and the filter of the location picks the staff of the home location (the default), of
- * the other locations or of every location.
+ * the other locations or of every location. The view of the list narrows the tasks to those of the signed-in staff
+ * member or of the staff members who have a staff role, and the counts of the views are given with it.
  *
  * @function
  * @name Wl_Task_Manager_TaskManagerListModel.get
