@@ -18,6 +18,7 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @property {number} i_all Every task the user may see.
    * @property {number} i_complete The tasks that are completed.
    * @property {number} i_future The tasks that are not completed: to do and in progress.
+   * @property {number} i_overdue The tasks that are overdue: not completed, with the due date and time that have passed.
    * @property {number} i_today The tasks due today, in the time zone of the business.
    */
 
@@ -37,6 +38,7 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @property {string} dtl_due The date and the time when the task is due, in the time zone of the business, MySQL format.
    * @property {string} html_description The description of the task, made into HTML from the visual editor. An empty string without one.
    * @property {number} id_task_status The status of the task. One of {@link Wl_Task_TaskStatusSid} constants.
+   * @property {boolean} is_overdue Whether the task is overdue: it is not completed, and its due date and time have passed. The row is overdue on every tab, not only on the tab Overdue.
    * @property {string} k_business Key of the business of the task: the business of the request, or another location of a franchise in the flexible travel mode.
    * @property {string} k_task Task key.
    * @property {string} text_add The date and the time when the task was created, as the page shows it: "Fri, Dec 30, 2022 at 3:00 pm".
@@ -46,6 +48,7 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @property {string} text_client_phone The cell phone of the client, formatted. An empty string when the task has no client or the client has no cell phone.
    * @property {string} text_create Who created the task. An empty string when the task keeps no author.
    * @property {string} text_due The date and the time when the task is due, as the page shows it: "Fri, Dec 30, 2022 at 3:00 pm".
+   * @property {string} text_overdue How late the task is, as the page shows it under the due date: "2 days overdue" for whole days of 24 hours, "Overdue" when the task is late less than a day. An empty string when the task is not overdue.
    * @property {string} text_staff The full name of the staff member the task is assigned to. An empty string when that user is no staff member of the business of the task.
    * @property {string} text_title The name of the task.
    * @property {?string} uid Key of the client of the task. `null` when the task has no client.
@@ -250,6 +253,15 @@ function Wl_Task_Manager_TaskManagerListModel()
   this.id_view = null;
 
   /**
+   * Whether to show only the overdue tasks: the tab Overdue. They are the tasks that are not completed and whose due
+   * date and time have passed, and the other filters narrow them. `null` or `false` for the tasks of any due time.
+   *
+   * @get get
+   * @type {?boolean}
+   */
+  this.is_overdue = null;
+
+  /**
    * Whether the list is sorted in the reverse order: Z to A, newest first.
    * `null` for the direct order.
    *
@@ -311,7 +323,7 @@ WlSdk_ModelAbstract.extend(Wl_Task_Manager_TaskManagerListModel);
  */
 Wl_Task_Manager_TaskManagerListModel.prototype.config=function()
 {
-  return {"a_field":{"a_count":{"get":{"result":true}},"a_row":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_task_location":{"get":{"get":true}},"a_task_status":{"get":{"get":true}},"a_uid_staff":{"get":{"get":true}},"a_view":{"get":{"result":true}},"can_add":{"get":{"result":true}},"can_edit":{"get":{"result":true}},"can_view":{"get":{"result":true}},"dl_due_end":{"get":{"get":true}},"dl_due_start":{"get":{"get":true}},"dl_today":{"get":{"result":true}},"i_page":{"get":{"get":true}},"i_page_size":{"get":{"get":true}},"i_total":{"get":{"result":true}},"id_column_sort":{"get":{"get":true}},"id_privilege_role":{"get":{"get":true}},"id_tab":{"get":{"result":true}},"id_view":{"get":{"get":true}},"is_sort_desc":{"get":{"get":true}},"is_task_location":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_business_role":{"get":{"get":true}},"text_search":{"get":{"get":true}},"url_add":{"get":{"result":true}}}};
+  return {"a_field":{"a_count":{"get":{"result":true}},"a_row":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_task_location":{"get":{"get":true}},"a_task_status":{"get":{"get":true}},"a_uid_staff":{"get":{"get":true}},"a_view":{"get":{"result":true}},"can_add":{"get":{"result":true}},"can_edit":{"get":{"result":true}},"can_view":{"get":{"result":true}},"dl_due_end":{"get":{"get":true}},"dl_due_start":{"get":{"get":true}},"dl_today":{"get":{"result":true}},"i_page":{"get":{"get":true}},"i_page_size":{"get":{"get":true}},"i_total":{"get":{"result":true}},"id_column_sort":{"get":{"get":true}},"id_privilege_role":{"get":{"get":true}},"id_tab":{"get":{"result":true}},"id_view":{"get":{"get":true}},"is_overdue":{"get":{"get":true}},"is_sort_desc":{"get":{"get":true}},"is_task_location":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_business_role":{"get":{"get":true}},"text_search":{"get":{"get":true}},"url_add":{"get":{"result":true}}}};
 };
 
 /**

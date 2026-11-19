@@ -15,7 +15,7 @@ function Wl_Tag_TagListModel()
 
   /**
    * @typedef {{}} Wl_Tag_TagListModel_a_list
-   * @property {number} i_sort The sort order of the tag, starts from zero. A tag sent without it (or with `null`) keeps the sort order   it has now, and a new tag sent without it goes to the end of the list.
+   * @property {number} i_sort The sort order of the tag, starts from zero. A tag sent without it (or with `null`) keeps the sort order   it has now, and a new tag sent without it goes to the end of the list. A new tag sent with it is put at that   position: the tags of the business that are not in the list and have the same or a greater sort order move   down by one. The tags that are in the list are not moved.
    * @property {string} k_tag The tag key.
    * @property {string} text_title The tag title.
    */

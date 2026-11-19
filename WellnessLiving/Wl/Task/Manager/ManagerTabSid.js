@@ -28,6 +28,13 @@ Wl_Task_Manager_ManagerTabSid.COMPLETE = 4;
 Wl_Task_Manager_ManagerTabSid.FUTURE = 2;
 
 /**
+ * Show the tasks that are overdue: not completed, with the due date and time that have passed.
+ *
+ * @type {number}
+ */
+Wl_Task_Manager_ManagerTabSid.OVERDUE = 5;
+
+/**
  * Show tasks for today.
  *
  * @type {number}

@@ -87,6 +87,8 @@ function Wl_Event_EventListModel()
    * @property {string} k_class_period Class period key.
    * @property {string} k_location Location key.
    * @property {string} k_resource_location Resource key, which has category {@link Wl_Resource_ResourceCategoryEnum}. Only one such resource can be selected for a schedule.
+   * @property {string} s_time_end End time of the scheduled sessions in `MySql` time format (`HH:MM:SS`).
+   * @property {string} s_time_start Start time of the scheduled sessions in `MySql` time format (`HH:MM:SS`).
    * @property {string} s_timezone_location Identifier of the timezone of the location of the session (for example `America/New_York`).
    * @property {string} text_location Location title.
    * @property {string} text_room Room where the session takes place.
