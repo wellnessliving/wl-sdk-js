@@ -248,6 +248,14 @@ function Wl_Ticket_TicketListModel()
    */
   this.url_booking = undefined;
 
+  /**
+   * Link to the checkout page of the event of the session.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_checkout = undefined;
+
   this.changeInit();
 }
 
@@ -258,7 +266,7 @@ WlSdk_ModelAbstract.extend(Wl_Ticket_TicketListModel);
  */
 Wl_Ticket_TicketListModel.prototype.config=function()
 {
-  return {"a_field":{"a_location":{"get":{"result":true}},"a_order":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_ticket":{"get":{"result":true}},"a_ticket_option":{"get":{"result":true}},"dtl_end":{"get":{"result":true}},"dtl_start":{"get":{"result":true}},"dtu_start":{"get":{"get":true}},"i_attend":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_sold":{"get":{"result":true}},"is_past":{"get":{"result":true}},"is_sales_report":{"get":{"result":true}},"is_sell":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_currency":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_title":{"get":{"result":true}},"url_booking":{"get":{"result":true}}}};
+  return {"a_field":{"a_location":{"get":{"result":true}},"a_order":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_ticket":{"get":{"result":true}},"a_ticket_option":{"get":{"result":true}},"dtl_end":{"get":{"result":true}},"dtl_start":{"get":{"result":true}},"dtu_start":{"get":{"get":true}},"i_attend":{"get":{"result":true}},"i_capacity":{"get":{"result":true}},"i_sold":{"get":{"result":true}},"is_past":{"get":{"result":true}},"is_sales_report":{"get":{"result":true}},"is_sell":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_class_period":{"get":{"get":true}},"k_currency":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_title":{"get":{"result":true}},"url_booking":{"get":{"result":true}},"url_checkout":{"get":{"result":true}}}};
 };
 
 /**
