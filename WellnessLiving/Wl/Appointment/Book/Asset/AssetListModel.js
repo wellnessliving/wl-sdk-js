@@ -76,6 +76,7 @@ function Wl_Appointment_Book_Asset_AssetListModel()
    * @property {string} html_title The resource name.
    * @property {number} i_padding_after Padding after each booking of the asset, in minutes. `0` if the asset has no padding after. The asset is blocked for this time after each booking. Whether to show it is up to the client.
    * @property {number} i_padding_before Padding before each booking of the asset, in minutes. `0` if the asset has no padding before. The asset is blocked for this time before each booking. Whether to show it is up to the client.
+   * @property {number} i_quantity The number of identical units of the asset. One booking takes one unit. The units booked at {@link Wl_Appointment_Book_Asset_AssetListModel.dtl_date} are listed in {@link Wl_Appointment_Book_Asset_AssetListModel.a_asset_busy}.
    * @property {number} id_deny_reason The ID of the reason why the client cannot book this asset. One of {@link Wl_Schedule_ClassView_DenyReasonSid} constants. `null` if there is no deny reason.
    * @property {number} id_service_require The purchase rule. One of the {@link RsServiceRequireSid} constants.
    * @property {boolean} is_age_restricted Determines whether this service can't be booked due to age restrictions.
