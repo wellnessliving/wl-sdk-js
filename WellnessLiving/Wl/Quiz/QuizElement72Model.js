@@ -505,6 +505,7 @@ function Wl_Quiz_QuizElement72Model()
    * @property {boolean} is_login_type_all `true` if all client types are selected, `false` otherwise.
    * @property {boolean} is_member_group `true` if the confirmation is sent only to specific client groups, `false` otherwise.
    * @property {boolean} is_member_group_all `true` if all client groups are selected, `false` otherwise.
+   * @property {boolean} is_sms_disable `true` if the business cannot send SMS notifications, `false` otherwise.
    * @property {?string} k_mail_pattern_live Key of the pattern of the custom confirmation. `null` if the form has no pattern yet.
    */
 

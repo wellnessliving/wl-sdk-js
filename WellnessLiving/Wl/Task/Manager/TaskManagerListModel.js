@@ -38,7 +38,7 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @property {string} dtl_due The date and the time when the task is due, in the time zone of the business, MySQL format.
    * @property {string} html_description The description of the task, made into HTML from the visual editor. An empty string without one.
    * @property {number} id_task_status The status of the task. One of {@link Wl_Task_TaskStatusSid} constants.
-   * @property {boolean} is_overdue Whether the task is overdue: it is not completed, and its due date and time have passed. The row is overdue on every tab, not only on the tab Overdue.
+   * @property {boolean} is_late Whether the task is overdue: it is not completed, and its due date and time have passed. The row is overdue on every tab, not only on the tab Overdue.
    * @property {string} k_business Key of the business of the task: the business of the request, or another location of a franchise in the flexible travel mode.
    * @property {string} k_task Task key.
    * @property {string} text_add The date and the time when the task was created, as the page shows it: "Fri, Dec 30, 2022 at 3:00 pm".
@@ -49,6 +49,7 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @property {string} text_create Who created the task. An empty string when the task keeps no author.
    * @property {string} text_due The date and the time when the task is due, as the page shows it: "Fri, Dec 30, 2022 at 3:00 pm".
    * @property {string} text_overdue How late the task is, as the page shows it under the due date: "2 days overdue" for whole days of 24 hours, "Overdue" when the task is late less than a day. An empty string when the task is not overdue.
+   * @property {string} text_repeat Text that tells how the task repeats, such as "Repeats every week on Friday". An empty string if the task does not repeat.
    * @property {string} text_staff The full name of the staff member the task is assigned to. An empty string when that user is no staff member of the business of the task.
    * @property {string} text_title The name of the task.
    * @property {?string} uid Key of the client of the task. `null` when the task has no client.

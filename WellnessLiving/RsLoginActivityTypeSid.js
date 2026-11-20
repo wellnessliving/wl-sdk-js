@@ -268,16 +268,6 @@ RsLoginActivityTypeSid.GUEST_PASS_REDEEM_GUEST = 69;
 RsLoginActivityTypeSid.GUEST_PASS_REDEEM_HOST = 68;
 
 /**
- * A reminder of a guest pass invitation was sent to the guest.
- *
- * Written on the feed of the owner of the guest pass. Hidden from the client while
- * {@link RsLoginActivityTypeSid.guestPassRemindClientShow()} says so.
- *
- * @type {number}
- */
-RsLoginActivityTypeSid.GUEST_PASS_REMIND = 71;
-
-/**
  * A guest pass invitation sent by the client was revoked by a person: a staff member or the client.
  *
  * Written on the feed of the owner of the guest pass.

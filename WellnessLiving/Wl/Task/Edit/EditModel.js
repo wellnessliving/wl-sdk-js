@@ -20,6 +20,16 @@ function Wl_Task_Edit_EditModel()
   this.a_k_task = undefined;
 
   /**
+   * Days of the week of a repeat by weeks on a schedule, each one of {@link ADateWeekSid}.
+   * Empty if the repeat is not by weeks, or if the task does not repeat.
+   *
+   * @get result
+   * @post post
+   * @type {number[]}
+   */
+  this.a_repeat_day_week = undefined;
+
+  /**
    * List of staff keys assigned to task.
    *
    * Empty array means not set.
@@ -58,6 +68,113 @@ function Wl_Task_Edit_EditModel()
   this.dl_due = "";
 
   /**
+   * Last day, in the time zone of the business, on which the next task is still made, in the MySQL format.
+   * `null` if the repeat does not end by a date. Set when {@link Wl_Task_Edit_EditModel.id_repeat_end} is {@link Wl_Task_Repeat_TaskRepeatEndEnum}.
+   *
+   * @get result
+   * @post post
+   * @type {?string}
+   */
+  this.dl_repeat_end = null;
+
+  /**
+   * Day of the month, 1 to 31, of a repeat by months on a day.
+   * `null` if the repeat is not by months on a day. A month that has fewer days gets its last day.
+   *
+   * @get result
+   * @post post
+   * @type {?number}
+   */
+  this.i_repeat_day_month = null;
+
+  /**
+   * Total number of tasks of the series, the first one included, after which no task is made.
+   * `null` if the repeat does not end by a count. Set when {@link Wl_Task_Edit_EditModel.id_repeat_end} is {@link Wl_Task_Repeat_TaskRepeatEndEnum}.
+   *
+   * @get result
+   * @post post
+   * @see Wl_Task_Repeat_TaskRepeatEndEnum
+   * @type {?number}
+   */
+  this.i_repeat_end_count = null;
+
+  /**
+   * The number of units of the repeat, 1 to 99: every 2 weeks on a schedule, or the gap after the task is completed.
+   * `null` if the task does not repeat.
+   *
+   * @get result
+   * @post post
+   * @type {?number}
+   */
+  this.i_repeat_every = null;
+
+  /**
+   * Number of the weekday in the month of a repeat by months on a weekday: one of {@link Wl_Task_Repeat_TaskRepeatOrderEnum}, 1 to
+   * 4, or 5 for the last one. `null` if the repeat is not by months on a weekday.
+   *
+   * @get result
+   * @post post
+   * @see Wl_Task_Repeat_TaskRepeatOrderEnum
+   * @type {?number}
+   */
+  this.i_repeat_month_order = null;
+
+  /**
+   * How the series of repeating tasks ends, one of {@link Wl_Task_Repeat_TaskRepeatEndEnum}.
+   * `null` if the task does not repeat.
+   *
+   * @get result
+   * @post post
+   * @see Wl_Task_Repeat_TaskRepeatEndEnum
+   * @type {?number}
+   */
+  this.id_repeat_end = null;
+
+  /**
+   * When the next task is made, one of {@link Wl_Task_Repeat_TaskRepeatModeEnum}.
+   * `null` if the task does not repeat.
+   *
+   * @get result
+   * @post post
+   * @see Wl_Task_Repeat_TaskRepeatModeEnum
+   * @type {?number}
+   */
+  this.id_repeat_mode = null;
+
+  /**
+   * How a repeat by months chooses the day, one of {@link Wl_Task_Repeat_TaskRepeatMonthEnum}.
+   * `null` if the repeat is not by months on a schedule.
+   *
+   * @get result
+   * @post post
+   * @see Wl_Task_Repeat_TaskRepeatMonthEnum
+   * @type {?number}
+   */
+  this.id_repeat_month = null;
+
+  /**
+   * Day of the week of a repeat by months on a weekday, one of {@link ADateWeekSid}.
+   * `null` if the repeat is not by months on a weekday.
+   *
+   * @get result
+   * @post post
+   * @see ADateWeekSid
+   * @type {number}
+   */
+  this.id_repeat_month_weekday = 0;
+
+  /**
+   * Unit of the repeat, one of {@link Wl_Task_Repeat_TaskRepeatUnitEnum}.
+   * `null` if the task does not repeat.
+   *
+   * @get result
+   * @post post
+   * @see Wl_Task_Repeat_TaskRepeatUnitEnum
+   * @type {?number}
+   */
+  this.id_repeat_unit = null;
+
+  /**
    * Task status.
    *
    * `null` means not set.
@@ -69,6 +186,29 @@ function Wl_Task_Edit_EditModel()
    * @type {number}
    */
   this.id_task_status = 0;
+
+  /**
+   * Whether the task repeats. The other properties of the repeat are read only if it is `true`.
+   * On a save, `null` leaves the repeat of the task as it is, and `false` turns it off.
+   *
+   * @get result
+   * @post post
+   * @type {?boolean}
+   */
+  this.is_repeat = null;
+
+  /**
+   * Whether the task had a repeat when the client read it.
+   *
+   * Optional. A client that sends it with the repeat on is refused when the rule has moved to a newer task of the
+   * series since, so a turn-off does not go to a task that no longer carries the rule. `null` if the client does not
+   * send it, and then only a request that turns the repeat on is checked: the protection against a stale turn-off
+   * exists only for a client that sends it.
+   *
+   * @post post
+   * @type {?boolean}
+   */
+  this.is_repeat_open = null;
 
   /**
    * Business key.
@@ -155,7 +295,7 @@ WlSdk_ModelAbstract.extend(Wl_Task_Edit_EditModel);
  */
 Wl_Task_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field":{"a_k_task":{"post":{"result":true}},"a_staff":{"get":{"result":true},"post":{"post":true}},"a_uid_staff":{"get":{"result":true},"post":{"post":true}},"dl_due":{"get":{"result":true},"post":{"post":true}},"id_task_status":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_location":{"get":{"result":true},"post":{"post":true}},"k_task":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"tl_due":{"get":{"result":true},"post":{"post":true}},"uid":{"get":{"result":true},"post":{"post":true}},"xml_description":{"get":{"result":true},"post":{"post":true}}}};
+  return {"a_field":{"a_k_task":{"post":{"result":true}},"a_repeat_day_week":{"get":{"result":true},"post":{"post":true}},"a_staff":{"get":{"result":true},"post":{"post":true}},"a_uid_staff":{"get":{"result":true},"post":{"post":true}},"dl_due":{"get":{"result":true},"post":{"post":true}},"dl_repeat_end":{"get":{"result":true},"post":{"post":true}},"i_repeat_day_month":{"get":{"result":true},"post":{"post":true}},"i_repeat_end_count":{"get":{"result":true},"post":{"post":true}},"i_repeat_every":{"get":{"result":true},"post":{"post":true}},"i_repeat_month_order":{"get":{"result":true},"post":{"post":true}},"id_repeat_end":{"get":{"result":true},"post":{"post":true}},"id_repeat_mode":{"get":{"result":true},"post":{"post":true}},"id_repeat_month":{"get":{"result":true},"post":{"post":true}},"id_repeat_month_weekday":{"get":{"result":true},"post":{"post":true}},"id_repeat_unit":{"get":{"result":true},"post":{"post":true}},"id_task_status":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_repeat":{"get":{"result":true},"post":{"post":true}},"is_repeat_open":{"post":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_location":{"get":{"result":true},"post":{"post":true}},"k_task":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"tl_due":{"get":{"result":true},"post":{"post":true}},"uid":{"get":{"result":true},"post":{"post":true}},"xml_description":{"get":{"result":true},"post":{"post":true}}}};
 };
 
 /**
@@ -164,6 +304,8 @@ Wl_Task_Edit_EditModel.prototype.config=function()
  * Deletes the task record, removes any pending due-date reminder, reindexes search data for
  * the previously assigned client, logs the removal, and notifies the task channel so that
  * connected clients refresh their task list.
+ *
+ * If the task carries the rule of a repeat, the repeat ends with it.
  *
  * @function
  * @name Wl_Task_Edit_EditModel.delete
@@ -206,6 +348,10 @@ Wl_Task_Edit_EditModel.prototype.config=function()
  *
  * Updates the task status, logs the change, and notifies the task channel so that connected
  * clients refresh their task list.
+ *
+ * If the task is set to Completed and repeats "when this one is completed", the next task of the repeat is made,
+ * and its staff are notified as of any new task. A status other than Completed, and a task that was Completed
+ * already, make nothing.
  *
  * @function
  * @name Wl_Task_Edit_EditModel.put

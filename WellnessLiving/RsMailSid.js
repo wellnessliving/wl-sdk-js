@@ -9,7 +9,7 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 232.
+ * Last used ID: 233.
  */
 function RsMailSid()
 {
@@ -1662,6 +1662,13 @@ RsMailSid.STAFF_CALLBACK_REQUEST = 196;
  * @type {number}
  */
 RsMailSid.TASK_ASSIGN = 104;
+
+/**
+ * Sends to a staff member to remind them that a task is due soon.
+ *
+ * @type {number}
+ */
+RsMailSid.TASK_REMIND = 233;
 
 /**
  * Send a copy of waiver.
