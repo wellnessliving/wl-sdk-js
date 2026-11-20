@@ -84,11 +84,26 @@ function Wl_Appointment_Book_Finish_FinishModel()
    * Keys refer to asset categories.  Values refer to arrays with the next keys:
    *
    * Specify this only for the appointment booking.
+   * @property {number[]} [a_week] New weekdays for a weekly `FORWARD` reschedule, constants of {@link ADateWeekSid}.
+   * Omitted or empty to keep the current weekdays. Ignored for other scopes.
+   * @property {string} [dl_edit_from] The start of the date range of a recurring reschedule, in MySQL format in the location's time zone.
+   * Specify this only when `id_edit_range` is {@link Wl_Appointment_Edit_EditRangeSid.RANGE}:
+   * only the visits of the recurring series on or after this date are rescheduled.
+   * @property {string} [dl_edit_to] The end of the date range of a recurring reschedule, in MySQL format in the location's time zone.
+   * Specify this only when `id_edit_range` is {@link Wl_Appointment_Edit_EditRangeSid.RANGE}:
+   * only the visits of the recurring series on or before this date are rescheduled.
    * @property {string} dt_date The date/time for the booking in MySQL format in the location's time zone.
    * @property {number} [i_duration] The duration of asset booking in minutes. Specify this for separate asset bookings only.
    * @property {number} [i_index] The asset index on the layout.
    * Specify this for separate asset bookings only and for cases when the asset category only has a layout.
    * @property {number} [id_class_tab] The booking service type. One of the {@link Wl_Classes_Tab_TabSid} constants.
+   * @property {number} [id_edit_range] The scope of a recurring reschedule. One of the {@link Wl_Appointment_Edit_EditRangeSid} constants:
+   * `ONCE` (default) reschedules this visit only; `FORWARD` reschedules this visit and all the following
+   * visits of the recurring series (new weekly days are supplied in `a_week`); `RANGE`
+   * reschedules only the visits inside the `dl_edit_from` / `dl_edit_to` range.
+   * Applied in backend mode only, while rescheduling (`k_appointment` is set).
+   * For a wider-than-`ONCE` scope, `dt_date` keeps the opened session's original local date; only the time
+   * changes. The repeat frequency and end remain unchanged.
    * @property {number} [id_gender_staff] The gender of the staff member conducting the appointment. One of the {@link AGenderSid} constants.
    * Specify this for appointment bookings only.
    * @property {boolean} [is_wait_list_unpaid] If `true`, appointment waits unpaid.
@@ -154,54 +169,18 @@ function Wl_Appointment_Book_Finish_FinishModel()
   this.a_notification = {};
 
   /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_pay_form_pa
-   * @property {string} [json_data] Additional payer authentication data.
+   * Payment is not processed by this API.
    *
-   *  Copy of value set with
-   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paDataSet()</tt>.
+   * Use the following APIs for payment:
+   * * {@link Wl_Appointment_Book_Payment_PaymentModel}
+   * * {@link Wl_Appointment_Book_Payment_PaymentPostModel}
+   * * {@link Wl_Appointment_Book_Payment_PaymentMultipleModel}
    *
-   *  An empty string (or element not passed) if this payment processor does not provide additional payer
-   *  authentication data, or payer authentication was not performed.
-   * @property {string} [m_amount] Authenticated payment amount.
-   *
-   *  Copy of value set with
-   *  <tt>Wl_Pay_Processor_ProcessorInterface_Abstract.paAmountSet()</tt>.
-   *
-   *  An empty string (or element not passed) if payer authentication was not performed.
-   * @property {string} [k_pay_transaction] Key of the payment transaction that was created during payer authentication.
-   *  In this case, payment transaction should be attached to this transaction.
-   *
-   *  An empty string (or element not passed) if transaction was not created during payer authentication, or payer
-   *  authentication was not executed.
-   */
-  /**
-   * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_pay_form
-   * @property {number} f_amount Amount of money to withdraw with this payment source.
-   * @property {number} id_pay_method Payment method. One of {@link WlPayMethodSid} constants.
-   * @property {boolean} is_hide Whether this payment method is hidden.
-   *
-   * @property {boolean} [is_success] Whether this source was successfully charged.
-   * @property {string} [m_fee] Fee amount for this payment source.
-   *
-   * @property {string} [m_surcharge] Surcharge amount for this payment source.
-   * @property {Wl_Appointment_Book_Finish_FinishModel_a_pay_form_pa} [pa] Payer authentication data. Element may not present for payment sources that do not support payer authentication,
-   *  or payer authentication is not implemented by this payment processor.
-   *
-   *  This array is represented by
-   *  <tt>namespace.Wl/Pay/Processor/ProcessorInterface/PayerAuthenticationForm.xml</tt>
-   *  at browser side.
-   *
-   *  Structure of the array:
-   * @property {string} s_index Index of this form. This corresponds the key this item is written in this array with.
-   */
-
-  /**
-   * A list of payment sources to pay with.
-   *
+   * @deprecated Not used. See documentation.
    * @post post
-   * @type {Wl_Appointment_Book_Finish_FinishModel_a_pay_form[]}
+   * @type {{}}
    */
-  this.a_pay_form = [];
+  this.a_pay_form = {};
 
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_payment_data
@@ -275,12 +254,16 @@ function Wl_Appointment_Book_Finish_FinishModel()
   /**
    * @typedef {{}} Wl_Appointment_Book_Finish_FinishModel_a_visit_payment
    * @property {boolean} is_free `true` if the visit is free; `false` otherwise.
-   * @property {boolean} is_pay_required `true` if the booking triggered the payment flow and the client must pay by the link in `text_payment_link`, otherwise the visit is cancelled automatically; `false` otherwise.
+   * @property {boolean} is_pay_required `true` if the booking triggered the payment flow: the visit is booked, is not paid, and the client must
+   *   pay for it by the link in `text_payment_link`, otherwise the visit is cancelled automatically.
+   *   `false` otherwise: the visit is paid, free, waitlisted, cancelled, or the payment is optional
+   *   (pay later, or the application is allowed to book without paying).
    * @property {boolean} is_waitlist `true` whether the booked slot was waitlisted; `false` otherwise.
    * @property {string} k_login_promotion Applied user's purchase option.
    * @property {string} k_promotion Purchase option.
    * @property {string} k_session_pass Applied session pass.
-   * @property {?string} text_payment_link Link to complete the payment, the same one the client receives by email. `null` if `is_pay_required` is `false`.
+   * @property {?string} text_payment_link Link to complete the payment, the same one the client receives by email.
+   *   `null` if `is_pay_required` is `false`.
    * @property {string} text_promotion Purchase option title.
    */
 
