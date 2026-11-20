@@ -1,7 +1,7 @@
 /**
  * Manages identifiers of user activity.
  *
- * Last ID: 64.
+ * Last ID: 71.
  */
 function RsLoginActivityTypeSid()
 {
@@ -238,6 +238,72 @@ RsLoginActivityTypeSid.FAVORITE_REMOVE_STAFF = 9;
  * @type {number}
  */
 RsLoginActivityTypeSid.FRIEND_ADD = 10;
+
+/**
+ * A guest pass invitation sent by the client expired: the guest did not claim it, or claimed it and did not visit
+ * before the expiration.
+ *
+ * Written on the feed of the owner of the guest pass.
+ *
+ * @type {number}
+ */
+RsLoginActivityTypeSid.GUEST_PASS_EXPIRE = 70;
+
+/**
+ * The client redeemed a guest pass sent by another client.
+ *
+ * Written on the feed of the guest.
+ *
+ * @type {number}
+ */
+RsLoginActivityTypeSid.GUEST_PASS_REDEEM_GUEST = 69;
+
+/**
+ * The guest redeemed a guest pass sent by the client.
+ *
+ * Written on the feed of the owner of the guest pass.
+ *
+ * @type {number}
+ */
+RsLoginActivityTypeSid.GUEST_PASS_REDEEM_HOST = 68;
+
+/**
+ * A reminder of a guest pass invitation was sent to the guest.
+ *
+ * Written on the feed of the owner of the guest pass. Hidden from the client while
+ * {@link RsLoginActivityTypeSid.guestPassRemindClientShow()} says so.
+ *
+ * @type {number}
+ */
+RsLoginActivityTypeSid.GUEST_PASS_REMIND = 71;
+
+/**
+ * A guest pass invitation sent by the client was revoked by a person: a staff member or the client.
+ *
+ * Written on the feed of the owner of the guest pass.
+ *
+ * @type {number}
+ */
+RsLoginActivityTypeSid.GUEST_PASS_REVOKE_MANUAL = 66;
+
+/**
+ * A guest pass invitation sent by the client was revoked by the system: a renewal, a hold, a transfer or another
+ * change of the membership, a change of the purchase option, a cancellation of the visit.
+ *
+ * Written on the feed of the owner of the guest pass.
+ *
+ * @type {number}
+ */
+RsLoginActivityTypeSid.GUEST_PASS_REVOKE_SYSTEM = 67;
+
+/**
+ * The client sent a guest pass invitation, or a staff member sent it on behalf of the client.
+ *
+ * Written on the feed of the owner of the guest pass.
+ *
+ * @type {number}
+ */
+RsLoginActivityTypeSid.GUEST_PASS_SEND = 65;
 
 /**
  * Client made a gym visit.

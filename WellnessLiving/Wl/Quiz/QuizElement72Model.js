@@ -496,6 +496,29 @@ function Wl_Quiz_QuizElement72Model()
   this.a_element = undefined;
 
   /**
+   * @typedef {{}} Wl_Quiz_QuizElement72Model_a_notification_custom
+   * @property {number} i_login_type Number of selected client types.
+   * @property {number} i_login_type_all Number of all client types of the business.
+   * @property {number} i_member_group Number of selected client groups.
+   * @property {number} i_member_group_all Number of all client groups of the business.
+   * @property {boolean} is_login_type `true` if the confirmation is sent only to specific client types, `false` otherwise.
+   * @property {boolean} is_login_type_all `true` if all client types are selected, `false` otherwise.
+   * @property {boolean} is_member_group `true` if the confirmation is sent only to specific client groups, `false` otherwise.
+   * @property {boolean} is_member_group_all `true` if all client groups are selected, `false` otherwise.
+   * @property {?string} k_mail_pattern_live Key of the pattern of the custom confirmation. `null` if the form has no pattern yet.
+   */
+
+  /**
+   * Send rules of the custom confirmation of the form: how many client types and client groups it is sent to.
+   *
+   * Empty for a form of the main business. Otherwise:
+   *
+   * @get result
+   * @type {Wl_Quiz_QuizElement72Model_a_notification_custom}
+   */
+  this.a_notification_custom = undefined;
+
+  /**
    * @typedef {{}} Wl_Quiz_QuizElement72Model_a_setting
    * @property {string[]} a_notify_additional List of additional email addresses which should receive email notification after quiz is submitted.
    * @property {string[][]} a_service List of services grouped by service ID.
@@ -511,6 +534,10 @@ function Wl_Quiz_QuizElement72Model()
    * @property {boolean} is_notify_additional Whether email notification should be sent to specific email addresses after quiz is submitted.
    * @property {boolean} is_notify_automated Whether email reminders should be sent for incomplete forms.
    * @property {boolean} is_notify_client Whether email notification should be sent to client after quiz submitted.
+   * @property {?boolean} is_notify_custom Whether the custom confirmation of the form is turned on: it is sent instead of the global form submission notification.
+   * @property {?boolean} is_notify_custom_mail Whether the email of the custom confirmation is activated.
+   * @property {?boolean} is_notify_custom_push Whether the push notification of the custom confirmation is activated.
+   * @property {?boolean} is_notify_custom_sms Whether the SMS of the custom confirmation is activated.
    * @property {boolean} is_notify_staff Whether email notification should be sent to staff members after quiz is submitted.
    * @property {boolean} is_prevent_franchisee Whether form can be edited by franchisee. `true` prevent franchisees from editing this form, `false` - otherwise.
    * @property {boolean} is_private Whether form can be viewed by staff member only after confirmation. `true` if form can be viewed only after confirmation `false` if form can be viewed always
@@ -723,6 +750,16 @@ function Wl_Quiz_QuizElement72Model()
   this.uid_client = "";
 
   /**
+   * URL of the page of the global form submission notification, which the custom confirmation of the form replaces.
+   *
+   * Empty for a form of the main business.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.url_notification = undefined;
+
+  /**
    * Direct URL to quiz.
    *
    * @get result
@@ -750,7 +787,7 @@ WlSdk_ModelAbstract.extend(Wl_Quiz_QuizElement72Model);
  */
 Wl_Quiz_QuizElement72Model.prototype.config=function()
 {
-  return {"a_field":{"a_access_log":{"get":{"result":true}},"a_element":{"get":{"result":true},"post":{"post":true}},"a_setting":{"get":{"result":true},"post":{"post":true},"put":{"result":true}},"can_amend":{"get":{"result":true}},"can_anonymous":{"get":{"get":true},"post":{"get":true}},"i_responses":{"get":{"result":true}},"is_active":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_builder":{"get":{"get":true}},"is_imported":{"get":{"result":true}},"is_prevent_franchisee":{"get":{"result":true}},"is_simple":{"get":{"get":true},"post":{"get":true}},"json_element":{"post":{"post":true}},"json_purchase_item":{"get":{"get":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_business_type":{"get":{"result":true},"post":{"post":true}},"k_quiz":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"k_quiz_login":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"s_secret":{"get":{"get":true}},"show_numbering":{"get":{"result":true},"post":{"post":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"uid_client":{"get":{"get":true}},"url_quiz":{"get":{"result":true},"put":{"result":true}},"url_quiz_kiosk":{"get":{"result":true},"put":{"result":true}}}};
+  return {"a_field":{"a_access_log":{"get":{"result":true}},"a_element":{"get":{"result":true},"post":{"post":true}},"a_notification_custom":{"get":{"result":true}},"a_setting":{"get":{"result":true},"post":{"post":true},"put":{"result":true}},"can_amend":{"get":{"result":true}},"can_anonymous":{"get":{"get":true},"post":{"get":true}},"i_responses":{"get":{"result":true}},"is_active":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_builder":{"get":{"get":true}},"is_imported":{"get":{"result":true}},"is_prevent_franchisee":{"get":{"result":true}},"is_simple":{"get":{"get":true},"post":{"get":true}},"json_element":{"post":{"post":true}},"json_purchase_item":{"get":{"get":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_business_type":{"get":{"result":true},"post":{"post":true}},"k_quiz":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"k_quiz_login":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"s_secret":{"get":{"get":true}},"show_numbering":{"get":{"result":true},"post":{"post":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"uid_client":{"get":{"get":true}},"url_notification":{"get":{"result":true}},"url_quiz":{"get":{"result":true},"put":{"result":true}},"url_quiz_kiosk":{"get":{"result":true},"put":{"result":true}}}};
 };
 
 /**

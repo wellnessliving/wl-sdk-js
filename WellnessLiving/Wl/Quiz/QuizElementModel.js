@@ -512,6 +512,10 @@ function Wl_Quiz_QuizElementModel()
    * @property {boolean} is_notify_additional Whether email notification should be sent to specific email addresses after quiz is submitted.
    * @property {boolean} is_notify_automated Whether email reminders should be sent for incomplete forms.
    * @property {boolean} is_notify_client Whether email notification should be sent to client after quiz submitted.
+   * @property {?boolean} is_notify_custom Whether the custom confirmation of the form is turned on: it is sent instead of the global form submission notification.
+   * @property {?boolean} is_notify_custom_mail Whether the email of the custom confirmation is activated.
+   * @property {?boolean} is_notify_custom_push Whether the push notification of the custom confirmation is activated.
+   * @property {?boolean} is_notify_custom_sms Whether the SMS of the custom confirmation is activated.
    * @property {boolean} is_notify_staff Whether email notification should be sent to staff members after quiz is submitted.
    * @property {boolean} is_prevent_franchisee Whether form can be edited by franchisee. `true` prevent franchisees from editing this form, `false` - otherwise.
    * @property {boolean} is_private Whether form can be viewed by staff member only after confirmation. `true` if form can be viewed only after confirmation `false` if form can be viewed always
