@@ -321,6 +321,9 @@ function Wl_Visit_VisitStatusModel()
    * the status is given by it, the visit cannot be changed, and the link to join a virtual visit is never given.
    * It is not the permanent secret of the visit, `rs_visit.s_secret`.
    *
+   * The value is passed in the query of a GET request, so it may be written to the access logs of the web server and
+   * to the referrer of a page. The expiration in one hour and the access to one visit limit what a leaked value gives.
+   *
    * Example: `1767225600-0f3a...`, where the number is the time of the expiration in UTC, and the rest is the
    * signature in 64 hexadecimal digits.
    *
