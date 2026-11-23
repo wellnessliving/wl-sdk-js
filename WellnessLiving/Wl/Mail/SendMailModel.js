@@ -1718,7 +1718,7 @@ function Wl_Mail_SendMailModel()
    * @property {string} text_amount The disputed amount with the currency.
    * @property {string} text_business_id Key of the business of the studio. It is text only: the mail is not tied to the business.
    * @property {string} text_business_name Name of the studio.
-   * @property {string} text_date_due The response deadline of the dispute, in the time zone of the business. Empty if there is none.
+   * @property {string} text_date_due The response deadline, in the time zone of the business with its name, and in UTC. Empty if none.
    * @property {string} url_transaction Address of the page of the disputed transaction for the staff. Empty if the transaction is not found.
    */
 

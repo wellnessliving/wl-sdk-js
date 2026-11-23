@@ -153,6 +153,16 @@ function Wl_Catalog_Cart_CartModel()
   this.is_auto_apply_prize = true;
 
   /**
+   * Specify this if the cart is calculated for a staff member in the backend (optional).
+   *
+   * Products in such a cart have the retail price, not the online discounted price that clients get.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_staff = false;
+
+  /**
    * The location key.
    *
    * @get get
@@ -268,7 +278,7 @@ WlSdk_ModelAbstract.extend(Wl_Catalog_Cart_CartModel);
  */
 Wl_Catalog_Cart_CartModel.prototype.config=function()
 {
-  return {"a_field":{"a_discount_item":{"get":{"result":true}},"a_item":{"get":{"get":true,"result":true}},"a_prize_propose":{"get":{"result":true}},"a_reward_item":{"get":{"result":true}},"a_reward_propose":{"get":{"result":true}},"a_tax_list":{"get":{"result":true}},"i_score":{"get":{"result":true}},"is_auto_apply_prize":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_login_prize":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
+  return {"a_field":{"a_discount_item":{"get":{"result":true}},"a_item":{"get":{"get":true,"result":true}},"a_prize_propose":{"get":{"result":true}},"a_reward_item":{"get":{"result":true}},"a_reward_propose":{"get":{"result":true}},"a_tax_list":{"get":{"result":true}},"i_score":{"get":{"result":true}},"is_auto_apply_prize":{"get":{"get":true}},"is_staff":{"get":{"get":true}},"k_location":{"get":{"get":true}},"k_login_prize":{"get":{"get":true}},"m_checkout":{"get":{"result":true}},"m_discount":{"get":{"result":true}},"m_discount_total":{"get":{"result":true}},"m_subtotal":{"get":{"result":true}},"m_tax":{"get":{"result":true}},"m_tip_purchase":{"get":{"result":true}},"m_total":{"get":{"result":true}},"text_discount_code":{"get":{"get":true}},"uid":{"get":{"get":true}}}};
 };
 
 /**

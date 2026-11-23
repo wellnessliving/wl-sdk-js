@@ -319,7 +319,7 @@ function Wl_Visit_VisitStatusModel()
    * {@link Wl_Purchase_Receipt_PurchaseReceiptModel.a_purchase_item}, and expires in one hour. An empty value, a
    * secret that has expired or a secret of another visit gives nothing: the access is checked as without it. Only
    * the status is given by it, the visit cannot be changed, and the link to join a virtual visit is never given.
-   * It is not the permanent secret of the visit, `rs_visit.s_secret`.
+   *
    *
    * The value is passed in the query of a GET request, so it may be written to the access logs of the web server and
    * to the referrer of a page. The expiration in one hour and the access to one visit limit what a leaked value gives.
@@ -447,7 +447,7 @@ Wl_Visit_VisitStatusModel.prototype.config=function()
  * the visit can still be cancelled. Handles class, appointment, and gym visit types. Used
  * to render the visit detail view and action buttons in the client portal. A visit of a class can also be read
  * without a login and without the access of the user by its temporary secret,
- * {@link Wl_Visit_VisitStatusModel.s_status_secret}. Such a visit cannot be virtual.
+ * {@link Wl_Visit_VisitStatusModel.s_status_secret}. Such a visit has no link to join a virtual service.
  *
  * @function
  * @name Wl_Visit_VisitStatusModel.get

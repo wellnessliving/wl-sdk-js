@@ -34,6 +34,7 @@ function Wl_Task_Manager_TaskManagerListModel()
 
   /**
    * @typedef {{}} Wl_Task_Manager_TaskManagerListModel_a_row
+   * @property {boolean} can_edit Whether the signed-in staff member may change the task with the bulk actions of the page and edit it: they have the privilege to edit tasks, and the privilege for all tasks or the task is assigned to them. The page lets them select only such tasks. {@link Wl_Task_Manager_TaskBulkModel} checks the same right again for every task.
    * @property {string} dtl_add The date and the time when the task was created, in the time zone of the business, MySQL format.
    * @property {string} dtl_due The date and the time when the task is due, in the time zone of the business, MySQL format.
    * @property {string} html_description The description of the task, made into HTML from the visual editor. An empty string without one.
@@ -56,6 +57,7 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @property {string} uid_staff Key of the user the task is assigned to.
    * @property {string} url_client_photo The address of the photo of the client. An empty string when the task has no client or the client has no photo.
    * @property {string} url_client_profile The address of the page Overview of the profile of the client. An empty string when the task has no client.
+   * @property {string} url_duplicate The address of the form of a new task that is a copy of the task, filled in from the saved task. It is the address of `url_edit` with  in the query in place of `k_task`: `<address>?k_task_duplicate=<key of the task>`.
    * @property {string} url_edit The address of the form that edits the task.
    * @property {string} url_staff The address of the profile of the staff member the task is assigned to, as the old report linked it. An empty string when that user is no staff member of the business of the page: a staff member of another location of a franchise has no profile here.
    */

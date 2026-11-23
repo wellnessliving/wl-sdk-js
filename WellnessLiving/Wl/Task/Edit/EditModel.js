@@ -267,10 +267,12 @@ function Wl_Task_Edit_EditModel()
   /**
    * Client's uid for whom connected task.
    *
-   * `null` means not set.
+   * `null` means not set. When a task is changed by `put()`, the client to assign to the task: the task
+   * gets this client, or its client is replaced by this one. `null` there leaves the client of the task as it is.
    *
    * @get result
    * @post post
+   * @put post
    * @type {?string}
    */
   this.uid = null;
@@ -294,7 +296,7 @@ WlSdk_ModelAbstract.extend(Wl_Task_Edit_EditModel);
  */
 Wl_Task_Edit_EditModel.prototype.config=function()
 {
-  return {"a_field":{"a_k_task":{"post":{"result":true}},"a_repeat_day_week":{"get":{"result":true},"post":{"post":true}},"a_staff":{"get":{"result":true},"post":{"post":true}},"a_uid_staff":{"get":{"result":true},"post":{"post":true}},"dl_due":{"get":{"result":true},"post":{"post":true}},"dl_repeat_end":{"get":{"result":true},"post":{"post":true}},"i_repeat_day_month":{"get":{"result":true},"post":{"post":true}},"i_repeat_end_count":{"get":{"result":true},"post":{"post":true}},"i_repeat_every":{"get":{"result":true},"post":{"post":true}},"i_repeat_month_order":{"get":{"result":true},"post":{"post":true}},"id_repeat_end":{"get":{"result":true},"post":{"post":true}},"id_repeat_mode":{"get":{"result":true},"post":{"post":true}},"id_repeat_month":{"get":{"result":true},"post":{"post":true}},"id_repeat_month_weekday":{"get":{"result":true},"post":{"post":true}},"id_repeat_unit":{"get":{"result":true},"post":{"post":true}},"id_task_status":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_repeat":{"get":{"result":true},"post":{"post":true}},"is_repeat_open":{"post":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_location":{"get":{"result":true},"post":{"post":true}},"k_task":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"tl_due":{"get":{"result":true},"post":{"post":true}},"uid":{"get":{"result":true},"post":{"post":true}},"xml_description":{"get":{"result":true},"post":{"post":true}}}};
+  return {"a_field":{"a_k_task":{"post":{"result":true}},"a_repeat_day_week":{"get":{"result":true},"post":{"post":true}},"a_staff":{"get":{"result":true},"post":{"post":true}},"a_uid_staff":{"get":{"result":true},"post":{"post":true}},"dl_due":{"get":{"result":true},"post":{"post":true}},"dl_repeat_end":{"get":{"result":true},"post":{"post":true}},"i_repeat_day_month":{"get":{"result":true},"post":{"post":true}},"i_repeat_end_count":{"get":{"result":true},"post":{"post":true}},"i_repeat_every":{"get":{"result":true},"post":{"post":true}},"i_repeat_month_order":{"get":{"result":true},"post":{"post":true}},"id_repeat_end":{"get":{"result":true},"post":{"post":true}},"id_repeat_mode":{"get":{"result":true},"post":{"post":true}},"id_repeat_month":{"get":{"result":true},"post":{"post":true}},"id_repeat_month_weekday":{"get":{"result":true},"post":{"post":true}},"id_repeat_unit":{"get":{"result":true},"post":{"post":true}},"id_task_status":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"is_repeat":{"get":{"result":true},"post":{"post":true}},"is_repeat_open":{"post":{"post":true}},"k_business":{"delete":{"get":true},"get":{"get":true},"post":{"get":true},"put":{"get":true}},"k_location":{"get":{"result":true},"post":{"post":true}},"k_task":{"delete":{"get":true},"get":{"get":true},"post":{"get":true,"result":true},"put":{"get":true}},"text_title":{"get":{"result":true},"post":{"post":true}},"tl_due":{"get":{"result":true},"post":{"post":true}},"uid":{"get":{"result":true},"post":{"post":true},"put":{"post":true}},"xml_description":{"get":{"result":true},"post":{"post":true}}}};
 };
 
 /**
@@ -343,14 +345,19 @@ Wl_Task_Edit_EditModel.prototype.config=function()
  */
 
 /**
- * Changes task status.
+ * Changes task status or assigns a client to the task.
  *
- * Updates the task status, logs the change, and notifies the task channel so that connected
- * clients refresh their task list.
+ * Updates the task status, the client of the task, or both, logs the change, and notifies the task channel so that
+ * connected clients refresh their task list. The status is changed when {@link Wl_Task_Edit_EditModel.id_task_status} is given,
+ * and the client when {@link Wl_Task_Edit_EditModel.uid} is given. At least one of them must be given. The client of the task is
+ * set when it has none, or replaced; it cannot be cleared. Changing the client sends no alert, no notification and
+ * no reminder, and does not touch the reminder or the due date of the task:  The staff member must be allowed to edit the task to change the client.
  *
  * If the task is set to Completed and repeats "when this one is completed", the next task of the repeat is made,
  * and its staff are notified as of any new task. A status other than Completed, and a task that was Completed
  * already, make nothing.
+ *
+ * Access: staff with the privilege to see all tasks and the staff member the task is assigned to; others get `access`.
  *
  * @function
  * @name Wl_Task_Edit_EditModel.put
