@@ -48,7 +48,7 @@ function Wl_Alert_AlertListModel()
    * @property {string} text_due The due date and time in the time zone of the business, as the page of the Task Manager shows a date: "Due   on Mon, Nov 2, 2026 at 10:00am".
    * @property {string} text_overdue How late the task is: "2 days overdue". A pinned task is late 1 day or more.
    * @property {string} text_title The name of the task, in full.
-   * @property {string} url_task The address of the Task Manager that opens the form of the task.
+   * @property {string} url_task The address of the Task Manager that opens the form of the task, for example   `https://example.com/Wl/Task/Manager.html?is_all=1&k_task=112811`.
    */
 
   /**
@@ -89,8 +89,9 @@ function Wl_Alert_AlertListModel()
   this.k_business = "";
 
   /**
-   * The address of the page with every overdue task, the tab Overdue of the Task Manager. Empty when
-   * {@link Wl_Alert_AlertListModel.is_pinned_more} is `false`.
+   * The address of the page with every overdue task, the tab Overdue of the Task Manager, for example
+   * `https://example.com/Wl/Task/Manager.html?is_overdue=1`. Empty when {@link Wl_Alert_AlertListModel.is_pinned_more} is
+   * `false`.
    *
    * @get result
    * @type {string}

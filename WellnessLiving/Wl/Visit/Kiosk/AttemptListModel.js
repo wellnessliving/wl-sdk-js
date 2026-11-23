@@ -133,7 +133,8 @@ Wl_Visit_Kiosk_AttemptListModel.prototype.config=function()
  * of the classes and of the appointments are not listed. The newest attempt goes first, 100 attempts a page.
  * The totals count the whole day. The attempts of the clients whom the staff member may not see (the scope of the
  * clients of the staff member) are neither listed nor counted. Works in the session of a staff member with access
- * to the location and the privilege to see the profiles of the clients; no key of a kiosk is needed.
+ * to the location and either the privilege to manage the profiles of the clients or the privilege to view the
+ * details of the clients; no key of a kiosk is needed.
  *
  * @function
  * @name Wl_Visit_Kiosk_AttemptListModel.get

@@ -284,7 +284,7 @@ function Wl_Staff_StaffElementModel()
    * This is the supported request identifier for staff update operations.
    * Value is normalized into {@link Wl_Staff_StaffElementModel.k_staff} in `post()`.
    *
-   * @post post
+   * @post post,result
    * @type {?string}
    */
   this.uid_staff = null;
@@ -299,7 +299,7 @@ WlSdk_ModelAbstract.extend(Wl_Staff_StaffElementModel);
  */
 Wl_Staff_StaffElementModel.prototype.config=function()
 {
-  return {"a_field":{"a_location":{"post":{"post":true}},"dl_end":{"post":{"post":true}},"dl_start":{"post":{"post":true}},"id_gender":{"post":{"post":true}},"id_role":{"post":{"post":true}},"is_employ":{"post":{"post":true}},"is_microsite":{"post":{"post":true}},"is_password_set_disable":{"post":{"post":true}},"is_uid":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_business_role":{"post":{"post":true}},"k_city":{"post":{"post":true}},"k_location":{"post":{"post":true}},"k_staff":{"post":{"get":true,"result":true}},"text_address":{"post":{"post":true}},"text_biography":{"post":{"post":true}},"text_city":{"post":{"post":true}},"text_email":{"post":{"post":true}},"text_first_name":{"post":{"post":true}},"text_last_name":{"post":{"post":true}},"text_password":{"post":{"post":true}},"text_password_confirm":{"post":{"post":true}},"text_phone_home":{"post":{"post":true}},"text_phone_mobile":{"post":{"post":true}},"text_position":{"post":{"post":true}},"text_postal":{"post":{"post":true}},"uid_staff":{"post":{"post":true}}}};
+  return {"a_field":{"a_location":{"post":{"post":true}},"dl_end":{"post":{"post":true}},"dl_start":{"post":{"post":true}},"id_gender":{"post":{"post":true}},"id_role":{"post":{"post":true}},"is_employ":{"post":{"post":true}},"is_microsite":{"post":{"post":true}},"is_password_set_disable":{"post":{"post":true}},"is_uid":{"post":{"post":true}},"k_business":{"post":{"post":true}},"k_business_role":{"post":{"post":true}},"k_city":{"post":{"post":true}},"k_location":{"post":{"post":true}},"k_staff":{"post":{"get":true,"result":true}},"text_address":{"post":{"post":true}},"text_biography":{"post":{"post":true}},"text_city":{"post":{"post":true}},"text_email":{"post":{"post":true}},"text_first_name":{"post":{"post":true}},"text_last_name":{"post":{"post":true}},"text_password":{"post":{"post":true}},"text_password_confirm":{"post":{"post":true}},"text_phone_home":{"post":{"post":true}},"text_phone_mobile":{"post":{"post":true}},"text_position":{"post":{"post":true}},"text_postal":{"post":{"post":true}},"uid_staff":{"post":{"post":true,"result":true}}}};
 };
 
 /**

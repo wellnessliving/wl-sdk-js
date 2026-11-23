@@ -11,12 +11,14 @@ function Wl_Visit_Kiosk_ScanResultSid()
 /**
  * The scanned value is a dynamic barcode of a client that has expired.
  *
+ * Also the result for the QR code of a client whose window of 30 seconds after its issue has passed.
+ *
  * @type {number}
  */
 Wl_Visit_Kiosk_ScanResultSid.DYNAMIC_EXPIRED = 4;
 
 /**
- * The business uses QR codes for the member IDs, and the kiosk does not read them.
+ * The business uses QR codes, and the scanned value contains `|` but is not a well-formed QR code of a client.
  *
  * @type {number}
  */

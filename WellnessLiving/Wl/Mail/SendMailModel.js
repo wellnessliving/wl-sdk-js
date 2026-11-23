@@ -2081,6 +2081,7 @@ function Wl_Mail_SendMailModel()
 
   /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_196
+   * @property {string} k_business Key of the business of the request. If it is given, it must be the business of the task.
    * @property {string} k_staff Key of the staff member assigned to the task.
    * @property {string} k_task Key of the task.
    */

@@ -58,7 +58,8 @@ function Wl_Visit_Kiosk_ScanModel()
   /**
    * The scanned value: a member ID or a dynamic barcode, for example `100245`.
    *
-   * The symbols that are not letters or digits are cut from both ends.
+   * When the business uses QR codes, also the QR code of the client, `text_barcode|tu_qr_issued|30`, for example
+   * `100245|1795000000|30`. The symbols that are not letters or digits are cut from both ends.
    *
    * @post post
    * @type {string}
@@ -106,10 +107,11 @@ Wl_Visit_Kiosk_ScanModel.prototype.config=function()
  * <li>the client is found: the key, the name and the photo of the client;</li>
  * <li>no client that the staff member may see matches the value;</li>
  * <li>the member ID of the client is inactive;</li>
- * <li>the dynamic barcode has expired;</li>
- * <li>the business uses QR codes, which the kiosk does not read: every scan gives this result.</li>
+ * <li>the dynamic barcode has expired, or the 30 seconds of the QR code have passed;</li>
+ * <li>the business uses QR codes, and the value contains `|` but is not a well-formed QR code.</li>
  * </ul>
- * Only one client is returned: there is no list of the candidates.
+ * At a business that uses QR codes, a value without `|` is found as at a business that does not use them. Only
+ * one client is returned: there is no list of the candidates.
  *
  * @function
  * @name Wl_Visit_Kiosk_ScanModel.post

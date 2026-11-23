@@ -55,7 +55,7 @@ function Wl_Task_Manager_TaskManagerListModel()
    * @property {?string} uid Key of the client of the task. `null` when the task has no client.
    * @property {string} uid_staff Key of the user the task is assigned to.
    * @property {string} url_client_photo The address of the photo of the client. An empty string when the task has no client or the client has no photo.
-   * @property {string} url_client_profile The address of the profile of the client. An empty string when the task has no client.
+   * @property {string} url_client_profile The address of the page Overview of the profile of the client. An empty string when the task has no client.
    * @property {string} url_edit The address of the form that edits the task.
    * @property {string} url_staff The address of the profile of the staff member the task is assigned to, as the old report linked it. An empty string when that user is no staff member of the business of the page: a staff member of another location of a franchise has no profile here.
    */
