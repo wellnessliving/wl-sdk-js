@@ -410,7 +410,8 @@ function Wl_Visit_VisitStatusModel()
   this.url_book_referral_short = null;
 
   /**
-   * URL of virtual service. Empty if the visit is not virtual.
+   * URL of virtual service. Empty if the visit is not virtual. Also empty for a virtual visit that is opened only by
+   * {@link Wl_Visit_VisitStatusModel.s_status_secret}: the link holds the permanent secret of the visit.
    *
    * @get result
    * @type {string}
