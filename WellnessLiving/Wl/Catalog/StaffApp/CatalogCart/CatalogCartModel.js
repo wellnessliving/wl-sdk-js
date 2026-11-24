@@ -40,6 +40,7 @@ function Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel()
 
   /**
    * @typedef {{}} Wl_Catalog_StaffApp_CatalogCart_CatalogCartModel_a_item_a_config_a_event_list_a_discount
+   * @property {string} f_discount_percent Discount in percents of the event price, more than `0` and not more than `100`. When it is      set, `m_discount` that comes with the request is ignored and the amount is calculated from      the price.
    * @property {string} m_discount Discount amount of the full event price.
    * @property {string} m_discount_checkout Output only. The part of this discount that is taken from `m_checkout_subtotal`. A      percentage discount takes its percent of `m_checkout_subtotal` (it is not stacked with the      other discounts), a flat discount is taken in full.
    * @property {string} text_discount Discount title.

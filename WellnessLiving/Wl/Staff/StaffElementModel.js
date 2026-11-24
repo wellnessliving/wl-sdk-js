@@ -281,8 +281,13 @@ function Wl_Staff_StaffElementModel()
   /**
    * User key of a staff member.
    *
-   * This is the supported request identifier for staff update operations.
-   * Value is normalized into {@link Wl_Staff_StaffElementModel.k_staff} in `post()`.
+   *
+   * In the request: the staff member to update. `null` to create a new staff member.
+   * In the result: the user key of the saved staff member. It is returned after every successful save, for a
+   * new staff member too.
+   *
+   * The value of the request is normalized into {@link Wl_Staff_StaffElementModel.k_staff} in
+   * `post()`.
    *
    * @post post,result
    * @type {?string}
@@ -306,7 +311,7 @@ Wl_Staff_StaffElementModel.prototype.config=function()
  * @function
  * @name Wl_Staff_StaffElementModel.instanceGet
  * @param {string} k_business The key of the business in which the staff member is being created or edited. This field is required.
- * @param {?string} uid_staff User key of a staff member. This is the supported request identifier for staff update operations. Value is normalized into {@link Wl_Staff_StaffElementModel.k_staff} in `post()`.
+ * @param {?string} uid_staff User key of a staff member. In the request: the staff member to update. `null` to create a new staff member. In the result: the user key of the saved staff member. It is returned after every successful save, for a new staff member too. The value of the request is normalized into {@link Wl_Staff_StaffElementModel.k_staff} in `post()`.
  * @returns {Wl_Staff_StaffElementModel}
  * @see WlSdk_ModelAbstract.instanceGet()
  */

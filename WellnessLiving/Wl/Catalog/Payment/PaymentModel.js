@@ -36,6 +36,7 @@ function Wl_Catalog_Payment_PaymentModel()
 
   /**
    * @typedef {{}} Wl_Catalog_Payment_PaymentModel_a_item_a_config_a_event_list_a_discount
+   * @property {string} f_discount_percent Discount in percents of the event price, more than `0` and not more than `100`.   When set, `m_discount` is ignored and calculated from the price.
    * @property {boolean} is_recurrent Whether the discount should also apply to the recurring membership payments.
    * @property {string} m_discount Discount amount.
    * @property {string} text_discount Discount title.
