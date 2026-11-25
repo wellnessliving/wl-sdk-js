@@ -40,7 +40,8 @@ function Wl_Visit_Billing_Code_VisitBillingCodeDefaultModel()
    */
 
   /**
-   * Codes applied by default to the service of the visit, sorted by the code value. Empty if the visit has no
+   * Codes applied by default to the service of the visit, in the natural order of the code value (`DEFAULT-2` goes
+   * before `DEFAULT-10`), which is the order the codes are applied to the visit in. Empty if the visit has no
    * service, for example if it is not an appointment.
    *
    * @get result
