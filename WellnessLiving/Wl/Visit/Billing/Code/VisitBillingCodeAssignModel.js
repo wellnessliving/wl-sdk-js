@@ -29,10 +29,11 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
   /**
    * @typedef {{}} Wl_Visit_Billing_Code_VisitBillingCodeAssignModel_a_history
    * @property {string} dtu_change Date and time of the change in UTC.
+   * @property {boolean} is_staff_delete `true` when the user who made the change was deleted. `false` for the codes applied by default, for a void, and when `uid_staff` is set.
    * @property {string} text_log What changed.
    * @property {?string} text_reason Reason of the change the staff member gave. `null` if no reason was given.
    * @property {?string} text_signature Signature of the staff member who made the change. `null` if no signature was given, or if the business did not require one.
-   * @property {?string} uid_staff Key of the staff member who made the change. `null` if the user is deleted, for the codes applied by default, and for a void made not by a user.
+   * @property {?string} uid_staff Key of the staff member who made the change. `null` for the codes applied by default, for a void not made by a user, and when the user was deleted (see `is_staff_delete`).
    */
 
   /**
@@ -121,6 +122,15 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
   this.is_signature = undefined;
 
   /**
+   * `true` when the diagnostic codes of the visit are locked and the user who signed them was deleted, so
+   * {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.uid_staff_lock} is `null`; `false` otherwise.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_staff_lock_delete = undefined;
+
+  /**
    * `true` if the business has the diagnostic codes turned on, `false` otherwise.
    *
    * @get result
@@ -189,8 +199,9 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
    * Full name of the staff member who signed and locked the diagnostic codes of the visit, as it is at the moment
    * of the request.
    *
-   * `null` when the diagnostic codes are not locked or when the user is deleted; the lock itself stays, so the
-   * diagnostic codes are kept frozen.
+   * `null` when the diagnostic codes are not locked. An empty string when the user who signed was deleted, see
+   * {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.is_staff_lock_delete}, or is not a staff member of the business; the lock
+   * itself stays, so the diagnostic codes are kept frozen.
    *
    * @get result
    * @type {?string}
@@ -200,7 +211,8 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
   /**
    * Key of the staff member who signed and locked the diagnostic codes of the visit.
    *
-   * `null` when the diagnostic codes are not locked or when the user is deleted.
+   * `null` when the diagnostic codes are not locked, or when the user who signed was deleted, see
+   * {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.is_staff_lock_delete}.
    *
    * @get result
    * @type {?string}
@@ -217,7 +229,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_Billing_Code_VisitBillingCodeAssignModel);
  */
 Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
 {
-  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"a_void":{"get":{"result":true}},"dtu_lock":{"get":{"result":true}},"is_locked":{"get":{"result":true}},"is_receipt_sent":{"get":{"result":true}},"is_signature":{"get":{"result":true}},"is_system":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_code_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}},"text_staff_name_lock":{"get":{"result":true}},"uid_staff_lock":{"get":{"result":true}}}};
+  return {"a_field":{"a_code":{"get":{"result":true}},"a_history":{"get":{"result":true}},"a_text_code":{"post":{"post":true}},"a_void":{"get":{"result":true}},"dtu_lock":{"get":{"result":true}},"is_locked":{"get":{"result":true}},"is_receipt_sent":{"get":{"result":true}},"is_signature":{"get":{"result":true}},"is_staff_lock_delete":{"get":{"result":true}},"is_system":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_code_version":{"get":{"result":true},"post":{"post":true,"result":true}},"text_reason":{"post":{"post":true}},"text_signature":{"post":{"post":true}},"text_staff_name_lock":{"get":{"result":true}},"uid_staff_lock":{"get":{"result":true}}}};
 };
 
 /**

@@ -9,7 +9,7 @@
  *
  * Pay attention that all `\MailPrioritySid` must start with backslash.
  *
- * Last used ID: 233.
+ * Last used ID: 234.
  */
 function RsMailSid()
 {
@@ -441,6 +441,17 @@ RsMailSid.BOOK_REMIND_CLASS = 25;
  * @type {number}
  */
 RsMailSid.BOOK_REMIND_ENROLLMENT = 62;
+
+/**
+ * Multiple Appointment Reminder (Client).
+ *
+ * Sent to remind the client about all of their appointments on the same day, in one message. It is sent instead
+ * of several appointment reminders, when the client has several appointments on the same day. It is off by
+ * default. The time of sending comes from the schedule of {@link RsMailSid.BOOK_REMIND_SERVICE_USER}.
+ *
+ * @type {number}
+ */
+RsMailSid.BOOK_REMIND_SERVICE_LIST_USER = 234;
 
 /**
  * Appointment Reminder - Staff.
