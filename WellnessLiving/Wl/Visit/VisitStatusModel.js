@@ -193,6 +193,26 @@ function Wl_Visit_VisitStatusModel()
   this.is_mail = false;
 
   /**
+   * The choice about the make-up pass of an early or a late cancel under the Make-up Passes policy of the business.
+   *
+   * `true` to issue the make-up pass, `false` not to issue it. Accepted only for an early or a late cancel
+   * (`id_visit`). 
+   *
+   * `null` to change the status without make-up passes, as for a visit that does not qualify for a pass.
+   *
+   * Without the privilege "Override make-up passes", which an administrator always has, only the default of the
+   * policy is accepted: to issue the pass for an early cancel of a client below the maximum of active passes and the
+   * purchase limit of the pass, not to issue it otherwise; a choice to issue the pass for a client at the maximum is
+   * accepted too and issues no pass.
+   * The choice to issue the pass is refused when the visit no longer qualifies or the client has reached the
+   * purchase limit of the pass.
+   *
+   * @post post
+   * @type {?boolean}
+   */
+  this.is_makeup_issue = null;
+
+  /**
    * Whether to send push notification.
    *
    * `true` - push notification will be sent.
@@ -428,7 +448,7 @@ WlSdk_ModelAbstract.extend(Wl_Visit_VisitStatusModel);
  */
 Wl_Visit_VisitStatusModel.prototype.config=function()
 {
-  return {"a_field":{"a_cancel":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_resource_alias":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_uid_staff":{"get":{"result":true}},"dt_date":{"get":{"result":true}},"dtl_date":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_wait_spot":{"get":{"result":true}},"id_mode":{"get":{"result":true},"post":{"post":true}},"id_visit":{"get":{"result":true},"post":{"post":true}},"id_visit_from":{"post":{"post":true}},"is_charge_fee":{"post":{"get":true}},"is_event":{"get":{"result":true}},"is_mail":{"post":{"post":true}},"is_push":{"post":{"post":true}},"is_request":{"get":{"result":true}},"is_sms":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"result":true}},"k_class_period":{"get":{"result":true}},"k_location":{"get":{"result":true}},"k_mail_pattern_live":{"post":{"get":true}},"k_service":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"k_timezone":{"get":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_calendar_file_content":{"get":{"result":true}},"s_status_secret":{"get":{"get":true}},"text_abbr_timezone":{"get":{"result":true}},"text_location":{"get":{"result":true}},"text_reason":{"post":{"get":true}},"text_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid":{"get":{"result":true}},"uid_staff":{"get":{"result":true}},"url_book_referral":{"get":{"result":true}},"url_book_referral_short":{"get":{"result":true}},"url_virtual_service":{"get":{"result":true}}}};
+  return {"a_field":{"a_cancel":{"get":{"result":true}},"a_resource":{"get":{"result":true}},"a_resource_alias":{"get":{"result":true}},"a_staff":{"get":{"result":true}},"a_uid_staff":{"get":{"result":true}},"dt_date":{"get":{"result":true}},"dtl_date":{"get":{"result":true}},"i_duration":{"get":{"result":true}},"i_wait_spot":{"get":{"result":true}},"id_mode":{"get":{"result":true},"post":{"post":true}},"id_visit":{"get":{"result":true},"post":{"post":true}},"id_visit_from":{"post":{"post":true}},"is_charge_fee":{"post":{"get":true}},"is_event":{"get":{"result":true}},"is_mail":{"post":{"post":true}},"is_makeup_issue":{"post":{"post":true}},"is_push":{"post":{"post":true}},"is_request":{"get":{"result":true}},"is_sms":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_class":{"get":{"result":true}},"k_class_period":{"get":{"result":true}},"k_location":{"get":{"result":true}},"k_mail_pattern_live":{"post":{"get":true}},"k_service":{"get":{"result":true}},"k_staff":{"get":{"result":true}},"k_timezone":{"get":{"get":true}},"k_visit":{"get":{"get":true},"post":{"get":true}},"s_calendar_file_content":{"get":{"result":true}},"s_status_secret":{"get":{"get":true}},"text_abbr_timezone":{"get":{"result":true}},"text_location":{"get":{"result":true}},"text_reason":{"post":{"get":true}},"text_staff":{"get":{"result":true}},"text_title":{"get":{"result":true}},"uid":{"get":{"result":true}},"uid_staff":{"get":{"result":true}},"url_book_referral":{"get":{"result":true}},"url_book_referral_short":{"get":{"result":true}},"url_virtual_service":{"get":{"result":true}}}};
 };
 
 /**

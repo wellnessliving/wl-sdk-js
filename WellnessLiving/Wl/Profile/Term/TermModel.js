@@ -65,12 +65,22 @@ function Wl_Profile_Term_TermModel()
   this.k_business = "";
 
   /**
-   * The user's name.
+   * The full name of the user who signed the waiver.
+   * It is the name of the user to show information for, if he signed the waiver himself or has not signed it yet.
    *
    * @get result
    * @type {string}
    */
   this.s_name = undefined;
+
+  /**
+   * The full name of the user to show information for, if a relative signed the waiver on his behalf.
+   * Empty if the user signed the waiver himself or has not signed it yet.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_sign_for = undefined;
 
   /**
    * The key of the user to show information for.
@@ -99,7 +109,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Term_TermModel);
  */
 Wl_Profile_Term_TermModel.prototype.config=function()
 {
-  return {"a_field":{"dt_agree":{"get":{"result":true}},"html_contract":{"get":{"result":true}},"i_minor_age":{"get":{"result":true}},"ip_agree":{"get":{"result":true}},"is_agree":{"get":{"result":true}},"k_business":{"get":{"get":true}},"s_name":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_signature":{"get":{"result":true}}}};
+  return {"a_field":{"dt_agree":{"get":{"result":true}},"html_contract":{"get":{"result":true}},"i_minor_age":{"get":{"result":true}},"ip_agree":{"get":{"result":true}},"is_agree":{"get":{"result":true}},"k_business":{"get":{"get":true}},"s_name":{"get":{"result":true}},"text_sign_for":{"get":{"result":true}},"uid":{"get":{"get":true}},"url_signature":{"get":{"result":true}}}};
 };
 
 /**

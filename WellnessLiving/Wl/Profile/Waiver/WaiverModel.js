@@ -19,6 +19,8 @@ function Wl_Profile_Waiver_WaiverModel()
    * @property {string} dt_agree_utc Agreement date in UTC.
    * @property {string} html_contract Contract text.
    * @property {string} ip_agree IP address from which agreement was done.
+   * @property {string} s_name Full name of the user who signed the waiver. It is the name of the user to get information for, if he signed the waiver himself.
+   * @property {string} text_sign_for Full name of the user to get information for, if a relative signed the waiver on his behalf. Empty if the user signed the waiver himself.
    * @property {string} url_signature URL to agreement signature.
    */
 

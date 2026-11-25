@@ -33,6 +33,31 @@ function Wl_Appointment_Cancel_ConfirmModel()
   this.a_appointment_list = null;
 
   /**
+   * @typedef {{}} Wl_Appointment_Cancel_ConfirmModel_a_makeup
+   * @property {boolean} can_override `true` if the current user may choose whether to issue the pass: the user has the privilege "Override make-up passes" or is an administrator. `false` if `is_makeup_issue` accepts only the default of the policy: to issue the pass for an early cancel when `is_limit` and `is_maximum` are `false`, not to issue it otherwise.
+   * @property {number} i_active The number of the active make-up passes that the policy issued to the client.
+   * @property {boolean} is_limit `true` if the client has reached the purchase limit of the pass: no pass can be issued.
+   * @property {boolean} is_maximum `true` if the client already holds the maximum number of active make-up passes of the policy: by default no pass is issued then.
+   * @property {string} text_expire The sentence of the expiry of the pass, for example "It expires on Nov 5, 2026.". An empty string if the end is not known before the pass is issued.
+   * @property {string} text_maximum The sentence of the client at the maximum, for example "Jane already has 2 active make-up passes, which is the maximum.". An empty string if the client is not at the maximum.
+   * @property {string} text_name_first The first name of the client who receives the pass.
+   * @property {string} text_promotion The title of the Purchase Option that is issued as the pass.
+   */
+
+  /**
+   * The Make-up pass section of the cancellation: the make-up pass that an early or a late cancel of the visit may
+   * issue under the Make-up Passes policy of the business. 
+   *
+   * `null` if there is no section: the policy is off, the visit does not qualify, the cancel is recurring, or the
+   * status is not an early or a late cancel. Given also without a status (`id_visit` is `0`, the status is chosen
+   * later): the section is the same for both statuses.
+   *
+   * @get result
+   * @type {?Wl_Appointment_Cancel_ConfirmModel_a_makeup}
+   */
+  this.a_makeup = null;
+
+  /**
    * @typedef {{}} Wl_Appointment_Cancel_ConfirmModel_a_notification
    * @property {boolean} is_attach `true` to attach calendar file, `false` to not attach calendar file.
    * @property {boolean} is_campaign Whether mail should track as a part of campaign. `true` if yes, `false` if no.
@@ -187,6 +212,23 @@ function Wl_Appointment_Cancel_ConfirmModel()
   this.is_inform_sms = false;
 
   /**
+   * The choice about the make-up pass of the cancellation: `true` to issue the make-up pass, `false` not to issue
+   * it. The same as {@link Wl_Visit_VisitStatusModel.is_makeup_issue}.
+   *
+   * `null` to cancel without make-up passes, as when `a_makeup` of the GET request is `null`. A choice is accepted
+   * only for an early or a late cancel (`id_visit`), never for a recurring cancel, which never issues a pass.
+   *
+   * Without the privilege "Override make-up passes", which an administrator always has (`can_override` of `a_makeup`
+   * is `false`), only the default of the policy is accepted, except that a choice to issue the pass for a client at
+   * the maximum is accepted and issues no pass. The choice to issue the pass is refused when the visit no longer
+   * qualifies or the client has reached the purchase limit of the pass.
+   *
+   * @post post
+   * @type {?boolean}
+   */
+  this.is_makeup_issue = null;
+
+  /**
    * Is it recurring appointment cancellation.
    *
    * `false` in case of cancellation of single appointment.
@@ -313,7 +355,7 @@ WlSdk_ModelAbstract.extend(Wl_Appointment_Cancel_ConfirmModel);
  */
 Wl_Appointment_Cancel_ConfirmModel.prototype.config=function()
 {
-  return {"a_field":{"a_appointment_list":{"get":{"result":true},"post":{"get":true}},"a_notification":{"post":{"post":true}},"dl_end":{"get":{"get":true,"result":true},"post":{"get":true}},"dl_start":{"get":{"get":true,"result":true},"post":{"get":true}},"dtl_max":{"get":{"result":true},"post":{"get":true}},"dtl_min":{"get":{"result":true},"post":{"get":true}},"html_fee_amount":{"get":{"result":true}},"i_appointment_selected":{"get":{"result":true}},"id_charge":{"get":{"result":true}},"id_visit":{"get":{"get":true},"post":{"get":true}},"is_appointment_specific":{"get":{"get":true},"post":{"get":true}},"is_charge_fee":{"post":{"get":true}},"is_inform_mail":{"get":{"result":true},"post":{"get":true}},"is_inform_push":{"get":{"result":true},"post":{"get":true}},"is_inform_sms":{"get":{"result":true},"post":{"get":true}},"is_recurring":{"get":{"get":true},"post":{"get":true}},"k_appointment":{"get":{"get":true},"post":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"result":true}},"k_mail_pattern_live":{"post":{"get":true}},"k_service":{"get":{"result":true}},"k_visit":{"get":{"get":true,"result":true},"post":{"get":true}},"m_fee_amount":{"get":{"result":true},"post":{"get":true}},"sid_mail":{"get":{"result":true}},"text_client_name":{"get":{"result":true}},"text_reason":{"post":{"get":true}},"text_status":{"get":{"result":true}},"text_title":{"get":{"result":true}}}};
+  return {"a_field":{"a_appointment_list":{"get":{"result":true},"post":{"get":true}},"a_makeup":{"get":{"result":true}},"a_notification":{"post":{"post":true}},"dl_end":{"get":{"get":true,"result":true},"post":{"get":true}},"dl_start":{"get":{"get":true,"result":true},"post":{"get":true}},"dtl_max":{"get":{"result":true},"post":{"get":true}},"dtl_min":{"get":{"result":true},"post":{"get":true}},"html_fee_amount":{"get":{"result":true}},"i_appointment_selected":{"get":{"result":true}},"id_charge":{"get":{"result":true}},"id_visit":{"get":{"get":true},"post":{"get":true}},"is_appointment_specific":{"get":{"get":true},"post":{"get":true}},"is_charge_fee":{"post":{"get":true}},"is_inform_mail":{"get":{"result":true},"post":{"get":true}},"is_inform_push":{"get":{"result":true},"post":{"get":true}},"is_inform_sms":{"get":{"result":true},"post":{"get":true}},"is_makeup_issue":{"post":{"post":true}},"is_recurring":{"get":{"get":true},"post":{"get":true}},"k_appointment":{"get":{"get":true},"post":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"k_location":{"get":{"result":true}},"k_mail_pattern_live":{"post":{"get":true}},"k_service":{"get":{"result":true}},"k_visit":{"get":{"get":true,"result":true},"post":{"get":true}},"m_fee_amount":{"get":{"result":true},"post":{"get":true}},"sid_mail":{"get":{"result":true}},"text_client_name":{"get":{"result":true}},"text_reason":{"post":{"get":true}},"text_status":{"get":{"result":true}},"text_title":{"get":{"result":true}}}};
 };
 
 /**

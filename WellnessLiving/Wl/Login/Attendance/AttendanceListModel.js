@@ -138,6 +138,8 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_active_a_resource} a_resource A list of information for any associated resources for this visit. Each element:
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_active_a_wait_confirm} a_wait_confirm The date and time when the client transitioned from the wait list to the active list, in human-readable format. Empty array if the visit is not awaiting confirmation. Each element:
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_active_a_wearable} a_wearable A list of information pertaining to the client's wearables.
+   * @property {boolean} can_makeup_cancel `true` if the visit can be cancelled early with a make-up pass: it is booked and qualifies for a pass under the Make-up Passes policy of the business. `false` otherwise; then the other make-up fields of a booked visit are `false` or empty.
+   * @property {boolean} can_makeup_override `true` if the current user may choose whether to issue the make-up pass of an early cancel: the user has the privilege "Override make-up passes" or is an administrator. `false` if only the default of the policy is accepted, or if the visit does not qualify (`can_makeup_cancel` is `false`).
    * @property {boolean} can_profile If `true`, the current user can access this client profile.
    * @property {string} dt_book The date the session was booked, in UTC.
    * @property {string} dt_date The date of the session, in UTC.
@@ -164,6 +166,9 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {boolean} is_free This will be `true` if the visit is free.
    * @property {boolean} is_guest `true` if this visit is paid with a guest pass. When `true`, `text_promotion` contains the formatted guest label instead of the Purchase Option title.
    * @property {boolean} is_hidden This will be `true` if details on this visit should be hidden from staff members.
+   * @property {boolean} is_makeup_at_maximum `true` if the client already holds the maximum number of active make-up passes of the policy: by default an early cancel issues no pass then. `false` otherwise, also if the visit does not qualify.
+   * @property {boolean} is_makeup_cancel `true` if the visit is an Early Cancel (Make-up): the client cancelled early, and the visit is used and is not returned to the Purchase Option. `id_visit` gives such a visit as {@link Wl_Visit_VisitSid}, so this field tells it from a regular early cancel. `false` for any other visit.
+   * @property {boolean} is_makeup_limit `true` if the client has reached the purchase limit of the make-up pass, so no pass can be issued. `false` otherwise, also if the visit does not qualify.
    * @property {boolean} is_penalty This will be `true` if this visit was cancelled late and a penalty is applied.
    * @property {boolean} is_promotion_first This will be `true` if this was the first visit for the Purchase Option used.
    * @property {boolean} is_promotion_last This will be `true` if this was the latest visit for the Purchase Option used.
@@ -186,6 +191,8 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_left The time left on the Purchase Option, in hours and minutes, for example `2 h 25 min`. An empty string if the Purchase Option is not of type {@link RsProgramTypeSid}, or if it has no time limit.
+   * @property {string} text_makeup_pass The sentence of the Make-up pass section of an early cancel, for example "Jane will receive 1 Make-up Class Pass. It expires on Nov 5, 2026.", "Jane already has 2 active make-up passes, which is the maximum." or "Jane has reached the purchase limit for Make-up Class Pass, so no pass will be issued.". An empty string if the visit does not qualify (`can_makeup_cancel` is `false`).
+   * @property {string} text_makeup_status The outcome of an Early Cancel (Make-up) (`is_makeup_cancel` is `true`): "Make-up Pass issued" or "No make-up pass issued". When the current user is paid for the session, a middle dot between spaces and "You are paid for this session" follow: the user is the staff member of the appointment or an instructor of the class session, and the own pay rate pays the make-up early cancellations; or the user is neither, has the {@link Wl_Privilege_PrivilegeSid} privilege, and the pay rate of the staff member of the appointment or of any instructor of the class session pays them. The pay part is never given by {@link Wl_Login_Attendance_AttendanceListByTokenModel}. An empty string for any other visit.
    * @property {string} text_note Any notes tied to the client.
    * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. The number is returned wherever the visit is returned, like the meeting link of a virtual appointment, also to a caller with a token or a guest application and without the {@link Wl_Privilege_PrivilegeSid} privilege.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
@@ -337,6 +344,8 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_confirm_a_resource} a_resource A list of information for any associated resources for this visit. Each element:
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_confirm_a_wait_confirm} a_wait_confirm The date and time when the client transitioned from the wait list to the active list, in human-readable format. Empty array if the visit is not awaiting confirmation. Each element:
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_confirm_a_wearable} a_wearable A list of information pertaining to the client's wearables.
+   * @property {boolean} can_makeup_cancel `true` if the visit can be cancelled early with a make-up pass: it is booked and qualifies for a pass under the Make-up Passes policy of the business. `false` otherwise; then the other make-up fields of a booked visit are `false` or empty.
+   * @property {boolean} can_makeup_override `true` if the current user may choose whether to issue the make-up pass of an early cancel: the user has the privilege "Override make-up passes" or is an administrator. `false` if only the default of the policy is accepted, or if the visit does not qualify (`can_makeup_cancel` is `false`).
    * @property {boolean} can_profile If `true`, the current user can access this client profile.
    * @property {string} dt_book The date the session was booked, in UTC.
    * @property {string} dt_date The date of the session, in UTC.
@@ -363,6 +372,9 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {boolean} is_free This will be `true` if the visit is free.
    * @property {boolean} is_guest `true` if this visit is paid with a guest pass. When `true`, `text_promotion` contains the formatted guest label instead of the Purchase Option title.
    * @property {boolean} is_hidden This will be `true` if details on this visit should be hidden from staff members.
+   * @property {boolean} is_makeup_at_maximum `true` if the client already holds the maximum number of active make-up passes of the policy: by default an early cancel issues no pass then. `false` otherwise, also if the visit does not qualify.
+   * @property {boolean} is_makeup_cancel `true` if the visit is an Early Cancel (Make-up): the client cancelled early, and the visit is used and is not returned to the Purchase Option. `id_visit` gives such a visit as {@link Wl_Visit_VisitSid}, so this field tells it from a regular early cancel. `false` for any other visit.
+   * @property {boolean} is_makeup_limit `true` if the client has reached the purchase limit of the make-up pass, so no pass can be issued. `false` otherwise, also if the visit does not qualify.
    * @property {boolean} is_penalty This will be `true` if this visit was cancelled late and a penalty is applied.
    * @property {boolean} is_promotion_first This will be `true` if this was the first visit for the Purchase Option used.
    * @property {boolean} is_promotion_last This will be `true` if this was the latest visit for the Purchase Option used.
@@ -385,6 +397,8 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_left The time left on the Purchase Option, in hours and minutes, for example `2 h 25 min`. An empty string if the Purchase Option is not of type {@link RsProgramTypeSid}, or if it has no time limit.
+   * @property {string} text_makeup_pass The sentence of the Make-up pass section of an early cancel, for example "Jane will receive 1 Make-up Class Pass. It expires on Nov 5, 2026.", "Jane already has 2 active make-up passes, which is the maximum." or "Jane has reached the purchase limit for Make-up Class Pass, so no pass will be issued.". An empty string if the visit does not qualify (`can_makeup_cancel` is `false`).
+   * @property {string} text_makeup_status The outcome of an Early Cancel (Make-up) (`is_makeup_cancel` is `true`): "Make-up Pass issued" or "No make-up pass issued". When the current user is paid for the session, a middle dot between spaces and "You are paid for this session" follow: the user is the staff member of the appointment or an instructor of the class session, and the own pay rate pays the make-up early cancellations; or the user is neither, has the {@link Wl_Privilege_PrivilegeSid} privilege, and the pay rate of the staff member of the appointment or of any instructor of the class session pays them. The pay part is never given by {@link Wl_Login_Attendance_AttendanceListByTokenModel}. An empty string for any other visit.
    * @property {string} text_note Any notes tied to the client.
    * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. The number is returned wherever the visit is returned, like the meeting link of a virtual appointment, also to a caller with a token or a guest application and without the {@link Wl_Privilege_PrivilegeSid} privilege.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
@@ -535,6 +549,8 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_wait_a_resource} a_resource A list of information for any associated resources for this visit. Each element:
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_wait_a_wait_confirm} a_wait_confirm The date and time when the client transitioned from the wait list to the active list, in human-readable format. Empty array if the visit is not awaiting confirmation. Each element:
    * @property {Wl_Login_Attendance_AttendanceListModel_a_list_wait_a_wearable} a_wearable A list of information pertaining to the client's wearables.
+   * @property {boolean} can_makeup_cancel `true` if the visit can be cancelled early with a make-up pass: it is booked and qualifies for a pass under the Make-up Passes policy of the business. `false` otherwise; then the other make-up fields of a booked visit are `false` or empty.
+   * @property {boolean} can_makeup_override `true` if the current user may choose whether to issue the make-up pass of an early cancel: the user has the privilege "Override make-up passes" or is an administrator. `false` if only the default of the policy is accepted, or if the visit does not qualify (`can_makeup_cancel` is `false`).
    * @property {boolean} can_profile If `true`, the current user can access this client profile.
    * @property {string} dt_book The date the session was booked, in UTC.
    * @property {string} dt_date The date of the session, in UTC.
@@ -561,6 +577,9 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {boolean} is_free This will be `true` if the visit is free.
    * @property {boolean} is_guest `true` if this visit is paid with a guest pass. When `true`, `text_promotion` contains the formatted guest label instead of the Purchase Option title.
    * @property {boolean} is_hidden This will be `true` if details on this visit should be hidden from staff members.
+   * @property {boolean} is_makeup_at_maximum `true` if the client already holds the maximum number of active make-up passes of the policy: by default an early cancel issues no pass then. `false` otherwise, also if the visit does not qualify.
+   * @property {boolean} is_makeup_cancel `true` if the visit is an Early Cancel (Make-up): the client cancelled early, and the visit is used and is not returned to the Purchase Option. `id_visit` gives such a visit as {@link Wl_Visit_VisitSid}, so this field tells it from a regular early cancel. `false` for any other visit.
+   * @property {boolean} is_makeup_limit `true` if the client has reached the purchase limit of the make-up pass, so no pass can be issued. `false` otherwise, also if the visit does not qualify.
    * @property {boolean} is_penalty This will be `true` if this visit was cancelled late and a penalty is applied.
    * @property {boolean} is_promotion_first This will be `true` if this was the first visit for the Purchase Option used.
    * @property {boolean} is_promotion_last This will be `true` if this was the latest visit for the Purchase Option used.
@@ -583,6 +602,8 @@ function Wl_Login_Attendance_AttendanceListModel()
    * @property {string} text_firstname The client first name.
    * @property {string} text_lastname The client last name.
    * @property {string} text_left The time left on the Purchase Option, in hours and minutes, for example `2 h 25 min`. An empty string if the Purchase Option is not of type {@link RsProgramTypeSid}, or if it has no time limit.
+   * @property {string} text_makeup_pass The sentence of the Make-up pass section of an early cancel, for example "Jane will receive 1 Make-up Class Pass. It expires on Nov 5, 2026.", "Jane already has 2 active make-up passes, which is the maximum." or "Jane has reached the purchase limit for Make-up Class Pass, so no pass will be issued.". An empty string if the visit does not qualify (`can_makeup_cancel` is `false`).
+   * @property {string} text_makeup_status The outcome of an Early Cancel (Make-up) (`is_makeup_cancel` is `true`): "Make-up Pass issued" or "No make-up pass issued". When the current user is paid for the session, a middle dot between spaces and "You are paid for this session" follow: the user is the staff member of the appointment or an instructor of the class session, and the own pay rate pays the make-up early cancellations; or the user is neither, has the {@link Wl_Privilege_PrivilegeSid} privilege, and the pay rate of the staff member of the appointment or of any instructor of the class session pays them. The pay part is never given by {@link Wl_Login_Attendance_AttendanceListByTokenModel}. An empty string for any other visit.
    * @property {string} text_note Any notes tied to the client.
    * @property {?string} text_phone The phone number the staff calls for a Phone Call booking, in the international E.164 format, for example `+15550101001`. `null` if the visit is not a Phone Call or has no number. The number is returned wherever the visit is returned, like the meeting link of a virtual appointment, also to a caller with a token or a guest application and without the {@link Wl_Privilege_PrivilegeSid} privilege.
    * @property {string} text_promotion The description of the type of Purchase Option. When `is_guest` is `true`, this contains a formatted label such as "Guest of [Member Name] - [Pass Name]" instead of the raw Purchase Option title.
