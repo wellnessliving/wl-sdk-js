@@ -3,7 +3,7 @@
  *
  *
  *
- * Last used ID: 23.
+ * Last used ID: 24.
  */
 function RsSkinSid()
 {
@@ -93,6 +93,13 @@ RsSkinSid.MOBILE_SCHEDULE = 10;
  * @type {number}
  */
 RsSkinSid.RESOURCE = 16;
+
+/**
+ * Asset booking widget built by microservice widget team.
+ *
+ * @type {number}
+ */
+RsSkinSid.RESOURCE_FOREIGN = 24;
 
 /**
  * Review list widget.

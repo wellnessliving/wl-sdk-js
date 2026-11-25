@@ -37,14 +37,14 @@ RsStaffPaySid.EVENT = 3;
 RsStaffPaySid.HOUR = 4;
 
 /**
- * <tt>Pay Per Client Range<tt> pay role.
+ * `Pay Per Client Range` pay role.
  *
  * @type {number}
  */
 RsStaffPaySid.RANGE = 5;
 
 /**
- * <tt>Tiered Pay Per Client Range<tt> pay role.
+ * `Tiered Pay Per Client Range` pay role.
  *
  * @type {number}
  */

@@ -64,7 +64,7 @@ Thoth_ReportCore_Generator_ReportGeneratorReportAbstract.BookingFlowReport = 105
  * populated in {@link \Thoth\Report\SalesReport\Transaction\BulkChargesDetail\BulkChargesDetailReport::generatorRun()} from `\Wl\Purchase\PurchaseItemInfo::$a_tax` for a
  * billed client (same mechanism as
  * {@link \Thoth\Report\SalesReport\Transaction\TransactionAllItemReport::generatorDynamic()}'s own per-tax
- * columns), or from `_clientExpectedGet()`'s own re-priced `a_tax_by_name` for a `PENDING`/`FAIL` client - see
+ * columns), or from {@link \Thoth\Report\SalesReport\Transaction\BulkChargesDetail\BulkChargesDetailReport::_clientExpectedGet()}'s own re-priced `a_tax_by_name` for a `PENDING`/`FAIL` client - see
  * SAL-1195.
  *
  * @type {number}

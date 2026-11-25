@@ -181,7 +181,7 @@ function Wl_Quiz_Response_Response65Model()
    * @property {string} html_heading Main HTML of the input question.
    * @property {string} html_subheading Additional HTML for detail description of the question.
    * @property {number} id_element Element ID. One of {@link Core_Quiz_Element_ElementSid} constants.
-   * @property {boolean} is_delete_custom_markup_image ` true ` if custom markup image is to be deleted `false` otherwise.
+   * @property {boolean} is_delete_custom_markup_image `true` if custom markup image is to be deleted `false` otherwise.
    * @property {boolean} is_require Whether element is required or not.
    * @property {string} k_id Fake id used for image upload.
    * @property {string} k_id_custom_markup_image Image ID of the temporary uploaded custom markup image to be copied as permanent drive link.

@@ -266,7 +266,7 @@ Wl_Search_Criteria_SearchCriteriaAbstract.NameLastCriteria = 70;
  * if `s_diastolic` is set to '80' and `s_systolic` is `null`, ''(empty string), or absent -
  * the criterion will match all users with diastolic pressure being 80, regardless of their systolic value.
  *
- * `['s_diastolic' -> '123']`
+ * `['s_diastolic' => '123']`
  *
  * @type {number}
  */

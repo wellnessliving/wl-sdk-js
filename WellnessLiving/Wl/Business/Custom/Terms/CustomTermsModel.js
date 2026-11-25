@@ -120,6 +120,10 @@ Wl_Business_Custom_Terms_CustomTermsModel.prototype.config=function()
  * Also returns {@link Wl_Business_Custom_Terms_CustomTermsModel.a_rule}, the ready rules that apply the terms to the English texts of a
  * client of the API. The rules are as public as the terms they are built from.
  *
+ * While {@link Wl_FeatureFlag_BusinessFeatureFlagAbstract} is disabled for the business, the saved terms (the preset of its business
+ * type is saved at the creation of the business whether the feature is on or not) are not shown: every term has
+ * the platform option, as CustomTermsRuntime::ruleList() gives no rules.
+ *
  * @function
  * @name Wl_Business_Custom_Terms_CustomTermsModel.get
  * @returns {WlSdk_Deferred_Promise}
