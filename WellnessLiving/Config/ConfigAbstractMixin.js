@@ -253,6 +253,7 @@ WlSdk_Config_MixinAbstract.configCsrf = function()
 };
 
 // noinspection JSUnusedLocalSymbols
+
 /**
  * Creates deferred object.
  *
@@ -264,7 +265,6 @@ WlSdk_Config_MixinAbstract.configDeferredCreate = function(s_where,s_comment)
 {
   return new WlSdk_Deferred();
 };
-
 /**
  * Provides always resolved promise.
  *
@@ -298,6 +298,33 @@ WlSdk_Config_MixinAbstract.configPromiseWhen = function(a_defer)
 WlSdk_Config_MixinAbstract.configTestLog = function(x_log)
 {
   // Do nothing by default.
+};
+
+/**
+ * Returns UTM values and click IDs that must be added to requests that write data.
+ *
+ * The values are added to the body of every `POST` and `PUT` request of any API. They are not added to `GET` and
+ * `DELETE` requests.
+ *
+ * Redefine this method to pass the values. It is called on every request, so it must be synchronous and cheap.
+ *
+ * Allowed keys:
+ * - `s_utm_source`;
+ * - `s_utm_medium`;
+ * - `s_utm_campaign`;
+ * - `s_utm_term`;
+ * - `s_utm_content`;
+ * - `s_gclid`;
+ * - `s_fbclid`.
+ *
+ * Empty values (`''`, `null`, `undefined`) are not sent.
+ *
+ * @return {Object<string,string>} Key is a name of the request parameter, value is its value.
+ *   An empty object if there is nothing to send.
+ */
+WlSdk_Config_MixinAbstract.configUtm = function()
+{
+  return {};
 };
 
 /**

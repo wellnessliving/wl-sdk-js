@@ -106,3 +106,27 @@ rendering the page and include it into the page to prevent request to get CSRF c
     - check 5 first symbols of the session key with 5 last symbols of CSRF code (see `WlSdk_Config_Mixin.csrfCode` method).
 
 [To understand this way better, read this.](AboutAuthentication.md) 
+
+# Passing UTM values and click IDs (optional)
+To send UTM values and click IDs with requests, redefine the method `WlSdk_Config_Mixin.configUtm` of the class
+`WlSdk_Config_Mixin`. The method must be synchronous and cheap: it is called on every request.
+```javascript
+WlSdk_Config_Mixin.configUtm = function()
+{
+  return {
+    's_utm_source': 'facebook',
+    's_utm_medium': 'paid_social',
+    's_utm_campaign': 'fall-strength-challenge',
+    's_utm_term': '',
+    's_utm_content': '',
+    's_gclid': '',
+    's_fbclid': ''
+  };
+};
+```
+Allowed keys: `s_utm_source`, `s_utm_medium`, `s_utm_campaign`, `s_utm_term`, `s_utm_content`, `s_gclid`, `s_fbclid`.
+Return only the values you have. Empty values are not sent. By default, the method returns an empty object and
+nothing is added to requests.
+
+The values are added to the body of every `POST` and `PUT` request of any API. They are not added to `GET` and
+`DELETE` requests. The SDK does not trim, decode or validate the values. The values are a part of the request signature.

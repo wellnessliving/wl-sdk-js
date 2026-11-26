@@ -947,6 +947,23 @@ WlSdk_ModelAbstract.prototype.request = function(a_config)
   if(s_csrf&&this.SIGNATURE)
     a_data['csrf'] = s_csrf;
 
+  // UTM values are sent only with requests that write data. GET is not used to keep URLs short,
+  // DELETE is not used because its body is not read.
+  if((s_method==='post'||s_method==='put')&&typeof WlSdk_Config_Mixin.configUtm==='function')
+  {
+    var a_utm = WlSdk_Config_Mixin.configUtm();
+    for(var s_utm in a_utm)
+    {
+      if(!a_utm.hasOwnProperty(s_utm))
+        continue;
+
+      if(a_utm[s_utm]===''||a_utm[s_utm]===null||a_utm[s_utm]===undefined)
+        continue;
+
+      a_data[s_utm] = a_utm[s_utm];
+    }
+  }
+
   var a_url;
   if(a_config.s_method!=='GET')
   {
