@@ -44,8 +44,8 @@ function Wl_Task_Manager_TaskBulkModel()
 
   /**
    * How many of the selected tasks the request skipped: a task that someone removed after the staff member selected
-   * it, and, for the reminder, a task that has nobody assigned to it. `i_done` and `i_skip` together make the number
-   * of the selected tasks.
+   * it, for the reminder a task that has nobody assigned to it, and for the status alone a task that has the status
+   * already (nothing is changed in it). `i_done` and `i_skip` together make the number of the selected tasks.
    *
    * @delete result
    * @post result
