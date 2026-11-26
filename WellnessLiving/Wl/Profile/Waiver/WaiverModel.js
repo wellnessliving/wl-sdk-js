@@ -19,8 +19,11 @@ function Wl_Profile_Waiver_WaiverModel()
    * @property {string} dt_agree_utc Agreement date in UTC.
    * @property {string} html_contract Contract text.
    * @property {string} ip_agree IP address from which agreement was done.
-   * @property {string} s_name Full name of the user who signed the waiver. It is the name of the user to get information for, if he signed the waiver himself.
-   * @property {string} text_sign_for Full name of the user to get information for, if a relative signed the waiver on his behalf. Empty if the user signed the waiver himself.
+   * @property {boolean} is_agree `true` if the waiver is signed, `false` if the agreement has no date of the signature.
+   * @property {boolean} is_old `true` if this signature no longer counts: the waiver of the business was edited or replaced after it, or a relation of the user was removed while the waiver had been signed by a relative. `false` if the signature is actual.
+   * @property {string} s_name Full name of the user who signed the waiver, as plain text and not escaped. It is the name of the user to get information for, if he signed the waiver himself.
+   * @property {string} text_sign_for Full name of the user to get information for, as plain text and not escaped, if a relative signed the waiver on his behalf. Empty if the user signed the waiver himself.
+   * @property {?string} uid_sign Key of the user who signed the waiver for this user, for example the parent of a minor. `null` if no signer is recorded: the user signed the waiver themselves.
    * @property {string} url_signature URL to agreement signature.
    */
 
@@ -85,8 +88,8 @@ Wl_Profile_Waiver_WaiverModel.prototype.config=function()
  * the profile. When the business belongs to a franchise that shares waivers across all
  * franchise locations, waivers are loaded from the franchisor business instead. Each waiver
  * includes the local and UTC agreement dates, the rendered contract text, the IP address used
- * to sign, and a link to the signature image, along with the minor age configured for parent
- * or guardian consent.
+ * to sign, whether the signature is old, the user who signed it for the client, and a link to
+ * the signature image, along with the minor age configured for parent or guardian consent.
  *
  * @function
  * @name Wl_Profile_Waiver_WaiverModel.get

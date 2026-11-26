@@ -57,6 +57,19 @@ function Wl_Login_Agree_AgreeModel()
    */
   this.uid = "";
 
+  /**
+   * Key of the main contact who signs the waiver for the user.
+   *
+   * Read only when the current user is neither the user nor a relative of the user (a staff member or an
+   * administrator signs the waiver at the kiosk). Must be a relative of the user in the business. `null` or an empty
+   * value to record no signer. When the current user is a relative of the user, the current user is recorded as the
+   * signer, and this value is ignored.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.uid_sign = null;
+
   this.changeInit();
 }
 
@@ -67,7 +80,7 @@ WlSdk_ModelAbstract.extend(Wl_Login_Agree_AgreeModel);
  */
 Wl_Login_Agree_AgreeModel.prototype.config=function()
 {
-  return {"a_field":{"html_contract":{"get":{"result":true}},"is_agree":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"s_signature":{"post":{"post":true}},"uid":{"get":{"get":true},"post":{"get":true}}}};
+  return {"a_field":{"html_contract":{"get":{"result":true}},"is_agree":{"post":{"post":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"s_signature":{"post":{"post":true}},"uid":{"get":{"get":true},"post":{"get":true}},"uid_sign":{"post":{"post":true}}}};
 };
 
 /**
@@ -97,6 +110,12 @@ Wl_Login_Agree_AgreeModel.prototype.config=function()
  *
  * Accepts the user's base64-encoded signature image and an optional electronic-signature consent flag, validates
  * both, records the agreement date and signature in the database, and sends a waiver confirmation notification.
+ *
+ * The agreement also records who signed the waiver for the user. Nobody is recorded when the user signs
+ * themselves. A relative of the user who signs the waiver is recorded as the signer, and `uid_sign` is ignored.
+ * Otherwise (a staff member or an administrator signs the waiver) the main contact sent in `uid_sign` is recorded,
+ * and nobody when `uid_sign` is empty; the request is refused when that main contact is not a relative of the user
+ * in the business.
  *
  * @function
  * @name Wl_Login_Agree_AgreeModel.post
