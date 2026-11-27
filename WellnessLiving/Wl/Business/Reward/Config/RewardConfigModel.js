@@ -58,6 +58,8 @@ Wl_Business_Reward_Config_RewardConfigModel.prototype.config=function()
  * Used in the backend settings editor to show the current enabled or disabled state of the reward
  * program before the staff member makes a change. Always reads live data, bypassing the cache.
  *
+ * Anybody may read the state, a guest included: whether a business has a reward program is public information.
+ *
  * @function
  * @name Wl_Business_Reward_Config_RewardConfigModel.get
  * @returns {WlSdk_Deferred_Promise}

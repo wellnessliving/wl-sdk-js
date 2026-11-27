@@ -63,7 +63,7 @@ function Wl_Profile_Edit_Email_EditEmailModel()
    * {@link Wl_Profile_Edit_Email_EditEmailModel.k_business}, `false` - otherwise.
    *
    * The password of such a user can not be set when the user is added as a staff member of
-   * {@link Wl_Profile_Edit_Email_EditEmailModel.k_business}, so the form of a new staff member does not ask for it.
+   * {@link Wl_Profile_Edit_Email_EditEmailModel.k_business}.
    *
    * @get result
    * @type {boolean}

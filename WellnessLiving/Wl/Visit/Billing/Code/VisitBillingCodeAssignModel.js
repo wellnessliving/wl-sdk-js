@@ -57,6 +57,10 @@ function Wl_Visit_Billing_Code_VisitBillingCodeAssignModel()
    * temporary codes. The case of a value does not matter. The codes the visit has are returned in
    * {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.a_code}.
    *
+   * While the business has the diagnostic codes turned off, a post that adds an ICD-10-CM diagnostic code the visit
+   * does not have yet is rejected with the error `visit-icd-disabled`, and nothing of the post is saved. The
+   * diagnostic codes the visit already has may stay in the list.
+   *
    * @post post
    * @type {string[]}
    */
@@ -258,6 +262,10 @@ Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.prototype.config=function()
  * The version of the codes the list is made from is posted together with the list: if another staff member has
  * changed the codes in the meantime, the post is rejected with the error `code-version-outdated` instead of
  * overwriting that change, see {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.s_code_version}.
+ *
+ * While the business has the diagnostic codes turned off, a post that adds an ICD-10-CM diagnostic code the visit
+ * does not have yet is rejected with the error `visit-icd-disabled` and nothing is saved, see
+ * {@link Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.a_text_code}. The diagnostic codes the visit already has may stay in the list.
  *
  * @function
  * @name Wl_Visit_Billing_Code_VisitBillingCodeAssignModel.post
