@@ -45,6 +45,18 @@ function Wl_Login_Search_StaffApp_ListModel()
   this.can_add = undefined;
 
   /**
+   * `true` - the search ignores the setting of QUICK Auto Check-In of the current staff member, so at a business with
+   * Dynamic ID clients are found by name, email, phone or client ID, and not only by the live dynamic barcode.
+   *
+   * `false` - the setting is followed: while QUICK Auto Check-In is on, a business with Dynamic ID finds a client by
+   * the live dynamic barcode only.
+   *
+   * @get get
+   * @type {boolean}
+   */
+  this.is_auto_check_in_ignore = false;
+
+  /**
    * `true` - search among whole franchise; `false` - search in specified business only.
    *
    * @get get
@@ -63,6 +75,9 @@ function Wl_Login_Search_StaffApp_ListModel()
   /**
    * The search string. Clients can be matched by name or email.
    *
+   * At a business with Dynamic ID the live dynamic barcode of a client is still matched first, see
+   * {@link Wl_Login_Search_StaffApp_ListModel.is_auto_check_in_ignore}.
+   *
    * @get get
    * @type {string}
    */
@@ -78,13 +93,13 @@ WlSdk_ModelAbstract.extend(Wl_Login_Search_StaffApp_ListModel);
  */
 Wl_Login_Search_StaffApp_ListModel.prototype.config=function()
 {
-  return {"a_field":{"a_list":{"get":{"result":true}},"can_add":{"get":{"result":true}},"is_franchisee_search_wide":{"get":{"get":true}},"k_business":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
+  return {"a_field":{"a_list":{"get":{"result":true}},"can_add":{"get":{"result":true}},"is_auto_check_in_ignore":{"get":{"get":true}},"is_franchisee_search_wide":{"get":{"get":true}},"k_business":{"get":{"get":true}},"text_search":{"get":{"get":true}}}};
 };
 
 /**
  * @function
  * @name Wl_Login_Search_StaffApp_ListModel.instanceGet
- * @param {string} text_search The search string. Clients can be matched by name or email.
+ * @param {string} text_search The search string. Clients can be matched by name or email. At a business with Dynamic ID the live dynamic barcode of a client is still matched first, see {@link Wl_Login_Search_StaffApp_ListModel.is_auto_check_in_ignore}.
  * @param {string} k_business The business key number used internally by WellnessLiving.
  * @param {boolean} is_franchisee_search_wide `true` - search among whole franchise; `false` - search in specified business only.
  * @returns {Wl_Login_Search_StaffApp_ListModel}
@@ -97,6 +112,10 @@ Wl_Login_Search_StaffApp_ListModel.prototype.config=function()
  * When a search string is provided, returns clients whose name or email matches the query within the specified
  * business. When the search string is empty, returns recently viewed clients. Each result includes the client's
  * name, email, phone, member ID, and user key.
+ *
+ * At a business with Dynamic ID the live dynamic barcode of a client is still matched first. While QUICK Auto
+ * Check-In of the current staff member is on, nothing else is matched, unless
+ * {@link Wl_Login_Search_StaffApp_ListModel.is_auto_check_in_ignore} is `true`.
  *
  * @function
  * @name Wl_Login_Search_StaffApp_ListModel.get
