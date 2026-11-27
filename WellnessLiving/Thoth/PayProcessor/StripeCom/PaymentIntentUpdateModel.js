@@ -76,7 +76,12 @@ function Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel()
    * Payment amount to set.
    * Required.
    *
-   * @post post
+   * With {@link Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel.s_payment_method} for a business that is under the rule of the surcharge it is
+   * the amount without the surcharge, and the answer gives the total with the surcharge decided by the server. A form
+   * that posts the model with the answer again, the total in it and the surcharge, gets the same: the posted surcharge
+   * is taken off the amount first.
+   *
+   * @post post,result
    * @type {string}
    */
   this.m_amount = "0.00";
@@ -85,7 +90,11 @@ function Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel()
    * Surcharge amount to set.
    * Required.
    *
-   * @post post
+   * With {@link Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel.s_payment_method} for a business that is under the rule of the surcharge the
+   * posted value is not charged: the surcharge is decided by the server and comes in the answer. The value only tells
+   * how much of {@link Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel.m_amount} is the surcharge of an earlier answer.
+   *
+   * @post post,result
    * @type {string}
    */
   this.m_surcharge = "0.00";
@@ -109,6 +118,23 @@ function Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel()
   this.s_payment_intent = "";
 
   /**
+   * The payment method of the new card to attach to the Payment Intent, `null` if there is none.
+   *
+   * The card form makes it after the card is entered (`stripe.createPaymentMethod()` of the Payment Element), and the
+   * payment is confirmed in the browser with the client secret alone. Stripe tells whether the card can be surcharged
+   * and the maximum only when a payment method is attached, so the server attaches it, decides the surcharge and sets
+   * the amount and the surcharge on the Payment Intent and on the transaction. A changed card is a new payment
+   * method: the step is repeated, and the amount and the surcharge are put back by the same request. Not for a
+   * Checkout Session, and not for a payment that is not under the rule of the surcharge (the business has no surcharge
+   * of the card, the country is not one of the rule, or the switch of the feature is off): the call is refused with
+   * `payment-method-rule`.
+   *
+   * @post post
+   * @type {?string}
+   */
+  this.s_payment_method = null;
+
+  /**
    * Payment owner user key.
    * `null` if pay owner is anonymous.
    *
@@ -127,7 +153,7 @@ WlSdk_ModelAbstract.extend(Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel
  */
 Thoth_PayProcessor_StripeCom_PaymentIntentUpdateModel.prototype.config=function()
 {
-  return {"a_field":{"a_line_item":{"post":{"post":true}},"id_currency":{"post":{"post":true}},"id_pay_actor":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_business_merchant":{"post":{"get":true}},"k_pay_transaction":{"post":{"get":true}},"m_amount":{"post":{"post":true}},"m_surcharge":{"post":{"post":true}},"s_checkout_session":{"post":{"get":true}},"s_payment_intent":{"post":{"get":true}},"uid_purchase":{"post":{"get":true}}}};
+  return {"a_field":{"a_line_item":{"post":{"post":true}},"id_currency":{"post":{"post":true}},"id_pay_actor":{"post":{"get":true}},"k_business":{"post":{"get":true}},"k_business_merchant":{"post":{"get":true}},"k_pay_transaction":{"post":{"get":true}},"m_amount":{"post":{"post":true,"result":true}},"m_surcharge":{"post":{"post":true,"result":true}},"s_checkout_session":{"post":{"get":true}},"s_payment_intent":{"post":{"get":true}},"s_payment_method":{"post":{"post":true}},"uid_purchase":{"post":{"get":true}}}};
 };
 
 /**

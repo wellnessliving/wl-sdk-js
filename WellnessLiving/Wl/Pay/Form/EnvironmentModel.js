@@ -381,6 +381,20 @@ function Wl_Pay_Form_EnvironmentModel()
   this.m_surcharge_ach = null;
 
   /**
+   * The disclosure that the payer sees at the checkout next to the surcharge line (SAL-1411).
+   *
+   * It is set only for a business that has the card surcharge on and is under the rule of the surcharge of Stripe (the
+   * country of the business and the switch of the feature, see
+   * SurchargeCardTypeResolver::localeList()). An empty string for any other business
+   * and any other processor: nothing is shown for them. The wording comes from WL-95032, which is not built, so for now it
+   * is `TEXT_SURCHARGE_DISCLOSURE_PLACEHOLDER`. It is a plain text, the widget escapes it.
+   *
+   * @get result
+   * @type {string}
+   */
+  this.text_surcharge_disclosure = undefined;
+
+  /**
    * The user ID to retrieve payment information for.
    *
    * `null` if not defined.
@@ -400,7 +414,7 @@ WlSdk_ModelAbstract.extend(Wl_Pay_Form_EnvironmentModel);
  */
 Wl_Pay_Form_EnvironmentModel.prototype.config=function()
 {
-  return {"a_field":{"a_card_system":{"get":{"result":true}},"a_method_staff":{"get":{"result":true}},"a_method_support":{"get":{"result":true}},"a_mobile_config":{"get":{"result":true}},"a_pay_processor":{"get":{"result":true}},"dl_now":{"get":{"result":true}},"f_surcharge":{"get":{"result":true}},"f_surcharge_ach":{"get":{"result":true}},"id_locale":{"get":{"result":true}},"is_save_optional":{"get":{"result":true}},"is_save_source":{"get":{"result":true}},"is_surcharge_card_present_blocked":{"get":{"result":true}},"is_surcharge_tender_contract":{"get":{"result":true}},"is_tip":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_currency":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_surcharge":{"get":{"result":true}},"m_surcharge_ach":{"get":{"result":true}},"uid_owner":{"get":{"get":true}}}};
+  return {"a_field":{"a_card_system":{"get":{"result":true}},"a_method_staff":{"get":{"result":true}},"a_method_support":{"get":{"result":true}},"a_mobile_config":{"get":{"result":true}},"a_pay_processor":{"get":{"result":true}},"dl_now":{"get":{"result":true}},"f_surcharge":{"get":{"result":true}},"f_surcharge_ach":{"get":{"result":true}},"id_locale":{"get":{"result":true}},"is_save_optional":{"get":{"result":true}},"is_save_source":{"get":{"result":true}},"is_surcharge_card_present_blocked":{"get":{"result":true}},"is_surcharge_tender_contract":{"get":{"result":true}},"is_tip":{"get":{"result":true}},"k_business":{"get":{"get":true}},"k_currency":{"get":{"get":true}},"k_location":{"get":{"get":true}},"m_surcharge":{"get":{"result":true}},"m_surcharge_ach":{"get":{"result":true}},"text_surcharge_disclosure":{"get":{"result":true}},"uid_owner":{"get":{"get":true}}}};
 };
 
 /**

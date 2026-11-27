@@ -84,6 +84,18 @@ function Wl_Passport_Login_Enter_PassportOtpModel()
   this.text_delivery_selected = undefined;
 
   /**
+   * Email of an existing account, to use instead of {@link Wl_Passport_Login_Enter_PassportOtpModel.uid}.
+   *
+   * Empty to give the user by {@link Wl_Passport_Login_Enter_PassportOtpModel.uid}. When the email is given, {@link Wl_Passport_Login_Enter_PassportOtpModel.uid}
+   * must be empty. Spaces around the email are ignored. At most 255 characters, the size of the email of an account.
+   *
+   * @get get
+   * @post get
+   * @type {string}
+   */
+  this.text_mail = "";
+
+  /**
    * Phone number masked with `*` symbols in case if we have priority sending and sms sending was selected.
    *
    * @get result
@@ -118,7 +130,7 @@ WlSdk_ModelAbstract.extend(Wl_Passport_Login_Enter_PassportOtpModel);
  */
 Wl_Passport_Login_Enter_PassportOtpModel.prototype.config=function()
 {
-  return {"a_field":{"i_attempt_left":{"post":{"result":true}},"id_delivery_strategy":{"get":{"get":true}},"is_mail":{"get":{"get":true}},"is_phone":{"get":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"s_otp_code":{"post":{"post":true}},"text_delivery_priority":{"get":{"get":true}},"text_delivery_selected":{"get":{"result":true}},"text_phone_masked":{"get":{"result":true}},"uid":{"get":{"get":true},"post":{"get":true}},"url_redirect":{"post":{"result":true}}}};
+  return {"a_field":{"i_attempt_left":{"post":{"result":true}},"id_delivery_strategy":{"get":{"get":true}},"is_mail":{"get":{"get":true}},"is_phone":{"get":{"get":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"s_otp_code":{"post":{"post":true}},"text_delivery_priority":{"get":{"get":true}},"text_delivery_selected":{"get":{"result":true}},"text_mail":{"get":{"get":true},"post":{"get":true}},"text_phone_masked":{"get":{"result":true}},"uid":{"get":{"get":true},"post":{"get":true}},"url_redirect":{"post":{"result":true}}}};
 };
 
 /**
@@ -126,6 +138,12 @@ Wl_Passport_Login_Enter_PassportOtpModel.prototype.config=function()
  *
  * Checks the OTP rate limit, generates a new code for the given user, and dispatches it according to the
  * chosen delivery strategy. The user must not be already signed in and must not be an admin.
+ *
+ * The user is given by {@link Wl_Passport_Login_Enter_PassportOtpModel.uid} or by {@link Wl_Passport_Login_Enter_PassportOtpModel.text_mail}. With the email, the
+ * limit of the requests from the IP address is checked and spent first; only then the request is refused when no
+ * account uses the email (`mail-nx`), when the account is an admin (`user-admin`) or a staff member of the
+ * business, active or not (`user-staff`). The code is then sent to the contacts of the account found, its email and
+ * its phone, which may differ from the email given.
  *
  * There are two ways to specify the delivery channel:
  *
@@ -163,6 +181,11 @@ Wl_Passport_Login_Enter_PassportOtpModel.prototype.config=function()
  *
  * Validates the OTP code for the given user, signs in the session, fires the post-login event,
  * completes business registration if applicable, and returns the redirect URL for the business frontend.
+ *
+ * The user is given by {@link Wl_Passport_Login_Enter_PassportOtpModel.uid} or by {@link Wl_Passport_Login_Enter_PassportOtpModel.text_mail}. With the email, the
+ * limit of the submits from the IP address is checked and spent first; only then the request is refused when no
+ * account uses the email (`mail-nx`), when the account is an admin (`user-admin`) or a staff member of the
+ * business, active or not (`user-staff`). The account found is signed in; no account is created.
  *
  * @function
  * @name Wl_Passport_Login_Enter_PassportOtpModel.post

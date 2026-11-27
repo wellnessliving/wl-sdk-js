@@ -1259,7 +1259,7 @@ RsMailSid.PAY_AUTOMATIC_SUCCESS = 116;
  *
  * The class of the email is `Thoth\WlPay\Dispute\Finance\Mail` of SAL, see {@link RsMailSid.SAL_CLASS}. It is a
  * text here and not a `@see` link: SAL is released after the monolith, and a link to a class that does not exist yet
- * fails the documentation check of this class. TODO WL-96921: replace the text with the links to this class and to
+ * fails the documentation check of this class. TODO wl-86945: replace the text with the links to this class and to
  * its methods that load the data and the information of the email when SAL is on every production.
  *
  * @type {number}

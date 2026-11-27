@@ -396,8 +396,8 @@ Wl_Appointment_Book_Schedule_Calendar73Model.prototype.config=function()
  * service at the given location. Availability is determined by the business schedule, holidays,
  * and staff availability for the selected date range.
  *
- * On a client request (`uid` set, `is_staff` false), time slots that overlap the client's own bookings of the
- * same service are excluded, including the future occurrences of the client's never-ending recurring bookings.
+ * On a client request (`uid` set, `is_staff` false), time slots with the exact same start time as the client's
+ * own confirmed bookings of the same service are excluded.
  *
  * @function
  * @name Wl_Appointment_Book_Schedule_Calendar73Model.get
