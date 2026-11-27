@@ -633,9 +633,9 @@ function Wl_Mail_SendMailModel()
 
   /**
    * @typedef {{}} Wl_Mail_SendMailModel_a_data_50
-   * @property {string[]} a_visit_list Keys of the visits of the client on one day, the earliest first. Each is a primary key in the RsVisitSql table. See ServiceListGroup::visitListGet().
+   * @property {string[]} a_visit_list Keys of the visits of the client on one day, the earliest first.
    * @property {boolean} is_secondary `true` if the mail goes to a secondary address of the client: the buttons are disabled, as in the single reminder.
-   * @property {string} k_business Business key. Primary key in the RsBusinessSql table.
+   * @property {string} k_business Business key.
    */
 
   /**
