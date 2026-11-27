@@ -59,6 +59,18 @@ function Wl_Profile_Edit_Email_EditEmailModel()
   this.is_backend = true;
 
   /**
+   * If `true`, the user who has the specified email is a client or a staff member of a business other than
+   * {@link Wl_Profile_Edit_Email_EditEmailModel.k_business}, `false` - otherwise.
+   *
+   * The password of such a user can not be set when the user is added as a staff member of
+   * {@link Wl_Profile_Edit_Email_EditEmailModel.k_business}, so the form of a new staff member does not ask for it.
+   *
+   * @get result
+   * @type {boolean}
+   */
+  this.is_business_foreign = undefined;
+
+  /**
    * If `true`, user is already a member of current business, `false` - otherwise.
    *
    * @get result
@@ -152,7 +164,7 @@ WlSdk_ModelAbstract.extend(Wl_Profile_Edit_Email_EditEmailModel);
  */
 Wl_Profile_Edit_Email_EditEmailModel.prototype.config=function()
 {
-  return {"a_field":{"a_business_member_key":{"get":{"result":true}},"a_user":{"get":{"result":true}},"is_added":{"get":{"result":true},"post":{"result":true}},"is_backend":{"get":{"get":true}},"is_current_member":{"get":{"result":true}},"is_limit":{"get":{"result":true}},"is_password_set":{"get":{"result":true}},"is_staff":{"get":{"result":true}},"is_staff_any_business":{"get":{"result":true}},"is_use":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"text_mail":{"get":{"get":true}},"uid_result":{"get":{"result":true}},"uid_want":{"get":{"get":true},"post":{"get":true}}}};
+  return {"a_field":{"a_business_member_key":{"get":{"result":true}},"a_user":{"get":{"result":true}},"is_added":{"get":{"result":true},"post":{"result":true}},"is_backend":{"get":{"get":true}},"is_business_foreign":{"get":{"result":true}},"is_current_member":{"get":{"result":true}},"is_limit":{"get":{"result":true}},"is_password_set":{"get":{"result":true}},"is_staff":{"get":{"result":true}},"is_staff_any_business":{"get":{"result":true}},"is_use":{"get":{"result":true}},"k_business":{"get":{"get":true},"post":{"get":true}},"text_mail":{"get":{"get":true}},"uid_result":{"get":{"result":true}},"uid_want":{"get":{"get":true},"post":{"get":true}}}};
 };
 
 /**
